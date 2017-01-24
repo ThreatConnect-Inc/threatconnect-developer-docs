@@ -3158,25 +3158,25 @@ Multiple Assignees or Escalatees may be provided by adding additional `username`
 > Add the user denoted by `username` to the list of Escalatees
 
 ```
-POST /v2/tasks/<task_id>escalatees/<username>
+POST /v2/tasks/<task_id>/escalatees/<username>
 ```
 
 > Add the user denoted by `username` to the list of Assignees
 
 ```
-POST /v2/tasks/<task_id>assignees/<username>
+POST /v2/tasks/<task_id>/assignees/<username>
 ```
 
 > Remove the user denoted by `username` from the list of Escalatees
 
 ```
-DELETE /v2/tasks/<task_id>escalatees/<username>
+DELETE /v2/tasks/<task_id>/escalatees/<username>
 ```
 
 > Remove the user denoted by `username` from the list of Assignees
 
 ```
-DELETE /v2/tasks/<task_id>assignees/<username>
+DELETE /v2/tasks/<task_id>/assignees/<username>
 ```
 
 > Retrieve all Indicators associated with a specific Task
