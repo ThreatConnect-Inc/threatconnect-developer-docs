@@ -47,19 +47,21 @@ Libraries in other languages are available for interfacing with the API, but are
 
 The Application Programming Interface (API) allows users to access data in their Organizations and Communities with REST-ful queries to HTTP endpoints
 
-## Getting your API key
+## Creating an API key
 
-1. Sign up for a free [ThreatConnect Basic account](https://www.threatconnect.com/platform/editions/#basic)
-2. Contact <sales@threatconnect.com> to enable API access for your account
+If you are not able to create an API key following to the steps provided below, please contact <sales@threatconnect.com> to discuss pricing.
+
+To create an API key:
+
 1.	Log in to the [ThreatConnect web application](https://app.threatconnect.com ) with your credentials
-1.	Click on Account and select Org Settings 
+1.	Hover over your user name in the top right corner and select "Org Settings"
 <img src="images/tcAPI_Figure2.png" alt="Figure 2"/><BR><BR>
-1.	Create a new API User and configure their information
+1.	Create a new API User and configure the user information
 <img src="images/tcAPI_Figure3.png" alt="Figure 3" <BR><BR>
-    - Name will identify this user in trusted communities
-    - Pseudonym will appear instead of Name in anonymous communities
+    - The API User's name will identify this user in trusted communities
+    - The pseudonym will appear instead of name in anonymous communities
      
-Access ID identifies the user account and Secret Key authenticates the account 
+Access ID identifies the user account and Secret Key authenticates the account.
 
 ## Using the API
 
