@@ -3151,9 +3151,9 @@ tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 indicators = tc.indicators()
     
 owner = 'Example Community'
-indicator = indicators.add('8743b52063cd84097a65d1633f5c74f5') # MD5 hash of string `hashcat`
-indicator.set_indicator('F123530f8e0104d4521958309eb9852e0731501') #SHA1 hash of same
-indicator.set_indicator('127e6fbfe24a750e72930c220a8e138275656b8e5d8f48a98c3c92df2caba935') # SHA256 hash of same
+indicator = indicators.add('8743b52063cd84097a65d1633f5c74f5', owner) # MD5 hash of string `hashcat`
+indicator.set_indicator('b89eaac7e61417341b710b727768294d0e6a277b') #SHA1 hash of same string
+indicator.set_indicator('127e6fbfe24a750e72930c220a8e138275656b8e5d8f48a98c3c92df2caba935') # SHA256 hash of same string
 indicator.set_confidence(75)
 indicator.set_rating(2.5)
 indicator.set_size(112)
