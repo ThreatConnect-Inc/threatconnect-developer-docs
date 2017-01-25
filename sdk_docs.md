@@ -3940,7 +3940,7 @@ The Python SDK provides easy methods to manage all Group, Indicator, and Victim 
 
 An example of the [Associate Group](#associate-group), [Associate Indicator](#associate-indicator), [Associate Victim](#associate-victim), [Disassociate Group](#disassociate-group), [Disassociate Indicator](#disassociate-indicator), and [Disassociate Victim](#disassociate-victim) methods, as well as explanations of the code, are provided in the following section .
 
-<b>Associate Group</b>
+##Associate Group
 
 An Association to a Resource Group, Indicator o,r Victim can be created to another Resource Group by using the `associate_group()` method and passing the Resource Type and Resource ID. The Associated Resource must exist in the ThreatConnect platform prior to the Association attempt.
 
