@@ -49,7 +49,7 @@ The Application Programming Interface (API) allows users to access data in their
 
 ## Creating an API key
 
-If you are not able to create an API key following to the steps provided below, please contact <sales@threatconnect.com> to discuss pricing.
+If you are not able to create an API key using to the steps provided below, please contact <sales@threatconnect.com> to discuss pricing.
 
 To create an API key:
 
