@@ -3036,7 +3036,7 @@ Paths                                                                    | Owner
 `/v2/indicators/<indicator type>/<value>/securityLabels`                 | TRUE          |                     
 `/v2/groups/<group type>/<ID>/securityLabels`                            | FALSE         |                     
 `/v2/indicators/<indicator type>/<value>/attributes/<ID>/securityLabels` | TRUE          |                     
-`/v2/ groups/<group type>/<ID>/attributes/<ID>/securityLabels`           | FALSE         |                     
+`/v2/groups/<group type>/<ID>/attributes/<ID>/securityLabels`            | FALSE         |                     
 `/v2/tasks/<ID>/indicators`                   | TRUE | 
 
 The SecurityLabels Service allows for the querying of a specific Security Label for a user’s Organization, as well as any Communities to which the user has access.
