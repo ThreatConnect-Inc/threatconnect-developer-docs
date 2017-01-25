@@ -1592,8 +1592,8 @@ Post filters are applied on the results returned by the API request.
 
 Filter               | Value Type   | Description                                                  
 ---------------------| ------------ | ------------------------------------------------------------ 
-`add_pf_name()        | str          | Filter Signature on name.
-`add_pf_date_added()  | str          | Filter Signature on date added.
+`add_pf_name()`        | str          | Filter Signature on name.
+`add_pf_date_added()`  | str          | Filter Signature on date added.
 
 ###Signatures Retrieve Filter Example
 
