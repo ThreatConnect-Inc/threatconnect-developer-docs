@@ -47,7 +47,7 @@ Libraries in other languages are available for interfacing with the API, but are
 
 The Application Programming Interface (API) allows users to access data in their Organizations and Communities with REST-ful queries to HTTP endpoints
 
-## Creating an API key
+## Creating an API Key
 
 If you are not able to create an API key using to the steps provided below, please contact <sales@threatconnect.com> to discuss pricing.
 
