@@ -3176,16 +3176,16 @@ The example demonstrates how to create a File Hash Indicator Resource in the Thr
 Snippet                                   | Description                                                                       
 ----------------------------------------- | --------------------------------------------------------------------------------- 
 `tc = ThreatConnect(api_access_id,...`    | Instantiate the ThreatConnect object. 
-`indicator = resources.add('A1231ba81...` | Add a Resource object setting the value and Owner. 
-`indicator.set_indicator('F123530f8e0...` | Add File addition File Hashes for this Indicator. 
-`indicator.set_indicator('B12310a665d...` | Add File addition File Hashes for this Indicator. 
+`indicator = indicators.add('8743b520...` | Add an Indicator object setting the value and Owner. 
+`indicator.set_indicator('b89eaac7e61...` | Add File addition File Hashes for this Indicator. 
+`indicator.set_indicator('127e6fbfe24...` | Add File addition File Hashes for this Indicator. 
 `indicator.set_confidence(75)`            | Set the Confidence value for this Indicator. 
 `indicator.set_rating(2.5)`               | Set the Rating value for this Indicator. 
 `indicator.set_size(112)`                 | Set the File size property of the Indicator. 
 `indicator.add_attribute('Description...` | Add an Attribute of type **Description** to the Resource. 
-`indicator.add_tag('EXAMPLE')`            | Add a Tag to the Resource. 
-`indicator.set_security_label('TLP Gre..` | Add a Security Label to the Resource. 
-`indicator.commit()`                      | Trigger multiple API calls to write Resource, <br> Attributes, Security Labels, and Tags. 
+`indicator.add_tag('EXAMPLE')`            | Add a Tag to the Indicator. 
+`indicator.set_security_label('TLP Gre..` | Add a Security Label to the Indicator. 
+`indicator.commit()`                      | Trigger multiple API calls to write Indicator, <br> Attributes, Security Labels, and Tags. 
 
 ##Adding File Occurrences
 
