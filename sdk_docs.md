@@ -3089,7 +3089,7 @@ The example demonstrates how to create an Address Indicator resource in the Thre
 Snippet                                   | Description                                                                       
 ----------------------------------------- | --------------------------------------------------------------------------------- 
 `tc = ThreatConnect(api_access_id,...`    | Instantiate the ThreatConnect object. 
-`indicators = tc.indicators()`            | Instantiate an Adversaries container object. 
+`indicators = tc.indicators()`            | Instantiate an Indicator container object. 
 `indicator = indicators.add('4.3.254....` | Add a Resource object setting the value and Owner. 
 `indicator.set_confidence(75)`            | Set the Confidence value for this Indicator. 
 `indicator.set_rating(2.5)`               | Set the Rating value for this Indicator. 
@@ -3131,7 +3131,7 @@ The example demonstrates how to create an Email Address Indicator Resource in th
 Snippet                                   | Description                                                                       
 ----------------------------------------- | --------------------------------------------------------------------------------- 
 `tc = ThreatConnect(api_access_id,...`    | Instantiate the ThreatConnect object. 
-`indicators = tc.indicators()`            | Instantiate an Adversaries container object. 
+`indicators = tc.indicators()`            | Instantiate an Indicator container object. 
 `indicator = indicators.add('badguy@....` | Add a Resource object setting the value and Owner. 
 `indicator.set_confidence(75)`            | Set the Confidence value for this Indicator. 
 `indicator.set_rating(2.5)`               | Set the Rating value for this Indicator. 
@@ -3242,7 +3242,7 @@ The example demonstrates how to create a Host Indicator Resource in the ThreatCo
 Snippet                                   | Description                                                                       
 ----------------------------------------- | --------------------------------------------------------------------------------- 
 `tc = ThreatConnect(api_access_id,...`    | Instantiate the ThreatConnect object. 
-`indicators = tc.indicators()`            | Instantiate an Adversaries container object. 
+`indicators = tc.indicators()`            | Instantiate an Indicator container object. 
 `indicator = indicators.add('badguy.....` | Add a Resource object setting the value and Owner. 
 `indicator.set_confidence(75)`            | Set the Confidence value for this Indicator. 
 `indicator.set_rating(2.5)`               | Set the Rating value for this Indicator. 
@@ -3284,7 +3284,7 @@ The example demonstrates how to create a URL Indicator Resource in the ThreatCon
 Snippet                                   | Description                                                                       
 ----------------------------------------- | --------------------------------------------------------------------------------- 
 `tc = ThreatConnect(api_access_id,...`    | Instantiate the ThreatConnect object. 
-`indicators = tc.indicators()`            | Instantiate an Adversaries container object. 
+`indicators = tc.indicators()`            | Instantiate an Indicator container object. 
 `indicator = indicators.add('badguy.....` | Add a Resource object setting the value and Owner. 
 `indicator.set_confidence(75)`            | Set the Confidence value for this Indicator. 
 `indicator.set_rating(2.5)`               | Set the Rating value for this Indicator. 
