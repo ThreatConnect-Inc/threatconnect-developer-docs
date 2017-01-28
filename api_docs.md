@@ -570,6 +570,7 @@ Below is a list of all Resource Types and all HTTP paths for obtaining each Reso
 - adversaries
 
 <b>Other</b>
+
 - victims
 - tasks
 - tags
