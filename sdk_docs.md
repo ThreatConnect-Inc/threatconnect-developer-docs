@@ -4422,9 +4422,9 @@ except RuntimeError as e:
 
 The Python SDK provides easy methods to manage Tags, which are supported on Indicators as well as Group Resources (e.g., Adversaries, Documents, Emails, Incidents, Signatures and Threats)   
 
-An example of the [add](#add-tag) and [delete](#delete-tag) methods are provided in the following section as well as explanations of the code.
+An example of the [add](#adding-tag) and [delete](#deleting-tags) methods are provided in the following section as well as explanations of the code.
 
-<b>Adding Tags</b>
+## Adding Tags
 
 A Tag can be added to a Group Resource or Indicator using the `add_tag()` method and passing the Tag value. Tags can be added while creating a new Resource or during a Resource update.
 
