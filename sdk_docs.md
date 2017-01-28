@@ -3942,7 +3942,7 @@ An example of the [Associate Group](#associate-group), [Associate Indicator](#as
 
 ##Associate Group
 
-An Association to a Resource Group, Indicator o,r Victim can be created to another Resource Group by using the `associate_group()` method and passing the Resource Type and Resource ID. The Associated Resource must exist in the ThreatConnect platform prior to the Association attempt.
+An Association to a Resource Group, Indicator, or Victim can be created to another Resource Group by using the `associate_group()` method and passing the Resource Type and Resource ID. The Associated Resource must exist in the ThreatConnect platform prior to the Association attempt.
 
 Note: In the prior example, no API calls are made until the commit() method is invoked.
 
