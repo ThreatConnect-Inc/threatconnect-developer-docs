@@ -464,7 +464,7 @@ The ThreatConnect API Indicators Service allows for the querying of a generic Co
 > The example below demonstrates usage of a Group name parameter:
 
 ```
-/v2/groups?filters=name%5ETes
+/v2/groups?filters=name%5ETest
 ```
 
 > The example below demonstrates usage of a Group fileType parameter:
@@ -482,7 +482,7 @@ The ThreatConnect API Indicators Service allows for the querying of a generic Co
 > The example below demonstrates usage of a victim filter parameter:
 
 ```
-/v2/victims?filters=name%5ETes
+/v2/victims?filters=name%5ETest
 ```
 
 > The example below demonstrates usage of a tag filter parameter:
