@@ -348,13 +348,7 @@ Response if Organization does not allow anonymous membership:
 }
 ```
 
-Depending on the member visibility of the Organization, results will include the member user's `name` and `id`, or only the member's `pseudonym`
-
-> View all members of a specific Owner Organization 
-
-```
-GET /v2/owners/<org_id>/members
-```
+Depending on the member visibility of the Organization, results will include the member user's `name` and `id`, or only the member's `pseudonym`.
 
 > The example below is of a request path with Owner query parameter for Indicators Collection:
 
