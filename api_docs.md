@@ -568,9 +568,11 @@ Below is a list of all Resource Types and all HTTP paths for obtaining each Reso
 - signatures
 - threats
 - adversaries
-- victims
 
-Tasks may also be queried and modified via the `/tasks` endpoint
+<b>Other</b>
+- victims
+- tasks
+- tags
 
 *Currently, Group-to-Group relationships are only permitted for two distinct Group types. For example, Incidents can be associated with Threats but not directly with other Incidents. This should be taken into consideration when constructing API queries to perform pivots.
 
