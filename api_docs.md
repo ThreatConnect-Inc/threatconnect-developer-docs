@@ -3023,7 +3023,7 @@ All Security Labels, including the Security Labels that have been applied to an 
 </securityLabelsResponse>
 ```
 
-A list of Security Labels from both the Indicators and Groups Services, as detailed in Table 31, can be retrieved.
+A list of Security Labels from the Indicator, Group, and Task Services, as detailed in Table 31, can be retrieved.
 
 <b>Table 32 - SecurityLabels Resource Type</b>
 
@@ -3034,7 +3034,8 @@ Paths                                                                    | Owner
 `/v2/groups/<group type>/<ID>/securityLabels`                            | FALSE         |                     
 `/v2/indicators/<indicator type>/<value>/attributes/<ID>/securityLabels` | TRUE          |                     
 `/v2/groups/<group type>/<ID>/attributes/<ID>/securityLabels`            | FALSE         |                     
-`/v2/tasks/<ID>/indicators`                   | TRUE | 
+`/v2/tasks/<ID>/securityLabels`                   | TRUE | 
+`/v2/tasks/<ID>/attributes/<ID>/securityLabels`                   | TRUE | 
 
 The SecurityLabels Service allows for the querying of a specific Security Label for a user’s Organization, as well as any Communities to which the user has access.
 
