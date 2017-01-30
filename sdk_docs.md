@@ -9058,7 +9058,7 @@ tc.tasks()
 ## Security Labels
 
 ```javascript
-tc.securityLabels()
+tc.tasks()
     .id(256)
     .done(function(response) {
         console.log('response', response);
@@ -9179,7 +9179,7 @@ tc.victims()
 ## Security Labels
 
 ```javascript
-tc.securityLabels()
+tc.victims()
     .id(256)
     .done(function(response) {
         console.log('response', response);
