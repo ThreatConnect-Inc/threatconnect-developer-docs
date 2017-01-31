@@ -816,11 +816,16 @@ For each Host, its Attributes, DNS Resolutions, associated Groups, Tags, Securit
  "data": {
   "resultCount": 1,
   "dnsResolution": [{
-   "resolutionDate": "2013-11-18T13:27:35Z",
+   "resolutionDate": "2017-01-30T20:49:05Z",
    "addresses": [{
+    "id": 123456,
     "ownerName": "Organization Name",
-    "webLink": "https://demo.threatconnect.com/tc/auth/indicators/details/address.xhtml?address=192.168.100.5&owner=Organization Name",
-    "ip": "208.64.121.161"
+    "dateAdded": "2017-01-20T20:49:05Z",
+    "lastModified": "2017-01-27T20:49:05Z",
+    "threatAssessRating": 3.0,
+    "threatAssessConfidence": 50.0,
+    "webLink": "https://demo.threatconnect.com/tc/auth/indicators/details/address.xhtml?address=192.168.100.1&owner=Organization+Name",
+    "ip": "192.168.100.1"
    }]
   }]
  }
@@ -1016,14 +1021,21 @@ For each Address, its Attributes, DNS Resolutions, associated Groups, Tags, Secu
  "status": "Success",
  "data": {
   "resultCount": 1,
-  "dnsResolution": [{
-   "resolutionDate": "2013-11-18T13:27:35Z",
-   "addresses": [{
-    "ownerName": "Organization Name",
-    "webLink": "https://demo.threatconnect.com/tc/auth/indicators/details/address.xhtml?host=bad.com&owner=Organization Name",
-    "host": "bad.com"
-   }]
-  }]
+  "indicator": [{
+   "id": 123456,
+   "ownerName": "Organization Name",
+   "type": "Host",
+   "dateAdded": "2015-07-02T17:45:32Z",
+   "lastModified": "2017-01-06T18:17:52Z",
+   "rating": 5.00,
+   "confidence": 85,
+   "threatAssessRating": 4.36,
+   "threatAssessConfidence": 80.67,
+   "webLink": "https://demo.threatconnect.com/tc/auth/indicators/details/host.xhtml?host=bad.com&owner=Organization+Name",
+   "description": "Host retrieved from malware analysis.",
+   "summary": "bad.com"
+   }
+  ]
  }
 }
 ```
