@@ -842,9 +842,14 @@ For each Host, its Attributes, DNS Resolutions, associated Groups, Tags, Securit
   <DnsResolution>
    <ResolutionDate>2013-11-18T13:27:35Z</ResolutionDate>
    <Addresses>
+    <Id>123456</Id>
     <OwnerName>Organization Name</OwnerName>
-    <WebLink>https://demo.threatconnect.com/tc/auth/indicators/details/address.xhtml?address=192.168.100.5&amp;owner=Organization Name</WebLink>
-    <Address>208.64.121.161</Address>
+    <DateAdded>2017-01-20T20:49:05Z</DateAdded>
+    <LastModified>2017-01-27T20:49:05Z</LastModified>
+    <ThreatAssessRating>3.0</ThreatAssessRating>
+    <ThreatAssessConfidence>50.0</ThreatAssessConfidence>
+    <WebLink>https://demo.threatconnect.com/tc/auth/indicators/details/address.xhtml?address=192.168.100.1&amp;owner=Organization+Name</WebLink>
+    <Ip>192.168.100.1</Ip>
    </Addresses>
   </DnsResolution>
  </Data>
@@ -1047,14 +1052,19 @@ For each Address, its Attributes, DNS Resolutions, associated Groups, Tags, Secu
  <Status>Success</Status>
  <Data xsi:type="dnsResolutionListResponseData" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <ResultCount>1</ResultCount>
-  <DnsResolution>
-   <ResolutionDate>2013-11-18T13:27:35Z</ResolutionDate>
-   <Hosts>
+  <Indicator>
+    <Id>123456</Id>
     <OwnerName>Organization Name</OwnerName>
-    <WebLink>https://demo.threatconnect.com/tc/auth/indicators/details/address.xhtml?host=bad.com&owner=Organization Name</WebLink>
-    <Host>bad.com</Host>
-   </Hosts>
-  </DnsResolution>
+    <Type>Host</Type>
+    <DateAdded>2015-07-02T17:45:32Z</DateAdded>
+    <LastModified>2017-01-06T18:17:52Z</LastModified>
+    <Rating>5.00</Rating>
+    <Confidence>85</Confidence>
+    <ThreatAssessRating>4.36</ThreatAssessRating>
+    <ThreatAssessConfidence>80.67</ThreatAssessConfidence>
+    <WebLink>https://demo.threatconnect.com/tc/auth/indicators/details/host.xhtml?host=bad.com&amp;owner=Organization+Name</WebLink>
+    <Summary>bad.com</Summary>
+  </Indicator>
  </Data>
 </dnsResolutionsResponse>
 ```
