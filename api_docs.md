@@ -792,6 +792,8 @@ Paths                             | Owner <br> Allowed | Pagination <br> Require
 ----------------------------------|---------------|--------------------
 `/v2/indicators/hosts/<hostname>` | TRUE          | FALSE   
 
+For each Host, its Attributes, associated Groups, Tags, Security Labels, Victims, Victim Assets, and available Owners can also be retrieved.
+
 ####DNS Resolutions Resource Type
 
 > Example of DNS History request for a Host within an Organization:
@@ -843,8 +845,6 @@ Paths                             | Owner <br> Allowed | Pagination <br> Require
  </Data>
 </dnsResolutionsResponse>
 ```
-
-For each Host, its Attributes, associated Groups, Tags, Security Labels, Victims, Victim Assets, and available Owners can also be retrieved.
 
 ####Addresses Resource Type
 
