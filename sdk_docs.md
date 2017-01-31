@@ -3582,7 +3582,7 @@ The example below demonstrates how to delete a Task Resource in the ThreatConnec
 
 tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
-Tasks = tc.tasks()
+tasks = tc.tasks()
 
 task = tasks.add('', owner)
 task.set_id(22)
@@ -3602,9 +3602,9 @@ Snippet                                   | Description                         
 ----------------------------------------- | --------------------------------------------------------------------------------- |
 `tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
 `tasks = tc.tasks()`                      | Instantiate a Tasks container object. |
-`task = tasks.add('')`                    | Add a Resource object setting the name and Owner. |
-`task.set_id(20)`                       | Set the ID of the task to the **EXISTING** task ID to delete. |
-`task.commit()`                           | Trigger API calls to write all added, deleted, or modified data. |
+`task = tasks.add('', owner)`             | Add a Task Resource setting the name and Owner. |
+`task.set_id(22)`                         | Set the ID of the task to the **EXISTING** task ID to delete. |
+`task.delete()`                           | Trigger API calls to delete the task. |
 
 <b>Attributes</b>
 See the [Loading Attributes Example](#loading-attributes-example).
