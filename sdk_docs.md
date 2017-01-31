@@ -612,7 +612,7 @@ Snippet                                   | Description
 ----------------------------------------- | --------------------------------------------------------------------------------- 
 `tc = ThreatConnect(api_access_id,...`    | Instantiate the ThreatConnect object. 
 `indicators = tc.indicators()`            | Instantiate an Indicators container object. 
-`filter1 = indicator_add_filter(...`      | Add a filter object to the Indicators container object <br> (support multiple filter objects). 
+`filter1 = indicator.add_filter()`        | Add a filter object to the Indicators container object <br> (support multiple filter objects). 
 `filter1.add_tag('EXAMPLE')`              | Add API filter to be applied to the API request. 
 `indicator.retrieve()`                    | Trigger the API request and retrieve the Indicators <br> intelligence data. 
 `for indicator in indicators:`            | Iterate over the Indicators container object generator. 
@@ -1372,7 +1372,7 @@ Snippet                                   | Description
 ----------------------------------------- | --------------------------------------------------------------------------------- 
 `tc = ThreatConnect(api_access_id,...`    | Instantiate the ThreatConnect object. 
 `indicators = tc.indicators()`            | Instantiate an Indicators container object. 
-`filter1 = indicator_add_filter(...`      | Add a filter object to the Indicators container object <br> (support multiple filter objects). 
+`filter1 = indicator.add_filter()`        | Add a filter object to the Indicators container object <br> (support multiple filter objects). 
 `filter1.add_tag('EXAMPLE')`              | Add API filter to be applied to the API request. 
 `indicator.retrieve()`                    | Trigger the API request and retrieve the Indicators <br> intelligence data. 
 `for indicator in indicators:`            | Iterate over the Indicators container object generator. 
