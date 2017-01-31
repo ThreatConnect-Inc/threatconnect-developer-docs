@@ -993,7 +993,59 @@ Paths                                | Owner <br> Allowed | Pagination <br> Requ
 -------------------------------------|---------------|---------------------
 `/v2/indicators/addresses/<address>` | TRUE          | FALSE      
 
-For each Address, its Attributes, associated Groups, Tags, Security Labels , Victims , Victim Assets , and available Owners can also be retrieved.
+For each Address, its Attributes, DNS Resolutions, associated Groups, Tags, Security Labels , Victims , Victim Assets , and available Owners can also be retrieved.
+
+####Retrieving Address DNS Resolutions
+
+> Example of DNS History request for an Address within an Organization:
+
+```
+/v2/indicators/addresses/192.168.0.1/dnsResolutions
+```
+
+> Example of DNS History request for an Address within a Community:
+
+```
+/v2/indicators/addresses/192.168.0.1/dnsResolutions?owner=Common%20Community
+```
+
+> DNSResolutions Resource Type JSON Response:
+
+```json
+{
+ "status": "Success",
+ "data": {
+  "resultCount": 1,
+  "dnsResolution": [{
+   "resolutionDate": "2013-11-18T13:27:35Z",
+   "addresses": [{
+    "ownerName": "Organization Name",
+    "webLink": "https://demo.threatconnect.com/tc/auth/indicators/details/address.xhtml?host=bad.com&owner=Organization Name",
+    "host": "bad.com"
+   }]
+  }]
+ }
+}
+```
+
+> DNSResolutions Resource Type XML Response:
+
+```xml
+<dnsResolutionsResponse>
+ <Status>Success</Status>
+ <Data xsi:type="dnsResolutionListResponseData" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ResultCount>1</ResultCount>
+  <DnsResolution>
+   <ResolutionDate>2013-11-18T13:27:35Z</ResolutionDate>
+   <Hosts>
+    <OwnerName>Organization Name</OwnerName>
+    <WebLink>https://demo.threatconnect.com/tc/auth/indicators/details/address.xhtml?host=bad.com&owner=Organization Name</WebLink>
+    <Host>bad.com</Host>
+   </Hosts>
+  </DnsResolution>
+ </Data>
+</dnsResolutionsResponse>
+```
 
 ####Files Resource Type
 
