@@ -4250,6 +4250,28 @@ Entities can be deleted using the HTTP DELETE method. With proper permissions, t
 
 NOTE: It is important to capture and use the ID to specify a Group or Attribute.
 
+####Retrieving Available Associations
+
+> To retrieve all of the available associations, use the following GET request:
+
+```
+GET /v2/types/associationTypes/
+```
+
+> To retrieve information about a specific association, use the following GET request format:
+
+```
+GET /v2/types/associationTypes/<association_type_name>/
+```
+
+> This GET request will return details about the "Adversary" association type:
+
+```
+GET /v2/types/associationTypes/adversaries/Adversary/
+```
+
+All of the available associations can be viewed by making a `GET` request to `/v2/types/associationTypes`.  This will return the name of the association and, if applicable, the Indicator/Group Resources between which the association can be created.  To get information about a specific association, add the association type to the end of the query above such as: `/v2/types/associationTypes/<association_type_name>`.
+
 ####Creating Associations
 
 > In order to see all IP Addresses associated with an Incident, issue the following query:
