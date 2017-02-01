@@ -9040,11 +9040,10 @@ tc.tasks()
 ```
 
 ## Tags
-The JavaScript SDK provides the `commitTags()` method to add tags.  The `id()` method is required to retrieve the tags.  The tag value should be passed to the `commitTags()` method.
+The JavaScript SDK provides the `commitTags()` method to add tags.  The `id()` method is required to retrieve the task.  The tag value should be passed to the `commitTags()` method.
 
 ```javascript
 tc.tasks()
-    .type(TYPE.INCIDENT)
     .id(256)
     .done(function(response) {
         console.log('response', response);
