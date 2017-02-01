@@ -2159,8 +2159,11 @@ The Groups service allows for the querying of a specific Incident for a user’s
 Paths                       | Owner <br> Allowed | Pagination <br> Required
 ----------------------------|---------------|---------------------
 `/v2/groups/incidents/<ID>` | FALSE         | FALSE      
+`/v2/groups/incidents/<ID>?includeAdditional=true` | FALSE         | FALSE      
 
 For each Incident, its Attributes, associated Indicators, Security Labels, Victims, Victim Assets, and Tags can be retrieved.
+
+Adding the ‘includeAdditional’ parameter will return the same information as `/v2/groups/incidents/<ID>` except that it will also include the Incident’s status.
 
 ####Documents Resource Type
 
