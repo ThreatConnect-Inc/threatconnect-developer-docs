@@ -2485,7 +2485,7 @@ tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 adversaries = tc.adversaries()
 
 adversary = adversaries.add('', owner)
-adversary.set_id(dl_id)
+adversary.set_id(20)
 
 try:
     adversary.delete()
@@ -2504,9 +2504,9 @@ Snippet                                   | Description
 ----------------------------------------- | --------------------------------------------------------------------------------- 
 `tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
 `adversaries = tc.adversaries()`          | Instantiate an Adversaries container object. 
-`adversary = adversaries.add('')`         | Add a resource object setting the name and Owner. 
+`adversary = adversaries.add('', owner)`  | Add a resource object setting the name and Owner. 
 `adversary.set_id(20)`                  | Set the ID of the Adversary to the **EXISTING** <br> Adversary ID to delete. 
-`adversary.commit()`                       | Trigger API calls to write all added, deleted, or <br> modified data. 
+`adversary.delete()`                       | Trigger API calls to write all added, deleted, or <br> modified data. 
 
 ##Batch Commit
 
@@ -2736,7 +2736,7 @@ tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 documents = tc.documents()
 
 document = documents.add('', owner)
-document.set_id(dl_id)
+document.set_id(20)
 
 try:
     document.delete()
@@ -2753,9 +2753,9 @@ Snippet                                   | Description
 ----------------------------------------- | --------------------------------------------------------------------------------- 
 `tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
 `documents = tc.documents()`              | Instantiate a Documents container object. 
-`document = documents.add('')`            | Add a Resource object setting the name and Owner. 
+`document = documents.add('', owner)`     | Add a Resource object setting the name and Owner. 
 `document.set_id(20)`                   | Set the ID of the Document to the **EXISTING** <br> Document ID to delete. 
-`document.commit()`                       | Trigger API calls to write all added, deleted, <br> or modified data. 
+`document.delete()`                       | Trigger API calls to write all added, deleted, <br> or modified data. 
 
 ##Emails Commit
 
@@ -2886,7 +2886,7 @@ tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 emails = tc.emails()
 
 email = emails.add('', owner)
-email.set_id(dl_id)
+email.set_id(20)
 
 try:
     email.delete()
@@ -2905,9 +2905,9 @@ Snippet                                   | Description
 ----------------------------------------- | --------------------------------------------------------------------------------- 
 `tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
 `emails = tc.emails()`                    | Instantiate an Emails container object. 
-`email = emails.add('')`                  | Add a Resource object setting the name <br> and Owner. 
+`email = emails.add('', owner)`           | Add a Resource object setting the name <br> and Owner. 
 `email.set_id(20)`                      | Set the ID of the Email to the **EXISTING** <Br> Email ID to delete. 
-`email.commit()`                       | Trigger API calls to write all added, deleted, <br> or modified data. 
+`email.delete()`                       | Trigger API calls to write all added, deleted, <br> or modified data. 
 
 ##Incidents Commit
 
@@ -3452,7 +3452,7 @@ tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 signatures = tc.signatures()
 
 signature = signatures.add('', owner)
-signature.set_id(dl_id)
+signature.set_id(20)
 
 try:
     signature.delete()
@@ -3471,9 +3471,9 @@ Snippet                                   | Description
 ----------------------------------------- | --------------------------------------------------------------------------------- 
 `tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
 `signatures = tc.signatures()`            | Instantiate a Signatures container object. 
-`signature = signatures.add('')`          | Add a Resource object setting the name and Owner. 
+`signature = signatures.add('', owner)`   | Add a Resource object setting the name and Owner. 
 `signature.set_id(20)`                  | Set the ID of the Signature to the **EXISTING** <br> Signature ID to delete. 
-`signature.commit()`                       | Trigger API calls to write all added, deleted, <br> or modified data. 
+`signature.delete()`                       | Trigger API calls to write all added, deleted, <br> or modified data. 
 
 ## Tasks Commit
 The ThreatConnect platform supports [adding](#adding-task-resources), [deleting](#deleting-task-resources), and [updating](#updating-task-resources) of task-intelligence data programmatically using the API. The Python SDK features an easy-to-use interface to assist in rapid development of software to manage this data.
@@ -3585,7 +3585,7 @@ tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 tasks = tc.tasks()
 
 task = tasks.add('', owner)
-task.set_id(22)
+task.set_id(20)
 
 try:
     task.delete()
@@ -3603,7 +3603,7 @@ Snippet                                   | Description                         
 `tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
 `tasks = tc.tasks()`                      | Instantiate a Tasks container object. |
 `task = tasks.add('', owner)`             | Add a Task Resource setting the name and Owner. |
-`task.set_id(22)`                         | Set the ID of the task to the **EXISTING** task ID to delete. |
+`task.set_id(20)`                         | Set the ID of the task to the **EXISTING** task ID to delete. |
 `task.delete()`                           | Trigger API calls to delete the task. |
 
 <b>Attributes</b>
@@ -3735,7 +3735,7 @@ tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 threats = tc.threats()
 
 threat = threats.add('', owner)
-threat.set_id(dl_id)
+threat.set_id(20)
 
 try:
     threat.delete()
@@ -3754,9 +3754,9 @@ Snippet                                   | Description
 ----------------------------------------- | --------------------------------------------------------------------------------- 
 `tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
 `threats = tc.threats()`                  | Instantiate a Threats container object. 
-`threat = threats.add('')`                | Add a Resource object setting the name and Owner. 
+`threat = threats.add('', owner)`         | Add a Resource object setting the name and Owner. 
 `threat.set_id(20)`                     | Set the ID of the Threat to the **EXISTING** <br> Threat ID to delete. 
-`threat.commit()`                       | Trigger API calls to write all added, deleted, <br> or modified data. 
+`threat.delete()`                       | Trigger API calls to write all added, deleted, <br> or modified data. 
 
 ##Victims Commit
 
@@ -3877,7 +3877,7 @@ tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 victims = tc.victims()
 
 victim = victims.add('', owner)
-victim.set_id(dl_id)
+victim.set_id(20)
 
 try:
     victim.delete()
@@ -3896,9 +3896,9 @@ Snippet                                   | Description
 ----------------------------------------- | --------------------------------------------------------------------------------- 
 `tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
 `victims = tc.victims()`                  | Instantiate a Victims container object. 
-`victim = victims.add('')`                | Add a Resource object setting the name and Owner. 
+`victim = victims.add('', owner)`         | Add a Resource object setting the name and Owner. 
 `victim.set_id(20)`                     | Set the ID of the Victim to the **EXISTING** <br> Victim ID to delete. 
-`victim.commit()`                       | Trigger API calls to write all added, deleted, <br> or modified data. 
+`victim.delete()`                       | Trigger API calls to write all added, deleted, <br> or modified data. 
 
 <b>Attributes</b>
 See the [Loading Attributes Example](#loading-attributes-example).
