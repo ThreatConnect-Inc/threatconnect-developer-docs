@@ -4226,7 +4226,7 @@ The Python SDK provides easy methods to manage Attributes.  Attributes are suppo
 
 An example of the [add](#add-attribute), [delete](#delete-attribute), and [update](#update-attribute) methods, as well as explanations of the code, are provided in the following section.
 
-<b>Adding Attributes</b>
+##Adding Attributes
 
 An Attribute can be added to a Resource Group or Indicator using the `add_attribute()` method and passing the Attribute Type and Attribute Value. Attributes can be added while creating a new Resource or during a Resource update. The Attribute Type (e.g., description) must be created in the Organization prior to it being added via the API.  Some Attributes come packaged with the ThreatConnect platform, but custom Attributes must have been previously created in the User Interface by the ThreatConnect administrator.
 
