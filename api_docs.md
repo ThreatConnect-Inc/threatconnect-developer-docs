@@ -546,28 +546,28 @@ name                           | String     | `=  ^`      | victim.name
 
 Below is a list of all Resource Types and all HTTP paths for obtaining each Resource Type. The following tables list when pagination is required or if the specific path supports specifying an Owner. Note that if a path does not support the Owner argument, but one is supplied, the argument will simply be ignored. Detailed information on each of the Resource Types, as well as example responses, are available later in this document. Table 3 also references multiple Indicator and Group types. Currently, these are the supported types for each entity:
 
-<b>Indicators</b>
+<b>Indicators</b>: `/v2/indicators/`
 
-- addresses
-- emailAddresses
-- hosts
-- urls
-- files
+- Addresses: `/v2/indicators/addresses/`
+- Email Addresses: `/v2/indicators/emailAddresses/`
+- Hosts: `/v2/indicators/hosts/`
+- Urls: `/v2/indicators/urls/`
+- Files: `/v2/indicators/files/`
 
-<b>Groups</b>
+<b>Groups</b>: `/v2/groups/`
 
-- emails
-- incidents
-- documents
-- signatures
-- threats
-- adversaries
+- Adversaries: `/v2/groups/adversaries/`
+- Documents: `/v2/groups/documents/`
+- Emails: `/v2/groups/emails/`
+- Incidents: `/v2/groups/incidents/`
+- Signatures: `/v2/groups/signatures/`
+- Threats: `/v2/groups/threats/`
 
 <b>Other</b>
 
-- victims
-- tasks
-- tags
+- Victims: `/v2/victims/`
+- Tasks: `/v2/tasks/`
+- Tags: `/v2/tags/`
 
 ####Indicators Resource Type
 
