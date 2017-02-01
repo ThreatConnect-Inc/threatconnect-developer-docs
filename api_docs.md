@@ -1788,6 +1788,7 @@ Within the API, Indicator entities only return the falsePositiveCount and falseP
   "webLink": "https://app.threatconnect.com/tc/auth/indicators/details/address.xhtml?address=192.168.0.1",
   "ip": "192.168.0.1"
  }
+}
 ```
 
 > ThreatAsses Score XML Response:
@@ -1838,6 +1839,7 @@ GET /v2/indicators/bulk?owner=Demo+Customer+Community
   "lastRun": "2015-03-26T19:06:53Z",
   "status": "Complete"
  }
+}
 ```
 
 > Checking bulkStatus Object XML Response:
@@ -1903,7 +1905,8 @@ Reports can be retrieved in JSON or CSV format. The JSON format will contain add
      "name": "China",
      "webLink": "https://app.threatconnect.com/tc/auth/tags/tag.xhtml?tag=China&owner=Demo Customer Community"
     }]
-   }
+   }]
+ }
 ```
 
 To query for a JSON report, execute the following query and include the Owner with to query. Note that the Owner must have JSON report publication enabled. 
