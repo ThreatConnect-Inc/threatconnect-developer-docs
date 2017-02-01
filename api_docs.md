@@ -1136,7 +1136,7 @@ For each Address, its Attributes, DNS Resolutions, associated Groups, Tags, Secu
 
 > Files Resource Type XML Response:
 
-```
+```xml
 <filesResponse>
  <Status>Success</Status>
  <Data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="fileListResponseData">
@@ -1712,7 +1712,7 @@ POST v2/indicators/[IndicatorType]/[IndicatorName]/falsePositive
 
 > Sample query with includeAdditional flag (e.g. /v2/indicators/[IndicatorType]/[IndicatorName]?includeAdditional=true):
 
-```
+```json
 {
   "status" : "Success",
   "data" : {
@@ -1740,7 +1740,7 @@ POST v2/indicators/[IndicatorType]/[IndicatorName]/falsePositive
 
 > Sample Query without includeAdditional flag (e.g. v2/indicators/[IndicatorType]/[IndicatorName]):
 
-```
+```json
 {
   "status" : "Success",
   "data" : {
