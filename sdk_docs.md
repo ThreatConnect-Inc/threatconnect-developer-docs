@@ -7391,7 +7391,7 @@ if ( tcSpaceElementId ) {
     apiSettings = {
         apiId: '12345678900987654321',
         apiSec: 'aabbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyyzz!@#$%^&*()-=',
-        apiUrl: 'https://ti.sumx.us/api'
+        apiUrl: 'https://demo.threatconnect.com/api'
     };
 }
 
@@ -7418,7 +7418,7 @@ Snippet                                   | Description
 `apiUrl: getParameterByName('tcApiPath')` | Retrieve API Path from Spaces. 
 `apiId: '12345678900987654321',`          | Set API ID when not using Spaces App. 
 `apiSec: 'aabbccddeeffgghhiijjkkllmmn...` | Set API Secret when not using Spaces App. 
-`apiUrl: 'https://ti.sumx.us/api`         | Set API URL when not using Spaces App. 
+`apiUrl: 'https://demo.threatconnect.com/api`         | Set API URL when not using Spaces App. 
 `var tc = new ThreatConnect(apiSettings)` | Get ThreatConnect Object. 
 `tc.owners()`                             | Get Owners object. 
 `.done(function(response) {`              | Set "done" callback. 
@@ -8122,7 +8122,7 @@ tc.owners()
     }
   ],
   "remaining": 0,
-  "url": "https://ti.sumx.us/api/v2/owners",
+  "url": "https://demo.threatconnect.com/api/v2/owners",
   "apiCalls": 1,
   "resultCount": 9,
   "status": "Success"
@@ -8902,8 +8902,8 @@ tc.tasks()
     // required
     .name('Test Task')
     // optional
-    .assignee([{'userName': 'bcsummers@gmail.com'}])
-    .escalatee([{'userName': 'bsummers'}])
+    .assignee([{'userName': 'joe-user@gmail.com'}])
+    .escalatee([{'userName': 'juser'}])
     .dueDate('2017-01-02T03:04:05Z')
     .escalationDate('2018-01-02T03:04:05Z')
     .reminderDate('2017-01-01T03:04:05Z')
@@ -8932,7 +8932,7 @@ tc.tasks()
             "type": "Organization"
         },
         "dateAdded": "2016-03-17T17:13:30Z",
-        "webLink": "https://ti.sumx.us/auth/workflow/task.xhtml?task=600",
+        "webLink": "https://demo.threatconnect.com/auth/workflow/task.xhtml?task=600",
         "status": "In Progress",
         "escalated": false,
         "reminded": false,
@@ -8941,20 +8941,20 @@ tc.tasks()
         "reminderDate": "2017-01-01T03:04:05Z",
         "escalationDate": "2018-01-02T03:04:05Z",
         "assignee": [{
-            "userName": "bcsummers@gmail.com",
-            "firstName": "Bryce",
-            "lastName": "Sumners"
+            "userName": "joe-user@gmail.com",
+            "firstName": "Joe",
+            "lastName": "User"
         }],
         "escalatee": [{
-            "userName": "bsummers",
-            "firstName": "Bracey",
-            "lastName": "Summers"
+            "userName": "joe-admin@gmail.com",
+            "firstName": "Joe",
+            "lastName": "Admin"
         }]
     },
     "remaining": 0,
-    "url": "https://ti.sumx.us/api/v2/tasks/?resultLimit=500&owner=SumX",
+    "url": "https://demo.threatconnect.com/api/v2/tasks/?resultLimit=500&owner=SumX",
     "apiCalls": 1,
-    "body": "{\"name\":\"Test Task\",\"assignee\":[{\"userName\":\"bcsummers@gmail.com\"}],\"escalatee\":[{\"userName\":\"bsummers\"}],\"dueDate\":\"2017-01-02T03:04:05Z\",\"escalationDate\":\"2018-01-02T03:04:05Z\",\"reminderDate\":\"2017-01-01T03:04:05Z\",\"escalated\":false,\"reminded\":false,\"overdue\":false,\"status\":\"In Progress\"}",
+    "body": "{\"name\":\"Test Task\",\"assignee\":[{\"userName\":\"joe-user@gmail.com\"}],\"escalatee\":[{\"userName\":\"juser\"}],\"dueDate\":\"2017-01-02T03:04:05Z\",\"escalationDate\":\"2018-01-02T03:04:05Z\",\"reminderDate\":\"2017-01-01T03:04:05Z\",\"escalated\":false,\"reminded\":false,\"overdue\":false,\"status\":\"In Progress\"}",
     "resultCount": 0,
     "status": "Success"
 }
@@ -8992,10 +8992,10 @@ victim.owner('Example Community')
         "suborg": "Anchor",
         "workLocation": "New York City, New York",
         "nationality": "Canadian",
-        "webLink": "https://ti.sumx.us/auth/victim/victim.xhtml?victim=22"
+        "webLink": "https://demo.threatconnect.com/auth/victim/victim.xhtml?victim=22"
     },
     "remaining": 0,
-    "url": "https://ti.sumx.us/api/v2/victims?resultLimit=500&owner=Example+Community",
+    "url": "https://demo.threatconnect.com/api/v2/victims?resultLimit=500&owner=Example+Community",
     "apiCalls": 1,
     "body": "{\"name\":\"Robin Scherbatsky\",\"org\":\"Fox News\",\"suborg\":\"Anchor\",\"workLocation\":\"New York City, New York\",\"nationality\":\"Canadian\"}",
     "resultCount": 0,
