@@ -7272,23 +7272,6 @@ The previous two examples explained how to:
 
 # JavaScript Library
 
-> The following is a code sample with line numbers and syntax highlighting:
-
-```
-
-
-1 tc.owners()
-2    .done(function(response) {
-3        console.log('owner response', response);
-4    })
-5    .error(function(response) {
-6        var message =  'Owner Retrieval failed.(' + response + ').';
-7        console.log('error message', message);
-8    })
-9    .retrieve();
-
-```
-
 <b>About This Document</b>
 
 This section explains the process of coding JavaScript applications, and the implementation of the JavaScript SDK, using the ThreatConnect API. The JavaScript SDK offers coverage of all features in version 4.0 of the ThreatConnect API—including the ability to write data to ThreatConnect.
@@ -7308,7 +7291,6 @@ All code examples will be noted in a separate box with a monospaced font and lin
 > An example of using configuration to read API configuration values is the following:
 
 ```javascript
-
 var apiSettings,
     tcSpaceElementId = getParameterByName('tcSpaceElementId');
 
