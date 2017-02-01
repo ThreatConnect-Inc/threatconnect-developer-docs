@@ -3567,7 +3567,7 @@ DELETE /v2/victims/securityLabels/<security_label_name>/victims/<victim_ID>
 
 Security Labels can be applied to Victims [in the same manner as other objects](#working-with-security-labels), allowing access and sharing restrictions.
 
-#### Resource Type
+#### Victim Attributes Resource Type
 
 > View Victim Attributes for a given Victim
 
