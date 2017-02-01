@@ -457,7 +457,7 @@ adversaries = tc.adversaries()
 try:
     owner = 'Example Community'
     filter1 = adversaries.add_filter()
-    filter1.add_owner(owners)
+    filter1.add_owner(owner)
     filter1.add_tag('APT')
 except AttributeError as e:
     print('Error: {0}'.format(e))
@@ -564,11 +564,12 @@ tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
 # indicator object
 indicators = tc.bulk_indicators()
+owner = 'Example Community'
  
 # Add Post Filters
 try:
     filter1 = indicators.add_filter()
-    filter1.add_owner(owners)
+    filter1.add_owner(owner)
     filter1.add_pf_confidence(75, FilterOperator.GE)
     filter1.add_pf_rating('2.5', FilterOperator.GT)
 except AttributeError as e:
@@ -813,10 +814,11 @@ Filter               | Value Type   | Description
 tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
 documents = tc.documents()
+owner = 'Example Community'
 
 try:
     filter1 = documents.add_filter()
-    filter1.add_owner(owners)
+    filter1.add_owner(owner)
     filter1.add_tag('APT')
 except AttributeError as e:
     print('Error: {0}'.format(e))
@@ -953,10 +955,11 @@ Filter               | Value Type   | Description
 tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
 emails = tc.emails()
+owner = 'Example Community'
 
 try:
     filter1 = emails.add_filter()
-    filter1.add_owner(owners)
+    filter1.add_owner(owner)
     filter1.add_tag('APT')
 except AttributeError as e:
     print('Error: {0}'.format(e))
@@ -1080,10 +1083,11 @@ Filter               | Value Type   | Description
 tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
 groups = tc.groups()
+owner = 'Example Community'
 
 try:
     filter1 = groups.add_filter()
-    filter1.add_owner(owners)
+    filter1.add_owner(owner)
     filter1.add_tag('APT')
 except AttributeError as e:
     print('Error: {0}'.format(e))
@@ -1198,10 +1202,11 @@ Filter               | Value Type   | Description
 tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
 incidents = tc.incidents()
+owner = 'Example Community'
 
 try:
     filter1 = incidents.add_filter()
-    filter1.add_owner(owners)
+    filter1.add_owner(owner)
     filter1.add_tag('APT')
 except AttributeError as e:
     print('Error: {0}'.format(e))
@@ -1323,11 +1328,12 @@ tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
 # indicator object
 indicators = tc.indicators()
+owner = 'Example Community'
  
 # Add API/Post Filters
 try:
     filter1 = indicators.add_filter()
-    filter1.add_owner(owners)
+    filter1.add_owner(owner)
     filter1.add_tag('EXAMPLE')
 except AttributeError as e:
     print(e)
@@ -1604,10 +1610,11 @@ Filter               | Value Type   | Description
 tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
 signatures = tc.signatures()
+owner = 'Example Community'
 
 try:
     filter1 = signatures.add_filter()
-    filter1.add_owner(owners)
+    filter1.add_owner(owner)
     filter1.add_tag('APT')
 except AttributeError as e:
     print('Error: {0}'.format(e))
@@ -1855,10 +1862,11 @@ Filter               | Value Type   | Description
 tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
 threats = tc.threats()
+owner = 'Example Community'
 
 try:
     filter1 = threats.add_filter()
-    filter1.add_owner(owners)
+    filter1.add_owner(owner)
     filter1.add_tag('APT')
 except AttributeError as e:
     print('Error: {0}'.format(e))
@@ -1930,10 +1938,11 @@ Filter               | Value Type   | Description
 tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
 victims = tc.victims()
+owner = 'Example Community'
 
 try:
     filter1 = victims.add_filter()
-    filter1.add_owner(owners)
+    filter1.add_owner(owner)
     filter1.add_adversary_id(531)
 except AttributeError as e:
     print('Error: {0}'.format(e))
@@ -4558,10 +4567,11 @@ In some environments, the server running the Python SDK does not have the requir
 > A list of Filters can also be retrieved by using the `filter1.filters` property:
 
 ```python 
+owner = 'Example Community'
 
 try:
     filter1 = adversary.add_filter()
-    filter1.add_owner(owners)
+    filter1.add_owner(owner)
     filter1.add_tag('APT')
 except AttributeError as e:
     print('Error: {0}'.format(e))
@@ -4680,9 +4690,11 @@ The **Modified Since** Filter applies to the entire Indicators Container but can
 > Python SDK Multiple Filter Objects example:
 
 ```python
+owner = 'Example Community'
+
 try:
     filter1 = indicators.add_filter()
-    filter1.add_owner(owners)
+    filter1.add_owner(owner)
     filter1.add_security_label('TLP Red')
 except AttributeError as e:
     print(e)
@@ -4690,7 +4702,7 @@ except AttributeError as e:
 
 try:
     filter2 = indicators.add_filter()
-    filter2.add_owner(owners)
+    filter2.add_owner(owner)
     filter2.add_filter_operator(FilterSetOperator.AND)
     filter2.add_threat_id(38)
 except AttributeError as e:
@@ -4699,7 +4711,7 @@ except AttributeError as e:
 
 try:
     filter3 = indicators.add_filter(IndicatorType.ADDRESSES)
-    filter3.add_owner(owners)
+    filter3.add_owner(owner)
     filter3.add_filter_operator(FilterSetOperator.OR)
     filter3.add_tag('EXAMPLE')
 except AttributeError as e:
@@ -4861,10 +4873,11 @@ The Python SDK allows for a Resource to be returned in multiple standard formats
 tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
 indicators = tc.indicators()
+owner = 'Example Community'
 
 try:
     filter1 = indicators.add_filter()
-    filter1.add_owner(owners)
+    filter1.add_owner(owner)
     filter1.add_tag('EXAMPLE')
 except AttributeError as e:
     print(e)
@@ -4897,10 +4910,11 @@ The Python SDK provides the `cef` methods to output data structured in CEF, whos
 tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
 indicators = tc.indicators()
+owner = 'Example Community'
 
 try:
     filter1 = indicators.add_filter()
-    filter1.add_owner(owners)
+    filter1.add_owner(owner)
     filter1.add_tag('EXAMPLE')
 except AttributeError as e:
     print(e)
@@ -4947,10 +4961,11 @@ The `csv_header` method should normally be called once per result set.
 tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
 indicators = tc.indicators()
+owner = 'Example Community'
 
 try:
     filter1 = indicators.add_filter()
-    filter1.add_owner(owners)
+    filter1.add_owner(owner)
     filter1.add_tag('EXAMPLE')
 except AttributeError as e:
     print(e)
@@ -4997,10 +5012,11 @@ The fields in the output depend on the type of Resource that has been requested.
 tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
 indicators = tc.indicators()
+owner = 'Example Community'
 
 try:
     filter1 = indicators.add_filter()
-    filter1.add_owner(owners)
+    filter1.add_owner(owner)
     filter1.add_tag('EXAMPLE')
 except AttributeError as e:
     print(e)
@@ -5035,10 +5051,11 @@ The fields in the output depend on the type of Resource that has been requested.
 tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
 indicators = tc.indicators()
+owner = 'Example Community'
 
 try:
     filter1 = indicators.add_filter()
-    filter1.add_owner(owners)
+    filter1.add_owner(owner)
     filter1.add_tag('EXAMPLE')
 except AttributeError as e:
     print(e)
@@ -5110,10 +5127,11 @@ The Python SDK provides the `set_indicator_regex` method which allows a user to 
 tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
 indicators = tc.indicators()
+owner = 'Example Community'
 
 try:
     filter1 = indicators.add_filter()
-    filter1.add_owner(owners)
+    filter1.add_owner(owner)
     filter1.add_tag('EXAMPLE')
 except AttributeError as e:
     print(e)
