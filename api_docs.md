@@ -2157,6 +2157,52 @@ The Groups service allows for the querying of a specific Incident for a user’s
 </incidentResponse>
 ```
 
+> Incident Resource Type JSON Response Including Incident Status:
+
+```json
+{
+ "status": "Success",
+ "data": {
+  "incident": {
+   "id": 3094,
+   "name": "Incident 1",
+   "owner": {
+    "id": 1,
+    "name": "Organization Name",
+    "type": "Organization"
+   },
+   "dateAdded": "2013-11-20T18:15:49Z",
+   "webLink": "https://app.threatconnect.com/tc/auth/incident/incident.xhtml?incident=3094",
+   "eventDate": "2013-11-04T00:00:00Z",
+   "status": "None"
+  }
+ }
+}
+```
+
+> Incident Resource Type XML Response Including Incident Status:
+
+```xml
+<incidentResponse>
+ <Status>Success</Status>
+ <Data xsi:type="incidentResponseData" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Incident>
+   <Id>3094</Id>
+   <Name>Incident 1</Name>
+   <Owner xsi:type="organization">
+    <Id>1</Id>
+    <Name>Organization Name</Name>
+    <Type>Organization</Type>
+   </Owner>
+   <DateAdded>2013-11-20T18:15:49Z</DateAdded>
+   <WebLink>https://app.threatconnect.com/tc/auth/incident/incident.xhtml?incident=3094</WebLink>
+   <EventDate>2013-11-04T00:00:00Z</EventDate>
+   <Status>None</Status>
+  </Incident>
+ </Data>
+</incidentResponse>
+```
+
 <b>Table 18 - Incident Resource Type</b>
 
 Paths                       | Owner <br> Allowed | Pagination <br> Required
