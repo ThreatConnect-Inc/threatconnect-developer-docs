@@ -544,7 +544,7 @@ name                           | String     | `=  ^`      | victim.name
 
 ### Resource Types
 
-Below is a list of all Resource Types and all HTTP paths for obtaining each Resource Type. The following tables lists when pagination is required or if the specific path supports specifying an Owner. Note that if a path does not support the Owner argument, but one is supplied, the argument will simply be ignored. Detailed information on each of the Resource Types, as well as example responses, are available later in this document. Table 3 also references multiple Indicator and Group types. Currently, these are the supported types for each entity:
+Below is a list of all Resource Types and all HTTP paths for obtaining each Resource Type. The following tables list when pagination is required or if the specific path supports specifying an Owner. Note that if a path does not support the Owner argument, but one is supplied, the argument will simply be ignored. Detailed information on each of the Resource Types, as well as example responses, are available later in this document. Table 3 also references multiple Indicator and Group types. Currently, these are the supported types for each entity:
 
 <b>Indicators</b>
 
