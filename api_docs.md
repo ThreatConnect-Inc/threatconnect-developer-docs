@@ -643,6 +643,228 @@ Below is a list of all Resource Types and all HTTP paths for obtaining each Reso
 `/v2/victims/<ID>/indicators`                          | FALSE         |     
 `/v2/tasks/<ID>/indicators`                          | TRUE         |     
 
+####Indicator Types
+
+> Indicator Type query for available Indicator types:
+
+```
+/v2/types/indicatorTypes
+```
+
+> Indicator Type query for details on a specific Indicator type:
+
+```
+/v2/types/indicatorTypes/<indicator type>
+```
+
+> Indicator Type JSON Response:
+
+```json
+{
+  "status": "Success",
+  "data": {
+    "resultCount": 10,
+    "indicatorType": [
+      {
+        "name": "Address",
+        "custom": "false",
+        "parsable": "true",
+        "apiBranch": "addresses",
+        "apiEntity": "address"
+      },
+      {
+        "name": "EmailAddress",
+        "custom": "false",
+        "parsable": "true",
+        "apiBranch": "emailAddresses",
+        "apiEntity": "emailAddress"
+      },
+      {
+        "name": "File",
+        "custom": "false",
+        "parsable": "true",
+        "apiBranch": "files",
+        "apiEntity": "file"
+      },
+      {
+        "name": "Host",
+        "custom": "false",
+        "parsable": "true",
+        "apiBranch": "hosts",
+        "apiEntity": "host"
+      },
+      {
+        "name": "URL",
+        "custom": "false",
+        "parsable": "true",
+        "apiBranch": "urls",
+        "apiEntity": "url"
+      },
+      {
+        "name": "ASN",
+        "custom": "true",
+        "parsable": "true",
+        "apiBranch": "asns",
+        "apiEntity": "asn",
+        "casePreference": "upper",
+        "value1Label": "AS Number",
+        "value1Type": "text",
+        "value2Label": ""
+      },
+      {
+        "name": "CIDR",
+        "custom": "true",
+        "parsable": "true",
+        "apiBranch": "cidrBlocks",
+        "apiEntity": "cidrBlock",
+        "casePreference": "lower",
+        "value1Label": "Block",
+        "value1Type": "text",
+        "value2Label": ""
+      },
+      {
+        "name": "Mutex",
+        "custom": "true",
+        "parsable": "false",
+        "apiBranch": "mutexes",
+        "apiEntity": "mutex",
+        "casePreference": "sensitive",
+        "value1Label": "Mutex",
+        "value1Type": "text",
+        "value2Label": ""
+      },
+      {
+        "name": "Registry Key",
+        "custom": "true",
+        "parsable": "false",
+        "apiBranch": "registryKeys",
+        "apiEntity": "registryKey",
+        "casePreference": "sensitive",
+        "value1Label": "Key Name",
+        "value1Type": "text",
+        "value2Label": "Value Name",
+        "value2Type": "text"
+      },
+      {
+        "name": "User Agent",
+        "custom": "true",
+        "parsable": "false",
+        "apiBranch": "userAgents",
+        "apiEntity": "userAgent",
+        "casePreference": "sensitive",
+        "value1Label": "User Agent String",
+        "value1Type": "text",
+        "value2Label": ""
+      }
+    ]
+  }
+}
+```
+
+> Indicator Type XML Response:
+
+```xml
+<indicatorTypesResponse>
+  <Status>Success</Status>
+  <Data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="indicatorTypeListResponseData">
+    <ResultCount>10</ResultCount>
+    <IndicatorType>
+      <Name>Address</Name>
+      <Custom>false</Custom>
+      <Parsable>true</Parsable>
+      <ApiBranch>addresses</ApiBranch>
+      <ApiEntity>address</ApiEntity>
+    </IndicatorType>
+    <IndicatorType>
+      <Name>EmailAddress</Name>
+      <Custom>false</Custom>
+      <Parsable>true</Parsable>
+      <ApiBranch>emailAddresses</ApiBranch>
+      <ApiEntity>emailAddress</ApiEntity>
+    </IndicatorType>
+    <IndicatorType>
+      <Name>File</Name>
+      <Custom>false</Custom>
+      <Parsable>true</Parsable>
+      <ApiBranch>files</ApiBranch>
+      <ApiEntity>file</ApiEntity>
+    </IndicatorType>
+    <IndicatorType>
+      <Name>Host</Name>
+      <Custom>false</Custom>
+      <Parsable>true</Parsable>
+      <ApiBranch>hosts</ApiBranch>
+      <ApiEntity>host</ApiEntity>
+    </IndicatorType>
+    <IndicatorType>
+      <Name>URL</Name>
+      <Custom>false</Custom>
+      <Parsable>true</Parsable>
+      <ApiBranch>urls</ApiBranch>
+      <ApiEntity>url</ApiEntity>
+    </IndicatorType>
+    <IndicatorType>
+      <Name>ASN</Name>
+      <Custom>true</Custom>
+      <Parsable>true</Parsable>
+      <ApiBranch>asns</ApiBranch>
+      <ApiEntity>asn</ApiEntity>
+      <casePreference>upper</casePreference>
+      <value1Label>AS Number</value1Label>
+      <value1Type>text</value1Type>
+      <value2Label/>
+    </IndicatorType>
+    <IndicatorType>
+      <Name>CIDR</Name>
+      <Custom>true</Custom>
+      <Parsable>true</Parsable>
+      <ApiBranch>cidrBlocks</ApiBranch>
+      <ApiEntity>cidrBlock</ApiEntity>
+      <casePreference>lower</casePreference>
+      <value1Label>Block</value1Label>
+      <value1Type>text</value1Type>
+      <value2Label/>
+    </IndicatorType>
+    <IndicatorType>
+      <Name>Mutex</Name>
+      <Custom>true</Custom>
+      <Parsable>false</Parsable>
+      <ApiBranch>mutexes</ApiBranch>
+      <ApiEntity>mutex</ApiEntity>
+      <casePreference>sensitive</casePreference>
+      <value1Label>Mutex</value1Label>
+      <value1Type>text</value1Type>
+      <value2Label/>
+    </IndicatorType>
+    <IndicatorType>
+      <Name>Registry Key</Name>
+      <Custom>true</Custom>
+      <Parsable>false</Parsable>
+      <ApiBranch>registryKeys</ApiBranch>
+      <ApiEntity>registryKey</ApiEntity>
+      <casePreference>sensitive</casePreference>
+      <value1Label>Key Name</value1Label>
+      <value1Type>text</value1Type>
+      <value2Label>Value Name</value2Label>
+      <value2Type>text</value2Type>
+    </IndicatorType>
+    <IndicatorType>
+      <Name>User Agent</Name>
+      <Custom>true</Custom>
+      <Parsable>false</Parsable>
+      <ApiBranch>userAgents</ApiBranch>
+      <ApiEntity>userAgent</ApiEntity>
+      <casePreference>sensitive</casePreference>
+      <value1Label>User Agent String</value1Label>
+      <value1Type>text</value1Type>
+      <value2Label/>
+    </IndicatorType>
+  </Data>
+</indicatorTypesResponse>
+```
+
+To support custom Indicator types, the API branch `/v2/types/indicatorTypes` will return all of the Indicator types available in an instance of ThreatConnect.  The response includes the name of the API branch and API entity for each Indicator type.  For more information about a specific Indicator type, add the Indicator type to the end of the query above such as: `/v2/types/indicatorTypes/<indicator_type>`.
+
 ####Hosts Resource Type
 
 > Hosts Resource Type JSON Response:
@@ -1589,10 +1811,9 @@ Paths                       | Owner <br> Allowed | Pagination <br> Required
 
 For each URL, its Attributes, associated Groups, Tags, Security Labels , Victims , Victim Assets , and available Owners can be retrieved.
 
-###Custom Indicators
+####Custom Indicator Types
 
-It is possible to create custom Indicators in ThreatConnect. To support this, the API branch `/v2/types/indicatorTypes` will return all of the Indicator types available in that instance of ThreatConnect (including both system-wide and custom indicators). This API branch also includes the name of the API branch and API entity for each Indicator type. For more information about a specific Indicator type, add the Indicator type to the end of the query above such as: `/v2/types/indicatorTypes/<indicator_type>`.
-
+It is possible to create custom Indicator types in ThreatConnect. To find the available custom Indicator types and their respective endpoints, refer to the Indicator Type branch.
 
 ###Observations
 
