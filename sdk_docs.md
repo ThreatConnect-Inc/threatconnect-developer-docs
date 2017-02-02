@@ -78,19 +78,20 @@ The Python SDK for ThreatConnect was designed with a focus on abstracting the AP
 
 The Python SDK supports the Resource Types listed below.  There is also a mechanism to do manual API requests to cover any API calls that are not provided with the core functionality.
 
-Object               | Description 
----------------------| ----------- 
-`adversaries()`      | Adversary container object 
-`bulk_indicators()`  | Bulk Indicator container object 
-`documents()`        | Document container object 
-`emails()`           | Email container object 
-`groups()`           | Group container object 
-`incidents()`        | Incident container object 
-`indicators()`       | Indicator container object 
-`owners()`           | Owner container object 
-`signatures()`       | Signature container object 
-`threats()`          | Threat container object 
-`victims()`          | Victim container object 
+Object                | Description                     
+--------------------- | -----------                     
+`adversaries()`       | Adversary container object      
+`bulk_indicators()`   | Bulk Indicator container object 
+`documents()`         | Document container object       
+`emails()`            | Email container object          
+`groups()`            | Group container object          
+`incidents()`         | Incident container object       
+`indicators()`        | Indicator container object      
+`owners()`            | Owner container object          
+`signatures()`        | Signature container object      
+`tasks()`             | Task container object           
+`threats()`           | Threat container object         
+`victims()`           | Victim container object         
 
 ## Example Python App
 
