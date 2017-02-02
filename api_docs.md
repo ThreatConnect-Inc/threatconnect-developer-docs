@@ -1589,6 +1589,11 @@ Paths                       | Owner <br> Allowed | Pagination <br> Required
 
 For each URL, its Attributes, associated Groups, Tags, Security Labels , Victims , Victim Assets , and available Owners can be retrieved.
 
+###Custom Indicators
+
+It is possible to create custom Indicators in ThreatConnect. To support this, the API branch `/v2/types/indicatorTypes` will return all of the Indicator types available in that instance of ThreatConnect (including both system-wide and custom indicators). This API branch also includes the name of the API branch and API entity for each Indicator type. For more information about a specific Indicator type, add the Indicator type to the end of the query above such as: `/v2/types/indicatorTypes/<indicator_type>`.
+
+
 ###Observations
 
 > Show total number of observations for a given Indicator (with timestamps)
