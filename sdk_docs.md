@@ -7349,12 +7349,15 @@ The JavaScript SDK for ThreatConnect was designed with a focus on abstracting th
 
 The JavaScript SDK supports the Resource Types listed below.  There is also a mechanism to do manual API requests to cover any API calls that are not provided with the core functionality.
 
-Object               | Description 
----------------------| ----------- 
-`groups()`           | Adversary, Documents, Emails, Incidents, Signatures and Threats.
-`indicators()`       | Indicator
-`owners()`           | Owner container object
-`victims()`          | Victim container object
+Object                | Description                     
+--------------------- | -----------                     
+`groups()`            | Group container object          
+`indicators()`        | Indicator container object      
+`owners()`            | Owner container object          
+`securityLabel()`     | Security Label container object 
+`tags()`              | Tag container object            
+`tasks()`             | Task container object           
+`victims()`           | Victim container object         
 
 ## Example JavaScript App
 
