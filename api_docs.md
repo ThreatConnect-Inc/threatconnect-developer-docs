@@ -2859,11 +2859,11 @@ A list of Signatures from both the Indicators and Tags service, as detailed in T
 Paths                                                        | Owner <br> Allowed | Pagination <br> Required
 -------------------------------------------------------------|---------------|---------------------
 `/v2/groups/signatures`                                      | TRUE          | TRUE                
-`/v2/indicators/[indicator type]/[value]/groups/signatures`  |               |                     
-`/v2/tags/[tag name]/groups/signatures`                      |               |                     
-`/v2/securityLabels/[security label name]/groups/signatures` |               |                     
-`/v2/groups/[group type]/[ID]/groups/signatures`             |               |                     
-`/v2/victims/[ID]/groups/signatures`                         |               |                     
+`/v2/indicators/<indicator type>/<value>/groups/signatures`  |               |                     
+`/v2/tags/<tag name>/groups/signatures`                      |               |                     
+`/v2/securityLabels/<security label name>/groups/signatures` |               |                     
+`/v2/groups/<group type>/<ID>/groups/signatures`             |               |                     
+`/v2/victims/<ID>/groups/signatures`                         |               |                     
 
 The Groups Service allows for the querying of a specific Signature for a user’s Organization, as well as any Communities to which a user has access.
 
