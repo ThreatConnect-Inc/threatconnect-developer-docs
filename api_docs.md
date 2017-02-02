@@ -3708,9 +3708,11 @@ Victim Assets can also be found by querying the victimAssets Collection. The vic
 
 <b>Table 36 - VictimAssets Resource Type</b>
 
-Paths                           | Owner <br> Allowed | Pagination <br> Required
---------------------------------|---------------|---------------------
-`/v2/victims/<ID>/victimAssets` | FALSE         | FALSE               
+Paths                                                  | Owner <br> Allowed | Pagination <br> Required 
+--------------------------------                       | ---------------    | ---------------------    
+`/v2/victims/<ID>/victimAssets`                        | TRUE              | FALSE                    
+`/v2/groups/<group type>/<ID>/victimAssets`            | TRUE               | FALSE                    
+`/v2/indicators/<indicator type>/<value>/victimAssets` | TRUE               | FALSE                    
 
 As Table 37 displays, each specific type of Victim Asset can be queried.
 
