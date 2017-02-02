@@ -863,7 +863,7 @@ Below is a list of all Resource Types and all HTTP paths for obtaining each Reso
 </indicatorTypesResponse>
 ```
 
-To support custom Indicator types, the API branch `/v2/types/indicatorTypes` will return all of the Indicator types available in an instance of ThreatConnect.  The response includes the name of the API branch and API entity for each Indicator type.  For more information about a specific Indicator type, add the Indicator type to the end of the query above such as: `/v2/types/indicatorTypes/<indicator_type>`.
+To support [custom Indicator types](http://docs.threatconnect.com/#custom-indicator-types), the API branch `/v2/types/indicatorTypes` will return all of the Indicator types available in an instance of ThreatConnect.  The response includes the name of the API branch and API entity for each Indicator type.  For more information about a specific Indicator type, add the Indicator type to the end of the query above such as: `/v2/types/indicatorTypes/<indicator_type>`.
 
 ####Hosts Resource Type
 
@@ -1813,7 +1813,7 @@ For each URL, its Attributes, associated Groups, Tags, Security Labels , Victims
 
 ####Custom Indicator Types
 
-It is possible to create custom Indicator types in ThreatConnect. To find the available custom Indicator types and their respective endpoints, refer to the Indicator Type branch.
+It is possible to create custom Indicator types in ThreatConnect. To find the available custom Indicator types and their respective endpoints, refer to the [Indicator Type](http://docs.threatconnect.com/#indicator-types) branch.
 
 ###Observations
 
