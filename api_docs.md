@@ -3157,6 +3157,8 @@ For each Signature, the Signature content can be downloaded, and the response fo
 
 For each Signature, its Attributes, associated Indicators, Security Labels, Victims, Victim Assets, and Tags can be retrieved.
 
+###Working With Attributes
+
 ####Attributes Resource Type
 
 > Example Attribute Paths:
@@ -3223,6 +3225,58 @@ Paths                                                | Owner <br> Allowed | Pagi
 `/v2/groups/<group type>/<ID>/attributes`            | FALSE         |                     
 
 Note that all relevant Security Labels for an Attribute can be queried.
+
+###Working With Associations
+
+####Retrieving Available Associations
+
+> To retrieve all of the available associations, use the following GET request:
+
+```
+GET /v2/types/associationTypes/
+```
+
+> To retrieve information about a specific association, use the following GET request format:
+
+```
+GET /v2/types/associationTypes/<association_type_name>/
+```
+
+> This GET request will return details about the "Adversary" association type:
+
+```
+GET /v2/types/associationTypes/adversaries/Adversary/
+```
+
+All of the available associations can be viewed by making a `GET` request to `/v2/types/associationTypes`.  This will return the name of the association and, if applicable, the Indicator/Group Resources between which the association can be created.  To get information about a specific association, add the association type to the end of the query above such as: `/v2/types/associationTypes/<association_type_name>`.
+
+####Indicator to Indicator Associations
+
+In ThreatConnect, some types of Indicators can be related with certain other types. At a high level, there are two ways to relate Indicators with one another:
+
+1. Association
+
+An association allows two Indicators of certain types to be related to one another in the manner that Indicators can be associated to Groups. Below is a list of the Indicator-to-Indicator associations possible in the ThreatConnect Cloud, along with the Indicator types that can be associated with one another using each association.
+
+Name                  | API Branch            | Indicators Associated  
+----                  | ----                  | ----                   
+Address to User Agent | `/addressToUserAgent` | Address <-> User Agent 
+ASN to Address        | `/asnToAddress`       | ASN <-> Address        
+ASN to CIDR           | `/asnToCidr`          | ASN <-> CIDR           
+CIDR to Address       | `/cidrToAddress`      | CIDR <-> Address       
+
+2. File Action
+
+A file action adds one Indicator to the behavior graph of a file Indicator. Below is a list of the file actions available in the ThreatConnect Cloud, along with the Indicator type that can be related via each file action.
+
+Name              | API Branch     | Indicator Type<br>Associated with File 
+----              | ----           | ----                                   
+File Archive      | `/archive`     | n/a                                    
+File Drop         | `/drop`        | n/a                                    
+File Traffic      | `/traffic`     | n/a                                    
+File Mutex        | `/mutex`       | Mutex                                  
+File Registry Key | `/registryKey` | Registry Key                           
+File User Agent   | `/userAgent`   | User Agent                             
 
 ###Working With Tags
 
@@ -4604,28 +4658,6 @@ Entities can be deleted using the HTTP DELETE method. With proper permissions, t
 
 NOTE: It is important to capture and use the ID to specify a Group or Attribute.
 
-####Retrieving Available Associations
-
-> To retrieve all of the available associations, use the following GET request:
-
-```
-GET /v2/types/associationTypes/
-```
-
-> To retrieve information about a specific association, use the following GET request format:
-
-```
-GET /v2/types/associationTypes/<association_type_name>/
-```
-
-> This GET request will return details about the "Adversary" association type:
-
-```
-GET /v2/types/associationTypes/adversaries/Adversary/
-```
-
-All of the available associations can be viewed by making a `GET` request to `/v2/types/associationTypes`.  This will return the name of the association and, if applicable, the Indicator/Group Resources between which the association can be created.  To get information about a specific association, add the association type to the end of the query above such as: `/v2/types/associationTypes/<association_type_name>`.
-
 ####Creating Associations
 
 > In order to see all IP Addresses associated with an Incident, issue the following query:
@@ -4666,34 +4698,6 @@ A query would return a list of Addresses in the same format as the `/v2/indicato
 This same pivoting syntax is used to create an Association. 
 
 NOTE: This will not create the Address in the system if the Address does not exist; this call only serves to associate the two.
-
-#####Indicator to Indicator Associations
-
-In ThreatConnect, some types of Indicators can be related with certain other types. At a high level, there are two ways to relate Indicators with one another:
-
-1. Association
-
-An association allows two Indicators of certain types to be related to one another in the manner that Indicators can be associated to Groups. Below is a list of the Indicator-to-Indicator associations possible in the ThreatConnect Cloud, along with the Indicator types that can be associated with one another using each association.
-
-Name                  | API Branch            | Indicators Associated  
-----                  | ----                  | ----                   
-Address to User Agent | `/addressToUserAgent` | Address <-> User Agent 
-ASN to Address        | `/asnToAddress`       | ASN <-> Address        
-ASN to CIDR           | `/asnToCidr`          | ASN <-> CIDR           
-CIDR to Address       | `/cidrToAddress`      | CIDR <-> Address       
-
-2. File Action
-
-A file action adds one Indicator to the behavior graph of a file Indicator. Below is a list of the file actions available in the ThreatConnect Cloud, along with the Indicator type that can be related via each file action.
-
-Name              | API Branch     | Indicator Type<br>Associated with File 
-----              | ----           | ----                                   
-File Archive      | `/archive`     | n/a                                    
-File Drop         | `/drop`        | n/a                                    
-File Traffic      | `/traffic`     | n/a                                    
-File Mutex        | `/mutex`       | Mutex                                  
-File Registry Key | `/registryKey` | Registry Key                           
-File User Agent   | `/userAgent`   | User Agent                             
 
 ####Deleting Associations
 
