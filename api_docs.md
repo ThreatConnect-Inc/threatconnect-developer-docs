@@ -3157,6 +3157,8 @@ For each Signature, the Signature content can be downloaded, and the response fo
 
 For each Signature, its Attributes, associated Indicators, Security Labels, Victims, Victim Assets, and Tags can be retrieved.
 
+###Working With Attributes
+
 ####Attributes Resource Type
 
 > Example Attribute Paths:
@@ -3223,6 +3225,204 @@ Paths                                                | Owner <br> Allowed | Pagi
 `/v2/groups/<group type>/<ID>/attributes`            | FALSE         |                     
 
 Note that all relevant Security Labels for an Attribute can be queried.
+
+###Working With Associations
+
+####Retrieving Available Associations
+
+> To retrieve all of the available associations, use the following GET request:
+
+```
+GET /v2/types/associationTypes/
+```
+
+> To retrieve information about a specific association, use the following GET request format:
+
+```
+GET /v2/types/associationTypes/<association_type_name>/
+```
+
+> This GET request will return details about the "Adversary" association type:
+
+```
+GET /v2/types/associationTypes/adversaries/Adversary/
+```
+
+All of the available associations can be viewed by making a `GET` request to `/v2/types/associationTypes`.  This will return the name of the association and, if applicable, the Indicator/Group Resources between which the association can be created.  To get information about a specific association, add the association type to the end of the query above such as: `/v2/types/associationTypes/<association_type_name>`.
+
+####Indicator to Indicator Associations
+
+> To retrieve indicators associated with another indicator using a custom association, use the following GET request format:
+
+```
+GET /v2/indicators/<indicator type>/<value>/associations/<association type>/indicators
+```
+
+> Retrieve all of the CIDR indicators associated with an ASN:
+
+```
+GET /v2/indicators/asns/ASN12345/associations/asnToCidr/indicators
+```
+
+> asnToCidr Associations retrieve JSON:
+
+```json
+{
+  "status": "Success",
+  "data": {
+    "resultCount": 1,
+    "indicator": [
+      {
+        "id": 123456,
+        "ownerName": "Organization Name",
+        "type": "CIDR",
+        "dateAdded": "2016-11-22T00:38:03Z",
+        "lastModified": "2016-11-22T01:50:53Z",
+        "rating": 1.00,
+        "confidence": 100,
+        "threatAssessRating": 1.0,
+        "threatAssessConfidence": 100.0,
+        "webLink": "https://app.threatconnect.com/auth/indicators/details/customIndicator.xhtml?id=123456&owner=Organization+Name",
+        "summary": "192.168.0.1/24"
+      }
+    ]
+  }
+}
+```
+
+> asnToCidr Associations retrieve XML:
+
+```xml
+<indicatorsResponse>
+  <Status>Success</Status>
+  <Data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="indicatorListResponseData">
+    <ResultCount>1</ResultCount>
+    <Indicator>
+      <Id>123456</Id>
+      <OwnerName>Organization Name</OwnerName>
+      <Type>CIDR</Type>
+      <DateAdded>2016-11-22T00:38:03Z</DateAdded>
+      <LastModified>2016-11-22T01:50:53Z</LastModified>
+      <Rating>1.00</Rating>
+      <Confidence>100</Confidence>
+      <ThreatAssessRating>1.0</ThreatAssessRating>
+      <ThreatAssessConfidence>100.0</ThreatAssessConfidence>
+      <WebLink>https://app.threatconnect.com/auth/indicators/details/customIndicator.xhtml?id=123456&amp;owner=Organization+Name</WebLink>
+      <Summary>192.168.0.1/24</Summary>
+    </Indicator>
+  </Data>
+</indicatorsResponse>
+```
+
+> To retrieve indicators associated with a file using a file action, use the following GET request format:
+
+```
+GET /v2/indicators/files/<file hash>/actions/<file action>/indicators
+```
+
+> Retrieve all of the indicators associated with the file using the mutex file action:
+
+```
+GET /v2/indicators/files/8743b52063cd84097a65d1633f5c74f5/actions/mutex/indicators
+```
+
+> Mutex file action retrieve JSON:
+
+```json
+{
+  "status": "Success",
+  "data": {
+    "resultCount": 2,
+    "indicator": [
+      {
+        "id": 123456,
+        "ownerName": "Organization Name",
+        "type": "Mutex",
+        "dateAdded": "2016-11-23T16:21:53Z",
+        "lastModified": "2016-11-23T16:21:53Z",
+        "threatAssessRating": 3.0,
+        "threatAssessConfidence": 50.0,
+        "webLink": "https://app.threatconnect.com/auth/indicators/details/customIndicator.xhtml?id=123456&owner=Organization+Name",
+        "description": "Mutex for file with hash **8743b52063cd84097a65d1633f5c74f5**.",
+        "summary": "50F163F13C2FF8FDB5262A672EB39B19"
+      },
+      {
+        "id": 123457,
+        "ownerName": "Organization Name",
+        "type": "Mutex",
+        "dateAdded": "2016-11-23T16:20:40Z",
+        "lastModified": "2016-11-23T16:20:40Z",
+        "threatAssessRating": 3.0,
+        "threatAssessConfidence": 50.0,
+        "webLink": "https://app.threatconnect.com/auth/indicators/details/customIndicator.xhtml?id=123457&owner=Organization+Name",
+        "description": "Mutex for file with hash **8743b52063cd84097a65d1633f5c74f5**.",
+        "summary": "CTF.TimListCache.FMPDefaultS-1-5-21-1547161642-507921405-839522115-1004MUTEX.DefaultS-1-5-21-1547161642-507921405-839522115-1004"
+      }
+    ]
+  }
+}
+```
+
+> Mutex file action retrieve XML:
+
+```xml
+<indicatorsResponse>
+  <Status>Success</Status>
+  <Data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="indicatorListResponseData">
+    <ResultCount>2</ResultCount>
+    <Indicator>
+      <Id>123456</Id>
+      <OwnerName>Organization Name</OwnerName>
+      <Type>Mutex</Type>
+      <DateAdded>2016-11-23T16:21:53Z</DateAdded>
+      <LastModified>2016-11-23T16:21:53Z</LastModified>
+      <ThreatAssessRating>3.0</ThreatAssessRating>
+      <ThreatAssessConfidence>50.0</ThreatAssessConfidence>
+      <WebLink>https://app.threatconnect.com/auth/indicators/details/customIndicator.xhtml?id=123456&amp;owner=Organization+Name</WebLink>
+      <Description>Mutex for file with hash **8743b52063cd84097a65d1633f5c74f5**.</Description>
+      <Summary>50F163F13C2FF8FDB5262A672EB39B19</Summary>
+    </Indicator>
+    <Indicator>
+      <Id>123457</Id>
+      <OwnerName>Organization Name</OwnerName>
+      <Type>Mutex</Type>
+      <DateAdded>2016-11-23T16:20:40Z</DateAdded>
+      <LastModified>2016-11-23T16:20:40Z</LastModified>
+      <ThreatAssessRating>3.0</ThreatAssessRating>
+      <ThreatAssessConfidence>50.0</ThreatAssessConfidence>
+      <WebLink>https://app.threatconnect.com/auth/indicators/details/customIndicator.xhtml?id=123457&amp;owner=Organization+Name</WebLink>
+      <Description>Mutex for file with hash **8743b52063cd84097a65d1633f5c74f5**.</Description>
+      <Summary>CTF.TimListCache.FMPDefaultS-1-5-21-1547161642-507921405-839522115-1004MUTEX.DefaultS-1-5-21-1547161642-507921405-839522115-1004</Summary>
+    </Indicator>
+  </Data>
+</indicatorsResponse>
+```
+
+In ThreatConnect, some types of Indicators can be related with certain other types. At a high level, there are two ways to relate Indicators with one another:
+
+1. **Association**
+
+  An association allows two Indicators of certain types to be related to one another in the manner that Indicators can be associated to Groups. Below is a list of the Indicator-to-Indicator associations possible in the ThreatConnect Cloud, along with the Indicator types that can be associated with one another using each association.
+
+  Name                  | API Branch            | Indicators Associated  
+  ----                  | ----                  | ----                   
+  Address to User Agent | `/addressToUserAgent` | Address <-> User Agent 
+  ASN to Address        | `/asnToAddress`       | ASN <-> Address        
+  ASN to CIDR           | `/asnToCidr`          | ASN <-> CIDR           
+  CIDR to Address       | `/cidrToAddress`      | CIDR <-> Address        
+
+2. **File Action**
+
+  A file action adds one Indicator to the behavior graph of a file Indicator. Below is a list of the file actions available in the ThreatConnect Cloud, along with the Indicator type that can be related via each file action.
+
+  Name              | API Branch     | Indicator Type<br>Associated with File 
+  ----              | ----           | ----                                   
+  File Archive      | `/archive`     | n/a                                    
+  File Drop         | `/drop`        | n/a                                    
+  File Traffic      | `/traffic`     | n/a                                    
+  File Mutex        | `/mutex`       | Mutex                                  
+  File Registry Key | `/registryKey` | Registry Key                           
+  File User Agent   | `/userAgent`   | User Agent                             
 
 ###Working With Tags
 
@@ -4603,28 +4803,6 @@ Host: api.threatconnect.com
 Entities can be deleted using the HTTP DELETE method. With proper permissions, this allows for the programmatic removal of data from ThreatConnect just as if it were done in the web client.
 
 NOTE: It is important to capture and use the ID to specify a Group or Attribute.
-
-####Retrieving Available Associations
-
-> To retrieve all of the available associations, use the following GET request:
-
-```
-GET /v2/types/associationTypes/
-```
-
-> To retrieve information about a specific association, use the following GET request format:
-
-```
-GET /v2/types/associationTypes/<association_type_name>/
-```
-
-> This GET request will return details about the "Adversary" association type:
-
-```
-GET /v2/types/associationTypes/adversaries/Adversary/
-```
-
-All of the possible associations can be viewed by making a `GET` request to `/v2/types/associationTypes`. This action will return the name of the association and, if applicable, the Indicator/Group types, which can be related using a given association. To get information about a specific association, add the association type to the end of the query above, such as `/v2/types/associationTypes/<association_type>`.
 
 ####Creating Associations
 
