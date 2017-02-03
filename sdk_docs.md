@@ -55,11 +55,11 @@ except ConfigParser.NoOptionError:
 tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 ```
 
-Installation of Python 2.7+, along with the Python SDK, is a prerequisite. Typically, Python comes pre-installed on Linux/OS X/Unix systems, so additional steps to install Python are not required.  This section will also highlight the basic configuration to connect to the ThreatConnect API. While an IDE will facilitate development of larger-scale systems, it is not required to follow the examples in this document.
+Installation of Python 2.7+, along with the Python SDK, is a prerequisite. Typically, Python comes pre-installed on Linux/OS X/Unix systems, so additional steps to install Python are not required. This section will also highlight the basic configuration to connect to the ThreatConnect API. While an IDE will facilitate development of larger-scale systems, it is not required to follow the examples in this document.
 
 To use the RESTful API for ThreatConnect, an API user must be provisioned. See the official ThreatConnect API documentation for details on how to create an API user as it is out of scope for this document.
 
-The Python SDK will need to be configured with an Access ID and Secret Key.  One way to achieve this is to use the `ConfigParser` module, which is part of the Python Standard Library.  Another option is to use `ArgParse` and pass the configuration items via CLI (command-line interface) arguments.  For this example, ConfigParser is used.
+The Python SDK will need to be configured with an Access ID and Secret Key. One way to achieve this is to use the `ConfigParser` module, which is part of the Python Standard Library. Another option is to use `ArgParse` and pass the configuration items via CLI (command-line interface) arguments. For this example, ConfigParser is used.
 
 Once the configuration has been set up, the developer should be able to run the examples in this document as long as the Python SDK has been installed. 
 
@@ -76,7 +76,7 @@ The Python SDK for ThreatConnect was designed with a focus on abstracting the AP
 
 <b>Supported Resource Types</b>
 
-The Python SDK supports the Resource Types listed below.  There is also a mechanism to do manual API requests to cover any API calls that are not provided with the core functionality.
+The Python SDK supports the Resource Types listed below. There is also a mechanism to do manual API requests to cover any API calls that are not provided with the core functionality.
 
 Object                | Description                     
 --------------------- | -----------                     
@@ -155,7 +155,7 @@ Snippet                                   | Description
     tc.set_tcl_console_level('critical')
 ```
 
-The Python SDK allows for the setting of the log-file location and debug level.  The level on the console logging can be set as well.  The default logging level for each is *critical*.
+The Python SDK allows for the setting of the log-file location and debug level. The level on the console logging can be set as well. The default logging level for each is *critical*.
 
 <b>Code Highlights</b>
 
@@ -178,7 +178,7 @@ This section provides an overview of the Python app development process and how 
 
 <b>Supported Version</b>
 
-The current supported version for Cloud deployment Python apps is 2.7.  This Python version is typically pre-installed on Linux®/Mac® OS/Unix systems. On-Premise clients do not have this restriction. They simply need to ensure that the Python runtime is available in their PATH environment variable.
+The current supported version for Cloud deployment Python apps is 2.7. This Python version is typically pre-installed on Linux®/Mac® OS/Unix systems. On-Premise clients do not have this restriction. They simply need to ensure that the Python runtime is available in their PATH environment variable.
 
 <b>Third-Party Libraries</b>
 
@@ -477,9 +477,9 @@ for adversary in adversaries:
     print(adversary.weblink)
 ```
 
-This example will demonstrate how to retrieve Adversaries while applying filters.  Two filters will be added: one for the Owner and another for a Tag.  The result set returned from this example will contain any Adversaries in the "Example Community" Owner that has a Tag of ***EXAMPLE***.
+This example will demonstrate how to retrieve Adversaries while applying filters. Two filters will be added: one for the Owner and another for a Tag. The result set returned from this example will contain any Adversaries in the "Example Community" Owner that has a Tag of ***EXAMPLE***.
 
-Note: The `filter1` object contains a `filters` property that provides a list of supported filters for the resource type being retrieved. To display this list, `print(filter1.filters)` can be used.  For more on using filters, see the [Advanced Filter Tutorial](#filtering).
+Note: The `filter1` object contains a `filters` property that provides a list of supported filters for the resource type being retrieved. To display this list, `print(filter1.filters)` can be used. For more on using filters, see the [Advanced Filter Tutorial](#filtering).
 
 <b>Code Highlights</b>
 
@@ -488,7 +488,7 @@ Snippet                                   | Description
 `tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
 `adversaries = tc.adversaries()`          | Instantiate an Adversaries container object. 
 `filter1 = adversaries.add_filter()`      | Add a filter object to the Adversaries container object <br> (support multiple filter objects). 
-`filter1.add_tag('EXAMPLE')`              | Add API filter to be applied to the API request. 
+`filter1.add_tag('EXAMPLE')`              | Add API filter to retrieve Adversaries with the 'Example' tag. 
 `adversaries.retrieve()`                  | Trigger the API request and retrieve the Adversaries <br> intelligence data. 
 `for adversary in adversaries:`           | Iterate over the Adversaries container object generator. 
 `print(adversary.id)`                     | Display the **'id'** property of the Adversary object. 
@@ -604,9 +604,9 @@ for indicator in indicators:
     
 ```
 
-This example will demonstrate how to retrieve Indicators while applying filters.  In this example, three filters will be added, one for the Owner, one for the Confidence, and one for the Rating.  The result set returned from this example will contain any Indicators in the **"Example Community"** Owner that has a Confidence greater than or equal to 75 and a Rating greater than 2.5.
+This example will demonstrate how to retrieve Indicators while applying filters. In this example, three filters will be added, one for the Owner, one for the Confidence, and one for the Rating. The result set returned from this example will contain any Indicators in the **"Example Community"** Owner that has a Confidence greater than or equal to 75 and a Rating greater than 2.5.
 
-Note: The `filter1` object contains a `filters` property which provides a list of supported filters for the resource type being retrieved. To display this list, `print(filter1.filters)` can be used.  For more on using filters, see the [Advanced Filter Tutorial](#filtering).
+Note: The `filter1` object contains a `filters` property which provides a list of supported filters for the resource type being retrieved. To display this list, `print(filter1.filters)` can be used. For more on using filters, see the [Advanced Filter Tutorial](#filtering).
 
 <b>Code Highlights</b>
 
@@ -615,7 +615,7 @@ Snippet                                   | Description
 `tc = ThreatConnect(api_access_id,...`    | Instantiate the ThreatConnect object. 
 `indicators = tc.indicators()`            | Instantiate an Indicators container object. 
 `filter1 = indicator.add_filter()`        | Add a filter object to the Indicators container object <br> (support multiple filter objects). 
-`filter1.add_tag('EXAMPLE')`              | Add API filter to be applied to the API request. 
+`filter1.add_tag('EXAMPLE')`              | Add API filter to retrieve Indicators with the 'Example' tag. 
 `indicator.retrieve()`                    | Trigger the API request and retrieve the Indicators <br> intelligence data. 
 `for indicator in indicators:`            | Iterate over the Indicators container object generator. 
 `print(indicator.indicator)`              | Display the **'indicator'** property of the Indicator object. 
@@ -634,7 +634,7 @@ Snippet                                   | Description
         print(attribute.displayed)
 ```
 
-The example continues from the previous [Bulk Download Example](#bulk-download-example).  Iterating through the **'indicators'** container provides `indicator` objects.  The `load_attribute()` method does not need to be called for Bulk Indicator downloads, since the Attribute data is packaged with the Indicator data.
+The example continues from the previous [Bulk Download Example](#bulk-download-example). Iterating through the **'indicators'** container provides `indicator` objects. The `load_attribute()` method does not need to be called for Bulk Indicator downloads, since the Attribute data is packaged with the Indicator data.
 
 <b>Code Highlights</b>
 
@@ -655,7 +655,7 @@ Snippet                                   | Description
         print(indicator.security_label.date_added)
 ```
 
-The example continues from the previous [Loading Attributes Example](#loading-attributes-example).  While still in the indicator's loop, the Indicator Security Label can be loaded by calling the `load_security_label()` method of the Indicator object.  By calling this method, another API request will be triggered, and the resulting data will be stored as a Security Label object in the Indicator object.  This object can then be directly accessed from the `security_label` property.
+The example continues from the previous [Loading Attributes Example](#loading-attributes-example). While still in the indicator's loop, the Indicator Security Label can be loaded by calling the `load_security_label()` method of the Indicator object. By calling this method, another API request will be triggered, and the resulting data will be stored as a Security Label object in the Indicator object. This object can then be directly accessed from the `security_label` property.
 
 <b>Code Highlights</b>
 
@@ -675,7 +675,7 @@ Snippet                                   | Description
         print(tag.weblink)
 ```
 
-The example continues from the previous [Loading Security Label Example](#loading-security-label-example).  The `load_tags()` method of the Indicator object does not need to be called for Bulk Indicator downloads, since the Tag is packaged with the Indicator data.  By calling this method, another API request will be triggered, and the resulting data will be stored as a Tag objects in the Indicator object.  This object can then be directly accessed from the `tags` property.
+The example continues from the previous [Loading Security Label Example](#loading-security-label-example). The `load_tags()` method of the Indicator object does not need to be called for Bulk Indicator downloads, since the Tag is packaged with the Indicator data. By calling this method, another API request will be triggered, and the resulting data will be stored as a Tag objects in the Indicator object. This object can then be directly accessed from the `tags` property.
 
 <b>Code Highlights</b>
 
@@ -699,7 +699,7 @@ Snippet                                   | Description
         print(g_association.weblink)
 ```
 
-Iterate through all Groups associated with this Indicator.  These Groups are pulled directly from the API and are not stored in the Indicator object.
+Iterate through all Groups associated with this Indicator. These Groups are pulled directly from the API and are not stored in the Indicator object.
 
 <b>Code Highlights</b>
 
@@ -726,7 +726,7 @@ Snippet                                   | Description
         print(i_associations.weblink)
 ```
 
-Iterate through all Indicators associated with this Indicator.  These Indicators are pulled directly from the API and are not stored in the Indicator object.
+Iterate through all Indicators associated with this Indicator. These Indicators are pulled directly from the API and are not stored in the Indicator object.
 
 <b>Code Highlights</b>
 
@@ -752,7 +752,7 @@ Snippet                                   | Description
         print(v_associations.weblink)
 ```
 
-Iterate through all Victims associated with this Indicator.  These Victims are pulled directly from the API and are not stored in the Indicator object.
+Iterate through all Victims associated with this Indicator. These Victims are pulled directly from the API and are not stored in the Indicator object.
 
 <b>Code Highlights</b>
 
@@ -841,9 +841,9 @@ for document in documents:
     print(document.file_name)
 ```
 
-This example will demonstrate how to retrieve documents while applying filters.  In this example, two filters will be added, one for the Owner and another for a Tag.  The result set returned from this example will contain any documents in the **Example Community** Owner that has a Tag of **EXAMPLE**.
+This example will demonstrate how to retrieve documents while applying filters. In this example, two filters will be added, one for the Owner and another for a Tag. The result set returned from this example will contain any documents in the **Example Community** Owner that has a Tag of **EXAMPLE**.
 
-Note: The `filter1` object contains a `filters` property that provides a list of supported filters for the resource type being retrieved. To display this list, `print(filter1.filters)` can be used.  For more on using filters see the [Advanced Filter Tutorial](/python/advanced/filtering/).
+Note: The `filter1` object contains a `filters` property that provides a list of supported filters for the resource type being retrieved. To display this list, `print(filter1.filters)` can be used. For more on using filters see the [Advanced Filter Tutorial](/python/advanced/filtering/).
 
 <b>Code Highlights</b>
 
@@ -852,7 +852,7 @@ Snippet                                   | Description
 `tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
 `documents = tc.documents()`              | Instantiate a Documents container object. 
 `filter1 = documents.add_filter()`        | Add a filter object to the Documents container object <br> (support multiple filter objects). 
-`filter1.add_tag('EXAMPLE')`              | Add API filter to be applied to the API request. 
+`filter1.add_tag('EXAMPLE')`              | Add API filter to retrieve Documents with the 'Example' tag 
 `documents.retrieve()`                    | Trigger the API request and retrieve the Documents <br> intelligence data. 
 `for document in documents:`              | Iterate over the Documents container object generator. 
 `print(document.id)`                      | Display the **'id'** property of the Document object. 
@@ -986,13 +986,13 @@ for email in emails:
     print(email.score)
 ```
 
-This example will demonstrate how to retrieve emails while applying filters.  In this example, two filters will be added, one for the Owner and another for a Tag.  The result set returned from this example will contain any emails in the **Example Community** Owner that has a Tag of ***EXAMPLE***.
+This example will demonstrate how to retrieve emails while applying filters. In this example, two filters will be added, one for the Owner and another for a Tag. The result set returned from this example will contain any emails in the **Example Community** Owner that has a Tag of ***EXAMPLE***.
 
 > To retrieve the headers and body for a single email, include a filter for its ID. (Make an individual query for each email.)
 
 `filter1.add_id($email_id)`
 
-Note: The `filter1` object contains a `filters` property which provides a list of supported filters for the resource type being retrieved. To display this list, `print(filter1.filters)` can be used.  For more on using filters, see the [Advanced Filter Tutorial](#filtering).
+Note: The `filter1` object contains a `filters` property which provides a list of supported filters for the resource type being retrieved. To display this list, `print(filter1.filters)` can be used. For more on using filters, see the [Advanced Filter Tutorial](#filtering).
 
 <b>Code Highlights</b>
 
@@ -1109,9 +1109,9 @@ for group in groups:
     print(group.type)
 ```
 
-This example will demonstrate how to retrieve Groups while applying filters.  In this example two filters will be added, one for the Owner and another for a Tag.  The result set returned from this example will contain any Groups in the **Example Community** Owner that has a Tag of ***EXAMPLE***.
+This example will demonstrate how to retrieve Groups while applying filters. In this example two filters will be added, one for the Owner and another for a Tag. The result set returned from this example will contain any Groups in the **Example Community** Owner that has a Tag of ***EXAMPLE***.
 
-Note: The `filter1` object contains a `filters` property that provides a list of supported filters for the resource type being retrieved. To display this list, `print(filter1.filters)` can be used.  For more on using filters see the [Advanced Filter Tutorial](#filtering).
+Note: The `filter1` object contains a `filters` property that provides a list of supported filters for the resource type being retrieved. To display this list, `print(filter1.filters)` can be used. For more on using filters see the [Advanced Filter Tutorial](#filtering).
 
 <b>Code Highlights</b>
 
@@ -1120,7 +1120,7 @@ Snippet                                   | Description
 `tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
 `groups = tc.groups()`                    | Instantiate a Groups container object. 
 `filter1 = groups.add_filter()`           | Add a filter object to the Groups container object <br> (support multiple filter objects). 
-`filter1.add_tag('EXAMPLE')`              | Add API filter to be applied to the API request. 
+`filter1.add_tag('EXAMPLE')`              | Add API filter to retrieve Groups with the 'Example' tag. 
 `groups.retrieve()`                       | Trigger the API request and retrieve the Groups <br> intelligence data. 
 `for group in groups:`                    | Iterate over the Groups container object generator. 
 `print(group.id)`                         | Display the **'id'** property of the Group object. 
@@ -1227,9 +1227,9 @@ for incident in incidents:
         
 ```
 
-This example will demonstrate how to retrieve Incidents while applying filters.  In this example, two filters will be added, one for the Owner and another for a Tag.  The result set returned from this example will contain any Incidents in the **Example Community** Owner that has a Tag of ***EXAMPLE***.
+This example will demonstrate how to retrieve Incidents while applying filters. In this example, two filters will be added, one for the Owner and another for a Tag. The result set returned from this example will contain any Incidents in the **Example Community** Owner that has a Tag of ***EXAMPLE***.
 
-Note: The `filter1` object contains a `filters` property that provides a list of supported filters for the resource type being retrieved. To display this list, `print(filter1.filters)` can be used.  For more on using filters see the [Advanced Filter Tutorial](/python/advanced/filtering/).
+Note: The `filter1` object contains a `filters` property that provides a list of supported filters for the resource type being retrieved. To display this list, `print(filter1.filters)` can be used. For more on using filters see the [Advanced Filter Tutorial](/python/advanced/filtering/).
 
 <b>Code Highlights</b>
 
@@ -1238,7 +1238,7 @@ Snippet                                   | Description
 `tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
 `incidents = tc.incidents()`              | Instantiate an Incidents container object. 
 `filter1 = incidents.add_filter()`        | Add a filter object to the Incidents container object <br> (support multiple filter objects). 
-`filter1.add_tag('EXAMPLE')`              | Add API filter to be applied to the API request. 
+`filter1.add_tag('EXAMPLE')`              | Add API filter to retrieve Incidents with the 'Example' tag. 
 `incidents.retrieve()`                    | Trigger the API request and retrieve the Incidents <br> intelligence data. 
 `for incident in incidents:`              | Iterate over the Incidents container object generator. 
 `print(incident.id)`                      | Display the **'id'** property of the Incidents object. 
@@ -1369,9 +1369,9 @@ for indicator in indicators:
 
 ```
 
-This example will demonstrate how to retrieve Indicators while applying filters.  In this example, two filters will be added, one for the Owner and another for a Tag.  The result set returned from this example will contain any Indicators in the **Example Community** Owner that has a Tag of ***EXAMPLE***.
+This example will demonstrate how to retrieve Indicators while applying filters. In this example, two filters will be added, one for the Owner and another for a Tag. The result set returned from this example will contain any Indicators in the **Example Community** Owner that has a Tag of ***EXAMPLE***.
 
-Note: The `filter1` object contains a `filters` property that provides a list of supported filters for the resource type being retrieved. To display this list, `print(filter1.filters)` can be used.  For more on using filters see the [Advanced Filter Tutorial](#filtering).
+Note: The `filter1` object contains a `filters` property that provides a list of supported filters for the resource type being retrieved. To display this list, `print(filter1.filters)` can be used. For more on using filters see the [Advanced Filter Tutorial](#filtering).
 
 <b>Code Highlights</b>
 
@@ -1380,7 +1380,7 @@ Snippet                                   | Description
 `tc = ThreatConnect(api_access_id,...`    | Instantiate the ThreatConnect object. 
 `indicators = tc.indicators()`            | Instantiate an Indicators container object. 
 `filter1 = indicator.add_filter()`        | Add a filter object to the Indicators container object <br> (support multiple filter objects). 
-`filter1.add_tag('EXAMPLE')`              | Add API filter to be applied to the API request. 
+`filter1.add_tag('EXAMPLE')`              | Add API filter to retrieve Indicators with the 'Example' tag. 
 `indicator.retrieve()`                    | Trigger the API request and retrieve the Indicators <br> intelligence data. 
 `for indicator in indicators:`            | Iterate over the Indicators container object generator. 
 `print(indicator.indicator)`              | Display the **'indicator'** property of the Indicator object. 
@@ -1400,7 +1400,7 @@ Snippet                                   | Description
         print(attribute.displayed)
 ```
 
-The example continues from the previous [Filter Example](#filter-example).  Iterating through the `indicators` container provides `indicator` objects.  By calling the `load_attribute()` method of the Indicator object, an API request is triggered and the resulting data is stored as Attribute objects in the parent Indicator object.  These Attribute objects can be retrieved by iterating over the `attributes` property generator, which will return the individual Attribute objects.
+The example continues from the previous [Filter Example](#filter-example). Iterating through the `indicators` container provides `indicator` objects. By calling the `load_attribute()` method of the Indicator object, an API request is triggered and the resulting data is stored as Attribute objects in the parent Indicator object. These Attribute objects can be retrieved by iterating over the `attributes` property generator, which will return the individual Attribute objects.
 
 <b>Code Highlights</b>
 
@@ -1423,7 +1423,7 @@ Snippet                                   | Description
         print(indicator.security_label.date_added)
 ```
 
-The example continues from the previous [Loading Attributes Example](#loading-attributes-example).  While still in the `indicators` loop, the Indicator Security Label can be loaded by calling the `load_security_label()` method of the Indicator object.  By calling this method, another API request will be triggered and the resulting data will be stored as a Security Label object in the Indicator object.  This object can then be directly accessed from the `security_label` property.
+The example continues from the previous [Loading Attributes Example](#loading-attributes-example). While still in the `indicators` loop, the Indicator Security Label can be loaded by calling the `load_security_label()` method of the Indicator object. By calling this method, another API request will be triggered and the resulting data will be stored as a Security Label object in the Indicator object. This object can then be directly accessed from the `security_label` property.
 
 <b>Code Highlights</b>
 
@@ -1444,7 +1444,7 @@ Snippet                                   | Description
         print(tag.weblink)
 ```
 
-The example continues from the previous [Loading Security Label Example](#loading-security-label-example).  While still in the `indicators` loop, the Indicator Tags can be loaded by calling the `load_tags()` method of the Indicator object.  By calling this method, another API request will be triggered and the resulting data will be stored as a Tag object in the Indicator object.  This object can then be directly accessed from the `tags` property.
+The example continues from the previous [Loading Security Label Example](#loading-security-label-example). While still in the `indicators` loop, the Indicator Tags can be loaded by calling the `load_tags()` method of the Indicator object. By calling this method, another API request will be triggered and the resulting data will be stored as a Tag object in the Indicator object. This object can then be directly accessed from the `tags` property.
 
 <b>Code Highlights</b>
 
@@ -1469,7 +1469,7 @@ Snippet                                   | Description
         print(g_association.weblink)
 ```
 
-Iterate through all Groups associated with this Indicator.  These Groups are pulled directly from the API and are not stored in the Indicator object.
+Iterate through all Groups associated with this Indicator. These Groups are pulled directly from the API and are not stored in the Indicator object.
 
 <b>Code Highlights</b>
 
@@ -1497,7 +1497,7 @@ Snippet                                   | Description
         print(i_associations.weblink)
 ```
 
-Iterate through all Indicators associated with this Indicator.  These Indicators are pulled directly from the API and are not stored in the Indicator object.
+Iterate through all Indicators associated with this Indicator. These Indicators are pulled directly from the API and are not stored in the Indicator object.
 
 <b>Code Highlights</b>
 
@@ -1524,7 +1524,7 @@ Snippet                                   | Description
         print(v_associations.weblink)
 ```
 
-Iterate through all Victims associated with this Indicator.  These Groups are pulled directly from the API and are not stored in the Indicator object.
+Iterate through all Victims associated with this Indicator. These Groups are pulled directly from the API and are not stored in the Indicator object.
 
 <b>Code Highlights</b>
 
@@ -1633,9 +1633,9 @@ for signature in signatures:
     print(signature.weblink)
 ```
 
-This example will demonstrate how to retrieve Signatures while applying filters.  In this example, two filters will be added, one for the Owner and another for a Tag.  The result set returned from this example will contain any Signatures in the **Example Community** Owner that has a Tag of ***EXAMPLE***.
+This example will demonstrate how to retrieve Signatures while applying filters. In this example, two filters will be added, one for the Owner and another for a Tag. The result set returned from this example will contain any Signatures in the **Example Community** Owner that has a Tag of ***EXAMPLE***.
 
-Note: The `filter1` object contains a `filters` property which provides a list of supported filters for the resource type being retrieved. To display this list, `print(filter1.filters)` can be used.  For more on using filters, see the [Advanced Filter Tutorial](#filtering).
+Note: The `filter1` object contains a `filters` property which provides a list of supported filters for the resource type being retrieved. To display this list, `print(filter1.filters)` can be used. For more on using filters, see the [Advanced Filter Tutorial](#filtering).
 
 <b>Code Highlights</b>
 
@@ -1644,7 +1644,7 @@ Snippet                                   | Description
 `tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
 `signatures = tc.signatures()`            | Instantiate an Signatures container object. 
 `filter1 = signatures.add_filter()`       | Add a filter object to the Signatures container object <br> (support multiple filter objects).
-`filter1.add_tag('EXAMPLE')`              | Add API filter to be applied to the API request.
+`filter1.add_tag('EXAMPLE')`              | Add API filter to retrieve Signatures with the 'Example' tag.
 `signatures.retrieve()`                   | Trigger the API request and retrieve the Signatures <br> intelligence data.
 `for signature in signatures:`            | Iterate over the Signatures container object generator.
 `print(signature.id)`                     | Display the **'id'** property of the Signature object.
@@ -1885,9 +1885,9 @@ for threat in threats:
     print(threat.weblink)
 ```
 
-This example will demonstrate how to retrieve Threats while applying filters.  In this example, two filters will be added, one for the Owner and another for a Tag.  The result set returned from this example will contain any Threats in the **Example Community** Owner that has a Tag of ***EXAMPLE***.
+This example will demonstrate how to retrieve Threats while applying filters. In this example, two filters will be added, one for the Owner and another for a Tag. The result set returned from this example will contain any Threats in the **Example Community** Owner that has a Tag of ***EXAMPLE***.
 
-Note: The `filter1` object contains a `filters` property that provides a list of supported filters for the resource type being retrieved. To display this list, `print(filter1.filters)` can be used.  For more on using filters, see the [Advanced Filter Tutorial](/python/advanced/filtering/).
+Note: The `filter1` object contains a `filters` property that provides a list of supported filters for the resource type being retrieved. To display this list, `print(filter1.filters)` can be used. For more on using filters, see the [Advanced Filter Tutorial](/python/advanced/filtering/).
 
 <b>Code Highlights</b>
 
@@ -1896,7 +1896,7 @@ Snippet                                   | Description
 `tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
 `threats = tc.threats()`                  | Instantiate a Threats container object. 
 `filter1 = threats.add_filter()`          | Add a filter object to the Threats container object <br> (support multiple filter objects). 
-`filter1.add_tag('EXAMPLE')`              | Add API filter to be applied to the API request. 
+`filter1.add_tag('EXAMPLE')`              | Add API filter to retrieve Threats with the 'Example' tag. 
 `threats.retrieve()`                      | Trigger the API request and retrieve the Threats <br> intelligence data. 
 `for threat in threats:`                  | Iterate over the Threats container object generator. 
 `print(threat.id)`                        | Display the **id** property of the Threat object. 
@@ -1965,9 +1965,9 @@ for victim in victims:
     print(obj.weblink)
 ```
 
-This example will demonstrate how to retrieve Victims while applying filters.  In this example two filters will be added, one for the Owner and another for an Adversary ID.  The result set returned from this example would contain any Victim in the "Example Community" Owner that has associations with the Adversary having the supplied ID.
+This example will demonstrate how to retrieve Victims while applying filters. In this example two filters will be added, one for the Owner and another for an Adversary ID. The result set returned from this example would contain any Victim in the "Example Community" Owner that has associations with the Adversary having the supplied ID.
 
-Note: The `filter1` object contains a `filters` property that provides a list of supported filters for the resource type being retrieved. To display this list, `print(filter1.filters)` can be used.  For more on using filters, see the [Advanced Filter Tutorial](#filtering).
+Note: The `filter1` object contains a `filters` property that provides a list of supported filters for the resource type being retrieved. To display this list, `print(filter1.filters)` can be used. For more on using filters, see the [Advanced Filter Tutorial](#filtering).
 
 <b>Code Highlights</b>
 
@@ -1976,7 +1976,7 @@ Snippet                                   | Description
 `tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
 `victims = tc.victims()`                  | Instantiate a Victims container object. 
 `filter1 = victims.add_filter()`          | Add a filter object to the Victims container object <br> (support multiple filter objects). 
-`filter1.add_adversary_id(531)`           | Add API filter to be applied to the API request. 
+`filter1.add_adversary_id(531)`           | Add API filter to retrieve Victims associated with the given Adversary. 
 `victims.retrieve()`                      | Trigger the API request and retrieve the Victims <br> intelligence data. 
 `for victim in victims:`                  | Iterate over the Victims container object generator. 
 `print(victim.id)`                        | Display the **id** property of the Victim object. 
@@ -2046,13 +2046,13 @@ for resource in resources:
 
 <b>Group Associations</b>
 
-The Python SDK provides the `group_associations` method to retrieve Group Associations for a Resource.  Group Associations are supported on Indicators as well as [Group](#groups-commit) Resources (e.g., [Adversaries](#resources-commit), [Documents](#documents-commit), [Emails](#emails-commit), [Incidents](#incidents-commit), [Signatures](#signatures-commit), and [Threats](#threats-commit)) and [Indicators](#indicators-commit). An example of the [Retrieving Group Associations](#associations) method, as well as an explanation of the code, is provided in the following section.
+The Python SDK provides the `group_associations` method to retrieve Group Associations for a Resource. Group Associations are supported on Indicators as well as [Group](#groups-commit) Resources (e.g., [Adversaries](#resources-commit), [Documents](#documents-commit), [Emails](#emails-commit), [Incidents](#incidents-commit), [Signatures](#signatures-commit), and [Threats](#threats-commit)) and [Indicators](#indicators-commit). An example of the [Retrieving Group Associations](#associations) method, as well as an explanation of the code, is provided in the following section.
 
 Resource Groups of the same type cannot be directly associated (e.g., Adversaries cannot be associated with other Adversaries).
 
 <b>Retrieving Group Associations</b>
 
-The following example demonstrates how to use the `Group_Associations` method on an Adversary Resource. For other Resource Groups and Indicators, the same method should be used.  These Associations are pulled directly from the API and are not stored in the Resource object.
+The following example demonstrates how to use the `Group_Associations` method on an Adversary Resource. For other Resource Groups and Indicators, the same method should be used. These Associations are pulled directly from the API and are not stored in the Resource object.
 
 <b>Group Associations Properties</b>
 
@@ -2116,11 +2116,11 @@ for resource in resources:
         print(associations.weblink)
 ```
 
-The Python SDK provides the `indicator_associations` method to retrieve Indicators Associations for a resource.  Indicator Associations are supported on Indicators as well as [Group](#groups-commit) Resources (e.g., [Adversaries](#resources-commit), [Documents](#documents-commit), [Emails](#emails-commit), [Incidents](#incidents-commit), [Signatures](#signatures-commit), and [Threats](#threats-commit)) and [Indicators](#indicators-commit). An example of the [Retrieving Indicator Associations](#retrieving-indicator-associations) method, as well as explanations of the code, is provided in the following section.
+The Python SDK provides the `indicator_associations` method to retrieve Indicators Associations for a resource. Indicator Associations are supported on Indicators as well as [Group](#groups-commit) Resources (e.g., [Adversaries](#resources-commit), [Documents](#documents-commit), [Emails](#emails-commit), [Incidents](#incidents-commit), [Signatures](#signatures-commit), and [Threats](#threats-commit)) and [Indicators](#indicators-commit). An example of the [Retrieving Indicator Associations](#retrieving-indicator-associations) method, as well as explanations of the code, is provided in the following section.
 
 <b>Retrieving Indicator Associations</b>
 
-The following example demonstrates how to use the `indicator_associations` method on an Adversary Resource. For other Resource Groups and Indicators, the same method should be used.  These Associations are pulled directly from the API and are not stored in the Resource object.
+The following example demonstrates how to use the `indicator_associations` method on an Adversary Resource. For other Resource Groups and Indicators, the same method should be used. These Associations are pulled directly from the API and are not stored in the Resource object.
 
 <b>Indicator Associations Properties</b>
 
@@ -2187,7 +2187,7 @@ for resource in resources:
         print(associations.weblink)
 ```
 
-The Python SDK provides the `victim_associations` method to retrieve Victim Associations for a resource.  Victim Associations are supported on all [Group](#groups_commit) Resources (e.g., [Adversaries](#resources-commit), [Documents](#documents-commit), [Emails](#emails-commit), [Incidents](#incidents-commit), [Signatures](#signatures-commit), and [Threats](#threats-commit)) and [Indicators](#indicators-commit). An example of the [Retrieving Victim Associations](#victim-associations-retrieve) method, as well as explanations of the code, is provided in the following section.
+The Python SDK provides the `victim_associations` method to retrieve Victim Associations for a resource. Victim Associations are supported on all [Group](#groups_commit) Resources (e.g., [Adversaries](#resources-commit), [Documents](#documents-commit), [Emails](#emails-commit), [Incidents](#incidents-commit), [Signatures](#signatures-commit), and [Threats](#threats-commit)) and [Indicators](#indicators-commit). An example of the [Retrieving Victim Associations](#victim-associations-retrieve) method, as well as explanations of the code, is provided in the following section.
 
 The following example demonstrates how to use the `victim_associations` method on an Adversary Resource. For other Resource Groups and Indicators, the same method should be used. These associations are pulled directly from the API and are not stored in the Resource object.
 
@@ -2247,7 +2247,7 @@ for resource in resources:
         print(attribute.displayed)
 ```
 
-The Python SDK provides the `load_attributes()` method to load a Resources Attribute.  Attributes are supported on all [Group](#groups-commit) Resources (e.g., [Adversaries](#resources-commit), [Documents](#documents-commit), [Emails](#emails-commit), [Incidents](#incidents-commit), [Signatures](#signatures-commit), and [Threats](#threats-commit)) and [Indicators](#indicators-commit).   
+The Python SDK provides the `load_attributes()` method to load a Resources Attribute. Attributes are supported on all [Group](#groups-commit) Resources (e.g., [Adversaries](#resources-commit), [Documents](#documents-commit), [Emails](#emails-commit), [Incidents](#incidents-commit), [Signatures](#signatures-commit), and [Threats](#threats-commit)) and [Indicators](#indicators-commit).   
 
 The following example demonstrates how to [Load Attributes](#loading-attributes) on an Adversary Resource. For other Resource Groups and Indicators, the same method should be used.
 
@@ -2305,7 +2305,7 @@ for resource in resources:
         print(resource.security_label.date_added)
 ```
 
-The Python SDK provides the `load_security_label()` method to load the Security Label for a resource.  Attributes are supported on all [Group](#groups-commit) Resources (e.g., [Adversaries](#resources-commit), [Documents](#documents-commit), [Emails](#emails-commit), [Incidents](#incidents-commit), [Signatures](#signatures-commit), and [Threats](#threats-commit)) and [Indicators](#indicators-commit). An example of the [Loading Security Label](#loading-security-label) method, as well as explanations of the code, is provided in the following section.
+The Python SDK provides the `load_security_label()` method to load the Security Label for a resource. Attributes are supported on all [Group](#groups-commit) Resources (e.g., [Adversaries](#resources-commit), [Documents](#documents-commit), [Emails](#emails-commit), [Incidents](#incidents-commit), [Signatures](#signatures-commit), and [Threats](#threats-commit)) and [Indicators](#indicators-commit). An example of the [Loading Security Label](#loading-security-label) method, as well as explanations of the code, is provided in the following section.
 
 The following example demonstrates how to **Load a Security Label** on an Adversary Resource. For other Resource Groups and Indicator,s the same method should be used.
 
@@ -2360,7 +2360,7 @@ for resource in resources:
         print(tag.weblink)
 ```
 
-The Python SDK provides the `load_tags()` method to load a Resources Tag.  Tags are supported on Indicators as well as Group Resources (e.g., Adversaries, Documents, Emails, Incidents, Signatures and Threats). An example of the [Loading Tags](#loading-tags) method,  as well as explanations of the code, is provided in the following section.
+The Python SDK provides the `load_tags()` method to load a Resources Tag. Tags are supported on Indicators as well as Group Resources (e.g., Adversaries, Documents, Emails, Incidents, Signatures and Threats). An example of the [Loading Tags](#loading-tags) method,  as well as explanations of the code, is provided in the following section.
 
 The following example demonstrates how to use the `load_tags()` method on an Adversary Resource. For other Resource Groups and Indicators, the same method should be used.
 
@@ -2410,7 +2410,7 @@ except RuntimeError as e:
 
 <b>Adversaries Commit</b>
 
-The ThreatConnect platform supports [adding](#add-an-adversary-resource), [deleting](#delete-an-adversary-resource), and [updating](#update-an-adversary-resource) of threat-intelligence data programmatically using the API.  The Python SDK features an easy-to-use interface to assist in rapid development of software to manage thisdata.
+The ThreatConnect platform supports [adding](#add-an-adversary-resource), [deleting](#delete-an-adversary-resource), and [updating](#update-an-adversary-resource) of threat-intelligence data programmatically using the API. The Python SDK features an easy-to-use interface to assist in rapid development of software to manage thisdata.
 
 <b>Adding Adversary Resources</b>
 
@@ -2464,7 +2464,7 @@ except RuntimeError as e:
     sys.exit(1)
 ```
 
-The example demonstrates how to update an Adversary Resource in the ThreatConnect platform.  For more information on the purpose of each line of code, see the **Code Highlights** section below.
+The example demonstrates how to update an Adversary Resource in the ThreatConnect platform. For more information on the purpose of each line of code, see the **Code Highlights** section below.
 
 Note: In the prior example, no API calls are made until the `commit()` method is invoked.
 
@@ -2504,7 +2504,7 @@ except RuntimeError as e:
     sys.exit(1)
 ```
 
-The example demonstrates how to delete an Adversary Resource in the ThreatConnect platform.  For more information on the purpose of each line of code, see the **Code Highlights** section below.
+The example demonstrates how to delete an Adversary Resource in the ThreatConnect platform. For more information on the purpose of each line of code, see the **Code Highlights** section below.
 
 Note: In the prior example, no API calls are made until the `commit()` method is invoked.
 
@@ -2588,13 +2588,13 @@ print("All batch jobs completed, totals:  "
 
 ```
 
-The ThreatConnect platform supports adding indicators in bulk using the API.  The Python SDK features an easy-to-use interface to assist in rapid development of software to manage this data.
+The ThreatConnect platform supports adding indicators in bulk using the API. The Python SDK features an easy-to-use interface to assist in rapid development of software to manage this data.
 
 These API calls assume that indicator data is [formatted in JSON, specifically a list of dictionaries](#batch-indicator-input-file-format)
 
 ### Adding Batch Resources
 
-The example below demonstrates how to use a Batch Resource in the ThreatConnect platform.  The Batch Resource has a few methods to support batch configuration before uploading a batch Indicator file to the platform. For more information on the purpose of each line of code, see the **Code Highlights** section below.
+The example below demonstrates how to use a Batch Resource in the ThreatConnect platform. The Batch Resource has a few methods to support batch configuration before uploading a batch Indicator file to the platform. For more information on the purpose of each line of code, see the **Code Highlights** section below.
 
 <b>Supported Functions and Properties</b>
 
@@ -2651,11 +2651,11 @@ except RuntimeError as e:
     print('Error: {0}'.format(e))
     sys.exit(1)
 ```
-The ThreatConnect platform supports [adding](#add-an-document-resource), [deleting](#delete-an-document-resource), and [updating](#update-an-document-resource) of threat-intelligence data programmatically using the API.  The Python SDK features an easy-to-use interface to assist in rapid development of software to manage this data.
+The ThreatConnect platform supports [adding](#add-an-document-resource), [deleting](#delete-an-document-resource), and [updating](#update-an-document-resource) of threat-intelligence data programmatically using the API. The Python SDK features an easy-to-use interface to assist in rapid development of software to manage this data.
 
 <b>Adding Document Resources</b>
 
-The example demonstrates how to a Document Resource in the ThreatConnect platform.  The Document Resource has a special method `upload()` that allows for uploading files to the platform. For more information on the purpose of each line of code, see the **Code Highlights** section below.
+The example demonstrates how to a Document Resource in the ThreatConnect platform. The Document Resource has a special method `upload()` that allows for uploading files to the platform. For more information on the purpose of each line of code, see the **Code Highlights** section below.
 
 <b>Supported Properties</b>
 
@@ -2715,7 +2715,7 @@ except RuntimeError as e:
     sys.exit(1)
 ```
 
-The example demonstrates how to update a Document Resource in the ThreatConnect platform.  For more information on the purpose of each line of code, see the **Code Highlights** section below.
+The example demonstrates how to update a Document Resource in the ThreatConnect platform. For more information on the purpose of each line of code, see the **Code Highlights** section below.
 
 Note: In the prior example, no API calls are made until the `commit()` method is invoked.
 
@@ -2755,7 +2755,7 @@ except RuntimeError as e:
 
 ```
 
-The example demonstrates how to delete a Document Resource in the ThreatConnect platform.  For more information on the purpose of each line of code, see the **Code Highlights** section below.
+The example demonstrates how to delete a Document Resource in the ThreatConnect platform. For more information on the purpose of each line of code, see the **Code Highlights** section below.
 
 <b>Code Highlights</b>
 
@@ -2795,7 +2795,7 @@ except RuntimeError as e:
     print('Error: {0}'.format(e))
     sys.exit(1)
 ```
-The ThreatConnect platform supports [adding](#add-an-email-resource), [deleting](#delete-an-email-resource), and [updating](#update-an-email-resource) of threat-intelligence data programmatically using the API.  The Python SDK features an easy-to-use interface to assist in rapid development of software to manage this data.
+The ThreatConnect platform supports [adding](#add-an-email-resource), [deleting](#delete-an-email-resource), and [updating](#update-an-email-resource) of threat-intelligence data programmatically using the API. The Python SDK features an easy-to-use interface to assist in rapid development of software to manage this data.
 
 <b>Adding Email Resources</b>
 
@@ -2944,7 +2944,7 @@ except RuntimeError as e:
     sys.exit(1)
 ```
 
-The ThreatConnect platform supports [adding](#add-an-incident-resource), [deleting](#delete-an-incident-resource), and [updating](#update-an-incident-resource) of threat-intelligence data programmatically using the API.  The Python SDK features an easy-to-use interface to assist in rapid development of software to manage this data.
+The ThreatConnect platform supports [adding](#add-an-incident-resource), [deleting](#delete-an-incident-resource), and [updating](#update-an-incident-resource) of threat-intelligence data programmatically using the API. The Python SDK features an easy-to-use interface to assist in rapid development of software to manage this data.
 
 <b>Adding Incident Resources</b>
 
@@ -3092,7 +3092,7 @@ The `add()` method on the `indicators()` object allows the user to bypass the au
 
 <b>Adding Address Indicators</b>
 
-The example demonstrates how to create an Address Indicator resource in the ThreatConnect platform.  For more information on the purpose of each line of code, see the **Code Highlights** section below.
+The example demonstrates how to create an Address Indicator resource in the ThreatConnect platform. For more information on the purpose of each line of code, see the **Code Highlights** section below.
 
 <b>Code Highlights</b>
 
@@ -3134,7 +3134,7 @@ except RuntimeError as e:
     sys.exit(1)
 ```
 
-The example demonstrates how to create an Email Address Indicator Resource in the ThreatConnect platform.  For more information on the purpose of each line of code, see the **Code Highlights** section below.
+The example demonstrates how to create an Email Address Indicator Resource in the ThreatConnect platform. For more information on the purpose of each line of code, see the **Code Highlights** section below.
 
 <b>Code Highlights</b>
 
@@ -3179,7 +3179,7 @@ except RuntimeError as e:
     sys.exit(1)
 ```
 
-The example demonstrates how to create a File Hash Indicator Resource in the ThreatConnect platform.  File Indicators support MD5, SHA1, and SHA256 hashes, added in the above order to the same Indicator with the `set_indicator()` method.  For more information on the purpose of each line of code, see the **Code Highlights** section below.
+The example demonstrates how to create a File Hash Indicator Resource in the ThreatConnect platform. File Indicators support MD5, SHA1, and SHA256 hashes, added in the above order to the same Indicator with the `set_indicator()` method. For more information on the purpose of each line of code, see the **Code Highlights** section below.
 
 <b>Code Highlights</b>
 
@@ -3245,7 +3245,7 @@ indicator.set_dns_active(True)
 indicator.set_whois_active(True) 
 ```
 
-The example demonstrates how to create a Host Indicator Resource in the ThreatConnect platform.  For more information on the purpose of each line of code, see the **Code Highlights** section below.
+The example demonstrates how to create a Host Indicator Resource in the ThreatConnect platform. For more information on the purpose of each line of code, see the **Code Highlights** section below.
 
 <b>Code Highlights</b>
 
@@ -3287,7 +3287,7 @@ except RuntimeError as e:
     sys.exit(1)
 ```
 
-The example demonstrates how to create a URL Indicator Resource in the ThreatConnect platform.  For more information on the purpose of each line of code, see the **Code Highlights** section below.
+The example demonstrates how to create a URL Indicator Resource in the ThreatConnect platform. For more information on the purpose of each line of code, see the **Code Highlights** section below.
 
 <b>Code Highlights</b>
 
@@ -3366,11 +3366,11 @@ except RuntimeError as e:
     print('Error: {0}'.format(e))
     sys.exit(1)
 ```
-The ThreatConnect platform supports [adding](#add-an-signature-resource), [deleting](#delete-an-signature-resource), and [updating](#update-an-signature-resource) of threat-intelligence data programmatically using the API.  The Python SDK features an easy-to-use interface to assist in rapid development of software to manage this data.
+The ThreatConnect platform supports [adding](#add-an-signature-resource), [deleting](#delete-an-signature-resource), and [updating](#update-an-signature-resource) of threat-intelligence data programmatically using the API. The Python SDK features an easy-to-use interface to assist in rapid development of software to manage this data.
 
 <b>Adding Signature Resources</b>
 
-The example demonstrates how to create a Signature Resource in the ThreatConnect platform.  For more information on the purpose of each line of code, see the **Code Highlights** section below.
+The example demonstrates how to create a Signature Resource in the ThreatConnect platform. For more information on the purpose of each line of code, see the **Code Highlights** section below.
 
 <b>Supported Properties</b>
 
@@ -3754,7 +3754,7 @@ except RuntimeError as e:
     sys.exit(1)
 ```
 
-The example demonstrates how to delete an Threat Resource in the ThreatConnect platform.  For more information on the purpose of each line of code, see the **Code Highlights** section below.
+The example demonstrates how to delete an Threat Resource in the ThreatConnect platform. For more information on the purpose of each line of code, see the **Code Highlights** section below.
 
 Note: In the prior example, no API calls are made until the `commit()` method is invoked.
 
@@ -3946,7 +3946,7 @@ except RuntimeError as e:
     print('Error: {0}'.format(e))
     sys.exit(1)
 ```
-The Python SDK provides easy methods to manage all Group, Indicator, and Victim Associations.  Associations are supported on Indicators as well as Group Resources (e.g., Adversaries, Documents, Emails, Incidents, Signatures and Threats)   
+The Python SDK provides easy methods to manage all Group, Indicator, and Victim Associations. Associations are supported on Indicators as well as Group Resources (e.g., Adversaries, Documents, Emails, Incidents, Signatures and Threats)   
 
 An example of the [Associate Group](#associate-group), [Associate Indicator](#associate-indicator), [Associate Victim](#associate-victim), [Disassociate Group](#disassociate-group), [Disassociate Indicator](#disassociate-indicator), and [Disassociate Victim](#disassociate-victim) methods, as well as explanations of the code, are provided in the following section .
 
@@ -3990,7 +3990,7 @@ except RuntimeError as e:
     sys.exit(1)
 ```
 
-An Association to a Resource Group, Indicator, or Victim can be created to a Indicator by using the `associate_indicator()` method and passing the Resource Type and Indicator Value.  The Associated Indicator must exist in the ThreatConnect platform prior to the Association attempt.
+An Association to a Resource Group, Indicator, or Victim can be created to a Indicator by using the `associate_indicator()` method and passing the Resource Type and Indicator Value. The Associated Indicator must exist in the ThreatConnect platform prior to the Association attempt.
 
 Note: In the prior example, no API calls are made until the commit() method is invoked.
 
@@ -4223,13 +4223,13 @@ except RuntimeError as e:
     sys.exit(1)
 ```
 
-The Python SDK provides easy methods to manage Attributes.  Attributes are supported on Indicators as well as Group Resources (e.g., Adversaries, Documents, Emails, Incidents, Signatures and Threats)   
+The Python SDK provides easy methods to manage Attributes. Attributes are supported on Indicators as well as Group Resources (e.g., Adversaries, Documents, Emails, Incidents, Signatures and Threats)   
 
 An example of the [add](#add-attribute), [delete](#delete-attribute), and [update](#update-attribute) methods, as well as explanations of the code, are provided in the following section.
 
 ##Adding Attributes
 
-An Attribute can be added to a Resource Group or Indicator using the `add_attribute()` method and passing the Attribute Type and Attribute Value. Attributes can be added while creating a new Resource or during a Resource update. The Attribute Type (e.g., description) must be created in the Organization prior to it being added via the API.  Some Attributes come packaged with the ThreatConnect platform, but custom Attributes must have been previously created in the User Interface by the ThreatConnect administrator.
+An Attribute can be added to a Resource Group or Indicator using the `add_attribute()` method and passing the Attribute Type and Attribute Value. Attributes can be added while creating a new Resource or during a Resource update. The Attribute Type (e.g., description) must be created in the Organization prior to it being added via the API. Some Attributes come packaged with the ThreatConnect platform, but custom Attributes must have been previously created in the User Interface by the ThreatConnect administrator.
 
 Note: In the prior example, no API calls are made until the commit() method is invoked.
 
@@ -4269,7 +4269,7 @@ except RuntimeError as e:
     print('Error: {0}'.format(e))
     sys.exit(1)
 ```
-An Attribute can be deleted from an existing Resource Group or Indicator using the `delete_attribute()` method and passing the Attribute ID.  If the Attribute ID is not known, all Attributes for this Resource or Indicator can be retrieved from the API using the [load_attributes()](/python/retrieve/loading_attributes_retrieve/#loading-attributes) method.
+An Attribute can be deleted from an existing Resource Group or Indicator using the `delete_attribute()` method and passing the Attribute ID. If the Attribute ID is not known, all Attributes for this Resource or Indicator can be retrieved from the API using the [load_attributes()](/python/retrieve/loading_attributes_retrieve/#loading-attributes) method.
 
 Note: In the prior example, no API calls are made until the commit() method is invoked.
 
@@ -4317,7 +4317,7 @@ except RuntimeError as e:
     sys.exit(1)
 ```
 
-An Attribute can be updated on an existing Resource Group or Indicator using the `update_attribute()` method and passing the Attribute ID and the updated Attribute Value.  If the Attribute ID is not known all Attributes for this Resource or Indicator can be retrieved from the API using the [load_attributes()](/python/retrieve/loading_attributes_retrieve/#loading-attributes) method.
+An Attribute can be updated on an existing Resource Group or Indicator using the `update_attribute()` method and passing the Attribute ID and the updated Attribute Value. If the Attribute ID is not known all Attributes for this Resource or Indicator can be retrieved from the API using the [load_attributes()](/python/retrieve/loading_attributes_retrieve/#loading-attributes) method.
 
 <b>Code Highlights</b>
 
@@ -4494,7 +4494,7 @@ Snippet                                   | Description
 
 <b>API Settings</b>
 
-The Python SDK provides a few methods that affect interactions with the ThreatConnect API.  The default settings should work in most cases.
+The Python SDK provides a few methods that affect interactions with the ThreatConnect API. The default settings should work in most cases.
 
 ###Activity Log
 
@@ -4510,7 +4510,7 @@ tc.set_activity_log(True)
 tc.set_activity_log(False)
 ```
 
-The ThreatConnect platform tracks all activity by users, including API accounts.  When using the API to create thousands of Indicators, the Activity Log could generate excessive data. Activity tracing is **disabled by default** in the Python SDK. This feature can be turned on by calling the `tc.set_activity_log()` method, passing `True` as the argument. To disable tracking again during the same execution period, call the `tc.set_activity_log()` method once more, passing `False`.
+The ThreatConnect platform tracks all activity by users, including API accounts. When using the API to create thousands of Indicators, the Activity Log could generate excessive data. Activity tracing is **disabled by default** in the Python SDK. This feature can be turned on by calling the `tc.set_activity_log()` method, passing `True` as the argument. To disable tracking again during the same execution period, call the `tc.set_activity_log()` method once more, passing `False`.
 
 ###API Request Timeout
 
@@ -4545,7 +4545,7 @@ Note:  There is a maximum window of 5 minutes before the API will reject the HMA
 tc.set_api_result_limit(500)
 ```
 
-The ThreatConnect API supports a **maximum of 500** results to be returned per API call during pagination.  The Python SDK is configured for a **default of 200** results per API request. To change the default value, call the `set_api_result_limit()` method, passing an Integer between 1-500. The higher the number, the less API calls will be made, but in some cases, a lower number is required due to network limitations.
+The ThreatConnect API supports a **maximum of 500** results to be returned per API call during pagination. The Python SDK is configured for a **default of 200** results per API request. To change the default value, call the `set_api_result_limit()` method, passing an Integer between 1-500. The higher the number, the less API calls will be made, but in some cases, a lower number is required due to network limitations.
 
 ###Proxies
 
@@ -4720,11 +4720,11 @@ except AttributeError as e:
     sys.exit(1)
 ```
 
-The Python SDK supports adding multiple Filter objects to a Resource Container.  A **filter_operator** allows a user to configure the results sets of the separate Filter objects to be **JOINED** or **INTERSECTED**.  No **filter_operator** is required on the first Filter object added.  Each subsequent Filter object can be joined (FilterSetOperator.OR) or intersected (FilterSetOperator.AND).
+The Python SDK supports adding multiple Filter objects to a Resource Container. A **filter_operator** allows a user to configure the results sets of the separate Filter objects to be **JOINED** or **INTERSECTED**. No **filter_operator** is required on the first Filter object added. Each subsequent Filter object can be joined (FilterSetOperator.OR) or intersected (FilterSetOperator.AND).
 
 ##Manual API Calls
 
-The Python SDK supports a manual way to access the API by allowing the creation of a `RequestObject()` and submitting these objects to the `api_request()` method.  The returned result will be a **Python Requests** object containing the HTTP Status Code, Response Headers, and API Results.
+The Python SDK supports a manual way to access the API by allowing the creation of a `RequestObject()` and submitting these objects to the `api_request()` method. The returned result will be a **Python Requests** object containing the HTTP Status Code, Response Headers, and API Results.
 
 ###Retrieving Indicators
 
@@ -5117,7 +5117,7 @@ except RuntimeError as e:
     sys.exit(1))
 ```
 
-The Python SDK provides the `set_indicator_regex` method which allows a user to override the baked-in Regular Expressions (Regex) in the SDK with user defined compiled Regexes.  The method takes an IndicatorType enum and either a single compiled Regex or a list of Regexes.  If a list is provided each Regex will be checked for a match for that Indicator Type.
+The Python SDK provides the `set_indicator_regex` method which allows a user to override the baked-in Regular Expressions (Regex) in the SDK with user defined compiled Regexes. The method takes an IndicatorType enum and either a single compiled Regex or a list of Regexes. If a list is provided each Regex will be checked for a match for that Indicator Type.
 
 ###Reporting
 
@@ -5181,7 +5181,7 @@ The Python SDK includes a reporting feature that provides a number of methods fo
 
 <b>Enabling Reporting</b>
 
-The basic data collection of the Reporting feature is always enabled, but the report-entry collection feature is disabled by default. To enable the report-entry collection feature, use the `tc.report_enable()` method.  To disable reporting, use the `tc.report_disable()` method.
+The basic data collection of the Reporting feature is always enabled, but the report-entry collection feature is disabled by default. To enable the report-entry collection feature, use the `tc.report_enable()` method. To disable reporting, use the `tc.report_disable()` method.
 
 <b>Statistics</b>
 
@@ -5846,7 +5846,7 @@ The methods below get Attributes and Attribute SecurityLabels for this Group typ
 
 ###AbstractIndicatorReaderAdapter
 
-AbstractIndicatorReaderAdapter and AbstractGroupReaderAdapter share many of the association actions. Indicators share the ability to associate Groups, Indicators, SecurityLabels, Tags, VictimAssets, and Attributes.  The listings below are some distinctions or subtle differences.
+AbstractIndicatorReaderAdapter and AbstractGroupReaderAdapter share many of the association actions. Indicators share the ability to associate Groups, Indicators, SecurityLabels, Tags, VictimAssets, and Attributes. The listings below are some distinctions or subtle differences.
 
 All Indicators in the ThreatConnect API have a uniqueId data type of "String". This identifier is provided by each Organization in the form of an Email Address, IP Address, File Hash, Host Name, or URL text. To understand this distinction, read the Indicator section in the ThreatConnect API documentation.
 
@@ -7327,7 +7327,7 @@ The JavaScript SDK is written to support ECMAScript&REG;-5 and should work in mo
 
 To use the RESTful API for ThreatConnect, an API user must be provisioned. See the ThreatConnect API User Guide for details on how to create an API user as it is out of scope for this document.
 
-The JavaScript SDK can be configured to use an Access ID and Secret Key or a Token.  Token support is only available when working with a Spaces application.
+The JavaScript SDK can be configured to use an Access ID and Secret Key or a Token. Token support is only available when working with a Spaces application.
 
 Once the configuration has been set up, the developer should be able to run the examples in this document as long as the JavaScript SDK has been installed. 
 
@@ -7348,7 +7348,7 @@ The JavaScript SDK for ThreatConnect was designed with a focus on abstracting th
 
 <b>Supported Resource Types</b>
 
-The JavaScript SDK supports the Resource Types listed below.  There is also a mechanism to do manual API requests to cover any API calls that are not provided with the core functionality.
+The JavaScript SDK supports the Resource Types listed below. There is also a mechanism to do manual API requests to cover any API calls that are not provided with the core functionality.
 
 Object                | Description                      
 --------------------- | -----------                      
@@ -7770,11 +7770,11 @@ if (indicators.hasNext()) {
 }
 ```
 
-The JavaScript SDK provide the `hasNext()` method for checking if more entries are available.  To retrieve the next set of entries the `next()` method is available.
+The JavaScript SDK provide the `hasNext()` method for checking if more entries are available. To retrieve the next set of entries the `next()` method is available.
 
-Note: Before the `next()` method can be called, the first API must have completed.  This should not be an issue if a user click triggers the next call; however, if the `next()` method is being called programmatically then it should be passed in a function to the `retrieve()` method.
+Note: Before the `next()` method can be called, the first API must have completed. This should not be an issue if a user click triggers the next call; however, if the `next()` method is being called programmatically then it should be passed in a function to the `retrieve()` method.
 
-Note: The `next()` method will return the same number of results defined in the `resultsLimit()` or the number of results remaining.  The same 'done' and 'error' callbacks are also used for the next set of results.
+Note: The `next()` method will return the same number of results defined in the `resultsLimit()` or the number of results remaining. The same 'done' and 'error' callbacks are also used for the next set of results.
 
 ###Single Indicator
 
@@ -7846,7 +7846,7 @@ indicators.owner('Example Community')
     .retrieve();
 
 ```
-Starting with ThreatConnect version 4.0 the API supports filtering using query string parameters.  For more information on which parameters support which operators see the ThreatConnect API Users Guide.
+Starting with ThreatConnect version 4.0 the API supports filtering using query string parameters. For more information on which parameters support which operators see the ThreatConnect API Users Guide.
 
 <b>Filter Options</b>
 
@@ -7906,7 +7906,7 @@ indicators.owner('Example Community')
     });
 ```
 
-The JavaScript SDK provides the `retrieveAssociations()` method to retrieve both Indicator and Indicator Associations.  The `type()`, and `id()` methods are required to retrieve the assocations.  The `retrieveAssociations()` method requires that a parameter object containing the Association `type` be provided.  Optionally an `id` can be provided to pull a specific association.
+The JavaScript SDK provides the `retrieveAssociations()` method to retrieve both Indicator and Indicator Associations. The `type()`, and `id()` methods are required to retrieve the assocations. The `retrieveAssociations()` method requires that a parameter object containing the Association `type` be provided. Optionally an `id` can be provided to pull a specific association.
 
 ###Attributes
 
@@ -7929,7 +7929,7 @@ indicators.owner('Example Community')
     .retrieveAttributes();
 ```
 
-The JavaScript SDK provides the `retrieveAttributes()` method to retrieve attributes.  Both the `type()` method and `id()` are required to retrieve the attributes.  An `id` can be passed to the `retrieveAttributes()` method to retrieve a specific attribute.
+The JavaScript SDK provides the `retrieveAttributes()` method to retrieve attributes. Both the `type()` method and `id()` are required to retrieve the attributes. An `id` can be passed to the `retrieveAttributes()` method to retrieve a specific attribute.
 
 ###Retrieve Observations
 
@@ -8015,7 +8015,7 @@ indicators.owner('Example Community')
     .retrieveTags();
 ```
 
-The JavaScript SDK provides the `retrieveTags()` method to retrieve tags.  Both the `type()` method and `id()` are required to retrieve the tags.
+The JavaScript SDK provides the `retrieveTags()` method to retrieve tags. Both the `type()` method and `id()` are required to retrieve the tags.
 
 ##Tags Retrieve
 
@@ -8065,7 +8065,7 @@ tc.tags()
 
 This section explains how to work with ThreatConnect Tags Resources.
 
-This example will demonstrate how to retrieve Tags. The result set returned from this example will contain all Tags to which the API credential being used has access.  Optionally the `name()` method can be used to pass a specific Tag name.
+This example will demonstrate how to retrieve Tags. The result set returned from this example will contain all Tags to which the API credential being used has access. Optionally the `name()` method can be used to pass a specific Tag name.
 
 ## Owners Retrieve
 
@@ -8133,7 +8133,7 @@ tc.owners()
     .retrieveMetrics();
 ```
 
-Starting with ThreatConnect platform version 4.0 retrieving Owner metrics is supported.  Owner metrics provides the summed data for the last 15 days.  Optionally the `id()` method can be used to pass a specific Owner ID.
+Starting with ThreatConnect platform version 4.0 retrieving Owner metrics is supported. Owner metrics provides the summed data for the last 15 days. Optionally the `id()` method can be used to pass a specific Owner ID.
 
 ## Group Retrieve
 
@@ -8216,11 +8216,11 @@ while (groups.hasNext()) {
 }
 ```
 
-The JavaScript SDK provide the `hasNext()` method for checking if more entries are available.  To retrieve the next set of entries the `next()` method is available.
+The JavaScript SDK provide the `hasNext()` method for checking if more entries are available. To retrieve the next set of entries the `next()` method is available.
 
-Note: Before the `next()` method can be called the first API must have completed.  This should not be an issue if a user click triggers the next call, however if the `next()` method is being called programmaticly then it should be passed in a function to the `retrieve()` method.
+Note: Before the `next()` method can be called the first API must have completed. This should not be an issue if a user click triggers the next call, however if the `next()` method is being called programmaticly then it should be passed in a function to the `retrieve()` method.
 
-Note: The `next()` method will return the same number of results defined in the `resultsLimit()` or the number of results remaining.  The same 'done' and 'error' callbacks are also used for the next set of results.
+Note: The `next()` method will return the same number of results defined in the `resultsLimit()` or the number of results remaining. The same 'done' and 'error' callbacks are also used for the next set of results.
 
 ## Filters
 
@@ -8245,7 +8245,7 @@ groups.owner('Example Community')
     })
     .retrieve();
 ```
-Starting with ThreatConnect version 4.0 the API supports filtering using query string parameters.  For more information on which parameters support which operators see the ThreatConnect API Users Guide.
+Starting with ThreatConnect version 4.0 the API supports filtering using query string parameters. For more information on which parameters support which operators see the ThreatConnect API Users Guide.
 
 Filter Options              | Filter Constant
 --------------------------- | ---------------
@@ -8284,7 +8284,7 @@ tc.groups()
     });
 ```
 
-The JavaScript SDK provides the `retrieveAssociations()` method to retrieve both Indicator and Group Associations.  The `type()`, and `id()` methods are required to retrieve the assocations.  The `retrieveAssociations()` method requires that a parameter object containing the association `type` be provided.  Optionally an `id` can be provided to pull a specific association.
+The JavaScript SDK provides the `retrieveAssociations()` method to retrieve both Indicator and Group Associations. The `type()`, and `id()` methods are required to retrieve the assocations. The `retrieveAssociations()` method requires that a parameter object containing the association `type` be provided. Optionally an `id` can be provided to pull a specific association.
 
 ##Retrieve Attributes
 
@@ -8304,7 +8304,7 @@ tc.groups()
     .retrieveAttributes();
 ```
 
-The JavaScript SDK provides the `retrieveAttributes()` method to retrieve attributes.  Both the `type()` method and `id()` are required to retrieve the attributes.  An `id` can be passed to the `retrieveAttributes()` method to retrieve a specific attribute.
+The JavaScript SDK provides the `retrieveAttributes()` method to retrieve attributes. Both the `type()` method and `id()` are required to retrieve the attributes. An `id` can be passed to the `retrieveAttributes()` method to retrieve a specific attribute.
 
 ##Retrieve Tags
 
@@ -8324,7 +8324,7 @@ tc.groups()
     .retrieveTags();
 ```
 
-The JavaScript SDK provides the `retrieveTags()` method to retrieve tags.  Both the `type()` method and `id()` are required to retrieve the tags.
+The JavaScript SDK provides the `retrieveTags()` method to retrieve tags. Both the `type()` method and `id()` are required to retrieve the tags.
 
 ##Retrieve Security Labels
 
@@ -8344,11 +8344,11 @@ tc.groups()
     .retrieveSecurityLabel();
 ```
 
-The JavaScript SDK provides the `retrieveSecurityLabel()` method to retrieve security labels.  Both the `type()` method and `id()` are required to retrieve the security label.
+The JavaScript SDK provides the `retrieveSecurityLabel()` method to retrieve security labels. Both the `type()` method and `id()` are required to retrieve the security label.
 
 ## Retrieve Tasks
 
-This example will demonstrate how to retrieve Tasks. The result set returned from this example will contain all Tasks that the API credential being used have access.  Optionally the `id()` method can be used to pass a specific task id to retrieve.
+This example will demonstrate how to retrieve Tasks. The result set returned from this example will contain all Tasks that the API credential being used have access. Optionally the `id()` method can be used to pass a specific task id to retrieve.
 
 ### Example
 
@@ -8392,7 +8392,7 @@ tc.tasks()
 
 ## Retrieve Victims
 
-This example will demonstrate how to retrieve Victims. The result set returned from this example will contain all Victims that the API credential being used have access.  Optionally the `id()` method can be used to pass a specific task id to retrieve.
+This example will demonstrate how to retrieve Victims. The result set returned from this example will contain all Victims that the API credential being used have access. Optionally the `id()` method can be used to pass a specific task id to retrieve.
 
 ### Example
 
@@ -8499,7 +8499,7 @@ indicators.owner('Example Community')
 }
 ```
 
-This example will demonstrate how to add an Address indicator to the "Example Community" Owner.  For indicator specific parameters refer to the ThreatConnect API User Guide.
+This example will demonstrate how to add an Address indicator to the "Example Community" Owner. For indicator specific parameters refer to the ThreatConnect API User Guide.
 
 ###Batch/Bulk Commit
 
@@ -8545,7 +8545,7 @@ Filters are not supported on Batch/Bulk downloads.
 
 ###Commit Association
 
-The JavaScript SDK provides the `commitAssociation()` method to add Group Associations.  Both `.type()`, and `id()` methods are required to commit the Assocations.  The value passed to the `commitAssociation()` method must be the specific Group Type (e.g., TYPE.ADVERSARY, TYPE.HOST).
+The JavaScript SDK provides the `commitAssociation()` method to add Group Associations. Both `.type()`, and `id()` methods are required to commit the Assocations. The value passed to the `commitAssociation()` method must be the specific Group Type (e.g., TYPE.ADVERSARY, TYPE.HOST).
 
 > Example of commitAssociations() method:
 
@@ -8606,7 +8606,7 @@ tc.indicators()
     .commitTags('Example Tag');
 ```
 
-The JavaScript SDK provides the `commitTags()` method to add Tags.  Both the `.type()` method and `id()` are required to add the Tags.  The Tag value should be passed to the `commitTags()` method.
+The JavaScript SDK provides the `commitTags()` method to add Tags. Both the `.type()` method and `id()` are required to add the Tags. The Tag value should be passed to the `commitTags()` method.
 
 ###Commit Security Labels
 
@@ -8717,7 +8717,7 @@ groups.owner('Example Community')
 }
 ```
 
-This example will demonstrate how to add an Adversary with a name of 'adver-001' to the "Example Community" Owner.  For group specific parameters refer to the ThreatConnect API User Guide.
+This example will demonstrate how to add an Adversary with a name of 'adver-001' to the "Example Community" Owner. For group specific parameters refer to the ThreatConnect API User Guide.
 
 ###Commit Associations
 
@@ -8740,7 +8740,7 @@ tc.groups()
     });
 ```
 
-The JavaScript SDK provides the `commitAssociations()` method to add both Indicator and Group Associations.  The `.type()`, `id()`, `associationType()`, and `associationId()` methods are required to commit the associations.  The value passed to the `associationType()` method must be the specific Group or Indicator Type (e.g., TYPE.ADVERSARY, TYPE.HOST).
+The JavaScript SDK provides the `commitAssociations()` method to add both Indicator and Group Associations. The `.type()`, `id()`, `associationType()`, and `associationId()` methods are required to commit the associations. The value passed to the `associationType()` method must be the specific Group or Indicator Type (e.g., TYPE.ADVERSARY, TYPE.HOST).
 
 ###Commit Attributes
 
@@ -8762,7 +8762,7 @@ tc.groups()
     });
 ```
 
-The JavaScript SDK provides the `commitAttributes()` method to add attributes.  The `.type()` and `id()` are required to add attributes.  The  attribute object should be passed to the `commitAttribute()` method with a type and value parameter.
+The JavaScript SDK provides the `commitAttributes()` method to add attributes. The `.type()` and `id()` are required to add attributes. The  attribute object should be passed to the `commitAttribute()` method with a type and value parameter.
 
 ###Commit False Positive
 
@@ -8820,7 +8820,7 @@ tc.groups()
     .commitTag('Example Tag');
 ```
 
-The JavaScript SDK provides the `commitTag()` method to add tags.  Both the `.type()` method and `id()` are required to add the tags.  The tag value should be passed to the `commitTag()` method.
+The JavaScript SDK provides the `commitTag()` method to add tags. Both the `.type()` method and `id()` are required to add the tags. The tag value should be passed to the `commitTag()` method.
 
 ###Commit Security Label
 
@@ -8875,7 +8875,7 @@ groups.owner('Example Community')
     });
 ```
 
-This example will demonstrate how to add an Adversary with a name of 'adver-999' to the Example Community Owner.  It passes a callback to the `commit()` method that will add a Group and Indicators Association, Attribute, Tag, and Security Label.  Any number of Associations, Attributes, or Tags can be added in the callback.
+This example will demonstrate how to add an Adversary with a name of 'adver-999' to the Example Community Owner. It passes a callback to the `commit()` method that will add a Group and Indicators Association, Attribute, Tag, and Security Label. Any number of Associations, Attributes, or Tags can be added in the callback.
 
 Note: To ensure that commits for the metadata happen after the commit of the Group pass a callback to the Group Commit method.
 
@@ -8991,7 +8991,7 @@ victim.owner('Example Community')
 ```
 
 ## Associations
-The JavaScript SDK provides the `commitAssociations()` method to add both Indicator and Group Associations.  The `.type()`, `id()`, `associationType()`, and `associationId()` methods are required to commit the assocations.  The value passed to the `associationType()` method must be the specific Group or Indicator Type (e.g. TYPE.ADVERSARY, TYPE.HOST).
+The JavaScript SDK provides the `commitAssociations()` method to add both Indicator and Group Associations. The `.type()`, `id()`, `associationType()`, and `associationId()` methods are required to commit the assocations. The value passed to the `associationType()` method must be the specific Group or Indicator Type (e.g. TYPE.ADVERSARY, TYPE.HOST).
 
 ```javascript
 tc.tasks()
@@ -9027,7 +9027,7 @@ tc.tasks()
 ```
 
 ## Attributes
-The JavaScript SDK provides the `commitAttributes()` method to add attributes.  The `id()` method is required to add attributes.  The  attribute object should be passed to `commitAttribute()` method with a type and value parameter.
+The JavaScript SDK provides the `commitAttributes()` method to add attributes. The `id()` method is required to add attributes. The  attribute object should be passed to `commitAttribute()` method with a type and value parameter.
 
 ```javascript
 tc.tasks()
@@ -9045,7 +9045,7 @@ tc.tasks()
 ```
 
 ## Tags
-The JavaScript SDK provides the `commitTags()` method to add tags.  The `id()` method is required to retrieve the task.  The tag value should be passed to the `commitTags()` method.
+The JavaScript SDK provides the `commitTags()` method to add tags. The `id()` method is required to retrieve the task. The tag value should be passed to the `commitTags()` method.
 
 ```javascript
 tc.tasks()
@@ -9075,7 +9075,7 @@ tc.tasks()
 
 ## Putting it all Together
 
-This example will demonstrate how to add a Task with a name of 'task-999' to the "Example Community" owner.  It passes a callback to the `commit()` method that will add a group and indicators association, attribute, tag, and security label.  Any number of Associations, Attributes, or Tags can be added in the callback.
+This example will demonstrate how to add a Task with a name of 'task-999' to the "Example Community" owner. It passes a callback to the `commit()` method that will add a group and indicators association, attribute, tag, and security label. Any number of Associations, Attributes, or Tags can be added in the callback.
 
 ```javascript
 tasks = tc.tasks();
@@ -9111,7 +9111,7 @@ tasks.owner('Example Community')
 
 
 ## Associations
-The JavaScript SDK provides the `commitAssociations()` method to add both Indicator and Group Associations.  The `.type()`, `id()`, `associationType()`, and `associationId()` methods are required to commit the assocations.  The value passed to the `associationType()` method must be the specific Group or Indicator Type (e.g. TYPE.ADVERSARY, TYPE.HOST).
+The JavaScript SDK provides the `commitAssociations()` method to add both Indicator and Group Associations. The `.type()`, `id()`, `associationType()`, and `associationId()` methods are required to commit the assocations. The value passed to the `associationType()` method must be the specific Group or Indicator Type (e.g. TYPE.ADVERSARY, TYPE.HOST).
 
 ```javascript
 tc.victims()
@@ -9147,7 +9147,7 @@ tc.victims()
 ```
 
 ## Attributes
-The JavaScript SDK provides the `commitAttributes()` method to add attributes.  The `id()` method is required to add attributes.  The  attribute object should be passed to `commitAttribute()` method with a type and value parameter.
+The JavaScript SDK provides the `commitAttributes()` method to add attributes. The `id()` method is required to add attributes. The  attribute object should be passed to `commitAttribute()` method with a type and value parameter.
 
 ```javascript
 tc.victims()
@@ -9165,7 +9165,7 @@ tc.victims()
 ```
 
 ## Tags
-The JavaScript SDK provides the `commitTags()` method to add tags.  The `id()` method is required to retrieve the victim.  The tag value should be passed to the `commitTags()` method.
+The JavaScript SDK provides the `commitTags()` method to add tags. The `id()` method is required to retrieve the victim. The tag value should be passed to the `commitTags()` method.
 
 ```javascript
 tc.victims()
@@ -9194,7 +9194,7 @@ tc.victims()
 ```
 
 ## Putting it all Together
-This example will demonstrate how to add a Victim with a name of 'task-999' to the "Example Community" owner.  It passes a callback to the `commit()` method that will add a group and indicators association, attribute, tag, and security label.  Any number of Associations, Attributes, or Tags can be added in the callback.
+This example will demonstrate how to add a Victim with a name of 'task-999' to the "Example Community" owner. It passes a callback to the `commit()` method that will add a group and indicators association, attribute, tag, and security label. Any number of Associations, Attributes, or Tags can be added in the callback.
 
 ```javascript
 victim = tc.victims();
@@ -9274,7 +9274,7 @@ tc.requestObject()
 ro.apiRequest(ro);
 ```
 
-The JavaScript SDK supports a manual way to access the API by allowing the creation of a `requestObject()` and submitting these objects to the `apiRequest()` method.  The returned result will contain API response.
+The JavaScript SDK supports a manual way to access the API by allowing the creation of a `requestObject()` and submitting these objects to the `apiRequest()` method. The returned result will contain API response.
 
 ###Retrieving Indicators
 
@@ -9361,7 +9361,7 @@ ro.owner('Example Community')
 
 ```
 
-The JavaScript SDK `requestObject` provides the `payload()` method to add any additional query string parameters.  This example shows how to add filters to a manual request using the `payload()` option.
+The JavaScript SDK `requestObject` provides the `payload()` method to add any additional query string parameters. This example shows how to add filters to a manual request using the `payload()` option.
 
 Query String Parameter | Helper Method 
 ---------------------- | ------------- 

@@ -863,7 +863,7 @@ Below is a list of all Resource Types and all HTTP paths for obtaining each Reso
 </indicatorTypesResponse>
 ```
 
-To support [custom Indicator types](http://docs.threatconnect.com/#custom-indicator-types), the API branch `/v2/types/indicatorTypes` will return all of the Indicator types available in an instance of ThreatConnect.  The response includes the name of the API branch and API entity for each Indicator type.  For more information about a specific Indicator type, add the Indicator type to the end of the query above such as: `/v2/types/indicatorTypes/<indicator_type>`.
+To support [custom Indicator types](http://docs.threatconnect.com/#custom-indicator-types), the API branch `/v2/types/indicatorTypes` will return all of the Indicator types available in that instance of ThreatConnect. This API branch will also return the name of the API branch and API entity for each Indicator type. For more information about a specific Indicator type, add the Indicator type to the end of the query above, e.g., `/v2/types/indicatorTypes/<indicator_type>`. The output on the right shows the Indicator types currently in the ThreatConnect Cloud.
 
 ####Hosts Resource Type
 
@@ -2438,7 +2438,7 @@ Paths                       | Owner <br> Allowed | Pagination <br> Required
 
 For each Incident, its Attributes, associated Indicators, Security Labels, Victims, Victim Assets, and Tags can be retrieved.
 
-Adding the ‘includeAdditional’ parameter will return the same information as `/v2/groups/incidents/<ID>` except that it will also include the Incident’s status.
+Adding the ‘includeAdditional’ parameter will return the same information as `/v2/groups/incidents/<ID>`, except that it will also include the Incident’s status.
 
 ####Documents Resource Type
 
