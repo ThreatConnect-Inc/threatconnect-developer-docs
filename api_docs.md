@@ -3252,6 +3252,90 @@ All of the available associations can be viewed by making a `GET` request to `/v
 
 ####Indicator to Indicator Associations
 
+> To retrieve indicators associated with a file using a file action, use the following GET request format:
+
+```
+GET /v2/indicators/files/<file hash>/actions/<file action>/indicators
+```
+
+> Retrieve all of the indicators associated with the file using the mutex file action:
+
+```
+GET /v2/indicators/files/8743b52063cd84097a65d1633f5c74f5/actions/mutex/indicators
+```
+
+> Mutex file action retrieve JSON:
+
+```json
+{
+  "status": "Success",
+  "data": {
+    "resultCount": 2,
+    "indicator": [
+      {
+        "id": 123456,
+        "ownerName": "Organization Name",
+        "type": "Mutex",
+        "dateAdded": "2016-11-23T16:21:53Z",
+        "lastModified": "2016-11-23T16:21:53Z",
+        "threatAssessRating": 3.0,
+        "threatAssessConfidence": 50.0,
+        "webLink": "https://app.threatconnect.com/auth/indicators/details/customIndicator.xhtml?id=123456&owner=Organization+Name",
+        "description": "Mutex for file with hash **8743b52063cd84097a65d1633f5c74f5**.",
+        "summary": "50F163F13C2FF8FDB5262A672EB39B19"
+      },
+      {
+        "id": 123457,
+        "ownerName": "Organization Name",
+        "type": "Mutex",
+        "dateAdded": "2016-11-23T16:20:40Z",
+        "lastModified": "2016-11-23T16:20:40Z",
+        "threatAssessRating": 3.0,
+        "threatAssessConfidence": 50.0,
+        "webLink": "https://app.threatconnect.com/auth/indicators/details/customIndicator.xhtml?id=123457&owner=Organization+Name",
+        "description": "Mutex for file with hash **8743b52063cd84097a65d1633f5c74f5**.",
+        "summary": "CTF.TimListCache.FMPDefaultS-1-5-21-1547161642-507921405-839522115-1004MUTEX.DefaultS-1-5-21-1547161642-507921405-839522115-1004"
+      }
+    ]
+  }
+}
+```
+
+> Mutex file action retrieve XML:
+
+```xml
+<indicatorsResponse>
+  <Status>Success</Status>
+  <Data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="indicatorListResponseData">
+    <ResultCount>2</ResultCount>
+    <Indicator>
+      <Id>123456</Id>
+      <OwnerName>Organization Name</OwnerName>
+      <Type>Mutex</Type>
+      <DateAdded>2016-11-23T16:21:53Z</DateAdded>
+      <LastModified>2016-11-23T16:21:53Z</LastModified>
+      <ThreatAssessRating>3.0</ThreatAssessRating>
+      <ThreatAssessConfidence>50.0</ThreatAssessConfidence>
+      <WebLink>https://app.threatconnect.com/auth/indicators/details/customIndicator.xhtml?id=123456&amp;owner=Organization+Name</WebLink>
+      <Description>Mutex for file with hash **8743b52063cd84097a65d1633f5c74f5**.</Description>
+      <Summary>50F163F13C2FF8FDB5262A672EB39B19</Summary>
+    </Indicator>
+    <Indicator>
+      <Id>123457</Id>
+      <OwnerName>Organization Name</OwnerName>
+      <Type>Mutex</Type>
+      <DateAdded>2016-11-23T16:20:40Z</DateAdded>
+      <LastModified>2016-11-23T16:20:40Z</LastModified>
+      <ThreatAssessRating>3.0</ThreatAssessRating>
+      <ThreatAssessConfidence>50.0</ThreatAssessConfidence>
+      <WebLink>https://app.threatconnect.com/auth/indicators/details/customIndicator.xhtml?id=123457&amp;owner=Organization+Name</WebLink>
+      <Description>Mutex for file with hash **8743b52063cd84097a65d1633f5c74f5**.</Description>
+      <Summary>CTF.TimListCache.FMPDefaultS-1-5-21-1547161642-507921405-839522115-1004MUTEX.DefaultS-1-5-21-1547161642-507921405-839522115-1004</Summary>
+    </Indicator>
+  </Data>
+</indicatorsResponse>
+```
+
 In ThreatConnect, some types of Indicators can be related with certain other types. At a high level, there are two ways to relate Indicators with one another:
 
 1. Association
