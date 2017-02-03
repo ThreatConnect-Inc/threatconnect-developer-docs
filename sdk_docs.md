@@ -488,7 +488,7 @@ Snippet                                   | Description
 `tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
 `adversaries = tc.adversaries()`          | Instantiate an Adversaries container object. 
 `filter1 = adversaries.add_filter()`      | Add a filter object to the Adversaries container object <br> (support multiple filter objects). 
-`filter1.add_tag('EXAMPLE')`              | Add API filter to be applied to the API request. 
+`filter1.add_tag('EXAMPLE')`              | Add API filter to retrieve Adversaries with the 'Example' tag. 
 `adversaries.retrieve()`                  | Trigger the API request and retrieve the Adversaries <br> intelligence data. 
 `for adversary in adversaries:`           | Iterate over the Adversaries container object generator. 
 `print(adversary.id)`                     | Display the **'id'** property of the Adversary object. 
@@ -615,7 +615,7 @@ Snippet                                   | Description
 `tc = ThreatConnect(api_access_id,...`    | Instantiate the ThreatConnect object. 
 `indicators = tc.indicators()`            | Instantiate an Indicators container object. 
 `filter1 = indicator.add_filter()`        | Add a filter object to the Indicators container object <br> (support multiple filter objects). 
-`filter1.add_tag('EXAMPLE')`              | Add API filter to be applied to the API request. 
+`filter1.add_tag('EXAMPLE')`              | Add API filter to retrieve Indicators with the 'Example' tag. 
 `indicator.retrieve()`                    | Trigger the API request and retrieve the Indicators <br> intelligence data. 
 `for indicator in indicators:`            | Iterate over the Indicators container object generator. 
 `print(indicator.indicator)`              | Display the **'indicator'** property of the Indicator object. 
@@ -852,7 +852,7 @@ Snippet                                   | Description
 `tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
 `documents = tc.documents()`              | Instantiate a Documents container object. 
 `filter1 = documents.add_filter()`        | Add a filter object to the Documents container object <br> (support multiple filter objects). 
-`filter1.add_tag('EXAMPLE')`              | Add API filter to be applied to the API request. 
+`filter1.add_tag('EXAMPLE')`              | Add API filter to retrieve Documents with the 'Example' tag 
 `documents.retrieve()`                    | Trigger the API request and retrieve the Documents <br> intelligence data. 
 `for document in documents:`              | Iterate over the Documents container object generator. 
 `print(document.id)`                      | Display the **'id'** property of the Document object. 
@@ -1120,7 +1120,7 @@ Snippet                                   | Description
 `tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
 `groups = tc.groups()`                    | Instantiate a Groups container object. 
 `filter1 = groups.add_filter()`           | Add a filter object to the Groups container object <br> (support multiple filter objects). 
-`filter1.add_tag('EXAMPLE')`              | Add API filter to be applied to the API request. 
+`filter1.add_tag('EXAMPLE')`              | Add API filter to retrieve Groups with the 'Example' tag. 
 `groups.retrieve()`                       | Trigger the API request and retrieve the Groups <br> intelligence data. 
 `for group in groups:`                    | Iterate over the Groups container object generator. 
 `print(group.id)`                         | Display the **'id'** property of the Group object. 
@@ -1238,7 +1238,7 @@ Snippet                                   | Description
 `tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
 `incidents = tc.incidents()`              | Instantiate an Incidents container object. 
 `filter1 = incidents.add_filter()`        | Add a filter object to the Incidents container object <br> (support multiple filter objects). 
-`filter1.add_tag('EXAMPLE')`              | Add API filter to be applied to the API request. 
+`filter1.add_tag('EXAMPLE')`              | Add API filter to retrieve Incidents with the 'Example' tag. 
 `incidents.retrieve()`                    | Trigger the API request and retrieve the Incidents <br> intelligence data. 
 `for incident in incidents:`              | Iterate over the Incidents container object generator. 
 `print(incident.id)`                      | Display the **'id'** property of the Incidents object. 
@@ -1380,7 +1380,7 @@ Snippet                                   | Description
 `tc = ThreatConnect(api_access_id,...`    | Instantiate the ThreatConnect object. 
 `indicators = tc.indicators()`            | Instantiate an Indicators container object. 
 `filter1 = indicator.add_filter()`        | Add a filter object to the Indicators container object <br> (support multiple filter objects). 
-`filter1.add_tag('EXAMPLE')`              | Add API filter to be applied to the API request. 
+`filter1.add_tag('EXAMPLE')`              | Add API filter to retrieve Indicators with the 'Example' tag. 
 `indicator.retrieve()`                    | Trigger the API request and retrieve the Indicators <br> intelligence data. 
 `for indicator in indicators:`            | Iterate over the Indicators container object generator. 
 `print(indicator.indicator)`              | Display the **'indicator'** property of the Indicator object. 
@@ -1644,7 +1644,7 @@ Snippet                                   | Description
 `tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
 `signatures = tc.signatures()`            | Instantiate an Signatures container object. 
 `filter1 = signatures.add_filter()`       | Add a filter object to the Signatures container object <br> (support multiple filter objects).
-`filter1.add_tag('EXAMPLE')`              | Add API filter to be applied to the API request.
+`filter1.add_tag('EXAMPLE')`              | Add API filter to retrieve Signatures with the 'Example' tag.
 `signatures.retrieve()`                   | Trigger the API request and retrieve the Signatures <br> intelligence data.
 `for signature in signatures:`            | Iterate over the Signatures container object generator.
 `print(signature.id)`                     | Display the **'id'** property of the Signature object.
@@ -1896,7 +1896,7 @@ Snippet                                   | Description
 `tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
 `threats = tc.threats()`                  | Instantiate a Threats container object. 
 `filter1 = threats.add_filter()`          | Add a filter object to the Threats container object <br> (support multiple filter objects). 
-`filter1.add_tag('EXAMPLE')`              | Add API filter to be applied to the API request. 
+`filter1.add_tag('EXAMPLE')`              | Add API filter to retrieve Threats with the 'Example' tag. 
 `threats.retrieve()`                      | Trigger the API request and retrieve the Threats <br> intelligence data. 
 `for threat in threats:`                  | Iterate over the Threats container object generator. 
 `print(threat.id)`                        | Display the **id** property of the Threat object. 
@@ -1976,7 +1976,7 @@ Snippet                                   | Description
 `tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
 `victims = tc.victims()`                  | Instantiate a Victims container object. 
 `filter1 = victims.add_filter()`          | Add a filter object to the Victims container object <br> (support multiple filter objects). 
-`filter1.add_adversary_id(531)`           | Add API filter to be applied to the API request. 
+`filter1.add_adversary_id(531)`           | Add API filter to retrieve Victims associated with the given Adversary. 
 `victims.retrieve()`                      | Trigger the API request and retrieve the Victims <br> intelligence data. 
 `for victim in victims:`                  | Iterate over the Victims container object generator. 
 `print(victim.id)`                        | Display the **id** property of the Victim object. 
