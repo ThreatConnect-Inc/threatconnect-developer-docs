@@ -3252,6 +3252,68 @@ All of the available associations can be viewed by making a `GET` request to `/v
 
 ####Indicator to Indicator Associations
 
+> To retrieve indicators associated with another indicator using a custom association, use the following GET request format:
+
+```
+GET /v2/indicators/<indicator type>/<value>/associations/<association type>/indicators
+```
+
+> Retrieve all of the CIDR indicators associated with an ASN:
+
+```
+GET /v2/indicators/asns/ASN12345/associations/asnToCidr/indicators
+```
+
+> asnToCidr Associations retrieve JSON:
+
+```json
+{
+  "status": "Success",
+  "data": {
+    "resultCount": 1,
+    "indicator": [
+      {
+        "id": 123456,
+        "ownerName": "Organization Name",
+        "type": "CIDR",
+        "dateAdded": "2016-11-22T00:38:03Z",
+        "lastModified": "2016-11-22T01:50:53Z",
+        "rating": 1.00,
+        "confidence": 100,
+        "threatAssessRating": 1.0,
+        "threatAssessConfidence": 100.0,
+        "webLink": "https://app.threatconnect.com/auth/indicators/details/customIndicator.xhtml?id=123456&owner=Organization+Name",
+        "summary": "192.168.0.1/24"
+      }
+    ]
+  }
+}
+```
+
+> asnToCidr Associations retrieve XML:
+
+```xml
+<indicatorsResponse>
+  <Status>Success</Status>
+  <Data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="indicatorListResponseData">
+    <ResultCount>1</ResultCount>
+    <Indicator>
+      <Id>123456</Id>
+      <OwnerName>Organization Name</OwnerName>
+      <Type>CIDR</Type>
+      <DateAdded>2016-11-22T00:38:03Z</DateAdded>
+      <LastModified>2016-11-22T01:50:53Z</LastModified>
+      <Rating>1.00</Rating>
+      <Confidence>100</Confidence>
+      <ThreatAssessRating>1.0</ThreatAssessRating>
+      <ThreatAssessConfidence>100.0</ThreatAssessConfidence>
+      <WebLink>https://app.threatconnect.com/auth/indicators/details/customIndicator.xhtml?id=123456&amp;owner=Organization+Name</WebLink>
+      <Summary>192.168.0.1/24</Summary>
+    </Indicator>
+  </Data>
+</indicatorsResponse>
+```
+
 > To retrieve indicators associated with a file using a file action, use the following GET request format:
 
 ```
