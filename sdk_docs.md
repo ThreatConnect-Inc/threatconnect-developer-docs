@@ -5352,13 +5352,13 @@ System.getProperties().setProperty("threatconnect.api.config", "<YOUR CONFIG FIL
 
 > On Windows:
 
-```java
+```shell
  java -cp ".;threatconnect-sdk-<version>.jar" -Dthreatconnect.api.config=myConfig.properties TestClass
 ```
 
 > On Linux:
 
-```java
+```shell
 java -cp ".:./threatconnect-sdk-<version>.jar" -Dthreatconnect.api.config=myConfig.properties TestClass
 ```
 
