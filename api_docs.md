@@ -4596,7 +4596,7 @@ Table 39 details the acceptable fields and values when creating a Group.
 |             | fileType*    | TRUE     |
 |             | fileText**   | TRUE     |
 
-*The valid values for a Signature’s fileType field are: {Snort ® , Suricata, YARA, ClamAV ® , OpenIOC, CybOX™, Bro}.
+*The valid values for a Signature’s fileType field are: {Snort ® , Suricata, YARA, ClamAV ® , OpenIOC, CybOX™, Bro, Regex}.
 **A Signature’s fileText field contains the Signature itself, which must be properly escaped and encoded when submitting for creation or updating.
 
 ####Documents
