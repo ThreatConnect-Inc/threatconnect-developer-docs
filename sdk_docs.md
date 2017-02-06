@@ -710,20 +710,20 @@ Snippet                                   | Description
 
 ###Indicator Associations
 
-> Example of Python SDK interating through all the Indicators assocatiated with an Indicator:
+> Example Python SDK iterating through all Indicators associated with an Indicator:
 
 ```python
-    for i_associations in indicator.indicator_associations:
-        print(i_associations.id)
-        print(i_associations.indicator)
-        print(i_associations.type)
-        print(i_associations.description)
-        print(i_associations.owner_name)
-        print(i_associations.rating)
-        print(i_associations.confidence)
-        print(i_associations.date_added)
-        print(i_associations.last_modified)
-        print(i_associations.weblink)
+    for i_association in indicator.indicator_associations:
+        print(i_association.id)
+        print(i_association.indicator)
+        print(i_association.type)
+        print(i_association.description)
+        print(i_association.owner_name)
+        print(i_association.rating)
+        print(i_association.confidence)
+        print(i_association.date_added)
+        print(i_association.last_modified)
+        print(i_association.weblink)
 ```
 
 Iterate through all Indicators associated with this Indicator. These Indicators are pulled directly from the API and are not stored in the Indicator object.
@@ -732,7 +732,7 @@ Iterate through all Indicators associated with this Indicator. These Indicators 
 
 Snippet                                   | Description                                                                       
 ----------------------------------------- | --------------------------------------------------------------------------------- 
-`for i_associations in indicator.ind_...` | Trigger API call to retrieve all Indicators associated <br>  with this Indicator. 
+`for i_association in indicator.ind_...` | Trigger API call to retrieve all Indicators associated <br>  with this Indicator. 
 `print(i_association.id)`                 | Display the **'id'** property of the associated <br> Indicator object. 
 
 ###Victim Associations
@@ -1480,21 +1480,20 @@ Snippet                                   | Description
 
 ###Indicator Associations
 
-> Example Python SDK iterating through all Indicators associated with this Indicator:
+> Example Python SDK iterating through all Indicators associated with an Indicator:
 
 ```python
-
-    for i_associations in indicator.indicator_associations:
-        print(i_associations.id)
-        print(i_associations.indicator)
-        print(i_associations.type)
-        print(i_associations.description)
-        print(i_associations.owner_name)
-        print(i_associations.rating)
-        print(i_associations.confidence)
-        print(i_associations.date_added)
-        print(i_associations.last_modified)
-        print(i_associations.weblink)
+    for i_association in indicator.indicator_associations:
+        print(i_association.id)
+        print(i_association.indicator)
+        print(i_association.type)
+        print(i_association.description)
+        print(i_association.owner_name)
+        print(i_association.rating)
+        print(i_association.confidence)
+        print(i_association.date_added)
+        print(i_association.last_modified)
+        print(i_association.weblink)
 ```
 
 Iterate through all Indicators associated with this Indicator. These Indicators are pulled directly from the API and are not stored in the Indicator object.
@@ -1503,7 +1502,7 @@ Iterate through all Indicators associated with this Indicator. These Indicators 
 
 Snippet                                   | Description                                                                       
 ----------------------------------------- | --------------------------------------------------------------------------------- 
-`for i_associations in indicator.ind_...` | Trigger API call to retrieve all Indicators associated with <br> this Indicator. 
+`for i_association in indicator.ind_...` | Trigger API call to retrieve all Indicators associated with <br> this Indicator. 
 `print(i_association.id)`                 | Display the **'id'** property of the associated Indicator object. 
 
 ###Victim Associations
