@@ -4971,7 +4971,7 @@ With the understanding of how Associations are created, Association deletion bec
  {                                           
  status: "Running",                          
  }                                           
- ```
+```
  
 > Server Response on Success (job finished)
 
@@ -4983,13 +4983,13 @@ With the understanding of how Associations are created, Association deletion bec
  successCount: 405432                        
  unprocessCount: 0                           
  }                                                                                      
- ```
+```
  
 > Sample Batch Error Message request
 
 ```
  GET /v2/batch/123/errors 
- ```
+```
  
 > Server Response on Success (job still running)
 
@@ -4999,7 +4999,7 @@ With the understanding of how Associations are created, Association deletion bec
  status: "Invalid",                          
  description: "Batch still in Running state" 
  }                                           
- ```
+```
 
 > Server Response on Success (job finished):
 
@@ -5010,7 +5010,7 @@ With the understanding of how Associations are created, Association deletion bec
  Content-Encoding: gzip                      
  <boundary-text>                             
  <response_data>                          
- ```
+```
 
 <b>Create Batch Endpoint</b>
  
