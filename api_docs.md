@@ -26,7 +26,7 @@ Each API response is formatted with a status. If the status is "Success," each r
 
 The API will be versioned as needed to support continued development of the ThreatConnect platform, and existing API versions will be appropriately deprecated.
 
-Version 2 (V2) of the API supports write capabilities via HTTP POST and PUT methods, in addition to deletion via the HTTP DELETE method. As with Version 1 (V1) API Implementation, the HTTP GET method is used for read access to resources.
+Version 2 (V2) of the API supports write capabilities via HTTP POST and PUT methods the HTTP GET method is used for read access to resources.
 
 ## Authentication
 
@@ -96,8 +96,6 @@ XML Response:
   </Owner>
  </Data>
 </ownersResponse>
-```
-
 ```
 
 Clients should start with a request to the Owners service to return all Organizations and Communities to which the API credentials have access. This basic request is not dependent on data or Community permissions, but it is required that the request meets the Authentication requirements.
