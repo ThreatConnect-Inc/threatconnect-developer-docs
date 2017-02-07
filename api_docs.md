@@ -6,7 +6,7 @@ The Application Programming Interface (API) allows users to access data in their
 
 To create an API User please refer to the <a href='http://kb.threatconnect.com/customer/en/portal/articles/2188549-creating-user-accounts'> Creating User Accounts KB article.</a>
 
-If you are not able to create an API key using instructions provided in the KB article above, please contact <sales@threatconnect.comTo discuss pricing.
+If you are not able to create an API key using instructions provided in the KB article above, please contact <sales@threatconnect.com> to discuss pricing.
 
 ## Using the API
 
