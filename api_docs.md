@@ -1061,14 +1061,14 @@ Addresses Resource Type JSON Response:
    "ownerName": "Organization Name",
    "dateAdded": "2013-12-22T14:53:51Z",
    "lastModified": "2013-12-22T14:53:51Z",
-   "webLink": "https://app.threatconnect.com/tc/auth/indicators/details/address.xhtml?address=192.168.1.1&owner=Organization Name",
+   "webLink": "https://app.threatconnect.com/tc/auth/indicators/details/address.xhtml?address=192.168.1.1&owner=Organization+Name",
    "ip": "192.168.1.1"
   }, {
    "id": 198,
    "ownerName": "Organization Name",
    "dateAdded": "2013-08-21T12:58:49Z",
    "lastModified": "2013-08-21T12:58:49Z",
-   "webLink": "https://app.threatconnect.com/tc/auth/indicators/details/address.xhtml?address=d24c:3256:0:0:0:0:0:2701&owner=Organization Name",
+   "webLink": "https://app.threatconnect.com/tc/auth/indicators/details/address.xhtml?address=d24c:3256:0:0:0:0:0:2701&owner=Organization+Name",
    "ip": "d24c:3256:0:0:0:0:0:2701"
   }]
  }
@@ -1087,7 +1087,7 @@ Addresses Resource Type XML Response:
 <OwnerName>Organization Name</OwnerName>
 <DateAdded>2013-12-22T14:53:51Z</DateAdded>
 <LastModified>2013-12-22T14:53:51Z</LastModified>
-<WebLink>https://app.threatconnect.com/tc/auth/indicators/details/address.xhtml?address=192.168.1.1&amp;owner=Organization Name</WebLink>
+<WebLink>https://app.threatconnect.com/tc/auth/indicators/details/address.xhtml?address=192.168.1.1&amp;owner=Organization+Name</WebLink>
 <Address>192.168.1.1</Address>
   </Address>
   <Address>
@@ -1095,7 +1095,7 @@ Addresses Resource Type XML Response:
 <OwnerName>Organization Name</OwnerName>
 <DateAdded>2013-08-21T12:58:49Z</DateAdded>
 <LastModified>2013-08-21T12:58:49Z</LastModified>
-<WebLink>https://app.threatconnect.com/tc/auth/indicators/details/address.xhtml?address=d24c:3256:0:0:0:0:0:2701&amp;owner=Organization Name</WebLink>
+<WebLink>https://app.threatconnect.com/tc/auth/indicators/details/address.xhtml?address=d24c:3256:0:0:0:0:0:2701&amp;owner=Organization+Name</WebLink>
 <Address>d24c:3256:0:0:0:0:0:2701</Address>
   </Address>
  </Data>
@@ -1135,7 +1135,7 @@ Address Resource Type JSON Response:
    },
    "dateAdded": "2013-08-21T12:58:49Z",
    "lastModified": "2013-08-21T12:58:49Z",
-   "webLink": "https://app.threatconnect.com/tc/auth/indicators/details/address.xhtml?address=192.168.1.1&owner=Organization Name",
+   "webLink": "https://app.threatconnect.com/tc/auth/indicators/details/address.xhtml?address=192.168.1.1&owner=Organization+Name",
    "ip": "192.168.1.1"
   }
  }
@@ -1157,7 +1157,7 @@ Address Resource TypeXML Response:
 </Owner>
 <DateAdded>2013-08-21T12:58:49Z</DateAdded>
 <LastModified>2013-08-21T12:58:49Z</LastModified>
-<WebLink>https://app.threatconnect.com/tc/auth/indicators/details/address.xhtml?address=192.168.1.1&amp;owner=Organization Name</WebLink>
+<WebLink>https://app.threatconnect.com/tc/auth/indicators/details/address.xhtml?address=192.168.1.1&amp;owner=Organization+Name</WebLink>
 <Address>192.168.1.1</Address>
   </Address>
  </Data>
@@ -1276,7 +1276,7 @@ Files Resource Type JSON Response:
    "lastModified": "2014-08-11T19:12:36-04:00",
    "rating": 4.0,
    "confidence": 81,
-   "webLink": "https://app.threatconnect.com/tc/auth/indicators/details/file.xhtml?file=222C230AE1C601AE0D125445BAB9728989AADDDA&owner=Organization Name",
+   "webLink": "https://app.threatconnect.com/tc/auth/indicators/details/file.xhtml?file=222C230AE1C601AE0D125445BAB9728989AADDDA&owner=Organization+Name",
    "sha1": "222C230AE1C601AE0D125445BAB9728989AADDDA"
   }, {
    "id": 258117,
@@ -1285,7 +1285,7 @@ Files Resource Type JSON Response:
    "lastModified": "2014-08-11T19:12:36-04:00",
    "rating": 4.0,
    "confidence": 81,
-   "webLink": "https://app.threatconnect.com/tc/auth/indicators/details/file.xhtml?file=222DF09B9CC2994B1C8CB254E1BBD2D9EEDD1916AF0BBAA95F5A3DFF6E2A499C&owner=Organization Name",
+   "webLink": "https://app.threatconnect.com/tc/auth/indicators/details/file.xhtml?file=222DF09B9CC2994B1C8CB254E1BBD2D9EEDD1916AF0BBAA95F5A3DFF6E2A499C&owner=Organization+Name",
    "sha256": "222DF09B9CC2994B1C8CB254E1BBD2D9EEDD1916AF0BBAA95F5A3DFF6E2A499C"
   }, {
    "id": 258115,
@@ -1294,7 +1294,7 @@ Files Resource Type JSON Response:
    "lastModified": "2014-08-11T19:12:36-04:00",
    "rating": 4.0,
    "confidence": 81,
-   "webLink": " https://app.threatconnect.com/tc/auth/indicators/details/file.xhtml?file=22202B566A725038BA2423C86B584428&owner=Organization Name",
+   "webLink": " https://app.threatconnect.com/tc/auth/indicators/details/file.xhtml?file=22202B566A725038BA2423C86B584428&owner=Organization+Name",
    "md5": "22202B566A725038BA2423C86B584428"
   }]
  }
@@ -1315,7 +1315,7 @@ Files Resource Type XML Response:
    <LastModified>2014-08-11T19:12:36-04:00</LastModified>
    <Rating>4.00</Rating>
    <Confidence>81</Confidence>
-   <WebLink> https://app.threatconnect.com/tc/auth/indicators/details/file.xhtml?file=222C230AE1C601AE0D125445BAB9728989AADDDA&owner=Organization Name</WebLink>
+   <WebLink> https://app.threatconnect.com/tc/auth/indicators/details/file.xhtml?file=222C230AE1C601AE0D125445BAB9728989AADDDA&owner=Organization+Name</WebLink>
    <sha1>222C230AE1C601AE0D125445BAB9728989AADDDA</sha1>
   </File>
   <File>
@@ -1325,7 +1325,7 @@ Files Resource Type XML Response:
    <LastModified>2014-08-11T19:12:36-04:00</LastModified>
    <Rating>4.00</Rating>
    <Confidence>81</Confidence>
-   <WebLink> https://app.threatconnect.com/tc/auth/indicators/details/file.xhtml?file=222DF09B9CC2994B1C8CB254E1BBD2D9EEDD1916AF0BBAA95F5A3DFF6E2A499C&owner=Organization Name</WebLink>
+   <WebLink> https://app.threatconnect.com/tc/auth/indicators/details/file.xhtml?file=222DF09B9CC2994B1C8CB254E1BBD2D9EEDD1916AF0BBAA95F5A3DFF6E2A499C&owner=Organization+Name</WebLink>
    <sha256>222DF09B9CC2994B1C8CB254E1BBD2D9EEDD1916AF0BBAA95F5A3DFF6E2A499C</sha256>
   </File>
   <File>
@@ -1335,7 +1335,7 @@ Files Resource Type XML Response:
    <LastModified>2014-08-11T19:12:36-04:00</LastModified>
    <Rating>4.00</Rating>
    <Confidence>81</Confidence>
-   <WebLink> https://app.threatconnect.com/tc/auth/indicators/details/file.xhtml?file=22202B566A725038BA2423C86B584428&owner=Organization Name</WebLink>
+   <WebLink> https://app.threatconnect.com/tc/auth/indicators/details/file.xhtml?file=22202B566A725038BA2423C86B584428&owner=Organization+Name</WebLink>
    <md5>22202B566A725038BA2423C86B584428</md5>
   </File>
  </Data>
@@ -1377,7 +1377,7 @@ File Resource Type JSON Response:
    },
    "dateAdded": "2013-08-21T14:14:42Z",
    "lastModified": "2013-08-21T14:14:42Z",
-   "webLink": "https://app.threatconnect.com/tc/auth/indicators/details/file.xhtml?file=A35A766A9F881A8E6B01BBBC0D6BE829&owner=Organization Name",
+   "webLink": "https://app.threatconnect.com/tc/auth/indicators/details/file.xhtml?file=A35A766A9F881A8E6B01BBBC0D6BE829&owner=Organization+Name",
    "md5": "A35A766A9F881A8E6B01BBBC0D6BE829",
    "sha1": "9F8CC0A150D272D9393F86B5F5F2D1265E8917D1",
    "sha256": "B4C1E9C99F861A4DD7654DCC3548AB5DDC15EE5FEB9690B9F716C4849714B20D"
@@ -1401,7 +1401,7 @@ File Resource Type XML Response:
    </Owner>
    <DateAdded>2013-08-21T14:14:42Z</DateAdded>
    <LastModified>2013-08-21T14:14:42Z</LastModified>
-   <WebLink>https://app.threatconnect.com/tc/auth/indicators/details/file.xhtml?file=A35A766A9F881A8E6B01BBBC0D6BE829&amp;owner=Organization Name</WebLink>
+   <WebLink>https://app.threatconnect.com/tc/auth/indicators/details/file.xhtml?file=A35A766A9F881A8E6B01BBBC0D6BE829&amp;owner=Organization+Name</WebLink>
    <md5>A35A766A9F881A8E6B01BBBC0D6BE829</md5>
    <sha1>9F8CC0A150D272D9393F86B5F5F2D1265E8917D1</sha1>
    <sha256>B4C1E9C99F861A4DD7654DCC3548AB5DDC15EE5FEB9690B9F716C4849714B20D</sha256>
@@ -1484,14 +1484,14 @@ emailAddresses Resource Type JSON Response:
    "ownerName": "Organization Name",
    "dateAdded": "2013-12-22T15:56:36Z",
    "lastModified": "2013-12-22T15:56:36Z",
-   "webLink": "https://app.threatconnect.com/tc/auth/indicators/details/emailaddress.xhtml?emailaddress=test@baddomain.com&owner=Organization Name",
+   "webLink": "https://app.threatconnect.com/tc/auth/indicators/details/emailaddress.xhtml?emailaddress=test@baddomain.com&owner=Organization+Name",
    "address": "test@baddomain.com"
   }, {
    "id": 6575,
    "ownerName": "Organization Name",
    "dateAdded": "2013-11-20T16:05:52Z",
    "lastModified": "2013-11-20T16:05:52Z",
-   "webLink": "https://app.threatconnect.com/tc/auth/indicators/details/emailaddress.xhtml?emailaddress=test@test.com&owner=Organization Name",
+   "webLink": "https://app.threatconnect.com/tc/auth/indicators/details/emailaddress.xhtml?emailaddress=test@test.com&owner=Organization+Name",
    "address": "test@test.com"
   }]
  }
@@ -1510,7 +1510,7 @@ emailAddresses Resource Type XML Response:
    <OwnerName>Organization Name</OwnerName>
    <DateAdded>2013-12-22T15:56:36Z</DateAdded>
    <LastModified>2013-12-22T15:56:36Z</LastModified>
-   <WebLink>https://app.threatconnect.com/tc/auth/indicators/details/emailaddress.xhtml?emailaddress=test@baddomain.com&amp;owner=Organization Name</WebLink>
+   <WebLink>https://app.threatconnect.com/tc/auth/indicators/details/emailaddress.xhtml?emailaddress=test@baddomain.com&amp;owner=Organization+Name</WebLink>
    <Address>test@baddomain.com</Address>
   </EmailAddress>
   <EmailAddress>
@@ -1518,7 +1518,7 @@ emailAddresses Resource Type XML Response:
    <OwnerName>Organization Name</OwnerName>
    <DateAdded>2013-11-20T16:05:52Z</DateAdded>
    <LastModified>2013-11-20T16:05:52Z</LastModified>
-   <WebLink>https://app.threatconnect.com/tc/auth/indicators/details/emailaddress.xhtml?emailaddress=test@test.com&amp;owner=Organization Name</WebLink>
+   <WebLink>https://app.threatconnect.com/tc/auth/indicators/details/emailaddress.xhtml?emailaddress=test@test.com&amp;owner=Organization+Name</WebLink>
    <Address>test@test.com</Address>
   </EmailAddress>
  </Data>
@@ -1568,7 +1568,7 @@ emailAddress Resource Type JSON Response:
    },
    "dateAdded": "2013-11-20T16:05:52Z",
    "lastModified": "2013-11-20T16:05:52Z",
-   "webLink": "https://app.threatconnect.com/tc/auth/indicators/details/emailaddress.xhtml?emailaddress=test@test.com&owner=Organization Name",
+   "webLink": "https://app.threatconnect.com/tc/auth/indicators/details/emailaddress.xhtml?emailaddress=test@test.com&owner=Organization+Name",
    "address": "test@test.com"
   }
  }
@@ -1590,7 +1590,7 @@ emailAddress Resource Type XML Response:
    </Owner>
    <DateAdded>2013-11-20T16:05:52Z</DateAdded>
    <LastModified>2013-11-20T16:05:52Z</LastModified>
-   <WebLink>https://app.threatconnect.com/tc/auth/indicators/details/emailaddress.xhtml?emailaddress=test@test.com&amp;owner=Organization Name</WebLink>
+   <WebLink>https://app.threatconnect.com/tc/auth/indicators/details/emailaddress.xhtml?emailaddress=test@test.com&amp;owner=Organization+Name</WebLink>
    <Address>test@test.com</Address>
   </EmailAddress>
  </Data>
@@ -1717,7 +1717,7 @@ url Resource Type JSON Response:
    },
    "dateAdded": "2013-11-20T16:07:17Z",
    "lastModified": "2013-11-20T16:07:17Z",
-   "webLink": "https://app.threatconnect.com/tc/auth/indicators/details/url.xhtml?url=http://test.com&owner=Organization Name",
+   "webLink": "https://app.threatconnect.com/tc/auth/indicators/details/url.xhtml?url=http://test.com&owner=Organization+Name",
    "text": "http://test.com"
   }
  }
@@ -1739,7 +1739,7 @@ url Resource Type XML Response:
    </Owner>
    <DateAdded>2013-11-20T16:07:17Z</DateAdded>
    <LastModified>2013-11-20T16:07:17Z</LastModified>
-   <WebLink>https://app.threatconnect.com/tc/auth/indicators/details/url.xhtml?url=http://test.com&amp;owner=Organization Name</WebLink>
+   <WebLink>https://app.threatconnect.com/tc/auth/indicators/details/url.xhtml?url=http://test.com&amp;owner=Organization+Name</WebLink>
    <Text>http://test.com</Text>
   </Url>
  </Data>
@@ -3399,10 +3399,10 @@ Example Tags Service query of a specific Tag:
   "resultCount": 2,
   "tag": [{
    "name": "tag 1",
-   "webLink": "https://app.threatconnect.com/tc/auth/tags/tag.xhtml?tag=tag 1&owner=Organization Name"
+   "webLink": "https://app.threatconnect.com/tc/auth/tags/tag.xhtml?tag=tag1&owner=Organization+Name"
   }, {
    "name": "tag 2",
-   "webLink": "https://app.threatconnect.com/tc/auth/tags/tag.xhtml?tag=tag 2&owner=Organization Name"
+   "webLink": "https://app.threatconnect.com/tc/auth/tags/tag.xhtml?tag=tag2&owner=Organization+Name"
   }]
  }
 }
@@ -3417,11 +3417,11 @@ Tags Resource Type XML Response:
   <ResultCount>2</ResultCount>
   <Tag>
    <Name>tag 1</Name>
-   <WebLink>https://app.threatconnect.com/tc/auth/tags/tag.xhtml?tag=tag 1&amp;owner=Organization Name</WebLink>
+   <WebLink>https://app.threatconnect.com/tc/auth/tags/tag.xhtml?tag=tag1&amp;owner=Organization+Name</WebLink>
   </Tag>
   <Tag>
    <Name>tag 2</Name>
-   <WebLink>https://app.threatconnect.com/tc/auth/tags/tag.xhtml?tag=tag 2&amp;owner=Organization Name</WebLink>
+   <WebLink>https://app.threatconnect.com/tc/auth/tags/tag.xhtml?tag=tag2&amp;owner=Organization+Name</WebLink>
   </Tag>
  </Data>
 </tagsResponse>
@@ -3447,7 +3447,7 @@ Tag Resource Type JSON Response:
  "data": {
   "tag": {
    "name": "tag 1",
-   "webLink": "https://app.threatconnect.com/tc/auth/tags/tag.xhtml?tag=tag%201&owner=Organization Name"
+   "webLink": "https://app.threatconnect.com/tc/auth/tags/tag.xhtml?tag=tag%201&owner=Organization+Name"
   }
  }
 }
@@ -3461,7 +3461,7 @@ Tag Resource Type XML Response:
  <Data xsi:type="tagResponseData" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Tag>
    <Name>tag 1</Name>
-   <WebLink>https://app.threatconnect.com/tc/auth/tags/tag.xhtml?tag=tag%201&amp;owner=Organization Name</WebLink>
+   <WebLink>https://app.threatconnect.com/tc/auth/tags/tag.xhtml?tag=tag%201&amp;owner=Organization+Name</WebLink>
   </Tag>
  </Data>
 </tagResponse>
