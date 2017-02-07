@@ -4969,16 +4969,16 @@ The Batch Create resource creates a batch entry in the system. No batch processi
 <b>Table 40</b>
 
 | BatchConfig Message | Values           | Description                                                                                                                                                                                                                     
-|---------------------|------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-| haltOnError         | true / false     | The batch process will stop processing the entire batch the first time it reaches an error during processing.          
-|                     |                  | If this field is not provided, the default behavior is to continue processing further entities in the input file.                                           
-|                     | default=false    |                                                                                                                                                                                                                                 
-| attributeWriteType  | Append / Replace | Append: Add attributes (allow duplicates)                                                                                                                                                                                       
-|                     |                  |                                                                                                                                                                                                                                 
-|                     |                  | Replace: Delete current attributes; Add/Validate new                                                                                                                                                                            
-| action              | Create / Delete  | Create: Create Indicator                                                                                                                                                                                                        
-|                     |                  |                                                                                                                                                                                                                                 
-|                     |                  | Delete: Delete Indicator (only the ‘summary’ and ‘type’ field are required)                                                                                                                                                     
+|---------------------|------------------|-------------------------------------------------------------------------------------------------------------------
+| haltOnError         | true             | The batch process will stop processing the entire batch the first time it reaches an error during processing.         
+|                     | false            | If this field is not provided, the default behavior is to continue processing further entities in the input file.                                          
+|                     | default=false    |                                                                                                                                                                                                                                
+|                     |                  |
+| attributeWriteType  | Append           | Append: Add attributes (allow duplicates)                                                                                                                                                                                       
+|                     | Replace          | Replace: Delete current attributes; Add/Validate new                                                                                                                                                                                                                               
+|                     |                  |
+| action              | Create           | Create: Create Indicator                                                                                                                                                                                                        
+|                     | Delete           | Delete: Delete Indicator (only the ‘summary’ and ‘type’ field are required)                                                                                                                                                                                                                               
 
 ### Batch Indicator Input File Format
 ```json
