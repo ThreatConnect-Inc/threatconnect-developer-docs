@@ -4896,7 +4896,7 @@ Server Response on Success
 Server Response on Overlarge Input File
 
 ```
-  HTTP/1.1 400 Bad Request             
+ HTTP/1.1 400 Bad Request             
  {                                    
  status: "Invalid",                   
  description: "File size greater than 
@@ -4913,7 +4913,7 @@ Sample Batch Status Check request
 Server Response on Success (job still running)
 
 ```
-  HTTP/1.1 200 OK                             
+ HTTP/1.1 200 OK                             
  {                                           
  status: "Running",                          
  }                                           
@@ -4922,7 +4922,7 @@ Server Response on Success (job still running)
 Server Response on Success (job finished)
 
 ```
-  HTTP/1.1 200 OK                             
+ HTTP/1.1 200 OK                             
  {                                           
  status: "Completed",                        
  errorCount: 3420,                           
@@ -4950,7 +4950,7 @@ Server Response on Success (job still running)
 Server Response on Success (job finished):
 
 ```
-  HTTP/1.1 200 OK                             
+ HTTP/1.1 200 OK                             
  Content-Type: application/octet-stream ; boundary=<boundary-text>                  
  Content-Length: <data_size>                       
  Content-Encoding: gzip                      
