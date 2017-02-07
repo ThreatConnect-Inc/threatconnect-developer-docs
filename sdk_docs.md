@@ -1335,7 +1335,7 @@ owner = 'Example Community'
 try:
     filter1 = indicators.add_filter()
     filter1.add_owner(owner)
-    filter1.add_tag('EXAMPLE')
+    filter1.add_tag('APT')
 except AttributeError as e:
     print(e)
     sys.exit(1)
@@ -1752,7 +1752,7 @@ tasks = tc.tasks()
 
 try:
     filter1 = tasks.add_filter()
-    filter1.add_tag('EXAMPLE')
+    filter1.add_tag('APT')
 except AttributeError as e:
     print('Error: {0}'.format(e))
     sys.exit(1)
@@ -4878,7 +4878,7 @@ owner = 'Example Community'
 try:
     filter1 = indicators.add_filter()
     filter1.add_owner(owner)
-    filter1.add_tag('EXAMPLE')
+    filter1.add_tag('APT')
 except AttributeError as e:
     print(e)
     sys.exit(1)
@@ -4915,7 +4915,7 @@ owner = 'Example Community'
 try:
     filter1 = indicators.add_filter()
     filter1.add_owner(owner)
-    filter1.add_tag('EXAMPLE')
+    filter1.add_tag('APT')
 except AttributeError as e:
     print(e)
     sys.exit(1)
@@ -4966,7 +4966,7 @@ owner = 'Example Community'
 try:
     filter1 = indicators.add_filter()
     filter1.add_owner(owner)
-    filter1.add_tag('EXAMPLE')
+    filter1.add_tag('APT')
 except AttributeError as e:
     print(e)
     sys.exit(1)
@@ -5017,7 +5017,7 @@ owner = 'Example Community'
 try:
     filter1 = indicators.add_filter()
     filter1.add_owner(owner)
-    filter1.add_tag('EXAMPLE')
+    filter1.add_tag('APT')
 except AttributeError as e:
     print(e)
     sys.exit(1)
@@ -5056,7 +5056,7 @@ owner = 'Example Community'
 try:
     filter1 = indicators.add_filter()
     filter1.add_owner(owner)
-    filter1.add_tag('EXAMPLE')
+    filter1.add_tag('APT')
 except AttributeError as e:
     print(e)
     sys.exit(1)
@@ -5132,7 +5132,7 @@ owner = 'Example Community'
 try:
     filter1 = indicators.add_filter()
     filter1.add_owner(owner)
-    filter1.add_tag('EXAMPLE')
+    filter1.add_tag('APT')
 except AttributeError as e:
     print(e)
     sys.exit(1)
