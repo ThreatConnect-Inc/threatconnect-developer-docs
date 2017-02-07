@@ -3921,7 +3921,7 @@ See the [Group Associations Documentation](#associations).
 
 ##Associations
 
-The following example demonstrates how to **Associate** a Group to an Adversary Resource. For other Resource Groups, Indicators, and Victims, the same method should be used:
+The following example demonstrates how to **Associate** an Adversary Resource with an Incident and Signature Resource. For other Resource Groups, Indicators, and Victims, the same method should be used:
 
 ```python
 

@@ -1843,8 +1843,6 @@ When an API user issues a POST to the /observations branch of the API, if an obs
 
 ###Indicator Activity
 
-###Indicator Activity
-
 
 Set API to return `inactive` results as well
 
