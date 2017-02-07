@@ -4,7 +4,7 @@ This section explains the process of coding Python applications, and the impleme
 
 The goal of this Python SDK library is to provide a programmatic abstraction layer around the ThreatConnect API without losing functional coverage over the available API resources. This abstraction layer enables developers to focus on writing enterprise functionality without worrying about low-level RESTful calls and authentication management.
 
-> This document is not a replacement for the official ThreatConnect API documentation. This document serves as a companion to the official documentation for the REST API. Read the official documentation to gain a further understanding of the functional aspects of using the ThreatConnect API.
+This document is not a replacement for the official ThreatConnect API documentation. This document serves as a companion to the official documentation for the REST API. Read the official documentation to gain a further understanding of the functional aspects of using the ThreatConnect API.
 
 <b>How to Use This Document</b>
 
@@ -14,7 +14,7 @@ All code examples will be to the right in the code column in a separate box with
 
 ## Getting Started
 
-> Python SDK Installation:
+Python SDK Installation:
 
 ```shell
 unzip threatconnect-python.zip
@@ -22,7 +22,7 @@ cd threatconnect-python
 python setup.py install
 ```
 
-> Example of using ConfigParser to read API configuration values:
+Example of using ConfigParser to read API configuration values:
 
 ```python
 read configuration file
@@ -39,7 +39,7 @@ except ConfigParser.NoOptionError:
     sys.exit(1)
 ```
 
-> The configuration file should contain the following lines at a minimum:
+The configuration file should contain the following lines at a minimum:
 
 ```
  1 [threatconnect]
@@ -49,7 +49,7 @@ except ConfigParser.NoOptionError:
  5 api_base_url = https://api.threatconnect.com
 ```
 
-> The following examples illustrates a typical initialization of the ThreatConnect Class:
+The following examples illustrates a typical initialization of the ThreatConnect Class:
 
 ```python
 tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
@@ -65,10 +65,10 @@ Once the configuration has been set up, the developer should be able to run the 
 
 <b>Third-Party Dependencies</b>
 
-Name          | Version       | Link
-------------- | ------------- | ----------------------
-requests      | 2.7.0         | [Python Requests](http://docs.python-requests.org/en/latest/)
-enum34        | 1.0.4         | [Python Enum34](https://pypi.python.org/pypi/enum34)
+|Name          | Version       | Link|
+|------------- | ------------- | ----------------------|
+|requests      | 2.7.0         | [Python Requests](http://docs.python-requests.org/en/latest/)|
+|enum34        | 1.0.4         | [Python Enum34](https://pypi.python.org/pypi/enum34)|
 
 <b>Technical Design</b>
 
@@ -78,24 +78,24 @@ The Python SDK for ThreatConnect was designed with a focus on abstracting the AP
 
 The Python SDK supports the Resource Types listed below. There is also a mechanism to do manual API requests to cover any API calls that are not provided with the core functionality.
 
-Object                | Description                     
---------------------- | -----------                     
-`adversaries()`       | Adversary container object      
-`bulk_indicators()`   | Bulk Indicator container object 
-`documents()`         | Document container object       
-`emails()`            | Email container object          
-`groups()`            | Group container object          
-`incidents()`         | Incident container object       
-`indicators()`        | Indicator container object      
-`owners()`            | Owner container object          
-`signatures()`        | Signature container object      
-`tasks()`             | Task container object           
-`threats()`           | Threat container object         
-`victims()`           | Victim container object         
+|Object                | Description|                     
+|--------------------- | -----------|                     
+|`adversaries()`       | Adversary container object|      
+|`bulk_indicators()`   | Bulk Indicator container object| 
+|`documents()`         | Document container object|       
+|`emails()`            | Email container object|          
+|`groups()`            | Group container object|          
+|`incidents()`         | Incident container object|       
+|`indicators()`        | Indicator container object|      
+|`owners()`            | Owner container object|          
+|`signatures()`        | Signature container object|      
+|`tasks()`             | Task container object|           
+|`threats()`           | Threat container object|         
+|`victims()`           | Victim container object|         
 
 ## Example Python App
 
-> Example of Python SDK writing to the ThreatConnect API:
+Example of Python SDK writing to the ThreatConnect API:
 
 ```python
 import ConfigParser
@@ -133,22 +133,22 @@ The example illustrates how to write a program using the Python SDK for the Thre
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`import ConfigParser`                     | Import the ConfigParser module used to read <br> the configuration file. 
-`from threatconnect import ThreatConnect` | Import the ThreatConnect Python SDK module. 
-`config = ConfigParser.RawConfigParser()` | Get an instance of ConfigParser. 
-`config.read(config_file)`                | Parse the configuration file containing the <br> API settings. 
-`api_access_id = config.get('threatco...` | Get the configuration items from the config <br> instance. 
-`tc = ThreatConnect(api_access_id, ap...` | Instantiate an instance of the ThreatConnect <br> Class. 
-`owners = tc.owners()`                    | Create an Owner's container object. 
-`owners.retrieve()`                       | Trigger an API request to retrieve Owners.  
-`for owner in owners:`                    | Iterate through Owner's generator. 
-`print(owner.id)`                         | Display the **'id'** property of the Owner. 
+|Snippet                                   | Description |                                                                      
+----------------------------------------- | ---------------------------------------------------------------------------------|
+|`import ConfigParser`                     | Import the ConfigParser module used to read the configuration file. |
+|`from threatconnect import ThreatConnect` | Import the ThreatConnect Python SDK module. |
+|`config = ConfigParser.RawConfigParser()` | Get an instance of ConfigParser. |
+|`config.read(config_file)`                | Parse the configuration file containing the API settings. |
+|`api_access_id = config.get('threatco...` | Get the configuration items from the config instance. |
+|`tc = ThreatConnect(api_access_id, ap...` | Instantiate an instance of the ThreatConnect Class. |
+|`owners = tc.owners()`                    | Create an Owner's container object. |
+|`owners.retrieve()`                       | Trigger an API request to retrieve Owners.  |
+|`for owner in owners:`                    | Iterate through Owner's generator. |
+|`print(owner.id)`                         | Display the **'id'** property of the Owner. |
 
 ### Logging
 
-> Example of Python SDK calling log-file and debug level:
+Example of Python SDK calling log-file and debug level:
 
 ```python
     tc.set_tcl_file('log/tc.log', 'debug')
@@ -159,10 +159,10 @@ The Python SDK allows for the setting of the log-file location and debug level. 
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc.set_tcl_file('log/tc.log', 'debug')`  | Set the destination log path and logging level. 
-`tc.set_tcl_console_level('info')`        | Set the console logging level. 
+|Snippet                                   | Description       |                                                                
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc.set_tcl_file('log/tc.log', 'debug')`  | Set the destination log path and logging level. |
+|`tc.set_tcl_console_level('info')`        | Set the console logging level. |
 
 <b>Summary</b>
 
@@ -184,18 +184,18 @@ The current supported version for Cloud deployment Python apps is 2.7. This Pyth
 
 Third-party libraries are restricted to the list below at this point in time. Cloud deployments will need to contact <support@threatconnect.com> to request installation of additional third-party libraries not on this list.
 
-Name          | Version       | Link
-------------- | ------------- | ----------------------
-threatconnect | 2.0.0         | [ThreatConnect python libraries](https://github.com/ThreatConnect-Inc/threatconnect-python)
-requests      | 2.6.0         | [Python Requests](http://docs.python-requests.org/en/latest/)
-enum34        | 1.0.4         | [Python Enum34](https://pypi.python.org/pypi/enum34)
+|Name          | Version       | Link|
+|------------- | ------------- | ----------------------|
+|threatconnect | 2.0.0         | [ThreatConnect python libraries](https://github.com/ThreatConnect-Inc/threatconnect-python)|
+|requests      | 2.6.0         | [Python Requests](http://docs.python-requests.org/en/latest/)|
+|enum34        | 1.0.4         | [Python Enum34](https://pypi.python.org/pypi/enum34)|
 
 ### Deployment Configuration
 [Apps use a deployment configuration file to define variables and execution environment](#deployment-configuration-file)
 
 ##Command-Line Parameters
 
-> Suppose `opendns.py` uses the following syntax:
+Suppose `opendns.py` uses the following syntax:
 
 ```python
 python opendns.py \
@@ -217,7 +217,7 @@ python opendns.py \
     --ratings >=,3.0 
 ```
 
-> These command line options can be implemented using `argparse`:
+These command line options can be implemented using `argparse`:
 
 ```python
 import argparse
@@ -276,9 +276,7 @@ This optional property controls which interval (in minutes) the job-creation dia
 
 A repeating job is a job that runs every day on an interval (e.g., every 30 minutes).
 
-The following property `repeating.minutes = 5,10,15,30,60,120,240,360` displays the following intervals in the repeating schedule picklist:
-
-![Repeating Interval](images/repeating-interval.png "Repeating Interval") 
+The following property `repeating.minutes = 5,10,15,30,60,120,240,360` will display the stated intervals within the repeating scheudle picklist.
 
 Multiple values should be separated by a comma. All minutes greater than 60 will be discarded unless they are divisible by 60. If this property is not provided, the following repeating intervals are defaulted during job creation: `60, 120, 240, 360, 720`.
 
@@ -316,8 +314,6 @@ This property will direct the ThreatConnect application to show a checkbox to th
 
 This property should be used to encrypt private passwords used by the app (e.g., API keys). This added level of security will allow the application to persist the password in encrypted form when at rest. The input field during job creation will be "password" text, and the key will not be visible when typed. 
 
-![Encrypted Field](images/encrypted-field.png "Encrypted Field") 
-
 Use encrypted parameters by setting the following flag:
 
 `param.<param-name>.encrypt`
@@ -332,12 +328,12 @@ ThreatConnect passes standard parameters to all jobs within its standard sandbox
 
 Since all job executions are run in a sandboxed environment, app developers should never hard-code ThreatConnect Parameters:
 
-ThreatConnect Parameter  | Description                                                                 | 
--------------- | ---------------------------------------------------------------------
-`tc_log_path`  | Log path for the specific instance of the job execution.              
-`tc_tmp_path`  | Temporary storage path for the specific instance of the job execution.
-`tc_out_path`  | Output path for the specific instance of the job execution.           
-`tc_api_path`  | Path to the ThreatConnect API server.                                 
+|ThreatConnect Parameter  | Description                                                                 | 
+|-------------- | ---------------------------------------------------------------------|
+|`tc_log_path`  | Log path for the specific instance of the job execution.         |     
+|`tc_tmp_path`  | Temporary storage path for the specific instance of the job execution.|
+|`tc_out_path`  | Output path for the specific instance of the job execution.    |       
+|`tc_api_path`  | Path to the ThreatConnect API server.  |                               
 
 ##Results ThreatConnect File
 
@@ -359,15 +355,15 @@ When `sys.exit()` is not called by an app, an exit code of zero is returned by d
 
 At times a program may want to report a partial failure (e.g.,  batch process where X out of Y updates completed). In cases of partial failure, the system administrator can retrieve the log file for that job execution and view more detailed output from the program run.  
 
-Status          | Description                                                   
---------------- | --------------------------------------------------------------
-Success         | Exit code 0 - Process completed successfully.                  
-Partial Failure | Exit code 3 - Process had a partial failure.                   
-Failure         | Any value not 0 or 3 (typically Exit code 1) - Process failed. 
+|Status          | Description     |                                              
+|--------------- | --------------------------------------------------------------|
+|Success         | Exit code 0 - Process completed successfully.            |      
+|Partial Failure | Exit code 3 - Process had a partial failure.              |     
+|Failure         | Any value not 0 or 3 (typically Exit code 1) - Process failed. |
 
 ##Wrapper-Testing Utility
 
-> Command line argument script example:
+Command line argument script example:
 
 ```python
 # Config file for tc-wrapper.py to call any ThreatConnect integration script
@@ -385,7 +381,7 @@ tc_api_path = https://api.threatconnect.com
 
 ```
 
-> Calling the wrapper:
+Calling the wrapper:
 
 ```python
 
@@ -393,7 +389,7 @@ tc_api_path = https://api.threatconnect.com
 
 ```
 
-> The wrapper calls the developer's program with the parameters as ThreatConnect would:
+The wrapper calls the developer's program with the parameters as ThreatConnect would:
 
 ```python
 python <my-script.py> \
@@ -423,19 +419,19 @@ This section explains how to work with ThreatConnect Adversary Resources.
 
 API filters use the API filtering feature to limit the result set returned from the API.
 
-Filter               | Value Type   | Description                                                 
+|Filter               | Value Type   | Description|                                                 
 ---------------------| ------------ | ------------------------------------------------------------
-`add_id()`             | int          | Filter Adversary by ID 
-`add_document_id()`    | int          | Filter Adversary on associated Document ID 
-`add_email_id()`       | int          | Filter Adversary on associated Email ID 
-`add_incident_id()`    | int          | Filter Adversary on associated Incident ID 
-`add_indicator()`      | str          | Filter Adversary on associated Indicator 
-`add_owner()`          | list or str  | Filter Adversary on associated Owner 
-`add_security_label()` | str          | Filter Adversary on associated Security Label 
-`add_signature_id()`   | int          | Filter Adversary on associated Signature ID 
-`add_tag()`            | str          | Filter Adversary on applied Tag 
-`add_threat_id()`      | int          | Filter Adversary on associated Threat ID 
-`add_victim_id()`      | int          | Filter Adversary on associated Victim ID 
+|`add_id()`             | int          | Filter Adversary by ID 
+|`add_document_id()`    | int          | Filter Adversary on associated Document ID 
+|`add_email_id()`       | int          | Filter Adversary on associated Email ID 
+|`add_incident_id()`    | int          | Filter Adversary on associated Incident ID 
+|`add_indicator()`      | str          | Filter Adversary on associated Indicator 
+|`add_owner()`          | list or str  | Filter Adversary on associated Owner 
+|`add_security_label()` | str          | Filter Adversary on associated Security Label 
+|`add_signature_id()`   | int          | Filter Adversary on associated Signature ID 
+|`add_tag()`            | str          | Filter Adversary on applied Tag 
+|`add_threat_id()`      | int          | Filter Adversary on associated Threat ID 
+|`add_victim_id()`      | int          | Filter Adversary on associated Victim ID 
 
 <b>Supported Post Filters</b>
 
@@ -443,12 +439,12 @@ Post filters are applied on the results returned by the API request.
 
 Filter               | Value Type   | Description                                                 
 ---------------------| ------------ | ------------------------------------------------------------
-`add_pf_name()`        | str          | Filter Adversary on name 
-`add_pf_date_added()`  | str          | Filter Adversary on date added 
+|`add_pf_name()`        | str          | Filter Adversary on name 
+|`add_pf_date_added()`  | str          | Filter Adversary on date added 
 
 ###Filter Example
 
-> The import statement and reading of the configuration files have been replaced with `...` for brevity.
+The import statement and reading of the configuration files have been replaced with `...` for brevity.
 
 ```python
 tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
@@ -483,15 +479,15 @@ Note: The `filter1` object contains a `filters` property that provides a list of
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`adversaries = tc.adversaries()`          | Instantiate an Adversaries container object. 
-`filter1 = adversaries.add_filter()`      | Add a filter object to the Adversaries container object <br> (support multiple filter objects). 
-`filter1.add_tag('EXAMPLE')`              | Add API filter to retrieve Adversaries with the 'Example' tag. 
-`adversaries.retrieve()`                  | Trigger the API request and retrieve the Adversaries <br> intelligence data. 
-`for adversary in adversaries:`           | Iterate over the Adversaries container object generator. 
-`print(adversary.id)`                     | Display the **'id'** property of the Adversary object. 
+|Snippet                                   | Description                                                                      | 
+|----------------------------------------- | ---------------------------------------------------------------------------------| 
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`adversaries = tc.adversaries()`          | Instantiate an Adversaries container object. |
+|`filter1 = adversaries.add_filter()`      | Add a filter object to the Adversaries container object (support multiple filter objects). |
+|`filter1.add_tag('EXAMPLE')`              | Add API filter to retrieve Adversaries with the 'Example' tag. |
+|`adversaries.retrieve()`                  | Trigger the API request and retrieve the Adversaries intelligence data. |
+|`for adversary in adversaries:`           | Iterate over the Adversaries container object generator. |
+|`print(adversary.id)`                     | Display the **'id'** property of the Adversary object. |
 
 <b>Resource Metadata</b>
 
@@ -544,21 +540,21 @@ The Bulk Download feature of the ThreatConnect API does not support any API filt
 
 Post filters are applied on the results returned by the API request.
 
-Filter                             | Value Type   | Description                                                  
----------------------------------- | ------------ | ------------------------------------------------------------ 
-`add_pf_attribute()`                 | str          | Filter Indicators on Attribute type. 
-`add_pf_confidence()`                | int          | Filter Indicators on Confidence value. 
-`add_pf_date_added()`                | str          | Filter Indicators on date added. 
-`add_pf_last_modified()`             | str          | Filter Indicators on last modified date. 
-`add_pf_rating()`                    | str          | Filter Indicators on Rating. 
-`add_pf_tag()`                       | str          | Filter Indicators on Tag. 
-`add_pf_threat_assess_confidence()`  | int          | Filter Indicators on Threat Assess Confidence. 
-`add_pf_threat_assess_rating()`      | str          | Filter Indicators on Threat Assess Rating.
-`add_pf_type()`                      | str         | Filter Indicators on Indicator type.
+|Filter                             | Value Type   | Description |                                                 
+|---------------------------------- | ------------ | ------------------------------------------------------------ |
+|`add_pf_attribute()`                 | str          | Filter Indicators on Attribute type. |
+|`add_pf_confidence()`                | int          | Filter Indicators on Confidence value. |
+|`add_pf_date_added()`                | str          | Filter Indicators on date added. |
+|`add_pf_last_modified()`             | str          | Filter Indicators on last modified date. |
+|`add_pf_rating()`                    | str          | Filter Indicators on Rating. |
+|`add_pf_tag()`                       | str          | Filter Indicators on Tag. |
+|`add_pf_threat_assess_confidence()`  | int          | Filter Indicators on Threat Assess Confidence. |
+|`add_pf_threat_assess_rating()`      | str          | Filter Indicators on Threat Assess Rating.|
+|`add_pf_type()`                      | str         | Filter Indicators on Indicator type.|
 
 ###Bulk Download Example
 
-> The import statement and reading of the configuration files have been replaced with `...` for brevity.
+The import statement and reading of the configuration files have been replaced with `...` for brevity.
 
 ```python
 tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
@@ -610,19 +606,19 @@ Note: The `filter1` object contains a `filters` property which provides a list o
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id,...`    | Instantiate the ThreatConnect object. 
-`indicators = tc.indicators()`            | Instantiate an Indicators container object. 
-`filter1 = indicator.add_filter()`        | Add a filter object to the Indicators container object <br> (support multiple filter objects). 
-`filter1.add_tag('EXAMPLE')`              | Add API filter to retrieve Indicators with the 'Example' tag. 
-`indicator.retrieve()`                    | Trigger the API request and retrieve the Indicators <br> intelligence data. 
-`for indicator in indicators:`            | Iterate over the Indicators container object generator. 
-`print(indicator.indicator)`              | Display the **'indicator'** property of the Indicator object. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id,...`    | Instantiate the ThreatConnect object. |
+|`indicators = tc.indicators()`            | Instantiate an Indicators container object. |
+|`filter1 = indicator.add_filter()`        | Add a filter object to the Indicators container object (support multiple filter objects). |
+|`filter1.add_tag('EXAMPLE')`              | Add API filter to retrieve Indicators with the 'Example' tag. |
+|`indicator.retrieve()`                    | Trigger the API request and retrieve the Indicators intelligence data. |
+|`for indicator in indicators:`            | Iterate over the Indicators container object generator. |
+|`print(indicator.indicator)`              | Display the **'indicator'** property of the Indicator object. |
 
 ###Loading Attributes Example
 
-> Example of Python SDK iterating through a container of indicator objects:
+Example of Python SDK iterating through a container of indicator objects:
 
 ```python
  
@@ -638,14 +634,14 @@ The example continues from the previous [Bulk Download Example](#bulk-download-e
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`for attribute in indicator.attributes:`  | Iterate over the Attribute property object generator. 
-`print(attribute.type)`                   | Display the **'type'** property of the Attribute object.
+|Snippet                                   | Description                                 |                                      
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`for attribute in indicator.attributes:`  | Iterate over the Attribute property object generator. |
+|`print(attribute.type)`                   | Display the **'type'** property of the Attribute object.|
 
 ###Loading Security Label Example
 
-> Example of Python SDK loading the Indicator Security Label:
+Example of Python SDK loading the Indicator Security Label:
 
 ```python
     indicator.load_security_label()
@@ -659,15 +655,15 @@ The example continues from the previous [Loading Attributes Example](#loading-at
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`indicator.load_security_label()`         | Trigger API call to load the Security Label into the <br> Indicator object. 
-`if indicator.security_label is not ...`  | Ensure the object has been loaded before <br> displaying properties. 
-`print(indicator.security_label.name)`    | Display the **'name'** property of the <br> Security Label object. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`indicator.load_security_label()`         | Trigger API call to load the Security Label into the Indicator object. |
+|`if indicator.security_label is not ...`  | Ensure the object has been loaded before displaying properties. |
+|`print(indicator.security_label.name)`    | Display the **'name'** property of the Security Label object. |
 
 ###Loading Tags Example
 
-> Example of Python SDK:
+Example of Python SDK:
 
 ```python
     for tag in indicator.tags:
@@ -679,14 +675,14 @@ The example continues from the previous [Loading Security Label Example](#loadin
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`for tag in indicator.tags:`              | Iterate over the Attribute property object generator. 
-`print(tag.name)`                         | Display the **'name'** property of the Attribute object. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`for tag in indicator.tags:`              | Iterate over the Attribute property object generator. |
+|`print(tag.name)`                         | Display the **'name'** property of the Attribute object. |
 
 ##Group Associations
 
-> Example of Python SDK pulling Groups from the API:
+Example of Python SDK pulling Groups from the API:
 
 ```python
     for g_association in indicator.group_associations:
@@ -703,14 +699,14 @@ Iterate through all Groups associated with this Indicator. These Groups are pull
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`for g_associations in indicator.grou...` | Trigger API call to retrieve all Groups associated <br> with this Indicator. 
-`print(g_association.id)`                 | Display the **'id'** property of the associated <br> Group object. 
+|Snippet                                   | Description          |                                                             
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`for g_associations in indicator.grou...` | Trigger API call to retrieve all Groups associated with this Indicator. |
+|`print(g_association.id)`                 | Display the **'id'** property of the associated Group object. |
 
 ###Indicator Associations
 
-> Example Python SDK iterating through all Indicators associated with an Indicator:
+Example Python SDK iterating through all Indicators associated with an Indicator:
 
 ```python
     for i_association in indicator.indicator_associations:
@@ -730,14 +726,14 @@ Iterate through all Indicators associated with this Indicator. These Indicators 
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`for i_association in indicator.ind_...` | Trigger API call to retrieve all Indicators associated <br>  with this Indicator. 
-`print(i_association.id)`                 | Display the **'id'** property of the associated <br> Indicator object. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`for i_association in indicator.ind_...`  | Trigger API call to retrieve all Indicators associated with this Indicator. |
+|`print(i_association.id)`                 | Display the **'id'** property of the associated Indicator object. |
 
 ###Victim Associations
 
-> Python SDK example of iterating through all Victims associated with this Indicator:
+Python SDK example of iterating through all Victims associated with this Indicator:
 
 ```python
     for v_associations in indicator.victim_associations:
@@ -756,10 +752,10 @@ Iterate through all Victims associated with this Indicator. These Victims are pu
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`for v_associations in indicator.vic_...` | Trigger API call to retrieve all Victims associated <br> with this Indicator. 
-`print(v_association.id)`                 | Display the **'id'** property of the associated <br> Victim object.
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`for v_associations in indicator.vic_...` | Trigger API call to retrieve all Victims associated with this Indicator. |
+|`print(v_association.id)`                 | Display the **'id'** property of the associated Victim object.|
 
 <b>Outputs</b>
 
@@ -783,32 +779,32 @@ This document explains how to work with ThreatConnect Document Resources.
 
 API filters use the API filtering feature to limit the result set returned from the API.
 
-Filter               | Value Type   | Description                                                  
----------------------| ------------ | ------------------------------------------------------------  
-`add_id()`             | int          | Filter Document by ID.
-`add_document_id()`    | int          | Filter Document on associated Document ID.
-`add_email_id()`       | int          | Filter Document on associated Email ID.
-`add_incident_id()`    | int          | Filter Document on associated Incident ID.
-`add_indicator()`      | str          | Filter Document on associated Indicator.
-`add_owner()`          | list or str  | Filter Document on associated Owner.
-`add_security_label()` | str          | Filter Document on associated Security Label.
-`add_signature_id()`   | int          | Filter Document on associated Signature ID.
-`add_tag()`            | str          | Filter Document on applied Tag.
-`add_threat_id()`      | int          | Filter Document on associated Threat ID.
-`add_victim_id()`      | int          | Filter Document on associated Victim ID.
+|Filter               | Value Type   | Description                                                  |
+|---------------------| ------------ | ------------------------------------------------------------  |
+|`add_id()`             | int          | Filter Document by ID.|
+|`add_document_id()`    | int          | Filter Document on associated Document ID.|
+|`add_email_id()`       | int          | Filter Document on associated Email ID.|
+|`add_incident_id()`    | int          | Filter Document on associated Incident ID.|
+|`add_indicator()`      | str          | Filter Document on associated Indicator.|
+|`add_owner()`          | list or str  | Filter Document on associated Owner.|
+|`add_security_label()` | str          | Filter Document on associated Security Label.|
+|`add_signature_id()`   | int          | Filter Document on associated Signature ID.|
+|`add_tag()`            | str          | Filter Document on applied Tag.|
+|`add_threat_id()`      | int          | Filter Document on associated Threat ID.|
+|`add_victim_id()`      | int          | Filter Document on associated Victim ID.|
 
 <b>Supported Post Filters</b>
 
 Post filters are applied on the results returned by the API request.
 
-Filter               | Value Type   | Description                                                  
----------------------| ------------ | ------------------------------------------------------------ 
-`add_pf_name()`        | str          | Filter Document on name.
-`add_pf_date_added()`  | str          | Filter Document on date added.
+|Filter               | Value Type   | Description                                                  |
+|---------------------| ------------ | ------------------------------------------------------------ |
+|`add_pf_name()`        | str          | Filter Document on name.|
+|`add_pf_date_added()`  | str          | Filter Document on date added.|
 
 ###Documents Retrieve Filter Example
 
-> The import statement and reading of the configuration files have been replaced with `...` for brevity.
+The import statement and reading of the configuration files have been replaced with `...` for brevity.
 
 ```python
 
@@ -847,19 +843,19 @@ Note: The `filter1` object contains a `filters` property that provides a list of
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`documents = tc.documents()`              | Instantiate a Documents container object. 
-`filter1 = documents.add_filter()`        | Add a filter object to the Documents container object <br> (support multiple filter objects). 
-`filter1.add_tag('EXAMPLE')`              | Add API filter to retrieve Documents with the 'Example' tag 
-`documents.retrieve()`                    | Trigger the API request and retrieve the Documents <br> intelligence data. 
-`for document in documents:`              | Iterate over the Documents container object generator. 
-`print(document.id)`                      | Display the **'id'** property of the Document object. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`documents = tc.documents()`              | Instantiate a Documents container object. |
+|`filter1 = documents.add_filter()`        | Add a filter object to the Documents container object (support multiple filter objects). |
+|`filter1.add_tag('EXAMPLE')`              | Add API filter to retrieve Documents with the 'Example' tag |
+|`documents.retrieve()`                    | Trigger the API request and retrieve the Documents intelligence data. |
+|`for document in documents:`              | Iterate over the Documents container object generator. |
+|`print(document.id)`                      | Display the **'id'** property of the Document object. |
 
 ###Download Document Contents Example
 
-> Python SDK example of downloading the contents of the document stored with the Document Resource:
+Python SDK example of downloading the contents of the document stored with the Document Resource:
 
 ```python
     document.download()
@@ -871,11 +867,11 @@ Continuing from the [Filter Example](#filter-example), the example will download
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`document.download()`                     | Trigger API request to download the Document contents. 
-`if document.contents is not None:`       | Validate the Document has downloaded before displaying. 
-`print(document.contents)`                | Display the contents of the Document. <br> (This should only be done for ASCII contents.)
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`document.download()`                     | Trigger API request to download the Document contents. |
+|`if document.contents is not None:`       | Validate the Document has downloaded before displaying. |
+|`print(document.contents)`                | Display the contents of the Document. (This should only be done for ASCII contents.)|
 
 <b>Resource Metadata</b>
 
@@ -924,32 +920,32 @@ This section explains how to work with ThreatConnect Email Resources.
 
 API filters use the API filtering feature to limit the result set returned from the API.
 
-Filter               | Value Type   | Description                                                  
----------------------| ------------ | ------------------------------------------------------------ 
-`add_id()`             | int          | Filter Email by ID.
-`add_document_id()`    | int          | Filter Email on associated Document ID.
-`add_email_id()`       | int          | Filter Email on associated Email ID.
-`add_incident_id()`    | int          | Filter Email on associated Incident ID.
-`add_indicator()`      | str          | Filter Email on associated Indicator.
-`add_owner()`          | list or str  | Filter Email on associated Owner.
-`add_security_label()` | str          | Filter Email on associated Security Label.
-`add_signature_id()`   | int          | Filter Email on associated Signature ID.
-`add_tag()`            | str          | Filter Email on applied Tag.
-`add_threat_id()`      | int          | Filter Email on associated Threat ID.
-`add_victim_id()`      | int          | Filter Email on associated Victim ID.
+|Filter               | Value Type   | Description     |                                             
+|---------------------| ------------ | ------------------------------------------------------------ |
+|`add_id()`             | int          | Filter Email by ID.|
+|`add_document_id()`    | int          | Filter Email on associated Document ID.|
+|`add_email_id()`       | int          | Filter Email on associated Email ID.|
+|`add_incident_id()`    | int          | Filter Email on associated Incident ID.|
+|`add_indicator()`      | str          | Filter Email on associated Indicator.|
+|`add_owner()`          | list or str  | Filter Email on associated Owner.|
+|`add_security_label()` | str          | Filter Email on associated Security Label.|
+|`add_signature_id()`   | int          | Filter Email on associated Signature ID.|
+|`add_tag()`            | str          | Filter Email on applied Tag.|
+|`add_threat_id()`      | int          | Filter Email on associated Threat ID.|
+|`add_victim_id()`      | int          | Filter Email on associated Victim ID.|
 
 <b>Supported Post Filters</b>
 
 Post filters are applied on the results returned by the API request.
 
-Filter               | Value Type   | Description                                                  
----------------------| ------------ | ------------------------------------------------------------
-`add_pf_name()`        | str          | Filter Email on name. 
-`add_pf_date_added()`  | str          | Filter Email on date added. 
+|Filter               | Value Type   | Description                 |                                 
+|---------------------| ------------ | ------------------------------------------------------------|
+|`add_pf_name()`        | str          | Filter Email on name. |
+|`add_pf_date_added()`  | str          | Filter Email on date added. |
 
 ###Emails Retrieve Filter Example
 
-> The import statement and reading of the configuration files have been replaced with `...` for brevity.
+The import statement and reading of the configuration files have been replaced with `...` for brevity.
 
 ```python
 
@@ -988,7 +984,7 @@ for email in emails:
 
 This example will demonstrate how to retrieve emails while applying filters. In this example, two filters will be added, one for the Owner and another for a Tag. The result set returned from this example will contain any emails in the **Example Community** Owner that has a Tag of ***EXAMPLE***.
 
-> To retrieve the headers and body for a single email, include a filter for its ID. (Make an individual query for each email.)
+To retrieve the headers and body for a single email, include a filter for its ID. (Make an individual query for each email.)
 
 `filter1.add_id($email_id)`
 
@@ -996,15 +992,15 @@ Note: The `filter1` object contains a `filters` property which provides a list o
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`emails = tc.emails()`                    | Instantiate an Emails container object. 
-`filter1 = emails.add_filter()`           | Add a Filter object to the Emails container object <br> (support multiple filter objects). 
-`filter1.add_tag('EXAMPLE')`              | Add API Filter to be applied to the API request. 
-`emails.retrieve()`                       | Trigger the API request and retrieve the Emails <br> intelligence data. 
-`for email in emails:`                    | Iterate over the Emails container object generator. 
-`print(email.id)`                         | Display the **'id'** property of the Email object. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`emails = tc.emails()`                    | Instantiate an Emails container object. |
+|`filter1 = emails.add_filter()`           | Add a Filter object to the Emails container object (support multiple filter objects). |
+|`filter1.add_tag('EXAMPLE')`              | Add API Filter to be applied to the API request. |
+|`emails.retrieve()`                       | Trigger the API request and retrieve the Emails intelligence data. |
+|`for email in emails:`                    | Iterate over the Emails container object generator. |
+|`print(email.id)`                         | Display the **'id'** property of the Email object. |
 
 <b>Resource Metadata</b>
 
@@ -1053,31 +1049,31 @@ This section explains how to work with the ThreatConnect Group Resources.
 
 API filters use the API filtering feature to limit the result set returned from the API.
 
-Filter               | Value Type   | Description                                                  
----------------------| ------------ | ------------------------------------------------------------  
-`add_document_id()`    | int          | Filter Group on associated Document ID.
-`add_email_id()`       | int          | Filter Group on associated Email ID.
-`add_incident_id()`    | int          | Filter Group on associated Incident ID.
-`add_indicator()`      | str          | Filter Group on associated Indicator. 
-`add_owner()`          | list or str  | Filter Group on associated Owner. 
-`add_security_label()` | str          | Filter Group on associated Security Label. 
-`add_signature_id()`   | int          | Filter Group on associated Signature ID. 
-`add_tag()`            | str          | Filter Group on applied Tag. 
-`add_threat_id()`      | int          | Filter Group on associated Threat ID. 
-`add_victim_id()`      | int          | Filter Group on associated Victim ID. 
+|Filter               | Value Type   | Description                        |                          
+|---------------------| ------------ | ------------------------------------------------------------ | 
+|`add_document_id()`    | int          | Filter Group on associated Document ID.|
+|`add_email_id()`       | int          | Filter Group on associated Email ID.|
+|`add_incident_id()`    | int          | Filter Group on associated Incident ID.|
+|`add_indicator()`      | str          | Filter Group on associated Indicator. |
+|`add_owner()`          | list or str  | Filter Group on associated Owner. |
+|`add_security_label()` | str          | Filter Group on associated Security Label. |
+|`add_signature_id()`   | int          | Filter Group on associated Signature ID.| 
+|`add_tag()`            | str          | Filter Group on applied Tag. |
+|`add_threat_id()`      | int          | Filter Group on associated Threat ID. |
+|`add_victim_id()`      | int          | Filter Group on associated Victim ID. |
 
 <b>Supported Post Filters</b>
 
 Post filters are applied on the results returned by the API request.
 
-Filter               | Value Type   | Description                                                  
----------------------| ------------ | ------------------------------------------------------------ 
-`add_pf_name()`        | str          | Filter Group on name.
-`add_pf_date_added()`  | str          | Filter Group on date added.
+|Filter               | Value Type   | Description            |                                      
+|---------------------| ------------ | ------------------------------------------------------------ |
+|`add_pf_name()`        | str          | Filter Group on name.|
+|`add_pf_date_added()`  | str          | Filter Group on date added.|
 
 ###Groups Retrieve Filter Example
 
-> The import statement and reading of the configuration files have been replaced with `...` for brevity.
+The import statement and reading of the configuration files have been replaced with `...` for brevity.
 
 ```python
 
@@ -1115,15 +1111,15 @@ Note: The `filter1` object contains a `filters` property that provides a list of
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`groups = tc.groups()`                    | Instantiate a Groups container object. 
-`filter1 = groups.add_filter()`           | Add a filter object to the Groups container object <br> (support multiple filter objects). 
-`filter1.add_tag('EXAMPLE')`              | Add API filter to retrieve Groups with the 'Example' tag. 
-`groups.retrieve()`                       | Trigger the API request and retrieve the Groups <br> intelligence data. 
-`for group in groups:`                    | Iterate over the Groups container object generator. 
-`print(group.id)`                         | Display the **'id'** property of the Group object. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`groups = tc.groups()`                    | Instantiate a Groups container object. |
+|`filter1 = groups.add_filter()`           | Add a filter object to the Groups container object (support multiple filter objects). |
+|`filter1.add_tag('EXAMPLE')`              | Add API filter to retrieve Groups with the 'Example' tag. |
+|`groups.retrieve()`                       | Trigger the API request and retrieve the Groups intelligence data. |
+|`for group in groups:`                    | Iterate over the Groups container object generator. |
+|`print(group.id)`                         | Display the **'id'** property of the Group object. |
 
 <b>Resource Metadata</b>
 
@@ -1172,32 +1168,32 @@ This section explains how to work with ThreatConnect Incident Resources.
 
 API filters use the API filtering feature to limit the result set returned from the API.
 
-Filter               | Value Type   | Description                                                  
----------------------| ------------ | ------------------------------------------------------------ 
-`add_id()`             | int          | Filter Incident by ID. 
-`add_document_id()`    | int          | Filter Incident on associated Document ID. 
-`add_email_id()`       | int          | Filter Incident on associated Email ID. 
-`add_incident_id()`    | int          | Filter Incident on associated Incident ID. 
-`add_indicator()`      | str          | Filter Incident on associated Indicator. 
-`add_owner()`          | list or str  | Filter Incident on associated Owner. 
-`add_security_label()` | str          | Filter Incident on associated Security Label. 
-`add_signature_id()`   | int          | Filter Incident on associated Signature ID. 
-`add_tag()`            | str          | Filter Incident on applied Tag. 
-`add_threat_id()`      | int          | Filter Incident on associated Threat ID. 
-`add_victim_id()`      | int          | Filter Incident on associated Victim ID. 
+Filter               | Value Type   | Description                                                  |
+---------------------| ------------ | ------------------------------------------------------------ |
+|`add_id()`             | int          | Filter Incident by ID. |
+|`add_document_id()`    | int          | Filter Incident on associated Document ID. |
+|`add_email_id()`       | int          | Filter Incident on associated Email ID. |
+|`add_incident_id()`    | int          | Filter Incident on associated Incident ID. |
+|`add_indicator()`      | str          | Filter Incident on associated Indicator. |
+|`add_owner()`          | list or str  | Filter Incident on associated Owner. |
+|`add_security_label()` | str          | Filter Incident on associated Security Label. |
+|`add_signature_id()`   | int          | Filter Incident on associated Signature ID. |
+|`add_tag()`            | str          | Filter Incident on applied Tag. |
+|`add_threat_id()`      | int          | Filter Incident on associated Threat ID. |
+|`add_victim_id()`      | int          | Filter Incident on associated Victim ID. |
 
 <b>Supported Post Filters</b>
 
 Post filters are applied on the results returned by the API request.
 
-Filter               | Value Type   | Description                                                  
----------------------| ------------ | ------------------------------------------------------------ 
-`add_pf_name()`        | str          | Filter Incident on name. 
-`add_pf_date_added()`  | str          | Filter Incident on date added. 
+|Filter               | Value Type   | Description                                                 | 
+|---------------------| ------------ | ------------------------------------------------------------ |
+|`add_pf_name()`        | str          | Filter Incident on name. |
+|`add_pf_date_added()`  | str          | Filter Incident on date added. |
 
 ###Incidents Retrieve Filter Example
 
-> The import statement and reading of the configuration files have been replaced with `...` for brevity.
+The import statement and reading of the configuration files have been replaced with `...` for brevity.
 
 ```python
 tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
@@ -1233,15 +1229,15 @@ Note: The `filter1` object contains a `filters` property that provides a list of
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`incidents = tc.incidents()`              | Instantiate an Incidents container object. 
-`filter1 = incidents.add_filter()`        | Add a filter object to the Incidents container object <br> (support multiple filter objects). 
-`filter1.add_tag('EXAMPLE')`              | Add API filter to retrieve Incidents with the 'Example' tag. 
-`incidents.retrieve()`                    | Trigger the API request and retrieve the Incidents <br> intelligence data. 
-`for incident in incidents:`              | Iterate over the Incidents container object generator. 
-`print(incident.id)`                      | Display the **'id'** property of the Incidents object. 
+|Snippet                                   | Description                                                                      | 
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`incidents = tc.incidents()`              | Instantiate an Incidents container object. |
+|`filter1 = incidents.add_filter()`        | Add a filter object to the Incidents container object (support multiple filter objects). |
+|`filter1.add_tag('EXAMPLE')`              | Add API filter to retrieve Incidents with the 'Example' tag. |
+|`incidents.retrieve()`                    | Trigger the API request and retrieve the Incidents intelligence data. |
+|`for incident in incidents:`              | Iterate over the Incidents container object generator. |
+|`print(incident.id)`                      | Display the **'id'** property of the Incidents object. |
 
 <b>Resource Metadata</b>
 
@@ -1290,39 +1286,39 @@ This section explains how to work with ThreatConnect Indicator Resources.
 
 API filters use the API filtering feature to limit the result set returned from the API.
 
-Filter               | Value Type   | Description                                                  
----------------------| ------------ | ------------------------------------------------------------  
-`add_adversary_id()`   | int          | Filter Indicator on associated Adversary ID. 
-`add_document_id()`   | int          | Filter Indicator on associated Document ID. 
-`add_email_id()`       | int          | Filter Indicator on associated Email ID. 
-`add_incident_id()`    | int          | Filter Indicator on associated Incident ID. 
-`add_indicator()`      | str          | Filter Indicator by Indicator value. 
-`add_owner()`          | list or str  | Filter Indicator on associated Owner. 
-`add_security_label()` | str          | Filter Indicator on associated Security Label. 
-`add_signature_id()`   | int          | Filter Indicator on associated Signature ID. 
-`add_tag()`            | str          | Filter Indicator on applied Tag. 
-`add_threat_id()`      | int          | Filter Indicator on associated Threat ID. 
-`add_victim_id()`      | int          | Filter Indicator on associated Victim ID. 
+|Filter               | Value Type   | Description                                                  |
+|---------------------| ------------ | ------------------------------------------------------------  |
+|`add_adversary_id()`   | int          | Filter Indicator on associated Adversary ID. |
+|`add_document_id()`   | int          | Filter Indicator on associated Document ID. |
+|`add_email_id()`       | int          | Filter Indicator on associated Email ID. |
+|`add_incident_id()`    | int          | Filter Indicator on associated Incident ID.| 
+|`add_indicator()`      | str          | Filter Indicator by Indicator value. |
+|`add_owner()`          | list or str  | Filter Indicator on associated Owner. |
+|`add_security_label()` | str          | Filter Indicator on associated Security Label. |
+|`add_signature_id()`   | int          | Filter Indicator on associated Signature ID. |
+|`add_tag()`            | str          | Filter Indicator on applied Tag. |
+|`add_threat_id()`      | int          | Filter Indicator on associated Threat ID. |
+|`add_victim_id()`      | int          | Filter Indicator on associated Victim ID. |
 
 <b>Supported Post Filters</b>
 
 Post filters are applied on the results returned by the API request.
 
-Filter                             | Value Type   | Description                                                  
----------------------------------- | ------------ | ------------------------------------------------------------ 
-`add_pf_attribute()`                 | str          | Filter Indicators on Attribute type. 
-`add_pf_confidence()`                | int          | Filter Indicators on Confidence value. 
-`add_pf_date_added()`                | str          | Filter Indicators on date added. 
-`add_pf_last_modified()`             | str          | Filter Indicators on last modified date. 
-`add_pf_rating()`                    | str          | Filter Indicators on Rating. 
-`add_pf_tag()`                       | str          | Filter Indicators on Tag. 
-`add_pf_threat_assess_confidence()`  | int          | Filter Indicators on Threat Assess Confidence. 
-`add_pf_threat_assess_rating()`      | str          | Filter Indicators on Threat Assess Rating. 
-`add_pf_type()`                      | str          | Filter Indicators on Indicator type. 
+|Filter                             | Value Type   | Description                                                  |
+|---------------------------------- | ------------ | ------------------------------------------------------------ |
+|`add_pf_attribute()`                 | str          | Filter Indicators on Attribute type. |
+|`add_pf_confidence()`                | int          | Filter Indicators on Confidence value.| 
+|`add_pf_date_added()`                | str          | Filter Indicators on date added. |
+|`add_pf_last_modified()`             | str          | Filter Indicators on last modified date. |
+|`add_pf_rating()`                    | str          | Filter Indicators on Rating. |
+|`add_pf_tag()`                       | str          | Filter Indicators on Tag. |
+|`add_pf_threat_assess_confidence()`  | int          | Filter Indicators on Threat Assess Confidence. |
+|`add_pf_threat_assess_rating()`      | str          | Filter Indicators on Threat Assess Rating. |
+|`add_pf_type()`                      | str          | Filter Indicators on Indicator type. |
 
 ###Indicators Retrieve Filter Example
 
-> The import statement and reading of the configuration files have been replaced with `...` for brevity.
+The import statement and reading of the configuration files have been replaced with `...` for brevity.
 
 ```python
 tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
@@ -1375,19 +1371,19 @@ Note: The `filter1` object contains a `filters` property that provides a list of
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id,...`    | Instantiate the ThreatConnect object. 
-`indicators = tc.indicators()`            | Instantiate an Indicators container object. 
-`filter1 = indicator.add_filter()`        | Add a filter object to the Indicators container object <br> (support multiple filter objects). 
-`filter1.add_tag('EXAMPLE')`              | Add API filter to retrieve Indicators with the 'Example' tag. 
-`indicator.retrieve()`                    | Trigger the API request and retrieve the Indicators <br> intelligence data. 
-`for indicator in indicators:`            | Iterate over the Indicators container object generator. 
-`print(indicator.indicator)`              | Display the **'indicator'** property of the Indicator object. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id,...`    | Instantiate the ThreatConnect object. |
+|`indicators = tc.indicators()`            | Instantiate an Indicators container object. |
+|`filter1 = indicator.add_filter()`        | Add a filter object to the Indicators container object (support multiple filter objects). |
+|`filter1.add_tag('EXAMPLE')`              | Add API filter to retrieve Indicators with the 'Example' tag. |
+|`indicator.retrieve()`                    | Trigger the API request and retrieve the Indicators intelligence data. |
+|`for indicator in indicators:`            | Iterate over the Indicators container object generator. |
+|`print(indicator.indicator)`              | Display the **'indicator'** property of the Indicator object. |
 
 ###Loading Attributes Example
 
-> Example Python SDK iterating through the `indicators` container provides `indicator` objects
+Example Python SDK iterating through the `indicators` container provides `indicator` objects
 
 ```python
  
@@ -1404,15 +1400,15 @@ The example continues from the previous [Filter Example](#filter-example). Itera
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`indicator.load_attributes()`             | Trigger API call to load Attributes into the <br> Indicator object. 
-`for attribute in indicator.attributes:`  | Iterate over the Attribute property object generator. 
-`print(attribute.type)`                   | Display the **'type'** property of the Attribute object. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`indicator.load_attributes()`             | Trigger API call to load Attributes into the Indicator object. |
+|`for attribute in indicator.attributes:`  | Iterate over the Attribute property object generator. |
+|`print(attribute.type)`                   | Display the **'type'** property of the Attribute object. |
 
 ###Loading Security Label Example
 
-> Example Python SDK loading the Indicator Security Label by calling the `load_security_label()` method of the Indicator object:
+Example Python SDK loading the Indicator Security Label by calling the `load_security_label()` method of the Indicator object:
 
 ```python
 
@@ -1427,15 +1423,15 @@ The example continues from the previous [Loading Attributes Example](#loading-at
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`indicator.load_security_label()`         | Trigger API call to load the Security Label into the <br> Indicator object. 
-`if indicator.security_label is not ...`  | Ensure the object has been loaded before displaying properties. 
-`print(indicator.security_label.name)`    | Display the **'name'** property of the Security Label object. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`indicator.load_security_label()`         | Trigger API call to load the Security Label into the Indicator object. |
+|`if indicator.security_label is not ...`  | Ensure the object has been loaded before displaying properties. |
+|`print(indicator.security_label.name)`    | Display the **'name'** property of the Security Label object. |
 
 ###Loading Tags Example
 
-> Example of Python SDK loading the Indicator Tags by calling the `load_tags()` method of the Indicator object:
+Example of Python SDK loading the Indicator Tags by calling the `load_tags()` method of the Indicator object:
 
 ```python
     indicator.load_tags()
@@ -1448,15 +1444,15 @@ The example continues from the previous [Loading Security Label Example](#loadin
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`indicator.load_tags()`                   | Trigger API call to load Tags into the Indicator object. 
-`for tag in indicator.tags:`              | Iterate over the Attribute property object generator. 
-`print(tag.name)`                         | Display the **'name'** property of the Attribute object. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`indicator.load_tags()`                   | Trigger API call to load Tags into the Indicator object. |
+|`for tag in indicator.tags:`              | Iterate over the Attribute property object generator. |
+|`print(tag.name)`                         | Display the **'name'** property of the Attribute object. |
 
 ###Group Associations
 
-> Example of Python SDK iterating through all Groups associated with this Indicator:
+Example of Python SDK iterating through all Groups associated with this Indicator:
 
 ```python
     for g_association in indicator.group_associations:
@@ -1473,14 +1469,14 @@ Iterate through all Groups associated with this Indicator. These Groups are pull
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`for g_associations in indicator.grou...` | Trigger API call to retrieve all Groups associated with <br> this Indicator. 
-`print(g_association.id)`                 | Display the **'id'** property of the associated Group object. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`for g_associations in indicator.grou...` | Trigger API call to retrieve all Groups associated with this Indicator. |
+|`print(g_association.id)`                 | Display the **'id'** property of the associated Group object. |
 
 ###Indicator Associations
 
-> Example Python SDK iterating through all Indicators associated with an Indicator:
+Example Python SDK iterating through all Indicators associated with an Indicator:
 
 ```python
     for i_association in indicator.indicator_associations:
@@ -1500,14 +1496,14 @@ Iterate through all Indicators associated with this Indicator. These Indicators 
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`for i_association in indicator.ind_...` | Trigger API call to retrieve all Indicators associated with <br> this Indicator. 
-`print(i_association.id)`                 | Display the **'id'** property of the associated Indicator object. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`for i_association in indicator.ind_...` | Trigger API call to retrieve all Indicators associated with this Indicator. |
+|`print(i_association.id)`                 | Display the **'id'** property of the associated Indicator object. |
 
 ###Victim Associations
 
-> Example Python SDK iterating through all Victims associated with this Indicator:
+Example Python SDK iterating through all Victims associated with this Indicator:
 
 ```python
 
@@ -1527,14 +1523,14 @@ Iterate through all Victims associated with this Indicator. These Groups are pul
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`for v_associations in indicator.vic_...` | Trigger API call to retrieve all Victims associated with <br> this Indicator. 
-`print(v_association.id)`                 | Display the **'id'** property of the associated Victim object. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`for v_associations in indicator.vic_..`  | Trigger API call to retrieve all Victims associated with this Indicator. |
+|`print(v_association.id)`                 | Display the **'id'** property of the associated Victim object. |
 
 ### DNS Resolution
 
-> Example Python SDK DNS Resolution:
+Example Python SDK DNS Resolution:
 
 ```python
 
@@ -1550,11 +1546,11 @@ DNS Resolution is only supported for the Host Indicator Type.
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`indicator.load_dns_resolutions()`        | Trigger API call to load DNS Resolutions into the Indicator object. 
-`for dns in indicator.dns_resolutions:`   | Iterate over the DNS Resolutions property object generator.
-`print(dns.ip)`                           | Display the **'ip'** property of the Attribute object.
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`indicator.load_dns_resolutions()`        | Trigger API call to load DNS Resolutions into the Indicator object. |
+|`for dns in indicator.dns_resolutions:`   | Iterate over the DNS Resolutions property object generator.|
+|`print(dns.ip)`                           | Display the **'ip'** property of the Attribute object.|
 
 <b>Output Formats</b>
 
@@ -1578,32 +1574,32 @@ This section explains how to work with ThreatConnect Signature Resources.
 
 API filters use the API filtering feature to limit the result set returned from the API.
 
-Filter               | Value Type   | Description                                                  
----------------------| ------------ | ------------------------------------------------------------  
-`add_id()`             | int          | Filter Signature by ID.
-`add_document_id()`    | int          | Filter Signature on associated Document ID.
-`add_email_id()`       | int          | Filter Signature on associated Email ID.
-`add_incident_id()`    | int          | Filter Signature on associated Incident ID.
-`add_indicator()`      | str          | Filter Signature on associated Indicator.
-`add_owner()`          | list or str  | Filter Signature on associated Owner.
-`add_security_label()` | str          | Filter Signature on associated Security Label.
-`add_signature_id()`   | int          | Filter Signature on associated Signature ID.
-`add_tag()`            | str          | Filter Signature on applied Tag.
-`add_threat_id()`      | int          | Filter Signature on associated Threat ID.
-`add_victim_id()`      | int          | Filter Signature on associated Victim ID.
+|Filter               | Value Type   | Description                                                  |
+|---------------------| ------------ | ------------------------------------------------------------  |
+|`add_id()`             | int          | Filter Signature by ID.|
+|`add_document_id()`    | int          | Filter Signature on associated Document ID.|
+|`add_email_id()`       | int          | Filter Signature on associated Email ID.|
+|`add_incident_id()`    | int          | Filter Signature on associated Incident ID.|
+|`add_indicator()`      | str          | Filter Signature on associated Indicator.|
+|`add_owner()`          | list or str  | Filter Signature on associated Owner.|
+|`add_security_label()` | str          | Filter Signature on associated Security Label.|
+|`add_signature_id()`   | int          | Filter Signature on associated Signature ID.|
+|`add_tag()`            | str          | Filter Signature on applied Tag.|
+|`add_threat_id()`      | int          | Filter Signature on associated Threat ID.|
+|`add_victim_id()`      | int          | Filter Signature on associated Victim ID.|
 
 <b>Supported Post Filters</b>
 
 Post filters are applied on the results returned by the API request.
 
-Filter               | Value Type   | Description                                                  
----------------------| ------------ | ------------------------------------------------------------ 
-`add_pf_name()`        | str          | Filter Signature on name.
-`add_pf_date_added()`  | str          | Filter Signature on date added.
+|Filter               | Value Type   | Description          |                                        
+|---------------------| ------------ | ------------------------------------------------------------ |
+|`add_pf_name()`        | str          | Filter Signature on name.|
+|`add_pf_date_added()`  | str          | Filter Signature on date added.|
 
 ###Signatures Retrieve Filter Example
 
-> The import statement and reading of the configuration files have been replaced with `...` for brevity.
+The import statement and reading of the configuration files have been replaced with `...` for brevity.
 
 ```python
 
@@ -1638,19 +1634,19 @@ Note: The `filter1` object contains a `filters` property which provides a list o
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`signatures = tc.signatures()`            | Instantiate an Signatures container object. 
-`filter1 = signatures.add_filter()`       | Add a filter object to the Signatures container object <br> (support multiple filter objects).
-`filter1.add_tag('EXAMPLE')`              | Add API filter to retrieve Signatures with the 'Example' tag.
-`signatures.retrieve()`                   | Trigger the API request and retrieve the Signatures <br> intelligence data.
-`for signature in signatures:`            | Iterate over the Signatures container object generator.
-`print(signature.id)`                     | Display the **'id'** property of the Signature object.
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`signatures = tc.signatures()`            | Instantiate an Signatures container object. |
+|`filter1 = signatures.add_filter()`       | Add a filter object to the Signatures container object (support multiple filter objects).|
+|`filter1.add_tag('EXAMPLE')`              | Add API filter to retrieve Signatures with the 'Example' tag.|
+|`signatures.retrieve()`                   | Trigger the API request and retrieve the Signatures intelligence data.|
+|`for signature in signatures:`            | Iterate over the Signatures container object generator.|
+|`print(signature.id)`                     | Display the **'id'** property of the Signature object.|
 
 ###Signature Download
 
-> Example Python SDK downloading the Signature contents for the Signature Resource:
+Example Python SDK downloading the Signature contents for the Signature Resource:
 
 ```python
 
@@ -1663,11 +1659,11 @@ Download the Signature contents for the Signature Resource.
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`signature.download()`                    | Trigger API request to download the Signature contents. 
-`if signature.contents is not None:`      | Validate that the Signature has downloaded before displaying. 
-`print(signature.contents)`               | Display the contents of the Signature.
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`signature.download()`                    | Trigger API request to download the Signature contents. |
+|`if signature.contents is not None:`      | Validate that the Signature has downloaded before displaying. |
+|`print(signature.contents)`               | Display the contents of the Signature.|
 
 <b>Resource Metadata</b>
 
@@ -1714,34 +1710,33 @@ This section explains how to work with ThreatConnect Task Resources.
 ## Supported API Filters
 API filters use the API filtering feature to limit the result set returned from the API.
 
-Filter               | Value Type   | Description                                                  |
----------------------| ------------ | ------------------------------------------------------------ |  
-add_id()             | int          | Filter Task by ID. |
-add_document_id()    | int          | Filter Task on associated Document ID. |
-add_email_id()       | int          | Filter Task on associated Email ID. |
-add_incident_id()    | int          | Filter Task on associated Incident ID. |
-add_indicator()      | int          | Filter Task on associated Indicator. |
-add_owner()          | list or str  | Filter Task on associated Owner. |
-add_security_label() | str          | Filter Task on associated Security Label. |
-add_signature_id()   | int          | Filter Task on associated Signature ID. |
-add_tag()            | str          | Filter Task on applied Tag. |
-add_threat_id()      | int          | Filter Task on associated Task ID. |
-add_victim_id()      | int          | Filter Task on associated Victim ID. |
+|Filter               | Value Type   | Description                                                  |
+|---------------------| ------------ | ------------------------------------------------------------ |  
+|add_id()             | int          | Filter Task by ID. |
+|add_document_id()    | int          | Filter Task on associated Document ID. |
+|add_email_id()       | int          | Filter Task on associated Email ID. |
+|add_incident_id()    | int          | Filter Task on associated Incident ID. |
+|add_indicator()      | int          | Filter Task on associated Indicator. |
+|add_owner()          | list or str  | Filter Task on associated Owner. |
+|add_security_label() | str          | Filter Task on associated Security Label. |
+|add_signature_id()   | int          | Filter Task on associated Signature ID. |
+|add_tag()            | str          | Filter Task on applied Tag. |
+|add_threat_id()      | int          | Filter Task on associated Task ID. |
+|add_victim_id()      | int          | Filter Task on associated Victim ID. |
 
 ## Supported Post Filters
 Post filters are applied on the results returned by the API request.
 
-Filter               | Value Type   | Description                                                  |
----------------------| ------------ | ------------------------------------------------------------ |
-add_pf_name()        | str          | Filter Task on name. |
-add_pf_date_added()  | str          | Filter Task on date added. |
+|Filter               | Value Type   | Description                                                  |
+|---------------------| ------------ | ------------------------------------------------------------ |
+|add_pf_name()        | str          | Filter Task on name. |
+|add_pf_date_added()  | str          | Filter Task on date added. |
 
 ## Filter Example
 
 This example will demonstrate how to retrieve Tasks while applying filters. In this example, one filters will be added for a Tag. The result set returned from this example will contain any Tasks that has a Tag of ***EXAMPLE***.
 
-> The import statement and reading of the configuration files have been replaced with `...` for brevity.
-<br/>
+The import statement and reading of the configuration files have been replaced with `...` for brevity.
 
 ```python
 ...
@@ -1769,19 +1764,19 @@ for task in tasks:
     print(task.weblink)
 ```
 
-> Note: The `filter1` object contains a `filters` property that provides a list of supported filters for the resource type being retrieved. To display this list, `print(filter1.filters)` can be used. For more information on using filters, see the [Advanced Filter Tutorial](/python/advanced/filtering/).
+Note: The `filter1` object contains a `filters` property that provides a list of supported filters for the resource type being retrieved. To display this list, `print(filter1.filters)` can be used. For more information on using filters, see the [Advanced Filter Tutorial](/python/advanced/filtering/).
 
 * Code Highlights*
 
-Snippet                                   | Description                                                                       |
------------------------------------------ | --------------------------------------------------------------------------------- |
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
-`Tasks = tc.Tasks()`                      | Instantiate a Tasks container object. |
-`filter1 = Tasks.add_filter()`            | Add a filter object to the Tasks container object (support multiple filter objects). |
-`filter1.add_tag('EXAMPLE')`              | Add an API filter to be applied to the API request. |
-`Tasks.retrieve()`                        | Trigger the API request and retrieve the Tasks-intelligence data. |
-`for task in Tasks:`                      | Iterate over the Tasks container object generator. |
-`print(task.id)`                          | Display the **id** property of the Task object. |
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`Tasks = tc.Tasks()`                      | Instantiate a Tasks container object. |
+|`filter1 = Tasks.add_filter()`            | Add a filter object to the Tasks container object (support multiple filter objects). |
+|`filter1.add_tag('EXAMPLE')`              | Add an API filter to be applied to the API request. |
+|`Tasks.retrieve()`                        | Trigger the API request and retrieve the Tasks-intelligence data. |
+|`for task in Tasks:`                      | Iterate over the Tasks container object generator. |
+|`print(task.id)`                          | Display the **id** property of the Task object. |
 
 <b>Resource Metadata</b>
 
@@ -1830,32 +1825,32 @@ This section explains how to work with ThreatConnect Threat Resources.
 
 API filters use the API filtering feature to limit the result set returned from the API.
 
-Filter               | Value Type   | Description                                                  
----------------------| ------------ | ------------------------------------------------------------ 
-`add_id()`             | int          | Filter Threat by ID.
-`add_document_id()`    | int          | Filter Threat on associated Document ID.
-`add_email_id()`       | int          | Filter Threat on associated Email ID.
-`add_incident_id()`    | int          | Filter Threat on associated Incident ID.
-`add_indicator()`      | str          | Filter Threat on associated Indicator.
-`add_owner()`          | list or str  | Filter Threat on associated Owner.
-`add_security_label()` | str          | Filter Threat on associated Security Label.
-`add_signature_id()`   | int          | Filter Threat on associated Signature ID.
-`add_tag()`            | str          | Filter Threat on applied Tag.
-`add_threat_id()`      | int          | Filter Threat on associated Threat ID.
-`add_victim_id()`      | int          | Filter Threat on associated Victim ID.
+|Filter               | Value Type   | Description                                                  |
+|---------------------| ------------ | ------------------------------------------------------------ |
+|`add_id()`             | int          | Filter Threat by ID.|
+|`add_document_id()`    | int          | Filter Threat on associated Document ID.|
+|`add_email_id()`       | int          | Filter Threat on associated Email ID.|
+|`add_incident_id()`    | int          | Filter Threat on associated Incident ID.|
+|`add_indicator()`      | str          | Filter Threat on associated Indicator.|
+|`add_owner()`          | list or str  | Filter Threat on associated Owner.|
+|`add_security_label()` | str          | Filter Threat on associated Security Label.|
+|`add_signature_id()`   | int          | Filter Threat on associated Signature ID.|
+|`add_tag()`            | str          | Filter Threat on applied Tag.|
+|`add_threat_id()`      | int          | Filter Threat on associated Threat ID.|
+|`add_victim_id()`      | int          | Filter Threat on associated Victim ID.|
 
 <b>Supported Post Filters</b>
 
 Post filters are applied on the results returned by the API request.
 
-Filter               | Value Type   | Description                                                  
----------------------| ------------ | ------------------------------------------------------------ 
-`add_pf_name()`        | str          | Filter Threat on name. 
-`add_pf_date_added()`  | str          | Filter Threat on date added. 
+|Filter               | Value Type   | Description|                                                  
+|---------------------| ------------ | ------------------------------------------------------------ |
+|`add_pf_name()`        | str          | Filter Threat on name. |
+|`add_pf_date_added()`  | str          | Filter Threat on date added. |
 
 ###Threats Retrieve Filter Example
 
-> The import statement and reading of the configuration files have been replaced with `...` for brevity.
+The import statement and reading of the configuration files have been replaced with `...` for brevity.
 
 ```python
 
@@ -1890,15 +1885,15 @@ Note: The `filter1` object contains a `filters` property that provides a list of
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`threats = tc.threats()`                  | Instantiate a Threats container object. 
-`filter1 = threats.add_filter()`          | Add a filter object to the Threats container object <br> (support multiple filter objects). 
-`filter1.add_tag('EXAMPLE')`              | Add API filter to retrieve Threats with the 'Example' tag. 
-`threats.retrieve()`                      | Trigger the API request and retrieve the Threats <br> intelligence data. 
-`for threat in threats:`                  | Iterate over the Threats container object generator. 
-`print(threat.id)`                        | Display the **id** property of the Threat object. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`threats = tc.threats()`                  | Instantiate a Threats container object. |
+|`filter1 = threats.add_filter()`          | Add a filter object to the Threats container object (support multiple filter objects). |
+|`filter1.add_tag('EXAMPLE')`              | Add API filter to retrieve Threats with the 'Example' tag. |
+|`threats.retrieve()`                      | Trigger the API request and retrieve the Threats intelligence data. |
+|`for threat in threats:`                  | Iterate over the Threats container object generator. |
+|`print(threat.id)`                        | Display the **id** property of the Threat object. |
 
 ##Victims Retrieve
 
@@ -1908,30 +1903,30 @@ This section explains how to work with ThreatConnect Victims Resources.
 
 API filters use the API filtering feature to limit the result set returned from the API.
 
-Filter               | Value Type   | Description                                                  
----------------------| ------------ | ------------------------------------------------------------ 
-`add_id()`             | int          | Filter Victim by ID. 
-`add_adversary_id()`   | int          | Filter Victim on associated Adversary ID. 
-`add_document_id()`    | int          | Filter Victim on associated Document ID. 
-`add_email_id()`       | int          | Filter Victim on associated Email ID. 
-`add_incident_id()`    | int          | Filter Victim on associated Incident ID. 
-`add_indicator()`      | str          | Filter Victim on associated Indicator. 
-`add_owner()`          | list or str  | Filter Victim on associated Owner. 
-`add_signature_id()`   | int          | Filter Victim on associated Signature ID. 
-`add_threat_id()`      | int          | Filter Victim on associated Threat ID. 
+|Filter               | Value Type   | Description                                                  |
+|---------------------| ------------ | ------------------------------------------------------------ |
+|`add_id()`             | int          | Filter Victim by ID. |
+|`add_adversary_id()`   | int          | Filter Victim on associated Adversary ID. |
+|`add_document_id()`    | int          | Filter Victim on associated Document ID. |
+|`add_email_id()`       | int          | Filter Victim on associated Email ID. |
+|`add_incident_id()`    | int          | Filter Victim on associated Incident ID. |
+|`add_indicator()`      | str          | Filter Victim on associated Indicator. |
+|`add_owner()`          | list or str  | Filter Victim on associated Owner. |
+|`add_signature_id()`   | int          | Filter Victim on associated Signature ID. |
+|`add_threat_id()`      | int          | Filter Victim on associated Threat ID. |
 
 <b>Supported Post Filters</b>
 
 Post filters are applied on the results returned by the API request.
 
-Filter               | Value Type   | Description                                                  
----------------------| ------------ | ------------------------------------------------------------ 
-`add_pf_name()`        | str          | Filter Victim on name.
-`add_pf_date_added()`  | str          | Filter Victim on date added. 
+|Filter               | Value Type   | Description                                                  |
+|---------------------| ------------ | ------------------------------------------------------------ |
+|`add_pf_name()`        | str          | Filter Victim on name.|
+|`add_pf_date_added()`  | str          | Filter Victim on date added. |
 
 ###Victims Retrieve Filter Example
 
-> The import statement and reading of the configuration files have been replaced with `...` for brevity.
+The import statement and reading of the configuration files have been replaced with `...` for brevity.
 
 ```python
 
@@ -1970,19 +1965,19 @@ Note: The `filter1` object contains a `filters` property that provides a list of
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`victims = tc.victims()`                  | Instantiate a Victims container object. 
-`filter1 = victims.add_filter()`          | Add a filter object to the Victims container object <br> (support multiple filter objects). 
-`filter1.add_adversary_id(531)`           | Add API filter to retrieve Victims associated with the given Adversary. 
-`victims.retrieve()`                      | Trigger the API request and retrieve the Victims <br> intelligence data. 
-`for victim in victims:`                  | Iterate over the Victims container object generator. 
-`print(victim.id)`                        | Display the **id** property of the Victim object. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`victims = tc.victims()`                  | Instantiate a Victims container object. |
+|`filter1 = victims.add_filter()`          | Add a filter object to the Victims container object (support multiple filter objects). |
+|`filter1.add_adversary_id(531)`           | Add API filter to retrieve Victims associated with the given Adversary. |
+|`victims.retrieve()`                      | Trigger the API request and retrieve the Victims intelligence data. |
+|`for victim in victims:`                  | Iterate over the Victims container object generator. |
+|`print(victim.id)`                        | Display the **id** property of the Victim object. |
 
 ###Load Victim Assets
 
-> This Python SDK example will pull all Assets for the current Victim Resource:
+This Python SDK example will pull all Assets for the current Victim Resource:
 
 ```python
     victim.load_assets()
@@ -1997,11 +1992,11 @@ Continuing from the [Filter Example](#filter-example), the following example wil
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`victim.load_assets()`                    | Trigger API call to load Assets into the Resource object. 
-`for asset in victim.assets:`             | Iterate over the Assets object generator. 
-`print(asset.id)`                         | Display the **id** property of the Asset object. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`victim.load_assets()`                    | Trigger API call to load Assets into the Resource object. |
+|`for asset in victim.assets:`             | Iterate over the Assets object generator. |
+|`print(asset.id)`                         | Display the **id** property of the Asset object. |
 
 <b>Attributes</b>
 See the [Loading Attributes Example](#loading-attributes-example).
@@ -2014,7 +2009,7 @@ See the [Loading Tags Documentation](#loading-tags).
 
 ##Associations
 
-> Python SDK example demonstrating how to use the `Group_Associations` method on an Adversary Resource:
+Python SDK example demonstrating how to use the `Group_Associations` method on an Adversary Resource:
 
 ```python
 
@@ -2055,14 +2050,14 @@ The following example demonstrates how to use the `Group_Associations` method on
 
 <b>Group Associations Properties</b>
 
-Property Name            | Type
------------------------- | ----
-id                       | int
-name                     | str
-type                     | str
-owner_name               | str
-date_added               | str
-weblink                  | str
+|Property Name            | Type|
+|------------------------ | ----|
+|id                       | int|
+|name                     | str|
+|type                     | str|
+|owner_name               | str|
+|date_added               | str|
+|weblink                  | str|
 
 For more information on the properties of an Attribute, read the ThreatConnect API documentation.
 
@@ -2070,19 +2065,19 @@ When the `Group_Associations` method is called, an API request is invoked immedi
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`resources = tc.adversaries()`            | Instantiate an Resources container object. 
-`resources.retrieve()`                    | Trigger API calls to retrieve the Resources. 
-`for resource in resources:`              | Iterate over the Resources container object generator. 
-`print(resource.id)`                      | Display the **id** property of the Resource object. 
-`for g_associations in resource.group_...`| Trigger an API call to retrieve all Groups associated <br> with this Resource. 
-`print(g_association.id)`                 | Display the **id** property of the associated Group object. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`resources = tc.adversaries()`            | Instantiate an Resources container object. |
+|`resources.retrieve()`                    | Trigger API calls to retrieve the Resources. |
+|`for resource in resources:`              | Iterate over the Resources container object generator. |
+|`print(resource.id)`                      | Display the **id** property of the Resource object. |
+|`for g_associations in resource.group_...`| Trigger an API call to retrieve all Groups associated with this Resource. |
+|`print(g_association.id)`                 | Display the **id** property of the associated Group object. |
 
 ##Indicator Associations
 
-> Python SDK example demonstrating how to use the `indicator_associations` method on an Adversary Resource:
+Python SDK example demonstrating how to use the `indicator_associations` method on an Adversary Resource:
 
 ```python
 
@@ -2123,18 +2118,18 @@ The following example demonstrates how to use the `indicator_associations` metho
 
 <b>Indicator Associations Properties</b>
 
-Property Name            | Type
------------------------- | ----
-id                       | int
-indicator                | str
-type                     | str
-description              | str
-owner_name               | str
-rating                   | str
-confidence               | str
-date_added               | str
-last_modified            | str
-weblink                  | str
+|Property Name            | Type|
+|------------------------ | ----|
+|id                       | int|
+|indicator                | str|
+|type                     | str|
+|description              | str|
+|owner_name               | str|
+|rating                   | str|
+|confidence               | str|
+|date_added               | str|
+|last_modified            | str|
+|weblink                  | str|
 
 For more information on the properties of an Attribute, read the ThreatConnect API documentation.
 
@@ -2142,19 +2137,19 @@ When the `indicator_associations` method is called, an API request is invoked im
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`resources = tc.adversaries()`            | Instantiate an Resources container object. 
-`resources.retrieve()`                    | Trigger API calls to retrieve the Resources. 
-`for resource in resources:`              | Iterate over the Resources container object generator. 
-`print(resource.id)`                      | Display the **id** property of the Resource object. 
-`for associations in resource.indicat_...`| Trigger API call to retrieve all Indicators associated <br> with this Resource. 
-`print(association.id)`                   | Display the **'id'** property of the associated <br> Indicator object. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`resources = tc.adversaries()`            | Instantiate an Resources container object. |
+|`resources.retrieve()`                    | Trigger API calls to retrieve the Resources. |
+|`for resource in resources:`              | Iterate over the Resources container object generator. |
+|`print(resource.id)`                      | Display the **id** property of the Resource object. |
+|`for associations in resource.indicat_...`| Trigger API call to retrieve all Indicators associated with this Resource. |
+|`print(association.id)`                   | Display the **'id'** property of the associated Indicator object. |
 
 ##Victim Associations Retrieve
 
-> Python SDK example demonstrating how to use the `victim_associations` method on an Adversary Resource:
+Python SDK example demonstrating how to use the `victim_associations` method on an Adversary Resource:
 
 ```python
 
@@ -2192,12 +2187,12 @@ The following example demonstrates how to use the `victim_associations` method o
 
 <b>Victim Associations Properties</b>
 
-Property Name            | Type
------------------------- | ----
-id                       | int
-name                     | str
-date_added               | str
-weblink                  | str
+|Property Name            | Type|
+|------------------------ | ----|
+|id                       | int|
+|name                     | str|
+|date_added               | str|
+|weblink                  | str|
 
 For more information on the properties of an Attribute, read the ThreatConnect API documentation.
 
@@ -2205,19 +2200,19 @@ When the `victim_associations` method is called, an API request is invoked immed
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | ---------------------------------------------------------------------------------
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`resources = tc.adversaries()`            | Instantiate an Resources container object. 
-`resources.retrieve()`                    | Trigger API calls to retrieve the Resources. 
-`for resource in resources:`              | Iterate over the Resources container object generator. 
-`print(resource.id)`                      | Display the **id** property of the Resource object. 
-`for associations in resource.victim_...` | Trigger API call to retrieve all Victims associated <br> with this Resource. 
-`print(v_association.id)`                 | Display the **id** property of the associated <br> Victim object. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | ---------------------------------------------------------------------------------|
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`resources = tc.adversaries()`            | Instantiate an Resources container object. |
+|`resources.retrieve()`                    | Trigger API calls to retrieve the Resources. |
+|`for resource in resources:`              | Iterate over the Resources container object generator. |
+|`print(resource.id)`                      | Display the **id** property of the Resource object. |
+|`for associations in resource.victim_...` | Trigger API call to retrieve all Victims associated with this Resource. |
+|`print(v_association.id)`                 | Display the **id** property of the associated Victim object. |
 
 ##Loading Attributes
 
-> Python SDK example on how to Load Attributes on an Adversary Resource:
+Python SDK example on how to Load Attributes on an Adversary Resource:
 
 ```python
 
@@ -2252,32 +2247,32 @@ The following example demonstrates how to [Load Attributes](#loading-attributes)
 
 <b>Attribute Properties</b>
 
-Property Name            | Type
------------------------- | ----
-type                     | str
-value                    | str
-date_added               | str
-last_modified            | str
-displayed                | bool
+|Property Name            | Type|
+|------------------------ | ----|
+|type                     | str|
+|value                    | str|
+|date_added               | str|
+|last_modified            | str|
+|displayed                | bool|
 
 For more information on the properties of an Attribute read, the ThreatConnect API documentation.
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`resources = tc.adversaries()`            | Instantiate a Resources container object. 
-`resources.retrieve()`                    | Trigger the API request and retrieve the Resources <br> intelligence data. 
-`for resource in resources:`              | Iterate over the Resources container object generator. 
-`print(resource.id)`                      | Display the **id** property of the Resource object. 
-`resource.load_attributes()`              | Trigger API call to load Attributes into the Resource object. 
-`for attribute in resource.attributes:`   | Iterate over the Attribute property object generator. 
-`print(attribute.type)`                   | Display the **'type'** property of the Attribute object. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`resources = tc.adversaries()`            | Instantiate a Resources container object. |
+|`resources.retrieve()`                    | Trigger the API request and retrieve the Resources intelligence data. |
+|`for resource in resources:`              | Iterate over the Resources container object generator. |
+|`print(resource.id)`                      | Display the **id** property of the Resource object. |
+|`resource.load_attributes()`              | Trigger API call to load Attributes into the Resource object. |
+|`for attribute in resource.attributes:`   | Iterate over the Attribute property object generator. |
+|`print(attribute.type)`                   | Display the **'type'** property of the Attribute object. |
 
 ##Loading a Security Label
 
-> Python SDK example demonstrating how to **Load a Security Label** on an Adversary Resource:
+Python SDK example demonstrating how to **Load a Security Label** on an Adversary Resource:
 
 ```python
 
@@ -2310,30 +2305,30 @@ The following example demonstrates how to **Load a Security Label** on an Advers
 
 <b>Attribute Properties</b>
 
-Property Name            | Type
------------------------- | ----
-name                     | str
-description              | str
-date_added               | str
+|Property Name            | Type|
+|------------------------ | ----|
+|name                     | str|
+|description              | str|
+|date_added               | str|
 
 For more information on the properties of a Security Label, read the ThreatConnect API documentation.
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`resources = tc.adversaries()`            | Instantiate an Resources container object. 
-`resources.retrieve()`                    | Trigger the API request and retrieve the Resources <br> intelligence data. 
-`for resource in resources:`              | Iterate over the Resources container object generator. 
-`print(resource.id)`                      | Display the **id** property of the Resource object. 
-`resource.load_security_label()`          | Trigger API call to load the Security Label into the <br> Resource object. 
-`if resource.security_label is not None:` | Ensure the object has been loaded before displaying <br> properties. 
-`print(resource.security_label.name)`     | Display the **'name'** property of the Security Label object. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`resources = tc.adversaries()`            | Instantiate an Resources container object. |
+|`resources.retrieve()`                    | Trigger the API request and retrieve the Resources intelligence data. |
+|`for resource in resources:`              | Iterate over the Resources container object generator. |
+|`print(resource.id)`                      | Display the **id** property of the Resource object. |
+|`resource.load_security_label()`          | Trigger API call to load the Security Label into the Resource object. |
+|`if resource.security_label is not None:` | Ensure the object has been loaded before displaying properties. |
+|`print(resource.security_label.name)`     | Display the **'name'** property of the Security Label object. |
 
 ##Loading Tags
 
-> Python SDK example demonstrating how to use the `load_tags()` method on an Adversary Resource:
+Python SDK example demonstrating how to use the `load_tags()` method on an Adversary Resource:
 
 ```python
 
@@ -2365,29 +2360,29 @@ The following example demonstrates how to use the `load_tags()` method on an Adv
 
 <b>Tag Properties</b>
 
-Property Name            | Type
------------------------- | ----
-name                     | str
-weblink                  | str
+|Property Name            | Type|
+|------------------------ | ----|
+|name                     | str|
+|weblink                  | str|
 
 For more information on the properties of an Attribute, read the ThreatConnect API documentation.
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`resources = tc.adversaries()`            | Instantiate an Resources container object. 
-`resources.retrieve()`                    | Trigger API calls to retrieve the Resources. 
-`for resource in resources:`              | Iterate over the Resources container object generator. 
-`print(resource.id)`                      | Display the **id** property of the Resource object. 
-`resource.load_tags()`                    | Trigger API call to load Tags into the Resource object. 
-`for tag in resource.tags:`               | Iterate over the Tag property object generator. 
-`print(tag.name)`                         | Display the **'name'** property of the Tag object. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`resources = tc.adversaries()`            | Instantiate an Resources container object. |
+|`resources.retrieve()`                    | Trigger API calls to retrieve the Resources. |
+|`for resource in resources:`              | Iterate over the Resources container object generator. |
+|`print(resource.id)`                      | Display the **id** property of the Resource object. |
+|`resource.load_tags()`                    | Trigger API call to load Tags into the Resource object. |
+|`for tag in resource.tags:`               | Iterate over the Tag property object generator. |
+|`print(tag.name)`                         | Display the **'name'** property of the Tag object. |
 
 ##Python Commit
 
-> Example Python SDK creating an adversary resource in the ThreatConnect platform:
+Example Python SDK creating an adversary resource in the ThreatConnect platform:
 
 ```python
 
@@ -2419,19 +2414,19 @@ Note: In the prior example, no API calls are made until the `commit()` method is
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`adversaries = tc.adversaries()`          | Instantiate an Adversaries container object. 
-`adversary = adversaries.add('New Adve...`| Add a resource object setting the name and Owner. 
-`adversary.add_attribute('Description'...`| Add an Attribute of type **Description** to the Resource. 
-`adversary.add_tag('EXAMPLE')`            | Add a Tag to the Adversary. 
-`adversary.set_security_label('TLP Gre...`| Add a Security Label to the Adversary. 
-`resource.commit()`                       | Trigger API calls to write all added, deleted, <br> or modified data. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`adversaries = tc.adversaries()`          | Instantiate an Adversaries container object. |
+|`adversary = adversaries.add('New Adve...`| Add a resource object setting the name and Owner. |
+|`adversary.add_attribute('Description'...`| Add an Attribute of type **Description** to the Resource. |
+|`adversary.add_tag('EXAMPLE')`            | Add a Tag to the Adversary. |
+|`adversary.set_security_label('TLP Gre...`| Add a Security Label to the Adversary. |
+|`resource.commit()`                       | Trigger API calls to write all added, deleted, or modified data. |
 
 ##Updating Adversary Resources
 
-> The example below demonstrates how to update an Adversary Resource in the ThreatConnect platform:
+The example below demonstrates how to update an Adversary Resource in the ThreatConnect platform:
 
 ```python
 
@@ -2469,23 +2464,23 @@ Note: In the prior example, no API calls are made until the `commit()` method is
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`adversaries = tc.adversaries()`          | Instantiate an Adversaries container object. 
-`adversary = adversaries.add('Updated ...`| Add a resource object setting the name and Owner. 
-`adversary.set_id(20)`                  | Set the ID of the Adversary to the ***EXISTING*** <br> Adversary ID to update. 
-`adversary.load_attributes()`             | Load existing Attributes into the Adversary object. 
-`adversary.delete_attribute(attribute.id)`| Add a delete flag on the Attribute with type **Description**. 
-`adversary.add_attribute('Description'...`| Add an Attribute of type **Description** to the Resource. 
-`adversary.load_tags()`                   | Load existing Tags into the Adversary object. 
-`adversary.delete_tag(tag.name)`          | Add a delete flag to all Tags. 
-`adversary.add_tag('EXAMPLE')`            | Add a Tag to the Resource. 
-`adversary.commit()`                       | Trigger API calls to write all added, deleted, or <br> modified data. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`adversaries = tc.adversaries()`          | Instantiate an Adversaries container object. |
+|`adversary = adversaries.add('Updated ...`| Add a resource object setting the name and Owner. |
+|`adversary.set_id(20)`                  | Set the ID of the Adversary to the ***EXISTING*** Adversary ID to update. |
+|`adversary.load_attributes()`             | Load existing Attributes into the Adversary object. |
+|`adversary.delete_attribute(attribute.id)`| Add a delete flag on the Attribute with type **Description**. |
+|`adversary.add_attribute('Description'...`| Add an Attribute of type **Description** to the Resource. |
+|`adversary.load_tags()`                   | Load existing Tags into the Adversary object. |
+|`adversary.delete_tag(tag.name)`          | Add a delete flag to all Tags. |
+|`adversary.add_tag('EXAMPLE')`            | Add a Tag to the Resource. |
+|`adversary.commit()`                       | Trigger API calls to write all added, deleted, or modified data. |
 
 ##Deleting Adversary Resources
 
-> The example below demonstrates how to delete an Adversary Resource in the ThreatConnect platform:
+The example below demonstrates how to delete an Adversary Resource in the ThreatConnect platform:
 
 ```python
 
@@ -2509,17 +2504,17 @@ Note: In the prior example, no API calls are made until the `commit()` method is
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`adversaries = tc.adversaries()`          | Instantiate an Adversaries container object. 
-`adversary = adversaries.add('', owner)`  | Add a resource object setting the name and Owner. 
-`adversary.set_id(20)`                  | Set the ID of the Adversary to the **EXISTING** <br> Adversary ID to delete. 
-`adversary.delete()`                       | Trigger API calls to write all added, deleted, or <br> modified data. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`adversaries = tc.adversaries()`          | Instantiate an Adversaries container object. |
+|`adversary = adversaries.add('', owner)`  | Add a resource object setting the name and Owner. |
+|`adversary.set_id(20)`                  | Set the ID of the Adversary to the **EXISTING** Adversary ID to delete. |
+|`adversary.delete()`                       | Trigger API calls to write all added, deleted, or modified data. |
 
 ##Batch Commit
 
-> Python SDK Batch Commit Code Sample:
+Python SDK Batch Commit Code Sample:
 
 ```python
 
@@ -2597,35 +2592,35 @@ The example below demonstrates how to use a Batch Resource in the ThreatConnect 
 
 <b>Supported Functions and Properties</b>
 
-Property Name            | Method                  | Required              | Allowable Values 
------------------------- | ----------------------- | --------------------- | ---------------- 
-halt_on_error            | set_halt_on_error       | True                  | True, False       
-attribute_write_type     | set_attribute_write_type| True                  | Replace, Append   
-action                   | set_action              | True                  | Create, Delete    
-owner                    | set_owner               | True                  | Any Owner        
- --                      | upload                  | True                  | Indicator JSON String       
+|Property Name            | Method                  | Required              | Allowable Values |
+|------------------------ | ----------------------- | --------------------- | ---------------- |
+|halt_on_error            | set_halt_on_error       | True                  | True, False       |
+|attribute_write_type     | set_attribute_write_type| True                  | Replace, Append   |
+|action                   | set_action              | True                  | Create, Delete    |
+|owner                    | set_owner               | True                  | Any Owner        |
+| --                      | upload                  | True                  | Indicator JSON String |      
 
 Note: In the prior example, no API calls are made until the `commit()` method is invoked.
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`batch_jobs = dst_tc.batch_jobs()`        | Instantiate a Batch Job container object. 
-`for batch in indicators:`                | Iterator through an array of arrays of indicator objects. 
-`batch_job.set_...`                       | Configure batch job to process as many indicators as <br> possible without aborting. 
-`batch_job.upload(json.dumps(batch))`     | Upload job with indicator chunk as JSON data. 
-`batch_job.commit()`                      | Start batch job with configuration and data defined. 
-`while len(batch_ids) > 0:`               | Begin polling for batch status until all pending batches <br> are complete. 
-`filter.add_id(batchId)`                  | Add current batchId to filter. 
-`for batch_job in batch_jobs:`            | Get job for filtered batch ID. 
-`if batch_job.status == 'Completed':`     | Check job status completion. 
-`for batch_job in finished_batches:`      | Iterate through the finished batches for status print. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`batch_jobs = dst_tc.batch_jobs()`        | Instantiate a Batch Job container object. |
+|`for batch in indicators:`                | Iterator through an array of arrays of indicator objects. |
+|`batch_job.set_...`                       | Configure batch job to process as many indicators as possible without aborting. |
+|`batch_job.upload(json.dumps(batch))`     | Upload job with indicator chunk as JSON data. |
+|`batch_job.commit()`                      | Start batch job with configuration and data defined. |
+|`while len(batch_ids) > 0:`               | Begin polling for batch status until all pending batches are complete. |
+|`filter.add_id(batchId)`                  | Add current batchId to filter. |
+|`for batch_job in batch_jobs:`            | Get job for filtered batch ID. |
+|`if batch_job.status == 'Completed':`     | Check job status completion. |
+|`for batch_job in finished_batches:`      | Iterate through the finished batches for status print. |
 
 ##Documents Commit
 
-> The example below demonstrates how to a Document Resource in the ThreatConnect platform.
+The example below demonstrates how to a Document Resource in the ThreatConnect platform.
 
 ```python
 
@@ -2658,31 +2653,31 @@ The example demonstrates how to a Document Resource in the ThreatConnect platfor
 
 <b>Supported Properties</b>
 
-Property Name            | Method                  | Required              
------------------------- | ----------------------- | --------------------- 
-file_name                | set_file_name           | True                  
+|Property Name            | Method                  | Required              |
+|------------------------ | ----------------------- | --------------------- |
+|file_name                | set_file_name           | True                  |
 
 Note: In the prior example, no API calls are made until the `commit()` method is invoked.
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`documents = tc.documents()`              | Instantiate a Documents container object. 
-`document = documents.add('New Documen...`| Add a resource object setting the name and Owner. 
-`document.set_file_name('New File.txt')`  | **(REQUIRED)** Set the Document file name. 
-`fh = open('./sample1.zip', 'rb')`        | Open the file handle. 
-`contents = fh.read()`                    | Read contents of file from file handle. 
-`document.upload(contents)`               | **Upload** file contents. 
-`document.add_attribute('Description',...`| Add an Attribute of type **Description** to the <br> Resource. 
-`document.add_tag('EXAMPLE')`             | Add a Tag to the Document. 
-`document.set_security_label('TLP Green')`| Add a Security Label to the Document. 
-`document.commit()`                       | Trigger API calls to write all added, deleted, <br> or modified data. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`documents = tc.documents()`              | Instantiate a Documents container object. |
+|`document = documents.add('New Documen...`| Add a resource object setting the name and Owner. |
+|`document.set_file_name('New File.txt')`  | **(REQUIRED)** Set the Document file name. |
+|`fh = open('./sample1.zip', 'rb')`        | Open the file handle. |
+|`contents = fh.read()`                    | Read contents of file from file handle. |
+|`document.upload(contents)`               | **Upload** file contents. |
+|`document.add_attribute('Description',...`| Add an Attribute of type **Description** to the Resource. |
+|`document.add_tag('EXAMPLE')`             | Add a Tag to the Document. |
+|`document.set_security_label('TLP Green')`| Add a Security Label to the Document. |
+|`document.commit()`                       | Trigger API calls to write all added, deleted, or modified data. |
 
 ##Updating Document Resources
 
-> The example below demonstrates how to update a Document Resource in the ThreatConnect platform:
+The example below demonstrates how to update a Document Resource in the ThreatConnect platform:
 
 ```python
 
@@ -2720,23 +2715,23 @@ Note: In the prior example, no API calls are made until the `commit()` method is
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`documents = tc.documents()`              | Instantiate a Documents container object. 
-`document = documents.add('Updated Doc...`| Add a Resource object setting the name and Owner. 
-`document.set_id(20)`                   | Set the ID of the Document to the ***EXISTING*** <br> Document ID to update. 
-`document.load_attributes()`              | Load existing Attributes into the Document object. 
-`document.delete_attribute(attribute.id)` | Add a delete flag on the Attribute with <br> type **Description**. 
-`document.add_attribute('Description',...`| Add an Attribute of type **Description** to <br> the Resource. 
-`document.load_tags()`                    | Load existing Tags into the Document object. 
-`document.delete_tag(tag.name)`           | Add a delete flag to all Tags. 
-`document.add_tag('EXAMPLE')`             | Add a Tag to the Resource. 
-`document.commit()`                       | Trigger API calls to write all added, deleted, <br> or modified data. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`documents = tc.documents()`              | Instantiate a Documents container object. |
+|`document = documents.add('Updated Doc...`| Add a Resource object setting the name and Owner. |
+|`document.set_id(20)`                   | Set the ID of the Document to the ***EXISTING*** Document ID to update. |
+|`document.load_attributes()`              | Load existing Attributes into the Document object. |
+|`document.delete_attribute(attribute.id)` | Add a delete flag on the Attribute with type **Description**. |
+|`document.add_attribute('Description',...`| Add an Attribute of type **Description** to the Resource. |
+|`document.load_tags()`                    | Load existing Tags into the Document object. |
+|`document.delete_tag(tag.name)`           | Add a delete flag to all Tags. |
+|`document.add_tag('EXAMPLE')`             | Add a Tag to the Resource. |
+|`document.commit()`                       | Trigger API calls to write all added, deleted, or modified data. |
 
 ##Deleting Document Resources
 
-> The example below demonstrates how to delete a Document Resource in the ThreatConnect platform:
+The example below demonstrates how to delete a Document Resource in the ThreatConnect platform:
 
 ```python
 
@@ -2758,17 +2753,17 @@ The example demonstrates how to delete a Document Resource in the ThreatConnect 
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`documents = tc.documents()`              | Instantiate a Documents container object. 
-`document = documents.add('', owner)`     | Add a Resource object setting the name and Owner. 
-`document.set_id(20)`                   | Set the ID of the Document to the **EXISTING** <br> Document ID to delete. 
-`document.delete()`                       | Trigger API calls to write all added, deleted, <br> or modified data. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- | 
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`documents = tc.documents()`              | Instantiate a Documents container object. |
+|`document = documents.add('', owner)`     | Add a Resource object setting the name and Owner. |
+|`document.set_id(20)`                   | Set the ID of the Document to the **EXISTING** Document ID to delete. |
+|`document.delete()`                       | Trigger API calls to write all added, deleted, or modified data. |
 
 ##Emails Commit
 
-> The example below demonstrates how to create an Email Resource in the ThreatConnect platform:
+The example below demonstrates how to create an Email Resource in the ThreatConnect platform:
 
 ```python
 
@@ -2802,37 +2797,37 @@ The example demonstrates how to create an Email Resource in the ThreatConnect pl
 
 <b>Supported Properties</b>
 
-Property Name            | Method                  | Required              
------------------------- | ----------------------- | --------------------- 
-body                     | set_body                | True                  
-from_address             | set_from_address        | False                 
-header                   | set_header              | True                  
-score                    | set_score               | False                 
-subject                  | set_subject             | True                  
-to                       | set_to                  | False                 
+|Property Name            | Method                  | Required              |
+|------------------------ | ----------------------- | --------------------- |
+|body                     | set_body                | True                  |
+|from_address             | set_from_address        | False                 |
+|header                   | set_header              | True                  |
+|score                    | set_score               | False                 |
+|subject                  | set_subject             | True                  |
+|to                       | set_to                  | False                 |
 
 Note: In the prior example, no API calls are made until the `commit()` method is invoked.
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`emails = tc.emails()`          | Instantiate an Emails container object. 
-`email = emails.add('New Email', ...`| Add a Resource object setting the name and Owner. 
-`email.set_body('This is an email body...`| **(REQUIRED)** Set the Email body. 
-`email.set_from_address('bad_guy@badgu...`| **(OPTIONAL)** Set the Email from address. 
-`email.set_header('This is an improper...`| **(REQUIRED)** Set the Email header. 
-`email.set_subject('This is an email s...`| **(REQUIRED)** Set the Email subject. 
-`email.set_to('victim@goodguys.com')`     | **(OPTIONAL)** Set the Email to address. 
-`email.add_attribute('Description', 'D...`| Add an Attribute of type **Description** to the Resource. 
-`email.add_tag('EXAMPLE')`                | Add a Tag to the Email. 
-`email.set_security_label('TLP Green')`   |Add a Security Label to the Email. 
-`email.commit()`                       | Trigger API calls to write all added, deleted, <br> or modified data. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`emails = tc.emails()`          | Instantiate an Emails container object. |
+|`email = emails.add('New Email', ...`| Add a Resource object setting the name and Owner. |
+|`email.set_body('This is an email body...`| **(REQUIRED)** Set the Email body. |
+|`email.set_from_address('bad_guy@badgu...`| **(OPTIONAL)** Set the Email from address. |
+|`email.set_header('This is an improper...`| **(REQUIRED)** Set the Email header. |
+|`email.set_subject('This is an email s...`| **(REQUIRED)** Set the Email subject. |
+|`email.set_to('victim@goodguys.com')`     | **(OPTIONAL)** Set the Email to address. |
+|`email.add_attribute('Description', 'D...`| Add an Attribute of type **Description** to the Resource. |
+|`email.add_tag('EXAMPLE')`                | Add a Tag to the Email. |
+|`email.set_security_label('TLP Green')`   |Add a Security Label to the Email. |
+|`email.commit()`                       | Trigger API calls to write all added, deleted, or modified data. |
 
 ##Updating Email Resources
 
-> The example below demonstrates how to update an Email Resource in the ThreatConnect platform:
+The example below demonstrates how to update an Email Resource in the ThreatConnect platform:
 
 ```python
 
@@ -2870,23 +2865,23 @@ Note: In the prior example, no API calls are made until the `commit()` method is
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`emails = tc.emails()`                    | Instantiate an Emails container object. 
-`email = emails.add('Updated Email', o...`| Add a Resource object setting the name and Owner. 
-`email.set_id(20)`                      | Set the ID of the Email to the ***EXISTING*** <br> Email ID to update. 
-`email.load_attributes()`                 | Load existing Attributes into the Email object. 
-`email.delete_attribute(attribute.id)`    | Add a delete flag on the Attribute with <br> type **Description**. 
-`email.add_attribute('Description', 'U...`| Add an Attribute of type **Description** to <br> the Resource. 
-`email.load_tags()`                       | Load existing Tags into the Email object. 
-`email.delete_tag(tag.name)`              | Add a delete flag to all Tags. 
-`email.add_tag('EXAMPLE')`                | Add a Tag to the Resource. 
-`email.commit()`                       | Trigger API calls to write all added, deleted, <br> or modified data. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`emails = tc.emails()`                    | Instantiate an Emails container object. |
+|`email = emails.add('Updated Email', o...`| Add a Resource object setting the name and Owner. |
+|`email.set_id(20)`                      | Set the ID of the Email to the ***EXISTING*** Email ID to update. |
+|`email.load_attributes()`                 | Load existing Attributes into the Email object. |
+|`email.delete_attribute(attribute.id)`    | Add a delete flag on the Attribute with type **Description**. |
+|`email.add_attribute('Description', 'U...`| Add an Attribute of type **Description** to the Resource. |
+|`email.load_tags()`                       | Load existing Tags into the Email object. |
+|`email.delete_tag(tag.name)`              | Add a delete flag to all Tags. |
+|`email.add_tag('EXAMPLE')`                | Add a Tag to the Resource. |
+|`email.commit()`                       | Trigger API calls to write all added, deleted, or modified data. |
 
 ##Deleting Email Resources
 
-> The example below demonstrates how to delete an Email Resource in the ThreatConnect platform:
+The example below demonstrates how to delete an Email Resource in the ThreatConnect platform:
 
 ```python
 
@@ -2910,17 +2905,17 @@ Note: In the prior example, no API calls are made until the `commit()` method is
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`emails = tc.emails()`                    | Instantiate an Emails container object. 
-`email = emails.add('', owner)`           | Add a Resource object setting the name <br> and Owner. 
-`email.set_id(20)`                      | Set the ID of the Email to the **EXISTING** <Br> Email ID to delete. 
-`email.delete()`                       | Trigger API calls to write all added, deleted, <br> or modified data. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`emails = tc.emails()`                    | Instantiate an Emails container object. |
+|`email = emails.add('', owner)`           | Add a Resource object setting the name and Owner. |
+|`email.set_id(20)`                      | Set the ID of the Email to the **EXISTING** Email ID to delete. |
+|`email.delete()`                       | Trigger API calls to write all added, deleted, or modified data. |
 
 ##Incidents Commit
 
-> The example below demonstrates how to create an Incident Resource in the ThreatConnect platform:
+The example below demonstrates how to create an Incident Resource in the ThreatConnect platform:
 
 ```python
 
@@ -2951,28 +2946,28 @@ The example demonstrates how to create an Incident Resource in the ThreatConnect
 
 <b>Supported Properties</b>
 
-Property Name            | Method                  | Required              
------------------------- | ----------------------- | --------------------- 
-event_date               | set_event_date          | True                  
+|Property Name            | Method                  | Required              |
+|------------------------ | ----------------------- | --------------------- |
+|event_date               | set_event_date          | True                  |
 
 Note: In the prior example, no API calls are made until the `commit()` method is invoked.
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`incidents = tc.incidents()`              | Instantiate an Incidents container object. 
-`incident = incidents.add('New Incident')`| Add a Resource object setting the name and Owner. 
-`incident.set_event_date('2015-03-01T0...`| **(REQUIRED)** Set event date of Incident. 
-`incident.add_attribute('Description' ...`| Add an Attribute of type **Description** to <br> the Resource. 
-`incident.add_tag('EXAMPLE')`             | Add a Tag to the Incident. 
-`incident.set_security_label('TLP Green')`| Add a Security Label to the Incident. 
-`incident.commit()`                       | Trigger API calls to write all added, deleted, <br> or modified data. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`incidents = tc.incidents()`              | Instantiate an Incidents container object. |
+|`incident = incidents.add('New Incident')`| Add a Resource object setting the name and Owner. |
+|`incident.set_event_date('2015-03-01T0...`| **(REQUIRED)** Set event date of Incident. |
+|`incident.add_attribute('Description' ...`| Add an Attribute of type **Description** to the Resource. |
+|`incident.add_tag('EXAMPLE')`             | Add a Tag to the Incident. |
+|`incident.set_security_label('TLP Green')`| Add a Security Label to the Incident. |
+|`incident.commit()`                       | Trigger API calls to write all added, deleted, or modified data. |
 
 ##Updating Incident Resources
 
-> The example below demonstrates how to update an Incident Resource in the ThreatConnect platform:
+The example below demonstrates how to update an Incident Resource in the ThreatConnect platform:
 
 ```python
 
@@ -3010,23 +3005,23 @@ Note: In the prior example ,no API calls are made until the `commit()` method is
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`incidents = tc.incidents()`              | Instantiate an Incidents container object. 
-`incident = incidents.add('Updated Inc...`| Add a Resource object setting the name and Owner. 
-`incident.set_id(20)`                   | Set the ID of the Incident to the ***EXISTING*** <br> Incident ID to update. 
-`incident.load_attributes()`              | Load existing Attributes into the Incident object. 
-`incident.delete_attribute(attribute.id)` | Add a delete flag to the Attribute with <br> type **Description**. 
-`incident.add_attribute('Description' ...`| Add an Attribute of type **Description** to <Bb> the Resource. 
-`incident.load_tags()`                    | Load existing Tags into the Incident object. 
-`incident.delete_tag(tag.name)`           | Add a delete flag to all Tags. 
-`incident.add_tag('EXAMPLE')`             | Add a Tag to the Resource. 
-`incident.commit()`                       | Trigger API calls to write all added, deleted, <br> or modified data. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`incidents = tc.incidents()`              | Instantiate an Incidents container object. |
+|`incident = incidents.add('Updated Inc...`| Add a Resource object setting the name and Owner. |
+|`incident.set_id(20)`                   | Set the ID of the Incident to the ***EXISTING*** Incident ID to update. |
+|`incident.load_attributes()`              | Load existing Attributes into the Incident object. |
+|`incident.delete_attribute(attribute.id)` | Add a delete flag to the Attribute with type **Description**. |
+|`incident.add_attribute('Description' ...`| Add an Attribute of type **Description** to the Resource. |
+|`incident.load_tags()`                    | Load existing Tags into the Incident object. |
+|`incident.delete_tag(tag.name)`           | Add a delete flag to all Tags. |
+|`incident.add_tag('EXAMPLE')`             | Add a Tag to the Resource. |
+|`incident.commit()`                       | Trigger API calls to write all added, deleted, or modified data. |
 
 ##Deleting Incident Resources
 
-> The example below demonstrates how to delete an Incident Resource in the ThreatConnect platform:
+The example below demonstrates how to delete an Incident Resource in the ThreatConnect platform:
 
 ```python
 
@@ -3050,17 +3045,17 @@ Note: In the prior example, no API calls are made until the `delete()` method is
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`incidents = tc.incidents()`              | Instantiate an Incidents container object. 
-`incident = incidents.add('', owner)`     | Add a Resource object setting the name and Owner. 
-`incident.set_id(20)`                   | Set the ID of the Incident to the **EXISTING** <br> Incident ID to delete. 
-`incident.delete()`                       | Trigger API calls to write all added, deleted, <br> or modified data. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`incidents = tc.incidents()`              | Instantiate an Incidents container object. |
+|`incident = incidents.add('', owner)`     | Add a Resource object setting the name and Owner. |
+|`incident.set_id(20)`                   | Set the ID of the Incident to the **EXISTING** Incident ID to delete. |
+|`incident.delete()`                       | Trigger API calls to write all added, deleted, or modified data. |
 
 ##Indicators Commit
 
-> The example below demonstrates how to create an Address Indicator resource in the ThreatConnect platform:
+The example below demonstrates how to create an Address Indicator resource in the ThreatConnect platform:
 
 ```python
 
@@ -3095,21 +3090,21 @@ The example demonstrates how to create an Address Indicator resource in the Thre
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id,...`    | Instantiate the ThreatConnect object. 
-`indicators = tc.indicators()`            | Instantiate an Indicator container object. 
-`indicator = indicators.add('4.3.254....` | Add a Resource object setting the value and Owner. 
-`indicator.set_confidence(75)`            | Set the Confidence value for this Indicator. 
-`indicator.set_rating(2.5)`               | Set the Rating value for this Indicator. 
-`indicator.add_attribute('Description...` | Add an Attribute of type **Description** to the Resource. 
-`indicator.add_tag('EXAMPLE')`            | Add a Tag to the Resource. 
-`indicator.set_security_label('TLP Gre..` | Add a Security Label to the Resource. 
-`indicator.commit()`                      | Trigger multiple API calls to write Resource, <br> Attributes, Security Labels, and Tags. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id,...`    | Instantiate the ThreatConnect object. |
+|`indicators = tc.indicators()`            | Instantiate an Indicator container object. |
+|`indicator = indicators.add('4.3.254....` | Add a Resource object setting the value and Owner. |
+|`indicator.set_confidence(75)`            | Set the Confidence value for this Indicator. |
+|`indicator.set_rating(2.5)`               | Set the Rating value for this Indicator. |
+|`indicator.add_attribute('Description...` | Add an Attribute of type **Description** to the Resource. |
+|`indicator.add_tag('EXAMPLE')`            | Add a Tag to the Resource. |
+|`indicator.set_security_label('TLP Gre..` | Add a Security Label to the Resource. |
+|`indicator.commit()`                      | Trigger multiple API calls to write Resource, Attributes, Security Labels, and Tags. |
 
 ##Adding Email Address Indicators
 
-> The example below demonstrates how to create an Email Address Indicator Resource in the ThreatConnect platform:
+The example below demonstrates how to create an Email Address Indicator Resource in the ThreatConnect platform:
 
 ```python
 
@@ -3137,21 +3132,21 @@ The example demonstrates how to create an Email Address Indicator Resource in th
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id,...`    | Instantiate the ThreatConnect object. 
-`indicators = tc.indicators()`            | Instantiate an Indicator container object. 
-`indicator = indicators.add('badguy@....` | Add a Resource object setting the value and Owner. 
-`indicator.set_confidence(75)`            | Set the Confidence value for this Indicator. 
-`indicator.set_rating(2.5)`               | Set the Rating value for this Indicator. 
-`indicator.add_attribute('Description...` | Add an Attribute of type **Description** to the Resource. 
-`indicator.add_tag('EXAMPLE')`            | Add a Tag to the Resource. 
-`indicator.set_security_label('TLP Gre..` | Add a Security Label to the Resource. 
-`indicator.commit()`                      | Trigger multiple API calls to write Resource, <br> Attributes, Security Labels, and Tags. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id,...`    | Instantiate the ThreatConnect object. |
+|`indicators = tc.indicators()`            | Instantiate an Indicator container object. |
+|`indicator = indicators.add('badguy@....` | Add a Resource object setting the value and Owner. |
+|`indicator.set_confidence(75)`            | Set the Confidence value for this Indicator. |
+|`indicator.set_rating(2.5)`               | Set the Rating value for this Indicator. |
+|`indicator.add_attribute('Description...` | Add an Attribute of type **Description** to the Resource. |
+|`indicator.add_tag('EXAMPLE')`            | Add a Tag to the Resource. |
+|`indicator.set_security_label('TLP Gre..` | Add a Security Label to the Resource. |
+|`indicator.commit()`                      | Trigger multiple API calls to write Resource, Attributes, Security Labels, and Tags. |
 
 ##Adding File Hash Indicators
 
-> The example below demonstrates how to create a File Hash Indicator Resource in the ThreatConnect platform:
+The example below demonstrates how to create a File Hash Indicator Resource in the ThreatConnect platform:
 
 ```python
 
@@ -3182,23 +3177,23 @@ The example demonstrates how to create a File Hash Indicator Resource in the Thr
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id,...`    | Instantiate the ThreatConnect object. 
-`indicator = indicators.add('8743b520...` | Add an Indicator object setting the value and Owner. 
-`indicator.set_indicator('b89eaac7e61...` | Add File addition File Hashes for this Indicator. 
-`indicator.set_indicator('127e6fbfe24...` | Add File addition File Hashes for this Indicator. 
-`indicator.set_confidence(75)`            | Set the Confidence value for this Indicator. 
-`indicator.set_rating(2.5)`               | Set the Rating value for this Indicator. 
-`indicator.set_size(112)`                 | Set the File size property of the Indicator. 
-`indicator.add_attribute('Description...` | Add an Attribute of type **Description** to the Resource. 
-`indicator.add_tag('EXAMPLE')`            | Add a Tag to the Indicator. 
-`indicator.set_security_label('TLP Gre..` | Add a Security Label to the Indicator. 
-`indicator.commit()`                      | Trigger multiple API calls to write Indicator, <br> Attributes, Security Labels, and Tags. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id,...`    | Instantiate the ThreatConnect object. |
+|`indicator = indicators.add('8743b520...` | Add an Indicator object setting the value and Owner. |
+|`indicator.set_indicator('b89eaac7e61...` | Add File addition File Hashes for this Indicator. |
+|`indicator.set_indicator('127e6fbfe24...` | Add File addition File Hashes for this Indicator. |
+|`indicator.set_confidence(75)`            | Set the Confidence value for this Indicator. |
+|`indicator.set_rating(2.5)`               | Set the Rating value for this Indicator. |
+|`indicator.set_size(112)`                 | Set the File size property of the Indicator. |
+|`indicator.add_attribute('Description...` | Add an Attribute of type **Description** to the Resource. |
+|`indicator.add_tag('EXAMPLE')`            | Add a Tag to the Indicator. |
+|`indicator.set_security_label('TLP Gre..` | Add a Security Label to the Indicator. |
+|`indicator.commit()`                      | Trigger multiple API calls to write Indicator, Attributes, Security Labels, and Tags. |
 
 ##Adding File Occurrences
 
-> A File occurrence can be added to File Indicators by inserting the example code before the `indicator.commit()` method is called:
+A File occurrence can be added to File Indicators by inserting the example code before the `indicator.commit()` method is called:
 
 ```python
 
@@ -3210,7 +3205,7 @@ A File occurrence can be added to File Indicators by inserting the example code 
 
 ##Adding Host Indicators
 
-> The example below demonstrates how to create a Host Indicator Resource in the ThreatConnect platform:
+The example below demonstrates how to create a Host Indicator Resource in the ThreatConnect platform:
 
 ```python
 
@@ -3234,7 +3229,7 @@ except RuntimeError as e:
     sys.exit(1)
 ```
 
-> Automatically enrich indicator with DNS resolution or ownership information from a third-party service
+Automatically enrich indicator with DNS resolution or ownership information from a third-party service
 
 ```python
 # Query PTR record for a given domain, or {A, AAAA} record for a given IP
@@ -3248,21 +3243,21 @@ The example demonstrates how to create a Host Indicator Resource in the ThreatCo
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id,...`    | Instantiate the ThreatConnect object. 
-`indicators = tc.indicators()`            | Instantiate an Indicator container object. 
-`indicator = indicators.add('badguy.....` | Add a Resource object setting the value and Owner. 
-`indicator.set_confidence(75)`            | Set the Confidence value for this Indicator. 
-`indicator.set_rating(2.5)`               | Set the Rating value for this Indicator. 
-`indicator.add_attribute('Description...` | Add an Attribute of type **Description** to the Resource. 
-`indicator.add_tag('EXAMPLE')`            | Add a Tag to the Resource. 
-`indicator.set_security_label('TLP Gre..` | Add a Security Label to the Resource. 
-`indicator.commit()`                      | Trigger multiple API calls to write Resource, <br> Attributes, Security Labels, and Tags. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id,...`    | Instantiate the ThreatConnect object. |
+|`indicators = tc.indicators()`            | Instantiate an Indicator container object. |
+|`indicator = indicators.add('badguy.....` | Add a Resource object setting the value and Owner. |
+|`indicator.set_confidence(75)`            | Set the Confidence value for this Indicator. |
+|`indicator.set_rating(2.5)`               | Set the Rating value for this Indicator. |
+|`indicator.add_attribute('Description...` | Add an Attribute of type **Description** to the Resource. |
+|`indicator.add_tag('EXAMPLE')`            | Add a Tag to the Resource. |
+|`indicator.set_security_label('TLP Gre..` | Add a Security Label to the Resource. |
+|`indicator.commit()`                      | Trigger multiple API calls to write Resource, Attributes, Security Labels, and Tags. |
 
 ##Adding URL Indicators
 
-> The example below demonstrates how to create a URL Indicator Resource in the ThreatConnect platform:
+The example below demonstrates how to create a URL Indicator Resource in the ThreatConnect platform:
 
 ```python
 
@@ -3290,21 +3285,21 @@ The example demonstrates how to create a URL Indicator Resource in the ThreatCon
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id,...`    | Instantiate the ThreatConnect object. 
-`indicators = tc.indicators()`            | Instantiate an Indicator container object. 
-`indicator = indicators.add('badguy.....` | Add a Resource object setting the value and Owner. 
-`indicator.set_confidence(75)`            | Set the Confidence value for this Indicator. 
-`indicator.set_rating(2.5)`               | Set the Rating value for this Indicator. 
-`indicator.add_attribute('Description...` | Add an Attribute of type **Description** to the Resource. 
-`indicator.add_tag('EXAMPLE')`            | Add a Tag to the Resource. 
-`indicator.set_security_label('TLP Gre..` | Add a Security Label to the Resource. 
-`indicator.commit()`                      | Trigger multiple API calls to write Resource, <br> Attributes, Security Labels, and Tags. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id,...`    | Instantiate the ThreatConnect object. |
+|`indicators = tc.indicators()`            | Instantiate an Indicator container object. |
+|`indicator = indicators.add('badguy.....` | Add a Resource object setting the value and Owner. |
+|`indicator.set_confidence(75)`            | Set the Confidence value for this Indicator. |
+|`indicator.set_rating(2.5)`               | Set the Rating value for this Indicator. |
+|`indicator.add_attribute('Description...` | Add an Attribute of type **Description** to the Resource. |
+|`indicator.add_tag('EXAMPLE')`            | Add a Tag to the Resource. |
+|`indicator.set_security_label('TLP Gre..` | Add a Security Label to the Resource. |
+|`indicator.commit()`                      | Trigger multiple API calls to write Resource, Attributes, Security Labels, and Tags. |
 
 ##Deleting Indicator Resources
 
-> Python SDK deleting Indicator Resources:
+Python SDK deleting Indicator Resources:
 
 ```python
 
@@ -3323,16 +3318,16 @@ except RuntimeError as e:
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id,...`    | Instantiate the ThreatConnect object. 
-`indicators = tc.indicators()`              | Instantiate an Indicator container object. 
-`indicator = indicators.add('4.3.2.1...`  | Add a Resource object setting the value and Owner. 
-`indicator.delete()`                      | Trigger API calls to delete the Resource. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id,...`    | Instantiate the ThreatConnect object. |
+|`indicators = tc.indicators()`              | Instantiate an Indicator container object. |
+|`indicator = indicators.add('4.3.2.1...`  | Add a Resource object setting the value and Owner. |
+|`indicator.delete()`                      | Trigger API calls to delete the Resource. |
 
 ##Signatures Commit
 
-> The example below demonstrates how to create a Signature Resource in the ThreatConnect platform.
+The example below demonstrates how to create a Signature Resource in the ThreatConnect platform.
 
 ```python
 
@@ -3373,32 +3368,32 @@ The example demonstrates how to create a Signature Resource in the ThreatConnect
 
 <b>Supported Properties</b>
 
-Property Name            | Method                  | Required              
------------------------- | ----------------------- | --------------------- 
-file_name                | set_file_name           | True                  
-file_text                | set_file_text           | False                 
-file_type                | set_file_type           | True                  
+|Property Name            | Method                  | Required              |
+|------------------------ | ----------------------- | --------------------- |
+|file_name                | set_file_name           | True                  |
+|file_text                | set_file_text           | False                 |
+|file_type                | set_file_type           | True                  |
 
 Note: In the prior example, no API calls are made until the `commit()` method is invoked.
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`signatures = tc.signatures()`            | Instantiate a Signatures container object. 
-`signature = signatures.add('New Signa...`| Add a Resource object setting the name and Owner. 
-`signature.set_file_name('bad_file.txt')` | **(REQUIRED)** Set file name for Signature. 
-`signature.set_file_type('YARA')`         | **(REQUIRED)** Set file type for Signature. 
-`signature.set_file_text(file_text)`      | **(OPTIONAL)** Set file contents for Signature. 
-`signature.add_attribute('Description'...`| Add an Attribute of type **Description** to the Resource. 
-`signature.add_tag('EXAMPLE')`            | Add a Tag to the Signature. 
-`signature.set_security_label('TLP Gre...`| Add a Security Label to the Signature. 
-`signature.commit()`                       | Trigger API calls to write all added, deleted, <br> or modified data. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`signatures = tc.signatures()`            | Instantiate a Signatures container object.| 
+|`signature = signatures.add('New Signa...`| Add a Resource object setting the name and Owner. |
+|`signature.set_file_name('bad_file.txt')` | **(REQUIRED)** Set file name for Signature. |
+|`signature.set_file_type('YARA')`         | **(REQUIRED)** Set file type for Signature. |
+|`signature.set_file_text(file_text)`      | **(OPTIONAL)** Set file contents for Signature. |
+|`signature.add_attribute('Description'...`| Add an Attribute of type **Description** to the Resource. |
+|`signature.add_tag('EXAMPLE')`            | Add a Tag to the Signature. |
+|`signature.set_security_label('TLP Gre...`| Add a Security Label to the Signature. |
+|`signature.commit()`                       | Trigger API calls to write all added, deleted, or modified data. |
 
 ##Updating Signature Resources
 
-> The example below demonstrates how to update a Signature Resource in the ThreatConnect platform:
+The example below demonstrates how to update a Signature Resource in the ThreatConnect platform:
 
 ```python
 
@@ -3436,23 +3431,23 @@ Note: In the prior example, no API calls are made until the `commit()` method is
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`signatures = tc.signatures()`            | Instantiate a Signatures container object. 
-`signature = signatures.add('Updated D...`| Add a Resource object setting the name and Owner. 
-`signature.set_id(20)`                  | Set the ID of the Signature to the ***EXISTING*** <br> Signature ID to update. 
-`signature.load_attributes()`             | Load existing Attributes into the Signature object. 
-`signature.delete_attribute(attribute.id)`| Add a delete flag to the Attribute with <br> type **Description**. 
-`signature.add_attribute('Description'...`| Add an Attribute of type **Description** to <br> the Resource. 
-`signature.load_tags()`                   | Load existing Tags into the Signature object. 
-`signature.delete_tag(tag.name)`          | Add a delete flag to all Tags. 
-`signature.add_tag('EXAMPLE')`            | Add a Tag to the Resource. 
-`signature.commit()`                       | Trigger API calls to write all added, deleted, <br> or modified data. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`signatures = tc.signatures()`            | Instantiate a Signatures container object. |
+|`signature = signatures.add('Updated D...`| Add a Resource object setting the name and Owner. |
+|`signature.set_id(20)`                  | Set the ID of the Signature to the ***EXISTING*** Signature ID to update. |
+|`signature.load_attributes()`             | Load existing Attributes into the Signature object. |
+|`signature.delete_attribute(attribute.id)`| Add a delete flag to the Attribute with type **Description**. |
+|`signature.add_attribute('Description'...`| Add an Attribute of type **Description** to the Resource. |
+|`signature.load_tags()`                   | Load existing Tags into the Signature object. |
+|`signature.delete_tag(tag.name)`          | Add a delete flag to all Tags. |
+|`signature.add_tag('EXAMPLE')`            | Add a Tag to the Resource. |
+|`signature.commit()`                       | Trigger API calls to write all added, deleted, or modified data. |
 
 ##Deleting Signature Resources
 
-> The example below demonstrates how to delete a Signature Resource in the ThreatConnect platform.
+The example below demonstrates how to delete a Signature Resource in the ThreatConnect platform.
 
 ```python
 
@@ -3476,13 +3471,13 @@ Note: In the prior example, no API calls are made until the `commit()` method is
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`signatures = tc.signatures()`            | Instantiate a Signatures container object. 
-`signature = signatures.add('', owner)`   | Add a Resource object setting the name and Owner. 
-`signature.set_id(20)`                  | Set the ID of the Signature to the **EXISTING** <br> Signature ID to delete. 
-`signature.delete()`                       | Trigger API calls to write all added, deleted, <br> or modified data. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`signatures = tc.signatures()`            | Instantiate a Signatures container object. |
+|`signature = signatures.add('', owner)`   | Add a Resource object setting the name and Owner. |
+|`signature.set_id(20)`                  | Set the ID of the Signature to the **EXISTING** Signature ID to delete. |
+|`signature.delete()`                       | Trigger API calls to write all added, deleted, or modified data. |
 
 ## Tasks Commit
 The ThreatConnect platform supports [adding](#adding-task-resources), [deleting](#deleting-task-resources), and [updating](#updating-task-resources) of task-intelligence data programmatically using the API. The Python SDK features an easy-to-use interface to assist in rapid development of software to manage this data.
@@ -3514,19 +3509,19 @@ except RuntimeError as e:
     sys.exit(1)
 ```
 
-> Note: In the prior example, no API calls are made until the `commit()` method is invoked.
+Note: In the prior example, no API calls are made until the `commit()` method is invoked.
 
 ###Code Highlights
 
-Snippet                                   | Description                                                                       |
------------------------------------------ | --------------------------------------------------------------------------------- |
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
-`tasks = tc.tasks()`                      | Instantiate a Tasks container object. |
-`task = tasks.add('New task' own...`      | Add a Resource object setting the name and Owner. |
-`task.add_attribute('Description' 'D...`  | Add an Attribute of type **Description** to the Resource. |
-`task.add_tag('EXAMPLE')`                 | Add a Tag to the Task. |
-`task.add_security_label('TLP Green')`    | Add a Security Label to the task. |
-`task.commit()`                           | Trigger API calls to write all added, deleted, or modified data. |
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`tasks = tc.tasks()`                      | Instantiate a Tasks container object. |
+|`task = tasks.add('New task' own...`      | Add a Resource object setting the name and Owner. |
+|`task.add_attribute('Description' 'D...`  | Add an Attribute of type **Description** to the Resource. |
+|`task.add_tag('EXAMPLE')`                 | Add a Tag to the Task. |
+|`task.add_security_label('TLP Green')`    | Add a Security Label to the task. |
+|`task.commit()`                           | Trigger API calls to write all added, deleted, or modified data. |
 
 ## Updating Task Resources
 The example below demonstrates how to update a Task Resource in the ThreatConnect platform. For more information on the purpose of each line of code, see the **Code Highlights** section below.
@@ -3563,23 +3558,23 @@ except RuntimeError as e:
     sys.exit(1)
 ```
 
-> Note: In the prior example, no API calls are made until the `commit()` method is invoked.
+Note: In the prior example, no API calls are made until the `commit()` method is invoked.
 
 *Code Highlights*
 
-Snippet                                   | Description                                                                       |
------------------------------------------ | --------------------------------------------------------------------------------- |
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
-`tasks = tc.tasks()`                      | Instantiate a Tasks container object. |
-`task = Tasks.add('Updated task'...`      | Add a Resource object setting the name and Owner. |
-`task.set_id(20)`                       | Set the ID of the task to the ***EXISTING*** task ID to update. |
-`task.load_attributes()`                  | Load existing Attributes into the task object. |
-`task.delete_attribute(attribute.id)`     | Add a delete flag to the Attribute with type **Description**. |
-`task.add_attribute('Description', '...`  | Add an Attribute of type **Description** to the Resource. |
-`task.load_tags()`                        | Load existing Tags into the task object. |
-`task.delete_tag(tag.name)`               | Add a delete flag to all Tags. |
-`task.add_tag('EXAMPLE')`                 | Add a Tag to the Resource. |
-`task.commit()`                           | Trigger API calls to write all added, deleted, or modified data. |
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`tasks = tc.tasks()`                      | Instantiate a Tasks container object. |
+|`task = Tasks.add('Updated task'...`      | Add a Resource object setting the name and Owner. |
+|`task.set_id(20)`                       | Set the ID of the task to the ***EXISTING*** task ID to update. |
+|`task.load_attributes()`                  | Load existing Attributes into the task object. |
+|`task.delete_attribute(attribute.id)`     | Add a delete flag to the Attribute with type **Description**. |
+|`task.add_attribute('Description', '...`  | Add an Attribute of type **Description** to the Resource. |
+|`task.load_tags()`                        | Load existing Tags into the task object. |
+|`task.delete_tag(tag.name)`               | Add a delete flag to all Tags. |
+|`task.add_tag('EXAMPLE')`                 | Add a Tag to the Resource. |
+|`task.commit()`                           | Trigger API calls to write all added, deleted, or modified data. |
 
 ## Deleting Task Resources
 The example below demonstrates how to delete a Task Resource in the ThreatConnect platform. For more information on the purpose of each line of code, see the **Code Highlights** section below.
@@ -3603,17 +3598,17 @@ except RuntimeError as e:
     sys.exit(1)
 ```
 
-> Note: In the prior example, no API calls are made until the `commit()` method is invoked.
+Note: In the prior example, no API calls are made until the `commit()` method is invoked.
 
 *Code Highlights*
 
-Snippet                                   | Description                                                                       |
------------------------------------------ | --------------------------------------------------------------------------------- |
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
-`tasks = tc.tasks()`                      | Instantiate a Tasks container object. |
-`task = tasks.add('', owner)`             | Add a Task Resource setting the name and Owner. |
-`task.set_id(20)`                         | Set the ID of the task to the **EXISTING** task ID to delete. |
-`task.delete()`                           | Trigger API calls to delete the task. |
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`tasks = tc.tasks()`                      | Instantiate a Tasks container object. |
+|`task = tasks.add('', owner)`             | Add a Task Resource setting the name and Owner. |
+|`task.set_id(20)`                         | Set the ID of the task to the **EXISTING** task ID to delete. |
+|`task.delete()`                           | Trigger API calls to delete the task. |
 
 <b>Attributes</b>
 See the [Loading Attributes Example](#loading-attributes-example).
@@ -3640,7 +3635,7 @@ See the [Victim Associations Documentation](#victim-associations-retrieve).
 
 ##Threats Commit
 
-> The example below demonstrates how to create a Threat Resource in the ThreatConnect platform:
+The example below demonstrates how to create a Threat Resource in the ThreatConnect platform:
 
 ```python
 
@@ -3669,19 +3664,19 @@ Note: In the prior example, no API calls are made until the `commit()` method is
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`threats = tc.threats()`                  | Instantiate a Threats container object. 
-`threat = threats.add('New Threat' own...`| Add a Resource object setting the name and Owner. 
-`threat.add_attribute('Description' 'D...`| Add an Attribute of type **Description** <br> to the Resource. 
-`threat.add_tag('EXAMPLE')`               | Add a Tag to the Threat. 
-`threat.set_security_label('TLP Green')`  | Add a Security Label to the Threat. 
-`threat.commit()`                       | Trigger API calls to write all added, deleted, <br> or modified data. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`threats = tc.threats()`                  | Instantiate a Threats container object. |
+|`threat = threats.add('New Threat' own...`| Add a Resource object setting the name and Owner. |
+|`threat.add_attribute('Description' 'D...`| Add an Attribute of type **Description** to the Resource. |
+|`threat.add_tag('EXAMPLE')`               | Add a Tag to the Threat. |
+|`threat.set_security_label('TLP Green')`  | Add a Security Label to the Threat. |
+|`threat.commit()`                       | Trigger API calls to write all added, deleted, or modified data. |
 
 ##Updating Threat Resources
 
-> The example below demonstrates how to update a Threat Resource in the ThreatConnect platform:
+The example below demonstrates how to update a Threat Resource in the ThreatConnect platform:
 
 ```python
 
@@ -3719,23 +3714,23 @@ Note: In the prior example, no API calls are made until the `commit()` method is
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`threats = tc.threats()`                  | Instantiate a Threats container object. 
-`threat = threats.add('Updated Threat'...`| Add a Resource object setting the name and Owner. 
-`threat.set_id(20)`                     | Set the ID of the Threat to the ***EXISTING*** <br> Threat ID to update. 
-`threat.load_attributes()`                | Load existing Attributes into the Threat object. 
-`threat.delete_attribute(attribute.id)`   | Add a delete flag to the Attribute with <br> type **Description**. 
-`threat.add_attribute('Description', '...`| Add an Attribute of type **Description** to <br> the Resource. 
-`threat.load_tags()`                      | Load existing Tags into the Threat object. 
-`threat.delete_tag(tag.name)`             | Add a delete flag to all Tags. 
-`threat.add_tag('EXAMPLE')`               | Add a Tag to the Resource. 
-`threat.commit()`                       | Trigger API calls to write all added, deleted, <br> or modified data. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`threats = tc.threats()`                  | Instantiate a Threats container object. |
+|`threat = threats.add('Updated Threat'...`| Add a Resource object setting the name and Owner. |
+|`threat.set_id(20)`                     | Set the ID of the Threat to the ***EXISTING*** Threat ID to update. |
+|`threat.load_attributes()`                | Load existing Attributes into the Threat object. |
+|`threat.delete_attribute(attribute.id)`   | Add a delete flag to the Attribute with type **Description**. |
+|`threat.add_attribute('Description', '...`| Add an Attribute of type **Description** to the Resource. |
+|`threat.load_tags()`                      | Load existing Tags into the Threat object. |
+|`threat.delete_tag(tag.name)`             | Add a delete flag to all Tags. |
+|`threat.add_tag('EXAMPLE')`               | Add a Tag to the Resource. |
+|`threat.commit()`                       | Trigger API calls to write all added, deleted, or modified data. |
 
 ##Deleting Threat Resources
 
-> The example below demonstrates how to delete an Threat Resource in the ThreatConnect platform:
+The example below demonstrates how to delete an Threat Resource in the ThreatConnect platform:
 
 ```python
 
@@ -3759,17 +3754,17 @@ Note: In the prior example, no API calls are made until the `commit()` method is
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`threats = tc.threats()`                  | Instantiate a Threats container object. 
-`threat = threats.add('', owner)`         | Add a Resource object setting the name and Owner. 
-`threat.set_id(20)`                     | Set the ID of the Threat to the **EXISTING** <br> Threat ID to delete. 
-`threat.delete()`                       | Trigger API calls to write all added, deleted, <br> or modified data. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`threats = tc.threats()`                  | Instantiate a Threats container object. |
+|`threat = threats.add('', owner)`         | Add a Resource object setting the name and Owner. |
+|`threat.set_id(20)`                     | Set the ID of the Threat to the **EXISTING** Threat ID to delete. |
+|`threat.delete()`                       | Trigger API calls to write all added, deleted, or modified data. |
 
 ##Victims Commit
 
-> The example below demonstrates hoe to create a Victim Resource in the ThreatConnect platform:
+The example below demonstrates hoe to create a Victim Resource in the ThreatConnect platform:
 
 ```python
 
@@ -3830,19 +3825,19 @@ Note: In the prior example, no API calls are made until the `commit()` method is
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`victims = tc.victims()`                  | Instantiate a Victims container object. 
-`victim = victims.add('Robin Scherbats...`| Add a Resource object setting the name and Owner. 
-`victim.set_nationality('Canadian')`      | **(OPTIONAL)** Set Victim nationality. 
-`victim.set_org('Royal Canadian Mounte...`| **(OPTIONAL)** Set Victim Organization. 
-`victim.set_suborg('Quebec Office')`      | **(OPTIONAL)** Set Victim Sub-Organization. 
-`victim.set_work_location('Quebec')`      | **(OPTIONAL)** Set Victim location. 
-`victim.commit()`                       | Trigger API calls to write all added, deleted, <br> or modified data. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`victims = tc.victims()`                  | Instantiate a Victims container object. |
+|`victim = victims.add('Robin Scherbats...`| Add a Resource object setting the name and Owner. |
+|`victim.set_nationality('Canadian')`      | **(OPTIONAL)** Set Victim nationality. |
+|`victim.set_org('Royal Canadian Mounte...`| **(OPTIONAL)** Set Victim Organization. |
+|`victim.set_suborg('Quebec Office')`      | **(OPTIONAL)** Set Victim Sub-Organization. |
+|`victim.set_work_location('Quebec')`      | **(OPTIONAL)** Set Victim location. |
+|`victim.commit()`                       | Trigger API calls to write all added, deleted, or modified data. |
 
 ##Updating Victim Resources
-> The example below demonstrates how to update a Victim Resource in the ThreatConnect platform:
+The example below demonstrates how to update a Victim Resource in the ThreatConnect platform:
 
 ```python
 
@@ -3867,17 +3862,17 @@ Note: In the prior example, no API calls are made until the `commit()` method is
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`victims = tc.victims()`                  | Instantiate a Victims container object. 
-`victim = victims.add('Updated Victim'...`| Add a Resource object setting the name and Owner. 
-`victim.set_id(20)`                     | Set the ID of the Victim to the ***EXISTING*** <br> Victim ID to update. 
-`victim.commit()`                       | Trigger API calls to write all added, deleted, <br> or modified data. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`victims = tc.victims()`                  | Instantiate a Victims container object. |
+|`victim = victims.add('Updated Victim'...`| Add a Resource object setting the name and Owner. |
+|`victim.set_id(20)`                     | Set the ID of the Victim to the ***EXISTING*** Victim ID to update. |
+|`victim.commit()`                       | Trigger API calls to write all added, deleted, or modified data. |
 
 ##Deleting Victim Resources
 
-> The example below demonstrates how to delete a Victim Resource in the ThreatConnect platform:
+The example below demonstrates how to delete a Victim Resource in the ThreatConnect platform:
 
 ```python
 
@@ -3901,13 +3896,13 @@ Note: In the prior example, no API calls are made until the `commit()` method is
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`victims = tc.victims()`                  | Instantiate a Victims container object. 
-`victim = victims.add('', owner)`         | Add a Resource object setting the name and Owner. 
-`victim.set_id(20)`                     | Set the ID of the Victim to the **EXISTING** <br> Victim ID to delete. 
-`victim.delete()`                       | Trigger API calls to write all added, deleted, <br> or modified data. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`victims = tc.victims()`                  | Instantiate a Victims container object. |
+|`victim = victims.add('', owner)`         | Add a Resource object setting the name and Owner. |
+|`victim.set_id(20)`                     | Set the ID of the Victim to the **EXISTING** Victim ID to delete. |
+|`victim.delete()`                       | Trigger API calls to write all added, deleted, or modified data. |
 
 <b>Attributes</b>
 See the [Loading Attributes Example](#loading-attributes-example).
@@ -3926,7 +3921,7 @@ See the [Group Associations Documentation](#associations).
 
 ##Associations
 
-> The following example demonstrates how to **Associate** an Adversary Resource with an Incident and Signature Resource. For other Resource Groups, Indicators, and Victims, the same method should be used:
+The following example demonstrates how to **Associate** an Adversary Resource with an Incident and Signature Resource. For other Resource Groups, Indicators, and Victims, the same method should be used:
 
 ```python
 
@@ -3957,18 +3952,18 @@ Note: In the prior example, no API calls are made until the commit() method is i
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`resources = tc.adversaries()`            | Instantiate a Resources container object. 
-`resource = resources.add('New Resourc...`| Add a Resource object setting the name and Owner. 
-`resource.associate_group(ResourceType...`| Add an Association to another Resource. 
-`resource.associate_group(ResourceType...`| Add an Association to another Resource. 
-`resource.commit()`                       | Trigger API calls to write all added, deleted, <br> or modified data. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`resources = tc.adversaries()`            | Instantiate a Resources container object. |
+|`resource = resources.add('New Resourc...`| Add a Resource object setting the name and Owner. |
+|`resource.associate_group(ResourceType...`| Add an Association to another Resource. |
+|`resource.associate_group(ResourceType...`| Add an Association to another Resource. |
+|`resource.commit()`                       | Trigger API calls to write all added, deleted, or modified data. |
 
 ##Associate Indicator
 
-> The following example demonstrates how to **Associate** an Indicator to an Adversary Resource. For other Resource Groups, Indicators, and Victims, the same method should be used:
+The following example demonstrates how to **Associate** an Indicator to an Adversary Resource. For other Resource Groups, Indicators, and Victims, the same method should be used:
 
 ```python
 
@@ -3995,19 +3990,19 @@ Note: In the prior example, no API calls are made until the commit() method is i
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`resources = tc.adversaries()`            | Instantiate a Resources container object. 
-`resource = resources.add('New Resourc...`| Add a Resource object setting the name and Owner. 
-`resource.associate_indicator(Resource...`| Add an Association to an Indicator. 
-`resource.associate_indicator(Resource...`| Add an Association to an Indicator. 
-`resource.associate_indicator(Resource...`| Add an Association to an Indicator. 
-`resource.commit()`                       | Trigger API calls to write all added, deleted, <br> or modified data.
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`resources = tc.adversaries()`            | Instantiate a Resources container object. |
+|`resource = resources.add('New Resourc...`| Add a Resource object setting the name and Owner. |
+|`resource.associate_indicator(Resource...`| Add an Association to an Indicator. |
+|`resource.associate_indicator(Resource...`| Add an Association to an Indicator. |
+|`resource.associate_indicator(Resource...`| Add an Association to an Indicator. |
+|`resource.commit()`                       | Trigger API calls to write all added, deleted, or modified data.|
 
 ##Associate Victim
 
-> The following example demonstrates how to **Associate** a Victim to an Adversary Resource. For other Resource Groups and Indicators, the same method should be used:
+The following example demonstrates how to **Associate** a Victim to an Adversary Resource. For other Resource Groups and Indicators, the same method should be used:
 
 ```python
 
@@ -4032,17 +4027,17 @@ Note: In the prior example, no API calls are made until the commit() method is i
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`resources = tc.adversaries()`              | Instantiate a Resources container object. 
-`resource = resources.add('New Adversa...`| Add a Resource object setting the name and Owner. 
-`resource.associate_victim(325)`          | Add an Association to a Victim. 
-`resource.commit()`                       | Trigger API calls to write all added, deleted, <br> or modified data. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`resources = tc.adversaries()`              | Instantiate a Resources container object. |
+|`resource = resources.add('New Adversa...`| Add a Resource object setting the name and Owner. |
+|`resource.associate_victim(325)`          | Add an Association to a Victim. |
+|`resource.commit()`                       | Trigger API calls to write all added, deleted, or modified data. |
 
 ##Disassociate Group
 
-> The following example demonstrates how to **Disassociate** a Group from an Adversary Resource. For other Resource Groups, Indicators, and Victims, the same method should be used:
+The following example demonstrates how to **Disassociate** a Group from an Adversary Resource. For other Resource Groups, Indicators, and Victims, the same method should be used:
 
 ```python
 
@@ -4070,19 +4065,19 @@ Note: In the prior example, no API calls are made until the commit() method is i
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`resources = tc.adversaries()`            | Instantiate a Resources container object. 
-`resource = resources.add('Existing Re...`| Add a Resource object setting the name and Owner. 
-`for association in resource.group_associat...`| Iterate through all Associated Groups. 
-`if association.type == 'Incident':`      | Match any Association of type Incidents. 
-`res.disassociate_group(association.re...`| Disassociate the Group Resource. 
-`resource.commit()`                       | Trigger API calls to write all added, deleted, <br> or modified data.
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`resources = tc.adversaries()`            | Instantiate a Resources container object. |
+|`resource = resources.add('Existing Re...`| Add a Resource object setting the name and Owner. |
+|`for association in resource.group_associat...`| Iterate through all Associated Groups. |
+|`if association.type == 'Incident':`      | Match any Association of type Incidents. |
+|`res.disassociate_group(association.re...`| Disassociate the Group Resource. |
+|`resource.commit()`                       | Trigger API calls to write all added, deleted, or modified data.|
 
 ##Disassociate Indicator
 
-> The following example demonstrates how to **Disassociate** an Indicator from an Adversary Resource. For other Resource Groups and Victim,s the same method should be used:
+The following example demonstrates how to **Disassociate** an Indicator from an Adversary Resource. For other Resource Groups and Victim,s the same method should be used:
 
 ```python
 
@@ -4110,19 +4105,19 @@ Note: In the prior example, no API calls are made until the commit() method is i
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`resources = tc.adversaries()`            | Instantiate a Resources container object. 
-`resource = resources.add('Existing Re...`| Add a Resource object setting the name and Owner. 
-`for association in resource.indicator_asso...`| Iterate through all Associated Groups. 
-`if association.type == 'EmailAdd':`      | Match any Association of type Incidents. 
-`resource.disassociate_indicator(associatio...`| Disassociate the Incident. 
-`resource.commit()`                       | Trigger API calls to write all added, deleted, <br> or modified data.
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`resources = tc.adversaries()`            | Instantiate a Resources container object. |
+|`resource = resources.add('Existing Re...`| Add a Resource object setting the name and Owner. |
+|`for association in resource.indicator_asso...`| Iterate through all Associated Groups. |
+|`if association.type == 'EmailAdd':`      | Match any Association of type Incidents. |
+|`resource.disassociate_indicator(associatio...`| Disassociate the Incident. |
+|`resource.commit()`                       | Trigger API calls to write all added, deleted, or modified data.|
 
 ##Disassociate Victim
 
-> The following example demonstrates how to **Disassociate** a Victim from an Adversary Resource. For other Resource Groups and Indicators, the same method should be used:
+The following example demonstrates how to **Disassociate** a Victim from an Adversary Resource. For other Resource Groups and Indicators, the same method should be used:
 
 ```python
 
@@ -4150,15 +4145,15 @@ Note: In the prior example, no API calls are made until the commit() method is i
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`resources = tc.adversaries()`            | Instantiate a Resources container object. 
-`resource = resources.add('Existing Re...`| Add a Resource object setting the name and Owner. 
-`for association in resource.victim_associa...`| Iterate through all Associated Groups. 
-`if association.name == 'Drew Brees':`    | Match any Association of type Incidents. 
-`res.disassociate_victim(association.i...`| Disassociate the Incident. 
-`resource.commit()`                       | Trigger API calls to write all added, deleted, <br> or modified data.
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`resources = tc.adversaries()`            | Instantiate a Resources container object. |
+|`resource = resources.add('Existing Re...`| Add a Resource object setting the name and Owner. |
+|`for association in resource.victim_associa...`| Iterate through all Associated Groups. |
+|`if association.name == 'Drew Brees':`    | Match any Association of type Incidents. |
+|`res.disassociate_victim(association.i...`| Disassociate the Incident. |
+|`resource.commit()`                       | Trigger API calls to write all added, deleted, or modified data.|
 
 <b>Resource Metadata</b>
 
@@ -4201,7 +4196,7 @@ See the [Key Value Output Documentation](#key-value).
 
 ##Attributes
 
-> The following example demonstrates how to **add** an Attribute to an Adversary Resource. For other Resource Groups and Indicators, the same method should be used:
+The following example demonstrates how to **add** an Attribute to an Adversary Resource. For other Resource Groups and Indicators, the same method should be used:
 
 ```python
 
@@ -4234,18 +4229,18 @@ Note: In the prior example, no API calls are made until the commit() method is i
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`resources = tc.adversaries()`            | Instantiate a Resources container object. 
-`resource = resources.add('New Adversa...`| Add a Resource object setting the name and Owner. 
-`resource.add_attribute('Description',...`| Add an Attribute of type **Description** to <br> the Resource. 
-`resource.add_attribute('Source, 'SIEM')` | Add an Attribute of type **Source** to the Resource. 
-`resource.commit()`                       | Trigger API calls to write all added, deleted, <br> or modified data.
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`resources = tc.adversaries()`            | Instantiate a Resources container object. |
+|`resource = resources.add('New Adversa...`| Add a Resource object setting the name and Owner. |
+|`resource.add_attribute('Description',...`| Add an Attribute of type **Description** to the Resource. |
+|`resource.add_attribute('Source, 'SIEM')` | Add an Attribute of type **Source** to the Resource. |
+|`resource.commit()`                       | Trigger API calls to write all added, deleted, or modified data.|
 
 ##Deleting Attributes
 
-> The following example demonstrates how to **delete** an Attribute for an Adversary Resource. For other Resource Groups and Indicators, the same method should be used:
+The following example demonstrates how to **delete** an Attribute for an Adversary Resource. For other Resource Groups and Indicators, the same method should be used:
 
 ```python
 
@@ -4274,20 +4269,20 @@ Note: In the prior example, no API calls are made until the commit() method is i
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`resources = tc.adversaries()`            | Instantiate a Resources container object. 
-`resource = resources.add('Existing Re...`| Add a Resource object setting the name and Owner. 
-`resource.load_attributes()`              | Load existing Attributes. 
-`for attribute in resource.attributes:`   | Iterate through Attribute objects. 
-`if attribute.type == 'Description':`     | Look for a **Description** Attribute. 
-`resource.delete_attribute(attribute.id)` | Delete the Attribute from the Resource.
-`resource.commit()`                       | Trigger API calls to write all added, deleted, <br> or modified data.
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`resources = tc.adversaries()`            | Instantiate a Resources container object. |
+|`resource = resources.add('Existing Re...`| Add a Resource object setting the name and Owner. |
+|`resource.load_attributes()`              | Load existing Attributes. |
+|`for attribute in resource.attributes:`   | Iterate through Attribute objects. |
+|`if attribute.type == 'Description':`     | Look for a **Description** Attribute. |
+|`resource.delete_attribute(attribute.id)` | Delete the Attribute from the Resource.|
+|`resource.commit()`                       | Trigger API calls to write all added, deleted, or modified data.|
 
 ##Update Attribute
 
-> Python SDK Updating Attribute using the load attributes method:
+Python SDK Updating Attribute using the load attributes method:
 
 ```python
 
@@ -4320,21 +4315,21 @@ An Attribute can be updated on an existing Resource Group or Indicator using the
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`resources = tc.adversaries()`            | Instantiate a Resources container object. 
-`resource = resources.add('Existing Re...`| Add a Resource object setting the name and Owner. 
-`resource.retrieve()`                     | Trigger the API request and retrieve the Adversary intelligence data.
-`resource.load_attributes()`              | Load existing Attributes.
-`for attribute in resource.attributes:`   | Iterate through Attribute objects. 
-`if attribute.type == 'Description':`     | Look for a **Description** Attribute. 
-`resource.update_attribute(attribute.i...`| Update the **Description** Attribute.
-`resource.commit()`                       | Trigger API calls to write all added, deleted, <br> or modified data.
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`resources = tc.adversaries()`            | Instantiate a Resources container object. |
+|`resource = resources.add('Existing Re...`| Add a Resource object setting the name and Owner. |
+|`resource.retrieve()`                     | Trigger the API request and retrieve the Adversary intelligence data.|
+|`resource.load_attributes()`              | Load existing Attributes.|
+|`for attribute in resource.attributes:`   | Iterate through Attribute objects. |
+|`if attribute.type == 'Description':`     | Look for a **Description** Attribute. |
+|`resource.update_attribute(attribute.i...`| Update the **Description** Attribute.|
+|`resource.commit()`                       | Trigger API calls to write all added, deleted, or modified data.|
 
 ##Security Label
 
-> The following example demonstrates how to **set** a Security Label for an Adversary Resource. For other Resource Groups and Indicators, the same method should be used:
+The following example demonstrates how to **set** a Security Label for an Adversary Resource. For other Resource Groups and Indicators, the same method should be used:
 
 ```python
 
@@ -4364,17 +4359,17 @@ Note: In the prior example, no API calls are made until the `commit()` method is
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`resources = tc.adversaries()`            | Instantiate an Adversaries container object. 
-`resource = resources.add('New Resourc...`| Add a Resource object setting the name and Owner. 
-`resource.set_security_label('TLP Green')`| Set the Security Label on the Resource. 
-`resource.commit()`                       | Trigger API calls to write all added, deleted, <br> or modified data.
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`resources = tc.adversaries()`            | Instantiate an Adversaries container object. |
+|`resource = resources.add('New Resourc...`| Add a Resource object setting the name and Owner. |
+|`resource.set_security_label('TLP Green')`| Set the Security Label on the Resource. |
+|`resource.commit()`                       | Trigger API calls to write all added, deleted, or modified data.|
 
 ##Deleting Security Labels
 
-> The following example demonstrates how to **delete** a Security Label for an Adversary Resource. For other Resource Groups and Indicators, the same method should be used:
+The following example demonstrates how to **delete** a Security Label for an Adversary Resource. For other Resource Groups and Indicators, the same method should be used:
 
 ```python
 
@@ -4399,17 +4394,17 @@ Note: In the prior example, no API calls are made until the `commit()` method is
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`resources = tc.adversaries()`            | Instantiate an Adversaries container object. 
-`resource = resources.add('New Resourc...`| Add a Resource object setting the name and Owner. 
-`resource.delete_security_label('TLP G...`| Set the Security Label on the Resource. 
-`resource.commit()`                       | Trigger API calls to write all added, deleted, <br> or modified data. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`resources = tc.adversaries()`            | Instantiate an Adversaries container object.| 
+|`resource = resources.add('New Resourc...`| Add a Resource object setting the name and Owner. |
+|`resource.delete_security_label('TLP G...`| Set the Security Label on the Resource. |
+|`resource.commit()`                       | Trigger API calls to write all added, deleted, or modified data. |
 
 ##Tags
 
-> The following example demonstrates how to add a Tag on an Adversary Resource. For other Resource Groups and Indicators, the same method should be used:
+The following example demonstrates how to add a Tag on an Adversary Resource. For other Resource Groups and Indicators, the same method should be used:
 
 ```python
 
@@ -4441,18 +4436,18 @@ Note: In the prior example, no API calls are made until the `commit()` method is
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id,...`    | Instantiate the ThreatConnect object. 
-`resources = tc.adversaries()`            | Instantiate a Resources container object. 
-`resource = resources.add('New Ads...`    | Add a Resource object setting the name and Owner. 
-`resource.add_tag('EXAMPLE')`             | Add a Tag to the Resource. 
-`resource.add_tag('APT')`                 | Add a Tag to the Resource. 
-`resource.commit()`                       | Trigger API calls to write all added, deleted, <br> or modified data. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id,...`    | Instantiate the ThreatConnect object. |
+|`resources = tc.adversaries()`            | Instantiate a Resources container object. |
+|`resource = resources.add('New Ads...`    | Add a Resource object setting the name and Owner. |
+|`resource.add_tag('EXAMPLE')`             | Add a Tag to the Resource. |
+|`resource.add_tag('APT')`                 | Add a Tag to the Resource. |
+|`resource.commit()`                       | Trigger API calls to write all added, deleted, or modified data. |
 
 ##Deleting Tags
 
-> The following example demonstrates how to delete a Tag on an Adversary Resource. For other Resource Groups and Indicators, the same method should be used:
+The following example demonstrates how to delete a Tag on an Adversary Resource. For other Resource Groups and Indicators, the same method should be used:
 
 ```python
 
@@ -4479,15 +4474,15 @@ Note: In the prior example, no API calls are made until the `commit()` method is
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. 
-`resources = tc.adversaries()`            | Instantiate a Resources container object. 
-`resource = resources.add('Existing Re...`| Add a Resource object setting the name and Owner. 
-`resource.set_id(123)`                    | Set the Resource ID to an existing Adversary. 
-`resource.delete_tag('EXAMPLE')`          | Delete a Tag to the Resource. 
-`resource.delete_tag('APT')`              | Delete a Tag to the Resource. 
-`resource.commit()`                       | Trigger multiple API calls to write all added, deleted, <br> or modified data. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
+|`resources = tc.adversaries()`            | Instantiate a Resources container object.| 
+|`resource = resources.add('Existing Re...`| Add a Resource object setting the name and Owner. |
+|`resource.set_id(123)`                    | Set the Resource ID to an existing Adversary. |
+|`resource.delete_tag('EXAMPLE')`          | Delete a Tag to the Resource. |
+|`resource.delete_tag('APT')`              | Delete a Tag to the Resource. |
+|`resource.commit()`                       | Trigger multiple API calls to write all added, deleted, or modified data. |
 
 ##Python Advanced
 
@@ -4523,7 +4518,7 @@ The Python SDK uses the Request module for communicating to the API. To prevent 
 
 ###API Retries/Sleep Period
 
-> To change the default sleep period, call the `set_api_sleep()` method, passing an Integer for the number of seconds to sleep.
+To change the default sleep period, call the `set_api_sleep()` method, passing an Integer for the number of seconds to sleep.
 
 ```python
 tc.set_api_retries(3)
@@ -4538,7 +4533,7 @@ Note:  There is a maximum window of 5 minutes before the API will reject the HMA
 
 ###API Result Limit
 
-> To change the default value, call the `set_api_result_limit()` method, passing an Integer between 1-500.
+To change the default value, call the `set_api_result_limit()` method, passing an Integer between 1-500.
 
 ```python
 tc.set_api_result_limit(500)
@@ -4616,7 +4611,7 @@ After creating a Filter object, the object can be printed, which will display th
 
 ###Filter Object Basics
 
-> Python SDK Filter Object Basics example:
+Python SDK Filter Object Basics example:
 
 ```python
 filter1 = adversary.add_filter()
@@ -4625,7 +4620,7 @@ filter1 = adversary.victim_id(10)
 filter1 = adversary.tag('APT')
 ```
 
-> Python SDK Post Filter Basics example:
+Python SDK Post Filter Basics example:
 
 ```python
 filter1 = adversary.add_filter()
@@ -4639,7 +4634,7 @@ As mentioned above, the Post Filters will intersect the results. In the example,
 
 ###Owner API Filter
 
-> Python SDK formatted URI example:
+Python SDK formatted URI example:
 
 ```
 /v2/indicators/address/10.20.30.40?owner=Example+Community
@@ -4653,7 +4648,7 @@ The Owner API Filter is a special Filter that is applied to all other API Filter
 
 ###Indicator-Type Filter
 
-> Python SDK example Supported Indicator Types:
+Python SDK example Supported Indicator Types:
 
 ```python
 filter1 = indicators.add_filter(IndicatorType.ADDRESSES)
@@ -4675,7 +4670,7 @@ An Indicator Filter object supports passing an optional IndicatorType enum argum
 
 ###Modified Since API Filter
 
-> Python SDK Modified Since API Filter:
+Python SDK Modified Since API Filter:
 
 ```python
 
@@ -4687,7 +4682,7 @@ The **Modified Since** Filter applies to the entire Indicators Container but can
 
 ###Multiple Filter Objects
 
-> Python SDK Multiple Filter Objects example:
+Python SDK Multiple Filter Objects example:
 
 ```python
 owner = 'Example Community'
@@ -4727,7 +4722,7 @@ The Python SDK supports a manual way to access the API by allowing the creation 
 
 ###Retrieving Indicators
 
-> The example below displays how to create a `RequestObject` that will retrieve all Indicators from a specified Owner:
+The example below displays how to create a `RequestObject` that will retrieve all Indicators from a specified Owner:
 
 ```python
 
@@ -4752,19 +4747,19 @@ The example displays how to create a `RequestObject` that will retrieve all Indi
 
 Refer to [ThreatConnect API documentation](#rest-api) for proper values for the `RequestObject`.
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`ro = RequestObject()`                    | Instantiate and Instance of a Request object. 
-`ro.set_http_method('GET')`               | Set the HTTP Method for the Request. 
-`ro.set_owner('Example Community')`       | Set the Owner for the Request (optional). 
-`ro.set_owner_allowed(True)`              | Set the Owner-Allowed flag for the Request to indicate if <br> this API call supports Owners. 
-`ro.set_resource_pagination(True)`        | Set the Pagination flag for the Request to indicate if this <br> API call supports pagination. 
-`ro.set_request_uri('/v2/indicators')`    | Set the URI (uniform resource identifier) for the Request. 
-`results = tc.api_request(ro)`            | Trigger the API Request and store result as `results`. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`ro = RequestObject()`                    | Instantiate and Instance of a Request object. |
+|`ro.set_http_method('GET')`               | Set the HTTP Method for the Request. |
+|`ro.set_owner('Example Community')`       | Set the Owner for the Request (optional). |
+|`ro.set_owner_allowed(True)`              | Set the Owner-Allowed flag for the Request to indicate if this API call supports Owners. |
+|`ro.set_resource_pagination(True)`        | Set the Pagination flag for the Request to indicate if this API call supports pagination.| 
+|`ro.set_request_uri('/v2/indicators')`    | Set the URI (uniform resource identifier) for the Request. |
+|`results = tc.api_request(ro)`            | Trigger the API Request and store result as `results`. |
 
 ###Downloading Document Contents
 
-> The example below displays how to create a `RequestObject` that will retrieve the contents of a document stored in a Document Resource.
+The example below displays how to create a `RequestObject` that will retrieve the contents of a document stored in a Document Resource.
 
 ```python
 
@@ -4789,19 +4784,19 @@ The example displays how to create a `RequestObject` that will retrieve the cont
 
 Refer to [ThreatConnect API documentation](#rest-api) for proper values for the `RequestObject`.
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`ro = RequestObject()`                    | Instantiate and Instance of a Request object. 
-`ro.set_http_method('GET')`               | Set the HTTP Method for the Request. 
-`ro.set_owner('Example Community')`       | Set the Owner for the Request (optional). 
-`ro.set_owner_allowed(True)`              | Set the Owner-Allowed flag for the Request to indicate if <br> this API call supports Owners. 
-`ro.set_resource_pagination(True)`        | Set the Pagination flag for the Request to indicate if this <br> API call supports pagination. 
-`ro.set_request_uri('/v2/indicators')`    | Set the URI for the Request. 
-`results = tc.api_request(ro)`            | Trigger the API Request and store result as `results`. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`ro = RequestObject()`                    | Instantiate and Instance of a Request object. |
+|`ro.set_http_method('GET')`               | Set the HTTP Method for the Request. |
+|`ro.set_owner('Example Community')`       | Set the Owner for the Request (optional). |
+|`ro.set_owner_allowed(True)`              | Set the Owner-Allowed flag for the Request to indicate if this API call supports Owners. |
+|`ro.set_resource_pagination(True)`        | Set the Pagination flag for the Request to indicate if this API call supports pagination. |
+|`ro.set_request_uri('/v2/indicators')`    | Set the URI for the Request. |
+|`results = tc.api_request(ro)`            | Trigger the API Request and store result as `results`. |
 
 ###Creating and Uploading Documents
 
-> The example below displays how to create a `RequestObject` that will create a Document Resource in ThreatConnect and upload a file to this Resource.
+The example below displays how to create a `RequestObject` that will create a Document Resource in ThreatConnect and upload a file to this Resource.
 
 ```python
  
@@ -4847,18 +4842,18 @@ The example displays how to create a `RequestObject` that will create a Document
 
 Refer to [ThreatConnect API documentation](#rest-api) for proper values for the `RequestObject`.
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`ro = RequestObject()`                    | Instantiate and Instance of a Request Object. 
-`body = {'name': 'Raw Upload Exam...`     | Create the JSON body for POST. 
-`ro.set_http_method('POST')`              | Set the HTTP Method for the Request. 
-`ro.set_owner('Example Community')`       | Set the Owner for the Request (optional). 
-`ro.set_owner_allowed(True)`              | Set the Owner-Allowed flag for the Request to indicate if <br> this API call supports Owners. 
-`ro.set_resource_pagination(False)`       | Set the Pagination flag for the Request to indicate if this <br> API call supports pagination. 
-`ro.set_request_uri('/v2/groups/doc...`   | Set the URI for the Request. 
-`print(ro)`                               | Display the Request Object before submitting (optional). 
-`results = tc.api_request(ro)`            | Trigger the API Request and store result as `results`. 
-`document_id = data['data']['doc...`      | Get the ID of the created Document to use in the contents upload. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`ro = RequestObject()`                    | Instantiate and Instance of a Request Object. |
+|`body = {'name': 'Raw Upload Exam...`     | Create the JSON body for POST. |
+|`ro.set_http_method('POST')`              | Set the HTTP Method for the Request. |
+|`ro.set_owner('Example Community')`       | Set the Owner for the Request (optional). |
+|`ro.set_owner_allowed(True)`              | Set the Owner-Allowed flag for the Request to indicate if this API call supports Owners. |
+|`ro.set_resource_pagination(False)`       | Set the Pagination flag for the Request to indicate if this API call supports pagination. |
+|`ro.set_request_uri('/v2/groups/doc...`   | Set the URI for the Request. |
+|`print(ro)`                               | Display the Request Object before submitting (optional). |
+|`results = tc.api_request(ro)`            | Trigger the API Request and store result as `results`. |
+|`document_id = data['data']['doc...`      | Get the ID of the created Document to use in the contents upload. |
 
 ###Advanced Outputs Formats
 
@@ -4866,7 +4861,7 @@ The Python SDK allows for a Resource to be returned in multiple standard formats
 
 ###CEF
 
-> Python SDK CEF Code Sample:
+Python SDK CEF Code Sample:
 
 ```python
 
@@ -4893,7 +4888,7 @@ for indicator in indicators:
     print(indicator.cef)
 ```
 
-> Python SDK Sample CEF Output:
+Python SDK Sample CEF Output:
 
 ```
 CEF:0|threatconnect|threatconnect|2|355999|TEST attribute #14|2.0|confidence="14" dateAdded="2015-06-21T10:40:33-05:00" dnsActive="None" hostName="www.badguy_014.com" lastModified="2015-06-21T10:40:33-05:00" ownerName="Example Community" type="None" weblink="https://tc.sumx.us/auth/indicators/details/host.xhtml?host\=www.badguy_014.com&owner\=Example+Community" whoisActive="None"
@@ -4903,7 +4898,7 @@ The Python SDK provides the `cef` methods to output data structured in CEF, whos
 
 ###CSV
 
-> Python SDK CSV Code Sample:
+Python SDK CSV Code Sample:
 
 ```python
 
@@ -4931,7 +4926,7 @@ for indicator in indicators:
     print(indicator.csv)
 ```
 
-> Python SDK Sample CSV Output:
+Python SDK Sample CSV Output:
 
 ```text
 {
@@ -4954,7 +4949,7 @@ The `csv_header` method should normally be called once per result set.
 
 ###JSON
 
-> Python SDK JSON Code Sample:
+Python SDK JSON Code Sample:
 
 ```python
 
@@ -4981,7 +4976,7 @@ for indicator in indicators:
     print(indicator.json)
 ```
 
-> Python SDK Sample JSON Output:
+Python SDK Sample JSON Output:
 
 ```json
 {
@@ -5005,7 +5000,7 @@ The fields in the output depend on the type of Resource that has been requested.
 
 ###Key Value
 
-> Python SDK Key Value Code Sample:
+Python SDK Key Value Code Sample:
 
 ```python
 
@@ -5032,7 +5027,7 @@ for indicator in indicators:
     print(indicator.keyval)
 ```
 
-> Sample Key/Value Output:
+Sample Key/Value Output:
 
 ```text
 confidence="14" dateAdded="2015-06-21T10:40:33-05:00" description="TEST attribute #14" dnsActive="None" hostName="www.badguy_014.com" id="355999" lastModified="2015-06-21T10:40:33-05:00" ownerName="Example Community" rating="1.0" type="None" weblink="https://tc.sumx.us/auth/indicators/details/host.xhtml?host=www.badguy_014.com&owner=Example+Community" whoisActive="None" 
@@ -5044,7 +5039,7 @@ The fields in the output depend on the type of Resource that has been requested.
 
 ###LEEF
 
-> Python SDK LEEF Code Sample:
+Python SDK LEEF Code Sample:
 
 ```python
 
@@ -5071,7 +5066,7 @@ for indicator in indicators:
     print(indicator.leef)
 ```
 
-> Python SDK Sample LEEF Output:
+Python SDK Sample LEEF Output:
 
 ```text
 LEEF:0|threatconnect|threatconnect|2|355999|confidence="14" devTime="2015-06-21T10:40:33-05:00" description="TEST attribute #14" dnsActive="None" hostName="www.badguy_014.com" id="355999" lastModified="2015-06-21T10:40:33-05:00" ownerName="Example Community" severity="1.0" type="None" weblink="https://tc.sumx.us/auth/indicators/details/host.xhtml?host=www.badguy_014.com&owner=Example+Community" whoisActive="None" 
@@ -5081,7 +5076,7 @@ The Python SDK provides the `leef` method to output data structured in LEEF, who
 
 ###Regex Overrides
 
-> Python SDK Regex Code Sample
+Python SDK Regex Code Sample
 
 ```
 
@@ -5120,7 +5115,7 @@ The Python SDK provides the `set_indicator_regex` method which allows a user to 
 
 ###Reporting
 
-> The `tc.report.stats` properties method provides an overview of the script results:
+The `tc.report.stats` properties method provides an overview of the script results:
 
 ```python
 
@@ -5145,7 +5140,7 @@ try:
 print(tc.report.stats)
 ```
 
-> Sample Report-Statistics Output:
+Sample Report-Statistics Output:
 
 ```text
 _Stats_
@@ -5188,7 +5183,7 @@ The `tc.report.stats` properties method provides an overview of the script resul
 
 ###Failed Reports
 
-> Python SDK failed reports example:
+Python SDK failed reports example:
 
 ```python
 
@@ -5196,7 +5191,7 @@ for fail in tc.report.failures:
     print(fail)
 ```
 
-> Sample Failed-Report Output:
+Sample Failed-Report Output:
 
 ```text
 _Report Entry_
@@ -5248,7 +5243,7 @@ All report entries can be accessed via the Report generator. By iterating over `
 
 # Java Library
 
-> The following is a code sample with line numbers syntax highlighting:
+The following is a code sample with line numbers syntax highlighting:
 
 ```java
   1     private static void doCreate(Connection conn) {
@@ -5291,7 +5286,7 @@ All code examples will be noted  in a separate box with a monospaced font and li
 
 ###Maven™ Configuration
 
-> Add the following entries to your POM (project object model) file. This is the preferred method to use the SDK:
+Add the following entries to your POM (project object model) file. This is the preferred method to use the SDK:
 
 ```xml
    <properties>
@@ -5324,7 +5319,7 @@ All code examples will be noted  in a separate box with a monospaced font and li
 
 ###Programmatic Configuration 
 
-> To connect to the API using the SDK, create a Configuration object with one of the following constructors:
+To connect to the API using the SDK, create a Configuration object with one of the following constructors:
 
 ```java
    public Configuration(String tcApiUrl, String tcApiAccessID, String tcApiUserSecretKey, String defaultOwner);
@@ -5335,27 +5330,27 @@ Pass the `Configuration` object when creating a new `Connection`. (See examples 
 
 ### Configuration using Properties
 
-> This property can be defined in two ways:
+This property can be defined in two ways:
 
-> In the JVM (Java virtual machine), you can call your program with the following -D property flag:
+In the JVM (Java virtual machine), you can call your program with the following -D property flag:
 
 `threatconnect.api.config=<YOUR CONFIG FILE LOCATION>`
 
-> Or the system property can be directly set at runtime using the following code:
+Or the system property can be directly set at runtime using the following code:
 
 ```java
 System.getProperties().setProperty("threatconnect.api.config", "<YOUR CONFIG FILE LOCATION>");
 ```
 
-> Once the configuration has been set up, the examples in this document should be executable, as long as the Java SDK for ThreatConnect is part of the classpath. See the following examples for a typical start-up script.
+Once the configuration has been set up, the examples in this document should be executable, as long as the Java SDK for ThreatConnect is part of the classpath. See the following examples for a typical start-up script.
 
-> On Windows:
+On Windows:
 
 ```shell
  java -cp ".;threatconnect-sdk-<version>.jar" -Dthreatconnect.api.config=myConfig.properties TestClass
 ```
 
-> On Linux:
+On Linux:
 
 ```shell
 java -cp ".:./threatconnect-sdk-<version>.jar" -Dthreatconnect.api.config=myConfig.properties TestClass
@@ -5375,15 +5370,15 @@ The configuration file should contain the following lines at a minimum:
 
 The SDK utilizes these open-source libraries primarily for RESTful communication and JSON (JavaScript Object Notation) parsing.
 
-Library | Version | Used by 
---------| ------- | ------- 
-HTTP Core | 4.4.1 | SDK 
-HTTP Client | 4.4.1 | SDK 
-↪ Commons Logging | 1.2 | HTTP Client 
-↪ Commons Codec | 1.9 | HTTP Client 
-Jackson Core| 2.5.3 | SDK 
-Jackson Databind| 2.5.3 | SDK 
-↪ Jackson Annotation| 2.5.0 | Jackson Databind 
+|Library | Version | Used by 
+|--------| ------- | ------- 
+|HTTP Core | 4.4.1 | SDK |
+|HTTP Client | 4.4.1 | SDK |
+|Commons Logging | 1.2 | HTTP Client |
+|Commons Codec | 1.9 | HTTP Client |
+|Jackson Core| 2.5.3 | SDK |
+|Jackson Databind| 2.5.3 | SDK |
+|↪ Jackson Annotation| 2.5.0 | Jackson Databind |
 
 <b>Technical Design</b>
 
@@ -5397,11 +5392,11 @@ Java generics are used to type many of the Adapters in an effort to reuse code, 
 
 ![SDK Architecture](images/sdk-arch.png "SDK Architecture") 
 
-> To facilitate interaction with the full set of Java SDK readers and writers, the use of ReaderAdapterFactory and WriterAdapterFactory, respectively, is highly recommended.
+To facilitate interaction with the full set of Java SDK readers and writers, the use of ReaderAdapterFactory and WriterAdapterFactory, respectively, is highly recommended.
 
 ## Example Java App
 
-> Once retrieved, the adversary objects will be printed to the console.
+Once retrieved, the adversary objects will be printed to the console.
 
 ```java
   1 import com.cyber2.api.lib.client.reader.AbstractGroupReaderAdapter;
@@ -5442,15 +5437,15 @@ Java generics are used to type many of the Adapters in an effort to reuse code, 
 
 To write the first program using the Java SDK for the ThreatConnect API, an Adversary reader that pulls all adversaries belonging to the "System" Organization must be created. 
 
-Line         | Description                                                     
------------- | --------------------------------------------------------------- 
-1-7          | Notable imports include:<br>The `com.cyber2.api.lib.client.reader` package holds all Adapter classes that read<br>data from the API. The `com.cyber2.api.lib.server.entity` package holds all entities <br>returned by the Java SDK. 
-17-18        | The platform programmatically define the system property to load the configuration file.<br>This allows the developer to instantiate Connection objects (line 18) with a <br>no-arg constructor. If the `threatconnect.api.config` property is not defined, <br>the developer has the option of passing the configuration file name string in the <br>single-arg Connection constructor.
-20           | To create an AbstractGroupReaderAdapter<Adversary> object: Use the<br>ReaderAdapterFactory pattern and generics to enforce compile-time type constraints <br>on this abstract class. Then pass the connection object used by the Adapter to <br>interact with the ThreatConnect API.
-21           | Using the reader object, call `getAll()` method and pass it the Organization <br>string name to return all Adversaries for the "System" Organization.
-22-24        | Iterate through the data collection to print the contents to the console.
-26           | The IOException is potentially thrown if the Connection object cannot find the <br>properties file. The FailedResponseException is thrown if the API request is invalid.
-29           | In all cases when processing is complete, call `disconnect()` on the connection <br>object to release resources.
+|Line         | Description                                                     |
+|------------ | --------------------------------------------------------------- |
+|1-7          | Notable imports include: The `com.cyber2.api.lib.client.reader` package holds all Adapter classes that read data from the API. The `com.cyber2.api.lib.server.entity` package holds all entities returned by the Java SDK. |
+|17-18        | The platform programmatically define the system property to load the configuration file. This allows the developer to instantiate Connection objects (line 18) with a no-arg constructor. If the `threatconnect.api.config` property is not defined, the developer has the option of passing the configuration file name string in the single-arg Connection constructor.|
+|20           | To create an AbstractGroupReaderAdapter object: Use the ReaderAdapterFactory pattern and generics to enforce compile-time type constraints on this abstract class. Then pass the connection object used by the Adapter to interact with the ThreatConnect API.|
+|21           | Using the reader object, call `getAll()` method and pass it the Organization  string name to return all Adversaries for the "System" Organization.|
+|22-24        | Iterate through the data collection to print the contents to the console.|
+|26           | The IOException is potentially thrown if the Connection object cannot find the properties file. The FailedResponseException is thrown if the API request is invalid.|
+|29           | In all cases when processing is complete, call `disconnect()` on the connection object to release resources.|
 
 <b>Summary</b>
 
@@ -5474,16 +5469,16 @@ ThreatConnect Java integrations require Oracle JRE 7 or later. OpenJRE is not su
 
 These libraries are automatically included in the classpath of every Java app. There is no need to include these libraries in the installation zip file. There is also no need to include these libraries in the `configuration` variable named `java.classpath`.
 
-Library | Version 
---------| ------- 
-[ThreatConnect SDK](https://github.com/ThreatConnect-Inc/threatconnect-java) | 2.0.0 
-[HTTP Core](https://hc.apache.org/httpcomponents-core-ga/) | 4.4.1 | 
-[HTTP Client](https://hc.apache.org/httpcomponents-client-ga/) | 4.4.1 |
-[Commons Logging](http://commons.apache.org/proper/commons-logging/) | 1.2 |
-[Commons Codec](https://commons.apache.org/proper/commons-codec/) | 1.9 | 
-[Jackson Core](https://github.com/FasterXML/jackson-core) | 2.5.3 | 
-[Jackson Databind](https://github.com/FasterXML/jackson-databind/) | 2.5.3 | 
-[Jackson Annotation](https://github.com/FasterXML/jackson-annotations) | 2.5.0 | 
+|Library | Version |
+|--------| ------- |
+|[ThreatConnect SDK](https://github.com/ThreatConnect-Inc/threatconnect-java) | 2.0.0 |
+|[HTTP Core](https://hc.apache.org/httpcomponents-core-ga/) | 4.4.1 |
+|[HTTP Client](https://hc.apache.org/httpcomponents-client-ga/) | 4.4.1 |
+|[Commons Logging](http://commons.apache.org/proper/commons-logging/) | 1.2 |
+|[Commons Codec](https://commons.apache.org/proper/commons-codec/) | 1.9 |
+|[Jackson Core](https://github.com/FasterXML/jackson-core) | 2.5.3 |
+|[Jackson Databind](https://github.com/FasterXML/jackson-databind/) | 2.5.3 |
+|[Jackson Annotation](https://github.com/FasterXML/jackson-annotations) | 2.5.0 |
 
 ### Deployment Configuration
 [Apps use a deployment configuration file to define variables and execution environment](#deployment-configuration-file)
@@ -5492,12 +5487,12 @@ Library | Version
 
 The application runtime environment passes standard parameters to all jobs as part of its standard sandbox container. There should be no assumptions made on the naming or existence of paths passed in these variables outside of the lifetime of the job execution. Because all job executions are run in a sandboxed environment, app developers should never hard-code ThreatConnect Parameters.
 
-ThreatConnect Parameter | Description                                                           
--------------- | --------------------------------------------------------------------- 
-`tc_log_path`  | Log path for the specific instance of the job execution.               
-`tc_tmp_path`  | Temporary storage path for the specific instance of the<br>job execution. 
-`tc_out_path`  | Output path for the specific instance of the job execution.            
-`tc_api_path`  | Path to the ThreatConnect API server.                                  
+|ThreatConnect Parameter | Description                                                     |      
+|-------------- | --------------------------------------------------------------------- |
+|`tc_log_path`  | Log path for the specific instance of the job execution.               |
+|`tc_tmp_path`  | Temporary storage path for the specific instance of the<br>job execution. |
+|`tc_out_path`  | Output path for the specific instance of the job execution.            |
+|`tc_api_path`  | Path to the ThreatConnect API server.                             |     
 
 ### Job Results
 
@@ -5519,11 +5514,11 @@ At times a program may want to report a partial failure (e.g., batch process whe
 
 The contents of message.tc are typically written any time the program exits normally or through an error:
 
-Status          | Description                                                    
---------------- | -------------------------------------------------------------- 
-Success         | Exit code 0 - Process completed successfully.                   
-Partial Failure | Exit code 3 - Process had a partial failure.                    
-Failure         | Any value not 0 or 3 (typically Exit code 1) - Process failed.  
+|Status          | Description                                                    |
+|--------------- | -------------------------------------------------------------- |
+|Success         | Exit code 0 - Process completed successfully.                  | 
+|Partial Failure | Exit code 3 - Process had a partial failure.                   | 
+|Failure         | Any value not 0 or 3 (typically Exit code 1) - Process failed. | 
 
 ###Exit Message File
 
@@ -5535,41 +5530,41 @@ Exit codes provide a mechanism to report status at a high level. For more granul
 
 The Reader package is the primary package to retrieve data from the ThreatConnect API. It covers all available resources exposed through the ThreatConnect API. The primary classes in the Reader Package, which encompass all read functionality from the API, are listed below.
 
-|Class<br>_Description_| 
+|Class|_Description_| 
 |-----------------------------------------------------------------| 
-|`ReaderAdapterFactory`<br>Primary entry point to instantiate all readers in the Reader Package.| 
-|`AbstractGroupReaderAdapter<T extends Group>`<br>Generic Group Reader Abstract class. Concrete object available in ReaderAdapterFactory.| 
-|`AbstractIndicatorReaderAdapter<T extends Indicator>`<br>Generic Indicator Reader Abstract class. Concrete object available in ReaderAdapterFactory.| 
-|`AbstractReaderAdapter`<br>Base Abstract Reader for all Reader Adapters in the Reader Package.| 
-|`OwnerReaderAdapter`<br>Concrete Reader for Organization owner data. Convenience object available in<br>ReaderAdapterFactory.| 
-|`SecurityLabelReaderAdapter`<br>Concrete Reader for SecurityLabel data. Convenience object available in ReaderAdapterFactory.| 
-|`TagReaderAdapter`<br>Concrete Reader for Tag data. Convenience object available in ReaderAdapterFactory.| 
-|`TaskReaderAdapter`<br>Concrete Reader for Task data. Convenience object available in ReaderAdapterFactory.| 
-|`VictimReaderAdapter`<br>Concrete Reader for Victim data. Convenience object available in ReaderAdapterFactory.| 
+|`ReaderAdapterFactory`|Primary entry point to instantiate all readers in the Reader Package.| 
+|`AbstractGroupReaderAdapter<T extends Group>`|Generic Group Reader Abstract class. Concrete object available in ReaderAdapterFactory.| 
+|`AbstractIndicatorReaderAdapter<T extends Indicator>`|Generic Indicator Reader Abstract class. Concrete object available in ReaderAdapterFactory.| 
+|`AbstractReaderAdapter`|Base Abstract Reader for all Reader Adapters in the Reader Package.| 
+|`OwnerReaderAdapter`|Concrete Reader for Organization owner data. Convenience object available in ReaderAdapterFactory.| 
+|`SecurityLabelReaderAdapter`|Concrete Reader for SecurityLabel data. Convenience object available in ReaderAdapterFactory.| 
+|`TagReaderAdapter`|Concrete Reader for Tag data. Convenience object available in ReaderAdapterFactory.| 
+|`TaskReaderAdapter`|Concrete Reader for Task data. Convenience object available in ReaderAdapterFactory.| 
+|`VictimReaderAdapter`|Concrete Reader for Victim data. Convenience object available in ReaderAdapterFactory.| 
 
 ###Reader Factory
 
 The ReaderAdapterFactory class is, effectively, the "hub" for reader Adapters. It provides convenience objects for all the Adapters in the Reader Package. Below is a list of the static methods and return types of the ReaderAdapterFactory:
 
-|Type<br>_Method_|                                                                 
+|Type|_Method_|                                                                 
 |------------------------------------------------------| 
-|`static AbstractGroupReaderAdapter<Adversary>`<br>createAdversaryGroupReader(Connection conn)|                          
-|`static AbstractGroupReaderAdapter<Email>`<br>createEmailGroupReader(Connection conn)|                              
-|`static AbstractGroupReaderAdapter<Incident>`<br>createIncidentGroupReader(Connection conn)|                             
-|`static AbstractGroupReaderAdapter<Signature>`<br>createSignatureGroupReader(Connection conn)|                            
-|`static AbstractGroupReaderAdapter<Threat>`<br>createThreatGroupReader(Connection conn)|                               
-|`static AbstractIndicatorReaderAdapter<Address>`<br>createAddressIndicatorReader(Connection conn)|                          
-|`static AbstractIndicatorReaderAdapter<EmailAddress>`<br>createEmailAddressIndicatorReader(Connection conn)|                     
-|`static AbstractIndicatorReaderAdapter<File>`<br>createFileIndicatorReader(Connection conn)|                             
-|`static AbstractIndicatorReaderAdapter<Host>`<br>createHostIndicatorReader(Connection conn)|                             
-|`static AbstractIndicatorReaderAdapter<Url>`<br>createUrlIndicatorReader(Connection conn)|                              
-|`static BatchReaderAdapter<Indicator>`<br>createIndicatorBatchReader(Connection conn)|                           
-|`static DocumentReaderAdapter`<br>createDocumentReader(Connection conn)|        
-|`static OwnerReaderAdapter`<br>createOwnerReader(Connection conn)|                                     
-|`static SecurityLabelReaderAdapter`<br>createSecurityLabelReader(Connection conn)|                             
-|`static TagReaderAdapter`<br>createTagReader(Connection conn)|  
-|`static TaskReaderAdapter`<br>createTaskReader(Connection conn)|   
-|`static VictimReaderAdapter`<br>createVictimReader(Connection conn)|                                    
+|`static AbstractGroupReaderAdapter<Adversary>`|createAdversaryGroupReader(Connection conn)|                          
+|`static AbstractGroupReaderAdapter<Email>`|createEmailGroupReader(Connection conn)|                              
+|`static AbstractGroupReaderAdapter<Incident>`|createIncidentGroupReader(Connection conn)|                             
+|`static AbstractGroupReaderAdapter<Signature>`|createSignatureGroupReader(Connection conn)|                            
+|`static AbstractGroupReaderAdapter<Threat>`|createThreatGroupReader(Connection conn)|                               
+|`static AbstractIndicatorReaderAdapter<Address>`|createAddressIndicatorReader(Connection conn)|                          
+|`static AbstractIndicatorReaderAdapter<EmailAddress>`|createEmailAddressIndicatorReader(Connection conn)|                     
+|`static AbstractIndicatorReaderAdapter<File>`|createFileIndicatorReader(Connection conn)|                             
+|`static AbstractIndicatorReaderAdapter<Host>`|createHostIndicatorReader(Connection conn)|                             
+|`static AbstractIndicatorReaderAdapter<Url>`|createUrlIndicatorReader(Connection conn)|                              
+|`static BatchReaderAdapter<Indicator>`|createIndicatorBatchReader(Connection conn)|                           
+|`static DocumentReaderAdapter`|createDocumentReader(Connection conn)|        
+|`static OwnerReaderAdapter`|createOwnerReader(Connection conn)|                                     
+|`static SecurityLabelReaderAdapter`|createSecurityLabelReader(Connection conn)|                             
+|`static TagReaderAdapter`|createTagReader(Connection conn)|  
+|`static TaskReaderAdapter`|createTaskReader(Connection conn)|   
+|`static VictimReaderAdapter`|createVictimReader(Connection conn)|                                    
 
 ###Reader Factory Example
 
@@ -5640,15 +5635,15 @@ This example continues building from the first one and uses more Adapters availa
 
 There are more concise ways of handling reading data and purely checking its ID. This code is written in a more verbose form strictly to illustrate the usage of different methods in the ReaderFactory.
 
-Line            | Description                                                                                                  
---------------- | -----------------------------------------------------------------------------------------------------------------------------------------------------------------
-5-10            | Notice how all Group-level entities in the imports are added. Results from<br>reader Adapters will return an entity or a collection of entities from the<br>`com.threatconnect.sdk.server.entity` package. 
-52-53           | Groups to which the current API user has access under the "System" Organization<br>should be retrieved. All AbstractGroupReaderAdapter’s have access to the<br>`getAllGroups()` method—it returns a collection of Group objects for the<br>"System" Organization from the ThreatConnect API.
-60              | To illustrate the different instantiations, a switch statement on the generic<br>Group object is used. 
-61-63           | Based on the Group.Type enum value (in this section, "Adversary"), an<br>AdversaryGroupReader object is created from the ReaderAdapterFactory. <br>The assignment to the adversaryReader variable is typed using generics to enforce<br>compile time checks on the data returned from this reader.
-65              | The `getById()` method to retrieve the proper Adversary Group data, based on the<br>ID and Organization name, from the ThreatConnect API, is used here. The<br>`result` variable is assigned an Adversary-type object. 
-67-90           | The remaining case statement blocks will check for different Group types, but,<br>effectively, does the same operation. Take some time to review these blocks<br>to understand how the ReaderFactory facilitates the creation of proper readers.
-96              | Here the Group ID is compared against the result ID returned by the `getById`<br>method to assert that they are, in fact, the same entity.
+|Line            | Description                                                                                                  |
+|--------------- | -----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|5-10            | Notice how all Group-level entities in the imports are added. Results from reader Adapters will return an entity or a collection of entities from the `com.threatconnect.sdk.server.entity` package. |
+|52-53           | Groups to which the current API user has access under the "System" Organization should be retrieved. All AbstractGroupReaderAdapter’s have access to the `getAllGroups()` method—it returns a collection of Group objects for the "System" Organization from the ThreatConnect API.|
+|60              | To illustrate the different instantiations, a switch statement on the generic Group object is used. |
+|61-63           | Based on the Group.Type enum value (in this section, "Adversary"), an AdversaryGroupReader object is created from the ReaderAdapterFactory. The assignment to the adversaryReader variable is typed using generics to enforce compile time checks on the data returned from this reader.|
+|65              | The `getById()` method to retrieve the proper Adversary Group data, based on the ID and Organization name, from the ThreatConnect API, is used here. The `result` variable is assigned an Adversary-type object. |
+|67-90           | The remaining case statement blocks will check for different Group types, but, effectively, does the same operation. Take some time to review these blocks to understand how the ReaderFactory facilitates the creation of proper readers.|
+|96              | Here the Group ID is compared against the result ID returned by the `getById` method to assert that they are, in fact, the same entity.
 
 ###IterableResponse Class
 
@@ -5671,13 +5666,13 @@ While the main entry point to the Reader Package is the ReaderFactory, getting f
 
 ###Parameter Naming Convention
 
-Type                | Description                            
-------------------- | --------------------------------- 
-`uniqueId`            | Identifier for the reader/writer Group or Incident Adapter type.<br>For Groups, this is an Integer that requires an Adversary ID, Email ID,<br>Incident ID, Signature ID, or Threat ID. This identifier is system generated<br>when the group is created in ThreatConnect.<br>For Indicators, this is a String that requires an IP Address,<br>Email Address, File Hash, Host Name, or URL text.<br>This identifier is user generated when the Indicator is created<br>in ThreatConnect.
-`victimId`            | Identifier for the Victim Adapter type. This identifier is an Integer created<br>by the system when the Victim entry is created in ThreatConnect.
-`assetId`             | Identifier for the VictimAsset Adapter type. This identifier is an Integer created<br>by the system when the VictimAsset is created in ThreatConnect.<br>This identifier represents a VictimEmailAddress ID,<br>VictimNetworkAccount ID, VictimPhone ID, VictimSocialNetwork ID,<br>or VictimWebsite ID.
-`securityLabel`       | Identifier for SecurityLabel Adapter type. This is a user-provided String that<br>represents the Security Label.
-`tagName`             | Identifier for Iag Adapter type. This is a user-provided String that<br>represents the Tag.
+|Type                | Description                            |
+|------------------- | --------------------------------- |
+|`uniqueId`            | Identifier for the reader/writer Group or Incident Adapter type. For Groups, this is an Integer that requires an Adversary ID, Email ID, Incident ID, Signature ID, or Threat ID. This identifier is system generated when the group is created in ThreatConnect. For Indicators, this is a String that requires an IP Address, Email Address, File Hash, Host Name, or URL text. This identifier is user generated when the Indicator is created in ThreatConnect.|
+|`victimId`            | Identifier for the Victim Adapter type. This identifier is an Integer created by the system when the Victim entry is created in ThreatConnect.|
+|`assetId`             | Identifier for the VictimAsset Adapter type. This identifier is an Integer created by the system when the VictimAsset is created in ThreatConnect. This identifier represents a VictimEmailAddress ID, VictimNetworkAccount ID, VictimPhone ID, VictimSocialNetwork ID, or VictimWebsite ID.|
+|`securityLabel`       | Identifier for SecurityLabel Adapter type. This is a user-provided String that represents the Security Label.|
+|`tagName`             | Identifier for Iag Adapter type. This is a user-provided String that represents the Tag.|
 
 The AbstractGroupReaderAdapter is the object returned when GroupReader is called from the ReaderFactory. These GroupReader instantiations were reviewed in the last example.
 
@@ -5685,7 +5680,7 @@ The Java SDK library for ThreatConnect comes with JavaDocs in the "apidocs" dire
 
 ###Filtering
 
-> Example filter usage:
+Example filter usage:
 
 ```java
 IterableResponse<Url> urls 
@@ -5704,144 +5699,144 @@ Filters can be passed to the `getForFilters(...)` method in the `AbstractBaseRea
 
 The methods below get data for the Group type (T) linked to this Adapter. The uniqueId (P) for Groups is an Integer.
 
-|Type<br>_Method_                                |
+|Type|_Method_                                |
 |-------------------------------------------------------- |
-|`T`<br>getById(P uniqueId)              |     
-|`T`<br>getById(P uniqueId, String ownerName)| 
-|`IterableResponse<T>`<br>getForFilters(String ownerName, boolean orParams, ApiFilterType...filters) |                             
-|`IterableResponse<T>`<br>getAll()  |                            
-|`IterableResponse<T>`<br>getAll(String ownerName)|              
+|`T`|getById(P uniqueId)              |     
+|`T`|getById(P uniqueId, String ownerName)| 
+|`IterableResponse<T>`|getForFilters(String ownerName, boolean orParams, ApiFilterType...filters) |                             
+|`IterableResponse<T>`|getAll()  |                            
+|`IterableResponse<T>`|getAll(String ownerName)|              
 
 The methods below get generic Group objects associated to this Group type (T).
 
-|Type<br>_Method_                                |
+|Type|_Method_                                |
 |-------------------------------------------------------- |
-|`IterableResponse<Group>`<br>getAllGroups()                        |
-|`IterableResponse<Group>`<br>getAllGroups(String ownerName)        |
-|`String`<br>getAllGroupsAsText()                  |
+|`IterableResponse<Group>`|getAllGroups()                        |
+|`IterableResponse<Group>`|getAllGroups(String ownerName)        |
+|`String`|getAllGroupsAsText()                  |
 
 ###Associated Groups
 
 The methods below get associated Group elements by distinct type.
 
-|Type<br>_Method_                                |
+|Type|_Method_                                |
 |-------------------------------------------------------- |
-|`IterableResponse<Group>`<br>getAssociatedGroups(Integer uniqueId) |
-|`IterableResponse<Group>`<br>getAssociatedGroups(Integer uniqueId, String ownerName) |
-|`IterableResponse<Adversary>`<br>getAssociatedGroupAdversaries(Integer uniqueId) |
-|`IterableResponse<Adversary>`<br>getAssociatedGroupAdversaries(Integer uniqueId, String ownerName) |
-|`Adversary`<br>getAssociatedGroupAdversary(Integer uniqueId, Integer adversaryId) |
-|`Adversary`<br>getAssociatedGroupAdversary(Integer uniqueId, Integer adversaryId, String ownerName) |
-|`IterableResponse<Email>`<br>getAssociatedGroupEmails(Integer uniqueId) |
-|`IterableResponse<Email>`<br>getAssociatedGroupEmails(Integer uniqueId, String ownerName) |
-|`Email`<br>getAssociatedGroupEmail(Integer uniqueId, Integer emailId) |
-|`Email`<br>getAssociatedGroupEmail(Integer uniqueId, Integer emailId, String ownerName) |
-|`IterableResponse<Incident>`<br>getAssociatedGroupIncidents(Integer uniqueId) |
-|`IterableResponse<Incident>`<br>getAssociatedGroupIncidents(Integer uniqueId, String ownerName) |
-|`Incident`<br>getAssociatedGroupIncident(Integer uniqueId, Integer incidentId) |
-|`Incident`<br>getAssociatedGroupIncident(Integer uniqueId, Integer incidentId, String ownerName) |
-|`IterableResponse<Signature>`<br>getAssociatedGroupSignatures(Integer uniqueId) |
-|`IterableResponse<Signature>`<br>getAssociatedGroupSignatures(Integer uniqueId, String ownerName) |
-|`Signature`<br>getAssociatedGroupSignature(Integer uniqueId, Integer signatureId) |
-|`Signature`<br>getAssociatedGroupSignature(Integer uniqueId, Integer signatureId, String ownerName) |
-|`IterableResponse<Threat>`<br>getAssociatedGroupThreats(Integer uniqueId) |
-|`IterableResponse<Threat>`<br>getAssociatedGroupThreats(Integer uniqueId, String ownerName) |
-|`Threat`<br>getAssociatedGroupThreat(Integer uniqueId, Integer threatId) |
-|`Threat`<br>getAssociatedGroupThreat(Integer uniqueId, Integer threatId, String ownerName) |
+|`IterableResponse<Group>`|getAssociatedGroups(Integer uniqueId) |
+|`IterableResponse<Group>`|getAssociatedGroups(Integer uniqueId, String ownerName) |
+|`IterableResponse<Adversary>`|getAssociatedGroupAdversaries(Integer uniqueId) |
+|`IterableResponse<Adversary>`|getAssociatedGroupAdversaries(Integer uniqueId, String ownerName) |
+|`Adversary`|getAssociatedGroupAdversary(Integer uniqueId, Integer adversaryId) |
+|`Adversary`|getAssociatedGroupAdversary(Integer uniqueId, Integer adversaryId, String ownerName) |
+|`IterableResponse<Email>`|getAssociatedGroupEmails(Integer uniqueId) |
+|`IterableResponse<Email>`|getAssociatedGroupEmails(Integer uniqueId, String ownerName) |
+|`Email`|getAssociatedGroupEmail(Integer uniqueId, Integer emailId) |
+|`Email`|getAssociatedGroupEmail(Integer uniqueId, Integer emailId, String ownerName) |
+|`IterableResponse<Incident>`|getAssociatedGroupIncidents(Integer uniqueId) |
+|`IterableResponse<Incident>`|getAssociatedGroupIncidents(Integer uniqueId, String ownerName) |
+|`Incident`|getAssociatedGroupIncident(Integer uniqueId, Integer incidentId) |
+|`Incident`|getAssociatedGroupIncident(Integer uniqueId, Integer incidentId, String ownerName) |
+|`IterableResponse<Signature>`|getAssociatedGroupSignatures(Integer uniqueId) |
+|`IterableResponse<Signature>`|getAssociatedGroupSignatures(Integer uniqueId, String ownerName) |
+|`Signature`|getAssociatedGroupSignature(Integer uniqueId, Integer signatureId) |
+|`Signature`|getAssociatedGroupSignature(Integer uniqueId, Integer signatureId, String ownerName) |
+|`IterableResponse<Threat>`|getAssociatedGroupThreats(Integer uniqueId) |
+|`IterableResponse<Threat>`|getAssociatedGroupThreats(Integer uniqueId, String ownerName) |
+|`Threat`|getAssociatedGroupThreat(Integer uniqueId, Integer threatId) |
+|`Threat`|getAssociatedGroupThreat(Integer uniqueId, Integer threatId, String ownerName) |
 
 ###Associated Indicators
 
 The methods below get associated Indicator elements by distinct types.
 
-|Type<br>_Method_                                |
+|Type|_Method_                                |
 |-------------------------------------------------------- |
-|`IterableResponse<Indicator>`<br>getAssociatedIndicators(Integer uniqueId) |
-|`IterableResponse<Indicator>`<br>getAssociatedIndicators(Integer uniqueId, String ownerName) |
-|`IterableResponse<Address>`<br>getAssociatedIndicatorAddresses(Integer uniqueId) |
-|`IterableResponse<Address>`<br>getAssociatedIndicatorAddresses(Integer uniqueId, String ownerName) |
-|`Address`<br>getAssociatedIndicatorAddress(Integer uniqueId, String ipAddress) |
-|`Address`<br>getAssociatedIndicatorAddress(Integer uniqueId, String ipAddress, String ownerName) |
-|`IterableResponse<Email>`<br>getAssociatedIndicatorEmails(Integer uniqueId) |
-|`IterableResponse<Email>`<br>getAssociatedIndicatorEmails(Integer uniqueId, String ownerName) |
-|`Email`<br>getAssociatedIndicatorEmail(Integer uniqueId, String emailAddress) |
-|`Email`<br>getAssociatedIndicatorEmail(Integer uniqueId, String emailAddress, String ownerName) |
-|`IterableResponse<File>`<br>getAssociatedIndicatorFiles(Integer uniqueId) |
-|`IterableResponse<File>`<br>getAssociatedIndicatorFiles(Integer uniqueId, String ownerName) |
-|`File`<br>getAssociatedIndicatorFile(Integer uniqueId, String fileHash) |
-|`IterableResponse<Host>`<br>getAssociatedIndicatorHosts(Integer uniqueId) |
-|`IterableResponse<Host>`<br>getAssociatedIndicatorHosts(Integer uniqueId, String ownerName) |
-|`Host`<br>getAssociatedIndicatorHost(Integer uniqueId, String hostName) |
-|`Host`<br>getAssociatedIndicatorHost(Integer uniqueId, String hostName, String ownerName) |
-|`IterableResponse<Url>`<br>getAssociatedIndicatorUrls(Integer uniqueId) |
-|`IterableResponse<Url>`<br>getAssociatedIndicatorUrls(Integer uniqueId, String ownerName) |
-|`Url`<br>getAssociatedIndicatorUrl(Integer uniqueId, String urlText) |
-|`Url`<br>getAssociatedIndicatorUrl(Integer uniqueId, String urlText, String ownerName) |
+|`IterableResponse<Indicator>`|getAssociatedIndicators(Integer uniqueId) |
+|`IterableResponse<Indicator>`|getAssociatedIndicators(Integer uniqueId, String ownerName) |
+|`IterableResponse<Address>`|getAssociatedIndicatorAddresses(Integer uniqueId) |
+|`IterableResponse<Address>`|getAssociatedIndicatorAddresses(Integer uniqueId, String ownerName) |
+|`Address`|getAssociatedIndicatorAddress(Integer uniqueId, String ipAddress) |
+|`Address`|getAssociatedIndicatorAddress(Integer uniqueId, String ipAddress, String ownerName) |
+|`IterableResponse<Email>`|getAssociatedIndicatorEmails(Integer uniqueId) |
+|`IterableResponse<Email>`|getAssociatedIndicatorEmails(Integer uniqueId, String ownerName) |
+|`Email`|getAssociatedIndicatorEmail(Integer uniqueId, String emailAddress) |
+|`Email`|getAssociatedIndicatorEmail(Integer uniqueId, String emailAddress, String ownerName) |
+|`IterableResponse<File>`|getAssociatedIndicatorFiles(Integer uniqueId) |
+|`IterableResponse<File>`|getAssociatedIndicatorFiles(Integer uniqueId, String ownerName) |
+|`File`|getAssociatedIndicatorFile(Integer uniqueId, String fileHash) |
+|`IterableResponse<Host>`|getAssociatedIndicatorHosts(Integer uniqueId) |
+|`IterableResponse<Host>`|getAssociatedIndicatorHosts(Integer uniqueId, String ownerName) |
+|`Host`|getAssociatedIndicatorHost(Integer uniqueId, String hostName) |
+|`Host`|getAssociatedIndicatorHost(Integer uniqueId, String hostName, String ownerName) |
+|`IterableResponse<Url>`|getAssociatedIndicatorUrls(Integer uniqueId) |
+|`IterableResponse<Url>`|getAssociatedIndicatorUrls(Integer uniqueId, String ownerName) |
+|`Url`|getAssociatedIndicatorUrl(Integer uniqueId, String urlText) |
+|`Url`|getAssociatedIndicatorUrl(Integer uniqueId, String urlText, String ownerName) |
 
 ###Associated Security Labels
 
 The methods below get associated SecurityLabel data elements.
 
-|Type<br>_Method_                                |
+|Type|_Method_                                |
 |-------------------------------------------------------- |
-|`IterableResponse<SecurityLabel>`<br>getAssociatedSecurityLabels(Integer uniqueId) |
-|`IterableResponse<SecurityLabel>`<br>getAssociatedSecurityLabels(Integer uniqueId, String ownerName) |
-|`SecurityLabel`<br>getAssociatedSecurityLabel(Integer uniqueId, String securityLabel) |
-|`SecurityLabel`<br>getAssociatedSecurityLabel(Integer uniqueId, String securityLabel, String ownerName) |
+|`IterableResponse<SecurityLabel>`|getAssociatedSecurityLabels(Integer uniqueId) |
+|`IterableResponse<SecurityLabel>`|getAssociatedSecurityLabels(Integer uniqueId, String ownerName) |
+|`SecurityLabel`|getAssociatedSecurityLabel(Integer uniqueId, String securityLabel) |
+|`SecurityLabel`|getAssociatedSecurityLabel(Integer uniqueId, String securityLabel, String ownerName) |
 
 ###Associated Tags
 
 The methods below get associated Tag data elements.
 
-|Type<br>_Method_                                |
+|Type|_Method_                                |
 |-------------------------------------------------------- |
-|`IterableResponse<Tag>`<br>getAssociatedTags(Integer uniqueId) |
-|`IterableResponse<Tag>`<br>getAssociatedTags(Integer uniqueId, String ownerName) |
-|`Tag`<br>getAssociatedTag(Integer uniqueId, String tagName) |
-|`Tag`<br>getAssociatedTag(Integer uniqueId, String tagName, String ownerName) |
+|`IterableResponse<Tag>`|getAssociatedTags(Integer uniqueId) |
+|`IterableResponse<Tag>`|getAssociatedTags(Integer uniqueId, String ownerName) |
+|`Tag`|getAssociatedTag(Integer uniqueId, String tagName) |
+|`Tag`|getAssociatedTag(Integer uniqueId, String tagName, String ownerName) |
 
 ###Associated VictimAssets
 
 The methods below get associated VictimAsset data elements.
 
-|Type<br>_Method_                                |
+|Type|_Method_                                |
 |-------------------------------------------------------- |
-|`IterableResponse<VictimAsset>`<br>getAssociatedVictimAssets(Integer uniqueId) |
-|`IterableResponse<VictimAsset>`<br>getAssociatedVictimAssets(Integer uniqueId, String ownerName) |
-|`IterableResponse<VictimEmailAddress>`<br>getAssociatedVictimAssetEmailAddresses(Integer uniqueId) |
-|`IterableResponse<VictimEmailAddress>`<br>getAssociatedVictimAssetEmailAddresses(Integer uniqueId, String ownerName) |
-|`VictimEmailAddress`<br>getAssociatedVictimAssetEmailAddress(Integer uniqueId, Integer assetId) |
-|`VictimEmailAddress`<br>getAssociatedVictimAssetEmailAddress(Integer uniqueId, Integer assetId, String ownerName) |
-|`IterableResponse<VictimNetworkAccount>`<br>getAssociatedVictimAssetNetworkAccounts(Integer uniqueId) |
-|`IterableResponse<VictimNetworkAccount>`<br>getAssociatedVictimAssetNetworkAccounts(Integer uniqueId, String ownerName) |
-|`VictimNetworkAccount`<br>getAssociatedVictimAssetNetworkAccount(Integer uniqueId, Integer assetId) |
-|`VictimNetworkAccount`<br>getAssociatedVictimAssetNetworkAccount(Integer uniqueId, Integer assetId, String ownerName) |
-|`IterableResponse<VictimPhone>`<br>getAssociatedVictimAssetPhoneNumbers(Integer uniqueId) |
-|`IterableResponse<VictimPhone>`<br>getAssociatedVictimAssetPhoneNumbers(Integer uniqueId, String ownerName) |
-|`VictimPhone`<br>getAssociatedVictimAssetPhoneNumber(Integer uniqueId, Integer assetId) |
-|`VictimPhone`<br>getAssociatedVictimAssetPhoneNumber(Integer uniqueId, Integer assetId, String ownerName) |
-|`IterableResponse<VictimSocialNetwork>`<br>getAssociatedVictimAssetSocialNetworks(Integer uniqueId) |
-|`IterableResponse<VictimSocialNetwork>`<br>getAssociatedVictimAssetSocialNetworks(Integer uniqueId, String ownerName) |
-|`VictimSocialNetwork`<br>getAssociatedVictimAssetSocialNetwork(Integer uniqueId, Integer assetId) |
-|`VictimSocialNetwork`<br>getAssociatedVictimAssetSocialNetwork(Integer uniqueId, Integer assetId, String ownerName) |
-|`IterableResponse<VictimWebSite>`<br>getAssociatedVictimAssetWebsites(Integer uniqueId) |
-|`IterableResponse<VictimWebSite>`<br>getAssociatedVictimAssetWebsites(Integer uniqueId, String ownerName) |
-|`VictimWebSite`<br>getAssociatedVictimAssetWebsite(Integer uniqueId, Integer assetId) |
-|`VictimWebSite`<br>getAssociatedVictimAssetWebsite(Integer uniqueId, Integer assetId, String ownerName) |
+|`IterableResponse<VictimAsset>`|getAssociatedVictimAssets(Integer uniqueId) |
+|`IterableResponse<VictimAsset>`|getAssociatedVictimAssets(Integer uniqueId, String ownerName) |
+|`IterableResponse<VictimEmailAddress>`|getAssociatedVictimAssetEmailAddresses(Integer uniqueId) |
+|`IterableResponse<VictimEmailAddress>`|getAssociatedVictimAssetEmailAddresses(Integer uniqueId, String ownerName) |
+|`VictimEmailAddress`|getAssociatedVictimAssetEmailAddress(Integer uniqueId, Integer assetId) |
+|`VictimEmailAddress`|getAssociatedVictimAssetEmailAddress(Integer uniqueId, Integer assetId, String ownerName) |
+|`IterableResponse<VictimNetworkAccount>`|getAssociatedVictimAssetNetworkAccounts(Integer uniqueId) |
+|`IterableResponse<VictimNetworkAccount>`|getAssociatedVictimAssetNetworkAccounts(Integer uniqueId, String ownerName) |
+|`VictimNetworkAccount`|getAssociatedVictimAssetNetworkAccount(Integer uniqueId, Integer assetId) |
+|`VictimNetworkAccount`|getAssociatedVictimAssetNetworkAccount(Integer uniqueId, Integer assetId, String ownerName) |
+|`IterableResponse<VictimPhone>`|getAssociatedVictimAssetPhoneNumbers(Integer uniqueId) |
+|`IterableResponse<VictimPhone>`|getAssociatedVictimAssetPhoneNumbers(Integer uniqueId, String ownerName) |
+|`VictimPhone`|getAssociatedVictimAssetPhoneNumber(Integer uniqueId, Integer assetId) |
+|`VictimPhone`|getAssociatedVictimAssetPhoneNumber(Integer uniqueId, Integer assetId, String ownerName) |
+|`IterableResponse<VictimSocialNetwork>`|getAssociatedVictimAssetSocialNetworks(Integer uniqueId) |
+|`IterableResponse<VictimSocialNetwork>`|getAssociatedVictimAssetSocialNetworks(Integer uniqueId, String ownerName) |
+|`VictimSocialNetwork`|getAssociatedVictimAssetSocialNetwork(Integer uniqueId, Integer assetId) |
+|`VictimSocialNetwork`|getAssociatedVictimAssetSocialNetwork(Integer uniqueId, Integer assetId, String ownerName) |
+|`IterableResponse<VictimWebSite>`|getAssociatedVictimAssetWebsites(Integer uniqueId) |
+|`IterableResponse<VictimWebSite>`|getAssociatedVictimAssetWebsites(Integer uniqueId, String ownerName) |
+|`VictimWebSite`|getAssociatedVictimAssetWebsite(Integer uniqueId, Integer assetId) |
+|`VictimWebSite`|getAssociatedVictimAssetWebsite(Integer uniqueId, Integer assetId, String ownerName) |
 
 ###Associated Attributes
 
 The methods below get Attributes and Attribute SecurityLabels for this Group type.
 
-|Type<br>_Method_                                |
+|Type|_Method_                                |
 |------------------------------------------------------- |
-|`IterableResponse<Attribute>`<br>getAttributes(Integer uniqueId) |
-|`IterableResponse<Attribute>`<br>getAttributes(Integer uniqueId, String ownerName) |
-|`Attribute`<br>getAttribute(Integer uniqueId, Integer attributeId) |
-|`Attribute`<br>getAttribute(Integer uniqueId, Integer attributeId, String ownerName) |
-|`IterableResponse<SecurityLabel>`<br>getAttributeSecurityLabels(Integer uniqueId, Integer attributeId) |
-|`IterableResponse<SecurityLabel>`<br>getAttributeSecurityLabels(Integer uniqueId, Integer attributeId, String ownerName) |
-|`SecurityLabel`<br>getAttributeSecurityLabel(Integer uniqueId, Integer attributeId, String securityLabel) |
-|`SecurityLabel`<br>getAttributeSecurityLabel(Integer uniqueId, Integer attributeId, String securityLabel, String ownerName) |
+|`IterableResponse<Attribute>`|getAttributes(Integer uniqueId) |
+|`IterableResponse<Attribute>`|getAttributes(Integer uniqueId, String ownerName) |
+|`Attribute`|getAttribute(Integer uniqueId, Integer attributeId) |
+|`Attribute`|getAttribute(Integer uniqueId, Integer attributeId, String ownerName) |
+|`IterableResponse<SecurityLabel>`|getAttributeSecurityLabels(Integer uniqueId, Integer attributeId) |
+|`IterableResponse<SecurityLabel>`|getAttributeSecurityLabels(Integer uniqueId, Integer attributeId, String ownerName) |
+|`SecurityLabel`|getAttributeSecurityLabel(Integer uniqueId, Integer attributeId, String securityLabel) |
+|`SecurityLabel`|getAttributeSecurityLabel(Integer uniqueId, Integer attributeId, String securityLabel, String ownerName) |
 
 ###AbstractIndicatorReaderAdapter
 
@@ -5851,90 +5846,90 @@ All Indicators in the ThreatConnect API have a uniqueId data type of "String". T
 
 The methods below get data for the Indicator type (T) linked to this Adapter. The uniqueId (P) for Indicators is a String.
 
-|Type<br>_Method_                                |
+|Type|_Method_                                |
 |-------------------------------------------------------- |
-|`T`<br>getById(P uniqueId)                   |
-|`T`<br>getById(P uniqueId, String ownerName) |
-|`IterableResponse<T>`<br>getForFilters(String ownerName, boolean orParams, ApiFilterType...filters)                              | 
-|`IterableResponse<T>`<br>getAll()                              |
-|`IterableResponse<T>`<br>getAll(String ownerName)              |
+|`T`|getById(P uniqueId)                   |
+|`T`|getById(P uniqueId, String ownerName) |
+|`IterableResponse<T>`|getForFilters(String ownerName, boolean orParams, ApiFilterType...filters)                              | 
+|`IterableResponse<T>`|getAll()                              |
+|`IterableResponse<T>`|getAll(String ownerName)              |
 
 The method below returns all the generic Indicators to which the current API user has access.
 
-|Type<br>_Method_                                |
+|Type|_Method_                                |
 |-------------------------------------------------------- |
-|`IterableResponse<Indicator>`<br>getIndicators()                       |
+|`IterableResponse<Indicator>`|getIndicators()                       |
 
 The methods below return owners who have created the Indicator under the uniqueId.
 
-|Type<br>_Method_                                |
+|Type|_Method_                                |
 |-------------------------------------------------------- |
-|`IterableResponse<Owner>`<br>getAssociatedOwners(String uniqueId) |
-|`IterableResponse<Owner>`<br>getAssociatedOwners(String uniqueId, String ownerName)  |
+|`IterableResponse<Owner>`|getAssociatedOwners(String uniqueId) |
+|`IterableResponse<Owner>`|getAssociatedOwners(String uniqueId, String ownerName)  |
 
 The methods below return False Positive counts for the Indicator under the uniqueId.
 
-|Type<br>_Method_                                |
+|Type|_Method_                                |
 -------------------------------------------------------- |
-`FalsePositive`<br>getFalsePositive(String uniqueId) |
-`FalsePositive`<br>getFalsePositive(String uniqueId, String ownerName) |
+`FalsePositive`|getFalsePositive(String uniqueId) |
+`FalsePositive`|getFalsePositive(String uniqueId, String ownerName) |
 
 The methods below return Observations and Observation counts for the Indicator under the uniqueId.
 
-|Type<br>_Method_                                |
+|Type|_Method_                                |
 |-------------------------------------------------------- |
-|`IterableResponse<Observation>`<br>getObservations(String uniqueId) |
-|`IterableResponse<Observation>`<br>getObservations(String uniqueId, String ownerName) |
-|`ObservationCount`<br>getObservationCount(String uniqueId) |
-|`ObservationCount`<br>getObservationCount(String uniqueId, String ownerName) |
+|`IterableResponse<Observation>`|getObservations(String uniqueId) |
+|`IterableResponse<Observation>`|getObservations(String uniqueId, String ownerName) |
+|`ObservationCount`|getObservationCount(String uniqueId) |
+|`ObservationCount`|getObservationCount(String uniqueId, String ownerName) |
 
 
 The AbstractIndicatorReaderAdapter class has a concrete subclass **FileIndicatorReaderAdapter** that exposes the methods below.
 
-|Type<br>_Method_                                |
+|Type|_Method_                                |
 |-------------------------------------------------------- |
-|`FileOccurrence`<br>getFileOccurrence(String uniqueId, Integer fileOccurrencId) |
-|`FileOccurrence` <br>getFileOccurrence(String uniqueId, Integer fileOccurrencId, String ownerName) |
+|`FileOccurrence`|getFileOccurrence(String uniqueId, Integer fileOccurrencId) |
+|`FileOccurrence` |getFileOccurrence(String uniqueId, Integer fileOccurrencId, String ownerName) |
 
 ###BatchReaderAdapter
 
 The BatchReaderAdapter class allows the developer to poll for the status of a batch upload file using a batch id. Once a batch is complete (either successfully or with errors), the developer can download errors (if any).
 
 
-|Type<br>_Method_                                |
+|Type|_Method_                                |
 |---------------------------------------------------------- |
-|`ApiEntitySingleResponse<BatchStatus, BatchStatusResponseData>`<br>getStatus(int batchId)                  |
-|`ApiEntitySingleResponse<BatchStatus, BatchStatusResponseData>`<br>getStatus(int batchId, String ownerName)                  |
-|`void`<br>downloadErrors(int batchId, Path outputPath) | 
-|`void`<br>downloadErrors(int batchId, String ownerName, Path outputPath) |
+|`ApiEntitySingleResponse<BatchStatus, BatchStatusResponseData>`|getStatus(int batchId)                  |
+|`ApiEntitySingleResponse<BatchStatus, BatchStatusResponseData>`|getStatus(int batchId, String ownerName)                  |
+|`void`|downloadErrors(int batchId, Path outputPath) | 
+|`void`|downloadErrors(int batchId, String ownerName, Path outputPath) |
 
 ###DocumentReaderAdapter
 
 The DocumentReaderAdapter class is a subclass of the AbstractGroupReader class. In addition to all GroupReader functionality, the document reader has access to the following method.
 
-|Type<br>_Method_                                |
+|Type|_Method_                                |
 |---------------------------------------------------------- |
-|`void`<br>downloadFile(int uniqueId, String ownerName, Path outputPath) | 
+|`void`|downloadFile(int uniqueId, String ownerName, Path outputPath) | 
 
 ###OwnerReaderAdapter
 
 The OwnerReaderAdapter is a simple Adapter that returns a list of Organizations to which the API user has access. There is a second method called "getOwnerMine()" that returns the default Organization for the API user.
 
-|Type<br>_Method_                                |
+|Type|_Method_                                |
 |-------------------------------------------------------- |
-|`Owner`<br>getOwnerMine()                        |
-|`IterableResponse<Owner>`<br> getOwners()                           |
+|`Owner`|getOwnerMine()                        |
+|`IterableResponse<Owner>`| getOwners()                           |
 
 ###SecurityLabelReaderAdapter 
 
 The SecurityLabelReaderAdapter class is a concrete class (available through the ReaderFactory) that returns SecurityLabels to which the developer's API user has access, as well as by uniqueId (P). The uniqueId data type for SecurityLabels is a String.
 
-|Type<br>_Method_                                |
+|Type|_Method_                                |
 |---------------------------------------------------------- |
-|`T`<br>getById(P uniqueId)                   |
-|`T`<br>getById(P uniqueId, String ownerName) |
-|`IterableResponse<T>`<br>getAll()                              |
-|`IterableResponse<T>`<br>getAll(String ownerName)              |
+|`T`|getById(P uniqueId)                   |
+|`T`|getById(P uniqueId, String ownerName) |
+|`IterableResponse<T>`|getAll()                              |
+|`IterableResponse<T>`|getAll(String ownerName)              |
 
 In addition to retrieving basic SecurityLabel data, associated [Groups](#associate-groups) and [Indicators](#associate-indicators) can be retrieved. For more details on these methods, see the [AbstractGroupReaderAdapter](#abstractgroupreaderadapter) class.
 
@@ -5942,13 +5937,13 @@ In addition to retrieving basic SecurityLabel data, associated [Groups](#associa
 
 The TagReaderAdapter class is a concrete class (available through the ReaderFactory) that returns Tags to which the developer's API user has access, as well as by uniqueId (P). The uniqueId data type for Tags is a String.
 
-|Type<br>_Method_                                |
+|Type|_Method_                                |
 |---------------------------------------------------------- |
-|`T`<br>getById(P uniqueId)                   |
-|`T`<br>getById(P uniqueId, String ownerName) |
-|`IterableResponse<T>`<br>getForFilters(String ownerName, boolean orParams, ApiFilterType...filters)                              | 
-|`IterableResponse<T>`<br>getAll()                              |
-|`IterableResponse<T>`<br>getAll(String ownerName)              |
+|`T`|getById(P uniqueId)                   |
+|`T`|getById(P uniqueId, String ownerName) |
+|`IterableResponse<T>`|getForFilters(String ownerName, boolean orParams, ApiFilterType...filters)                              | 
+|`IterableResponse<T>`|getAll()                              |
+|`IterableResponse<T>`|getAll(String ownerName)              |
 
 In addition to retrieving basic Tag data, associated [Groups](#associate-groups) and [Indicators](#associate-indicators) can be retrieved. For more details on these methods, review the [AbstractGroupReaderAdapter](#abstractgroupreaderadapter) class.
 
@@ -5956,49 +5951,48 @@ In addition to retrieving basic Tag data, associated [Groups](#associate-groups)
 
 The TaskReaderAdapter class is a concrete class (available through the ReaderFactory) that returns Tasks to which the API user has access, as well as by uniqueId (P). The uniqueId data type for a Task is an Integer.
 
-|Type<br>_Method_                                |
+|Type|_Method_                                |
 |---------------------------------------------------------- |
-|`T`<br>getById(P uniqueId)                   |
-|`T`<br>getById(P uniqueId, String ownerName) |
-|`IterableResponse<T>`<br>getForFilters(String ownerName, boolean orParams, ApiFilterType...filters)                              | 
-|`IterableResponse<T>`<br>getAll()                              |
-|`IterableResponse<T>`<br>getAll(String ownerName)              |
-|`IterableResponse<
+|`T`|getById(P uniqueId)                   |
+|`T`|getById(P uniqueId, String ownerName) |
+|`IterableResponse<T>`|getForFilters(String ownerName, boolean orParams, ApiFilterType...filters)                              | 
+|`IterableResponse<T>`|getAll()                              |
+|`IterableResponse<T>`|getAll(String ownerName)              |
 
 In addition to retrieving basic Task data, associated Assignees and Escalatees can be retrieved.
 
 The methods below return all Assignees or Escalatees associated with a given Task's id
 
-|Type<br>_Method_                                |
+|Type|_Method_                                |
 |---------------------------------------------------------- |
-|`IterableResponse<User>`<br>getAssignees(P uniqueId)                   |
-|`IterableResponse<User>`<br>getEscalatees(P uniqueId) |
+|`IterableResponse<User>`|getAssignees(P uniqueId)                   |
+|`IterableResponse<User>`|getEscalatees(P uniqueId) |
 
 The methods below return an individual Assignee or Escalatees' information
 
-|Type<br>_Method_                                |
+|Type|_Method_                                |
 |---------------------------------------------------------- |
-|`IterableResponse<User>`<br>getAssignee(P uniqueId, String userName)                   |
-|`IterableResponse<User>`<br>getEscalatee(P uniqueId, String userName) |
+|`IterableResponse<User>`|getAssignee(P uniqueId, String userName)                   |
+|`IterableResponse<User>`|getEscalatee(P uniqueId, String userName) |
 
 ###VictimReaderAdapter Class
 
 The VictimReaderAdapter class is a concrete class (available through the ReaderFactory) that returns Victims to which the API user has access, as well as by uniqueId (P). The uniqueId data type for a Victim is an Integer.
 
 
-|Type<br>_Method_                                |
+|Type|_Method_                                |
 |---------------------------------------------------------- |
-|`T`<br>getById(P uniqueId)                   |
-|`T`<br>getById(P uniqueId, String ownerName) |
-|`IterableResponse<T>`<br>getForFilters(String ownerName, boolean orParams, ApiFilterType...filters)                              | 
-|`IterableResponse<T>`<br>getAll()                              |
-|`IterableResponse<T>`<br>getAll(String ownerName)              |
+|`T`|getById(P uniqueId)                   |
+|`T`|getById(P uniqueId, String ownerName) |
+|`IterableResponse<T>`|getForFilters(String ownerName, boolean orParams, ApiFilterType...filters)                              | 
+|`IterableResponse<T>`|getAll()                              |
+|`IterableResponse<T>`|getAll(String ownerName)              |
 
 In addition to retrieving basic Victim data, associated [Groups](#associate-groups), [Indicators](#associate-indicators), and [VictimAssets](#associated-victimassets) can be retrieved. For more details on these methods, review the  [AbstractGroupReaderAdapter](#abstractgroupreaderadapter) class.
 
 ###Reader IP Address and Tag Example
 
-> The following example uses the Reader Package to retrieve associated Tags from our IP address Indicators:
+The following example uses the Reader Package to retrieve associated Tags from our IP address Indicators:
 
 ```java
   1 
@@ -6019,12 +6013,12 @@ In addition to retrieving basic Victim data, associated [Groups](#associate-grou
  16 
 ```
 
-Line            | Description                                                                                                  
---------------- | -----------------------------------------------------------------------------------------------------------------------------------------------------------------
-3-4             |An IndicatorReaderAdapter is created to read all the addresses to which the API user<br>has access. The `getAll()` method returns a collection of addresses from the<br>ThreatConnect API.
-5-6             |Each address is iterated through and its uniqueId is printed. As mentioned in the<br>AbstractIndicatorReaderAdapter section, all uniqueIds for Indicators are Strings.<br>In the case of address objects, it is the IP address or the `getIp()` getter method.
-8               |To get a collection of associated Tags for the IP Address, the<br>`getAssociatedTags()` method is called.
-10-11           |Each Tag returned from the ThreatConnect API for that specific IP address is iterated<br>through and printed to the console.
+|Line            | Description                  |                                                                                
+|--------------- | -----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|3-4             |An IndicatorReaderAdapter is created to read all the addresses to which the API user has access. The `getAll()` method returns a collection of addresses from the ThreatConnect API.|
+|5-6             |Each address is iterated through and its uniqueId is printed. As mentioned in the AbstractIndicatorReaderAdapter section, all uniqueIds for Indicators are Strings. In the case of address objects, it is the IP address or the `getIp()` getter method.|
+|8               |To get a collection of associated Tags for the IP Address, the `getAssociatedTags()` method is called.|
+|10-11           |Each Tag returned from the ThreatConnect API for that specific IP address is iterated through and printed to the console.|
 
 <b>Summary</b>
 
@@ -6037,40 +6031,40 @@ This example explained how to:
 
 The Writer Package shares many of the concepts of the Reader Package with the distinction of introducing the new functionality of version 2.0 of the ThreatConnect API. Note that the WriterAdapterFactory class is effectively the "hub" for writer Adapters. It provides convenience objects for all the Adapters in the Writer Package. Below is a list of the static methods and return types of the WriterAdapterFactory.
 
-|Class<br>_Description_|
-|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`WriterAdapterFactory`<br>Primary entry point to instantiate all writers in the Writer Package.|
-|`AbstractGroupWriterAdapter<T extends Group>`<br>Generic Group writer abstract class. Concrete object available in WriterAdapterFactory.|
-|`AbstractIndicatorWriterAdapter<T extends Indicator>`<br>Generic Indicator writer abstract class. Concrete object available in WriterAdapterFactory.|
-|`AbstractWriterAdapter`<br>Base abstract writer for all reader Adapters in the Reader Package.|
-|`SecurityLabelWriterAdapter`<br>Concrete writer for SecurityLabel data. Convenience object available in WriterAdapterFactory.|
-|`TagWriterAdapter`<br>Concrete writer for Tag data. Convenience object available in WriterAdapterFactory.|
-|`TaskWriterAdapter`<br>Concrete writer for Task data. Convenience object available in WriterAdapterFactory.|
-|`VictimWriterAdapter`<br>Concrete writer for Victim data. Convenience object available in WriterAdapterFactory.|
-|`AbstractBatchWriterAdapter<T>`<br>Writer for batch indicator uploads. Concrete object available in WriterAdapterFactory.|
+|Class|_Description_|
+|-------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|`WriterAdapterFactory`|Primary entry point to instantiate all writers in the Writer Package.|
+|`AbstractGroupWriterAdapter<T extends Group>`|Generic Group writer abstract class. Concrete object available in WriterAdapterFactory.|
+|`AbstractIndicatorWriterAdapter<T extends Indicator>`|Generic Indicator writer abstract class. Concrete object available in WriterAdapterFactory.|
+|`AbstractWriterAdapter`|Base abstract writer for all reader Adapters in the Reader Package.|
+|`SecurityLabelWriterAdapter`|Concrete writer for SecurityLabel data. Convenience object available in WriterAdapterFactory.|
+|`TagWriterAdapter`|Concrete writer for Tag data. Convenience object available in WriterAdapterFactory.|
+|`TaskWriterAdapter`|Concrete writer for Task data. Convenience object available in WriterAdapterFactory.|
+|`VictimWriterAdapter`|Concrete writer for Victim data. Convenience object available in WriterAdapterFactory.|
+|`AbstractBatchWriterAdapter<T>`|Writer for batch indicator uploads. Concrete object available in WriterAdapterFactory.|
 
 ###Writer Factory
 
 The primary methods for the WriterFactory are listed below. They encompass all write functionality for the ThreatConnect API.
 
-|Class<br>_Method_
+|Class|_Method_|
 |---------------------------------------------------- | -------------------------------------------------------------------------------------------------------
-|`static AbstractGroupWriterAdapter<Adversary>`<br>createAdversaryGroupWriter(Connection conn) |
-|`static AbstractGroupWriterAdapter<Email>`<br>createEmailGroupWriter(Connection conn) |
-|`static AbstractGroupWriterAdapter<Incident>`<br>createIncidentGroupWriter(Connection conn) |
-|`static AbstractGroupWriterAdapter<Signature>`<br>createSignatureGroupWriter(Connection conn) |
-|`static AbstractGroupWriterAdapter<Threat>`<br>createThreatGroupWriter(Connection conn) |
-|`static AbstractIndicatorWriterAdapter<Address>`<br>createAddressIndicatorWriter(Connection conn) |
-|`static AbstractIndicatorWriterAdapter<EmailAddress>`<br>createEmailAddressIndicatorWriter(Connection conn) |
-|`static AbstractIndicatorWriterAdapter<File>`<br>createFileIndicatorWriter(Connection conn) |
-|`static AbstractIndicatorWriterAdapter<Host>`<br>createHostIndicatorWriter(Connection conn) |
-|`static AbstractIndicatorWriterAdapter<Url>`<br>createUrlIndicatorWriter(Connection conn) |
-|`static AbstractBatchWriterAdapter<Indicator>`<br>createBatchIndicatorWriter(Connection conn) |
-|`static DocumentWriterAdapter`<br>createDocumentWriter(Connection conn) |
-|`static SecurityLabelWriterAdapter`<br>createSecurityLabelWriter(Connection conn) |
-|`static TagWriterAdapter`<br>createTagWriter(Connection conn) |
-|`static TaskWriterAdapter`<br>createTaskWriter(Connection conn) |
-|`static VictimWriterAdapter`<br>createVictimWriter(Connection conn) |
+|`static AbstractGroupWriterAdapter<Adversary>`|createAdversaryGroupWriter(Connection conn) |
+|`static AbstractGroupWriterAdapter<Email>`|createEmailGroupWriter(Connection conn) |
+|`static AbstractGroupWriterAdapter<Incident>`|createIncidentGroupWriter(Connection conn) |
+|`static AbstractGroupWriterAdapter<Signature>`|createSignatureGroupWriter(Connection conn) |
+|`static AbstractGroupWriterAdapter<Threat>`|createThreatGroupWriter(Connection conn) |
+|`static AbstractIndicatorWriterAdapter<Address>`|createAddressIndicatorWriter(Connection conn) |
+|`static AbstractIndicatorWriterAdapter<EmailAddress>`|createEmailAddressIndicatorWriter(Connection conn) |
+|`static AbstractIndicatorWriterAdapter<File>`|createFileIndicatorWriter(Connection conn) |
+|`static AbstractIndicatorWriterAdapter<Host>`|createHostIndicatorWriter(Connection conn) |
+|`static AbstractIndicatorWriterAdapter<Url>`|createUrlIndicatorWriter(Connection conn) |
+|`static AbstractBatchWriterAdapter<Indicator>`|createBatchIndicatorWriter(Connection conn) |
+|`static DocumentWriterAdapter`|createDocumentWriter(Connection conn) |
+|`static SecurityLabelWriterAdapter`|createSecurityLabelWriter(Connection conn) |
+|`static TagWriterAdapter`|createTagWriter(Connection conn) |
+|`static TaskWriterAdapter`|createTaskWriter(Connection conn) |
+|`static VictimWriterAdapter`|createVictimWriter(Connection conn) |
 
 ###Writer Responses
 
@@ -6080,20 +6074,20 @@ When a single item is modified (create/delete/update) using the Java SDK, the re
 
 When a collection of items is modified (create/delete/update) using the Java SDK, the return type is a WriteListResponse object. Likewise, in an effort to simplify write-operation response handling, the WriteListResponse object holds collections of failed/succeeded ApiEntitySingleResponse objects. The following listing describes how modify responses should be handled.
 
-Type<br>_Method_                  | Description
-----------------------------------|------------------------
-`List<ApiEntitySingleResponse>`<br>getFailureList()      | Collection of failed ApiEntitySingleResponse objects<br>for each element the API user attempted a write<br>operation to the ThreatConnect API
-`List<ApiEntitySingleResponse>`<br>getSuccessList()      | Collection of successful ApiEntitySingle Response<br>objects for each element the API user attempted a<br>write operation to the ThreatConnect API
-`boolean`<br>isSuccess()                                 | Returns whether the attempted operation returned<br>successfully from the ThreatConnect API for the item<br>that is part of this response. This should be the first<br>element.
-`String`<br>getMessage()                                 | If `isSuccess()`  returns false, check this field to<br>find the cause of the failure for the item that it<br>is part of this response.
-`T`<br>getItem()                                         | This field is a convenience method that returns the<br>item that is part of this response. Note that not<br>all responses return an item 
+|Type|_Method_                  | Description|
+|----------------------------------|------------------------|
+|`List<ApiEntitySingleResponse>`|getFailureList()      | Collection of failed ApiEntitySingleResponse objects for each element the API user attempted a write operation to the ThreatConnect API.|
+|`List<ApiEntitySingleResponse>`|getSuccessList()      | Collection of successful ApiEntitySingle Response objects for each element the API user attempted a write operation to the ThreatConnect API.|
+|`boolean`|isSuccess()                                 | Returns whether the attempted operation returned successfully from the ThreatConnect API for the item that is part of this response. This should be the first element.|
+|`String`|getMessage()                                 | If `isSuccess()`  returns false, check this field to find the cause of the failure for the item that it is part of this response.|
+|`T`|getItem()                                         | This field is a convenience method that returns the item that is part of this response. Note that not all responses return an item.|
 
 
 While the ApiEntitySingleResponse class manages failed write operations to the ThreatConnect API, the developer is responsible for capturing any runtime exceptions that may occur because of network, configuration, or data-related issues.
 
 ###Fluent Entities
 
-> The following is a simple Fluent Example:
+The following is a simple Fluent Example:
 
 ```java
 
@@ -6108,41 +6102,41 @@ While the ApiEntitySingleResponse class manages failed write operations to the T
 
 There are entity classes available using a fluent style to simplify object creation. These classes are part of the SDK and can be used in place of creating a traditional new ThreatConnect entity with all setters. Using the fluent entities in the `com.threatconnect.sdk.client.fluent` package are optional and a matter of preference.
 
-Fluent Types                                 |
------------------------------------- |
-`AddressBuilder` |
-`AdversaryBuilder` |
-`AttributeBuilder` |
-`CommunityBuilder` |
-`DocumentBuilder` |
-`EmailAddressBuilder` |
-`EmailBuilder` |
-`FileBuilder` |
-`FileOccurrenceBuilder` |
-`GroupBuilder` |
-`HostBuilder` |
-`IncidentBuilder` |
-`IndicatorBuilder` |
-`IndividualBuilder` |
-`SecurityLabelBuilder` |
-`SignatureBuilder` |
-`SourceBuilder` |
-`TagBuilder` |
-`TaskBuilder` |
-`ThreatBuilder` |
-`UrlBuilder` |
-`UserBuilder` |
-`VictimAssetBuilder` |
-`VictimBuilder` |
-`VictimEmailAddressBuilder` |
-`VictimNetworkAccountBuilder` |
-`VictimPhoneBuilder` |
-`VictimSocialNetworkBuilder` |
-`VictimWebSiteBuilder` |
+|Fluent Types                                 |
+|------------------------------------ |
+|`AddressBuilder` |
+|`AdversaryBuilder` |
+|`AttributeBuilder` |
+|`CommunityBuilder` |
+|`DocumentBuilder` |
+|`EmailAddressBuilder` |
+|`EmailBuilder` |
+|`FileBuilder` |
+|`FileOccurrenceBuilder` |
+|`GroupBuilder` |
+|`HostBuilder` |
+|`IncidentBuilder` |
+|`IndicatorBuilder` |
+|`IndividualBuilder` |
+|`SecurityLabelBuilder` |
+|`SignatureBuilder` |
+|`SourceBuilder` |
+|`TagBuilder` |
+|`TaskBuilder` |
+|`ThreatBuilder` |
+|`UrlBuilder` |
+|`UserBuilder` |
+|`VictimAssetBuilder` |
+|`VictimBuilder` |
+|`VictimEmailAddressBuilder` |
+|`VictimNetworkAccountBuilder` |
+|`VictimPhoneBuilder` |
+|`VictimSocialNetworkBuilder` |
+|`VictimWebSiteBuilder` |
 
 ###Writer Create Example
 
-> The following is a simple Writer Create Example:
+The following is a simple Writer Create Example:
 
 ```java
 
@@ -6181,14 +6175,14 @@ Fluent Types                                 |
 
 <br>Code Sample<br>
 
-Line            | Description                                                                                                  |
---------------- | -----------------------------------------------------------------------------------------------------------------------------------------------------------------
-104             | An AbstractGroupWriterAdapter for the Adversary Group type is created.<br>With this Adapter, Group data elements, Victim assets, Attributes, and associations <br>can be written/updated/deleted. |
-106-108         | A simple Adversary with a name and owner (Organization) is created. |
-111             | The writer is used to create an Adversary using the ThreatConnect API.<br>For single-item writes, an ApiEntitySingleResponse object is always returned.<br>This object allows for the appropriate inspection and handling of<br>the response. |
-112-114         | To see if the create was successful, `isSuccess()` is called.<br>If the check passes, the item associated with the response is delivered using the <br>`getItem()` method (Line 113). The successfully saved Adversary object<br>returns from the ThreatConnect API with a valid ID value. |
-116             | If the response is unsuccessful, the response message to the console is printed. |
-121             | Any potential runtime exceptions are caught and handled appropriately.<br>In the case of this basic example, it is simply dumped to the console.
+|Line            | Description                                                                                                  |
+|--------------- | -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+|104             | An AbstractGroupWriterAdapter for the Adversary Group type is created. With this Adapter, Group data elements, Victim assets, Attributes, and associations  can be written/updated/deleted. |
+|106-108         | A simple Adversary with a name and owner (Organization) is created. |
+|111             | The writer is used to create an Adversary using the ThreatConnect API. For single-item writes, an ApiEntitySingleResponse object is always returned. This object allows for the appropriate inspection and handling of the response. |
+|112-114         | To see if the create was successful, `isSuccess()` is called. If the check passes, the item associated with the response is delivered using the `getItem()` method (Line 113). The successfully saved Adversary object returns from the ThreatConnect API with a valid ID value. |
+|116             | If the response is unsuccessful, the response message to the console is printed. |
+|121             | Any potential runtime exceptions are caught and handled appropriately. In the case of this basic example, it is simply dumped to the console.|
 
 <b>Summary</b>
 
@@ -6210,308 +6204,308 @@ The methods below write data for the Group type (T) linked to this Adapter.
 * The delete methods require the key ID value as a collection or single object.
 * The update methods require a Group type object as a collection or single object.
 
-||Type<br>_Method_|
+||Type|_Method_|
 |------------------------------------------- | --------------------------------------------------------------- |
-|`WriteListResponse<T>`<br>create(`List<T> itemList`)                                      |
-|`ApiEntitySingleResponse`<br>create(`T item`)                                                |
-|`ApiEntitySingleResponse`<br>create(`T item`, `String ownerName`)                              |
-|`WriteListResponse<P>`<br>delete(`List<P> itemIds`)                                       |
-|`WriteListResponse<P>`<br>delete(`List<P> itemIds`, `String ownerName`)                     |
-|`ApiEntitySingleResponse`<br>delete(`P itemId`)                                              |
-|`ApiEntitySingleResponse`<br>delete(`P itemId`, `String ownerName`)                            |
-|`WriteListResponse<T>`<br>update(`List<T> itemList`)                                      |
-|`WriteListResponse<T>`<br>update(`List<T> itemList`, `String ownerName`)                    |
-|`ApiEntitySingleResponse`<br>update(`T item`)                                                |
-|`ApiEntitySingleResponse`<br>update(`T item`, `String ownerName`)                              | 
+|`WriteListResponse<T>`|create(`List<T> itemList`)                                      |
+|`ApiEntitySingleResponse`|create(`T item`)                                                |
+|`ApiEntitySingleResponse`|create(`T item`, `String ownerName`)                              |
+|`WriteListResponse<P>`|delete(`List<P> itemIds`)                                       |
+|`WriteListResponse<P>`|delete(`List<P> itemIds`, `String ownerName`)                     |
+|`ApiEntitySingleResponse`|delete(`P itemId`)                                              |
+|`ApiEntitySingleResponse`|delete(`P itemId`, `String ownerName`)                            |
+|`WriteListResponse<T>`|update(`List<T> itemList`)                                      |
+|`WriteListResponse<T>`|update(`List<T> itemList`, `String ownerName`)                    |
+|`ApiEntitySingleResponse`|update(`T item`)                                                |
+|`ApiEntitySingleResponse`|update(`T item`, `String ownerName`)                              | 
 
 ###Associate Groups
 
 The methods below associate a Group type to another Group type. Groups are associated by passing in the uniqueId (Integer) with the Group ID to which it will be associated. 
 
-|Type<br>_Method_|
-|---------------------------------------------------------------------------------------------------------- |
-|`WriteListResponse<Integer>`<br>associateGroupAdversaries(`Integer uniqueId`, `List<Integer> adversaryIds`) |
-|`WriteListResponse<Integer>`<br>associateGroupAdversaries(`Integer uniqueId`, `List<Integer> adversaryIds`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>associateGroupAdversary(`Integer uniqueId`, `Integer adversaryId`) |
-|`ApiEntitySingleResponse`<br>associateGroupAdversary(`Integer uniqueId`, `Integer adversaryId`, `String ownerName`) |
-|`WriteListResponse<Integer>`<br>associateGroupEmails(`Integer uniqueId`, `List<Integer> emailIds`) |
-|`WriteListResponse<Integer>`<br>associateGroupEmails(`Integer uniqueId`, `List<Integer> emailIds`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>associateGroupEmail(`Integer uniqueId`, `Integer emailId`) |
-|`ApiEntitySingleResponse`<br>associateGroupEmail(`Integer uniqueId`, `Integer emailId`, `String ownerName`) |
-|`WriteListResponse<Integer>`<br>associateGroupIncidents(`Integer uniqueId`, `List<Integer> incidentIds`) |
-|`WriteListResponse<Integer>`<br>associateGroupIncidents(`Integer uniqueId`, `List<Integer> incidentIds`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>associateGroupIncident(`Integer uniqueId`, `Integer incidentId`) |
-|`ApiEntitySingleResponse`<br>associateGroupIncident(`Integer uniqueId`, `Integer incidentId`, `String ownerName`) |
-|`WriteListResponse<Integer>`<br>associateGroupSignatures(`Integer uniqueId`, `List<Integer> signatureIds`) |
-|`WriteListResponse<Integer>`<br>associateGroupSignatures(`Integer uniqueId`, `List<Integer> signatureIds`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>associateGroupSignature(`Integer uniqueId`, `Integer signatureId`) |
-|`ApiEntitySingleResponse`<br>associateGroupSignature(`Integer uniqueId`, `Integer signatureId`, `String ownerName`) |
-|`WriteListResponse<Integer>`<br>associateGroupThreats(`Integer uniqueId`, `List<Integer> threatIds`) |
-|`WriteListResponse<Integer>`<br>associateGroupThreats(`Integer uniqueId`, `List<Integer> threatIds`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>associateGroupThreat(`Integer uniqueId`, `Integer threatId`) |
-|`ApiEntitySingleResponse`<br>associateGroupThreat(`Integer uniqueId`, `Integer threatId`, `String ownerName`) |
+|Type|_Method_|
+|-----------------------------|----------------------------------------------------------------------------- |
+|`WriteListResponse<Integer>`|associateGroupAdversaries(`Integer uniqueId`, `List<Integer> adversaryIds`) |
+|`WriteListResponse<Integer>`|associateGroupAdversaries(`Integer uniqueId`, `List<Integer> adversaryIds`, `String ownerName`) |
+|`ApiEntitySingleResponse`|associateGroupAdversary(`Integer uniqueId`, `Integer adversaryId`) |
+|`ApiEntitySingleResponse`|associateGroupAdversary(`Integer uniqueId`, `Integer adversaryId`, `String ownerName`) |
+|`WriteListResponse<Integer>`|associateGroupEmails(`Integer uniqueId`, `List<Integer> emailIds`) |
+|`WriteListResponse<Integer>`|associateGroupEmails(`Integer uniqueId`, `List<Integer> emailIds`, `String ownerName`) |
+|`ApiEntitySingleResponse`|associateGroupEmail(`Integer uniqueId`, `Integer emailId`) |
+|`ApiEntitySingleResponse`|associateGroupEmail(`Integer uniqueId`, `Integer emailId`, `String ownerName`) |
+|`WriteListResponse<Integer>`|associateGroupIncidents(`Integer uniqueId`, `List<Integer> incidentIds`) |
+|`WriteListResponse<Integer>`|associateGroupIncidents(`Integer uniqueId`, `List<Integer> incidentIds`, `String ownerName`) |
+|`ApiEntitySingleResponse`|associateGroupIncident(`Integer uniqueId`, `Integer incidentId`) |
+|`ApiEntitySingleResponse`|associateGroupIncident(`Integer uniqueId`, `Integer incidentId`, `String ownerName`) |
+|`WriteListResponse<Integer>`|associateGroupSignatures(`Integer uniqueId`, `List<Integer> signatureIds`) |
+|`WriteListResponse<Integer>`|associateGroupSignatures(`Integer uniqueId`, `List<Integer> signatureIds`, `String ownerName`) |
+|`ApiEntitySingleResponse`|associateGroupSignature(`Integer uniqueId`, `Integer signatureId`) |
+|`ApiEntitySingleResponse`|associateGroupSignature(`Integer uniqueId`, `Integer signatureId`, `String ownerName`) |
+|`WriteListResponse<Integer>`|associateGroupThreats(`Integer uniqueId`, `List<Integer> threatIds`) |
+|`WriteListResponse<Integer>`|associateGroupThreats(`Integer uniqueId`, `List<Integer> threatIds`, `String ownerName`) |
+|`ApiEntitySingleResponse`|associateGroupThreat(`Integer uniqueId`, `Integer threatId`) |
+|`ApiEntitySingleResponse`|associateGroupThreat(`Integer uniqueId`, `Integer threatId`, `String ownerName`) |
 
 ###Associate Indicators
 
 The methods below associate Indicators to a Group type.
 
-|Type<br>_Method_|
-|---------------------------------------------------------------------------------------------------------- |
-|`WriteListResponse<String>`<br>associateIndicatorAddresses(`Integer uniqueId`, `List<String> ipAddresses`) |
-|`WriteListResponse<String>`<br>associateIndicatorAddresses(`Integer uniqueId`, `List<String> ipAddresses`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>associateIndicatorAddress(`Integer uniqueId`, `String ipAddress`) |
-|`ApiEntitySingleResponse`<br>associateIndicatorAddress(`Integer uniqueId`, `String ipAddress`, `String ownerName`) |
-|`WriteListResponse<String>`<br>associateIndicatorEmailAddresses(`Integer uniqueId`, `List<String> emailAddresses`) |
-|`WriteListResponse<String>`<br>associateIndicatorEmailAddresses(`Integer uniqueId`, `List<String> emailAddresses`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>associateIndicatorEmailAddress(`Integer uniqueId`, `String emailAddress`) |
-|`ApiEntitySingleResponse`<br>associateIndicatorEmailAddress(`Integer uniqueId`, `String emailAddress`, `String ownerName`) |
-|`WriteListResponse<String>`<br>associateIndicatorFiles(`Integer uniqueId`, `List<String> fileHashes`) |
-|`WriteListResponse<String>`<br>associateIndicatorFiles(`Integer uniqueId`, `List<String> fileHashes`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>associateIndicatorFile(`Integer uniqueId`, `String fileHash`) |
-|`ApiEntitySingleResponse`<br>associateIndicatorFile(`Integer uniqueId`, `String fileHash`, `String ownerName`) |
-|`WriteListResponse<String>`<br>associateIndicatorHosts(`Integer uniqueId`, `List<String> hostNames`) |
-|`WriteListResponse<String>`<br>associateIndicatorHosts(`Integer uniqueId`, `List<String> hostNames`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>associateIndicatorHost(`Integer uniqueId`, `String hostName`) |
-|`ApiEntitySingleResponse`<br>associateIndicatorHost(`Integer uniqueId`, `String hostName`, `String ownerName`) |
-|`WriteListResponse<String>`<br>associateIndicatorUrls(`Integer uniqueId`, `List<String> urlTexts`) |
-|`WriteListResponse<String>`<br>associateIndicatorUrls(`Integer uniqueId`, `List<String> urlTexts`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>associateIndicatorUrl(`Integer uniqueId`, `String urlText`) |
-|`ApiEntitySingleResponse`<br>associateIndicatorUrl(`Integer uniqueId`, `String urlText`, `String ownerName`) |
+|Type|_Method_|
+|---------------------------|------------------------------------------------------------------------------- |
+|`WriteListResponse<String>`|associateIndicatorAddresses(`Integer uniqueId`, `List<String> ipAddresses`) |
+|`WriteListResponse<String>`|associateIndicatorAddresses(`Integer uniqueId`, `List<String> ipAddresses`, `String ownerName`) |
+|`ApiEntitySingleResponse`|associateIndicatorAddress(`Integer uniqueId`, `String ipAddress`) |
+|`ApiEntitySingleResponse`|associateIndicatorAddress(`Integer uniqueId`, `String ipAddress`, `String ownerName`) |
+|`WriteListResponse<String>`|associateIndicatorEmailAddresses(`Integer uniqueId`, `List<String> emailAddresses`) |
+|`WriteListResponse<String>`|associateIndicatorEmailAddresses(`Integer uniqueId`, `List<String> emailAddresses`, `String ownerName`) |
+|`ApiEntitySingleResponse`|associateIndicatorEmailAddress(`Integer uniqueId`, `String emailAddress`) |
+|`ApiEntitySingleResponse`|associateIndicatorEmailAddress(`Integer uniqueId`, `String emailAddress`, `String ownerName`) |
+|`WriteListResponse<String>`|associateIndicatorFiles(`Integer uniqueId`, `List<String> fileHashes`) |
+|`WriteListResponse<String>`|associateIndicatorFiles(`Integer uniqueId`, `List<String> fileHashes`, `String ownerName`) |
+|`ApiEntitySingleResponse`|associateIndicatorFile(`Integer uniqueId`, `String fileHash`) |
+|`ApiEntitySingleResponse`|associateIndicatorFile(`Integer uniqueId`, `String fileHash`, `String ownerName`) |
+|`WriteListResponse<String>`|associateIndicatorHosts(`Integer uniqueId`, `List<String> hostNames`) |
+|`WriteListResponse<String>`|associateIndicatorHosts(`Integer uniqueId`, `List<String> hostNames`, `String ownerName`) |
+|`ApiEntitySingleResponse`|associateIndicatorHost(`Integer uniqueId`, `String hostName`) |
+|`ApiEntitySingleResponse`|associateIndicatorHost(`Integer uniqueId`, `String hostName`, `String ownerName`) |
+|`WriteListResponse<String>`|associateIndicatorUrls(`Integer uniqueId`, `List<String> urlTexts`) |
+|`WriteListResponse<String>`|associateIndicatorUrls(`Integer uniqueId`, `List<String> urlTexts`, `String ownerName`) |
+|`ApiEntitySingleResponse`|associateIndicatorUrl(`Integer uniqueId`, `String urlText`) |
+|`ApiEntitySingleResponse`|associateIndicatorUrl(`Integer uniqueId`, `String urlText`, `String ownerName`) |
 
 ###Associate Security Labels
 
 The methods below associate Security Labels to a Group type.
 
-|Type<br>_Method_|
-|---------------------------------------------------------------------------------------------------------- |
-|`WriteListResponse<String>`<br>associateSecurityLabels(`Integer uniqueId`, `List<String> securityLabels`) |
-|`WriteListResponse<String>`<br>associateSecurityLabels(`Integer uniqueId`, `List<String> securityLabels`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>associateSecurityLabel(`Integer uniqueId`, `String securityLabel`) |
-|`ApiEntitySingleResponse`<br>associateSecurityLabel(`Integer uniqueId`, `String securityLabel`, `String ownerName`) |
+|Type|_Method_|
+|----------------------------|------------------------------------------------------------------------------ |
+|`WriteListResponse<String>`|associateSecurityLabels(`Integer uniqueId`, `List<String> securityLabels`) |
+|`WriteListResponse<String>`|associateSecurityLabels(`Integer uniqueId`, `List<String> securityLabels`, `String ownerName`) |
+|`ApiEntitySingleResponse`|associateSecurityLabel(`Integer uniqueId`, `String securityLabel`) |
+|`ApiEntitySingleResponse`|associateSecurityLabel(`Integer uniqueId`, `String securityLabel`, `String ownerName`) |
 
 ###Associate Tag
 
 The methods below associate Tags to a Group type.
 
-|Type<br>_Method_|
-|---------------------------------------------------------------------------------------------------------- |
-|`WriteListResponse<String>`<br>associateTags(`Integer uniqueId`, `List<String> tagNames`) |
-|`WriteListResponse<String>`<br>associateTags(`Integer uniqueId`, `List<String> tagNames`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>associateTag(`Integer uniqueId`, `String tagName`) |
-|`ApiEntitySingleResponse`<br>associateTag(`Integer uniqueId`, `String tagName`, `String ownerName`) |
+|Type|_Method_|
+|---------------------------|------------------------------------------------------------------------------- |
+|`WriteListResponse<String>`|associateTags(`Integer uniqueId`, `List<String> tagNames`) |
+|`WriteListResponse<String>`|associateTags(`Integer uniqueId`, `List<String> tagNames`, `String ownerName`) |
+|`ApiEntitySingleResponse`|associateTag(`Integer uniqueId`, `String tagName`) |
+|`ApiEntitySingleResponse`|associateTag(`Integer uniqueId`, `String tagName`, `String ownerName`) |
 
 ###Associate Victim
 
 The methods below associate Victims to a Group type.
 
-|Type<br>_Method_|
-|--------------------------------------------------------------------------------------------------------- |
-|`WriteListResponse<Integer>`<br>associateVictims(`Integer uniqueId`, `List<Integer> victimIds`) |
-|`WriteListResponse<Integer>`<br>associateVictims(`Integer uniqueId`, `List<Integer> victimIds`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>associateVictim(`Integer uniqueId`, `Integer victimId`) |
-|`ApiEntitySingleResponse`<br>associateVictim(`Integer uniqueId`, `Integer victimId`, `String ownerName`) |
+|Type|_Method_|
+|----------------------------|----------------------------------------------------------------------------- |
+|`WriteListResponse<Integer>`|associateVictims(`Integer uniqueId`, `List<Integer> victimIds`) |
+|`WriteListResponse<Integer>`|associateVictims(`Integer uniqueId`, `List<Integer> victimIds`, `String ownerName`) |
+|`ApiEntitySingleResponse`|associateVictim(`Integer uniqueId`, `Integer victimId`) |
+|`ApiEntitySingleResponse`|associateVictim(`Integer uniqueId`, `Integer victimId`, `String ownerName`) |
 
 ###Associate Victim Asset
 
 The methods below associate Victim Assets to a Group type.
 
-|Type<br>_Method_|
-|---------------------------------------------------------------------------------------------------------- |
-|`WriteListResponse<Integer>`<br>associateVictimAssetEmailAddresses(`Integer uniqueId`, `List<Integer> assetIds`) |
-|`WriteListResponse<Integer>`<br>associateVictimAssetEmailAddresses(`Integer uniqueId`, `List<Integer> assetIds`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>associateVictimAssetEmailAddress(`Integer uniqueId`, `Integer assetId`) |
-|`ApiEntitySingleResponse`<br>associateVictimAssetEmailAddress(`Integer uniqueId`, `Integer assetId`, `String ownerName`) |
-|`WriteListResponse<Integer>`<br>associateVictimAssetNetworkAccounts(`Integer uniqueId`, `List<Integer> assetIds`) |
-|`WriteListResponse<Integer>`<br>associateVictimAssetNetworkAccounts(`Integer uniqueId`, `List<Integer> assetIds`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>associateVictimAssetNetworkAccount(`Integer uniqueId`, `Integer assetId`) |
-|`ApiEntitySingleResponse`<br>associateVictimAssetNetworkAccount(`Integer uniqueId`, `Integer assetId`, `String ownerName`) |
-|`WriteListResponse<Integer>`<br>associateVictimAssetPhoneNumbers(`Integer uniqueId`, `List<Integer> assetIds`) |
-|`WriteListResponse<Integer>`<br>associateVictimAssetPhoneNumbers(`Integer uniqueId`, `List<Integer> assetIds`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>associateVictimAssetPhoneNumber(`Integer uniqueId`, `Integer assetId`) |
-|`ApiEntitySingleResponse`<br>associateVictimAssetPhoneNumber(`Integer uniqueId`, `Integer assetId`, `String ownerName`) |
-|`WriteListResponse<Integer>`<br>associateVictimAssetSocialNetworks(`Integer uniqueId`, `List<Integer> assetIds`) |
-|`WriteListResponse<Integer>`<br>associateVictimAssetSocialNetworks(`Integer uniqueId`, `List<Integer> assetIds`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>associateVictimAssetSocialNetwork(`Integer uniqueId`, `Integer assetId`) |
-|`ApiEntitySingleResponse`<br>associateVictimAssetSocialNetwork(`Integer uniqueId`, `Integer assetId`, `String ownerName`) |
-|`WriteListResponse<Integer>`<br>associateVictimAssetWebsites(`Integer uniqueId`, `List<Integer> assetIds`) |
-|`WriteListResponse<Integer>`<br>associateVictimAssetWebsites(`Integer uniqueId`, `List<Integer> assetIds`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>associateVictimAssetWebsite(`Integer uniqueId`, `Integer assetId`) |
-|`ApiEntitySingleResponse`<br>associateVictimAssetWebsite(`Integer uniqueId`, `Integer assetId`, `String ownerName`) |
+|Type|_Method_|
+|----------------------------|------------------------------------------------------------------------------ |
+|`WriteListResponse<Integer>`|associateVictimAssetEmailAddresses(`Integer uniqueId`, `List<Integer> assetIds`) |
+|`WriteListResponse<Integer>`|associateVictimAssetEmailAddresses(`Integer uniqueId`, `List<Integer> assetIds`, `String ownerName`) |
+|`ApiEntitySingleResponse`|associateVictimAssetEmailAddress(`Integer uniqueId`, `Integer assetId`) |
+|`ApiEntitySingleResponse`|associateVictimAssetEmailAddress(`Integer uniqueId`, `Integer assetId`, `String ownerName`) |
+|`WriteListResponse<Integer>`|associateVictimAssetNetworkAccounts(`Integer uniqueId`, `List<Integer> assetIds`) |
+|`WriteListResponse<Integer>`|associateVictimAssetNetworkAccounts(`Integer uniqueId`, `List<Integer> assetIds`, `String ownerName`) |
+|`ApiEntitySingleResponse`|associateVictimAssetNetworkAccount(`Integer uniqueId`, `Integer assetId`) |
+|`ApiEntitySingleResponse`|associateVictimAssetNetworkAccount(`Integer uniqueId`, `Integer assetId`, `String ownerName`) |
+|`WriteListResponse<Integer>`|associateVictimAssetPhoneNumbers(`Integer uniqueId`, `List<Integer> assetIds`) |
+|`WriteListResponse<Integer>`|associateVictimAssetPhoneNumbers(`Integer uniqueId`, `List<Integer> assetIds`, `String ownerName`) |
+|`ApiEntitySingleResponse`|associateVictimAssetPhoneNumber(`Integer uniqueId`, `Integer assetId`) |
+|`ApiEntitySingleResponse`|associateVictimAssetPhoneNumber(`Integer uniqueId`, `Integer assetId`, `String ownerName`) |
+|`WriteListResponse<Integer>`|associateVictimAssetSocialNetworks(`Integer uniqueId`, `List<Integer> assetIds`) |
+|`WriteListResponse<Integer>`|associateVictimAssetSocialNetworks(`Integer uniqueId`, `List<Integer> assetIds`, `String ownerName`) |
+|`ApiEntitySingleResponse`|associateVictimAssetSocialNetwork(`Integer uniqueId`, `Integer assetId`) |
+|`ApiEntitySingleResponse`|associateVictimAssetSocialNetwork(`Integer uniqueId`, `Integer assetId`, `String ownerName`) |
+|`WriteListResponse<Integer>`|associateVictimAssetWebsites(`Integer uniqueId`, `List<Integer> assetIds`) |
+|`WriteListResponse<Integer>`|associateVictimAssetWebsites(`Integer uniqueId`, `List<Integer> assetIds`, `String ownerName`) |
+|`ApiEntitySingleResponse`|associateVictimAssetWebsite(`Integer uniqueId`, `Integer assetId`) |
+|`ApiEntitySingleResponse`|associateVictimAssetWebsite(`Integer uniqueId`, `Integer assetId`, `String ownerName`) |
 
 ###Add Attributes
 
 The methods below add Attribute types to a Group.
 
-|Type<br>_Method_|
-|---------------------------------------------------------------------------------------------------------- |
-|`WriteListResponse<Attribute>`<br>addAttributes(`Integer uniqueId`, `List<Attribute> attributes`) |
-|`WriteListResponse<Attribute>`<br>addAttributes(`Integer uniqueId`, `List<Attribute> attribute`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>addAttribute(`Integer uniqueId`, `Attribute attribute`) |
-|`ApiEntitySingleResponse`<br>addAttribute(`Integer uniqueId`, `Attribute attribute`, `String ownerName`) |
-|`WriteListResponse<String>`<br>addAttributeSecurityLabels(`Integer uniqueId`, `Integer attributeId`, `List<String> securityLabels`) |
-|`WriteListResponse<String>`<br>addAttributeSecurityLabels(`Integer uniqueId`, `Integer attributeId`, `List<String> securityLabels`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>addAttributeSecurityLabel(`Integer uniqueId`, `Integer attributeId`, `String securityLabel`) |
-|`ApiEntitySingleResponse`<br>addAttributeSecurityLabel(`Integer uniqueId`, `Integer attributeId`, `String securityLabel`, `String ownerName`) |
+|Type|_Method_|
+|------------------------------|---------------------------------------------------------------------------- |
+|`WriteListResponse<Attribute>`|addAttributes(`Integer uniqueId`, `List<Attribute> attributes`) |
+|`WriteListResponse<Attribute>`|addAttributes(`Integer uniqueId`, `List<Attribute> attribute`, `String ownerName`) |
+|`ApiEntitySingleResponse`|addAttribute(`Integer uniqueId`, `Attribute attribute`) |
+|`ApiEntitySingleResponse`|addAttribute(`Integer uniqueId`, `Attribute attribute`, `String ownerName`) |
+|`WriteListResponse<String>`|addAttributeSecurityLabels(`Integer uniqueId`, `Integer attributeId`, `List<String> securityLabels`) |
+|`WriteListResponse<String>`|addAttributeSecurityLabels(`Integer uniqueId`, `Integer attributeId`, `List<String> securityLabels`, `String ownerName`) |
+|`ApiEntitySingleResponse`|addAttributeSecurityLabel(`Integer uniqueId`, `Integer attributeId`, `String securityLabel`) |
+|`ApiEntitySingleResponse`|addAttributeSecurityLabel(`Integer uniqueId`, `Integer attributeId`, `String securityLabel`, `String ownerName`) |
 
 ###Update Attribute
 
 The methods below **update** an Attribute added to a specific Indicator type.
 
-|Type<br>_Method_|
-|---------------------------------------------------------------------------------------------------------- |
-|`WriteListResponse<Attribute>`<br>updateAttributes(`Integer uniqueId`, `List<Attribute> attributes`) |
-|`WriteListResponse<Attribute>`<br>updateAttributes(`Integer uniqueId`, `List<Attribute> attribute`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>updateAttribute(`Integer uniqueId`, `Attribute attribute`) |
-|`ApiEntitySingleResponse`<br>updateAttribute(`Integer uniqueId`, `Attribute attribute`, `String ownerName`) |
+|Type|_Method_|
+|-------------------------------|--------------------------------------------------------------------------- |
+|`WriteListResponse<Attribute>`|updateAttributes(`Integer uniqueId`, `List<Attribute> attributes`) |
+|`WriteListResponse<Attribute>`|updateAttributes(`Integer uniqueId`, `List<Attribute> attribute`, `String ownerName`) |
+|`ApiEntitySingleResponse`|updateAttribute(`Integer uniqueId`, `Attribute attribute`) |
+|`ApiEntitySingleResponse`|updateAttribute(`Integer uniqueId`, `Attribute attribute`, `String ownerName`) |
 
 
 ###Create Observation
 
 The methods below **create** an Observation on a specific Indicator type.
 
-|Type<br>_Method_|                                                          
-|----------------------------------------------------------------------------------------------------------| 
-|`ApiEntitySingleResponse`<br>createObservation(`Integer uniqueId`)|
-|`ApiEntitySingleResponse`<br>createObservation(`Integer uniqueId`, `String ownerName`)| 
+|Type|_Method_|                                                          
+|---------------------------|-------------------------------------------------------------------------------| 
+|`ApiEntitySingleResponse`|createObservation(`Integer uniqueId`)|
+|`ApiEntitySingleResponse`|createObservation(`Integer uniqueId`, `String ownerName`)| 
 
 
 ###Update False Positive
 
 The methods below **update** the False Positive field on a specific Indicator type.
 
-|Type<br>_Method_|                                                          
-|----------------------------------------------------------------------------------------------------------| 
-|`ApiEntitySingleResponse`<br>updateFalsePositive(`Integer uniqueId`)|
-|`ApiEntitySingleResponse`<br>updateFalsePositive(`Integer uniqueId`, `String ownerName`)| 
+|Type|_Method_|                                                          
+|--------------------------|--------------------------------------------------------------------------------| 
+|`ApiEntitySingleResponse`|updateFalsePositive(`Integer uniqueId`)|
+|`ApiEntitySingleResponse`|updateFalsePositive(`Integer uniqueId`, `String ownerName`)| 
 
 ###Delete Group Association
 
 The methods below **delete** Group associations to a specific Group type.
 
-|Type<br>_Method_|
-|---------------------------------------------------------------------------------------------------------- |
-|`WriteListResponse<Integer>`<br>dissociateGroupAdversaries(`Integer uniqueId`, `List<Integer> adversaryIds`) |
-|`WriteListResponse<Integer>`<br>dissociateGroupAdversaries(`Integer uniqueId`, `List<Integer> adversaryIds`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>dissociateGroupAdversary(`Integer uniqueId`, `Integer adversaryId`) |
-|`ApiEntitySingleResponse`<br>dissociateGroupAdversary(`Integer uniqueId`, `Integer adversaryId`, `String ownerName`) |
-|`WriteListResponse<Integer>`<br>dissociateGroupEmails(`Integer uniqueId`, `List<Integer> emailIds`) |
-|`WriteListResponse<Integer>`<br>dissociateGroupEmails(`Integer uniqueId`, `List<Integer> emailIds`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>dissociateGroupEmail(`Integer uniqueId`, `Integer emailId`) |
-|`ApiEntitySingleResponse`<br>dissociateGroupEmail(`Integer uniqueId`, `Integer emailId`, `String ownerName`) |
-|`WriteListResponse<Integer>`<br>dissociateGroupIncidents(`Integer uniqueId`, `List<Integer> incidentIds`) |
-|`WriteListResponse<Integer>`<br>dissociateGroupIncidents(`Integer uniqueId`, `List<Integer> incidentIds`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>dissociateGroupIncident(`Integer uniqueId`, `Integer incidentId`) |
-|`ApiEntitySingleResponse`<br>dissociateGroupIncident(`Integer uniqueId`, `Integer incidentId`, `String ownerName`) |
-|`WriteListResponse<Integer>`<br>dissociateGroupSignatures(`Integer uniqueId`, `List<Integer> signatureIds`) |
-|`WriteListResponse<Integer>`<br>dissociateGroupSignatures(`Integer uniqueId`, `List<Integer> signatureIds`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>dissociateGroupSignature(`Integer uniqueId`, `Integer signatureId`) |
-|`ApiEntitySingleResponse`<br>dissociateGroupSignature(`Integer uniqueId`, `Integer signatureId`, `String ownerName`) |
-|`WriteListResponse<Integer>`<br>dissociateGroupThreats(`Integer uniqueId`, `List<Integer> threatIds`) |
-|`WriteListResponse<Integer>`<br>dissociateGroupThreats(`Integer uniqueId`, `List<Integer> threatIds`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>dissociateGroupThreat(`Integer uniqueId`, `Integer threatId`) |
-|`ApiEntitySingleResponse`<br>dissociateGroupThreat(`Integer uniqueId`, `Integer threatId`, `String ownerName`) |
+|Type|_Method_|
+|-----------------------------|----------------------------------------------------------------------------- |
+|`WriteListResponse<Integer>`|dissociateGroupAdversaries(`Integer uniqueId`, `List<Integer> adversaryIds`) |
+|`WriteListResponse<Integer>`|dissociateGroupAdversaries(`Integer uniqueId`, `List<Integer> adversaryIds`, `String ownerName`) |
+|`ApiEntitySingleResponse`|dissociateGroupAdversary(`Integer uniqueId`, `Integer adversaryId`) |
+|`ApiEntitySingleResponse`|dissociateGroupAdversary(`Integer uniqueId`, `Integer adversaryId`, `String ownerName`) |
+|`WriteListResponse<Integer>`|dissociateGroupEmails(`Integer uniqueId`, `List<Integer> emailIds`) |
+|`WriteListResponse<Integer>`|dissociateGroupEmails(`Integer uniqueId`, `List<Integer> emailIds`, `String ownerName`) |
+|`ApiEntitySingleResponse`|dissociateGroupEmail(`Integer uniqueId`, `Integer emailId`) |
+|`ApiEntitySingleResponse`|dissociateGroupEmail(`Integer uniqueId`, `Integer emailId`, `String ownerName`) |
+|`WriteListResponse<Integer>`|dissociateGroupIncidents(`Integer uniqueId`, `List<Integer> incidentIds`) |
+|`WriteListResponse<Integer>`|dissociateGroupIncidents(`Integer uniqueId`, `List<Integer> incidentIds`, `String ownerName`) |
+|`ApiEntitySingleResponse`|dissociateGroupIncident(`Integer uniqueId`, `Integer incidentId`) |
+|`ApiEntitySingleResponse`|dissociateGroupIncident(`Integer uniqueId`, `Integer incidentId`, `String ownerName`) |
+|`WriteListResponse<Integer>`|dissociateGroupSignatures(`Integer uniqueId`, `List<Integer> signatureIds`) |
+|`WriteListResponse<Integer>`|dissociateGroupSignatures(`Integer uniqueId`, `List<Integer> signatureIds`, `String ownerName`) |
+|`ApiEntitySingleResponse`|dissociateGroupSignature(`Integer uniqueId`, `Integer signatureId`) |
+|`ApiEntitySingleResponse`|dissociateGroupSignature(`Integer uniqueId`, `Integer signatureId`, `String ownerName`) |
+|`WriteListResponse<Integer>`|dissociateGroupThreats(`Integer uniqueId`, `List<Integer> threatIds`) |
+|`WriteListResponse<Integer>`|dissociateGroupThreats(`Integer uniqueId`, `List<Integer> threatIds`, `String ownerName`) |
+|`ApiEntitySingleResponse`|dissociateGroupThreat(`Integer uniqueId`, `Integer threatId`) |
+|`ApiEntitySingleResponse`|dissociateGroupThreat(`Integer uniqueId`, `Integer threatId`, `String ownerName`) |
 
 ###Delete Indicator Associations
 
 The methods below **delete** Indicator associations to a specific Group type.
 
-|Type<br>_Method_|
-|---------------------------------------------------------------------------------------------------------- |
-|`WriteListResponse<String>`<br>dissociateIndicatorAddresses(`Integer uniqueId`, `List<String> ipAddresses`) |
-|`WriteListResponse<String>`<br>dissociateIndicatorAddresses(`Integer uniqueId`, `List<String> ipAddresses`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>dissociateIndicatorAddress(`Integer uniqueId`, `String ipAddress`) |
-|`ApiEntitySingleResponse`<br>dissociateIndicatorAddress(`Integer uniqueId`, `String ipAddress`, `String ownerName`) |
-|`WriteListResponse<String>`<br>dissociateIndicatorEmailAddresses(`Integer uniqueId`, `List<String> emailAddresses`) |
-|`WriteListResponse<String>`<br>dissociateIndicatorEmailAddresses(`Integer uniqueId`, `List<String> emailAddresses`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>dissociateIndicatorEmailAddress(`Integer uniqueId`, `String emailAddress`) |
-|`ApiEntitySingleResponse`<br>dissociateIndicatorEmailAddress(`Integer uniqueId`, `String emailAddress`, `String ownerName`) |
-|`WriteListResponse<String>`<br>dissociateIndicatorFiles(`Integer uniqueId`, `List<String> fileHashes`) |
-|`WriteListResponse<String>`<br>dissociateIndicatorFiles(`Integer uniqueId`, `List<String> fileHashes`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>dissociateIndicatorFile(`Integer uniqueId`, `String fileHash`) |
-|`ApiEntitySingleResponse`<br>dissociateIndicatorFile(`Integer uniqueId`, `String fileHash`, `String ownerName`) |
-|`WriteListResponse<String>`<br>dissociateIndicatorHosts(`Integer uniqueId`, `List<String> hostNames`) |
-|`WriteListResponse<String>`<br>dissociateIndicatorHosts(`Integer uniqueId`, `List<String> hostNames`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>dissociateIndicatorHost(`Integer uniqueId`, `String hostName`) |
-|`ApiEntitySingleResponse`<br>dissociateIndicatorHost(`Integer uniqueId`, `String hostName`, `String ownerName`) |
-|`WriteListResponse<String>`<br>dissociateIndicatorUrls(`Integer uniqueId`, `List<String> urlTexts`) |
-|`WriteListResponse<String>`<br>dissociateIndicatorUrls(`Integer uniqueId`, `List<String> urlTexts`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>dissociateIndicatorUrl(`Integer uniqueId`, `String urlText`) |
-|`ApiEntitySingleResponse`<br>dissociateIndicatorUrl(`Integer uniqueId`, `String urlText`, `String ownerName`) |
+|Type|_Method_|
+|------------------------------|---------------------------------------------------------------------------- |
+|`WriteListResponse<String>`|dissociateIndicatorAddresses(`Integer uniqueId`, `List<String> ipAddresses`) |
+|`WriteListResponse<String>`|dissociateIndicatorAddresses(`Integer uniqueId`, `List<String> ipAddresses`, `String ownerName`) |
+|`ApiEntitySingleResponse`|dissociateIndicatorAddress(`Integer uniqueId`, `String ipAddress`) |
+|`ApiEntitySingleResponse`|dissociateIndicatorAddress(`Integer uniqueId`, `String ipAddress`, `String ownerName`) |
+|`WriteListResponse<String>`|dissociateIndicatorEmailAddresses(`Integer uniqueId`, `List<String> emailAddresses`) |
+|`WriteListResponse<String>`|dissociateIndicatorEmailAddresses(`Integer uniqueId`, `List<String> emailAddresses`, `String ownerName`) |
+|`ApiEntitySingleResponse`|dissociateIndicatorEmailAddress(`Integer uniqueId`, `String emailAddress`) |
+|`ApiEntitySingleResponse`|dissociateIndicatorEmailAddress(`Integer uniqueId`, `String emailAddress`, `String ownerName`) |
+|`WriteListResponse<String>`|dissociateIndicatorFiles(`Integer uniqueId`, `List<String> fileHashes`) |
+|`WriteListResponse<String>`|dissociateIndicatorFiles(`Integer uniqueId`, `List<String> fileHashes`, `String ownerName`) |
+|`ApiEntitySingleResponse`|dissociateIndicatorFile(`Integer uniqueId`, `String fileHash`) |
+|`ApiEntitySingleResponse`|dissociateIndicatorFile(`Integer uniqueId`, `String fileHash`, `String ownerName`) |
+|`WriteListResponse<String>`|dissociateIndicatorHosts(`Integer uniqueId`, `List<String> hostNames`) |
+|`WriteListResponse<String>`|dissociateIndicatorHosts(`Integer uniqueId`, `List<String> hostNames`, `String ownerName`) |
+|`ApiEntitySingleResponse`|dissociateIndicatorHost(`Integer uniqueId`, `String hostName`) |
+|`ApiEntitySingleResponse`|dissociateIndicatorHost(`Integer uniqueId`, `String hostName`, `String ownerName`) |
+|`WriteListResponse<String>`|dissociateIndicatorUrls(`Integer uniqueId`, `List<String> urlTexts`) |
+|`WriteListResponse<String>`|dissociateIndicatorUrls(`Integer uniqueId`, `List<String> urlTexts`, `String ownerName`) |
+|`ApiEntitySingleResponse`|dissociateIndicatorUrl(`Integer uniqueId`, `String urlText`) |
+|`ApiEntitySingleResponse`|dissociateIndicatorUrl(`Integer uniqueId`, `String urlText`, `String ownerName`) |
 
 ###Delete Security Label Associations
 
 The methods below **delete** SecurityLabel associations to a specific Group type.
 
-|Type<br>_Method_|
-|---------------------------------------------------------------------------------------------------------- |
-|`WriteListResponse<String>`<br>dissociateSecurityLabel(`Integer uniqueId`, `List<String> securityLabels`) |
-|`WriteListResponse<String>`<br>dissociateSecurityLabel(`Integer uniqueId`, `List<String> securityLabels`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>dissociateSecurityLabel(`Integer uniqueId`, `String securityLabel`) |
-|`ApiEntitySingleResponse`<br>dissociateSecurityLabel(`Integer uniqueId`, `String securityLabel`, `String ownerName`) |
+|Type|_Method_|
+|----------------------------|------------------------------------------------------------------------------ |
+|`WriteListResponse<String>`|dissociateSecurityLabel(`Integer uniqueId`, `List<String> securityLabels`) |
+|`WriteListResponse<String>`|dissociateSecurityLabel(`Integer uniqueId`, `List<String> securityLabels`, `String ownerName`) |
+|`ApiEntitySingleResponse`|dissociateSecurityLabel(`Integer uniqueId`, `String securityLabel`) |
+|`ApiEntitySingleResponse`|dissociateSecurityLabel(`Integer uniqueId`, `String securityLabel`, `String ownerName`) |
 
 ###Delete Tag Associations
 
 The methods below **delete** Tag associations to a specific Group type.
 
-|Type<br>_Method_|
-|---------------------------------------------------------------------------------------------------------- |
-|`WriteListResponse<String>`<br>dissociateTags(`Integer uniqueId`, `List<String> tagNames`) |
-|`WriteListResponse<String>`<br>dissociateTags(`Integer uniqueId`, `List<String> tagNames`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>dissociateTag(`Integer uniqueId`, `String tagName`) |
-|`ApiEntitySingleResponse`<br>dissociateTag(`Integer uniqueId`, `String tagName`, `String ownerName`) |
+|Type|_Method_|
+|----------------------------|------------------------------------------------------------------------------ |
+|`WriteListResponse<String>`|dissociateTags(`Integer uniqueId`, `List<String> tagNames`) |
+|`WriteListResponse<String>`|dissociateTags(`Integer uniqueId`, `List<String> tagNames`, `String ownerName`) |
+|`ApiEntitySingleResponse`|dissociateTag(`Integer uniqueId`, `String tagName`) |
+|`ApiEntitySingleResponse`|dissociateTag(`Integer uniqueId`, `String tagName`, `String ownerName`) |
 
 ###Delete Victim Associations
 
 The methods below **delete** Victim associations to a specific Group type.
 
-|Type<br>_Method_|
-|--------------------------------------------------------------------------------------------------------- |
-|`WriteListResponse<Integer>`<br>dissociateVictims(`Integer uniqueId`, `List<Integer> victimIds`) |
-|`WriteListResponse<Integer>`<br>dissociateVictims(`Integer uniqueId`, `List<Integer> victimIds`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>dissociateVictim(`Integer uniqueId`, `Integer victimId`) |
-|`ApiEntitySingleResponse`<br>dissociateVictim(`Integer uniqueId`, `Integer victimId`, `String ownerName`) |
+|Type|_Method_|
+|-----------------------------|---------------------------------------------------------------------------- |
+|`WriteListResponse<Integer>`|dissociateVictims(`Integer uniqueId`, `List<Integer> victimIds`) |
+|`WriteListResponse<Integer>`|dissociateVictims(`Integer uniqueId`, `List<Integer> victimIds`, `String ownerName`) |
+|`ApiEntitySingleResponse`|dissociateVictim(`Integer uniqueId`, `Integer victimId`) |
+|`ApiEntitySingleResponse`|dissociateVictim(`Integer uniqueId`, `Integer victimId`, `String ownerName`) |
 
 ###Delete VictimAsset Associations
 
 The methods below **delete** VictimAsset associations to a specific Group type.
 
-|Type<br>_Method_|
-|---------------------------------------------------------------------------------------------------------- |
-|`WriteListResponse<Integer>`<br>dissociateVictimAssetEmailAddresses(`Integer uniqueId`, `List<Integer> assetIds`) |
-|`WriteListResponse<Integer>`<br>dissociateVictimAssetEmailAddresses(`Integer uniqueId`, `List<Integer> assetIds`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>dissociateVictimAssetEmailAddress(`Integer uniqueId`, `Integer assetId`) |
-|`ApiEntitySingleResponse`<br>dissociateVictimAssetEmailAddress(`Integer uniqueId`, `Integer assetId`, `String ownerName`) |
-|`WriteListResponse<Integer>`<br>dissociateVictimAssetNetworkAccounts(`Integer uniqueId`, `List<Integer> assetIds`) |
-|`WriteListResponse<Integer>`<br>dissociateVictimAssetNetworkAccounts(`Integer uniqueId`, `List<Integer> assetIds`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>dissociateVictimAssetNetworkAccount(`Integer uniqueId`, `Integer assetId`) |
-|`ApiEntitySingleResponse`<br>dissociateVictimAssetNetworkAccount(`Integer uniqueId`, `Integer assetId`, `String ownerName`) |
-|`WriteListResponse<Integer>`<br>dissociateVictimAssetPhoneNumbers(`Integer uniqueId`, `List<Integer> assetIds`) |
-|`WriteListResponse<Integer>`<br>dissociateVictimAssetPhoneNumbers(`Integer uniqueId`, `List<Integer> assetIds`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>dissociateVictimAssetPhoneNumber(`Integer uniqueId`, `Integer assetId`) |
-|`ApiEntitySingleResponse`<br>dissociateVictimAssetPhoneNumber(`Integer uniqueId`, `Integer assetId`, `String ownerName`) |
-|`WriteListResponse<Integer>`<br>dissociateVictimAssetSocialNetworks(`Integer uniqueId`, `List<Integer> assetIds`) |
-|`WriteListResponse<Integer>`<br>dissociateVictimAssetSocialNetworks(`Integer uniqueId`, `List<Integer> assetIds`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>dissociateVictimAssetSocialNetwork(`Integer uniqueId`, `Integer assetId`) |
-|`ApiEntitySingleResponse`<br>dissociateVictimAssetSocialNetwork(`Integer uniqueId`, `Integer assetId`, `String ownerName`) |
-|`WriteListResponse<Integer>`<br>dissociateVictimAssetWebsites(`Integer uniqueId`, `List<Integer> assetIds`) |
-|`WriteListResponse<Integer>`<br>dissociateVictimAssetWebsites(`Integer uniqueId`, `List<Integer> assetIds`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>dissociateVictimAssetWebsite(`Integer uniqueId`, `Integer assetId`) |
-|`ApiEntitySingleResponse`<br>dissociateVictimAssetWebsite(`Integer uniqueId`, `Integer assetId`, `String ownerName`) |
+|Type|_Method_|
+|-----------------------------|----------------------------------------------------------------------------- |
+|`WriteListResponse<Integer>`|dissociateVictimAssetEmailAddresses(`Integer uniqueId`, `List<Integer> assetIds`) |
+|`WriteListResponse<Integer>`|dissociateVictimAssetEmailAddresses(`Integer uniqueId`, `List<Integer> assetIds`, `String ownerName`) |
+|`ApiEntitySingleResponse`|dissociateVictimAssetEmailAddress(`Integer uniqueId`, `Integer assetId`) |
+|`ApiEntitySingleResponse`|dissociateVictimAssetEmailAddress(`Integer uniqueId`, `Integer assetId`, `String ownerName`) |
+|`WriteListResponse<Integer>`|dissociateVictimAssetNetworkAccounts(`Integer uniqueId`, `List<Integer> assetIds`) |
+|`WriteListResponse<Integer>`|dissociateVictimAssetNetworkAccounts(`Integer uniqueId`, `List<Integer> assetIds`, `String ownerName`) |
+|`ApiEntitySingleResponse`|dissociateVictimAssetNetworkAccount(`Integer uniqueId`, `Integer assetId`) |
+|`ApiEntitySingleResponse`|dissociateVictimAssetNetworkAccount(`Integer uniqueId`, `Integer assetId`, `String ownerName`) |
+|`WriteListResponse<Integer>`|dissociateVictimAssetPhoneNumbers(`Integer uniqueId`, `List<Integer> assetIds`) |
+|`WriteListResponse<Integer>`|dissociateVictimAssetPhoneNumbers(`Integer uniqueId`, `List<Integer> assetIds`, `String ownerName`) |
+|`ApiEntitySingleResponse`|dissociateVictimAssetPhoneNumber(`Integer uniqueId`, `Integer assetId`) |
+|`ApiEntitySingleResponse`|dissociateVictimAssetPhoneNumber(`Integer uniqueId`, `Integer assetId`, `String ownerName`) |
+|`WriteListResponse<Integer>`|dissociateVictimAssetSocialNetworks(`Integer uniqueId`, `List<Integer> assetIds`) |
+|`WriteListResponse<Integer>`|dissociateVictimAssetSocialNetworks(`Integer uniqueId`, `List<Integer> assetIds`, `String ownerName`) |
+|`ApiEntitySingleResponse`|dissociateVictimAssetSocialNetwork(`Integer uniqueId`, `Integer assetId`) |
+|`ApiEntitySingleResponse`|dissociateVictimAssetSocialNetwork(`Integer uniqueId`, `Integer assetId`, `String ownerName`) |
+|`WriteListResponse<Integer>`|dissociateVictimAssetWebsites(`Integer uniqueId`, `List<Integer> assetIds`) |
+|`WriteListResponse<Integer>`|dissociateVictimAssetWebsites(`Integer uniqueId`, `List<Integer> assetIds`, `String ownerName`) |
+|`ApiEntitySingleResponse`|dissociateVictimAssetWebsite(`Integer uniqueId`, `Integer assetId`) |
+|`ApiEntitySingleResponse`|dissociateVictimAssetWebsite(`Integer uniqueId`, `Integer assetId`, `String ownerName`) |
 
 ###Delete Attribute
 
 The methods below **delete** Attributes from a specific Group type.
 
-|Type<br>_Method_|
-|---------------------------------------------------------------------------------------------------------- |
-|`WriteListResponse<Integer>`<br>deleteAttributes(`Integer uniqueId`, `List<Integer> attributes`) |
-|`WriteListResponse<Integer>`<br>deleteAttributes(`Integer uniqueId`, `List<Integer> attribute`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>deleteAttribute(`Integer uniqueId`, `Integer attribute`) |
-|`ApiEntitySingleResponse`<br>deleteAttribute(`Integer uniqueId`, `Integer attribute`, `String ownerName`) |
-|`WriteListResponse<String>`<br>deleteAttributeSecurityLabels(`Integer uniqueId`, `Integer attributeId`, `List<String> securityLabels`) |
-|`WriteListResponse<String>`<br>deleteAttributeSecurityLabels(`Integer uniqueId`, `Integer attributeId`, `List<String> securityLabels`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>deleteAttributeSecurityLabel(`Integer uniqueId`, `Integer attributeId`, `String securityLabel`) |
-|`ApiEntitySingleResponse`<br>deleteAttributeSecurityLabel(`Integer uniqueId`, `Integer attributeId`, `String securityLabel`, `String ownerName`) |
+|Type|_Method_|
+|-----------------------------|----------------------------------------------------------------------------- |
+|`WriteListResponse<Integer>`|deleteAttributes(`Integer uniqueId`, `List<Integer> attributes`) |
+|`WriteListResponse<Integer>`|deleteAttributes(`Integer uniqueId`, `List<Integer> attribute`, `String ownerName`) |
+|`ApiEntitySingleResponse`|deleteAttribute(`Integer uniqueId`, `Integer attribute`) |
+|`ApiEntitySingleResponse`|deleteAttribute(`Integer uniqueId`, `Integer attribute`, `String ownerName`) |
+|`WriteListResponse<String>`|deleteAttributeSecurityLabels(`Integer uniqueId`, `Integer attributeId`, `List<String> securityLabels`) |
+|`WriteListResponse<String>`|deleteAttributeSecurityLabels(`Integer uniqueId`, `Integer attributeId`, `List<String> securityLabels`, `String ownerName`) |
+|`ApiEntitySingleResponse`|deleteAttributeSecurityLabel(`Integer uniqueId`, `Integer attributeId`, `String securityLabel`) |
+|`ApiEntitySingleResponse`|deleteAttributeSecurityLabel(`Integer uniqueId`, `Integer attributeId`, `String securityLabel`, `String ownerName`) |
 
 ###AbstractIndicatorWriterAdapter
 
@@ -6534,31 +6528,31 @@ The key parameter-level distinction between the AbstractIndicatorWriterAdapter a
 
 FileIndicatorWriterAdapter, which all the functionality of the AbstractIndicatorWriterAdapter with the addition of the following write methods:
 
-|Type<br>_Method_|
+|Type|_Method_|
 |---------------------------------------------------------------------------------------------------------- |
-|`WriteListResponse<FileOccurrence>`<br>updateFileOccurrences(`String fileHash`, `List<FileOccurrence> fileOccurrences`) |
-|`WriteListResponse<FileOccurrence>`<br>updateFileOccurrences(`String fileHash`, `List<FileOccurrence> fileOccurrences`, `String ownerName`) |
-|`FileOccurrence`<br>updateFileOccurrence(`String fileHash`, `FileOccurrence fileOccurrence`) |
-|`FileOccurrence`<br>updateFileOccurrence(`String fileHash`, `FileOccurrence fileOccurrence`, `String ownerName`) |
+|`WriteListResponse<FileOccurrence>`|updateFileOccurrences(`String fileHash`, `List<FileOccurrence> fileOccurrences`) |
+|`WriteListResponse<FileOccurrence>`|updateFileOccurrences(`String fileHash`, `List<FileOccurrence> fileOccurrences`, `String ownerName`) |
+|`FileOccurrence`|updateFileOccurrence(`String fileHash`, `FileOccurrence fileOccurrence`) |
+|`FileOccurrence`|updateFileOccurrence(`String fileHash`, `FileOccurrence fileOccurrence`, `String ownerName`) |
 
 ###DocumentWriterAdapter
 
 DocumentWriterAdapter has all the functionality of the AbstractGroupWriterAdapter with the addition of the following write methods:
 
-|Type<br>_Method_|
+|Type|_Method_|
 |---------------------------------------------------------------------------------------------------------- |
-|`ApiEntitySingleResponse`<br>uploadFile(`int uniqueId`, `File file`) |
-|`ApiEntitySingleResponse`<br>uploadFile(`int uniqueId`, `File file`, `String ownerName`) |
+|`ApiEntitySingleResponse`|uploadFile(`int uniqueId`, `File file`) |
+|`ApiEntitySingleResponse`|uploadFile(`int uniqueId`, `File file`, `String ownerName`) |
 
 ###AbstractBatchWriterAdapter
 
 The AbstractBatchWriterAdapter class allows batch writing of indicators to the API. The adapter facilitates the initial creation and upload of the batch file using the following write methods:
 
-|Type<br>_Method_|
+|Type|_Method_|
 |---------------------------------------------------------------------------------------------------------- |
-|`ApiEntitySingleResponse`<br>create(`BatchConfig item` ) |
-|`ApiEntitySingleResponse`<br>create(`BatchConfig item`, `String ownerName`) |
-|`ApiEntitySingleResponse`<br>uploadFile(`int batchId`, `File file`) |
+|`ApiEntitySingleResponse`|create(`BatchConfig item` ) |
+|`ApiEntitySingleResponse`|create(`BatchConfig item`, `String ownerName`) |
+|`ApiEntitySingleResponse`|uploadFile(`int batchId`, `File file`) |
 
 Once a batch configuration is created, the ApiEntitySingleResponse object returns BatchResponseData with a batchId if successful. This batchId is used to upload the batch file using the `uploadFile` method. At this point, a successfuly response to the upload will trigger the batch. Use the BatchReaderAdapter to poll for the status of the batch. 
 
@@ -6568,19 +6562,19 @@ The SecurityLabelWriterAdapter class allows [Group](#associate-groups) and [Indi
 
 Below is the standard create methods available to all WriterAdapter’s. Note that the deletes require the Security Label as the `uniqueId` String (P). The create and update requires the full SecurityLabel object (T).
 
-|Type<br>_Method_|
-|---------------------------------------------------------------------------------------------------------- |
-|`WriteListResponse<T>`                        <br>create(`List<T> itemList`)                                        |
-|`ApiEntitySingleResponse`                     <br>create(`T item`)                                                  |
-|`ApiEntitySingleResponse`                     <br>create(`T item`, `String ownerName`)                                |
-|`WriteListResponse<P>`                        <br>delete(`List<P> itemIds`)                                         |
-|`WriteListResponse<P>`                        <br>delete(`List<P> itemIds`, `String ownerName`)                       |
-|`ApiEntitySingleResponse`                     <br>delete(`P itemId`)                                                |
-|`ApiEntitySingleResponse`                     <br>delete(`P itemId`, `String ownerName`)                              |
-|`WriteListResponse<T>`                        <br>update(`List<T> itemList`)                                        |
-|`WriteListResponse<T>`                        <br>update(`List<T> itemList`, `String ownerName`)                      |
-|`ApiEntitySingleResponse`                     <br>update(`T item`)                                                  |
-|`ApiEntitySingleResponse`                     <br>update(`T item`, `String ownerName`)                                |
+|Type|_Method_|
+|-----------------------------------------------|----------------------------------------------------------- |
+|`WriteListResponse<T>`                        |create(`List<T> itemList`)                                        |
+|`ApiEntitySingleResponse`                     |create(`T item`)                                                  |
+|`ApiEntitySingleResponse`                     |create(`T item`, `String ownerName`)                                |
+|`WriteListResponse<P>`                        |delete(`List<P> itemIds`)                                         |
+|`WriteListResponse<P>`                        |delete(`List<P> itemIds`, `String ownerName`)                       |
+|`ApiEntitySingleResponse`                     |delete(`P itemId`)                                                |
+|`ApiEntitySingleResponse`                     |delete(`P itemId`, `String ownerName`)                              |
+|`WriteListResponse<T>`                        |update(`List<T> itemList`)                                        |
+|`WriteListResponse<T>`                        |update(`List<T> itemList`, `String ownerName`)                      |
+|`ApiEntitySingleResponse`                     |update(`T item`)                                                  |
+|`ApiEntitySingleResponse`                     |update(`T item`, `String ownerName`)                                |
 
 
 ###TagWriterAdapter
@@ -6589,19 +6583,19 @@ The TagWriterAdapter class allows [Group](#associate-groups) and [Indicator](#as
 
 Below is the standard create methods available to all WriterAdapters. Note that the deletes require the Tag Name  as the `uniqueId` String (P). The create and update requires the full Tag object (T).
 
-|Type<br>_Method_|
-|---------------------------------------------------------------------------------------------------------- |
-|`WriteListResponse<T>`                        <br>create(`List<T> itemList`)                                        |
-|`ApiEntitySingleResponse`                     <br>create(`T item`)                                                  |
-|`ApiEntitySingleResponse`                     <br>create(`T item`, `String ownerName`)                                |
-|`WriteListResponse<P>`                        <br>delete(`List<P> itemIds`)                                         |
-|`WriteListResponse<P>`                        <br>delete(`List<P> itemIds`, `String ownerName`)                       |
-|`ApiEntitySingleResponse`                     <br>delete(`P itemId`)                                                |
-|`ApiEntitySingleResponse`                     <br>delete(`P itemId`, `String ownerName`)                              |
-|`WriteListResponse<T>`                        <br>update(`List<T> itemList`)                                        |
-|`WriteListResponse<T>`                        <br>update(`List<T> itemList`, `String ownerName`)                      |
-|`ApiEntitySingleResponse`                     <br>update(`T item`)                                                  |
-|`ApiEntitySingleResponse`                     <br>update(`T item`, `String ownerName`)                                |
+|Type|_Method_|
+|----------------------------------------------|------------------------------------------------------------ |
+|`WriteListResponse<T>`                        |create(`List<T> itemList`)                                        |
+|`ApiEntitySingleResponse`                     |create(`T item`)                                                  |
+|`ApiEntitySingleResponse`                     |create(`T item`, `String ownerName`)                                |
+|`WriteListResponse<P>`                        |delete(`List<P> itemIds`)                                         |
+|`WriteListResponse<P>`                        |delete(`List<P> itemIds`, `String ownerName`)                       |
+|`ApiEntitySingleResponse`                     |delete(`P itemId`)                                                |
+|`ApiEntitySingleResponse`                     |delete(`P itemId`, `String ownerName`)                              |
+|`WriteListResponse<T>`                        |update(`List<T> itemList`)                                        |
+|`WriteListResponse<T>`                        |update(`List<T> itemList`, `String ownerName`)                      |
+|`ApiEntitySingleResponse`                     |update(`T item`)                                                  |
+|`ApiEntitySingleResponse`                     |update(`T item`, `String ownerName`)                                |
 
 ###TaskWriterAdapter
 
@@ -6609,28 +6603,28 @@ The TaskWriterAdapter allows
 
 Below is the standard create methods available to all WriterAdapters. 
 
-|Type<br>_Method_|
+|Type|_Method_|
 |---------------------------------------------------------------------------------------------------------- |
-|`WriteListResponse<T>`                        <br>create(`List<T> itemList`)                                        |
-|`ApiEntitySingleResponse`                     <br>create(`T item`)                                                  |
-|`ApiEntitySingleResponse`                     <br>create(`T item`, `String ownerName`)                                |
-|`WriteListResponse<P>`                        <br>delete(`List<P> itemIds`)                                         |
-|`WriteListResponse<P>`                        <br>delete(`List<P> itemIds`, `String ownerName`)                       |
-|`ApiEntitySingleResponse`                     <br>delete(`P itemId`)                                                |
-|`ApiEntitySingleResponse`                     <br>delete(`P itemId`, `String ownerName`)                              |
-|`WriteListResponse<T>`                        <br>update(`List<T> itemList`)                                        |
-|`WriteListResponse<T>`                        <br>update(`List<T> itemList`, `String ownerName`)                      |
-|`ApiEntitySingleResponse`                     <br>update(`T item`)                                                  |
-|`ApiEntitySingleResponse`                     <br>update(`T item`, `String ownerName`)                                |
+|`WriteListResponse<T>`                        |create(`List<T> itemList`)                                        |
+|`ApiEntitySingleResponse`                     |create(`T item`)                                                  |
+|`ApiEntitySingleResponse`                     |create(`T item`, `String ownerName`)                                |
+|`WriteListResponse<P>`                        |delete(`List<P> itemIds`)                                         |
+|`WriteListResponse<P>`                        |delete(`List<P> itemIds`, `String ownerName`)                       |
+|`ApiEntitySingleResponse`                     |delete(`P itemId`)                                                |
+|`ApiEntitySingleResponse`                     |delete(`P itemId`, `String ownerName`)                              |
+|`WriteListResponse<T>`                        |update(`List<T> itemList`)                                        |
+|`WriteListResponse<T>`                        |update(`List<T> itemList`, `String ownerName`)                      |
+|`ApiEntitySingleResponse`                     |update(`T item`)                                                  |
+|`ApiEntitySingleResponse`                     |update(`T item`, `String ownerName`)                                |
 
 In addition to the User-specific methods below. Note the delete methods require the username while the create methods require the entire User object.
 
-|Type<br>_Method_                                |
+|Type|_Method_                                |
 |---------------------------------------------------------- |
-|`UserResponse`<br>createAssignee(P uniqueId, User assignee)                   |
-|`UserResponse`<br>createEscalatee(P uniqueId, User escalatee) |
-|`UserResponse`<br>deleteAssignee(P uniqueId, String userName)                   |
-|`UserResponse`<br>deleteEscalatee(P uniqueId, String userName) |
+|`UserResponse`|createAssignee(P uniqueId, User assignee)                   |
+|`UserResponse`|createEscalatee(P uniqueId, User escalatee) |
+|`UserResponse`|deleteAssignee(P uniqueId, String userName)                   |
+|`UserResponse`|deleteEscalatee(P uniqueId, String userName) |
 
 ###VictimWriterAdapter
 
@@ -6638,23 +6632,23 @@ The TagWriterAdapter class allows [Group](#associate-groups), [Indicator](#assoc
 
 Below is the standard create methods available to all WriterAdapters. Note that the deletes require the system-generated VictimAsset ID  as the `uniqueId` Integer (P). The create and update requires the full VictimAsset object (T).
 
-|Type<br>_Method_|
+|Type|_Method_|
 |---------------------------------------------------------------------------------------------------------- |
-|`WriteListResponse<T>`                        <br>create(`List<T> itemList`)                                        |
-|`ApiEntitySingleResponse`                     <br>create(`T item`)                                                  |
-|`ApiEntitySingleResponse`                     <br>create(`T item`, `String ownerName`)                                |
-|`WriteListResponse<P>`                        <br>delete(`List<P> itemIds`)                                         |
-|`WriteListResponse<P>`                        <br>delete(`List<P> itemIds`, `String ownerName`)                       |
-|`ApiEntitySingleResponse`                     <br>delete(`P itemId`)                                                |
-|`ApiEntitySingleResponse`                     <br>delete(`P itemId`, `String ownerName`)                              |
-|`WriteListResponse<T>`                        <br>update(`List<T> itemList`)                                        |
-|`WriteListResponse<T>`                        <br>update(`List<T> itemList`, `String ownerName`)                      |
-|`ApiEntitySingleResponse`                     <br>update(`T item`)                                                  |
-|`ApiEntitySingleResponse`                     <br>update(`T item`, `String ownerName`)                                |
+|`WriteListResponse<T>`                        |create(`List<T> itemList`)                                        |
+|`ApiEntitySingleResponse`                     |create(`T item`)                                                  |
+|`ApiEntitySingleResponse`                     |create(`T item`, `String ownerName`)                                |
+|`WriteListResponse<P>`                        |delete(`List<P> itemIds`)                                         |
+|`WriteListResponse<P>`                        |delete(`List<P> itemIds`, `String ownerName`)                       |
+|`ApiEntitySingleResponse`                     |delete(`P itemId`)                                                |
+|`ApiEntitySingleResponse`                     |delete(`P itemId`, `String ownerName`)                              |
+|`WriteListResponse<T>`                        |update(`List<T> itemList`)                                        |
+|`WriteListResponse<T>`                        |update(`List<T> itemList`, `String ownerName`)                      |
+|`ApiEntitySingleResponse`                     |update(`T item`)                                                  |
+|`ApiEntitySingleResponse`                     |update(`T item`, `String ownerName`)                                |
 
 ###Writer Examples
 
-> Writer Delete Example:
+Writer Delete Example:
 
 ```java
 
@@ -6703,19 +6697,19 @@ Below is the standard create methods available to all WriterAdapters. Note that 
 
 This section offers examples on how to create, delete, and update data using the Java SDK for ThreatConnect.
 
-Line         | Description                                                     |
------------- | --------------------------------------------------------------- |
-131          | Since Adversary objects from the ThreatConnect API will be created and deleted,<br>an AbstractGroupWriterAdapter with the Adversary parameterized type applied is<br>instantiated. |
-138-139      | An Adversary object with the ThreatConnect API is created, the response is captured,<br>and `isSuccess()` is called to check if the save was successful. |
-140          | The response Adversary object returned from the ThreatConnect API is printed.<br>The `getItem()`method will return this object with the ID field populated.<br>This method will always hold the saved item on a successful response. |
-141-142      | The ID from the successful create is used to delete the same Adversary object.<br>Note that the call to the `delete()` method requires the system-generated<br>Adversary ID. |
-143-144      | The delete response is verified as successful, and the original response is dumped. |
-146          | With a failed delete, the error message is printed by calling the `getMessage()`<br>method on the response object. |
-149          | If the original create failed, the `getMessage()` method is also called to find<br>the cause. |
+|Line         | Description                                                     |
+|------------ | --------------------------------------------------------------- |
+|131          | Since Adversary objects from the ThreatConnect API will be created and deleted, an AbstractGroupWriterAdapter with the Adversary parameterized type applied is instantiated. |
+|138-139      | An Adversary object with the ThreatConnect API is created, the response is captured, and `isSuccess()` is called to check if the save was successful. |
+|140          | The response Adversary object returned from the ThreatConnect API is printed. The `getItem()`method will return this object with the ID field populated. This method will always hold the saved item on a successful response. |
+|141-142      | The ID from the successful create is used to delete the same Adversary object. Note that the call to the `delete()` method requires the system-generated Adversary ID. |
+|143-144      | The delete response is verified as successful, and the original response is dumped. |
+|146          | With a failed delete, the error message is printed by calling the `getMessage()` method on the response object. |
+|149          | If the original create failed, the `getMessage()` method is also called to find the cause. |
  
 ###Writer Update Example
 
-> Writer Update Example:
+Writer Update Example:
  
 ```java
 
@@ -6770,15 +6764,15 @@ Line         | Description                                                     |
 
 <b>Code Sample Description</b>
 
-Line         | Description                                                     |
------------- | --------------------------------------------------------------- |
-155-164      | A test Adversary is created and saved to the ThreatConnect API. |
-166-168      | The created Adversary is assigned to a variable called "updatedAdversary()" so that the<br>Adversary name can be changed (line 167). Before updating the Adversary in<br>ThreatConnect, it is printed to the console. The output should have an<br>ID value populated and the name should read:<br>"UPDATED: Test Adversary".|
-170-172      | The "update()" method is called to save the changes to ThreatConnect. The argument to<br>this method is the actual Adversary object. Just like the delete, the response<br>success is verified and written to the console.
+|Line         | Description                                                     |
+|------------ | --------------------------------------------------------------- |
+|155-164      | A test Adversary is created and saved to the ThreatConnect API. |
+|166-168      | The created Adversary is assigned to a variable called "updatedAdversary()" so that the Adversary name can be changed (line 167). Before updating the Adversary in ThreatConnect, it is printed to the console. The output should have an ID value populated and the name should read: "UPDATED: Test Adversary".|
+|170-172      | The "update()" method is called to save the changes to ThreatConnect. The argument to this method is the actual Adversary object. Just like the delete, the response success is verified and written to the console.|
 
 ###Writer Add Attribute Example
 
-> Writer Add Attribute Example
+Writer Add Attribute Example
 
 ```java
   1 
@@ -6845,16 +6839,16 @@ Line         | Description                                                     |
 
 <b>Code Sample Description</b>
 
-Line         | Description                                                    |
------------- | --------------------------------------------------------------- |
-72-73        | The test email object and the Attribute to be added are created.         |
-79-81        | The email in ThreatConnect is created and checked that it is successful. |
-86-87        | The `addAttribute()` method takes the Email Group ID and the Attribute <br>object to be added. |
-89-90        | To confirm that the Attribute was added successfully, the response is checked. |
+|Line         | Description                                                    |
+|------------ | --------------------------------------------------------------- |
+|72-73        | The test email object and the Attribute to be added are created.         |
+|79-81        | The email in ThreatConnect is created and checked that it is successful. |
+|86-87        | The `addAttribute()` method takes the Email Group ID and the Attribute  object to be added. |
+|89-90        | To confirm that the Attribute was added successfully, the response is checked. |
 
 ###Writer Associate Indicator Example
 
-> Writer Associate Indicator Example
+Writer Associate Indicator Example
 
 ```java
   1 
@@ -6933,17 +6927,17 @@ Line         | Description                                                    |
 
 <b>Code Sample Description</b>
 
-Line         | Description                                                     |
------------- | --------------------------------------------------------------- |
-106-107      | Two writers are created: one for the new email and the other for the host <br>to be associated. |
-109-110      | The test email object is crated, as well as the host to be associated.        |
-117-121      | To set up the example, both email and host are created in ThreatConnect. <br>The create is verified as successful and the items are printed to the console. |
-126-128      | The host is associated to the Email Group by using the Email ID and the <br>Host Name (the unique ID for the Host Indicator). |
-130-133      | The association is verified as successful.|
+|Line         | Description                                                     |
+|------------ | --------------------------------------------------------------- |
+|106-107      | Two writers are created: one for the new email and the other for the host to be associated. |
+|109-110      | The test email object is crated, as well as the host to be associated.        |
+|117-121      | To set up the example, both email and host are created in ThreatConnect. The create is verified as successful and the items are printed to the console. |
+|126-128      | The host is associated to the Email Group by using the Email ID and the Host Name (the unique ID for the Host Indicator). |
+|130-133      | The association is verified as successful.|
 
 ###Writer Associate Group Example
 
-> Writer Associate Group Example
+Writer Associate Group Example
 
 ```java
 
@@ -7019,17 +7013,17 @@ Line         | Description                                                     |
 
 <b>Code Sample Description</b>
 
-Line         | Description                                                     |
------------- | --------------------------------------------------------------- |
-153-154      | Two writers are created: one for the new email and the other for the Threat <br>to be associated. |
-156-157      | The test email object is created, as well as the Threat to be associated. |
-163-167      | To set up the example, both email and Threat are created in ThreatConnect, <br>the create is verified as successful, and the items are printed to the console.|
-172-174      | The Threat is associated to the Email Group by using the Email ID and the Threat ID. |
-176-179      | The association is verified as successful.|
+|Line         | Description                                                     |
+|------------ | --------------------------------------------------------------- |
+|153-154      | Two writers are created: one for the new email and the other for the Threat to be associated. |
+|156-157      | The test email object is created, as well as the Threat to be associated. |
+|163-167      | To set up the example, both email and Threat are created in ThreatConnect, the create is verified as successful, and the items are printed to the console.|
+|172-174      | The Threat is associated to the Email Group by using the Email ID and the Threat ID. |
+|176-179      | The association is verified as successful.|
 
 ###Writer Associate Tag Example
 
-> Writer Associate Tag Example
+Writer Associate Tag Example
 
 ```java
 
@@ -7105,17 +7099,17 @@ Line         | Description                                                     |
 
 <b>Code Sample Description</b>
 
-Line         | Description                                                     |
------------- | --------------------------------------------------------------- |
-198-199      | Two writers are created: one for the new email and the other for the Tag to associate. |
-201-202       | The test email object, and the Tag to associate, are created.|
-208-214      | To set up the example, both email and Tag are created in ThreatConnect. The create <br> is verified as successful, and the items are printed to the console.|
-219-221      | The Tag is associated to the Email Group by using the Email ID and the Tag name <br>(the `uniqueID` for the Tag). |
-223-226      | The association is verified as successful. |
+|Line         | Description                                                     |
+|------------ | --------------------------------------------------------------- |
+|198-199      | Two writers are created: one for the new email and the other for the Tag to associate. |
+|201-202       | The test email object, and the Tag to associate, are created.|
+|208-214      | To set up the example, both email and Tag are created in ThreatConnect. The create is verified as successful, and the items are printed to the console.|
+|219-221      | The Tag is associated to the Email Group by using the Email ID and the Tag name (the `uniqueID` for the Tag). |
+|223-226      | The association is verified as successful. |
 
 ###Writer Associate Victim Example
 
-> Writer Associate Victim Example
+Writer Associate Victim Example
 
 ```java
  
@@ -7177,17 +7171,17 @@ Line         | Description                                                     |
 
 <b>Code Sample Description</b>
 
-Line         | Description                                                     |
------------- | --------------------------------------------------------------- |
-305-306      | Two writers are created: one for the new email and the other for the Victim to associate. |
-308-309      | The test email object, and the Victim to associate, are created. |
-315-319      | To set up the example, both email and Victim are created in ThreatConnect. <br>The create is verified as successful, and the items are printed <br>to the console. |
-324-326      | The Victim is associated to the Email Group by using the Email ID and the Victim ID. |
-328-331      | The association is verified as successful.|
+|Line         | Description                                                     |
+|------------ | --------------------------------------------------------------- |
+|305-306      | Two writers are created: one for the new email and the other for the Victim to associate. |
+|308-309      | The test email object, and the Victim to associate, are created. |
+|315-319      | To set up the example, both email and Victim are created in ThreatConnect. The create is verified as successful, and the items are printed to the console. |
+|324-326      | The Victim is associated to the Email Group by using the Email ID and the Victim ID. |
+|328-331      | The association is verified as successful.|
 
 ###Writer Remove Association Example
 
-> Writer Remove Association Example
+Writer Remove Association Example
 
 ```java
 
@@ -7255,11 +7249,11 @@ Line         | Description                                                     |
 
 <b>Code Sample Description</b>
 
-Line         | Description                                                    
------------- | ---------------------------------------------------------------
-245-271      | The Email Group is created and associated with the Tag item.
-276-278      | The `dissociateTag()` method is called using the same parameters as <br> the associate method. The email item ID value is used  with the Tag name.
-280-281      | The deleting is verified as successful, and the message is dumped to the console.
+|Line         | Description                                                    |
+|------------ | ---------------------------------------------------------------|
+|245-271      | The Email Group is created and associated with the Tag item.|
+|276-278      | The `dissociateTag()` method is called using the same parameters as the associate method. The email item ID value is used  with the Tag name.|
+|280-281      | The deleting is verified as successful, and the message is dumped to the console.|
 
 <b>Summary</b>
 
@@ -7288,7 +7282,7 @@ All code examples will be noted in a separate box with a monospaced font and lin
 
 ## Getting Started
 
-> An example of using configuration to read API configuration values is the following:
+An example of using configuration to read API configuration values is the following:
 
 ```javascript
 var apiSettings,
@@ -7336,10 +7330,10 @@ The following example illustrates a typical initialization of the ThreatConnect 
 
 <b>Third-Party Dependencies</b>
 
-Name          | Version       | Link
-------------- | ------------- | ----------------------
-jquery        | 2.1.4         | [https://jquery.com/](https://jquery.com/)
-Crypto-JS     | 3.1           | [https://code.google.com/p/crypto-js/](https://code.google.com/p/crypto-js/)
+|Name          | Version       | Link|
+|------------- | ------------- | ----------------------|
+|jquery        | 2.1.4         | [https://jquery.com/](https://jquery.com/)|
+|Crypto-JS     | 3.1           | [https://code.google.com/p/crypto-js/](https://code.google.com/p/crypto-js/)|
 
 <b>Technical Design</b>
 
@@ -7362,7 +7356,7 @@ Object                | Description
 
 ## Example JavaScript App
 
-> The example below illustrates how to write a program using the JavaScript SDK for the ThreatConnect API:
+The example below illustrates how to write a program using the JavaScript SDK for the ThreatConnect API:
 
 ```javascript
 var apiSettings,
@@ -7397,21 +7391,21 @@ This example illustrates how to write a program using the JavaScript SDK for the
 
 <b>Code Highlights</b>
 
-Snippet                                   | Description                                                                       
------------------------------------------ | --------------------------------------------------------------------------------- 
-`tcSpaceElementId = getParameterByNam...` | Retrieve Space Element Id (only supported on <br>Spaces application). 
-`apiToken: getParameterByName('tcToken')` | Retrieve Token from Spaces. 
-`apiUrl: getParameterByName('tcApiPath')` | Retrieve API Path from Spaces. 
-`apiId: '12345678900987654321',`          | Set API ID when not using Spaces App. 
-`apiSec: 'aabbccddeeffgghhiijjkkllmmn...` | Set API Secret when not using Spaces App. 
-`apiUrl: 'https://demo.threatconnect.com/api`         | Set API URL when not using Spaces App. 
-`var tc = new ThreatConnect(apiSettings)` | Get ThreatConnect Object. 
-`tc.owners()`                             | Get Owners object. 
-`.done(function(response) {`              | Set "done" callback. 
-`console.log('owner response', response)` | Console log response. 
-`.error(function(response) {`             | Set "error" callback. 
-`console.log('owner response error', ...` | Console log any error. 
-`.retrieve();`                            | Retrieve Owners. 
+|Snippet                                   | Description                                                                       |
+|----------------------------------------- | --------------------------------------------------------------------------------- |
+|`tcSpaceElementId = getParameterByNam...` | Retrieve Space Element Id (only supported on Spaces application). |
+|`apiToken: getParameterByName('tcToken')` | Retrieve Token from Spaces. |
+|`apiUrl: getParameterByName('tcApiPath')` | Retrieve API Path from Spaces. |
+|`apiId: '12345678900987654321',`          | Set API ID when not using Spaces App. |
+|`apiSec: 'aabbccddeeffgghhiijjkkllmmn...` | Set API Secret when not using Spaces App. |
+|`apiUrl: 'https://demo.threatconnect.com/api`         | Set API URL when not using Spaces App. |
+|`var tc = new ThreatConnect(apiSettings)` | Get ThreatConnect Object. |
+|`tc.owners()`                             | Get Owners object. |
+|`.done(function(response) {`              | Set "done" callback. |
+|`console.log('owner response', response)` | Console log response. |
+|`.error(function(response) {`             | Set "error" callback. |
+|`console.log('owner response error', ...` | Console log any error. |
+|`.retrieve();`                            | Retrieve Owners. |
 
 <b>Summary</b>
 
@@ -7429,16 +7423,16 @@ This section provides an overview of the JavaScript app development process as i
 
 ###Query Parameters
 
-> For the sample install configuration example above, here is a sample query String passed to the app:
+For the sample install configuration example above, here is a sample query String passed to the app:
 
 ```
 tcSpaceElementId=467&tcToken=ABC123&tcApiPath=https://api.threatconnect.com:8443&tcType=Host&tcSelectedItem=greystoneexpress.com&tcSelectedItemOwner=TestOrg&add_tags=OpenDNS Scan&add_confidence=25&add_rating=1&opendns_api_token=abc-123&logging=info
 ```
 
-> All Spaces apps will have standard 'tc' prefixed parameters passed that may be used by the app.
+All Spaces apps will have standard 'tc' prefixed parameters passed that may be used by the app.
 
 
-> The above query string can be parsed with the following JavaScript code:
+The above query string can be parsed with the following JavaScript code:
 
 ```javascript
     $(document).ready(function () {
@@ -7492,14 +7486,14 @@ ThreatConnect passes standard parameters to all jobs within its standard sandbox
 
 Since all Spaces apps are managed within ThreatConnect, app developers should never hard-code ThreatConnect Parameters 
 
-ThreatConnect Parameter  | Description                                                                 
------------------------- | --------------------------------------------------------------------- 
-`tcSpaceElementId`   | The unique space element instance ID for the user who added this app <br> to their Space. This numeric ID can be used by the app to store state for the user.
-`tcToken`            | Session token to be used by the app to access the API. The JavaScript SDK <br> has configuration options for this parameter.
-`tcApiPath`          | The path to the API defined in System Settings for all apps.
-`tcType`             | Only relevant for context-aware apps. This field corresponds to the <br> runtime.context Attribute defined in the install configuration file.
-`tcSelectedItem`     | Only relevant for context-aware apps. This is the actual context-item <br> identifier used within ThreatConnect. For instance, a Host identifier might be: g00gle.com
-`tcSelectedItemOwner` | Only relevant for context-aware apps. This is the Owner of the context item.
+|ThreatConnect Parameter  | Description                                                              |   
+|------------------------ | --------------------------------------------------------------------- |
+|`tcSpaceElementId`   | The unique space element instance ID for the user who added this app to their Space. This numeric ID can be used by the app to store state for the user.|
+|`tcToken`            | Session token to be used by the app to access the API. The JavaScript SDK has configuration options for this parameter.|
+|`tcApiPath`          | The path to the API defined in System Settings for all apps.|
+|`tcType`             | Only relevant for context-aware apps. This field corresponds to the runtime.context Attribute defined in the install configuration file.|
+|`tcSelectedItem`     | Only relevant for context-aware apps. This is the actual context-item identifier used within ThreatConnect. For instance, a Host identifier might be: g00gle.com|
+|`tcSelectedItemOwner` | Only relevant for context-aware apps. This is the Owner of the context item.|
 
 <b>JavaScript Examples</b>
 
@@ -7511,15 +7505,15 @@ The example below demonstrates how to authenticate and add an Indicator via the 
 
 <b>Dependencies</b>
 
-File                     | URL                                             
------------------------- | ----------------------------------------------- 
-enc-base-64.js           | [https://code.google.com/p/crypto-js/downloads](https://code.google.com/p/crypto-js/downloads) 
-hmac-sha256.js           | [https://code.google.com/p/crypto-js/downloads](https://code.google.com/p/crypto-js/downloads) 
-sha256.js                | [https://code.google.com/p/crypto-js/downloads](https://code.google.com/p/crypto-js/downloads) 
+|File                     | URL                                             |
+|------------------------ | ----------------------------------------------- |
+|enc-base-64.js           | [https://code.google.com/p/crypto-js/downloads](https://code.google.com/p/crypto-js/downloads) |
+|hmac-sha256.js           | [https://code.google.com/p/crypto-js/downloads](https://code.google.com/p/crypto-js/downloads) |
+|sha256.js                | [https://code.google.com/p/crypto-js/downloads](https://code.google.com/p/crypto-js/downloads) |
 
 ##Dependencies Installation (Linux)
 
-> Run these commands to install dependencies:
+Run these commands to install dependencies:
 
 ```shell
 mkdir lib
@@ -7529,7 +7523,7 @@ cp CyrptoJS\ v3.1.2/hmac-sha256.js lib/
 cp CyrptoJS\ v3.1.2/sha256.js lib/
 ```
 
-> tc.js code sample:
+tc.js code sample:
 
 ```javascript
 var CryptoJS = require('./lib/hmac-sha256.js'),
@@ -7681,17 +7675,17 @@ This section explains how to work with ThreatConnect Indicator Resources.
 
 <b>Supported Indicator Types</b>
 
-Indicator Name       | Indicator Constant 
--------------------- | --------------- 
-Address              | TYPE.ADDRESS
-Email Address        | TYPE.EMAIL_ADDRESS
-File                 | TYPE.FILE
-Host                 | TYPE.HOST
-URL                  | TYPE.URL
+|Indicator Name       | Indicator Constant |
+|-------------------- | --------------- |
+|Address              | TYPE.ADDRESS|
+|Email Address        | TYPE.EMAIL_ADDRESS|
+|File                 | TYPE.FILE|
+|Host                 | TYPE.HOST|
+|URL                  | TYPE.URL|
 
 ###Retrieve Indicator
 
-> Example of Retrieving Indicators:
+Example of Retrieving Indicators:
 
 ```javascript
 var indicators = tc.indicators();
@@ -7716,7 +7710,7 @@ This example will demonstrate how to retrieve Indicators. The result set returne
 
 ###Retrieve Next
 
-> Example of retrieve.next method:
+Example of retrieve.next method:
 
 ```javascript
 if (indicators.hasNext()) {
@@ -7724,7 +7718,7 @@ if (indicators.hasNext()) {
 }
 ```
 
-> Example Results of the retrieve.next method:
+Example Results of the retrieve.next method:
 
 ```json
 {
@@ -7777,7 +7771,7 @@ Note: The `next()` method will return the same number of results defined in the 
 
 ###Single Indicator
 
-> This example will demonstrate how to retrieve a Single Indicator:
+This example will demonstrate how to retrieve a Single Indicator:
 
 ```javascipt
 var indicators = tc.indicators();
@@ -7795,7 +7789,7 @@ indicators.owner('Example Community')
     .retrieve()
 ```
 
-> Single Indicator retrieve Example Results:
+Single Indicator retrieve Example Results:
 
 ```json
 {
@@ -7824,7 +7818,7 @@ indicators.owner('Example Community')
 
 ###Filters
 
-> Example of how to retrieve Threats:
+Example of how to retrieve Threats:
 
 ```javascript
 var filter = new Filter(FILTER.AND);
@@ -7849,16 +7843,16 @@ Starting with ThreatConnect version 4.0 the API supports filtering using query s
 
 <b>Filter Options</b>
 
-Filter                      | Filter Constant
---------------------------- | ---------------
-And                         | FILTER.AND
-Or                          | FILTER.OR 
-Equal (=)                   | FILTER.OR 
-Greater Than (>)            | FILTER.GT 
-Greater Than or Equal (>=)  | FILTER.GE 
-Less Than (<)               | FILTER.LT 
-Less Than or Equal (<=)     | FILTER.LE 
-Starts With (^)             | FILTER.SW 
+|Filter                      | Filter Constant|
+|--------------------------- | ---------------|
+|And                         | FILTER.AND|
+|Or                          | FILTER.OR |
+|Equal (=)                   | FILTER.OR |
+|Greater Than (>)            | FILTER.GT |
+|Greater Than or Equal (>=)  | FILTER.GE |
+|Less Than (<)               | FILTER.LT |
+|Less Than or Equal (<=)     | FILTER.LE |
+|Starts With (^)             | FILTER.SW |
 
 <b>Filter Example</b>
 
@@ -7868,7 +7862,7 @@ Note that multiple filter can be added to one API call.
 
 ###Batch/Bulk Retrieve
 
-> Example of Batch/Bulk Retrieve:
+Example of Batch/Bulk Retrieve:
 
 ```javascript
 var indicators = tc.indicatorsBatch();
@@ -7909,7 +7903,7 @@ The JavaScript SDK provides the `retrieveAssociations()` method to retrieve both
 
 ###Attributes
 
-> Example of retrieveAttributes() method:
+Example of retrieveAttributes() method:
 
 ```javascript
 var indicators = tc.indicators();
@@ -7975,7 +7969,7 @@ NOTE: The Observation Count can also be retrieved with the "Single Indicator" me
 
 ###Retrieve Security Labels Method
 
-> Example of retrieveSecurityLabel() method:
+Example of retrieveSecurityLabel() method:
 
 ```javascript
 var indicators = tc.indicators();
@@ -7996,7 +7990,7 @@ indicators.owner('Example Community')
 
 ###Retrieve Tags Method
 
-> Example of retrieveTags() method:
+Example of retrieveTags() method:
 
 ```javascript
 var indicators = tc.indicators();
@@ -8018,7 +8012,7 @@ The JavaScript SDK provides the `retrieveTags()` method to retrieve tags. Both t
 
 ##Tags Retrieve
 
-> Example of how to retrieve Tags:
+Example of how to retrieve Tags:
 
 ```javascript
 tc.tags()
@@ -8032,7 +8026,7 @@ tc.tags()
     .retrieve();
 ```
 
-> Example of retrieve Tags results:
+Example of retrieve Tags results:
 
 ```json
 {
@@ -8068,7 +8062,7 @@ This example will demonstrate how to retrieve Tags. The result set returned from
 
 ## Owners Retrieve
 
-> Retrieve Owners Example:
+Retrieve Owners Example:
 
 ```javascript
 tc.owners()
@@ -8081,7 +8075,7 @@ tc.owners()
     .retrieve();
 ```
 
-> Example Owners Results:
+Example Owners Results:
 
 ```json
 {
@@ -8119,7 +8113,7 @@ This section explains how to work with ThreatConnect Owners Resources.
 
 ### Metrics
 
-> Retrieving Owner Metrics:
+Retrieving Owner Metrics:
 
 ```javascript
 tc.owners()
@@ -8140,18 +8134,18 @@ This section explains how to work with ThreatConnect Group Resources.
 
 <b>Supported Group Types</b>
 
-Group Name           | Group Constant 
----------------------| --------------- 
-Adversary            | TYPE.ADVERSARY
-Document             | TYPE.DOCUMENT
-Email                | TYPE.EMAIL
-Incident             | TYPE.INCIDENT
-Signature            | TYPE.SIGNATURE
-Threat               | TYPE.THREAT
+|Group Name           | Group Constant |
+|---------------------| --------------- |
+|Adversary            | TYPE.ADVERSARY|
+|Document             | TYPE.DOCUMENT|
+|Email                | TYPE.EMAIL|
+|Incident             | TYPE.INCIDENT|
+|Signature            | TYPE.SIGNATURE|
+|Threat               | TYPE.THREAT|
 
 ### Retrieve Group
 
-> Example of how to retrieve Adversaries:
+Example of how to retrieve Adversaries:
 
 ```javascript
 groups = tc.groups();
@@ -8172,7 +8166,7 @@ This example will demonstrate how to retrieve Adversaries. The result set return
 
 ### Retrieve Next
 
-> Example of hasNext() method:
+Example of hasNext() method:
 
 ```javascript
 while (groups.hasNext()) {
@@ -8180,7 +8174,7 @@ while (groups.hasNext()) {
 }
 ```
 
-> Example of Results:
+Example of Results:
 
 ```json
 {
@@ -8223,7 +8217,7 @@ Note: The `next()` method will return the same number of results defined in the 
 
 ## Filters
 
-> Example of how to retrieve Threats that start-with 'thre' and had a dateAdded value great than '2015-12-02' using an API filter:
+Example of how to retrieve Threats that start-with 'thre' and had a dateAdded value great than '2015-12-02' using an API filter:
 
 ```javascript
 filter = new Filter(FILTER.AND);
@@ -8246,16 +8240,16 @@ groups.owner('Example Community')
 ```
 Starting with ThreatConnect version 4.0 the API supports filtering using query string parameters. For more information on which parameters support which operators see the ThreatConnect API Users Guide.
 
-Filter Options              | Filter Constant
---------------------------- | ---------------
-And                         | FILTER.AND
-Or                          | FILTER.OR
-Equal (=)                   | FILTER.OR
-Greater Than (>)            | FILTER.GT
-Greater Than or Equal (>=)  | FILTER.GE
-Less Than (<)               | FILTER.LT
-Less Than or Equal (<=)     | FILTER.LE
-Starts With (^)             | FILTER.SW
+|Filter Options              | Filter Constant|
+|--------------------------- | ---------------|
+|And                         | FILTER.AND|
+|Or                          | FILTER.OR|
+|Equal (=)                   | FILTER.OR|
+|Greater Than (>)            | FILTER.GT|
+|Greater Than or Equal (>=)  | FILTER.GE|
+|Less Than (<)               | FILTER.LT|
+|Less Than or Equal (<=)     | FILTER.LE|
+|Starts With (^)             | FILTER.SW|
 
 <b>Filter Example</b>
 
@@ -8265,7 +8259,7 @@ Note that multiple filter can be added to one API call.
 
 ##Retrieve Associations
 
-> Example of retrieveAssociations() method:
+Example of retrieveAssociations() method:
 
 ```javascript
 tc.groups()
@@ -8287,7 +8281,7 @@ The JavaScript SDK provides the `retrieveAssociations()` method to retrieve both
 
 ##Retrieve Attributes
 
-> Example of retrieveAttributes() method:
+Example of retrieveAttributes() method:
 
 ```javascript
 tc.groups()
@@ -8307,7 +8301,7 @@ The JavaScript SDK provides the `retrieveAttributes()` method to retrieve attrib
 
 ##Retrieve Tags
 
-> Example of retrieveTags() method:
+Example of retrieveTags() method:
 
 ```javascript
 tc.groups()
@@ -8327,7 +8321,7 @@ The JavaScript SDK provides the `retrieveTags()` method to retrieve tags. Both t
 
 ##Retrieve Security Labels
 
-> Example of retrieveSecurityLabel() method:
+Example of retrieveSecurityLabel() method:
 
 ```javascript
 tc.groups()
@@ -8443,17 +8437,17 @@ This section explains how to work with ThreatConnect Indicator Resources.
 
 <b>Supported Indicator Types</b>
 
-Indicator Name       | Indicator Constant |
--------------------- | --------------- |  
-Address              | TYPE.ADDRESS |
-Email Address        | TYPE.EMAIL_ADDRESS |
-File                 | TYPE.FILE |
-Host                 | TYPE.HOST |
-URL                  | TYPE.URL |
+|Indicator Name       | Indicator Constant |
+|-------------------- | --------------- |  
+|Address              | TYPE.ADDRESS |
+|Email Address        | TYPE.EMAIL_ADDRESS |
+|File                 | TYPE.FILE |
+|Host                 | TYPE.HOST |
+|URL                  | TYPE.URL |
 
 ###Commit Indicator
 
-> Example of how to add an Address indicator to the "Example Community" Owner:
+Example of how to add an Address indicator to the "Example Community" Owner:
 
 ```javascript
 var indicators = tc.indicators();
@@ -8472,7 +8466,7 @@ indicators.owner('Example Community')
     .commit();
 ```
 
-> Example Results:
+Example Results:
 
 ```json
 {
@@ -8502,7 +8496,7 @@ This example will demonstrate how to add an Address indicator to the "Example Co
 
 ###Batch/Bulk Commit
 
-> Example of Batch/Bulk Commit:
+Example of Batch/Bulk Commit:
 
 ```javascript
 var indicators = tc.indicatorsBatch();
@@ -8546,7 +8540,7 @@ Filters are not supported on Batch/Bulk downloads.
 
 The JavaScript SDK provides the `commitAssociation()` method to add Group Associations. Both `.type()`, and `id()` methods are required to commit the Associations. The value passed to the `commitAssociation()` method must be the specific Group Type (e.g., TYPE.ADVERSARY, TYPE.HOST).
 
-> Example of commitAssociations() method:
+Example of commitAssociations() method:
 
 ```javascript
 tc.indicators()
@@ -8567,7 +8561,7 @@ tc.indicators()
 
 ###Commit Attribute
 
-> Example of commitAttributes() method:
+Example of commitAttributes() method:
 
 ```javascript
 tc.indicators()
@@ -8589,7 +8583,7 @@ The JavaScript SDK provides the `commitAttribute()` method to add Attributes. Bo
 
 ###Commit Tags
 
-> Example of commitTags() method:
+Example of commitTags() method:
 
 ```javascript
 tc.indicators()
@@ -8609,7 +8603,7 @@ The JavaScript SDK provides the `commitTags()` method to add Tags. Both the `.ty
 
 ###Commit Security Labels
 
-> Example of commitSecurityLabel() method:
+Example of commitSecurityLabel() method:
 
 ```javascript
 tc.indicators()
@@ -8626,7 +8620,7 @@ tc.indicators()
 
 ###Putting it all Together
 
-> Example of how to add an Adversary with a name of 'adver-999' to the "Example Community" owner
+Example of how to add an Adversary with a name of 'adver-999' to the "Example Community" owner
 
 ```javascript
 indicators.owner('Example Community')
@@ -8666,18 +8660,18 @@ This section explains how to work with ThreatConnect Group Resources.
 
 <b>Supported Group Types</b>
 
-Group Name           | Group Constant 
----------------------| --------------- 
-Adversary            | TYPE.ADVERSARY
-Document             | TYPE.DOCUMENT
-Email                | TYPE.EMAIL
-Incident             | TYPE.INCIDENT
-Signature            | TYPE.SIGNATURE
-Threat               | TYPE.THREAT
+|Group Name           | Group Constant |
+|---------------------| --------------- |
+|Adversary            | TYPE.ADVERSARY|
+|Document             | TYPE.DOCUMENT|
+|Email                | TYPE.EMAIL|
+|Incident             | TYPE.INCIDENT|
+|Signature            | TYPE.SIGNATURE|
+|Threat               | TYPE.THREAT|
 
 ###Commit Group
 
-> Example of how to add an Adversaries with a name of 'adver-001' to the "Example Community" Owner:
+Example of how to add an Adversaries with a name of 'adver-001' to the "Example Community" Owner:
 
 ```javascript
 groups = tc.groups();
@@ -8694,7 +8688,7 @@ groups.owner('Example Community')
     .commit();
 ```
 
-> Example Results:
+Example Results:
 
 ```json
 {
@@ -8720,7 +8714,7 @@ This example will demonstrate how to add an Adversary with a name of 'adver-001'
 
 ###Commit Associations
 
-> Example of commitAssociations() method:
+Example of commitAssociations() method:
 
 ```javascript
 tc.groups()
@@ -8743,7 +8737,7 @@ The JavaScript SDK provides the `commitAssociations()` method to add both Indica
 
 ###Commit Attributes
 
-> Example of commitAttributes() method:
+Example of commitAttributes() method:
 
 ```javascript
 tc.groups()
@@ -8804,7 +8798,7 @@ The JavaScript SDK provides the `commitObservation()` method to add an Indicator
 
 ###Commit Tag Method
 
-> Example of commitTag() method:
+Example of commitTag() method:
 
 ```javascript
 tc.groups()
@@ -8823,7 +8817,7 @@ The JavaScript SDK provides the `commitTag()` method to add tags. Both the `.typ
 
 ###Commit Security Label
 
-> Example of commitSecurityLabel() method:
+Example of commitSecurityLabel() method:
 
 ```javascript
 tc.groups()
@@ -8842,7 +8836,7 @@ tc.groups()
 
 ###Putting it all Together
 
-> Example of how to add an Adversary with a name of 'adver-999' to the "Example Community" owner
+Example of how to add an Adversary with a name of 'adver-999' to the "Example Community" owner
 
 ```javascript
 groups = tc.groups();
@@ -9105,7 +9099,7 @@ tasks.owner('Example Community')
     });
 ```
 
-> Note: To ensure the commits for the metadata happen after the commit of the task pass a callback to the group commit method.
+Note: To ensure the commits for the metadata happen after the commit of the task pass a callback to the group commit method.
 
 
 
@@ -9262,11 +9256,11 @@ victim.owner('Example Community')
     });
 ```
 
-> Note: To ensure the commits for the metadata happen after the commit of the task pass a callback to the group commit method.
+Note: To ensure the commits for the metadata happen after the commit of the task pass a callback to the group commit method.
 
 ##Manual API Calls
 
-> The example below accesses the API by allowing the creation of a requestObject():
+The example below accesses the API by allowing the creation of a requestObject():
 
 ```
 tc.requestObject()
@@ -9277,7 +9271,7 @@ The JavaScript SDK supports a manual way to access the API by allowing the creat
 
 ###Retrieving Indicators
 
-> The example below displays how to create a `RequestObject` that will retrieve all Indicators from a specified Owner:
+The example below displays how to create a `RequestObject` that will retrieve all Indicators from a specified Owner:
 
 ```javascript
 var ro = tc.requestObject();
@@ -9301,7 +9295,7 @@ This example displays how to create a `RequestObject` that will retrieve all Ind
 
 ###Downloading Document Contents
 
-> The example below displays how to create a `RequestObject` that will retrieve the contents of a document stored in a Document Resource:
+The example below displays how to create a `RequestObject` that will retrieve the contents of a document stored in a Document Resource:
 
 ```javascript
 var ro = tc.requestObject();
@@ -9323,7 +9317,7 @@ This example displays how to create a `RequestObject` that will retrieve the con
 
 ###Creating and Uploading Documents
 
-> The example below displays how to create a `RequestObject` that will create a Document Resource in ThreatConnect and upload a file to this Resource.
+The example below displays how to create a `RequestObject` that will create a Document Resource in ThreatConnect and upload a file to this Resource.
 
 ```javascript
 var ro = tc.requestObject();
@@ -9349,7 +9343,7 @@ This example displays how to create a `RequestObject` that will create a Documen
 
 ###Query String Parameters
 
-> This example shows how to add filters to a manual request using the `payload()` option.
+This example shows how to add filters to a manual request using the `payload()` option.
 
 ```javascript
 var ro = tc.requestObject();
@@ -9362,14 +9356,14 @@ ro.owner('Example Community')
 
 The JavaScript SDK `requestObject` provides the `payload()` method to add any additional query string parameters. This example shows how to add filters to a manual request using the `payload()` option.
 
-Query String Parameter | Helper Method 
----------------------- | ------------- 
-owner                  | owner() 
-createActivityLog      | createActivityLog() 
-resultLimit            | resultLimit() 
-resultStart            | resultStart() 
-filters                | manually via payload() 
-orParams               | manually via payload() 
+|Query String Parameter | Helper Method |
+|---------------------- | ------------- |
+|owner                  | owner() |
+|createActivityLog      | createActivityLog() |
+|resultLimit            | resultLimit() |
+|resultStart            | resultStart() |
+|filters                | manually via payload() |
+|orParams               | manually via payload() |
 
 For a full list of query string parameters supported by the ThreatConnect API reference the ThreatConnect API User Guide.
 
@@ -9458,7 +9452,7 @@ The variable-expression feature enables developers to reference “$” style va
 
 Internal variables are predefined (reserved) variables that can be explicitly declared in the **install.json** file. Apps declaring these variables will direct the Job Wizard and Spaces configuration dialog box to convert the variables into literal values. Internal variables should be used only with the **Choice** and **MultiChoice** types. They should be defined in the **validValues** property.
 
-> Example of a validValues parameter definition example:
+Example of a validValues parameter definition example:
 
 ```json
 {
@@ -9488,7 +9482,7 @@ The Variables feature in the ThreatConnect platform allows any user to create va
 
 Since the variable names are not known by the app developer, the generic form of the variables is referenced instead in a **&lt;level:type&gt;** format. 
 
-> For instance, to allow the user to select one of their plain-text variables from Organization and User levels, the **install.json** file would reference them as follows:
+For instance, to allow the user to select one of their plain-text variables from Organization and User levels, the **install.json** file would reference them as follows:
 
 ```json
 "validValues": ["{USER:TEXT}", "${ORGANIZATION: TEXT}"]
@@ -9514,7 +9508,7 @@ Multiple external-variable expressions can be included in string array form.
 
 This section provides an example of an **install.json** file for a Python app. The key elements are described with line-number references in 8, below the example.
 
-> Example install.json file for a Python app:
+Example install.json file for a Python app:
 
 ```json
 {
