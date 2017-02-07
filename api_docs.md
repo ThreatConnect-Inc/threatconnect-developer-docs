@@ -6,7 +6,7 @@ The Application Programming Interface (API) allows users to access data in their
 
 To create an API User please refer to the <a href='http://kb.threatconnect.com/customer/en/portal/articles/2188549-creating-user-accounts'> Creating User Accounts KB article.</a>
 
-If you are not able to create an API key using instructions provided in the KB article above, please contact <sales@threatconnect.com> to discuss pricing.
+If you are not able to create an API key using instructions provided in the KB article above, please contact <sales@threatconnect.comTo discuss pricing.
 
 ## Using the API
 
@@ -26,11 +26,11 @@ Each API response is formatted with a status. If the status is "Success," each r
 
 The API will be versioned as needed to support continued development of the ThreatConnect platform, and existing API versions will be appropriately deprecated.
 
-Version 2 (V2) of the API supports write capabilities via HTTP POST and PUT methods, in addition to deletion via the HTTP DELETE method. As with Version 1 (V1) API Implementation, the HTTP GET method is used for read access to resources.
+Version 2 (V2) of the API supports write capabilities via HTTP POST and PUT methods the HTTP GET method is used for read access to resources.
 
 ## Authentication
 
-> Passing a Signature to the API
+Passing a Signature to the API
 
 ```
 GET https://api.threatconnect.com/v2/indicators?owner=Common%20Community HTTP/1.1
@@ -53,13 +53,13 @@ Note: If the nonce is not within five minutes of the ThreatConnect server's syst
 
 ## Example API GET Request
 
-> Get a list of all Owners visible to this user
+Get a list of all Owners visible to this user:
 
 ```
 GET /v2/owners
 ```
 
-> JSON Response:
+JSON Response:
 
 ```json
 {
@@ -78,7 +78,7 @@ GET /v2/owners
 }
 ```
 
-> XML Response:
+XML Response:
 
 ```xml
 <ownersResponse>
@@ -175,7 +175,7 @@ NOTE: Pagination counts and Indices should not be stored in long-lived applicati
 
 ###Owners Service
 
-> Owners Service JSON Response:
+Owners Service JSON Response:
 
 ```json
 {
@@ -194,7 +194,7 @@ NOTE: Pagination counts and Indices should not be stored in long-lived applicati
 }
 ```
 
-> Owners Service XML Response:
+Owners Service XML Response:
 
 ```xml
 <ownersResponse>
@@ -214,7 +214,7 @@ NOTE: Pagination counts and Indices should not be stored in long-lived applicati
 </ownersResponse>
 ```
 
-> View the Owner Organization for the current API User
+View the Owner Organization for the current API User
 
 ```
 GET /v2/owners/mine
@@ -232,7 +232,7 @@ Response:
 }
 ```
 
-> View all Owners that are accessible to the current API User
+View all Owners that are accessible to the current API User
 
 ```
 GET /v2/owners
@@ -257,7 +257,7 @@ Response:
 }
 ```
 
-> View all members of an Organization 
+View all members of an Organization 
 
 ```
 GET /v2/owners/mine/members
@@ -313,13 +313,13 @@ The example below is a request to see available Owners of the specified Indicato
 /v2/indicators/hosts/baddomain.com/owners
 ```
 
-> Threats Collection for the Common Community:
+Threats Collection for the Common Community:
 
 ```
 /v2/groups/threats?owner=Common%20Community
 ```
 
-> Specific Threat (Owner implied by ID):
+Specific Threat (Owner implied by ID):
 
 ```
 /v2/groups/threats/300
@@ -343,7 +343,7 @@ NOTE: With the additional of write functionality to API V2, Owner roles have bec
 
 ###Indicators Service
 
-> Example Indicator Service Path:
+Example Indicator Service Path:
 
 ```
 /v2/indicators/hosts?resultStart=0&resultLimit=20
@@ -354,7 +354,7 @@ NOTE: With the additional of write functionality to API V2, Owner roles have bec
 
 The ThreatConnect API Indicators Service allows for the querying of a generic Collection of Indicators for a user’s Organization, as well as any Communities to which the user has access. 
 
-> Note that the results will contain a mix of Indicator types, including variations, such as IPv4/IPv6 for addresses or MD5/SHA-1/SHA-256 for files. A list of Indicators from both the Groups and Tags Service can also be retrieved.
+Note that the results will contain a mix of Indicator types, including variations, such as IPv4/IPv6 for addresses or MD5/SHA-1/SHA-256 for files. A list of Indicators from both the Groups and Tags Service can also be retrieved.
 
 ###Filtering Indicators
 
@@ -516,7 +516,7 @@ Below is a list of all Resource Types and all HTTP paths for obtaining each Reso
 
 ####Indicators Resource Type
 
-> Indicators Resource Type JSON Response:
+Indicators Resource Type JSON Response:
 
 ```json
 {
@@ -546,7 +546,7 @@ Below is a list of all Resource Types and all HTTP paths for obtaining each Reso
 }
 ```
 
-> Indicators Resource Type XML Response:
+Indicators Resource Type XML Response:
 
 ```xml
 <indicatorsResponse>
@@ -590,19 +590,19 @@ Below is a list of all Resource Types and all HTTP paths for obtaining each Reso
 
 ####Indicator Types
 
-> Indicator Type query for available Indicator types:
+Indicator Type query for available Indicator types:
 
 ```
 /v2/types/indicatorTypes
 ```
 
-> Indicator Type query for details on a specific Indicator type:
+Indicator Type query for details on a specific Indicator type:
 
 ```
 /v2/types/indicatorTypes/<indicator type>
 ```
 
-> Indicator Type JSON Response:
+Indicator Type JSON Response:
 
 ```json
 {
@@ -706,7 +706,7 @@ Below is a list of all Resource Types and all HTTP paths for obtaining each Reso
 }
 ```
 
-> Indicator Type XML Response:
+Indicator Type XML Response:
 
 ```xml
 <indicatorTypesResponse>
@@ -812,7 +812,7 @@ To support [custom Indicator types](http://docs.threatconnect.com/#custom-indica
 
 ####Hosts Resource Type
 
-> Hosts Resource Type JSON Response:
+Hosts Resource Type JSON Response:
 
 ```json
 {
@@ -842,7 +842,7 @@ To support [custom Indicator types](http://docs.threatconnect.com/#custom-indica
 }
 ```
 
-> Hosts Resource Type XML Response:
+Hosts Resource Type XML Response:
 
 ```xml
 <hostsResponse>
@@ -887,19 +887,19 @@ A list of Hosts from both the Groups and Tags Service can be retrieved, as detai
 
 ####Host Resource Type
 
-> Example of Indicator Service query for a specific Host for a user’s Organization:
+Example of Indicator Service query for a specific Host for a user’s Organization:
 
 ```
 /v2/indicators/hosts/baddomain.com
 ```
 
-> Example of an Indicator Service query for a speific Host to the Communities to which a user has access:
+Example of an Indicator Service query for a speific Host to the Communities to which a user has access:
 
 ```
 /v2/indicators/hosts/baddomain.com?owner=Common%20Community
 ```
 
-> Host Resource Type JSON Response:
+Host Resource Type JSON Response:
 
 ```json
 {
@@ -925,7 +925,7 @@ A list of Hosts from both the Groups and Tags Service can be retrieved, as detai
 }
 ```
 
-> Host Resource Type XML Response:
+Host Resource Type XML Response:
 
 ```xml
 <hostResponse>
@@ -963,19 +963,19 @@ For each Host, its Attributes, DNS Resolutions, associated Groups, Tags, Securit
 
 ####Retrieving Host DNS Resolutions
 
-> Example of DNS History request for a Host within an Organization:
+Example of DNS History request for a Host within an Organization:
 
 ```
 /v2/indicators/hosts/baddomain.com/dnsResolutions
 ```
 
-> Example of DNS History request for a Host within a Community:
+Example of DNS History request for a Host within a Community:
 
 ```
 /v2/indicators/hosts/baddomain.com/dnsResolutions?owner=Common%20Community
 ```
 
-> DNSResolutions Resource Type JSON Response:
+DNSResolutions Resource Type JSON Response:
 
 ```json
 {
@@ -999,7 +999,7 @@ For each Host, its Attributes, DNS Resolutions, associated Groups, Tags, Securit
 }
 ```
 
-> DNSResolutions Resource Type XML Response:
+DNSResolutions Resource Type XML Response:
 
 ```xml
 <dnsResolutionsResponse>
@@ -1025,31 +1025,31 @@ For each Host, its Attributes, DNS Resolutions, associated Groups, Tags, Securit
 
 ####Addresses Resource Type
 
-> Example of an Indicators Service query for a Collection of Addresses for a user's organization:
+Example of an Indicators Service query for a Collection of Addresses for a user's organization:
 
 ```
 /v2/indicators/addresses?resultStart=0&resultLimit=20
 ```
 
-> Example of an Indicator Service query for a Collection of Addresses to the Communities to which a user has access:
+Example of an Indicator Service query for a Collection of Addresses to the Communities to which a user has access:
 
 ```
 /v2/indicators/addresses?owner=Common%20Community&resultStart=0&resultLimit=20
 ```
 
-> Example of an Indicators Service query for a specific Address for a user's Organization:
+Example of an Indicators Service query for a specific Address for a user's Organization:
 
 ```
 /v2/indicators/addresses/192.168.1.1
 ```
 
-> Example of an Indicator Service query for a specific Address to the Communities to which a user has access:
+Example of an Indicator Service query for a specific Address to the Communities to which a user has access:
 
 ```
 /v2/indicators/addresses/d24c:3256:0:0:0:0:0:2701?owner=Common%20Community
 ```
 
-> Addresses Resource Type JSON Response:
+Addresses Resource Type JSON Response:
 
 ```json
 {
@@ -1075,7 +1075,7 @@ For each Host, its Attributes, DNS Resolutions, associated Groups, Tags, Securit
 }
 ```
 
-> Addresses Resource Type XML Response:
+Addresses Resource Type XML Response:
 
 ```xml
 <addressesResponse>
@@ -1120,7 +1120,7 @@ The Indicators Service allows for the querying of a specific Address for a user�
 
 ####Address Resource Type
 
-> Address Resource Type JSON Response:
+Address Resource Type JSON Response:
 
 ```json
 {
@@ -1142,7 +1142,7 @@ The Indicators Service allows for the querying of a specific Address for a user�
 }
 ```
 
-> Address Resource TypeXML Response:
+Address Resource TypeXML Response:
 
 ```xml
 <addressResponse>
@@ -1174,19 +1174,19 @@ For each Address, its Attributes, DNS Resolutions, associated Groups, Tags, Secu
 
 ####Retrieving Address DNS Resolutions
 
-> Example of DNS History request for an Address within an Organization:
+Example of DNS History request for an Address within an Organization:
 
 ```
 /v2/indicators/addresses/192.168.0.1/dnsResolutions
 ```
 
-> Example of DNS History request for an Address within a Community:
+Example of DNS History request for an Address within a Community:
 
 ```
 /v2/indicators/addresses/192.168.0.1/dnsResolutions?owner=Common%20Community
 ```
 
-> DNSResolutions Resource Type JSON Response:
+DNSResolutions Resource Type JSON Response:
 
 ```json
 {
@@ -1212,7 +1212,7 @@ For each Address, its Attributes, DNS Resolutions, associated Groups, Tags, Secu
 }
 ```
 
-> DNSResolutions Resource Type XML Response:
+DNSResolutions Resource Type XML Response:
 
 ```xml
 <dnsResolutionsResponse>
@@ -1238,31 +1238,31 @@ For each Address, its Attributes, DNS Resolutions, associated Groups, Tags, Secu
 
 ####Files Resource Type
 
-> Example of an Indicators Service query for a Collection of Files for a user's organization:
+Example of an Indicators Service query for a Collection of Files for a user's organization:
 
 ```
 /v2/indicators/files?resultStart=0&resultLimit=20
 ```
 
-> Example of an Indicator Service query for a Collection of Files to the Communities to which a user has access:
+Example of an Indicator Service query for a Collection of Files to the Communities to which a user has access:
 
 ```
 /v2/indicators/files?owner=Common%20Community&resultStart=0&resultLimit=20
 ```
 
-> Example of an Indicators Service query for a Collection of Files for a user's organization:
+Example of an Indicators Service query for a Collection of Files for a user's organization:
 
 ```
 /v2/indicators/files/A35A766A9F881A8E6B01BBBC0D6BE829
 ```
 
-> Example of an Indicator Service query for a Collection of Files to the Communities to which a user has access:
+Example of an Indicator Service query for a Collection of Files to the Communities to which a user has access:
 
 ```
 /v2/indicators/files/A35A766A9F881A8E6B01BBBC0D6BE829?owner=Common%20Community
 ```
 
-> Files Resource Type JSON Response:
+Files Resource Type JSON Response:
 
 ```json
 {
@@ -1301,7 +1301,7 @@ For each Address, its Attributes, DNS Resolutions, associated Groups, Tags, Secu
 }
 ```
 
-> Files Resource Type XML Response:
+Files Resource Type XML Response:
 
 ```xml
 <filesResponse>
@@ -1362,7 +1362,7 @@ The Indicators Service allows for the querying of a specific File for a user’s
 
 ####File Resource Type
 
-> File Resource Type JSON Response:
+File Resource Type JSON Response:
 
 ```json
 {
@@ -1386,7 +1386,7 @@ The Indicators Service allows for the querying of a specific File for a user’s
 }
 ```
 
-> File Resource Type XML Response:
+File Resource Type XML Response:
 
 ```xml
 <fileResponse>
@@ -1422,7 +1422,7 @@ For each File, its Attributes, associated Groups, Tags, Security Labels , Victim
 
 ####FileOccurrence Resource Type
 
-> FileOccurrence Resource Type JSON Response:
+FileOccurrence Resource Type JSON Response:
 
 ```json
 {
@@ -1438,7 +1438,7 @@ For each File, its Attributes, associated Groups, Tags, Security Labels , Victim
 }
 ```
 
-> FileOccurrence Resource Type XML Response:
+FileOccurrence Resource Type XML Response:
 
 ```xml
 <FileOccurrence>
@@ -1460,19 +1460,19 @@ Paths                                        | Owner <br> Allowed | Pagination <
  
 ####emailAddresses Resource Type
 
-> Example of an Indicators Service query for a Collection of Email Addresses for a user's organization:
+Example of an Indicators Service query for a Collection of Email Addresses for a user's organization:
 
 ```
 /v2/indicators/emailAddresses?resultStart=0&resultLimit=20
 ```
 
-> Example of an Indicator Service query for a Collection of Email Addresses to the Communities to which a user has access:
+Example of an Indicator Service query for a Collection of Email Addresses to the Communities to which a user has access:
 
 ```
 /v2/indicators/emailAddresses?owner=Common%20Community&resultStart=0&resultLimit=20
 ```
 
-> emailAddresses Resource Type JSON Response:
+emailAddresses Resource Type JSON Response:
 
 ```json
 {
@@ -1498,7 +1498,7 @@ Paths                                        | Owner <br> Allowed | Pagination <
 }
 ```
 
-> emailAddresses Resource Type XML Response:
+emailAddresses Resource Type XML Response:
 
 ```xml
 <emailAddressesResponse>
@@ -1541,19 +1541,19 @@ Paths                                                                | Owner <br
 
 ####emailAddress Resource Type
 
-> Example of an Indicators Service query for a Collection of Email Addresses for a user's organization:
+Example of an Indicators Service query for a Collection of Email Addresses for a user's organization:
 
 ```
 /v2/indicators/emailAddresses/test@baddomain.com
 ```
 
-> Example of an Indicator Service query for a Collection of Email Addresses to the Communities to which a user has access:
+Example of an Indicator Service query for a Collection of Email Addresses to the Communities to which a user has access:
 
 ```
 /v2/indicators/emailAddresses/test@baddomain.com?owner=Common%20Community
 ```
 
-> emailAddress Resource Type JSON Response:
+emailAddress Resource Type JSON Response:
 
 ```json
 {
@@ -1575,7 +1575,7 @@ Paths                                                                | Owner <br
 }
 ```
 
-> emailAddress Resource Type XML Response:
+emailAddress Resource Type XML Response:
 
 ```xml
 <emailAddressResponse>
@@ -1609,19 +1609,19 @@ For each Email Address, its Attributes, associated Groups, Tags, Security Labels
 
 ####urls Resource Type
 
-> Indicator Service query for a Collection of URLs from a user's Organization:
+Indicator Service query for a Collection of URLs from a user's Organization:
 
 ```
 /v2/indicators/urls?resultStart=0&resultLimit=20
 ```
 
-> Indicator Service query for a Collection of URLs from a user's Organization:
+Indicator Service query for a Collection of URLs from a user's Organization:
 
 ```
 /v2/indicators/urls?owner=Common%20Community&resultStart=0&resultLimit=20
 ```
 
-> urls Resource Type JSON Response:
+urls Resource Type JSON Response:
 
 ```json
 {
@@ -1647,7 +1647,7 @@ For each Email Address, its Attributes, associated Groups, Tags, Security Labels
 }
 ```
 
-> urls Resource Type XML Response:
+urls Resource Type XML Response:
 
 ```xml
 <urlsResponse>
@@ -1690,19 +1690,19 @@ Paths                                                      | Owner <br> Allowed 
 
 ####url Resource Type
 
-> Indicator Service query for a Collection of URLs from a user's Organization:
+Indicator Service query for a Collection of URLs from a user's Organization:
 
 ```
 /v2/indicators/urls/http%3A%2F%2Ftest.com
 ```
 
-> Indicator Service query for a Collection of URLs from a user's Organization:
+Indicator Service query for a Collection of URLs from a user's Organization:
 
 ```
 /v2/indicators/urls/http%3A%2F%2Ftest.com?owner=Common%20Community
 ```
 
-> url Resource Type JSON Response:
+url Resource Type JSON Response:
 
 ```json
 {
@@ -1724,7 +1724,7 @@ Paths                                                      | Owner <br> Allowed 
 }
 ```
 
-> url Resource Type XML Response:
+url Resource Type XML Response:
 
 ```xml
 <urlResponse>
@@ -1762,10 +1762,10 @@ It is possible to create custom Indicator types in ThreatConnect. To find the av
 
 ###Observations
 
-> Show total number of observations for a given Indicator (with timestamps)
+Show total number of observations for a given Indicator (with timestamps)
 `GET /v2/indicators/[IndicatorType]/[IndicatorName]/observations`
 
-> Response data (note: if `resultCount` is 0 there are no observations and response[data][observation] will be an empty list)
+Response data (note: if `resultCount` is 0 there are no observations and response[data][observation] will be an empty list):
 
 ```json
 {
@@ -1783,11 +1783,11 @@ It is possible to create custom Indicator types in ThreatConnect. To find the av
 }
 ```
 
-> Show full details of observations for a given Indicator
+Show full details of observations for a given Indicator
 
 `GET /v2/indicators/[IndicatorType]/[IndicatorName]/observations?includeAdditional=true`
 
-> Response data
+Response data:
 
 ```json
 {
@@ -1815,7 +1815,7 @@ It is possible to create custom Indicator types in ThreatConnect. To find the av
 }
 ```
 
-> Update the observation count for a given Indicator in your Organization
+Update the observation count for a given Indicator in your Organization
 
 ```
 POST /v2/indicators/[IndicatorType]/[IndicatorName]/observations
@@ -1825,7 +1825,7 @@ POST /v2/indicators/[IndicatorType]/[IndicatorName]/observations
 }
 ```
 
-> Update the observation count for a given Indicator [in a Community or Source you have access to](http://docs.threatconnect.com/#owners-service)
+Update the observation count for a given Indicator [in a Community or Source you have access to](http://docs.threatconnect.com/#owners-service)
 
 ```
 POST /v2/indicators/[IndicatorType]/[IndicatorName]/observations?owner=[owner_name]
@@ -1846,19 +1846,19 @@ When an API user issues a POST to the /observations branch of the API, if an obs
 ###Indicator Activity
 
 
-> Set API to return `inactive` results as well
+Set API to return `inactive` results as well
 
 ```
 POST /api/v2/indicators/[IndicatorType]/[IndicatorName]?includeInactive=true
 ```
 
-> Set API to ignore (not return) `inactive` results
+Set API to ignore (not return) `inactive` results
 
 ```
 POST /api/v2/indicators/[IndicatorType]/[IndicatorName]?includeActive=true
 ```
 
-> Reset the `active` flag on an Indicator import:
+Reset the `active` flag on an Indicator import:
 
 ```
 POST /api/v2/indicators/[IndicatorType]/[IndicatorName]?active=true
@@ -1874,14 +1874,14 @@ By default, inactive Indicators are not returned through the API when getting a 
 
 ###False Positives
 
-> Report a given Indicator as a False Positive:
+Report a given Indicator as a False Positive:
 
 ```
 POST v2/indicators/[IndicatorType]/[IndicatorName]/falsePositive
 
 ```
 
-> Sample query with includeAdditional flag (e.g. /v2/indicators/[IndicatorType]/[IndicatorName]?includeAdditional=true):
+Sample query with includeAdditional flag (e.g. /v2/indicators/[IndicatorType]/[IndicatorName]?includeAdditional=true):
 
 ```json
 {
@@ -1909,7 +1909,7 @@ POST v2/indicators/[IndicatorType]/[IndicatorName]/falsePositive
 }
 ```
 
-> Sample Query without includeAdditional flag (e.g. v2/indicators/[IndicatorType]/[IndicatorName]):
+Sample Query without includeAdditional flag (e.g. v2/indicators/[IndicatorType]/[IndicatorName]):
 
 ```json
 {
@@ -1939,7 +1939,7 @@ Within the API, Indicator entities only return the falsePositiveCount and falseP
 
 ###ThreatAssess 
 
-> ThreatAsses Score JSON Response:
+ThreatAsses Score JSON Response:
 
 ```json
 {
@@ -1962,7 +1962,7 @@ Within the API, Indicator entities only return the falsePositiveCount and falseP
 }
 ```
 
-> ThreatAsses Score XML Response:
+ThreatAsses Score XML Response:
 
 ```xml
 <Address>
@@ -1993,12 +1993,13 @@ If retrieving all of the Indicators and their entire context (i.e., tags, attrib
 
 #### Checking the Status of Bulk Indicator Reports
 
-> Example of verifying that a Community or Source has bulk-reporting enabled:
+Example of verifying that a Community or Source has bulk-reporting enabled:
 
 ```
 GET /v2/indicators/bulk?owner=Demo+Customer+Community
 ```
-> Checking bulkStatus Object JSON Response:
+
+Checking bulkStatus Object JSON Response:
 
 ```json
 {
@@ -2013,7 +2014,7 @@ GET /v2/indicators/bulk?owner=Demo+Customer+Community
 }
 ```
 
-> Checking bulkStatus Object XML Response:
+Checking bulkStatus Object XML Response:
 
 ```xml
 <BulkStatus>
@@ -2040,7 +2041,7 @@ Reports can be retrieved in JSON or CSV format. The JSON format will contain add
 
 #####JSON Bulk Reports
 
-> Retrieving Bulk Reports JSON Response:
+Retrieving Bulk Reports JSON Response:
 
 ```json
 {
@@ -2090,7 +2091,7 @@ The API will return the latest version of the JSON report with a content-type he
 
 #####CSV Bulk Reports
 
-> Example of a CSV report being downloaded for the Demo Customer Community:
+Example of a CSV report being downloaded for the Demo Customer Community:
 
 ```
 GET /v2/indicators/bulk/csv?owner=Demo+Customer+Community
@@ -2115,19 +2116,19 @@ The API will return the latest CSV report with a content-type header of "text/cs
 
 ####Groups Service Resource Type
 
-> Example of an Groups Service query for a generic Collection of Groups Resources for a user’s Organization:
+Example of an Groups Service query for a generic Collection of Groups Resources for a user’s Organization:
 
 ```
 /v2/groups?resultStart=0&resultLimit=20
 ```
 
-> Example of an Groups Service query for a generic Collection of Groups Resources to the Communities to which a user has access:
+Example of an Groups Service query for a generic Collection of Groups Resources to the Communities to which a user has access:
 
 ```
 /v2/groups?owner=Common%20Community&resultStart=0&resultLimit=20
 ```
 
-> Generic Groups Resource Type JSON Response:
+Generic Groups Resource Type JSON Response:
 
 ```json
 {
@@ -2153,7 +2154,7 @@ The API will return the latest CSV report with a content-type header of "text/cs
 }
 ```
 
-> Generic Groups Resource Type XML Response:
+Generic Groups Resource Type XML Response:
 
 ```xml
 <groupsResponse>
@@ -2197,25 +2198,25 @@ From the Groups Service, a query can be made for specific Group Collection types
 
 ####Incidents Resource Type
 
-> Example of an Groups Service query for a generic Collection of Incidents for a user’s Organization:
+Example of an Groups Service query for a generic Collection of Incidents for a user’s Organization:
 
 ```
 /v2/groups/incidents?resultStart=0&resultLimit=20
 ```
 
-> Example of an Groups Service query for a generic Collection of Incidents to the Communities to which a user has access:
+Example of an Groups Service query for a generic Collection of Incidents to the Communities to which a user has access:
 
 ```
 /v2/groups/incidents?owner=Common%20Community&resultStart=0&resultLimit=20
 ```
 
-> Example of a Group Service query of a specific Incident for a user’s Organization:
+Example of a Group Service query of a specific Incident for a user’s Organization:
 
 ```
 /v2/groups/incidents/3094
 ```
 
-> Incidents Resource Type JSON Response:
+Incidents Resource Type JSON Response:
 
 ```json
 {
@@ -2241,7 +2242,7 @@ From the Groups Service, a query can be made for specific Group Collection types
 }
 ```
 
-> Incidents Resource Type XML Response:
+Incidents Resource Type XML Response:
 
 ```xml
 <incidentsResponse>
@@ -2284,7 +2285,7 @@ The Groups service allows for the querying of a specific Incident for a user’s
 
 ####Incident Resource Type
 
-> Incident Resource Type JSON Response:
+Incident Resource Type JSON Response:
 
 ```json
 {
@@ -2306,7 +2307,7 @@ The Groups service allows for the querying of a specific Incident for a user’s
 }
 ```
 
-> Incident Resource Type XML Response:
+Incident Resource Type XML Response:
 
 ```xml
 <incidentResponse>
@@ -2328,7 +2329,7 @@ The Groups service allows for the querying of a specific Incident for a user’s
 </incidentResponse>
 ```
 
-> Incident Resource Type JSON Response Including Incident Status:
+Incident Resource Type JSON Response Including Incident Status:
 
 ```json
 {
@@ -2351,7 +2352,7 @@ The Groups service allows for the querying of a specific Incident for a user’s
 }
 ```
 
-> Incident Resource Type XML Response Including Incident Status:
+Incident Resource Type XML Response Including Incident Status:
 
 ```xml
 <incidentResponse>
@@ -2387,25 +2388,25 @@ Adding the ‘includeAdditional’ parameter will return the same information as
 
 ####Documents Resource Type
 
-> Example of an Groups Service query for a Collection of Documents for a user's organization:
+Example of an Groups Service query for a Collection of Documents for a user's organization:
 
 ```
 /v2/groups/documents?resultStart=0&resultLimit=20
 ```
 
-> Example of an Indicator Service query for a Collection of Documents to the Communities to which a user has access:
+Example of an Indicator Service query for a Collection of Documents to the Communities to which a user has access:
 
 ```
 /v2/groups/documents?owner=Common%20Community&resultStart=0&resultLimit=20
 ```
 
-> Example of the Documents Resource Type query of a specific Document using the the Document’s unique ID:
+Example of the Documents Resource Type query of a specific Document using the the Document’s unique ID:
 
 ```
 /v2/groups/documents/734899
 ```
 
-> Documents Resource Type JSON Response:
+Documents Resource Type JSON Response:
 
 ```json
 {
@@ -2429,7 +2430,7 @@ Adding the ‘includeAdditional’ parameter will return the same information as
 }
 ```
 
-> Documents Resource Type XML Response:
+Documents Resource Type XML Response:
 
 ```xml
 <documentsResponse>
@@ -2471,7 +2472,7 @@ Paths                                                       | Owner <br> Allowed
 
 ####Document Resource Type
 
-> Document Resource Type JSON Response:
+Document Resource Type JSON Response:
 
 ```json
 {
@@ -2495,7 +2496,7 @@ Paths                                                       | Owner <br> Allowed
 }
 ```
 
-> Document Resource Type XML Response:
+Document Resource Type XML Response:
 
 ```xml
 <documentResponse>
@@ -2531,25 +2532,25 @@ For each Document, its Attributes, associated Indicators, Security Labels, Victi
 
 ####Threats Resource Type
 
-> Example of an Groups Service query for a specific Threat for a user's organization:
+Example of an Groups Service query for a specific Threat for a user's organization:
 
 ```
 /v2/groups/threats?resultStart=0&resultLimit=20
 ```
 
-> Example of an Groups Service query for a specific Threat to the Communities to which a user has access:
+Example of an Groups Service query for a specific Threat to the Communities to which a user has access:
 
 ```
 /v2/groups/threats?owner=Common%20Community&resultStart=0&resultLimit=20
 ```
 
-> Example of a Group Service query of a specific Threat:
+Example of a Group Service query of a specific Threat:
 
 ```
 /v2/groups/threats/3095
 ```
 
-> Threats Resource Type JSON Response:
+Threats Resource Type JSON Response:
 
 ```json
 {
@@ -2573,7 +2574,7 @@ For each Document, its Attributes, associated Indicators, Security Labels, Victi
 }
 ```
 
-> Threats Resource Type XML Response:
+Threats Resource Type XML Response:
 
 ```xml
 <threatsResponse>
@@ -2615,7 +2616,7 @@ The Groups Service allows for the querying of a specific Threat for a user’s O
 
 ####Threat Resource Type
 
-> Threat Resource Type JSON Response:
+Threat Resource Type JSON Response:
 
 ```json
 {
@@ -2636,7 +2637,7 @@ The Groups Service allows for the querying of a specific Threat for a user’s O
 }
 ```
 
-> Threat Resource Type XML Response:
+Threat Resource Type XML Response:
 
 ```xml
 <threatResponse>
@@ -2667,25 +2668,25 @@ For each Threat, its Attributes, associated Indicators, Security Labels, Victims
 
 ####Adversaries Resource Type
 
-> Example of an Groups Service query for a Collection of Adversaries for a user's organization:
+Example of an Groups Service query for a Collection of Adversaries for a user's organization:
 
 ```
 /v2/groups/adversaries?resultStart=0&resultLimit=20
 ```
 
-> Example of an Groups Service query for a Collection of Adversaries to the Communities to which a user has access:
+Example of an Groups Service query for a Collection of Adversaries to the Communities to which a user has access:
 
 ```
 /v2/groups/adversaries?owner=Common%20Community&resultStart=0&resultLimit=20
 ```
 
-> Example of a Group Service query for a specific Adversary within a user's Organization:
+Example of a Group Service query for a specific Adversary within a user's Organization:
 
 ```
 /v2/groups/adversaries/3093
 ```
 
-> Adversaries Resource Type JSON Response:
+Adversaries Resource Type JSON Response:
 
 ```json
 {
@@ -2709,7 +2710,7 @@ For each Threat, its Attributes, associated Indicators, Security Labels, Victims
 }
 ```
 
-> Adversaries Resource Type XML Response:
+Adversaries Resource Type XML Response:
 
 ```xml
 <adversariesResponse>
@@ -2753,7 +2754,7 @@ The Groups Service allows for the querying of a specific Adversary for a user’
 
 ####Adversary Resource Type
 
-> Adversary Resource Type JSON Response:
+Adversary Resource Type JSON Response:
 
 ```json
 {
@@ -2774,7 +2775,7 @@ The Groups Service allows for the querying of a specific Adversary for a user’
 }
 ```
 
-> Adversary Resource Type XML Response:
+Adversary Resource Type XML Response:
 
 ```xml
 <adversaryResponse>
@@ -2805,23 +2806,23 @@ For each Adversary, its Attributes, associated Indicators, Security Labels, Vict
 
 ####Emails Resource Type
 
-> Example of an Groups Service query for a Collection of Emails for a user's organization:
+Example of an Groups Service query for a Collection of Emails for a user's organization:
 
 ```
 /v2/groups/emails?resultStart=0&resultLimit=20
 ```
 
-> Example of an Groups Service query for a Collection of Emails to the Communities to which a user has access:
+Example of an Groups Service query for a Collection of Emails to the Communities to which a user has access:
 
 ```
 /v2/groups/emails?owner=Common%20Community&resultStart=0&resultLimit=20
 ```
 
-> Example of a Groups Service query of a specific Email:
+Example of a Groups Service query of a specific Email:
 
 `/v2/groups/emails/3108`
 
-> Emails Resource Type JSON Response:
+Emails Resource Type JSON Response:
 
 ```json
 {
@@ -2840,7 +2841,7 @@ For each Adversary, its Attributes, associated Indicators, Security Labels, Vict
 }
 ```
 
-> Emails Resource Type XML Response:
+Emails Resource Type XML Response:
 
 ```xml
 <emailsResponse>
@@ -2879,7 +2880,7 @@ The Groups Service allows for the querying of a specific Email for a user’s Or
 
 ####Email Resource Type
 
-> Email Resource Type JSON Response:
+Email Resource Type JSON Response:
 
 ```json
 {
@@ -2906,7 +2907,7 @@ The Groups Service allows for the querying of a specific Email for a user’s Or
 }
 ```
 
-> Email Resource Type XML Response:
+Email Resource Type XML Response:
 
 ```xml
 <emailResponse>
@@ -2950,25 +2951,25 @@ For each Email, its Attributes, associated Indicators, Security Labels , Victims
 
 ####Signatures Resource Type
 
-> Example of a Groups Service query for a Collection of Signatures for a user's organization:
+Example of a Groups Service query for a Collection of Signatures for a user's organization:
 
 ```
 /v2/groups/signatures?resultStart=0&resultLimit=20
 ```
 
-> Example of a Groups Service query for a Collection of Signatures to the Communities to which a user has access:
+Example of a Groups Service query for a Collection of Signatures to the Communities to which a user has access:
 
 ```
 /v2/groups/signatures?owner=Common%20Community&resultStart=0&resultLimit=20
 ```
 
-> Example of a Groups Service allows for the querying of a specific Signature:
+Example of a Groups Service allows for the querying of a specific Signature:
 
 ```
 /v2/groups/signatures/3106
 ```
 
-> Signatures Resource Type JSON Response:
+Signatures Resource Type JSON Response:
 
 ```json
 {
@@ -2994,7 +2995,7 @@ For each Email, its Attributes, associated Indicators, Security Labels , Victims
 }
 ```
 
-> Signatures Resource Type XML Response:
+Signatures Resource Type XML Response:
 
 ```xml
 <signaturesResponse>
@@ -3040,13 +3041,13 @@ The Groups Service allows for the querying of a specific Signature for a user’
 
 ####Signature Resource Type
 
-> For each Signature, the Signature content can be downloaded:
+For each Signature, the Signature content can be downloaded:
 
 ```
 /v2/groups/signatures/3106/download
 ```
 
-> Signature Resource Type JSON Response:
+Signature Resource Type JSON Response:
 
 ```json
 {
@@ -3069,7 +3070,7 @@ The Groups Service allows for the querying of a specific Signature for a user’
 }
 ```
 
-> Signature Resource Type XML Response:
+Signature Resource Type XML Response:
 
 ```xml
 <signatureResponse>
@@ -3106,14 +3107,14 @@ For each Signature, its Attributes, associated Indicators, Security Labels, Vict
 
 ####Attributes Resource Type
 
-> Example Attribute Paths:
+Example Attribute Paths:
 
 ```
 /v2/groups/signatures/3106/attributes
 /v2/indicators/emailAddresses/test@baddomain.com/attributes
 ```
 
-> Attributes Resource Type JSON Response:
+Attributes Resource Type JSON Response:
 
 ```json
 {
@@ -3135,7 +3136,7 @@ For each Signature, its Attributes, associated Indicators, Security Labels, Vict
 }
 ```
 
-> Attributes Resource Type XML Response:
+Attributes Resource Type XML Response:
 
 ```xml
 <attributesResponse>
@@ -3175,19 +3176,19 @@ Note that all relevant Security Labels for an Attribute can be queried.
 
 ####Retrieving Available Associations
 
-> To retrieve all of the available associations, use the following GET request:
+To retrieve all of the available associations, use the following GET request:
 
 ```
 GET /v2/types/associationTypes/
 ```
 
-> To retrieve information about a specific association, use the following GET request format:
+To retrieve information about a specific association, use the following GET request format:
 
 ```
 GET /v2/types/associationTypes/<association_type_name>/
 ```
 
-> This GET request will return details about the "Adversary" association type:
+This GET request will return details about the "Adversary" association type:
 
 ```
 GET /v2/types/associationTypes/adversaries/Adversary/
@@ -3197,19 +3198,19 @@ All of the available associations can be viewed by making a `GET` request to `/v
 
 ####Indicator to Indicator Associations
 
-> To retrieve indicators associated with another indicator using a custom association, use the following GET request format:
+To retrieve indicators associated with another indicator using a custom association, use the following GET request format:
 
 ```
 GET /v2/indicators/<indicator type>/<value>/associations/<association type>/indicators
 ```
 
-> Retrieve all of the CIDR indicators associated with an ASN:
+Retrieve all of the CIDR indicators associated with an ASN:
 
 ```
 GET /v2/indicators/asns/ASN12345/associations/asnToCidr/indicators
 ```
 
-> asnToCidr Associations retrieve JSON:
+asnToCidr Associations retrieve JSON:
 
 ```json
 {
@@ -3235,7 +3236,7 @@ GET /v2/indicators/asns/ASN12345/associations/asnToCidr/indicators
 }
 ```
 
-> asnToCidr Associations retrieve XML:
+asnToCidr Associations retrieve XML:
 
 ```xml
 <indicatorsResponse>
@@ -3259,19 +3260,19 @@ GET /v2/indicators/asns/ASN12345/associations/asnToCidr/indicators
 </indicatorsResponse>
 ```
 
-> To retrieve indicators associated with a file using a file action, use the following GET request format:
+To retrieve indicators associated with a file using a file action, use the following GET request format:
 
 ```
 GET /v2/indicators/files/<file hash>/actions/<file action>/indicators
 ```
 
-> Retrieve all of the indicators associated with the file using the mutex file action:
+Retrieve all of the indicators associated with the file using the mutex file action:
 
 ```
 GET /v2/indicators/files/8743b52063cd84097a65d1633f5c74f5/actions/mutex/indicators
 ```
 
-> Mutex file action retrieve JSON:
+Mutex file action retrieve JSON:
 
 ```json
 {
@@ -3308,7 +3309,7 @@ GET /v2/indicators/files/8743b52063cd84097a65d1633f5c74f5/actions/mutex/indicato
 }
 ```
 
-> Mutex file action retrieve XML:
+Mutex file action retrieve XML:
 
 ```xml
 <indicatorsResponse>
@@ -3352,9 +3353,9 @@ In ThreatConnect, some types of Indicators can be related with certain other typ
   Name                  | API Branch            | Indicators Associated  
   ----                  | ----                  | ----                   
   Address to User Agent | `/addressToUserAgent` | Address <-> User Agent 
-  ASN to Address        | `/asnToAddress`       | ASN <-> Address        
+  ASN to Address        | `/asnToAddress`       | ASN <-Address        
   ASN to CIDR           | `/asnToCidr`          | ASN <-> CIDR           
-  CIDR to Address       | `/cidrToAddress`      | CIDR <-> Address        
+  CIDR to Address       | `/cidrToAddress`      | CIDR <-Address        
 
 2. **File Action**
 
@@ -3371,7 +3372,7 @@ In ThreatConnect, some types of Indicators can be related with certain other typ
 
 ###Working With Tags
 
-> Path for all Tags:
+Path for all Tags:
 
 ```
 /v2/tags
@@ -3383,9 +3384,9 @@ A list of Tags from both the Indicators and Groups Services, as detailed in Tabl
 
 ####Tags Resource Type
 
-> Tags Resource Type JSON Response:
+Tags Resource Type JSON Response:
 
-> Example Tags Service query of a specific Tag:
+Example Tags Service query of a specific Tag:
 
 ```
 /v2/tags/tag%201
@@ -3407,7 +3408,7 @@ A list of Tags from both the Indicators and Groups Services, as detailed in Tabl
 }
 ```
 
-> Tags Resource Type XML Response:
+Tags Resource Type XML Response:
 
 ```xml
 <tagsResponse>
@@ -3438,7 +3439,7 @@ The Tags Service allows for the querying of a specific Tag for both a user’s O
 
 ####Tag Resource Type
         
-> Tag Resource Type JSON Response:
+Tag Resource Type JSON Response:
 
 ```json
 {
@@ -3452,7 +3453,7 @@ The Tags Service allows for the querying of a specific Tag for both a user’s O
 }
 ```
 
-> Tag Resource Type XML Response:
+Tag Resource Type XML Response:
 
 ```xml
 <tagResponse>
@@ -3476,7 +3477,7 @@ For each Tag, its associated Indicators and Groups can be found.
 
 ###Working with Security Labels
 
-> Path for all Security Labels: 
+Path for all Security Labels: 
 
 ```
 /v2/securityLabels
@@ -3486,13 +3487,13 @@ All Security Labels, including the Security Labels that have been applied to an 
 
 ####Security Labels Resource Type
 
-> Example The SecurityLabels Service query of a specific Security Label:
+Example The SecurityLabels Service query of a specific Security Label:
 
 ```
 /v2/securityLabels/SECURITY%20LABEL%20NAME
 ```
 
-> SecurityLabels Resource Type JSON Response:
+SecurityLabels Resource Type JSON Response:
 
 ```json
 {
@@ -3506,7 +3507,7 @@ All Security Labels, including the Security Labels that have been applied to an 
 }
 ```
 
-> SecurityLabels Resource Type XML Response:
+SecurityLabels Resource Type XML Response:
 
 ```xml
 <securityLabelsResponse>
@@ -3538,7 +3539,7 @@ The SecurityLabels Service allows for the querying of a specific Security Label 
 
 ####Security Label Resource Type
 
-> SecurityLabel Resource Type JSON Response:
+SecurityLabel Resource Type JSON Response:
 
 ```json
 {
@@ -3551,7 +3552,7 @@ The SecurityLabels Service allows for the querying of a specific Security Label 
 }
 ```
 
-> SecurityLabel Resource Type XML Response:
+SecurityLabel Resource Type XML Response:
 
 ```xml
 <securityLabelResponse>
@@ -3574,14 +3575,14 @@ For each SecurityLabel, its associated Indicators and Groups can be found.
 
 ### Working with Tasks
 
-> Retrieve all Tasks that can be accessed by this API User 
+Retrieve all Tasks that can be accessed by this API User 
 
 ```
 GET /v2/tasks
 ```
 Tasks will be shown for the API user’s Organization and Communities that they can access.
 
-> Retrieve a specific Task
+Retrieve a specific Task
 
 ```
 GET /v2/tasks/<task_id>
@@ -3614,19 +3615,19 @@ GET /v2/tasks/599
 }
 ```
 
-> Retrieve the list of people assigned to a specific Task
+Retrieve the list of people assigned to a specific Task
 
 ```
 GET /v2/tasks/<task_id>/assignees
 ```
 
-> Retrieve the list of Escalatees ("people who will be notified when the deadline passes") for a specific Task
+Retrieve the list of Escalatees ("people who will be notified when the deadline passes") for a specific Task
 
 ```
 GET /v2/tasks/<task_id>/escalatees
 ```
 
-> Create a new Task; Escalatees and Assignees may be a list of `userName` entries
+Create a new Task; Escalatees and Assignees may be a list of `userName` entries
 
 ```
 POST /v2/tasks/
@@ -3638,7 +3639,7 @@ POST /v2/tasks/
 
 ```
 
-> Update the due date (a `DateTime` object) and description for a Task
+Update the due date (a `DateTime` object) and description for a Task
 
 ```
 POST /v2/tasks/<task_id>/attributes
@@ -3650,31 +3651,31 @@ POST /v2/tasks/<task_id>/attributes
 
 Multiple Assignees or Escalatees may be provided by adding additional `username` entries as a list.
 
-> Add the user denoted by `username` to the list of Escalatees
+Add the user denoted by `username` to the list of Escalatees
 
 ```
 POST /v2/tasks/<task_id>/escalatees/<username>
 ```
 
-> Add the user denoted by `username` to the list of Assignees
+Add the user denoted by `username` to the list of Assignees
 
 ```
 POST /v2/tasks/<task_id>/assignees/<username>
 ```
 
-> Remove the user denoted by `username` from the list of Escalatees
+Remove the user denoted by `username` from the list of Escalatees
 
 ```
 DELETE /v2/tasks/<task_id>/escalatees/<username>
 ```
 
-> Remove the user denoted by `username` from the list of Assignees
+Remove the user denoted by `username` from the list of Assignees
 
 ```
 DELETE /v2/tasks/<task_id>/assignees/<username>
 ```
 
-> Retrieve all Indicators associated with a specific Task
+Retrieve all Indicators associated with a specific Task
 
 ```
 GET /v2/tasks/<task_id/indicators
@@ -3684,13 +3685,13 @@ A list of Indicators, Tags, and Security Labels that are related to each Task ma
 
 ####Victims Resource Type
 
-> Retrieve a specific Victim by ID
+Retrieve a specific Victim by ID
 
 ```
 /v2/groups/victims/<victim_ID>
 ```
 
-> Victims Resource Type JSON Response:
+Victims Resource Type JSON Response:
 
 ```json
 {
@@ -3710,7 +3711,7 @@ A list of Indicators, Tags, and Security Labels that are related to each Task ma
 }
 ```
 
-> Victims Resource Type XML Response:
+Victims Resource Type XML Response:
 
 ```xml
 <victimsResponse>
@@ -3744,7 +3745,7 @@ The Victims Service allows for the querying of a specific Victim for the user’
 
 ###Working With Victims
 
-> Retrieve all Victims in a user’s Organization and in any Communities to which a user has access.
+Retrieve all Victims in a user’s Organization and in any Communities to which a user has access.
 
 ```
 /v2/victims
@@ -3754,13 +3755,13 @@ By using the Victims Service, all Victims for a user’s Organization, as well a
 
 ####Victims Resource Type
 
-> Retrieve a specific Victim by ID
+Retrieve a specific Victim by ID
 
 ```
 /v2/groups/victims/<victim_ID>
 ```
 
-> Victims Resource Type JSON Response:
+Victims Resource Type JSON Response:
 
 ```json
 {
@@ -3780,7 +3781,7 @@ By using the Victims Service, all Victims for a user’s Organization, as well a
 }
 ```
 
-> Victims Resource Type XML Response:
+Victims Resource Type XML Response:
 
 ```xml
 <victimsResponse>
@@ -3815,7 +3816,7 @@ The Victims Service allows for the querying of a specific Victim for the user’
 
 ####Victim Resource Type
 
-> Victim Resource Type JSON Response:
+Victim Resource Type JSON Response:
 
 ```json
 {
@@ -3835,7 +3836,7 @@ The Victims Service allows for the querying of a specific Victim for the user’
 }
 ```
 
-> Victim Resource Type XML Response:
+Victim Resource Type XML Response:
 
 ```xml
 <victimResponse>
@@ -3866,25 +3867,25 @@ For each Victim, its Attributes, associated Groups, Indicators, Tags, and availa
 
 ####Victim Tags Resource Type
 
-> View all Tags for a given Victim
+View all Tags for a given Victim
 
 ```
 GET /v2/victims/<victim_ID>/tags
 ```
 
-> View a specific Tag for a given Victim
+View a specific Tag for a given Victim
 
 ```
 GET /v2/victims/<victim_ID>/tags/<tag_name>
 ```
 
-> Add a Tag to a given Victim
+Add a Tag to a given Victim
 
 ```
 POST /v2/victims/<victim_ID>/tags/<tag_name>
 ```
 
-> Remove a Tag from a given Victim
+Remove a Tag from a given Victim
 
 ```
 DELETE /v2/victims/<victim_ID>/tags/<tag_name>
@@ -3894,43 +3895,43 @@ Tags can be applied to Victims [in the same manner as other objects](#working-wi
 
 ####Victim Security Labels Resource Type
 
-> View all Security Labels for a given Victim
+View all Security Labels for a given Victim
 
 ```
 GET /v2/victims/<victim_ID>/securityLabels
 ```
 
-> View a specific Security Label for a given Victim
+View a specific Security Label for a given Victim
 
 ```
 GET /v2/victims/<victim_ID>/securityLabels/<security_label_name>
 ```
 
-> View all Victims for a given Security Label
+View all Victims for a given Security Label
 
 ```
 GET /v2/victims/securityLabels/<security_label_name>/victims
 ```
 
-> Add a Security Labels to a given Victim
+Add a Security Labels to a given Victim
 
 ```
 POST /v2/victims/<victim_ID>/securityLabels/<security_label_name>
 ```
 
-> Add a Victim to a given Security Label
+Add a Victim to a given Security Label
 
 ```
 POST /v2/victims/securityLabels/<security_label_name>/victims/<victim_ID>
 ```
 
-> Remove a Security Label from a given Victim
+Remove a Security Label from a given Victim
 
 ```
 DELETE /v2/victims/<victim_ID>/securityLabels/<security_label_name>
 ```
 
-> Remove a Victim from a given Security Label
+Remove a Victim from a given Security Label
 
 ```
 DELETE /v2/victims/securityLabels/<security_label_name>/victims/<victim_ID>
@@ -3940,55 +3941,55 @@ Security Labels can be applied to Victims [in the same manner as other objects](
 
 #### Victim Attributes Resource Type
 
-> View Victim Attributes for a given Victim
+View Victim Attributes for a given Victim
 
 ```
 GET /v2/victims/<victim_ID>/attributes
 ```
 
-> View a specific Victim Attribute for a given Victim
+View a specific Victim Attribute for a given Victim
 
 ```
 GET /v2/victims/<victim_ID>/attributes/<attribute_ID>
 ```
 
-> View all Security Labels for a given Victim Attribute
+View all Security Labels for a given Victim Attribute
 
 ```
 GET /v2/victims/<victim_ID>/attributes/<attribute_ID>/securityLabels
 ```
 
-> View Security Label for a given Victim Attribute
+View Security Label for a given Victim Attribute
 
 ```
 GET /v2/victims/<victim_ID>/attributes/<attribute_ID>/securityLabels/<security_label_name>
 ```
 
-> Add an Attribute to a given Victim Attribute
+Add an Attribute to a given Victim Attribute
 
 ```
 POST /v2/victims/<victim_ID>/attributes
 ```
 
-> Add a Security Label to a given Victim Attribute
+Add a Security Label to a given Victim Attribute
 
 ```
 POST /v2/victims/<victim_ID>/attributes/<attribute_ID>/securityLabels/<security_label_name>
 ```
 
-> Update an Attribute on a given Victim Attribute
+Update an Attribute on a given Victim Attribute
 
 ```
 PUT /v2/victims/<victim_ID>/attributes/<attribute_ID>
 ```
 
-> Remove an Attribute from a given Victim Attribute
+Remove an Attribute from a given Victim Attribute
 
 ```
 DELETE /v2/victims/<victim_ID>/attributes/<attribute_ID>
 ```
 
-> Remove a Security Label from a given Victim Attribute
+Remove a Security Label from a given Victim Attribute
 
 ```
 DELETE /v2/victims/<victim_ID>/attributes/<attribute_ID>/securityLabels/<security_label_name>
@@ -3998,7 +3999,7 @@ Attributes can be added to Victims [in the same manner as other objects](#attrib
 
 ####Victim Assets Resource Type
 
-> victimAssets Resource Type JSON Response:
+VictimAssets Resource Type JSON Response:
 
 ```json
 {
@@ -4034,7 +4035,7 @@ Attributes can be added to Victims [in the same manner as other objects](#attrib
 }
 ```
 
-> victimAssets Resource Type XML Response:
+VictimAssets Resource Type XML Response:
 
 ```xml
 <victimAssetsResponse>
@@ -4102,7 +4103,7 @@ socialNetwork                                   |               |
 `/v2/victims/<ID>/victimAssets/webSites`        | FALSE         | FALSE   
 WebSite                                         |               |
 
-> Sample query and response for emailAddress
+Sample query and response for emailAddress
 
 ```json
 {
@@ -4124,7 +4125,7 @@ WebSite                                         |               |
 </VictimEmailAddress>
 ```
 
-> Sample query and response for networkAccount 
+Sample query and response for networkAccount 
 
 ```json
  {
@@ -4147,7 +4148,7 @@ WebSite                                         |               |
 </VictimNetworkAccount>
 ```
 
-> Sample query and response for  "phoneType"       
+Sample query and response for  "phoneType"       
 
 ```json
  {
@@ -4168,7 +4169,7 @@ WebSite                                         |               |
 </VictimPhone>        
 ```
 
-> Sample query and response for socialNetwork   
+Sample query and response for socialNetwork   
 
 ```json
 {
@@ -4191,7 +4192,7 @@ WebSite                                         |               |
 </VictimSocialNetwork>
 ```
 
-> Sample query and response for WebSite        
+Sample query and response for WebSite        
 
 ```json
  {
@@ -4251,7 +4252,7 @@ POST /v2/indicators/hosts
 POST /v2/indicators/urls
 ```
 
-> Sample results for `address` query
+Sample results for `address` query
 
 ```json
  {
@@ -4261,7 +4262,7 @@ POST /v2/indicators/urls
  }                                             
 ```
 
-> Sample results for ` emailAddresses ` query
+Sample results for ` emailAddresses ` query
 
 ```json
  {
@@ -4271,7 +4272,7 @@ POST /v2/indicators/urls
  }                                              
 ```
 
-> Sample results for `files` query
+Sample results for `files` query
 
 ```json
 {
@@ -4285,7 +4286,7 @@ POST /v2/indicators/urls
 }                                                                                
 ```
 
-> Sample results for `hosts` query
+Sample results for `hosts` query
 
 ```json
 {
@@ -4298,7 +4299,7 @@ POST /v2/indicators/urls
 ```
 
 
-> Sample results for `urls` query
+Sample results for `urls` query
 
 ```json
 {
@@ -4361,7 +4362,7 @@ The file-occurrence object returned by the API details the structure used to mod
 } ]
 ```
 
-> Utilizing a pivot-like functionality, the API allows for the creation of fileOccurrences by specifying a valid hash for an existing File Indicator:
+Utilizing a pivot-like functionality, the API allows for the creation of fileOccurrences by specifying a valid hash for an existing File Indicator:
 
 ```
 POST /v2/indicators/files
@@ -4392,7 +4393,7 @@ Files also have additional data structures to model instances of a file’s occu
 
 ####Groups
 
-> For example, the following POST request would create a new Incident named "Remote Access Incident" that occurred on October 20, 2014:
+For example, the following POST request would create a new Incident named "Remote Access Incident" that occurred on October 20, 2014:
 
 ```
 POST /v2/groups/incidents
@@ -4404,7 +4405,7 @@ Content-Type: application/json
 }
 ```
 
-> This response will contain the newly created Group ID for future use, just as if the Group had been queried for specifically:
+This response will contain the newly created Group ID for future use, just as if the Group had been queried for specifically:
 
 ```
 HTTP/1.1 201 CREATED
@@ -4428,7 +4429,7 @@ Content-Type: application/json
 }
 ```
 
-> Sample `adversaries` query output
+Sample `adversaries` query output
 
 ```json
  {                                             
@@ -4436,7 +4437,7 @@ Content-Type: application/json
  }                                             
 ```
 
-> Sample `documents` query output
+Sample `documents` query output
 
 ```json
  {                                             
@@ -4446,7 +4447,7 @@ Content-Type: application/json
  }                                             
 ```
 
-> Sample `emails` query output
+Sample `emails` query output
 
 ```json
 {
@@ -4475,7 +4476,7 @@ Content-Type: application/json
 }                              
 ```
 
-> Sample `incidents` query output
+Sample `incidents` query output
 
 ```json
  {                                             
@@ -4484,7 +4485,7 @@ Content-Type: application/json
  }                                             
 ```
 
-> Sample `threats` query output
+Sample `threats` query output
 
 ```json
  {                                             
@@ -4492,7 +4493,7 @@ Content-Type: application/json
  }                                             
 ```
 
-> Sample `signatures` query output
+Sample `signatures` query output
 
 ```json
 {                                             
@@ -4546,7 +4547,7 @@ Table 39 details the acceptable fields and values when creating a Group.
 
 ####Documents
 
-> First, create a new Document given its filename
+First, create a new Document given its filename
 
 ```
 POST /v2/groups/documents/
@@ -4559,7 +4560,7 @@ Content-Type: application/json
 
 ```
 
-> Next, receive a globally unique ID for the Document (if creation was successful)
+Next, receive a globally unique ID for the Document (if creation was successful)
 
 ```json
 {                                          
@@ -4573,7 +4574,7 @@ Content-Type: application/json
 }
 ```
 
-> Finally, for the given Document ID, upload the Document content in the POST body (for instance using `curl --data @filename`)
+Finally, for the given Document ID, upload the Document content in the POST body (for instance using `curl --data @filename`)
 
 ```
 POST /v2/groups/documents/<DOCUMENT_ID>/upload
@@ -4582,7 +4583,7 @@ Content-Type: application/octet-stream
 <raw_document>
 ```
 
-> To update the Document, use an HTTP PUT with the same Document ID - and the new Document content in the PUT body
+To update the Document, use an HTTP PUT with the same Document ID - and the new Document content in the PUT body
 
 ```
 PUT /v2/groups/documents/<DOCUMENT_ID>/upload
@@ -4603,7 +4604,7 @@ NOTE: Any filetype may be uploaded to the system, which are stored and not rende
 
 #### Malware Documents
 
-> Include the `malware` and `password` fields to create a new Document for a malicious file
+Include the `malware` and `password` fields to create a new Document for a malicious file
 
 ```
 POST /v2/groups/documents/
@@ -4643,7 +4644,7 @@ Content-Type: application/json
 }
 ```
 
-> Rules and mappings as defined by the Organizational Administrator:
+Rules and mappings as defined by the Organizational Administrator:
 
 ```
 HTTP/1.1 201 CREATED
@@ -4671,7 +4672,7 @@ NOTE: The Attributes can have a displayed field, which is equivalent to specifyi
 
 ####Victims
 
-> To create a Victim, simply POST a request with the Victim’s name to the Victims Service:
+To create a Victim, simply POST a request with the Victim’s name to the Victims Service:
 
 ```
 POST /v2/victims
@@ -4682,7 +4683,7 @@ Content-Type: application/json
 }
 ```
 
-> Victim Assets can also be created by POSTing a request to the appropriate service, for example:
+Victim Assets can also be created by POSTing a request to the appropriate service, for example:
 
 ```
 POST /v2/victims/victimAssets/emailAddresses
@@ -4751,32 +4752,32 @@ NOTE: It is important to capture and use the ID to specify a Group or Attribute.
 
 ####Creating Associations
 
-> In order to see all IP Addresses associated with an Incident, issue the following query:
+In order to see all IP Addresses associated with an Incident, issue the following query:
 
 ```
 GET /v2/groups/incidents/119842/indicators/addresses
 ```
 
-> To add an Association between the above Incident and unassociated IP Address 10.0.2.5, the following POST request could be issued:
+To add an Association between the above Incident and unassociated IP Address 10.0.2.5, the following POST request could be issued:
 
 ```
 POST /v2/groups/incidents/119842/indicators/addresses/10.0.2.5
 ```
 
-> In keeping with the bidirectional nature of Associations and pivoting, the Association can be created by pivoting off the Address:
+In keeping with the bidirectional nature of Associations and pivoting, the Association can be created by pivoting off the Address:
 
 ```
 POST /v2/indicators/addresses/10.0.2.5/groups/incidents/119842
 ```
 
-> This Association mechanic can also be used to add Tags to a Group or an Indicator, again in either direction:
+This Association mechanic can also be used to add Tags to a Group or an Indicator, again in either direction:
 
 ```
 POST /v2/groups/incidents/119842/tags/China
 POST /v2/tags/China/groups/incidents/119842
 ```
 
-> This Association mechanic can also be used to set Security Labels to a Group or an Indicator, again in either direction:
+This Association mechanic can also be used to set Security Labels to a Group or an Indicator, again in either direction:
 
 ```
 POST /v2/groups/incidents/119842/securityLabels/Sensitive
@@ -4792,13 +4793,13 @@ NOTE: This will not create the Address in the system if the Address does not exi
 
 ####Deleting Associations
 
-> In the example below, the Association between a Threat and an email address can be removed if it is no longer relevant:
+In the example below, the Association between a Threat and an email address can be removed if it is no longer relevant:
 
 ```
 DELETE /v2/groups/threats/666/indicators/emailAddresses/oldhat@irrelevant.net
 ```
 
-> To remove a Tag that is no longer applicable:
+To remove a Tag that is no longer applicable:
 
 ```
 DELETE /v2/indicators/emailAddresses/oldhat@irrelevant.net/tags/APT
@@ -4808,7 +4809,7 @@ With the understanding of how Associations are created, Association deletion bec
 
 ####Batch Upload: Indicators
 
-> Sample Batch Create request
+Sample Batch Create request
 
 ```
  POST /v2/batch/                 
@@ -4820,7 +4821,7 @@ With the understanding of how Associations are created, Association deletion bec
  }                               
 ```
 
-> Server Response on Success
+Server Response on Success
 
 ```
  HTTP/1.1 201 Created                       
@@ -4829,7 +4830,7 @@ With the understanding of how Associations are created, Association deletion bec
  }                                          
 ```
 
-> Server Response on Insufficient Privileges
+Server Response on Insufficient Privileges
 
 ```
  HTTP/1.1 403 Forbidden                     
@@ -4840,7 +4841,7 @@ With the understanding of how Associations are created, Association deletion bec
  }                                          
 ```
 
-> Server Response on Incorrect Settings
+Server Response on Incorrect Settings
 
 ```
  HTTP/1.1 403 Forbidden                     
@@ -4871,7 +4872,7 @@ The following is an example of a Batch Indicator Input file:
 }
 ```
 
-> Sample Batch Upload Input File request
+Sample Batch Upload Input File request
 
 ```
  POST /v2/batch/123                                               
@@ -4883,7 +4884,7 @@ The following is an example of a Batch Indicator Input file:
  <uploaded_data>                                              
  ```
  
- > Server Response on Success
+Server Response on Success
  
  ```
  HTTP/1.1 202 Accepted                
@@ -4892,7 +4893,7 @@ The following is an example of a Batch Indicator Input file:
  }                                    
 ```
 
-> Server Response on Overlarge Input File
+Server Response on Overlarge Input File
 
 ```
   HTTP/1.1 400 Bad Request             
@@ -4903,13 +4904,13 @@ The following is an example of a Batch Indicator Input file:
  }                                    
  ```
 
-> Sample Batch Status Check request
+Sample Batch Status Check request
 
 ```
  GET /v2/batch/123        
 ```
 
-> Server Response on Success (job still running)
+Server Response on Success (job still running)
 
 ```
   HTTP/1.1 200 OK                             
@@ -4918,7 +4919,7 @@ The following is an example of a Batch Indicator Input file:
  }                                           
 ```
  
-> Server Response on Success (job finished)
+Server Response on Success (job finished)
 
 ```
   HTTP/1.1 200 OK                             
@@ -4930,13 +4931,13 @@ The following is an example of a Batch Indicator Input file:
  }                                                                                      
 ```
  
-> Sample Batch Error Message request
+Sample Batch Error Message request
 
 ```
  GET /v2/batch/123/errors 
 ```
  
-> Server Response on Success (job still running)
+Server Response on Success (job still running)
 
 ```
  HTTP/1.1 400 Bad Request                    
@@ -4946,7 +4947,7 @@ The following is an example of a Batch Indicator Input file:
  }                                           
 ```
 
-> Server Response on Success (job finished):
+Server Response on Success (job finished):
 
 ```
   HTTP/1.1 200 OK                             
@@ -5070,7 +5071,7 @@ With the information thus far included in this document, users are ready to star
 
 ####Retrieving All IP Addresses with a Certain Tag
 
-> Using paginated queries, a user can continue to pull the remaining IP Addresses, if they number more than the default page size:
+Using paginated queries, a user can continue to pull the remaining IP Addresses, if they number more than the default page size:
 
 ```
 /v2/tags/<TAGNAME>/indicators/addresses
@@ -5080,7 +5081,7 @@ The query to the right will retrieve the first page IP Addresses within a user�
 
 ####Retrieving All Signatures from a Specific File
 
-> A user can also take the Signature IDs from the results and issue further queries to download the Signatures themselves, as detailed in the Signatures section:
+A user can also take the Signature IDs from the results and issue further queries to download the Signatures themselves, as detailed in the Signatures section:
 
 ```
 /v2/indicators/files/<FILE_HASH>/groups/signatures
@@ -5090,7 +5091,7 @@ The query to the right will return the first page of Signatures for the file spe
 
 ####Retrieving All Incidents from a Community
 
-> Using paginated queries, a user can continue to pull the remaining Incidents, if they number more than the default page size:
+Using paginated queries, a user can continue to pull the remaining Incidents, if they number more than the default page size:
 
 ```
 /v2/groups/incidents?owner=Common%20Community
@@ -5100,19 +5101,19 @@ The query to the right will retrieve the first page of Incidents belonging to th
 
 ####Exploring an Incident’s Indicators of Interest
 
-> This will return a summary of all Indicators associated to a specified Indicent:
+This will return a summary of all Indicators associated to a specified Indicent:
 
 ```
 /v2/groups/incidents/<INCIDENT_ID>/indicators
 ```
 
-> This will return the Incident's associated file Indicators:
+This will return the Incident's associated file Indicators:
 
 ```
 /v2/groups/incidents/<INCIDENT_ID>/indicators/files
 ```
 
-> This will return the Incident's associated address Indicators:
+This will return the Incident's associated address Indicators:
 
 ```
 /v2/groups/incidents/<INCIDENT_ID>/indicators/addresses
@@ -5125,7 +5126,7 @@ The second and third queries to the right will return the Incident’s associate
 
 ####Creating an Incident with Indicators
 
-> Note that the first query will return the body of the newly created Incident whose ID must be captured to specify later in the third query to produce the Association:
+Note that the first query will return the body of the newly created Incident whose ID must be captured to specify later in the third query to produce the Association:
 
 ```
 POST /v2/groups/incidents
@@ -5149,7 +5150,7 @@ The queries below will create an Incident named "Bad November Incident," IP Addr
 
 ####Tracking a "Times Seen" Attribute
 
->  Creates IP Address Indicator 
+Creates IP Address Indicator 
 
 ```
  POST /v2/indicators/addresses                            
@@ -5160,13 +5161,13 @@ The queries below will create an Incident named "Bad November Incident," IP Addr
  }                                                        
 ```
 
->   Adds the tag "Tracked" to the above IP Address
+Adds the tag "Tracked" to the above IP Address
 
 ```
  POST /v2/indicators/addresses/192.168.0.1/tags/Tracked   
 ```
 
-> Create the "Times Seen" Attribute on the above IP Address. Note that this Attribute Type must be created by an Organization Administrator (via the ThreatConnect web GUI).
+Create the "Times Seen" Attribute on the above IP Address. Note that this Attribute Type must be created by an Organization Administrator (via the ThreatConnect web GUI).
 
 ```
  POST /v2/indicators/addresses/192.168.0.1/attributes     
@@ -5176,13 +5177,13 @@ The queries below will create an Incident named "Bad November Incident," IP Addr
  }                                                        
 ```
 
-> Get all attributes attached to an IP Address
+Get all attributes attached to an IP Address
 
 ```
  GET /v2/indicators/addresses/192.168.0.1/attributes      
 ```
 
->  Increment the "Times Seen" Attribute by one
+Increment the "Times Seen" Attribute by one
 
 ```
  PUT /v2/indicators/addresses/192.168.0.1/attributes/1234 
@@ -5191,7 +5192,7 @@ The queries below will create an Incident named "Bad November Incident," IP Addr
  }                                                        
 ```
 
->  Remove the "Tracked" Tag from the specified IP Address
+Remove the "Tracked" Tag from the specified IP Address
 
 ```
  DELETE /v2/indicators/addresses/192.168.0.1/tags/Tracked 
