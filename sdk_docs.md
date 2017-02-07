@@ -280,7 +280,7 @@ The following property `repeating.minutes = 5,10,15,30,60,120,240,360` displays 
 
 ![Repeating Interval](images/repeating-interval.png "Repeating Interval") 
 
-Multiple values should be separated by a comma. All minutes greater than 60 will be discarded unless they are divisible by 60. If this property is no't provided, the following repeating intervals are defaulted during job creation: `60, 120, 240, 360, 720`.
+Multiple values should be separated by a comma. All minutes greater than 60 will be discarded unless they are divisible by 60. If this property is not provided, the following repeating intervals are defaulted during job creation: `60, 120, 240, 360, 720`.
 
 <b>Parsing Argument Lists</b>
 
@@ -367,7 +367,7 @@ Failure         | Any value not 0 or 3 (typically Exit code 1) - Process failed.
 
 ##Wrapper-Testing Utility
 
-> Command line arguement script example:
+> Command line argument script example:
 
 ```python
 # Config file for tc-wrapper.py to call any ThreatConnect integration script
@@ -1456,7 +1456,7 @@ Snippet                                   | Description
 
 ###Group Associations
 
-> Example of Python SDK iterating throguh all Groups associated with this Indicator:
+> Example of Python SDK iterating through all Groups associated with this Indicator:
 
 ```python
     for g_association in indicator.group_associations:
@@ -1553,7 +1553,7 @@ DNS Resolution is only supported for the Host Indicator Type.
 Snippet                                   | Description                                                                       
 ----------------------------------------- | --------------------------------------------------------------------------------- 
 `indicator.load_dns_resolutions()`        | Trigger API call to load DNS Resolutions into the Indicator object. 
-`for dns in indicator.dns_resolutions:`   | Iterate over the DNS Resoultions property object generator.
+`for dns in indicator.dns_resolutions:`   | Iterate over the DNS Resolutions property object generator.
 `print(dns.ip)`                           | Display the **'ip'** property of the Attribute object.
 
 <b>Output Formats</b>
@@ -2409,7 +2409,7 @@ except RuntimeError as e:
 
 <b>Adversaries Commit</b>
 
-The ThreatConnect platform supports [adding](#add-an-adversary-resource), [deleting](#delete-an-adversary-resource), and [updating](#update-an-adversary-resource) of threat-intelligence data programmatically using the API. The Python SDK features an easy-to-use interface to assist in rapid development of software to manage thisdata.
+The ThreatConnect platform supports [adding](#add-an-adversary-resource), [deleting](#delete-an-adversary-resource), and [updating](#update-an-adversary-resource) of threat-intelligence data programmatically using the API. The Python SDK features an easy-to-use interface to assist in rapid development of software to manage this data.
 
 <b>Adding Adversary Resources</b>
 
@@ -4358,7 +4358,7 @@ An example of the [set](#set-security-label) and [delete](#delete-security-label
 
 <b>Setting Security Labels</b>
 
-A Security Label can be set on a Resource Group or Indicator using the `set_security_label()` method and passing the Security Label Value. Security Labels can be set while creating a new Resource or during a Resource update. The Security Label (e.g., TLP Green) must be created in the Organization prior to being added via the API. The ThreatConnect administrator can add Security Labes via the User Interface.
+A Security Label can be set on a Resource Group or Indicator using the `set_security_label()` method and passing the Security Label Value. Security Labels can be set while creating a new Resource or during a Resource update. The Security Label (e.g., TLP Green) must be created in the Organization prior to being added via the API. The ThreatConnect administrator can add Security Labels via the User Interface.
 
 Note: In the prior example, no API calls are made until the `commit()` method is invoked.
 
@@ -5447,7 +5447,7 @@ Line         | Description
 1-7          | Notable imports include:<br>The `com.cyber2.api.lib.client.reader` package holds all Adapter classes that read<br>data from the API. The `com.cyber2.api.lib.server.entity` package holds all entities <br>returned by the Java SDK. 
 17-18        | The platform programmatically define the system property to load the configuration file.<br>This allows the developer to instantiate Connection objects (line 18) with a <br>no-arg constructor. If the `threatconnect.api.config` property is not defined, <br>the developer has the option of passing the configuration file name string in the <br>single-arg Connection constructor.
 20           | To create an AbstractGroupReaderAdapter<Adversary> object: Use the<br>ReaderAdapterFactory pattern and generics to enforce compile-time type constraints <br>on this abstract class. Then pass the connection object used by the Adapter to <br>interact with the ThreatConnect API.
-21           | Using the reader object, call `getAll()` method and pass it the Organization <br>string name to return alladversaries for the "System" Organization.
+21           | Using the reader object, call `getAll()` method and pass it the Organization <br>string name to return all Adversaries for the "System" Organization.
 22-24        | Iterate through the data collection to print the contents to the console.
 26           | The IOException is potentially thrown if the Connection object cannot find the <br>properties file. The FailedResponseException is thrown if the API request is invalid.
 29           | In all cases when processing is complete, call `disconnect()` on the connection <br>object to release resources.
@@ -5974,7 +5974,7 @@ The methods below return all Assignees or Escalatees associated with a given Tas
 |`IterableResponse<User>`<br>getAssignees(P uniqueId)                   |
 |`IterableResponse<User>`<br>getEscalatees(P uniqueId) |
 
-The methods below return an individual Assignee or Escalatees's information
+The methods below return an individual Assignee or Escalatees' information
 
 |Type<br>_Method_                                |
 |---------------------------------------------------------- |
@@ -6710,7 +6710,7 @@ Line         | Description                                                     |
 140          | The response Adversary object returned from the ThreatConnect API is printed.<br>The `getItem()`method will return this object with the ID field populated.<br>This method will always hold the saved item on a successful response. |
 141-142      | The ID from the successful create is used to delete the same Adversary object.<br>Note that the call to the `delete()` method requires the system-generated<br>Adversary ID. |
 143-144      | The delete response is verified as successful, and the original response is dumped. |
-146          | With a failed delete, the error message is printed by calling the `getMessage()`<br>method on theresponse object. |
+146          | With a failed delete, the error message is printed by calling the `getMessage()`<br>method on the response object. |
 149          | If the original create failed, the `getMessage()` method is also called to find<br>the cause. |
  
 ###Writer Update Example
@@ -7905,7 +7905,7 @@ indicators.owner('Example Community')
     });
 ```
 
-The JavaScript SDK provides the `retrieveAssociations()` method to retrieve both Indicator and Indicator Associations. The `type()`, and `id()` methods are required to retrieve the assocations. The `retrieveAssociations()` method requires that a parameter object containing the Association `type` be provided. Optionally an `id` can be provided to pull a specific association.
+The JavaScript SDK provides the `retrieveAssociations()` method to retrieve both Indicator and Indicator Associations. The `type()`, and `id()` methods are required to retrieve the associations. The `retrieveAssociations()` method requires that a parameter object containing the Association `type` be provided. Optionally an `id` can be provided to pull a specific association.
 
 ###Attributes
 
@@ -8283,7 +8283,7 @@ tc.groups()
     });
 ```
 
-The JavaScript SDK provides the `retrieveAssociations()` method to retrieve both Indicator and Group Associations. The `type()`, and `id()` methods are required to retrieve the assocations. The `retrieveAssociations()` method requires that a parameter object containing the association `type` be provided. Optionally an `id` can be provided to pull a specific association.
+The JavaScript SDK provides the `retrieveAssociations()` method to retrieve both Indicator and Group Associations. The `type()`, and `id()` methods are required to retrieve the associations. The `retrieveAssociations()` method requires that a parameter object containing the association `type` be provided. Optionally an `id` can be provided to pull a specific association.
 
 ##Retrieve Attributes
 
@@ -8544,7 +8544,7 @@ Filters are not supported on Batch/Bulk downloads.
 
 ###Commit Association
 
-The JavaScript SDK provides the `commitAssociation()` method to add Group Associations. Both `.type()`, and `id()` methods are required to commit the Assocations. The value passed to the `commitAssociation()` method must be the specific Group Type (e.g., TYPE.ADVERSARY, TYPE.HOST).
+The JavaScript SDK provides the `commitAssociation()` method to add Group Associations. Both `.type()`, and `id()` methods are required to commit the Associations. The value passed to the `commitAssociation()` method must be the specific Group Type (e.g., TYPE.ADVERSARY, TYPE.HOST).
 
 > Example of commitAssociations() method:
 
@@ -8990,7 +8990,7 @@ victim.owner('Example Community')
 ```
 
 ## Associations
-The JavaScript SDK provides the `commitAssociations()` method to add both Indicator and Group Associations. The `.type()`, `id()`, `associationType()`, and `associationId()` methods are required to commit the assocations. The value passed to the `associationType()` method must be the specific Group or Indicator Type (e.g. TYPE.ADVERSARY, TYPE.HOST).
+The JavaScript SDK provides the `commitAssociations()` method to add both Indicator and Group Associations. The `.type()`, `id()`, `associationType()`, and `associationId()` methods are required to commit the associations. The value passed to the `associationType()` method must be the specific Group or Indicator Type (e.g. TYPE.ADVERSARY, TYPE.HOST).
 
 ```javascript
 tc.tasks()
@@ -9110,7 +9110,7 @@ tasks.owner('Example Community')
 
 
 ## Associations
-The JavaScript SDK provides the `commitAssociations()` method to add both Indicator and Group Associations. The `.type()`, `id()`, `associationType()`, and `associationId()` methods are required to commit the assocations. The value passed to the `associationType()` method must be the specific Group or Indicator Type (e.g. TYPE.ADVERSARY, TYPE.HOST).
+The JavaScript SDK provides the `commitAssociations()` method to add both Indicator and Group Associations. The `.type()`, `id()`, `associationType()`, and `associationId()` methods are required to commit the associations. The value passed to the `associationType()` method must be the specific Group or Indicator Type (e.g. TYPE.ADVERSARY, TYPE.HOST).
 
 ```javascript
 tc.victims()
@@ -9441,7 +9441,7 @@ In Python, parameters are called by using the “--param &lt;value&gt;” syntax
 
 ### Type Parameter
 
-The **type** parameter serves a dual purpose in the ThreatConnect platform, depending on the actual type defined. The table belo lists the available types and how they affect elements within the platform.
+The **type** parameter serves a dual purpose in the ThreatConnect platform, depending on the actual type defined. The table below lists the available types and how they affect elements within the platform.
 
 |Type|Description|
 |--- |--- |
