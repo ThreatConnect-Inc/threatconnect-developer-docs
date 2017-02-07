@@ -7432,7 +7432,7 @@ This section provides an overview of the JavaScript app development process as i
 > For the sample install configuration example above, here is a sample query String passed to the app:
 
 ```
-tcSpaceElementId=467&tcToken=ABC123&tcApiPath=https://api.threatconnect.com:8443&tcType=Host&tcSelectedItem=greystoneexpress.com&tcSelectedItemOwner=Test Org&add_tags=OpenDNS Scan&add_confidence=25&add_rating=1&opendns_api_token=abc-123&logging=info
+tcSpaceElementId=467&tcToken=ABC123&tcApiPath=https://api.threatconnect.com:8443&tcType=Host&tcSelectedItem=greystoneexpress.com&tcSelectedItemOwner=TestOrg&add_tags=OpenDNS Scan&add_confidence=25&add_rating=1&opendns_api_token=abc-123&logging=info
 ```
 
 > All Spaces apps will have standard 'tc' prefixed parameters passed that may be used by the app.
@@ -8208,7 +8208,7 @@ while (groups.hasNext()) {
     }
   ],
   "remaining": 0,
-  "url": "https://api.threatconnect.com/v2/groups/adversaries/?createActivityLog=false&resultLimit=500&resultStart=0&owner=Example Community",
+  "url": "https://api.threatconnect.com/v2/groups/adversaries/?createActivityLog=false&resultLimit=500&resultStart=0&owner=Example+Community",
   "apiCalls": 1,
   "resultCount": 15,
   "status": "Success"
