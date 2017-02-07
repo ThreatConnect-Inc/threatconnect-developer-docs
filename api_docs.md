@@ -14,7 +14,7 @@ The public ThreatConnect API is accessible at `https://api.threatconnect.com/v2/
 
 Requests to ThreatConnect API endpoints must be made over HTTPS with a valid Signature, or a 403 error will be returned
 
-NOTE: ThreatConnect Dedicated Cloud and On-Premise users will need to contact their System Adminstrator for the correct API URL.
+NOTE: ThreatConnect Dedicated Cloud and On-Premise users will need to contact their System Administrator for the correct API URL.
 
 The example below details the path of a version 2 request to the Groups Service and Incidents-Collections Resource:
 
@@ -138,7 +138,7 @@ The second path will return only Incidents associated to a specific Host with a 
 /v2/indicators/hosts/baddomain.com/groups/incidents
 ```
 
-Each ThreatConnect API Service and Resource is defined by the HTTP path of the request. To request a specific Resource from a Collection, append the appropriate identifier to the path. The API supports "pivoting" much like the ThreatConnect platform. Because the API supports pivoting and relationships, different request paths can return the same Resource Type, although limited in scope. Refer to [Resource Types](#resource-types) for supported resources and retrival paths.
+Each ThreatConnect API Service and Resource is defined by the HTTP path of the request. To request a specific Resource from a Collection, append the appropriate identifier to the path. The API supports "pivoting" much like the ThreatConnect platform. Because the API supports pivoting and relationships, different request paths can return the same Resource Type, although limited in scope. Refer to [Resource Types](#resource-types) for supported resources and retrieval paths.
 
 <b>The Response</b>
 
@@ -171,7 +171,7 @@ resultLimit          | The limit to the number of results to return with the req
 
 A Collections Resource request that does not include the parameters indicated is assumed to use the default values above. A request having a resultStart value of 0 will return the current count of all items in the Collection. This count should be saved to iterate over the Collection and to know when all items have been retrieved. The maximum value that can be specified for resultLimit is 500.
 
-NOTE: Pagination counts and Indices should not be stored in long-lived applications as a way to return to a resultset. The dataset will change with time, so those range markers might cause objects to be skipped or duplicated if reused at a later time.
+NOTE: Pagination counts and Indices should not be stored in long-lived applications as a way to return to a result-set. The dataset will change with time, so those range markers might cause objects to be skipped or duplicated if reused at a later time.
 
 ###Owners Service
 
@@ -442,7 +442,7 @@ The example below demonstrates usage multiple parameters (with parameters OR’e
 /v2/indicators?filters=summary=lmco.com,dateAdded%3E20151015&orParams=true
 ```
 
-To prevent the ThreatConnect API to return an entire resultset, limit the scope of the query based on the modifiedSince parameter. When a query from the list below is issued with this parameter, it will only return Indicators whose lastModified field contains a value on or after the time specified by the included ISO 8601 time-stamp.
+To prevent the ThreatConnect API to return an entire result-set, limit the scope of the query based on the modifiedSince parameter. When a query from the list below is issued with this parameter, it will only return Indicators whose lastModified field contains a value on or after the time specified by the included ISO 8601 time-stamp.
 
 Use the modifiedSince parameter on the Indicators Service, e.g., `/v2/indicators`
 
@@ -893,7 +893,7 @@ Example of Indicator Service query for a specific Host for a user’s Organizati
 /v2/indicators/hosts/baddomain.com
 ```
 
-Example of an Indicator Service query for a speific Host to the Communities to which a user has access:
+Example of an Indicator Service query for a specific Host to the Communities to which a user has access:
 
 ```
 /v2/indicators/hosts/baddomain.com?owner=Common%20Community
@@ -3438,7 +3438,7 @@ Paths                                          | Owner <br> Allowed | Pagination
 The Tags Service allows for the querying of a specific Tag for both a user’s Organization, as well as any Communities to which the user has access.
 
 ####Tag Resource Type
-        
+
 Tag Resource Type JSON Response:
 
 ```json
@@ -4600,7 +4600,7 @@ To upload a new Document:
 - Upload the raw Document content using HTTP POST given its ID to `/v2/groups/documents/<DOCUMENT_ID>/upload` as an `octet-stream`
 (A Document may be updated using an HTTP PUT to this same endpoint)
 
-NOTE: Any filetype may be uploaded to the system, which are stored and not rendered for security considerations
+NOTE: Any file type may be uploaded to the system, which are stored and not rendered for security considerations
 
 #### Malware Documents
 
@@ -5101,7 +5101,7 @@ The query to the right will retrieve the first page of Incidents belonging to th
 
 ####Exploring an Incident’s Indicators of Interest
 
-This will return a summary of all Indicators associated to a specified Indicent:
+This will return a summary of all Indicators associated to a specified Incident:
 
 ```
 /v2/groups/incidents/<INCIDENT_ID>/indicators
