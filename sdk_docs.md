@@ -5132,7 +5132,7 @@ except RuntimeError as e:
     sys.exit(1))
 ```
 
-The Python SDK provides the `set_indicator_regex` method which allows a user to override the baked-in Regular Expressions (Regex) in the SDK with user defined compiled Regexes. The method takes an IndicatorType enum and either a single compiled Regex or a list of Regexes. If a list is provided each Regex will be checked for a match for that Indicator Type.
+The Python SDK provides the `set_indicator_regex` method which allows a user to override the baked-in Regular Expressions (Regexes) in the SDK with user defined compiled Regexes. The method takes an IndicatorType enum and either a single compiled Regex or a list of Regexes. If a list is provided each Regex will be checked for a match for that Indicator Type.
 
 ###Reporting
 
