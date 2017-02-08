@@ -264,30 +264,30 @@ GET /v2/owners/mine/members
 
 Response if Organization allows anonymous membership:
 {
-    “anonymous”: true,
+    "anonymous": true,
     "status": "Success",
     "resultCount": 2,
-    “members”:
+    "members":
     [
-     “pseudonym”: “test”,
-     “pseudonym”: “test2”
+     "pseudonym": "test",
+     "pseudonym": "test2"
     ]
   
 }
 
 Response if Organization does not allow anonymous membership:
 {
-  “anonymous”: false, 
+  "anonymous": false, 
   "status": "Success",
   "resultCount": 2,
-  “members”: [
+  "members": [
       {
-          “name”: “test”,
-          “id”: “50”
+          "name": "test",
+          "id": "50"
       }, 
       {
-          “name”: “test2”,
-          “id”: “51”
+          "name": "test2",
+          "id": "51"
       }
   ]
 }
@@ -3630,9 +3630,9 @@ Create a new Task; Escalatees and Assignees may be a list of `userName` entries
 ```
 POST /v2/tasks/
 {
-  “name” : “Task Name”,
-  “escalatee” : { “userName” : “manager@threatconnect.com” },
-  “assignee” : { “userName” : “worker@threatconnect.com”}
+  "name" : "Task Name",
+  "escalatee" : { "userName" : "manager@threatconnect.com" },
+  "assignee" : { "userName" : "worker@threatconnect.com"}
 }
 
 ```
