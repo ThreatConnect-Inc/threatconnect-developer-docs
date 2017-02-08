@@ -7839,6 +7839,7 @@ indicators.owner('Example Community')
     .retrieve();
 
 ```
+
 Starting with ThreatConnect version 4.0 the API supports filtering using query string parameters. For more information on which parameters support which operators see the ThreatConnect API Users Guide.
 
 <b>Filter Options</b>
@@ -7853,10 +7854,6 @@ Starting with ThreatConnect version 4.0 the API supports filtering using query s
 |Less Than (<)               | FILTER.LT |
 |Less Than or Equal (<=)     | FILTER.LE |
 |Starts With (^)             | FILTER.SW |
-
-<b>Filter Example</b>
-
-This example will demonstrate how to retrieve Threats that start-with 'thre' and had a dateAdded value great than '2015-12-02' using an API filter.
 
 Note that multiple filter can be added to one API call.
 
@@ -8217,7 +8214,7 @@ Note: The `next()` method will return the same number of results defined in the 
 
 ## Filters
 
-Example of how to retrieve Threats that start-with 'thre' and had a dateAdded value great than '2015-12-02' using an API filter:
+Example of how to retrieve Threats that start-with 'threat' and have a dateAdded value great than '2015-12-02' using an API filter:
 
 ```javascript
 filter = new Filter(FILTER.AND);
@@ -8238,6 +8235,7 @@ groups.owner('Example Community')
     })
     .retrieve();
 ```
+
 Starting with ThreatConnect version 4.0 the API supports filtering using query string parameters. For more information on which parameters support which operators see the ThreatConnect API Users Guide.
 
 |Filter Options              | Filter Constant|
@@ -8250,10 +8248,6 @@ Starting with ThreatConnect version 4.0 the API supports filtering using query s
 |Less Than (<)               | FILTER.LT|
 |Less Than or Equal (<=)     | FILTER.LE|
 |Starts With (^)             | FILTER.SW|
-
-<b>Filter Example</b>
-
-This example will demonstrate how to retrieve Threats that start-with 'thre' and had a dateAdded value great than '2015-12-02' using an API filter.
 
 Note that multiple filter can be added to one API call.
 
