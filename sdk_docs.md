@@ -8614,7 +8614,7 @@ tc.indicators()
     .commitTags('Example Tag');
 ```
 
-The JavaScript SDK provides the `commitTags()` method to add Tags. Both the `.type()` method and `id()` are required to add the Tags. The Tag value should be passed to the `commitTags()` method.
+The JavaScript SDK provides the `commitTags()` method to add Tags. Both the `.type()` and `id()` methods are required to add the Tags. The Tag value should be passed to the `commitTags()` method.
 
 ###Commit Security Labels
 
@@ -8633,7 +8633,7 @@ tc.indicators()
     .commitSecurityLabel('TLP Red');
 ```
 
-The JavaScript SDK provides the `commitSecurityLabel()` method to add Security Labels. Both the `.type()` and `indicator()` methods are required to add the Security Label. The Security Label value should be passed to the `commitSecurityLabel()` method.
+The JavaScript SDK provides the `commitSecurityLabel()` method to add Security Labels. Both the `.type()` and `indicator()` methods are required to add the Security Labels. The Security Label value should be passed to the `commitSecurityLabel()` method.
 
 ###Putting it all Together
 
@@ -8830,7 +8830,7 @@ tc.groups()
     .commitTag('Example Tag');
 ```
 
-The JavaScript SDK provides the `commitTag()` method to add tags. Both the `.type()` method and `id()` are required to add the tags. The tag value should be passed to the `commitTag()` method.
+The JavaScript SDK provides the `commitTag()` method to add tags. Both the `.type()` and `id()` methods are required to add the tags. The Tag value should be passed to the `commitTag()` method.
 
 ###Commit Security Label
 
