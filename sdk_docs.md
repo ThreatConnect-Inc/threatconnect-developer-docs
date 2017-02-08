@@ -7773,7 +7773,7 @@ Note: The `next()` method will return the same number of results defined in the 
 
 This example will demonstrate how to retrieve a Single Indicator:
 
-```javascipt
+```javascript
 var indicators = tc.indicators();
 
 indicators.owner('Example Community')
