@@ -8633,6 +8633,8 @@ tc.indicators()
     .commitSecurityLabel('TLP Red');
 ```
 
+The JavaScript SDK provides the `commitSecurityLabel()` method to add Security Labels. Both the `.type()` and `indicator()` methods are required to add the Security Label. The Security Label value should be passed to the `commitSecurityLabel()` method.
+
 ###Putting it all Together
 
 Example of how to add an Adversary with a name of 'adver-999' to the "Example Community" owner
