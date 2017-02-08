@@ -7855,7 +7855,7 @@ Starting with ThreatConnect version 4.0 the API supports filtering using query s
 |Less Than or Equal (<=)     | FILTER.LE |
 |Starts With (^)             | FILTER.SW |
 
-Note that multiple filter can be added to one API call.
+Note that multiple filters can be added to one API call.
 
 ###Batch/Bulk Retrieve
 
@@ -8214,7 +8214,7 @@ Note: The `next()` method will return the same number of results defined in the 
 
 ## Filters
 
-Example of how to retrieve Threats that start-with 'threat' and have a dateAdded value great than '2015-12-02' using an API filter:
+Example of how to retrieve Threats that start-with 'threat' and have a dateAdded value greater than '2015-12-02' using an API filter:
 
 ```javascript
 filter = new Filter(FILTER.AND);
@@ -8249,7 +8249,7 @@ Starting with ThreatConnect version 4.0 the API supports filtering using query s
 |Less Than or Equal (<=)     | FILTER.LE|
 |Starts With (^)             | FILTER.SW|
 
-Note that multiple filter can be added to one API call.
+Note that multiple filters can be added to one API call.
 
 ##Retrieve Associations
 
