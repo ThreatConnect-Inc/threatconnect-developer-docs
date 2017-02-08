@@ -5014,7 +5014,7 @@ The batch upload feature expects to ingest a JSON file consisting of a list of d
 `tag` | list of dictionaries| Optional
 `attribute` | list of dictionaries| Optional
 
-Supported `Type` values for Indicators:
+Supported `type` values for Indicators:
 
 - Host
 - Address
