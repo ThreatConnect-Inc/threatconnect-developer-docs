@@ -373,7 +373,7 @@ The example below demonstrates usage of the modifiedSince parameter and an addit
 The example below demonstrates usage of the summary parameter:
 
 ```
-/v2/indicators?filters=summary=lmco.com
+/v2/indicators?filters=summary%3Dlmco.com
 ```
 
 The example below demonstrates usage of the rating parameter:
@@ -391,13 +391,13 @@ The example below demonstrates usage of the threatAssessConfidence parameter:
 The example below demonstrates usage of the organization parameter:
 
 ```
-/v2/indicators/addresses?filters=organization=mosso%20hosting
+/v2/indicators/addresses?filters=organization%3Dmosso%20hosting
 ```
 
 The example below demonstrates usage of the whoisActive parameter:
 
 ```
-/v2/indicators/hosts?filters=whoisActive=true
+/v2/indicators/hosts?filters=whoisActive%3Dtrue
 ```
 
 The example below demonstrates usage of a Group name parameter:
@@ -409,13 +409,13 @@ The example below demonstrates usage of a Group name parameter:
 The example below demonstrates usage of a Group fileType parameter:
 
 ```
-/v2/groups/documents?filters=fileType=PDF
+/v2/groups/documents?filters=fileType%3DPDF
 ```
 
 The example below demonstrates usage of a securityLabels filter parameter:
 
 ```
-/v2/securityLabels?filters=name=dictators
+/v2/securityLabels?filters=name%3Ddictators
 ```
 
 The example below demonstrates usage of a victim filter parameter:
@@ -433,13 +433,13 @@ The example below demonstrates usage of a tag filter parameter:
 The example below demonstrates usage multiple parameters (with implicit AND):
 
 ```
-/v2/indicators?filters=summary=lmco.com,dateAdded%3C20151015
+/v2/indicators?filters=summary%3Dlmco.com,dateAdded%3C20151015
 ```
 
 The example below demonstrates usage multiple parameters (with parameters OR’ed):
 
 ```
-/v2/indicators?filters=summary=lmco.com,dateAdded%3E20151015&orParams=true
+/v2/indicators?filters=summary%3Dlmco.com,dateAdded%3E20151015&orParams=true
 ```
 
 To prevent the ThreatConnect API to return an entire result-set, limit the scope of the query based on the modifiedSince parameter. When a query from the list below is issued with this parameter, it will only return Indicators whose lastModified field contains a value on or after the time specified by the included ISO 8601 time-stamp.
