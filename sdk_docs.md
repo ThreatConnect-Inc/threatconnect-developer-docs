@@ -6225,7 +6225,7 @@ The methods below write data for the Group type (T) linked to this Adapter.
 * The delete methods require the key ID value as a collection or single object.
 * The update methods require a Group type object as a collection or single object.
 
-||Type|_Method_|
+|Type|_Method_|
 |------------------------------------------- | --------------------------------------------------------------- |
 |`WriteListResponse<T>`|create(`List<T> itemList`)                                      |
 |`ApiEntitySingleResponse`|create(`T item`)                                                |
@@ -6550,7 +6550,7 @@ The key parameter-level distinction between the AbstractIndicatorWriterAdapter a
 FileIndicatorWriterAdapter, which all the functionality of the AbstractIndicatorWriterAdapter with the addition of the following write methods:
 
 |Type|_Method_|
-|---------------------------------------------------------------------------------------------------------- |
+|------------------------------------|---------------------------------------------------------------------- |
 |`WriteListResponse<FileOccurrence>`|updateFileOccurrences(`String fileHash`, `List<FileOccurrence> fileOccurrences`) |
 |`WriteListResponse<FileOccurrence>`|updateFileOccurrences(`String fileHash`, `List<FileOccurrence> fileOccurrences`, `String ownerName`) |
 |`FileOccurrence`|updateFileOccurrence(`String fileHash`, `FileOccurrence fileOccurrence`) |
@@ -6561,7 +6561,7 @@ FileIndicatorWriterAdapter, which all the functionality of the AbstractIndicator
 DocumentWriterAdapter has all the functionality of the AbstractGroupWriterAdapter with the addition of the following write methods:
 
 |Type|_Method_|
-|---------------------------------------------------------------------------------------------------------- |
+|-------------------------|--------------------------------------------------------------------------------- |
 |`ApiEntitySingleResponse`|uploadFile(`int uniqueId`, `File file`) |
 |`ApiEntitySingleResponse`|uploadFile(`int uniqueId`, `File file`, `String ownerName`) |
 
@@ -6570,7 +6570,7 @@ DocumentWriterAdapter has all the functionality of the AbstractGroupWriterAdapte
 The AbstractBatchWriterAdapter class allows batch writing of indicators to the API. The adapter facilitates the initial creation and upload of the batch file using the following write methods:
 
 |Type|_Method_|
-|---------------------------------------------------------------------------------------------------------- |
+|-------------------------|--------------------------------------------------------------------------------- |
 |`ApiEntitySingleResponse`|create(`BatchConfig item` ) |
 |`ApiEntitySingleResponse`|create(`BatchConfig item`, `String ownerName`) |
 |`ApiEntitySingleResponse`|uploadFile(`int batchId`, `File file`) |
@@ -6641,7 +6641,7 @@ Below is the standard create methods available to all WriterAdapters.
 In addition to the User-specific methods below. Note the delete methods require the username while the create methods require the entire User object.
 
 |Type|_Method_                                |
-|---------------------------------------------------------- |
+|--------------|-------------------------------------------- |
 |`UserResponse`|createAssignee(P uniqueId, User assignee)                   |
 |`UserResponse`|createEscalatee(P uniqueId, User escalatee) |
 |`UserResponse`|deleteAssignee(P uniqueId, String userName)                   |
@@ -6654,7 +6654,7 @@ The TagWriterAdapter class allows [Group](#associate-groups), [Indicator](#assoc
 Below is the standard create methods available to all WriterAdapters. Note that the deletes require the system-generated VictimAsset ID  as the `uniqueId` Integer (P). The create and update requires the full VictimAsset object (T).
 
 |Type|_Method_|
-|---------------------------------------------------------------------------------------------------------- |
+|----------------------------------------------|------------------------------------------------------------ |
 |`WriteListResponse<T>`                        |create(`List<T> itemList`)                                        |
 |`ApiEntitySingleResponse`                     |create(`T item`)                                                  |
 |`ApiEntitySingleResponse`                     |create(`T item`, `String ownerName`)                                |
@@ -7364,16 +7364,16 @@ The JavaScript SDK for ThreatConnect was designed with a focus on abstracting th
 
 The JavaScript SDK supports the Resource Types listed below. There is also a mechanism to do manual API requests to cover any API calls that are not provided with the core functionality.
 
-Object                | Description                      
---------------------- | -----------                      
-`groups()`            | Group container object           
-`indicators()`        | Indicator container object       
-`indicatorsBatch()`   | Batch Indicator container object 
-`owners()`            | Owner container object           
-`securityLabel()`     | Security Label container object  
-`tags()`              | Tag container object             
-`tasks()`             | Task container object            
-`victims()`           | Victim container object          
+|Object                | Description          |            
+|--------------------- | -----------           |           
+|`groups()`            | Group container object  |         
+|`indicators()`        | Indicator container object   |    
+|`indicatorsBatch()`   | Batch Indicator container object |
+|`owners()`            | Owner container object           |
+|`securityLabel()`     | Security Label container object  |
+|`tags()`              | Tag container object             |
+|`tasks()`             | Task container object            |
+|`victims()`           | Victim container object          |
 
 ## Example JavaScript App
 
@@ -7490,8 +7490,6 @@ This property will direct the ThreatConnect application to show a checkbox to th
 <b>Encrypted Parameters</b>
 
 This property should be used to encrypt private passwords used by the app (e.g., API keys). This added level of security will allow the application to persist the password in encrypted form when at rest. The input field during job creation will be "password" text, and the key will not be visible when typed. 
-
-![Encrypted Field](images/encrypted-field.png "Encrypted Field") 
 
 The configuration property is defined for the encrypted parameter using the following flag:
 

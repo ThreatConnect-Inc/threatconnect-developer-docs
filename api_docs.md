@@ -4318,25 +4318,20 @@ Likewise, Table 38 illustrates valid fields for inclusion in the body of the POS
 | addresses      | ip           | TRUE         |
 |                | rating       | FALSE    |
 |                | confidence   |FALSE    |
-|                |              |    |
-|                |              |           |
 | emailAddresses | address      | TRUE         |
 |                | rating       | FALSE    |
 |                | confidence   | FALSE   |
-|                |              |     |
 | files          | md5          |  TRUE*        |
 |                | sha1         |  TRUE*    |
 |                | sha256       | TRUE*    |
 |                | size         | FALSE    |
 |                | rating       | FALSE    |
 |                | confidence   |FALSE    |
-|                |          |          |
 | hosts          | hostName     |  TRUE        |
 |                | dnsActive     | FALSE    |
 |                | whoisActive | FALSE    |
 |                | rating      | FALSE    |
 |                | confidence  | FALSE    |
-|                |              |          |
 | urls           | text         |TRUE        |
 |                | rating       | FALSE     |
 |                | confidence   | FALSE    |
@@ -4971,10 +4966,8 @@ The Batch Create resource creates a batch entry in the system. No batch processi
 | haltOnError         | true             | The batch process will stop processing the entire batch the first time it reaches an error during processing.         
 |                     | false            | If this field is not provided, the default behavior is to continue processing further entities in the input file.                                          
 |                     | default=false    |                                                                                                                                                                                                                                
-|                     |                  |
 | attributeWriteType  | Append           | Append: Add attributes (allow duplicates)                                                                                                                                                                                       
 |                     | Replace          | Replace: Delete current attributes; Add/Validate new                                                                                                                                                                                                                               
-|                     |                  |
 | action              | Create           | Create: Create Indicator                                                                                                                                                                                                        
 |                     | Delete           | Delete: Delete Indicator (only the ‘summary’ and ‘type’ field are required)                                                                                                                                                                                                                               
 
