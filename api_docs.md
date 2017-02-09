@@ -3584,10 +3584,12 @@ Retrieve a specific Task
 
 ```
 GET /v2/tasks/<task_id>
+```
 
 Sample Response to 
 GET /v2/tasks/599
 
+```json
 {
     "status": "Success",
     "data": {
