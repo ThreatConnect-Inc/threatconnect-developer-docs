@@ -4982,6 +4982,7 @@ The Batch Create resource creates a batch entry in the system. No batch processi
         "description": "a malicious domain",
         "summary": "super-malicious.ru",
         "type": "Host", 
+        "associatedGroup": [12345, 54321],
         "attribute": [
             {
                 "type": "AttributeName",
@@ -5008,6 +5009,7 @@ The batch upload feature expects to ingest a JSON file consisting of a list of d
 `type` | string|Required
 `tag` | list of dictionaries| Optional
 `attribute` | list of dictionaries| Optional
+`associatedGroup` | list of integers | Optional
 
 Supported `type` values for Indicators:
 
