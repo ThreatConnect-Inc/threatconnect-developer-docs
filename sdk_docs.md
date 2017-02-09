@@ -557,6 +557,8 @@ Post filters are applied on the results returned by the API request.
 The import statement and reading of the configuration files have been replaced with `...` for brevity.
 
 ```python
+from threatconnect.Config.FilterOperator import FilterOperator
+
 tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
 # indicator object
@@ -4623,6 +4625,8 @@ filter1 = adversary.tag('APT')
 Python SDK Post Filter Basics example:
 
 ```python
+from threatconnect.Config.FilterOperator import FilterOperator
+
 filter1 = adversary.add_filter()
 filter1 = adversary.add_pf_name('Bad Guy')
 filter1 = adversary.add_pf_date_added('2015-06-18T20:21:45-05:00', FilterOperator.GE)
