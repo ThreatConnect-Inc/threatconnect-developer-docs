@@ -9490,7 +9490,7 @@ The variables listed in the table below are internal variables understood by the
 |ATTRIBUTES|String Array|["${ATTRIBUTES:Address}"]|The ATTRIBUTES variable resolves to attributes the current organization has available. This variable has a second, optional,	component, :<type>,	that further refines the attributes resolved to the specific Indicator or group type. This component gives the developer further control over the attribute type values rendered at	runtime. The string value of the attribute(s) is passed as an argument to the app.|
 
 
-When the $ATTRIBUTES internal variable is used with a :&lt;type&gt; suffix, the types can be any of the Indicator or group types in the ThreatConnect platform: Address, Adversary, Document, Email, EmailAddress, File, Host, Incident, Signature, Task,Threat, URL, and Victim.
+When the $ATTRIBUTES internal variable is used with a :&lt;type&gt; suffix, the types can be any of the Indicator, Group, Task, or Victim types in the ThreatConnect platform: Address, Adversary, Campaign, Document, Email, EmailAddress, File, Host, Incident, Signature, Task, Threat, and URL.
 
 ### External Variables
 
