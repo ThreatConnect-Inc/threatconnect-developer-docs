@@ -2928,7 +2928,7 @@ incidents = tc.incidents()
 owner = 'Example Community'
 incident = incidents.add('New Incident', owner)
 
-incident.set_event_date('2015-03-01T00:00:00Z')
+incident.set_event_date('2015-03-21T00:00:00Z')
     
 incident.add_attribute('Description', 'Description Example')
 incident.add_tag('EXAMPLE')
@@ -2961,7 +2961,7 @@ Note: In the prior example, no API calls are made until the `commit()` method is
 |`tc = ThreatConnect(api_access_id, api...`| Instantiate the ThreatConnect object. |
 |`incidents = tc.incidents()`              | Instantiate an Incidents container object. |
 |`incident = incidents.add('New Incident')`| Add a Resource object setting the name and Owner. |
-|`incident.set_event_date('2015-03-01T0...`| **(REQUIRED)** Set event date of Incident. |
+|`incident.set_event_date('2015-03-21T0...`| **(REQUIRED)** Set event date of Incident. |
 |`incident.add_attribute('Description' ...`| Add an Attribute of type **Description** to the Resource. |
 |`incident.add_tag('EXAMPLE')`             | Add a Tag to the Incident. |
 |`incident.set_security_label('TLP Green')`| Add a Security Label to the Incident. |
@@ -7821,7 +7821,7 @@ Single Indicator retrieve Example Results:
             "id": 97934,
             "indicators": "10.20.30.40",
             "dateAdded": "2015-12-14T23:23:00Z",
-            "lastModified": "2016-01-07T23:47:53Z",
+            "lastModified": "2016-01-14T23:47:53Z",
             "ownerName": "Example Community",
             "rating": 3,
             "confidence": 0,
@@ -8903,9 +8903,9 @@ tc.tasks()
     // optional
     .assignee([{'userName': 'joe-user@gmail.com'}])
     .escalatee([{'userName': 'juser'}])
-    .dueDate('2017-01-02T03:04:05Z')
-    .escalationDate('2018-01-02T03:04:05Z')
-    .reminderDate('2017-01-01T03:04:05Z')
+    .dueDate('2017-01-13T03:04:05Z')
+    .escalationDate('2017-01-18T03:04:05Z')
+    .reminderDate('2017-01-16T03:04:05Z')
     .escalated(false)
     .reminded(false)
     .overdue(false)
@@ -8936,9 +8936,9 @@ tc.tasks()
         "escalated": false,
         "reminded": false,
         "overdue": false,
-        "dueDate": "2017-01-02T03:04:05Z",
-        "reminderDate": "2017-01-01T03:04:05Z",
-        "escalationDate": "2018-01-02T03:04:05Z",
+        "dueDate": "2017-01-13T03:04:05Z",
+        "reminderDate": "2017-01-16T03:04:05Z",
+        "escalationDate": "2017-01-18T03:04:05Z",
         "assignee": [{
             "userName": "joe-user@gmail.com",
             "firstName": "Joe",
@@ -8953,7 +8953,7 @@ tc.tasks()
     "remaining": 0,
     "url": "https://demo.threatconnect.com/api/v2/tasks/?resultLimit=500&owner=SumX",
     "apiCalls": 1,
-    "body": "{\"name\":\"Test Task\",\"assignee\":[{\"userName\":\"joe-user@gmail.com\"}],\"escalatee\":[{\"userName\":\"juser\"}],\"dueDate\":\"2017-01-02T03:04:05Z\",\"escalationDate\":\"2018-01-02T03:04:05Z\",\"reminderDate\":\"2017-01-01T03:04:05Z\",\"escalated\":false,\"reminded\":false,\"overdue\":false,\"status\":\"In Progress\"}",
+    "body": "{\"name\":\"Test Task\",\"assignee\":[{\"userName\":\"joe-user@gmail.com\"}],\"escalatee\":[{\"userName\":\"juser\"}],\"dueDate\":\"2017-01-13T03:04:05Z\",\"escalationDate\":\"2017-01-18T03:04:05Z\",\"reminderDate\":\"2017-01-16T03:04:05Z\",\"escalated\":false,\"reminded\":false,\"overdue\":false,\"status\":\"In Progress\"}",
     "resultCount": 0,
     "status": "Success"
 }
