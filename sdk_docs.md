@@ -5403,7 +5403,7 @@ The SDK utilizes these open-source libraries primarily for RESTful communication
 |Commons Codec | 1.9 | HTTP Client |
 |Jackson Core| 2.5.3 | SDK |
 |Jackson Databind| 2.5.3 | SDK |
-|↪ Jackson Annotation| 2.5.0 | Jackson Databind |
+|Jackson Annotation| 2.5.0 | Jackson Databind |
 
 <b>Technical Design</b>
 
