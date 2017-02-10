@@ -4,6 +4,7 @@
 # ThreatConnect Developer Documentation
 
 <a href='https://github.com/ThreatConnect-Inc'>Star us on GitHub</a>
+
 <a href='https://www.threatconnect.com/platform/editions/#basic'>Sign up for ThreatConnect (free)</a>
 
 # Getting Started
