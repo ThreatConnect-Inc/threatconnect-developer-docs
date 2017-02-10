@@ -1,3 +1,6 @@
+<img height="100" width="300" src="https://threatconnect.com/wp-content/uploads/ThreatConnect-Logo-Retina-Color.png" alt="ThreatConnect | Enterprise Threat Intelligence Platform"/>
+
+
 # ThreatConnect Developer Documentation
 
 <a href='https://github.com/ThreatConnect-Inc'>Star us on GitHub</a>
