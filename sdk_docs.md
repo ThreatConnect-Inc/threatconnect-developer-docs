@@ -2502,7 +2502,7 @@ except RuntimeError as e:
 
 The example demonstrates how to delete an Adversary Resource in the ThreatConnect platform. For more information on the purpose of each line of code, see the **Code Highlights** section below.
 
-Note: In the prior example, no API calls are made until the `commit()` method is invoked.
+Note: In the prior example, no API calls are made until the `delete()` method is invoked.
 
 <b>Code Highlights</b>
 
@@ -2903,7 +2903,7 @@ except RuntimeError as e:
 
 The example demonstrates how to delete an Email Resource in the ThreatConnect platform. For more information on the purpose of each line of code, see the **Code Highlights** section below.
 
-Note: In the prior example, no API calls are made until the `commit()` method is invoked.
+Note: In the prior example, no API calls are made until the `delete()` method is invoked.
 
 <b>Code Highlights</b>
 
@@ -3469,7 +3469,7 @@ except RuntimeError as e:
 
 The example demonstrates how to delete a Signature Resource in the ThreatConnect platform. For more information on the purpose of each line of code, see the **Code Highlights** section below.
 
-Note: In the prior example, no API calls are made until the `commit()` method is invoked.
+Note: In the prior example, no API calls are made until the `delete()` method is invoked.
 
 <b>Code Highlights</b>
 
@@ -3600,7 +3600,7 @@ except RuntimeError as e:
     sys.exit(1)
 ```
 
-Note: In the prior example, no API calls are made until the `commit()` method is invoked.
+Note: In the prior example, no API calls are made until the `delete()` method is invoked.
 
 *Code Highlights*
 
@@ -3752,7 +3752,7 @@ except RuntimeError as e:
 
 The example demonstrates how to delete an Threat Resource in the ThreatConnect platform. For more information on the purpose of each line of code, see the **Code Highlights** section below.
 
-Note: In the prior example, no API calls are made until the `commit()` method is invoked.
+Note: In the prior example, no API calls are made until the `delete()` method is invoked.
 
 <b>Code Highlights</b>
 
@@ -3894,7 +3894,7 @@ except RuntimeError as e:
 
 The example demonstrates how to delete a Victim Resource in the ThreatConnect platform. For more information on the purpose of each line of code, see the **Code Highlights** section below.
 
-Note: In the prior example, no API calls are made until the `commit()` method is invoked.
+Note: In the prior example, no API calls are made until the `delete()` method is invoked.
 
 <b>Code Highlights</b>
 
