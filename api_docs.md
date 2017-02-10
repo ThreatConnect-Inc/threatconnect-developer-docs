@@ -361,13 +361,13 @@ Note that the results will contain a mix of Indicator types, including variation
 The example below demonstrates usage of the modifiedSince parameter: 
 
 ```
-/v2/indicators?modifiedSince=2014-08-01T12:00:00Z
+/v2/indicators?modifiedSince=2014-08-21T12:00:00Z
 ```
 
 The example below demonstrates usage of the modifiedSince parameter and an additional parameter:
 
 ```
-/v2/indicators?modifiedSince=2014-08-01T12:00:00Z&owner=Common%20Community
+/v2/indicators?modifiedSince=2014-08-21T12:00:00Z&owner=Common%20Community
 ```
 
 The example below demonstrates usage of the summary parameter:
@@ -1197,8 +1197,8 @@ DNSResolutions Resource Type JSON Response:
    "id": 123456,
    "ownerName": "Organization Name",
    "type": "Host",
-   "dateAdded": "2015-07-02T17:45:32Z",
-   "lastModified": "2017-01-06T18:17:52Z",
+   "dateAdded": "2015-07-21T17:45:32Z",
+   "lastModified": "2017-01-21T18:17:52Z",
    "rating": 5.00,
    "confidence": 85,
    "threatAssessRating": 4.36,
@@ -1223,8 +1223,8 @@ DNSResolutions Resource Type XML Response:
     <Id>123456</Id>
     <OwnerName>Organization Name</OwnerName>
     <Type>Host</Type>
-    <DateAdded>2015-07-02T17:45:32Z</DateAdded>
-    <LastModified>2017-01-06T18:17:52Z</LastModified>
+    <DateAdded>2015-07-21T17:45:32Z</DateAdded>
+    <LastModified>2017-01-13T18:17:52Z</LastModified>
     <Rating>5.00</Rating>
     <Confidence>85</Confidence>
     <ThreatAssessRating>4.36</ThreatAssessRating>
@@ -1800,13 +1800,13 @@ Response data:
         "name" : "Acme",
         "type" : "Organization"
       },
-      "dateAdded" : "2016-02-02T17:50:25-05:00",
-      "lastModified" : "2016-02-02T17:50:25-05:00",
+      "dateAdded" : "2016-02-14T17:50:25-05:00",
+      "lastModified" : "2016-02-13T17:50:25-05:00",
       "webLink" : "https://……..",
       "observationCount" : 5,
-      "lastObserved" : "2016-02-04T11:28:23-05:00",
+      "lastObserved" : "2016-02-13T11:28:23-05:00",
       "falsePositiveCount" : 1,
-      "falsePositiveLastReported" : "2016-02-04T00:00:00-05:00",
+      "falsePositiveLastReported" : "2016-02-16T00:00:00-05:00",
       "hostName" : "….",
       "dnsActive" : "false",
       "whoisActive" : "false"
@@ -1892,13 +1892,13 @@ Sample query with includeAdditional flag (e.g. /v2/indicators/[IndicatorType]/[I
         "name" : "Acme",
         "type" : "Organization"
       },
-      "dateAdded" : "2016-02-02T17:50:25-05:00",
-      "lastModified" : "2016-02-02T17:50:25-05:00",
+      "dateAdded" : "2016-02-21T17:50:25-05:00",
+      "lastModified" : "2016-02-21T17:50:25-05:00",
       "webLink" : "https://……..",
       "observationCount" : 5,
-      "lastObserved" : "2016-02-04T11:28:23-05:00",
+      "lastObserved" : "2016-02-24T11:28:23-05:00",
       "falsePositiveCount" : 1,
-      "falsePositiveLastReported" : "2016-02-04T00:00:00-05:00",
+      "falsePositiveLastReported" : "2016-02-25T00:00:00-05:00",
       "hostName" : "….",
       "dnsActive" : "false",
       "whoisActive" : "false"
@@ -1920,8 +1920,8 @@ Sample Query without includeAdditional flag (e.g. v2/indicators/[IndicatorType]/
         "name" : "Acme",
         "type" : "Organization"
       },
-      "dateAdded" : "2016-02-02T17:50:25-05:00",
-      "lastModified" : "2016-02-02T17:50:25-05:00",
+      "dateAdded" : "2016-02-22T17:50:25-05:00",
+      "lastModified" : "2016-02-22T17:50:25-05:00",
       "webLink" : "https://……..",
       "hostName" : "….",
       "dnsActive" : "false",
@@ -2048,7 +2048,7 @@ Retrieving Bulk Reports JSON Response:
     "ownerName": "Demo Customer Community",
     "type": "Host",
     "dateAdded": "2013-11-15T21:32:39Z",
-    "lastModified": "2015-03-03T06:22:03Z",
+    "lastModified": "2015-03-13T06:22:03Z",
     "rating": 5.0,
     "confidence": 73,
     "threatAssessRating": 4.38,
