@@ -2194,6 +2194,32 @@ Paths                                           | Owner <br> Allowed | Paginatio
 
 From the Groups Service, a query can be made for specific Group Collection types such as Threats, Incidents, etc.
 
+####Campaigns Resource Type
+
+Example of an Groups Service query for a generic Collection of Campaigns for a user’s Organization:
+
+```
+/v2/groups/campaigns?resultStart=0&resultLimit=20
+```
+
+Example of an Groups Service query for a generic Collection of Campaigns in the Common Community:
+
+```
+/v2/groups/campaigns?owner=Common%20Community&resultStart=0&resultLimit=20
+```
+
+Example of a Group Service query of a specific Campaign:
+
+```
+/v2/groups/campaigns/3094
+```
+
+As of ThreatConnect 5.0, Campaign objects have been added to the data model and are available via the API. More documentation is coming soon.
+
+####Campaign Resource Type
+
+More documentation is coming soon.
+
 ####Incidents Resource Type
 
 Example of an Groups Service query for a generic Collection of Incidents for a user’s Organization:
