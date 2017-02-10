@@ -28,9 +28,9 @@ source_parsers = {
     '.md': CommonMarkParser,
 }
 
-master_doc = 'index'
-project = u'Read The Docs'
-copyright = u'2010, Eric Holscher, Charlie Leifer, Bobby Grace'
+master_doc = 'readme'
+project = u'ThreatConnect_Developer_Docs'
+copyright = u'2017 ThreatConnect'
 version = '1.0'
 release = '1.0'
 exclude_patterns = ['_build']
@@ -43,14 +43,14 @@ intersphinx_mapping = {
 }
 # This doesn't exist since we aren't shipping any static files ourselves.
 #html_static_path = ['_static']
-htmlhelp_basename = 'ReadTheDocsdoc'
+htmlhelp_basename = 'ThreatConnect Developer Docs'
 latex_documents = [
-    ('index', 'ReadTheDocs.tex', u'Read The Docs Documentation',
-     u'Eric Holscher, Charlie Leifer, Bobby Grace', 'manual'),
+    ('readme', 'api_docs', u'sdk_docs',
+     u'ThreatConnect', 'manual'),
 ]
 man_pages = [
-    ('index', 'read-the-docs', u'Read The Docs Documentation',
-     [u'Eric Holscher, Charlie Leifer, Bobby Grace'], 1)
+    ('readme', 'api_docs', u'sdk_docs',
+     [u'ThreatConnect'], 1)
 ]
 
 exclude_patterns = [
