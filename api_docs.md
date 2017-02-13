@@ -5225,22 +5225,5 @@ An integration may want to update the "Times Seen" Attribute (such as a sensor o
 
 Removing a tag from an indicator may be useful if it is no longer considered relevant based on a computation of its "Times Seen" Attribute and its creation date (or "last-seen" date, if that was also tracked as an Attribute).
 
-# Python Library
-<p <b>10007-04 EN Rev. A</b></p>
-
-The following is a code sample and syntax highlighting:
-
-```python
-
-resources = tc.adversaries()
-
-resource = resources.add('Test Adversary')
-resource.add_attribute('Description', 'Adversary Sample Description')
-resource.add_tag('Sample Adversary')
-try:
-    resources.commit('Acme Corp')
-except RuntimeError as e:
-    print(e)
-```
 
 
