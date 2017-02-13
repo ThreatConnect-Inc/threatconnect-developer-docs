@@ -5,7 +5,7 @@
 
 <a href='https://github.com/ThreatConnect-Inc'>Star us on GitHub</a>
 
-<a href='https://www.threatconnect.com/platform/editions/#basic'>Sign up for ThreatConnect (free)</a>
+<a href='https://www.threatconnect.com/request-a-demo/'>Request a ThreatConnect Demo</a>
 
 # Getting Started
 
