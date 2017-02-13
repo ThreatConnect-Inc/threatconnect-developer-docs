@@ -3,9 +3,9 @@
 
 # ThreatConnect Developer Documentation
 
-<a href='https://github.com/ThreatConnect-Inc'>Star us on GitHub</a>
+[Star us on GitHub](https://github.com/ThreatConnect-Inc)
 
-<a href='https://www.threatconnect.com/request-a-demo/'>Request a ThreatConnect Demo</a>
+[Request a ThreatConnect Demo](https://www.threatconnect.com/request-a-demo/)
 
 # Getting Started
 
