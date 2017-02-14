@@ -15,7 +15,7 @@ Join the developer forum at [/r/threatconnect](https://www.reddit.com/r/threatco
 
 The ThreatConnect platform enables developers to query their data and enrich it with powerful integrations. 
 
-The [RESTful public API for ThreatConnect](api_docs/#rest-api) is available to [developers with an API ID and Secret Key](#getting-your-api-key). 
+The [RESTful public API for ThreatConnect](api_docs/#rest-api) is available to [developers with an API ID and Secret Key](#creating-an-api-key). 
 
 JavaScript apps may be installed by the user with the [Spaces visualization feature](http://kb.threatconnect.com/customer/en/portal/articles/2256255-creating-a-space).
 
