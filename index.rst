@@ -6,6 +6,13 @@ ThreatConnect Developer Documentation
 `Request a ThreatConnect
 Demo <https://www.threatconnect.com/request-a-demo/>`__
 
+.. toctree::
+   :caption:  Table of Contents
+   :maxdepth: 2
+
+   api_doc
+   sdk_docs
+
 Getting Started
 ===============
 
