@@ -11,7 +11,10 @@ Demo <https://www.threatconnect.com/request-a-demo/>`__
    :maxdepth: 2
 
    api_docs
-   sdk_docs
+   sdk_intro
+   python_sdk
+   java_sdk
+   javascript_sdk
 
 
 Getting Started
