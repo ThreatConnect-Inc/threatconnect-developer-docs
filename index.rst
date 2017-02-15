@@ -10,8 +10,9 @@ Demo <https://www.threatconnect.com/request-a-demo/>`__
    :caption:  Table of Contents
    :maxdepth: 2
 
-   api_doc
+   api_docs
    sdk_docs
+
 
 Getting Started
 ===============
