@@ -16,6 +16,7 @@ Demo <https://www.threatconnect.com/request-a-demo/>`__
    python_sdk
    java_sdk
    javascript_sdk
+   deployment_config
    sdk_trademarks
 
 
