@@ -1,24 +1,3 @@
-ThreatConnect Developer Documentation
-=====================================
-
-`Star us on GitHub <https://github.com/ThreatConnect-Inc>`__
-
-`Request a ThreatConnect
-Demo <https://www.threatconnect.com/request-a-demo/>`__
-
-.. toctree::
-   :caption:  Table of Contents
-   :maxdepth: 2
-
-   getting_started
-   api_docs
-   sdk_intro
-   python_sdk
-   java_sdk
-   javascript_sdk
-   sdk_trademarks
-
-
 Getting Started
 ===============
 
