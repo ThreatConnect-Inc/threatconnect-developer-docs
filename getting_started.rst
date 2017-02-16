@@ -29,10 +29,10 @@ the Exchange)
 
 -  `See an example of a Python app <../python_sdk/#example-python-app>`__
 
--  `See an example of a Java app <java_sdk/#example-java-app>`__
+-  `See an example of a Java app <../java_sdk/#example-java-app>`__
 
 -  `See an example of a JavaScript Spaces
-   app <javascript_sdk/#example-javascript-app>`__
+   app <../javascript_sdk/#example-javascript-app>`__
 
 Libraries in other languages are available for interfacing with the API,
 but are *not officially supported*:
