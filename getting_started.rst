@@ -11,7 +11,7 @@ enrich it with powerful integrations.
 
 The `RESTful public API for ThreatConnect <rest_api_docs/#rest-api>`__ is
 available to `developers with an API ID and Secret
-Key <rest_api_docs/#creating-an-api-key>`__.
+Key <../rest_api_docs/#creating-an-api-key>`__.
 
 JavaScript apps may be installed by the user with the `Spaces
 visualization
@@ -27,7 +27,7 @@ is accessible to all ThreatConnect users.
 (Contact support@threatconnect.com to have your application listed in
 the Exchange)
 
--  `See an example of a Python app <python_sdk/#example-python-app>`__
+-  `See an example of a Python app <../python_sdk/#example-python-app>`__
 
 -  `See an example of a Java app <java_sdk/#example-java-app>`__
 
