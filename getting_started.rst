@@ -9,9 +9,9 @@ Join the developer forum at
 The ThreatConnect platform enables developers to query their data and
 enrich it with powerful integrations.
 
-The `RESTful public API for ThreatConnect <api_docs/#rest-api>`__ is
+The `RESTful public API for ThreatConnect <rest_api_docs/#rest-api>`__ is
 available to `developers with an API ID and Secret
-Key <#getting-your-api-key>`__.
+Key <rest_api_docs/#creating-an-api-key>`__.
 
 JavaScript apps may be installed by the user with the `Spaces
 visualization
@@ -27,12 +27,12 @@ is accessible to all ThreatConnect users.
 (Contact support@threatconnect.com to have your application listed in
 the Exchange)
 
--  `See an example of a Python app <sdk_docs/#example-python-app>`__
+-  `See an example of a Python app <python_sdk/#example-python-app>`__
 
--  `See an example of a Java app <sdk_docs/#example-java-app>`__
+-  `See an example of a Java app <java_sdk/#example-java-app>`__
 
 -  `See an example of a JavaScript Spaces
-   app <sdk_docs/#example-javascript-app>`__
+   app <javascript_sdk/#example-javascript-app>`__
 
 Libraries in other languages are available for interfacing with the API,
 but are *not officially supported*:
