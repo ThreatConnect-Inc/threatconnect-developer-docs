@@ -12,7 +12,6 @@ Demo <https://www.threatconnect.com/request-a-demo/>`__
 
    getting_started
    rest_api_docs
-   sdk_intro
    python_sdk
    java_sdk
    javascript_sdk
