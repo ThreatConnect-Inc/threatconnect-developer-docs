@@ -1,5 +1,5 @@
-Java Library
-============
+Java SDK
+========
 
 The following is a code sample with line numbers syntax highlighting:
 

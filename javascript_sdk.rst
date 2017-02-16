@@ -1,5 +1,5 @@
-JavaScript Library
-==================
+JavaScript SDK
+==============
 
 About This Document
 

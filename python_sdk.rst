@@ -1,5 +1,5 @@
-Python Library
-==============
+Python SDK
+==========
 
 Getting Started
 ---------------
