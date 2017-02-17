@@ -1,27 +1,6 @@
 Java SDK
 ========
 
-The following is a code sample with line numbers syntax highlighting:
-
-.. code:: java
-
-      1     private static void doCreate(Connection conn) {
-      2         AbstractGroupWriterAdapter<Adversary> writer WriterAdapterFactory.createAdversaryGroupWriter(conn);
-      3         
-      4         Adversary adversary = new Adversary();
-      5         adversary.setName("Test Adversary");
-      6         adversary.setOwnerName("System");
-      7         
-      8         try {
-      9             Adversary savedAdversary = writer.create(adversary);
-     10             System.out.println("Saved: " + savedAdversary.toString() );
-     11             
-     12         } catch (IOException | FailedResponseException ex) {
-     13             System.err.println("Error: " + ex.toString()); 
-     14         }   
-     15         
-     16     }   
-
 About This Document
 
 This guide details the process of coding Java applications utilizing the
