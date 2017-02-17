@@ -2686,7 +2686,38 @@ Table 17 - Campaigns Resource Type
 Campaign Resource Type
 ^^^^^^^^^^^^^^^^^^^^^^
 
-More documentation is coming soon.
+Campaign Resource Type JSON Response:
+
+.. code:: json
+
+    {
+      "status": "Success",
+      "data": {
+        "campaign": {
+          "id": 1234567,
+          "name": "Shamoon",
+          "owner": {
+            "id": 2,
+            "name": "Organization Name",
+            "type": "Organization"
+          },
+          "dateAdded": "2017-01-13T00:00:00Z",
+          "webLink": "https://app.threatconnect.com/auth/campaign/campaign.xhtml?campaign=1234567",
+          "firstSeen": "2012-08-15T00:00:00Z"
+        }
+      }
+    }
+
+Table 18 - Campaign Resource Type
+
++--------------------------------------------------------+-----------------+-----------------------+
+| Paths                                                  | Owner Allowed   | Pagination Required   |
++========================================================+=================+=======================+
+| ``/v2/groups/campaigns/<ID>``                          | FALSE           | FALSE                 |
++--------------------------------------------------------+-----------------+-----------------------+
+
+For each Campaign, its Attributes, associated Indicators, Security
+Labels, Victims, Victim Assets, and Tags can be retrieved.
 
 Incidents Resource Type
 ^^^^^^^^^^^^^^^^^^^^^^^
