@@ -437,6 +437,32 @@ have become increasingly important. For example, when creating or
 modifying Resources in a Community or Source, at least a
 Contributor-level access for that ownership Group must be held.
 
+Whoami Service
+~~~~~~~~~~~~~~
+
+The ``whoami`` branch, shown below, provides information about the current user.
+
+::
+
+    /v2/whoami
+
+Whoami Service JSON Response:
+
+.. code-block:: json
+
+    {
+      "status": "Success",
+      "data": {
+        "user": {
+          "userName": "12345678901234567890",
+          "firstName": "Joe_API",
+          "lastName": "User",
+          "pseudonym": "Joey",
+          "role": "Api User"
+        }
+      }
+    }
+
 Indicators Service
 ~~~~~~~~~~~~~~~~~~
 
