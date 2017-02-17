@@ -2137,6 +2137,21 @@ count to the existing one. If it does not find a record, then it will
 create a new Observation. No entity is returned to the API user—only a
 204 response, if successful.
 
+Recent Observations
+~~~~~~~~~~~~~~~~~~~
+
+As of ThreatConnect 5.0, the API branch below provides the ten Indicators with the most observations since the given date.
+
+.. code-block:: shell
+
+    /v2/indicators/observed
+
+If no date is given, the default query returns the ten Indicators which have had the most observations over the past day. In this context, a “day” includes all of the previous day and all data from the current day up to the current moment in time. To view Indicators with the most observations since a specific date, use the `dateObserved` parameter, as demonstrated in the example below. 
+
+.. code-block:: shell
+
+    /v2/indicators/observed?dateObserved=2017-01-13
+
 Indicator Activity
 ~~~~~~~~~~~~~~~~~~
 
