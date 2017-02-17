@@ -2634,8 +2634,54 @@ Example of a Group Service query of a specific Campaign:
 
     /v2/groups/campaigns/3094
 
-As of ThreatConnect 5.0, Campaign objects have been added to the data
-model and are available via the API. More documentation is coming soon.
+Campaigns Resource Type JSON Response:
+
+.. code:: json
+
+    {
+      "status": "Success",
+      "data": {
+        "resultCount": 2,
+        "campaign": [
+          {
+            "id": 1234567,
+            "name": "Shamoon",
+            "ownerName": "Organization Name",
+            "dateAdded": "2017-01-13T00:00:00Z",
+            "webLink": "https://app.threatconnect.com/auth/campaign/campaign.xhtml?campaign=1234567",
+            "firstSeen": "2012-08-15T00:00:00Z"
+          },
+          {
+            "id": 1234568,
+            "name": "Shamoon 2",
+            "ownerName": "Organization Name",
+            "dateAdded": "2017-01-15T00:00:00Z",
+            "webLink": "https://app.threatconnect.com/auth/campaign/campaign.xhtml?campaign=1234568",
+            "firstSeen": "2016-11-01T00:00:00Z"
+          }
+        ]
+      }
+    }
+
+A list of API paths involving the Campaigns Resource Type are shown in the table below.
+
+Table 17 - Campaigns Resource Type
+
++-----------------------------------------------------------------+-----------------+-----------------------+
+| Paths                                                           | Owner Allowed   | Pagination Required   |
++=================================================================+=================+=======================+
+| ``/v2/groups/campaigns``                                        | TRUE            | TRUE                  |
++-----------------------------------------------------------------+-----------------+-----------------------+
+| ``/v2/indicators/<indicator type>/<value>/groups/campaigns``    |                 |                       |
++-----------------------------------------------------------------+-----------------+-----------------------+
+| ``/v2/tags/<tag name>/groups/campaigns``                        |                 |                       |
++-----------------------------------------------------------------+-----------------+-----------------------+
+| ``/v2/securityLabels/<security label name>/groups/campaigns``   |                 |                       |
++-----------------------------------------------------------------+-----------------+-----------------------+
+| ``/v2/groups/<group type>/<ID>/groups/campaigns``               |                 |                       |
++-----------------------------------------------------------------+-----------------+-----------------------+
+| ``/v2/victims/<ID>/groups/campaigns``                           |                 |                       |
++-----------------------------------------------------------------+-----------------+-----------------------+
 
 Campaign Resource Type
 ^^^^^^^^^^^^^^^^^^^^^^
