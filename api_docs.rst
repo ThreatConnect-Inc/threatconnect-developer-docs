@@ -2178,6 +2178,28 @@ If no date is given, the default query returns the ten Indicators which have had
 
     /v2/indicators/observed?dateObserved=2017-01-13
 
+Response data:
+
+.. code-block:: json
+
+    {
+      "status": "Success",
+      "data": {
+        "resultCount": 1,
+        "indicator": [
+          {
+            "summary": "bad.com",
+            "userObservedList": [
+              {
+                "userName": "12345678901234567890",
+                "count": 3
+              }
+            ]
+          }
+        ]
+      }
+    }
+
 Indicator Activity
 ~~~~~~~~~~~~~~~~~~
 
