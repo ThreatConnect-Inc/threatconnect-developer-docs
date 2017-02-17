@@ -440,7 +440,7 @@ Contributor-level access for that ownership Group must be held.
 Whoami Service
 ~~~~~~~~~~~~~~
 
-The ``whoami`` branch, shown below, provides information about the current user.
+The ``whoami`` service, shown below, provides information about the current user.
 
 ::
 
@@ -995,8 +995,8 @@ Indicator Type XML Response:
 
 To support `custom Indicator
 types <http://docs.threatconnect.com/#custom-indicator-types>`__, the
-API branch ``/v2/types/indicatorTypes`` will return all of the Indicator
-types available in that instance of ThreatConnect. This API branch will
+``/v2/types/indicatorTypes`` service will return all of the Indicator
+types available in that instance of ThreatConnect. This service will
 also return the name of the API branch and API entity for each Indicator
 type. For more information about a specific Indicator type, add the
 Indicator type to the end of the query above, e.g.,
@@ -2068,7 +2068,7 @@ Custom Indicator Types
 It is possible to create custom Indicator types in ThreatConnect. To
 find the available custom Indicator types and their respective
 endpoints, refer to the `Indicator
-Type <http://docs.threatconnect.com/#indicator-types>`__ branch.
+Type <http://docs.threatconnect.com/#indicator-types>`__ service.
 
 Observations
 ~~~~~~~~~~~~
@@ -2163,16 +2163,16 @@ count to the existing one. If it does not find a record, then it will
 create a new Observation. No entity is returned to the API user—only a
 204 response, if successful.
 
-Recent Observations
-~~~~~~~~~~~~~~~~~~~
+Recent Observations Service
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-As of ThreatConnect 5.0, the API branch below provides the ten Indicators with the most observations since the given date.
+As of ThreatConnect 5.0, the ``/observed`` service below provides the ten Indicators with the most observations since the given date.
 
 ::
 
     /v2/indicators/observed
 
-If no date is given, the default query returns the ten Indicators which have had the most observations over the past day. In this context, a “day” includes all of the previous day and all data from the current day up to the current moment in time. To view Indicators with the most observations since a specific date, use the `dateObserved` parameter, as demonstrated in the example below. 
+If no date is given, the default query returns the ten Indicators which have had the most observations over the past day. In this context, a “day” includes all of the previous day and all data from the current day up to the current moment in time. To view Indicators with the most observations since a specific date, use the ``dateObserved`` parameter, as demonstrated in the example below. 
 
 ::
 
