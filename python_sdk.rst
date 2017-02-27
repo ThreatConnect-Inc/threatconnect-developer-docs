@@ -1894,30 +1894,23 @@ Tutorial <#filtering>`__.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id,...``         |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``indicators = tc.indica | Instantiate an Indicators container object.     |
-| tors()``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``filter1 = indicator.ad | Add a filter object to the Indicators container |
-| d_filter()``             | object (support multiple filter objects).       |
-+--------------------------+-------------------------------------------------+
-| ``filter1.add_tag('EXAMP | Add API filter to retrieve Indicators with the  |
-| LE')``                   | 'Example' tag.                                  |
-+--------------------------+-------------------------------------------------+
-| ``indicator.retrieve()`` | Trigger the API request and retrieve the        |
-|                          | Indicators intelligence data.                   |
-+--------------------------+-------------------------------------------------+
-| ``for indicator in indic | Iterate over the Indicators container object    |
-| ators:``                 | generator.                                      |
-+--------------------------+-------------------------------------------------+
-| ``print(indicator.indica | Display the **'indicator'** property of the     |
-| tor)``                   | Indicator object.                               |
-+--------------------------+-------------------------------------------------+
++----------------------------------------+-------------------------------------------------------------------------------------------+
+| Snippet                                | Description                                                                               |
++========================================+===========================================================================================+
+| `tc = ThreatConnect(api_access_id,...` | Instantiate the ThreatConnect object.                                                     |
++----------------------------------------+-------------------------------------------------------------------------------------------+
+| `indicators = tc.indicators()`         | Instantiate an Indicators container object.                                               |
++----------------------------------------+-------------------------------------------------------------------------------------------+
+| `filter1 = indicator.add_filter()`     | Add a filter object to the Indicators container object (support multiple filter objects). |
++----------------------------------------+-------------------------------------------------------------------------------------------+
+| `filter1.add_tag('EXAMPLE')`           | Add API filter to retrieve Indicators with the 'Example' tag.                             |
++----------------------------------------+-------------------------------------------------------------------------------------------+
+| `indicator.retrieve()`                 | Trigger the API request and retrieve the Indicators intelligence data.                    |
++----------------------------------------+-------------------------------------------------------------------------------------------+
+| `for indicator in indicators:`         | Iterate over the Indicators container object generator.                                   |
++----------------------------------------+-------------------------------------------------------------------------------------------+
+| `print(indicator.indicator)`           | Display the **'indicator'** property of the Indicator object.                             |
++----------------------------------------+-------------------------------------------------------------------------------------------+
 
 Loading Attributes Example
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1947,18 +1940,15 @@ the individual Attribute objects.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``indicator.load_attribu | Trigger API call to load Attributes into the    |
-| tes()``                  | Indicator object.                               |
-+--------------------------+-------------------------------------------------+
-| ``for attribute in indic | Iterate over the Attribute property object      |
-| ator.attributes:``       | generator.                                      |
-+--------------------------+-------------------------------------------------+
-| ``print(attribute.type)` | Display the **'type'** property of the          |
-| `                        | Attribute object.                               |
-+--------------------------+-------------------------------------------------+
++--------------------------------------------+----------------------------------------------------------------+
+| Snippet                                    | Description                                                    |
++============================================+================================================================+
+| ``indicator.load_attributes()``            | Trigger API call to load Attributes into the Indicator object. |
++--------------------------------------------+----------------------------------------------------------------+
+| ``for attribute in indicator.attributes:`` | Iterate over the Attribute property object generator.          |
++--------------------------------------------+----------------------------------------------------------------+
+| ``print(attribute.type)``                  | Display the **'type'** property of the Attribute object.       |
++--------------------------------------------+----------------------------------------------------------------+
 
 Loading Security Label Example
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1986,18 +1976,15 @@ Indicator object. This object can then be directly accessed from the
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``indicator.load_securit | Trigger API call to load the Security Label     |
-| y_label()``              | into the Indicator object.                      |
-+--------------------------+-------------------------------------------------+
-| ``if indicator.security_ | Ensure the object has been loaded before        |
-| label is not ...``       | displaying properties.                          |
-+--------------------------+-------------------------------------------------+
-| ``print(indicator.securi | Display the **'name'** property of the Security |
-| ty_label.name)``         | Label object.                                   |
-+--------------------------+-------------------------------------------------+
++--------------------------------------------+------------------------------------------------------------------------+
+| Snippet                                    | Description                                                            |
++============================================+========================================================================+
+| ``indicator.load_security_label()``        | Trigger API call to load the Security Label into the Indicator object. |
++--------------------------------------------+------------------------------------------------------------------------+
+| ``if indicator.security_label is not ...`` | Ensure the object has been loaded before displaying properties.        |
++--------------------------------------------+------------------------------------------------------------------------+
+| ``print(indicator.security_label.name)``   | Display the **'name'** property of the Security Label object.          |
++--------------------------------------------+------------------------------------------------------------------------+
 
 Loading Tags Example
 ~~~~~~~~~~~~~~~~~~~~
@@ -2022,18 +2009,15 @@ directly accessed from the ``tags`` property.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``indicator.load_tags()` | Trigger API call to load Tags into the          |
-| `                        | Indicator object.                               |
-+--------------------------+-------------------------------------------------+
-| ``for tag in indicator.t | Iterate over the Attribute property object      |
-| ags:``                   | generator.                                      |
-+--------------------------+-------------------------------------------------+
-| ``print(tag.name)``      | Display the **'name'** property of the          |
-|                          | Attribute object.                               |
-+--------------------------+-------------------------------------------------+
++--------------------------------+----------------------------------------------------------+
+| Snippet                        | Description                                              |
++================================+==========================================================+
+| ``indicator.load_tags()``      | Trigger API call to load Tags into the Indicator object. |
++--------------------------------+----------------------------------------------------------+
+| ``for tag in indicator.tags:`` | Iterate over the Attribute property object generator.    |
++--------------------------------+----------------------------------------------------------+
+| ``print(tag.name)``            | Display the **'name'** property of the Attribute object. |
++--------------------------------+----------------------------------------------------------+
 
 Group Associations
 ~~~~~~~~~~~~~~~~~~
@@ -2058,15 +2042,14 @@ object.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``for g_associations in  | Trigger API call to retrieve all Groups         |
-| indicator.grou...``      | associated with this Indicator.                 |
-+--------------------------+-------------------------------------------------+
-| ``print(g_association.id | Display the **'id'** property of the associated |
-| )``                      | Group object.                                   |
-+--------------------------+-------------------------------------------------+
++---------------------------------------------+-------------------------------------------------------------------------+
+| Snippet                                     | Description                                                             |
++=============================================+=========================================================================+
+| ``for g_associations in indicator.grou...`` | Trigger API call to retrieve all Groups associated with this Indicator. |
++---------------------------------------------+-------------------------------------------------------------------------+
+| ``print(g_association.id)``                 | Display the **'id'** property of the associated Group object.           |
++---------------------------------------------+-------------------------------------------------------------------------+
+
 
 Indicator Associations
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -2094,15 +2077,13 @@ Indicator object.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``for i_association in i | Trigger API call to retrieve all Indicators     |
-| ndicator.ind_...``       | associated with this Indicator.                 |
-+--------------------------+-------------------------------------------------+
-| ``print(i_association.id | Display the **'id'** property of the associated |
-| )``                      | Indicator object.                               |
-+--------------------------+-------------------------------------------------+
++--------------------------------------------+-----------------------------------------------------------------------------+
+| Snippet                                    | Description                                                                 |
++============================================+=============================================================================+
+| ``for i_association in indicator.ind_...`` | Trigger API call to retrieve all Indicators associated with this Indicator. |
++--------------------------------------------+-----------------------------------------------------------------------------+
+| ``print(i_association.id)``                | Display the **'id'** property of the associated Indicator object.           |
++--------------------------------------------+-----------------------------------------------------------------------------+
 
 Victim Associations
 ~~~~~~~~~~~~~~~~~~~
@@ -2130,15 +2111,13 @@ object.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``for v_associations in  | Trigger API call to retrieve all Victims        |
-| indicator.vic_..``       | associated with this Indicator.                 |
-+--------------------------+-------------------------------------------------+
-| ``print(v_association.id | Display the **'id'** property of the associated |
-| )``                      | Victim object.                                  |
-+--------------------------+-------------------------------------------------+
++--------------------------------------------+--------------------------------------------------------------------------+
+| Snippet                                    | Description                                                              |
++============================================+==========================================================================+
+| ``for v_associations in indicator.vic_..`` | Trigger API call to retrieve all Victims associated with this Indicator. |
++--------------------------------------------+--------------------------------------------------------------------------+
+| ``print(v_association.id)``                | Display the **'id'** property of the associated Victim object.           |
++--------------------------------------------+--------------------------------------------------------------------------+
 
 DNS Resolution
 ~~~~~~~~~~~~~~
@@ -2159,18 +2138,15 @@ DNS Resolution is only supported for the Host Indicator Type.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``indicator.load_dns_res | Trigger API call to load DNS Resolutions into   |
-| olutions()``             | the Indicator object.                           |
-+--------------------------+-------------------------------------------------+
-| ``for dns in indicator.d | Iterate over the DNS Resolutions property       |
-| ns_resolutions:``        | object generator.                               |
-+--------------------------+-------------------------------------------------+
-| ``print(dns.ip)``        | Display the **'ip'** property of the Attribute  |
-|                          | object.                                         |
-+--------------------------+-------------------------------------------------+
++-------------------------------------------+---------------------------------------------------------------------+
+| Snippet                                   | Description                                                         |
++===========================================+=====================================================================+
+| ``indicator.load_dns_resolutions()``      | Trigger API call to load DNS Resolutions into the Indicator object. |
++-------------------------------------------+---------------------------------------------------------------------+
+| ``for dns in indicator.dns_resolutions:`` | Iterate over the DNS Resolutions property object generator.         |
++-------------------------------------------+---------------------------------------------------------------------+
+| ``print(dns.ip)``                         | Display the **'ip'** property of the Attribute object.              |
++-------------------------------------------+---------------------------------------------------------------------+
 
 Output Formats
 
@@ -2282,30 +2258,23 @@ Tutorial <#filtering>`__.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``signatures = tc.signat | Instantiate an Signatures container object.     |
-| ures()``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``filter1 = signatures.a | Add a filter object to the Signatures container |
-| dd_filter()``            | object (support multiple filter objects).       |
-+--------------------------+-------------------------------------------------+
-| ``filter1.add_tag('EXAMP | Add API filter to retrieve Signatures with the  |
-| LE')``                   | 'Example' tag.                                  |
-+--------------------------+-------------------------------------------------+
-| ``signatures.retrieve()` | Trigger the API request and retrieve the        |
-| `                        | Signatures intelligence data.                   |
-+--------------------------+-------------------------------------------------+
-| ``for signature in signa | Iterate over the Signatures container object    |
-| tures:``                 | generator.                                      |
-+--------------------------+-------------------------------------------------+
-| ``print(signature.id)``  | Display the **'id'** property of the Signature  |
-|                          | object.                                         |
-+--------------------------+-------------------------------------------------+
++----------------------------------------------+-------------------------------------------------------------------------------------------+
+| Snippet                                      | Description                                                                               |
++==============================================+===========================================================================================+
+| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                                                     |
++----------------------------------------------+-------------------------------------------------------------------------------------------+
+| ``signatures = tc.signatures()``             | Instantiate an Signatures container object.                                               |
++----------------------------------------------+-------------------------------------------------------------------------------------------+
+| ``filter1 = signatures.add_filter()``        | Add a filter object to the Signatures container object (support multiple filter objects). |
++----------------------------------------------+-------------------------------------------------------------------------------------------+
+| ``filter1.add_tag('EXAMPLE')``               | Add API filter to retrieve Signatures with the 'Example' tag.                             |
++----------------------------------------------+-------------------------------------------------------------------------------------------+
+| ``signatures.retrieve()``                    | Trigger the API request and retrieve the Signatures intelligence data.                    |
++----------------------------------------------+-------------------------------------------------------------------------------------------+
+| ``for signature in signatures:``             | Iterate over the Signatures container object generator.                                   |
++----------------------------------------------+-------------------------------------------------------------------------------------------+
+| ``print(signature.id)``                      | Display the **'id'** property of the Signature object.                                    |
++----------------------------------------------+-------------------------------------------------------------------------------------------+
 
 Signature Download
 ~~~~~~~~~~~~~~~~~~
@@ -2324,18 +2293,15 @@ Download the Signature contents for the Signature Resource.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``signature.download()`` | Trigger API request to download the Signature   |
-|                          | contents.                                       |
-+--------------------------+-------------------------------------------------+
-| ``if signature.contents  | Validate that the Signature has downloaded      |
-| is not None:``           | before displaying.                              |
-+--------------------------+-------------------------------------------------+
-| ``print(signature.conten | Display the contents of the Signature.          |
-| ts)``                    |                                                 |
-+--------------------------+-------------------------------------------------+
++----------------------------------------+---------------------------------------------------------------+
+| Snippet                                | Description                                                   |
++========================================+===============================================================+
+| ``signature.download()``               | Trigger API request to download the Signature contents.       |
++----------------------------------------+---------------------------------------------------------------+
+| ``if signature.contents is not None:`` | Validate that the Signature has downloaded before displaying. |
++----------------------------------------+---------------------------------------------------------------+
+| ``print(signature.contents)``          | Display the contents of the Signature.                        |
++----------------------------------------+---------------------------------------------------------------+
 
 Resource Metadata
 
@@ -2472,28 +2438,23 @@ Tutorial </python/advanced/filtering/>`__.
 
 -  Code Highlights\*
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``Tasks = tc.Tasks()``   | Instantiate a Tasks container object.           |
-+--------------------------+-------------------------------------------------+
-| ``filter1 = Tasks.add_fi | Add a filter object to the Tasks container      |
-| lter()``                 | object (support multiple filter objects).       |
-+--------------------------+-------------------------------------------------+
-| ``filter1.add_tag('EXAMP | Add an API filter to be applied to the API      |
-| LE')``                   | request.                                        |
-+--------------------------+-------------------------------------------------+
-| ``Tasks.retrieve()``     | Trigger the API request and retrieve the        |
-|                          | Tasks-intelligence data.                        |
-+--------------------------+-------------------------------------------------+
-| ``for task in Tasks:``   | Iterate over the Tasks container object         |
-|                          | generator.                                      |
-+--------------------------+-------------------------------------------------+
-| ``print(task.id)``       | Display the **id** property of the Task object. |
-+--------------------------+-------------------------------------------------+
++----------------------------------------------+--------------------------------------------------------------------------------------+
+| Snippet                                      | Description                                                                          |
++==============================================+======================================================================================+
+| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                                                |
++----------------------------------------------+--------------------------------------------------------------------------------------+
+| ``Tasks = tc.Tasks()``                       | Instantiate a Tasks container object.                                                |
++----------------------------------------------+--------------------------------------------------------------------------------------+
+| ``filter1 = Tasks.add_filter()``             | Add a filter object to the Tasks container object (support multiple filter objects). |
++----------------------------------------------+--------------------------------------------------------------------------------------+
+| ``filter1.add_tag('EXAMPLE')``               | Add an API filter to be applied to the API request.                                  |
++----------------------------------------------+--------------------------------------------------------------------------------------+
+| ``Tasks.retrieve()``                         | Trigger the API request and retrieve the Tasks-intelligence data.                    |
++----------------------------------------------+--------------------------------------------------------------------------------------+
+| ``for task in Tasks:``                       | Iterate over the Tasks container object generator.                                   |
++----------------------------------------------+--------------------------------------------------------------------------------------+
+| ``print(task.id)``                           | Display the **id** property of the Task object.                                      |
++----------------------------------------------+--------------------------------------------------------------------------------------+
 
 Resource Metadata
 
@@ -2630,30 +2591,23 @@ Tutorial </python/advanced/filtering/>`__.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``threats = tc.threats() | Instantiate a Threats container object.         |
-| ``                       |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``filter1 = threats.add_ | Add a filter object to the Threats container    |
-| filter()``               | object (support multiple filter objects).       |
-+--------------------------+-------------------------------------------------+
-| ``filter1.add_tag('EXAMP | Add API filter to retrieve Threats with the     |
-| LE')``                   | 'Example' tag.                                  |
-+--------------------------+-------------------------------------------------+
-| ``threats.retrieve()``   | Trigger the API request and retrieve the        |
-|                          | Threats intelligence data.                      |
-+--------------------------+-------------------------------------------------+
-| ``for threat in threats: | Iterate over the Threats container object       |
-| ``                       | generator.                                      |
-+--------------------------+-------------------------------------------------+
-| ``print(threat.id)``     | Display the **id** property of the Threat       |
-|                          | object.                                         |
-+--------------------------+-------------------------------------------------+
++----------------------------------------------+----------------------------------------------------------------------------------------+
+| Snippet                                      | Description                                                                            |
++==============================================+========================================================================================+
+| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                                                  |
++----------------------------------------------+----------------------------------------------------------------------------------------+
+| ``threats = tc.threats()``                   | Instantiate a Threats container object.                                                |
++----------------------------------------------+----------------------------------------------------------------------------------------+
+| ``filter1 = threats.add_filter()``           | Add a filter object to the Threats container object (support multiple filter objects). |
++----------------------------------------------+----------------------------------------------------------------------------------------+
+| ``filter1.add_tag('EXAMPLE')``               | Add API filter to retrieve Threats with the 'Example' tag.                             |
++----------------------------------------------+----------------------------------------------------------------------------------------+
+| ``threats.retrieve()``                       | Trigger the API request and retrieve the Threats intelligence data.                    |
++----------------------------------------------+----------------------------------------------------------------------------------------+
+| ``for threat in threats:``                   | Iterate over the Threats container object generator.                                   |
++----------------------------------------------+----------------------------------------------------------------------------------------+
+| ``print(threat.id)``                         | Display the **id** property of the Threat object.                                      |
++----------------------------------------------+----------------------------------------------------------------------------------------+
 
 Victims Retrieve
 ----------------
@@ -2750,30 +2704,23 @@ Tutorial <#filtering>`__.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``victims = tc.victims() | Instantiate a Victims container object.         |
-| ``                       |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``filter1 = victims.add_ | Add a filter object to the Victims container    |
-| filter()``               | object (support multiple filter objects).       |
-+--------------------------+-------------------------------------------------+
-| ``filter1.add_adversary_ | Add API filter to retrieve Victims associated   |
-| id(531)``                | with the given Adversary.                       |
-+--------------------------+-------------------------------------------------+
-| ``victims.retrieve()``   | Trigger the API request and retrieve the        |
-|                          | Victims intelligence data.                      |
-+--------------------------+-------------------------------------------------+
-| ``for victim in victims: | Iterate over the Victims container object       |
-| ``                       | generator.                                      |
-+--------------------------+-------------------------------------------------+
-| ``print(victim.id)``     | Display the **id** property of the Victim       |
-|                          | object.                                         |
-+--------------------------+-------------------------------------------------+
++----------------------------------------------+----------------------------------------------------------------------------------------+
+| Snippet                                      | Description                                                                            |
++==============================================+========================================================================================+
+| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                                                  |
++----------------------------------------------+----------------------------------------------------------------------------------------+
+| ``victims = tc.victims()``                   | Instantiate a Victims container object.                                                |
++----------------------------------------------+----------------------------------------------------------------------------------------+
+| ``filter1 = victims.add_filter()``           | Add a filter object to the Victims container object (support multiple filter objects). |
++----------------------------------------------+----------------------------------------------------------------------------------------+
+| ``filter1.add_adversary_id(531)``            | Add API filter to retrieve Victims associated with the given Adversary.                |
++----------------------------------------------+----------------------------------------------------------------------------------------+
+| ``victims.retrieve()``                       | Trigger the API request and retrieve the Victims intelligence data.                    |
++----------------------------------------------+----------------------------------------------------------------------------------------+
+| ``for victim in victims:``                   | Iterate over the Victims container object generator.                                   |
++----------------------------------------------+----------------------------------------------------------------------------------------+
+| ``print(victim.id)``                         | Display the **id** property of the Victim object.                                      |
++----------------------------------------------+----------------------------------------------------------------------------------------+
 
 Load Victim Assets
 ~~~~~~~~~~~~~~~~~~
@@ -2795,18 +2742,15 @@ example will pull all Assets for the current Victim Resource.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``victim.load_assets()`` | Trigger API call to load Assets into the        |
-|                          | Resource object.                                |
-+--------------------------+-------------------------------------------------+
-| ``for asset in victim.as | Iterate over the Assets object generator.       |
-| sets:``                  |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``print(asset.id)``      | Display the **id** property of the Asset        |
-|                          | object.                                         |
-+--------------------------+-------------------------------------------------+
++---------------------------------+-----------------------------------------------------------+
+| Snippet                         | Description                                               |
++=================================+===========================================================+
+| ``victim.load_assets()``        | Trigger API call to load Assets into the Resource object. |
++---------------------------------+-----------------------------------------------------------+
+| ``for asset in victim.assets:`` | Iterate over the Assets object generator.                 |
++---------------------------------+-----------------------------------------------------------+
+| ``print(asset.id)``             | Display the **id** property of the Asset object.          |
++---------------------------------+-----------------------------------------------------------+
 
 Attributes See the `Loading Attributes
 Example <#loading-attributes-example>`__.
@@ -2897,29 +2841,23 @@ invoked immediately.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resources = tc.adversa | Instantiate an Resources container object.      |
-| ries()``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resources.retrieve()`` | Trigger API calls to retrieve the Resources.    |
-+--------------------------+-------------------------------------------------+
-| ``for resource in resour | Iterate over the Resources container object     |
-| ces:``                   | generator.                                      |
-+--------------------------+-------------------------------------------------+
-| ``print(resource.id)``   | Display the **id** property of the Resource     |
-|                          | object.                                         |
-+--------------------------+-------------------------------------------------+
-| ``for g_associations in  | Trigger an API call to retrieve all Groups      |
-| resource.group_...``     | associated with this Resource.                  |
-+--------------------------+-------------------------------------------------+
-| ``print(g_association.id | Display the **id** property of the associated   |
-| )``                      | Group object.                                   |
-+--------------------------+-------------------------------------------------+
++----------------------------------------------+---------------------------------------------------------------------------+
+| Snippet                                      | Description                                                               |
++==============================================+===========================================================================+
+| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                                     |
++----------------------------------------------+---------------------------------------------------------------------------+
+| ``resources = tc.adversaries()``             | Instantiate an Resources container object.                                |
++----------------------------------------------+---------------------------------------------------------------------------+
+| ``resources.retrieve()``                     | Trigger API calls to retrieve the Resources.                              |
++----------------------------------------------+---------------------------------------------------------------------------+
+| ``for resource in resources:``               | Iterate over the Resources container object generator.                    |
++----------------------------------------------+---------------------------------------------------------------------------+
+| ``print(resource.id)``                       | Display the **id** property of the Resource object.                       |
++----------------------------------------------+---------------------------------------------------------------------------+
+| ``for g_associations in resource.group_...`` | Trigger an API call to retrieve all Groups associated with this Resource. |
++----------------------------------------------+---------------------------------------------------------------------------+
+| ``print(g_association.id)``                  | Display the **id** property of the associated Group object.               |
++----------------------------------------------+---------------------------------------------------------------------------+
 
 Indicator Associations
 ----------------------
@@ -3012,29 +2950,23 @@ invoked immediately.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resources = tc.adversa | Instantiate an Resources container object.      |
-| ries()``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resources.retrieve()`` | Trigger API calls to retrieve the Resources.    |
-+--------------------------+-------------------------------------------------+
-| ``for resource in resour | Iterate over the Resources container object     |
-| ces:``                   | generator.                                      |
-+--------------------------+-------------------------------------------------+
-| ``print(resource.id)``   | Display the **id** property of the Resource     |
-|                          | object.                                         |
-+--------------------------+-------------------------------------------------+
-| ``for associations in re | Trigger API call to retrieve all Indicators     |
-| source.indicat_...``     | associated with this Resource.                  |
-+--------------------------+-------------------------------------------------+
-| ``print(association.id)` | Display the **'id'** property of the associated |
-| `                        | Indicator object.                               |
-+--------------------------+-------------------------------------------------+
++----------------------------------------------+----------------------------------------------------------------------------+
+| Snippet                                      | Description                                                                |
++==============================================+============================================================================+
+| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                                      |
++----------------------------------------------+----------------------------------------------------------------------------+
+| ``resources = tc.adversaries()``             | Instantiate an Resources container object.                                 |
++----------------------------------------------+----------------------------------------------------------------------------+
+| ``resources.retrieve()``                     | Trigger API calls to retrieve the Resources.                               |
++----------------------------------------------+----------------------------------------------------------------------------+
+| ``for resource in resources:``               | Iterate over the Resources container object generator.                     |
++----------------------------------------------+----------------------------------------------------------------------------+
+| ``print(resource.id)``                       | Display the **id** property of the Resource object.                        |
++----------------------------------------------+----------------------------------------------------------------------------+
+| ``for associations in resource.indicat_...`` | Trigger API call to retrieve all Indicators associated with this Resource. |
++----------------------------------------------+----------------------------------------------------------------------------+
+| ``print(association.id)``                    | Display the **'id'** property of the associated Indicator object.          |
++----------------------------------------------+----------------------------------------------------------------------------+
 
 Victim Associations Retrieve
 ----------------------------
@@ -3110,29 +3042,23 @@ invoked immediately.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resources = tc.adversa | Instantiate an Resources container object.      |
-| ries()``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resources.retrieve()`` | Trigger API calls to retrieve the Resources.    |
-+--------------------------+-------------------------------------------------+
-| ``for resource in resour | Iterate over the Resources container object     |
-| ces:``                   | generator.                                      |
-+--------------------------+-------------------------------------------------+
-| ``print(resource.id)``   | Display the **id** property of the Resource     |
-|                          | object.                                         |
-+--------------------------+-------------------------------------------------+
-| ``for associations in re | Trigger API call to retrieve all Victims        |
-| source.victim_...``      | associated with this Resource.                  |
-+--------------------------+-------------------------------------------------+
-| ``print(v_association.id | Display the **id** property of the associated   |
-| )``                      | Victim object.                                  |
-+--------------------------+-------------------------------------------------+
++----------------------------------------------+-------------------------------------------------------------------------+
+| Snippet                                      | Description                                                             |
++==============================================+=========================================================================+
+| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                                   |
++----------------------------------------------+-------------------------------------------------------------------------+
+| ``resources = tc.adversaries()``             | Instantiate an Resources container object.                              |
++----------------------------------------------+-------------------------------------------------------------------------+
+| ``resources.retrieve()``                     | Trigger API calls to retrieve the Resources.                            |
++----------------------------------------------+-------------------------------------------------------------------------+
+| ``for resource in resources:``               | Iterate over the Resources container object generator.                  |
++----------------------------------------------+-------------------------------------------------------------------------+
+| ``print(resource.id)``                       | Display the **id** property of the Resource object.                     |
++----------------------------------------------+-------------------------------------------------------------------------+
+| ``for associations in resource.victim_...``  | Trigger API call to retrieve all Victims associated with this Resource. |
++----------------------------------------------+-------------------------------------------------------------------------+
+| ``print(v_association.id)``                  | Display the **id** property of the associated Victim object.            |
++----------------------------------------------+-------------------------------------------------------------------------+
 
 Loading Attributes
 ------------------
@@ -3199,33 +3125,25 @@ ThreatConnect API documentation.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resources = tc.adversa | Instantiate a Resources container object.       |
-| ries()``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resources.retrieve()`` | Trigger the API request and retrieve the        |
-|                          | Resources intelligence data.                    |
-+--------------------------+-------------------------------------------------+
-| ``for resource in resour | Iterate over the Resources container object     |
-| ces:``                   | generator.                                      |
-+--------------------------+-------------------------------------------------+
-| ``print(resource.id)``   | Display the **id** property of the Resource     |
-|                          | object.                                         |
-+--------------------------+-------------------------------------------------+
-| ``resource.load_attribut | Trigger API call to load Attributes into the    |
-| es()``                   | Resource object.                                |
-+--------------------------+-------------------------------------------------+
-| ``for attribute in resou | Iterate over the Attribute property object      |
-| rce.attributes:``        | generator.                                      |
-+--------------------------+-------------------------------------------------+
-| ``print(attribute.type)` | Display the **'type'** property of the          |
-| `                        | Attribute object.                               |
-+--------------------------+-------------------------------------------------+
++----------------------------------------------+-----------------------------------------------------------------------+
+| Snippet                                      | Description                                                           |
++==============================================+=======================================================================+
+| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                                 |
++----------------------------------------------+-----------------------------------------------------------------------+
+| ``resources = tc.adversaries()``             | Instantiate a Resources container object.                             |
++----------------------------------------------+-----------------------------------------------------------------------+
+| ``resources.retrieve()``                     | Trigger the API request and retrieve the Resources intelligence data. |
++----------------------------------------------+-----------------------------------------------------------------------+
+| ``for resource in resources:``               | Iterate over the Resources container object generator.                |
++----------------------------------------------+-----------------------------------------------------------------------+
+| ``print(resource.id)``                       | Display the **id** property of the Resource object.                   |
++----------------------------------------------+-----------------------------------------------------------------------+
+| ``resource.load_attributes()``               | Trigger API call to load Attributes into the Resource object.         |
++----------------------------------------------+-----------------------------------------------------------------------+
+| ``for attribute in resource.attributes:``    | Iterate over the Attribute property object generator.                 |
++----------------------------------------------+-----------------------------------------------------------------------+
+| ``print(attribute.type)``                    | Display the **'type'** property of the Attribute object.              |
++----------------------------------------------+-----------------------------------------------------------------------+
 
 Loading a Security Label
 ------------------------
@@ -3289,33 +3207,25 @@ ThreatConnect API documentation.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resources = tc.adversa | Instantiate an Resources container object.      |
-| ries()``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resources.retrieve()`` | Trigger the API request and retrieve the        |
-|                          | Resources intelligence data.                    |
-+--------------------------+-------------------------------------------------+
-| ``for resource in resour | Iterate over the Resources container object     |
-| ces:``                   | generator.                                      |
-+--------------------------+-------------------------------------------------+
-| ``print(resource.id)``   | Display the **id** property of the Resource     |
-|                          | object.                                         |
-+--------------------------+-------------------------------------------------+
-| ``resource.load_security | Trigger API call to load the Security Label     |
-| _label()``               | into the Resource object.                       |
-+--------------------------+-------------------------------------------------+
-| ``if resource.security_l | Ensure the object has been loaded before        |
-| abel is not None:``      | displaying properties.                          |
-+--------------------------+-------------------------------------------------+
-| ``print(resource.securit | Display the **'name'** property of the Security |
-| y_label.name)``          | Label object.                                   |
-+--------------------------+-------------------------------------------------+
++----------------------------------------------+-----------------------------------------------------------------------+
+| Snippet                                      | Description                                                           |
++==============================================+=======================================================================+
+| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                                 |
++----------------------------------------------+-----------------------------------------------------------------------+
+| ``resources = tc.adversaries()``             | Instantiate an Resources container object.                            |
++----------------------------------------------+-----------------------------------------------------------------------+
+| ``resources.retrieve()``                     | Trigger the API request and retrieve the Resources intelligence data. |
++----------------------------------------------+-----------------------------------------------------------------------+
+| ``for resource in resources:``               | Iterate over the Resources container object generator.                |
++----------------------------------------------+-----------------------------------------------------------------------+
+| ``print(resource.id)``                       | Display the **id** property of the Resource object.                   |
++----------------------------------------------+-----------------------------------------------------------------------+
+| ``resource.load_security_label()``           | Trigger API call to load the Security Label into the Resource object. |
++----------------------------------------------+-----------------------------------------------------------------------+
+| ``if resource.security_label is not None:``  | Ensure the object has been loaded before displaying properties.       |
++----------------------------------------------+-----------------------------------------------------------------------+
+| ``print(resource.security_label.name)``      | Display the **'name'** property of the Security Label object.         |
++----------------------------------------------+-----------------------------------------------------------------------+
 
 Loading Tags
 ------------
@@ -3372,32 +3282,25 @@ ThreatConnect API documentation.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resources = tc.adversa | Instantiate an Resources container object.      |
-| ries()``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resources.retrieve()`` | Trigger API calls to retrieve the Resources.    |
-+--------------------------+-------------------------------------------------+
-| ``for resource in resour | Iterate over the Resources container object     |
-| ces:``                   | generator.                                      |
-+--------------------------+-------------------------------------------------+
-| ``print(resource.id)``   | Display the **id** property of the Resource     |
-|                          | object.                                         |
-+--------------------------+-------------------------------------------------+
-| ``resource.load_tags()`` | Trigger API call to load Tags into the Resource |
-|                          | object.                                         |
-+--------------------------+-------------------------------------------------+
-| ``for tag in resource.ta | Iterate over the Tag property object generator. |
-| gs:``                    |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``print(tag.name)``      | Display the **'name'** property of the Tag      |
-|                          | object.                                         |
-+--------------------------+-------------------------------------------------+
++----------------------------------------------+---------------------------------------------------------+
+| Snippet                                      | Description                                             |
++==============================================+=========================================================+
+| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                   |
++----------------------------------------------+---------------------------------------------------------+
+| ``resources = tc.adversaries()``             | Instantiate an Resources container object.              |
++----------------------------------------------+---------------------------------------------------------+
+| ``resources.retrieve()``                     | Trigger API calls to retrieve the Resources.            |
++----------------------------------------------+---------------------------------------------------------+
+| ``for resource in resources:``               | Iterate over the Resources container object generator.  |
++----------------------------------------------+---------------------------------------------------------+
+| ``print(resource.id)``                       | Display the **id** property of the Resource object.     |
++----------------------------------------------+---------------------------------------------------------+
+| ``resource.load_tags()``                     | Trigger API call to load Tags into the Resource object. |
++----------------------------------------------+---------------------------------------------------------+
+| ``for tag in resource.tags:``                | Iterate over the Tag property object generator.         |
++----------------------------------------------+---------------------------------------------------------+
+| ``print(tag.name)``                          | Display the **'name'** property of the Tag object.      |
++----------------------------------------------+---------------------------------------------------------+
 
 Python Commit
 -------------
