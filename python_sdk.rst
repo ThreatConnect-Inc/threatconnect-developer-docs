@@ -771,31 +771,27 @@ Supported Post Filters
 
 Post filters are applied on the results returned by the API request.
 
-+-------------------------+----------+------------------------------------------+
-| Filter                  | Value    | Description                              |
-|                         | Type     |                                          |
-+=========================+==========+==========================================+
-| ``add_pf_attribute()``  | str      | Filter Indicators on Attribute type.     |
-+-------------------------+----------+------------------------------------------+
-| ``add_pf_confidence()`` | int      | Filter Indicators on Confidence value.   |
-+-------------------------+----------+------------------------------------------+
-| ``add_pf_date_added()`` | str      | Filter Indicators on date added.         |
-+-------------------------+----------+------------------------------------------+
-| ``add_pf_last_modified( | str      | Filter Indicators on last modified date. |
-| )``                     |          |                                          |
-+-------------------------+----------+------------------------------------------+
-| ``add_pf_rating()``     | str      | Filter Indicators on Rating.             |
-+-------------------------+----------+------------------------------------------+
-| ``add_pf_tag()``        | str      | Filter Indicators on Tag.                |
-+-------------------------+----------+------------------------------------------+
-| ``add_pf_threat_assess_ | int      | Filter Indicators on Threat Assess       |
-| confidence()``          |          | Confidence.                              |
-+-------------------------+----------+------------------------------------------+
-| ``add_pf_threat_assess_ | str      | Filter Indicators on Threat Assess       |
-| rating()``              |          | Rating.                                  |
-+-------------------------+----------+------------------------------------------+
-| ``add_pf_type()``       | str      | Filter Indicators on Indicator type.     |
-+-------------------------+----------+------------------------------------------+
++---------------------------------------+------------+------------------------------------------------+
+| Filter                                | Value Type | Description                                    |
++=======================================+============+================================================+
+| ``add_pf_attribute()``                | str        | Filter Indicators on Attribute type.           |
++---------------------------------------+------------+------------------------------------------------+
+| ``add_pf_confidence()``               | int        | Filter Indicators on Confidence value.         |
++---------------------------------------+------------+------------------------------------------------+
+| ``add_pf_date_added()``               | str        | Filter Indicators on date added.               |
++---------------------------------------+------------+------------------------------------------------+
+| ``add_pf_last_modified()``            | str        | Filter Indicators on last modified date.       |
++---------------------------------------+------------+------------------------------------------------+
+| ``add_pf_rating()``                   | str        | Filter Indicators on Rating.                   |
++---------------------------------------+------------+------------------------------------------------+
+| ``add_pf_tag()``                      | str        | Filter Indicators on Tag.                      |
++---------------------------------------+------------+------------------------------------------------+
+| ``add_pf_threat_assess_confidence()`` | int        | Filter Indicators on Threat Assess Confidence. |
++---------------------------------------+------------+------------------------------------------------+
+| ``add_pf_threat_assess_rating()``     | str        | Filter Indicators on Threat Assess Rating.     |
++---------------------------------------+------------+------------------------------------------------+
+| ``add_pf_type()``                     | str        | Filter Indicators on Indicator type.           |
++---------------------------------------+------------+------------------------------------------------+
 
 Bulk Download Example
 ~~~~~~~~~~~~~~~~~~~~~
@@ -1209,30 +1205,24 @@ Tutorial </python/advanced/filtering/>`__.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``documents = tc.documen | Instantiate a Documents container object.       |
-| ts()``                   |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``filter1 = documents.ad | Add a filter object to the Documents container  |
-| d_filter()``             | object (support multiple filter objects).       |
-+--------------------------+-------------------------------------------------+
-| ``filter1.add_tag('EXAMP | Add API filter to retrieve Documents with the   |
-| LE')``                   | 'Example' tag                                   |
-+--------------------------+-------------------------------------------------+
-| ``documents.retrieve()`` | Trigger the API request and retrieve the        |
-|                          | Documents intelligence data.                    |
-+--------------------------+-------------------------------------------------+
-| ``for document in docume | Iterate over the Documents container object     |
-| nts:``                   | generator.                                      |
-+--------------------------+-------------------------------------------------+
-| ``print(document.id)``   | Display the **'id'** property of the Document   |
-|                          | object.                                         |
-+--------------------------+-------------------------------------------------+
++--------------------------------------------+------------------------------------------------------------------------------------------+
+| Snippet                                    | Description                                                                              |
++============================================+==========================================================================================+
+| `tc = ThreatConnect(api_access_id, api...` | Instantiate the ThreatConnect object.                                                    |
++--------------------------------------------+------------------------------------------------------------------------------------------+
+| `documents = tc.documents()`               | Instantiate a Documents container object.                                                |
++--------------------------------------------+------------------------------------------------------------------------------------------+
+| `filter1 = documents.add_filter()`         | Add a filter object to the Documents container object (support multiple filter objects). |
++--------------------------------------------+------------------------------------------------------------------------------------------+
+| `filter1.add_tag('EXAMPLE')`               | Add API filter to retrieve Documents with the 'Example' tag                              |
++--------------------------------------------+------------------------------------------------------------------------------------------+
+| `documents.retrieve()`                     | Trigger the API request and retrieve the Documents intelligence data.                    |
++--------------------------------------------+------------------------------------------------------------------------------------------+
+| `for document in documents:`               | Iterate over the Documents container object generator.                                   |
++--------------------------------------------+------------------------------------------------------------------------------------------+
+| `print(document.id)`                       | Display the **'id'** property of the Document object.                                    |
++--------------------------------------------+------------------------------------------------------------------------------------------+
+
 
 Download Document Contents Example
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1252,18 +1242,15 @@ Resource.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``document.download()``  | Trigger API request to download the Document    |
-|                          | contents.                                       |
-+--------------------------+-------------------------------------------------+
-| ``if document.contents i | Validate the Document has downloaded before     |
-| s not None:``            | displaying.                                     |
-+--------------------------+-------------------------------------------------+
-| ``print(document.content | Display the contents of the Document. (This     |
-| s)``                     | should only be done for ASCII contents.)        |
-+--------------------------+-------------------------------------------------+
++-------------------------------------+--------------------------------------------------------------------------------------+
+| Snippet                             | Description                                                                          |
++=====================================+======================================================================================+
+| `document.download()`               | Trigger API request to download the Document contents.                               |
++-------------------------------------+--------------------------------------------------------------------------------------+
+| `if document.contents is not None:` | Validate the Document has downloaded before displaying.                              |
++-------------------------------------+--------------------------------------------------------------------------------------+
+| `print(document.contents)`          | Display the contents of the Document. (This should only be done for ASCII contents.) |
++-------------------------------------+--------------------------------------------------------------------------------------+
 
 Resource Metadata
 
@@ -1413,29 +1400,23 @@ Tutorial <#filtering>`__.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``emails = tc.emails()`` | Instantiate an Emails container object.         |
-+--------------------------+-------------------------------------------------+
-| ``filter1 = emails.add_f | Add a Filter object to the Emails container     |
-| ilter()``                | object (support multiple filter objects).       |
-+--------------------------+-------------------------------------------------+
-| ``filter1.add_tag('EXAMP | Add API Filter to be applied to the API         |
-| LE')``                   | request.                                        |
-+--------------------------+-------------------------------------------------+
-| ``emails.retrieve()``    | Trigger the API request and retrieve the Emails |
-|                          | intelligence data.                              |
-+--------------------------+-------------------------------------------------+
-| ``for email in emails:`` | Iterate over the Emails container object        |
-|                          | generator.                                      |
-+--------------------------+-------------------------------------------------+
-| ``print(email.id)``      | Display the **'id'** property of the Email      |
-|                          | object.                                         |
-+--------------------------+-------------------------------------------------+
++--------------------------------------------+---------------------------------------------------------------------------------------+
+| Snippet                                    | Description                                                                           |
++============================================+=======================================================================================+
+| `tc = ThreatConnect(api_access_id, api...` | Instantiate the ThreatConnect object.                                                 |
++--------------------------------------------+---------------------------------------------------------------------------------------+
+| `emails = tc.emails()`                     | Instantiate an Emails container object.                                               |
++--------------------------------------------+---------------------------------------------------------------------------------------+
+| `filter1 = emails.add_filter()`            | Add a Filter object to the Emails container object (support multiple filter objects). |
++--------------------------------------------+---------------------------------------------------------------------------------------+
+| `filter1.add_tag('EXAMPLE')`               | Add API Filter to be applied to the API request.                                      |
++--------------------------------------------+---------------------------------------------------------------------------------------+
+| `emails.retrieve()`                        | Trigger the API request and retrieve the Emails intelligence data.                    |
++--------------------------------------------+---------------------------------------------------------------------------------------+
+| `for email in emails:`                     | Iterate over the Emails container object generator.                                   |
++--------------------------------------------+---------------------------------------------------------------------------------------+
+| `print(email.id)`                          | Display the **'id'** property of the Email object.                                    |
++--------------------------------------------+---------------------------------------------------------------------------------------+
 
 Resource Metadata
 
@@ -1574,29 +1555,23 @@ Tutorial <#filtering>`__.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``groups = tc.groups()`` | Instantiate a Groups container object.          |
-+--------------------------+-------------------------------------------------+
-| ``filter1 = groups.add_f | Add a filter object to the Groups container     |
-| ilter()``                | object (support multiple filter objects).       |
-+--------------------------+-------------------------------------------------+
-| ``filter1.add_tag('EXAMP | Add API filter to retrieve Groups with the      |
-| LE')``                   | 'Example' tag.                                  |
-+--------------------------+-------------------------------------------------+
-| ``groups.retrieve()``    | Trigger the API request and retrieve the Groups |
-|                          | intelligence data.                              |
-+--------------------------+-------------------------------------------------+
-| ``for group in groups:`` | Iterate over the Groups container object        |
-|                          | generator.                                      |
-+--------------------------+-------------------------------------------------+
-| ``print(group.id)``      | Display the **'id'** property of the Group      |
-|                          | object.                                         |
-+--------------------------+-------------------------------------------------+
++--------------------------------------------+---------------------------------------------------------------------------------------+
+| Snippet                                    | Description                                                                           |
++============================================+=======================================================================================+
+| `tc = ThreatConnect(api_access_id, api...` | Instantiate the ThreatConnect object.                                                 |
++--------------------------------------------+---------------------------------------------------------------------------------------+
+| `groups = tc.groups()`                     | Instantiate a Groups container object.                                                |
++--------------------------------------------+---------------------------------------------------------------------------------------+
+| `filter1 = groups.add_filter()`            | Add a filter object to the Groups container object (support multiple filter objects). |
++--------------------------------------------+---------------------------------------------------------------------------------------+
+| `filter1.add_tag('EXAMPLE')`               | Add API filter to retrieve Groups with the 'Example' tag.                             |
++--------------------------------------------+---------------------------------------------------------------------------------------+
+| `groups.retrieve()`                        | Trigger the API request and retrieve the Groups intelligence data.                    |
++--------------------------------------------+---------------------------------------------------------------------------------------+
+| `for group in groups:`                     | Iterate over the Groups container object generator.                                   |
++--------------------------------------------+---------------------------------------------------------------------------------------+
+| `print(group.id)`                          | Display the **'id'** property of the Group object.                                    |
++--------------------------------------------+---------------------------------------------------------------------------------------+
 
 Resource Metadata
 
@@ -1734,30 +1709,23 @@ Tutorial </python/advanced/filtering/>`__.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``incidents = tc.inciden | Instantiate an Incidents container object.      |
-| ts()``                   |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``filter1 = incidents.ad | Add a filter object to the Incidents container  |
-| d_filter()``             | object (support multiple filter objects).       |
-+--------------------------+-------------------------------------------------+
-| ``filter1.add_tag('EXAMP | Add API filter to retrieve Incidents with the   |
-| LE')``                   | 'Example' tag.                                  |
-+--------------------------+-------------------------------------------------+
-| ``incidents.retrieve()`` | Trigger the API request and retrieve the        |
-|                          | Incidents intelligence data.                    |
-+--------------------------+-------------------------------------------------+
-| ``for incident in incide | Iterate over the Incidents container object     |
-| nts:``                   | generator.                                      |
-+--------------------------+-------------------------------------------------+
-| ``print(incident.id)``   | Display the **'id'** property of the Incidents  |
-|                          | object.                                         |
-+--------------------------+-------------------------------------------------+
++--------------------------------------------+------------------------------------------------------------------------------------------+
+| Snippet                                    | Description                                                                              |
++============================================+==========================================================================================+
+| `tc = ThreatConnect(api_access_id, api...` | Instantiate the ThreatConnect object.                                                    |
++--------------------------------------------+------------------------------------------------------------------------------------------+
+| `incidents = tc.incidents()`               | Instantiate an Incidents container object.                                               |
++--------------------------------------------+------------------------------------------------------------------------------------------+
+| `filter1 = incidents.add_filter()`         | Add a filter object to the Incidents container object (support multiple filter objects). |
++--------------------------------------------+------------------------------------------------------------------------------------------+
+| `filter1.add_tag('EXAMPLE')`               | Add API filter to retrieve Incidents with the 'Example' tag.                             |
++--------------------------------------------+------------------------------------------------------------------------------------------+
+| `incidents.retrieve()`                     | Trigger the API request and retrieve the Incidents intelligence data.                    |
++--------------------------------------------+------------------------------------------------------------------------------------------+
+| `for incident in incidents:`               | Iterate over the Incidents container object generator.                                   |
++--------------------------------------------+------------------------------------------------------------------------------------------+
+| `print(incident.id)`                       | Display the **'id'** property of the Incidents object.                                   |
++--------------------------------------------+------------------------------------------------------------------------------------------+
 
 Resource Metadata
 
@@ -1840,31 +1808,27 @@ Supported Post Filters
 
 Post filters are applied on the results returned by the API request.
 
-+-------------------------+----------+------------------------------------------+
-| Filter                  | Value    | Description                              |
-|                         | Type     |                                          |
-+=========================+==========+==========================================+
-| ``add_pf_attribute()``  | str      | Filter Indicators on Attribute type.     |
-+-------------------------+----------+------------------------------------------+
-| ``add_pf_confidence()`` | int      | Filter Indicators on Confidence value.   |
-+-------------------------+----------+------------------------------------------+
-| ``add_pf_date_added()`` | str      | Filter Indicators on date added.         |
-+-------------------------+----------+------------------------------------------+
-| ``add_pf_last_modified( | str      | Filter Indicators on last modified date. |
-| )``                     |          |                                          |
-+-------------------------+----------+------------------------------------------+
-| ``add_pf_rating()``     | str      | Filter Indicators on Rating.             |
-+-------------------------+----------+------------------------------------------+
-| ``add_pf_tag()``        | str      | Filter Indicators on Tag.                |
-+-------------------------+----------+------------------------------------------+
-| ``add_pf_threat_assess_ | int      | Filter Indicators on Threat Assess       |
-| confidence()``          |          | Confidence.                              |
-+-------------------------+----------+------------------------------------------+
-| ``add_pf_threat_assess_ | str      | Filter Indicators on Threat Assess       |
-| rating()``              |          | Rating.                                  |
-+-------------------------+----------+------------------------------------------+
-| ``add_pf_type()``       | str      | Filter Indicators on Indicator type.     |
-+-------------------------+----------+------------------------------------------+
++---------------------------------------+------------+------------------------------------------------+
+| Filter                                | Value Type | Description                                    |
++=======================================+============+================================================+
+| ``add_pf_attribute()``                | str        | Filter Indicators on Attribute type.           |
++---------------------------------------+------------+------------------------------------------------+
+| ``add_pf_confidence()``               | int        | Filter Indicators on Confidence value.         |
++---------------------------------------+------------+------------------------------------------------+
+| ``add_pf_date_added()``               | str        | Filter Indicators on date added.               |
++---------------------------------------+------------+------------------------------------------------+
+| ``add_pf_last_modified()``            | str        | Filter Indicators on last modified date.       |
++---------------------------------------+------------+------------------------------------------------+
+| ``add_pf_rating()``                   | str        | Filter Indicators on Rating.                   |
++---------------------------------------+------------+------------------------------------------------+
+| ``add_pf_tag()``                      | str        | Filter Indicators on Tag.                      |
++---------------------------------------+------------+------------------------------------------------+
+| ``add_pf_threat_assess_confidence()`` | int        | Filter Indicators on Threat Assess Confidence. |
++---------------------------------------+------------+------------------------------------------------+
+| ``add_pf_threat_assess_rating()``     | str        | Filter Indicators on Threat Assess Rating.     |
++---------------------------------------+------------+------------------------------------------------+
+| ``add_pf_type()``                     | str        | Filter Indicators on Indicator type.           |
++---------------------------------------+------------+------------------------------------------------+
 
 Indicators Retrieve Filter Example
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
