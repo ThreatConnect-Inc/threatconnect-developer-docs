@@ -5792,32 +5792,21 @@ displays the fields required for the Batch Create message.
 
 Table 40
 
-+------------+----------+-------------------------------------------------------+
-| BatchConfi | Values   | Description                                           |
-| g          |          |                                                       |
-| Message    |          |                                                       |
-+============+==========+=======================================================+
-| haltOnErro | true     | The batch process will stop processing the entire     |
-| r          |          | batch the first time it reaches an error during       |
-|            |          | processing.                                           |
-+------------+----------+-------------------------------------------------------+
-|            | false    | If this field is not provided, the default behavior   |
-|            |          | is to continue processing further entities in the     |
-|            |          | input file.                                           |
-+------------+----------+-------------------------------------------------------+
-|            | default= |                                                       |
-|            | false    |                                                       |
-+------------+----------+-------------------------------------------------------+
-| attributeW | Append   | Append: Add attributes (allow duplicates)             |
-| riteType   |          |                                                       |
-+------------+----------+-------------------------------------------------------+
-|            | Replace  | Replace: Delete current attributes; Add/Validate new  |
-+------------+----------+-------------------------------------------------------+
-| action     | Create   | Create: Create Indicator                              |
-+------------+----------+-------------------------------------------------------+
-|            | Delete   | Delete: Delete Indicator (only the ‘summary’ and      |
-|            |          | ‘type’ field are required)                            |
-+------------+----------+-------------------------------------------------------+
++---------------------+-----------------+-------------------------------------------------------------------------------------------------------------------+
+| BatchConfig Message | Values          | Description                                                                                                       |
++=====================+=================+===================================================================================================================+
+| haltOnError         | true            | The batch process will stop processing the entire batch the first time it reaches an error during processing.     |
++---------------------+-----------------+-------------------------------------------------------------------------------------------------------------------+
+|                     | false (default) | If this field is not provided, the default behavior is to continue processing further entities in the input file. |
++---------------------+-----------------+-------------------------------------------------------------------------------------------------------------------+
+| attributeWriteType  | Append          | Append: Add attributes (allow duplicates)                                                                         |
++---------------------+-----------------+-------------------------------------------------------------------------------------------------------------------+
+|                     | Replace         | Replace: Delete current attributes; Add/Validate new                                                              |
++---------------------+-----------------+-------------------------------------------------------------------------------------------------------------------+
+| action              | Create          | Create: Create Indicator                                                                                          |
++---------------------+-----------------+-------------------------------------------------------------------------------------------------------------------+
+|                     | Delete          | Delete: Delete Indicator (only the ‘summary’ and ‘type’ field are required)                                       |
++---------------------+-----------------+-------------------------------------------------------------------------------------------------------------------+
 
 Batch Indicator Input File Format
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
