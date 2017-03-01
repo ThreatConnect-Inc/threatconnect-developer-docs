@@ -5858,33 +5858,25 @@ method is invoked.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resources = tc.adversa | Instantiate a Resources container object.       |
-| ries()``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resource = resources.a | Add a Resource object setting the name and      |
-| dd('Existing Re...``     | Owner.                                          |
-+--------------------------+-------------------------------------------------+
-| ``resource.load_attribut | Load existing Attributes.                       |
-| es()``                   |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``for attribute in resou | Iterate through Attribute objects.              |
-| rce.attributes:``        |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``if attribute.type == ' | Look for a **Description** Attribute.           |
-| Description':``          |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resource.delete_attrib | Delete the Attribute from the Resource.         |
-| ute(attribute.id)``      |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resource.commit()``    | Trigger API calls to write all added, deleted,  |
-|                          | or modified data.                               |
-+--------------------------+-------------------------------------------------+
++----------------------------------------------+------------------------------------------------------------------+
+| Snippet                                      | Description                                                      |
++==============================================+==================================================================+
+| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                            |
++----------------------------------------------+------------------------------------------------------------------+
+| ``resources = tc.adversaries()``             | Instantiate a Resources container object.                        |
++----------------------------------------------+------------------------------------------------------------------+
+| ``resource = resources.add('Existing Re...`` | Add a Resource object setting the name and Owner.                |
++----------------------------------------------+------------------------------------------------------------------+
+| ``resource.load_attributes()``               | Load existing Attributes.                                        |
++----------------------------------------------+------------------------------------------------------------------+
+| ``for attribute in resource.attributes:``    | Iterate through Attribute objects.                               |
++----------------------------------------------+------------------------------------------------------------------+
+| ``if attribute.type == 'Description':``      | Look for a **Description** Attribute.                            |
++----------------------------------------------+------------------------------------------------------------------+
+| ``resource.delete_attribute(attribute.id)``  | Delete the Attribute from the Resource.                          |
++----------------------------------------------+------------------------------------------------------------------+
+| ``resource.commit()``                        | Trigger API calls to write all added, deleted, or modified data. |
++----------------------------------------------+------------------------------------------------------------------+
 
 Update Attribute
 ----------------
@@ -5928,36 +5920,27 @@ method.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resources = tc.adversa | Instantiate a Resources container object.       |
-| ries()``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resource = resources.a | Add a Resource object setting the name and      |
-| dd('Existing Re...``     | Owner.                                          |
-+--------------------------+-------------------------------------------------+
-| ``resource.retrieve()``  | Trigger the API request and retrieve the        |
-|                          | Adversary intelligence data.                    |
-+--------------------------+-------------------------------------------------+
-| ``resource.load_attribut | Load existing Attributes.                       |
-| es()``                   |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``for attribute in resou | Iterate through Attribute objects.              |
-| rce.attributes:``        |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``if attribute.type == ' | Look for a **Description** Attribute.           |
-| Description':``          |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resource.update_attrib | Update the **Description** Attribute.           |
-| ute(attribute.i...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resource.commit()``    | Trigger API calls to write all added, deleted,  |
-|                          | or modified data.                               |
-+--------------------------+-------------------------------------------------+
++----------------------------------------------+-----------------------------------------------------------------------+
+| Snippet                                      | Description                                                           |
++==============================================+=======================================================================+
+| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                                 |
++----------------------------------------------+-----------------------------------------------------------------------+
+| ``resources = tc.adversaries()``             | Instantiate a Resources container object.                             |
++----------------------------------------------+-----------------------------------------------------------------------+
+| ``resource = resources.add('Existing Re...`` | Add a Resource object setting the name and Owner.                     |
++----------------------------------------------+-----------------------------------------------------------------------+
+| ``resource.retrieve()``                      | Trigger the API request and retrieve the Adversary intelligence data. |
++----------------------------------------------+-----------------------------------------------------------------------+
+| ``resource.load_attributes()``               | Load existing Attributes.                                             |
++----------------------------------------------+-----------------------------------------------------------------------+
+| ``for attribute in resource.attributes:``    | Iterate through Attribute objects.                                    |
++----------------------------------------------+-----------------------------------------------------------------------+
+| ``if attribute.type == 'Description':``      | Look for a **Description** Attribute.                                 |
++----------------------------------------------+-----------------------------------------------------------------------+
+| ``resource.update_attribute(attribute.i...`` | Update the **Description** Attribute.                                 |
++----------------------------------------------+-----------------------------------------------------------------------+
+| ``resource.commit()``                        | Trigger API calls to write all added, deleted, or modified data.      |
++----------------------------------------------+-----------------------------------------------------------------------+
 
 Security Label
 --------------
@@ -6005,24 +5988,19 @@ method is invoked.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resources = tc.adversa | Instantiate an Adversaries container object.    |
-| ries()``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resource = resources.a | Add a Resource object setting the name and      |
-| dd('New Resourc...``     | Owner.                                          |
-+--------------------------+-------------------------------------------------+
-| ``resource.set_security_ | Set the Security Label on the Resource.         |
-| label('TLP Green')``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resource.commit()``    | Trigger API calls to write all added, deleted,  |
-|                          | or modified data.                               |
-+--------------------------+-------------------------------------------------+
++----------------------------------------------+------------------------------------------------------------------+
+| Snippet                                      | Description                                                      |
++==============================================+==================================================================+
+| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                            |
++----------------------------------------------+------------------------------------------------------------------+
+| ``resources = tc.adversaries()``             | Instantiate an Adversaries container object.                     |
++----------------------------------------------+------------------------------------------------------------------+
+| ``resource = resources.add('New Resourc...`` | Add a Resource object setting the name and Owner.                |
++----------------------------------------------+------------------------------------------------------------------+
+| ``resource.set_security_label('TLP Green')`` | Set the Security Label on the Resource.                          |
++----------------------------------------------+------------------------------------------------------------------+
+| ``resource.commit()``                        | Trigger API calls to write all added, deleted, or modified data. |
++----------------------------------------------+------------------------------------------------------------------+
 
 Deleting Security Labels
 ------------------------
@@ -6057,24 +6035,19 @@ method is invoked.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resources = tc.adversa | Instantiate an Adversaries container object.    |
-| ries()``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resource = resources.a | Add a Resource object setting the name and      |
-| dd('New Resourc...``     | Owner.                                          |
-+--------------------------+-------------------------------------------------+
-| ``resource.delete_securi | Set the Security Label on the Resource.         |
-| ty_label('TLP G...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resource.commit()``    | Trigger API calls to write all added, deleted,  |
-|                          | or modified data.                               |
-+--------------------------+-------------------------------------------------+
++----------------------------------------------+------------------------------------------------------------------+
+| Snippet                                      | Description                                                      |
++==============================================+==================================================================+
+| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                            |
++----------------------------------------------+------------------------------------------------------------------+
+| ``resources = tc.adversaries()``             | Instantiate an Adversaries container object.                     |
++----------------------------------------------+------------------------------------------------------------------+
+| ``resource = resources.add('New Resourc...`` | Add a Resource object setting the name and Owner.                |
++----------------------------------------------+------------------------------------------------------------------+
+| ``resource.delete_security_label('TLP G...`` | Set the Security Label on the Resource.                          |
++----------------------------------------------+------------------------------------------------------------------+
+| ``resource.commit()``                        | Trigger API calls to write all added, deleted, or modified data. |
++----------------------------------------------+------------------------------------------------------------------+
 
 Tags
 ----
@@ -6121,27 +6094,21 @@ method is invoked.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id,...``         |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resources = tc.adversa | Instantiate a Resources container object.       |
-| ries()``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resource = resources.a | Add a Resource object setting the name and      |
-| dd('New Ads...``         | Owner.                                          |
-+--------------------------+-------------------------------------------------+
-| ``resource.add_tag('EXAM | Add a Tag to the Resource.                      |
-| PLE')``                  |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resource.add_tag('APT' | Add a Tag to the Resource.                      |
-| )``                      |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resource.commit()``    | Trigger API calls to write all added, deleted,  |
-|                          | or modified data.                               |
-+--------------------------+-------------------------------------------------+
++------------------------------------------+------------------------------------------------------------------+
+| Snippet                                  | Description                                                      |
++==========================================+==================================================================+
+| ``tc = ThreatConnect(api_access_id,...`` | Instantiate the ThreatConnect object.                            |
++------------------------------------------+------------------------------------------------------------------+
+| ``resources = tc.adversaries()``         | Instantiate a Resources container object.                        |
++------------------------------------------+------------------------------------------------------------------+
+| ``resource = resources.add('New Ads...`` | Add a Resource object setting the name and Owner.                |
++------------------------------------------+------------------------------------------------------------------+
+| ``resource.add_tag('EXAMPLE')``          | Add a Tag to the Resource.                                       |
++------------------------------------------+------------------------------------------------------------------+
+| ``resource.add_tag('APT')``              | Add a Tag to the Resource.                                       |
++------------------------------------------+------------------------------------------------------------------+
+| ``resource.commit()``                    | Trigger API calls to write all added, deleted, or modified data. |
++------------------------------------------+------------------------------------------------------------------+
 
 Deleting Tags
 -------------
@@ -6177,29 +6144,23 @@ method is invoked.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resources = tc.adversa | Instantiate a Resources container object.       |
-| ries()``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resource = resources.a | Add a Resource object setting the name and      |
-| dd('Existing Re...``     | Owner.                                          |
-+--------------------------+-------------------------------------------------+
-| ``resource.set_id(123)`` | Set the Resource ID to an existing Adversary.   |
-+--------------------------+-------------------------------------------------+
-| ``resource.delete_tag('E | Delete a Tag to the Resource.                   |
-| XAMPLE')``               |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resource.delete_tag('A | Delete a Tag to the Resource.                   |
-| PT')``                   |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resource.commit()``    | Trigger multiple API calls to write all added,  |
-|                          | deleted, or modified data.                      |
-+--------------------------+-------------------------------------------------+
++----------------------------------------------+---------------------------------------------------------------------------+
+| Snippet                                      | Description                                                               |
++==============================================+===========================================================================+
+| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                                     |
++----------------------------------------------+---------------------------------------------------------------------------+
+| ``resources = tc.adversaries()``             | Instantiate a Resources container object.                                 |
++----------------------------------------------+---------------------------------------------------------------------------+
+| ``resource = resources.add('Existing Re...`` | Add a Resource object setting the name and Owner.                         |
++----------------------------------------------+---------------------------------------------------------------------------+
+| ``resource.set_id(123)``                     | Set the Resource ID to an existing Adversary.                             |
++----------------------------------------------+---------------------------------------------------------------------------+
+| ``resource.delete_tag('EXAMPLE')``           | Delete a Tag to the Resource.                                             |
++----------------------------------------------+---------------------------------------------------------------------------+
+| ``resource.delete_tag('APT')``               | Delete a Tag to the Resource.                                             |
++----------------------------------------------+---------------------------------------------------------------------------+
+| ``resource.commit()``                        | Trigger multiple API calls to write all added, deleted, or modified data. |
++----------------------------------------------+---------------------------------------------------------------------------+
 
 Python Advanced
 ---------------
@@ -6574,29 +6535,23 @@ Code Highlights
 Refer to `ThreatConnect API documentation <#rest-api>`__ for proper
 values for the ``RequestObject``.
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``ro = RequestObject()`` | Instantiate and Instance of a Request object.   |
-+--------------------------+-------------------------------------------------+
-| ``ro.set_http_method('GE | Set the HTTP Method for the Request.            |
-| T')``                    |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``ro.set_owner('Example  | Set the Owner for the Request (optional).       |
-| Community')``            |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``ro.set_owner_allowed(T | Set the Owner-Allowed flag for the Request to   |
-| rue)``                   | indicate if this API call supports Owners.      |
-+--------------------------+-------------------------------------------------+
-| ``ro.set_resource_pagina | Set the Pagination flag for the Request to      |
-| tion(True)``             | indicate if this API call supports pagination.  |
-+--------------------------+-------------------------------------------------+
-| ``ro.set_request_uri('/v | Set the URI (uniform resource identifier) for   |
-| 2/indicators')``         | the Request.                                    |
-+--------------------------+-------------------------------------------------+
-| ``results = tc.api_reque | Trigger the API Request and store result as     |
-| st(ro)``                 | ``results``.                                    |
-+--------------------------+-------------------------------------------------+
++------------------------------------------+-------------------------------------------------------------------------------------------+
+| Snippet                                  | Description                                                                               |
++==========================================+===========================================================================================+
+| ``ro = RequestObject()``                 | Instantiate and Instance of a Request object.                                             |
++------------------------------------------+-------------------------------------------------------------------------------------------+
+| ``ro.set_http_method('GET')``            | Set the HTTP Method for the Request.                                                      |
++------------------------------------------+-------------------------------------------------------------------------------------------+
+| ``ro.set_owner('Example Community')``    | Set the Owner for the Request (optional).                                                 |
++------------------------------------------+-------------------------------------------------------------------------------------------+
+| ``ro.set_owner_allowed(True)``           | Set the Owner-Allowed flag for the Request to indicate if this API call supports Owners.  |
++------------------------------------------+-------------------------------------------------------------------------------------------+
+| ``ro.set_resource_pagination(True)``     | Set the Pagination flag for the Request to indicate if this API call supports pagination. |
++------------------------------------------+-------------------------------------------------------------------------------------------+
+| ``ro.set_request_uri('/v2/indicators')`` | Set the URI (uniform resource identifier) for the Request.                                |
++------------------------------------------+-------------------------------------------------------------------------------------------+
+| ``results = tc.api_request(ro)``         | Trigger the API Request and store result as ``results``.                                  |
++------------------------------------------+-------------------------------------------------------------------------------------------+
 
 Downloading Document Contents
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -6629,29 +6584,23 @@ Code Highlights
 Refer to `ThreatConnect API documentation <#rest-api>`__ for proper
 values for the ``RequestObject``.
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``ro = RequestObject()`` | Instantiate and Instance of a Request object.   |
-+--------------------------+-------------------------------------------------+
-| ``ro.set_http_method('GE | Set the HTTP Method for the Request.            |
-| T')``                    |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``ro.set_owner('Example  | Set the Owner for the Request (optional).       |
-| Community')``            |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``ro.set_owner_allowed(T | Set the Owner-Allowed flag for the Request to   |
-| rue)``                   | indicate if this API call supports Owners.      |
-+--------------------------+-------------------------------------------------+
-| ``ro.set_resource_pagina | Set the Pagination flag for the Request to      |
-| tion(True)``             | indicate if this API call supports pagination.  |
-+--------------------------+-------------------------------------------------+
-| ``ro.set_request_uri('/v | Set the URI for the Request.                    |
-| 2/indicators')``         |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``results = tc.api_reque | Trigger the API Request and store result as     |
-| st(ro)``                 | ``results``.                                    |
-+--------------------------+-------------------------------------------------+
++------------------------------------------+-------------------------------------------------------------------------------------------+
+| Snippet                                  | Description                                                                               |
++==========================================+===========================================================================================+
+| ``ro = RequestObject()``                 | Instantiate and Instance of a Request object.                                             |
++------------------------------------------+-------------------------------------------------------------------------------------------+
+| ``ro.set_http_method('GET')``            | Set the HTTP Method for the Request.                                                      |
++------------------------------------------+-------------------------------------------------------------------------------------------+
+| ``ro.set_owner('Example Community')``    | Set the Owner for the Request (optional).                                                 |
++------------------------------------------+-------------------------------------------------------------------------------------------+
+| ``ro.set_owner_allowed(True)``           | Set the Owner-Allowed flag for the Request to indicate if this API call supports Owners.  |
++------------------------------------------+-------------------------------------------------------------------------------------------+
+| ``ro.set_resource_pagination(True)``     | Set the Pagination flag for the Request to indicate if this API call supports pagination. |
++------------------------------------------+-------------------------------------------------------------------------------------------+
+| ``ro.set_request_uri('/v2/indicators')`` | Set the URI for the Request.                                                              |
++------------------------------------------+-------------------------------------------------------------------------------------------+
+| ``results = tc.api_request(ro)``         | Trigger the API Request and store result as ``results``.                                  |
++------------------------------------------+-------------------------------------------------------------------------------------------+
 
 Creating and Uploading Documents
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -6705,38 +6654,29 @@ Code Highlights
 Refer to `ThreatConnect API documentation <#rest-api>`__ for proper
 values for the ``RequestObject``.
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``ro = RequestObject()`` | Instantiate and Instance of a Request Object.   |
-+--------------------------+-------------------------------------------------+
-| ``body = {'name': 'Raw U | Create the JSON body for POST.                  |
-| pload Exam...``          |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``ro.set_http_method('PO | Set the HTTP Method for the Request.            |
-| ST')``                   |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``ro.set_owner('Example  | Set the Owner for the Request (optional).       |
-| Community')``            |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``ro.set_owner_allowed(T | Set the Owner-Allowed flag for the Request to   |
-| rue)``                   | indicate if this API call supports Owners.      |
-+--------------------------+-------------------------------------------------+
-| ``ro.set_resource_pagina | Set the Pagination flag for the Request to      |
-| tion(False)``            | indicate if this API call supports pagination.  |
-+--------------------------+-------------------------------------------------+
-| ``ro.set_request_uri('/v | Set the URI for the Request.                    |
-| 2/groups/doc...``        |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``print(ro)``            | Display the Request Object before submitting    |
-|                          | (optional).                                     |
-+--------------------------+-------------------------------------------------+
-| ``results = tc.api_reque | Trigger the API Request and store result as     |
-| st(ro)``                 | ``results``.                                    |
-+--------------------------+-------------------------------------------------+
-| ``document_id = data['da | Get the ID of the created Document to use in    |
-| ta']['doc...``           | the contents upload.                            |
-+--------------------------+-------------------------------------------------+
++-------------------------------------------+-------------------------------------------------------------------------------------------+
+| Snippet                                   | Description                                                                               |
++===========================================+===========================================================================================+
+| ``ro = RequestObject()``                  | Instantiate and Instance of a Request Object.                                             |
++-------------------------------------------+-------------------------------------------------------------------------------------------+
+| ``body = {'name': 'Raw Upload Exam...``   | Create the JSON body for POST.                                                            |
++-------------------------------------------+-------------------------------------------------------------------------------------------+
+| ``ro.set_http_method('POST')``            | Set the HTTP Method for the Request.                                                      |
++-------------------------------------------+-------------------------------------------------------------------------------------------+
+| ``ro.set_owner('Example Community')``     | Set the Owner for the Request (optional).                                                 |
++-------------------------------------------+-------------------------------------------------------------------------------------------+
+| ``ro.set_owner_allowed(True)``            | Set the Owner-Allowed flag for the Request to indicate if this API call supports Owners.  |
++-------------------------------------------+-------------------------------------------------------------------------------------------+
+| ``ro.set_resource_pagination(False)``     | Set the Pagination flag for the Request to indicate if this API call supports pagination. |
++-------------------------------------------+-------------------------------------------------------------------------------------------+
+| ``ro.set_request_uri('/v2/groups/doc...`` | Set the URI for the Request.                                                              |
++-------------------------------------------+-------------------------------------------------------------------------------------------+
+| ``print(ro)``                             | Display the Request Object before submitting (optional).                                  |
++-------------------------------------------+-------------------------------------------------------------------------------------------+
+| ``results = tc.api_request(ro)``          | Trigger the API Request and store result as ``results``.                                  |
++-------------------------------------------+-------------------------------------------------------------------------------------------+
+| ``document_id = data['data']['doc...``    | Get the ID of the created Document to use in the contents upload.                         |
++-------------------------------------------+-------------------------------------------------------------------------------------------+
 
 Advanced Outputs Formats
 ~~~~~~~~~~~~~~~~~~~~~~~~
