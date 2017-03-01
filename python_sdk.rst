@@ -4260,36 +4260,27 @@ line of code, see the **Code Highlights** section below.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id,...``         |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``indicators = tc.indica | Instantiate an Indicator container object.      |
-| tors()``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``indicator = indicators | Add a Resource object setting the value and     |
-| .add('4.3.254....``      | Owner.                                          |
-+--------------------------+-------------------------------------------------+
-| ``indicator.set_confiden | Set the Confidence value for this Indicator.    |
-| ce(75)``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``indicator.set_rating(2 | Set the Rating value for this Indicator.        |
-| .5)``                    |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``indicator.add_attribut | Add an Attribute of type **Description** to the |
-| e('Description...``      | Resource.                                       |
-+--------------------------+-------------------------------------------------+
-| ``indicator.add_tag('EXA | Add a Tag to the Resource.                      |
-| MPLE')``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``indicator.set_security | Add a Security Label to the Resource.           |
-| _label('TLP Gre..``      |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``indicator.commit()``   | Trigger multiple API calls to write Resource,   |
-|                          | Attributes, Security Labels, and Tags.          |
-+--------------------------+-------------------------------------------------+
++---------------------------------------------+--------------------------------------------------------------------------------------+
+| Snippet                                     | Description                                                                          |
++=============================================+======================================================================================+
+| ``tc = ThreatConnect(api_access_id,...``    | Instantiate the ThreatConnect object.                                                |
++---------------------------------------------+--------------------------------------------------------------------------------------+
+| ``indicators = tc.indicators()``            | Instantiate an Indicator container object.                                           |
++---------------------------------------------+--------------------------------------------------------------------------------------+
+| ``indicator = indicators.add('4.3.254....`` | Add a Resource object setting the value and Owner.                                   |
++---------------------------------------------+--------------------------------------------------------------------------------------+
+| ``indicator.set_confidence(75)``            | Set the Confidence value for this Indicator.                                         |
++---------------------------------------------+--------------------------------------------------------------------------------------+
+| ``indicator.set_rating(2.5)``               | Set the Rating value for this Indicator.                                             |
++---------------------------------------------+--------------------------------------------------------------------------------------+
+| ``indicator.add_attribute('Description...`` | Add an Attribute of type **Description** to the Resource.                            |
++---------------------------------------------+--------------------------------------------------------------------------------------+
+| ``indicator.add_tag('EXAMPLE')``            | Add a Tag to the Resource.                                                           |
++---------------------------------------------+--------------------------------------------------------------------------------------+
+| ``indicator.set_security_label('TLP Gre..`` | Add a Security Label to the Resource.                                                |
++---------------------------------------------+--------------------------------------------------------------------------------------+
+| ``indicator.commit()``                      | Trigger multiple API calls to write Resource, Attributes, Security Labels, and Tags. |
++---------------------------------------------+--------------------------------------------------------------------------------------+
 
 Adding Email Address Indicators
 -------------------------------
@@ -4325,36 +4316,27 @@ purpose of each line of code, see the **Code Highlights** section below.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id,...``         |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``indicators = tc.indica | Instantiate an Indicator container object.      |
-| tors()``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``indicator = indicators | Add a Resource object setting the value and     |
-| .add('badguy@....``      | Owner.                                          |
-+--------------------------+-------------------------------------------------+
-| ``indicator.set_confiden | Set the Confidence value for this Indicator.    |
-| ce(75)``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``indicator.set_rating(2 | Set the Rating value for this Indicator.        |
-| .5)``                    |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``indicator.add_attribut | Add an Attribute of type **Description** to the |
-| e('Description...``      | Resource.                                       |
-+--------------------------+-------------------------------------------------+
-| ``indicator.add_tag('EXA | Add a Tag to the Resource.                      |
-| MPLE')``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``indicator.set_security | Add a Security Label to the Resource.           |
-| _label('TLP Gre..``      |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``indicator.commit()``   | Trigger multiple API calls to write Resource,   |
-|                          | Attributes, Security Labels, and Tags.          |
-+--------------------------+-------------------------------------------------+
++---------------------------------------------+--------------------------------------------------------------------------------------+
+| Snippet                                     | Description                                                                          |
++=============================================+======================================================================================+
+| ``tc = ThreatConnect(api_access_id,...``    | Instantiate the ThreatConnect object.                                                |
++---------------------------------------------+--------------------------------------------------------------------------------------+
+| ``indicators = tc.indicators()``            | Instantiate an Indicator container object.                                           |
++---------------------------------------------+--------------------------------------------------------------------------------------+
+| ``indicator = indicators.add('badguy@....`` | Add a Resource object setting the value and Owner.                                   |
++---------------------------------------------+--------------------------------------------------------------------------------------+
+| ``indicator.set_confidence(75)``            | Set the Confidence value for this Indicator.                                         |
++---------------------------------------------+--------------------------------------------------------------------------------------+
+| ``indicator.set_rating(2.5)``               | Set the Rating value for this Indicator.                                             |
++---------------------------------------------+--------------------------------------------------------------------------------------+
+| ``indicator.add_attribute('Description...`` | Add an Attribute of type **Description** to the Resource.                            |
++---------------------------------------------+--------------------------------------------------------------------------------------+
+| ``indicator.add_tag('EXAMPLE')``            | Add a Tag to the Resource.                                                           |
++---------------------------------------------+--------------------------------------------------------------------------------------+
+| ``indicator.set_security_label('TLP Gre..`` | Add a Security Label to the Resource.                                                |
++---------------------------------------------+--------------------------------------------------------------------------------------+
+| ``indicator.commit()``                      | Trigger multiple API calls to write Resource, Attributes, Security Labels, and Tags. |
++---------------------------------------------+--------------------------------------------------------------------------------------+
 
 Adding File Hash Indicators
 ---------------------------
@@ -4395,42 +4377,31 @@ line of code, see the **Code Highlights** section below.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id,...``         |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``indicator = indicators | Add an Indicator object setting the value and   |
-| .add('8743b520...``      | Owner.                                          |
-+--------------------------+-------------------------------------------------+
-| ``indicator.set_indicato | Add File addition File Hashes for this          |
-| r('b89eaac7e61...``      | Indicator.                                      |
-+--------------------------+-------------------------------------------------+
-| ``indicator.set_indicato | Add File addition File Hashes for this          |
-| r('127e6fbfe24...``      | Indicator.                                      |
-+--------------------------+-------------------------------------------------+
-| ``indicator.set_confiden | Set the Confidence value for this Indicator.    |
-| ce(75)``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``indicator.set_rating(2 | Set the Rating value for this Indicator.        |
-| .5)``                    |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``indicator.set_size(112 | Set the File size property of the Indicator.    |
-| )``                      |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``indicator.add_attribut | Add an Attribute of type **Description** to the |
-| e('Description...``      | Resource.                                       |
-+--------------------------+-------------------------------------------------+
-| ``indicator.add_tag('EXA | Add a Tag to the Indicator.                     |
-| MPLE')``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``indicator.set_security | Add a Security Label to the Indicator.          |
-| _label('TLP Gre..``      |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``indicator.commit()``   | Trigger multiple API calls to write Indicator,  |
-|                          | Attributes, Security Labels, and Tags.          |
-+--------------------------+-------------------------------------------------+
++---------------------------------------------+---------------------------------------------------------------------------------------+
+| Snippet                                     | Description                                                                           |
++=============================================+=======================================================================================+
+| ``tc = ThreatConnect(api_access_id,...``    | Instantiate the ThreatConnect object.                                                 |
++---------------------------------------------+---------------------------------------------------------------------------------------+
+| ``indicator = indicators.add('8743b520...`` | Add an Indicator object setting the value and Owner.                                  |
++---------------------------------------------+---------------------------------------------------------------------------------------+
+| ``indicator.set_indicator('b89eaac7e61...`` | Add File addition File Hashes for this Indicator.                                     |
++---------------------------------------------+---------------------------------------------------------------------------------------+
+| ``indicator.set_indicator('127e6fbfe24...`` | Add File addition File Hashes for this Indicator.                                     |
++---------------------------------------------+---------------------------------------------------------------------------------------+
+| ``indicator.set_confidence(75)``            | Set the Confidence value for this Indicator.                                          |
++---------------------------------------------+---------------------------------------------------------------------------------------+
+| ``indicator.set_rating(2.5)``               | Set the Rating value for this Indicator.                                              |
++---------------------------------------------+---------------------------------------------------------------------------------------+
+| ``indicator.set_size(112)``                 | Set the File size property of the Indicator.                                          |
++---------------------------------------------+---------------------------------------------------------------------------------------+
+| ``indicator.add_attribute('Description...`` | Add an Attribute of type **Description** to the Resource.                             |
++---------------------------------------------+---------------------------------------------------------------------------------------+
+| ``indicator.add_tag('EXAMPLE')``            | Add a Tag to the Indicator.                                                           |
++---------------------------------------------+---------------------------------------------------------------------------------------+
+| ``indicator.set_security_label('TLP Gre..`` | Add a Security Label to the Indicator.                                                |
++---------------------------------------------+---------------------------------------------------------------------------------------+
+| ``indicator.commit()``                      | Trigger multiple API calls to write Indicator, Attributes, Security Labels, and Tags. |
++---------------------------------------------+---------------------------------------------------------------------------------------+
 
 Adding File Occurrences
 -----------------------
@@ -4492,36 +4463,27 @@ of code, see the **Code Highlights** section below.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id,...``         |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``indicators = tc.indica | Instantiate an Indicator container object.      |
-| tors()``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``indicator = indicators | Add a Resource object setting the value and     |
-| .add('badguy.....``      | Owner.                                          |
-+--------------------------+-------------------------------------------------+
-| ``indicator.set_confiden | Set the Confidence value for this Indicator.    |
-| ce(75)``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``indicator.set_rating(2 | Set the Rating value for this Indicator.        |
-| .5)``                    |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``indicator.add_attribut | Add an Attribute of type **Description** to the |
-| e('Description...``      | Resource.                                       |
-+--------------------------+-------------------------------------------------+
-| ``indicator.add_tag('EXA | Add a Tag to the Resource.                      |
-| MPLE')``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``indicator.set_security | Add a Security Label to the Resource.           |
-| _label('TLP Gre..``      |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``indicator.commit()``   | Trigger multiple API calls to write Resource,   |
-|                          | Attributes, Security Labels, and Tags.          |
-+--------------------------+-------------------------------------------------+
++---------------------------------------------+--------------------------------------------------------------------------------------+
+| Snippet                                     | Description                                                                          |
++=============================================+======================================================================================+
+| ``tc = ThreatConnect(api_access_id,...``    | Instantiate the ThreatConnect object.                                                |
++---------------------------------------------+--------------------------------------------------------------------------------------+
+| ``indicators = tc.indicators()``            | Instantiate an Indicator container object.                                           |
++---------------------------------------------+--------------------------------------------------------------------------------------+
+| ``indicator = indicators.add('badguy.....`` | Add a Resource object setting the value and Owner.                                   |
++---------------------------------------------+--------------------------------------------------------------------------------------+
+| ``indicator.set_confidence(75)``            | Set the Confidence value for this Indicator.                                         |
++---------------------------------------------+--------------------------------------------------------------------------------------+
+| ``indicator.set_rating(2.5)``               | Set the Rating value for this Indicator.                                             |
++---------------------------------------------+--------------------------------------------------------------------------------------+
+| ``indicator.add_attribute('Description...`` | Add an Attribute of type **Description** to the Resource.                            |
++---------------------------------------------+--------------------------------------------------------------------------------------+
+| ``indicator.add_tag('EXAMPLE')``            | Add a Tag to the Resource.                                                           |
++---------------------------------------------+--------------------------------------------------------------------------------------+
+| ``indicator.set_security_label('TLP Gre..`` | Add a Security Label to the Resource.                                                |
++---------------------------------------------+--------------------------------------------------------------------------------------+
+| ``indicator.commit()``                      | Trigger multiple API calls to write Resource, Attributes, Security Labels, and Tags. |
++---------------------------------------------+--------------------------------------------------------------------------------------+
 
 Adding URL Indicators
 ---------------------
@@ -4557,36 +4519,27 @@ of code, see the **Code Highlights** section below.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id,...``         |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``indicators = tc.indica | Instantiate an Indicator container object.      |
-| tors()``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``indicator = indicators | Add a Resource object setting the value and     |
-| .add('badguy.....``      | Owner.                                          |
-+--------------------------+-------------------------------------------------+
-| ``indicator.set_confiden | Set the Confidence value for this Indicator.    |
-| ce(75)``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``indicator.set_rating(2 | Set the Rating value for this Indicator.        |
-| .5)``                    |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``indicator.add_attribut | Add an Attribute of type **Description** to the |
-| e('Description...``      | Resource.                                       |
-+--------------------------+-------------------------------------------------+
-| ``indicator.add_tag('EXA | Add a Tag to the Resource.                      |
-| MPLE')``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``indicator.set_security | Add a Security Label to the Resource.           |
-| _label('TLP Gre..``      |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``indicator.commit()``   | Trigger multiple API calls to write Resource,   |
-|                          | Attributes, Security Labels, and Tags.          |
-+--------------------------+-------------------------------------------------+
++---------------------------------------------+--------------------------------------------------------------------------------------+
+| Snippet                                     | Description                                                                          |
++=============================================+======================================================================================+
+| ``tc = ThreatConnect(api_access_id,...``    | Instantiate the ThreatConnect object.                                                |
++---------------------------------------------+--------------------------------------------------------------------------------------+
+| ``indicators = tc.indicators()``            | Instantiate an Indicator container object.                                           |
++---------------------------------------------+--------------------------------------------------------------------------------------+
+| ``indicator = indicators.add('badguy.....`` | Add a Resource object setting the value and Owner.                                   |
++---------------------------------------------+--------------------------------------------------------------------------------------+
+| ``indicator.set_confidence(75)``            | Set the Confidence value for this Indicator.                                         |
++---------------------------------------------+--------------------------------------------------------------------------------------+
+| ``indicator.set_rating(2.5)``               | Set the Rating value for this Indicator.                                             |
++---------------------------------------------+--------------------------------------------------------------------------------------+
+| ``indicator.add_attribute('Description...`` | Add an Attribute of type **Description** to the Resource.                            |
++---------------------------------------------+--------------------------------------------------------------------------------------+
+| ``indicator.add_tag('EXAMPLE')``            | Add a Tag to the Resource.                                                           |
++---------------------------------------------+--------------------------------------------------------------------------------------+
+| ``indicator.set_security_label('TLP Gre..`` | Add a Security Label to the Resource.                                                |
++---------------------------------------------+--------------------------------------------------------------------------------------+
+| ``indicator.commit()``                      | Trigger multiple API calls to write Resource, Attributes, Security Labels, and Tags. |
++---------------------------------------------+--------------------------------------------------------------------------------------+
 
 Deleting Indicator Resources
 ----------------------------
@@ -4609,20 +4562,17 @@ Python SDK deleting Indicator Resources:
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id,...``         |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``indicators = tc.indica | Instantiate an Indicator container object.      |
-| tors()``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``indicator = indicators | Add a Resource object setting the value and     |
-| .add('4.3.2.1...``       | Owner.                                          |
-+--------------------------+-------------------------------------------------+
-| ``indicator.delete()``   | Trigger API calls to delete the Resource.       |
-+--------------------------+-------------------------------------------------+
++--------------------------------------------+----------------------------------------------------+
+| Snippet                                    | Description                                        |
++============================================+====================================================+
+| ``tc = ThreatConnect(api_access_id,...``   | Instantiate the ThreatConnect object.              |
++--------------------------------------------+----------------------------------------------------+
+| ``indicators = tc.indicators()``           | Instantiate an Indicator container object.         |
++--------------------------------------------+----------------------------------------------------+
+| ``indicator = indicators.add('4.3.2.1...`` | Add a Resource object setting the value and Owner. |
++--------------------------------------------+----------------------------------------------------+
+| ``indicator.delete()``                     | Trigger API calls to delete the Resource.          |
++--------------------------------------------+----------------------------------------------------+
 
 Signatures Commit
 -----------------
@@ -4693,39 +4643,29 @@ method is invoked.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``signatures = tc.signat | Instantiate a Signatures container object.      |
-| ures()``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``signature = signatures | Add a Resource object setting the name and      |
-| .add('New Signa...``     | Owner.                                          |
-+--------------------------+-------------------------------------------------+
-| ``signature.set_file_nam | **(REQUIRED)** Set file name for Signature.     |
-| e('bad_file.txt')``      |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``signature.set_file_typ | **(REQUIRED)** Set file type for Signature.     |
-| e('YARA')``              |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``signature.set_file_tex | **(OPTIONAL)** Set file contents for Signature. |
-| t(file_text)``           |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``signature.add_attribut | Add an Attribute of type **Description** to the |
-| e('Description'...``     | Resource.                                       |
-+--------------------------+-------------------------------------------------+
-| ``signature.add_tag('EXA | Add a Tag to the Signature.                     |
-| MPLE')``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``signature.set_security | Add a Security Label to the Signature.          |
-| _label('TLP Gre...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``signature.commit()``   | Trigger API calls to write all added, deleted,  |
-|                          | or modified data.                               |
-+--------------------------+-------------------------------------------------+
++----------------------------------------------+------------------------------------------------------------------+
+| Snippet                                      | Description                                                      |
++==============================================+==================================================================+
+| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                            |
++----------------------------------------------+------------------------------------------------------------------+
+| ``signatures = tc.signatures()``             | Instantiate a Signatures container object.                       |
++----------------------------------------------+------------------------------------------------------------------+
+| ``signature = signatures.add('New Signa...`` | Add a Resource object setting the name and Owner.                |
++----------------------------------------------+------------------------------------------------------------------+
+| ``signature.set_file_name('bad_file.txt')``  | **(REQUIRED)** Set file name for Signature.                      |
++----------------------------------------------+------------------------------------------------------------------+
+| ``signature.set_file_type('YARA')``          | **(REQUIRED)** Set file type for Signature.                      |
++----------------------------------------------+------------------------------------------------------------------+
+| ``signature.set_file_text(file_text)``       | **(OPTIONAL)** Set file contents for Signature.                  |
++----------------------------------------------+------------------------------------------------------------------+
+| ``signature.add_attribute('Description'...`` | Add an Attribute of type **Description** to the Resource.        |
++----------------------------------------------+------------------------------------------------------------------+
+| ``signature.add_tag('EXAMPLE')``             | Add a Tag to the Signature.                                      |
++----------------------------------------------+------------------------------------------------------------------+
+| ``signature.set_security_label('TLP Gre...`` | Add a Security Label to the Signature.                           |
++----------------------------------------------+------------------------------------------------------------------+
+| ``signature.commit()``                       | Trigger API calls to write all added, deleted, or modified data. |
++----------------------------------------------+------------------------------------------------------------------+
 
 Updating Signature Resources
 ----------------------------
@@ -4772,42 +4712,31 @@ method is invoked.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``signatures = tc.signat | Instantiate a Signatures container object.      |
-| ures()``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``signature = signatures | Add a Resource object setting the name and      |
-| .add('Updated D...``     | Owner.                                          |
-+--------------------------+-------------------------------------------------+
-| ``signature.set_id(20)`` | Set the ID of the Signature to the              |
-|                          | ***EXISTING*** Signature ID to update.          |
-+--------------------------+-------------------------------------------------+
-| ``signature.load_attribu | Load existing Attributes into the Signature     |
-| tes()``                  | object.                                         |
-+--------------------------+-------------------------------------------------+
-| ``signature.delete_attri | Add a delete flag to the Attribute with type    |
-| bute(attribute.id)``     | **Description**.                                |
-+--------------------------+-------------------------------------------------+
-| ``signature.add_attribut | Add an Attribute of type **Description** to the |
-| e('Description'...``     | Resource.                                       |
-+--------------------------+-------------------------------------------------+
-| ``signature.load_tags()` | Load existing Tags into the Signature object.   |
-| `                        |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``signature.delete_tag(t | Add a delete flag to all Tags.                  |
-| ag.name)``               |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``signature.add_tag('EXA | Add a Tag to the Resource.                      |
-| MPLE')``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``signature.commit()``   | Trigger API calls to write all added, deleted,  |
-|                          | or modified data.                               |
-+--------------------------+-------------------------------------------------+
++----------------------------------------------+---------------------------------------------------------------------------+
+| Snippet                                      | Description                                                               |
++==============================================+===========================================================================+
+| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                                     |
++----------------------------------------------+---------------------------------------------------------------------------+
+| ``signatures = tc.signatures()``             | Instantiate a Signatures container object.                                |
++----------------------------------------------+---------------------------------------------------------------------------+
+| ``signature = signatures.add('Updated D...`` | Add a Resource object setting the name and Owner.                         |
++----------------------------------------------+---------------------------------------------------------------------------+
+| ``signature.set_id(20)``                     | Set the ID of the Signature to the ***EXISTING*** Signature ID to update. |
++----------------------------------------------+---------------------------------------------------------------------------+
+| ``signature.load_attributes()``              | Load existing Attributes into the Signature object.                       |
++----------------------------------------------+---------------------------------------------------------------------------+
+| ``signature.delete_attribute(attribute.id)`` | Add a delete flag to the Attribute with type **Description**.             |
++----------------------------------------------+---------------------------------------------------------------------------+
+| ``signature.add_attribute('Description'...`` | Add an Attribute of type **Description** to the Resource.                 |
++----------------------------------------------+---------------------------------------------------------------------------+
+| ``signature.load_tags()``                    | Load existing Tags into the Signature object.                             |
++----------------------------------------------+---------------------------------------------------------------------------+
+| ``signature.delete_tag(tag.name)``           | Add a delete flag to all Tags.                                            |
++----------------------------------------------+---------------------------------------------------------------------------+
+| ``signature.add_tag('EXAMPLE')``             | Add a Tag to the Resource.                                                |
++----------------------------------------------+---------------------------------------------------------------------------+
+| ``signature.commit()``                       | Trigger API calls to write all added, deleted, or modified data.          |
++----------------------------------------------+---------------------------------------------------------------------------+
 
 Deleting Signature Resources
 ----------------------------
@@ -4840,24 +4769,19 @@ method is invoked.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``signatures = tc.signat | Instantiate a Signatures container object.      |
-| ures()``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``signature = signatures | Add a Resource object setting the name and      |
-| .add('', owner)``        | Owner.                                          |
-+--------------------------+-------------------------------------------------+
-| ``signature.set_id(20)`` | Set the ID of the Signature to the **EXISTING** |
-|                          | Signature ID to delete.                         |
-+--------------------------+-------------------------------------------------+
-| ``signature.delete()``   | Trigger API calls to write all added, deleted,  |
-|                          | or modified data.                               |
-+--------------------------+-------------------------------------------------+
++----------------------------------------------+-------------------------------------------------------------------------+
+| Snippet                                      | Description                                                             |
++==============================================+=========================================================================+
+| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                                   |
++----------------------------------------------+-------------------------------------------------------------------------+
+| ``signatures = tc.signatures()``             | Instantiate a Signatures container object.                              |
++----------------------------------------------+-------------------------------------------------------------------------+
+| ``signature = signatures.add('', owner)``    | Add a Resource object setting the name and Owner.                       |
++----------------------------------------------+-------------------------------------------------------------------------+
+| ``signature.set_id(20)``                     | Set the ID of the Signature to the **EXISTING** Signature ID to delete. |
++----------------------------------------------+-------------------------------------------------------------------------+
+| ``signature.delete()``                       | Trigger API calls to write all added, deleted, or modified data.        |
++----------------------------------------------+-------------------------------------------------------------------------+
 
 Tasks Commit
 ------------
@@ -4908,29 +4832,23 @@ method is invoked.
 Code Highlights
 ~~~~~~~~~~~~~~~
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``tasks = tc.tasks()``   | Instantiate a Tasks container object.           |
-+--------------------------+-------------------------------------------------+
-| ``task = tasks.add('New  | Add a Resource object setting the name and      |
-| task' own...``           | Owner.                                          |
-+--------------------------+-------------------------------------------------+
-| ``task.add_attribute('De | Add an Attribute of type **Description** to the |
-| scription' 'D...``       | Resource.                                       |
-+--------------------------+-------------------------------------------------+
-| ``task.add_tag('EXAMPLE' | Add a Tag to the Task.                          |
-| )``                      |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``task.add_security_labe | Add a Security Label to the task.               |
-| l('TLP Green')``         |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``task.commit()``        | Trigger API calls to write all added, deleted,  |
-|                          | or modified data.                               |
-+--------------------------+-------------------------------------------------+
++----------------------------------------------+------------------------------------------------------------------+
+| Snippet                                      | Description                                                      |
++==============================================+==================================================================+
+| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                            |
++----------------------------------------------+------------------------------------------------------------------+
+| ``tasks = tc.tasks()``                       | Instantiate a Tasks container object.                            |
++----------------------------------------------+------------------------------------------------------------------+
+| ``task = tasks.add('New task' own...``       | Add a Resource object setting the name and Owner.                |
++----------------------------------------------+------------------------------------------------------------------+
+| ``task.add_attribute('Description' 'D...``   | Add an Attribute of type **Description** to the Resource.        |
++----------------------------------------------+------------------------------------------------------------------+
+| ``task.add_tag('EXAMPLE')``                  | Add a Tag to the Task.                                           |
++----------------------------------------------+------------------------------------------------------------------+
+| ``task.add_security_label('TLP Green')``     | Add a Security Label to the task.                                |
++----------------------------------------------+------------------------------------------------------------------+
+| ``task.commit()``                            | Trigger API calls to write all added, deleted, or modified data. |
++----------------------------------------------+------------------------------------------------------------------+
 
 Updating Task Resources
 -----------------------
@@ -4977,40 +4895,31 @@ method is invoked.
 
 *Code Highlights*
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``tasks = tc.tasks()``   | Instantiate a Tasks container object.           |
-+--------------------------+-------------------------------------------------+
-| ``task = Tasks.add('Upda | Add a Resource object setting the name and      |
-| ted task'...``           | Owner.                                          |
-+--------------------------+-------------------------------------------------+
-| ``task.set_id(20)``      | Set the ID of the task to the ***EXISTING***    |
-|                          | task ID to update.                              |
-+--------------------------+-------------------------------------------------+
-| ``task.load_attributes() | Load existing Attributes into the task object.  |
-| ``                       |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``task.delete_attribute( | Add a delete flag to the Attribute with type    |
-| attribute.id)``          | **Description**.                                |
-+--------------------------+-------------------------------------------------+
-| ``task.add_attribute('De | Add an Attribute of type **Description** to the |
-| scription', '...``       | Resource.                                       |
-+--------------------------+-------------------------------------------------+
-| ``task.load_tags()``     | Load existing Tags into the task object.        |
-+--------------------------+-------------------------------------------------+
-| ``task.delete_tag(tag.na | Add a delete flag to all Tags.                  |
-| me)``                    |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``task.add_tag('EXAMPLE' | Add a Tag to the Resource.                      |
-| )``                      |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``task.commit()``        | Trigger API calls to write all added, deleted,  |
-|                          | or modified data.                               |
-+--------------------------+-------------------------------------------------+
++----------------------------------------------+------------------------------------------------------------------+
+| Snippet                                      | Description                                                      |
++==============================================+==================================================================+
+| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                            |
++----------------------------------------------+------------------------------------------------------------------+
+| ``tasks = tc.tasks()``                       | Instantiate a Tasks container object.                            |
++----------------------------------------------+------------------------------------------------------------------+
+| ``task = Tasks.add('Updated task'...``       | Add a Resource object setting the name and Owner.                |
++----------------------------------------------+------------------------------------------------------------------+
+| ``task.set_id(20)``                          | Set the ID of the task to the ***EXISTING*** task ID to update.  |
++----------------------------------------------+------------------------------------------------------------------+
+| ``task.load_attributes()``                   | Load existing Attributes into the task object.                   |
++----------------------------------------------+------------------------------------------------------------------+
+| ``task.delete_attribute(attribute.id)``      | Add a delete flag to the Attribute with type **Description**.    |
++----------------------------------------------+------------------------------------------------------------------+
+| ``task.add_attribute('Description', '...``   | Add an Attribute of type **Description** to the Resource.        |
++----------------------------------------------+------------------------------------------------------------------+
+| ``task.load_tags()``                         | Load existing Tags into the task object.                         |
++----------------------------------------------+------------------------------------------------------------------+
+| ``task.delete_tag(tag.name)``                | Add a delete flag to all Tags.                                   |
++----------------------------------------------+------------------------------------------------------------------+
+| ``task.add_tag('EXAMPLE')``                  | Add a Tag to the Resource.                                       |
++----------------------------------------------+------------------------------------------------------------------+
+| ``task.commit()``                            | Trigger API calls to write all added, deleted, or modified data. |
++----------------------------------------------+------------------------------------------------------------------+
 
 Deleting Task Resources
 -----------------------
@@ -5044,22 +4953,19 @@ method is invoked.
 
 *Code Highlights*
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``tasks = tc.tasks()``   | Instantiate a Tasks container object.           |
-+--------------------------+-------------------------------------------------+
-| ``task = tasks.add('', o | Add a Task Resource setting the name and Owner. |
-| wner)``                  |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``task.set_id(20)``      | Set the ID of the task to the **EXISTING** task |
-|                          | ID to delete.                                   |
-+--------------------------+-------------------------------------------------+
-| ``task.delete()``        | Trigger API calls to delete the task.           |
-+--------------------------+-------------------------------------------------+
++----------------------------------------------+---------------------------------------------------------------+
+| Snippet                                      | Description                                                   |
++==============================================+===============================================================+
+| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                         |
++----------------------------------------------+---------------------------------------------------------------+
+| ``tasks = tc.tasks()``                       | Instantiate a Tasks container object.                         |
++----------------------------------------------+---------------------------------------------------------------+
+| ``task = tasks.add('', owner)``              | Add a Task Resource setting the name and Owner.               |
++----------------------------------------------+---------------------------------------------------------------+
+| ``task.set_id(20)``                          | Set the ID of the task to the **EXISTING** task ID to delete. |
++----------------------------------------------+---------------------------------------------------------------+
+| ``task.delete()``                            | Trigger API calls to delete the task.                         |
++----------------------------------------------+---------------------------------------------------------------+
 
 Attributes See the `Loading Attributes
 Example <#loading-attributes-example>`__.
@@ -5128,30 +5034,23 @@ method is invoked.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``threats = tc.threats() | Instantiate a Threats container object.         |
-| ``                       |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``threat = threats.add(' | Add a Resource object setting the name and      |
-| New Threat' own...``     | Owner.                                          |
-+--------------------------+-------------------------------------------------+
-| ``threat.add_attribute(' | Add an Attribute of type **Description** to the |
-| Description' 'D...``     | Resource.                                       |
-+--------------------------+-------------------------------------------------+
-| ``threat.add_tag('EXAMPL | Add a Tag to the Threat.                        |
-| E')``                    |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``threat.set_security_la | Add a Security Label to the Threat.             |
-| bel('TLP Green')``       |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``threat.commit()``      | Trigger API calls to write all added, deleted,  |
-|                          | or modified data.                               |
-+--------------------------+-------------------------------------------------+
++----------------------------------------------+------------------------------------------------------------------+
+| Snippet                                      | Description                                                      |
++==============================================+==================================================================+
+| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                            |
++----------------------------------------------+------------------------------------------------------------------+
+| ``threats = tc.threats()``                   | Instantiate a Threats container object.                          |
++----------------------------------------------+------------------------------------------------------------------+
+| ``threat = threats.add('New Threat' own...`` | Add a Resource object setting the name and Owner.                |
++----------------------------------------------+------------------------------------------------------------------+
+| ``threat.add_attribute('Description' 'D...`` | Add an Attribute of type **Description** to the Resource.        |
++----------------------------------------------+------------------------------------------------------------------+
+| ``threat.add_tag('EXAMPLE')``                | Add a Tag to the Threat.                                         |
++----------------------------------------------+------------------------------------------------------------------+
+| ``threat.set_security_label('TLP Green')``   | Add a Security Label to the Threat.                              |
++----------------------------------------------+------------------------------------------------------------------+
+| ``threat.commit()``                          | Trigger API calls to write all added, deleted, or modified data. |
++----------------------------------------------+------------------------------------------------------------------+
 
 Updating Threat Resources
 -------------------------
@@ -5198,41 +5097,31 @@ method is invoked.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``threats = tc.threats() | Instantiate a Threats container object.         |
-| ``                       |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``threat = threats.add(' | Add a Resource object setting the name and      |
-| Updated Threat'...``     | Owner.                                          |
-+--------------------------+-------------------------------------------------+
-| ``threat.set_id(20)``    | Set the ID of the Threat to the ***EXISTING***  |
-|                          | Threat ID to update.                            |
-+--------------------------+-------------------------------------------------+
-| ``threat.load_attributes | Load existing Attributes into the Threat        |
-| ()``                     | object.                                         |
-+--------------------------+-------------------------------------------------+
-| ``threat.delete_attribut | Add a delete flag to the Attribute with type    |
-| e(attribute.id)``        | **Description**.                                |
-+--------------------------+-------------------------------------------------+
-| ``threat.add_attribute(' | Add an Attribute of type **Description** to the |
-| Description', '...``     | Resource.                                       |
-+--------------------------+-------------------------------------------------+
-| ``threat.load_tags()``   | Load existing Tags into the Threat object.      |
-+--------------------------+-------------------------------------------------+
-| ``threat.delete_tag(tag. | Add a delete flag to all Tags.                  |
-| name)``                  |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``threat.add_tag('EXAMPL | Add a Tag to the Resource.                      |
-| E')``                    |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``threat.commit()``      | Trigger API calls to write all added, deleted,  |
-|                          | or modified data.                               |
-+--------------------------+-------------------------------------------------+
++----------------------------------------------+---------------------------------------------------------------------+
+| Snippet                                      | Description                                                         |
++==============================================+=====================================================================+
+| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                               |
++----------------------------------------------+---------------------------------------------------------------------+
+| ``threats = tc.threats()``                   | Instantiate a Threats container object.                             |
++----------------------------------------------+---------------------------------------------------------------------+
+| ``threat = threats.add('Updated Threat'...`` | Add a Resource object setting the name and Owner.                   |
++----------------------------------------------+---------------------------------------------------------------------+
+| ``threat.set_id(20)``                        | Set the ID of the Threat to the ***EXISTING*** Threat ID to update. |
++----------------------------------------------+---------------------------------------------------------------------+
+| ``threat.load_attributes()``                 | Load existing Attributes into the Threat object.                    |
++----------------------------------------------+---------------------------------------------------------------------+
+| ``threat.delete_attribute(attribute.id)``    | Add a delete flag to the Attribute with type **Description**.       |
++----------------------------------------------+---------------------------------------------------------------------+
+| ``threat.add_attribute('Description', '...`` | Add an Attribute of type **Description** to the Resource.           |
++----------------------------------------------+---------------------------------------------------------------------+
+| ``threat.load_tags()``                       | Load existing Tags into the Threat object.                          |
++----------------------------------------------+---------------------------------------------------------------------+
+| ``threat.delete_tag(tag.name)``              | Add a delete flag to all Tags.                                      |
++----------------------------------------------+---------------------------------------------------------------------+
+| ``threat.add_tag('EXAMPLE')``                | Add a Tag to the Resource.                                          |
++----------------------------------------------+---------------------------------------------------------------------+
+| ``threat.commit()``                          | Trigger API calls to write all added, deleted, or modified data.    |
++----------------------------------------------+---------------------------------------------------------------------+
 
 Deleting Threat Resources
 -------------------------
@@ -5265,24 +5154,19 @@ method is invoked.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``threats = tc.threats() | Instantiate a Threats container object.         |
-| ``                       |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``threat = threats.add(' | Add a Resource object setting the name and      |
-| ', owner)``              | Owner.                                          |
-+--------------------------+-------------------------------------------------+
-| ``threat.set_id(20)``    | Set the ID of the Threat to the **EXISTING**    |
-|                          | Threat ID to delete.                            |
-+--------------------------+-------------------------------------------------+
-| ``threat.delete()``      | Trigger API calls to write all added, deleted,  |
-|                          | or modified data.                               |
-+--------------------------+-------------------------------------------------+
++----------------------------------------------+-------------------------------------------------------------------+
+| Snippet                                      | Description                                                       |
++==============================================+===================================================================+
+| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                             |
++----------------------------------------------+-------------------------------------------------------------------+
+| ``threats = tc.threats()``                   | Instantiate a Threats container object.                           |
++----------------------------------------------+-------------------------------------------------------------------+
+| ``threat = threats.add('', owner)``          | Add a Resource object setting the name and Owner.                 |
++----------------------------------------------+-------------------------------------------------------------------+
+| ``threat.set_id(20)``                        | Set the ID of the Threat to the **EXISTING** Threat ID to delete. |
++----------------------------------------------+-------------------------------------------------------------------+
+| ``threat.delete()``                          | Trigger API calls to write all added, deleted, or modified data.  |
++----------------------------------------------+-------------------------------------------------------------------+
 
 Victims Commit
 --------------
@@ -5358,33 +5242,25 @@ method is invoked.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``victims = tc.victims() | Instantiate a Victims container object.         |
-| ``                       |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``victim = victims.add(' | Add a Resource object setting the name and      |
-| Robin Scherbats...``     | Owner.                                          |
-+--------------------------+-------------------------------------------------+
-| ``victim.set_nationality | **(OPTIONAL)** Set Victim nationality.          |
-| ('Canadian')``           |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``victim.set_org('Royal  | **(OPTIONAL)** Set Victim Organization.         |
-| Canadian Mounte...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``victim.set_suborg('Que | **(OPTIONAL)** Set Victim Sub-Organization.     |
-| bec Office')``           |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``victim.set_work_locati | **(OPTIONAL)** Set Victim location.             |
-| on('Quebec')``           |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``victim.commit()``      | Trigger API calls to write all added, deleted,  |
-|                          | or modified data.                               |
-+--------------------------+-------------------------------------------------+
++----------------------------------------------+------------------------------------------------------------------+
+| Snippet                                      | Description                                                      |
++==============================================+==================================================================+
+| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                            |
++----------------------------------------------+------------------------------------------------------------------+
+| ``victims = tc.victims()``                   | Instantiate a Victims container object.                          |
++----------------------------------------------+------------------------------------------------------------------+
+| ``victim = victims.add('Robin Scherbats...`` | Add a Resource object setting the name and Owner.                |
++----------------------------------------------+------------------------------------------------------------------+
+| ``victim.set_nationality('Canadian')``       | **(OPTIONAL)** Set Victim nationality.                           |
++----------------------------------------------+------------------------------------------------------------------+
+| ``victim.set_org('Royal Canadian Mounte...`` | **(OPTIONAL)** Set Victim Organization.                          |
++----------------------------------------------+------------------------------------------------------------------+
+| ``victim.set_suborg('Quebec Office')``       | **(OPTIONAL)** Set Victim Sub-Organization.                      |
++----------------------------------------------+------------------------------------------------------------------+
+| ``victim.set_work_location('Quebec')``       | **(OPTIONAL)** Set Victim location.                              |
++----------------------------------------------+------------------------------------------------------------------+
+| ``victim.commit()``                          | Trigger API calls to write all added, deleted, or modified data. |
++----------------------------------------------+------------------------------------------------------------------+
 
 Updating Victim Resources
 -------------------------
@@ -5418,24 +5294,19 @@ method is invoked.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``victims = tc.victims() | Instantiate a Victims container object.         |
-| ``                       |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``victim = victims.add(' | Add a Resource object setting the name and      |
-| Updated Victim'...``     | Owner.                                          |
-+--------------------------+-------------------------------------------------+
-| ``victim.set_id(20)``    | Set the ID of the Victim to the ***EXISTING***  |
-|                          | Victim ID to update.                            |
-+--------------------------+-------------------------------------------------+
-| ``victim.commit()``      | Trigger API calls to write all added, deleted,  |
-|                          | or modified data.                               |
-+--------------------------+-------------------------------------------------+
++----------------------------------------------+---------------------------------------------------------------------+
+| Snippet                                      | Description                                                         |
++==============================================+=====================================================================+
+| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                               |
++----------------------------------------------+---------------------------------------------------------------------+
+| ``victims = tc.victims()``                   | Instantiate a Victims container object.                             |
++----------------------------------------------+---------------------------------------------------------------------+
+| ``victim = victims.add('Updated Victim'...`` | Add a Resource object setting the name and Owner.                   |
++----------------------------------------------+---------------------------------------------------------------------+
+| ``victim.set_id(20)``                        | Set the ID of the Victim to the ***EXISTING*** Victim ID to update. |
++----------------------------------------------+---------------------------------------------------------------------+
+| ``victim.commit()``                          | Trigger API calls to write all added, deleted, or modified data.    |
++----------------------------------------------+---------------------------------------------------------------------+
 
 Deleting Victim Resources
 -------------------------
@@ -5468,24 +5339,19 @@ method is invoked.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``victims = tc.victims() | Instantiate a Victims container object.         |
-| ``                       |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``victim = victims.add(' | Add a Resource object setting the name and      |
-| ', owner)``              | Owner.                                          |
-+--------------------------+-------------------------------------------------+
-| ``victim.set_id(20)``    | Set the ID of the Victim to the **EXISTING**    |
-|                          | Victim ID to delete.                            |
-+--------------------------+-------------------------------------------------+
-| ``victim.delete()``      | Trigger API calls to write all added, deleted,  |
-|                          | or modified data.                               |
-+--------------------------+-------------------------------------------------+
++----------------------------------------------+-------------------------------------------------------------------+
+| Snippet                                      | Description                                                       |
++==============================================+===================================================================+
+| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                             |
++----------------------------------------------+-------------------------------------------------------------------+
+| ``victims = tc.victims()``                   | Instantiate a Victims container object.                           |
++----------------------------------------------+-------------------------------------------------------------------+
+| ``victim = victims.add('', owner)``          | Add a Resource object setting the name and Owner.                 |
++----------------------------------------------+-------------------------------------------------------------------+
+| ``victim.set_id(20)``                        | Set the ID of the Victim to the **EXISTING** Victim ID to delete. |
++----------------------------------------------+-------------------------------------------------------------------+
+| ``victim.delete()``                          | Trigger API calls to write all added, deleted, or modified data.  |
++----------------------------------------------+-------------------------------------------------------------------+
 
 Attributes See the `Loading Attributes
 Example <#loading-attributes-example>`__.
@@ -5552,27 +5418,21 @@ method is invoked.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resources = tc.adversa | Instantiate a Resources container object.       |
-| ries()``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resource = resources.a | Add a Resource object setting the name and      |
-| dd('New Resourc...``     | Owner.                                          |
-+--------------------------+-------------------------------------------------+
-| ``resource.associate_gro | Add an Association to another Resource.         |
-| up(ResourceType...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resource.associate_gro | Add an Association to another Resource.         |
-| up(ResourceType...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resource.commit()``    | Trigger API calls to write all added, deleted,  |
-|                          | or modified data.                               |
-+--------------------------+-------------------------------------------------+
++----------------------------------------------+------------------------------------------------------------------+
+| Snippet                                      | Description                                                      |
++==============================================+==================================================================+
+| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                            |
++----------------------------------------------+------------------------------------------------------------------+
+| ``resources = tc.adversaries()``             | Instantiate a Resources container object.                        |
++----------------------------------------------+------------------------------------------------------------------+
+| ``resource = resources.add('New Resourc...`` | Add a Resource object setting the name and Owner.                |
++----------------------------------------------+------------------------------------------------------------------+
+| ``resource.associate_group(ResourceType...`` | Add an Association to another Resource.                          |
++----------------------------------------------+------------------------------------------------------------------+
+| ``resource.associate_group(ResourceType...`` | Add an Association to another Resource.                          |
++----------------------------------------------+------------------------------------------------------------------+
+| ``resource.commit()``                        | Trigger API calls to write all added, deleted, or modified data. |
++----------------------------------------------+------------------------------------------------------------------+
 
 Associate Indicator
 -------------------
@@ -5610,30 +5470,23 @@ method is invoked.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resources = tc.adversa | Instantiate a Resources container object.       |
-| ries()``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resource = resources.a | Add a Resource object setting the name and      |
-| dd('New Resourc...``     | Owner.                                          |
-+--------------------------+-------------------------------------------------+
-| ``resource.associate_ind | Add an Association to an Indicator.             |
-| icator(Resource...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resource.associate_ind | Add an Association to an Indicator.             |
-| icator(Resource...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resource.associate_ind | Add an Association to an Indicator.             |
-| icator(Resource...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resource.commit()``    | Trigger API calls to write all added, deleted,  |
-|                          | or modified data.                               |
-+--------------------------+-------------------------------------------------+
++----------------------------------------------+------------------------------------------------------------------+
+| Snippet                                      | Description                                                      |
++==============================================+==================================================================+
+| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                            |
++----------------------------------------------+------------------------------------------------------------------+
+| ``resources = tc.adversaries()``             | Instantiate a Resources container object.                        |
++----------------------------------------------+------------------------------------------------------------------+
+| ``resource = resources.add('New Resourc...`` | Add a Resource object setting the name and Owner.                |
++----------------------------------------------+------------------------------------------------------------------+
+| ``resource.associate_indicator(Resource...`` | Add an Association to an Indicator.                              |
++----------------------------------------------+------------------------------------------------------------------+
+| ``resource.associate_indicator(Resource...`` | Add an Association to an Indicator.                              |
++----------------------------------------------+------------------------------------------------------------------+
+| ``resource.associate_indicator(Resource...`` | Add an Association to an Indicator.                              |
++----------------------------------------------+------------------------------------------------------------------+
+| ``resource.commit()``                        | Trigger API calls to write all added, deleted, or modified data. |
++----------------------------------------------+------------------------------------------------------------------+
 
 Associate Victim
 ----------------
@@ -5669,24 +5522,19 @@ method is invoked.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resources = tc.adversa | Instantiate a Resources container object.       |
-| ries()``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resource = resources.a | Add a Resource object setting the name and      |
-| dd('New Adversa...``     | Owner.                                          |
-+--------------------------+-------------------------------------------------+
-| ``resource.associate_vic | Add an Association to a Victim.                 |
-| tim(325)``               |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resource.commit()``    | Trigger API calls to write all added, deleted,  |
-|                          | or modified data.                               |
-+--------------------------+-------------------------------------------------+
++----------------------------------------------+------------------------------------------------------------------+
+| Snippet                                      | Description                                                      |
++==============================================+==================================================================+
+| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                            |
++----------------------------------------------+------------------------------------------------------------------+
+| ``resources = tc.adversaries()``             | Instantiate a Resources container object.                        |
++----------------------------------------------+------------------------------------------------------------------+
+| ``resource = resources.add('New Adversa...`` | Add a Resource object setting the name and Owner.                |
++----------------------------------------------+------------------------------------------------------------------+
+| ``resource.associate_victim(325)``           | Add an Association to a Victim.                                  |
++----------------------------------------------+------------------------------------------------------------------+
+| ``resource.commit()``                        | Trigger API calls to write all added, deleted, or modified data. |
++----------------------------------------------+------------------------------------------------------------------+
 
 Disassociate Group
 ------------------
@@ -5728,31 +5576,23 @@ method is invoked.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resources = tc.adversa | Instantiate a Resources container object.       |
-| ries()``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resource = resources.a | Add a Resource object setting the name and      |
-| dd('Existing Re...``     | Owner.                                          |
-+--------------------------+-------------------------------------------------+
-| ``for association in res | Iterate through all Associated Groups.          |
-| ource.group_associat...` |                                                 |
-| `                        |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``if association.type == | Match any Association of type Incidents.        |
-|  'Incident':``           |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``res.disassociate_group | Disassociate the Group Resource.                |
-| (association.re...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resource.commit()``    | Trigger API calls to write all added, deleted,  |
-|                          | or modified data.                               |
-+--------------------------+-------------------------------------------------+
++---------------------------------------------------+------------------------------------------------------------------+
+| Snippet                                           | Description                                                      |
++===================================================+==================================================================+
+| ``tc = ThreatConnect(api_access_id, api...``      | Instantiate the ThreatConnect object.                            |
++---------------------------------------------------+------------------------------------------------------------------+
+| ``resources = tc.adversaries()``                  | Instantiate a Resources container object.                        |
++---------------------------------------------------+------------------------------------------------------------------+
+| ``resource = resources.add('Existing Re...``      | Add a Resource object setting the name and Owner.                |
++---------------------------------------------------+------------------------------------------------------------------+
+| ``for association in resource.group_associat...`` | Iterate through all Associated Groups.                           |
++---------------------------------------------------+------------------------------------------------------------------+
+| ``if association.type == 'Incident':``            | Match any Association of type Incidents.                         |
++---------------------------------------------------+------------------------------------------------------------------+
+| ``res.disassociate_group(association.re...``      | Disassociate the Group Resource.                                 |
++---------------------------------------------------+------------------------------------------------------------------+
+| ``resource.commit()``                             | Trigger API calls to write all added, deleted, or modified data. |
++---------------------------------------------------+------------------------------------------------------------------+
 
 Disassociate Indicator
 ----------------------
@@ -5794,32 +5634,23 @@ method is invoked.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resources = tc.adversa | Instantiate a Resources container object.       |
-| ries()``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resource = resources.a | Add a Resource object setting the name and      |
-| dd('Existing Re...``     | Owner.                                          |
-+--------------------------+-------------------------------------------------+
-| ``for association in res | Iterate through all Associated Groups.          |
-| ource.indicator_asso...` |                                                 |
-| `                        |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``if association.type == | Match any Association of type Incidents.        |
-|  'EmailAdd':``           |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resource.disassociate_ | Disassociate the Incident.                      |
-| indicator(associatio...` |                                                 |
-| `                        |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resource.commit()``    | Trigger API calls to write all added, deleted,  |
-|                          | or modified data.                               |
-+--------------------------+-------------------------------------------------+
++---------------------------------------------------+------------------------------------------------------------------+
+| Snippet                                           | Description                                                      |
++===================================================+==================================================================+
+| ``tc = ThreatConnect(api_access_id, api...``      | Instantiate the ThreatConnect object.                            |
++---------------------------------------------------+------------------------------------------------------------------+
+| ``resources = tc.adversaries()``                  | Instantiate a Resources container object.                        |
++---------------------------------------------------+------------------------------------------------------------------+
+| ``resource = resources.add('Existing Re...``      | Add a Resource object setting the name and Owner.                |
++---------------------------------------------------+------------------------------------------------------------------+
+| ``for association in resource.indicator_asso...`` | Iterate through all Associated Groups.                           |
++---------------------------------------------------+------------------------------------------------------------------+
+| ``if association.type == 'EmailAdd':``            | Match any Association of type Incidents.                         |
++---------------------------------------------------+------------------------------------------------------------------+
+| ``resource.disassociate_indicator(associatio...`` | Disassociate the Incident.                                       |
++---------------------------------------------------+------------------------------------------------------------------+
+| ``resource.commit()``                             | Trigger API calls to write all added, deleted, or modified data. |
++---------------------------------------------------+------------------------------------------------------------------+
 
 Disassociate Victim
 -------------------
@@ -5860,31 +5691,23 @@ method is invoked.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resources = tc.adversa | Instantiate a Resources container object.       |
-| ries()``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resource = resources.a | Add a Resource object setting the name and      |
-| dd('Existing Re...``     | Owner.                                          |
-+--------------------------+-------------------------------------------------+
-| ``for association in res | Iterate through all Associated Groups.          |
-| ource.victim_associa...` |                                                 |
-| `                        |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``if association.name == | Match any Association of type Incidents.        |
-|  'Drew Brees':``         |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``res.disassociate_victi | Disassociate the Incident.                      |
-| m(association.i...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resource.commit()``    | Trigger API calls to write all added, deleted,  |
-|                          | or modified data.                               |
-+--------------------------+-------------------------------------------------+
++---------------------------------------------------+------------------------------------------------------------------+
+| Snippet                                           | Description                                                      |
++===================================================+==================================================================+
+| ``tc = ThreatConnect(api_access_id, api...``      | Instantiate the ThreatConnect object.                            |
++---------------------------------------------------+------------------------------------------------------------------+
+| ``resources = tc.adversaries()``                  | Instantiate a Resources container object.                        |
++---------------------------------------------------+------------------------------------------------------------------+
+| ``resource = resources.add('Existing Re...``      | Add a Resource object setting the name and Owner.                |
++---------------------------------------------------+------------------------------------------------------------------+
+| ``for association in resource.victim_associa...`` | Iterate through all Associated Groups.                           |
++---------------------------------------------------+------------------------------------------------------------------+
+| ``if association.name == 'Drew Brees':``          | Match any Association of type Incidents.                         |
++---------------------------------------------------+------------------------------------------------------------------+
+| ``res.disassociate_victim(association.i...``      | Disassociate the Incident.                                       |
++---------------------------------------------------+------------------------------------------------------------------+
+| ``resource.commit()``                             | Trigger API calls to write all added, deleted, or modified data. |
++---------------------------------------------------+------------------------------------------------------------------+
 
 Resource Metadata
 
@@ -5978,27 +5801,21 @@ method is invoked.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resources = tc.adversa | Instantiate a Resources container object.       |
-| ries()``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``resource = resources.a | Add a Resource object setting the name and      |
-| dd('New Adversa...``     | Owner.                                          |
-+--------------------------+-------------------------------------------------+
-| ``resource.add_attribute | Add an Attribute of type **Description** to the |
-| ('Description',...``     | Resource.                                       |
-+--------------------------+-------------------------------------------------+
-| ``resource.add_attribute | Add an Attribute of type **Source** to the      |
-| ('Source, 'SIEM')``      | Resource.                                       |
-+--------------------------+-------------------------------------------------+
-| ``resource.commit()``    | Trigger API calls to write all added, deleted,  |
-|                          | or modified data.                               |
-+--------------------------+-------------------------------------------------+
++----------------------------------------------+------------------------------------------------------------------+
+| Snippet                                      | Description                                                      |
++==============================================+==================================================================+
+| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                            |
++----------------------------------------------+------------------------------------------------------------------+
+| ``resources = tc.adversaries()``             | Instantiate a Resources container object.                        |
++----------------------------------------------+------------------------------------------------------------------+
+| ``resource = resources.add('New Adversa...`` | Add a Resource object setting the name and Owner.                |
++----------------------------------------------+------------------------------------------------------------------+
+| ``resource.add_attribute('Description',...`` | Add an Attribute of type **Description** to the Resource.        |
++----------------------------------------------+------------------------------------------------------------------+
+| ``resource.add_attribute('Source, 'SIEM')``  | Add an Attribute of type **Source** to the Resource.             |
++----------------------------------------------+------------------------------------------------------------------+
+| ``resource.commit()``                        | Trigger API calls to write all added, deleted, or modified data. |
++----------------------------------------------+------------------------------------------------------------------+
 
 Deleting Attributes
 -------------------
