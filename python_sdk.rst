@@ -47,9 +47,9 @@ Example of using ConfigParser to read API configuration values:
 
 .. code:: python
 
-    read configuration file
+    # read configuration file
     config = ConfigParser.RawConfigParser()
-    config.read('threatconnect.conf')
+    config.read('tc.conf')
 
     try:
         api_access_id = config.get('threatconnect', 'api_access_id')
