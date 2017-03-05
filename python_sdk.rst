@@ -47,6 +47,11 @@ Example of using ConfigParser to read API configuration values:
 
 .. code:: python
 
+    try:
+        import ConfigParser
+    except:
+        import configparser as ConfigParser
+
     # read configuration file
     config = ConfigParser.RawConfigParser()
     config.read('tc.conf')
