@@ -165,7 +165,11 @@ Example of Python SDK writing to the ThreatConnect API:
 
 .. code:: python
 
-    import ConfigParser
+    try:
+        import ConfigParser
+    except:
+        import configparser as ConfigParser
+
     from threatconnect import ThreatConnect
 
     config = ConfigParser.RawConfigParser()
