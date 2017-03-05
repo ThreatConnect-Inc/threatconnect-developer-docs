@@ -69,11 +69,11 @@ The configuration file should contain the following lines at a minimum:
 
 ::
 
-     1 [threatconnect]
-     2 api_access_id = 12345678900987654321
-     3 api_default_org = Acme Corp
-     4 api_secret_key = aabbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyyzz!@#$%^&*()-=
-     5 api_base_url = https://api.threatconnect.com
+     [threatconnect]
+     api_access_id = 12345678900987654321
+     api_default_org = Test Owner
+     api_secret_key = aabbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyyzz!@#$%^&*()-=
+     api_base_url = https://api.threatconnect.com
 
 The following examples illustrates a typical initialization of the
 ThreatConnect Class:
