@@ -1177,19 +1177,19 @@ Code Highlights
 +--------------------------------------------+------------------------------------------------------------------------------------------+
 | Snippet                                    | Description                                                                              |
 +============================================+==========================================================================================+
-| `tc = ThreatConnect(api_access_id, api...` | Instantiate the ThreatConnect object.                                                    |
+| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                                                    |
 +--------------------------------------------+------------------------------------------------------------------------------------------+
-| `documents = tc.documents()`               | Instantiate a Documents container object.                                                |
+| ``documents = tc.documents()``               | Instantiate a Documents container object.                                                |
 +--------------------------------------------+------------------------------------------------------------------------------------------+
-| `filter1 = documents.add_filter()`         | Add a filter object to the Documents container object (support multiple filter objects). |
+| ``filter1 = documents.add_filter()``         | Add a filter object to the Documents container object (support multiple filter objects). |
 +--------------------------------------------+------------------------------------------------------------------------------------------+
-| `filter1.add_tag('EXAMPLE')`               | Add API filter to retrieve Documents with the 'Example' tag                              |
+| ``filter1.add_tag('EXAMPLE')``               | Add API filter to retrieve Documents with the 'Example' tag                              |
 +--------------------------------------------+------------------------------------------------------------------------------------------+
-| `documents.retrieve()`                     | Trigger the API request and retrieve the Documents intelligence data.                    |
+| ``documents.retrieve()``                     | Trigger the API request and retrieve the Documents intelligence data.                    |
 +--------------------------------------------+------------------------------------------------------------------------------------------+
-| `for document in documents:`               | Iterate over the Documents container object generator.                                   |
+| ``for document in documents:``               | Iterate over the Documents container object generator.                                   |
 +--------------------------------------------+------------------------------------------------------------------------------------------+
-| `print(document.id)`                       | Display the **'id'** property of the Document object.                                    |
+| ``print(document.id)``                       | Display the **'id'** property of the Document object.                                    |
 +--------------------------------------------+------------------------------------------------------------------------------------------+
 
 
@@ -1214,11 +1214,11 @@ Code Highlights
 +-------------------------------------+--------------------------------------------------------------------------------------+
 | Snippet                             | Description                                                                          |
 +=====================================+======================================================================================+
-| `document.download()`               | Trigger API request to download the Document contents.                               |
+| ``document.download()``               | Trigger API request to download the Document contents.                               |
 +-------------------------------------+--------------------------------------------------------------------------------------+
-| `if document.contents is not None:` | Validate the Document has downloaded before displaying.                              |
+| ``if document.contents is not None:`` | Validate the Document has downloaded before displaying.                              |
 +-------------------------------------+--------------------------------------------------------------------------------------+
-| `print(document.contents)`          | Display the contents of the Document. (This should only be done for ASCII contents.) |
+| ``print(document.contents)``          | Display the contents of the Document. (This should only be done for ASCII contents.) |
 +-------------------------------------+--------------------------------------------------------------------------------------+
 
 Resource Metadata
