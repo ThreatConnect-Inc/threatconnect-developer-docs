@@ -890,15 +890,13 @@ Indicator data.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``for attribute in indic | Iterate over the Attribute property object      |
-| ator.attributes:``       | generator.                                      |
-+--------------------------+-------------------------------------------------+
-| ``print(attribute.type)` | Display the **'type'** property of the          |
-| `                        | Attribute object.                               |
-+--------------------------+-------------------------------------------------+
++--------------------------------------------+----------------------------------------------------------+
+| Snippet                                    | Description                                              |
++============================================+==========================================================+
+| ``for attribute in indicator.attributes:`` | Iterate over the Attribute property object generator.    |
++--------------------------------------------+----------------------------------------------------------+
+| ``print(attribute.type)``                  | Display the **'type'** property of the Attribute object. |
++--------------------------------------------+----------------------------------------------------------+
 
 Loading Security Label Example
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -924,18 +922,15 @@ property.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``indicator.load_securit | Trigger API call to load the Security Label     |
-| y_label()``              | into the Indicator object.                      |
-+--------------------------+-------------------------------------------------+
-| ``if indicator.security_ | Ensure the object has been loaded before        |
-| label is not ...``       | displaying properties.                          |
-+--------------------------+-------------------------------------------------+
-| ``print(indicator.securi | Display the **'name'** property of the Security |
-| ty_label.name)``         | Label object.                                   |
-+--------------------------+-------------------------------------------------+
++--------------------------------------------+------------------------------------------------------------------------+
+| Snippet                                    | Description                                                            |
++============================================+========================================================================+
+| ``indicator.load_security_label()``        | Trigger API call to load the Security Label into the Indicator object. |
++--------------------------------------------+------------------------------------------------------------------------+
+| ``if indicator.security_label is not ...`` | Ensure the object has been loaded before displaying properties.        |
++--------------------------------------------+------------------------------------------------------------------------+
+| ``print(indicator.security_label.name)``   | Display the **'name'** property of the Security Label object.          |
++--------------------------------------------+------------------------------------------------------------------------+
 
 Loading Tags Example
 ~~~~~~~~~~~~~~~~~~~~
@@ -958,15 +953,13 @@ object can then be directly accessed from the ``tags`` property.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``for tag in indicator.t | Iterate over the Attribute property object      |
-| ags:``                   | generator.                                      |
-+--------------------------+-------------------------------------------------+
-| ``print(tag.name)``      | Display the **'name'** property of the          |
-|                          | Attribute object.                               |
-+--------------------------+-------------------------------------------------+
++--------------------------------+----------------------------------------------------------+
+| Snippet                        | Description                                              |
++================================+==========================================================+
+| ``for tag in indicator.tags:`` | Iterate over the Attribute property object generator.    |
++--------------------------------+----------------------------------------------------------+
+| ``print(tag.name)``            | Display the **'name'** property of the Attribute object. |
++--------------------------------+----------------------------------------------------------+
 
 Group Associations
 ------------------
@@ -990,15 +983,13 @@ object.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``for g_associations in  | Trigger API call to retrieve all Groups         |
-| indicator.grou...``      | associated with this Indicator.                 |
-+--------------------------+-------------------------------------------------+
-| ``print(g_association.id | Display the **'id'** property of the associated |
-| )``                      | Group object.                                   |
-+--------------------------+-------------------------------------------------+
++---------------------------------------------+-------------------------------------------------------------------------+
+| Snippet                                     | Description                                                             |
++=============================================+=========================================================================+
+| ``for g_associations in indicator.grou...`` | Trigger API call to retrieve all Groups associated with this Indicator. |
++---------------------------------------------+-------------------------------------------------------------------------+
+| ``print(g_association.id)``                 | Display the **'id'** property of the associated Group object.           |
++---------------------------------------------+-------------------------------------------------------------------------+
 
 Indicator Associations
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -1026,15 +1017,13 @@ Indicator object.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``for i_association in i | Trigger API call to retrieve all Indicators     |
-| ndicator.ind_...``       | associated with this Indicator.                 |
-+--------------------------+-------------------------------------------------+
-| ``print(i_association.id | Display the **'id'** property of the associated |
-| )``                      | Indicator object.                               |
-+--------------------------+-------------------------------------------------+
++--------------------------------------------+-----------------------------------------------------------------------------+
+| Snippet                                    | Description                                                                 |
++============================================+=============================================================================+
+| ``for i_association in indicator.ind_...`` | Trigger API call to retrieve all Indicators associated with this Indicator. |
++--------------------------------------------+-----------------------------------------------------------------------------+
+| ``print(i_association.id)``                | Display the **'id'** property of the associated Indicator object.           |
++--------------------------------------------+-----------------------------------------------------------------------------+
 
 Victim Associations
 ~~~~~~~~~~~~~~~~~~~
