@@ -207,35 +207,29 @@ console.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``import ConfigParser``  | Import the ConfigParser module used to read the |
-|                          | configuration file.                             |
-+--------------------------+-------------------------------------------------+
-| ``from threatconnect imp | Import the ThreatConnect Python SDK module.     |
-| ort ThreatConnect``      |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``config = ConfigParser. | Get an instance of ConfigParser.                |
-| RawConfigParser()``      |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``config.read(config_fil | Parse the configuration file containing the API |
-| e)``                     | settings.                                       |
-+--------------------------+-------------------------------------------------+
-| ``api_access_id = config | Get the configuration items from the config     |
-| .get('threatco...``      | instance.                                       |
-+--------------------------+-------------------------------------------------+
-| ``tc = ThreatConnect(api | Instantiate an instance of the ThreatConnect    |
-| _access_id, ap...``      | Class.                                          |
-+--------------------------+-------------------------------------------------+
-| ``owners = tc.owners()`` | Create an Owner's container object.             |
-+--------------------------+-------------------------------------------------+
-| ``owners.retrieve()``    | Trigger an API request to retrieve Owners.      |
-+--------------------------+-------------------------------------------------+
-| ``for owner in owners:`` | Iterate through Owner's generator.              |
-+--------------------------+-------------------------------------------------+
-| ``print(owner.id)``      | Display the **'id'** property of the Owner.     |
-+--------------------------+-------------------------------------------------+
++---------------------------------------------+---------------------------------------------------------------------+
+| Snippet                                     | Description                                                         |
++=============================================+=====================================================================+
+| ``import ConfigParser``                     | Import the ConfigParser module used to read the configuration file. |
++---------------------------------------------+---------------------------------------------------------------------+
+| ``from threatconnect import ThreatConnect`` | Import the ThreatConnect Python SDK module.                         |
++---------------------------------------------+---------------------------------------------------------------------+
+| ``config = ConfigParser.RawConfigParser()`` | Get an instance of ConfigParser.                                    |
++---------------------------------------------+---------------------------------------------------------------------+
+| ``config.read(config_file)``                | Parse the configuration file containing the API settings.           |
++---------------------------------------------+---------------------------------------------------------------------+
+| ``api_access_id = config.get('threatco...`` | Get the configuration items from the config instance.               |
++---------------------------------------------+---------------------------------------------------------------------+
+| ``tc = ThreatConnect(api_access_id, ap...`` | Instantiate an instance of the ThreatConnect Class.                 |
++---------------------------------------------+---------------------------------------------------------------------+
+| ``owners = tc.owners()``                    | Create an Owner's container object.                                 |
++---------------------------------------------+---------------------------------------------------------------------+
+| ``owners.retrieve()``                       | Trigger an API request to retrieve Owners.                          |
++---------------------------------------------+---------------------------------------------------------------------+
+| ``for owner in owners:``                    | Iterate through Owner's generator.                                  |
++---------------------------------------------+---------------------------------------------------------------------+
+| ``print(owner.id)``                         | Display the **'id'** property of the Owner.                         |
++---------------------------------------------+---------------------------------------------------------------------+
 
 Logging
 ~~~~~~~
@@ -253,15 +247,13 @@ logging level for each is *critical*.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc.set_tcl_file('log/t | Set the destination log path and logging level. |
-| c.log', 'debug')``       |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``tc.set_tcl_console_lev | Set the console logging level.                  |
-| el('info')``             |                                                 |
-+--------------------------+-------------------------------------------------+
++--------------------------------------------+-------------------------------------------------+
+| Snippet                                    | Description                                     |
++============================================+=================================================+
+| ``tc.set_tcl_file('log/tc.log', 'debug')`` | Set the destination log path and logging level. |
++--------------------------------------------+-------------------------------------------------+
+| ``tc.set_tcl_console_level('info')``       | Set the console logging level.                  |
++--------------------------------------------+-------------------------------------------------+
 
 Summary
 
@@ -481,23 +473,17 @@ the job execution.
 Since all job executions are run in a sandboxed environment, app
 developers should never hard-code ThreatConnect Parameters:
 
-+--------------+-------------------------------------------------------------+
-| ThreatConnec | Description                                                 |
-| t            |                                                             |
-| Parameter    |                                                             |
-+==============+=============================================================+
-| ``tc_log_pat | Log path for the specific instance of the job execution.    |
-| h``          |                                                             |
-+--------------+-------------------------------------------------------------+
-| ``tc_tmp_pat | Temporary storage path for the specific instance of the job |
-| h``          | execution.                                                  |
-+--------------+-------------------------------------------------------------+
-| ``tc_out_pat | Output path for the specific instance of the job execution. |
-| h``          |                                                             |
-+--------------+-------------------------------------------------------------+
-| ``tc_api_pat | Path to the ThreatConnect API server.                       |
-| h``          |                                                             |
-+--------------+-------------------------------------------------------------+
++-------------------------+------------------------------------------------------------------------+
+| ThreatConnect Parameter | Description                                                            |
++=========================+========================================================================+
+| ``tc_log_path``         | Log path for the specific instance of the job execution.               |
++-------------------------+------------------------------------------------------------------------+
+| ``tc_tmp_path``         | Temporary storage path for the specific instance of the job execution. |
++-------------------------+------------------------------------------------------------------------+
+| ``tc_out_path``         | Output path for the specific instance of the job execution.            |
++-------------------------+------------------------------------------------------------------------+
+| ``tc_api_path``         | Path to the ThreatConnect API server.                                  |
++-------------------------+------------------------------------------------------------------------+
 
 Results ThreatConnect File
 --------------------------
@@ -700,31 +686,23 @@ Tutorial <#filtering>`__.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id, api...``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``adversaries = tc.adver | Instantiate an Adversaries container object.    |
-| saries()``               |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``filter1 = adversaries. | Add a filter object to the Adversaries          |
-| add_filter()``           | container object (support multiple filter       |
-|                          | objects).                                       |
-+--------------------------+-------------------------------------------------+
-| ``filter1.add_tag('EXAMP | Add API filter to retrieve Adversaries with the |
-| LE')``                   | 'Example' tag.                                  |
-+--------------------------+-------------------------------------------------+
-| ``adversaries.retrieve() | Trigger the API request and retrieve the        |
-| ``                       | Adversaries intelligence data.                  |
-+--------------------------+-------------------------------------------------+
-| ``for adversary in adver | Iterate over the Adversaries container object   |
-| saries:``                | generator.                                      |
-+--------------------------+-------------------------------------------------+
-| ``print(adversary.id)``  | Display the **'id'** property of the Adversary  |
-|                          | object.                                         |
-+--------------------------+-------------------------------------------------+
++----------------------------------------------+--------------------------------------------------------------------------------------------+
+| Snippet                                      | Description                                                                                |
++==============================================+============================================================================================+
+| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                                                      |
++----------------------------------------------+--------------------------------------------------------------------------------------------+
+| ``adversaries = tc.adversaries()``           | Instantiate an Adversaries container object.                                               |
++----------------------------------------------+--------------------------------------------------------------------------------------------+
+| ``filter1 = adversaries.add_filter()``       | Add a filter object to the Adversaries container object (support multiple filter objects). |
++----------------------------------------------+--------------------------------------------------------------------------------------------+
+| ``filter1.add_tag('EXAMPLE')``               | Add API filter to retrieve Adversaries with the 'Example' tag.                             |
++----------------------------------------------+--------------------------------------------------------------------------------------------+
+| ``adversaries.retrieve()``                   | Trigger the API request and retrieve the Adversaries intelligence data.                    |
++----------------------------------------------+--------------------------------------------------------------------------------------------+
+| ``for adversary in adversaries:``            | Iterate over the Adversaries container object generator.                                   |
++----------------------------------------------+--------------------------------------------------------------------------------------------+
+| ``print(adversary.id)``                      | Display the **'id'** property of the Adversary object.                                     |
++----------------------------------------------+--------------------------------------------------------------------------------------------+
 
 Resource Metadata
 
@@ -869,30 +847,23 @@ Tutorial <#filtering>`__.
 
 Code Highlights
 
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tc = ThreatConnect(api | Instantiate the ThreatConnect object.           |
-| _access_id,...``         |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``indicators = tc.indica | Instantiate an Indicators container object.     |
-| tors()``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``filter1 = indicator.ad | Add a filter object to the Indicators container |
-| d_filter()``             | object (support multiple filter objects).       |
-+--------------------------+-------------------------------------------------+
-| ``filter1.add_tag('EXAMP | Add API filter to retrieve Indicators with the  |
-| LE')``                   | 'Example' tag.                                  |
-+--------------------------+-------------------------------------------------+
-| ``indicator.retrieve()`` | Trigger the API request and retrieve the        |
-|                          | Indicators intelligence data.                   |
-+--------------------------+-------------------------------------------------+
-| ``for indicator in indic | Iterate over the Indicators container object    |
-| ators:``                 | generator.                                      |
-+--------------------------+-------------------------------------------------+
-| ``print(indicator.indica | Display the **'indicator'** property of the     |
-| tor)``                   | Indicator object.                               |
-+--------------------------+-------------------------------------------------+
++------------------------------------------+-------------------------------------------------------------------------------------------+
+| Snippet                                  | Description                                                                               |
++==========================================+===========================================================================================+
+| ``tc = ThreatConnect(api_access_id,...`` | Instantiate the ThreatConnect object.                                                     |
++------------------------------------------+-------------------------------------------------------------------------------------------+
+| ``indicators = tc.indicators()``         | Instantiate an Indicators container object.                                               |
++------------------------------------------+-------------------------------------------------------------------------------------------+
+| ``filter1 = indicator.add_filter()``     | Add a filter object to the Indicators container object (support multiple filter objects). |
++------------------------------------------+-------------------------------------------------------------------------------------------+
+| ``filter1.add_tag('EXAMPLE')``           | Add API filter to retrieve Indicators with the 'Example' tag.                             |
++------------------------------------------+-------------------------------------------------------------------------------------------+
+| ``indicator.retrieve()``                 | Trigger the API request and retrieve the Indicators intelligence data.                    |
++------------------------------------------+-------------------------------------------------------------------------------------------+
+| ``for indicator in indicators:``         | Iterate over the Indicators container object generator.                                   |
++------------------------------------------+-------------------------------------------------------------------------------------------+
+| ``print(indicator.indicator)``           | Display the **'indicator'** property of the Indicator object.                             |
++------------------------------------------+-------------------------------------------------------------------------------------------+
 
 Loading Attributes Example
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
