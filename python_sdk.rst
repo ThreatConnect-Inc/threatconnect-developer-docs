@@ -1370,19 +1370,19 @@ Code Highlights
 +--------------------------------------------+---------------------------------------------------------------------------------------+
 | Snippet                                    | Description                                                                           |
 +============================================+=======================================================================================+
-| `tc = ThreatConnect(api_access_id, api...` | Instantiate the ThreatConnect object.                                                 |
+| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                                                 |
 +--------------------------------------------+---------------------------------------------------------------------------------------+
-| `emails = tc.emails()`                     | Instantiate an Emails container object.                                               |
+| ``emails = tc.emails()``                     | Instantiate an Emails container object.                                               |
 +--------------------------------------------+---------------------------------------------------------------------------------------+
-| `filter1 = emails.add_filter()`            | Add a Filter object to the Emails container object (support multiple filter objects). |
+| ``filter1 = emails.add_filter()``            | Add a Filter object to the Emails container object (support multiple filter objects). |
 +--------------------------------------------+---------------------------------------------------------------------------------------+
-| `filter1.add_tag('EXAMPLE')`               | Add API Filter to be applied to the API request.                                      |
+| ``filter1.add_tag('EXAMPLE')``               | Add API Filter to be applied to the API request.                                      |
 +--------------------------------------------+---------------------------------------------------------------------------------------+
-| `emails.retrieve()`                        | Trigger the API request and retrieve the Emails intelligence data.                    |
+| ``emails.retrieve()``                        | Trigger the API request and retrieve the Emails intelligence data.                    |
 +--------------------------------------------+---------------------------------------------------------------------------------------+
-| `for email in emails:`                     | Iterate over the Emails container object generator.                                   |
+| ``for email in emails:``                     | Iterate over the Emails container object generator.                                   |
 +--------------------------------------------+---------------------------------------------------------------------------------------+
-| `print(email.id)`                          | Display the **'id'** property of the Email object.                                    |
+| ``print(email.id)``                          | Display the **'id'** property of the Email object.                                    |
 +--------------------------------------------+---------------------------------------------------------------------------------------+
 
 Resource Metadata
@@ -1525,19 +1525,19 @@ Code Highlights
 +--------------------------------------------+---------------------------------------------------------------------------------------+
 | Snippet                                    | Description                                                                           |
 +============================================+=======================================================================================+
-| `tc = ThreatConnect(api_access_id, api...` | Instantiate the ThreatConnect object.                                                 |
+| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                                                 |
 +--------------------------------------------+---------------------------------------------------------------------------------------+
-| `groups = tc.groups()`                     | Instantiate a Groups container object.                                                |
+| ``groups = tc.groups()``                     | Instantiate a Groups container object.                                                |
 +--------------------------------------------+---------------------------------------------------------------------------------------+
-| `filter1 = groups.add_filter()`            | Add a filter object to the Groups container object (support multiple filter objects). |
+| ``filter1 = groups.add_filter()``            | Add a filter object to the Groups container object (support multiple filter objects). |
 +--------------------------------------------+---------------------------------------------------------------------------------------+
-| `filter1.add_tag('EXAMPLE')`               | Add API filter to retrieve Groups with the 'Example' tag.                             |
+| ``filter1.add_tag('EXAMPLE')``               | Add API filter to retrieve Groups with the 'Example' tag.                             |
 +--------------------------------------------+---------------------------------------------------------------------------------------+
-| `groups.retrieve()`                        | Trigger the API request and retrieve the Groups intelligence data.                    |
+| ``groups.retrieve()``                        | Trigger the API request and retrieve the Groups intelligence data.                    |
 +--------------------------------------------+---------------------------------------------------------------------------------------+
-| `for group in groups:`                     | Iterate over the Groups container object generator.                                   |
+| ``for group in groups:``                     | Iterate over the Groups container object generator.                                   |
 +--------------------------------------------+---------------------------------------------------------------------------------------+
-| `print(group.id)`                          | Display the **'id'** property of the Group object.                                    |
+| ``print(group.id)``                          | Display the **'id'** property of the Group object.                                    |
 +--------------------------------------------+---------------------------------------------------------------------------------------+
 
 Resource Metadata
@@ -1679,19 +1679,19 @@ Code Highlights
 +--------------------------------------------+------------------------------------------------------------------------------------------+
 | Snippet                                    | Description                                                                              |
 +============================================+==========================================================================================+
-| `tc = ThreatConnect(api_access_id, api...` | Instantiate the ThreatConnect object.                                                    |
+| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                                                    |
 +--------------------------------------------+------------------------------------------------------------------------------------------+
-| `incidents = tc.incidents()`               | Instantiate an Incidents container object.                                               |
+| ``incidents = tc.incidents()``               | Instantiate an Incidents container object.                                               |
 +--------------------------------------------+------------------------------------------------------------------------------------------+
-| `filter1 = incidents.add_filter()`         | Add a filter object to the Incidents container object (support multiple filter objects). |
+| ``filter1 = incidents.add_filter()``         | Add a filter object to the Incidents container object (support multiple filter objects). |
 +--------------------------------------------+------------------------------------------------------------------------------------------+
-| `filter1.add_tag('EXAMPLE')`               | Add API filter to retrieve Incidents with the 'Example' tag.                             |
+| ``filter1.add_tag('EXAMPLE')``               | Add API filter to retrieve Incidents with the 'Example' tag.                             |
 +--------------------------------------------+------------------------------------------------------------------------------------------+
-| `incidents.retrieve()`                     | Trigger the API request and retrieve the Incidents intelligence data.                    |
+| ``incidents.retrieve()``                     | Trigger the API request and retrieve the Incidents intelligence data.                    |
 +--------------------------------------------+------------------------------------------------------------------------------------------+
-| `for incident in incidents:`               | Iterate over the Incidents container object generator.                                   |
+| ``for incident in incidents:``               | Iterate over the Incidents container object generator.                                   |
 +--------------------------------------------+------------------------------------------------------------------------------------------+
-| `print(incident.id)`                       | Display the **'id'** property of the Incidents object.                                   |
+| ``print(incident.id)``                       | Display the **'id'** property of the Incidents object.                                   |
 +--------------------------------------------+------------------------------------------------------------------------------------------+
 
 Resource Metadata
@@ -1864,19 +1864,19 @@ Code Highlights
 +----------------------------------------+-------------------------------------------------------------------------------------------+
 | Snippet                                | Description                                                                               |
 +========================================+===========================================================================================+
-| `tc = ThreatConnect(api_access_id,...` | Instantiate the ThreatConnect object.                                                     |
+| ``tc = ThreatConnect(api_access_id,...`` | Instantiate the ThreatConnect object.                                                     |
 +----------------------------------------+-------------------------------------------------------------------------------------------+
-| `indicators = tc.indicators()`         | Instantiate an Indicators container object.                                               |
+| ``indicators = tc.indicators()``         | Instantiate an Indicators container object.                                               |
 +----------------------------------------+-------------------------------------------------------------------------------------------+
-| `filter1 = indicator.add_filter()`     | Add a filter object to the Indicators container object (support multiple filter objects). |
+| ``filter1 = indicator.add_filter()``     | Add a filter object to the Indicators container object (support multiple filter objects). |
 +----------------------------------------+-------------------------------------------------------------------------------------------+
-| `filter1.add_tag('EXAMPLE')`           | Add API filter to retrieve Indicators with the 'Example' tag.                             |
+| ``filter1.add_tag('EXAMPLE')``           | Add API filter to retrieve Indicators with the 'Example' tag.                             |
 +----------------------------------------+-------------------------------------------------------------------------------------------+
-| `indicator.retrieve()`                 | Trigger the API request and retrieve the Indicators intelligence data.                    |
+| ``indicator.retrieve()``                 | Trigger the API request and retrieve the Indicators intelligence data.                    |
 +----------------------------------------+-------------------------------------------------------------------------------------------+
-| `for indicator in indicators:`         | Iterate over the Indicators container object generator.                                   |
+| ``for indicator in indicators:``         | Iterate over the Indicators container object generator.                                   |
 +----------------------------------------+-------------------------------------------------------------------------------------------+
-| `print(indicator.indicator)`           | Display the **'indicator'** property of the Indicator object.                             |
+| ``print(indicator.indicator)``           | Display the **'indicator'** property of the Indicator object.                             |
 +----------------------------------------+-------------------------------------------------------------------------------------------+
 
 Loading Attributes Example
