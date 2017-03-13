@@ -956,9 +956,9 @@ Code Highlights
 +--------------------------------+----------------------------------------------------------+
 | Snippet                        | Description                                              |
 +================================+==========================================================+
-| ``for tag in indicator.tags:`` | Iterate over the Attribute property object generator.    |
+| ``for tag in indicator.tags:`` | Iterate over the Tag property object generator.    |
 +--------------------------------+----------------------------------------------------------+
-| ``print(tag.name)``            | Display the **'name'** property of the Attribute object. |
+| ``print(tag.name)``            | Display the **'name'** property of the Tag object. |
 +--------------------------------+----------------------------------------------------------+
 
 Group Associations
