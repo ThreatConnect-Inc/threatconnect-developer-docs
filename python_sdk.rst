@@ -820,6 +820,7 @@ replaced with ``...`` for brevity.
                 print('{0}: {1}'.format(indicator_type, indicator_value))
         else:
             print(indicator.indicator)
+
         print(indicator.id)
         print(indicator.owner_name)
         print(indicator.date_added)
@@ -1834,6 +1835,7 @@ replaced with ``...`` for brevity.
                 print('{0}: {1}'.format(indicator_type, indicator_value))
         else:
             print(indicator.indicator)
+
         print(indicator.id)
         print(indicator.owner_name)
         print(indicator.date_added)
@@ -1842,7 +1844,6 @@ replaced with ``...`` for brevity.
         print(indicator.confidence)
         print(indicator.threat_assess_rating)
         print(indicator.threat_assess_confidence)
-        print(indicator.source)
         print(indicator.description)
         print(indicator.dns_active)
         print(indicator.weblink)
