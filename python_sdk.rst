@@ -676,7 +676,7 @@ This example will demonstrate how to retrieve Adversaries while applying
 filters. Two filters will be added: one for the Owner and another for a
 Tag. The result set returned from this example will contain any
 Adversaries in the "Example Community" Owner that has a Tag of
-***EXAMPLE***.
+**EXAMPLE**.
 
 Note: The ``filter1`` object contains a ``filters`` property that
 provides a list of supported filters for the resource type being
@@ -1353,7 +1353,7 @@ This example will demonstrate how to retrieve emails while applying
 filters. In this example, two filters will be added, one for the Owner
 and another for a Tag. The result set returned from this example will
 contain any emails in the **Example Community** Owner that has a Tag of
-***EXAMPLE***.
+**EXAMPLE**.
 
 To retrieve the headers and body for a single email, include a filter
 for its ID. (Make an individual query for each email.)
@@ -1513,7 +1513,7 @@ This example will demonstrate how to retrieve Groups while applying
 filters. In this example two filters will be added, one for the Owner
 and another for a Tag. The result set returned from this example will
 contain any Groups in the **Example Community** Owner that has a Tag of
-***EXAMPLE***.
+**EXAMPLE**.
 
 Note: The ``filter1`` object contains a ``filters`` property that
 provides a list of supported filters for the resource type being
@@ -1667,7 +1667,7 @@ This example will demonstrate how to retrieve Incidents while applying
 filters. In this example, two filters will be added, one for the Owner
 and another for a Tag. The result set returned from this example will
 contain any Incidents in the **Example Community** Owner that has a Tag
-of ***EXAMPLE***.
+of **EXAMPLE**.
 
 Note: The ``filter1`` object contains a ``filters`` property that
 provides a list of supported filters for the resource type being
@@ -1852,7 +1852,7 @@ This example will demonstrate how to retrieve Indicators while applying
 filters. In this example, two filters will be added, one for the Owner
 and another for a Tag. The result set returned from this example will
 contain any Indicators in the **Example Community** Owner that has a Tag
-of ***EXAMPLE***.
+of **EXAMPLE**.
 
 Note: The ``filter1`` object contains a ``filters`` property that
 provides a list of supported filters for the resource type being
@@ -2216,7 +2216,7 @@ This example will demonstrate how to retrieve Signatures while applying
 filters. In this example, two filters will be added, one for the Owner
 and another for a Tag. The result set returned from this example will
 contain any Signatures in the **Example Community** Owner that has a Tag
-of ***EXAMPLE***.
+of **EXAMPLE**.
 
 Note: The ``filter1`` object contains a ``filters`` property which
 provides a list of supported filters for the resource type being
@@ -2367,7 +2367,7 @@ Filter Example
 This example will demonstrate how to retrieve Tasks while applying
 filters. In this example, one filters will be added for a Tag. The
 result set returned from this example will contain any Tasks that has a
-Tag of ***EXAMPLE***.
+Tag of **EXAMPLE**.
 
 The import statement and reading of the configuration files have been
 replaced with ``...`` for brevity.
@@ -2549,7 +2549,7 @@ This example will demonstrate how to retrieve Threats while applying
 filters. In this example, two filters will be added, one for the Owner
 and another for a Tag. The result set returned from this example will
 contain any Threats in the **Example Community** Owner that has a Tag of
-***EXAMPLE***.
+**EXAMPLE**.
 
 Note: The ``filter1`` object contains a ``filters`` property that
 provides a list of supported filters for the resource type being
