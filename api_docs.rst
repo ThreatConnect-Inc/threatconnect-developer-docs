@@ -19,7 +19,9 @@ Using the API
 -------------
 
 The public ThreatConnect API is accessible at
-``https://api.threatconnect.com/v2/``
+``https://api.threatconnect.com/v2/``.
+
+.. note:: If you are working with the ThreatConnect sandbox, the api path is https://sandbox.threatconnect.com/api.
 
 Requests to ThreatConnect API endpoints must be made over HTTPS with a
 valid Signature, or a 403 error will be returned
