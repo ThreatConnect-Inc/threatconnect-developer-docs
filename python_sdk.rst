@@ -5371,7 +5371,7 @@ Victim <#associate-victim>`__, `Disassociate
 Group <#disassociate-group>`__, `Disassociate
 Indicator <#disassociate-indicator>`__, and `Disassociate
 Victim <#disassociate-victim>`__ methods, as well as explanations of the
-code, are provided in the following section .
+code, are provided in the following section.
 
 Associate Group
 ---------------

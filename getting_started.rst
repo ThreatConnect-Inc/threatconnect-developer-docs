@@ -35,6 +35,6 @@ the Exchange)
    app <../javascript_sdk/#example-javascript-app>`__
 
 Libraries in other languages are available for interfacing with the API,
-but are *not officially supported*:
+but are *not officially supported:*
 
 -  `Powershell <https://github.com/davidhowell-tx/PS-ThreatConnectV2API>`__
