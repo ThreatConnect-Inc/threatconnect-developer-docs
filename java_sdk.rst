@@ -135,6 +135,8 @@ The configuration file should contain the following lines at a minimum:
 
 ``connection.tcApiUserSecretKey=<YOUR API SECRET KEY>``
 
+.. note:: If you are working with the ThreatConnect **sandbox**, the connection.tcApiUrl should be: ``https://sandbox.threatconnect.com/api``.
+
 Third-Party Dependencies
 
 The SDK utilizes these open-source libraries primarily for RESTful

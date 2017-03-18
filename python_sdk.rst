@@ -75,6 +75,8 @@ The configuration file should contain the following lines at a minimum:
      api_secret_key = aabbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyyzz!@#$%^&*()-=
      api_base_url = https://api.threatconnect.com
 
+.. note:: If you are working with the ThreatConnect **sandbox**, the api_base_url should be: ``https://sandbox.threatconnect.com/api/``.
+
 The following examples illustrates a typical initialization of the
 ThreatConnect Class:
 

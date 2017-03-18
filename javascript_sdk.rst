@@ -54,6 +54,8 @@ the following:
         };
     }
 
+.. note:: If you are working with the ThreatConnect **sandbox**, the second apiSettings.apiUrl (the one in the ``else`` branch) should be: ``https://sandbox.threatconnect.com/api/``.
+
 .. code:: html
 
     <!-- JQuery -->
