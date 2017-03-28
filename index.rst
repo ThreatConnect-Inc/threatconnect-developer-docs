@@ -19,3 +19,4 @@ Demo <https://www.threatconnect.com/request-a-demo/>`__
    javascript_sdk
    deployment_config
    sdk_trademarks
+   tcex
