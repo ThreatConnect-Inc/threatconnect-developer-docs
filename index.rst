@@ -18,5 +18,5 @@ Demo <https://www.threatconnect.com/request-a-demo/>`__
    java_sdk
    javascript_sdk
    deployment_config
-   sdk_trademarks
    tcex
+   sdk_trademarks
