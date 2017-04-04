@@ -22,7 +22,7 @@ API filters use the API filtering feature to limit the result set returned from 
 +------------------------+-------------+--------------------------------------------+
 | ``add_indicator()``    | str         | Filter Victims on associated Indicator.    |
 +------------------------+-------------+--------------------------------------------+
-| ``add_owner()``        | list or str | Filter Victims on associated Owner.        |
+| ``add_owner()``        | list or str | Filter Victims on Owner.                   |
 +------------------------+-------------+--------------------------------------------+
 | ``add_signature_id()`` | int         | Filter Victims on associated Signature ID. |
 +------------------------+-------------+--------------------------------------------+

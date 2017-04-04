@@ -22,7 +22,7 @@ API filters use the API filtering feature to limit the result set returned from 
 +--------------------------+-------------+---------------------------------------------+
 | ``add_indicator()``      | str         | Filter Groups on associated Indicator.      |
 +--------------------------+-------------+---------------------------------------------+
-| ``add_owner()``          | list or str | Filter Groups on associated Owner.          |
+| ``add_owner()``          | list or str | Filter Groups on Owner.                     |
 +--------------------------+-------------+---------------------------------------------+
 | ``add_security_label()`` | str         | Filter Groups on associated Security Label. |
 +--------------------------+-------------+---------------------------------------------+

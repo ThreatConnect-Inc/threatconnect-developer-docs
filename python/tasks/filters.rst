@@ -22,7 +22,7 @@ API filters use the API filtering feature to limit the result set returned from 
 +--------------------------+-------------+--------------------------------------------+
 | ``add_indicator()``      | str         | Filter Tasks on associated Indicator.      |
 +--------------------------+-------------+--------------------------------------------+
-| ``add_owner()``          | list or str | Filter Tasks on associated Owner.          |
+| ``add_owner()``          | list or str | Filter Tasks on Owner.                     |
 +--------------------------+-------------+--------------------------------------------+
 | ``add_security_label()`` | str         | Filter Tasks on associated Security Label. |
 +--------------------------+-------------+--------------------------------------------+
