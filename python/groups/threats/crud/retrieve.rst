@@ -95,11 +95,7 @@ and another for a Tag. The result set returned from this example will
 contain any Threats in the **Example Community** Owner that has a Tag of
 **EXAMPLE**.
 
-Note: The ``filter1`` object contains a ``filters`` property that
-provides a list of supported filters for the resource type being
-retrieved. To display this list, ``print(filter1.filters)`` can be used.
-For more on using filters, see the `Advanced Filter
-Tutorial </python/advanced/filtering/>`__.
+.. note:: The ``filter1`` object contains a ``filters`` property that provides a list of supported filters for the resource type being retrieved. To display this list, ``print(filter1.filters)`` can be used. For more on using filters see the `Advanced Filter Tutorial </python/advanced/filtering/>`__.
 
 Code Highlights
 

@@ -99,8 +99,7 @@ Supported Functions and Properties
 | --                       | upload                        | True       | Indicator JSON String   |
 +--------------------------+-------------------------------+------------+-------------------------+
 
-Note: In the prior example, no API calls are made until the ``commit()``
-method is invoked.
+.. note:: In the prior example, no API calls are made until the ``commit()`` method is invoked.
 
 **Code Highlights**
 

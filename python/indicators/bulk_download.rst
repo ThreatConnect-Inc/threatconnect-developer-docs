@@ -93,11 +93,7 @@ returned from this example will contain any Indicators in the **"Example
 Community"** Owner that has a Confidence greater than or equal to 75 and
 a Rating greater than 2.5.
 
-Note: The ``filter1`` object contains a ``filters`` property which
-provides a list of supported filters for the resource type being
-retrieved. To display this list, ``print(filter1.filters)`` can be used.
-For more on using filters, see the `Advanced Filter
-Tutorial <#filtering>`__.
+.. note:: The ``filter1`` object contains a ``filters`` property that provides a list of supported filters for the resource type being retrieved. To display this list, ``print(filter1.filters)`` can be used. For more on using filters see the `Advanced Filter Tutorial </python/advanced/filtering/>`__.
 
 **Code Highlights**
 

@@ -86,9 +86,7 @@ The Python SDK has a **default of 5** retries, with a **default
 change the default retry value, call the ``set_api_retries()`` method,
 passing an Integer for the number of retries.
 
-Note: There is a maximum window of 5 minutes before the API will reject
-the HMAC (hash message authentication code) header due to a time
-mismatch.
+.. note:: There is a maximum window of 5 minutes before the API will reject the HMAC (hash message authentication code) header due to a time mismatch.
 
 API Result Limit
 ----------------
