@@ -10,11 +10,11 @@ Demo <https://www.threatconnect.com/request-a-demo/>`__
 
 .. toctree::
    :caption:  Table of Contents
-   :maxdepth: 2
+   :maxdepth: 3
 
    getting_started
    rest_api_docs
-   python_sdk
+   python/python_sdk.rst
    java_sdk
    javascript_sdk
    deployment_config
