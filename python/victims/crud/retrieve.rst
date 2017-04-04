@@ -33,6 +33,8 @@ The example below demonstrates how to retrieve a Victim Resource from the Threat
         print(obj.work_location)
         print(obj.weblink)
 
+For details on how to retrieve victim assets, refer to the `Victim Asset retrieval <https://docs.threatconnect.com/en/latest/python/python_sdk.html#retrieve-victim-assets>`_ section.
+
 Retrieving Multiple Victims
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
