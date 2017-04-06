@@ -8,7 +8,7 @@ Python SDK Batch Commit Code Sample:
     dst_tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
     #
-    # ... populate 'indicators' list of dictionaries...
+    # populate 'indicators' list of dictionaries
     #
 
     batch_job_ids = []
@@ -35,7 +35,7 @@ Python SDK Batch Commit Code Sample:
     while len(batch_job_ids) > 0:
         time.sleep(args.poll_time)
         total_time += args.poll_time
-        print("polling (total wait time {0} minutes)...".format(int(total_time / 60)))
+        print("polling (total wait time {0} minutes)".format(int(total_time / 60)))
                      
         batch_jobs = dst_tc.batch_jobs()
         for batchId in batch_job_ids:
