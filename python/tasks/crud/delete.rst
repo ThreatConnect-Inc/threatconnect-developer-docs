@@ -11,6 +11,7 @@ The example below demonstrates how to delete a Task Resource from the ThreatConn
 
     tasks = tc.tasks()
 
+    owner = 'Example Community'
     task = tasks.add('', owner)
     task.set_id(20)
 

@@ -12,6 +12,7 @@ ThreatConnect platform:
 
     threats = tc.threats()
 
+    owner = 'Example Community'
     threat = threats.add('', owner)
     threat.set_id(20)
 

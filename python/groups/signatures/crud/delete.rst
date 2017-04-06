@@ -12,6 +12,7 @@ ThreatConnect platform.
 
     signatures = tc.signatures()
 
+    owner = 'Example Community'
     signature = signatures.add('', owner)
     signature.set_id(20)
 

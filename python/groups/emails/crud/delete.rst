@@ -12,6 +12,7 @@ ThreatConnect platform:
 
     emails = tc.emails()
 
+    owner = 'Example Community'
     email = emails.add('', owner)
     email.set_id(20)
 

@@ -12,6 +12,7 @@ the ThreatConnect platform:
 
     adversaries = tc.adversaries()
 
+    owner = 'Example Community'
     adversary = adversaries.add('', owner)
     adversary.set_id(20)
 

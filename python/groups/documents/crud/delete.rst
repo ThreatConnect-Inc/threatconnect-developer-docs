@@ -12,6 +12,7 @@ ThreatConnect platform:
 
     documents = tc.documents()
 
+    owner = 'Example Community'
     document = documents.add('', owner)
     document.set_id(20)
 

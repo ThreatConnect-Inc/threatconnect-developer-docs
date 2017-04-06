@@ -322,7 +322,10 @@ Python SDK Multiple Filter Objects example:
     from threatconnect.Config.FilterOperator import FilterSetOperator
     from threatconnect.Config.IndicatorType import IndicatorType
 
+    ...
+
     owner = 'Example Community'
+    indicators = tc.indicators()
 
     try:
         filter1 = indicators.add_filter()
@@ -350,7 +353,7 @@ Python SDK Multiple Filter Objects example:
         print(e)
         sys.exit(1)
 
-    # add code here...
+    # add code here
 
 The Python SDK supports adding multiple Filter objects to a Resource
 Container. A **filter\_operator** allows a user to configure the results
@@ -375,6 +378,8 @@ The example below displays how to create a ``RequestObject`` that will
 retrieve all Indicators from a specified Owner:
 
 .. code:: python
+
+    from threatconnect import RequestObject
 
     ...
 
@@ -426,6 +431,9 @@ retrieve the contents of a document stored in a Document Resource.
 
 .. code:: python
 
+    from threatconnect import RequestObject
+
+    ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
@@ -476,7 +484,10 @@ Resource.
 
 .. code:: python
 
-     
+    from threatconnect import RequestObject
+
+    ...
+
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
     ro = RequestObject()

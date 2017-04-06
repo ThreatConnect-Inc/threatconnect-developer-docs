@@ -12,6 +12,7 @@ ThreatConnect platform:
 
     incidents = tc.incidents()
 
+    owner = 'Example Community'
     incident = incidents.add('', owner)
     incident.set_id(20)
 
