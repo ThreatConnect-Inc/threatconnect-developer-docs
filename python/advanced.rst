@@ -418,7 +418,7 @@ values for the ``RequestObject``.
 +------------------------------------------+-------------------------------------------------------------------------------------------+
 | ``ro.set_http_method('GET')``            | Set the HTTP Method for the Request.                                                      |
 +------------------------------------------+-------------------------------------------------------------------------------------------+
-| ``ro.set_owner('Example Community')``    | Set the Owner for the Request (optional).                                                 |
+| ``ro.set_owner(owner)``                  | Set the Owner for the Request (optional).                                                 |
 +------------------------------------------+-------------------------------------------------------------------------------------------+
 | ``ro.set_owner_allowed(True)``           | Set the Owner-Allowed flag for the Request to indicate if this API call supports Owners.  |
 +------------------------------------------+-------------------------------------------------------------------------------------------+
@@ -443,9 +443,11 @@ retrieve the contents of a document stored in a Document Resource.
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
+    owner = 'Example Community'
+
     ro = RequestObject()
     ro.set_http_method('GET')
-    ro.set_owner('Example Community')
+    ro.set_owner(owner)
     ro.set_owner_allowed(True)
     ro.set_resource_pagination(False)
     ro.set_request_uri('/v2/groups/documents/19/download')
@@ -470,7 +472,7 @@ values for the ``RequestObject``.
 +------------------------------------------+-------------------------------------------------------------------------------------------+
 | ``ro.set_http_method('GET')``            | Set the HTTP Method for the Request.                                                      |
 +------------------------------------------+-------------------------------------------------------------------------------------------+
-| ``ro.set_owner('Example Community')``    | Set the Owner for the Request (optional).                                                 |
+| ``ro.set_owner(owner)``                  | Set the Owner for the Request (optional).                                                 |
 +------------------------------------------+-------------------------------------------------------------------------------------------+
 | ``ro.set_owner_allowed(True)``           | Set the Owner-Allowed flag for the Request to indicate if this API call supports Owners.  |
 +------------------------------------------+-------------------------------------------------------------------------------------------+
@@ -498,12 +500,14 @@ Resource.
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
+    owner = 'Example Community'
+
     ro = RequestObject()
     ro.set_http_method('POST')
     body = {'name': 'Raw Upload Example', 'fileName': 'raw_example.txt'}
     ro.set_body(json.dumps(body))
     ro.set_content_type('application/json')
-    ro.set_owner('Example Community')
+    ro.set_owner(owner)
     ro.set_owner_allowed(True)
     ro.set_resource_pagination(False)
     ro.set_request_uri('/v2/groups/documents')
@@ -522,7 +526,7 @@ Resource.
         body = 'Raw upload example file Contents.'
         ro.set_body(body)
         ro.set_content_type('application/octet-stream')
-        ro.set_owner('Example Community')
+        ro.set_owner(owner)
         ro.set_owner_allowed(True)
         ro.set_resource_pagination(False)
         ro.set_request_uri('/v2/groups/documents/{0}/upload'.format(document_id))
@@ -547,7 +551,7 @@ values for the ``RequestObject``.
 +-------------------------------------------+-------------------------------------------------------------------------------------------+
 | ``ro.set_http_method('POST')``            | Set the HTTP Method for the Request.                                                      |
 +-------------------------------------------+-------------------------------------------------------------------------------------------+
-| ``ro.set_owner('Example Community')``     | Set the Owner for the Request (optional).                                                 |
+| ``ro.set_owner(owner)``                   | Set the Owner for the Request (optional).                                                 |
 +-------------------------------------------+-------------------------------------------------------------------------------------------+
 | ``ro.set_owner_allowed(True)``            | Set the Owner-Allowed flag for the Request to indicate if this API call supports Owners.  |
 +-------------------------------------------+-------------------------------------------------------------------------------------------+
