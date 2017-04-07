@@ -6,7 +6,7 @@ The example below demonstrates how to create a Victim Resource in the ThreatConn
 .. code:: python
 
     from threatconnect.Config.ResourceType import ResourceType
-    from threatconnect import VictimAssetObject
+    from threatconnect.VictimAssetObject import VictimAssetObject
 
     ...
 

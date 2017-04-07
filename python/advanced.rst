@@ -324,6 +324,8 @@ Python SDK Multiple Filter Objects example:
 
     ...
 
+    tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
+
     owner = 'Example Community'
     indicators = tc.indicators()
 
@@ -379,7 +381,7 @@ retrieve all Indicators from a specified Owner:
 
 .. code:: python
 
-    from threatconnect import RequestObject
+    from threatconnect.RequestObject import RequestObject
 
     ...
 
@@ -431,7 +433,7 @@ retrieve the contents of a document stored in a Document Resource.
 
 .. code:: python
 
-    from threatconnect import RequestObject
+    from threatconnect.RequestObject import RequestObject
 
     ...
 
@@ -484,7 +486,7 @@ Resource.
 
 .. code:: python
 
-    from threatconnect import RequestObject
+    from threatconnect.RequestObject import RequestObject
 
     ...
 
