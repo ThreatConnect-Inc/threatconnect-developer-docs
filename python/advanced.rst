@@ -381,15 +381,19 @@ retrieve all Indicators from a specified Owner:
 
 .. code:: python
 
+    import json
+
     from threatconnect.RequestObject import RequestObject
 
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
+    owner = 'Example Community'
+
     ro = RequestObject()
     ro.set_http_method('GET')
-    ro.set_owner('Example Community')
+    ro.set_owner(owner)
     ro.set_owner_allowed(True)
     ro.set_resource_pagination(True)
     ro.set_request_uri('/v2/indicators')
@@ -485,6 +489,8 @@ create a Document Resource in ThreatConnect and upload a file to this
 Resource.
 
 .. code:: python
+
+    import json
 
     from threatconnect.RequestObject import RequestObject
 
