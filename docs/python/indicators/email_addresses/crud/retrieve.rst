@@ -15,7 +15,7 @@ Retrieving a Single Email Address
 
     # set a filter to retrieve a specific email address indicator
     filter1 = indicators.add_filter()
-    filter1.add_indicator('badguy@badguysareus.com')
+    filter1.add_indicator('badguy@example.com')
 
     try:
         indicators.retrieve()

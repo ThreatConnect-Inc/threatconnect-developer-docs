@@ -13,10 +13,10 @@ The example below demonstrates how to delete an Email Address Indicator from the
     indicators = tc.indicators()
     owner = 'Example Community'
 
-    # specify a specific email address from a specific owner (in this case 'badguy@badguysareus.com' from the 'Example Community')
+    # specify a specific email address from a specific owner (in this case 'badguy@example.com' from the 'Example Community')
     filter1 = indicators.add_filter()
     filter1.add_owner(owner)
-    filter1.add_indicator('badguy@badguysareus.com')
+    filter1.add_indicator('badguy@example.com')
 
     # retrieve the indicator
     indicators.retrieve()

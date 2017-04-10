@@ -13,10 +13,10 @@ The example below demonstrates how to delete a Host Indicator from the ThreatCon
     indicators = tc.indicators()
     owner = 'Example Community'
 
-    # specify a specific host from a specific owner (in this case 'badguy.com' from the 'Example Community')
+    # specify a specific host from a specific owner (in this case 'example.com' from the 'Example Community')
     filter1 = indicators.add_filter()
     filter1.add_owner(owner)
-    filter1.add_indicator('badguy.com')
+    filter1.add_indicator('example.com')
 
     # retrieve the indicator
     indicators.retrieve()

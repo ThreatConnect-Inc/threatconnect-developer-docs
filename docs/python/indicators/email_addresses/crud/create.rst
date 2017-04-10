@@ -13,7 +13,7 @@ Resource in the ThreatConnect platform:
     indicators = tc.indicators()
 
     owner = 'Example Community'
-    indicator = indicators.add('badguy@badguysareus.com', owner)
+    indicator = indicators.add('badguy@example.com', owner)
     indicator.set_confidence(75)
     indicator.set_rating(2.5)
 

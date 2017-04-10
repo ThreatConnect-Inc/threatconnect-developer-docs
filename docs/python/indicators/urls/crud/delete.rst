@@ -13,10 +13,10 @@ The example below demonstrates how to delete a URL Indicator from the ThreatConn
     indicators = tc.indicators()
     owner = 'Example Community'
 
-    # specify a specific url from a specific owner (in this case 'http://badguy.com' from the 'Example Community')
+    # specify a specific url from a specific owner (in this case 'http://example.com' from the 'Example Community')
     filter1 = indicators.add_filter()
     filter1.add_owner(owner)
-    filter1.add_indicator('http://badguy.com')
+    filter1.add_indicator('http://example.com')
 
     # retrieve the indicator
     indicators.retrieve()

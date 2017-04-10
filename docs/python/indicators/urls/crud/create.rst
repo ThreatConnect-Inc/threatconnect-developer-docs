@@ -13,7 +13,7 @@ the ThreatConnect platform:
     indicators = tc.indicators()
         
     owner = 'Example Community'
-    indicator = indicators.add('http://badguy.com/clickme.html', owner)
+    indicator = indicators.add('http://example.com/clickme.html', owner)
     indicator.set_confidence(75)
     indicator.set_rating(2.5)
 
@@ -36,7 +36,7 @@ Code Highlights
 +-----------------------------------------------+--------------------------------------------------------------------------------------+
 | ``indicators = tc.indicators()``              | Instantiate an Indicator container object.                                           |
 +-----------------------------------------------+--------------------------------------------------------------------------------------+
-| ``indicator = indicators.add('http://bad...`` | Add a Resource object setting the value and Owner.                                   |
+| ``indicator = indicators.add('http://exa...`` | Add a Resource object setting the value and Owner.                                   |
 +-----------------------------------------------+--------------------------------------------------------------------------------------+
 | ``indicator.set_confidence(75)``              | Set the Confidence value for this Indicator.                                         |
 +-----------------------------------------------+--------------------------------------------------------------------------------------+
