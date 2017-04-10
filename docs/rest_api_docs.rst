@@ -5697,11 +5697,11 @@ Sample Batch Upload Input File request
      Content-Encoding: gzip       
      [boundary-text]                                                  
      <uploaded_data>                                              
-     ```
-     
-    Server Response on Success
-     
-     ```
+
+Server Response on Success
+
+::
+
      HTTP/1.1 202 Accepted                
      {                                    
      status: "Queued"    
@@ -5717,64 +5717,58 @@ Server Response on Overlarge Input File
      description: "File size greater than 
      allowable limit of 2000000"          
      }                                    
-     ```
 
-    Sample Batch Status Check request
-
-GET /v2/batch/123
+Sample Batch Status Check request
 
 ::
 
+    GET /v2/batch/123
 
-    Server Response on Success (job still running)
 
-| HTTP/1.1 200 OK
-| {
-| status: "Running",
-| }
+Server Response on Success (job still running)
 
 ::
 
-     
-    Server Response on Success (job finished)
+    HTTP/1.1 200 OK
+    {
+    status: "Running",
+    }
 
-| HTTP/1.1 200 OK
-| {
-| status: "Completed",
-| errorCount: 3420,
-| successCount: 405432
-| unprocessCount: 0
-| }
+Server Response on Success (job finished)
 
 ::
 
-     
-    Sample Batch Error Message request
+    HTTP/1.1 200 OK
+    {
+    status: "Completed",
+    errorCount: 3420,
+    successCount: 405432
+    unprocessCount: 0
+    }
 
-GET /v2/batch/123/errors
-
-::
-
-     
-    Server Response on Success (job still running)
-
-| HTTP/1.1 400 Bad Request
-| {
-| status: "Invalid",
-| description: "Batch still in Running state" }
+Sample Batch Error Message request
 
 ::
 
+    GET /v2/batch/123/errors
 
-    Server Response on Success (job finished):
+Server Response on Success (job still running)
 
-| HTTP/1.1 200 OK
-| Content-Type: application/octet-stream ; boundary=
-| Content-Length: 
-| Content-Encoding: gzip
-| 
-| 
-| \`\`\`
+::
+
+    HTTP/1.1 400 Bad Request
+    {
+    status: "Invalid",
+    description: "Batch still in Running state" }
+
+Server Response on Success (job finished):
+
+::
+
+    HTTP/1.1 200 OK
+    Content-Type: application/octet-stream ; boundary=
+    Content-Length: 
+    Content-Encoding: gzip
 
 Create Batch Endpoint
 
