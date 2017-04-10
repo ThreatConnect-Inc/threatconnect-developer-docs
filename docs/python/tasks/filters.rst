@@ -7,33 +7,37 @@ This section provides the available filters which can be used when retrieving Ta
 
 API filters use the API filtering feature to limit the result set returned from the API.
 
-+--------------------------+-------------+--------------------------------------------+
-| Filter                   | Value Type  | Description                                |
-+==========================+=============+============================================+
-| ``add_id()``             | int         | Filter Tasks by ID.                        |
-+--------------------------+-------------+--------------------------------------------+
-| ``add_adversary_id()``   | int         | Filter Tasks on associated Adversary ID.   |
-+--------------------------+-------------+--------------------------------------------+
-| ``add_document_id()``    | int         | Filter Tasks on associated Document ID.    |
-+--------------------------+-------------+--------------------------------------------+
-| ``add_email_id()``       | int         | Filter Tasks on associated Email ID.       |
-+--------------------------+-------------+--------------------------------------------+
-| ``add_incident_id()``    | int         | Filter Tasks on associated Incident ID.    |
-+--------------------------+-------------+--------------------------------------------+
-| ``add_indicator()``      | str         | Filter Tasks on associated Indicator.      |
-+--------------------------+-------------+--------------------------------------------+
-| ``add_owner()``          | list or str | Filter Tasks on Owner.                     |
-+--------------------------+-------------+--------------------------------------------+
-| ``add_security_label()`` | str         | Filter Tasks on associated Security Label. |
-+--------------------------+-------------+--------------------------------------------+
-| ``add_signature_id()``   | int         | Filter Tasks on associated Signature ID.   |
-+--------------------------+-------------+--------------------------------------------+
-| ``add_tag()``            | str         | Filter Tasks on applied Tag.               |
-+--------------------------+-------------+--------------------------------------------+
-| ``add_threat_id()``      | int         | Filter Tasks on associated Threat ID.      |
-+--------------------------+-------------+--------------------------------------------+
-| ``add_victim_id()``      | int         | Filter Tasks on associated Victim ID.      |
-+--------------------------+-------------+--------------------------------------------+
++--------------------------+-------------+------------------------------------------+
+| Filter                   | Value Type  | Description                              |
++==========================+=============+==========================================+
+| ``add_id()``             | int         | Filter Tasks by ID.                      |
++--------------------------+-------------+------------------------------------------+
+| ``add_adversary_id()``   | int         | Filter Tasks on associated Adversary ID. |
++--------------------------+-------------+------------------------------------------+
+| ``add_campaign_id()``    | int         | Filter Tasks on associated Campaign ID.  |
++--------------------------+-------------+------------------------------------------+
+| ``add_document_id()``    | int         | Filter Tasks on associated Document ID.  |
++--------------------------+-------------+------------------------------------------+
+| ``add_email_id()``       | int         | Filter Tasks on associated Email ID.     |
++--------------------------+-------------+------------------------------------------+
+| ``add_incident_id()``    | int         | Filter Tasks on associated Incident ID.  |
++--------------------------+-------------+------------------------------------------+
+| ``add_indicator()``      | str         | Filter Tasks on associated Indicator.    |
++--------------------------+-------------+------------------------------------------+
+| ``add_owner()``          | list or str | Filter Tasks on Owner.                   |
++--------------------------+-------------+------------------------------------------+
+| ``add_security_label()`` | str         | Filter Tasks on applied Security Label.  |
++--------------------------+-------------+------------------------------------------+
+| ``add_signature_id()``   | int         | Filter Tasks on associated Signature ID. |
++--------------------------+-------------+------------------------------------------+
+| ``add_tag()``            | str         | Filter Tasks on applied Tag.             |
++--------------------------+-------------+------------------------------------------+
+| ``add_task_id()``        | int         | Filter Tasks on associated Task ID.      |
++--------------------------+-------------+------------------------------------------+
+| ``add_threat_id()``      | int         | Filter Tasks on associated Threat ID.    |
++--------------------------+-------------+------------------------------------------+
+| ``add_victim_id()``      | int         | Filter Tasks on associated Victim ID.    |
++--------------------------+-------------+------------------------------------------+
 
 **Supported Post Filters**
 
