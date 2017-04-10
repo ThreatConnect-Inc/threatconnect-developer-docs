@@ -30,6 +30,75 @@ Retrieving a Single File Indicator
 
 This example demonstrates how to retrieve a specific file indicator. The ``add_indicator`` filter allows us to specify the file hash which we would like to retrieve. If a file exists in ThreatConnect, you can pass the md5, sha1, or sha256 of that file into the ``add_indicator`` filter and it will work.
 
+Retrieving File Size
+++++++++++++++++++++
+
+The code snippet below demonstrates how to retrieve a File Indicator's size:
+
+.. code:: python
+
+    ...
+
+    tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
+
+    # instantiate indicators object
+    indicators = tc.indicators()
+
+    # set a filter to retrieve a specific file indicator
+    filter1 = indicators.add_filter()
+    filter1.add_indicator('8743b52063cd84097a65d1633f5c74f5')
+
+    try:
+        indicators.retrieve()
+    except RuntimeError as e:
+        print('Error: {0}'.format(e))
+        sys.exit(1)
+
+    # if the file was found, print some information about it
+    for indicator in indicators:
+        print(indicator.indicator)
+
+        # this line prints the file size
+        print(indicator.size)
+
+Retrieving File Occurrences
++++++++++++++++++++++++++++
+
+The code snippet below demonstrates how to retrieve a File Indicator's occurrences:
+
+.. code:: python
+
+    ...
+
+    tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
+
+    # instantiate indicators object
+    indicators = tc.indicators()
+
+    # set a filter to retrieve a specific file indicator
+    filter1 = indicators.add_filter()
+    filter1.add_indicator('8743b52063cd84097a65d1633f5c74f5')
+
+    try:
+        indicators.retrieve()
+    except RuntimeError as e:
+        print('Error: {0}'.format(e))
+        sys.exit(1)
+
+    # if the file was found, print some information about it
+    for indicator in indicators:
+        print(indicator.indicator)
+
+        # load the file occurrences
+        indicator.load_file_occurrence()
+
+        # iterate through the indicator's file occurrences
+        for file_occurrence in indicator.file_occurrences:
+            print(file_occurrence.date)
+            print(file_occurrence.file_name)
+            print(file_occurrence.id)
+            print(file_occurrence.path)
+
 Retrieving Multiple File Indicators
 """""""""""""""""""""""""""""""""""
 
