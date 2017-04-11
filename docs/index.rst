@@ -13,10 +13,10 @@ Demo <https://www.threatconnect.com/request-a-demo/>`__
    :maxdepth: 3
 
    getting_started
-   rest_api_docs
+   rest_api/rest_api_docs
    python/python_sdk.rst
-   java_sdk
-   javascript_sdk
+   java/java_sdk
+   javascript/javascript_sdk
    deployment_config
-   tcex
+   tcex/tcex
    sdk_trademarks
