@@ -4,7 +4,7 @@ Create Adversaries
 Example Python SDK creating an adversary resource in the ThreatConnect
 platform:
 
-.. code:: python
+.. code-block:: python
     :linenos:
 
     ...
