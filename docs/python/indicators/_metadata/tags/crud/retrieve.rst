@@ -3,7 +3,8 @@ Retrieve Indicator Tags
 
 The code snippet below demonstrates how to retrieve the tags from an Indicator. This example assumes a host indicator ``example.com`` exists in the target owner (and it works better if the host has some tags on it).
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 

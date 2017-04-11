@@ -6,7 +6,8 @@ Retrieving a Single Victim
 
 The example below demonstrates how to retrieve a Victim Resource from the ThreatConnect platform:
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 
@@ -40,7 +41,8 @@ Retrieving Multiple Victims
 
 The example below demonstrates how to retrieve multiple Victim Resources from the ThreatConnect platform:
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 

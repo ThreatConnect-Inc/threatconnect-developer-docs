@@ -3,7 +3,8 @@ Retrieve Victim Tags
 
 The code snippet below demonstrates how to retrieve the tags from an Incident. This example assumes there is a Victim with an ID of ``123456`` in the target owner. To test this code snippet, change the ``victim_id`` variable to the ID of a victim in your owner.
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 

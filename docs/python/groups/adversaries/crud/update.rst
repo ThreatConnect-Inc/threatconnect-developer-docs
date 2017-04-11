@@ -4,7 +4,8 @@ Update Adversaries
 The example below demonstrates how to update an Adversary Resource in
 the ThreatConnect platform:
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 

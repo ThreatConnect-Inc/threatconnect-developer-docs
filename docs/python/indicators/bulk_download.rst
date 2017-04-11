@@ -39,7 +39,8 @@ Bulk Download Example
 The import statement and reading of the configuration files have been
 replaced with ``...`` for brevity.
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     from threatconnect.Config.FilterOperator import FilterOperator
 

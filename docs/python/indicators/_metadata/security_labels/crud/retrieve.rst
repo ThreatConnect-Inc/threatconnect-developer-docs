@@ -3,7 +3,8 @@ Retrieve Indicator Security Labels
 
 The code snippet below demonstrates how to retrieve the security label from an Indicator. This example assumes a host indicator ``example.com`` exists in the target owner and has a security label.
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 

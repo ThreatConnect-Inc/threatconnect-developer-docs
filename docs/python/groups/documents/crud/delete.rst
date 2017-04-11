@@ -4,7 +4,8 @@ Delete Documents
 The example below demonstrates how to delete a Document Resource from the
 ThreatConnect platform:
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 

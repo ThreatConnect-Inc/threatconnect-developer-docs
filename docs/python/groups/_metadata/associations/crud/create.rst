@@ -3,7 +3,8 @@ Create Group Associations
 
 The code snippet below demonstrates how to create an association between an Incident and another Group, Indicator, and Victim in ThreatConnect. This example is designed to create associations with an Incident with an ID of ``123456``. To test this code snippet, change the ``group_id`` variable to the ID of an incident in your owner. This same process also applies to all group types. Simply change ``tc.incidents()`` to the group type you would like to retrieve. The available group types are: ``tc.<adversaries|campaigns|documents|emails|incidents|signatures|threats>()``.
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     from threatconnect.Config.ResourceType import ResourceType
 

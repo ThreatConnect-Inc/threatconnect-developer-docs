@@ -3,7 +3,8 @@ Delete Tasks
 
 The example below demonstrates how to delete a Task Resource from the ThreatConnect platform:
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 

@@ -4,7 +4,8 @@ Retrieve URLs
 Retrieving a Single URL
 """""""""""""""""""""""
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 
@@ -33,7 +34,8 @@ This example demonstrates how to retrieve a specific URL indicator. The ``add_in
 Retrieving Multiple URLs
 """"""""""""""""""""""""
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     # this import allows us to specify which indicator type we want to import
     from threatconnect.Config.IndicatorType import IndicatorType

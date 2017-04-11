@@ -3,7 +3,8 @@ Create Victim Assets
 
 The example below demonstrates how to create Victim Assets for an existing Victim with an ID of ``123456``:
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     from threatconnect.Config.ResourceType import ResourceType
 

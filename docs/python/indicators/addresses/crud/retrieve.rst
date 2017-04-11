@@ -4,7 +4,8 @@ Retrieve IP Addresses
 Retrieving a Single Address
 """""""""""""""""""""""""""
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 
@@ -33,7 +34,8 @@ This example demonstrates how to retrieve a specific IP address indicator. The `
 Retrieving Multiple Addresses
 """""""""""""""""""""""""""""
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     # this import allows us to specify which indicator type we want to import
     from threatconnect.Config.IndicatorType import IndicatorType

@@ -4,7 +4,8 @@ Retrieve Files
 Retrieving a Single File Indicator
 """"""""""""""""""""""""""""""""""
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 
@@ -35,7 +36,8 @@ Retrieving File Size
 
 The code snippet below demonstrates how to retrieve a File Indicator's size:
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 
@@ -66,7 +68,8 @@ Retrieving File Occurrences
 
 The code snippet below demonstrates how to retrieve a File Indicator's occurrences:
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 
@@ -102,7 +105,8 @@ The code snippet below demonstrates how to retrieve a File Indicator's occurrenc
 Retrieving Multiple File Indicators
 """""""""""""""""""""""""""""""""""
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     # this import allows us to specify which indicator type we want to import
     from threatconnect.Config.IndicatorType import IndicatorType

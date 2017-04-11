@@ -4,7 +4,8 @@ Create Emails
 The example below demonstrates how to create an Email Resource in the
 ThreatConnect platform:
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 

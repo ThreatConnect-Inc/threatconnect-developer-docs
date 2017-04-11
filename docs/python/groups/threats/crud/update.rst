@@ -4,7 +4,8 @@ Update Threats
 The example below demonstrates how to update a Threat Resource in the
 ThreatConnect platform:
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 

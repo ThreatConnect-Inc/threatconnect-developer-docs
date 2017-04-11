@@ -3,7 +3,8 @@ Delete Indicator Security Labels
 
 The code snippet below demonstrates how to delete a security label from an Indicator. This example assumes a host indicator ``example.com`` exists in the target owner and that the host has the 'TLP Green' security label (security labels are not case sensitive when using the Python SDK).
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 

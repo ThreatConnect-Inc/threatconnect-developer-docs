@@ -6,7 +6,8 @@ Retrieving a Single Incident
 
 The import statement and reading of the configuration files have been replaced with ``...`` for brevity.
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 
@@ -62,7 +63,8 @@ Retrieving Multiple Incidents
 The import statement and reading of the configuration files have been
 replaced with ``...`` for brevity.
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 
