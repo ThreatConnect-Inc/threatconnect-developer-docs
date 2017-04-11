@@ -4,7 +4,8 @@ Retrieve Hosts
 Retrieving a Single Host
 """"""""""""""""""""""""
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 
@@ -35,7 +36,8 @@ Retrieving DNS Resolutions
 
 The example below demonstrates how to retrieve a Host Indicator's DNS Resolutions:
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 
@@ -82,7 +84,8 @@ The example below demonstrates how to retrieve a Host Indicator's DNS Resolution
 Retrieving Multiple Hosts
 """""""""""""""""""""""""
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     # this import allows us to specify which indicator type we want to import
     from threatconnect.Config.IndicatorType import IndicatorType

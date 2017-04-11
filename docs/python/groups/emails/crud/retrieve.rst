@@ -6,7 +6,8 @@ Retrieving a Single Email
 
 The import statement and reading of the configuration files have been replaced with ``...`` for brevity.
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 
@@ -69,7 +70,8 @@ Retrieving Multiple Emails
 The import statement and reading of the configuration files have been
 replaced with ``...`` for brevity.
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 

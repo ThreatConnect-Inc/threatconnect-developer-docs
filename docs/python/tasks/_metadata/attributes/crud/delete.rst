@@ -3,7 +3,8 @@ Delete Task Attributes
 
 The code snippet below demonstrates how to delete a Task's attribute. This example assumes there is a Task with an ID of ``123456`` in the target owner. To test this code snippet, change the ``task_id`` variable to the ID of a task in your owner.
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 

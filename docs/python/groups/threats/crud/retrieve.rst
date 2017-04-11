@@ -6,7 +6,8 @@ Retrieving a Single Threat
 
 The import statement and reading of the configuration files have been replaced with ``...`` for brevity.
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 
@@ -61,7 +62,8 @@ Retrieving Multiple Threats
 The import statement and reading of the configuration files have been
 replaced with ``...`` for brevity.
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 

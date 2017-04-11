@@ -3,7 +3,8 @@ Update Victim Assets
 
 The example below demonstrates how to update the Victim Assets of an existing Victim with an ID of ``123456``:
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 

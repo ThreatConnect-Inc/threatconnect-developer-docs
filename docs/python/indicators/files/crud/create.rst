@@ -4,7 +4,8 @@ Create Files
 The example below demonstrates how to create a File Indicator
 Resource in the ThreatConnect platform:
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 
@@ -69,7 +70,8 @@ Adding File Occurrences
 A File occurrence can be added to File Indicators by inserting the
 example code below into the previous code snippet before the ``indicator.commit()`` method is called:
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     fo_date = (datetime.isoformat(datetime(2015, 3, 29))) + 'Z'
     indicator.add_file_occurrence('badfile.exe', 'C:\windows', fo_date)

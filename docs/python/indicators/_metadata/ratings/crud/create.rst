@@ -3,7 +3,8 @@ Create Indicator Threat and Confidence Ratings
 
 The code snippet below demonstrates how to add/change the threat and/or confidence rating on an Indicator. This example assumes a host indicator ``example.com`` exists in the target owner.
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 

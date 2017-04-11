@@ -4,7 +4,8 @@ Create Signatures
 The example below demonstrates how to create a Signature Resource in the
 ThreatConnect platform.
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 

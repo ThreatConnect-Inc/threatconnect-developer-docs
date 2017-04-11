@@ -3,7 +3,8 @@ Retrieve Indicator Associations
 
 The code snippet below demonstrates how to view Groups, Indicators, and Victims which are associated with a given Indicator in ThreatConnect. This example assumes a host indicator ``example.com`` exists in the target owner.
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 

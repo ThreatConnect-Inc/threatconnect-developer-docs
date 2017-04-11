@@ -4,7 +4,8 @@ Create URLs
 The example below demonstrates how to create a URL Indicator Resource in
 the ThreatConnect platform:
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 

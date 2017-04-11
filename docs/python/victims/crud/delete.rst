@@ -3,7 +3,8 @@ Delete Victims
 
 The example below demonstrates how to delete a Victim Resource in the ThreatConnect platform:
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 

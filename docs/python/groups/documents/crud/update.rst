@@ -4,7 +4,8 @@ Update Documents
 The example below demonstrates how to update a Document Resource in the
 ThreatConnect platform:
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 

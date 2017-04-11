@@ -6,7 +6,8 @@ Retrieving a Single Signature
 
 The import statement and reading of the configuration files have been replaced with ``...`` for brevity.
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 
@@ -61,7 +62,8 @@ Downloading a Signature's Content
 Example Python SDK downloading the Signature contents for the Signature
 Resource:
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     signature.download()
     if signature.contents is not None:
@@ -86,7 +88,8 @@ Retrieving Multiple Signatures
 
 The import statement and reading of the configuration files have been replaced with ``...`` for brevity.
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 

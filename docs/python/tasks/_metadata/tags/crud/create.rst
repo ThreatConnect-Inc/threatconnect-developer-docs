@@ -3,7 +3,8 @@ Create Task Tags
 
 The code snippet below demonstrates how to add a tag to a Task. This example assumes there is a Task with an ID of ``123456`` in the target owner. To test this code snippet, change the ``task_id`` variable to the ID of a task in your owner.
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 

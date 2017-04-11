@@ -4,7 +4,8 @@ Delete Threats
 The example below demonstrates how to delete an Threat Resource in the
 ThreatConnect platform:
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 

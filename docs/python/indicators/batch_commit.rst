@@ -3,7 +3,8 @@ Batch Commit
 
 Python SDK Batch Commit Code Sample:
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     dst_tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 

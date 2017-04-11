@@ -3,7 +3,8 @@ Delete Indicator Tags
 
 The code snippet below demonstrates how to delete a tag from an Indicator. This example assumes a host indicator ``example.com`` exists in the target owner and is tagged 'Test'.
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 

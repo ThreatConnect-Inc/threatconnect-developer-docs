@@ -4,7 +4,8 @@ Create Threats
 The example below demonstrates how to create a Threat Resource in the
 ThreatConnect platform:
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 

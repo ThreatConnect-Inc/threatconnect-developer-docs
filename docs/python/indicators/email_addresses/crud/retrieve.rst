@@ -4,7 +4,8 @@ Retrieve Email Addresses
 Retrieving a Single Email Address
 """""""""""""""""""""""""""""""""
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 
@@ -33,7 +34,8 @@ This example demonstrates how to retrieve a specific email address indicator. Th
 Retrieving Multiple Email Addresses
 """""""""""""""""""""""""""""""""""
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     # this import allows us to specify which indicator type we want to import
     from threatconnect.Config.IndicatorType import IndicatorType

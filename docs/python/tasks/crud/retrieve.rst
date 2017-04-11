@@ -4,7 +4,8 @@ Retrieve Tasks
 Retrieving a Single Task
 """"""""""""""""""""""""
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 
@@ -51,7 +52,8 @@ Retrieving a Single Task
 Retrieving Multiple Tasks
 """""""""""""""""""""""""
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 

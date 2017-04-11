@@ -4,7 +4,8 @@ Create IP Addresses
 The example below demonstrates how to create an Address Indicator
 resource in the ThreatConnect platform:
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 

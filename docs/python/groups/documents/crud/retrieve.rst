@@ -7,7 +7,8 @@ Retrieving a Single Document
 The import statement and reading of the configuration files have been
 replaced with ``...`` for brevity.
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
@@ -65,7 +66,8 @@ Downloading a Document's Contents
 Python SDK example of downloading the contents of the document stored
 with the Document Resource:
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
         document.download()
         if document.contents is not None:
@@ -93,7 +95,8 @@ Retrieving Multiple Documents
 The import statement and reading of the configuration files have been
 replaced with ``...`` for brevity.
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)

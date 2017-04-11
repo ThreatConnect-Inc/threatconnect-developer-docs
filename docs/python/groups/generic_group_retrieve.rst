@@ -4,7 +4,8 @@ Generic Group Retrieval
 The import statement and reading of the configuration files have been
 replaced with ``...`` for brevity.
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 

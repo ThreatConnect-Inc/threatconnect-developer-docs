@@ -4,7 +4,8 @@ Update Incidents
 The example below demonstrates how to update an Incident Resource in the
 ThreatConnect platform:
 
-.. code:: python
+.. code-block:: python
+    :linenos:
 
     ...
 
