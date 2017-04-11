@@ -103,12 +103,6 @@ Assuming that you have installed the ThreatConnect Python SDK and have created a
 
 4. In the command line/command prompt, run ``python tc_test.py``. This should print the ID number, name, and type of the owners which you have permission to see.
 
-From here, find a topic that interests you and dig in! If you don't know where to start, retrieving indicators is a good place to start.
-
-.. hint:: If you want some good examples using this SDK, you can find them here: `https://github.com/ThreatConnect-Inc/threatconnect-python/tree/master/examples <https://github.com/ThreatConnect-Inc/threatconnect-python/tree/master/examples>`__
-
-.. hint:: When using this documentation, it will be helpful to have a basic understanding of the `ThreatConnect Data Model <http://kb.threatconnect.com/customer/en/portal/articles/2092925-the-threatconnect-data-model>`_.
-
 Throughout the code snippets in this documentation, the configuration code snippet below will be summarized with a ``...`` for the sake of brevity:
 
 .. code-block:: python
@@ -131,3 +125,9 @@ Throughout the code snippets in this documentation, the configuration code snipp
     except ConfigParser.NoOptionError:
         print('Could not read configuration file.')
         sys.exit(1)
+
+From here, find a topic that interests you and dig in! If you don't know where to start, retrieving indicators is a good place to start.
+
+.. hint:: There are some **good examples** using this SDK here: `https://github.com/ThreatConnect-Inc/threatconnect-python/tree/master/examples <https://github.com/ThreatConnect-Inc/threatconnect-python/tree/master/examples>`__
+
+.. hint:: When using this documentation, it will be helpful to have a basic understanding of the `ThreatConnect Data Model <http://kb.threatconnect.com/customer/en/portal/articles/2092925-the-threatconnect-data-model>`_.
