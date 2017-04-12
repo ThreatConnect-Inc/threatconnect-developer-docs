@@ -6,7 +6,7 @@ platform:
 
 .. code-block:: python
     :linenos:
-    :emphasize-lines: 10,12,14,16,20
+    :emphasize-lines: 9-16,19-20
 
     ...
 
