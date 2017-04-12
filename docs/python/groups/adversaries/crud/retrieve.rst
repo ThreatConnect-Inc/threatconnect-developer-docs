@@ -8,27 +8,28 @@ The import statement and reading of the configuration files have been replaced w
 
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 10-11
 
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
+    owner = 'Example Community'
 
+    # instantiate Adversaries container
     adversaries = tc.adversaries()
 
-    try:
-        owner = 'Example Community'
-        filter1 = adversaries.add_filter()
-        filter1.add_id(123456)
-    except AttributeError as e:
-        print('Error: {0}'.format(e))
-        sys.exit(1)
+    # set a filter to only retrieve the adversary with ID: 123456
+    filter1 = adversaries.add_filter()
+    filter1.add_id(123456)
 
     try:
+        # retrieve the adversary
         adversaries.retrieve()
     except RuntimeError as e:
         print('Error: {0}'.format(e))
         sys.exit(1)
 
+    # iterate through the retrieved adversaries (in this case there should only be one) and print its properties
     for adversary in adversaries:
         print(adversary.id)
         print(adversary.name)
@@ -64,35 +65,36 @@ The import statement and reading of the configuration files have been replaced w
 
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 10-12
 
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
+    owner = 'Example Community'
 
+    # instantiate Adversaries container
     adversaries = tc.adversaries()
 
-    try:
-        owner = 'Example Community'
-        filter1 = adversaries.add_filter()
-        filter1.add_owner(owner)
-        filter1.add_tag('APT')
-    except AttributeError as e:
-        print('Error: {0}'.format(e))
-        sys.exit(1)
+    # set a filter to only retrieve adversaries in the 'Example Community' tagged: 'APT'
+    filter1 = adversaries.add_filter()
+    filter1.add_owner(owner)
+    filter1.add_tag('APT')
 
     try:
+        # retrieve the adversary
         adversaries.retrieve()
     except RuntimeError as e:
         print('Error: {0}'.format(e))
         sys.exit(1)
 
+    # iterate through the retrieved adversaries and print their properties
     for adversary in adversaries:
         print(adversary.id)
         print(adversary.name)
         print(adversary.date_added)
         print(adversary.weblink)
 
-This example demonstrates how to retrieve Adversaries while applying filters. Two filters are added: one for the Owner and another for a Tag. The result set returned from this example will contain all Adversaries in the "Example Community" Owner that has the **APT** Tag.
+This example demonstrates how to retrieve Adversaries while applying filters. Two filters are added: one for the Owner and another for a Tag. The result set returned from this example will contain all Adversaries in the "Example Community" Owner that have the **APT** Tag.
 
 Code Highlights
 

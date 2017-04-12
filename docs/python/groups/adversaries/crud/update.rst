@@ -6,31 +6,43 @@ the ThreatConnect platform:
 
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 10,12
 
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
+    owner = 'Example Community'
 
+    # instantiate Adversaries container
     adversaries = tc.adversaries()
 
-    owner = 'Example Community'
+    # create an empty adversary
     adversary = adversaries.add('Updated Adversary', owner)
-    adversary.set_id(20)
+    # set the ID of the new adversary to the ID of the adversary you would like to update
+    adversary.set_id(123456)
 
+    # load adversary attributes
     adversary.load_attributes()
     for attribute in adversary.attributes:
+        # if the attribute is a description, delete it
         if attribute.type == 'Description':
+            # delete the attribute
             adversary.delete_attribute(attribute.id)
 
+    # add a new description attribute
     adversary.add_attribute('Description', 'Updated Description')
 
+    # load adversary tags
     adversary.load_tags()
+    # delete all of the adversary's tags
     for tag in adversary.tags:
         adversary.delete_tag(tag.name)
 
+    # add a tag
     adversary.add_tag('EXAMPLE')
 
     try:
+        # update the adversary
         adversary.commit()
     except RuntimeError as e:
         print('Error: {0}'.format(e))
