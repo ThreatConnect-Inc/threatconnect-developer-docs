@@ -65,6 +65,7 @@ Assuming that you have installed the ThreatConnect Python SDK and have created a
 3. Copy and paste the following code into a file and save it in the new folder with the name ``tc_test.py``. This code will print all of the owners in ThreatConnect which you have permission to see.
 
    .. code-block:: python
+        :linenos:
 
         try:
             import ConfigParser
