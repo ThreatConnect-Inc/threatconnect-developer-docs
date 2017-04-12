@@ -914,7 +914,7 @@ Python SDK Regex Code Sample
         indicator.commit()
     except RuntimeError as e:
         print('Error: {0!s}'.format(e))
-        sys.exit(1))
+        sys.exit(1)
 
 The Python SDK provides the ``set_indicator_regex`` method which allows
 a user to override the baked-in Regular Expressions (Regexes) in the SDK
