@@ -170,7 +170,7 @@ calls. In fact, the entities themselves were ported directly from the
 ThreatConnect API to enable consistent communication between the Java
 SDK and the REST API.
 
-.. figure:: images/sdk-design.png
+.. figure:: ../_static/sdk-design.png
    :alt: SDK Technical Design
 
    SDK Design
@@ -190,7 +190,7 @@ classes (Note: Names are conceptual to illustrate interaction. Actual
 class names and methods will be discussed later in this document) . All
 interactions with the Java SDK will follow this programmatic idiom.
 
-.. figure:: images/sdk-arch.png
+.. figure:: ../_static/sdk-arch.png
    :alt: SDK Architecture
 
    SDK Architecture
@@ -434,7 +434,7 @@ characters or less. The job executor reads this file after execution
 completes on each job and displays the contents in the Job table detail
 tip.
 
-.. figure:: images/exit-message-tip.png
+.. figure:: ../_static/exit-message-tip.png
    :alt: Exit Message
 
    Exit Message
