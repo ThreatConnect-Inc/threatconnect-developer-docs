@@ -2,11 +2,11 @@ language: python
 python:
   - "2.7"
 install:
+  - pip install pytest
   - pip install linkchecker
   # install a version of requests that works with linkchecker (see https://github.com/wummel/linkchecker/issues/649)
   - pip install requests==2.2.1
-  - pip install pytest
 script:
   - linkchecker https://docs.threatconnect.com/en/latest/
-  - cd ./ThreatConnect-Inc/ThreatConnect_Developer_Docs/tests/
+  - cd ./tests/
   - pytest
