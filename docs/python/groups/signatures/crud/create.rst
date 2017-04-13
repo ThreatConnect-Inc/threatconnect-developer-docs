@@ -37,11 +37,11 @@ ThreatConnect platform.
     signature.set_file_text(file_text)  # OPTIONAL
 
     # add a description attribute
-    adversary.add_attribute('Description', 'Description Example')
+    signature.add_attribute('Description', 'Description Example')
     # add a tag
-    adversary.add_tag('Example')
+    signature.add_tag('Example')
     # add a security label
-    adversary.set_security_label('TLP Green')
+    signature.set_security_label('TLP Green')
 
     try:
         # create the Signature

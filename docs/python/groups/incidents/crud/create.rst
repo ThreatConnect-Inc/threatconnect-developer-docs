@@ -22,11 +22,11 @@ ThreatConnect platform:
     incident.set_event_date('2017-03-21T00:00:00Z')  # REQUIRED
 
     # add a description attribute
-    adversary.add_attribute('Description', 'Description Example')
+    incident.add_attribute('Description', 'Description Example')
     # add a tag
-    adversary.add_tag('Example')
+    incident.add_tag('Example')
     # add a security label
-    adversary.set_security_label('TLP Green')
+    incident.set_security_label('TLP Green')
 
     try:
         # create the Incident
