@@ -20,11 +20,11 @@ ThreatConnect platform:
     threat = threats.add('New Threat', owner)
 
     # add a description attribute
-    adversary.add_attribute('Description', 'Description Example')
+    threat.add_attribute('Description', 'Description Example')
     # add a tag
-    adversary.add_tag('Example')
+    threat.add_tag('Example')
     # add a security label
-    adversary.set_security_label('TLP Green')
+    threat.set_security_label('TLP Green')
 
     try:
         # create the Threat

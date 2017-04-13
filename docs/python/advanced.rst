@@ -13,9 +13,10 @@ Example of Python SDK calling log-file and debug level:
 
 .. code-block:: python
     :linenos:
+    :no-test:
 
-        tc.set_tcl_file('log/tc.log', 'debug')
-        tc.set_tcl_console_level('critical')
+    tc.set_tcl_file('log/tc.log', 'debug')
+    tc.set_tcl_console_level('critical')
 
 The Python SDK allows for the setting of the log-file location and debug
 level. The level on the console logging can be set as well. The default
@@ -34,17 +35,19 @@ Code Highlights
 Activity Log
 ------------
 
-    Enabling the Activity Log:
+Enabling the Activity Log:
 
 .. code-block:: python
     :linenos:
+    :no-test:
 
     tc.set_activity_log(True)
 
-    Disabling the Activity Log:
+Disabling the Activity Log:
 
 .. code-block:: python
     :linenos:
+    :no-test:
 
     tc.set_activity_log(False)
 
@@ -64,6 +67,7 @@ API Request Timeout
 
 .. code-block:: python
     :linenos:
+    :no-test:
 
     tc.set_api_request_timeout(15)
 
@@ -79,6 +83,7 @@ passing an Integer for the number of seconds to sleep.
 
 .. code-block:: python
     :linenos:
+    :no-test:
 
     tc.set_api_retries(3)
     tc.set_api_sleep(30)
@@ -101,6 +106,7 @@ passing an Integer between 1-500.
 
 .. code-block:: python
     :linenos:
+    :no-test:
 
     tc.set_api_result_limit(500)
 
@@ -115,17 +121,19 @@ limitations.
 Proxies
 -------
 
-    Proxy Setting (No Authentication)
+Proxy Setting (No Authentication)
 
 .. code-block:: python
     :linenos:
+    :no-test:
 
     tc.set_proxies('10.10.10.10', 8443)
 
-    Proxy Setting (Authentication Provided)
+Proxy Setting (Authentication Provided)
 
 .. code-block:: python
     :linenos:
+    :no-test:
 
     tc.set_proxies('10.10.10.10', 8443, 'proxy_user', 'password123')
 
@@ -145,6 +153,7 @@ Filtering
 
 .. code-block:: python
     :linenos:
+    :no-test:
 
     owner = 'Example Community'
 
@@ -229,6 +238,7 @@ Python SDK Filter Object Basics example:
 
 .. code-block:: python
     :linenos:
+    :no-test:
 
     filter1 = adversary.add_filter()
     filter1 = adversary.indicator('10.20.30.40')
@@ -239,6 +249,7 @@ Python SDK Post Filter Basics example:
 
 .. code-block:: python
     :linenos:
+    :no-test:
 
     from threatconnect.Config.FilterOperator import FilterOperator
 
@@ -299,6 +310,7 @@ Python SDK example filtering on supported Indicator Types:
 
 .. code-block:: python
     :linenos:
+    :no-test:
 
     from threatconnect.Config.IndicatorType import IndicatorType
 
@@ -315,6 +327,7 @@ Python SDK Modified Since API Filter:
 
 .. code-block:: python
     :linenos:
+    :no-test:
 
     modified_since = (datetime.isoformat(datetime(2015, 6, 17))) + 'Z'
     indicators.set_modified_since(modified_since)
@@ -602,6 +615,7 @@ Python SDK CEF Code Sample:
 .. code-block:: python
     :linenos:
 
+    ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
@@ -645,6 +659,7 @@ Python SDK CSV Code Sample:
 .. code-block:: python
     :linenos:
 
+    ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
@@ -701,6 +716,7 @@ Python SDK JSON Code Sample:
 .. code-block:: python
     :linenos:
 
+    ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
@@ -757,6 +773,7 @@ Python SDK Key Value Code Sample:
 .. code-block:: python
     :linenos:
 
+    ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
@@ -802,6 +819,7 @@ Python SDK LEEF Code Sample:
 .. code-block:: python
     :linenos:
 
+    ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
@@ -844,6 +862,7 @@ Indicator Type Override
 The ``add()`` method on the ``tc.indicators()`` object allows the user to bypass the automatic Indicator identification and validation check by specifying the IndicatorType:
 
 .. code-block:: python
+    :linenos:
 
     from threatconnect.Config.IndicatorType import IndicatorType
 
@@ -862,6 +881,7 @@ Regex Overrides
 Python SDK Regex Code Sample
 
 .. code-block:: python
+    :linenos:
 
     ...
 
@@ -1009,7 +1029,7 @@ Python SDK failed reports example:
 
 .. code-block:: python
     :linenos:
-
+    :no-test:
 
     for fail in tc.report.failures:
         print(fail)

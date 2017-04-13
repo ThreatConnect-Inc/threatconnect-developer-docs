@@ -69,9 +69,9 @@ with the Document Resource:
 .. code-block:: python
     :linenos:
 
-        document.download()
-        if document.contents is not None:
-            print(document.contents)
+    document.download()
+    if document.contents is not None:
+        print(document.contents)
 
 Continuing from the `Filter Example <#filter-example>`__, the example
 will download the contents of the document stored with the Document
