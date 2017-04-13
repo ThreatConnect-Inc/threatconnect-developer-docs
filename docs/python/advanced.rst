@@ -14,8 +14,8 @@ Example of Python SDK calling log-file and debug level:
 .. code-block:: python
     :linenos:
 
-        tc.set_tcl_file('log/tc.log', 'debug')
-        tc.set_tcl_console_level('critical')
+    tc.set_tcl_file('log/tc.log', 'debug')
+    tc.set_tcl_console_level('critical')
 
 The Python SDK allows for the setting of the log-file location and debug
 level. The level on the console logging can be set as well. The default
