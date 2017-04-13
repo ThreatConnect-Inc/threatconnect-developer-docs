@@ -6,19 +6,28 @@ ThreatConnect platform:
 
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 9-10,20-21
 
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
+    # instantiate a Threat container
     threats = tc.threats()
-        
+
     owner = 'Example Community'
+    # create a new Threat in 'Example Community' with the name: 'New Threat'
     threat = threats.add('New Threat', owner)
-    threat.add_attribute('Description', 'Description Example')
-    threat.add_tag('EXAMPLE')
-    threat.set_security_label('TLP Green')
+
+    # add a description attribute
+    adversary.add_attribute('Description', 'Description Example')
+    # add a tag
+    adversary.add_tag('Example')
+    # add a security label
+    adversary.set_security_label('TLP Green')
+
     try:
+        # create the Threat
         threat.commit()
     except RuntimeError as e:
         print('Error: {0}'.format(e))

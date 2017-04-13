@@ -11,18 +11,18 @@ the ThreatConnect platform:
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
-    owner = 'Example Community'
 
     # instantiate Adversaries container
     adversaries = tc.adversaries()
 
-    # create an empty adversary
+    owner = 'Example Community'
+    # create an empty Adversary
     adversary = adversaries.add('', owner)
-    # set the ID of the new adversary to the ID of the adversary you would like to delete
+    # set the ID of the new Adversary to the ID of the Adversary you would like to delete
     adversary.set_id(123456)
 
     try:
-        # delete the adversary
+        # delete the Adversary
         adversary.delete()
     except RuntimeError as e:
         print(e)

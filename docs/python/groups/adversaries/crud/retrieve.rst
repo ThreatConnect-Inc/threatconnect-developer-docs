@@ -13,17 +13,16 @@ The import statement and reading of the configuration files have been replaced w
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
-    owner = 'Example Community'
 
     # instantiate Adversaries container
     adversaries = tc.adversaries()
 
-    # set a filter to only retrieve the adversary with ID: 123456
+    # set a filter to only retrieve the Adversary with ID: 123456
     filter1 = adversaries.add_filter()
     filter1.add_id(123456)
 
     try:
-        # retrieve the adversary
+        # retrieve the Adversary
         adversaries.retrieve()
     except RuntimeError as e:
         print('Error: {0}'.format(e))
@@ -65,16 +64,16 @@ The import statement and reading of the configuration files have been replaced w
 
 .. code-block:: python
     :linenos:
-    :emphasize-lines: 10-12,15-16
+    :emphasize-lines: 9-12,15-16
 
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
-    owner = 'Example Community'
 
     # instantiate Adversaries container
     adversaries = tc.adversaries()
 
+    owner = 'Example Community'
     # set a filter to only retrieve adversaries in the 'Example Community' tagged: 'APT'
     filter1 = adversaries.add_filter()
     filter1.add_owner(owner)

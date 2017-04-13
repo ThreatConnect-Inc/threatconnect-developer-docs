@@ -6,27 +6,28 @@ platform:
 
 .. code-block:: python
     :linenos:
-    :emphasize-lines: 9-16,19-20
+    :emphasize-lines: 9-10,20-21
 
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
-    owner = 'Example Community'
 
-    # instantiate Adversaries container
+    # instantiate an Adversaries container
     adversaries = tc.adversaries()
 
-    # create a new adversary in 'Example Community' with the name: 'New Adversary'
+    owner = 'Example Community'
+    # create a new Adversary in 'Example Community' with the name: 'New Adversary'
     adversary = adversaries.add('New Adversary', owner)
+
     # add a description attribute
     adversary.add_attribute('Description', 'Description Example')
     # add a tag
-    adversary.add_tag('EXAMPLE')
+    adversary.add_tag('Example')
     # add a security label
     adversary.set_security_label('TLP Green')
 
     try:
-        # create the adversary
+        # create the Adversary
         adversary.commit()
     except RuntimeError as e:
         print('Error: {0}'.format(e))

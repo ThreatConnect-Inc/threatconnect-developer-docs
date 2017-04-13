@@ -6,16 +6,20 @@ ThreatConnect platform.
 
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 9-10,12-20,22-27,37-38
 
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
+    # instantiate a Signatures container
     signatures = tc.signatures()
         
     owner = 'Example Community'
+    # create a new Signature in 'Example Community' with the name: 'New Signature'
     signature = signatures.add('New Signature', owner)
 
+    # define Signature's content
     file_text = '"rule example_sig : example\n{\n'
     file_text += 'meta:\n        description = "This '
     file_text += 'is just an example"\n\n '
@@ -25,32 +29,40 @@ ThreatConnect platform.
     file_text += '59 F7 F9}\n    condition:\n '
     file_text += '$a or $b or $c\n}"'
 
-    signature.set_file_name('bad_file.txt')
-    signature.set_file_type('YARA')
-    signature.set_file_text(file_text)
-        
-    signature.add_attribute('Description', 'Description Example')
-    signature.add_tag('EXAMPLE')
-    signature.set_security_label('TLP Green')
+    # set the file name of the Signature
+    signature.set_file_name('bad_file.txt')  # REQUIRED
+    # set the type of the Signature
+    signature.set_file_type('YARA')  # REQUIRED
+    # set the contents of the signature
+    signature.set_file_text(file_text)  # OPTIONAL
+
+    # add a description attribute
+    adversary.add_attribute('Description', 'Description Example')
+    # add a tag
+    adversary.add_tag('Example')
+    # add a security label
+    adversary.set_security_label('TLP Green')
+
     try:
+        # create the Signature
         signature.commit()
     except RuntimeError as e:
         print('Error: {0}'.format(e))
         sys.exit(1)
 
+.. note:: In the prior example, no API calls are made until the ``commit()`` method is invoked.
+
 Supported Properties
 
-+-----------------+-------------------+------------+
-| Property Name   | Method            | Required   |
-+=================+===================+============+
-| file\_name      | set\_file\_name   | True       |
-+-----------------+-------------------+------------+
-| file\_text      | set\_file\_text   | False      |
-+-----------------+-------------------+------------+
-| file\_type      | set\_file\_type   | True       |
-+-----------------+-------------------+------------+
-
-.. note:: In the prior example, no API calls are made until the ``commit()`` method is invoked.
++---------------+-----------------+----------+
+| Property Name | Method          | Required |
++===============+=================+==========+
+| file\_name    | set\_file\_name | True     |
++---------------+-----------------+----------+
+| file\_text    | set\_file\_text | False    |
++---------------+-----------------+----------+
+| file\_type    | set\_file\_type | True     |
++---------------+-----------------+----------+
 
 Code Highlights
 
