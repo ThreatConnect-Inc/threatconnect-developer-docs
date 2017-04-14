@@ -44,6 +44,8 @@ replaced with ``...`` for brevity.
 
     from threatconnect.Config.FilterOperator import FilterOperator
 
+    ...
+
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
     # indicator object

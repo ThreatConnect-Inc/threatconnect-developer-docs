@@ -64,6 +64,7 @@ Resource:
 
 .. code-block:: python
     :linenos:
+    :no-test:
 
     signature.download()
     if signature.contents is not None:

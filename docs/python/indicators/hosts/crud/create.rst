@@ -33,6 +33,7 @@ information from a third-party service
 
 .. code-block:: python
     :linenos:
+    :no-test:
 
     # Query PTR record for a given domain, or {A, AAAA} record for a given IP
     indicator.set_dns_active(True)

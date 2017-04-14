@@ -6,6 +6,8 @@ Python SDK Batch Commit Code Sample:
 .. code-block:: python
     :linenos:
 
+    ...
+
     dst_tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
     #
@@ -67,6 +69,8 @@ Python SDK Batch Commit Code Sample:
     print("All batch jobs completed, totals:  "
           "succeeded: {0}, failed: {1}, unprocessed: {2}".format(success_total, error_total, unprocess_total))
 
+.. note:: In the prior example, no API calls are made until the ``commit()`` method is invoked.
+
 The ThreatConnect platform supports adding indicators in bulk using the
 API. The Python SDK features an easy-to-use interface to assist in rapid
 development of software to manage this data.
@@ -99,8 +103,6 @@ Supported Functions and Properties
 +--------------------------+-------------------------------+------------+-------------------------+
 | --                       | upload                        | True       | Indicator JSON String   |
 +--------------------------+-------------------------------+------------+-------------------------+
-
-.. note:: In the prior example, no API calls are made until the ``commit()`` method is invoked.
 
 **Code Highlights**
 

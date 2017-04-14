@@ -10,6 +10,7 @@ replaced with ``...`` for brevity.
 .. code-block:: python
     :linenos:
 
+    ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
@@ -68,6 +69,7 @@ with the Document Resource:
 
 .. code-block:: python
     :linenos:
+    :no-test:
 
     document.download()
     if document.contents is not None:
@@ -98,6 +100,7 @@ replaced with ``...`` for brevity.
 .. code-block:: python
     :linenos:
 
+    ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
