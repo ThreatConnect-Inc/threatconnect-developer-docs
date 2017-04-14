@@ -20,14 +20,14 @@ ThreatConnect platform.
     signature = signatures.add('New Signature', owner)
 
     # define Signature's content
-    file_text = '"rule example_sig : example\n{\n'
+    file_text = 'rule example_sig : example\n{\n'
     file_text += 'meta:\n        description = "This '
     file_text += 'is just an example"\n\n '
     file_text += 'strings:\n        $a = {6A 40 68 00 '
     file_text += '30 00 00 6A 14 8D 91}\n        $b = '
     file_text += '{8D 4D B0 2B C1 83 C0 27 99 6A 4E '
     file_text += '59 F7 F9}\n    condition:\n '
-    file_text += '$a or $b\n}"'
+    file_text += '$a or $b\n}'
 
     # set the file name of the Signature
     signature.set_file_name('bad_file.txt')  # REQUIRED
