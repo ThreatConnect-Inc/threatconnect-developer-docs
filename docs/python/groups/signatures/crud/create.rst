@@ -27,14 +27,14 @@ ThreatConnect platform.
     file_text += '30 00 00 6A 14 8D 91}\n        $b = '
     file_text += '{8D 4D B0 2B C1 83 C0 27 99 6A 4E '
     file_text += '59 F7 F9}\n    condition:\n '
-    file_text += '$a or $b or $c\n}"'
+    file_text += '$a or $b\n}"'
 
     # set the file name of the Signature
     signature.set_file_name('bad_file.txt')  # REQUIRED
     # set the type of the Signature
     signature.set_file_type('YARA')  # REQUIRED
     # set the contents of the signature
-    signature.set_file_text(file_text)  # OPTIONAL
+    signature.set_file_text(file_text)  # REQUIRED
 
     # add a description attribute
     signature.add_attribute('Description', 'Description Example')
@@ -59,7 +59,7 @@ Supported Properties
 +===============+=================+==========+
 | file\_name    | set\_file\_name | True     |
 +---------------+-----------------+----------+
-| file\_text    | set\_file\_text | False    |
+| file\_text    | set\_file\_text | True     |
 +---------------+-----------------+----------+
 | file\_type    | set\_file\_type | True     |
 +---------------+-----------------+----------+
@@ -79,7 +79,7 @@ Code Highlights
 +----------------------------------------------+------------------------------------------------------------------+
 | ``signature.set_file_type('YARA')``          | **(REQUIRED)** Set file type for Signature.                      |
 +----------------------------------------------+------------------------------------------------------------------+
-| ``signature.set_file_text(file_text)``       | **(OPTIONAL)** Set file contents for Signature.                  |
+| ``signature.set_file_text(file_text)``       | **(REQUIRED)** Set file contents for Signature.                  |
 +----------------------------------------------+------------------------------------------------------------------+
 | ``signature.add_attribute('Description'...`` | Add an Attribute of type **Description** to the Resource.        |
 +----------------------------------------------+------------------------------------------------------------------+
