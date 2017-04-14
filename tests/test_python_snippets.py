@@ -80,7 +80,7 @@ def test_snippets():
                     error_output = subprocess.getoutput("python {}".format(default_file))
 
                     # if the output was not an expected error, make a not of it
-                    if "ConfigParser.NoSectionError: No section: 'threatconnect'" not in error_output:
+                    if "configparser.NoSectionError: No section: 'threatconnect'" not in error_output:
                         print("\n\n{}:\n{}".format(os.path.join(path, file_), error_output))
                         counter['unexpected_error'] += 1
                     else:
