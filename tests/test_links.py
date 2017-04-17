@@ -1,3 +1,4 @@
+"""Find and test each of the links in the docs to make sure they are working properly."""
 import sys
 
 from bs4 import BeautifulSoup
