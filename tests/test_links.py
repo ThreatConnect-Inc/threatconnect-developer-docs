@@ -61,7 +61,8 @@ def test_links():
                     bad_links += 1
             # check links that are relative to the current page
             else:
-                target_url = page + "/" + href
+                # create a target url by removing the file from the current page and adding the desired href
+                target_url = "/".join(page.split("/")[:-1]) + "/" + href
                 r = requests.get(target_url)
 
                 if str(r.status_code).startswith("4"):
