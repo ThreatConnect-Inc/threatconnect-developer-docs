@@ -19,8 +19,7 @@ def test_links():
     bad_links = 0
     base_url = 'https://docs.threatconnect.com/en/latest'
     # TODO: consider dynamically pulling the links below:
-    docs_pages = ['https://docs.threatconnect.com/en/latest/index.html',
-                  'https://docs.threatconnect.com/en/latest/getting_started.html',
+    docs_pages = ['https://docs.threatconnect.com/en/latest/getting_started.html',
                   'https://docs.threatconnect.com/en/latest/rest_api/rest_api_docs.html',
                   'https://docs.threatconnect.com/en/latest/python/python_sdk.html'
                   'https://docs.threatconnect.com/en/latest/java/java_sdk.html',
