@@ -3744,6 +3744,30 @@ above such as: ``/v2/types/associationTypes/<association_type_name>``.
 Indicator to Indicator Associations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+In ThreatConnect, some types of Indicators can be related with certain
+other types. At a high level, there are two ways to relate Indicators
+with one another:
+
+1. **Association**
+
+An association allows two Indicators of certain types to be related to
+one another in the manner that Indicators can be associated to Groups.
+Below is a list of the Indicator-to-Indicator associations possible in
+the ThreatConnect Cloud, along with the Indicator types that can be
+associated with one another using each association.
+
++-------------------------+---------------------------+--------------------------+
+| Name                    | API Branch                | Indicators Associated    |
++=========================+===========================+==========================+
+| Address to User Agent   | ``/addressToUserAgent``   | Address <-> User Agent   |
++-------------------------+---------------------------+--------------------------+
+| ASN to Address          | ``/asnToAddress``         | ASN <-Address            |
++-------------------------+---------------------------+--------------------------+
+| ASN to CIDR             | ``/asnToCidr``            | ASN <-> CIDR             |
++-------------------------+---------------------------+--------------------------+
+| CIDR to Address         | ``/cidrToAddress``        | CIDR <-Address           |
++-------------------------+---------------------------+--------------------------+
+
 To retrieve indicators associated with another indicator using a custom
 association, use the following GET request format:
 
@@ -3806,6 +3830,29 @@ asnToCidr Associations retrieve XML:
         </Indicator>
       </Data>
     </indicatorsResponse>
+
+2. **File Action**
+
+A file action adds one Indicator to the behavior graph of a file
+Indicator. Below is a list of the file actions available in the
+ThreatConnect Cloud, along with the Indicator type that can be related
+via each file action.
+
++---------------------+--------------------+--------------------------------------+
+| Name                | API Branch         | Indicator TypeAssociated with File   |
++=====================+====================+======================================+
+| File Archive        | ``/archive``       | n/a                                  |
++---------------------+--------------------+--------------------------------------+
+| File Drop           | ``/drop``          | n/a                                  |
++---------------------+--------------------+--------------------------------------+
+| File Traffic        | ``/traffic``       | n/a                                  |
++---------------------+--------------------+--------------------------------------+
+| File Mutex          | ``/mutex``         | Mutex                                |
++---------------------+--------------------+--------------------------------------+
+| File Registry Key   | ``/registryKey``   | Registry Key                         |
++---------------------+--------------------+--------------------------------------+
+| File User Agent     | ``/userAgent``     | User Agent                           |
++---------------------+--------------------+--------------------------------------+
 
 To retrieve indicators associated with a file using a file action, use
 the following GET request format:
@@ -3892,53 +3939,6 @@ Mutex file action retrieve XML:
         </Indicator>
       </Data>
     </indicatorsResponse>
-
-In ThreatConnect, some types of Indicators can be related with certain
-other types. At a high level, there are two ways to relate Indicators
-with one another:
-
-1. **Association**
-
-An association allows two Indicators of certain types to be related to
-one another in the manner that Indicators can be associated to Groups.
-Below is a list of the Indicator-to-Indicator associations possible in
-the ThreatConnect Cloud, along with the Indicator types that can be
-associated with one another using each association.
-
-+-------------------------+---------------------------+--------------------------+
-| Name                    | API Branch                | Indicators Associated    |
-+=========================+===========================+==========================+
-| Address to User Agent   | ``/addressToUserAgent``   | Address <-> User Agent   |
-+-------------------------+---------------------------+--------------------------+
-| ASN to Address          | ``/asnToAddress``         | ASN <-Address            |
-+-------------------------+---------------------------+--------------------------+
-| ASN to CIDR             | ``/asnToCidr``            | ASN <-> CIDR             |
-+-------------------------+---------------------------+--------------------------+
-| CIDR to Address         | ``/cidrToAddress``        | CIDR <-Address           |
-+-------------------------+---------------------------+--------------------------+
-
-2. **File Action**
-
-A file action adds one Indicator to the behavior graph of a file
-Indicator. Below is a list of the file actions available in the
-ThreatConnect Cloud, along with the Indicator type that can be related
-via each file action.
-
-+---------------------+--------------------+--------------------------------------+
-| Name                | API Branch         | Indicator TypeAssociated with File   |
-+=====================+====================+======================================+
-| File Archive        | ``/archive``       | n/a                                  |
-+---------------------+--------------------+--------------------------------------+
-| File Drop           | ``/drop``          | n/a                                  |
-+---------------------+--------------------+--------------------------------------+
-| File Traffic        | ``/traffic``       | n/a                                  |
-+---------------------+--------------------+--------------------------------------+
-| File Mutex          | ``/mutex``         | Mutex                                |
-+---------------------+--------------------+--------------------------------------+
-| File Registry Key   | ``/registryKey``   | Registry Key                         |
-+---------------------+--------------------+--------------------------------------+
-| File User Agent     | ``/userAgent``     | User Agent                           |
-+---------------------+--------------------+--------------------------------------+
 
 Working With Tags
 ~~~~~~~~~~~~~~~~~
