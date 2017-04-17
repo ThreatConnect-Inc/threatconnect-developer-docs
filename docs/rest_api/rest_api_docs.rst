@@ -3831,6 +3831,12 @@ asnToCidr Associations retrieve XML:
       </Data>
     </indicatorsResponse>
 
+To create an association between two Indicators, use the following POST request format:
+
+::
+
+    POST /v2/indicators/<indicator type>/<indicator>/associations/<association type>/indicators/<indicator type>/<indicator>
+
 2. **File Action**
 
 A file action adds one Indicator to the behavior graph of a file
@@ -3939,6 +3945,12 @@ Mutex file action retrieve XML:
         </Indicator>
       </Data>
     </indicatorsResponse>
+
+To create an association between two Indicators using a file action, use the following POST request format:
+
+::
+
+    POST /v2/indicators/files/<file hash>/actions/<file action>/indicators/<indicator type>/<indicator>
 
 Working With Tags
 ~~~~~~~~~~~~~~~~~
