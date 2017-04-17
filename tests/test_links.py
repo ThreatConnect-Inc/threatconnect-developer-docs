@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 import requests
 
 
-def get_headings(soup):
+def _get_headings(soup):
     """Get the href/id of all of the headings in the given html."""
     headings = list()
 
@@ -37,7 +37,7 @@ def test_links():
         soup = BeautifulSoup(r.text, 'html.parser')
 
         links = soup.find_all('a')
-        headings = get_headings(soup)
+        headings = _get_headings(soup)
 
         for link in links:
             href = link['href']
