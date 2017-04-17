@@ -56,7 +56,10 @@ def test_links():
                     bad_links += 1
             # check links to locations on the current page
             elif href.startswith("#"):
-                if href not in headings:
+                # skip any links that are just href="#"
+                if href == "#":
+                    pass
+                elif href not in headings:
                     print("Link to {} does not exist".format(href))
                     bad_links += 1
             # check links that are relative to the current page
