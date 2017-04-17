@@ -1,3 +1,4 @@
+"""Test each of the code snippets in the python SDK docs."""
 import os
 import re
 import subprocess
