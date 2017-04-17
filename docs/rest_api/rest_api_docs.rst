@@ -5535,8 +5535,7 @@ upload, as described in the Documents section.
 Deleting Entities
 ^^^^^^^^^^^^^^^^^
 
-The following example will delete a specified email address
-"falsepositive@highvolume.net":
+The following example will delete the email address: falsepositive at highvolume.net:
 
 ::
 
