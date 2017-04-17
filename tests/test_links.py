@@ -42,8 +42,11 @@ def test_links():
         for link in links:
             href = link['href']
 
+            # ignore "mailto:" links
+            if href.startswith("mailto:"):
+                continue
             # ignore links to external locations
-            if href.startswith("//") or href.startswith("http"):
+            elif href.startswith("//") or href.startswith("http"):
                 # TODO: consider checking these links too
                 continue
             # check links that are relative to the base url
