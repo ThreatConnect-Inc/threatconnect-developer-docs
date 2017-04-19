@@ -6,31 +6,43 @@ ThreatConnect platform:
 
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 9-12
 
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
+    # instantiate Signatures container
     signatures = tc.signatures()
 
     owner = 'Example Community'
+    # create an empty Signature
     signature = signatures.add('Updated Signature', owner)
-    signature.set_id(20)
+    # set the ID of the new Signature to the ID of an existing Signature you want to update
+    signature.set_id(123456)
 
+    # load Signature attributes
     signature.load_attributes()
     for attribute in signature.attributes:
+        # if the attribute is a description, delete it
         if attribute.type == 'Description':
+            # delete the attribute
             signature.delete_attribute(attribute.id)
 
+    # add a new description attribute
     signature.add_attribute('Description', 'Updated Description')
 
+    # load Signature tags
     signature.load_tags()
+    # delete all of the Signature's tags
     for tag in signature.tags:
         signature.delete_tag(tag.name)
 
+    # add a tag
     signature.add_tag('EXAMPLE')
 
     try:
+        # update the Signature
         signature.commit()
     except RuntimeError as e:
         print('Error: {0}'.format(e))

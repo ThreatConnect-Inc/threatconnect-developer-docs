@@ -6,32 +6,44 @@ ThreatConnect platform:
 
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 9-12
 
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
-    emails = tc.emails()
+    # instantiate Documents container
+    documents = tc.documents()
 
     owner = 'Example Community'
-    email = emails.add('Updated Email', owner)
-    email.set_id(20)
+    # create an empty Document
+    document = documents.add('Updated Document', owner)
+    # set the ID of the new Document to the ID of an existing Document you want to update
+    document.set_id(123456)
 
-    email.load_attributes()
-    for attribute in email.attributes:
+    # load Document attributes
+    document.load_attributes()
+    for attribute in document.attributes:
+        # if the attribute is a description, delete it
         if attribute.type == 'Description':
-            email.delete_attribute(attribute.id)
+            # delete the attribute
+            document.delete_attribute(attribute.id)
 
-    email.add_attribute('Description', 'Updated Description')
+    # add a new description attribute
+    document.add_attribute('Description', 'Updated Description')
 
-    email.load_tags()
-    for tag in email.tags:
-        email.delete_tag(tag.name)
+    # load Document tags
+    document.load_tags()
+    # delete all of the Document's tags
+    for tag in document.tags:
+        document.delete_tag(tag.name)
 
-    email.add_tag('EXAMPLE')
+    # add a tag
+    document.add_tag('EXAMPLE')
 
     try:
-        email.commit()
+        # update the Document
+        document.commit()
     except RuntimeError as e:
         print('Error: {0}'.format(e))
         sys.exit(1)

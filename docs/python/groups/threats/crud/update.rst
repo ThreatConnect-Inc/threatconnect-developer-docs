@@ -6,31 +6,43 @@ ThreatConnect platform:
 
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 9-12
 
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
+    # instantiate Threats container
     threats = tc.threats()
 
     owner = 'Example Community'
+    # create an empty Threat
     threat = threats.add('Updated Threat', owner)
-    threat.set_id(20)
+    # set the ID of the new Threat to the ID of an existing Threat you want to update
+    threat.set_id(123456)
 
+    # load Threat attributes
     threat.load_attributes()
     for attribute in threat.attributes:
+        # if the attribute is a description, delete it
         if attribute.type == 'Description':
+            # delete the attribute
             threat.delete_attribute(attribute.id)
 
+    # add a new description attribute
     threat.add_attribute('Description', 'Updated Description')
 
+    # load Threat tags
     threat.load_tags()
+    # delete all of the Threat's tags
     for tag in threat.tags:
         threat.delete_tag(tag.name)
 
+    # add a tag
     threat.add_tag('EXAMPLE')
 
     try:
+        # update the Threat
         threat.commit()
     except RuntimeError as e:
         print('Error: {0}'.format(e))

@@ -6,31 +6,43 @@ ThreatConnect platform:
 
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 9-12
 
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
+    # instantiate Incidents container
     incidents = tc.incidents()
 
     owner = 'Example Community'
+    # create an empty Incident
     incident = incidents.add('Updated Incident', owner)
-    incident.set_id(20)
+    # set the ID of the new Incident to the ID of an existing Incident you want to update
+    incident.set_id(123456)
 
+    # load Incident attributes
     incident.load_attributes()
     for attribute in incident.attributes:
+        # if the attribute is a description, delete it
         if attribute.type == 'Description':
+            # delete the attribute
             incident.delete_attribute(attribute.id)
 
+    # add a new description attribute
     incident.add_attribute('Description', 'Updated Description')
 
+    # load Incident tags
     incident.load_tags()
+    # delete all of the Incident's tags
     for tag in incident.tags:
         incident.delete_tag(tag.name)
 
+    # add a tag
     incident.add_tag('EXAMPLE')
 
     try:
+        # update the Incident
         incident.commit()
     except RuntimeError as e:
         print('Error: {0}'.format(e))

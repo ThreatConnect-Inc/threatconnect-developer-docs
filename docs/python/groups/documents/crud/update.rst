@@ -6,31 +6,43 @@ ThreatConnect platform:
 
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 9-12
 
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
+    # instantiate Documents container
     documents = tc.documents()
 
     owner = 'Example Community'
+    # create an empty Document
     document = documents.add('Updated Document', owner)
-    document.set_id(20)
+    # set the ID of the new Document to the ID of an existing Document you want to update
+    document.set_id(123456)
 
+    # load Document attributes
     document.load_attributes()
     for attribute in document.attributes:
+        # if the attribute is a description, delete it
         if attribute.type == 'Description':
+            # delete the attribute
             document.delete_attribute(attribute.id)
 
+    # add a new description attribute
     document.add_attribute('Description', 'Updated Description')
 
+    # load Document tags
     document.load_tags()
+    # delete all of the Document's tags
     for tag in document.tags:
         document.delete_tag(tag.name)
 
+    # add a tag
     document.add_tag('EXAMPLE')
 
     try:
+        # update the Document
         document.commit()
     except RuntimeError as e:
         print('Error: {0}'.format(e))

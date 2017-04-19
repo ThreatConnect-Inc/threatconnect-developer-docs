@@ -6,7 +6,7 @@ the ThreatConnect platform:
 
 .. code-block:: python
     :linenos:
-    :emphasize-lines: 9-12,35-36
+    :emphasize-lines: 9-12
 
     ...
 
