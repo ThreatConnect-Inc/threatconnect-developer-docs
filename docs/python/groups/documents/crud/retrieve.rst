@@ -67,9 +67,11 @@ Downloading a Document's Contents
 Python SDK example of downloading the contents of the document stored
 with the Document Resource:
 
+.. 
+    no-test
+
 .. code-block:: python
     :linenos:
-    :no-test:
 
     document.download()
     if document.contents is not None:

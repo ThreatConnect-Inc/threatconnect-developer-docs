@@ -109,9 +109,11 @@ Next Steps
 
 Throughout the code snippets in this documentation, the configuration code snippet below will be summarized with a ``...`` for the sake of brevity:
 
+.. 
+    no-test
+
 .. code-block:: python
     :linenos:
-    :no-test:
 
     try:
         import ConfigParser

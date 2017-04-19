@@ -62,9 +62,11 @@ Downloading a Signature's Content
 Example Python SDK downloading the Signature contents for the Signature
 Resource:
 
+.. 
+    no-test
+
 .. code-block:: python
     :linenos:
-    :no-test:
 
     signature.download()
     if signature.contents is not None:
