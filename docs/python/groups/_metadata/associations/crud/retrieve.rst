@@ -1,24 +1,25 @@
 Retrieve Group Associations
 """""""""""""""""""""""""""
 
-The code snippet below demonstrates how to view Groups, Indicators, and Victims which are associated with a given Group in ThreatConnect. This example is designed to retrieve the associations from an Incident with an ID of ``123456``. To test this code snippet, change the ``group_id`` variable to the ID of an incident in your owner. This same process also applies to all group types. Simply change ``tc.incidents()`` to the group type you would like to retrieve. The available group types are: ``tc.<adversaries|campaigns|documents|emails|incidents|signatures|threats>()``.
+The code snippet below demonstrates how to view Groups, Indicators, and Victims which are associated with a given Group in ThreatConnect. This example is designed to retrieve the associations from an Incident with an ID of ``123456``. To test this code snippet, change the ``incident_id`` variable to the ID of an incident in your owner. This same process also applies to all group types. Simply change ``tc.incidents()`` to the group type you would like to retrieve. The available group types are: ``tc.<adversaries|campaigns|documents|emails|incidents|signatures|threats>()``.
 
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 25,35,49
 
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
     # define the ID of the group we would like to retrieve
-    group_id = 123456
+    incident_id = 123456
 
     # create an incidents object
     incidents = tc.incidents()
 
     # set a filter to retrieve the incident with the id: 123456
     filter1 = incidents.add_filter()
-    filter1.add_id(group_id)
+    filter1.add_id(incident_id)
 
     try:
         incidents.retrieve()
@@ -29,9 +30,9 @@ The code snippet below demonstrates how to view Groups, Indicators, and Victims 
     for incident in incidents:
         print(incident.name)
 
-        # iterate through all associated groups
+        # iterate through all associated Groups
         for associated_group in incident.group_associations:
-            # print details about the associated group
+            # print details about the associated Group
             print(associated_group.id)
             print(associated_group.name)
             print(associated_group.resource_type)
@@ -39,9 +40,9 @@ The code snippet below demonstrates how to view Groups, Indicators, and Victims 
             print(associated_group.date_added)
             print(associated_group.weblink)
 
-        # iterate through all associated indicators
+        # iterate through all associated Indicators
         for associated_indicator in incident.indicator_associations:
-            # print details about the associated indicator
+            # print details about the associated Indicator
             print(associated_indicator.id)
             print(associated_indicator.indicator)
             print(associated_indicator.type)
@@ -53,9 +54,9 @@ The code snippet below demonstrates how to view Groups, Indicators, and Victims 
             print(associated_indicator.last_modified)
             print(associated_indicator.weblink)
 
-        # iterate through all associated victims
+        # iterate through all associated Victims
         for associated_victim in incident.victim_associations:
-            # print details about the associated victim
+            # print details about the associated Victim
             print(associated_victim.id)
             print(associated_victim.name)
             print(associated_victim.description)

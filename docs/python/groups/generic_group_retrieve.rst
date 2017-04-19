@@ -6,26 +6,24 @@ replaced with ``...`` for brevity.
 
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 9-13,16-17
 
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
-    # create a groups object
+    # create a Groups object
     groups = tc.groups()
+
     owner = 'Example Community'
+    filter1 = groups.add_filter()
+    # only retrieve groups from the owner named: 'Example Community'
+    filter1.add_owner(owner)
+    # only retrieve groups tagged with: 'APT'
+    filter1.add_tag('APT')
 
     try:
-        filter1 = groups.add_filter()
-        # only retrieve groups from the owner named: 'Example Community'
-        filter1.add_owner(owner)
-        # only retrieve groups tagged with: 'APT'
-        filter1.add_tag('APT')
-    except AttributeError as e:
-        print('Error: {0}'.format(e))
-        sys.exit(1)
-
-    try:
+        # retrieve Groups
         groups.retrieve()
     except RuntimeError as e:
         print('Error: {0}'.format(e))
@@ -36,7 +34,7 @@ replaced with ``...`` for brevity.
         print(group.date_added)
         print(group.weblink)
 
-        # group specific property
+        # Group specific property
         print(group.type)
 
 This example will demonstrate how to retrieve Groups while applying filters. In this example two filters will be added, one for the Owner and another for a Tag. The result set returned from this example will contain any Groups in the **Example Community** Owner that has a Tag of **APT**.
