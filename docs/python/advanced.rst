@@ -11,9 +11,11 @@ Logging
 
 Example of Python SDK calling log-file and debug level:
 
+.. 
+    no-test
+
 .. code-block:: python
     :linenos:
-    :no-test:
 
     tc.set_tcl_file('log/tc.log', 'debug')
     tc.set_tcl_console_level('critical')
@@ -37,17 +39,21 @@ Activity Log
 
 Enabling the Activity Log:
 
+.. 
+    no-test
+
 .. code-block:: python
     :linenos:
-    :no-test:
 
     tc.set_activity_log(True)
 
 Disabling the Activity Log:
 
+.. 
+    no-test
+
 .. code-block:: python
     :linenos:
-    :no-test:
 
     tc.set_activity_log(False)
 
@@ -65,9 +71,11 @@ API Request Timeout
     This timeout value can be changed by passing the new timeout value,
     in seconds, to the ``tc.set_api_request_timeout()`` method.
 
+.. 
+    no-test
+
 .. code-block:: python
     :linenos:
-    :no-test:
 
     tc.set_api_request_timeout(15)
 
@@ -81,9 +89,11 @@ API Retries/Sleep Period
 To change the default sleep period, call the ``set_api_sleep()`` method,
 passing an Integer for the number of seconds to sleep.
 
+.. 
+    no-test
+
 .. code-block:: python
     :linenos:
-    :no-test:
 
     tc.set_api_retries(3)
     tc.set_api_sleep(30)
@@ -104,9 +114,11 @@ API Result Limit
 To change the default value, call the ``set_api_result_limit()`` method,
 passing an Integer between 1-500.
 
+.. 
+    no-test
+
 .. code-block:: python
     :linenos:
-    :no-test:
 
     tc.set_api_result_limit(500)
 
@@ -123,17 +135,21 @@ Proxies
 
 Proxy Setting (No Authentication)
 
+.. 
+    no-test
+
 .. code-block:: python
     :linenos:
-    :no-test:
 
     tc.set_proxies('10.10.10.10', 8443)
 
 Proxy Setting (Authentication Provided)
 
+.. 
+    no-test
+
 .. code-block:: python
     :linenos:
-    :no-test:
 
     tc.set_proxies('10.10.10.10', 8443, 'proxy_user', 'password123')
 
@@ -151,9 +167,11 @@ Filtering
     A list of Filters can also be retrieved by using the
     ``filter1.filters`` property:
 
+.. 
+    no-test
+
 .. code-block:: python
     :linenos:
-    :no-test:
 
     owner = 'Example Community'
 
@@ -236,9 +254,11 @@ Filter Object Basics
 
 Python SDK Filter Object Basics example:
 
+.. 
+    no-test
+
 .. code-block:: python
     :linenos:
-    :no-test:
 
     filter1 = adversary.add_filter()
     filter1 = adversary.indicator('10.20.30.40')
@@ -247,9 +267,11 @@ Python SDK Filter Object Basics example:
 
 Python SDK Post Filter Basics example:
 
+.. 
+    no-test
+
 .. code-block:: python
     :linenos:
-    :no-test:
 
     from threatconnect.Config.FilterOperator import FilterOperator
 
@@ -308,9 +330,11 @@ in the Filter object to the Indicator Type specified.
 
 Python SDK example filtering on supported Indicator Types:
 
+.. 
+    no-test
+
 .. code-block:: python
     :linenos:
-    :no-test:
 
     from threatconnect.Config.IndicatorType import IndicatorType
 
@@ -325,9 +349,11 @@ Modified Since API Filter
 
 Python SDK Modified Since API Filter:
 
+.. 
+    no-test
+
 .. code-block:: python
     :linenos:
-    :no-test:
 
     modified_since = (datetime.isoformat(datetime(2015, 6, 17))) + 'Z'
     indicators.set_modified_since(modified_since)
@@ -1027,9 +1053,11 @@ Failed Reports
 
 Python SDK failed reports example:
 
+.. 
+    no-test
+
 .. code-block:: python
     :linenos:
-    :no-test:
 
     for fail in tc.report.failures:
         print(fail)

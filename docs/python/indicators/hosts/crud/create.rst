@@ -31,9 +31,11 @@ in the ThreatConnect platform:
 Automatically enrich indicator with DNS resolution or ownership
 information from a third-party service
 
+.. 
+    no-test
+
 .. code-block:: python
     :linenos:
-    :no-test:
 
     # Query PTR record for a given domain, or {A, AAAA} record for a given IP
     indicator.set_dns_active(True)
