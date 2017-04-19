@@ -8,7 +8,7 @@ The import statement and reading of the configuration files have been replaced w
 
 .. code-block:: python
     :linenos:
-   :emphasize-lines: 8-10,13-14
+    :emphasize-lines: 8-10,13-14
 
     ...
 
