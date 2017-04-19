@@ -234,8 +234,7 @@ ThreatConnect platform.
 Deployment Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-`Apps use a deployment configuration file to define variables and
-execution environment <#deployment-configuration-file>`__
+Apps use a deployment configuration file to define variables and execution environment. You can read more about the deployment configuration file `here <https://docs.threatconnect.com/en/latest/deployment_config.html>`_.
 
 Query Parameters
 ~~~~~~~~~~~~~~~~
@@ -323,33 +322,33 @@ the job execution.
 Since all Spaces apps are managed within ThreatConnect, app developers
 should never hard-code ThreatConnect Parameters
 
-+--------------------+-------------------------------------------------------+
-| ThreatConnect      | Description                                           |
-| Parameter          |                                                       |
-+====================+=======================================================+
-| ``tcSpaceElementId | The unique space element instance ID for the user who |
-| ``                 | added this app to their Space. This numeric ID can be |
-|                    | used by the app to store state for the user.          |
-+--------------------+-------------------------------------------------------+
-| ``tcToken``        | Session token to be used by the app to access the     |
-|                    | API. The JavaScript SDK has configuration options for |
-|                    | this parameter.                                       |
-+--------------------+-------------------------------------------------------+
-| ``tcApiPath``      | The path to the API defined in System Settings for    |
-|                    | all apps.                                             |
-+--------------------+-------------------------------------------------------+
-| ``tcType``         | Only relevant for context-aware apps. This field      |
-|                    | corresponds to the runtime.context Attribute defined  |
-|                    | in the install configuration file.                    |
-+--------------------+-------------------------------------------------------+
-| ``tcSelectedItem`` | Only relevant for context-aware apps. This is the     |
-|                    | actual context-item identifier used within            |
-|                    | ThreatConnect. For instance, a Host identifier might  |
-|                    | be: g00gle.com                                        |
-+--------------------+-------------------------------------------------------+
-| ``tcSelectedItemOw | Only relevant for context-aware apps. This is the     |
-| ner``              | Owner of the context item.                            |
-+--------------------+-------------------------------------------------------+
++----------------------+-------------------------------------------------------+
+| ThreatConnect        | Description                                           |
+| Parameter            |                                                       |
++======================+=======================================================+
+| ``tcSpaceElementId`` | The unique space element instance ID for the user who |
+|                      | added this app to their Space. This numeric ID can be |
+|                      | used by the app to store state for the user.          |
++----------------------+-------------------------------------------------------+
+| ``tcToken``          | Session token to be used by the app to access the     |
+|                      | API. The JavaScript SDK has configuration options for |
+|                      | this parameter.                                       |
++----------------------+-------------------------------------------------------+
+| ``tcApiPath``        | The path to the API defined in System Settings for    |
+|                      | all apps.                                             |
++----------------------+-------------------------------------------------------+
+| ``tcType``           | Only relevant for context-aware apps. This field      |
+|                      | corresponds to the runtime.context Attribute defined  |
+|                      | in the install configuration file.                    |
++----------------------+-------------------------------------------------------+
+| ``tcSelectedItem``   | Only relevant for context-aware apps. This is the     |
+|                      | actual context-item identifier used within            |
+|                      | ThreatConnect. For instance, a Host identifier might  |
+|                      | be: g00gle.com                                        |
++----------------------+-------------------------------------------------------+
+| ``tcSelectedItemOw   | Only relevant for context-aware apps. This is the     |
+| ner``                | Owner of the context item.                            |
++----------------------+-------------------------------------------------------+
 
 JavaScript Examples
 

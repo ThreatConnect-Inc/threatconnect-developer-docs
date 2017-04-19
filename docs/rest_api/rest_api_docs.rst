@@ -4148,8 +4148,7 @@ Table 32 - SecurityLabels Resource Type
 +-----------------------------------------------------+---------+------------+
 | ``/v2/tasks/<ID>/securityLabels``                   | TRUE    |            |
 +-----------------------------------------------------+---------+------------+
-| ``/v2/tasks/<ID>/attributes/<ID>/securityLabels     | TRUE    |            |
-| ``                                                  |         |            |
+| ``/v2/tasks/<ID>/attributes/<ID>/securityLabels``   | TRUE    |            |
 +-----------------------------------------------------+---------+------------+
 
 The SecurityLabels Service allows for the querying of a specific
