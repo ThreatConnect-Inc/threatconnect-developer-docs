@@ -161,8 +161,8 @@ connectivity. To configure the Python SDK to use a proxy, call the
 number as parameters. If the proxy server requires authentication, also
 provide the proxy user and proxy password as parameters.
 
-Filtering
----------
+Advanced Filtering
+------------------
 
     A list of Filters can also be retrieved by using the
     ``filter1.filters`` property:
@@ -250,7 +250,7 @@ filter1.filters Resulting Output
 +-----------------------+-------------------------+
 
 Filter Object Basics
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 Python SDK Filter Object Basics example:
 
@@ -290,7 +290,7 @@ name *"Bad Guy"* **AND** have a date added of >=
 *2015-06-18T20:21:45-05:00*.
 
 Owner API Filter
-----------------
+^^^^^^^^^^^^^^^^
 
 The Owner API Filter is a special Filter that is applied to all other
 API Filters in the same Filter Object. This is due to the fact that the
@@ -308,7 +308,7 @@ Python SDK formatted URI examples:
     /v2/groups/adversaries/5/indicators?owner=Example+Community
 
 Indicator-Type Filter
----------------------
+^^^^^^^^^^^^^^^^^^^^^
 
 An Indicator Filter object supports passing an optional IndicatorType
 enum argument to the ``add_filter`` method. This will filter all results
@@ -345,7 +345,7 @@ Python SDK example filtering on supported Indicator Types:
     filter1 = indicators.add_filter(IndicatorType.URLS)
 
 Modified Since API Filter
--------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Python SDK Modified Since API Filter:
 
@@ -365,7 +365,7 @@ different Indicator search, there is a Post Filter for **modified
 since** that works on all Indicator result sets.
 
 Multiple Filter Objects
------------------------
+^^^^^^^^^^^^^^^^^^^^^^^
 
 Python SDK Multiple Filter Objects example:
 

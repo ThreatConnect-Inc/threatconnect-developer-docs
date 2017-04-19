@@ -119,7 +119,7 @@ for its ID. (Make an individual query for each email.)
 
 ``filter1.add_id($email_id)``
 
-.. note:: The ``filter1`` object contains a ``filters`` property that provides a list of supported filters for the resource type being retrieved. To display this list, ``print(filter1.filters)`` can be used. For more on using filters see the `Advanced Filter Tutorial </python/advanced/filtering/>`__.
+.. note:: The ``filter1`` object contains a ``filters`` property that provides a list of supported filters for the resource type being retrieved. To display this list, ``print(filter1.filters)`` can be used. For more on using filters see the `Advanced Filter Tutorial <#advanced-filtering>`__.
 
 Code Highlights
 
