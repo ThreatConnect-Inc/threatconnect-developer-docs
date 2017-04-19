@@ -8,33 +8,33 @@ The import statement and reading of the configuration files have been replaced w
 
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 8-10,13-14
 
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
+    # instantiate Emails container
     emails = tc.emails()
-    owner = 'Example Community'
+
+    # set a filter to only retrieve the Email with ID: 123456
+    filter1 = emails.add_filter()
+    filter1.add_id(123456)
 
     try:
-        filter1 = emails.add_filter()
-        filter1.add_id(123456)
-    except AttributeError as e:
-        print('Error: {0}'.format(e))
-        sys.exit(1)
-
-    try:
+        # retrieve the Email
         emails.retrieve()
     except RuntimeError as e:
         print('Error: {0}'.format(e))
 
+    # iterate through the retrieved Emails (in this case there should only be one) and print its properties
     for email in emails:
         print(email.id)
         print(email.name)
         print(email.date_added)
         print(email.weblink)
-        
-        # email specific properties
+
+        # Email specific properties
         print(email.header)
         print(email.subject)
         print(email.from_address)
@@ -72,34 +72,35 @@ replaced with ``...`` for brevity.
 
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 9-12,15-16
 
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
+    # instantiate Emails container
     emails = tc.emails()
+
     owner = 'Example Community'
+    # set a filter to only retrieve Emails in the 'Example Community' tagged: 'APT'
+    filter1 = emails.add_filter()
+    filter1.add_owner(owner)
+    filter1.add_tag('APT')
 
     try:
-        filter1 = emails.add_filter()
-        filter1.add_owner(owner)
-        filter1.add_tag('APT')
-    except AttributeError as e:
-        print('Error: {0}'.format(e))
-        sys.exit(1)
-
-    try:
+        # retrieve the Emails
         emails.retrieve()
     except RuntimeError as e:
         print('Error: {0}'.format(e))
 
+    # iterate through the retrieved Emails and print their properties
     for email in emails:
         print(email.id)
         print(email.name)
         print(email.date_added)
         print(email.weblink)
-        
-        # email specific properties
+
+        # Email specific properties
         print(email.header)
         print(email.subject)
         print(email.from_address)

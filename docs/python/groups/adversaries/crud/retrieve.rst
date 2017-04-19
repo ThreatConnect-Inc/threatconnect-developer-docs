@@ -8,7 +8,7 @@ The import statement and reading of the configuration files have been replaced w
 
 .. code-block:: python
     :linenos:
-    :emphasize-lines: 9-11,14-15
+    :emphasize-lines: 8-10,13-14
 
     ...
 
@@ -28,7 +28,7 @@ The import statement and reading of the configuration files have been replaced w
         print('Error: {0}'.format(e))
         sys.exit(1)
 
-    # iterate through the retrieved adversaries (in this case there should only be one) and print its properties
+    # iterate through the retrieved Adversaries (in this case there should only be one) and print its properties
     for adversary in adversaries:
         print(adversary.id)
         print(adversary.name)
@@ -74,19 +74,19 @@ The import statement and reading of the configuration files have been replaced w
     adversaries = tc.adversaries()
 
     owner = 'Example Community'
-    # set a filter to only retrieve adversaries in the 'Example Community' tagged: 'APT'
+    # set a filter to only retrieve Adversaries in the 'Example Community' tagged: 'APT'
     filter1 = adversaries.add_filter()
     filter1.add_owner(owner)
     filter1.add_tag('APT')
 
     try:
-        # retrieve the adversary
+        # retrieve the Adversaries
         adversaries.retrieve()
     except RuntimeError as e:
         print('Error: {0}'.format(e))
         sys.exit(1)
 
-    # iterate through the retrieved adversaries and print their properties
+    # iterate through the retrieved Adversaries and print their properties
     for adversary in adversaries:
         print(adversary.id)
         print(adversary.name)

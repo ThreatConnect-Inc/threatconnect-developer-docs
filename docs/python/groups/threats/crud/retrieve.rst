@@ -8,26 +8,27 @@ The import statement and reading of the configuration files have been replaced w
 
 .. code-block:: python
     :linenos:
+   :emphasize-lines: 8-10,13-14
 
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
+    # instantiate Threats container
     threats = tc.threats()
-    owner = 'Example Community'
+
+    # set a filter to only retrieve the Threat with ID: 123456
+    filter1 = threats.add_filter()
+    filter1.add_id(123456)
 
     try:
-        filter1 = threats.add_filter()
-        filter1.add_id(123456)
-    except AttributeError as e:
-        print('Error: {0}'.format(e))
-        sys.exit(1)
-
-    try:
+        # retrieve the Threat
         threats.retrieve()
     except RuntimeError as e:
         print('Error: {0}'.format(e))
+        sys.exit(1)
 
+    # iterate through the retrieved Threats (in this case there should only be one) and print its properties
     for threat in threats:
         print(threat.id)
         print(threat.name)
@@ -64,27 +65,29 @@ replaced with ``...`` for brevity.
 
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 9-12,15-16
 
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
+    # instantiate Threats container
     threats = tc.threats()
+
     owner = 'Example Community'
+    # set a filter to only retrieve Threats in the 'Example Community' tagged: 'APT'
+    filter1 = threats.add_filter()
+    filter1.add_owner(owner)
+    filter1.add_tag('APT')
 
     try:
-        filter1 = threats.add_filter()
-        filter1.add_owner(owner)
-        filter1.add_tag('APT')
-    except AttributeError as e:
-        print('Error: {0}'.format(e))
-        sys.exit(1)
-
-    try:
+        # retrieve the Threats
         threats.retrieve()
     except RuntimeError as e:
         print('Error: {0}'.format(e))
+        sys.exit(1)
 
+    # iterate through the retrieved Threats and print their properties
     for threat in threats:
         print(threat.id)
         print(threat.name)

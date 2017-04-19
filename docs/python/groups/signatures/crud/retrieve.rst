@@ -8,26 +8,27 @@ The import statement and reading of the configuration files have been replaced w
 
 .. code-block:: python
     :linenos:
+   :emphasize-lines: 8-10,13-14
 
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
+    # instantiate Signatures container
     signatures = tc.signatures()
-    owner = 'Example Community'
+
+    # set a filter to only retrieve the Signature with ID: 123456
+    filter1 = signatures.add_filter()
+    filter1.add_id(123456)
 
     try:
-        filter1 = signatures.add_filter()
-        filter1.add_id(123456)
-    except AttributeError as e:
-        print('Error: {0}'.format(e))
-        sys.exit(1)
-
-    try:
+        # retrieve the Signature
         signatures.retrieve()
     except RuntimeError as e:
         print('Error: {0}'.format(e))
+        sys.exit(1)
 
+    # iterate through the retrieved Signatures (in this case there should only be one) and print its properties
     for signature in signatures:
         print(signature.id)
         print(signature.name)
@@ -93,27 +94,29 @@ The import statement and reading of the configuration files have been replaced w
 
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 9-12,15-16
 
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
+    # instantiate Signatures container
     signatures = tc.signatures()
+
     owner = 'Example Community'
+    # set a filter to only retrieve Signatures in the 'Example Community' tagged: 'APT'
+    filter1 = signatures.add_filter()
+    filter1.add_owner(owner)
+    filter1.add_tag('APT')
 
     try:
-        filter1 = signatures.add_filter()
-        filter1.add_owner(owner)
-        filter1.add_tag('APT')
-    except AttributeError as e:
-        print('Error: {0}'.format(e))
-        sys.exit(1)
-
-    try:
+        # retrieve the Signatures
         signatures.retrieve()
     except RuntimeError as e:
         print('Error: {0}'.format(e))
+        sys.exit(1)
 
+    # iterate through the retrieved Signatures and print their properties
     for signature in signatures:
         print(signature.id)
         print(signature.name)
