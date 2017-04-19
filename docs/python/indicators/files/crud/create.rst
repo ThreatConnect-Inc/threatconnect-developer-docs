@@ -67,11 +67,20 @@ Code Highlights
 Adding File Occurrences
 """""""""""""""""""""""
 
-A File occurrence can be added to File Indicators by inserting the
-example code below into the previous code snippet before the ``indicator.commit()`` method is called:
+A File occurrence can be added to File Indicators using the ``add_file_occurrence`` function which takes parameters in the following format: ``add_file_occurrence(<file_name>, <run_path>, <date>)``. Inserting the example code below into the previous code snippet before the ``indicator.commit()`` method will add a File occurrence.
+
+.. 
+    no-test
 
 .. code-block:: python
     :linenos:
 
-    fo_date = (datetime.isoformat(datetime(2015, 3, 29))) + 'Z'
+    from datetime import datetime
+
+    # set the date of the file occurrence (this example uses the current datetime stamp)
+    fo_date = (datetime.isoformat(datetime.today())) + 'Z'
+
+    # add a file occurrence with the following data: add_file_occurrence(<file_name>, <run_path>, <date>)
     indicator.add_file_occurrence('badfile.exe', 'C:\windows', fo_date)
+
+.. note:: A File occurrence will only be added to a File Indicator if the ``indicator.add_file_occurrence(...)`` function occurs before the ``indicator.commit()``.
