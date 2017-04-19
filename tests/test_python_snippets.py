@@ -30,11 +30,12 @@ default_file = "./test.py"
 
 def get_code_snippets(file_text):
     """Identify all of the code snippets in the documentation."""
-    code_block_pattern = "\.\. code-block:: python\n((.*\n)*?)[\S]"
+    code_block_pattern = "(\.\. \n    no-test\n\n)?\.\. code-block:: python\n((.*\n)*?)[\S]"
 
     code_blocks = re.findall(code_block_pattern, file_text)
 
-    return [codeblock[0] for codeblock in code_blocks]
+    # add the code (codeblock[1]) for each code block that is not prefixed with a "no-test" comment (codeblock[0])
+    return [codeblock[1] for codeblock in code_blocks if codeblock[0] == ""]
 
 
 def test_snippets():
@@ -56,10 +57,6 @@ def test_snippets():
 
             # test each of the code blocks
             for code_block in code_blocks:
-                # if this code block is not meant to run as a stand-alone file, skip it
-                if ":no-test:" in code_block:
-                    continue
-
                 # pattern for ":linenos:" and ":emphasize-lines:"
                 line_num_pattern = ":.*?:.*"
 
