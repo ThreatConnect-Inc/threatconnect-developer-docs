@@ -6,18 +6,23 @@ ThreatConnect platform:
 
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 9-12,15-16
 
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
+    # instantiate Threats container
     threats = tc.threats()
 
     owner = 'Example Community'
+    # create an empty Threat
     threat = threats.add('', owner)
-    threat.set_id(20)
+    # set the ID of the new Threat to the ID of the Threat you would like to delete
+    threat.set_id(123456)
 
     try:
+        # delete the Threat
         threat.delete()
     except RuntimeError as e:
         print(e)
