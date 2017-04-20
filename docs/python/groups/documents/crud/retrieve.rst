@@ -77,22 +77,6 @@ with the Document Resource:
     if document.contents is not None:
         print(document.contents)
 
-Continuing from the `Filter Example <#filter-example>`__, the example
-will download the contents of the document stored with the Document
-Resource.
-
-Code Highlights
-
-+---------------------------------------+--------------------------------------------------------------------------------------+
-| Snippet                               | Description                                                                          |
-+=======================================+======================================================================================+
-| ``document.download()``               | Trigger API request to download the Document contents.                               |
-+---------------------------------------+--------------------------------------------------------------------------------------+
-| ``if document.contents is not None:`` | Validate the Document has downloaded before displaying.                              |
-+---------------------------------------+--------------------------------------------------------------------------------------+
-| ``print(document.contents)``          | Display the contents of the Document. (This should only be done for ASCII contents.) |
-+---------------------------------------+--------------------------------------------------------------------------------------+
-
 Retrieving Multiple Documents
 """""""""""""""""""""""""""""
 

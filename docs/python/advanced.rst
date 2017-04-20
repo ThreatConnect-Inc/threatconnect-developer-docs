@@ -462,7 +462,7 @@ retrieve all Indicators from a specified Owner.
 
 Code Highlights
 
-Refer to `ThreatConnect API documentation <#rest-api>`__ for proper
+Refer to `ThreatConnect API documentation <../rest_api/rest_api_docs.html>`__ for proper
 values for the ``RequestObject``.
 
 +------------------------------------------+-------------------------------------------------------------------------------------------+
@@ -517,7 +517,7 @@ retrieve the contents of a document stored in a Document Resource.
 
 Code Highlights
 
-Refer to `ThreatConnect API documentation <#rest-api>`__ for proper
+Refer to `ThreatConnect API documentation <../rest_api/rest_api_docs.html>`__ for proper
 values for the ``RequestObject``.
 
 +------------------------------------------+-------------------------------------------------------------------------------------------+
@@ -595,7 +595,7 @@ a Document Resource in ThreatConnect and upload a file to this Resource.
 
 Code Highlights
 
-Refer to `ThreatConnect API documentation <#rest-api>`__ for proper
+Refer to `ThreatConnect API documentation <../rest_api/rest_api_docs.html>`__ for proper
 values for the ``RequestObject``.
 
 +-------------------------------------------+-------------------------------------------------------------------------------------------+
@@ -673,7 +673,7 @@ Python SDK Sample CEF Output:
 
 The Python SDK provides the ``cef`` methods to output data structured in
 CEF, whose output is only supported on
-`Indicators <#indicators_commit>`__. The CEF-formatted data maps the
+`Indicators <#indicators>`__. The CEF-formatted data maps the
 ThreatConnect Resource properties to the standard fields, when possible,
 and then uses the extension feature to store non-standard properties.
 
@@ -877,7 +877,7 @@ Python SDK Sample LEEF Output:
 
 The Python SDK provides the ``leef`` method to output data structured in
 LEEF, whose output is only supported on
-`Indicators <#indicators_commit>`__. The LEEF-formatted data maps the
+`Indicators <#indicators>`__. The LEEF-formatted data maps the
 ThreatConnect Resource properties to the standard fields, when possible,
 and then uses the custom attribute feature to store non-standard
 properties.

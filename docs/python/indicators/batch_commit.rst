@@ -75,9 +75,7 @@ The ThreatConnect platform supports adding indicators in bulk using the
 API. The Python SDK features an easy-to-use interface to assist in rapid
 development of software to manage this data.
 
-These API calls assume that indicator data is `formatted in JSON,
-specifically a list of
-dictionaries <#batch-indicator-input-file-format>`__
+These API calls assume that indicator data is formatted in `JSON, specifically a list of dictionaries <../rest_api/rest_api_docs.html#batch-indicator-input-file-format>`_.
 
 Adding Batch Resources
 ^^^^^^^^^^^^^^^^^^^^^^
