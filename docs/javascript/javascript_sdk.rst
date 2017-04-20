@@ -234,7 +234,7 @@ ThreatConnect platform.
 Deployment Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Apps use a deployment configuration file to define variables and execution environment. You can read more about the deployment configuration file `here <https://docs.threatconnect.com/en/latest/deployment_config.html>`_.
+Apps use a deployment configuration file to define variables and execution environment. You can read more about the deployment configuration file `here <../deployment_config.html>`_.
 
 Query Parameters
 ~~~~~~~~~~~~~~~~

@@ -38,7 +38,7 @@ Getting Started with Java SDK
    7+ <http://www.oracle.com/technetwork/java/javase/downloads/index.html>`__
 -  Import `Java SDK for
    ThreatConnect <https://github.com/ThreatConnect-Inc/threatconnect-java>`__
--  Create an API User, refer to `REST API documentation <#rest-api>`__
+-  Create an API User, refer to `REST API documentation <../rest_api/rest_api_docs.html#creating-an-api-key>`__
 
 Maven™ Configuration
 ~~~~~~~~~~~~~~~~~~~~
@@ -340,8 +340,7 @@ in the ``configuration`` variable named ``java.classpath``.
 Deployment Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-`Apps use a deployment configuration file to define variables and
-execution environment <#deployment-configuration-file>`__
+Apps use a deployment configuration file to define variables and execution environment. You can read more about the deployment configuration file `here <../deployment_config.html>`_.
 
 Command-Line Parameters
 -----------------------
@@ -1320,54 +1319,51 @@ effectively the "hub" for writer Adapters. It provides convenience
 objects for all the Adapters in the Writer Package. Below is a list of
 the static methods and return types of the WriterAdapterFactory.
 
-+-----------+----------------------------------------------------------------+
-| Class     | *Description*                                                  |
-+===========+================================================================+
-| ``WriterA | Primary entry point to instantiate all writers in the Writer   |
-| dapterFac | Package.                                                       |
-| tory``    |                                                                |
-+-----------+----------------------------------------------------------------+
-| ``Abstrac | Generic Group writer abstract class. Concrete object available |
-| tGroupWri | in WriterAdapterFactory.                                       |
-| terAdapte |                                                                |
-| r<T exten |                                                                |
-| ds Group> |                                                                |
-| ``        |                                                                |
-+-----------+----------------------------------------------------------------+
-| ``Abstrac | Generic Indicator writer abstract class. Concrete object       |
-| tIndicato | available in WriterAdapterFactory.                             |
-| rWriterAd |                                                                |
-| apter<T e |                                                                |
-| xtends In |                                                                |
-| dicator>` |                                                                |
-| `         |                                                                |
-+-----------+----------------------------------------------------------------+
-| ``Abstrac | Base abstract writer for all reader Adapters in the Reader     |
-| tWriterAd | Package.                                                       |
-| apter``   |                                                                |
-+-----------+----------------------------------------------------------------+
-| ``Securit | Concrete writer for SecurityLabel data. Convenience object     |
-| yLabelWri | available in WriterAdapterFactory.                             |
-| terAdapte |                                                                |
-| r``       |                                                                |
-+-----------+----------------------------------------------------------------+
-| ``TagWrit | Concrete writer for Tag data. Convenience object available in  |
-| erAdapter | WriterAdapterFactory.                                          |
-| ``        |                                                                |
-+-----------+----------------------------------------------------------------+
-| ``TaskWri | Concrete writer for Task data. Convenience object available in |
-| terAdapte | WriterAdapterFactory.                                          |
-| r``       |                                                                |
-+-----------+----------------------------------------------------------------+
-| ``VictimW | Concrete writer for Victim data. Convenience object available  |
-| riterAdap | in WriterAdapterFactory.                                       |
-| ter``     |                                                                |
-+-----------+----------------------------------------------------------------+
-| ``Abstrac | Writer for batch indicator uploads. Concrete object available  |
-| tBatchWri | in WriterAdapterFactory.                                       |
-| terAdapte |                                                                |
-| r<T>``    |                                                                |
-+-----------+----------------------------------------------------------------+
++-------------+----------------------------------------------------------------+
+| Class       | *Description*                                                  |
++=============+================================================================+
+| ``WriterA   | Primary entry point to instantiate all writers in the Writer   |
+| dapterFac   | Package.                                                       |
+| tory``      |                                                                |
++-------------+----------------------------------------------------------------+
+| ``Abstrac   | Generic Group writer abstract class. Concrete object available |
+| tGroupWri   | in WriterAdapterFactory.                                       |
+| terAdapte   |                                                                |
+| r<T exten   |                                                                |
+| ds Group>`` |                                                                |
++-------------+----------------------------------------------------------------+
+| ``Abstrac   | Generic Indicator writer abstract class. Concrete object       |
+| tIndicato   | available in WriterAdapterFactory.                             |
+| rWriterAd   |                                                                |
+| apter<T e   |                                                                |
+| xtends In   |                                                                |
+| dicator>``  |                                                                |
++-------------+----------------------------------------------------------------+
+| ``Abstrac   | Base abstract writer for all reader Adapters in the Reader     |
+| tWriterAd   | Package.                                                       |
+| apter``     |                                                                |
++-------------+----------------------------------------------------------------+
+| ``Securit   | Concrete writer for SecurityLabel data. Convenience object     |
+| yLabelWri   | available in WriterAdapterFactory.                             |
+| terAdapte   |                                                                |
+| r``         |                                                                |
++-------------+----------------------------------------------------------------+
+| ``TagWrit   | Concrete writer for Tag data. Convenience object available in  |
+| erAdapter`` | WriterAdapterFactory.                                          |
++-------------+----------------------------------------------------------------+
+| ``TaskWri   | Concrete writer for Task data. Convenience object available in |
+| terAdapte   | WriterAdapterFactory.                                          |
+| r``         |                                                                |
++-------------+----------------------------------------------------------------+
+| ``VictimW   | Concrete writer for Victim data. Convenience object available  |
+| riterAdap   | in WriterAdapterFactory.                                       |
+| ter``       |                                                                |
++-------------+----------------------------------------------------------------+
+| ``Abstrac   | Writer for batch indicator uploads. Concrete object available  |
+| tBatchWri   | in WriterAdapterFactory.                                       |
+| terAdapte   |                                                                |
+| r<T>``      |                                                                |
++-------------+----------------------------------------------------------------+
 
 Writer Factory
 ~~~~~~~~~~~~~~
@@ -1375,59 +1371,58 @@ Writer Factory
 The primary methods for the WriterFactory are listed below. They
 encompass all write functionality for the ThreatConnect API.
 
-+--------------------------+-------------------------------------------------+
-| Class                    | *Method*                                        |
-+==========================+=================================================+
-| ``static AbstractGroupWr | createAdversaryGroupWriter(Connection conn)     |
-| iterAdapter<Adversary>`` |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``static AbstractGroupWr | createEmailGroupWriter(Connection conn)         |
-| iterAdapter<Email>``     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``static AbstractGroupWr | createIncidentGroupWriter(Connection conn)      |
-| iterAdapter<Incident>``  |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``static AbstractGroupWr | createSignatureGroupWriter(Connection conn)     |
-| iterAdapter<Signature>`` |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``static AbstractGroupWr | createThreatGroupWriter(Connection conn)        |
-| iterAdapter<Threat>``    |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``static AbstractIndicat | createAddressIndicatorWriter(Connection conn)   |
-| orWriterAdapter<Address> |                                                 |
-| ``                       |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``static AbstractIndicat | createEmailAddressIndicatorWriter(Connection    |
-| orWriterAdapter<EmailAdd | conn)                                           |
-| ress>``                  |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``static AbstractIndicat | createFileIndicatorWriter(Connection conn)      |
-| orWriterAdapter<File>``  |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``static AbstractIndicat | createHostIndicatorWriter(Connection conn)      |
-| orWriterAdapter<Host>``  |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``static AbstractIndicat | createUrlIndicatorWriter(Connection conn)       |
-| orWriterAdapter<Url>``   |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``static AbstractBatchWr | createBatchIndicatorWriter(Connection conn)     |
-| iterAdapter<Indicator>`` |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``static DocumentWriterA | createDocumentWriter(Connection conn)           |
-| dapter``                 |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``static SecurityLabelWr | createSecurityLabelWriter(Connection conn)      |
-| iterAdapter``            |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``static TagWriterAdapte | createTagWriter(Connection conn)                |
-| r``                      |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``static TaskWriterAdapt | createTaskWriter(Connection conn)               |
-| er``                     |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``static VictimWriterAda | createVictimWriter(Connection conn)             |
-| pter``                   |                                                 |
-+--------------------------+-------------------------------------------------+
++----------------------------+-----------------------------------------------+
+| Class                      | *Method*                                      |
++============================+===============================================+
+| ``static AbstractGroupWr   | createAdversaryGroupWriter(Connection conn)   |
+| iterAdapter<Adversary>``   |                                               |
++----------------------------+-----------------------------------------------+
+| ``static AbstractGroupWr   | createEmailGroupWriter(Connection conn)       |
+| iterAdapter<Email>``       |                                               |
++----------------------------+-----------------------------------------------+
+| ``static AbstractGroupWr   | createIncidentGroupWriter(Connection conn)    |
+| iterAdapter<Incident>``    |                                               |
++----------------------------+-----------------------------------------------+
+| ``static AbstractGroupWr   | createSignatureGroupWriter(Connection conn)   |
+| iterAdapter<Signature>``   |                                               |
++----------------------------+-----------------------------------------------+
+| ``static AbstractGroupWr   | createThreatGroupWriter(Connection conn)      |
+| iterAdapter<Threat>``      |                                               |
++----------------------------+-----------------------------------------------+
+| ``static AbstractIndicat   | createAddressIndicatorWriter(Connection conn) |
+| orWriterAdapter<Address>`` |                                               |
++----------------------------+-----------------------------------------------+
+| ``static AbstractIndicat   | createEmailAddressIndicatorWriter(Connection  |
+| orWriterAdapter<EmailAdd   | conn)                                         |
+| ress>``                    |                                               |
++----------------------------+-----------------------------------------------+
+| ``static AbstractIndicat   | createFileIndicatorWriter(Connection conn)    |
+| orWriterAdapter<File>``    |                                               |
++----------------------------+-----------------------------------------------+
+| ``static AbstractIndicat   | createHostIndicatorWriter(Connection conn)    |
+| orWriterAdapter<Host>``    |                                               |
++----------------------------+-----------------------------------------------+
+| ``static AbstractIndicat   | createUrlIndicatorWriter(Connection conn)     |
+| orWriterAdapter<Url>``     |                                               |
++----------------------------+-----------------------------------------------+
+| ``static AbstractBatchWr   | createBatchIndicatorWriter(Connection conn)   |
+| iterAdapter<Indicator>``   |                                               |
++----------------------------+-----------------------------------------------+
+| ``static DocumentWriterA   | createDocumentWriter(Connection conn)         |
+| dapter``                   |                                               |
++----------------------------+-----------------------------------------------+
+| ``static SecurityLabelWr   | createSecurityLabelWriter(Connection conn)    |
+| iterAdapter``              |                                               |
++----------------------------+-----------------------------------------------+
+| ``static TagWriterAdapte   | createTagWriter(Connection conn)              |
+| r``                        |                                               |
++----------------------------+-----------------------------------------------+
+| ``static TaskWriterAdapt   | createTaskWriter(Connection conn)             |
+| er``                       |                                               |
++----------------------------+-----------------------------------------------+
+| ``static VictimWriterAda   | createVictimWriter(Connection conn)           |
+| pter``                     |                                               |
++----------------------------+-----------------------------------------------+
 
 Writer Responses
 ~~~~~~~~~~~~~~~~
@@ -1758,74 +1753,74 @@ Associate Indicators
 
 The methods below associate Indicators to a Group type.
 
-+--------------------+-------------------------------------------------------+
-| Type               | *Method*                                              |
-+====================+=======================================================+
-| ``WriteListRespons | associateIndicatorAddresses(\ ``Integer uniqueId``,   |
-| e<String>``        | ``List<String> ipAddresses``)                         |
-+--------------------+-------------------------------------------------------+
-| ``WriteListRespons | associateIndicatorAddresses(\ ``Integer uniqueId``,   |
-| e<String>``        | ``List<String> ipAddresses``, ``String ownerName``)   |
-+--------------------+-------------------------------------------------------+
-| ``ApiEntitySingleR | associateIndicatorAddress(\ ``Integer uniqueId``,     |
-| esponse``          | ``String ipAddress``)                                 |
-+--------------------+-------------------------------------------------------+
-| ``ApiEntitySingleR | associateIndicatorAddress(\ ``Integer uniqueId``,     |
-| esponse``          | ``String ipAddress``, ``String ownerName``)           |
-+--------------------+-------------------------------------------------------+
-| ``WriteListRespons | associateIndicatorEmailAddresses(\ ``Integer uniqueId |
-| e<String>``        | ``,                                                   |
-|                    | ``List<String> emailAddresses``)                      |
-+--------------------+-------------------------------------------------------+
-| ``WriteListRespons | associateIndicatorEmailAddresses(\ ``Integer uniqueId |
-| e<String>``        | ``,                                                   |
-|                    | ``List<String> emailAddresses``,                      |
-|                    | ``String ownerName``)                                 |
-+--------------------+-------------------------------------------------------+
-| ``ApiEntitySingleR | associateIndicatorEmailAddress(\ ``Integer uniqueId`` |
-| esponse``          | ,                                                     |
-|                    | ``String emailAddress``)                              |
-+--------------------+-------------------------------------------------------+
-| ``ApiEntitySingleR | associateIndicatorEmailAddress(\ ``Integer uniqueId`` |
-| esponse``          | ,                                                     |
-|                    | ``String emailAddress``, ``String ownerName``)        |
-+--------------------+-------------------------------------------------------+
-| ``WriteListRespons | associateIndicatorFiles(\ ``Integer uniqueId``,       |
-| e<String>``        | ``List<String> fileHashes``)                          |
-+--------------------+-------------------------------------------------------+
-| ``WriteListRespons | associateIndicatorFiles(\ ``Integer uniqueId``,       |
-| e<String>``        | ``List<String> fileHashes``, ``String ownerName``)    |
-+--------------------+-------------------------------------------------------+
-| ``ApiEntitySingleR | associateIndicatorFile(\ ``Integer uniqueId``,        |
-| esponse``          | ``String fileHash``)                                  |
-+--------------------+-------------------------------------------------------+
-| ``ApiEntitySingleR | associateIndicatorFile(\ ``Integer uniqueId``,        |
-| esponse``          | ``String fileHash``, ``String ownerName``)            |
-+--------------------+-------------------------------------------------------+
-| ``WriteListRespons | associateIndicatorHosts(\ ``Integer uniqueId``,       |
-| e<String>``        | ``List<String> hostNames``)                           |
-+--------------------+-------------------------------------------------------+
-| ``WriteListRespons | associateIndicatorHosts(\ ``Integer uniqueId``,       |
-| e<String>``        | ``List<String> hostNames``, ``String ownerName``)     |
-+--------------------+-------------------------------------------------------+
-| ``ApiEntitySingleR | associateIndicatorHost(\ ``Integer uniqueId``,        |
-| esponse``          | ``String hostName``)                                  |
-+--------------------+-------------------------------------------------------+
-| ``ApiEntitySingleR | associateIndicatorHost(\ ``Integer uniqueId``,        |
-| esponse``          | ``String hostName``, ``String ownerName``)            |
-+--------------------+-------------------------------------------------------+
-| ``WriteListRespons | associateIndicatorUrls(\ ``Integer uniqueId``,        |
-| e<String>``        | ``List<String> urlTexts``)                            |
-+--------------------+-------------------------------------------------------+
-| ``WriteListRespons | associateIndicatorUrls(\ ``Integer uniqueId``,        |
-| e<String>``        | ``List<String> urlTexts``, ``String ownerName``)      |
-+--------------------+-------------------------------------------------------+
-| ``ApiEntitySingleR | associateIndicatorUrl(\ ``Integer uniqueId``,         |
-| esponse``          | ``String urlText``)                                   |
-+--------------------+-------------------------------------------------------+
-| ``ApiEntitySingleR | associateIndicatorUrl(\ ``Integer uniqueId``,         |
-| esponse``          | ``String urlText``, ``String ownerName``)             |
-+--------------------+-------------------------------------------------------+
++--------------------+---------------------------------------------------------+
+| Type               | *Method*                                                |
++====================+=========================================================+
+| ``WriteListRespons | associateIndicatorAddresses(\ ``Integer uniqueId``,     |
+| e<String>``        | ``List<String> ipAddresses``)                           |
++--------------------+---------------------------------------------------------+
+| ``WriteListRespons | associateIndicatorAddresses(\ ``Integer uniqueId``,     |
+| e<String>``        | ``List<String> ipAddresses``, ``String ownerName``)     |
++--------------------+---------------------------------------------------------+
+| ``ApiEntitySingleR | associateIndicatorAddress(\ ``Integer uniqueId``,       |
+| esponse``          | ``String ipAddress``)                                   |
++--------------------+---------------------------------------------------------+
+| ``ApiEntitySingleR | associateIndicatorAddress(\ ``Integer uniqueId``,       |
+| esponse``          | ``String ipAddress``, ``String ownerName``)             |
++--------------------+---------------------------------------------------------+
+| ``WriteListRespons | associateIndicatorEmailAddresses(\ ``Integer uniqueId`` |
+| e<String>``        | ,                                                       |
+|                    | ``List<String> emailAddresses``)                        |
++--------------------+---------------------------------------------------------+
+| ``WriteListRespons | associateIndicatorEmailAddresses(\ ``Integer uniqueId`` |
+| e<String>``        | ,                                                       |
+|                    | ``List<String> emailAddresses``,                        |
+|                    | ``String ownerName``)                                   |
++--------------------+---------------------------------------------------------+
+| ``ApiEntitySingleR | associateIndicatorEmailAddress(\ ``Integer uniqueId``   |
+| esponse``          | ,                                                       |
+|                    | ``String emailAddress``)                                |
++--------------------+---------------------------------------------------------+
+| ``ApiEntitySingleR | associateIndicatorEmailAddress(\ ``Integer uniqueId``   |
+| esponse``          | ,                                                       |
+|                    | ``String emailAddress``, ``String ownerName``)          |
++--------------------+---------------------------------------------------------+
+| ``WriteListRespons | associateIndicatorFiles(\ ``Integer uniqueId``,         |
+| e<String>``        | ``List<String> fileHashes``)                            |
++--------------------+---------------------------------------------------------+
+| ``WriteListRespons | associateIndicatorFiles(\ ``Integer uniqueId``,         |
+| e<String>``        | ``List<String> fileHashes``, ``String ownerName``)      |
++--------------------+---------------------------------------------------------+
+| ``ApiEntitySingleR | associateIndicatorFile(\ ``Integer uniqueId``,          |
+| esponse``          | ``String fileHash``)                                    |
++--------------------+---------------------------------------------------------+
+| ``ApiEntitySingleR | associateIndicatorFile(\ ``Integer uniqueId``,          |
+| esponse``          | ``String fileHash``, ``String ownerName``)              |
++--------------------+---------------------------------------------------------+
+| ``WriteListRespons | associateIndicatorHosts(\ ``Integer uniqueId``,         |
+| e<String>``        | ``List<String> hostNames``)                             |
++--------------------+---------------------------------------------------------+
+| ``WriteListRespons | associateIndicatorHosts(\ ``Integer uniqueId``,         |
+| e<String>``        | ``List<String> hostNames``, ``String ownerName``)       |
++--------------------+---------------------------------------------------------+
+| ``ApiEntitySingleR | associateIndicatorHost(\ ``Integer uniqueId``,          |
+| esponse``          | ``String hostName``)                                    |
++--------------------+---------------------------------------------------------+
+| ``ApiEntitySingleR | associateIndicatorHost(\ ``Integer uniqueId``,          |
+| esponse``          | ``String hostName``, ``String ownerName``)              |
++--------------------+---------------------------------------------------------+
+| ``WriteListRespons | associateIndicatorUrls(\ ``Integer uniqueId``,          |
+| e<String>``        | ``List<String> urlTexts``)                              |
++--------------------+---------------------------------------------------------+
+| ``WriteListRespons | associateIndicatorUrls(\ ``Integer uniqueId``,          |
+| e<String>``        | ``List<String> urlTexts``, ``String ownerName``)        |
++--------------------+---------------------------------------------------------+
+| ``ApiEntitySingleR | associateIndicatorUrl(\ ``Integer uniqueId``,           |
+| esponse``          | ``String urlText``)                                     |
++--------------------+---------------------------------------------------------+
+| ``ApiEntitySingleR | associateIndicatorUrl(\ ``Integer uniqueId``,           |
+| esponse``          | ``String urlText``, ``String ownerName``)               |
++--------------------+---------------------------------------------------------+
 
 Associate Security Labels
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1896,85 +1891,85 @@ Associate Victim Asset
 
 The methods below associate Victim Assets to a Group type.
 
-+---------------------+------------------------------------------------------+
-| Type                | *Method*                                             |
-+=====================+======================================================+
-| ``WriteListResponse | associateVictimAssetEmailAddresses(\ ``Integer uniqu |
-| <Integer>``         | eId``,                                               |
-|                     | ``List<Integer> assetIds``)                          |
-+---------------------+------------------------------------------------------+
-| ``WriteListResponse | associateVictimAssetEmailAddresses(\ ``Integer uniqu |
-| <Integer>``         | eId``,                                               |
-|                     | ``List<Integer> assetIds``, ``String ownerName``)    |
-+---------------------+------------------------------------------------------+
-| ``ApiEntitySingleRe | associateVictimAssetEmailAddress(\ ``Integer uniqueI |
-| sponse``            | d``,                                                 |
-|                     | ``Integer assetId``)                                 |
-+---------------------+------------------------------------------------------+
-| ``ApiEntitySingleRe | associateVictimAssetEmailAddress(\ ``Integer uniqueI |
-| sponse``            | d``,                                                 |
-|                     | ``Integer assetId``, ``String ownerName``)           |
-+---------------------+------------------------------------------------------+
-| ``WriteListResponse | associateVictimAssetNetworkAccounts(\ ``Integer uniq |
-| <Integer>``         | ueId``,                                              |
-|                     | ``List<Integer> assetIds``)                          |
-+---------------------+------------------------------------------------------+
-| ``WriteListResponse | associateVictimAssetNetworkAccounts(\ ``Integer uniq |
-| <Integer>``         | ueId``,                                              |
-|                     | ``List<Integer> assetIds``, ``String ownerName``)    |
-+---------------------+------------------------------------------------------+
-| ``ApiEntitySingleRe | associateVictimAssetNetworkAccount(\ ``Integer uniqu |
-| sponse``            | eId``,                                               |
-|                     | ``Integer assetId``)                                 |
-+---------------------+------------------------------------------------------+
-| ``ApiEntitySingleRe | associateVictimAssetNetworkAccount(\ ``Integer uniqu |
-| sponse``            | eId``,                                               |
-|                     | ``Integer assetId``, ``String ownerName``)           |
-+---------------------+------------------------------------------------------+
-| ``WriteListResponse | associateVictimAssetPhoneNumbers(\ ``Integer uniqueI |
-| <Integer>``         | d``,                                                 |
-|                     | ``List<Integer> assetIds``)                          |
-+---------------------+------------------------------------------------------+
-| ``WriteListResponse | associateVictimAssetPhoneNumbers(\ ``Integer uniqueI |
-| <Integer>``         | d``,                                                 |
-|                     | ``List<Integer> assetIds``, ``String ownerName``)    |
-+---------------------+------------------------------------------------------+
-| ``ApiEntitySingleRe | associateVictimAssetPhoneNumber(\ ``Integer uniqueId |
-| sponse``            | ``,                                                  |
-|                     | ``Integer assetId``)                                 |
-+---------------------+------------------------------------------------------+
-| ``ApiEntitySingleRe | associateVictimAssetPhoneNumber(\ ``Integer uniqueId |
-| sponse``            | ``,                                                  |
-|                     | ``Integer assetId``, ``String ownerName``)           |
-+---------------------+------------------------------------------------------+
-| ``WriteListResponse | associateVictimAssetSocialNetworks(\ ``Integer uniqu |
-| <Integer>``         | eId``,                                               |
-|                     | ``List<Integer> assetIds``)                          |
-+---------------------+------------------------------------------------------+
-| ``WriteListResponse | associateVictimAssetSocialNetworks(\ ``Integer uniqu |
-| <Integer>``         | eId``,                                               |
-|                     | ``List<Integer> assetIds``, ``String ownerName``)    |
-+---------------------+------------------------------------------------------+
-| ``ApiEntitySingleRe | associateVictimAssetSocialNetwork(\ ``Integer unique |
-| sponse``            | Id``,                                                |
-|                     | ``Integer assetId``)                                 |
-+---------------------+------------------------------------------------------+
-| ``ApiEntitySingleRe | associateVictimAssetSocialNetwork(\ ``Integer unique |
-| sponse``            | Id``,                                                |
-|                     | ``Integer assetId``, ``String ownerName``)           |
-+---------------------+------------------------------------------------------+
-| ``WriteListResponse | associateVictimAssetWebsites(\ ``Integer uniqueId``, |
-| <Integer>``         | ``List<Integer> assetIds``)                          |
-+---------------------+------------------------------------------------------+
-| ``WriteListResponse | associateVictimAssetWebsites(\ ``Integer uniqueId``, |
-| <Integer>``         | ``List<Integer> assetIds``, ``String ownerName``)    |
-+---------------------+------------------------------------------------------+
-| ``ApiEntitySingleRe | associateVictimAssetWebsite(\ ``Integer uniqueId``,  |
-| sponse``            | ``Integer assetId``)                                 |
-+---------------------+------------------------------------------------------+
-| ``ApiEntitySingleRe | associateVictimAssetWebsite(\ ``Integer uniqueId``,  |
-| sponse``            | ``Integer assetId``, ``String ownerName``)           |
-+---------------------+------------------------------------------------------+
++---------------------+-----------------------------------------------------------+
+| Type                | *Method*                                                  |
++=====================+===========================================================+
+| ``WriteListResponse | associateVictimAssetEmailAddresses(\ ``Integer uniqu      |
+| <Integer>``         | eId``,                                                    |
+|                     | ``List<Integer> assetIds``)                               |
++---------------------+-----------------------------------------------------------+
+| ``WriteListResponse | associateVictimAssetEmailAddresses(\ ``Integer uniqu      |
+| <Integer>``         | eId``,                                                    |
+|                     | ``List<Integer> assetIds``, ``String ownerName``)         |
++---------------------+-----------------------------------------------------------+
+| ``ApiEntitySingleRe | associateVictimAssetEmailAddress(\ ``Integer uniqueI      |
+| sponse``            | d``,                                                      |
+|                     | ``Integer assetId``)                                      |
++---------------------+-----------------------------------------------------------+
+| ``ApiEntitySingleRe | associateVictimAssetEmailAddress(\ ``Integer uniqueI      |
+| sponse``            | d``,                                                      |
+|                     | ``Integer assetId``, ``String ownerName``)                |
++---------------------+-----------------------------------------------------------+
+| ``WriteListResponse | associateVictimAssetNetworkAccounts(\ ``Integer uniq      |
+| <Integer>``         | ueId``,                                                   |
+|                     | ``List<Integer> assetIds``)                               |
++---------------------+-----------------------------------------------------------+
+| ``WriteListResponse | associateVictimAssetNetworkAccounts(\ ``Integer uniq      |
+| <Integer>``         | ueId``,                                                   |
+|                     | ``List<Integer> assetIds``, ``String ownerName``)         |
++---------------------+-----------------------------------------------------------+
+| ``ApiEntitySingleRe | associateVictimAssetNetworkAccount(\ ``Integer uniqu      |
+| sponse``            | eId``,                                                    |
+|                     | ``Integer assetId``)                                      |
++---------------------+-----------------------------------------------------------+
+| ``ApiEntitySingleRe | associateVictimAssetNetworkAccount(\ ``Integer uniqu      |
+| sponse``            | eId``,                                                    |
+|                     | ``Integer assetId``, ``String ownerName``)                |
++---------------------+-----------------------------------------------------------+
+| ``WriteListResponse | associateVictimAssetPhoneNumbers(\ ``Integer uniqueId``   |
+| <Integer>``         | ,                                                         |
+|                     | ``List<Integer> assetIds``)                               |
++---------------------+-----------------------------------------------------------+
+| ``WriteListResponse | associateVictimAssetPhoneNumbers(\ ``Integer uniqueId``   |
+| <Integer>``         | ,                                                         |
+|                     | ``List<Integer> assetIds``, ``String ownerName``)         |
++---------------------+-----------------------------------------------------------+
+| ``ApiEntitySingleRe | associateVictimAssetPhoneNumber(\ ``Integer uniqueId``    |
+| sponse``            | ,                                                         |
+|                     | ``Integer assetId``)                                      |
++---------------------+-----------------------------------------------------------+
+| ``ApiEntitySingleRe | associateVictimAssetPhoneNumber(\ ``Integer uniqueId``    |
+| sponse``            | ,                                                         |
+|                     | ``Integer assetId``, ``String ownerName``)                |
++---------------------+-----------------------------------------------------------+
+| ``WriteListResponse | associateVictimAssetSocialNetworks(\ ``Integer uniqueId`` |
+| <Integer>``         | ,                                                         |
+|                     | ``List<Integer> assetIds``)                               |
++---------------------+-----------------------------------------------------------+
+| ``WriteListResponse | associateVictimAssetSocialNetworks(\ ``Integer uniqueId`` |
+| <Integer>``         | ,                                                         |
+|                     | ``List<Integer> assetIds``, ``String ownerName``)         |
++---------------------+-----------------------------------------------------------+
+| ``ApiEntitySingleRe | associateVictimAssetSocialNetwork(\ ``Integer uniqueId``  |
+| sponse``            | ,                                                         |
+|                     | ``Integer assetId``)                                      |
++---------------------+-----------------------------------------------------------+
+| ``ApiEntitySingleRe | associateVictimAssetSocialNetwork(\ ``Integer uniqueId``  |
+| sponse``            | ,                                                         |
+|                     | ``Integer assetId``, ``String ownerName``)                |
++---------------------+-----------------------------------------------------------+
+| ``WriteListResponse | associateVictimAssetWebsites(\ ``Integer uniqueId``,      |
+| <Integer>``         | ``List<Integer> assetIds``)                               |
++---------------------+-----------------------------------------------------------+
+| ``WriteListResponse | associateVictimAssetWebsites(\ ``Integer uniqueId``,      |
+| <Integer>``         | ``List<Integer> assetIds``, ``String ownerName``)         |
++---------------------+-----------------------------------------------------------+
+| ``ApiEntitySingleRe | associateVictimAssetWebsite(\ ``Integer uniqueId``,       |
+| sponse``            | ``Integer assetId``)                                      |
++---------------------+-----------------------------------------------------------+
+| ``ApiEntitySingleRe | associateVictimAssetWebsite(\ ``Integer uniqueId``,       |
+| sponse``            | ``Integer assetId``, ``String ownerName``)                |
++---------------------+-----------------------------------------------------------+
 
 Add Attributes
 ~~~~~~~~~~~~~~
@@ -2507,8 +2502,8 @@ The SecurityLabelWriterAdapter class allows
 associations. Much like the Indicator Adapters, the ``uniqueId`` is a
 user-created Security Label String. In addition to creating
 associations, the SecurityLabelWriterAdapter allows deleting
-associations from `Group <#dissociate-groups>`__ and
-`Indicator <#dissociate-indicators>`__ types.
+associations from `Group <#delete-group-association>`__ and
+`Indicator <#delete-indicator-associations>`__ types.
 
 Below is the standard create methods available to all WriterAdapter’s.
 Note that the deletes require the Security Label as the ``uniqueId``
@@ -2548,8 +2543,8 @@ The TagWriterAdapter class allows `Group <#associate-groups>`__ and
 `Indicator <#associate-indicators>`__ associations. Much like the
 Indicator Adapters, the uniqueId is a user-created Tag name String. In
 addition to creating associations, the TagWriterAdapter allows deleting
-associations from `Group <#dissociate-groups>`__ and
-`Indicator <#dissociate-indicators>`__ types.
+associations from `Group <#delete-group-association>`__ and
+`Indicator <#delete-indicator-associations>`__ types.
 
 Below is the standard create methods available to all WriterAdapters.
 Note that the deletes require the Tag Name as the ``uniqueId`` String
@@ -2638,8 +2633,8 @@ The TagWriterAdapter class allows `Group <#associate-groups>`__,
 Much like the Group Adapters, the uniqueId is a user-created Security
 Label String. In addition to creating associations, the
 VictimAssetWriterAdapter can remove associations for
-`Group <#dissociate-groups>`__, `Indicator <#dissociate-indicators>`__,
-and `VictimAssets <#dissociate-victimasset>`__.
+`Group <#delete-group-association>`__, `Indicator <#delete-indicator-associations>`__,
+and `VictimAssets <#delete-victimasset-associations>`__.
 
 Below is the standard create methods available to all WriterAdapters.
 Note that the deletes require the system-generated VictimAsset ID as the
