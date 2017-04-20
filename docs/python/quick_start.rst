@@ -71,6 +71,7 @@ Assuming that you have installed the ThreatConnect Python SDK and have created a
             import ConfigParser
         except:
             import configparser as ConfigParser
+        import sys
 
         from threatconnect import ThreatConnect
 
@@ -119,6 +120,7 @@ Throughout the code snippets in this documentation, the configuration code snipp
         import ConfigParser
     except:
         import configparser as ConfigParser
+    import sys
 
     from threatconnect import ThreatConnect
 
