@@ -58,7 +58,7 @@ def test_snippets():
             # test each of the code blocks
             for code_block in code_blocks:
                 # pattern for ":linenos:" and ":emphasize-lines:"
-                line_num_pattern = ":.*?:.*"
+                line_num_pattern = ":.*?line.*?:.*"
 
                 # replace the appropriate sections of the code block
                 code_block = re.sub(line_num_pattern, "", code_block)
