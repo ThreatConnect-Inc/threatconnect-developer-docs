@@ -64,44 +64,44 @@ Assuming that you have installed the ThreatConnect Python SDK and have created a
 2. Copy the configuration file from the previous, **Configuration** step into the new folder and name it ``tc.conf``.
 3. Copy and paste the following code into a file and save it in the new folder with the name ``tc_test.py``. This code will print all of the owners in ThreatConnect which you have permission to see.
 
-   .. code-block:: python
-        :linenos:
+.. code-block:: python
+    :linenos:
 
-        try:
-            import ConfigParser
-        except:
-            import configparser as ConfigParser
-        import sys
+    try:
+        import ConfigParser
+    except:
+        import configparser as ConfigParser
+    import sys
 
-        from threatconnect import ThreatConnect
+    from threatconnect import ThreatConnect
 
-        config = ConfigParser.RawConfigParser()
-        config.read("./tc.conf")
+    config = ConfigParser.RawConfigParser()
+    config.read("./tc.conf")
 
-        try:
-            api_access_id = config.get('threatconnect', 'api_access_id')
-            api_secret_key = config.get('threatconnect', 'api_secret_key')
-            api_default_org = config.get('threatconnect', 'api_default_org')
-            api_base_url = config.get('threatconnect', 'api_base_url')
-        except ConfigParser.NoOptionError:
-            print('Could not read configuration file.')
-            sys.exit(1)
+    try:
+        api_access_id = config.get('threatconnect', 'api_access_id')
+        api_secret_key = config.get('threatconnect', 'api_secret_key')
+        api_default_org = config.get('threatconnect', 'api_default_org')
+        api_base_url = config.get('threatconnect', 'api_base_url')
+    except ConfigParser.NoOptionError:
+        print('Could not read configuration file.')
+        sys.exit(1)
 
-        tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
+    tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
-        owners = tc.owners()
+    owners = tc.owners()
 
-        try:
-            owners.retrieve()
-        except RuntimeError as e:
-            print('Error: {0}'.format(e))
-            sys.exit(1)
+    try:
+        owners.retrieve()
+    except RuntimeError as e:
+        print('Error: {0}'.format(e))
+        sys.exit(1)
 
-        for owner in owners:
-            print(owner.id)
-            print(owner.name)
-            print(owner.type)
-            print("")
+    for owner in owners:
+        print(owner.id)
+        print(owner.name)
+        print(owner.type)
+        print("")
 
 4. In the command line/command prompt, run ``python tc_test.py``. This should print the ID number, name, and type of the owners which you have permission to see.
 
