@@ -34,6 +34,8 @@ The import statement and reading of the configuration files have been replaced w
         print(incident.name)
         print(incident.date_added)
         print(incident.weblink)
+
+        # Incident specific property
         print(incident.event_date)
 
 This example demonstrates how to retrieve a specific Incident using the Incident's ID. The ``add_id`` filter specifies the ID of the Incident which you would like to retrieve.
