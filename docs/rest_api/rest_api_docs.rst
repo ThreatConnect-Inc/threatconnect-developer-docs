@@ -26,8 +26,7 @@ The public ThreatConnect API is accessible at
 Requests to ThreatConnect API endpoints must be made over HTTPS with a
 valid Signature, or a 403 error will be returned
 
-NOTE: ThreatConnect Dedicated Cloud and On-Premise users will need to
-contact their System Administrator for the correct API URL.
+.. note:: ThreatConnect Dedicated Cloud and On-Premise users will need to contact their System Administrator for the correct API URL.
 
 The example below details the path of a version 2 request to the Groups
 Service and Incidents-Collections Resource:
@@ -77,8 +76,7 @@ The result is then signed with the user's ``Secret Key`` using SHA256 as
 an HMAC as in `this
 code <https://github.com/ThreatConnect-Inc/threatconnect-python/blob/master/threatconnect/ThreatConnect.py#L135>`__
 
-Note: If the nonce is not within five minutes of the ThreatConnect
-server's system time, a 403 error will be returned.
+.. note:: If the nonce is not within five minutes of the ThreatConnect server's system time, a 403 error will be returned.
 
 Example API GET Request
 -----------------------
@@ -240,10 +238,7 @@ Collection. This count should be saved to iterate over the Collection
 and to know when all items have been retrieved. The maximum value that
 can be specified for resultLimit is 500.
 
-NOTE: Pagination counts and Indices should not be stored in long-lived
-applications as a way to return to a result-set. The dataset will change
-with time, so those range markers might cause objects to be skipped or
-duplicated if reused at a later time.
+.. note:: Pagination counts and Indices should not be stored in long-lived applications as a way to return to a result-set. The dataset will change with time, so those range markers might cause objects to be skipped or duplicated if reused at a later time.
 
 Owners Service
 ~~~~~~~~~~~~~~
@@ -434,10 +429,12 @@ baddomain host, to which the user has access. When working with Groups,
 such as Incidents and Threats, only specify the Owner when retrieving
 the Collection, as a specific Group is retrieved by a unique ID.
 
-NOTE: With the additional of write functionality to API V2, Owner roles
+.. note:: With the additional of write functionality to API V2, Owner roles
 have become increasingly important. For example, when creating or
 modifying Resources in a Community or Source, at least a
 Contributor-level access for that ownership Group must be held.
+
+
 
 Indicators Service
 ~~~~~~~~~~~~~~~~~~
@@ -572,64 +569,63 @@ Indicator’s Confidence value
 
 Table 3 - Filters
 
-+----------------------------------+--------------+-------------+------------------------------------+
-| Name                             | Data Type    | Operators   | DB Field                           |
-+==================================+==============+=============+====================================+
-| Indicator Common Filters         |              |             |                                    |
-+----------------------------------+--------------+-------------+------------------------------------+
-| summary                          | String       | ``= ^``     | indicator.summary                  |
-+----------------------------------+--------------+-------------+------------------------------------+
-| dateAdded                        | Date         | ``< >``     | indicator.dateAdded                |
-+----------------------------------+--------------+-------------+------------------------------------+
-| rating                           | BigDecimal   | ``<>``      | indicator.rating                   |
-+----------------------------------+--------------+-------------+------------------------------------+
-| confidence                       | Short        | ``=<>``     | indicator.confidence               |
-+----------------------------------+--------------+-------------+------------------------------------+
-| threatAssessRating               | Double       | ``<>``      | commonIndicator.rating             |
-+----------------------------------+--------------+-------------+------------------------------------+
-| threatAssessConfidence           | Double       | ``<>``      | commonIndicator.confidence         |
-+----------------------------------+--------------+-------------+------------------------------------+
-| Address Specific Filters         |              |             |                                    |
-+----------------------------------+--------------+-------------+------------------------------------+
-| countryCode                      | String       | ``=``       | ipgeo.countryCode                  |
-+----------------------------------+--------------+-------------+------------------------------------+
-| organization                     | String       | ``=``       | ipgeo.registeringOrg               |
-+----------------------------------+--------------+-------------+------------------------------------+
-| asn                              | Integer      | ``=``       | ipgeo.asn                          |
-+----------------------------------+--------------+-------------+------------------------------------+
-| Host Specific Filters            |              |             |                                    |
-+----------------------------------+--------------+-------------+------------------------------------+
-| whoisActive                      | Boolean      | ``=``       | Indicator.flag2 on a host record   |
-+----------------------------------+--------------+-------------+------------------------------------+
-| dnsActive                        | Boolean      | ``=``       | Indicator.flag1 on a host record   |
-+----------------------------------+--------------+-------------+------------------------------------+
-| Groups Type Filters              |              |             |                                    |
-+----------------------------------+--------------+-------------+------------------------------------+
-| name                             | String       | ``= ^``     | bucket.name                        |
-+----------------------------------+--------------+-------------+------------------------------------+
-| dateAdded                        | Date         | ``=<>``     | bucket.dateAdded                   |
-+----------------------------------+--------------+-------------+------------------------------------+
-| Groups Document Filter           |              |             |                                    |
-+----------------------------------+--------------+-------------+------------------------------------+
-| fileType                         | String       | ``=``       | bucketDocument.type                |
-+----------------------------------+--------------+-------------+------------------------------------+
-| Security Label Specific Filter   |              |             |                                    |
-+----------------------------------+--------------+-------------+------------------------------------+
-| name                             | String       | ``= ^``     | securitylabel.name                 |
-+----------------------------------+--------------+-------------+------------------------------------+
-| Tag Specific Filter              |              |             |                                    |
-+----------------------------------+--------------+-------------+------------------------------------+
-| name                             | String       | ``= ^``     | tag.name                           |
-+----------------------------------+--------------+-------------+------------------------------------+
-| weight                           | Integer      | ``=<>``     | tag.weight                         |
-+----------------------------------+--------------+-------------+------------------------------------+
-| Victim Specific Filter           |              |             |                                    |
-+----------------------------------+--------------+-------------+------------------------------------+
-| name                             | String       | ``=  ^``    | victim.name                        |
-+----------------------------------+--------------+-------------+------------------------------------+
++--------------------------------+------------+-----------+----------------------------------+
+| Name                           | Data Type  | Operators | DB Field                         |
++================================+============+===========+==================================+
+| Indicator Common Filters       |            |           |                                  |
++--------------------------------+------------+-----------+----------------------------------+
+| summary                        | String     | ``= ^``   | indicator.summary                |
++--------------------------------+------------+-----------+----------------------------------+
+| dateAdded                      | Date       | ``< >``   | indicator.dateAdded              |
++--------------------------------+------------+-----------+----------------------------------+
+| rating                         | BigDecimal | ``<>``    | indicator.rating                 |
++--------------------------------+------------+-----------+----------------------------------+
+| confidence                     | Short      | ``=<>``   | indicator.confidence             |
++--------------------------------+------------+-----------+----------------------------------+
+| threatAssessRating             | Double     | ``<>``    | commonIndicator.rating           |
++--------------------------------+------------+-----------+----------------------------------+
+| threatAssessConfidence         | Double     | ``<>``    | commonIndicator.confidence       |
++--------------------------------+------------+-----------+----------------------------------+
+| Address Specific Filters       |            |           |                                  |
++--------------------------------+------------+-----------+----------------------------------+
+| countryCode                    | String     | ``=``     | ipgeo.countryCode                |
++--------------------------------+------------+-----------+----------------------------------+
+| organization                   | String     | ``=``     | ipgeo.registeringOrg             |
++--------------------------------+------------+-----------+----------------------------------+
+| asn                            | Integer    | ``=``     | ipgeo.asn                        |
++--------------------------------+------------+-----------+----------------------------------+
+| Host Specific Filters          |            |           |                                  |
++--------------------------------+------------+-----------+----------------------------------+
+| whoisActive                    | Boolean    | ``=``     | Indicator.flag2 on a host record |
++--------------------------------+------------+-----------+----------------------------------+
+| dnsActive                      | Boolean    | ``=``     | Indicator.flag1 on a host record |
++--------------------------------+------------+-----------+----------------------------------+
+| Groups Type Filters            |            |           |                                  |
++--------------------------------+------------+-----------+----------------------------------+
+| name                           | String     | ``= ^``   | bucket.name                      |
++--------------------------------+------------+-----------+----------------------------------+
+| dateAdded                      | Date       | ``=<>``   | bucket.dateAdded                 |
++--------------------------------+------------+-----------+----------------------------------+
+| Groups Document Filter         |            |           |                                  |
++--------------------------------+------------+-----------+----------------------------------+
+| fileType                       | String     | ``=``     | bucketDocument.type              |
++--------------------------------+------------+-----------+----------------------------------+
+| Security Label Specific Filter |            |           |                                  |
++--------------------------------+------------+-----------+----------------------------------+
+| name                           | String     | ``= ^``   | securitylabel.name               |
++--------------------------------+------------+-----------+----------------------------------+
+| Tag Specific Filter            |            |           |                                  |
++--------------------------------+------------+-----------+----------------------------------+
+| name                           | String     | ``= ^``   | tag.name                         |
++--------------------------------+------------+-----------+----------------------------------+
+| weight                         | Integer    | ``=<>``   | tag.weight                       |
++--------------------------------+------------+-----------+----------------------------------+
+| Victim Specific Filter         |            |           |                                  |
++--------------------------------+------------+-----------+----------------------------------+
+| name                           | String     | ``=  ^``  | victim.name                      |
++--------------------------------+------------+-----------+----------------------------------+
 
-Note: ``<``, ``>``, and ``^`` operators need to be escaped in the url
-as: ``< %3C``, ``> %3E``, ``^ %5E``.
+.. note:: ``<``, ``>``, and ``^`` operators need to be escaped in the url as: ``< %3C``, ``> %3E``, ``^ %5E``.
 
 Resource Types
 ~~~~~~~~~~~~~~
@@ -5247,10 +5243,7 @@ Group is created with the relevant information, such as the name, and
 the V2 API will return the newly created object, including its ID, for
 future reference.
 
-NOTE: The content’s variable names and values take the same form as
-those returned when polling for a specific Incident. The V2
-ThreatConnect API maintains this congruency intentionally to make
-reusing values easier.
+.. note:: The content’s variable names and values take the same form as those returned when polling for a specific Incident. The V2 ThreatConnect API maintains this congruency intentionally to make reusing values easier.
 
 If created successfully, the V2 API will respond with a response
 detailing the Group created.
@@ -5364,8 +5357,7 @@ To upload a new Document:
    ``/v2/groups/documents/<DOCUMENT_ID>/upload`` as an ``octet-stream``
    (A Document may be updated using an HTTP PUT to this same endpoint)
 
-NOTE: Any file type may be uploaded to the system, which are stored and
-not rendered for security considerations
+.. note:: Any file type may be uploaded to the system, which are stored and not rendered for security considerations
 
 Malware Documents
 ^^^^^^^^^^^^^^^^^
@@ -5395,8 +5387,7 @@ To upload a malware sample as a Document:
    zip file password
 -  Upload the document `as above <#documents>`__
 
-NOTE: Uploading raw malware executables or weaponized documents is
-strictly forbidden
+.. note:: Uploading raw malware executables or weaponized documents is strictly forbidden
 
 For malware uploads, An ``HTTP 400 - Bad Request`` error will be
 returned if the document is not a password-protected zip file (as
@@ -5449,11 +5440,7 @@ Note that this response will contain the Attribute’s ID, which can be
 useful for deleting or modifying this Attribute in the future.
 Attributes must conform to the Attribute Validation.
 
-NOTE: The Attributes can have a displayed field, which is equivalent to
-specifying that an Attribute should be treated as the "Default" in the
-GUI. This distinction is important for the Source and Description
-Attributes, which will be displayed at the top of an Indicator or Group
-screen, as well as on a Browse screen resource.
+.. note:: The Attributes can have a displayed field, which is equivalent to specifying that an Attribute should be treated as the "Default" in the GUI. This distinction is important for the Source and Description Attributes, which will be displayed at the top of an Indicator or Group screen, as well as on a Browse screen resource.
 
 Victims
 ^^^^^^^
@@ -5485,8 +5472,7 @@ Victim Assets can also be created by POSTing a request to the appropriate servic
 Creating a Victim in this fashion will return a Victim object as if it
 been queried for directly.
 
-NOTE: These Asset paths and field names will be identical to those
-outlined in the Victims section.
+.. note:: These Asset paths and field names will be identical to those outlined in the Victims section.
 
 Updating Entities
 ^^^^^^^^^^^^^^^^^
@@ -5550,8 +5536,7 @@ Entities can be deleted using the HTTP DELETE method. With proper
 permissions, this allows for the programmatic removal of data from
 ThreatConnect just as if it were done in the web client.
 
-NOTE: It is important to capture and use the ID to specify a Group or
-Attribute.
+.. note:: It is important to capture and use the ID to specify a Group or Attribute.
 
 Creating Associations
 ^^^^^^^^^^^^^^^^^^^^^
@@ -5604,8 +5589,7 @@ above will only return a list of Addresses that are associated to the
 specified Incident. This same pivoting syntax is used to create an
 Association.
 
-NOTE: This will not create the Address in the system if the Address does
-not exist; this call only serves to associate the two.
+.. note:: This will not create the Address in the system if the Address does not exist; this call only serves to associate the two.
 
 Deleting Associations
 ^^^^^^^^^^^^^^^^^^^^^
@@ -5787,7 +5771,7 @@ upload instantly triggers a batch job to begin processing the data. The
 Batch API is restricted to Indicators and will improve performance when
 importing large amounts of data.
 
-NOTE: Document Storage is required to use the Batch API.
+.. note:: Document Storage is required to use the Batch API.
 
 The Batch Create resource creates a batch entry in the system. No batch
 processing is triggered until the batch input file is uploaded. Table 40
@@ -5869,8 +5853,7 @@ Supported ``type`` values for Indicators:
 -  URL
 -  File
 
-Note: Exporting indicators via the ``JSON Export`` feature in
-ThreatConnect will create a file in this format
+.. note:: Exporting indicators via the ``JSON Export`` feature in ThreatConnect will create a file in this format
 
 Upload Batch Input File Endpoint
 
