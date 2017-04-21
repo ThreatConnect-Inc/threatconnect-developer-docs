@@ -5470,20 +5470,17 @@ Victims Service:
     "name" : "Victim Name"
     }
 
-Victim Assets can also be created by POSTing a request to the
-appropriate service, for example:
+Victim Assets can also be created by POSTing a request to the appropriate service as shown below. The `12345` in the example represents the ID of an existing Victim in ThreatConnect.
 
 ::
 
-    POST /v2/victims/victimAssets/emailAddresses
+    POST /v2/victims/12345/victimAssets/emailAddresses
     Host: api.threatconnect.com
     Content-Type: application/json
     {
     "address" : "victim@demo.net",
     "addressType" : "Personal"
     }
-
-Victims can be created programmatically, as can their Assets.
 
 Creating a Victim in this fashion will return a Victim object as if it
 been queried for directly.
