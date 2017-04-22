@@ -35,7 +35,7 @@ ThreatConnect platform:
         print('Error: {0}'.format(e))
         sys.exit(1)
 
-Supported Properties
+**Supported Properties**
 
 +-----------------+--------------------+------------+
 | Property Name   | Method             | Required   |

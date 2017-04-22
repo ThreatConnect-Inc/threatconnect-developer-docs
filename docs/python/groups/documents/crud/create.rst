@@ -50,7 +50,7 @@ platform. The Document Resource has a special method ``upload()`` that
 allows you to upload files to the platform. For more information on the
 purpose of each line of code, see the **Code Highlights** section below.
 
-Supported Properties
+**Supported Properties**
 
 +-----------------+-------------------+------------+
 | Property Name   | Method            | Required   |

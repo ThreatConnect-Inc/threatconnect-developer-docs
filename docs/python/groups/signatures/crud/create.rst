@@ -52,7 +52,7 @@ ThreatConnect platform.
 
 .. note:: In the prior example, no API calls are made until the ``commit()`` method is invoked.
 
-Supported Properties
+**Supported Properties**
 
 +---------------+-----------------+----------+
 | Property Name | Method          | Required |

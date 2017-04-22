@@ -90,7 +90,7 @@ ThreatConnect Object:
 
 ``var tc = new ThreatConnect(apiSettings);``
 
-Third-Party Dependencies
+**Third-Party Dependencies**
 
 +-------------+-----------+----------------------------------------+
 | Name        | Version   | Link                                   |
@@ -100,13 +100,13 @@ Third-Party Dependencies
 | Crypto-JS   | 3.1       | https://code.google.com/p/crypto-js/   |
 +-------------+-----------+----------------------------------------+
 
-Technical Design
+**Technical Design**
 
 The JavaScript SDK for ThreatConnect was designed with a focus on
 abstracting the API REST calls while enabling the developer to use an
 enterprise-level programming language.
 
-Supported Resource Types
+**Supported Resource Types**
 
 The JavaScript SDK supports the Resource Types listed below. There is
 also a mechanism to do manual API requests to cover any API calls that
@@ -540,7 +540,7 @@ Indicator Retrieve
 This section explains how to work with ThreatConnect Indicator
 Resources.
 
-Supported Indicator Types
+**Supported Indicator Types**
 
 +------------------+-----------------------+
 | Indicator Name   | Indicator Constant    |
@@ -1059,7 +1059,7 @@ Group Retrieve
 
 This section explains how to work with ThreatConnect Group Resources.
 
-Supported Group Types
+**Supported Group Types**
 
 +--------------+------------------+
 | Group Name   | Group Constant   |
@@ -1422,7 +1422,7 @@ Indicator Commit
 This section explains how to work with ThreatConnect Indicator
 Resources.
 
-Supported Indicator Types
+**Supported Indicator Types**
 
 +------------------+-----------------------+
 | Indicator Name   | Indicator Constant    |
@@ -1682,7 +1682,7 @@ Group Commit
 
 This section explains how to work with ThreatConnect Group Resources.
 
-Supported Group Types
+**Supported Group Types**
 
 +--------------+------------------+
 | Group Name   | Group Constant   |
