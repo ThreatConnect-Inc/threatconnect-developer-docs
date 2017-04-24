@@ -4,13 +4,16 @@ Delete Files
 The example below demonstrates how to delete a File Indicator from the ThreatConnect platform:
 
 .. code-block:: python
+    :linenos:
+    :emphasize-lines: 23-24
 
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
-    # instantiate indicators object
+    # instantiate an Indicators container
     indicators = tc.indicators()
+
     owner = 'Example Community'
 
     # specify a specific file hash from a specific owner (in this case '8743b52063cd84097a65d1633f5c74f5' from the 'Example Community')
@@ -18,12 +21,15 @@ The example below demonstrates how to delete a File Indicator from the ThreatCon
     filter1.add_owner(owner)
     filter1.add_indicator('8743b52063cd84097a65d1633f5c74f5')
 
-    # retrieve the indicator
+    # retrieve the Indicator
     indicators.retrieve()
 
+    # prove that there is only one Indicator retrieved
+    assert len(indicators) == 1
+
     try:
-        # delete the indicator (there will be at most one indicator)
         for indicator in indicators:
+            # delete the Indicator
             indicator.delete()
     except RuntimeError as e:
         print('Error: {0}'.format(e))
