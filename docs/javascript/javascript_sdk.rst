@@ -242,7 +242,7 @@ Query Parameters
 For the sample install configuration example above, here is a sample
 query String passed to the app:
 
-::
+.. code::
 
     tcSpaceElementId=467&tcToken=ABC123&tcApiPath=https://api.threatconnect.com:8443&tcType=Host&tcSelectedItem=greystoneexpress.com&tcSelectedItemOwner=TestOrg&add_tags=OpenDNS Scan&add_confidence=25&add_rating=1&opendns_api_token=abc-123&logging=info
 
@@ -2384,7 +2384,7 @@ Manual API Calls
 The example below accesses the API by allowing the creation of a
 requestObject():
 
-::
+.. code-block:: javascript
 
     tc.requestObject()
     ro.apiRequest(ro);
