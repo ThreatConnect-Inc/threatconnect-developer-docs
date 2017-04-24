@@ -299,11 +299,11 @@ examples below.
 
 Python SDK formatted URI examples:
 
-::
+.. code::
 
     /v2/indicators/address/10.20.30.40?owner=Example+Community
 
-::
+.. code::
 
     /v2/groups/adversaries/5/indicators?owner=Example+Community
 
