@@ -31,7 +31,7 @@ valid Signature, or a 403 error will be returned
 The example below details the path of a version 2 request to the Groups
 Service and Incidents-Collections Resource:
 
-::
+.. code::
 
     /v2/groups/incidents
 
@@ -54,7 +54,7 @@ Authentication
 
 Passing a Signature to the API
 
-::
+.. code::
 
     GET https://api.threatconnect.com/v2/indicators?owner=Common%20Community HTTP/1.1
      Timestamp: 1386658343
@@ -83,7 +83,7 @@ Example API GET Request
 
 Get a list of all Owners visible to this user:
 
-::
+.. code::
 
     GET /v2/owners
 
@@ -138,40 +138,40 @@ Services and Resources
 The example below denotes the HTTP path of a request to the Groups
 Service and an Incidents-Collections Resource:
 
-::
+.. code::
 
     /v2/groups/incidents
 
 The example below is of a path that will return a specific Incident with
 an ID of 1:
 
-::
+.. code::
 
     /v2/groups/incidents/1
 
 The example below is of a path will return a specific Host:
 
-::
+.. code::
 
     /v2/indicators/hosts/baddomain.com
 
 The example below displays the path to which a request must be sent in
 order to obtain the associated Incidents of the above Host:
 
-::
+.. code::
 
     /v2/indicators/hosts/baddomain.com/groups/incidents
 
 This path returns all Incidents within the user’s Organization.
 
-::
+.. code::
 
     /v2/groups/incidents
 
 The second path will return only Incidents associated to a specific Host
 with a value of baddomain.com:
 
-::
+.. code::
 
     /v2/indicators/hosts/baddomain.com/groups/incidents
 
@@ -201,7 +201,7 @@ Collections Resources
 The example below is of sample Collections-request path with
 pagination-query parameters for Incidents:
 
-::
+.. code::
 
     /v2/groups/incidents?resultStart=0&resultLimit=50
 
@@ -284,7 +284,7 @@ Owners Service XML Response:
 
 View the Owner Organization for the current API User
 
-::
+.. code::
 
     GET /v2/owners/mine
 
@@ -302,7 +302,7 @@ View the Owner Organization for the current API User
 
 View all Owners that are accessible to the current API User
 
-::
+.. code::
 
     GET /v2/owners
 
@@ -327,7 +327,7 @@ View all Owners that are accessible to the current API User
 
 View all members of an Organization
 
-::
+.. code::
 
     GET /v2/owners/mine/members
 
@@ -368,33 +368,33 @@ include the member user's ``name`` and ``id``, or only the member's
 The example below is of a request path with Owner query parameter for
 Indicators Collection:
 
-::
+.. code::
 
     /v2/indicators?owner=Common%20Community
 
 The example below is of a request path with Owner query parameter for
 Host Indicator baddomain.com:
 
-::
+.. code::
 
     /v2/indicators/hosts/baddomain.com?owner=Common%20Community
 
 The example below is a request to see available Owners of the specified
 Indicators:
 
-::
+.. code::
 
     /v2/indicators/hosts/baddomain.com/owners
 
 Threats Collection for the Common Community:
 
-::
+.. code::
 
     /v2/groups/threats?owner=Common%20Community
 
 Specific Threat (Owner implied by ID):
 
-::
+.. code::
 
     /v2/groups/threats/300
 
@@ -441,7 +441,7 @@ Indicators Service
 
 Example Indicator Service Path:
 
-::
+.. code::
 
     /v2/indicators/hosts?resultStart=0&resultLimit=20
     /v2/indicators/hosts?owner=Common%20Community&resultStart=0&resultLimit=20
@@ -460,90 +460,90 @@ Filtering Indicators
 
 The example below demonstrates usage of the modifiedSince parameter:
 
-::
+.. code::
 
     /v2/indicators?modifiedSince=2014-08-21T12:00:00Z
 
 The example below demonstrates usage of the modifiedSince parameter and
 an additional parameter:
 
-::
+.. code::
 
     /v2/indicators?modifiedSince=2014-08-21T12:00:00Z&owner=Common%20Community
 
 The example below demonstrates usage of the summary parameter:
 
-::
+.. code::
 
     /v2/indicators?filters=summary%3Dlmco.com
 
 The example below demonstrates usage of the rating parameter:
 
-::
+.. code::
 
     /v2/indicators?filters=rating%3E3
 
 The example below demonstrates usage of the threatAssessConfidence
 parameter:
 
-::
+.. code::
 
     /v2/indicators/urls?filters=threatAssessConfidence%3E50
 
 The example below demonstrates usage of the organization parameter:
 
-::
+.. code::
 
     /v2/indicators/addresses?filters=organization%3Dmosso%20hosting
 
 The example below demonstrates usage of the whoisActive parameter:
 
-::
+.. code::
 
     /v2/indicators/hosts?filters=whoisActive%3Dtrue
 
 The example below demonstrates usage of a Group name parameter:
 
-::
+.. code::
 
     /v2/groups?filters=name%5ETest
 
 The example below demonstrates usage of a Group fileType parameter:
 
-::
+.. code::
 
     /v2/groups/documents?filters=fileType%3DPDF
 
 The example below demonstrates usage of a securityLabels filter
 parameter:
 
-::
+.. code::
 
     /v2/securityLabels?filters=name%3Ddictators
 
 The example below demonstrates usage of a victim filter parameter:
 
-::
+.. code::
 
     /v2/victims?filters=name%5ETest
 
 The example below demonstrates usage of a tag filter parameter:
 
-::
+.. code::
 
     /v2/tags?filters=weight%3E2
 
 The example below demonstrates usage multiple parameters (with implicit
 AND):
 
-::
+.. code::
 
     /v2/indicators?filters=summary%3Dlmco.com,dateAdded%3C20151015
 
 The example below demonstrates usage multiple parameters (with
 parameters OR’ed):
 
-::
+.. code::
 
     /v2/indicators?filters=summary%3Dlmco.com,dateAdded%3E20151015&orParams=true
 
@@ -749,13 +749,13 @@ Indicator Types
 
 Indicator Type query for available Indicator types:
 
-::
+.. code::
 
     /v2/types/indicatorTypes
 
 Indicator Type query for details on a specific Indicator type:
 
-::
+.. code::
 
     /v2/types/indicatorTypes/<indicator type>
 
@@ -1064,14 +1064,14 @@ Host Resource Type
 Example of Indicator Service query for a specific Host for a user’s
 Organization:
 
-::
+.. code::
 
     /v2/indicators/hosts/baddomain.com
 
 Example of an Indicator Service query for a specific Host to the
 Communities to which a user has access:
 
-::
+.. code::
 
     /v2/indicators/hosts/baddomain.com?owner=Common%20Community
 
@@ -1148,13 +1148,13 @@ Retrieving Host DNS Resolutions
 
 Example of DNS History request for a Host within an Organization:
 
-::
+.. code::
 
     /v2/indicators/hosts/baddomain.com/dnsResolutions
 
 Example of DNS History request for a Host within a Community:
 
-::
+.. code::
 
     /v2/indicators/hosts/baddomain.com/dnsResolutions?owner=Common%20Community
 
@@ -1212,28 +1212,28 @@ Addresses Resource Type
 Example of an Indicators Service query for a Collection of Addresses for
 a user's organization:
 
-::
+.. code::
 
     /v2/indicators/addresses?resultStart=0&resultLimit=20
 
 Example of an Indicator Service query for a Collection of Addresses to
 the Communities to which a user has access:
 
-::
+.. code::
 
     /v2/indicators/addresses?owner=Common%20Community&resultStart=0&resultLimit=20
 
 Example of an Indicators Service query for a specific Address for a
 user's Organization:
 
-::
+.. code::
 
     /v2/indicators/addresses/192.168.1.1
 
 Example of an Indicator Service query for a specific Address to the
 Communities to which a user has access:
 
-::
+.. code::
 
     /v2/indicators/addresses/d24c:3256:0:0:0:0:0:2701?owner=Common%20Community
 
@@ -1382,13 +1382,13 @@ Retrieving Address DNS Resolutions
 
 Example of DNS History request for an Address within an Organization:
 
-::
+.. code::
 
     /v2/indicators/addresses/192.168.0.1/dnsResolutions
 
 Example of DNS History request for an Address within a Community:
 
-::
+.. code::
 
     /v2/indicators/addresses/192.168.0.1/dnsResolutions?owner=Common%20Community
 
@@ -1448,28 +1448,28 @@ Files Resource Type
 Example of an Indicators Service query for a Collection of Files for a
 user's organization:
 
-::
+.. code::
 
     /v2/indicators/files?resultStart=0&resultLimit=20
 
 Example of an Indicator Service query for a Collection of Files to the
 Communities to which a user has access:
 
-::
+.. code::
 
     /v2/indicators/files?owner=Common%20Community&resultStart=0&resultLimit=20
 
 Example of an Indicators Service query for a Collection of Files for a
 user's organization:
 
-::
+.. code::
 
     /v2/indicators/files/A35A766A9F881A8E6B01BBBC0D6BE829
 
 Example of an Indicator Service query for a Collection of Files to the
 Communities to which a user has access:
 
-::
+.. code::
 
     /v2/indicators/files/A35A766A9F881A8E6B01BBBC0D6BE829?owner=Common%20Community
 
@@ -1701,14 +1701,14 @@ emailAddresses Resource Type
 Example of an Indicators Service query for a Collection of Email
 Addresses for a user's organization:
 
-::
+.. code::
 
     /v2/indicators/emailAddresses?resultStart=0&resultLimit=20
 
 Example of an Indicator Service query for a Collection of Email
 Addresses to the Communities to which a user has access:
 
-::
+.. code::
 
     /v2/indicators/emailAddresses?owner=Common%20Community&resultStart=0&resultLimit=20
 
@@ -1794,14 +1794,14 @@ emailAddress Resource Type
 Example of an Indicators Service query for a Collection of Email
 Addresses for a user's organization:
 
-::
+.. code::
 
     /v2/indicators/emailAddresses/test@baddomain.com
 
 Example of an Indicator Service query for a Collection of Email
 Addresses to the Communities to which a user has access:
 
-::
+.. code::
 
     /v2/indicators/emailAddresses/test@baddomain.com?owner=Common%20Community
 
@@ -1871,14 +1871,14 @@ urls Resource Type
 Indicator Service query for a Collection of URLs from a user's
 Organization:
 
-::
+.. code::
 
     /v2/indicators/urls?resultStart=0&resultLimit=20
 
 Indicator Service query for a Collection of URLs from a user's
 Organization:
 
-::
+.. code::
 
     /v2/indicators/urls?owner=Common%20Community&resultStart=0&resultLimit=20
 
@@ -1964,14 +1964,14 @@ url Resource Type
 Indicator Service query for a Collection of URLs from a user's
 Organization:
 
-::
+.. code::
 
     /v2/indicators/urls/http%3A%2F%2Ftest.com
 
 Indicator Service query for a Collection of URLs from a user's
 Organization:
 
-::
+.. code::
 
     /v2/indicators/urls/http%3A%2F%2Ftest.com?owner=Common%20Community
 
@@ -2102,7 +2102,7 @@ Response data:
 
 Update the observation count for a given Indicator in your Organization
 
-::
+.. code::
 
     POST /v2/indicators/[IndicatorType]/[IndicatorName]/observations
 
@@ -2114,7 +2114,7 @@ Update the observation count for a given Indicator `in a Community or
 Source you have access
 to <http://docs.threatconnect.com/#owners-service>`__
 
-::
+.. code::
 
     POST /v2/indicators/[IndicatorType]/[IndicatorName]/observations?owner=[owner_name]
 
@@ -2140,19 +2140,19 @@ Indicator Activity
 
 Set API to return ``inactive`` results as well
 
-::
+.. code::
 
     POST /api/v2/indicators/[IndicatorType]/[IndicatorName]?includeInactive=true
 
 Set API to ignore (not return) ``inactive`` results
 
-::
+.. code::
 
     POST /api/v2/indicators/[IndicatorType]/[IndicatorName]?includeActive=true
 
 Reset the ``active`` flag on an Indicator import:
 
-::
+.. code::
 
     POST /api/v2/indicators/[IndicatorType]/[IndicatorName]?active=true
 
@@ -2185,7 +2185,7 @@ False Positives
 
 Report a given Indicator as a False Positive:
 
-::
+.. code::
 
     POST v2/indicators/[IndicatorType]/[IndicatorName]/falsePositive
 
@@ -2328,7 +2328,7 @@ Checking the Status of Bulk Indicator Reports
 Example of verifying that a Community or Source has bulk-reporting
 enabled:
 
-::
+.. code::
 
     GET /v2/indicators/bulk?owner=Demo+Customer+Community
 
@@ -2447,13 +2447,13 @@ CSV Bulk Reports
 Example of a CSV report being downloaded for the Demo Customer
 Community:
 
-::
+.. code::
 
     GET /v2/indicators/bulk/csv?owner=Demo+Customer+Community
 
 The example below displays the output from a CSV report:
 
-::
+.. code::
 
     Type,Value,Rating,Confidence
     Host,example.com,null,null
@@ -2480,14 +2480,14 @@ Groups Service Resource Type
 Example of an Groups Service query for a generic Collection of Groups
 Resources for a user’s Organization:
 
-::
+.. code::
 
     /v2/groups?resultStart=0&resultLimit=20
 
 Example of an Groups Service query for a generic Collection of Groups
 Resources to the Communities to which a user has access:
 
-::
+.. code::
 
     /v2/groups?owner=Common%20Community&resultStart=0&resultLimit=20
 
@@ -2574,20 +2574,20 @@ Campaigns Resource Type
 Example of an Groups Service query for a generic Collection of Campaigns
 for a user’s Organization:
 
-::
+.. code::
 
     /v2/groups/campaigns?resultStart=0&resultLimit=20
 
 Example of an Groups Service query for a generic Collection of Campaigns
 in the Common Community:
 
-::
+.. code::
 
     /v2/groups/campaigns?owner=Common%20Community&resultStart=0&resultLimit=20
 
 Example of a Group Service query of a specific Campaign:
 
-::
+.. code::
 
     /v2/groups/campaigns/3094
 
@@ -2605,21 +2605,21 @@ Incidents Resource Type
 Example of an Groups Service query for a generic Collection of Incidents
 for a user’s Organization:
 
-::
+.. code::
 
     /v2/groups/incidents?resultStart=0&resultLimit=20
 
 Example of an Groups Service query for a generic Collection of Incidents
 to the Communities to which a user has access:
 
-::
+.. code::
 
     /v2/groups/incidents?owner=Common%20Community&resultStart=0&resultLimit=20
 
 Example of a Group Service query of a specific Incident for a user’s
 Organization:
 
-::
+.. code::
 
     /v2/groups/incidents/3094
 
@@ -2816,21 +2816,21 @@ Documents Resource Type
 Example of an Groups Service query for a Collection of Documents for a
 user's organization:
 
-::
+.. code::
 
     /v2/groups/documents?resultStart=0&resultLimit=20
 
 Example of an Indicator Service query for a Collection of Documents to
 the Communities to which a user has access:
 
-::
+.. code::
 
     /v2/groups/documents?owner=Common%20Community&resultStart=0&resultLimit=20
 
 Example of the Documents Resource Type query of a specific Document
 using the the Document’s unique ID:
 
-::
+.. code::
 
     /v2/groups/documents/734899
 
@@ -2980,20 +2980,20 @@ Threats Resource Type
 Example of an Groups Service query for a specific Threat for a user's
 organization:
 
-::
+.. code::
 
     /v2/groups/threats?resultStart=0&resultLimit=20
 
 Example of an Groups Service query for a specific Threat to the
 Communities to which a user has access:
 
-::
+.. code::
 
     /v2/groups/threats?owner=Common%20Community&resultStart=0&resultLimit=20
 
 Example of a Group Service query of a specific Threat:
 
-::
+.. code::
 
     /v2/groups/threats/3095
 
@@ -3133,21 +3133,21 @@ Adversaries Resource Type
 Example of an Groups Service query for a Collection of Adversaries for a
 user's organization:
 
-::
+.. code::
 
     /v2/groups/adversaries?resultStart=0&resultLimit=20
 
 Example of an Groups Service query for a Collection of Adversaries to
 the Communities to which a user has access:
 
-::
+.. code::
 
     /v2/groups/adversaries?owner=Common%20Community&resultStart=0&resultLimit=20
 
 Example of a Group Service query for a specific Adversary within a
 user's Organization:
 
-::
+.. code::
 
     /v2/groups/adversaries/3093
 
@@ -3291,14 +3291,14 @@ Emails Resource Type
 Example of an Groups Service query for a Collection of Emails for a
 user's organization:
 
-::
+.. code::
 
     /v2/groups/emails?resultStart=0&resultLimit=20
 
 Example of an Groups Service query for a Collection of Emails to the
 Communities to which a user has access:
 
-::
+.. code::
 
     /v2/groups/emails?owner=Common%20Community&resultStart=0&resultLimit=20
 
@@ -3455,21 +3455,21 @@ Signatures Resource Type
 Example of a Groups Service query for a Collection of Signatures for a
 user's organization:
 
-::
+.. code::
 
     /v2/groups/signatures?resultStart=0&resultLimit=20
 
 Example of a Groups Service query for a Collection of Signatures to the
 Communities to which a user has access:
 
-::
+.. code::
 
     /v2/groups/signatures?owner=Common%20Community&resultStart=0&resultLimit=20
 
 Example of a Groups Service allows for the querying of a specific
 Signature:
 
-::
+.. code::
 
     /v2/groups/signatures/3106
 
@@ -3560,7 +3560,7 @@ Signature Resource Type
 
 For each Signature, the Signature content can be downloaded:
 
-::
+.. code::
 
     /v2/groups/signatures/3106/download
 
@@ -3632,7 +3632,7 @@ Attributes Resource Type
 
 Example Attribute Paths:
 
-::
+.. code::
 
     /v2/groups/signatures/3106/attributes
     /v2/indicators/emailAddresses/test@baddomain.com/attributes
@@ -3712,21 +3712,21 @@ Retrieving Available Associations
 To retrieve all of the available associations, use the following GET
 request:
 
-::
+.. code::
 
     GET /v2/types/associationTypes/
 
 To retrieve information about a specific association, use the following
 GET request format:
 
-::
+.. code::
 
     GET /v2/types/associationTypes/<association_type_name>/
 
 This GET request will return details about the "Adversary" association
 type:
 
-::
+.. code::
 
     GET /v2/types/associationTypes/adversaries/Adversary/
 
@@ -3767,13 +3767,13 @@ associated with one another using each association.
 To retrieve indicators associated with another indicator using a custom
 association, use the following GET request format:
 
-::
+.. code::
 
     GET /v2/indicators/<indicator type>/<indicator>/associations/<association type>/indicators
 
 Retrieve all of the CIDR indicators associated with an ASN:
 
-::
+.. code::
 
     GET /v2/indicators/asns/ASN12345/associations/asnToCidr/indicators
 
@@ -3829,7 +3829,7 @@ asnToCidr Associations retrieve XML:
 
 To create an association between two Indicators, use the following POST request format:
 
-::
+.. code::
 
     POST /v2/indicators/<indicator type>/<indicator>/associations/<association type>/indicators/<indicator type>/<indicator>
 
@@ -3859,14 +3859,14 @@ via each file action.
 To retrieve indicators associated with a file using a file action, use
 the following GET request format:
 
-::
+.. code::
 
     GET /v2/indicators/files/<file hash>/actions/<file action>/indicators
 
 Retrieve all of the indicators associated with the file using the mutex
 file action:
 
-::
+.. code::
 
     GET /v2/indicators/files/8743b52063cd84097a65d1633f5c74f5/actions/mutex/indicators
 
@@ -3944,7 +3944,7 @@ Mutex file action retrieve XML:
 
 To create an association between two Indicators using a file action, use the following POST request format:
 
-::
+.. code::
 
     POST /v2/indicators/files/<file hash>/actions/<file action>/indicators/<indicator type>/<indicator>
 
@@ -3953,7 +3953,7 @@ Working With Tags
 
 Path for all Tags:
 
-::
+.. code::
 
     /v2/tags
 
@@ -3972,7 +3972,7 @@ Tags Resource Type JSON Response:
 
 Example Tags Service query of a specific Tag:
 
-::
+.. code::
 
     /v2/tags/tag%201
 
@@ -4073,7 +4073,7 @@ Working with Security Labels
 
 Path for all Security Labels:
 
-::
+.. code::
 
     /v2/securityLabels
 
@@ -4088,7 +4088,7 @@ Security Labels Resource Type
 
 Example The SecurityLabels Service query of a specific Security Label:
 
-::
+.. code::
 
     /v2/securityLabels/SECURITY%20LABEL%20NAME
 
@@ -4196,7 +4196,7 @@ Working with Tasks
 
 Retrieve all Tasks that can be accessed by this API User
 
-::
+.. code::
 
     GET /v2/tasks
 
@@ -4205,7 +4205,7 @@ they can access.
 
 Retrieve a specific Task
 
-::
+.. code::
 
     GET /v2/tasks/<task_id>
 
@@ -4239,21 +4239,21 @@ Sample Response to GET /v2/tasks/599
 
 Retrieve the list of people assigned to a specific Task
 
-::
+.. code::
 
     GET /v2/tasks/<task_id>/assignees
 
 Retrieve the list of Escalatees ("people who will be notified when the
 deadline passes") for a specific Task
 
-::
+.. code::
 
     GET /v2/tasks/<task_id>/escalatees
 
 Create a new Task; Escalatees and Assignees may be a list of
 ``userName`` entries
 
-::
+.. code::
 
     POST /v2/tasks/
     {
@@ -4264,7 +4264,7 @@ Create a new Task; Escalatees and Assignees may be a list of
 
 Update the due date (a ``DateTime`` object) and description for a Task
 
-::
+.. code::
 
     POST /v2/tasks/<task_id>/attributes
     {
@@ -4277,31 +4277,31 @@ Multiple Assignees or Escalatees may be provided by adding additional
 
 Add the user denoted by ``username`` to the list of Escalatees
 
-::
+.. code::
 
     POST /v2/tasks/<task_id>/escalatees/<username>
 
 Add the user denoted by ``username`` to the list of Assignees
 
-::
+.. code::
 
     POST /v2/tasks/<task_id>/assignees/<username>
 
 Remove the user denoted by ``username`` from the list of Escalatees
 
-::
+.. code::
 
     DELETE /v2/tasks/<task_id>/escalatees/<username>
 
 Remove the user denoted by ``username`` from the list of Assignees
 
-::
+.. code::
 
     DELETE /v2/tasks/<task_id>/assignees/<username>
 
 Retrieve all Indicators associated with a specific Task
 
-::
+.. code::
 
     GET /v2/tasks/<task_id/indicators
 
@@ -4314,7 +4314,7 @@ Victims Resource Type
 
 Retrieve a specific Victim by ID
 
-::
+.. code::
 
     /v2/groups/victims/<victim_ID>
 
@@ -4382,7 +4382,7 @@ Working With Victims
 Retrieve all Victims in a user’s Organization and in any Communities to
 which a user has access.
 
-::
+.. code::
 
     /v2/victims
 
@@ -4394,7 +4394,7 @@ Victims Resource Type
 
 Retrieve a specific Victim by ID
 
-::
+.. code::
 
     /v2/groups/victims/<victim_ID>
 
@@ -4518,25 +4518,25 @@ Victim Tags Resource Type
 
 View all Tags for a given Victim
 
-::
+.. code::
 
     GET /v2/victims/<victim_ID>/tags
 
 View a specific Tag for a given Victim
 
-::
+.. code::
 
     GET /v2/victims/<victim_ID>/tags/<tag_name>
 
 Add a Tag to a given Victim
 
-::
+.. code::
 
     POST /v2/victims/<victim_ID>/tags/<tag_name>
 
 Remove a Tag from a given Victim
 
-::
+.. code::
 
     DELETE /v2/victims/<victim_ID>/tags/<tag_name>
 
@@ -4548,43 +4548,43 @@ Victim Security Labels Resource Type
 
 View all Security Labels for a given Victim
 
-::
+.. code::
 
     GET /v2/victims/<victim_ID>/securityLabels
 
 View a specific Security Label for a given Victim
 
-::
+.. code::
 
     GET /v2/victims/<victim_ID>/securityLabels/<security_label_name>
 
 View all Victims for a given Security Label
 
-::
+.. code::
 
     GET /v2/victims/securityLabels/<security_label_name>/victims
 
 Add a Security Labels to a given Victim
 
-::
+.. code::
 
     POST /v2/victims/<victim_ID>/securityLabels/<security_label_name>
 
 Add a Victim to a given Security Label
 
-::
+.. code::
 
     POST /v2/victims/securityLabels/<security_label_name>/victims/<victim_ID>
 
 Remove a Security Label from a given Victim
 
-::
+.. code::
 
     DELETE /v2/victims/<victim_ID>/securityLabels/<security_label_name>
 
 Remove a Victim from a given Security Label
 
-::
+.. code::
 
     DELETE /v2/victims/securityLabels/<security_label_name>/victims/<victim_ID>
 
@@ -4597,55 +4597,55 @@ Victim Attributes Resource Type
 
 View Victim Attributes for a given Victim
 
-::
+.. code::
 
     GET /v2/victims/<victim_ID>/attributes
 
 View a specific Victim Attribute for a given Victim
 
-::
+.. code::
 
     GET /v2/victims/<victim_ID>/attributes/<attribute_ID>
 
 View all Security Labels for a given Victim Attribute
 
-::
+.. code::
 
     GET /v2/victims/<victim_ID>/attributes/<attribute_ID>/securityLabels
 
 View Security Label for a given Victim Attribute
 
-::
+.. code::
 
     GET /v2/victims/<victim_ID>/attributes/<attribute_ID>/securityLabels/<security_label_name>
 
 Add an Attribute to a given Victim Attribute
 
-::
+.. code::
 
     POST /v2/victims/<victim_ID>/attributes
 
 Add a Security Label to a given Victim Attribute
 
-::
+.. code::
 
     POST /v2/victims/<victim_ID>/attributes/<attribute_ID>/securityLabels/<security_label_name>
 
 Update an Attribute on a given Victim Attribute
 
-::
+.. code::
 
     PUT /v2/victims/<victim_ID>/attributes/<attribute_ID>
 
 Remove an Attribute from a given Victim Attribute
 
-::
+.. code::
 
     DELETE /v2/victims/<victim_ID>/attributes/<attribute_ID>
 
 Remove a Security Label from a given Victim Attribute
 
-::
+.. code::
 
     DELETE /v2/victims/<victim_ID>/attributes/<attribute_ID>/securityLabels/<security_label_name>
 
@@ -4913,7 +4913,7 @@ querying the API.
 
 The example below displays an API call that creates a new IP address:
 
-::
+.. code::
 
     POST /v2/indicators/addresses
     Host: api.threatconnect.com
@@ -4941,7 +4941,7 @@ Indicators
 
 The following are all considered valid paths for creating indicators:
 
-::
+.. code::
 
     POST /v2/indicators/addresses
     POST /v2/indicators/emailAddresses
@@ -5066,7 +5066,7 @@ The file-occurrence object returned by the API details the structure
 used to model the name, run path, and date for one observed occurrence
 of this file:
 
-::
+.. code::
 
     "fileOccurence" : [ {
     "fileName" : "win999301.dll",
@@ -5082,7 +5082,7 @@ Utilizing a pivot-like functionality, the API allows for the creation of
 fileOccurrences by specifying a valid hash for an existing File
 Indicator:
 
-::
+.. code::
 
     POST /v2/indicators/files
     Host: api.threatconnect.com
@@ -5120,7 +5120,7 @@ Groups
 For example, the following POST request would create a new Incident
 named "Remote Access Incident" that occurred on October 20, 2014:
 
-::
+.. code::
 
     POST /v2/groups/incidents
     Host: api.threatconnect.com
@@ -5133,7 +5133,7 @@ named "Remote Access Incident" that occurred on October 20, 2014:
 This response will contain the newly created Group ID for future use,
 just as if the Group had been queried for specifically:
 
-::
+.. code::
 
     HTTP/1.1 201 CREATED
     Content-Type: application/json
@@ -5302,7 +5302,7 @@ Documents
 
 First, create a new Document given its filename
 
-::
+.. code::
 
     POST /v2/groups/documents/
     Host: api.threatconnect.com
@@ -5330,7 +5330,7 @@ successful)
 Finally, for the given Document ID, upload the Document content in the
 POST body (for instance using ``curl --data @filename``)
 
-::
+.. code::
 
     POST /v2/groups/documents/<DOCUMENT_ID>/upload
     Host: api.threatconnect.com
@@ -5340,7 +5340,7 @@ POST body (for instance using ``curl --data @filename``)
 To update the Document, use an HTTP PUT with the same Document ID - and
 the new Document content in the PUT body
 
-::
+.. code::
 
     PUT /v2/groups/documents/<DOCUMENT_ID>/upload
     Host: api.threatconnect.com
@@ -5365,7 +5365,7 @@ Malware Documents
 Include the ``malware`` and ``password`` fields to create a new Document
 for a malicious file
 
-::
+.. code::
 
     POST /v2/groups/documents/
     Host: api.threatconnect.com
@@ -5399,7 +5399,7 @@ Attributes
 The request below adds a "Source" Attribute with the value "Proprietary
 Reporting" to the "Remote Access Incident" created above:
 
-::
+.. code::
 
     POST /v2/groups/incidents/119842/attributes
     Host: api.threatconnect.com
@@ -5412,7 +5412,7 @@ Reporting" to the "Remote Access Incident" created above:
 
 Rules and mappings as defined by the Organizational Administrator:
 
-::
+.. code::
 
     HTTP/1.1 201 CREATED
     Content-Type: application/json
@@ -5448,7 +5448,7 @@ Victims
 To create a Victim, simply POST a request with the Victim’s name to the
 Victims Service:
 
-::
+.. code::
 
     POST /v2/victims
     Host: api.threatconnect.com
@@ -5459,7 +5459,7 @@ Victims Service:
 
 Victim Assets can also be created by POSTing a request to the appropriate service as shown below. The `12345` in the example represents the ID of an existing Victim in ThreatConnect.
 
-::
+.. code::
 
     POST /v2/victims/12345/victimAssets/emailAddresses
     Host: api.threatconnect.com
@@ -5480,7 +5480,7 @@ Updating Entities
 The PUT request below will update the Confidence value for a specific
 Host Indicator to 80:
 
-::
+.. code::
 
     PUT /v2/indicators/hosts/baddomain.net
     Host: api.threatconnect.com
@@ -5492,7 +5492,7 @@ Host Indicator to 80:
 The PUT request below will update the "Threat Level" Attribute
 (identified by Attribute ID 54321) of an Incident to "Severe":
 
-::
+.. code::
 
     PUT /v2/groups/incidents/123456/attributes/54321
     Host: api.threatconnect.com
@@ -5519,7 +5519,7 @@ Deleting Entities
 
 The following example will delete the email address: falsepositive at highvolume.net:
 
-::
+.. code::
 
     DELETE /v2/indicators/emailAddresses/falsepositive@highvolume.net
     Host: api.threatconnect.com
@@ -5527,7 +5527,7 @@ The following example will delete the email address: falsepositive at highvolume
 The following example will delete the Attribute identified by ID #12345
 from the Threat identified by ID #666:
 
-::
+.. code::
 
     DELETE /v2/groups/threats/666/attributes/12345
     Host: api.threatconnect.com
@@ -5544,28 +5544,28 @@ Creating Associations
 In order to see all IP Addresses associated with an Incident, issue the
 following query:
 
-::
+.. code::
 
     GET /v2/groups/incidents/119842/indicators/addresses
 
 To add an Association between the above Incident and unassociated IP
 Address 10.0.2.5, the following POST request could be issued:
 
-::
+.. code::
 
     POST /v2/groups/incidents/119842/indicators/addresses/10.0.2.5
 
 In keeping with the bidirectional nature of Associations and pivoting,
 the Association can be created by pivoting off the Address:
 
-::
+.. code::
 
     POST /v2/indicators/addresses/10.0.2.5/groups/incidents/119842
 
 This Association mechanic can also be used to add Tags to a Group or an
 Indicator, again in either direction:
 
-::
+.. code::
 
     POST /v2/groups/incidents/119842/tags/China
     POST /v2/tags/China/groups/incidents/119842
@@ -5573,7 +5573,7 @@ Indicator, again in either direction:
 This Association mechanic can also be used to set Security Labels to a
 Group or an Indicator, again in either direction:
 
-::
+.. code::
 
     POST /v2/groups/incidents/119842/securityLabels/Sensitive
     POST /v2/securityLabels/sensitive/groups/incidents/119842
@@ -5597,13 +5597,13 @@ Deleting Associations
 In the example below, the Association between a Threat and an email
 address can be removed if it is no longer relevant:
 
-::
+.. code::
 
     DELETE /v2/groups/threats/666/indicators/emailAddresses/oldhat@irrelevant.net
 
 To remove a Tag that is no longer applicable:
 
-::
+.. code::
 
     DELETE /v2/indicators/emailAddresses/oldhat@irrelevant.net/tags/APT
 
@@ -5616,7 +5616,7 @@ Batch Upload: Indicators
 
 Sample Batch Create request
 
-::
+.. code::
 
      POST /v2/batch/                 
      {                               
@@ -5628,7 +5628,7 @@ Sample Batch Create request
 
 Server Response on Success
 
-::
+.. code::
 
      HTTP/1.1 201 Created                       
      {                                          
@@ -5637,7 +5637,7 @@ Server Response on Success
 
 Server Response on Insufficient Privileges
 
-::
+.. code::
 
      HTTP/1.1 403 Forbidden                     
      {                                          
@@ -5648,7 +5648,7 @@ Server Response on Insufficient Privileges
 
 Server Response on Incorrect Settings
 
-::
+.. code::
 
      HTTP/1.1 403 Forbidden                     
      {                                          
@@ -5679,7 +5679,7 @@ The following is an example of a Batch Indicator Input file:
 
 Sample Batch Upload Input File request
 
-::
+.. code::
 
      POST /v2/batch/123                                               
                                                                       
@@ -5691,7 +5691,7 @@ Sample Batch Upload Input File request
 
 Server Response on Success
 
-::
+.. code::
 
      HTTP/1.1 202 Accepted                
      {                                    
@@ -5700,7 +5700,7 @@ Server Response on Success
 
 Server Response on Overlarge Input File
 
-::
+.. code::
 
      HTTP/1.1 400 Bad Request             
      {                                    
@@ -5711,14 +5711,14 @@ Server Response on Overlarge Input File
 
 Sample Batch Status Check request
 
-::
+.. code::
 
     GET /v2/batch/123
 
 
 Server Response on Success (job still running)
 
-::
+.. code::
 
     HTTP/1.1 200 OK
     {
@@ -5727,7 +5727,7 @@ Server Response on Success (job still running)
 
 Server Response on Success (job finished)
 
-::
+.. code::
 
     HTTP/1.1 200 OK
     {
@@ -5739,13 +5739,13 @@ Server Response on Success (job finished)
 
 Sample Batch Error Message request
 
-::
+.. code::
 
     GET /v2/batch/123/errors
 
 Server Response on Success (job still running)
 
-::
+.. code::
 
     HTTP/1.1 400 Bad Request
     {
@@ -5754,7 +5754,7 @@ Server Response on Success (job still running)
 
 Server Response on Success (job finished):
 
-::
+.. code::
 
     HTTP/1.1 200 OK
     Content-Type: application/octet-stream ; boundary=
@@ -5937,7 +5937,7 @@ Retrieving All IP Addresses with a Certain Tag
 Using paginated queries, a user can continue to pull the remaining IP
 Addresses, if they number more than the default page size:
 
-::
+.. code::
 
     /v2/tags/<TAGNAME>/indicators/addresses
 
@@ -5952,7 +5952,7 @@ A user can also take the Signature IDs from the results and issue
 further queries to download the Signatures themselves, as detailed in
 the Signatures section:
 
-::
+.. code::
 
     /v2/indicators/files/<FILE_HASH>/groups/signatures
 
@@ -5967,7 +5967,7 @@ Retrieving All Incidents from a Community
 Using paginated queries, a user can continue to pull the remaining
 Incidents, if they number more than the default page size:
 
-::
+.. code::
 
     /v2/groups/incidents?owner=Common%20Community
 
@@ -5982,19 +5982,19 @@ Exploring an Incident’s Indicators of Interest
 This will return a summary of all Indicators associated to a specified
 Incident:
 
-::
+.. code::
 
     /v2/groups/incidents/<INCIDENT_ID>/indicators
 
 This will return the Incident's associated file Indicators:
 
-::
+.. code::
 
     /v2/groups/incidents/<INCIDENT_ID>/indicators/files
 
 This will return the Incident's associated address Indicators:
 
-::
+.. code::
 
     /v2/groups/incidents/<INCIDENT_ID>/indicators/addresses
 
@@ -6020,7 +6020,7 @@ Note that the first query will return the body of the newly created
 Incident whose ID must be captured to specify later in the third query
 to produce the Association:
 
-::
+.. code::
 
     POST /v2/groups/incidents
     {
@@ -6046,7 +6046,7 @@ Tracking a "Times Seen" Attribute
 
 Creates IP Address Indicator
 
-::
+.. code::
 
      POST /v2/indicators/addresses                            
      {                                                        
@@ -6057,7 +6057,7 @@ Creates IP Address Indicator
 
 Adds the tag "Tracked" to the above IP Address
 
-::
+.. code::
 
      POST /v2/indicators/addresses/192.168.0.1/tags/Tracked   
 
@@ -6065,7 +6065,7 @@ Create the "Times Seen" Attribute on the above IP Address. Note that
 this Attribute Type must be created by an Organization Administrator
 (via the ThreatConnect web GUI).
 
-::
+.. code::
 
      POST /v2/indicators/addresses/192.168.0.1/attributes     
      {                                                        
@@ -6075,13 +6075,13 @@ this Attribute Type must be created by an Organization Administrator
 
 Get all attributes attached to an IP Address
 
-::
+.. code::
 
      GET /v2/indicators/addresses/192.168.0.1/attributes      
 
 Increment the "Times Seen" Attribute by one
 
-::
+.. code::
 
      PUT /v2/indicators/addresses/192.168.0.1/attributes/1234 
      {                                                        
@@ -6090,7 +6090,7 @@ Increment the "Times Seen" Attribute by one
 
 Remove the "Tracked" Tag from the specified IP Address
 
-::
+.. code::
 
      DELETE /v2/indicators/addresses/192.168.0.1/tags/Tracked 
 
