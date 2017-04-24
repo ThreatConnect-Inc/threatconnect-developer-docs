@@ -164,8 +164,7 @@ provide the proxy user and proxy password as parameters.
 Advanced Filtering
 ------------------
 
-    A list of Filters can also be retrieved by using the
-    ``filter1.filters`` property:
+A list of Filters can also be retrieved by using the ``filter1.filters`` property:
 
 .. 
     no-test
