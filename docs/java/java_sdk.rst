@@ -305,12 +305,12 @@ runtime environment.
 `Example
 Applications <https://github.com/ThreatConnect-Inc/threatconnect-java/tree/master/threatconnect-sdk-core/src/main/java/com/threatconnect/sdk/examples>`__
 
-Supported Version
+**Supported Version**
 
 ThreatConnect Java integrations require Oracle JRE 7 or later. OpenJRE
 is not supported.
 
-Third-Party Libraries
+**Third-Party Libraries**
 
 These libraries are automatically included in the classpath of every
 Java app. There is no need to include these libraries in the

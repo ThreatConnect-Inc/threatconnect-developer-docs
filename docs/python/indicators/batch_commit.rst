@@ -86,7 +86,7 @@ batch configuration before uploading a batch Indicator file to the
 platform. For more information on the purpose of each line of code, see
 the **Code Highlights** section below.
 
-Supported Functions and Properties
+**Supported Functions and Properties**
 
 +--------------------------+-------------------------------+------------+-------------------------+
 | Property Name            | Method                        | Required   | Allowable Values        |
