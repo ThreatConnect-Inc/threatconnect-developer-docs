@@ -7,6 +7,4 @@ A URL Indicator represents a valid URL, including protocol (e.g., http://www.exa
 
 .. include:: indicators/urls/crud/create.rst
 
-.. include:: indicators/urls/crud/update.rst
-
 .. include:: indicators/urls/crud/delete.rst

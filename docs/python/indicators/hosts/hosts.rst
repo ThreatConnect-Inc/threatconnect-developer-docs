@@ -7,6 +7,4 @@ A Host Indicator represents a valid hostname, which is also referred to as a dom
 
 .. include:: indicators/hosts/crud/create.rst
 
-.. include:: indicators/hosts/crud/update.rst
-
 .. include:: indicators/hosts/crud/delete.rst

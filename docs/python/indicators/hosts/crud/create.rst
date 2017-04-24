@@ -1,35 +1,45 @@
 Create Hosts
 ^^^^^^^^^^^^
 
-The example below demonstrates how to create a Host Indicator Resource
-in the ThreatConnect platform:
+The example below demonstrates how to create a Host Indicator in the ThreatConnect platform:
 
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 10-11,25-26
 
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
+    # instantiate an Indicators container
     indicators = tc.indicators()
-        
+
     owner = 'Example Community'
+
+    # create a new Indicator in the given owner
     indicator = indicators.add('example.com', owner)
+    # set the confidence rating for the Indicator
     indicator.set_confidence(75)
+    # set the threat rating for the Indicator
     indicator.set_rating(2.5)
 
-    indicator.add_attribute('Description', 'Example Attribute')
-    indicator.add_tag('EXAMPLE')
-    indicator.set_security_label('TLP Green')
+    # add a description attribute
+    adversary.add_attribute('Description', 'Description Example')
+    # add a tag
+    adversary.add_tag('Example')
+    # add a security label
+    adversary.set_security_label('TLP Green')
 
     try:
+        # create the Indicator
         indicator.commit()
     except RuntimeError as e:
         print('Error: {0}'.format(e))
         sys.exit(1)
 
-Automatically enrich indicator with DNS resolution or ownership
-information from a third-party service
+.. note:: In the prior example, no API calls are made until the ``commit()`` method is invoked.
+
+Optionally, turn on DNS resolution and/or ownership information for the host.
 
 .. 
     no-test
@@ -37,32 +47,8 @@ information from a third-party service
 .. code-block:: python
     :linenos:
 
-    # Query PTR record for a given domain, or {A, AAAA} record for a given IP
+    # Query PTR record for a given host
     indicator.set_dns_active(True)
 
-    # Look up IP or domain ownership information 
-    indicator.set_whois_active(True) 
-
-Code Highlights
-
-+----------------------------------------------+--------------------------------------------------------------------------------------+
-| Snippet                                      | Description                                                                          |
-+==============================================+======================================================================================+
-| ``tc = ThreatConnect(api_access_id,...``     | Instantiate the ThreatConnect object.                                                |
-+----------------------------------------------+--------------------------------------------------------------------------------------+
-| ``indicators = tc.indicators()``             | Instantiate an Indicator container object.                                           |
-+----------------------------------------------+--------------------------------------------------------------------------------------+
-| ``indicator = indicators.add('example.....`` | Add a Resource object setting the value and Owner.                                   |
-+----------------------------------------------+--------------------------------------------------------------------------------------+
-| ``indicator.set_confidence(75)``             | Set the Confidence value for this Indicator.                                         |
-+----------------------------------------------+--------------------------------------------------------------------------------------+
-| ``indicator.set_rating(2.5)``                | Set the Rating value for this Indicator.                                             |
-+----------------------------------------------+--------------------------------------------------------------------------------------+
-| ``indicator.add_attribute('Description...``  | Add an Attribute of type **Description** to the Resource.                            |
-+----------------------------------------------+--------------------------------------------------------------------------------------+
-| ``indicator.add_tag('EXAMPLE')``             | Add a Tag to the Resource.                                                           |
-+----------------------------------------------+--------------------------------------------------------------------------------------+
-| ``indicator.set_security_label('TLP Gre..``  | Add a Security Label to the Resource.                                                |
-+----------------------------------------------+--------------------------------------------------------------------------------------+
-| ``indicator.commit()``                       | Trigger multiple API calls to write Resource, Attributes, Security Labels, and Tags. |
-+----------------------------------------------+--------------------------------------------------------------------------------------+
+    # Look up host ownership information
+    indicator.set_whois_active(True)

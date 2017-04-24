@@ -4,32 +4,37 @@ Retrieve Hosts
 Retrieving a Single Host
 """"""""""""""""""""""""
 
+This example demonstrates how to retrieve a Host Indicator from the ThreatConnect platform. The ``add_indicator`` filter allows us to specify the specific Indicator we would like to retrieve.
+
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 8-10,13-14
 
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
-    # instantiate indicators object
+    # instantiate an Indicators object
     indicators = tc.indicators()
 
-    # set a filter to retrieve a specific host indicator
+    # set a filter to retrieve a specific Host Indicator
     filter1 = indicators.add_filter()
     filter1.add_indicator('example.com')
 
     try:
+        # retrieve the Indicators
         indicators.retrieve()
     except RuntimeError as e:
         print('Error: {0}'.format(e))
         sys.exit(1)
 
-    # if the host was found, print some information about it
+    # prove that there is only one Indicator retrieved
+    assert len(indicators) == 1
+
+    # if the Host was found, print some information about it
     for indicator in indicators:
         print(indicator.indicator)
         print(indicator.weblink)
-
-This example demonstrates how to retrieve a specific host indicator. The ``add_indicator`` filter allows us to specify the host which we would like to retrieve.
 
 Retrieving DNS Resolutions
 ++++++++++++++++++++++++++
@@ -38,6 +43,7 @@ The example below demonstrates how to retrieve a Host Indicator's DNS Resolution
 
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 22-23,25-30
 
     ...
 
@@ -60,7 +66,10 @@ The example below demonstrates how to retrieve a Host Indicator's DNS Resolution
     for indicator in indicators:
         print(indicator.indicator)
 
+        # load the DNS resolutions
         indicator.load_dns_resolutions()
+
+        # iterate through the Host Indicator's DNS resolutions
         for dns in indicator.dns_resolutions:
             print(dns.ip)
             print(dns.owner_name)
@@ -69,45 +78,35 @@ The example below demonstrates how to retrieve a Host Indicator's DNS Resolution
 
 .. note:: DNS Resolutions are only supported for the Host Indicator type.
 
-**Code Highlights**
-
-+-------------------------------------------+---------------------------------------------------------------------+
-| Snippet                                   | Description                                                         |
-+===========================================+=====================================================================+
-| ``indicator.load_dns_resolutions()``      | Trigger API call to load DNS Resolutions into the Indicator object. |
-+-------------------------------------------+---------------------------------------------------------------------+
-| ``for dns in indicator.dns_resolutions:`` | Iterate over the DNS Resolutions property object generator.         |
-+-------------------------------------------+---------------------------------------------------------------------+
-| ``print(dns.ip)``                         | Display the **'ip'** property of the Attribute object.              |
-+-------------------------------------------+---------------------------------------------------------------------+
-
 Retrieving Multiple Hosts
 """""""""""""""""""""""""
 
+This example demonstrates how to retrieve all Host Indicators in the default organization. The ``IndicatorType.HOSTS`` which is passed into the filter specifies which Indicator type we want to retrieve.
+
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 1-2,11-12,15-16
 
-    # this import allows us to specify which indicator type we want to import
+    # this import allows us to specify which Indicator type we want to retrieve
     from threatconnect.Config.IndicatorType import IndicatorType
 
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
-    # instantiate indicators object
+    # instantiate Indicators object
     indicators = tc.indicators()
 
-    # set a filter to retrieve file indicators
+    # set a filter to retrieve Host Indicators
     filter1 = indicators.add_filter(IndicatorType.HOSTS)
 
     try:
+        # retrieve the Indicators
         indicators.retrieve()
     except RuntimeError as e:
         print('Error: {0}'.format(e))
         sys.exit(1)
 
+    # iterate through the retrieved Hosts and print them
     for indicator in indicators:
-        print(indicator.indicator)
-        print(indicator.weblink)
-
-This example demonstrates how to retrieve all host indicators in the default organization. The ``IndicatorType.HOSTS`` which is passed into the filter specifies which indicator type we want to retrieve.
+        print(indicator)

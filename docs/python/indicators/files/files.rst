@@ -7,6 +7,4 @@ A File Indicator represents a unique file hash or series of hashes (e.g., MD5, S
 
 .. include:: indicators/files/crud/create.rst
 
-.. include:: indicators/files/crud/update.rst
-
 .. include:: indicators/files/crud/delete.rst

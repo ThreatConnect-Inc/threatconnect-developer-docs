@@ -7,6 +7,4 @@ An Address Indicator represents a valid IP Address, either IPv4 or IPv6 (e.g., 1
 
 .. include:: indicators/addresses/crud/create.rst
 
-.. include:: indicators/addresses/crud/update.rst
-
 .. include:: indicators/addresses/crud/delete.rst
