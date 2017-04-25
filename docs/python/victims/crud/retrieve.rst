@@ -4,27 +4,34 @@ Retrieve Victims
 Retrieving a Single Victim
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The example below demonstrates how to retrieve a Victim Resource from the ThreatConnect platform:
+The example below demonstrates how to retrieve a specific Victim Resource from the ThreatConnect platform:
 
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 8-10,13-14
 
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
+    # instantiate a Victims object
     victims = tc.victims()
 
-    # set a filter to retrieve the victim with the id: 123456
+    # set a filter to retrieve the Victim with the id: 123456
     filter1 = victims.add_filter()
     filter1.add_id(123456)
 
     try:
+        # retrieve the Victim
         victims.retrieve()
     except RuntimeError as e:
         print('Error: {0}'.format(e))
         sys.exit(1)
 
+    # prove that there is only one Victim retrieved
+    assert len(victims) == 1
+
+    # if the Victim was found, print some information about it
     for victim in victims:
         print(obj.id)
         print(obj.name)
@@ -43,24 +50,30 @@ The example below demonstrates how to retrieve multiple Victim Resources from th
 
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 10-12,16-17
 
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
+    # instantiate a Victims object
     victims = tc.victims()
+
     owner = 'Example Community'
 
+    # set a filter to retrieve all Victims from the given owner that have the tag: 'Example'
     filter1 = victims.add_filter()
     filter1.add_owner(owner)
-    filter1.add_adversary_id(531)
+    filter1.add_tag('Example')
 
     try:
+        # retrieve the Victims
         victims.retrieve()
     except RuntimeError as e:
         print('Error: {0}'.format(e))
         sys.exit(1)
 
+    # iterate through the retrieved Victims and print their properties
     for victim in victims:
         print(obj.id)
         print(obj.name)
@@ -69,29 +82,3 @@ The example below demonstrates how to retrieve multiple Victim Resources from th
         print(obj.suborg)
         print(obj.work_location)
         print(obj.weblink)
-
-This example will demonstrate how to retrieve Victims while applying
-filters. In this example two filters will be added, one for the Owner
-and another for an Adversary ID. The result set returned from this
-example would contain any Victim in the "Example Community" Owner that
-has associations with the Adversary having the supplied ID.
-
-**Code Highlights**
-
-+----------------------------------------------+----------------------------------------------------------------------------------------+
-| Snippet                                      | Description                                                                            |
-+==============================================+========================================================================================+
-| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                                                  |
-+----------------------------------------------+----------------------------------------------------------------------------------------+
-| ``victims = tc.victims()``                   | Instantiate a Victims container object.                                                |
-+----------------------------------------------+----------------------------------------------------------------------------------------+
-| ``filter1 = victims.add_filter()``           | Add a filter object to the Victims container object (support multiple filter objects). |
-+----------------------------------------------+----------------------------------------------------------------------------------------+
-| ``filter1.add_adversary_id(531)``            | Add API filter to retrieve Victims associated with the given Adversary.                |
-+----------------------------------------------+----------------------------------------------------------------------------------------+
-| ``victims.retrieve()``                       | Trigger the API request and retrieve the Victims intelligence data.                    |
-+----------------------------------------------+----------------------------------------------------------------------------------------+
-| ``for victim in victims:``                   | Iterate over the Victims container object generator.                                   |
-+----------------------------------------------+----------------------------------------------------------------------------------------+
-| ``print(victim.id)``                         | Display the **id** property of the Victim object.                                      |
-+----------------------------------------------+----------------------------------------------------------------------------------------+
