@@ -51,7 +51,7 @@ Post filters are applied on the results returned by the API request.
 | ``add_pf_date_added()`` | str        | Filter Groups on date added. |
 +-------------------------+------------+------------------------------+
 
-The example below demonstrates how to use the ``add_pf_name()`` filter to find a group with the name "Example Group".
+The example below demonstrates how to use the ``add_pf_name()`` filter to find a Group with the name 'Example Group'.
 
 .. code-block:: python
     :linenos:
@@ -66,11 +66,11 @@ The example below demonstrates how to use the ``add_pf_name()`` filter to find a
 
     owner = 'Example Community'
     filter1 = groups.add_filter()
-    # only retrieve groups from the given owner
+    # only retrieve Groups from the given owner
     filter1.add_owner(owner)
 
+    # add a filter for Groups whose name matches the desired_group_name
     desired_group_name = 'Example Group'
-    # add a filter for groups whose name matches the desired_group_name
     filter1.add_pf_name(desired_group_name)
 
     try:
@@ -87,13 +87,13 @@ The example below demonstrates how to use the ``add_pf_name()`` filter to find a
 
         # Group specific property
         print(group.type)
-        print("")
+        print('')
 
-The example below demonstrates how to use the ``add_pf_date_added()`` filter to find all groups added within the past seven days.
+The example below demonstrates how to use the ``add_pf_date_added()`` filter to find all Groups added within the past seven days.
 
 .. code-block:: python
     :linenos:
-    :emphasize-lines: 20,22-23
+    :emphasize-lines: 18-21,23-24
 
     import datetime
 
@@ -107,16 +107,17 @@ The example below demonstrates how to use the ``add_pf_date_added()`` filter to 
     groups = tc.groups()
 
     owner = 'Example Community'
+
     filter1 = groups.add_filter()
-    # only retrieve groups from the given owner
+    # only retrieve Groups from the given owner
     filter1.add_owner(owner)
 
     # get a datestamp for the past week
     today = datetime.datetime.today()
     delta = datetime.timedelta(days = 7)
-    datestamp = (today - delta).isoformat() + "Z"
+    datestamp = (today - delta).isoformat() + 'Z'
 
-    # add a filter to see all groups with a date added datestamp greater than (thus, more recent) than the datestamp
+    # add a filter to see all Groups with a date added datestamp greater than (thus, more recent) than the datestamp
     filter1.add_pf_date_added(datestamp, FilterOperator.GE)
 
     try:
@@ -133,6 +134,6 @@ The example below demonstrates how to use the ``add_pf_date_added()`` filter to 
 
         # Group specific property
         print(group.type)
-        print("")
+        print('')
 
-.. note:: Both of the examples above will first retrieve *all* of the groups from the owner and will then apply the post filter.
+.. note:: Both of the examples above will first retrieve *all* of the Indicators from the owner and will then apply the post filter.
