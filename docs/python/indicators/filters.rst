@@ -62,3 +62,75 @@ Post filters are applied on the results returned by the API request.
 +---------------------------------------+------------+------------------------------------------------+
 | ``add_pf_type()``                     | str        | Filter Indicators on Indicator type.           |
 +---------------------------------------+------------+------------------------------------------------+
+
+
+The example below demonstrates how to use each of the post filters listed above:
+
+.. code-block:: python
+    :linenos:
+    :emphasize-lines: 19-20,22-23,25-28,30-31,33-34,36-37,39-40,42-43,45-46,48-49
+
+    import datetime
+
+    from threatconnect.Config.FilterOperator import FilterOperator
+
+    ...
+
+    tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
+
+    # create an Indicators object
+    indicators = tc.indicators()
+
+    owner = 'Example Community'
+
+    filter1 = indicators.add_filter()
+
+    # only retrieve Indicators from the given owner
+    filter1.add_owner(owner)
+
+    # add a filter for Indicators that contain a 'Description' attribute
+    filter1.add_pf_attribute('Description', FilterOperator.EQ)
+
+    # add a filter for Indicators with a confidence rating greater than or equal to 50
+    filter1.add_pf_confidence(50, FilterOperator.GE)
+
+    # get a datestamp for the past week
+    today = datetime.datetime.today()
+    delta = datetime.timedelta(days = 7)
+    previous_week_datestamp = (today - delta).isoformat() + 'Z'
+
+    # add a filter for Indicators that have been added at a date greater (thus, more recent) than a week ago
+    filter1.add_pf_date_added(previous_week_datestamp, FilterOperator.GT)
+
+    # add a filter for Indicators that have been modified at a date greater (thus, more recent) than a week ago
+    filter1.add_pf_last_modified(previous_week_datestamp, FilterOperator.GT)
+
+    # add a filter for Indicators that have a threat rating greater than or equal to 3
+    filter1.add_pf_rating(3, FilterOperator.GE)
+
+    # add a filter for Indicators that have a threat assess confidence rating greater than or equal to 50
+    filter1.add_pf_threat_assess_confidence(50, FilterOperator.GE)
+
+    # add a filter for Indicators that have a threat assess threat rating greater than or equal to 3
+    filter1.add_pf_threat_assess_rating(3, FilterOperator.GE)
+
+    # add a filter for Indicators to return only Address Indicators
+    filter1.add_pf_type('Address', FilterOperator.EQ)
+
+    # alternatively, add a filter for Indicators to return all indicators that are NOT Address Indicators
+    filter1.add_pf_type('Address', FilterOperator.NE)
+
+    try:
+        # retrieve Indicators
+        indicators.retrieve()
+    except RuntimeError as e:
+        print('Error: {0}'.format(e))
+
+    for indicator in indicators:
+        print(indicator.id)
+        print(indicator.name)
+        print(indicator.date_added)
+        print(indicator.weblink)
+        print('')
+
+.. note:: The example above will first retrieve *all* of the Indicators from the owner and will then apply the post filter(s).
