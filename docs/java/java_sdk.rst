@@ -304,25 +304,25 @@ Java app. There is no need to include these libraries in the
 installation zip file. There is also no need to include these libraries
 in the ``configuration`` variable named ``java.classpath``.
 
-+-----------------------------------------------------------------------------------+-----------+
-| Library                                                                           | Version   |
-+===================================================================================+===========+
-| `ThreatConnect SDK <https://github.com/ThreatConnect-Inc/threatconnect-java>`__   | 2.0.0     |
-+-----------------------------------------------------------------------------------+-----------+
-| `HTTP Core <https://hc.apache.org/httpcomponents-core-ga/>`__                     | 4.4.1     |
-+-----------------------------------------------------------------------------------+-----------+
-| `HTTP Client <https://hc.apache.org/httpcomponents-client-ga/>`__                 | 4.4.1     |
-+-----------------------------------------------------------------------------------+-----------+
-| `Commons Logging <http://commons.apache.org/proper/commons-logging/>`__           | 1.2       |
-+-----------------------------------------------------------------------------------+-----------+
-| `Commons Codec <https://commons.apache.org/proper/commons-codec/>`__              | 1.9       |
-+-----------------------------------------------------------------------------------+-----------+
-| `Jackson Core <https://github.com/FasterXML/jackson-core>`__                      | 2.5.3     |
-+-----------------------------------------------------------------------------------+-----------+
-| `Jackson Databind <https://github.com/FasterXML/jackson-databind/>`__             | 2.5.3     |
-+-----------------------------------------------------------------------------------+-----------+
-| `Jackson Annotation <https://github.com/FasterXML/jackson-annotations>`__         | 2.5.0     |
-+-----------------------------------------------------------------------------------+-----------+
++---------------------------------------------------------------------------------+---------+
+| Library                                                                         | Version |
++=================================================================================+=========+
+| `ThreatConnect SDK <https://github.com/ThreatConnect-Inc/threatconnect-java>`__ | 2.0.0   |
++---------------------------------------------------------------------------------+---------+
+| `HTTP Core <https://hc.apache.org/httpcomponents-core-ga/>`__                   | 4.4.1   |
++---------------------------------------------------------------------------------+---------+
+| `HTTP Client <https://hc.apache.org/httpcomponents-client-ga/>`__               | 4.4.1   |
++---------------------------------------------------------------------------------+---------+
+| `Commons Logging <http://commons.apache.org/proper/commons-logging/>`__         | 1.2     |
++---------------------------------------------------------------------------------+---------+
+| `Commons Codec <https://commons.apache.org/proper/commons-codec/>`__            | 1.9     |
++---------------------------------------------------------------------------------+---------+
+| `Jackson Core <https://github.com/FasterXML/jackson-core>`__                    | 2.5.3   |
++---------------------------------------------------------------------------------+---------+
+| `Jackson Databind <https://github.com/FasterXML/jackson-databind/>`__           | 2.5.3   |
++---------------------------------------------------------------------------------+---------+
+| `Jackson Annotation <https://github.com/FasterXML/jackson-annotations>`__       | 2.5.0   |
++---------------------------------------------------------------------------------+---------+
 
 Deployment Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -619,9 +619,7 @@ illustrate the usage of different methods in the ReaderFactory.
 IterableResponse Class
 ~~~~~~~~~~~~~~~~~~~~~~
 
-    Using this iterable, the developer can utilize traditional
-    ``iterator()`` methods to iterate through the results, or, more
-    concisely, the Java for each loop is as follows:
+Using this iterable, the developer can utilize traditional ``iterator()`` methods to iterate through the results, or, more concisely, the Java for each loop is as follows:
 
 .. code:: java
 
