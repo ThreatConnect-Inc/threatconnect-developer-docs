@@ -49,30 +49,17 @@ is the preferred method to use the SDK:
 .. code:: xml
 
        <properties>
-            <threatconnect-sdk.version>2.0.3</threatconnect-sdk.version>
+            <threatconnect-sdk.version>2.7.3</threatconnect-sdk.version>
         </properties>
-
-
-    <!-- repository entry -->
-      <repositories>
-          <repository>
-              <id>threatconnect-java-mvn-repo</id>
-             <url>https://raw.github.com/ThreatConnect-Inc/threatconnect-java/mvn-repo-${threatconnect-sdk.version}/</url>
-               <snapshots>
-                  <enabled>true</enabled>
-                  <updatePolicy>always</updatePolicy>
-              </snapshots>
-          </repository>
-      </repositories>
 
 
     <!-- sdk dependency -->
         <dependencies>
             <dependency>
-                <groupId>com.threatconnect.sdk</groupId>
+                <groupId>com.threatconnect.sdk.core</groupId>
                 <artifactId>threatconnect-sdk</artifactId>
                 <version>${threatconnect-sdk.version}</version>
-             </dependency>
+            </dependency>
         </dependencies>
 
 Programmatic Configuration
@@ -352,23 +339,22 @@ variables outside of the lifetime of the job execution. Because all job
 executions are run in a sandboxed environment, app developers should
 never hard-code ThreatConnect Parameters.
 
-+--------------+-------------------------------------------------------------+
-| ThreatConnec | Description                                                 |
-| t            |                                                             |
-| Parameter    |                                                             |
-+==============+=============================================================+
-| ``tc_log_pat | Log path for the specific instance of the job execution.    |
-| h``          |                                                             |
-+--------------+-------------------------------------------------------------+
-| ``tc_tmp_pat | Temporary storage path for the specific instance of thejob  |
-| h``          | execution.                                                  |
-+--------------+-------------------------------------------------------------+
-| ``tc_out_pat | Output path for the specific instance of the job execution. |
-| h``          |                                                             |
-+--------------+-------------------------------------------------------------+
-| ``tc_api_pat | Path to the ThreatConnect API server.                       |
-| h``          |                                                             |
-+--------------+-------------------------------------------------------------+
++----------------------+-------------------------------------------------------------+
+| ThreatConnect        | Description                                                 |
+| Parameter            |                                                             |
++======================+=============================================================+
+| ``tc_log_path``      | Log path for the specific instance of the job execution.    |
+|                      |                                                             |
++----------------------+-------------------------------------------------------------+
+| ``tc_tmp_path``      | Temporary storage path for the specific instance of thejob  |
+|                      | execution.                                                  |
++----------------------+-------------------------------------------------------------+
+| ``tc_out_path``      | Output path for the specific instance of the job execution. |
+|                      |                                                             |
++----------------------+-------------------------------------------------------------+
+| ``tc_api_path``      | Path to the ThreatConnect API server.                       |
+|                      |                                                             |
++----------------------+-------------------------------------------------------------+
 
 Job Results
 ~~~~~~~~~~~
