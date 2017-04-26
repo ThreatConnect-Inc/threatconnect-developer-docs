@@ -339,23 +339,22 @@ variables outside of the lifetime of the job execution. Because all job
 executions are run in a sandboxed environment, app developers should
 never hard-code ThreatConnect Parameters.
 
-+--------------+-------------------------------------------------------------+
-| ThreatConnec | Description                                                 |
-| t            |                                                             |
-| Parameter    |                                                             |
-+==============+=============================================================+
-| ``tc_log_pat | Log path for the specific instance of the job execution.    |
-| h``          |                                                             |
-+--------------+-------------------------------------------------------------+
-| ``tc_tmp_pat | Temporary storage path for the specific instance of thejob  |
-| h``          | execution.                                                  |
-+--------------+-------------------------------------------------------------+
-| ``tc_out_pat | Output path for the specific instance of the job execution. |
-| h``          |                                                             |
-+--------------+-------------------------------------------------------------+
-| ``tc_api_pat | Path to the ThreatConnect API server.                       |
-| h``          |                                                             |
-+--------------+-------------------------------------------------------------+
++----------------------+-------------------------------------------------------------+
+| ThreatConnect        | Description                                                 |
+| Parameter            |                                                             |
++======================+=============================================================+
+| ``tc_log_path``      | Log path for the specific instance of the job execution.    |
+|                      |                                                             |
++----------------------+-------------------------------------------------------------+
+| ``tc_tmp_path``      | Temporary storage path for the specific instance of thejob  |
+|                      | execution.                                                  |
++----------------------+-------------------------------------------------------------+
+| ``tc_out_path``      | Output path for the specific instance of the job execution. |
+|                      |                                                             |
++----------------------+-------------------------------------------------------------+
+| ``tc_api_path``      | Path to the ThreatConnect API server.                       |
+|                      |                                                             |
++----------------------+-------------------------------------------------------------+
 
 Job Results
 ~~~~~~~~~~~
