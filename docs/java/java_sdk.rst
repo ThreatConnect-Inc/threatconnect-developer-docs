@@ -49,30 +49,17 @@ is the preferred method to use the SDK:
 .. code:: xml
 
        <properties>
-            <threatconnect-sdk.version>2.0.3</threatconnect-sdk.version>
+            <threatconnect-sdk.version>2.7.3</threatconnect-sdk.version>
         </properties>
-
-
-    <!-- repository entry -->
-      <repositories>
-          <repository>
-              <id>threatconnect-java-mvn-repo</id>
-             <url>https://raw.github.com/ThreatConnect-Inc/threatconnect-java/mvn-repo-${threatconnect-sdk.version}/</url>
-               <snapshots>
-                  <enabled>true</enabled>
-                  <updatePolicy>always</updatePolicy>
-              </snapshots>
-          </repository>
-      </repositories>
 
 
     <!-- sdk dependency -->
         <dependencies>
             <dependency>
-                <groupId>com.threatconnect.sdk</groupId>
+                <groupId>com.threatconnect.sdk.core</groupId>
                 <artifactId>threatconnect-sdk</artifactId>
                 <version>${threatconnect-sdk.version}</version>
-             </dependency>
+            </dependency>
         </dependencies>
 
 Programmatic Configuration
