@@ -432,27 +432,50 @@ ThreatConnect API. It covers all available resources exposed through the
 ThreatConnect API. The primary classes in the Reader Package, which
 encompass all read functionality from the API, are listed below.
 
-+-----------------------------------------------------------+
-| Class                                                     |
-+===========================================================+
-| ``ReaderAdapterFactory``                                  |
-+-----------------------------------------------------------+
-| ``AbstractGroupReaderAdapter<T extends Group>``           |
-+-----------------------------------------------------------+
-| ``AbstractIndicatorReaderAdapter<T extends Indicator>``   |
-+-----------------------------------------------------------+
-| ``AbstractReaderAdapter``                                 |
-+-----------------------------------------------------------+
-| ``OwnerReaderAdapter``                                    |
-+-----------------------------------------------------------+
-| ``SecurityLabelReaderAdapter``                            |
-+-----------------------------------------------------------+
-| ``TagReaderAdapter``                                      |
-+-----------------------------------------------------------+
-| ``TaskReaderAdapter``                                     |
-+-----------------------------------------------------------+
-| ``VictimReaderAdapter``                                   |
-+-----------------------------------------------------------+
++--------------------------------------+---------------------------------+
+| Class                                | *Description*                   |
++======================================+=================================+
+| ``ReaderAdapterFactory``             | Primary entry point to          |
+|                                      | instantiate all readers in the  |
+|                                      | Reader Package.                 |
++--------------------------------------+---------------------------------+
+| ``AbstractGroupReaderAdapter<T exten | Generic Group Reader Abstract   |
+| ds Group>``                          | class. Concrete object          |
+|                                      | available in                    |
+|                                      | ReaderAdapterFactory.           |
++--------------------------------------+---------------------------------+
+| ``AbstractIndicatorReaderAdapter<T e | Generic Indicator Reader        |
+| xtends Indicator>``                  | Abstract class. Concrete object |
+|                                      | available in                    |
+|                                      | ReaderAdapterFactory.           |
++--------------------------------------+---------------------------------+
+| ``AbstractReaderAdapter``            | Base Abstract Reader for all    |
+|                                      | Reader Adapters in the Reader   |
+|                                      | Package.                        |
++--------------------------------------+---------------------------------+
+| ``OwnerReaderAdapter``               | Concrete Reader for             |
+|                                      | Organization owner data.        |
+|                                      | Convenience object available in |
+|                                      | ReaderAdapterFactory.           |
++--------------------------------------+---------------------------------+
+| ``SecurityLabelReaderAdapter``       | Concrete Reader for             |
+|                                      | SecurityLabel data. Convenience |
+|                                      | object available in             |
+|                                      | ReaderAdapterFactory.           |
++--------------------------------------+---------------------------------+
+| ``TagReaderAdapter``                 | Concrete Reader for Tag data.   |
+|                                      | Convenience object available in |
+|                                      | ReaderAdapterFactory.           |
++--------------------------------------+---------------------------------+
+| ``TaskReaderAdapter``                | Concrete Reader for Task data.  |
+|                                      | Convenience object available in |
+|                                      | ReaderAdapterFactory.           |
++--------------------------------------+---------------------------------+
+| ``VictimReaderAdapter``              | Concrete Reader for Victim      |
+|                                      | data. Convenience object        |
+|                                      | available in                    |
+|                                      | ReaderAdapterFactory.           |
++--------------------------------------+---------------------------------+
 
 Reader Factory
 ~~~~~~~~~~~~~~
@@ -462,43 +485,44 @@ Adapters. It provides convenience objects for all the Adapters in the
 Reader Package. Below is a list of the static methods and return types
 of the ReaderAdapterFactory:
 
-+-----------------------------------------------------------+
-| Type                                                      |
-+===========================================================+
-| ``static AbstractGroupReaderAdapter<Adversary>``          |
-+-----------------------------------------------------------+
-| ``static AbstractGroupReaderAdapter<Email>``              |
-+-----------------------------------------------------------+
-| ``static AbstractGroupReaderAdapter<Incident>``           |
-+-----------------------------------------------------------+
-| ``static AbstractGroupReaderAdapter<Signature>``          |
-+-----------------------------------------------------------+
-| ``static AbstractGroupReaderAdapter<Threat>``             |
-+-----------------------------------------------------------+
-| ``static AbstractIndicatorReaderAdapter<Address>``        |
-+-----------------------------------------------------------+
-| ``static AbstractIndicatorReaderAdapter<EmailAddress>``   |
-+-----------------------------------------------------------+
-| ``static AbstractIndicatorReaderAdapter<File>``           |
-+-----------------------------------------------------------+
-| ``static AbstractIndicatorReaderAdapter<Host>``           |
-+-----------------------------------------------------------+
-| ``static AbstractIndicatorReaderAdapter<Url>``            |
-+-----------------------------------------------------------+
-| ``static BatchReaderAdapter<Indicator>``                  |
-+-----------------------------------------------------------+
-| ``static DocumentReaderAdapter``                          |
-+-----------------------------------------------------------+
-| ``static OwnerReaderAdapter``                             |
-+-----------------------------------------------------------+
-| ``static SecurityLabelReaderAdapter``                     |
-+-----------------------------------------------------------+
-| ``static TagReaderAdapter``                               |
-+-----------------------------------------------------------+
-| ``static TaskReaderAdapter``                              |
-+-----------------------------------------------------------+
-| ``static VictimReaderAdapter``                            |
-+-----------------------------------------------------------+
+
++---------------------------------------------------------+----------------------------------------------------+
+| Type                                                    | Method                                             |
++=========================================================+====================================================+
+| ``static AbstractGroupReaderAdapter<Adversary>``        | createAdversaryGroupReader(Connection conn)        |
++---------------------------------------------------------+----------------------------------------------------+
+| ``static AbstractGroupReaderAdapter<Email>``            | createEmailGroupReader(Connection conn)            |
++---------------------------------------------------------+----------------------------------------------------+
+| ``static AbstractGroupReaderAdapter<Incident>``         | createIncidentGroupReader(Connection conn)         |
++---------------------------------------------------------+----------------------------------------------------+
+| ``static AbstractGroupReaderAdapter<Signature>``        | createSignatureGroupReader(Connection conn)        |
++---------------------------------------------------------+----------------------------------------------------+
+| ``static AbstractGroupReaderAdapter<Threat>``           | createThreatGroupReader(Connection conn)           |
++---------------------------------------------------------+----------------------------------------------------+
+| ``static AbstractIndicatorReaderAdapter<Address>``      | createAddressIndicatorReader(Connection conn)      |
++---------------------------------------------------------+----------------------------------------------------+
+| ``static AbstractIndicatorReaderAdapter<EmailAddress>`` | createEmailAddressIndicatorReader(Connection conn) |
++---------------------------------------------------------+----------------------------------------------------+
+| ``static AbstractIndicatorReaderAdapter<File>``         | createFileIndicatorReader(Connection conn)         |
++---------------------------------------------------------+----------------------------------------------------+
+| ``static AbstractIndicatorReaderAdapter<Host>``         | createHostIndicatorReader(Connection conn)         |
++---------------------------------------------------------+----------------------------------------------------+
+| ``static AbstractIndicatorReaderAdapter<Url>``          | createUrlIndicatorReader(Connection conn)          |
++---------------------------------------------------------+----------------------------------------------------+
+| ``static BatchReaderAdapter<Indicator>``                | createIndicatorBatchReader(Connection conn)        |
++---------------------------------------------------------+----------------------------------------------------+
+| ``static DocumentReaderAdapter``                        | createDocumentReader(Connection conn)              |
++---------------------------------------------------------+----------------------------------------------------+
+| ``static OwnerReaderAdapter``                           | createOwnerReader(Connection conn)                 |
++---------------------------------------------------------+----------------------------------------------------+
+| ``static SecurityLabelReaderAdapter``                   | createSecurityLabelReader(Connection conn)         |
++---------------------------------------------------------+----------------------------------------------------+
+| ``static TagReaderAdapter``                             | createTagReader(Connection conn)                   |
++---------------------------------------------------------+----------------------------------------------------+
+| ``static TaskReaderAdapter``                            | createTaskReader(Connection conn)                  |
++---------------------------------------------------------+----------------------------------------------------+
+| ``static VictimReaderAdapter``                          | createVictimReader(Connection conn)                |
++---------------------------------------------------------+----------------------------------------------------+
 
 Reader Factory Example
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -733,249 +757,248 @@ AbstractGroupReaderAdapter
 The methods below get data for the Group type (T) linked to this
 Adapter. The uniqueId (P) for Groups is an Integer.
 
-+---------------------------+
-| Type                      |
-+===========================+
-| ``T``                     |
-+---------------------------+
-| ``T``                     |
-+---------------------------+
-| ``IterableResponse<T>``   |
-+---------------------------+
-| ``IterableResponse<T>``   |
-+---------------------------+
-| ``IterableResponse<T>``   |
-+---------------------------+
++-------------------------+----------------------------------------------------------------------------+
+| Type                    | Method                                                                     |
++=========================+============================================================================+
+| ``T``                   | getById(P uniqueId)                                                        |
++-------------------------+----------------------------------------------------------------------------+
+| ``T``                   | getById(P uniqueId, String ownerName)                                      |
++-------------------------+----------------------------------------------------------------------------+
+| ``IterableResponse<T>`` | getForFilters(String ownerName, boolean orParams, ApiFilterType...filters) |
++-------------------------+----------------------------------------------------------------------------+
+| ``IterableResponse<T>`` | getAll()                                                                   |
++-------------------------+----------------------------------------------------------------------------+
+| ``IterableResponse<T>`` | getAll(String ownerName)                                                   |
++-------------------------+----------------------------------------------------------------------------+
 
 The methods below get generic Group objects associated to this Group
 type (T).
 
-+-------------------------------+
-| Type                          |
-+===============================+
-| ``IterableResponse<Group>``   |
-+-------------------------------+
-| ``IterableResponse<Group>``   |
-+-------------------------------+
-| ``String``                    |
-+-------------------------------+
++-----------------------------+--------------------------------+
+| Type                        | Method                         |
++=============================+================================+
+| ``IterableResponse<Group>`` | getAllGroups()                 |
++-----------------------------+--------------------------------+
+| ``IterableResponse<Group>`` | getAllGroups(String ownerName) |
++-----------------------------+--------------------------------+
+| ``String``                  | getAllGroupsAsText()           |
++-----------------------------+--------------------------------+
 
 Associated Groups
 ~~~~~~~~~~~~~~~~~
 
 The methods below get associated Group elements by distinct type.
 
-+-----------------------------------+
-| Type                              |
-+===================================+
-| ``IterableResponse<Group>``       |
-+-----------------------------------+
-| ``IterableResponse<Group>``       |
-+-----------------------------------+
-| ``IterableResponse<Adversary>``   |
-+-----------------------------------+
-| ``IterableResponse<Adversary>``   |
-+-----------------------------------+
-| ``Adversary``                     |
-+-----------------------------------+
-| ``Adversary``                     |
-+-----------------------------------+
-| ``IterableResponse<Email>``       |
-+-----------------------------------+
-| ``IterableResponse<Email>``       |
-+-----------------------------------+
-| ``Email``                         |
-+-----------------------------------+
-| ``Email``                         |
-+-----------------------------------+
-| ``IterableResponse<Incident>``    |
-+-----------------------------------+
-| ``IterableResponse<Incident>``    |
-+-----------------------------------+
-| ``Incident``                      |
-+-----------------------------------+
-| ``Incident``                      |
-+-----------------------------------+
-| ``IterableResponse<Signature>``   |
-+-----------------------------------+
-| ``IterableResponse<Signature>``   |
-+-----------------------------------+
-| ``Signature``                     |
-+-----------------------------------+
-| ``Signature``                     |
-+-----------------------------------+
-| ``IterableResponse<Threat>``      |
-+-----------------------------------+
-| ``IterableResponse<Threat>``      |
-+-----------------------------------+
-| ``Threat``                        |
-+-----------------------------------+
-| ``Threat``                        |
-+-----------------------------------+
++---------------------------------+--------------------------------------------------------------------------------------+
+| Type                            | Method                                                                               |
++=================================+======================================================================================+
+| ``IterableResponse<Group>``     | getAssociatedGroups(Integer uniqueId)                                                |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``IterableResponse<Group>``     | getAssociatedGroups(Integer uniqueId, String ownerName)                              |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``IterableResponse<Adversary>`` | getAssociatedGroupAdversaries(Integer uniqueId)                                      |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``IterableResponse<Adversary>`` | getAssociatedGroupAdversaries(Integer uniqueId, String ownerName)                    |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``Adversary``                   | getAssociatedGroupAdversary(Integer uniqueId, Integer adversaryId)                   |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``Adversary``                   | getAssociatedGroupAdversary(Integer uniqueId, Integer adversaryId, String ownerName) |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``IterableResponse<Email>``     | getAssociatedGroupEmails(Integer uniqueId)                                           |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``IterableResponse<Email>``     | getAssociatedGroupEmails(Integer uniqueId, String ownerName)                         |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``Email``                       | getAssociatedGroupEmail(Integer uniqueId, Integer emailId)                           |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``Email``                       | getAssociatedGroupEmail(Integer uniqueId, Integer emailId, String ownerName)         |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``IterableResponse<Incident>``  | getAssociatedGroupIncidents(Integer uniqueId)                                        |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``IterableResponse<Incident>``  | getAssociatedGroupIncidents(Integer uniqueId, String ownerName)                      |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``Incident``                    | getAssociatedGroupIncident(Integer uniqueId, Integer incidentId)                     |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``Incident``                    | getAssociatedGroupIncident(Integer uniqueId, Integer incidentId, String ownerName)   |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``IterableResponse<Signature>`` | getAssociatedGroupSignatures(Integer uniqueId)                                       |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``IterableResponse<Signature>`` | getAssociatedGroupSignatures(Integer uniqueId, String ownerName)                     |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``Signature``                   | getAssociatedGroupSignature(Integer uniqueId, Integer signatureId)                   |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``Signature``                   | getAssociatedGroupSignature(Integer uniqueId, Integer signatureId, String ownerName) |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``IterableResponse<Threat>``    | getAssociatedGroupThreats(Integer uniqueId)                                          |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``IterableResponse<Threat>``    | getAssociatedGroupThreats(Integer uniqueId, String ownerName)                        |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``Threat``                      | getAssociatedGroupThreat(Integer uniqueId, Integer threatId)                         |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``Threat``                      | getAssociatedGroupThreat(Integer uniqueId, Integer threatId, String ownerName)       |
++---------------------------------+--------------------------------------------------------------------------------------+
 
 Associated Indicators
 ~~~~~~~~~~~~~~~~~~~~~
 
 The methods below get associated Indicator elements by distinct types.
 
-+-----------------------------------+
-| Type                              |
-+===================================+
-| ``IterableResponse<Indicator>``   |
-+-----------------------------------+
-| ``IterableResponse<Indicator>``   |
-+-----------------------------------+
-| ``IterableResponse<Address>``     |
-+-----------------------------------+
-| ``IterableResponse<Address>``     |
-+-----------------------------------+
-| ``Address``                       |
-+-----------------------------------+
-| ``Address``                       |
-+-----------------------------------+
-| ``IterableResponse<Email>``       |
-+-----------------------------------+
-| ``IterableResponse<Email>``       |
-+-----------------------------------+
-| ``Email``                         |
-+-----------------------------------+
-| ``Email``                         |
-+-----------------------------------+
-| ``IterableResponse<File>``        |
-+-----------------------------------+
-| ``IterableResponse<File>``        |
-+-----------------------------------+
-| ``File``                          |
-+-----------------------------------+
-| ``IterableResponse<Host>``        |
-+-----------------------------------+
-| ``IterableResponse<Host>``        |
-+-----------------------------------+
-| ``Host``                          |
-+-----------------------------------+
-| ``Host``                          |
-+-----------------------------------+
-| ``IterableResponse<Url>``         |
-+-----------------------------------+
-| ``IterableResponse<Url>``         |
-+-----------------------------------+
-| ``Url``                           |
-+-----------------------------------+
-| ``Url``                           |
-+-----------------------------------+
++---------------------------------+--------------------------------------------------------------------------------------+
+| Type                            | Method                                                                               |
++=================================+======================================================================================+
+| ``IterableResponse<Indicator>`` | getAssociatedIndicators(Integer uniqueId)                                            |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``IterableResponse<Indicator>`` | getAssociatedIndicators(Integer uniqueId, String ownerName)                          |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``IterableResponse<Address>``   | getAssociatedIndicatorAddresses(Integer uniqueId)                                    |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``IterableResponse<Address>``   | getAssociatedIndicatorAddresses(Integer uniqueId, String ownerName)                  |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``Address``                     | getAssociatedIndicatorAddress(Integer uniqueId, String ipAddress)                    |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``Address``                     | getAssociatedIndicatorAddress(Integer uniqueId, String ipAddress, String ownerName)  |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``IterableResponse<Email>``     | getAssociatedIndicatorEmails(Integer uniqueId)                                       |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``IterableResponse<Email>``     | getAssociatedIndicatorEmails(Integer uniqueId, String ownerName)                     |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``Email``                       | getAssociatedIndicatorEmail(Integer uniqueId, String emailAddress)                   |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``Email``                       | getAssociatedIndicatorEmail(Integer uniqueId, String emailAddress, String ownerName) |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``IterableResponse<File>``      | getAssociatedIndicatorFiles(Integer uniqueId)                                        |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``IterableResponse<File>``      | getAssociatedIndicatorFiles(Integer uniqueId, String ownerName)                      |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``File``                        | getAssociatedIndicatorFile(Integer uniqueId, String fileHash)                        |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``IterableResponse<Host>``      | getAssociatedIndicatorHosts(Integer uniqueId)                                        |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``IterableResponse<Host>``      | getAssociatedIndicatorHosts(Integer uniqueId, String ownerName)                      |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``Host``                        | getAssociatedIndicatorHost(Integer uniqueId, String hostName)                        |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``Host``                        | getAssociatedIndicatorHost(Integer uniqueId, String hostName, String ownerName)      |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``IterableResponse<Url>``       | getAssociatedIndicatorUrls(Integer uniqueId)                                         |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``IterableResponse<Url>``       | getAssociatedIndicatorUrls(Integer uniqueId, String ownerName)                       |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``Url``                         | getAssociatedIndicatorUrl(Integer uniqueId, String urlText)                          |
++---------------------------------+--------------------------------------------------------------------------------------+
+| ``Url``                         | getAssociatedIndicatorUrl(Integer uniqueId, String urlText, String ownerName)        |
++---------------------------------+--------------------------------------------------------------------------------------+
 
 Associated Security Labels
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The methods below get associated SecurityLabel data elements.
 
-+---------------------------------------+
-| Type                                  |
-+=======================================+
-| ``IterableResponse<SecurityLabel>``   |
-+---------------------------------------+
-| ``IterableResponse<SecurityLabel>``   |
-+---------------------------------------+
-| ``SecurityLabel``                     |
-+---------------------------------------+
-| ``SecurityLabel``                     |
-+---------------------------------------+
++-------------------------------------+--------------------------------------------------------------------------------------+
+| Type                                | Method                                                                               |
++=====================================+======================================================================================+
+| ``IterableResponse<SecurityLabel>`` | getAssociatedSecurityLabels(Integer uniqueId)                                        |
++-------------------------------------+--------------------------------------------------------------------------------------+
+| ``IterableResponse<SecurityLabel>`` | getAssociatedSecurityLabels(Integer uniqueId, String ownerName)                      |
++-------------------------------------+--------------------------------------------------------------------------------------+
+| ``SecurityLabel``                   | getAssociatedSecurityLabel(Integer uniqueId, String securityLabel)                   |
++-------------------------------------+--------------------------------------------------------------------------------------+
+| ``SecurityLabel``                   | getAssociatedSecurityLabel(Integer uniqueId, String securityLabel, String ownerName) |
++-------------------------------------+--------------------------------------------------------------------------------------+
 
 Associated Tags
 ~~~~~~~~~~~~~~~
 
 The methods below get associated Tag data elements.
 
-+-----------------------------+
-| Type                        |
-+=============================+
-| ``IterableResponse<Tag>``   |
-+-----------------------------+
-| ``IterableResponse<Tag>``   |
-+-----------------------------+
-| ``Tag``                     |
-+-----------------------------+
-| ``Tag``                     |
-+-----------------------------+
++---------------------------+----------------------------------------------------------------------+
+| Type                      | Method                                                               |
++===========================+======================================================================+
+| ``IterableResponse<Tag>`` | getAssociatedTags(Integer uniqueId)                                  |
++---------------------------+----------------------------------------------------------------------+
+| ``IterableResponse<Tag>`` | getAssociatedTags(Integer uniqueId, String ownerName)                |
++---------------------------+----------------------------------------------------------------------+
+| ``Tag``                   | getAssociatedTag(Integer uniqueId, String tagName)                   |
++---------------------------+----------------------------------------------------------------------+
+| ``Tag``                   | getAssociatedTag(Integer uniqueId, String tagName, String ownerName) |
++---------------------------+----------------------------------------------------------------------+
 
 Associated VictimAssets
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 The methods below get associated VictimAsset data elements.
 
-+----------------------------------------------+
-| Type                                         |
-+==============================================+
-| ``IterableResponse<VictimAsset>``            |
-+----------------------------------------------+
-| ``IterableResponse<VictimAsset>``            |
-+----------------------------------------------+
-| ``IterableResponse<VictimEmailAddress>``     |
-+----------------------------------------------+
-| ``IterableResponse<VictimEmailAddress>``     |
-+----------------------------------------------+
-| ``VictimEmailAddress``                       |
-+----------------------------------------------+
-| ``VictimEmailAddress``                       |
-+----------------------------------------------+
-| ``IterableResponse<VictimNetworkAccount>``   |
-+----------------------------------------------+
-| ``IterableResponse<VictimNetworkAccount>``   |
-+----------------------------------------------+
-| ``VictimNetworkAccount``                     |
-+----------------------------------------------+
-| ``VictimNetworkAccount``                     |
-+----------------------------------------------+
-| ``IterableResponse<VictimPhone>``            |
-+----------------------------------------------+
-| ``IterableResponse<VictimPhone>``            |
-+----------------------------------------------+
-| ``VictimPhone``                              |
-+----------------------------------------------+
-| ``VictimPhone``                              |
-+----------------------------------------------+
-| ``IterableResponse<VictimSocialNetwork>``    |
-+----------------------------------------------+
-| ``IterableResponse<VictimSocialNetwork>``    |
-+----------------------------------------------+
-| ``VictimSocialNetwork``                      |
-+----------------------------------------------+
-| ``VictimSocialNetwork``                      |
-+----------------------------------------------+
-| ``IterableResponse<VictimWebSite>``          |
-+----------------------------------------------+
-| ``IterableResponse<VictimWebSite>``          |
-+----------------------------------------------+
-| ``VictimWebSite``                            |
-+----------------------------------------------+
-| ``VictimWebSite``                            |
-+----------------------------------------------+
++--------------------------------------------+---------------------------------------------------------------------------------------------+
+| Type                                       | Method                                                                                      |
++============================================+=============================================================================================+
+| ``IterableResponse<VictimAsset>``          | getAssociatedVictimAssets(Integer uniqueId)                                                 |
++--------------------------------------------+---------------------------------------------------------------------------------------------+
+| ``IterableResponse<VictimAsset>``          | getAssociatedVictimAssets(Integer uniqueId, String ownerName)                               |
++--------------------------------------------+---------------------------------------------------------------------------------------------+
+| ``IterableResponse<VictimEmailAddress>``   | getAssociatedVictimAssetEmailAddresses(Integer uniqueId)                                    |
++--------------------------------------------+---------------------------------------------------------------------------------------------+
+| ``IterableResponse<VictimEmailAddress>``   | getAssociatedVictimAssetEmailAddresses(Integer uniqueId, String ownerName)                  |
++--------------------------------------------+---------------------------------------------------------------------------------------------+
+| ``VictimEmailAddress``                     | getAssociatedVictimAssetEmailAddress(Integer uniqueId, Integer assetId)                     |
++--------------------------------------------+---------------------------------------------------------------------------------------------+
+| ``VictimEmailAddress``                     | getAssociatedVictimAssetEmailAddress(Integer uniqueId, Integer assetId, String ownerName)   |
++--------------------------------------------+---------------------------------------------------------------------------------------------+
+| ``IterableResponse<VictimNetworkAccount>`` | getAssociatedVictimAssetNetworkAccounts(Integer uniqueId)                                   |
++--------------------------------------------+---------------------------------------------------------------------------------------------+
+| ``IterableResponse<VictimNetworkAccount>`` | getAssociatedVictimAssetNetworkAccounts(Integer uniqueId, String ownerName)                 |
++--------------------------------------------+---------------------------------------------------------------------------------------------+
+| ``VictimNetworkAccount``                   | getAssociatedVictimAssetNetworkAccount(Integer uniqueId, Integer assetId)                   |
++--------------------------------------------+---------------------------------------------------------------------------------------------+
+| ``VictimNetworkAccount``                   | getAssociatedVictimAssetNetworkAccount(Integer uniqueId, Integer assetId, String ownerName) |
++--------------------------------------------+---------------------------------------------------------------------------------------------+
+| ``IterableResponse<VictimPhone>``          | getAssociatedVictimAssetPhoneNumbers(Integer uniqueId)                                      |
++--------------------------------------------+---------------------------------------------------------------------------------------------+
+| ``IterableResponse<VictimPhone>``          | getAssociatedVictimAssetPhoneNumbers(Integer uniqueId, String ownerName)                    |
++--------------------------------------------+---------------------------------------------------------------------------------------------+
+| ``VictimPhone``                            | getAssociatedVictimAssetPhoneNumber(Integer uniqueId, Integer assetId)                      |
++--------------------------------------------+---------------------------------------------------------------------------------------------+
+| ``VictimPhone``                            | getAssociatedVictimAssetPhoneNumber(Integer uniqueId, Integer assetId, String ownerName)    |
++--------------------------------------------+---------------------------------------------------------------------------------------------+
+| ``IterableResponse<VictimSocialNetwork>``  | getAssociatedVictimAssetSocialNetworks(Integer uniqueId)                                    |
++--------------------------------------------+---------------------------------------------------------------------------------------------+
+| ``IterableResponse<VictimSocialNetwork>``  | getAssociatedVictimAssetSocialNetworks(Integer uniqueId, String ownerName)                  |
++--------------------------------------------+---------------------------------------------------------------------------------------------+
+| ``VictimSocialNetwork``                    | getAssociatedVictimAssetSocialNetwork(Integer uniqueId, Integer assetId)                    |
++--------------------------------------------+---------------------------------------------------------------------------------------------+
+| ``VictimSocialNetwork``                    | getAssociatedVictimAssetSocialNetwork(Integer uniqueId, Integer assetId, String ownerName)  |
++--------------------------------------------+---------------------------------------------------------------------------------------------+
+| ``IterableResponse<VictimWebSite>``        | getAssociatedVictimAssetWebsites(Integer uniqueId)                                          |
++--------------------------------------------+---------------------------------------------------------------------------------------------+
+| ``IterableResponse<VictimWebSite>``        | getAssociatedVictimAssetWebsites(Integer uniqueId, String ownerName)                        |
++--------------------------------------------+---------------------------------------------------------------------------------------------+
+| ``VictimWebSite``                          | getAssociatedVictimAssetWebsite(Integer uniqueId, Integer assetId)                          |
++--------------------------------------------+---------------------------------------------------------------------------------------------+
+| ``VictimWebSite``                          | getAssociatedVictimAssetWebsite(Integer uniqueId, Integer assetId, String ownerName)        |
++--------------------------------------------+---------------------------------------------------------------------------------------------+
 
 Associated Attributes
 ~~~~~~~~~~~~~~~~~~~~~
 
-The methods below get Attributes and Attribute SecurityLabels for this
-Group type.
+The methods below get Attributes and Attribute SecurityLabels for this Group type.
 
-+---------------------------------------+
-| Type                                  |
-+=======================================+
-| ``IterableResponse<Attribute>``       |
-+---------------------------------------+
-| ``IterableResponse<Attribute>``       |
-+---------------------------------------+
-| ``Attribute``                         |
-+---------------------------------------+
-| ``Attribute``                         |
-+---------------------------------------+
-| ``IterableResponse<SecurityLabel>``   |
-+---------------------------------------+
-| ``IterableResponse<SecurityLabel>``   |
-+---------------------------------------+
-| ``SecurityLabel``                     |
-+---------------------------------------+
-| ``SecurityLabel``                     |
-+---------------------------------------+
++-------------------------------------+----------------------------------------------------------------------------------------------------------+
+| Type                                | Method                                                                                                   |
++=====================================+==========================================================================================================+
+| ``IterableResponse<Attribute>``     | getAttributes(Integer uniqueId)                                                                          |
++-------------------------------------+----------------------------------------------------------------------------------------------------------+
+| ``IterableResponse<Attribute>``     | getAttributes(Integer uniqueId, String ownerName)                                                        |
++-------------------------------------+----------------------------------------------------------------------------------------------------------+
+| ``Attribute``                       | getAttribute(Integer uniqueId, Integer attributeId)                                                      |
++-------------------------------------+----------------------------------------------------------------------------------------------------------+
+| ``Attribute``                       | getAttribute(Integer uniqueId, Integer attributeId, String ownerName)                                    |
++-------------------------------------+----------------------------------------------------------------------------------------------------------+
+| ``IterableResponse<SecurityLabel>`` | getAttributeSecurityLabels(Integer uniqueId, Integer attributeId)                                        |
++-------------------------------------+----------------------------------------------------------------------------------------------------------+
+| ``IterableResponse<SecurityLabel>`` | getAttributeSecurityLabels(Integer uniqueId, Integer attributeId, String ownerName)                      |
++-------------------------------------+----------------------------------------------------------------------------------------------------------+
+| ``SecurityLabel``                   | getAttributeSecurityLabel(Integer uniqueId, Integer attributeId, String securityLabel)                   |
++-------------------------------------+----------------------------------------------------------------------------------------------------------+
+| ``SecurityLabel``                   | getAttributeSecurityLabel(Integer uniqueId, Integer attributeId, String securityLabel, String ownerName) |
++-------------------------------------+----------------------------------------------------------------------------------------------------------+
 
 AbstractIndicatorReaderAdapter
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -994,252 +1017,225 @@ ThreatConnect API documentation.
 The methods below get data for the Indicator type (T) linked to this
 Adapter. The uniqueId (P) for Indicators is a String.
 
-+---------------------------+
-| Type                      |
-+===========================+
-| ``T``                     |
-+---------------------------+
-| ``T``                     |
-+---------------------------+
-| ``IterableResponse<T>``   |
-+---------------------------+
-| ``IterableResponse<T>``   |
-+---------------------------+
-| ``IterableResponse<T>``   |
-+---------------------------+
++-------------------------+----------------------------------------------------------------------------+
+| Type                    | Method                                                                     |
++=========================+============================================================================+
+| ``T``                   | getById(P uniqueId)                                                        |
++-------------------------+----------------------------------------------------------------------------+
+| ``T``                   | getById(P uniqueId, String ownerName)                                      |
++-------------------------+----------------------------------------------------------------------------+
+| ``IterableResponse<T>`` | getForFilters(String ownerName, boolean orParams, ApiFilterType...filters) |
++-------------------------+----------------------------------------------------------------------------+
+| ``IterableResponse<T>`` | getAll()                                                                   |
++-------------------------+----------------------------------------------------------------------------+
+| ``IterableResponse<T>`` | getAll(String ownerName)                                                   |
++-------------------------+----------------------------------------------------------------------------+
 
-The method below returns all the generic Indicators to which the current
-API user has access.
+The method below returns all the generic Indicators to which the current API user has access.
 
-+-----------------------------------+
-| Type                              |
-+===================================+
-| ``IterableResponse<Indicator>``   |
-+-----------------------------------+
++---------------------------------+-----------------+
+| Type                            | Method          |
++=================================+=================+
+| ``IterableResponse<Indicator>`` | getIndicators() |
++---------------------------------+-----------------+
 
-The methods below return owners who have created the Indicator under the
-uniqueId.
+The methods below return owners who have created the Indicator under the uniqueId.
 
-+-------------------------------+
-| Type                          |
-+===============================+
-| ``IterableResponse<Owner>``   |
-+-------------------------------+
-| ``IterableResponse<Owner>``   |
-+-------------------------------+
++-----------------------------+--------------------------------------------------------+
+| Type                        | Method                                                 |
++=============================+========================================================+
+| ``IterableResponse<Owner>`` | getAssociatedOwners(String uniqueId)                   |
++-----------------------------+--------------------------------------------------------+
+| ``IterableResponse<Owner>`` | getAssociatedOwners(String uniqueId, String ownerName) |
++-----------------------------+--------------------------------------------------------+
 
-The methods below return False Positive counts for the Indicator under
-the uniqueId.
+The methods below return False Positive counts for the Indicator under the uniqueId.
 
-\|Type\|\ *Method* \|
--------------------------------------------------------- \|
-``FalsePositive``\ \|getFalsePositive(String uniqueId) \|
-``FalsePositive``\ \|getFalsePositive(String uniqueId, String ownerName)
-\|
+\|Type\|Method \| -------------------------------------------------------- \|
+``FalsePositive``\ \|getFalsePositive(String uniqueId) \| ``FalsePositive``\ \|getFalsePositive(String uniqueId, String
+ownerName) \|
 
-The methods below return Observations and Observation counts for the
-Indicator under the uniqueId.
+The methods below return Observations and Observation counts for the Indicator under the uniqueId.
 
-+-------------------------------------+
-| Type                                |
-+=====================================+
-| ``IterableResponse<Observation>``   |
-+-------------------------------------+
-| ``IterableResponse<Observation>``   |
-+-------------------------------------+
-| ``ObservationCount``                |
-+-------------------------------------+
-| ``ObservationCount``                |
-+-------------------------------------+
++-----------------------------------+--------------------------------------------------------+
+| Type                              | Method                                                 |
++===================================+========================================================+
+| ``IterableResponse<Observation>`` | getObservations(String uniqueId)                       |
++-----------------------------------+--------------------------------------------------------+
+| ``IterableResponse<Observation>`` | getObservations(String uniqueId, String ownerName)     |
++-----------------------------------+--------------------------------------------------------+
+| ``ObservationCount``              | getObservationCount(String uniqueId)                   |
++-----------------------------------+--------------------------------------------------------+
+| ``ObservationCount``              | getObservationCount(String uniqueId, String ownerName) |
++-----------------------------------+--------------------------------------------------------+
 
-The AbstractIndicatorReaderAdapter class has a concrete subclass
-**FileIndicatorReaderAdapter** that exposes the methods below.
+The AbstractIndicatorReaderAdapter class has a concrete subclass **FileIndicatorReaderAdapter** that exposes the methods
+below.
 
-+----------------------+
-| Type                 |
-+======================+
-| ``FileOccurrence``   |
-+----------------------+
-| ``FileOccurrence``   |
-+----------------------+
++--------------------+-------------------------------------------------------------------------------+
+| Type               | Method                                                                        |
++====================+===============================================================================+
+| ``FileOccurrence`` | getFileOccurrence(String uniqueId, Integer fileOccurrencId)                   |
++--------------------+-------------------------------------------------------------------------------+
+| ``FileOccurrence`` | getFileOccurrence(String uniqueId, Integer fileOccurrencId, String ownerName) |
++--------------------+-------------------------------------------------------------------------------+
 
 BatchReaderAdapter
 ~~~~~~~~~~~~~~~~~~
 
-The BatchReaderAdapter class allows the developer to poll for the status
-of a batch upload file using a batch id. Once a batch is complete
-(either successfully or with errors), the developer can download errors
-(if any).
+The BatchReaderAdapter class allows the developer to poll for the status of a batch upload file using a batch id. Once a
+batch is complete (either successfully or with errors), the developer can download errors (if any).
 
-+---------------------------------------------------------------------+
-| Type                                                                |
-+=====================================================================+
-| ``ApiEntitySingleResponse<BatchStatus, BatchStatusResponseData>``   |
-+---------------------------------------------------------------------+
-| ``ApiEntitySingleResponse<BatchStatus, BatchStatusResponseData>``   |
-+---------------------------------------------------------------------+
-| ``void``                                                            |
-+---------------------------------------------------------------------+
-| ``void``                                                            |
-+---------------------------------------------------------------------+
++-------------------------------------------------------------------+----------------------------------------------------------------+
+| Type                                                              | Method                                                         |
++===================================================================+================================================================+
+| ``ApiEntitySingleResponse<BatchStatus, BatchStatusResponseData>`` | getStatus(int batchId)                                         |
++-------------------------------------------------------------------+----------------------------------------------------------------+
+| ``ApiEntitySingleResponse<BatchStatus, BatchStatusResponseData>`` | getStatus(int batchId, String ownerName)                       |
++-------------------------------------------------------------------+----------------------------------------------------------------+
+| ``void``                                                          | downloadErrors(int batchId, Path outputPath)                   |
++-------------------------------------------------------------------+----------------------------------------------------------------+
+| ``void``                                                          | downloadErrors(int batchId, String ownerName, Path outputPath) |
++-------------------------------------------------------------------+----------------------------------------------------------------+
 
 DocumentReaderAdapter
 ~~~~~~~~~~~~~~~~~~~~~
 
-The DocumentReaderAdapter class is a subclass of the AbstractGroupReader
-class. In addition to all GroupReader functionality, the document reader
-has access to the following method.
+The DocumentReaderAdapter class is a subclass of the AbstractGroupReader class. In addition to all GroupReader
+functionality, the document reader has access to the following method.
 
-+------------+
-| Type       |
-+============+
-| ``void``   |
-+------------+
++----------+---------------------------------------------------------------+
+| Type     | Method                                                        |
++==========+===============================================================+
+| ``void`` | downloadFile(int uniqueId, String ownerName, Path outputPath) |
++----------+---------------------------------------------------------------+
 
 OwnerReaderAdapter
 ~~~~~~~~~~~~~~~~~~
 
-The OwnerReaderAdapter is a simple Adapter that returns a list of
-Organizations to which the API user has access. There is a second method
-called "getOwnerMine()" that returns the default Organization for the
-API user.
+The OwnerReaderAdapter is a simple Adapter that returns a list of Organizations to which the API user has access. There
+is a second method called "getOwnerMine()" that returns the default Organization for the API user.
 
-+-------------------------------+
-| Type                          |
-+===============================+
-| ``Owner``                     |
-+-------------------------------+
-| ``IterableResponse<Owner>``   |
-+-------------------------------+
++-----------------------------+----------------+
+| Type                        | Method         |
++=============================+================+
+| ``Owner``                   | getOwnerMine() |
++-----------------------------+----------------+
+| ``IterableResponse<Owner>`` | getOwners()    |
++-----------------------------+----------------+
 
 SecurityLabelReaderAdapter
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The SecurityLabelReaderAdapter class is a concrete class (available
-through the ReaderFactory) that returns SecurityLabels to which the
-developer's API user has access, as well as by uniqueId (P). The
-uniqueId data type for SecurityLabels is a String.
+The SecurityLabelReaderAdapter class is a concrete class (available through the ReaderFactory) that returns
+SecurityLabels to which the developer's API user has access, as well as by uniqueId (P). The uniqueId data type for
+SecurityLabels is a String.
 
-+---------------------------+
-| Type                      |
-+===========================+
-| ``T``                     |
-+---------------------------+
-| ``T``                     |
-+---------------------------+
-| ``IterableResponse<T>``   |
-+---------------------------+
-| ``IterableResponse<T>``   |
-+---------------------------+
++-------------------------+---------------------------------------+
+| Type                    | Method                                |
++=========================+=======================================+
+| ``T``                   | getById(P uniqueId)                   |
++-------------------------+---------------------------------------+
+| ``T``                   | getById(P uniqueId, String ownerName) |
++-------------------------+---------------------------------------+
+| ``IterableResponse<T>`` | getAll()                              |
++-------------------------+---------------------------------------+
+| ``IterableResponse<T>`` | getAll(String ownerName)              |
++-------------------------+---------------------------------------+
 
-In addition to retrieving basic SecurityLabel data, associated
-`Groups <#associate-groups>`__ and
-`Indicators <#associate-indicators>`__ can be retrieved. For more
-details on these methods, see the
+In addition to retrieving basic SecurityLabel data, associated `Groups <#associate-groups>`__ and
+`Indicators <#associate-indicators>`__ can be retrieved. For more details on these methods, see the
 `AbstractGroupReaderAdapter <#abstractgroupreaderadapter>`__ class.
 
 TagReaderAdapter Class
 ~~~~~~~~~~~~~~~~~~~~~~
 
-The TagReaderAdapter class is a concrete class (available through the
-ReaderFactory) that returns Tags to which the developer's API user has
-access, as well as by uniqueId (P). The uniqueId data type for Tags is a
-String.
+The TagReaderAdapter class is a concrete class (available through the ReaderFactory) that returns Tags to which the
+developer's API user has access, as well as by uniqueId (P). The uniqueId data type for Tags is a String.
 
-+---------------------------+
-| Type                      |
-+===========================+
-| ``T``                     |
-+---------------------------+
-| ``T``                     |
-+---------------------------+
-| ``IterableResponse<T>``   |
-+---------------------------+
-| ``IterableResponse<T>``   |
-+---------------------------+
-| ``IterableResponse<T>``   |
-+---------------------------+
++-------------------------+----------------------------------------------------------------------------+
+| Type                    | Method                                                                     |
++=========================+============================================================================+
+| ``T``                   | getById(P uniqueId)                                                        |
++-------------------------+----------------------------------------------------------------------------+
+| ``T``                   | getById(P uniqueId, String ownerName)                                      |
++-------------------------+----------------------------------------------------------------------------+
+| ``IterableResponse<T>`` | getForFilters(String ownerName, boolean orParams, ApiFilterType...filters) |
++-------------------------+----------------------------------------------------------------------------+
+| ``IterableResponse<T>`` | getAll()                                                                   |
++-------------------------+----------------------------------------------------------------------------+
+| ``IterableResponse<T>`` | getAll(String ownerName)                                                   |
++-------------------------+----------------------------------------------------------------------------+
 
-In addition to retrieving basic Tag data, associated
-`Groups <#associate-groups>`__ and
-`Indicators <#associate-indicators>`__ can be retrieved. For more
-details on these methods, review the
+In addition to retrieving basic Tag data, associated `Groups <#associate-groups>`__ and
+`Indicators <#associate-indicators>`__ can be retrieved. For more details on these methods, review the
 `AbstractGroupReaderAdapter <#abstractgroupreaderadapter>`__ class.
 
 TaskReaderAdapter Class
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-The TaskReaderAdapter class is a concrete class (available through the
-ReaderFactory) that returns Tasks to which the API user has access, as
-well as by uniqueId (P). The uniqueId data type for a Task is an
-Integer.
+The TaskReaderAdapter class is a concrete class (available through the ReaderFactory) that returns Tasks to which the
+API user has access, as well as by uniqueId (P). The uniqueId data type for a Task is an Integer.
 
-+---------------------------+
-| Type                      |
-+===========================+
-| ``T``                     |
-+---------------------------+
-| ``T``                     |
-+---------------------------+
-| ``IterableResponse<T>``   |
-+---------------------------+
-| ``IterableResponse<T>``   |
-+---------------------------+
-| ``IterableResponse<T>``   |
-+---------------------------+
++-------------------------+----------------------------------------------------------------------------+
+| Type                    | Method                                                                     |
++=========================+============================================================================+
+| ``T``                   | getById(P uniqueId)                                                        |
++-------------------------+----------------------------------------------------------------------------+
+| ``T``                   | getById(P uniqueId, String ownerName)                                      |
++-------------------------+----------------------------------------------------------------------------+
+| ``IterableResponse<T>`` | getForFilters(String ownerName, boolean orParams, ApiFilterType...filters) |
++-------------------------+----------------------------------------------------------------------------+
+| ``IterableResponse<T>`` | getAll()                                                                   |
++-------------------------+----------------------------------------------------------------------------+
+| ``IterableResponse<T>`` | getAll(String ownerName)                                                   |
++-------------------------+----------------------------------------------------------------------------+
 
-In addition to retrieving basic Task data, associated Assignees and
-Escalatees can be retrieved.
+In addition to retrieving basic Task data, associated Assignees and Escalatees can be retrieved.
 
-The methods below return all Assignees or Escalatees associated with a
-given Task's id
+The methods below return all Assignees or Escalatees associated with a given Task's id
 
-+------------------------------+
-| Type                         |
-+==============================+
-| ``IterableResponse<User>``   |
-+------------------------------+
-| ``IterableResponse<User>``   |
-+------------------------------+
++----------------------------+---------------------------+
+| Type                       | Method                    |
++============================+===========================+
+| ``IterableResponse<User>`` | getAssignees(P uniqueId)  |
++----------------------------+---------------------------+
+| ``IterableResponse<User>`` | getEscalatees(P uniqueId) |
++----------------------------+---------------------------+
 
-The methods below return an individual Assignee or Escalatees'
-information
+The methods below return an individual Assignee or Escalatees' information
 
-+------------------------------+
-| Type                         |
-+==============================+
-| ``IterableResponse<User>``   |
-+------------------------------+
-| ``IterableResponse<User>``   |
-+------------------------------+
++----------------------------+-------------------------------------------+
+| Type                       | Method                                    |
++============================+===========================================+
+| ``IterableResponse<User>`` | getAssignee(P uniqueId, String userName)  |
++----------------------------+-------------------------------------------+
+| ``IterableResponse<User>`` | getEscalatee(P uniqueId, String userName) |
++----------------------------+-------------------------------------------+
 
 VictimReaderAdapter Class
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The VictimReaderAdapter class is a concrete class (available through the
-ReaderFactory) that returns Victims to which the API user has access, as
-well as by uniqueId (P). The uniqueId data type for a Victim is an
-Integer.
+The VictimReaderAdapter class is a concrete class (available through the ReaderFactory) that returns Victims to which
+the API user has access, as well as by uniqueId (P). The uniqueId data type for a Victim is an Integer.
 
-+---------------------------+
-| Type                      |
-+===========================+
-| ``T``                     |
-+---------------------------+
-| ``T``                     |
-+---------------------------+
-| ``IterableResponse<T>``   |
-+---------------------------+
-| ``IterableResponse<T>``   |
-+---------------------------+
-| ``IterableResponse<T>``   |
-+---------------------------+
++-------------------------+----------------------------------------------------------------------------+
+| Type                    | Method                                                                     |
++=========================+============================================================================+
+| ``T``                   | getById(P uniqueId)                                                        |
++-------------------------+----------------------------------------------------------------------------+
+| ``T``                   | getById(P uniqueId, String ownerName)                                      |
++-------------------------+----------------------------------------------------------------------------+
+| ``IterableResponse<T>`` | getForFilters(String ownerName, boolean orParams, ApiFilterType...filters) |
++-------------------------+----------------------------------------------------------------------------+
+| ``IterableResponse<T>`` | getAll()                                                                   |
++-------------------------+----------------------------------------------------------------------------+
+| ``IterableResponse<T>`` | getAll(String ownerName)                                                   |
++-------------------------+----------------------------------------------------------------------------+
 
-In addition to retrieving basic Victim data, associated
-`Groups <#associate-groups>`__, `Indicators <#associate-indicators>`__,
-and `VictimAssets <#associated-victimassets>`__ can be retrieved. For
-more details on these methods, review the
-`AbstractGroupReaderAdapter <#abstractgroupreaderadapter>`__ class.
+In addition to retrieving basic Victim data, associated `Groups <#associate-groups>`__,
+`Indicators <#associate-indicators>`__, and `VictimAssets <#associated-victimassets>`__ can be retrieved. For more
+details on these methods, review the `AbstractGroupReaderAdapter <#abstractgroupreaderadapter>`__ class.
 
 Reader IP Address and Tag Example
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1266,24 +1262,24 @@ Tags from our IP address Indicators:
      15     }
      16 
 
-+--------+-------------------------------------------------------------------+
-| Line   | Description                                                       |
-+========+===================================================================+
-| 3-4    | An IndicatorReaderAdapter is created to read all the addresses to |
-|        | which the API user has access. The ``getAll()`` method returns a  |
-|        | collection of addresses from the ThreatConnect API.               |
-+--------+-------------------------------------------------------------------+
-| 5-6    | Each address is iterated through and its uniqueId is printed. As  |
-|        | mentioned in the AbstractIndicatorReaderAdapter section, all      |
-|        | uniqueIds for Indicators are Strings. In the case of address      |
-|        | objects, it is the IP address or the ``getIp()`` getter method.   |
-+--------+-------------------------------------------------------------------+
-| 8      | To get a collection of associated Tags for the IP Address, the    |
-|        | ``getAssociatedTags()`` method is called.                         |
-+--------+-------------------------------------------------------------------+
-| 10-11  | Each Tag returned from the ThreatConnect API for that specific IP |
-|        | address is iterated through and printed to the console.           |
-+--------+-------------------------------------------------------------------+
++-------+-------------------------------------------------------------------+
+| Line  | Description                                                       |
++=======+===================================================================+
+| 3-4   | An IndicatorReaderAdapter is created to read all the addresses to |
+|       | which the API user has access. The ``getAll()`` method returns a  |
+|       | collection of addresses from the ThreatConnect API.               |
++-------+-------------------------------------------------------------------+
+| 5-6   | Each address is iterated through and its uniqueId is printed. As  |
+|       | mentioned in the AbstractIndicatorReaderAdapter section, all      |
+|       | uniqueIds for Indicators are Strings. In the case of address      |
+|       | objects, it is the IP address or the ``getIp()`` getter method.   |
++-------+-------------------------------------------------------------------+
+| 8     | To get a collection of associated Tags for the IP Address, the    |
+|       | ``getAssociatedTags()`` method is called.                         |
++-------+-------------------------------------------------------------------+
+| 10-11 | Each Tag returned from the ThreatConnect API for that specific IP |
+|       | address is iterated through and printed to the console.           |
++-------+-------------------------------------------------------------------+
 
 Summary
 
@@ -1355,58 +1351,41 @@ Writer Factory
 The primary methods for the WriterFactory are listed below. They
 encompass all write functionality for the ThreatConnect API.
 
-+----------------------------+-----------------------------------------------+
-| Class                      | *Method*                                      |
-+============================+===============================================+
-| ``static AbstractGroupWr   | createAdversaryGroupWriter(Connection conn)   |
-| iterAdapter<Adversary>``   |                                               |
-+----------------------------+-----------------------------------------------+
-| ``static AbstractGroupWr   | createEmailGroupWriter(Connection conn)       |
-| iterAdapter<Email>``       |                                               |
-+----------------------------+-----------------------------------------------+
-| ``static AbstractGroupWr   | createIncidentGroupWriter(Connection conn)    |
-| iterAdapter<Incident>``    |                                               |
-+----------------------------+-----------------------------------------------+
-| ``static AbstractGroupWr   | createSignatureGroupWriter(Connection conn)   |
-| iterAdapter<Signature>``   |                                               |
-+----------------------------+-----------------------------------------------+
-| ``static AbstractGroupWr   | createThreatGroupWriter(Connection conn)      |
-| iterAdapter<Threat>``      |                                               |
-+----------------------------+-----------------------------------------------+
-| ``static AbstractIndicat   | createAddressIndicatorWriter(Connection conn) |
-| orWriterAdapter<Address>`` |                                               |
-+----------------------------+-----------------------------------------------+
-| ``static AbstractIndicat   | createEmailAddressIndicatorWriter(Connection  |
-| orWriterAdapter<EmailAdd   | conn)                                         |
-| ress>``                    |                                               |
-+----------------------------+-----------------------------------------------+
-| ``static AbstractIndicat   | createFileIndicatorWriter(Connection conn)    |
-| orWriterAdapter<File>``    |                                               |
-+----------------------------+-----------------------------------------------+
-| ``static AbstractIndicat   | createHostIndicatorWriter(Connection conn)    |
-| orWriterAdapter<Host>``    |                                               |
-+----------------------------+-----------------------------------------------+
-| ``static AbstractIndicat   | createUrlIndicatorWriter(Connection conn)     |
-| orWriterAdapter<Url>``     |                                               |
-+----------------------------+-----------------------------------------------+
-| ``static AbstractBatchWr   | createBatchIndicatorWriter(Connection conn)   |
-| iterAdapter<Indicator>``   |                                               |
-+----------------------------+-----------------------------------------------+
-| ``static DocumentWriterA   | createDocumentWriter(Connection conn)         |
-| dapter``                   |                                               |
-+----------------------------+-----------------------------------------------+
-| ``static SecurityLabelWr   | createSecurityLabelWriter(Connection conn)    |
-| iterAdapter``              |                                               |
-+----------------------------+-----------------------------------------------+
-| ``static TagWriterAdapte   | createTagWriter(Connection conn)              |
-| r``                        |                                               |
-+----------------------------+-----------------------------------------------+
-| ``static TaskWriterAdapt   | createTaskWriter(Connection conn)             |
-| er``                       |                                               |
-+----------------------------+-----------------------------------------------+
-| ``static VictimWriterAda   | createVictimWriter(Connection conn)           |
-| pter``                     |                                               |
-+----------------------------+-----------------------------------------------+
++---------------------------------------------------------+----------------------------------------------------+
+| Class                                                   | Method                                             |
++=========================================================+====================================================+
+| ``static AbstractGroupWriterAdapter<Adversary>``        | createAdversaryGroupWriter(Connection conn)        |
++---------------------------------------------------------+----------------------------------------------------+
+| ``static AbstractGroupWriterAdapter<Email>``            | createEmailGroupWriter(Connection conn)            |
++---------------------------------------------------------+----------------------------------------------------+
+| ``static AbstractGroupWriterAdapter<Incident>``         | createIncidentGroupWriter(Connection conn)         |
++---------------------------------------------------------+----------------------------------------------------+
+| ``static AbstractGroupWriterAdapter<Signature>``        | createSignatureGroupWriter(Connection conn)        |
++---------------------------------------------------------+----------------------------------------------------+
+| ``static AbstractGroupWriterAdapter<Threat>``           | createThreatGroupWriter(Connection conn)           |
++---------------------------------------------------------+----------------------------------------------------+
+| ``static AbstractIndicatorWriterAdapter<Address>``      | createAddressIndicatorWriter(Connection conn)      |
++---------------------------------------------------------+----------------------------------------------------+
+| ``static AbstractIndicatorWriterAdapter<EmailAddress>`` | createEmailAddressIndicatorWriter(Connection conn) |
++---------------------------------------------------------+----------------------------------------------------+
+| ``static AbstractIndicatorWriterAdapter<File>``         | createFileIndicatorWriter(Connection conn)         |
++---------------------------------------------------------+----------------------------------------------------+
+| ``static AbstractIndicatorWriterAdapter<Host>``         | createHostIndicatorWriter(Connection conn)         |
++---------------------------------------------------------+----------------------------------------------------+
+| ``static AbstractIndicatorWriterAdapter<Url>``          | createUrlIndicatorWriter(Connection conn)          |
++---------------------------------------------------------+----------------------------------------------------+
+| ``static AbstractBatchWriterAdapter<Indicator>``        | createBatchIndicatorWriter(Connection conn)        |
++---------------------------------------------------------+----------------------------------------------------+
+| ``static DocumentWriterAdapter``                        | createDocumentWriter(Connection conn)              |
++---------------------------------------------------------+----------------------------------------------------+
+| ``static SecurityLabelWriterAdapter``                   | createSecurityLabelWriter(Connection conn)         |
++---------------------------------------------------------+----------------------------------------------------+
+| ``static TagWriterAdapter``                             | createTagWriter(Connection conn)                   |
++---------------------------------------------------------+----------------------------------------------------+
+| ``static TaskWriterAdapter``                            | createTaskWriter(Connection conn)                  |
++---------------------------------------------------------+----------------------------------------------------+
+| ``static VictimWriterAdapter``                          | createVictimWriter(Connection conn)                |
++---------------------------------------------------------+----------------------------------------------------+
 
 Writer Responses
 ~~~~~~~~~~~~~~~~
@@ -1470,67 +1449,67 @@ setters. Using the fluent entities in the
 ``com.threatconnect.sdk.client.fluent`` package are optional and a
 matter of preference.
 
-+-----------------------------------+
-| Fluent Types                      |
-+===================================+
-| ``AddressBuilder``                |
-+-----------------------------------+
-| ``AdversaryBuilder``              |
-+-----------------------------------+
-| ``AttributeBuilder``              |
-+-----------------------------------+
-| ``CommunityBuilder``              |
-+-----------------------------------+
-| ``DocumentBuilder``               |
-+-----------------------------------+
-| ``EmailAddressBuilder``           |
-+-----------------------------------+
-| ``EmailBuilder``                  |
-+-----------------------------------+
-| ``FileBuilder``                   |
-+-----------------------------------+
-| ``FileOccurrenceBuilder``         |
-+-----------------------------------+
-| ``GroupBuilder``                  |
-+-----------------------------------+
-| ``HostBuilder``                   |
-+-----------------------------------+
-| ``IncidentBuilder``               |
-+-----------------------------------+
-| ``IndicatorBuilder``              |
-+-----------------------------------+
-| ``IndividualBuilder``             |
-+-----------------------------------+
-| ``SecurityLabelBuilder``          |
-+-----------------------------------+
-| ``SignatureBuilder``              |
-+-----------------------------------+
-| ``SourceBuilder``                 |
-+-----------------------------------+
-| ``TagBuilder``                    |
-+-----------------------------------+
-| ``TaskBuilder``                   |
-+-----------------------------------+
-| ``ThreatBuilder``                 |
-+-----------------------------------+
-| ``UrlBuilder``                    |
-+-----------------------------------+
-| ``UserBuilder``                   |
-+-----------------------------------+
-| ``VictimAssetBuilder``            |
-+-----------------------------------+
-| ``VictimBuilder``                 |
-+-----------------------------------+
-| ``VictimEmailAddressBuilder``     |
-+-----------------------------------+
-| ``VictimNetworkAccountBuilder``   |
-+-----------------------------------+
-| ``VictimPhoneBuilder``            |
-+-----------------------------------+
-| ``VictimSocialNetworkBuilder``    |
-+-----------------------------------+
-| ``VictimWebSiteBuilder``          |
-+-----------------------------------+
++---------------------------------+
+| Fluent Types                    |
++=================================+
+| ``AddressBuilder``              |
++---------------------------------+
+| ``AdversaryBuilder``            |
++---------------------------------+
+| ``AttributeBuilder``            |
++---------------------------------+
+| ``CommunityBuilder``            |
++---------------------------------+
+| ``DocumentBuilder``             |
++---------------------------------+
+| ``EmailAddressBuilder``         |
++---------------------------------+
+| ``EmailBuilder``                |
++---------------------------------+
+| ``FileBuilder``                 |
++---------------------------------+
+| ``FileOccurrenceBuilder``       |
++---------------------------------+
+| ``GroupBuilder``                |
++---------------------------------+
+| ``HostBuilder``                 |
++---------------------------------+
+| ``IncidentBuilder``             |
++---------------------------------+
+| ``IndicatorBuilder``            |
++---------------------------------+
+| ``IndividualBuilder``           |
++---------------------------------+
+| ``SecurityLabelBuilder``        |
++---------------------------------+
+| ``SignatureBuilder``            |
++---------------------------------+
+| ``SourceBuilder``               |
++---------------------------------+
+| ``TagBuilder``                  |
++---------------------------------+
+| ``TaskBuilder``                 |
++---------------------------------+
+| ``ThreatBuilder``               |
++---------------------------------+
+| ``UrlBuilder``                  |
++---------------------------------+
+| ``UserBuilder``                 |
++---------------------------------+
+| ``VictimAssetBuilder``          |
++---------------------------------+
+| ``VictimBuilder``               |
++---------------------------------+
+| ``VictimEmailAddressBuilder``   |
++---------------------------------+
+| ``VictimNetworkAccountBuilder`` |
++---------------------------------+
+| ``VictimPhoneBuilder``          |
++---------------------------------+
+| ``VictimSocialNetworkBuilder``  |
++---------------------------------+
+| ``VictimWebSiteBuilder``        |
++---------------------------------+
 
 Writer Create Example
 ~~~~~~~~~~~~~~~~~~~~~
@@ -1633,31 +1612,31 @@ Adapter.
 -  The update methods require a Group type object as a collection or
    single object.
 
-+-------------------------------+--------------------------------------------------------+
-| Type                          | *Method*                                               |
-+===============================+========================================================+
-| ``WriteListResponse<T>``      | create(\ ``List<T> itemList``)                         |
-+-------------------------------+--------------------------------------------------------+
-| ``ApiEntitySingleResponse``   | create(\ ``T item``)                                   |
-+-------------------------------+--------------------------------------------------------+
-| ``ApiEntitySingleResponse``   | create(\ ``T item``, ``String ownerName``)             |
-+-------------------------------+--------------------------------------------------------+
-| ``WriteListResponse<P>``      | delete(\ ``List<P> itemIds``)                          |
-+-------------------------------+--------------------------------------------------------+
-| ``WriteListResponse<P>``      | delete(\ ``List<P> itemIds``, ``String ownerName``)    |
-+-------------------------------+--------------------------------------------------------+
-| ``ApiEntitySingleResponse``   | delete(\ ``P itemId``)                                 |
-+-------------------------------+--------------------------------------------------------+
-| ``ApiEntitySingleResponse``   | delete(\ ``P itemId``, ``String ownerName``)           |
-+-------------------------------+--------------------------------------------------------+
-| ``WriteListResponse<T>``      | update(\ ``List<T> itemList``)                         |
-+-------------------------------+--------------------------------------------------------+
-| ``WriteListResponse<T>``      | update(\ ``List<T> itemList``, ``String ownerName``)   |
-+-------------------------------+--------------------------------------------------------+
-| ``ApiEntitySingleResponse``   | update(\ ``T item``)                                   |
-+-------------------------------+--------------------------------------------------------+
-| ``ApiEntitySingleResponse``   | update(\ ``T item``, ``String ownerName``)             |
-+-------------------------------+--------------------------------------------------------+
++-----------------------------+------------------------------------------------------+
+| Type                        | *Method*                                             |
++=============================+======================================================+
+| ``WriteListResponse<T>``    | create(\ ``List<T> itemList``)                       |
++-----------------------------+------------------------------------------------------+
+| ``ApiEntitySingleResponse`` | create(\ ``T item``)                                 |
++-----------------------------+------------------------------------------------------+
+| ``ApiEntitySingleResponse`` | create(\ ``T item``, ``String ownerName``)           |
++-----------------------------+------------------------------------------------------+
+| ``WriteListResponse<P>``    | delete(\ ``List<P> itemIds``)                        |
++-----------------------------+------------------------------------------------------+
+| ``WriteListResponse<P>``    | delete(\ ``List<P> itemIds``, ``String ownerName``)  |
++-----------------------------+------------------------------------------------------+
+| ``ApiEntitySingleResponse`` | delete(\ ``P itemId``)                               |
++-----------------------------+------------------------------------------------------+
+| ``ApiEntitySingleResponse`` | delete(\ ``P itemId``, ``String ownerName``)         |
++-----------------------------+------------------------------------------------------+
+| ``WriteListResponse<T>``    | update(\ ``List<T> itemList``)                       |
++-----------------------------+------------------------------------------------------+
+| ``WriteListResponse<T>``    | update(\ ``List<T> itemList``, ``String ownerName``) |
++-----------------------------+------------------------------------------------------+
+| ``ApiEntitySingleResponse`` | update(\ ``T item``)                                 |
++-----------------------------+------------------------------------------------------+
+| ``ApiEntitySingleResponse`` | update(\ ``T item``, ``String ownerName``)           |
++-----------------------------+------------------------------------------------------+
 
 Associate Groups
 ~~~~~~~~~~~~~~~~
@@ -1666,729 +1645,560 @@ The methods below associate a Group type to another Group type. Groups
 are associated by passing in the uniqueId (Integer) with the Group ID to
 which it will be associated.
 
-+----------------------+------------------------------------------------------+
-| Type                 | *Method*                                             |
-+======================+======================================================+
-| ``WriteListResponse< | associateGroupAdversaries(\ ``Integer uniqueId``,    |
-| Integer>``           | ``List<Integer> adversaryIds``)                      |
-+----------------------+------------------------------------------------------+
-| ``WriteListResponse< | associateGroupAdversaries(\ ``Integer uniqueId``,    |
-| Integer>``           | ``List<Integer> adversaryIds``,                      |
-|                      | ``String ownerName``)                                |
-+----------------------+------------------------------------------------------+
-| ``ApiEntitySingleRes | associateGroupAdversary(\ ``Integer uniqueId``,      |
-| ponse``              | ``Integer adversaryId``)                             |
-+----------------------+------------------------------------------------------+
-| ``ApiEntitySingleRes | associateGroupAdversary(\ ``Integer uniqueId``,      |
-| ponse``              | ``Integer adversaryId``, ``String ownerName``)       |
-+----------------------+------------------------------------------------------+
-| ``WriteListResponse< | associateGroupEmails(\ ``Integer uniqueId``,         |
-| Integer>``           | ``List<Integer> emailIds``)                          |
-+----------------------+------------------------------------------------------+
-| ``WriteListResponse< | associateGroupEmails(\ ``Integer uniqueId``,         |
-| Integer>``           | ``List<Integer> emailIds``, ``String ownerName``)    |
-+----------------------+------------------------------------------------------+
-| ``ApiEntitySingleRes | associateGroupEmail(\ ``Integer uniqueId``,          |
-| ponse``              | ``Integer emailId``)                                 |
-+----------------------+------------------------------------------------------+
-| ``ApiEntitySingleRes | associateGroupEmail(\ ``Integer uniqueId``,          |
-| ponse``              | ``Integer emailId``, ``String ownerName``)           |
-+----------------------+------------------------------------------------------+
-| ``WriteListResponse< | associateGroupIncidents(\ ``Integer uniqueId``,      |
-| Integer>``           | ``List<Integer> incidentIds``)                       |
-+----------------------+------------------------------------------------------+
-| ``WriteListResponse< | associateGroupIncidents(\ ``Integer uniqueId``,      |
-| Integer>``           | ``List<Integer> incidentIds``, ``String ownerName``) |
-+----------------------+------------------------------------------------------+
-| ``ApiEntitySingleRes | associateGroupIncident(\ ``Integer uniqueId``,       |
-| ponse``              | ``Integer incidentId``)                              |
-+----------------------+------------------------------------------------------+
-| ``ApiEntitySingleRes | associateGroupIncident(\ ``Integer uniqueId``,       |
-| ponse``              | ``Integer incidentId``, ``String ownerName``)        |
-+----------------------+------------------------------------------------------+
-| ``WriteListResponse< | associateGroupSignatures(\ ``Integer uniqueId``,     |
-| Integer>``           | ``List<Integer> signatureIds``)                      |
-+----------------------+------------------------------------------------------+
-| ``WriteListResponse< | associateGroupSignatures(\ ``Integer uniqueId``,     |
-| Integer>``           | ``List<Integer> signatureIds``,                      |
-|                      | ``String ownerName``)                                |
-+----------------------+------------------------------------------------------+
-| ``ApiEntitySingleRes | associateGroupSignature(\ ``Integer uniqueId``,      |
-| ponse``              | ``Integer signatureId``)                             |
-+----------------------+------------------------------------------------------+
-| ``ApiEntitySingleRes | associateGroupSignature(\ ``Integer uniqueId``,      |
-| ponse``              | ``Integer signatureId``, ``String ownerName``)       |
-+----------------------+------------------------------------------------------+
-| ``WriteListResponse< | associateGroupThreats(\ ``Integer uniqueId``,        |
-| Integer>``           | ``List<Integer> threatIds``)                         |
-+----------------------+------------------------------------------------------+
-| ``WriteListResponse< | associateGroupThreats(\ ``Integer uniqueId``,        |
-| Integer>``           | ``List<Integer> threatIds``, ``String ownerName``)   |
-+----------------------+------------------------------------------------------+
-| ``ApiEntitySingleRes | associateGroupThreat(\ ``Integer uniqueId``,         |
-| ponse``              | ``Integer threatId``)                                |
-+----------------------+------------------------------------------------------+
-| ``ApiEntitySingleRes | associateGroupThreat(\ ``Integer uniqueId``,         |
-| ponse``              | ``Integer threatId``, ``String ownerName``)          |
-+----------------------+------------------------------------------------------+
++--------------------------------+---------------------------------------------------------------------------------------------------------+
+| Type                           | Method                                                                                                  |
++================================+=========================================================================================================+
+| ``WriteListResponse<Integer>`` | associateGroupAdversaries(\ ``Integer uniqueId``, ``List<Integer> adversaryIds``)                       |
++--------------------------------+---------------------------------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>`` | associateGroupAdversaries(\ ``Integer uniqueId``, ``List<Integer> adversaryIds``, ``String ownerName``) |
++--------------------------------+---------------------------------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | associateGroupAdversary(\ ``Integer uniqueId``, ``Integer adversaryId``)                                |
++--------------------------------+---------------------------------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | associateGroupAdversary(\ ``Integer uniqueId``, ``Integer adversaryId``, ``String ownerName``)          |
++--------------------------------+---------------------------------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>`` | associateGroupEmails(\ ``Integer uniqueId``, ``List<Integer> emailIds``)                                |
++--------------------------------+---------------------------------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>`` | associateGroupEmails(\ ``Integer uniqueId``, ``List<Integer> emailIds``, ``String ownerName``)          |
++--------------------------------+---------------------------------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | associateGroupEmail(\ ``Integer uniqueId``, ``Integer emailId``)                                        |
++--------------------------------+---------------------------------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | associateGroupEmail(\ ``Integer uniqueId``, ``Integer emailId``, ``String ownerName``)                  |
++--------------------------------+---------------------------------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>`` | associateGroupIncidents(\ ``Integer uniqueId``, ``List<Integer> incidentIds``)                          |
++--------------------------------+---------------------------------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>`` | associateGroupIncidents(\ ``Integer uniqueId``, ``List<Integer> incidentIds``, ``String ownerName``)    |
++--------------------------------+---------------------------------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | associateGroupIncident(\ ``Integer uniqueId``, ``Integer incidentId``)                                  |
++--------------------------------+---------------------------------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | associateGroupIncident(\ ``Integer uniqueId``, ``Integer incidentId``, ``String ownerName``)            |
++--------------------------------+---------------------------------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>`` | associateGroupSignatures(\ ``Integer uniqueId``, ``List<Integer> signatureIds``)                        |
++--------------------------------+---------------------------------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>`` | associateGroupSignatures(\ ``Integer uniqueId``, ``List<Integer> signatureIds``, ``String ownerName``)  |
++--------------------------------+---------------------------------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | associateGroupSignature(\ ``Integer uniqueId``, ``Integer signatureId``)                                |
++--------------------------------+---------------------------------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | associateGroupSignature(\ ``Integer uniqueId``, ``Integer signatureId``, ``String ownerName``)          |
++--------------------------------+---------------------------------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>`` | associateGroupThreats(\ ``Integer uniqueId``, ``List<Integer> threatIds``)                              |
++--------------------------------+---------------------------------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>`` | associateGroupThreats(\ ``Integer uniqueId``, ``List<Integer> threatIds``, ``String ownerName``)        |
++--------------------------------+---------------------------------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | associateGroupThreat(\ ``Integer uniqueId``, ``Integer threatId``)                                      |
++--------------------------------+---------------------------------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | associateGroupThreat(\ ``Integer uniqueId``, ``Integer threatId``, ``String ownerName``)                |
++--------------------------------+---------------------------------------------------------------------------------------------------------+
 
 Associate Indicators
 ~~~~~~~~~~~~~~~~~~~~
 
 The methods below associate Indicators to a Group type.
 
-+--------------------+---------------------------------------------------------+
-| Type               | *Method*                                                |
-+====================+=========================================================+
-| ``WriteListRespons | associateIndicatorAddresses(\ ``Integer uniqueId``,     |
-| e<String>``        | ``List<String> ipAddresses``)                           |
-+--------------------+---------------------------------------------------------+
-| ``WriteListRespons | associateIndicatorAddresses(\ ``Integer uniqueId``,     |
-| e<String>``        | ``List<String> ipAddresses``, ``String ownerName``)     |
-+--------------------+---------------------------------------------------------+
-| ``ApiEntitySingleR | associateIndicatorAddress(\ ``Integer uniqueId``,       |
-| esponse``          | ``String ipAddress``)                                   |
-+--------------------+---------------------------------------------------------+
-| ``ApiEntitySingleR | associateIndicatorAddress(\ ``Integer uniqueId``,       |
-| esponse``          | ``String ipAddress``, ``String ownerName``)             |
-+--------------------+---------------------------------------------------------+
-| ``WriteListRespons | associateIndicatorEmailAddresses(\ ``Integer uniqueId`` |
-| e<String>``        | ,                                                       |
-|                    | ``List<String> emailAddresses``)                        |
-+--------------------+---------------------------------------------------------+
-| ``WriteListRespons | associateIndicatorEmailAddresses(\ ``Integer uniqueId`` |
-| e<String>``        | ,                                                       |
-|                    | ``List<String> emailAddresses``,                        |
-|                    | ``String ownerName``)                                   |
-+--------------------+---------------------------------------------------------+
-| ``ApiEntitySingleR | associateIndicatorEmailAddress(\ ``Integer uniqueId``   |
-| esponse``          | ,                                                       |
-|                    | ``String emailAddress``)                                |
-+--------------------+---------------------------------------------------------+
-| ``ApiEntitySingleR | associateIndicatorEmailAddress(\ ``Integer uniqueId``   |
-| esponse``          | ,                                                       |
-|                    | ``String emailAddress``, ``String ownerName``)          |
-+--------------------+---------------------------------------------------------+
-| ``WriteListRespons | associateIndicatorFiles(\ ``Integer uniqueId``,         |
-| e<String>``        | ``List<String> fileHashes``)                            |
-+--------------------+---------------------------------------------------------+
-| ``WriteListRespons | associateIndicatorFiles(\ ``Integer uniqueId``,         |
-| e<String>``        | ``List<String> fileHashes``, ``String ownerName``)      |
-+--------------------+---------------------------------------------------------+
-| ``ApiEntitySingleR | associateIndicatorFile(\ ``Integer uniqueId``,          |
-| esponse``          | ``String fileHash``)                                    |
-+--------------------+---------------------------------------------------------+
-| ``ApiEntitySingleR | associateIndicatorFile(\ ``Integer uniqueId``,          |
-| esponse``          | ``String fileHash``, ``String ownerName``)              |
-+--------------------+---------------------------------------------------------+
-| ``WriteListRespons | associateIndicatorHosts(\ ``Integer uniqueId``,         |
-| e<String>``        | ``List<String> hostNames``)                             |
-+--------------------+---------------------------------------------------------+
-| ``WriteListRespons | associateIndicatorHosts(\ ``Integer uniqueId``,         |
-| e<String>``        | ``List<String> hostNames``, ``String ownerName``)       |
-+--------------------+---------------------------------------------------------+
-| ``ApiEntitySingleR | associateIndicatorHost(\ ``Integer uniqueId``,          |
-| esponse``          | ``String hostName``)                                    |
-+--------------------+---------------------------------------------------------+
-| ``ApiEntitySingleR | associateIndicatorHost(\ ``Integer uniqueId``,          |
-| esponse``          | ``String hostName``, ``String ownerName``)              |
-+--------------------+---------------------------------------------------------+
-| ``WriteListRespons | associateIndicatorUrls(\ ``Integer uniqueId``,          |
-| e<String>``        | ``List<String> urlTexts``)                              |
-+--------------------+---------------------------------------------------------+
-| ``WriteListRespons | associateIndicatorUrls(\ ``Integer uniqueId``,          |
-| e<String>``        | ``List<String> urlTexts``, ``String ownerName``)        |
-+--------------------+---------------------------------------------------------+
-| ``ApiEntitySingleR | associateIndicatorUrl(\ ``Integer uniqueId``,           |
-| esponse``          | ``String urlText``)                                     |
-+--------------------+---------------------------------------------------------+
-| ``ApiEntitySingleR | associateIndicatorUrl(\ ``Integer uniqueId``,           |
-| esponse``          | ``String urlText``, ``String ownerName``)               |
-+--------------------+---------------------------------------------------------+
++-------------------------------+---------------------------------------------------------------------------------+
+| Type                          | Method                                                                          |
++===============================+=================================================================================+
+| ``WriteListResponse<String>`` | associateIndicatorAddresses(\ ``Integer uniqueId``,                             |
+|                               | ``List<String> ipAddresses``)                                                   |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``WriteListResponse<String>`` | associateIndicatorAddresses(\ ``Integer uniqueId``,                             |
+|                               | ``List<String> ipAddresses``, ``String ownerName``)                             |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | associateIndicatorAddress(\ ``Integer uniqueId``, ``String ipAddress``)         |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | associateIndicatorAddress(\ ``Integer uniqueId``, ``String ipAddress``,         |
+|                               | ``String ownerName``)                                                           |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``WriteListResponse<String>`` | associateIndicatorEmailAddresses(\ ``Integer uniqueId``,                        |
+|                               | ``List<String> emailAddresses``)                                                |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``WriteListResponse<String>`` | associateIndicatorEmailAddresses(\ ``Integer uniqueId``,                        |
+|                               | ``List<String> emailAddresses``, ``String ownerName``)                          |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | associateIndicatorEmailAddress(\ ``Integer uniqueId``, ``String emailAddress``) |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | associateIndicatorEmailAddress(\ ``Integer uniqueId``, ``String emailAddress``, |
+|                               | ``String ownerName``)                                                           |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``WriteListResponse<String>`` | associateIndicatorFiles(\ ``Integer uniqueId``, ``List<String> fileHashes``)    |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``WriteListResponse<String>`` | associateIndicatorFiles(\ ``Integer uniqueId``, ``List<String> fileHashes``,    |
+|                               | ``String ownerName``)                                                           |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | associateIndicatorFile(\ ``Integer uniqueId``, ``String fileHash``)             |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | associateIndicatorFile(\ ``Integer uniqueId``, ``String fileHash``,             |
+|                               | ``String ownerName``)                                                           |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``WriteListResponse<String>`` | associateIndicatorHosts(\ ``Integer uniqueId``, ``List<String> hostNames``)     |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``WriteListResponse<String>`` | associateIndicatorHosts(\ ``Integer uniqueId``, ``List<String> hostNames``,     |
+|                               | ``String ownerName``)                                                           |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | associateIndicatorHost(\ ``Integer uniqueId``, ``String hostName``)             |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | associateIndicatorHost(\ ``Integer uniqueId``, ``String hostName``,             |
+|                               | ``String ownerName``)                                                           |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``WriteListResponse<String>`` | associateIndicatorUrls(\ ``Integer uniqueId``, ``List<String> urlTexts``)       |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``WriteListResponse<String>`` | associateIndicatorUrls(\ ``Integer uniqueId``, ``List<String> urlTexts``,       |
+|                               | ``String ownerName``)                                                           |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | associateIndicatorUrl(\ ``Integer uniqueId``, ``String urlText``)               |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | associateIndicatorUrl(\ ``Integer uniqueId``, ``String urlText``,               |
+|                               | ``String ownerName``)                                                           |
++-------------------------------+---------------------------------------------------------------------------------+
+
 
 Associate Security Labels
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The methods below associate Security Labels to a Group type.
 
-+---------------------+------------------------------------------------------+
-| Type                | *Method*                                             |
-+=====================+======================================================+
-| ``WriteListResponse | associateSecurityLabels(\ ``Integer uniqueId``,      |
-| <String>``          | ``List<String> securityLabels``)                     |
-+---------------------+------------------------------------------------------+
-| ``WriteListResponse | associateSecurityLabels(\ ``Integer uniqueId``,      |
-| <String>``          | ``List<String> securityLabels``,                     |
-|                     | ``String ownerName``)                                |
-+---------------------+------------------------------------------------------+
-| ``ApiEntitySingleRe | associateSecurityLabel(\ ``Integer uniqueId``,       |
-| sponse``            | ``String securityLabel``)                            |
-+---------------------+------------------------------------------------------+
-| ``ApiEntitySingleRe | associateSecurityLabel(\ ``Integer uniqueId``,       |
-| sponse``            | ``String securityLabel``, ``String ownerName``)      |
-+---------------------+------------------------------------------------------+
++-------------------------------+--------------------------------------------------------------------------------------------------------+
+| Type                          | Method                                                                                                 |
++===============================+========================================================================================================+
+| ``WriteListResponse<String>`` | associateSecurityLabels(\ ``Integer uniqueId``, ``List<String> securityLabels``)                       |
++-------------------------------+--------------------------------------------------------------------------------------------------------+
+| ``WriteListResponse<String>`` | associateSecurityLabels(\ ``Integer uniqueId``, ``List<String> securityLabels``, ``String ownerName``) |
++-------------------------------+--------------------------------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | associateSecurityLabel(\ ``Integer uniqueId``, ``String securityLabel``)                               |
++-------------------------------+--------------------------------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | associateSecurityLabel(\ ``Integer uniqueId``, ``String securityLabel``, ``String ownerName``)         |
++-------------------------------+--------------------------------------------------------------------------------------------------------+
 
 Associate Tag
 ~~~~~~~~~~~~~
 
 The methods below associate Tags to a Group type.
 
-+--------------------+-------------------------------------------------------+
-| Type               | *Method*                                              |
-+====================+=======================================================+
-| ``WriteListRespons | associateTags(\ ``Integer uniqueId``,                 |
-| e<String>``        | ``List<String> tagNames``)                            |
-+--------------------+-------------------------------------------------------+
-| ``WriteListRespons | associateTags(\ ``Integer uniqueId``,                 |
-| e<String>``        | ``List<String> tagNames``, ``String ownerName``)      |
-+--------------------+-------------------------------------------------------+
-| ``ApiEntitySingleR | associateTag(\ ``Integer uniqueId``,                  |
-| esponse``          | ``String tagName``)                                   |
-+--------------------+-------------------------------------------------------+
-| ``ApiEntitySingleR | associateTag(\ ``Integer uniqueId``,                  |
-| esponse``          | ``String tagName``, ``String ownerName``)             |
-+--------------------+-------------------------------------------------------+
++-------------------------------+----------------------------------------------------------------------------------------+
+| Type                          | Method                                                                                 |
++===============================+========================================================================================+
+| ``WriteListResponse<String>`` | associateTags(\ ``Integer uniqueId``, ``List<String> tagNames``)                       |
++-------------------------------+----------------------------------------------------------------------------------------+
+| ``WriteListResponse<String>`` | associateTags(\ ``Integer uniqueId``, ``List<String> tagNames``, ``String ownerName``) |
++-------------------------------+----------------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | associateTag(\ ``Integer uniqueId``, ``String tagName``)                               |
++-------------------------------+----------------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | associateTag(\ ``Integer uniqueId``, ``String tagName``, ``String ownerName``)         |
++-------------------------------+----------------------------------------------------------------------------------------+
 
 Associate Victim
 ~~~~~~~~~~~~~~~~
 
 The methods below associate Victims to a Group type.
 
-+---------------------+------------------------------------------------------+
-| Type                | *Method*                                             |
-+=====================+======================================================+
-| ``WriteListResponse | associateVictims(\ ``Integer uniqueId``,             |
-| <Integer>``         | ``List<Integer> victimIds``)                         |
-+---------------------+------------------------------------------------------+
-| ``WriteListResponse | associateVictims(\ ``Integer uniqueId``,             |
-| <Integer>``         | ``List<Integer> victimIds``, ``String ownerName``)   |
-+---------------------+------------------------------------------------------+
-| ``ApiEntitySingleRe | associateVictim(\ ``Integer uniqueId``,              |
-| sponse``            | ``Integer victimId``)                                |
-+---------------------+------------------------------------------------------+
-| ``ApiEntitySingleRe | associateVictim(\ ``Integer uniqueId``,              |
-| sponse``            | ``Integer victimId``, ``String ownerName``)          |
-+---------------------+------------------------------------------------------+
++--------------------------------+---------------------------------------------------------------------------------------------+
+| Type                           | Method                                                                                      |
++================================+=============================================================================================+
+| ``WriteListResponse<Integer>`` | associateVictims(\ ``Integer uniqueId``, ``List<Integer> victimIds``)                       |
++--------------------------------+---------------------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>`` | associateVictims(\ ``Integer uniqueId``, ``List<Integer> victimIds``, ``String ownerName``) |
++--------------------------------+---------------------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | associateVictim(\ ``Integer uniqueId``, ``Integer victimId``)                               |
++--------------------------------+---------------------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | associateVictim(\ ``Integer uniqueId``, ``Integer victimId``, ``String ownerName``)         |
++--------------------------------+---------------------------------------------------------------------------------------------+
 
 Associate Victim Asset
 ~~~~~~~~~~~~~~~~~~~~~~
 
 The methods below associate Victim Assets to a Group type.
 
-+---------------------+-----------------------------------------------------------+
-| Type                | *Method*                                                  |
-+=====================+===========================================================+
-| ``WriteListResponse | associateVictimAssetEmailAddresses(\ ``Integer uniqu      |
-| <Integer>``         | eId``,                                                    |
-|                     | ``List<Integer> assetIds``)                               |
-+---------------------+-----------------------------------------------------------+
-| ``WriteListResponse | associateVictimAssetEmailAddresses(\ ``Integer uniqu      |
-| <Integer>``         | eId``,                                                    |
-|                     | ``List<Integer> assetIds``, ``String ownerName``)         |
-+---------------------+-----------------------------------------------------------+
-| ``ApiEntitySingleRe | associateVictimAssetEmailAddress(\ ``Integer uniqueI      |
-| sponse``            | d``,                                                      |
-|                     | ``Integer assetId``)                                      |
-+---------------------+-----------------------------------------------------------+
-| ``ApiEntitySingleRe | associateVictimAssetEmailAddress(\ ``Integer uniqueI      |
-| sponse``            | d``,                                                      |
-|                     | ``Integer assetId``, ``String ownerName``)                |
-+---------------------+-----------------------------------------------------------+
-| ``WriteListResponse | associateVictimAssetNetworkAccounts(\ ``Integer uniq      |
-| <Integer>``         | ueId``,                                                   |
-|                     | ``List<Integer> assetIds``)                               |
-+---------------------+-----------------------------------------------------------+
-| ``WriteListResponse | associateVictimAssetNetworkAccounts(\ ``Integer uniq      |
-| <Integer>``         | ueId``,                                                   |
-|                     | ``List<Integer> assetIds``, ``String ownerName``)         |
-+---------------------+-----------------------------------------------------------+
-| ``ApiEntitySingleRe | associateVictimAssetNetworkAccount(\ ``Integer uniqu      |
-| sponse``            | eId``,                                                    |
-|                     | ``Integer assetId``)                                      |
-+---------------------+-----------------------------------------------------------+
-| ``ApiEntitySingleRe | associateVictimAssetNetworkAccount(\ ``Integer uniqu      |
-| sponse``            | eId``,                                                    |
-|                     | ``Integer assetId``, ``String ownerName``)                |
-+---------------------+-----------------------------------------------------------+
-| ``WriteListResponse | associateVictimAssetPhoneNumbers(\ ``Integer uniqueId``   |
-| <Integer>``         | ,                                                         |
-|                     | ``List<Integer> assetIds``)                               |
-+---------------------+-----------------------------------------------------------+
-| ``WriteListResponse | associateVictimAssetPhoneNumbers(\ ``Integer uniqueId``   |
-| <Integer>``         | ,                                                         |
-|                     | ``List<Integer> assetIds``, ``String ownerName``)         |
-+---------------------+-----------------------------------------------------------+
-| ``ApiEntitySingleRe | associateVictimAssetPhoneNumber(\ ``Integer uniqueId``    |
-| sponse``            | ,                                                         |
-|                     | ``Integer assetId``)                                      |
-+---------------------+-----------------------------------------------------------+
-| ``ApiEntitySingleRe | associateVictimAssetPhoneNumber(\ ``Integer uniqueId``    |
-| sponse``            | ,                                                         |
-|                     | ``Integer assetId``, ``String ownerName``)                |
-+---------------------+-----------------------------------------------------------+
-| ``WriteListResponse | associateVictimAssetSocialNetworks(\ ``Integer uniqueId`` |
-| <Integer>``         | ,                                                         |
-|                     | ``List<Integer> assetIds``)                               |
-+---------------------+-----------------------------------------------------------+
-| ``WriteListResponse | associateVictimAssetSocialNetworks(\ ``Integer uniqueId`` |
-| <Integer>``         | ,                                                         |
-|                     | ``List<Integer> assetIds``, ``String ownerName``)         |
-+---------------------+-----------------------------------------------------------+
-| ``ApiEntitySingleRe | associateVictimAssetSocialNetwork(\ ``Integer uniqueId``  |
-| sponse``            | ,                                                         |
-|                     | ``Integer assetId``)                                      |
-+---------------------+-----------------------------------------------------------+
-| ``ApiEntitySingleRe | associateVictimAssetSocialNetwork(\ ``Integer uniqueId``  |
-| sponse``            | ,                                                         |
-|                     | ``Integer assetId``, ``String ownerName``)                |
-+---------------------+-----------------------------------------------------------+
-| ``WriteListResponse | associateVictimAssetWebsites(\ ``Integer uniqueId``,      |
-| <Integer>``         | ``List<Integer> assetIds``)                               |
-+---------------------+-----------------------------------------------------------+
-| ``WriteListResponse | associateVictimAssetWebsites(\ ``Integer uniqueId``,      |
-| <Integer>``         | ``List<Integer> assetIds``, ``String ownerName``)         |
-+---------------------+-----------------------------------------------------------+
-| ``ApiEntitySingleRe | associateVictimAssetWebsite(\ ``Integer uniqueId``,       |
-| sponse``            | ``Integer assetId``)                                      |
-+---------------------+-----------------------------------------------------------+
-| ``ApiEntitySingleRe | associateVictimAssetWebsite(\ ``Integer uniqueId``,       |
-| sponse``            | ``Integer assetId``, ``String ownerName``)                |
-+---------------------+-----------------------------------------------------------+
++-------------------------------+---------------------------------------------------------------------------------+
+| Type                          | Method                                                                          |
++===============================+=================================================================================+
+| ``WriteListResponse<Integer>` | associateVictimAssetEmailAddresses(\ ``Integer uniqueId``,                      |
+| `                             | ``List<Integer> assetIds``)                                                     |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>` | associateVictimAssetEmailAddresses(\ ``Integer uniqueId``,                      |
+| `                             | ``List<Integer> assetIds``, ``String ownerName``)                               |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | associateVictimAssetEmailAddress(\ ``Integer uniqueId``, ``Integer assetId``)   |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | associateVictimAssetEmailAddress(\ ``Integer uniqueId``, ``Integer assetId``,   |
+|                               | ``String ownerName``)                                                           |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>` | associateVictimAssetNetworkAccounts(\ ``Integer uniqueId``,                     |
+| `                             | ``List<Integer> assetIds``)                                                     |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>` | associateVictimAssetNetworkAccounts(\ ``Integer uniqueId``,                     |
+| `                             | ``List<Integer> assetIds``, ``String ownerName``)                               |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | associateVictimAssetNetworkAccount(\ ``Integer uniqueId``, ``Integer assetId``) |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | associateVictimAssetNetworkAccount(\ ``Integer uniqueId``, ``Integer assetId``, |
+|                               | ``String ownerName``)                                                           |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>` | associateVictimAssetPhoneNumbers(\ ``Integer uniqueId``,                        |
+| `                             | ``List<Integer> assetIds``)                                                     |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>` | associateVictimAssetPhoneNumbers(\ ``Integer uniqueId``,                        |
+| `                             | ``List<Integer> assetIds``, ``String ownerName``)                               |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | associateVictimAssetPhoneNumber(\ ``Integer uniqueId``, ``Integer assetId``)    |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | associateVictimAssetPhoneNumber(\ ``Integer uniqueId``, ``Integer assetId``,    |
+|                               | ``String ownerName``)                                                           |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>` | associateVictimAssetSocialNetworks(\ ``Integer uniqueId``,                      |
+| `                             | ``List<Integer> assetIds``)                                                     |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>` | associateVictimAssetSocialNetworks(\ ``Integer uniqueId``,                      |
+| `                             | ``List<Integer> assetIds``, ``String ownerName``)                               |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | associateVictimAssetSocialNetwork(\ ``Integer uniqueId``, ``Integer assetId``)  |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | associateVictimAssetSocialNetwork(\ ``Integer uniqueId``, ``Integer assetId``,  |
+|                               | ``String ownerName``)                                                           |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>` | associateVictimAssetWebsites(\ ``Integer uniqueId``,                            |
+| `                             | ``List<Integer> assetIds``)                                                     |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>` | associateVictimAssetWebsites(\ ``Integer uniqueId``,                            |
+| `                             | ``List<Integer> assetIds``, ``String ownerName``)                               |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | associateVictimAssetWebsite(\ ``Integer uniqueId``, ``Integer assetId``)        |
++-------------------------------+---------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | associateVictimAssetWebsite(\ ``Integer uniqueId``, ``Integer assetId``,        |
+|                               | ``String ownerName``)                                                           |
++-------------------------------+---------------------------------------------------------------------------------+
 
 Add Attributes
 ~~~~~~~~~~~~~~
 
 The methods below add Attribute types to a Group.
 
-+----------------------+-----------------------------------------------------+
-| Type                 | *Method*                                            |
-+======================+=====================================================+
-| ``WriteListResponse< | addAttributes(\ ``Integer uniqueId``,               |
-| Attribute>``         | ``List<Attribute> attributes``)                     |
-+----------------------+-----------------------------------------------------+
-| ``WriteListResponse< | addAttributes(\ ``Integer uniqueId``,               |
-| Attribute>``         | ``List<Attribute> attribute``,                      |
-|                      | ``String ownerName``)                               |
-+----------------------+-----------------------------------------------------+
-| ``ApiEntitySingleRes | addAttribute(\ ``Integer uniqueId``,                |
-| ponse``              | ``Attribute attribute``)                            |
-+----------------------+-----------------------------------------------------+
-| ``ApiEntitySingleRes | addAttribute(\ ``Integer uniqueId``,                |
-| ponse``              | ``Attribute attribute``, ``String ownerName``)      |
-+----------------------+-----------------------------------------------------+
-| ``WriteListResponse< | addAttributeSecurityLabels(\ ``Integer uniqueId``,  |
-| String>``            | ``Integer attributeId``,                            |
-|                      | ``List<String> securityLabels``)                    |
-+----------------------+-----------------------------------------------------+
-| ``WriteListResponse< | addAttributeSecurityLabels(\ ``Integer uniqueId``,  |
-| String>``            | ``Integer attributeId``,                            |
-|                      | ``List<String> securityLabels``,                    |
-|                      | ``String ownerName``)                               |
-+----------------------+-----------------------------------------------------+
-| ``ApiEntitySingleRes | addAttributeSecurityLabel(\ ``Integer uniqueId``,   |
-| ponse``              | ``Integer attributeId``, ``String securityLabel``)  |
-+----------------------+-----------------------------------------------------+
-| ``ApiEntitySingleRes | addAttributeSecurityLabel(\ ``Integer uniqueId``,   |
-| ponse``              | ``Integer attributeId``, ``String securityLabel``,  |
-|                      | ``String ownerName``)                               |
-+----------------------+-----------------------------------------------------+
++---------------------------------+-----------------------------------------------------------------------------+
+| Type                            | Method                                                                      |
++=================================+=============================================================================+
+| ``WriteListResponse<Attribute>` | addAttributes(\ ``Integer uniqueId``, ``List<Attribute> attributes``)       |
+| `                               |                                                                             |
++---------------------------------+-----------------------------------------------------------------------------+
+| ``WriteListResponse<Attribute>` | addAttributes(\ ``Integer uniqueId``, ``List<Attribute> attribute``,        |
+| `                               | ``String ownerName``)                                                       |
++---------------------------------+-----------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``     | addAttribute(\ ``Integer uniqueId``, ``Attribute attribute``)               |
++---------------------------------+-----------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``     | addAttribute(\ ``Integer uniqueId``, ``Attribute attribute``,               |
+|                                 | ``String ownerName``)                                                       |
++---------------------------------+-----------------------------------------------------------------------------+
+| ``WriteListResponse<String>``   | addAttributeSecurityLabels(\ ``Integer uniqueId``, ``Integer attributeId``, |
+|                                 | ``List<String> securityLabels``)                                            |
++---------------------------------+-----------------------------------------------------------------------------+
+| ``WriteListResponse<String>``   | addAttributeSecurityLabels(\ ``Integer uniqueId``, ``Integer attributeId``, |
+|                                 | ``List<String> securityLabels``, ``String ownerName``)                      |
++---------------------------------+-----------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``     | addAttributeSecurityLabel(\ ``Integer uniqueId``, ``Integer attributeId``,  |
+|                                 | ``String securityLabel``)                                                   |
++---------------------------------+-----------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``     | addAttributeSecurityLabel(\ ``Integer uniqueId``, ``Integer attributeId``,  |
+|                                 | ``String securityLabel``, ``String ownerName``)                             |
++---------------------------------+-----------------------------------------------------------------------------+
 
 Update Attribute
 ~~~~~~~~~~~~~~~~
 
-The methods below **update** an Attribute added to a specific Indicator
-type.
+The methods below **update** an Attribute added to a specific Indicator type.
 
-+-----------------------+----------------------------------------------------+
-| Type                  | *Method*                                           |
-+=======================+====================================================+
-| ``WriteListResponse<A | updateAttributes(\ ``Integer uniqueId``,           |
-| ttribute>``           | ``List<Attribute> attributes``)                    |
-+-----------------------+----------------------------------------------------+
-| ``WriteListResponse<A | updateAttributes(\ ``Integer uniqueId``,           |
-| ttribute>``           | ``List<Attribute> attribute``,                     |
-|                       | ``String ownerName``)                              |
-+-----------------------+----------------------------------------------------+
-| ``ApiEntitySingleResp | updateAttribute(\ ``Integer uniqueId``,            |
-| onse``                | ``Attribute attribute``)                           |
-+-----------------------+----------------------------------------------------+
-| ``ApiEntitySingleResp | updateAttribute(\ ``Integer uniqueId``,            |
-| onse``                | ``Attribute attribute``, ``String ownerName``)     |
-+-----------------------+----------------------------------------------------+
++----------------------------------+-----------------------------------------------------------------------------------------------+
+| Type                             | Method                                                                                        |
++==================================+===============================================================================================+
+| ``WriteListResponse<Attribute>`` | updateAttributes(\ ``Integer uniqueId``, ``List<Attribute> attributes``)                      |
++----------------------------------+-----------------------------------------------------------------------------------------------+
+| ``WriteListResponse<Attribute>`` | updateAttributes(\ ``Integer uniqueId``, ``List<Attribute> attribute``, ``String ownerName``) |
++----------------------------------+-----------------------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``      | updateAttribute(\ ``Integer uniqueId``, ``Attribute attribute``)                              |
++----------------------------------+-----------------------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``      | updateAttribute(\ ``Integer uniqueId``, ``Attribute attribute``, ``String ownerName``)        |
++----------------------------------+-----------------------------------------------------------------------------------------------+
 
 Create Observation
 ~~~~~~~~~~~~~~~~~~
 
-The methods below **create** an Observation on a specific Indicator
-type.
+The methods below **create** an Observation on a specific Indicator type.
 
-+--------------------+-------------------------------------------------------+
-| Type               | *Method*                                              |
-+====================+=======================================================+
-| ``ApiEntitySingleR | createObservation(\ ``Integer uniqueId``)             |
-| esponse``          |                                                       |
-+--------------------+-------------------------------------------------------+
-| ``ApiEntitySingleR | createObservation(\ ``Integer uniqueId``,             |
-| esponse``          | ``String ownerName``)                                 |
-+--------------------+-------------------------------------------------------+
++-----------------------------+-----------------------------------------------------------------+
+| Type                        | Method                                                          |
++=============================+=================================================================+
+| ``ApiEntitySingleResponse`` | createObservation(\ ``Integer uniqueId``)                       |
++-----------------------------+-----------------------------------------------------------------+
+| ``ApiEntitySingleResponse`` | createObservation(\ ``Integer uniqueId``, ``String ownerName``) |
++-----------------------------+-----------------------------------------------------------------+
 
 Update False Positive
 ~~~~~~~~~~~~~~~~~~~~~
 
-The methods below **update** the False Positive field on a specific
-Indicator type.
+The methods below **update** the False Positive field on a specific Indicator type.
 
-+--------------------+--------------------------------------------------------+
-| Type               | *Method*                                               |
-+====================+========================================================+
-| ``ApiEntitySingleR | updateFalsePositive(\ ``Integer uniqueId``)            |
-| esponse``          |                                                        |
-+--------------------+--------------------------------------------------------+
-| ``ApiEntitySingleR | updateFalsePositive(\ ``Integer uniqueId``,            |
-| esponse``          | ``String ownerName``)                                  |
-+--------------------+--------------------------------------------------------+
++-----------------------------+-------------------------------------------------------------------+
+| Type                        | Method                                                            |
++=============================+===================================================================+
+| ``ApiEntitySingleResponse`` | updateFalsePositive(\ ``Integer uniqueId``)                       |
++-----------------------------+-------------------------------------------------------------------+
+| ``ApiEntitySingleResponse`` | updateFalsePositive(\ ``Integer uniqueId``, ``String ownerName``) |
++-----------------------------+-------------------------------------------------------------------+
 
 Delete Group Association
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-The methods below **delete** Group associations to a specific Group
-type.
+The methods below **delete** Group associations to a specific Group type.
 
-+----------------------+------------------------------------------------------+
-| Type                 | *Method*                                             |
-+======================+======================================================+
-| ``WriteListResponse< | dissociateGroupAdversaries(\ ``Integer uniqueId``,   |
-| Integer>``           | ``List<Integer> adversaryIds``)                      |
-+----------------------+------------------------------------------------------+
-| ``WriteListResponse< | dissociateGroupAdversaries(\ ``Integer uniqueId``,   |
-| Integer>``           | ``List<Integer> adversaryIds``,                      |
-|                      | ``String ownerName``)                                |
-+----------------------+------------------------------------------------------+
-| ``ApiEntitySingleRes | dissociateGroupAdversary(\ ``Integer uniqueId``,     |
-| ponse``              | ``Integer adversaryId``)                             |
-+----------------------+------------------------------------------------------+
-| ``ApiEntitySingleRes | dissociateGroupAdversary(\ ``Integer uniqueId``,     |
-| ponse``              | ``Integer adversaryId``, ``String ownerName``)       |
-+----------------------+------------------------------------------------------+
-| ``WriteListResponse< | dissociateGroupEmails(\ ``Integer uniqueId``,        |
-| Integer>``           | ``List<Integer> emailIds``)                          |
-+----------------------+------------------------------------------------------+
-| ``WriteListResponse< | dissociateGroupEmails(\ ``Integer uniqueId``,        |
-| Integer>``           | ``List<Integer> emailIds``, ``String ownerName``)    |
-+----------------------+------------------------------------------------------+
-| ``ApiEntitySingleRes | dissociateGroupEmail(\ ``Integer uniqueId``,         |
-| ponse``              | ``Integer emailId``)                                 |
-+----------------------+------------------------------------------------------+
-| ``ApiEntitySingleRes | dissociateGroupEmail(\ ``Integer uniqueId``,         |
-| ponse``              | ``Integer emailId``, ``String ownerName``)           |
-+----------------------+------------------------------------------------------+
-| ``WriteListResponse< | dissociateGroupIncidents(\ ``Integer uniqueId``,     |
-| Integer>``           | ``List<Integer> incidentIds``)                       |
-+----------------------+------------------------------------------------------+
-| ``WriteListResponse< | dissociateGroupIncidents(\ ``Integer uniqueId``,     |
-| Integer>``           | ``List<Integer> incidentIds``, ``String ownerName``) |
-+----------------------+------------------------------------------------------+
-| ``ApiEntitySingleRes | dissociateGroupIncident(\ ``Integer uniqueId``,      |
-| ponse``              | ``Integer incidentId``)                              |
-+----------------------+------------------------------------------------------+
-| ``ApiEntitySingleRes | dissociateGroupIncident(\ ``Integer uniqueId``,      |
-| ponse``              | ``Integer incidentId``, ``String ownerName``)        |
-+----------------------+------------------------------------------------------+
-| ``WriteListResponse< | dissociateGroupSignatures(\ ``Integer uniqueId``,    |
-| Integer>``           | ``List<Integer> signatureIds``)                      |
-+----------------------+------------------------------------------------------+
-| ``WriteListResponse< | dissociateGroupSignatures(\ ``Integer uniqueId``,    |
-| Integer>``           | ``List<Integer> signatureIds``,                      |
-|                      | ``String ownerName``)                                |
-+----------------------+------------------------------------------------------+
-| ``ApiEntitySingleRes | dissociateGroupSignature(\ ``Integer uniqueId``,     |
-| ponse``              | ``Integer signatureId``)                             |
-+----------------------+------------------------------------------------------+
-| ``ApiEntitySingleRes | dissociateGroupSignature(\ ``Integer uniqueId``,     |
-| ponse``              | ``Integer signatureId``, ``String ownerName``)       |
-+----------------------+------------------------------------------------------+
-| ``WriteListResponse< | dissociateGroupThreats(\ ``Integer uniqueId``,       |
-| Integer>``           | ``List<Integer> threatIds``)                         |
-+----------------------+------------------------------------------------------+
-| ``WriteListResponse< | dissociateGroupThreats(\ ``Integer uniqueId``,       |
-| Integer>``           | ``List<Integer> threatIds``, ``String ownerName``)   |
-+----------------------+------------------------------------------------------+
-| ``ApiEntitySingleRes | dissociateGroupThreat(\ ``Integer uniqueId``,        |
-| ponse``              | ``Integer threatId``)                                |
-+----------------------+------------------------------------------------------+
-| ``ApiEntitySingleRes | dissociateGroupThreat(\ ``Integer uniqueId``,        |
-| ponse``              | ``Integer threatId``, ``String ownerName``)          |
-+----------------------+------------------------------------------------------+
++--------------------------------+----------------------------------------------------------------------------------------------------------+
+| Type                           | Method                                                                                                   |
++================================+==========================================================================================================+
+| ``WriteListResponse<Integer>`` | dissociateGroupAdversaries(\ ``Integer uniqueId``, ``List<Integer> adversaryIds``)                       |
++--------------------------------+----------------------------------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>`` | dissociateGroupAdversaries(\ ``Integer uniqueId``, ``List<Integer> adversaryIds``, ``String ownerName``) |
++--------------------------------+----------------------------------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | dissociateGroupAdversary(\ ``Integer uniqueId``, ``Integer adversaryId``)                                |
++--------------------------------+----------------------------------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | dissociateGroupAdversary(\ ``Integer uniqueId``, ``Integer adversaryId``, ``String ownerName``)          |
++--------------------------------+----------------------------------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>`` | dissociateGroupEmails(\ ``Integer uniqueId``, ``List<Integer> emailIds``)                                |
++--------------------------------+----------------------------------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>`` | dissociateGroupEmails(\ ``Integer uniqueId``, ``List<Integer> emailIds``, ``String ownerName``)          |
++--------------------------------+----------------------------------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | dissociateGroupEmail(\ ``Integer uniqueId``, ``Integer emailId``)                                        |
++--------------------------------+----------------------------------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | dissociateGroupEmail(\ ``Integer uniqueId``, ``Integer emailId``, ``String ownerName``)                  |
++--------------------------------+----------------------------------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>`` | dissociateGroupIncidents(\ ``Integer uniqueId``, ``List<Integer> incidentIds``)                          |
++--------------------------------+----------------------------------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>`` | dissociateGroupIncidents(\ ``Integer uniqueId``, ``List<Integer> incidentIds``, ``String ownerName``)    |
++--------------------------------+----------------------------------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | dissociateGroupIncident(\ ``Integer uniqueId``, ``Integer incidentId``)                                  |
++--------------------------------+----------------------------------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | dissociateGroupIncident(\ ``Integer uniqueId``, ``Integer incidentId``, ``String ownerName``)            |
++--------------------------------+----------------------------------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>`` | dissociateGroupSignatures(\ ``Integer uniqueId``, ``List<Integer> signatureIds``)                        |
++--------------------------------+----------------------------------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>`` | dissociateGroupSignatures(\ ``Integer uniqueId``, ``List<Integer> signatureIds``, ``String ownerName``)  |
++--------------------------------+----------------------------------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | dissociateGroupSignature(\ ``Integer uniqueId``, ``Integer signatureId``)                                |
++--------------------------------+----------------------------------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | dissociateGroupSignature(\ ``Integer uniqueId``, ``Integer signatureId``, ``String ownerName``)          |
++--------------------------------+----------------------------------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>`` | dissociateGroupThreats(\ ``Integer uniqueId``, ``List<Integer> threatIds``)                              |
++--------------------------------+----------------------------------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>`` | dissociateGroupThreats(\ ``Integer uniqueId``, ``List<Integer> threatIds``, ``String ownerName``)        |
++--------------------------------+----------------------------------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | dissociateGroupThreat(\ ``Integer uniqueId``, ``Integer threatId``)                                      |
++--------------------------------+----------------------------------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | dissociateGroupThreat(\ ``Integer uniqueId``, ``Integer threatId``, ``String ownerName``)                |
++--------------------------------+----------------------------------------------------------------------------------------------------------+
 
 Delete Indicator Associations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The methods below **delete** Indicator associations to a specific Group
-type.
+The methods below **delete** Indicator associations to a specific Group type.
 
-+----------------------+-----------------------------------------------------+
-| Type                 | *Method*                                            |
-+======================+=====================================================+
-| ``WriteListResponse< | dissociateIndicatorAddresses(\ ``Integer uniqueId`` |
-| String>``            | ,                                                   |
-|                      | ``List<String> ipAddresses``)                       |
-+----------------------+-----------------------------------------------------+
-| ``WriteListResponse< | dissociateIndicatorAddresses(\ ``Integer uniqueId`` |
-| String>``            | ,                                                   |
-|                      | ``List<String> ipAddresses``, ``String ownerName``) |
-+----------------------+-----------------------------------------------------+
-| ``ApiEntitySingleRes | dissociateIndicatorAddress(\ ``Integer uniqueId``,  |
-| ponse``              | ``String ipAddress``)                               |
-+----------------------+-----------------------------------------------------+
-| ``ApiEntitySingleRes | dissociateIndicatorAddress(\ ``Integer uniqueId``,  |
-| ponse``              | ``String ipAddress``, ``String ownerName``)         |
-+----------------------+-----------------------------------------------------+
-| ``WriteListResponse< | dissociateIndicatorEmailAddresses(\ ``Integer uniqu |
-| String>``            | eId``,                                              |
-|                      | ``List<String> emailAddresses``)                    |
-+----------------------+-----------------------------------------------------+
-| ``WriteListResponse< | dissociateIndicatorEmailAddresses(\ ``Integer uniqu |
-| String>``            | eId``,                                              |
-|                      | ``List<String> emailAddresses``,                    |
-|                      | ``String ownerName``)                               |
-+----------------------+-----------------------------------------------------+
-| ``ApiEntitySingleRes | dissociateIndicatorEmailAddress(\ ``Integer uniqueI |
-| ponse``              | d``,                                                |
-|                      | ``String emailAddress``)                            |
-+----------------------+-----------------------------------------------------+
-| ``ApiEntitySingleRes | dissociateIndicatorEmailAddress(\ ``Integer uniqueI |
-| ponse``              | d``,                                                |
-|                      | ``String emailAddress``, ``String ownerName``)      |
-+----------------------+-----------------------------------------------------+
-| ``WriteListResponse< | dissociateIndicatorFiles(\ ``Integer uniqueId``,    |
-| String>``            | ``List<String> fileHashes``)                        |
-+----------------------+-----------------------------------------------------+
-| ``WriteListResponse< | dissociateIndicatorFiles(\ ``Integer uniqueId``,    |
-| String>``            | ``List<String> fileHashes``, ``String ownerName``)  |
-+----------------------+-----------------------------------------------------+
-| ``ApiEntitySingleRes | dissociateIndicatorFile(\ ``Integer uniqueId``,     |
-| ponse``              | ``String fileHash``)                                |
-+----------------------+-----------------------------------------------------+
-| ``ApiEntitySingleRes | dissociateIndicatorFile(\ ``Integer uniqueId``,     |
-| ponse``              | ``String fileHash``, ``String ownerName``)          |
-+----------------------+-----------------------------------------------------+
-| ``WriteListResponse< | dissociateIndicatorHosts(\ ``Integer uniqueId``,    |
-| String>``            | ``List<String> hostNames``)                         |
-+----------------------+-----------------------------------------------------+
-| ``WriteListResponse< | dissociateIndicatorHosts(\ ``Integer uniqueId``,    |
-| String>``            | ``List<String> hostNames``, ``String ownerName``)   |
-+----------------------+-----------------------------------------------------+
-| ``ApiEntitySingleRes | dissociateIndicatorHost(\ ``Integer uniqueId``,     |
-| ponse``              | ``String hostName``)                                |
-+----------------------+-----------------------------------------------------+
-| ``ApiEntitySingleRes | dissociateIndicatorHost(\ ``Integer uniqueId``,     |
-| ponse``              | ``String hostName``, ``String ownerName``)          |
-+----------------------+-----------------------------------------------------+
-| ``WriteListResponse< | dissociateIndicatorUrls(\ ``Integer uniqueId``,     |
-| String>``            | ``List<String> urlTexts``)                          |
-+----------------------+-----------------------------------------------------+
-| ``WriteListResponse< | dissociateIndicatorUrls(\ ``Integer uniqueId``,     |
-| String>``            | ``List<String> urlTexts``, ``String ownerName``)    |
-+----------------------+-----------------------------------------------------+
-| ``ApiEntitySingleRes | dissociateIndicatorUrl(\ ``Integer uniqueId``,      |
-| ponse``              | ``String urlText``)                                 |
-+----------------------+-----------------------------------------------------+
-| ``ApiEntitySingleRes | dissociateIndicatorUrl(\ ``Integer uniqueId``,      |
-| ponse``              | ``String urlText``, ``String ownerName``)           |
-+----------------------+-----------------------------------------------------+
++-------------------------------+-------------------------------------------------------------------------------+
+| Type                          | Method                                                                        |
++===============================+===============================================================================+
+| ``WriteListResponse<String>`` | dissociateIndicatorAddresses(\ ``Integer uniqueId``,                          |
+|                               | ``List<String> ipAddresses``)                                                 |
++-------------------------------+-------------------------------------------------------------------------------+
+| ``WriteListResponse<String>`` | dissociateIndicatorAddresses(\ ``Integer uniqueId``,                          |
+|                               | ``List<String> ipAddresses``, ``String ownerName``)                           |
++-------------------------------+-------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | dissociateIndicatorAddress(\ ``Integer uniqueId``, ``String ipAddress``)      |
++-------------------------------+-------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | dissociateIndicatorAddress(\ ``Integer uniqueId``, ``String ipAddress``,      |
+|                               | ``String ownerName``)                                                         |
++-------------------------------+-------------------------------------------------------------------------------+
+| ``WriteListResponse<String>`` | dissociateIndicatorEmailAddresses(\ ``Integer uniqueId``,                     |
+|                               | ``List<String> emailAddresses``)                                              |
++-------------------------------+-------------------------------------------------------------------------------+
+| ``WriteListResponse<String>`` | dissociateIndicatorEmailAddresses(\ ``Integer uniqueId``,                     |
+|                               | ``List<String> emailAddresses``, ``String ownerName``)                        |
++-------------------------------+-------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | dissociateIndicatorEmailAddress(\ ``Integer uniqueId``,                       |
+|                               | ``String emailAddress``)                                                      |
++-------------------------------+-------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | dissociateIndicatorEmailAddress(\ ``Integer uniqueId``,                       |
+|                               | ``String emailAddress``, ``String ownerName``)                                |
++-------------------------------+-------------------------------------------------------------------------------+
+| ``WriteListResponse<String>`` | dissociateIndicatorFiles(\ ``Integer uniqueId``, ``List<String> fileHashes``) |
++-------------------------------+-------------------------------------------------------------------------------+
+| ``WriteListResponse<String>`` | dissociateIndicatorFiles(\ ``Integer uniqueId``, ``List<String> fileHashes``, |
+|                               | ``String ownerName``)                                                         |
++-------------------------------+-------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | dissociateIndicatorFile(\ ``Integer uniqueId``, ``String fileHash``)          |
++-------------------------------+-------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | dissociateIndicatorFile(\ ``Integer uniqueId``, ``String fileHash``,          |
+|                               | ``String ownerName``)                                                         |
++-------------------------------+-------------------------------------------------------------------------------+
+| ``WriteListResponse<String>`` | dissociateIndicatorHosts(\ ``Integer uniqueId``, ``List<String> hostNames``)  |
++-------------------------------+-------------------------------------------------------------------------------+
+| ``WriteListResponse<String>`` | dissociateIndicatorHosts(\ ``Integer uniqueId``, ``List<String> hostNames``,  |
+|                               | ``String ownerName``)                                                         |
++-------------------------------+-------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | dissociateIndicatorHost(\ ``Integer uniqueId``, ``String hostName``)          |
++-------------------------------+-------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | dissociateIndicatorHost(\ ``Integer uniqueId``, ``String hostName``,          |
+|                               | ``String ownerName``)                                                         |
++-------------------------------+-------------------------------------------------------------------------------+
+| ``WriteListResponse<String>`` | dissociateIndicatorUrls(\ ``Integer uniqueId``, ``List<String> urlTexts``)    |
++-------------------------------+-------------------------------------------------------------------------------+
+| ``WriteListResponse<String>`` | dissociateIndicatorUrls(\ ``Integer uniqueId``, ``List<String> urlTexts``,    |
+|                               | ``String ownerName``)                                                         |
++-------------------------------+-------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | dissociateIndicatorUrl(\ ``Integer uniqueId``, ``String urlText``)            |
++-------------------------------+-------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | dissociateIndicatorUrl(\ ``Integer uniqueId``, ``String urlText``,            |
+|                               | ``String ownerName``)                                                         |
++-------------------------------+-------------------------------------------------------------------------------+
 
 Delete Security Label Associations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The methods below **delete** SecurityLabel associations to a specific
-Group type.
+The methods below **delete** SecurityLabel associations to a specific Group type.
 
-+---------------------+------------------------------------------------------+
-| Type                | *Method*                                             |
-+=====================+======================================================+
-| ``WriteListResponse | dissociateSecurityLabel(\ ``Integer uniqueId``,      |
-| <String>``          | ``List<String> securityLabels``)                     |
-+---------------------+------------------------------------------------------+
-| ``WriteListResponse | dissociateSecurityLabel(\ ``Integer uniqueId``,      |
-| <String>``          | ``List<String> securityLabels``,                     |
-|                     | ``String ownerName``)                                |
-+---------------------+------------------------------------------------------+
-| ``ApiEntitySingleRe | dissociateSecurityLabel(\ ``Integer uniqueId``,      |
-| sponse``            | ``String securityLabel``)                            |
-+---------------------+------------------------------------------------------+
-| ``ApiEntitySingleRe | dissociateSecurityLabel(\ ``Integer uniqueId``,      |
-| sponse``            | ``String securityLabel``, ``String ownerName``)      |
-+---------------------+------------------------------------------------------+
++-------------------------------+--------------------------------------------------------------------------------------------------------+
+| Type                          | Method                                                                                                 |
++===============================+========================================================================================================+
+| ``WriteListResponse<String>`` | dissociateSecurityLabel(\ ``Integer uniqueId``, ``List<String> securityLabels``)                       |
++-------------------------------+--------------------------------------------------------------------------------------------------------+
+| ``WriteListResponse<String>`` | dissociateSecurityLabel(\ ``Integer uniqueId``, ``List<String> securityLabels``, ``String ownerName``) |
++-------------------------------+--------------------------------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | dissociateSecurityLabel(\ ``Integer uniqueId``, ``String securityLabel``)                              |
++-------------------------------+--------------------------------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | dissociateSecurityLabel(\ ``Integer uniqueId``, ``String securityLabel``, ``String ownerName``)        |
++-------------------------------+--------------------------------------------------------------------------------------------------------+
 
 Delete Tag Associations
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 The methods below **delete** Tag associations to a specific Group type.
 
-+---------------------+------------------------------------------------------+
-| Type                | *Method*                                             |
-+=====================+======================================================+
-| ``WriteListResponse | dissociateTags(\ ``Integer uniqueId``,               |
-| <String>``          | ``List<String> tagNames``)                           |
-+---------------------+------------------------------------------------------+
-| ``WriteListResponse | dissociateTags(\ ``Integer uniqueId``,               |
-| <String>``          | ``List<String> tagNames``, ``String ownerName``)     |
-+---------------------+------------------------------------------------------+
-| ``ApiEntitySingleRe | dissociateTag(\ ``Integer uniqueId``,                |
-| sponse``            | ``String tagName``)                                  |
-+---------------------+------------------------------------------------------+
-| ``ApiEntitySingleRe | dissociateTag(\ ``Integer uniqueId``,                |
-| sponse``            | ``String tagName``, ``String ownerName``)            |
-+---------------------+------------------------------------------------------+
++-------------------------------+-----------------------------------------------------------------------------------------+
+| Type                          | Method                                                                                  |
++===============================+=========================================================================================+
+| ``WriteListResponse<String>`` | dissociateTags(\ ``Integer uniqueId``, ``List<String> tagNames``)                       |
++-------------------------------+-----------------------------------------------------------------------------------------+
+| ``WriteListResponse<String>`` | dissociateTags(\ ``Integer uniqueId``, ``List<String> tagNames``, ``String ownerName``) |
++-------------------------------+-----------------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | dissociateTag(\ ``Integer uniqueId``, ``String tagName``)                               |
++-------------------------------+-----------------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``   | dissociateTag(\ ``Integer uniqueId``, ``String tagName``, ``String ownerName``)         |
++-------------------------------+-----------------------------------------------------------------------------------------+
 
 Delete Victim Associations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The methods below **delete** Victim associations to a specific Group
-type.
+The methods below **delete** Victim associations to a specific Group type.
 
-+----------------------+-----------------------------------------------------+
-| Type                 | *Method*                                            |
-+======================+=====================================================+
-| ``WriteListResponse< | dissociateVictims(\ ``Integer uniqueId``,           |
-| Integer>``           | ``List<Integer> victimIds``)                        |
-+----------------------+-----------------------------------------------------+
-| ``WriteListResponse< | dissociateVictims(\ ``Integer uniqueId``,           |
-| Integer>``           | ``List<Integer> victimIds``, ``String ownerName``)  |
-+----------------------+-----------------------------------------------------+
-| ``ApiEntitySingleRes | dissociateVictim(\ ``Integer uniqueId``,            |
-| ponse``              | ``Integer victimId``)                               |
-+----------------------+-----------------------------------------------------+
-| ``ApiEntitySingleRes | dissociateVictim(\ ``Integer uniqueId``,            |
-| ponse``              | ``Integer victimId``, ``String ownerName``)         |
-+----------------------+-----------------------------------------------------+
++--------------------------------+----------------------------------------------------------------------------------------------+
+| Type                           | Method                                                                                       |
++================================+==============================================================================================+
+| ``WriteListResponse<Integer>`` | dissociateVictims(\ ``Integer uniqueId``, ``List<Integer> victimIds``)                       |
++--------------------------------+----------------------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>`` | dissociateVictims(\ ``Integer uniqueId``, ``List<Integer> victimIds``, ``String ownerName``) |
++--------------------------------+----------------------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | dissociateVictim(\ ``Integer uniqueId``, ``Integer victimId``)                               |
++--------------------------------+----------------------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | dissociateVictim(\ ``Integer uniqueId``, ``Integer victimId``, ``String ownerName``)         |
++--------------------------------+----------------------------------------------------------------------------------------------+
 
 Delete VictimAsset Associations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The methods below **delete** VictimAsset associations to a specific
-Group type.
+The methods below **delete** VictimAsset associations to a specific Group type.
 
-+----------------------+------------------------------------------------------+
-| Type                 | *Method*                                             |
-+======================+======================================================+
-| ``WriteListResponse< | dissociateVictimAssetEmailAddresses(\ ``Integer uniq |
-| Integer>``           | ueId``,                                              |
-|                      | ``List<Integer> assetIds``)                          |
-+----------------------+------------------------------------------------------+
-| ``WriteListResponse< | dissociateVictimAssetEmailAddresses(\ ``Integer uniq |
-| Integer>``           | ueId``,                                              |
-|                      | ``List<Integer> assetIds``, ``String ownerName``)    |
-+----------------------+------------------------------------------------------+
-| ``ApiEntitySingleRes | dissociateVictimAssetEmailAddress(\ ``Integer unique |
-| ponse``              | Id``,                                                |
-|                      | ``Integer assetId``)                                 |
-+----------------------+------------------------------------------------------+
-| ``ApiEntitySingleRes | dissociateVictimAssetEmailAddress(\ ``Integer unique |
-| ponse``              | Id``,                                                |
-|                      | ``Integer assetId``, ``String ownerName``)           |
-+----------------------+------------------------------------------------------+
-| ``WriteListResponse< | dissociateVictimAssetNetworkAccounts(\ ``Integer uni |
-| Integer>``           | queId``,                                             |
-|                      | ``List<Integer> assetIds``)                          |
-+----------------------+------------------------------------------------------+
-| ``WriteListResponse< | dissociateVictimAssetNetworkAccounts(\ ``Integer uni |
-| Integer>``           | queId``,                                             |
-|                      | ``List<Integer> assetIds``, ``String ownerName``)    |
-+----------------------+------------------------------------------------------+
-| ``ApiEntitySingleRes | dissociateVictimAssetNetworkAccount(\ ``Integer uniq |
-| ponse``              | ueId``,                                              |
-|                      | ``Integer assetId``)                                 |
-+----------------------+------------------------------------------------------+
-| ``ApiEntitySingleRes | dissociateVictimAssetNetworkAccount(\ ``Integer uniq |
-| ponse``              | ueId``,                                              |
-|                      | ``Integer assetId``, ``String ownerName``)           |
-+----------------------+------------------------------------------------------+
-| ``WriteListResponse< | dissociateVictimAssetPhoneNumbers(\ ``Integer unique |
-| Integer>``           | Id``,                                                |
-|                      | ``List<Integer> assetIds``)                          |
-+----------------------+------------------------------------------------------+
-| ``WriteListResponse< | dissociateVictimAssetPhoneNumbers(\ ``Integer unique |
-| Integer>``           | Id``,                                                |
-|                      | ``List<Integer> assetIds``, ``String ownerName``)    |
-+----------------------+------------------------------------------------------+
-| ``ApiEntitySingleRes | dissociateVictimAssetPhoneNumber(\ ``Integer uniqueI |
-| ponse``              | d``,                                                 |
-|                      | ``Integer assetId``)                                 |
-+----------------------+------------------------------------------------------+
-| ``ApiEntitySingleRes | dissociateVictimAssetPhoneNumber(\ ``Integer uniqueI |
-| ponse``              | d``,                                                 |
-|                      | ``Integer assetId``, ``String ownerName``)           |
-+----------------------+------------------------------------------------------+
-| ``WriteListResponse< | dissociateVictimAssetSocialNetworks(\ ``Integer uniq |
-| Integer>``           | ueId``,                                              |
-|                      | ``List<Integer> assetIds``)                          |
-+----------------------+------------------------------------------------------+
-| ``WriteListResponse< | dissociateVictimAssetSocialNetworks(\ ``Integer uniq |
-| Integer>``           | ueId``,                                              |
-|                      | ``List<Integer> assetIds``, ``String ownerName``)    |
-+----------------------+------------------------------------------------------+
-| ``ApiEntitySingleRes | dissociateVictimAssetSocialNetwork(\ ``Integer uniqu |
-| ponse``              | eId``,                                               |
-|                      | ``Integer assetId``)                                 |
-+----------------------+------------------------------------------------------+
-| ``ApiEntitySingleRes | dissociateVictimAssetSocialNetwork(\ ``Integer uniqu |
-| ponse``              | eId``,                                               |
-|                      | ``Integer assetId``, ``String ownerName``)           |
-+----------------------+------------------------------------------------------+
-| ``WriteListResponse< | dissociateVictimAssetWebsites(\ ``Integer uniqueId`` |
-| Integer>``           | ,                                                    |
-|                      | ``List<Integer> assetIds``)                          |
-+----------------------+------------------------------------------------------+
-| ``WriteListResponse< | dissociateVictimAssetWebsites(\ ``Integer uniqueId`` |
-| Integer>``           | ,                                                    |
-|                      | ``List<Integer> assetIds``, ``String ownerName``)    |
-+----------------------+------------------------------------------------------+
-| ``ApiEntitySingleRes | dissociateVictimAssetWebsite(\ ``Integer uniqueId``, |
-| ponse``              | ``Integer assetId``)                                 |
-+----------------------+------------------------------------------------------+
-| ``ApiEntitySingleRes | dissociateVictimAssetWebsite(\ ``Integer uniqueId``, |
-| ponse``              | ``Integer assetId``, ``String ownerName``)           |
-+----------------------+------------------------------------------------------+
++--------------------------------+--------------------------------------------------------------------------------+
+| Type                           | Method                                                                         |
++================================+================================================================================+
+| ``WriteListResponse<Integer>`` | dissociateVictimAssetEmailAddresses(\ ``Integer uniqueId``,                    |
+|                                | ``List<Integer> assetIds``)                                                    |
++--------------------------------+--------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>`` | dissociateVictimAssetEmailAddresses(\ ``Integer uniqueId``,                    |
+|                                | ``List<Integer> assetIds``, ``String ownerName``)                              |
++--------------------------------+--------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | dissociateVictimAssetEmailAddress(\ ``Integer uniqueId``, ``Integer assetId``) |
++--------------------------------+--------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | dissociateVictimAssetEmailAddress(\ ``Integer uniqueId``, ``Integer assetId``, |
+|                                | ``String ownerName``)                                                          |
++--------------------------------+--------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>`` | dissociateVictimAssetNetworkAccounts(\ ``Integer uniqueId``,                   |
+|                                | ``List<Integer> assetIds``)                                                    |
++--------------------------------+--------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>`` | dissociateVictimAssetNetworkAccounts(\ ``Integer uniqueId``,                   |
+|                                | ``List<Integer> assetIds``, ``String ownerName``)                              |
++--------------------------------+--------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | dissociateVictimAssetNetworkAccount(\ ``Integer uniqueId``,                    |
+|                                | ``Integer assetId``)                                                           |
++--------------------------------+--------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | dissociateVictimAssetNetworkAccount(\ ``Integer uniqueId``,                    |
+|                                | ``Integer assetId``, ``String ownerName``)                                     |
++--------------------------------+--------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>`` | dissociateVictimAssetPhoneNumbers(\ ``Integer uniqueId``,                      |
+|                                | ``List<Integer> assetIds``)                                                    |
++--------------------------------+--------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>`` | dissociateVictimAssetPhoneNumbers(\ ``Integer uniqueId``,                      |
+|                                | ``List<Integer> assetIds``, ``String ownerName``)                              |
++--------------------------------+--------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | dissociateVictimAssetPhoneNumber(\ ``Integer uniqueId``, ``Integer assetId``)  |
++--------------------------------+--------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | dissociateVictimAssetPhoneNumber(\ ``Integer uniqueId``, ``Integer assetId``,  |
+|                                | ``String ownerName``)                                                          |
++--------------------------------+--------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>`` | dissociateVictimAssetSocialNetworks(\ ``Integer uniqueId``,                    |
+|                                | ``List<Integer> assetIds``)                                                    |
++--------------------------------+--------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>`` | dissociateVictimAssetSocialNetworks(\ ``Integer uniqueId``,                    |
+|                                | ``List<Integer> assetIds``, ``String ownerName``)                              |
++--------------------------------+--------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | dissociateVictimAssetSocialNetwork(\ ``Integer uniqueId``,                     |
+|                                | ``Integer assetId``)                                                           |
++--------------------------------+--------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | dissociateVictimAssetSocialNetwork(\ ``Integer uniqueId``,                     |
+|                                | ``Integer assetId``, ``String ownerName``)                                     |
++--------------------------------+--------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>`` | dissociateVictimAssetWebsites(\ ``Integer uniqueId``,                          |
+|                                | ``List<Integer> assetIds``)                                                    |
++--------------------------------+--------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>`` | dissociateVictimAssetWebsites(\ ``Integer uniqueId``,                          |
+|                                | ``List<Integer> assetIds``, ``String ownerName``)                              |
++--------------------------------+--------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | dissociateVictimAssetWebsite(\ ``Integer uniqueId``, ``Integer assetId``)      |
++--------------------------------+--------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | dissociateVictimAssetWebsite(\ ``Integer uniqueId``, ``Integer assetId``,      |
+|                                | ``String ownerName``)                                                          |
++--------------------------------+--------------------------------------------------------------------------------+
 
 Delete Attribute
 ~~~~~~~~~~~~~~~~
 
 The methods below **delete** Attributes from a specific Group type.
 
-+----------------------+------------------------------------------------------+
-| Type                 | *Method*                                             |
-+======================+======================================================+
-| ``WriteListResponse< | deleteAttributes(\ ``Integer uniqueId``,             |
-| Integer>``           | ``List<Integer> attributes``)                        |
-+----------------------+------------------------------------------------------+
-| ``WriteListResponse< | deleteAttributes(\ ``Integer uniqueId``,             |
-| Integer>``           | ``List<Integer> attribute``, ``String ownerName``)   |
-+----------------------+------------------------------------------------------+
-| ``ApiEntitySingleRes | deleteAttribute(\ ``Integer uniqueId``,              |
-| ponse``              | ``Integer attribute``)                               |
-+----------------------+------------------------------------------------------+
-| ``ApiEntitySingleRes | deleteAttribute(\ ``Integer uniqueId``,              |
-| ponse``              | ``Integer attribute``, ``String ownerName``)         |
-+----------------------+------------------------------------------------------+
-| ``WriteListResponse< | deleteAttributeSecurityLabels(\ ``Integer uniqueId`` |
-| String>``            | ,                                                    |
-|                      | ``Integer attributeId``,                             |
-|                      | ``List<String> securityLabels``)                     |
-+----------------------+------------------------------------------------------+
-| ``WriteListResponse< | deleteAttributeSecurityLabels(\ ``Integer uniqueId`` |
-| String>``            | ,                                                    |
-|                      | ``Integer attributeId``,                             |
-|                      | ``List<String> securityLabels``,                     |
-|                      | ``String ownerName``)                                |
-+----------------------+------------------------------------------------------+
-| ``ApiEntitySingleRes | deleteAttributeSecurityLabel(\ ``Integer uniqueId``, |
-| ponse``              | ``Integer attributeId``, ``String securityLabel``)   |
-+----------------------+------------------------------------------------------+
-| ``ApiEntitySingleRes | deleteAttributeSecurityLabel(\ ``Integer uniqueId``, |
-| ponse``              | ``Integer attributeId``, ``String securityLabel``,   |
-|                      | ``String ownerName``)                                |
-+----------------------+------------------------------------------------------+
++--------------------------------+--------------------------------------------------------------------------------+
+| Type                           | Method                                                                         |
++================================+================================================================================+
+| ``WriteListResponse<Integer>`` | deleteAttributes(\ ``Integer uniqueId``, ``List<Integer> attributes``)         |
++--------------------------------+--------------------------------------------------------------------------------+
+| ``WriteListResponse<Integer>`` | deleteAttributes(\ ``Integer uniqueId``, ``List<Integer> attribute``,          |
+|                                | ``String ownerName``)                                                          |
++--------------------------------+--------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | deleteAttribute(\ ``Integer uniqueId``, ``Integer attribute``)                 |
++--------------------------------+--------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | deleteAttribute(\ ``Integer uniqueId``, ``Integer attribute``,                 |
+|                                | ``String ownerName``)                                                          |
++--------------------------------+--------------------------------------------------------------------------------+
+| ``WriteListResponse<String>``  | deleteAttributeSecurityLabels(\ ``Integer uniqueId``, ``Integer attributeId``, |
+|                                | ``List<String> securityLabels``)                                               |
++--------------------------------+--------------------------------------------------------------------------------+
+| ``WriteListResponse<String>``  | deleteAttributeSecurityLabels(\ ``Integer uniqueId``, ``Integer attributeId``, |
+|                                | ``List<String> securityLabels``, ``String ownerName``)                         |
++--------------------------------+--------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | deleteAttributeSecurityLabel(\ ``Integer uniqueId``, ``Integer attributeId``,  |
+|                                | ``String securityLabel``)                                                      |
++--------------------------------+--------------------------------------------------------------------------------+
+| ``ApiEntitySingleResponse``    | deleteAttributeSecurityLabel(\ ``Integer uniqueId``, ``Integer attributeId``,  |
+|                                | ``String securityLabel``, ``String ownerName``)                                |
++--------------------------------+--------------------------------------------------------------------------------+
 
 AbstractIndicatorWriterAdapter
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2415,44 +2225,38 @@ method-naming conventions are the same.
 FileIndicatorWriterAdapter
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-FileIndicatorWriterAdapter, which all the functionality of the
-AbstractIndicatorWriterAdapter with the addition of the following write
-methods:
+FileIndicatorWriterAdapter, which all the functionality of the AbstractIndicatorWriterAdapter with the addition of the
+following write methods:
 
-+--------------------------+-------------------------------------------------+
-| Type                     | *Method*                                        |
-+==========================+=================================================+
-| ``WriteListResponse<File | updateFileOccurrences(\ ``String fileHash``,    |
-| Occurrence>``            | ``List<FileOccurrence> fileOccurrences``)       |
-+--------------------------+-------------------------------------------------+
-| ``WriteListResponse<File | updateFileOccurrences(\ ``String fileHash``,    |
-| Occurrence>``            | ``List<FileOccurrence> fileOccurrences``,       |
-|                          | ``String ownerName``)                           |
-+--------------------------+-------------------------------------------------+
-| ``FileOccurrence``       | updateFileOccurrence(\ ``String fileHash``,     |
-|                          | ``FileOccurrence fileOccurrence``)              |
-+--------------------------+-------------------------------------------------+
-| ``FileOccurrence``       | updateFileOccurrence(\ ``String fileHash``,     |
-|                          | ``FileOccurrence fileOccurrence``,              |
-|                          | ``String ownerName``)                           |
-+--------------------------+-------------------------------------------------+
++---------------------------------------+-----------------------------------------------------------------+
+| Type                                  | Method                                                          |
++=======================================+=================================================================+
+| ``WriteListResponse<FileOccurrence>`` | updateFileOccurrences(\ ``String fileHash``,                    |
+|                                       | ``List<FileOccurrence> fileOccurrences``)                       |
++---------------------------------------+-----------------------------------------------------------------+
+| ``WriteListResponse<FileOccurrence>`` | updateFileOccurrences(\ ``String fileHash``,                    |
+|                                       | ``List<FileOccurrence> fileOccurrences``, ``String ownerName``) |
++---------------------------------------+-----------------------------------------------------------------+
+| ``FileOccurrence``                    | updateFileOccurrence(\ ``String fileHash``,                     |
+|                                       | ``FileOccurrence fileOccurrence``)                              |
++---------------------------------------+-----------------------------------------------------------------+
+| ``FileOccurrence``                    | updateFileOccurrence(\ ``String fileHash``,                     |
+|                                       | ``FileOccurrence fileOccurrence``, ``String ownerName``)        |
++---------------------------------------+-----------------------------------------------------------------+
 
 DocumentWriterAdapter
 ~~~~~~~~~~~~~~~~~~~~~
 
-DocumentWriterAdapter has all the functionality of the
-AbstractGroupWriterAdapter with the addition of the following write
-methods:
+DocumentWriterAdapter has all the functionality of the AbstractGroupWriterAdapter with the addition of the following
+write methods:
 
-+-------------------+--------------------------------------------------------+
-| Type              | *Method*                                               |
-+===================+========================================================+
-| ``ApiEntitySingle | uploadFile(\ ``int uniqueId``, ``File file``)          |
-| Response``        |                                                        |
-+-------------------+--------------------------------------------------------+
-| ``ApiEntitySingle | uploadFile(\ ``int uniqueId``, ``File file``,          |
-| Response``        | ``String ownerName``)                                  |
-+-------------------+--------------------------------------------------------+
++-----------------------------+---------------------------------------------------------------------+
+| Type                        | Method                                                              |
++=============================+=====================================================================+
+| ``ApiEntitySingleResponse`` | uploadFile(\ ``int uniqueId``, ``File file``)                       |
++-----------------------------+---------------------------------------------------------------------+
+| ``ApiEntitySingleResponse`` | uploadFile(\ ``int uniqueId``, ``File file``, ``String ownerName``) |
++-----------------------------+---------------------------------------------------------------------+
 
 AbstractBatchWriterAdapter
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2474,7 +2278,7 @@ the batch file using the following write methods:
 Once a batch configuration is created, the ApiEntitySingleResponse
 object returns BatchResponseData with a batchId if successful. This
 batchId is used to upload the batch file using the ``uploadFile``
-method. At this point, a successfuly response to the upload will trigger
+method. At this point, a successfully response to the upload will trigger
 the batch. Use the BatchReaderAdapter to poll for the status of the
 batch.
 
@@ -2494,31 +2298,31 @@ Note that the deletes require the Security Label as the ``uniqueId``
 String (P). The create and update requires the full SecurityLabel object
 (T).
 
-+-------------------------------+--------------------------------------------------------+
-| Type                          | *Method*                                               |
-+===============================+========================================================+
-| ``WriteListResponse<T>``      | create(\ ``List<T> itemList``)                         |
-+-------------------------------+--------------------------------------------------------+
-| ``ApiEntitySingleResponse``   | create(\ ``T item``)                                   |
-+-------------------------------+--------------------------------------------------------+
-| ``ApiEntitySingleResponse``   | create(\ ``T item``, ``String ownerName``)             |
-+-------------------------------+--------------------------------------------------------+
-| ``WriteListResponse<P>``      | delete(\ ``List<P> itemIds``)                          |
-+-------------------------------+--------------------------------------------------------+
-| ``WriteListResponse<P>``      | delete(\ ``List<P> itemIds``, ``String ownerName``)    |
-+-------------------------------+--------------------------------------------------------+
-| ``ApiEntitySingleResponse``   | delete(\ ``P itemId``)                                 |
-+-------------------------------+--------------------------------------------------------+
-| ``ApiEntitySingleResponse``   | delete(\ ``P itemId``, ``String ownerName``)           |
-+-------------------------------+--------------------------------------------------------+
-| ``WriteListResponse<T>``      | update(\ ``List<T> itemList``)                         |
-+-------------------------------+--------------------------------------------------------+
-| ``WriteListResponse<T>``      | update(\ ``List<T> itemList``, ``String ownerName``)   |
-+-------------------------------+--------------------------------------------------------+
-| ``ApiEntitySingleResponse``   | update(\ ``T item``)                                   |
-+-------------------------------+--------------------------------------------------------+
-| ``ApiEntitySingleResponse``   | update(\ ``T item``, ``String ownerName``)             |
-+-------------------------------+--------------------------------------------------------+
++-----------------------------+------------------------------------------------------+
+| Type                        | *Method*                                             |
++=============================+======================================================+
+| ``WriteListResponse<T>``    | create(\ ``List<T> itemList``)                       |
++-----------------------------+------------------------------------------------------+
+| ``ApiEntitySingleResponse`` | create(\ ``T item``)                                 |
++-----------------------------+------------------------------------------------------+
+| ``ApiEntitySingleResponse`` | create(\ ``T item``, ``String ownerName``)           |
++-----------------------------+------------------------------------------------------+
+| ``WriteListResponse<P>``    | delete(\ ``List<P> itemIds``)                        |
++-----------------------------+------------------------------------------------------+
+| ``WriteListResponse<P>``    | delete(\ ``List<P> itemIds``, ``String ownerName``)  |
++-----------------------------+------------------------------------------------------+
+| ``ApiEntitySingleResponse`` | delete(\ ``P itemId``)                               |
++-----------------------------+------------------------------------------------------+
+| ``ApiEntitySingleResponse`` | delete(\ ``P itemId``, ``String ownerName``)         |
++-----------------------------+------------------------------------------------------+
+| ``WriteListResponse<T>``    | update(\ ``List<T> itemList``)                       |
++-----------------------------+------------------------------------------------------+
+| ``WriteListResponse<T>``    | update(\ ``List<T> itemList``, ``String ownerName``) |
++-----------------------------+------------------------------------------------------+
+| ``ApiEntitySingleResponse`` | update(\ ``T item``)                                 |
++-----------------------------+------------------------------------------------------+
+| ``ApiEntitySingleResponse`` | update(\ ``T item``, ``String ownerName``)           |
++-----------------------------+------------------------------------------------------+
 
 TagWriterAdapter
 ~~~~~~~~~~~~~~~~
@@ -2534,31 +2338,31 @@ Below is the standard create methods available to all WriterAdapters.
 Note that the deletes require the Tag Name as the ``uniqueId`` String
 (P). The create and update requires the full Tag object (T).
 
-+-------------------------------+--------------------------------------------------------+
-| Type                          | *Method*                                               |
-+===============================+========================================================+
-| ``WriteListResponse<T>``      | create(\ ``List<T> itemList``)                         |
-+-------------------------------+--------------------------------------------------------+
-| ``ApiEntitySingleResponse``   | create(\ ``T item``)                                   |
-+-------------------------------+--------------------------------------------------------+
-| ``ApiEntitySingleResponse``   | create(\ ``T item``, ``String ownerName``)             |
-+-------------------------------+--------------------------------------------------------+
-| ``WriteListResponse<P>``      | delete(\ ``List<P> itemIds``)                          |
-+-------------------------------+--------------------------------------------------------+
-| ``WriteListResponse<P>``      | delete(\ ``List<P> itemIds``, ``String ownerName``)    |
-+-------------------------------+--------------------------------------------------------+
-| ``ApiEntitySingleResponse``   | delete(\ ``P itemId``)                                 |
-+-------------------------------+--------------------------------------------------------+
-| ``ApiEntitySingleResponse``   | delete(\ ``P itemId``, ``String ownerName``)           |
-+-------------------------------+--------------------------------------------------------+
-| ``WriteListResponse<T>``      | update(\ ``List<T> itemList``)                         |
-+-------------------------------+--------------------------------------------------------+
-| ``WriteListResponse<T>``      | update(\ ``List<T> itemList``, ``String ownerName``)   |
-+-------------------------------+--------------------------------------------------------+
-| ``ApiEntitySingleResponse``   | update(\ ``T item``)                                   |
-+-------------------------------+--------------------------------------------------------+
-| ``ApiEntitySingleResponse``   | update(\ ``T item``, ``String ownerName``)             |
-+-------------------------------+--------------------------------------------------------+
++-----------------------------+------------------------------------------------------+
+| Type                        | *Method*                                             |
++=============================+======================================================+
+| ``WriteListResponse<T>``    | create(\ ``List<T> itemList``)                       |
++-----------------------------+------------------------------------------------------+
+| ``ApiEntitySingleResponse`` | create(\ ``T item``)                                 |
++-----------------------------+------------------------------------------------------+
+| ``ApiEntitySingleResponse`` | create(\ ``T item``, ``String ownerName``)           |
++-----------------------------+------------------------------------------------------+
+| ``WriteListResponse<P>``    | delete(\ ``List<P> itemIds``)                        |
++-----------------------------+------------------------------------------------------+
+| ``WriteListResponse<P>``    | delete(\ ``List<P> itemIds``, ``String ownerName``)  |
++-----------------------------+------------------------------------------------------+
+| ``ApiEntitySingleResponse`` | delete(\ ``P itemId``)                               |
++-----------------------------+------------------------------------------------------+
+| ``ApiEntitySingleResponse`` | delete(\ ``P itemId``, ``String ownerName``)         |
++-----------------------------+------------------------------------------------------+
+| ``WriteListResponse<T>``    | update(\ ``List<T> itemList``)                       |
++-----------------------------+------------------------------------------------------+
+| ``WriteListResponse<T>``    | update(\ ``List<T> itemList``, ``String ownerName``) |
++-----------------------------+------------------------------------------------------+
+| ``ApiEntitySingleResponse`` | update(\ ``T item``)                                 |
++-----------------------------+------------------------------------------------------+
+| ``ApiEntitySingleResponse`` | update(\ ``T item``, ``String ownerName``)           |
++-----------------------------+------------------------------------------------------+
 
 TaskWriterAdapter
 ~~~~~~~~~~~~~~~~~
@@ -2567,47 +2371,47 @@ The TaskWriterAdapter allows
 
 Below is the standard create methods available to all WriterAdapters.
 
-+-------------------------------+
-| Type                          |
-+===============================+
-| ``WriteListResponse<T>``      |
-+-------------------------------+
-| ``ApiEntitySingleResponse``   |
-+-------------------------------+
-| ``ApiEntitySingleResponse``   |
-+-------------------------------+
-| ``WriteListResponse<P>``      |
-+-------------------------------+
-| ``WriteListResponse<P>``      |
-+-------------------------------+
-| ``ApiEntitySingleResponse``   |
-+-------------------------------+
-| ``ApiEntitySingleResponse``   |
-+-------------------------------+
-| ``WriteListResponse<T>``      |
-+-------------------------------+
-| ``WriteListResponse<T>``      |
-+-------------------------------+
-| ``ApiEntitySingleResponse``   |
-+-------------------------------+
-| ``ApiEntitySingleResponse``   |
-+-------------------------------+
++-----------------------------+------------------------------------------------------+
+| Type                        | Method                                               |
++=============================+======================================================+
+| ``WriteListResponse<T>``    | create(\ ``List<T> itemList``)                       |
++-----------------------------+------------------------------------------------------+
+| ``ApiEntitySingleResponse`` | create(\ ``T item``)                                 |
++-----------------------------+------------------------------------------------------+
+| ``ApiEntitySingleResponse`` | create(\ ``T item``, ``String ownerName``)           |
++-----------------------------+------------------------------------------------------+
+| ``WriteListResponse<P>``    | delete(\ ``List<P> itemIds``)                        |
++-----------------------------+------------------------------------------------------+
+| ``WriteListResponse<P>``    | delete(\ ``List<P> itemIds``, ``String ownerName``)  |
++-----------------------------+------------------------------------------------------+
+| ``ApiEntitySingleResponse`` | delete(\ ``P itemId``)                               |
++-----------------------------+------------------------------------------------------+
+| ``ApiEntitySingleResponse`` | delete(\ ``P itemId``, ``String ownerName``)         |
++-----------------------------+------------------------------------------------------+
+| ``WriteListResponse<T>``    | update(\ ``List<T> itemList``)                       |
++-----------------------------+------------------------------------------------------+
+| ``WriteListResponse<T>``    | update(\ ``List<T> itemList``, ``String ownerName``) |
++-----------------------------+------------------------------------------------------+
+| ``ApiEntitySingleResponse`` | update(\ ``T item``)                                 |
++-----------------------------+------------------------------------------------------+
+| ``ApiEntitySingleResponse`` | update(\ ``T item``, ``String ownerName``)           |
++-----------------------------+------------------------------------------------------+
 
 In addition to the User-specific methods below. Note the delete methods
 require the username while the create methods require the entire User
 object.
 
-+--------------------+------------------------------------------------+
-| Type               | *Method*                                       |
-+====================+================================================+
-| ``UserResponse``   | createAssignee(P uniqueId, User assignee)      |
-+--------------------+------------------------------------------------+
-| ``UserResponse``   | createEscalatee(P uniqueId, User escalatee)    |
-+--------------------+------------------------------------------------+
-| ``UserResponse``   | deleteAssignee(P uniqueId, String userName)    |
-+--------------------+------------------------------------------------+
-| ``UserResponse``   | deleteEscalatee(P uniqueId, String userName)   |
-+--------------------+------------------------------------------------+
++------------------+----------------------------------------------+
+| Type             | *Method*                                     |
++==================+==============================================+
+| ``UserResponse`` | createAssignee(P uniqueId, User assignee)    |
++------------------+----------------------------------------------+
+| ``UserResponse`` | createEscalatee(P uniqueId, User escalatee)  |
++------------------+----------------------------------------------+
+| ``UserResponse`` | deleteAssignee(P uniqueId, String userName)  |
++------------------+----------------------------------------------+
+| ``UserResponse`` | deleteEscalatee(P uniqueId, String userName) |
++------------------+----------------------------------------------+
 
 VictimWriterAdapter
 ~~~~~~~~~~~~~~~~~~~
@@ -2625,31 +2429,31 @@ Note that the deletes require the system-generated VictimAsset ID as the
 ``uniqueId`` Integer (P). The create and update requires the full
 VictimAsset object (T).
 
-+-------------------------------+--------------------------------------------------------+
-| Type                          | *Method*                                               |
-+===============================+========================================================+
-| ``WriteListResponse<T>``      | create(\ ``List<T> itemList``)                         |
-+-------------------------------+--------------------------------------------------------+
-| ``ApiEntitySingleResponse``   | create(\ ``T item``)                                   |
-+-------------------------------+--------------------------------------------------------+
-| ``ApiEntitySingleResponse``   | create(\ ``T item``, ``String ownerName``)             |
-+-------------------------------+--------------------------------------------------------+
-| ``WriteListResponse<P>``      | delete(\ ``List<P> itemIds``)                          |
-+-------------------------------+--------------------------------------------------------+
-| ``WriteListResponse<P>``      | delete(\ ``List<P> itemIds``, ``String ownerName``)    |
-+-------------------------------+--------------------------------------------------------+
-| ``ApiEntitySingleResponse``   | delete(\ ``P itemId``)                                 |
-+-------------------------------+--------------------------------------------------------+
-| ``ApiEntitySingleResponse``   | delete(\ ``P itemId``, ``String ownerName``)           |
-+-------------------------------+--------------------------------------------------------+
-| ``WriteListResponse<T>``      | update(\ ``List<T> itemList``)                         |
-+-------------------------------+--------------------------------------------------------+
-| ``WriteListResponse<T>``      | update(\ ``List<T> itemList``, ``String ownerName``)   |
-+-------------------------------+--------------------------------------------------------+
-| ``ApiEntitySingleResponse``   | update(\ ``T item``)                                   |
-+-------------------------------+--------------------------------------------------------+
-| ``ApiEntitySingleResponse``   | update(\ ``T item``, ``String ownerName``)             |
-+-------------------------------+--------------------------------------------------------+
++-----------------------------+------------------------------------------------------+
+| Type                        | *Method*                                             |
++=============================+======================================================+
+| ``WriteListResponse<T>``    | create(\ ``List<T> itemList``)                       |
++-----------------------------+------------------------------------------------------+
+| ``ApiEntitySingleResponse`` | create(\ ``T item``)                                 |
++-----------------------------+------------------------------------------------------+
+| ``ApiEntitySingleResponse`` | create(\ ``T item``, ``String ownerName``)           |
++-----------------------------+------------------------------------------------------+
+| ``WriteListResponse<P>``    | delete(\ ``List<P> itemIds``)                        |
++-----------------------------+------------------------------------------------------+
+| ``WriteListResponse<P>``    | delete(\ ``List<P> itemIds``, ``String ownerName``)  |
++-----------------------------+------------------------------------------------------+
+| ``ApiEntitySingleResponse`` | delete(\ ``P itemId``)                               |
++-----------------------------+------------------------------------------------------+
+| ``ApiEntitySingleResponse`` | delete(\ ``P itemId``, ``String ownerName``)         |
++-----------------------------+------------------------------------------------------+
+| ``WriteListResponse<T>``    | update(\ ``List<T> itemList``)                       |
++-----------------------------+------------------------------------------------------+
+| ``WriteListResponse<T>``    | update(\ ``List<T> itemList``, ``String ownerName``) |
++-----------------------------+------------------------------------------------------+
+| ``ApiEntitySingleResponse`` | update(\ ``T item``)                                 |
++-----------------------------+------------------------------------------------------+
+| ``ApiEntitySingleResponse`` | update(\ ``T item``, ``String ownerName``)           |
++-----------------------------+------------------------------------------------------+
 
 Writer Examples
 ~~~~~~~~~~~~~~~
