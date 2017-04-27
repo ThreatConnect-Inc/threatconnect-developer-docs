@@ -260,9 +260,9 @@ Python SDK Filter Object Basics example:
     :linenos:
 
     filter1 = adversary.add_filter()
-    filter1 = adversary.indicator('10.20.30.40')
-    filter1 = adversary.victim_id(10)
-    filter1 = adversary.tag('APT')
+    filter1.add_indicator('10.20.30.40')
+    filter1.add_victim_id(10)
+    filter1.add_tag('APT')
 
 Python SDK Post Filter Basics example:
 
@@ -275,8 +275,8 @@ Python SDK Post Filter Basics example:
     from threatconnect.Config.FilterOperator import FilterOperator
 
     filter1 = adversary.add_filter()
-    filter1 = adversary.add_pf_name('Bad Guy')
-    filter1 = adversary.add_pf_date_added('2015-06-18T20:21:45-05:00', FilterOperator.GE)
+    filter1.add_pf_name('Bad Guy')
+    filter1.add_pf_date_added('2015-06-18T20:21:45-05:00', FilterOperator.GE)
 
 As mentioned above, an API Filter will join the results. In the example,
 the API results will contain any Adversary that has an Association with
