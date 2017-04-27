@@ -92,13 +92,13 @@ ThreatConnect Object:
 
 **Third-Party Dependencies**
 
-+-------------+-----------+----------------------------------------+
-| Name        | Version   | Link                                   |
-+=============+===========+========================================+
-| jquery      | 2.1.4     | https://jquery.com/                    |
-+-------------+-----------+----------------------------------------+
-| Crypto-JS   | 3.1       | https://code.google.com/p/crypto-js/   |
-+-------------+-----------+----------------------------------------+
++-----------+---------+--------------------------------------+
+| Name      | Version | Link                                 |
++===========+=========+======================================+
+| jquery    | 2.1.4   | https://jquery.com/                  |
++-----------+---------+--------------------------------------+
+| Crypto-JS | 3.1     | https://code.google.com/p/crypto-js/ |
++-----------+---------+--------------------------------------+
 
 **Technical Design**
 
@@ -112,25 +112,25 @@ The JavaScript SDK supports the Resource Types listed below. There is
 also a mechanism to do manual API requests to cover any API calls that
 are not provided with the core functionality.
 
-+-------------------------+------------------------------------+
-| Object                  | Description                        |
-+=========================+====================================+
-| ``groups()``            | Group container object             |
-+-------------------------+------------------------------------+
-| ``indicators()``        | Indicator container object         |
-+-------------------------+------------------------------------+
-| ``indicatorsBatch()``   | Batch Indicator container object   |
-+-------------------------+------------------------------------+
-| ``owners()``            | Owner container object             |
-+-------------------------+------------------------------------+
-| ``securityLabel()``     | Security Label container object    |
-+-------------------------+------------------------------------+
-| ``tags()``              | Tag container object               |
-+-------------------------+------------------------------------+
-| ``tasks()``             | Task container object              |
-+-------------------------+------------------------------------+
-| ``victims()``           | Victim container object            |
-+-------------------------+------------------------------------+
++-----------------------+----------------------------------+
+| Object                | Description                      |
++=======================+==================================+
+| ``groups()``          | Group container object           |
++-----------------------+----------------------------------+
+| ``indicators()``      | Indicator container object       |
++-----------------------+----------------------------------+
+| ``indicatorsBatch()`` | Batch Indicator container object |
++-----------------------+----------------------------------+
+| ``owners()``          | Owner container object           |
++-----------------------+----------------------------------+
+| ``securityLabel()``   | Security Label container object  |
++-----------------------+----------------------------------+
+| ``tags()``            | Tag container object             |
++-----------------------+----------------------------------+
+| ``tasks()``           | Task container object            |
++-----------------------+----------------------------------+
+| ``victims()``         | Victim container object          |
++-----------------------+----------------------------------+
 
 Example JavaScript App
 ----------------------
@@ -322,33 +322,33 @@ the job execution.
 Since all Spaces apps are managed within ThreatConnect, app developers
 should never hard-code ThreatConnect Parameters
 
-+----------------------+-------------------------------------------------------+
-| ThreatConnect        | Description                                           |
-| Parameter            |                                                       |
-+======================+=======================================================+
-| ``tcSpaceElementId`` | The unique space element instance ID for the user who |
-|                      | added this app to their Space. This numeric ID can be |
-|                      | used by the app to store state for the user.          |
-+----------------------+-------------------------------------------------------+
-| ``tcToken``          | Session token to be used by the app to access the     |
-|                      | API. The JavaScript SDK has configuration options for |
-|                      | this parameter.                                       |
-+----------------------+-------------------------------------------------------+
-| ``tcApiPath``        | The path to the API defined in System Settings for    |
-|                      | all apps.                                             |
-+----------------------+-------------------------------------------------------+
-| ``tcType``           | Only relevant for context-aware apps. This field      |
-|                      | corresponds to the runtime.context Attribute defined  |
-|                      | in the install configuration file.                    |
-+----------------------+-------------------------------------------------------+
-| ``tcSelectedItem``   | Only relevant for context-aware apps. This is the     |
-|                      | actual context-item identifier used within            |
-|                      | ThreatConnect. For instance, a Host identifier might  |
-|                      | be: g00gle.com                                        |
-+----------------------+-------------------------------------------------------+
-| ``tcSelectedItemOw   | Only relevant for context-aware apps. This is the     |
-| ner``                | Owner of the context item.                            |
-+----------------------+-------------------------------------------------------+
++-------------------------+-------------------------------------------------------+
+| ThreatConnect           | Description                                           |
+| Parameter               |                                                       |
++=========================+=======================================================+
+| ``tcSpaceElementId``    | The unique space element instance ID for the user who |
+|                         | added this app to their Space. This numeric ID can be |
+|                         | used by the app to store state for the user.          |
++-------------------------+-------------------------------------------------------+
+| ``tcToken``             | Session token to be used by the app to access the     |
+|                         | API. The JavaScript SDK has configuration options for |
+|                         | this parameter.                                       |
++-------------------------+-------------------------------------------------------+
+| ``tcApiPath``           | The path to the API defined in System Settings for    |
+|                         | all apps.                                             |
++-------------------------+-------------------------------------------------------+
+| ``tcType``              | Only relevant for context-aware apps. This field      |
+|                         | corresponds to the runtime.context Attribute defined  |
+|                         | in the install configuration file.                    |
++-------------------------+-------------------------------------------------------+
+| ``tcSelectedItem``      | Only relevant for context-aware apps. This is the     |
+|                         | actual context-item identifier used within            |
+|                         | ThreatConnect. For instance, a Host identifier might  |
+|                         | be: g00gle.com                                        |
++-------------------------+-------------------------------------------------------+
+| ``tcSelectedItemOwner`` | Only relevant for context-aware apps. This is the     |
+|                         | Owner of the context item.                            |
++-------------------------+-------------------------------------------------------+
 
 JavaScript Examples
 
@@ -2493,21 +2493,21 @@ The JavaScript SDK ``requestObject`` provides the ``payload()`` method
 to add any additional query string parameters. This example shows how to
 add filters to a manual request using the ``payload()`` option.
 
-+--------------------------+--------------------------+
-| Query String Parameter   | Helper Method            |
-+==========================+==========================+
-| owner                    | owner()                  |
-+--------------------------+--------------------------+
-| createActivityLog        | createActivityLog()      |
-+--------------------------+--------------------------+
-| resultLimit              | resultLimit()            |
-+--------------------------+--------------------------+
-| resultStart              | resultStart()            |
-+--------------------------+--------------------------+
-| filters                  | manually via payload()   |
-+--------------------------+--------------------------+
-| orParams                 | manually via payload()   |
-+--------------------------+--------------------------+
++------------------------+------------------------+
+| Query String Parameter | Helper Method          |
++========================+========================+
+| owner                  | owner()                |
++------------------------+------------------------+
+| createActivityLog      | createActivityLog()    |
++------------------------+------------------------+
+| resultLimit            | resultLimit()          |
++------------------------+------------------------+
+| resultStart            | resultStart()          |
++------------------------+------------------------+
+| filters                | manually via payload() |
++------------------------+------------------------+
+| orParams               | manually via payload() |
++------------------------+------------------------+
 
 For a full list of query string parameters supported by the
 ThreatConnect API reference the ThreatConnect API User Guide.
