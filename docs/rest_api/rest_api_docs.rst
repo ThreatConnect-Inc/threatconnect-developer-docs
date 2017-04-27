@@ -213,20 +213,18 @@ result limit of items to be returned as HTTP query parameters to the
 request. For example, requesting a result start index of 50 and a result
 limit of 100 will retrieve items 50 to 150.
 
-Table 2 displays the query parameters.
+The table below displays the query parameters.
 
-Table 2 - Query Parameters
-
-+------------------+--------------------------------------------------+---------+
-| HTTP Query       | Description                                      | Default |
-| Parameter        |                                                  |         |
-+==================+==================================================+=========+
-| resultStart\*    | The starting index of the result list that is    | 0       |
-|                  | returned                                         |         |
-+------------------+--------------------------------------------------+---------+
-| resultLimit      | The limit to the number of results to return     | 100     |
-|                  | with the request                                 |         |
-+------------------+--------------------------------------------------+---------+
++---------------+-----------------------------------------------+---------+
+| HTTP Query    | Description                                   | Default |
+| Parameter     |                                               |         |
++===============+===============================================+=========+
+| resultStart\* | The starting index of the result list that is | 0       |
+|               | returned                                      |         |
++---------------+-----------------------------------------------+---------+
+| resultLimit   | The limit to the number of results to return  | 100     |
+|               | with the request                              |         |
++---------------+-----------------------------------------------+---------+
 
 \*Specifying a resultStart other than 0 will omit the resultCount field
 in the return data for performance reasons.
@@ -567,63 +565,63 @@ manually - Importing the Indicator via structured or unstructured import
 - Changing or resetting the Indicator’s "Threat" Rating - Changing the
 Indicator’s Confidence value
 
-Table 3 - Filters
+**Filters**
 
-+--------------------------------+------------+-----------+----------------------------------+
-| Name                           | Data Type  | Operators | DB Field                         |
-+================================+============+===========+==================================+
-| Indicator Common Filters       |            |           |                                  |
-+--------------------------------+------------+-----------+----------------------------------+
-| summary                        | String     | ``= ^``   | indicator.summary                |
-+--------------------------------+------------+-----------+----------------------------------+
-| dateAdded                      | Date       | ``< >``   | indicator.dateAdded              |
-+--------------------------------+------------+-----------+----------------------------------+
-| rating                         | BigDecimal | ``<>``    | indicator.rating                 |
-+--------------------------------+------------+-----------+----------------------------------+
-| confidence                     | Short      | ``=<>``   | indicator.confidence             |
-+--------------------------------+------------+-----------+----------------------------------+
-| threatAssessRating             | Double     | ``<>``    | commonIndicator.rating           |
-+--------------------------------+------------+-----------+----------------------------------+
-| threatAssessConfidence         | Double     | ``<>``    | commonIndicator.confidence       |
-+--------------------------------+------------+-----------+----------------------------------+
-| Address Specific Filters       |            |           |                                  |
-+--------------------------------+------------+-----------+----------------------------------+
-| countryCode                    | String     | ``=``     | ipgeo.countryCode                |
-+--------------------------------+------------+-----------+----------------------------------+
-| organization                   | String     | ``=``     | ipgeo.registeringOrg             |
-+--------------------------------+------------+-----------+----------------------------------+
-| asn                            | Integer    | ``=``     | ipgeo.asn                        |
-+--------------------------------+------------+-----------+----------------------------------+
-| Host Specific Filters          |            |           |                                  |
-+--------------------------------+------------+-----------+----------------------------------+
-| whoisActive                    | Boolean    | ``=``     | Indicator.flag2 on a host record |
-+--------------------------------+------------+-----------+----------------------------------+
-| dnsActive                      | Boolean    | ``=``     | Indicator.flag1 on a host record |
-+--------------------------------+------------+-----------+----------------------------------+
-| Groups Type Filters            |            |           |                                  |
-+--------------------------------+------------+-----------+----------------------------------+
-| name                           | String     | ``= ^``   | bucket.name                      |
-+--------------------------------+------------+-----------+----------------------------------+
-| dateAdded                      | Date       | ``=<>``   | bucket.dateAdded                 |
-+--------------------------------+------------+-----------+----------------------------------+
-| Groups Document Filter         |            |           |                                  |
-+--------------------------------+------------+-----------+----------------------------------+
-| fileType                       | String     | ``=``     | bucketDocument.type              |
-+--------------------------------+------------+-----------+----------------------------------+
-| Security Label Specific Filter |            |           |                                  |
-+--------------------------------+------------+-----------+----------------------------------+
-| name                           | String     | ``= ^``   | securitylabel.name               |
-+--------------------------------+------------+-----------+----------------------------------+
-| Tag Specific Filter            |            |           |                                  |
-+--------------------------------+------------+-----------+----------------------------------+
-| name                           | String     | ``= ^``   | tag.name                         |
-+--------------------------------+------------+-----------+----------------------------------+
-| weight                         | Integer    | ``=<>``   | tag.weight                       |
-+--------------------------------+------------+-----------+----------------------------------+
-| Victim Specific Filter         |            |           |                                  |
-+--------------------------------+------------+-----------+----------------------------------+
-| name                           | String     | ``=  ^``  | victim.name                      |
-+--------------------------------+------------+-----------+----------------------------------+
++------------------------------------+------------+-----------+----------------------------------+
+| Name                               | Data Type  | Operators | DB Field                         |
++====================================+============+===========+==================================+
+| **Indicator Common Filters**       |            |           |                                  |
++------------------------------------+------------+-----------+----------------------------------+
+| summary                            | String     | ``= ^``   | indicator.summary                |
++------------------------------------+------------+-----------+----------------------------------+
+| dateAdded                          | Date       | ``< >``   | indicator.dateAdded              |
++------------------------------------+------------+-----------+----------------------------------+
+| rating                             | BigDecimal | ``<>``    | indicator.rating                 |
++------------------------------------+------------+-----------+----------------------------------+
+| confidence                         | Short      | ``=<>``   | indicator.confidence             |
++------------------------------------+------------+-----------+----------------------------------+
+| threatAssessRating                 | Double     | ``<>``    | commonIndicator.rating           |
++------------------------------------+------------+-----------+----------------------------------+
+| threatAssessConfidence             | Double     | ``<>``    | commonIndicator.confidence       |
++------------------------------------+------------+-----------+----------------------------------+
+| **Address Specific Filters**       |            |           |                                  |
++------------------------------------+------------+-----------+----------------------------------+
+| countryCode                        | String     | ``=``     | ipgeo.countryCode                |
++------------------------------------+------------+-----------+----------------------------------+
+| organization                       | String     | ``=``     | ipgeo.registeringOrg             |
++------------------------------------+------------+-----------+----------------------------------+
+| asn                                | Integer    | ``=``     | ipgeo.asn                        |
++------------------------------------+------------+-----------+----------------------------------+
+| **Host Specific Filters**          |            |           |                                  |
++------------------------------------+------------+-----------+----------------------------------+
+| whoisActive                        | Boolean    | ``=``     | Indicator.flag2 on a host record |
++------------------------------------+------------+-----------+----------------------------------+
+| dnsActive                          | Boolean    | ``=``     | Indicator.flag1 on a host record |
++------------------------------------+------------+-----------+----------------------------------+
+| **Groups Type Filters**            |            |           |                                  |
++------------------------------------+------------+-----------+----------------------------------+
+| name                               | String     | ``= ^``   | bucket.name                      |
++------------------------------------+------------+-----------+----------------------------------+
+| dateAdded                          | Date       | ``=<>``   | bucket.dateAdded                 |
++------------------------------------+------------+-----------+----------------------------------+
+| **Groups Document Filter**         |            |           |                                  |
++------------------------------------+------------+-----------+----------------------------------+
+| fileType                           | String     | ``=``     | bucketDocument.type              |
++------------------------------------+------------+-----------+----------------------------------+
+| **Security Label Specific Filter** |            |           |                                  |
++------------------------------------+------------+-----------+----------------------------------+
+| name                               | String     | ``= ^``   | securitylabel.name               |
++------------------------------------+------------+-----------+----------------------------------+
+| **Tag Specific Filter**            |            |           |                                  |
++------------------------------------+------------+-----------+----------------------------------+
+| name                               | String     | ``= ^``   | tag.name                         |
++------------------------------------+------------+-----------+----------------------------------+
+| weight                             | Integer    | ``=<>``   | tag.weight                       |
++------------------------------------+------------+-----------+----------------------------------+
+| **Victim Specific Filter**         |            |           |                                  |
++------------------------------------+------------+-----------+----------------------------------+
+| name                               | String     | ``=  ^``  | victim.name                      |
++------------------------------------+------------+-----------+----------------------------------+
 
 .. note:: ``<``, ``>``, and ``^`` operators need to be escaped in the url as: ``< %3C``, ``> %3E``, ``^ %5E``.
 
@@ -636,7 +634,7 @@ required or if the specific path supports specifying an Owner. Note that
 if a path does not support the Owner argument, but one is supplied, the
 argument will simply be ignored. Detailed information on each of the
 Resource Types, as well as example responses, are available later in
-this document. Table 3 also references multiple Indicator and Group
+this document. The table above also references multiple Indicator and Group
 types. Currently, these are the supported types for each entity:
 
 Indicators: ``/v2/indicators/``
@@ -650,6 +648,7 @@ Indicators: ``/v2/indicators/``
 Groups: ``/v2/groups/``
 
 -  Adversaries: ``/v2/groups/adversaries/``
+-  Campaigns: ``/v2/groups/campaigns/``
 -  Documents: ``/v2/groups/documents/``
 -  Emails: ``/v2/groups/emails/``
 -  Incidents: ``/v2/groups/incidents/``
@@ -726,23 +725,23 @@ Indicators Resource Type XML Response:
      </Data>
     </indicatorsResponse>
 
-Table 4 - Indicators Resource Type
+**Indicators Resource Type**
 
-+-----------------------------------------------------------+-----------------+-----------------------+
-| Paths                                                     | Owner Allowed   | Pagination Required   |
-+===========================================================+=================+=======================+
-| ``/v2/indicators``                                        | TRUE            | TRUE                  |
-+-----------------------------------------------------------+-----------------+-----------------------+
-| ``/v2/groups/<group type>/<ID>/indicators``               | FALSE           |                       |
-+-----------------------------------------------------------+-----------------+-----------------------+
-| ``/v2/tags/<tag name>/indicators``                        | TRUE            |                       |
-+-----------------------------------------------------------+-----------------+-----------------------+
-| ``/v2/securityLabels/<security label name>/indicators``   | TRUE            |                       |
-+-----------------------------------------------------------+-----------------+-----------------------+
-| ``/v2/victims/<ID>/indicators``                           | FALSE           |                       |
-+-----------------------------------------------------------+-----------------+-----------------------+
-| ``/v2/tasks/<ID>/indicators``                             | TRUE            |                       |
-+-----------------------------------------------------------+-----------------+-----------------------+
++---------------------------------------------------------+---------------+---------------------+
+| Paths                                                   | Owner Allowed | Pagination Required |
++=========================================================+===============+=====================+
+| ``/v2/indicators``                                      | TRUE          | TRUE                |
++---------------------------------------------------------+---------------+---------------------+
+| ``/v2/groups/<group type>/<ID>/indicators``             | FALSE         |                     |
++---------------------------------------------------------+---------------+---------------------+
+| ``/v2/tags/<tag name>/indicators``                      | TRUE          |                     |
++---------------------------------------------------------+---------------+---------------------+
+| ``/v2/securityLabels/<security label name>/indicators`` | TRUE          |                     |
++---------------------------------------------------------+---------------+---------------------+
+| ``/v2/victims/<ID>/indicators``                         | FALSE         |                     |
++---------------------------------------------------------+---------------+---------------------+
+| ``/v2/tasks/<ID>/indicators``                           | TRUE          |                     |
++---------------------------------------------------------+---------------+---------------------+
 
 Indicator Types
 ^^^^^^^^^^^^^^^
@@ -1040,23 +1039,23 @@ Hosts Resource Type XML Response:
     </hostsResponse>
 
 A list of Hosts from both the Groups and Tags Service can be retrieved,
-as detailed in Table 4.
+as detailed in the table below.
 
-Table 5 - Hosts Resource Type
+**Hosts Resource Type**
 
-+-----------------------------------------------------------------+-----------------+-----------------------+
-| Paths                                                           | Owner Allowed   | Pagination Required   |
-+=================================================================+=================+=======================+
-| ``/v2/indicators/hosts``                                        | TRUE            | TRUE                  |
-+-----------------------------------------------------------------+-----------------+-----------------------+
-| ``/v2/groups/<group type>/<ID>/indicators/hosts``               | FALSE           |                       |
-+-----------------------------------------------------------------+-----------------+-----------------------+
-| ``/v2/tags/<tag name>/indicators/hosts``                        | TRUE            |                       |
-+-----------------------------------------------------------------+-----------------+-----------------------+
-| ``/v2/securityLabels/<security label name>/indicators/hosts``   | TRUE            |                       |
-+-----------------------------------------------------------------+-----------------+-----------------------+
-| ``/v2/victims/<ID>/indicators/hosts``                           | FALSE           |                       |
-+-----------------------------------------------------------------+-----------------+-----------------------+
++---------------------------------------------------------------+---------------+---------------------+
+| Paths                                                         | Owner Allowed | Pagination Required |
++===============================================================+===============+=====================+
+| ``/v2/indicators/hosts``                                      | TRUE          | TRUE                |
++---------------------------------------------------------------+---------------+---------------------+
+| ``/v2/groups/<group type>/<ID>/indicators/hosts``             | FALSE         |                     |
++---------------------------------------------------------------+---------------+---------------------+
+| ``/v2/tags/<tag name>/indicators/hosts``                      | TRUE          |                     |
++---------------------------------------------------------------+---------------+---------------------+
+| ``/v2/securityLabels/<security label name>/indicators/hosts`` | TRUE          |                     |
++---------------------------------------------------------------+---------------+---------------------+
+| ``/v2/victims/<ID>/indicators/hosts``                         | FALSE         |                     |
++---------------------------------------------------------------+---------------+---------------------+
 
 Host Resource Type
 ^^^^^^^^^^^^^^^^^^
@@ -1131,13 +1130,13 @@ The Indicators Service allows for the querying of a specific Host for a
 user’s Organization, as well as any Communities to which a user has
 access.
 
-Table 6 - Host Resource Type
+**Host Resource Type**
 
-+---------------------------------------+-----------------+-----------------------+
-| Paths                                 | Owner Allowed   | Pagination Required   |
-+=======================================+=================+=======================+
-| ``/v2/indicators/hosts/<hostname>``   | TRUE            | FALSE                 |
-+---------------------------------------+-----------------+-----------------------+
++-------------------------------------+---------------+---------------------+
+| Paths                               | Owner Allowed | Pagination Required |
++=====================================+===============+=====================+
+| ``/v2/indicators/hosts/<hostname>`` | TRUE          | FALSE               |
++-------------------------------------+---------------+---------------------+
 
 For each Host, its Attributes, DNS Resolutions, associated Groups, Tags,
 Security Labels, Victims, Victim Assets, and available Owners can also
@@ -1296,23 +1295,23 @@ which a user has access. Both IPv4 and IPv6 address types are supported,
 both with queries and as possible results, in the "ip" field.
 
 A list of Addresses from both the Groups and Tags Service, as detailed
-in Table 6, may also be retrieved.
+in the table below, may also be retrieved.
 
-Table 7 - Addresses Resource Type
+**Addresses Resource Type**
 
-+---------------------------------------------------------------------+-----------------+-----------------------+
-| Paths                                                               | Owner Allowed   | Pagination Required   |
-+=====================================================================+=================+=======================+
-| ``/v2/indicators/addresses``                                        | TRUE            | TRUE                  |
-+---------------------------------------------------------------------+-----------------+-----------------------+
-| ``/v2/groups/<group type>/<ID>/indicators/addresses``               | FALSE           |                       |
-+---------------------------------------------------------------------+-----------------+-----------------------+
-| ``/v2/tags/<tag name>/indicators/addresses``                        | TRUE            |                       |
-+---------------------------------------------------------------------+-----------------+-----------------------+
-| ``/v2/securityLabels/<security label name>/indicators/addresses``   | TRUE            |                       |
-+---------------------------------------------------------------------+-----------------+-----------------------+
-| ``/v2/victims/<ID>/indicators/addresses``                           | FALSE           |                       |
-+---------------------------------------------------------------------+-----------------+-----------------------+
++-------------------------------------------------------------------+---------------+---------------------+
+| Paths                                                             | Owner Allowed | Pagination Required |
++===================================================================+===============+=====================+
+| ``/v2/indicators/addresses``                                      | TRUE          | TRUE                |
++-------------------------------------------------------------------+---------------+---------------------+
+| ``/v2/groups/<group type>/<ID>/indicators/addresses``             | FALSE         |                     |
++-------------------------------------------------------------------+---------------+---------------------+
+| ``/v2/tags/<tag name>/indicators/addresses``                      | TRUE          |                     |
++-------------------------------------------------------------------+---------------+---------------------+
+| ``/v2/securityLabels/<security label name>/indicators/addresses`` | TRUE          |                     |
++-------------------------------------------------------------------+---------------+---------------------+
+| ``/v2/victims/<ID>/indicators/addresses``                         | FALSE         |                     |
++-------------------------------------------------------------------+---------------+---------------------+
 
 The Indicators Service allows for the querying of a specific Address for
 a user’s Organization, as well as any Communities to which a user has
@@ -1365,13 +1364,13 @@ Address Resource TypeXML Response:
      </Data>
     </addressResponse>
 
-Table 8 - Address Resource Type
+**Address Resource Type**
 
-+------------------------------------------+-----------------+-----------------------+
-| Paths                                    | Owner Allowed   | Pagination Required   |
-+==========================================+=================+=======================+
-| ``/v2/indicators/addresses/<address>``   | TRUE            | FALSE                 |
-+------------------------------------------+-----------------+-----------------------+
++----------------------------------------+---------------+---------------------+
+| Paths                                  | Owner Allowed | Pagination Required |
++========================================+===============+=====================+
+| ``/v2/indicators/addresses/<address>`` | TRUE          | FALSE               |
++----------------------------------------+---------------+---------------------+
 
 For each Address, its Attributes, DNS Resolutions, associated Groups,
 Tags, Security Labels , Victims , Victim Assets , and available Owners
@@ -1557,24 +1556,23 @@ The Indicators Service allows for the querying of a Collection of Files
 for a user’s Organization, as well as any Communities to which a user
 has access.
 
-A list of Files from both the Groups and Tags Service, as detailed in
-Table 8, can also be retrieved.
+A list of Files from both the Groups and Tags Service, as detailed in the table below, can also be retrieved.
 
-Table 9 - Files Resource Type
+**Files Resource Type**
 
-+-----------------------------------------------------------------+-----------------+-----------------------+
-| Paths                                                           | Owner Allowed   | Pagination Required   |
-+=================================================================+=================+=======================+
-| ``/v2/indicators/files``                                        | TRUE            | TRUE                  |
-+-----------------------------------------------------------------+-----------------+-----------------------+
-| ``/v2/groups/<group type>/<ID>/indicators/files``               | FALSE           |                       |
-+-----------------------------------------------------------------+-----------------+-----------------------+
-| ``/v2/tags/<tag name>/indicators/files``                        | TRUE            |                       |
-+-----------------------------------------------------------------+-----------------+-----------------------+
-| ``/v2/securityLabels/<security label name>/indicators/files``   | TRUE            |                       |
-+-----------------------------------------------------------------+-----------------+-----------------------+
-| ``/v2/victims/<ID>/indicators/files``                           | FALSE           |                       |
-+-----------------------------------------------------------------+-----------------+-----------------------+
++---------------------------------------------------------------+---------------+---------------------+
+| Paths                                                         | Owner Allowed | Pagination Required |
++===============================================================+===============+=====================+
+| ``/v2/indicators/files``                                      | TRUE          | TRUE                |
++---------------------------------------------------------------+---------------+---------------------+
+| ``/v2/groups/<group type>/<ID>/indicators/files``             | FALSE         |                     |
++---------------------------------------------------------------+---------------+---------------------+
+| ``/v2/tags/<tag name>/indicators/files``                      | TRUE          |                     |
++---------------------------------------------------------------+---------------+---------------------+
+| ``/v2/securityLabels/<security label name>/indicators/files`` | TRUE          |                     |
++---------------------------------------------------------------+---------------+---------------------+
+| ``/v2/victims/<ID>/indicators/files``                         | FALSE         |                     |
++---------------------------------------------------------------+---------------+---------------------+
 
 The Files Resource Type response format is to the right. Note that with
 support for additional hash types, the Files response format may return
@@ -1637,13 +1635,13 @@ File Resource Type XML Response:
      </Data>
     </fileResponse>
 
-Table 10 - File Resource Type
+**File Resource Type**
 
-+-----------------------------------+-----------------+-----------------------+
-| Paths                             | Owner Allowed   | Pagination Required   |
-+===================================+=================+=======================+
-| ``/v2/indicators/files/<hash>``   | TRUE            | FALSE                 |
-+-----------------------------------+-----------------+-----------------------+
++---------------------------------+---------------+---------------------+
+| Paths                           | Owner Allowed | Pagination Required |
++=================================+===============+=====================+
+| ``/v2/indicators/files/<hash>`` | TRUE          | FALSE               |
++---------------------------------+---------------+---------------------+
 
 The File Resource Type response format is to the right. Note that any
 valid MD5, SHA-1, or SHA-256 hash in the system may be supplied. If
@@ -1684,16 +1682,15 @@ FileOccurrence Resource Type XML Response:
      <Date>2014-11-05T00:00:00Z</Date>
     </FileOccurrence>
 
-Table 11 - FileOccurrence Resource Type
+For each File, its File Occurrences can be retrieved as detailed in the table below.
 
-For each File, its File Occurrences can be retrieved from a separate
-service.
+**FileOccurrence Resource Type**
 
-+---------------------------------------------------+-----------------+-----------------------+
-| Paths                                             | Owner Allowed   | Pagination Required   |
-+===================================================+=================+=======================+
-| ``/v2/indicators/files/<hash>/fileOccurrences``   | TRUE            | FALSE                 |
-+---------------------------------------------------+-----------------+-----------------------+
++-------------------------------------------------+---------------+---------------------+
+| Paths                                           | Owner Allowed | Pagination Required |
++=================================================+===============+=====================+
+| ``/v2/indicators/files/<hash>/fileOccurrences`` | TRUE          | FALSE               |
++-------------------------------------------------+---------------+---------------------+
 
 emailAddresses Resource Type
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1770,23 +1767,23 @@ Addresses for a user’s Organization, as well as any Communities to which
 a user has access:
 
 A list of Email Addresses from both the Groups and Tags Service, as
-detailed in Table 11, can be retrieved.
+detailed in the table below, can be retrieved.
 
-Table 12 - Email Addresses Resource Type
+**Email Addresses Resource Type**
 
-+--------------------------------------------------------------------------+-----------------+-----------------------+
-| Paths                                                                    | Owner Allowed   | Pagination Required   |
-+==========================================================================+=================+=======================+
-| ``/v2/indicators/emailAddresses``                                        | TRUE            | TRUE                  |
-+--------------------------------------------------------------------------+-----------------+-----------------------+
-| ``/v2/groups/<group type>/<ID>/indicators/emailAddresses``               | FALSE           |                       |
-+--------------------------------------------------------------------------+-----------------+-----------------------+
-| ``/v2/tags/<tag name>/indicators/emailAddresses``                        | TRUE            |                       |
-+--------------------------------------------------------------------------+-----------------+-----------------------+
-| ``/v2/securityLabels/<security label name>/indicators/emailAddresses``   | TRUE            |                       |
-+--------------------------------------------------------------------------+-----------------+-----------------------+
-| ``/v2/victims/<ID>/indicators/emailAddresses``                           | FALSE           |                       |
-+--------------------------------------------------------------------------+-----------------+-----------------------+
++------------------------------------------------------------------------+---------------+---------------------+
+| Paths                                                                  | Owner Allowed | Pagination Required |
++========================================================================+===============+=====================+
+| ``/v2/indicators/emailAddresses``                                      | TRUE          | TRUE                |
++------------------------------------------------------------------------+---------------+---------------------+
+| ``/v2/groups/<group type>/<ID>/indicators/emailAddresses``             | FALSE         |                     |
++------------------------------------------------------------------------+---------------+---------------------+
+| ``/v2/tags/<tag name>/indicators/emailAddresses``                      | TRUE          |                     |
++------------------------------------------------------------------------+---------------+---------------------+
+| ``/v2/securityLabels/<security label name>/indicators/emailAddresses`` | TRUE          |                     |
++------------------------------------------------------------------------+---------------+---------------------+
+| ``/v2/victims/<ID>/indicators/emailAddresses``                         | FALSE         |                     |
++------------------------------------------------------------------------+---------------+---------------------+
 
 emailAddress Resource Type
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1853,13 +1850,13 @@ The Indicators Service allows for the querying of a specific Email
 Address for a user’s Organization, as well as any Communities to which a
 user has access:
 
-Table 13 - emailAddress Resource Type
+**emailAddress Resource Type**
 
-+-----------------------------------------------------+-----------------+-----------------------+
-| Paths                                               | Owner Allowed   | Pagination Required   |
-+=====================================================+=================+=======================+
-| ``/v2/indicators/emailAddresses/<email address>``   | TRUE            | FALSE                 |
-+-----------------------------------------------------+-----------------+-----------------------+
++---------------------------------------------------+---------------+---------------------+
+| Paths                                             | Owner Allowed | Pagination Required |
++===================================================+===============+=====================+
+| ``/v2/indicators/emailAddresses/<email address>`` | TRUE          | FALSE               |
++---------------------------------------------------+---------------+---------------------+
 
 For each Email Address, its Attributes, associated Groups, Tags,
 Security Labels , Victims , Victim Assets , and available Owners can be
@@ -1939,24 +1936,23 @@ The Indicators Service allows for the querying of a Collection of URLs
 for a user’s Organization, as well as any Communities to which a user
 has access:
 
-A list of URLs from both the Groups and Tags Service, as detailed in
-Table 13, can be retrieved.
+A list of URLs from both the Groups and Tags Service, as detailed in the table below, can be retrieved.
 
-Table 14 - urls Resource Type
+**urls Resource Type**
 
-+----------------------------------------------------------------+-----------------+-----------------------+
-| Paths                                                          | Owner Allowed   | Pagination Required   |
-+================================================================+=================+=======================+
-| ``/v2/indicators/urls``                                        | TRUE            | TRUE                  |
-+----------------------------------------------------------------+-----------------+-----------------------+
-| ``/v2/groups/<group type>/<ID>/indicators/urls``               | FALSE           |                       |
-+----------------------------------------------------------------+-----------------+-----------------------+
-| ``/v2/tags/<tag name>/indicators/urls``                        | TRUE            |                       |
-+----------------------------------------------------------------+-----------------+-----------------------+
-| ``/v2/securityLabels/<security label name>/indicators/urls``   | TRUE            |                       |
-+----------------------------------------------------------------+-----------------+-----------------------+
-| ``/v2/victims/<ID>/indicators/urls``                           | FALSE           |                       |
-+----------------------------------------------------------------+-----------------+-----------------------+
++--------------------------------------------------------------+---------------+---------------------+
+| Paths                                                        | Owner Allowed | Pagination Required |
++==============================================================+===============+=====================+
+| ``/v2/indicators/urls``                                      | TRUE          | TRUE                |
++--------------------------------------------------------------+---------------+---------------------+
+| ``/v2/groups/<group type>/<ID>/indicators/urls``             | FALSE         |                     |
++--------------------------------------------------------------+---------------+---------------------+
+| ``/v2/tags/<tag name>/indicators/urls``                      | TRUE          |                     |
++--------------------------------------------------------------+---------------+---------------------+
+| ``/v2/securityLabels/<security label name>/indicators/urls`` | TRUE          |                     |
++--------------------------------------------------------------+---------------+---------------------+
+| ``/v2/victims/<ID>/indicators/urls``                         | FALSE         |                     |
++--------------------------------------------------------------+---------------+---------------------+
 
 url Resource Type
 ^^^^^^^^^^^^^^^^^
@@ -2023,13 +2019,13 @@ The Indicators Service allows for the querying of a specific URL for a
 user’s Organization, as well as any Communities to which a user has
 access:
 
-Table 15 - URL Resource Type
+**URL Resource Type**
 
-+---------------------------------+-----------------+-----------------------+
-| Paths                           | Owner Allowed   | Pagination Required   |
-+=================================+=================+=======================+
-| ``/v2/indicators/urls/<url>``   | TRUE            | FALSE                 |
-+---------------------------------+-----------------+-----------------------+
++-------------------------------+---------------+---------------------+
+| Paths                         | Owner Allowed | Pagination Required |
++===============================+===============+=====================+
+| ``/v2/indicators/urls/<url>`` | TRUE          | FALSE               |
++-------------------------------+---------------+---------------------+
 
 For each URL, its Attributes, associated Groups, Tags, Security Labels ,
 Victims , Victim Assets , and available Owners can be retrieved.
@@ -2544,10 +2540,9 @@ Generic Groups Resource Type XML Response:
      </Data>
     </groupsResponse>
 
-A list of Groups from both the Indicators and Tags Service, as detailed
-in Table 15, can be retrieved.
+A list of Groups from both the Indicators and Tags Service, as detailed in the table below, can be retrieved.
 
-Table 16 - Groups Resource Type
+**Groups Resource Type**
 
 +--------------------------------------------------------+---------------+---------------------+
 | Paths                                                  | Owner Allowed | Pagination Required |
@@ -2675,10 +2670,9 @@ Incidents Resource Type XML Response:
      </Data>
     </incidentsResponse>
 
-A list of Incidents from both the Indicators and Tags Service, as
-detailed in Table 16, can be retrieved.
+A list of Incidents from both the Indicators and Tags Service, as detailed in the table below, can be retrieved.
 
-Table 17 - Incidents Resource Type
+**Incidents Resource Type**
 
 +------------------------------------------------------------------+---------------+---------------------+
 | Paths                                                            | Owner Allowed | Pagination Required |
@@ -2793,22 +2787,19 @@ Incident Resource Type XML Response Including Incident Status:
      </Data>
     </incidentResponse>
 
-Table 18 - Incident Resource Type
+**Incident Resource Type**
 
-+--------------------------------------------------------+-----------------+-----------------------+
-| Paths                                                  | Owner Allowed   | Pagination Required   |
-+========================================================+=================+=======================+
-| ``/v2/groups/incidents/<ID>``                          | FALSE           | FALSE                 |
-+--------------------------------------------------------+-----------------+-----------------------+
-| ``/v2/groups/incidents/<ID>?includeAdditional=true``   | FALSE           | FALSE                 |
-+--------------------------------------------------------+-----------------+-----------------------+
++------------------------------------------------------+---------------+---------------------+
+| Paths                                                | Owner Allowed | Pagination Required |
++======================================================+===============+=====================+
+| ``/v2/groups/incidents/<ID>``                        | FALSE         | FALSE               |
++------------------------------------------------------+---------------+---------------------+
+| ``/v2/groups/incidents/<ID>?includeAdditional=true`` | FALSE         | FALSE               |
++------------------------------------------------------+---------------+---------------------+
 
-For each Incident, its Attributes, associated Indicators, Security
-Labels, Victims, Victim Assets, and Tags can be retrieved.
+Adding the ‘includeAdditional’ parameter will return the same information as ``/v2/groups/incidents/<ID>``, except that it will also include the Incident’s status.
 
-Adding the ‘includeAdditional’ parameter will return the same
-information as ``/v2/groups/incidents/<ID>``, except that it will also
-include the Incident’s status.
+For each Incident, its Attributes, associated Indicators, Security Labels, Victims, Victim Assets, and Tags can be retrieved.
 
 Documents Resource Type
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -2887,10 +2878,9 @@ The Groups Service allows for the querying of a specific Document for a
 user’s Organization, as well as any Communities to which a user has
 access, using the Document’s unique ID.
 
-A list of Documents from both the Indicators and Tags Service, as
-detailed in Table 18, can be retrieved.
+A list of Documents from both the Indicators and Tags Service, as detailed in the table below, can be retrieved.
 
-Table 19 - Documents Resource Type
+**Documents Resource Type**
 
 +------------------------------------------------------------------+---------------+---------------------+
 | Paths                                                            | Owner Allowed | Pagination Required |
@@ -2959,13 +2949,13 @@ Document Resource Type XML Response:
      </Data>
     </documentResponse>
 
-Table 20 - Document Resource Type
+**Document Resource Type**
 
-+---------------------------------+-----------------+-----------------------+
-| Paths                           | Owner Allowed   | Pagination Required   |
-+=================================+=================+=======================+
-| ``/v2/groups/documents/<ID>``   | FALSE           | FALSE                 |
-+---------------------------------+-----------------+-----------------------+
++-------------------------------+---------------+---------------------+
+| Paths                         | Owner Allowed | Pagination Required |
++===============================+===============+=====================+
+| ``/v2/groups/documents/<ID>`` | FALSE         | FALSE               |
++-------------------------------+---------------+---------------------+
 
 Note that the data has a field named "Status" that denotes if the
 document is still in the process of being uploaded and stored within
@@ -3046,10 +3036,9 @@ Threats Resource Type XML Response:
      </Data>
     </threatsResponse>
 
-A list of Threats from both the Indicators and Tags Service, as detailed
-in Table 20, can be retrieved.
+A list of Threats from both the Indicators and Tags Service, as detailed in the table below, can be retrieved.
 
-Table 21 - Threats Resource Type
+**Threats Resource Type**
 
 +----------------------------------------------------------------+---------------+---------------------+
 | Paths                                                          | Owner Allowed | Pagination Required |
@@ -3116,13 +3105,13 @@ Threat Resource Type XML Response:
      </Data>
     </threatResponse>
 
-Table 22 - Threat Resource Type
+**Threat Resource Type**
 
-+-------------------------------+-----------------+-----------------------+
-| Paths                         | Owner Allowed   | Pagination Required   |
-+===============================+=================+=======================+
-| ``/v2/groups/threats/<ID>``   | FALSE           | FALSE                 |
-+-------------------------------+-----------------+-----------------------+
++-----------------------------+---------------+---------------------+
+| Paths                       | Owner Allowed | Pagination Required |
++=============================+===============+=====================+
+| ``/v2/groups/threats/<ID>`` | FALSE         | FALSE               |
++-----------------------------+---------------+---------------------+
 
 For each Threat, its Attributes, associated Indicators, Security Labels,
 Victims, Victim Assets, and Tags can be retrieved.
@@ -3204,10 +3193,9 @@ The Groups Service allows for the querying of a Collection of
 Adversaries for both a user’s Organization, as well as any Communities
 to which a user has access.
 
-A list of Adversaries from both the Indicators and Tags Service, as
-detailed in Table 22, can be retrieved.
+A list of Adversaries from both the Indicators and Tags Service, as detailed in the table below, can be retrieved.
 
-Table 23 - Adversaries Resource Type
+**Adversaries Resource Type**
 
 +--------------------------------------------------------------------+---------------+---------------------+
 | Paths                                                              | Owner Allowed | Pagination Required |
@@ -3274,13 +3262,13 @@ Adversary Resource Type XML Response:
      </Data>
     </adversaryResponse>
 
-Table 24 - Adversary Resource Type
+**Adversary Resource Type**
 
-+-----------------------------------+-----------------+-----------------------+
-| Paths                             | Owner Allowed   | Pagination Required   |
-+===================================+=================+=======================+
-| ``/v2/groups/adversaries/<ID>``   | FALSE           | FALSE                 |
-+-----------------------------------+-----------------+-----------------------+
++---------------------------------+---------------+---------------------+
+| Paths                           | Owner Allowed | Pagination Required |
++=================================+===============+=====================+
+| ``/v2/groups/adversaries/<ID>`` | FALSE         | FALSE               |
++---------------------------------+---------------+---------------------+
 
 For each Adversary, its Attributes, associated Indicators, Security
 Labels, Victims, Victim Assets, and Tags can be retrieved.
@@ -3348,10 +3336,9 @@ The Groups Service allows for the querying of a Collection of Emails for
 a user’s Organization, as well as any Communities to which a user has
 access.
 
-A list of Emails from both the Indicators and Tags Service, as detailed
-in Table 24, can be retrieved.
+A list of Emails from both the Indicators and Tags Service, as detailed in the table below, can be retrieved.
 
-Table 25 - Email Resource Type
+**Email Resource Type**
 
 +---------------------------------------------------------------+---------------+---------------------+
 | Paths                                                         | Owner Allowed | Pagination Required |
@@ -3435,13 +3422,13 @@ Email Resource Type XML Response:
      </Data>
     </emailResponse>
 
-Table 26 - Email Resource Type
+**Email Resource Type**
 
-+------------------------------+-----------------+-----------------------+
-| Paths                        | Owner Allowed   | Pagination Required   |
-+==============================+=================+=======================+
-| ``/v2/groups/emails/<ID>``   | FALSE           | FALSE                 |
-+------------------------------+-----------------+-----------------------+
++----------------------------+---------------+---------------------+
+| Paths                      | Owner Allowed | Pagination Required |
++============================+===============+=====================+
+| ``/v2/groups/emails/<ID>`` | FALSE         | FALSE               |
++----------------------------+---------------+---------------------+
 
 Note that the "to" field may be empty if the field was not supplied when
 the email was uploaded.
@@ -3530,10 +3517,9 @@ The Groups Service allows for the querying of a Collection of Signatures
 for a user’s Organization, as well as any Communities to which a user
 has access.
 
-A list of Signatures from both the Indicators and Tags service, as
-detailed in Table 26, can be retrieved.
+A list of Signatures from both the Indicators and Tags service, as detailed in the table below, can be retrieved.
 
-Table 27 - Signatures Resource Type
+**Signatures Resource Type**
 
 +-------------------------------------------------------------------+---------------+---------------------+
 | Paths                                                             | Owner Allowed | Pagination Required |
@@ -3610,13 +3596,13 @@ Signature Resource Type XML Response:
      </Data>
     </signatureResponse>
 
-Table 28 - Signature Resource Type
+**Signature Resource Type**
 
-+----------------------------------+-----------------+-----------------------+
-| Paths                            | Owner Allowed   | Pagination Required   |
-+==================================+=================+=======================+
-| ``/v2/groups/signatures/<ID>``   | FALSE           | FALSE                 |
-+----------------------------------+-----------------+-----------------------+
++--------------------------------+---------------+---------------------+
+| Paths                          | Owner Allowed | Pagination Required |
++================================+===============+=====================+
+| ``/v2/groups/signatures/<ID>`` | FALSE         | FALSE               |
++--------------------------------+---------------+---------------------+
 
 For each Signature, the Signature content can be downloaded, and the
 response format will mirror the content of the Signature upload.
@@ -3688,10 +3674,9 @@ They are always with another item, such as a Host or a Threat. To
 retrieve a list of Attributes, append the Attributes path onto a
 specific Indicator or Group.
 
-A list of Attributes from both the Indicators and Groups Services, as
-detailed in Table 29, can be retrieved.
+A list of Attributes from both the Indicators and Groups Services, as detailed in the table below, can be retrieved.
 
-Table 29 - Attributes Resource Type
+**Attributes Resource Type**
 
 +------------------------------------------------------------+---------------+---------------------+
 | Paths                                                      | Owner Allowed | Pagination Required |
@@ -3962,8 +3947,7 @@ tagged, as well as the Indicators or Groups of a specific Tag for a
 user’s Organization, as well as any Communities to which a user has
 access, can be found with the Tag Service.
 
-A list of Tags from both the Indicators and Groups Services, as detailed
-in Table 30, can be retrieved.
+A list of Tags from both the Indicators and Groups Services can be retrieved as detailed in the table in the next section.
 
 Tags Resource Type
 ^^^^^^^^^^^^^^^^^^
@@ -4011,7 +3995,7 @@ Tags Resource Type XML Response:
      </Data>
     </tagsResponse>
 
-Table 30 - Tags Resource Type
+**Tags Resource Type**
 
 +------------------------------------------------------+---------------+---------------------+
 | Paths                                                | Owner Allowed | Pagination Required |
@@ -4058,13 +4042,13 @@ Tag Resource Type XML Response:
      </Data>
     </tagResponse>
 
-Table 31 - Tag Resource Type
+**Tag Resource Type**
 
-+---------------------------+-----------------+-----------------------+
-| Paths                     | Owner Allowed   | Pagination Required   |
-+===========================+=================+=======================+
-| ``/v2/tags/<tag name>``   | TRUE            | FALSE                 |
-+---------------------------+-----------------+-----------------------+
++-------------------------+---------------+---------------------+
+| Paths                   | Owner Allowed | Pagination Required |
++=========================+===============+=====================+
+| ``/v2/tags/<tag name>`` | TRUE          | FALSE               |
++-------------------------+---------------+---------------------+
 
 For each Tag, its associated Indicators and Groups can be found.
 
@@ -4120,32 +4104,28 @@ SecurityLabels Resource Type XML Response:
      </Data>
     </securityLabelsResponse>
 
-A list of Security Labels from the Indicator, Group, and Task Services,
-as detailed in Table 31, can be retrieved.
+A list of Security Labels from the Indicator, Group, and Task Services, as detailed in the table below, can be retrieved.
 
-Table 32 - SecurityLabels Resource Type
+**SecurityLabels Resource Type**
 
-+-----------------------------------------------------+---------+------------+
-| Paths                                               | Owner   | Pagination |
-|                                                     | Allowed | Required   |
-+=====================================================+=========+============+
-| ``/v2/securityLabels``                              | TRUE    | TRUE       |
-+-----------------------------------------------------+---------+------------+
-| ``/v2/indicators/<indicator type>/<indicator>/secur | TRUE    |            |
-| ityLabels``                                         |         |            |
-+-----------------------------------------------------+---------+------------+
-| ``/v2/groups/<group type>/<ID>/securityLabels``     | FALSE   |            |
-+-----------------------------------------------------+---------+------------+
-| ``/v2/indicators/<indicator type>/<indicator>/attri | TRUE    |            |
-| butes/<ID>/securityLabels``                         |         |            |
-+-----------------------------------------------------+---------+------------+
-| ``/v2/groups/<group type>/<ID>/attributes/<ID>/     | FALSE   |            |
-| securityLabels``                                    |         |            |
-+-----------------------------------------------------+---------+------------+
-| ``/v2/tasks/<ID>/securityLabels``                   | TRUE    |            |
-+-----------------------------------------------------+---------+------------+
-| ``/v2/tasks/<ID>/attributes/<ID>/securityLabels``   | TRUE    |            |
-+-----------------------------------------------------+---------+------------+
++--------------------------------------------------------------------------------+---------+------------+
+| Paths                                                                          | Owner   | Pagination |
+|                                                                                | Allowed | Required   |
++================================================================================+=========+============+
+| ``/v2/securityLabels``                                                         | TRUE    | TRUE       |
++--------------------------------------------------------------------------------+---------+------------+
+| ``/v2/indicators/<indicator type>/<indicator>/securityLabels``                 | TRUE    |            |
++--------------------------------------------------------------------------------+---------+------------+
+| ``/v2/groups/<group type>/<ID>/securityLabels``                                | FALSE   |            |
++--------------------------------------------------------------------------------+---------+------------+
+| ``/v2/indicators/<indicator type>/<indicator>/attributes/<ID>/securityLabels`` | TRUE    |            |
++--------------------------------------------------------------------------------+---------+------------+
+| ``/v2/groups/<group type>/<ID>/attributes/<ID>/securityLabels``                | FALSE   |            |
++--------------------------------------------------------------------------------+---------+------------+
+| ``/v2/tasks/<ID>/securityLabels``                                              | TRUE    |            |
++--------------------------------------------------------------------------------+---------+------------+
+| ``/v2/tasks/<ID>/attributes/<ID>/securityLabels``                              | TRUE    |            |
++--------------------------------------------------------------------------------+---------+------------+
 
 The SecurityLabels Service allows for the querying of a specific
 Security Label for a user’s Organization, as well as any Communities to
@@ -4180,13 +4160,13 @@ SecurityLabel Resource Type XML Response:
      </Data>
     </securityLabelResponse>
 
-Table 33 - SecurityLabel Resource Type
+**SecurityLabel Resource Type**
 
-+------------------------------------------------+-----------------+-----------------------+
-| Paths                                          | Owner Allowed   | Pagination Required   |
-+================================================+=================+=======================+
-| ``/v2/securityLabels/<security label name>``   | TRUE            | TRUE                  |
-+------------------------------------------------+-----------------+-----------------------+
++----------------------------------------------+---------------+---------------------+
+| Paths                                        | Owner Allowed | Pagination Required |
++==============================================+===============+=====================+
+| ``/v2/securityLabels/<security label name>`` | TRUE          | TRUE                |
++----------------------------------------------+---------------+---------------------+
 
 For each SecurityLabel, its associated Indicators and Groups can be
 found.
@@ -4359,8 +4339,7 @@ Victims Resource Type XML Response:
      <statusCode>OK</statusCode>
     </victimsResponse>
 
-A list of Tasks from both the Indicators and Groups Services, as
-detailed in Table 34, can be retrieved.
+A list of Victims from both the Indicators and Groups Services, as detailed in the table below, can be retrieved.
 
 +---------------------------------------------------------+---------------+---------------------+
 | Paths                                                   | Owner Allowed | Pagination Required |
@@ -4439,10 +4418,9 @@ Victims Resource Type XML Response:
      <statusCode>OK</statusCode>
     </victimsResponse>
 
-A list of Victims from both the Indicators and Groups Services, as
-detailed in Table 34, can be retrieved.
+A list of Victims from both the Indicators and Groups Services, as detailed in the table below, can be retrieved.
 
-Table 34 - Victim List Resource Type
+**Victim List Resource Type**
 
 +---------------------------------------------------------+---------------+---------------------+
 | Paths                                                   | Owner Allowed | Pagination Required |
@@ -4502,13 +4480,13 @@ Victim Resource Type XML Response:
      <statusCode>OK</statusCode>
     </victimResponse>
 
-Table 35 - Victim Resource Type
+**Victim Resource Type**
 
-+------------------------+-----------------+-----------------------+
-| Paths                  | Owner Allowed   | Pagination Required   |
-+========================+=================+=======================+
-| ``/v2/victims/<ID>``   | FALSE           | FALSE                 |
-+------------------------+-----------------+-----------------------+
++----------------------+---------------+---------------------+
+| Paths                | Owner Allowed | Pagination Required |
++======================+===============+=====================+
+| ``/v2/victims/<ID>`` | FALSE         | FALSE               |
++----------------------+---------------+---------------------+
 
 For each Victim, its Attributes, associated Groups, Indicators, Tags,
 and available Owners can be retrieved.
@@ -4736,7 +4714,7 @@ Victim Assets can also be found by querying the victimAssets Collection.
 The victimAssets Collection will return all Assets attached to a
 specified Victim ID.
 
-Table 36 - VictimAssets Resource Type
+**VictimAssets Resource Type**
 
 +--------------------------------------------------------------+---------------+---------------------+
 | Paths                                                        | Owner Allowed | Pagination Required |
@@ -4748,33 +4726,23 @@ Table 36 - VictimAssets Resource Type
 | ``/v2/indicators/<indicator type>/<indicator>/victimAssets`` | TRUE          | FALSE               |
 +--------------------------------------------------------------+---------------+---------------------+
 
-As Table 37 displays, each specific type of Victim Asset can be queried.
+As displayed in the table below, each specific type of Victim Asset can be queried.
 
-Table 37
+**VictimAsset Types**
 
-+-----------------------------------------------------+-----------------+-----------------------+
-| PathsVictim Asset Type                              | Owner Allowed   | Pagination Required   |
-+=====================================================+=================+=======================+
-| ``/v2/victims/<ID>/victimAssets/emailAddresses``    | FALSE           | FALSE                 |
-+-----------------------------------------------------+-----------------+-----------------------+
-| emailAddress                                        |                 |                       |
-+-----------------------------------------------------+-----------------+-----------------------+
-| ``/v2/victims/<ID>/victimAssets/networkAccounts``   | FALSE           | FALSE                 |
-+-----------------------------------------------------+-----------------+-----------------------+
-| networkAccount                                      |                 |                       |
-+-----------------------------------------------------+-----------------+-----------------------+
-| ``/v2/victims/<ID>/victimAssets/phoneNumbers``      | FALSE           | FALSE                 |
-+-----------------------------------------------------+-----------------+-----------------------+
-| phoneType                                           |                 |                       |
-+-----------------------------------------------------+-----------------+-----------------------+
-| ``/v2/victims/<ID>/victimAssets/socialNetworks``    | FALSE           | FALSE                 |
-+-----------------------------------------------------+-----------------+-----------------------+
-| socialNetwork                                       |                 |                       |
-+-----------------------------------------------------+-----------------+-----------------------+
-| ``/v2/victims/<ID>/victimAssets/webSites``          | FALSE           | FALSE                 |
-+-----------------------------------------------------+-----------------+-----------------------+
-| WebSite                                             |                 |                       |
-+-----------------------------------------------------+-----------------+-----------------------+
++---------------------------------------------------+---------------+---------------------+
+| Paths                                             | Owner Allowed | Pagination Required |
++===================================================+===============+=====================+
+| ``/v2/victims/<ID>/victimAssets/emailAddresses``  | FALSE         | FALSE               |
++---------------------------------------------------+---------------+---------------------+
+| ``/v2/victims/<ID>/victimAssets/networkAccounts`` | FALSE         | FALSE               |
++---------------------------------------------------+---------------+---------------------+
+| ``/v2/victims/<ID>/victimAssets/phoneNumbers``    | FALSE         | FALSE               |
++---------------------------------------------------+---------------+---------------------+
+| ``/v2/victims/<ID>/victimAssets/socialNetworks``  | FALSE         | FALSE               |
++---------------------------------------------------+---------------+---------------------+
+| ``/v2/victims/<ID>/victimAssets/webSites``        | FALSE         | FALSE               |
++---------------------------------------------------+---------------+---------------------+
 
 Sample query and response for emailAddress
 
@@ -5008,54 +4976,52 @@ Sample results for ``urls`` query
 The V2 API will allow for the programmatic creation of Indicators by
 issuing POST requests with valid bodies to the appropriate resources.
 
-Likewise, Table 38 illustrates valid fields for inclusion in the body of
+Likewise, the table below illustrates valid fields for inclusion in the body of
 the POST request when creating an Indicator.
 
-Table 38
-
-+------------------+----------------+------------+
-| Indicator Type   | Valid Fields   | Required   |
-+==================+================+============+
-| addresses        | ip             | TRUE       |
-+------------------+----------------+------------+
-|                  | rating         | FALSE      |
-+------------------+----------------+------------+
-|                  | confidence     | FALSE      |
-+------------------+----------------+------------+
-| emailAddresses   | address        | TRUE       |
-+------------------+----------------+------------+
-|                  | rating         | FALSE      |
-+------------------+----------------+------------+
-|                  | confidence     | FALSE      |
-+------------------+----------------+------------+
-| files            | md5            | TRUE\*     |
-+------------------+----------------+------------+
-|                  | sha1           | TRUE\*     |
-+------------------+----------------+------------+
-|                  | sha256         | TRUE\*     |
-+------------------+----------------+------------+
-|                  | size           | FALSE      |
-+------------------+----------------+------------+
-|                  | rating         | FALSE      |
-+------------------+----------------+------------+
-|                  | confidence     | FALSE      |
-+------------------+----------------+------------+
-| hosts            | hostName       | TRUE       |
-+------------------+----------------+------------+
-|                  | dnsActive      | FALSE      |
-+------------------+----------------+------------+
-|                  | whoisActive    | FALSE      |
-+------------------+----------------+------------+
-|                  | rating         | FALSE      |
-+------------------+----------------+------------+
-|                  | confidence     | FALSE      |
-+------------------+----------------+------------+
-| urls             | text           | TRUE       |
-+------------------+----------------+------------+
-|                  | rating         | FALSE      |
-+------------------+----------------+------------+
-|                  | confidence     | FALSE      |
-+------------------+----------------+------------+
++----------------+--------------+----------+
+| Indicator Type | Valid Fields | Required |
++================+==============+==========+
+| addresses      | ip           | TRUE     |
++----------------+--------------+----------+
+|                | rating       | FALSE    |
++----------------+--------------+----------+
+|                | confidence   | FALSE    |
++----------------+--------------+----------+
+| emailAddresses | address      | TRUE     |
++----------------+--------------+----------+
+|                | rating       | FALSE    |
++----------------+--------------+----------+
+|                | confidence   | FALSE    |
++----------------+--------------+----------+
+| files          | md5          | TRUE\*   |
++----------------+--------------+----------+
+|                | sha1         | TRUE\*   |
++----------------+--------------+----------+
+|                | sha256       | TRUE\*   |
++----------------+--------------+----------+
+|                | size         | FALSE    |
++----------------+--------------+----------+
+|                | rating       | FALSE    |
++----------------+--------------+----------+
+|                | confidence   | FALSE    |
++----------------+--------------+----------+
+| hosts          | hostName     | TRUE     |
++----------------+--------------+----------+
+|                | dnsActive    | FALSE    |
++----------------+--------------+----------+
+|                | whoisActive  | FALSE    |
++----------------+--------------+----------+
+|                | rating       | FALSE    |
++----------------+--------------+----------+
+|                | confidence   | FALSE    |
++----------------+--------------+----------+
+| urls           | text         | TRUE     |
++----------------+--------------+----------+
+|                | rating       | FALSE    |
++----------------+--------------+----------+
+|                | confidence   | FALSE    |
++----------------+--------------+----------+
 
 \*Files are required to be submitted with at least one valid hash.
 
@@ -5248,54 +5214,51 @@ future reference.
 If created successfully, the V2 API will respond with a response
 detailing the Group created.
 
-Table 39 details the acceptable fields and values when creating a Group.
+The table below details the acceptable fields and values when creating a Group.
 
-Table 39
++-------------+--------------+----------+
+| Group Type  | Valid Fields | Required |
++=============+==============+==========+
+| adversaries | name         | TRUE     |
++-------------+--------------+----------+
+| documents   | fileName     | TRUE     |
++-------------+--------------+----------+
+|             | name         | TRUE     |
++-------------+--------------+----------+
+|             | malware      | FALSE    |
++-------------+--------------+----------+
+|             | password     | FALSE    |
++-------------+--------------+----------+
+| emails      | name         | TRUE     |
++-------------+--------------+----------+
+|             | to           | FALSE    |
++-------------+--------------+----------+
+|             | from         | FALSE    |
++-------------+--------------+----------+
+|             | subject      | TRUE     |
++-------------+--------------+----------+
+|             | header       | TRUE     |
++-------------+--------------+----------+
+|             | body         | TRUE     |
++-------------+--------------+----------+
+| incidents   | name         | TRUE     |
++-------------+--------------+----------+
+|             | eventDate    | TRUE     |
++-------------+--------------+----------+
+| threats     | name         | TRUE     |
++-------------+--------------+----------+
+| signatures  | name         | TRUE     |
++-------------+--------------+----------+
+|             | fileName     | TRUE     |
++-------------+--------------+----------+
+|             | fileType\*   | TRUE     |
++-------------+--------------+----------+
+|             | fileText\*\* | TRUE     |
++-------------+--------------+----------+
 
-+---------------+----------------+------------+
-| Group Type    | Valid Fields   | Required   |
-+===============+================+============+
-| adversaries   | name           | TRUE       |
-+---------------+----------------+------------+
-| documents     | fileName       | TRUE       |
-+---------------+----------------+------------+
-|               | name           | TRUE       |
-+---------------+----------------+------------+
-|               | malware        | FALSE      |
-+---------------+----------------+------------+
-|               | password       | FALSE      |
-+---------------+----------------+------------+
-| emails        | name           | TRUE       |
-+---------------+----------------+------------+
-|               | to             | FALSE      |
-+---------------+----------------+------------+
-|               | from           | FALSE      |
-+---------------+----------------+------------+
-|               | subject        | TRUE       |
-+---------------+----------------+------------+
-|               | header         | TRUE       |
-+---------------+----------------+------------+
-|               | body           | TRUE       |
-+---------------+----------------+------------+
-| incidents     | name           | TRUE       |
-+---------------+----------------+------------+
-|               | eventDate      | TRUE       |
-+---------------+----------------+------------+
-| threats       | name           | TRUE       |
-+---------------+----------------+------------+
-| signatures    | name           | TRUE       |
-+---------------+----------------+------------+
-|               | fileName       | TRUE       |
-+---------------+----------------+------------+
-|               | fileType\*     | TRUE       |
-+---------------+----------------+------------+
-|               | fileText\*\*   | TRUE       |
-+---------------+----------------+------------+
+\*The valid values for a Signature’s fileType field are: {Snort ® , Suricata, YARA, ClamAV ® , OpenIOC, CybOX™, Bro, Regex}.
 
-\*The valid values for a Signature’s fileType field are: {Snort ® ,
-Suricata, YARA, ClamAV ® , OpenIOC, CybOX™, Bro, Regex}. \*\*A
-Signature’s fileText field contains the Signature itself, which must be
-properly escaped and encoded when submitting for creation or updating.
+\*\*A Signature’s fileText field contains the Signature itself, which must be properly escaped and encoded when submitting for creation or updating.
 
 Documents
 ^^^^^^^^^
@@ -5773,11 +5736,7 @@ importing large amounts of data.
 
 .. note:: Document Storage is required to use the Batch API.
 
-The Batch Create resource creates a batch entry in the system. No batch
-processing is triggered until the batch input file is uploaded. Table 40
-displays the fields required for the Batch Create message.
-
-Table 40
+The Batch Create resource creates a batch entry in the system. No batch processing is triggered until the batch input file is uploaded. The table below displays the fields required for the Batch Create message.
 
 +---------------------+-----------------+-------------------------------------------------------------------------------------------------------------------+
 | BatchConfig Message | Values          | Description                                                                                                       |
@@ -5825,25 +5784,25 @@ Batch Indicator Input File Format
 The batch upload feature expects to ingest a JSON file consisting of a
 list of dictionaries
 
-+-----------------------+------------------------+-------------+
-| Field                 | Data type              | Required?   |
-+=======================+========================+=============+
-| ``rating``            | integer                | Required    |
-+-----------------------+------------------------+-------------+
-| ``confidence``        | float                  | Required    |
-+-----------------------+------------------------+-------------+
-| ``description``       | string                 | Required    |
-+-----------------------+------------------------+-------------+
-| ``summary``           | string                 | Required    |
-+-----------------------+------------------------+-------------+
-| ``type``              | string                 | Required    |
-+-----------------------+------------------------+-------------+
-| ``tag``               | list of dictionaries   | Optional    |
-+-----------------------+------------------------+-------------+
-| ``attribute``         | list of dictionaries   | Optional    |
-+-----------------------+------------------------+-------------+
-| ``associatedGroup``   | list of integers       | Optional    |
-+-----------------------+------------------------+-------------+
++---------------------+----------------------+-----------+
+| Field               | Data type            | Required? |
++=====================+======================+===========+
+| ``rating``          | integer              | Required  |
++---------------------+----------------------+-----------+
+| ``confidence``      | float                | Required  |
++---------------------+----------------------+-----------+
+| ``description``     | string               | Required  |
++---------------------+----------------------+-----------+
+| ``summary``         | string               | Required  |
++---------------------+----------------------+-----------+
+| ``type``            | string               | Required  |
++---------------------+----------------------+-----------+
+| ``tag``             | list of dictionaries | Optional  |
++---------------------+----------------------+-----------+
+| ``attribute``       | list of dictionaries | Optional  |
++---------------------+----------------------+-----------+
+| ``associatedGroup`` | list of integers     | Optional  |
++---------------------+----------------------+-----------+
 
 Supported ``type`` values for Indicators:
 
@@ -5887,41 +5846,41 @@ Responses
 ~~~~~~~~~
 
 The API will return appropriate HTTP response codes with a description
-in the message field as detailed in Table 40. This can be helpful when
+in the message field as detailed in the table below. This can be helpful when
 troubleshooting queries.
 
-Table 41
+**HTTP Response Codes**
 
-+----------------+-----------------------------------------------------------+
-| HTTP Response  | Explanation                                               |
-| Code           |                                                           |
-+================+===========================================================+
-| 200 - Success  | Successful execution of a request.                        |
-+----------------+-----------------------------------------------------------+
-| 201 - Created  | The query successfully created the specified entity.      |
-+----------------+-----------------------------------------------------------+
-| 400 - Bad      | Status returned if the request was not properly           |
-| Request        | formatted. The message included with the response will    |
-|                | include details.                                          |
-+----------------+-----------------------------------------------------------+
-| 401 -          | Returned if a user does not have access to the specified  |
-| Unauthorized   | resource or the method attempted on a resource.           |
-+----------------+-----------------------------------------------------------+
-| 403 -          | Returned when specifying an Owner to which the user does  |
-| Forbidden      | do not have access, or does not exist.                    |
-+----------------+-----------------------------------------------------------+
-| 403 - Bad      | This Indicator is included in a system-wide exclusion     |
-| Request        | list.                                                     |
-+----------------+-----------------------------------------------------------+
-| 404 - Not      | The service or resource specified in the path does not    |
-| Found          | exist.                                                    |
-+----------------+-----------------------------------------------------------+
-| 500 - Internal | An unknown internal error                                 |
-| Server Error   |                                                           |
-+----------------+-----------------------------------------------------------+
-| 503 - Service  | The Instance of ThreatConnect is not licensed to enable   |
-| Unavailable    | the API.                                                  |
-+----------------+-----------------------------------------------------------+
++----------------+----------------------------------------------------------+
+| HTTP Response  | Explanation                                              |
+| Code           |                                                          |
++================+==========================================================+
+| 200 - Success  | Successful execution of a request.                       |
++----------------+----------------------------------------------------------+
+| 201 - Created  | The query successfully created the specified entity.     |
++----------------+----------------------------------------------------------+
+| 400 - Bad      | Status returned if the request was not properly          |
+| Request        | formatted. The message included with the response will   |
+|                | include details.                                         |
++----------------+----------------------------------------------------------+
+| 401 -          | Returned if a user does not have access to the specified |
+| Unauthorized   | resource or the method attempted on a resource.          |
++----------------+----------------------------------------------------------+
+| 403 -          | Returned when specifying an Owner to which the user does |
+| Forbidden      | do not have access, or does not exist.                   |
++----------------+----------------------------------------------------------+
+| 403 - Bad      | This Indicator is included in a system-wide exclusion    |
+| Request        | list.                                                    |
++----------------+----------------------------------------------------------+
+| 404 - Not      | The service or resource specified in the path does not   |
+| Found          | exist.                                                   |
++----------------+----------------------------------------------------------+
+| 500 - Internal | An unknown internal error                                |
+| Server Error   |                                                          |
++----------------+----------------------------------------------------------+
+| 503 - Service  | The Instance of ThreatConnect is not licensed to enable  |
+| Unavailable    | the API.                                                 |
++----------------+----------------------------------------------------------+
 
 Putting Everything Together
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -92,13 +92,13 @@ ThreatConnect Object:
 
 **Third-Party Dependencies**
 
-+-------------+-----------+----------------------------------------+
-| Name        | Version   | Link                                   |
-+=============+===========+========================================+
-| jquery      | 2.1.4     | https://jquery.com/                    |
-+-------------+-----------+----------------------------------------+
-| Crypto-JS   | 3.1       | https://code.google.com/p/crypto-js/   |
-+-------------+-----------+----------------------------------------+
++-----------+---------+--------------------------------------+
+| Name      | Version | Link                                 |
++===========+=========+======================================+
+| jquery    | 2.1.4   | https://jquery.com/                  |
++-----------+---------+--------------------------------------+
+| Crypto-JS | 3.1     | https://code.google.com/p/crypto-js/ |
++-----------+---------+--------------------------------------+
 
 **Technical Design**
 
@@ -112,25 +112,25 @@ The JavaScript SDK supports the Resource Types listed below. There is
 also a mechanism to do manual API requests to cover any API calls that
 are not provided with the core functionality.
 
-+-------------------------+------------------------------------+
-| Object                  | Description                        |
-+=========================+====================================+
-| ``groups()``            | Group container object             |
-+-------------------------+------------------------------------+
-| ``indicators()``        | Indicator container object         |
-+-------------------------+------------------------------------+
-| ``indicatorsBatch()``   | Batch Indicator container object   |
-+-------------------------+------------------------------------+
-| ``owners()``            | Owner container object             |
-+-------------------------+------------------------------------+
-| ``securityLabel()``     | Security Label container object    |
-+-------------------------+------------------------------------+
-| ``tags()``              | Tag container object               |
-+-------------------------+------------------------------------+
-| ``tasks()``             | Task container object              |
-+-------------------------+------------------------------------+
-| ``victims()``           | Victim container object            |
-+-------------------------+------------------------------------+
++-----------------------+----------------------------------+
+| Object                | Description                      |
++=======================+==================================+
+| ``groups()``          | Group container object           |
++-----------------------+----------------------------------+
+| ``indicators()``      | Indicator container object       |
++-----------------------+----------------------------------+
+| ``indicatorsBatch()`` | Batch Indicator container object |
++-----------------------+----------------------------------+
+| ``owners()``          | Owner container object           |
++-----------------------+----------------------------------+
+| ``securityLabel()``   | Security Label container object  |
++-----------------------+----------------------------------+
+| ``tags()``            | Tag container object             |
++-----------------------+----------------------------------+
+| ``tasks()``           | Task container object            |
++-----------------------+----------------------------------+
+| ``victims()``         | Victim container object          |
++-----------------------+----------------------------------+
 
 Example JavaScript App
 ----------------------
@@ -140,14 +140,18 @@ JavaScript SDK for the ThreatConnect API:
 
 .. code:: javascript
 
-    var apiSettings,
-        tcSpaceElementId = getParameterByName('tcSpaceElementId');
+    var apiSettings
 
+    // retrieve Space Element ID (only supported for Spaces applications)
+    var tcSpaceElementId = getParameterByName('tcSpaceElementId');
+
+    // use the Space Element ID if it exists
     if ( tcSpaceElementId ) {
         apiSettings = {
             apiToken: getParameterByName('tcToken'),
             apiUrl: getParameterByName('tcApiPath')
         };
+    // otherwise, use the API settings defined below
     } else {
         apiSettings = {
             apiId: '12345678900987654321',
@@ -156,15 +160,20 @@ JavaScript SDK for the ThreatConnect API:
         };
     }
 
+    // create ThreatConnect object
     var tc = new ThreatConnect(apiSettings);
 
+    // get Owners object
     tc.owners()
+        // if the call finishes successfully, the "done" callback will be run
         .done(function(response) {
             console.log('owner response', response);
         })
+        // if the call does NOT finish successfully, the "error" callback will be run
         .error(function(response) {
             console.log('owner response error', response.error);
         })
+        // retrieve Owners
         .retrieve();
 
 This example illustrates how to write a program using the JavaScript SDK
@@ -173,50 +182,7 @@ pull a collection of all Owners to which the API account being used has
 access. Once retrieved, the Owners objects will be printed to the
 console.
 
-Code Highlights
-
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tcSpaceElementId = get | Retrieve Space Element Id (only supported on    |
-| ParameterByNam...``      | Spaces application).                            |
-+--------------------------+-------------------------------------------------+
-| ``apiToken: getParameter | Retrieve Token from Spaces.                     |
-| ByName('tcToken')``      |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``apiUrl: getParameterBy | Retrieve API Path from Spaces.                  |
-| Name('tcApiPath')``      |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``apiId: '12345678900987 | Set API ID when not using Spaces App.           |
-| 654321',``               |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``apiSec: 'aabbccddeeffg | Set API Secret when not using Spaces App.       |
-| ghhiijjkkllmmn...``      |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``apiUrl: 'https://demo. | Set API URL when not using Spaces App.          |
-| threatconnect.com/api``  |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``var tc = new ThreatCon | Get ThreatConnect Object.                       |
-| nect(apiSettings)``      |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``tc.owners()``          | Get Owners object.                              |
-+--------------------------+-------------------------------------------------+
-| ``.done(function(respons | Set "done" callback.                            |
-| e) {``                   |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``console.log('owner res | Console log response.                           |
-| ponse', response)``      |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``.error(function(respon | Set "error" callback.                           |
-| se) {``                  |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``console.log('owner res | Console log any error.                          |
-| ponse error', ...``      |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``.retrieve();``         | Retrieve Owners.                                |
-+--------------------------+-------------------------------------------------+
-
-Summary
+**Summary**
 
 This section explained how to:
 
@@ -322,33 +288,33 @@ the job execution.
 Since all Spaces apps are managed within ThreatConnect, app developers
 should never hard-code ThreatConnect Parameters
 
-+----------------------+-------------------------------------------------------+
-| ThreatConnect        | Description                                           |
-| Parameter            |                                                       |
-+======================+=======================================================+
-| ``tcSpaceElementId`` | The unique space element instance ID for the user who |
-|                      | added this app to their Space. This numeric ID can be |
-|                      | used by the app to store state for the user.          |
-+----------------------+-------------------------------------------------------+
-| ``tcToken``          | Session token to be used by the app to access the     |
-|                      | API. The JavaScript SDK has configuration options for |
-|                      | this parameter.                                       |
-+----------------------+-------------------------------------------------------+
-| ``tcApiPath``        | The path to the API defined in System Settings for    |
-|                      | all apps.                                             |
-+----------------------+-------------------------------------------------------+
-| ``tcType``           | Only relevant for context-aware apps. This field      |
-|                      | corresponds to the runtime.context Attribute defined  |
-|                      | in the install configuration file.                    |
-+----------------------+-------------------------------------------------------+
-| ``tcSelectedItem``   | Only relevant for context-aware apps. This is the     |
-|                      | actual context-item identifier used within            |
-|                      | ThreatConnect. For instance, a Host identifier might  |
-|                      | be: g00gle.com                                        |
-+----------------------+-------------------------------------------------------+
-| ``tcSelectedItemOw   | Only relevant for context-aware apps. This is the     |
-| ner``                | Owner of the context item.                            |
-+----------------------+-------------------------------------------------------+
++-------------------------+-------------------------------------------------------+
+| ThreatConnect           | Description                                           |
+| Parameter               |                                                       |
++=========================+=======================================================+
+| ``tcSpaceElementId``    | The unique space element instance ID for the user who |
+|                         | added this app to their Space. This numeric ID can be |
+|                         | used by the app to store state for the user.          |
++-------------------------+-------------------------------------------------------+
+| ``tcToken``             | Session token to be used by the app to access the     |
+|                         | API. The JavaScript SDK has configuration options for |
+|                         | this parameter.                                       |
++-------------------------+-------------------------------------------------------+
+| ``tcApiPath``           | The path to the API defined in System Settings for    |
+|                         | all apps.                                             |
++-------------------------+-------------------------------------------------------+
+| ``tcType``              | Only relevant for context-aware apps. This field      |
+|                         | corresponds to the runtime.context Attribute defined  |
+|                         | in the install configuration file.                    |
++-------------------------+-------------------------------------------------------+
+| ``tcSelectedItem``      | Only relevant for context-aware apps. This is the     |
+|                         | actual context-item identifier used within            |
+|                         | ThreatConnect. For instance, a Host identifier might  |
+|                         | be: g00gle.com                                        |
++-------------------------+-------------------------------------------------------+
+| ``tcSelectedItemOwner`` | Only relevant for context-aware apps. This is the     |
+|                         | Owner of the context item.                            |
++-------------------------+-------------------------------------------------------+
 
 JavaScript Examples
 
@@ -2493,21 +2459,21 @@ The JavaScript SDK ``requestObject`` provides the ``payload()`` method
 to add any additional query string parameters. This example shows how to
 add filters to a manual request using the ``payload()`` option.
 
-+--------------------------+--------------------------+
-| Query String Parameter   | Helper Method            |
-+==========================+==========================+
-| owner                    | owner()                  |
-+--------------------------+--------------------------+
-| createActivityLog        | createActivityLog()      |
-+--------------------------+--------------------------+
-| resultLimit              | resultLimit()            |
-+--------------------------+--------------------------+
-| resultStart              | resultStart()            |
-+--------------------------+--------------------------+
-| filters                  | manually via payload()   |
-+--------------------------+--------------------------+
-| orParams                 | manually via payload()   |
-+--------------------------+--------------------------+
++------------------------+------------------------+
+| Query String Parameter | Helper Method          |
++========================+========================+
+| owner                  | owner()                |
++------------------------+------------------------+
+| createActivityLog      | createActivityLog()    |
++------------------------+------------------------+
+| resultLimit            | resultLimit()          |
++------------------------+------------------------+
+| resultStart            | resultStart()          |
++------------------------+------------------------+
+| filters                | manually via payload() |
++------------------------+------------------------+
+| orParams               | manually via payload() |
++------------------------+------------------------+
 
 For a full list of query string parameters supported by the
 ThreatConnect API reference the ThreatConnect API User Guide.
