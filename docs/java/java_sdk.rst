@@ -432,50 +432,50 @@ ThreatConnect API. It covers all available resources exposed through the
 ThreatConnect API. The primary classes in the Reader Package, which
 encompass all read functionality from the API, are listed below.
 
-+--------------------------------------+---------------------------------+
-| Class                                | *Description*                   |
-+======================================+=================================+
-| ``ReaderAdapterFactory``             | Primary entry point to          |
-|                                      | instantiate all readers in the  |
-|                                      | Reader Package.                 |
-+--------------------------------------+---------------------------------+
-| ``AbstractGroupReaderAdapter<T exten | Generic Group Reader Abstract   |
-| ds Group>``                          | class. Concrete object          |
-|                                      | available in                    |
-|                                      | ReaderAdapterFactory.           |
-+--------------------------------------+---------------------------------+
-| ``AbstractIndicatorReaderAdapter<T e | Generic Indicator Reader        |
-| xtends Indicator>``                  | Abstract class. Concrete object |
-|                                      | available in                    |
-|                                      | ReaderAdapterFactory.           |
-+--------------------------------------+---------------------------------+
-| ``AbstractReaderAdapter``            | Base Abstract Reader for all    |
-|                                      | Reader Adapters in the Reader   |
-|                                      | Package.                        |
-+--------------------------------------+---------------------------------+
-| ``OwnerReaderAdapter``               | Concrete Reader for             |
-|                                      | Organization owner data.        |
-|                                      | Convenience object available in |
-|                                      | ReaderAdapterFactory.           |
-+--------------------------------------+---------------------------------+
-| ``SecurityLabelReaderAdapter``       | Concrete Reader for             |
-|                                      | SecurityLabel data. Convenience |
-|                                      | object available in             |
-|                                      | ReaderAdapterFactory.           |
-+--------------------------------------+---------------------------------+
-| ``TagReaderAdapter``                 | Concrete Reader for Tag data.   |
-|                                      | Convenience object available in |
-|                                      | ReaderAdapterFactory.           |
-+--------------------------------------+---------------------------------+
-| ``TaskReaderAdapter``                | Concrete Reader for Task data.  |
-|                                      | Convenience object available in |
-|                                      | ReaderAdapterFactory.           |
-+--------------------------------------+---------------------------------+
-| ``VictimReaderAdapter``              | Concrete Reader for Victim      |
-|                                      | data. Convenience object        |
-|                                      | available in                    |
-|                                      | ReaderAdapterFactory.           |
-+--------------------------------------+---------------------------------+
++---------------------------------------------------------+---------------------------------+
+| Class                                                   | *Description*                   |
++=========================================================+=================================+
+| ``ReaderAdapterFactory``                                | Primary entry point to          |
+|                                                         | instantiate all readers in the  |
+|                                                         | Reader Package.                 |
++---------------------------------------------------------+---------------------------------+
+| ``AbstractGroupReaderAdapter<T extends Group>``         | Generic Group Reader Abstract   |
+|                                                         | class. Concrete object          |
+|                                                         | available in                    |
+|                                                         | ReaderAdapterFactory.           |
++---------------------------------------------------------+---------------------------------+
+| ``AbstractIndicatorReaderAdapter<T extends Indicator>`` | Generic Indicator Reader        |
+|                                                         | Abstract class. Concrete object |
+|                                                         | available in                    |
+|                                                         | ReaderAdapterFactory.           |
++---------------------------------------------------------+---------------------------------+
+| ``AbstractReaderAdapter``                               | Base Abstract Reader for all    |
+|                                                         | Reader Adapters in the Reader   |
+|                                                         | Package.                        |
++---------------------------------------------------------+---------------------------------+
+| ``OwnerReaderAdapter``                                  | Concrete Reader for             |
+|                                                         | Organization owner data.        |
+|                                                         | Convenience object available in |
+|                                                         | ReaderAdapterFactory.           |
++---------------------------------------------------------+---------------------------------+
+| ``SecurityLabelReaderAdapter``                          | Concrete Reader for             |
+|                                                         | SecurityLabel data. Convenience |
+|                                                         | object available in             |
+|                                                         | ReaderAdapterFactory.           |
++---------------------------------------------------------+---------------------------------+
+| ``TagReaderAdapter``                                    | Concrete Reader for Tag data.   |
+|                                                         | Convenience object available in |
+|                                                         | ReaderAdapterFactory.           |
++---------------------------------------------------------+---------------------------------+
+| ``TaskReaderAdapter``                                   | Concrete Reader for Task data.  |
+|                                                         | Convenience object available in |
+|                                                         | ReaderAdapterFactory.           |
++---------------------------------------------------------+---------------------------------+
+| ``VictimReaderAdapter``                                 | Concrete Reader for Victim      |
+|                                                         | data. Convenience object        |
+|                                                         | available in                    |
+|                                                         | ReaderAdapterFactory.           |
++---------------------------------------------------------+---------------------------------+
 
 Reader Factory
 ~~~~~~~~~~~~~~
@@ -1051,9 +1051,13 @@ The methods below return owners who have created the Indicator under the uniqueI
 
 The methods below return False Positive counts for the Indicator under the uniqueId.
 
-\|Type\|Method \| -------------------------------------------------------- \|
-``FalsePositive``\ \|getFalsePositive(String uniqueId) \| ``FalsePositive``\ \|getFalsePositive(String uniqueId, String
-ownerName) \|
++-------------------+-----------------------------------------------------+
+| Type              | Method                                            |
++===================+=====================================================+
+| ``FalsePositive`` | getFalsePositive(String uniqueId)                   |
++-------------------+-----------------------------------------------------+
+| ``FalsePositive`` | getFalsePositive(String uniqueId, String ownerName) |
++-------------------+-----------------------------------------------------+
 
 The methods below return Observations and Observation counts for the Indicator under the uniqueId.
 
