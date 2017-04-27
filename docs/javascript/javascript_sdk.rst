@@ -140,14 +140,18 @@ JavaScript SDK for the ThreatConnect API:
 
 .. code:: javascript
 
-    var apiSettings,
-        tcSpaceElementId = getParameterByName('tcSpaceElementId');
+    var apiSettings
 
+    // retrieve Space Element ID (only supported for Spaces applications)
+    var tcSpaceElementId = getParameterByName('tcSpaceElementId');
+
+    // use the Space Element ID if it exists
     if ( tcSpaceElementId ) {
         apiSettings = {
             apiToken: getParameterByName('tcToken'),
             apiUrl: getParameterByName('tcApiPath')
         };
+    // otherwise, use the API settings defined below
     } else {
         apiSettings = {
             apiId: '12345678900987654321',
@@ -156,15 +160,20 @@ JavaScript SDK for the ThreatConnect API:
         };
     }
 
+    // create ThreatConnect object
     var tc = new ThreatConnect(apiSettings);
 
+    // get Owners object
     tc.owners()
+        // if the call finishes successfully, the "done" callback will be run
         .done(function(response) {
             console.log('owner response', response);
         })
+        // if the call does NOT finish successfully, the "error" callback will be run
         .error(function(response) {
             console.log('owner response error', response.error);
         })
+        // retrieve Owners
         .retrieve();
 
 This example illustrates how to write a program using the JavaScript SDK
@@ -173,50 +182,7 @@ pull a collection of all Owners to which the API account being used has
 access. Once retrieved, the Owners objects will be printed to the
 console.
 
-Code Highlights
-
-+--------------------------+-------------------------------------------------+
-| Snippet                  | Description                                     |
-+==========================+=================================================+
-| ``tcSpaceElementId = get | Retrieve Space Element Id (only supported on    |
-| ParameterByNam...``      | Spaces application).                            |
-+--------------------------+-------------------------------------------------+
-| ``apiToken: getParameter | Retrieve Token from Spaces.                     |
-| ByName('tcToken')``      |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``apiUrl: getParameterBy | Retrieve API Path from Spaces.                  |
-| Name('tcApiPath')``      |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``apiId: '12345678900987 | Set API ID when not using Spaces App.           |
-| 654321',``               |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``apiSec: 'aabbccddeeffg | Set API Secret when not using Spaces App.       |
-| ghhiijjkkllmmn...``      |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``apiUrl: 'https://demo. | Set API URL when not using Spaces App.          |
-| threatconnect.com/api``  |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``var tc = new ThreatCon | Get ThreatConnect Object.                       |
-| nect(apiSettings)``      |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``tc.owners()``          | Get Owners object.                              |
-+--------------------------+-------------------------------------------------+
-| ``.done(function(respons | Set "done" callback.                            |
-| e) {``                   |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``console.log('owner res | Console log response.                           |
-| ponse', response)``      |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``.error(function(respon | Set "error" callback.                           |
-| se) {``                  |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``console.log('owner res | Console log any error.                          |
-| ponse error', ...``      |                                                 |
-+--------------------------+-------------------------------------------------+
-| ``.retrieve();``         | Retrieve Owners.                                |
-+--------------------------+-------------------------------------------------+
-
-Summary
+**Summary**
 
 This section explained how to:
 
