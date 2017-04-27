@@ -272,7 +272,7 @@ Organization must be created.
 |              | resources.                                                  |
 +--------------+-------------------------------------------------------------+
 
-Summary
+**Summary**
 
 This section explained:
 
@@ -1285,7 +1285,7 @@ Tags from our IP address Indicators:
 |       | address is iterated through and printed to the console.           |
 +-------+-------------------------------------------------------------------+
 
-Summary
+**Summary**
 
 This example explained how to:
 
@@ -1585,7 +1585,7 @@ Code Sample
 |        | dumped to the console.                                            |
 +--------+-------------------------------------------------------------------+
 
-Summary
+**Summary**
 
 This example explained how to:
 
@@ -3173,7 +3173,7 @@ Code Sample Description
 |              | dumped to the console.                                      |
 +--------------+-------------------------------------------------------------+
 
-Summary
+**Summary**
 
 The previous two examples explained how to:
 
