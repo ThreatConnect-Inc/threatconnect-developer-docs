@@ -4731,7 +4731,7 @@ As displayed in the table below, each specific type of Victim Asset can be queri
 **VictimAsset Types**
 
 +---------------------------------------------------+---------------+---------------------+
-| PathsVictim Asset Type                            | Owner Allowed | Pagination Required |
+| Paths                                             | Owner Allowed | Pagination Required |
 +===================================================+===============+=====================+
 | ``/v2/victims/<ID>/victimAssets/emailAddresses``  | FALSE         | FALSE               |
 +---------------------------------------------------+---------------+---------------------+
