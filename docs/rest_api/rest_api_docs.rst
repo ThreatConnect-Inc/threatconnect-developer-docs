@@ -4292,72 +4292,6 @@ Indicator or Group <#resource-types>`__.
 Victims Resource Type
 ^^^^^^^^^^^^^^^^^^^^^
 
-Retrieve a specific Victim by ID
-
-.. code::
-
-    /v2/groups/victims/<victim_ID>
-
-Victims Resource Type JSON Response:
-
-.. code:: json
-
-    {
-     "status": "Success",
-     "data": {
-      "resultCount": 1,
-      "victim": [{
-       "id": 527,
-       "name": "Example Victim",
-       "org": "Demo Org",
-       "suborg": "HR Department",
-       "workLocation": "Washington D.C.",
-       "nationality": "American",
-       "webLink": "https://app.threatconnect.com/tc/auth/victim/victim.xhtml?victim=527"
-      }]
-     }
-    }
-
-Victims Resource Type XML Response:
-
-.. code:: xml
-
-    <victimsResponse>
-     <Status>Success</Status>
-     <Data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="victimListResponseData">
-      <ResultCount>1</ResultCount>
-      <Victim>
-       <Id>527</Id>
-       <Name>Example Victim</Name>
-       <Org>Test Org</Org>
-       <Suborg>HR Department</Suborg>
-       <WorkLocation>Washington D.C.</WorkLocation>
-       <Nationality>American</Nationality>
-       <WebLink>https://app.threatconnect.com/tc/auth/victim/victim.xhtml?victim=527</WebLink>
-      </Victim>
-     </Data>
-     <statusCode>OK</statusCode>
-    </victimsResponse>
-
-A list of Victims from both the Indicators and Groups Services, as detailed in the table below, can be retrieved.
-
-+---------------------------------------------------------+---------------+---------------------+
-| Paths                                                   | Owner Allowed | Pagination Required |
-+=========================================================+===============+=====================+
-| ``/v2/victims``                                         | TRUE          | TRUE                |
-+---------------------------------------------------------+---------------+---------------------+
-| ``/v2/indicators/<indicator type>/<indicator>/victims`` | TRUE          |                     |
-+---------------------------------------------------------+---------------+---------------------+
-| ``/v2/groups/<group type>/<ID>/victims``                | FALSE         |                     |
-+---------------------------------------------------------+---------------+---------------------+
-
-The Victims Service allows for the querying of a specific Victim for the
-user’s Organization, as well as any Communities to which the user has
-access.
-
-Working With Victims
-~~~~~~~~~~~~~~~~~~~~
-
 Retrieve all Victims in a user’s Organization and in any Communities to
 which a user has access.
 
@@ -4365,18 +4299,6 @@ which a user has access.
 
     /v2/victims
 
-By using the Victims Service, all Victims for a user’s Organization, as
-well as any Communities to which a user has access, can be retrieved.
-
-Victims Resource Type
-^^^^^^^^^^^^^^^^^^^^^
-
-Retrieve a specific Victim by ID
-
-.. code::
-
-    /v2/groups/victims/<victim_ID>
-
 Victims Resource Type JSON Response:
 
 .. code:: json
@@ -4420,7 +4342,7 @@ Victims Resource Type XML Response:
 
 A list of Victims from both the Indicators and Groups Services, as detailed in the table below, can be retrieved.
 
-**Victim List Resource Type**
+**Victims Resource Type**
 
 +---------------------------------------------------------+---------------+---------------------+
 | Paths                                                   | Owner Allowed | Pagination Required |
@@ -4438,6 +4360,12 @@ access.
 
 Victim Resource Type
 ^^^^^^^^^^^^^^^^^^^^
+
+Retrieve a specific Victim by ID
+
+.. code::
+
+    /v2/groups/victims/<victim_ID>
 
 Victim Resource Type JSON Response:
 
