@@ -77,8 +77,8 @@ def test_snippets():
                     # if there is an exception, get the output
                     error_output = subprocess.getoutput("python {}".format(default_file))
 
-                    # if the output was not an expected error, make a not of it
-                    if "configparser.NoSectionError: No section: 'threatconnect'" not in error_output:
+                    # if the output was unexpected, make a note of it
+                    if 'No handlers could be found for logger "threatconnect"' not in error_output or "Access Denied" not in error_output:
                         print("\n\n{}:\n{}".format(os.path.join(path, file_), error_output))
                         counter['unexpected_error'] += 1
                     else:
