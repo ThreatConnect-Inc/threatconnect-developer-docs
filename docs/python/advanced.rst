@@ -908,6 +908,8 @@ Python SDK Regex Code Sample
 .. code-block:: python
     :linenos:
 
+    import re
+
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
