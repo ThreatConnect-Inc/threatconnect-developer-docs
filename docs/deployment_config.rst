@@ -179,11 +179,22 @@ understood by the ThreatConnect platform.
 | INDICATORS | String Array     | ["${INDICATOR_TYPES}"]                         | The INDICATOR_TYPES variable resolves to all of the indicator types available in the given instance of ThreatConnect. The string value of the indicator type(s) is passed as an argument to the app.                                                                                                                                                                                                                    |
 +------------+------------------+------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-When the $ATTRIBUTES internal variable is used with a :<type> suffix,
-the types can be any of the Indicator, Group, Task, or Victim types in
-the ThreatConnect platform: Address, Adversary, Campaign, Document,
-Email, EmailAddress, File, Host, Incident, Signature, Task, Threat, and
-URL.
+When the ``$ATTRIBUTES`` internal variable is used with a ``:<type>`` suffix, the type can be any of the Indicator, Group, Task, or Victim types in the ThreatConnect platform:
+
+* Address: ``["${ATTRIBUTES:Address}"]``
+* Adversary: ``["${ATTRIBUTES:Adversary}"]``
+* Campaign: ``["${ATTRIBUTES:Campaign}"]``
+* Document: ``["${ATTRIBUTES:Document}"]``
+* Email: ``["${ATTRIBUTES:Email}"]``
+* EmailAddress: ``["${ATTRIBUTES:EmailAddress}"]``
+* File: ``["${ATTRIBUTES:File}"]``
+* Host: ``["${ATTRIBUTES:Host}"]``
+* Incident: ``["${ATTRIBUTES:Incident}"]``
+* Signature: ``["${ATTRIBUTES:Signature}"]``
+* Task: ``["${ATTRIBUTES:Task}"]``
+* Threat: ``["${ATTRIBUTES:Threat}"]``
+* URL: ``["${ATTRIBUTES:URL}"]``
+* Victim: ``["${ATTRIBUTES:Victim}"]``
 
 External Variables
 ~~~~~~~~~~~~~~~~~~
