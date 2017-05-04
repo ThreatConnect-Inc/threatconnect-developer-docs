@@ -78,11 +78,11 @@ def test_snippets():
                     error_output = subprocess.getoutput("python {}".format(default_file))
 
                     # if the output was unexpected, make a note of it
-                    if 'No handlers could be found for logger "threatconnect"' not in error_output and "Access Denied" not in error_output:
+                    if 'No handlers could be found for logger "threatconnect"' in error_output or "Access Denied" in error_output:
+                        counter['expected_error'] += 1
+                    else:
                         print("\n\n{}:\n{}".format(os.path.join(path, file_), error_output))
                         counter['unexpected_error'] += 1
-                    else:
-                        counter['expected_error'] += 1
 
     # report the damage
     print("Successes: {}\nExpected Errors: {}\nUnexpected Errors: {}".format(counter['success'],
