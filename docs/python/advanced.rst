@@ -908,9 +908,15 @@ Python SDK Regex Code Sample
 .. code-block:: python
     :linenos:
 
+    import re
+
+    from threatconnect.Config.IndicatorType import IndicatorType
+
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
+
+    indicators = tc.indicators()
 
     #
     # override FILES Regex

@@ -2043,7 +2043,8 @@ Observations
 
 Show total number of observations for a given Indicator (with
 timestamps)
-``GET /v2/indicators/[IndicatorType]/[IndicatorName]/observations``
+
+``GET /v2/indicators/<indicator type>/<indicator>/observations``
 
 Response data (note: if ``resultCount`` is 0 there are no observations
 and response[data][observation] will be an empty list):
@@ -2066,7 +2067,7 @@ and response[data][observation] will be an empty list):
 
 Show full details of observations for a given Indicator
 
-``GET /v2/indicators/[IndicatorType]/[IndicatorName]/observations?includeAdditional=true``
+``GET /v2/indicators/<indicator type>/<indicator>/observations?includeAdditional=true``
 
 Response data:
 
