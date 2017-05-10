@@ -23,6 +23,8 @@ the ThreatConnect platform:
 
     # load Adversary attributes
     adversary.load_attributes()
+
+    # iterate through Adversary attributes
     for attribute in adversary.attributes:
         # if the attribute is a description, delete it
         if attribute.type == 'Description':
@@ -34,6 +36,7 @@ the ThreatConnect platform:
 
     # load Adversary tags
     adversary.load_tags()
+
     # delete all of the Adversary's tags
     for tag in adversary.tags:
         adversary.delete_tag(tag.name)

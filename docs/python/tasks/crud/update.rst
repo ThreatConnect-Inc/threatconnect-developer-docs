@@ -5,61 +5,48 @@ The example below demonstrates how to update a Task Resource in the ThreatConnec
 
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 8-11,37-38
 
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
+    # instantiate a Tasks object
     tasks = tc.tasks()
 
+    # create a new Task object with an updated name
     task = tasks.add('Updated Task')
-    task.set_id(20)
+    # set the ID of the new Task to the ID of the existing Task you want to update
+    task.set_id(123456)
 
+    # load Task attributes
     task.load_attributes()
+
+    # iterate through Task attributes
     for attribute in task.attributes:
+        # if the attribute is a description, delete it
         if attribute.type == 'Description':
+            # delete the attribute
             task.delete_attribute(attribute.id)
 
+    # add a new description attribute
     task.add_attribute('Description', 'Updated Description')
 
+    # load Task tags
     task.load_tags()
+
+    # delete all of the Task tags
     for tag in task.tags:
         task.delete_tag(tag.name)
 
+    # add a tag
     task.add_tag('EXAMPLE')
 
     try:
+        # update the Task
         task.commit()
     except RuntimeError as e:
         print('Error: {0}'.format(e))
         sys.exit(1)
 
 .. note:: In the prior example, no API calls are made until the ``commit()`` method is invoked.
-
-**Code Highlights**
-
-+----------------------------------------------+------------------------------------------------------------------+
-| Snippet                                      | Description                                                      |
-+==============================================+==================================================================+
-| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                            |
-+----------------------------------------------+------------------------------------------------------------------+
-| ``tasks = tc.tasks()``                       | Instantiate a Tasks container object.                            |
-+----------------------------------------------+------------------------------------------------------------------+
-| ``task = Tasks.add('Updated task'...``       | Add a Resource object setting the name and Owner.                |
-+----------------------------------------------+------------------------------------------------------------------+
-| ``task.set_id(20)``                          | Set the ID of the task to the **EXISTING** task ID to update.  |
-+----------------------------------------------+------------------------------------------------------------------+
-| ``task.load_attributes()``                   | Load existing Attributes into the task object.                   |
-+----------------------------------------------+------------------------------------------------------------------+
-| ``task.delete_attribute(attribute.id)``      | Add a delete flag to the Attribute with type **Description**.    |
-+----------------------------------------------+------------------------------------------------------------------+
-| ``task.add_attribute('Description', '...``   | Add an Attribute of type **Description** to the Resource.        |
-+----------------------------------------------+------------------------------------------------------------------+
-| ``task.load_tags()``                         | Load existing Tags into the task object.                         |
-+----------------------------------------------+------------------------------------------------------------------+
-| ``task.delete_tag(tag.name)``                | Add a delete flag to all Tags.                                   |
-+----------------------------------------------+------------------------------------------------------------------+
-| ``task.add_tag('EXAMPLE')``                  | Add a Tag to the Resource.                                       |
-+----------------------------------------------+------------------------------------------------------------------+
-| ``task.commit()``                            | Trigger API calls to write all added, deleted, or modified data. |
-+----------------------------------------------+------------------------------------------------------------------+

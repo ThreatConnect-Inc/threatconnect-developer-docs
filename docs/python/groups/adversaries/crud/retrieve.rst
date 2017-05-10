@@ -17,7 +17,7 @@ The import statement and reading of the configuration files have been replaced w
     # instantiate Adversaries container
     adversaries = tc.adversaries()
 
-    # set a filter to only retrieve the Adversary with ID: 123456
+    # set a filter to retrieve only the Adversary with ID: 123456
     filter1 = adversaries.add_filter()
     filter1.add_id(123456)
 
@@ -28,7 +28,7 @@ The import statement and reading of the configuration files have been replaced w
         print('Error: {0}'.format(e))
         sys.exit(1)
 
-    # iterate through the retrieved Adversaries (in this case there should only be one) and print its properties
+    # iterate through the retrieved Adversary (in this case there should only be one) and print its properties
     for adversary in adversaries:
         print(adversary.id)
         print(adversary.name)
