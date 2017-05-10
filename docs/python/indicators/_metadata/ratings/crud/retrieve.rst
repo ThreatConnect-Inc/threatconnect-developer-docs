@@ -5,6 +5,7 @@ The code snippet below demonstrates how to retrieve the threat and confidence ra
 
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 20-21,23-24
 
     ...
 

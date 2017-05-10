@@ -5,6 +5,7 @@ The code snippet below demonstrates how to add a tag to an Indicator. This examp
 
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 20-21
 
     ...
 

@@ -5,6 +5,7 @@ The code snippet below demonstrates how to create an attribute on an Indicator. 
 
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 20-21,23-24
 
     ...
 

@@ -5,6 +5,7 @@ The code snippet below demonstrates how to update an Indicator's attribute. This
 
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 29
 
     ...
 

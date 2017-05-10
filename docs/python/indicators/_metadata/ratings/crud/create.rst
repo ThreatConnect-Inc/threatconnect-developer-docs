@@ -5,6 +5,7 @@ The code snippet below demonstrates how to add/change the threat and/or confiden
 
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 20-21,23-24
 
     ...
 

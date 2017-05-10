@@ -5,6 +5,7 @@ The code snippet below demonstrates how to delete a security label from an Indic
 
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 20-21
 
     ...
 

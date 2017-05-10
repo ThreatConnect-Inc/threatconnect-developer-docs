@@ -5,6 +5,7 @@ The code snippet below demonstrates how to add a security label to an Indicator.
 
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 20-21
 
     ...
 

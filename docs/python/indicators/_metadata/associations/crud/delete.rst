@@ -5,6 +5,7 @@ The code snippet below demonstrates how to remove an association between an Indi
 
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 1,24-25,27-28,30-31
 
     from threatconnect.Config.ResourceType import ResourceType
 

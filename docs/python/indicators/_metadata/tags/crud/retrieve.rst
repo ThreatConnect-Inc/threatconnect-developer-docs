@@ -5,6 +5,7 @@ The code snippet below demonstrates how to retrieve the tags from an Indicator. 
 
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 20-21
 
     ...
 

@@ -5,6 +5,7 @@ The code snippet below demonstrates how to delete a tag from an Indicator. This 
 
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 20-21
 
     ...
 

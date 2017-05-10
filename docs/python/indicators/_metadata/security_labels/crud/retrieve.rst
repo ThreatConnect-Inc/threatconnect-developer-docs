@@ -5,6 +5,7 @@ The code snippet below demonstrates how to retrieve the security label from an I
 
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 20-21
 
     ...
 
