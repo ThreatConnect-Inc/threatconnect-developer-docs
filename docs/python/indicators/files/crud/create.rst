@@ -26,11 +26,11 @@ The example below demonstrates how to create a File Indicator in the ThreatConne
     indicator.set_rating(2.5)
 
     # add a description attribute
-    adversary.add_attribute('Description', 'Description Example')
+    indicator.add_attribute('Description', 'Description Example')
     # add a tag
-    adversary.add_tag('Example')
+    indicator.add_tag('Example')
     # add a security label
-    adversary.set_security_label('TLP Green')
+    indicator.set_security_label('TLP Green')
 
     try:
         # create the Indicator
