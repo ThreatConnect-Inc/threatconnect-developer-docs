@@ -2,7 +2,7 @@ Retrieve Tasks
 --------------
 
 Retrieving a Single Task
-""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: python
     :linenos:
@@ -37,7 +37,7 @@ Retrieving a Single Task
         print(task.weblink)
 
 Retrieving Multiple Tasks
-"""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: python
     :linenos:
