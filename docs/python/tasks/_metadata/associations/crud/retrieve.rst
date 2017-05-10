@@ -5,6 +5,7 @@ The code snippet below demonstrates how to view Groups, Indicators, and Victims 
 
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 3,27-28,37-38,51-52
 
     ...
 
@@ -15,7 +16,7 @@ The code snippet below demonstrates how to view Groups, Indicators, and Victims 
     # define the ID of the task we would like to retrieve
     task_id = 123456
 
-    # create a tasks object
+    # instantiate Tasks object
     tasks = tc.tasks()
 
     # set a filter to retrieve the task with the id: 123456
@@ -28,6 +29,7 @@ The code snippet below demonstrates how to view Groups, Indicators, and Victims 
         print('Error: {0}'.format(e))
         sys.exit(1)
 
+    # iterate through the Tasks and print their associations
     for task in tasks:
         print(task.name)
 
