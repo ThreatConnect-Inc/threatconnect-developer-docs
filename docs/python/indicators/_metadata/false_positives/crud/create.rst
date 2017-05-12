@@ -1,7 +1,7 @@
-Create Indicator False Positive
-"""""""""""""""""""""""""""""""
+Add Indicator False Positive
+""""""""""""""""""""""""""""
 
-The code snippet below demonstrates how to create an false positive to an Indicator. This example assumes a host indicator ``example.com`` exists in the target owner.
+The code snippet below demonstrates how to add a false positive to an Indicator. This example assumes a host indicator ``example.com`` exists in the target owner.
 
 .. code-block:: python
     :emphasize-lines: 20-21
