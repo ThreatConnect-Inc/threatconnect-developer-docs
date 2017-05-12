@@ -11,7 +11,7 @@ The example below demonstrates how to pull all Assets for the current Victim Res
 
     victims = tc.victims()
 
-    # set a filter to retrieve the victim with the id: 123456
+    # set a filter to retrieve the Victim with the id: 123456
     filter1 = victims.add_filter()
     filter1.add_id(123456)
 
@@ -28,21 +28,9 @@ The example below demonstrates how to pull all Assets for the current Victim Res
         # retrieve the assets from ThreatConnect
         victim.load_assets()
 
-        # iterate through the victim's assets
+        # iterate through the Victim's assets
         for asset in victim.assets:
             print(asset.id)
             print(asset.name)
             print(asset.type)
             print(asset.weblink)
-
-**Code Highlights**
-
-+---------------------------------+-----------------------------------------------------------+
-| Snippet                         | Description                                               |
-+=================================+===========================================================+
-| ``victim.load_assets()``        | Trigger API call to load Assets into the Resource object. |
-+---------------------------------+-----------------------------------------------------------+
-| ``for asset in victim.assets:`` | Iterate over the Assets object generator.                 |
-+---------------------------------+-----------------------------------------------------------+
-| ``print(asset.id)``             | Display the **id** property of the Asset object.          |
-+---------------------------------+-----------------------------------------------------------+

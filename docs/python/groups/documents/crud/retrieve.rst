@@ -4,8 +4,7 @@ Retrieve Documents
 Retrieving a Single Document
 """"""""""""""""""""""""""""
 
-The import statement and reading of the configuration files have been
-replaced with ``...`` for brevity.
+This example demonstrates how to retrieve a specific Document using the Document's ID. The ``add_id`` filter specifies the ID of the Document which you would like to retrieve.
 
 .. code-block:: python
     :emphasize-lines: 8-10,13-14
@@ -38,28 +37,6 @@ replaced with ``...`` for brevity.
         # Document specific property
         print(document.file_name)
 
-This example demonstrates how to retrieve a specific Document using the Document's ID. The ``add_id`` filter specifies the ID of the Document which you would like to retrieve.
-
-Code Highlights
-
-+----------------------------------------------+------------------------------------------------------------------------------------------+
-| Snippet                                      | Description                                                                              |
-+==============================================+==========================================================================================+
-| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                                                    |
-+----------------------------------------------+------------------------------------------------------------------------------------------+
-| ``documents = tc.documents()``               | Instantiate a Documents container object.                                                |
-+----------------------------------------------+------------------------------------------------------------------------------------------+
-| ``filter1 = documents.add_filter()``         | Add a filter object to the Documents container object (support multiple filter objects). |
-+----------------------------------------------+------------------------------------------------------------------------------------------+
-| ``filter1.add_tag('EXAMPLE')``               | Add API filter to retrieve Documents with the 'Example' tag                              |
-+----------------------------------------------+------------------------------------------------------------------------------------------+
-| ``documents.retrieve()``                     | Trigger the API request and retrieve the Documents intelligence data.                    |
-+----------------------------------------------+------------------------------------------------------------------------------------------+
-| ``for document in documents:``               | Iterate over the Documents container object generator.                                   |
-+----------------------------------------------+------------------------------------------------------------------------------------------+
-| ``print(document.id)``                       | Display the **'id'** property of the Document object.                                    |
-+----------------------------------------------+------------------------------------------------------------------------------------------+
-
 Downloading a Document's Contents
 +++++++++++++++++++++++++++++++++
 
@@ -78,8 +55,11 @@ with the Document Resource:
 Retrieving Multiple Documents
 """""""""""""""""""""""""""""
 
-The import statement and reading of the configuration files have been
-replaced with ``...`` for brevity.
+This example will demonstrate how to retrieve documents while applying
+filters. In this example, two filters will be added, one for the Owner
+and another for a Tag. The result set returned from this example will
+contain any documents in the **Example Community** Owner that has a Tag
+of **EXAMPLE**.
 
 .. code-block:: python
     :emphasize-lines: 9-12,15-16
@@ -114,30 +94,4 @@ replaced with ``...`` for brevity.
         # Document specific property
         print(document.file_name)
 
-This example will demonstrate how to retrieve documents while applying
-filters. In this example, two filters will be added, one for the Owner
-and another for a Tag. The result set returned from this example will
-contain any documents in the **Example Community** Owner that has a Tag
-of **EXAMPLE**.
-
 .. note:: The ``filter1`` object contains a ``filters`` property that provides a list of supported filters for the resource type being retrieved. To display this list, ``print(filter1.filters)`` can be used. For more on using filters see the `Advanced Filter Tutorial <#advanced-filtering>`__.
-
-Code Highlights
-
-+----------------------------------------------+------------------------------------------------------------------------------------------+
-| Snippet                                      | Description                                                                              |
-+==============================================+==========================================================================================+
-| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                                                    |
-+----------------------------------------------+------------------------------------------------------------------------------------------+
-| ``documents = tc.documents()``               | Instantiate a Documents container object.                                                |
-+----------------------------------------------+------------------------------------------------------------------------------------------+
-| ``filter1 = documents.add_filter()``         | Add a filter object to the Documents container object (support multiple filter objects). |
-+----------------------------------------------+------------------------------------------------------------------------------------------+
-| ``filter1.add_tag('APT')``                   | Add API filter to retrieve Documents with the 'APT' tag                                  |
-+----------------------------------------------+------------------------------------------------------------------------------------------+
-| ``documents.retrieve()``                     | Trigger the API request and retrieve the Documents intelligence data.                    |
-+----------------------------------------------+------------------------------------------------------------------------------------------+
-| ``for document in documents:``               | Iterate over the Documents container object generator.                                   |
-+----------------------------------------------+------------------------------------------------------------------------------------------+
-| ``print(document.id)``                       | Display the **'id'** property of the Document object.                                    |
-+----------------------------------------------+------------------------------------------------------------------------------------------+
