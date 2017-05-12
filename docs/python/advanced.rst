@@ -432,6 +432,7 @@ retrieve all Indicators from a specified Owner:
     ro.set_resource_pagination(True)
     ro.set_request_uri('/v2/indicators')
 
+    # instantiate Api Request object 
     results = tc.api_request(ro)
     if results.headers['content-type'] == 'application/json':
         data = results.json()
@@ -486,6 +487,7 @@ retrieve the contents of a document stored in a Document Resource.
     ro.set_resource_pagination(False)
     ro.set_request_uri('/v2/groups/documents/19/download')
 
+    # instantiate Api Request object 
     results = tc.api_request(ro)
     if results.headers['content-type'] == 'application/octet-stream':
         file_contents = results.content
@@ -548,6 +550,7 @@ Resource.
 
     print(ro)
 
+    # instantiate Api Request object 
     results = tc.api_request(ro)
     if results.headers['content-type'] == 'application/json':
         data = results.json()
@@ -565,6 +568,7 @@ Resource.
         ro.set_resource_pagination(False)
         ro.set_request_uri('/v2/groups/documents/{0}/upload'.format(document_id))
 
+        # instantiate Api Request object 
         results = tc.api_request(ro)
         print('Status Code: {0}'.format(results.status_code))
 
@@ -622,6 +626,7 @@ Python SDK CEF Code Sample:
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
+    # instantiate Indicators object 
     indicators = tc.indicators()
     owner = 'Example Community'
 
@@ -634,11 +639,13 @@ Python SDK CEF Code Sample:
         sys.exit(1)
 
     try:
+        # retrieve the Indicators
         indicators.retrieve()
     except RuntimeError as e:
         print(e)
         sys.exit(1)
 
+    # iterate through the Indicators
     for indicator in indicators:
         print(indicator.cef)
 
@@ -665,6 +672,7 @@ Python SDK CSV Code Sample:
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
+    # instantiate Indicators object 
     indicators = tc.indicators()
     owner = 'Example Community'
 
@@ -677,6 +685,7 @@ Python SDK CSV Code Sample:
         sys.exit(1)
 
     try:
+        # retrieve the Indicators
         indicators.retrieve()
     except RuntimeError as e:
         print(e)
@@ -721,6 +730,7 @@ Python SDK JSON Code Sample:
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
+    # instantiate Indicators object 
     indicators = tc.indicators()
     owner = 'Example Community'
 
@@ -733,11 +743,13 @@ Python SDK JSON Code Sample:
         sys.exit(1)
 
     try:
+        # retrieve the Indicators
         indicators.retrieve()
     except RuntimeError as e:
         print(e)
         sys.exit(1)
 
+    # iterate through the Indicators
     for indicator in indicators:
         print(indicator.json)
 
@@ -777,6 +789,7 @@ Python SDK Key Value Code Sample:
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
+    # instantiate Indicators object 
     indicators = tc.indicators()
     owner = 'Example Community'
 
@@ -789,11 +802,13 @@ Python SDK Key Value Code Sample:
         sys.exit(1)
 
     try:
+        # retrieve the Indicators
         indicators.retrieve()
     except RuntimeError as e:
         print(e)
         sys.exit(1)
 
+    # iterate through the Indicators
     for indicator in indicators:
         print(indicator.keyval)
 
@@ -822,6 +837,7 @@ Python SDK LEEF Code Sample:
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
+    # instantiate Indicators object 
     indicators = tc.indicators()
     owner = 'Example Community'
 
@@ -834,11 +850,13 @@ Python SDK LEEF Code Sample:
         sys.exit(1)
 
     try:
+        # retrieve the Indicators
         indicators.retrieve()
     except RuntimeError as e:
         print(e)
         sys.exit(1)
 
+    # iterate through the Indicators
     for indicator in indicators:
         print(indicator.leef)
 
@@ -868,6 +886,7 @@ The ``add()`` method on the ``tc.indicators()`` object allows the user to bypass
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
+    # instantiate Indicators object 
     indicators = tc.indicators()
     owner = 'Example Community'
 
@@ -888,6 +907,7 @@ Python SDK Regex Code Sample
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
+    # instantiate Indicators object 
     indicators = tc.indicators()
 
     #
@@ -962,6 +982,7 @@ script results:
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
+    # instantiate Indicators object 
     indicators = tc.indicators()
     owner = 'Example Community'
 
@@ -970,6 +991,7 @@ script results:
     filter1.add_tag('APT')
 
     try:
+        # retrieve the Indicators
         indicators.retrieve()
     except RuntimeError as e:
         print('Error: {0}'.format(e))
@@ -1035,6 +1057,7 @@ Python SDK failed reports example:
 
 .. code-block:: python
 
+    # iterate through the failures
     for fail in tc.report.failures:
         print(fail)
 

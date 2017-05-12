@@ -78,6 +78,7 @@ The example below demonstrates how to use the ``add_pf_name()`` filter to find a
     except RuntimeError as e:
         print('Error: {0}'.format(e))
 
+    # iterate through the Groups
     for group in groups:
         print(group.id)
         print(group.name)
@@ -124,6 +125,7 @@ The example below demonstrates how to use the ``add_pf_date_added()`` filter to 
     except RuntimeError as e:
         print('Error: {0}'.format(e))
 
+    # iterate through the Groups
     for group in groups:
         print(group.id)
         print(group.name)
