@@ -17,32 +17,7 @@ The example below demonstrates how to update a Task Resource in the ThreatConnec
     # create a new Task object with an updated name
     task = tasks.add('Updated Task')
     # set the ID of the new Task to the ID of the existing Task you want to update
-    task.set_id(123456)
-
-    # load Task attributes
-    task.load_attributes()
-
-    # iterate through Task attributes
-    for attribute in task.attributes:
-        # if the attribute is a description, delete it
-        if attribute.type == 'Description':
-            # delete the attribute
-            task.delete_attribute(attribute.id)
-
-    # add a new description attribute
-    task.add_attribute('Description', 'Updated Description')
-
-    # load Task tags
-    task.load_tags()
-
-    # delete all of the Task tags
-    for tag in task.tags:
-        task.delete_tag(tag.name)
-
-    # add a tag
-    task.add_tag('EXAMPLE')
-
-    try:
+    task# you can update the Task metadata as described here: https://docs.threatconnect.com/en/latest/python/python_sdk.html#group-metadata
         # update the Task
         task.commit()
     except RuntimeError as e:
