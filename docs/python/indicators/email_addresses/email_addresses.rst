@@ -1,4 +1,4 @@
-EMAIL ADDRESSES
+Email Addresses
 ---------------
 
 An Email Address Indicator represents a valid email address (e.g., badguy@bad.com).

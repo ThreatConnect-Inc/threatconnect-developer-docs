@@ -1,4 +1,4 @@
-SIGNATURES
+Signatures
 ----------
 
 The Signature Group represents an actual Signature that can be used for detection or prevention in a supported format (Snort®, YARA, CybOX™, OpenIOC, ClamAV®, Suricata, Bro, and Regex).

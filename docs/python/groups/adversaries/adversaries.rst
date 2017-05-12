@@ -1,4 +1,4 @@
-ADVERSARIES
+Adversaries
 -----------
 
 The Adversary Group represents a malicious actor or group of actors.

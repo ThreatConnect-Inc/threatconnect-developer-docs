@@ -1,4 +1,4 @@
-EMAILS
+Emails
 ------
 
 The E-mail Group represents an occurrence of a specific suspicious email, such as a phishing attempt.

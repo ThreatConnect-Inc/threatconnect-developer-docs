@@ -1,4 +1,4 @@
-INCIDENTS
+Incidents
 ---------
 
 The Incident Group represents a snapshot of a particular intrusion, breach, or other event of interest.

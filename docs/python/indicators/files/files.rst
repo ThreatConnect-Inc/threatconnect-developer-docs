@@ -1,4 +1,4 @@
-FILES
+Files
 -----
 
 A File Indicator represents a unique file hash or series of hashes (e.g., MD5, SHA-1, and SHA-256).

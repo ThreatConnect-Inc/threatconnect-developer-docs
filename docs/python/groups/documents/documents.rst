@@ -1,4 +1,4 @@
-DOCUMENTS
+Documents
 ---------
 
 The Document Group represents an actual file of interest, such as a PDF report that contains valuable intelligence or a malware sample.
