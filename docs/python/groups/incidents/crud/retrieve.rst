@@ -14,7 +14,7 @@ The import statement and reading of the configuration files have been replaced w
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
-    # instantiate Incidents container
+    # instantiate Incidents object
     incidents = tc.incidents()
 
     # set a filter to retrieve only the Incident with ID: 123456
@@ -74,7 +74,7 @@ replaced with ``...`` for brevity.
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
-    # instantiate Incidents container
+    # instantiate Incidents object
     incidents = tc.incidents()
 
     owner = 'Example Community'

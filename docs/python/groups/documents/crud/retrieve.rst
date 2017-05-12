@@ -15,7 +15,7 @@ replaced with ``...`` for brevity.
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
-    # instantiate Documents container
+    # instantiate Documents object
     documents = tc.documents()
 
     # set a filter to retrieve only the Document with ID: 123456
@@ -91,7 +91,7 @@ replaced with ``...`` for brevity.
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
-    # instantiate Documents container
+    # instantiate Documents object
     documents = tc.documents()
 
     owner = 'Example Community'

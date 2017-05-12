@@ -11,7 +11,7 @@ The example below demonstrates how to create a Host Indicator in the ThreatConne
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
-    # instantiate an Indicators object
+    # instantiate Indicators object
     indicators = tc.indicators()
 
     owner = 'Example Community'

@@ -14,7 +14,7 @@ This example demonstrates how to retrieve an Address Indicator from the ThreatCo
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
-    # instantiate an Indicators object
+    # instantiate Indicators object
     indicators = tc.indicators()
 
     # set a filter to retrieve a specific Address Indicator

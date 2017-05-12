@@ -14,7 +14,7 @@ The import statement and reading of the configuration files have been replaced w
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
-    # instantiate Emails container
+    # instantiate Emails object
     emails = tc.emails()
 
     # set a filter to retrieve only the Email with ID: 123456
@@ -78,7 +78,7 @@ replaced with ``...`` for brevity.
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
-    # instantiate Emails container
+    # instantiate Emails object
     emails = tc.emails()
 
     owner = 'Example Community'

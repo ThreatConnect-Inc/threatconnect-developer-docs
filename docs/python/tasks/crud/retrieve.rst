@@ -12,7 +12,7 @@ Retrieving a Single Task
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
-    # instantiate a Tasks object
+    # instantiate Tasks object
     tasks = tc.tasks()
 
     # set a filter to retrieve only the Task with ID: 123456
@@ -47,7 +47,7 @@ Retrieving Multiple Tasks
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
-    # instantiate a Tasks object
+    # instantiate Tasks object
     tasks = tc.tasks()
 
     # set a filter to retrieve only Tasks with the tag: "Nation State"
