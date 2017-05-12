@@ -4,7 +4,6 @@ Delete Files
 The example below demonstrates how to delete a File Indicator from the ThreatConnect platform:
 
 .. code-block:: python
-    :linenos:
     :emphasize-lines: 23-24
 
     ...

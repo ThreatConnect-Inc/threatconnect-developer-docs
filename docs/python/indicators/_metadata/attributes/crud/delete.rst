@@ -4,7 +4,6 @@ Delete Indicator Attributes
 The code snippet below demonstrates how to delete an Indicator's attribute. This example assumes a host indicator ``example.com`` exists in the target owner.
 
 .. code-block:: python
-    :linenos:
     :emphasize-lines: 29
 
     ...

@@ -4,7 +4,6 @@ Retrieve Task Associations
 The code snippet below demonstrates how to view Groups, Indicators, and Victims which are associated with a given Task in ThreatConnect. This example assumes there is a Task with an ID of ``123456`` in the target owner. To test this code snippet, change the ``task_id`` variable to the ID of a task in your owner.
 
 .. code-block:: python
-    :linenos:
     :emphasize-lines: 25-26,35-36,49-50
 
     ...

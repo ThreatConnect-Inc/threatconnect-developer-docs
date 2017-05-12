@@ -4,7 +4,6 @@ Retrieve Owners
 The example below demonstrates how to retrieve Owners from the ThreatConnect platform:
 
 .. code-block:: python
-    :linenos:
 
     ...
 

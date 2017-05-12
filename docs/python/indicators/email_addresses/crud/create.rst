@@ -4,7 +4,6 @@ Create Email Addresses
 The example below demonstrates how to create an Email Address Indicator in the ThreatConnect platform:
 
 .. code-block:: python
-    :linenos:
     :emphasize-lines: 10-11,25-26
 
     ...

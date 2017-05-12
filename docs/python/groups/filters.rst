@@ -54,7 +54,6 @@ Post filters are applied on the results returned by the API request.
 The example below demonstrates how to use the ``add_pf_name()`` filter to find a Group with the name 'Example Group'.
 
 .. code-block:: python
-    :linenos:
     :emphasize-lines: 13-15
 
     ...
@@ -92,7 +91,6 @@ The example below demonstrates how to use the ``add_pf_name()`` filter to find a
 The example below demonstrates how to use the ``add_pf_date_added()`` filter to find all Groups added within the past seven days.
 
 .. code-block:: python
-    :linenos:
     :emphasize-lines: 18-21,23-24
 
     import datetime

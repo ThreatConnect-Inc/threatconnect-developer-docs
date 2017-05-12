@@ -4,7 +4,6 @@ Create Tasks
 The example below demonstrates how to create a Task Resource in the ThreatConnect platform:
 
 .. code-block:: python
-    :linenos:
     :emphasize-lines: 8-9,19-20
 
     ...

@@ -4,7 +4,6 @@ Create Files
 The example below demonstrates how to create a File Indicator in the ThreatConnect platform:
 
 .. code-block:: python
-    :linenos:
     :emphasize-lines: 10-13,27-28
 
     ...
@@ -52,7 +51,6 @@ A File occurrence can be added to File Indicators using the ``add_file_occurrenc
     no-test
 
 .. code-block:: python
-    :linenos:
 
     from datetime import datetime
 

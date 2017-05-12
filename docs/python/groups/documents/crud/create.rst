@@ -5,7 +5,6 @@ The example below demonstrates how to a Document Resource in the
 ThreatConnect platform.
 
 .. code-block:: python
-    :linenos:
     :emphasize-lines: 9-11,13-17,27-28
 
     ...

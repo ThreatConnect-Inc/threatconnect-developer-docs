@@ -4,7 +4,6 @@ Create Hosts
 The example below demonstrates how to create a Host Indicator in the ThreatConnect platform:
 
 .. code-block:: python
-    :linenos:
     :emphasize-lines: 10-11,25-26
 
     ...
@@ -45,7 +44,6 @@ Optionally, turn on DNS resolution and/or ownership information for the host.
     no-test
 
 .. code-block:: python
-    :linenos:
 
     # Query PTR record for a given host
     indicator.set_dns_active(True)

@@ -4,7 +4,6 @@ Delete IP Addresses
 The example below demonstrates how to delete an Address Indicator from the ThreatConnect platform:
 
 .. code-block:: python
-    :linenos:
     :emphasize-lines: 23-24
 
     ...

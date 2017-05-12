@@ -67,7 +67,6 @@ Post filters are applied on the results returned by the API request.
 The example below demonstrates how to use each of the post filters listed above:
 
 .. code-block:: python
-    :linenos:
     :emphasize-lines: 1,3,19-20,22-23,25-28,30-31,33-34,36-37,39-40,42-43,45-46,48-49
 
     import datetime

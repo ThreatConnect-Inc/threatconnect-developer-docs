@@ -4,7 +4,6 @@ Create Indicator Associations
 The code snippet below demonstrates how to create an association between an Indicator and a Group, Indicator, or Victim in ThreatConnect. This example assumes a host indicator ``example.com`` exists in the target owner.
 
 .. code-block:: python
-    :linenos:
     :emphasize-lines: 1,24-25,27-28,30-31
 
     from threatconnect.Config.ResourceType import ResourceType

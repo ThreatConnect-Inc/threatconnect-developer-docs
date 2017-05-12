@@ -7,7 +7,6 @@ Retrieving a Single File Indicator
 This example demonstrates how to retrieve a File Indicator from the ThreatConnect platform. The ``add_indicator`` filter allows us to specify the specific Indicator we would like to retrieve. If a File Indicator exists in ThreatConnect and has all three types of hashes (md5, sha1, and sha256), you can pass any one of those hashes into the ``add_indicator`` filter and it will return the File Indicator with that hash.
 
 .. code-block:: python
-    :linenos:
     :emphasize-lines: 8-10,13-14
 
     ...
@@ -45,7 +44,6 @@ Retrieving File Occurrences
 The code snippet below demonstrates how to retrieve a File Indicator's occurrences:
 
 .. code-block:: python
-    :linenos:
     :emphasize-lines: 22-23,25-30
 
     ...
@@ -85,7 +83,6 @@ Retrieving Multiple File Indicators
 This example demonstrates how to retrieve all File Indicators in the default organization. The ``IndicatorType.FILES`` which is passed into the filter specifies which Indicator type we want to retrieve.
 
 .. code-block:: python
-    :linenos:
     :emphasize-lines: 1-2,11-12,15-16
 
     # this import allows us to specify which Indicator type we want to retrieve

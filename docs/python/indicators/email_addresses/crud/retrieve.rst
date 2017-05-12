@@ -7,7 +7,6 @@ Retrieving a Single Email Address
 This example demonstrates how to retrieve an Email Address Indicator from the ThreatConnect platform. The ``add_indicator`` filter allows us to specify the specific Indicator we would like to retrieve.
 
 .. code-block:: python
-    :linenos:
     :emphasize-lines: 8-10,13-14
 
     ...
@@ -42,7 +41,6 @@ Retrieving Multiple Email Addresses
 This example demonstrates how to retrieve all Email Address Indicators in the default organization. The ``IndicatorType.EMAIL_ADDRESSES`` which is passed into the filter specifies which Indicator type we want to retrieve.
 
 .. code-block:: python
-    :linenos:
     :emphasize-lines: 1-2,11-12,15-16
 
     # this import allows us to specify which Indicator type we want to retrieve

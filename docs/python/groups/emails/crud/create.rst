@@ -5,7 +5,6 @@ The example below demonstrates how to create an Email Resource in the
 ThreatConnect platform:
 
 .. code-block:: python
-    :linenos:
     :emphasize-lines: 9-10,12-17,27-28
 
     ...

@@ -4,7 +4,6 @@ Delete Email Addresses
 The example below demonstrates how to delete an Email Address Indicator from the ThreatConnect platform:
 
 .. code-block:: python
-    :linenos:
     :emphasize-lines: 23-24
 
     ...

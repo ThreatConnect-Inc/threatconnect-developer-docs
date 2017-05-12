@@ -4,7 +4,6 @@ Delete Tasks
 The example below demonstrates how to delete a Task Resource from the ThreatConnect platform:
 
 .. code-block:: python
-    :linenos:
     :emphasize-lines: 10-13,16-17
 
     ...

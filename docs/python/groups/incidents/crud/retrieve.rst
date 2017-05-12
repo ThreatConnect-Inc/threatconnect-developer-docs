@@ -7,7 +7,6 @@ Retrieving a Single Incident
 The import statement and reading of the configuration files have been replaced with ``...`` for brevity.
 
 .. code-block:: python
-    :linenos:
     :emphasize-lines: 8-10,13-14
 
     ...
@@ -67,7 +66,6 @@ The import statement and reading of the configuration files have been
 replaced with ``...`` for brevity.
 
 .. code-block:: python
-    :linenos:
     :emphasize-lines: 9-12,15-16
 
     ...

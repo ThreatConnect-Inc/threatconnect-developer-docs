@@ -4,7 +4,6 @@ Retrieve Indicator Threat and Confidence Ratings
 The code snippet below demonstrates how to retrieve the threat and confidence ratings from an Indicator. This example assumes a host indicator ``example.com`` exists in the target owner.
 
 .. code-block:: python
-    :linenos:
     :emphasize-lines: 20-21,23-24
 
     ...

@@ -4,7 +4,6 @@ Delete Victim Assets
 The example below demonstrates how to delete Victim Assets from an existing Victim with an ID of ``123456``:
 
 .. code-block:: python
-    :linenos:
 
     ...
 

@@ -4,7 +4,6 @@ Batch Commit
 Python SDK Batch Commit Code Sample:
 
 .. code-block:: python
-    :linenos:
 
     ...
 

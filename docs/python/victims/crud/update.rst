@@ -4,7 +4,6 @@ Update Victims
 The example below demonstrates how to update a Victim Resource in the ThreatConnect platform:
 
 .. code-block:: python
-    :linenos:
     :emphasize-lines: 10-11,13-14
 
     ...

@@ -5,7 +5,6 @@ The example below demonstrates how to create a Signature Resource in the
 ThreatConnect platform.
 
 .. code-block:: python
-    :linenos:
     :emphasize-lines: 9-10,12-20,22-27,37-38
 
     ...

@@ -40,7 +40,6 @@ The import statement and reading of the configuration files have been
 replaced with ``...`` for brevity.
 
 .. code-block:: python
-    :linenos:
     :emphasize-lines: 1
 
     from threatconnect.Config.FilterOperator import FilterOperator

@@ -4,7 +4,6 @@ Update Victim Assets
 The example below demonstrates how to update the Victim Assets of an existing Victim with an ID of ``123456``:
 
 .. code-block:: python
-    :linenos:
 
     from threatconnect.Config.ResourceType import ResourceType
 

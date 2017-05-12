@@ -5,7 +5,6 @@ The example below demonstrates how to delete an Threat Resource in the
 ThreatConnect platform:
 
 .. code-block:: python
-    :linenos:
     :emphasize-lines: 9-12,15-16
 
     ...

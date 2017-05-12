@@ -5,7 +5,6 @@ Example Python SDK creating an adversary resource in the ThreatConnect
 platform:
 
 .. code-block:: python
-    :linenos:
     :emphasize-lines: 9-10,20-21
 
     ...

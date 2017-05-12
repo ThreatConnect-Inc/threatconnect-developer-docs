@@ -4,7 +4,6 @@ Update Tasks
 The example below demonstrates how to update a Task Resource in the ThreatConnect platform:
 
 .. code-block:: python
-    :linenos:
     :emphasize-lines: 8-11,37-38
 
     ...

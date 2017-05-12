@@ -4,7 +4,6 @@ Delete Task Associations
 The code snippet below demonstrates how to remove an association between a Task and another Group, Indicator, and Victim. This example assumes there is a Task with an ID of ``123456`` in the target owner. To test this code snippet, change the ``task_id`` variable to the ID of a task in your owner.
 
 .. code-block:: python
-    :linenos:
     :emphasize-lines: 1,28-29,31-32,34-35
 
     from threatconnect.Config.ResourceType import ResourceType

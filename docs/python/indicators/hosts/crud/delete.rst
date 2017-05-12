@@ -4,7 +4,6 @@ Delete Hosts
 The example below demonstrates how to delete a Host Indicator from the ThreatConnect platform:
 
 .. code-block:: python
-    :linenos:
     :emphasize-lines: 23-24
 
     ...

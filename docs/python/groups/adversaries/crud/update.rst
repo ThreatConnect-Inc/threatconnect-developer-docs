@@ -5,7 +5,6 @@ The example below demonstrates how to update an Adversary Resource in
 the ThreatConnect platform:
 
 .. code-block:: python
-    :linenos:
     :emphasize-lines: 10-13,18-19
 
     ...

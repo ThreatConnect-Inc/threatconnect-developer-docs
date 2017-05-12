@@ -15,7 +15,6 @@ Example of Python SDK calling log-file and debug level:
     no-test
 
 .. code-block:: python
-    :linenos:
 
     tc.set_tcl_file('log/tc.log', 'debug')
     tc.set_tcl_console_level('critical')
@@ -43,7 +42,6 @@ Enabling the Activity Log:
     no-test
 
 .. code-block:: python
-    :linenos:
 
     tc.set_activity_log(True)
 
@@ -53,7 +51,6 @@ Disabling the Activity Log:
     no-test
 
 .. code-block:: python
-    :linenos:
 
     tc.set_activity_log(False)
 
@@ -75,7 +72,6 @@ API Request Timeout
     no-test
 
 .. code-block:: python
-    :linenos:
 
     tc.set_api_request_timeout(15)
 
@@ -93,7 +89,6 @@ passing an Integer for the number of seconds to sleep.
     no-test
 
 .. code-block:: python
-    :linenos:
 
     tc.set_api_retries(3)
     tc.set_api_sleep(30)
@@ -118,7 +113,6 @@ passing an Integer between 1-500.
     no-test
 
 .. code-block:: python
-    :linenos:
 
     tc.set_api_result_limit(500)
 
@@ -139,7 +133,6 @@ Proxy Setting (No Authentication)
     no-test
 
 .. code-block:: python
-    :linenos:
 
     tc.set_proxies('10.10.10.10', 8443)
 
@@ -149,7 +142,6 @@ Proxy Setting (Authentication Provided)
     no-test
 
 .. code-block:: python
-    :linenos:
 
     tc.set_proxies('10.10.10.10', 8443, 'proxy_user', 'password123')
 
@@ -170,7 +162,6 @@ A list of Filters can also be retrieved by using the ``filter1.filters`` propert
     no-test
 
 .. code-block:: python
-    :linenos:
 
     owner = 'Example Community'
 
@@ -253,7 +244,6 @@ Python SDK Filter Object Basics example:
     no-test
 
 .. code-block:: python
-    :linenos:
 
     filter1 = adversary.add_filter()
     filter1.add_indicator('10.20.30.40')
@@ -266,7 +256,6 @@ Python SDK Post Filter Basics example:
     no-test
 
 .. code-block:: python
-    :linenos:
 
     from threatconnect.Config.FilterOperator import FilterOperator
 
@@ -329,7 +318,6 @@ Python SDK example filtering on supported Indicator Types:
     no-test
 
 .. code-block:: python
-    :linenos:
 
     from threatconnect.Config.IndicatorType import IndicatorType
 
@@ -348,7 +336,6 @@ Python SDK Modified Since API Filter:
     no-test
 
 .. code-block:: python
-    :linenos:
 
     modified_since = (datetime.isoformat(datetime(2015, 6, 17))) + 'Z'
     indicators.set_modified_since(modified_since)
@@ -365,7 +352,6 @@ Multiple Filter Objects
 Python SDK Multiple Filter Objects example:
 
 .. code-block:: python
-    :linenos:
 
     from threatconnect.Config.FilterOperator import FilterSetOperator
     from threatconnect.Config.IndicatorType import IndicatorType
@@ -428,7 +414,6 @@ The example below displays how to create a ``RequestObject`` that will
 retrieve all Indicators from a specified Owner:
 
 .. code-block:: python
-    :linenos:
 
     import json
 
@@ -485,7 +470,6 @@ The example below displays how to create a ``RequestObject`` that will
 retrieve the contents of a document stored in a Document Resource.
 
 .. code-block:: python
-    :linenos:
 
     from threatconnect.RequestObject import RequestObject
 
@@ -541,7 +525,6 @@ create a Document Resource in ThreatConnect and upload a file to this
 Resource.
 
 .. code-block:: python
-    :linenos:
 
     import json
 
@@ -634,7 +617,6 @@ CEF
 Python SDK CEF Code Sample:
 
 .. code-block:: python
-    :linenos:
 
     ...
 
@@ -678,7 +660,6 @@ CSV
 Python SDK CSV Code Sample:
 
 .. code-block:: python
-    :linenos:
 
     ...
 
@@ -735,7 +716,6 @@ JSON
 Python SDK JSON Code Sample:
 
 .. code-block:: python
-    :linenos:
 
     ...
 
@@ -792,7 +772,6 @@ Key Value
 Python SDK Key Value Code Sample:
 
 .. code-block:: python
-    :linenos:
 
     ...
 
@@ -838,7 +817,6 @@ LEEF
 Python SDK LEEF Code Sample:
 
 .. code-block:: python
-    :linenos:
 
     ...
 
@@ -883,7 +861,6 @@ Indicator Type Override
 The ``add()`` method on the ``tc.indicators()`` object allows the user to bypass the automatic Indicator identification and validation check by specifying the IndicatorType:
 
 .. code-block:: python
-    :linenos:
 
     from threatconnect.Config.IndicatorType import IndicatorType
 
@@ -902,7 +879,6 @@ Regex Overrides
 Python SDK Regex Code Sample
 
 .. code-block:: python
-    :linenos:
 
     import re
 
@@ -980,7 +956,6 @@ The ``tc.report.stats`` properties method provides an overview of the
 script results:
 
 .. code-block:: python
-    :linenos:
 
     ...
 
@@ -1058,7 +1033,6 @@ Python SDK failed reports example:
     no-test
 
 .. code-block:: python
-    :linenos:
 
     for fail in tc.report.failures:
         print(fail)
