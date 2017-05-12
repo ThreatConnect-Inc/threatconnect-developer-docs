@@ -6,7 +6,7 @@ the ThreatConnect platform:
 
 .. code-block:: python
     :linenos:
-    :emphasize-lines: 9-12
+    :emphasize-lines: 9-12,38-39
 
     ...
 
@@ -18,7 +18,7 @@ the ThreatConnect platform:
     owner = 'Example Community'
     # create an empty Adversary
     adversary = adversaries.add('Updated Adversary', owner)
-    # set the ID of the new Adversary to the ID of an existing Adversary you want to update
+    # set the ID of the new Adversary to the ID of the existing Adversary you want to update
     adversary.set_id(123456)
 
     # load Adversary attributes

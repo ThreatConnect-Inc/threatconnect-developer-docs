@@ -6,7 +6,7 @@ ThreatConnect platform:
 
 .. code-block:: python
     :linenos:
-    :emphasize-lines: 9-12
+    :emphasize-lines: 9-12,35-36
 
     ...
 
@@ -18,7 +18,7 @@ ThreatConnect platform:
     owner = 'Example Community'
     # create an empty Signature
     signature = signatures.add('Updated Signature', owner)
-    # set the ID of the new Signature to the ID of an existing Signature you want to update
+    # set the ID of the new Signature to the ID of the existing Signature you want to update
     signature.set_id(123456)
 
     # load Signature attributes

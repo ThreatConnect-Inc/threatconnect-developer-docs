@@ -17,7 +17,7 @@ The import statement and reading of the configuration files have been replaced w
     # instantiate Threats container
     threats = tc.threats()
 
-    # set a filter to only retrieve the Threat with ID: 123456
+    # set a filter to retrieve only the Threat with ID: 123456
     filter1 = threats.add_filter()
     filter1.add_id(123456)
 

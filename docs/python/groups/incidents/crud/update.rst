@@ -6,7 +6,7 @@ ThreatConnect platform:
 
 .. code-block:: python
     :linenos:
-    :emphasize-lines: 9-12
+    :emphasize-lines: 9-12,35-36
 
     ...
 
@@ -18,7 +18,7 @@ ThreatConnect platform:
     owner = 'Example Community'
     # create an empty Incident
     incident = incidents.add('Updated Incident', owner)
-    # set the ID of the new Incident to the ID of an existing Incident you want to update
+    # set the ID of the new Incident to the ID of the existing Incident you want to update
     incident.set_id(123456)
 
     # load Incident attributes

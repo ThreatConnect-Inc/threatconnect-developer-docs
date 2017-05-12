@@ -28,7 +28,7 @@ The example below demonstrates how to retrieve a specific Victim Resource from t
         print('Error: {0}'.format(e))
         sys.exit(1)
 
-    # prove that there is only one Victim retrieved
+    # prove there is only one Victim retrieved
     assert len(victims) == 1
 
     # if the Victim was found, print some information about it

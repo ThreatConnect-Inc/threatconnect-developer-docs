@@ -17,7 +17,7 @@ The import statement and reading of the configuration files have been replaced w
     # instantiate Emails container
     emails = tc.emails()
 
-    # set a filter to only retrieve the Email with ID: 123456
+    # set a filter to retrieve only the Email with ID: 123456
     filter1 = emails.add_filter()
     filter1.add_id(123456)
 

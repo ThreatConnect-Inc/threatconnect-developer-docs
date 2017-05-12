@@ -12,7 +12,7 @@ ThreatConnect platform:
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
-    # instantiate an Incidents container
+    # instantiate an Incidents object
     incidents = tc.incidents()
 
     owner = 'Example Community'

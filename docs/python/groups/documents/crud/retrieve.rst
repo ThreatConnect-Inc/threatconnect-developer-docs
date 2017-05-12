@@ -18,7 +18,7 @@ replaced with ``...`` for brevity.
     # instantiate Documents container
     documents = tc.documents()
 
-    # set a filter to only retrieve the Document with ID: 123456
+    # set a filter to retrieve only the Document with ID: 123456
     filter1 = documents.add_filter()
     filter1.add_id(123456)
 

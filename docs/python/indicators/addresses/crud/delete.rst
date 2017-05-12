@@ -11,7 +11,7 @@ The example below demonstrates how to delete an Address Indicator from the Threa
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
-    # instantiate an Indicators container
+    # instantiate an Indicators object
     indicators = tc.indicators()
 
     owner = 'Example Community'
@@ -24,7 +24,7 @@ The example below demonstrates how to delete an Address Indicator from the Threa
     # retrieve the Indicator
     indicators.retrieve()
 
-    # prove that there is only one Indicator retrieved
+    # prove there is only one Indicator retrieved
     assert len(indicators) == 1
 
     try:

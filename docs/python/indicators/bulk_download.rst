@@ -41,6 +41,7 @@ replaced with ``...`` for brevity.
 
 .. code-block:: python
     :linenos:
+    :emphasize-lines: 1
 
     from threatconnect.Config.FilterOperator import FilterOperator
 
@@ -51,7 +52,7 @@ replaced with ``...`` for brevity.
     # indicator object
     indicators = tc.bulk_indicators()
     owner = 'Example Community'
-     
+
     # Add Post Filters
     try:
         filter1 = indicators.add_filter()

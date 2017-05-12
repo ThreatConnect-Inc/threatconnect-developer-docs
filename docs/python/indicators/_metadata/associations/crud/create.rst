@@ -11,8 +11,6 @@ The code snippet below demonstrates how to create an association between an Indi
 
     ...
 
-    from threatconnect.Config.ResourceType import ResourceType
-
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
     indicators = tc.indicators()

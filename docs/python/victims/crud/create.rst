@@ -5,7 +5,7 @@ The example below demonstrates how to create a Victim Resource in the ThreatConn
 
 .. code-block:: python
     :linenos:
-    :emphasize-lines: 13-14,51-52
+    :emphasize-lines: 1-2,13-14,51-52
 
     from threatconnect.Config.ResourceType import ResourceType
     from threatconnect.VictimAssetObject import VictimAssetObject

@@ -5,13 +5,11 @@ The code snippet below demonstrates how to remove an association between an Inci
 
 .. code-block:: python
     :linenos:
-    :emphasize-lines: 28-29,31-32,34-35
+    :emphasize-lines: 1,26-27,29-30,32-33
 
     from threatconnect.Config.ResourceType import ResourceType
 
     ...
-
-    from threatconnect.Config.ResourceType import ResourceType
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 

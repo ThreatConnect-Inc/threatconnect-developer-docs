@@ -17,7 +17,7 @@ The import statement and reading of the configuration files have been replaced w
     # instantiate Signatures container
     signatures = tc.signatures()
 
-    # set a filter to only retrieve the Signature with ID: 123456
+    # set a filter to retrieve only the Signature with ID: 123456
     filter1 = signatures.add_filter()
     filter1.add_id(123456)
 

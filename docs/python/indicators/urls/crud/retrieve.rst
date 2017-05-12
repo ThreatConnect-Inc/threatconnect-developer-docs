@@ -28,7 +28,7 @@ This example demonstrates how to retrieve a URL Indicator from the ThreatConnect
         print('Error: {0}'.format(e))
         sys.exit(1)
 
-    # prove that there is only one Indicator retrieved
+    # prove there is only one Indicator retrieved
     assert len(indicators) == 1
 
     # if the URL was found, print some information about it

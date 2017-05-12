@@ -11,7 +11,7 @@ The example below demonstrates how to create an Email Address Indicator in the T
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
-    # instantiate an Indicators container
+    # instantiate an Indicators object
     indicators = tc.indicators()
 
     owner = 'Example Community'

@@ -6,7 +6,7 @@ ThreatConnect platform:
 
 .. code-block:: python
     :linenos:
-    :emphasize-lines: 9-12
+    :emphasize-lines: 9-12,35-36
 
     ...
 
@@ -18,7 +18,7 @@ ThreatConnect platform:
     owner = 'Example Community'
     # create an empty Document
     document = documents.add('Updated Document', owner)
-    # set the ID of the new Document to the ID of an existing Document you want to update
+    # set the ID of the new Document to the ID of the existing Document you want to update
     document.set_id(123456)
 
     # load Document attributes

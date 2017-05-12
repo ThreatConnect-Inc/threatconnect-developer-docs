@@ -17,7 +17,7 @@ The import statement and reading of the configuration files have been replaced w
     # instantiate Incidents container
     incidents = tc.incidents()
 
-    # set a filter to only retrieve the Incident with ID: 123456
+    # set a filter to retrieve only the Incident with ID: 123456
     filter1 = incidents.add_filter()
     filter1.add_id(123456)
 

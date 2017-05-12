@@ -6,7 +6,7 @@ ThreatConnect platform:
 
 .. code-block:: python
     :linenos:
-    :emphasize-lines: 9-12
+    :emphasize-lines: 9-12,35-36
 
     ...
 
@@ -18,7 +18,7 @@ ThreatConnect platform:
     owner = 'Example Community'
     # create an empty Threat
     threat = threats.add('Updated Threat', owner)
-    # set the ID of the new Threat to the ID of an existing Threat you want to update
+    # set the ID of the new Threat to the ID of the existing Threat you want to update
     threat.set_id(123456)
 
     # load Threat attributes

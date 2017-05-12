@@ -5,11 +5,11 @@ The code snippet below demonstrates how to remove an association between a Task 
 
 .. code-block:: python
     :linenos:
-    :emphasize-lines: 3,28-29,31-32,34-35
-
-    ...
+    :emphasize-lines: 1,28-29,31-32,34-35
 
     from threatconnect.Config.ResourceType import ResourceType
+
+    ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 

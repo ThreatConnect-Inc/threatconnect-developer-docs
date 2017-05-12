@@ -5,11 +5,9 @@ The code snippet below demonstrates how to view Groups, Indicators, and Victims 
 
 .. code-block:: python
     :linenos:
-    :emphasize-lines: 3,27-28,37-38,51-52
+    :emphasize-lines: 25-26,35-36,49-50
 
     ...
-
-    from threatconnect.Config.ResourceType import ResourceType
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
