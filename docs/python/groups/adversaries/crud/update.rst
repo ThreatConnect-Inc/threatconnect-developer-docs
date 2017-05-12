@@ -16,7 +16,7 @@ the ThreatConnect platform:
     adversaries = tc.adversaries()
 
     owner = 'Example Community'
-    # create an empty Adversary
+    # create an Adversary with an updated name
     adversary = adversaries.add('Updated Adversary', owner)
     # set the ID of the new Adversary to the ID of the existing Adversary you want to update
     adversary.set_id(123456)

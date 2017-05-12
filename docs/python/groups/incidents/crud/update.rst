@@ -16,7 +16,7 @@ ThreatConnect platform:
     incidents = tc.incidents()
 
     owner = 'Example Community'
-    # create an empty Incident
+    # create an Incident with an updated name
     incident = incidents.add('Updated Incident', owner)
     # set the ID of the new Incident to the ID of the existing Incident you want to update
     incident.set_id(123456)

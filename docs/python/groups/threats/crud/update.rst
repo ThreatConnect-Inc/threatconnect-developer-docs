@@ -16,7 +16,7 @@ ThreatConnect platform:
     threats = tc.threats()
 
     owner = 'Example Community'
-    # create an empty Threat
+    # create a Threat with an updated name
     threat = threats.add('Updated Threat', owner)
     # set the ID of the new Threat to the ID of the existing Threat you want to update
     threat.set_id(123456)

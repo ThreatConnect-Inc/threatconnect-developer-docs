@@ -16,7 +16,7 @@ ThreatConnect platform:
     documents = tc.documents()
 
     owner = 'Example Community'
-    # create an empty Document
+    # create a Document with an updated name
     document = documents.add('Updated Document', owner)
     # set the ID of the new Document to the ID of the existing Document you want to update
     document.set_id(123456)

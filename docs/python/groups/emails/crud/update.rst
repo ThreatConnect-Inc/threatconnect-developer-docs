@@ -16,7 +16,7 @@ ThreatConnect platform:
     emails = tc.emails()
 
     owner = 'Example Community'
-    # create an empty Email
+    # create an Email with an updated name
     email = emails.add('Updated Email', owner)
     # set the ID of the new Email to the ID of the existing Email you want to update
     email.set_id(123456)

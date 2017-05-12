@@ -16,7 +16,7 @@ ThreatConnect platform:
     signatures = tc.signatures()
 
     owner = 'Example Community'
-    # create an empty Signature
+    # create a Signature with an updated name
     signature = signatures.add('Updated Signature', owner)
     # set the ID of the new Signature to the ID of the existing Signature you want to update
     signature.set_id(123456)
