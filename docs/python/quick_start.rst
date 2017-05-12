@@ -88,14 +88,17 @@ Assuming that you have installed the ThreatConnect Python SDK and have created a
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
+    # instantiate Owners object
     owners = tc.owners()
 
     try:
+        # retrieve the Owners
         owners.retrieve()
     except RuntimeError as e:
         print('Error: {0}'.format(e))
         sys.exit(1)
 
+    # iterate through the Owners
     for owner in owners:
         print(owner.id)
         print(owner.name)

@@ -20,11 +20,13 @@ The code snippet below demonstrates how to retrieve the tags from a Task. This e
     filter1.add_id(task_id)
 
     try:
+        # retrieve the Tasks
         tasks.retrieve()
     except RuntimeError as e:
         print('Error: {0}'.format(e))
         sys.exit(1)
 
+    # iterate through the Tasks
     for task in tasks:
         print(task.name)
 

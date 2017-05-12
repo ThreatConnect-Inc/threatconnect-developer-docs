@@ -23,11 +23,13 @@ The code snippet below demonstrates how to remove an association between an Inci
     filter1.add_id(incident_id)
 
     try:
+        # retrieve the Incidents
         incidents.retrieve()
     except RuntimeError as e:
         print('Error: {0}'.format(e))
         sys.exit(1)
 
+    # iterate through the Incidents
     for incident in incidents:
         print(incident.name)
 

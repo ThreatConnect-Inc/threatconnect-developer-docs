@@ -934,6 +934,7 @@ Python SDK Regex Code Sample
     indicator.set_rating('2.0')
 
     try:
+        # commit the Indicator
         indicator.commit()
     except RuntimeError as e:
         print('Error: {0!s}'.format(e))

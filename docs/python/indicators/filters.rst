@@ -125,6 +125,7 @@ The example below demonstrates how to use each of the post filters listed above:
     except RuntimeError as e:
         print('Error: {0}'.format(e))
 
+    # iterate through the Indicators
     for indicator in indicators:
         print(indicator.id)
         print(indicator.name)

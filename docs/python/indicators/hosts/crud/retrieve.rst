@@ -55,6 +55,7 @@ The example below demonstrates how to retrieve a Host Indicator's DNS Resolution
     filter1.add_indicator('example.com')
 
     try:
+        # retrieve the Indicators
         indicators.retrieve()
     except RuntimeError as e:
         print('Error: {0}'.format(e))

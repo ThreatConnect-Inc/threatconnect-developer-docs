@@ -58,6 +58,7 @@ The code snippet below demonstrates how to retrieve a File Indicator's occurrenc
     filter1.add_indicator('8743b52063cd84097a65d1633f5c74f5')
 
     try:
+        # retrieve the Indicators
         indicators.retrieve()
     except RuntimeError as e:
         print('Error: {0}'.format(e))

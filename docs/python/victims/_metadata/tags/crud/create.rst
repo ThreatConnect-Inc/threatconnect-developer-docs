@@ -20,11 +20,13 @@ The code snippet below demonstrates how to add a tag to a Victim. This example a
     filter1.add_id(victim_id)
 
     try:
+        # retrieve the Victims
         victims.retrieve()
     except RuntimeError as e:
         print('Error: {0}'.format(e))
         sys.exit(1)
 
+    # iterate through the Victims
     for victim in victims:
         print(victim.name)
 

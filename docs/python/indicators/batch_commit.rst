@@ -25,6 +25,7 @@ Python SDK Batch Commit Code Sample:
     batch_job.upload(json.dumps(indicators))
 
     try:
+        # commit the Batch Job
         batch_job.commit()
         print("Created batchjob %s" % batch_job.id)
         batch_job_ids.append(batch_job.id)

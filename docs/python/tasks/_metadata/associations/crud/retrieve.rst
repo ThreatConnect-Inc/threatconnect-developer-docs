@@ -21,6 +21,7 @@ The code snippet below demonstrates how to view Groups, Indicators, and Victims 
     filter1.add_id(task_id)
 
     try:
+        # retrieve the Tasks
         tasks.retrieve()
     except RuntimeError as e:
         print('Error: {0}'.format(e))

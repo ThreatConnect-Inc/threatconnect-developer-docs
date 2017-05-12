@@ -11,6 +11,7 @@ The example below demonstrates how to create Victim Assets for an existing Victi
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
+    # instantiate Victims object
     victims = tc.victims()
 
     # set a filter to retrieve the victim with the id: 123456
@@ -18,11 +19,13 @@ The example below demonstrates how to create Victim Assets for an existing Victi
     filter1.add_id(123456)
 
     try:
+        # retrieve the Victims
         victims.retrieve()
     except RuntimeError as e:
         print('Error: {0}'.format(e))
         sys.exit(1)
 
+    # iterate through the Victims
     for victim in victims:
         # add email address asset to victim
         asset = VictimAssetObject(ResourceType.VICTIM_EMAIL_ADDRESSES)
@@ -53,6 +56,7 @@ The example below demonstrates how to create Victim Assets for an existing Victi
         victim.add_asset(asset)
 
         try:
+            # commit the Victim with the new Victim Assets
             victim.commit()
         except RuntimeError as e:
             print('Error: {0}'.format(e))

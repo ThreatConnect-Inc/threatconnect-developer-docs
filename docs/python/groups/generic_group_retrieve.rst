@@ -27,6 +27,7 @@ replaced with ``...`` for brevity.
     except RuntimeError as e:
         print('Error: {0}'.format(e))
 
+    # iterate through the Groups
     for group in groups:
         print(group.id)
         print(group.name)

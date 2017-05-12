@@ -64,6 +64,7 @@ replaced with ``...`` for brevity.
 
     # Retrieve Indicators and Apply Filters
     try:
+        # retrieve the Indicators
         indicators.retrieve()
     except RuntimeError as e:
         print(e)

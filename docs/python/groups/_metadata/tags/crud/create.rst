@@ -21,11 +21,13 @@ The code snippet below demonstrates how to add a tag to an Incident. This exampl
     filter1.add_id(incident_id)
 
     try:
+        # retrieve the Incidents
         incidents.retrieve()
     except RuntimeError as e:
         print('Error: {0}'.format(e))
         sys.exit(1)
 
+    # iterate through the Incidents
     for incident in incidents:
         print(incident.name)
 
