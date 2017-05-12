@@ -19,7 +19,11 @@ The example below demonstrates how to update a Victim Resource in the ThreatConn
     victim = victims.add('Updated Victim', owner)
 
     # set the id of the new Victim object to that of an existing Victim
-    victim# you can update the Victim metadata as described here: https://docs.threatconnect.com/en/latest/python/python_sdk.html#group-metadata
+    victim.set_id(123456)
+
+    # you can update the Victim metadata as described here: https://docs.threatconnect.com/en/latest/python/python_sdk.html#group-metadata
+
+    try:
         # this will change the name of the Victim with id 123456 to: 'Updated Victim'
         victim.commit()
     except RuntimeError as e:

@@ -16,7 +16,11 @@ The example below demonstrates how to update a Task Resource in the ThreatConnec
     # create a new Task object with an updated name
     task = tasks.add('Updated Task')
     # set the ID of the new Task to the ID of the existing Task you want to update
-    task# you can update the Task metadata as described here: https://docs.threatconnect.com/en/latest/python/python_sdk.html#group-metadata
+    task.set_id(123456)
+
+    # you can update the Task metadata as described here: https://docs.threatconnect.com/en/latest/python/python_sdk.html#group-metadata
+
+    try:
         # update the Task
         task.commit()
     except RuntimeError as e:
