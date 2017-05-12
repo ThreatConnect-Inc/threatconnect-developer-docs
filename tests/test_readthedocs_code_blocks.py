@@ -42,9 +42,9 @@ def test_readthedocs_code_blocks():
         readthedocs_code_blocks = get_code_blocks_from_rtd(mappings[mapping])
         rst_code_blocks = get_code_blocks_from_rst(mapping)
 
-        print("\n{}".format(mapping.split("/")[-1].title()))
+        print("\n{}".format(mapping.split("/")[-1].title().upper()))
 
-        print(readthedocs_code_blocks)
-        print(rst_code_blocks)
+        print("Code blocks in ReadTheDocs: {}".format(readthedocs_code_blocks))
+        print("Code blocks in the RST files: {}".format(rst_code_blocks))
 
         assert readthedocs_code_blocks == rst_code_blocks
