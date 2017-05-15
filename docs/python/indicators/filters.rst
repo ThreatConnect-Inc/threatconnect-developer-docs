@@ -67,12 +67,14 @@ Post filters are applied on the results returned by the API request.
 The example below demonstrates how to use each of the post filters listed above:
 
 .. code-block:: python
-    :emphasize-lines: 1,3,19-20,22-23,25-28,30-31,33-34,36-37,39-40,42-43,45-46,48-49
+    :emphasize-lines: 1,3,21-22,24-25,27-30,32-33,35-36,38-39,41-42,44-45,47-48,50-51
 
     import datetime
 
     from threatconnect.Config.FilterOperator import FilterOperator
 
+    # replace the line below with the standard, TC script heading described here:
+    # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)

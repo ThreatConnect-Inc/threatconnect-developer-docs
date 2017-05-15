@@ -5,8 +5,10 @@ The import statement and reading of the configuration files have been
 replaced with ``...`` for brevity.
 
 .. code-block:: python
-    :emphasize-lines: 9-13,16-17
+    :emphasize-lines: 11-15,18-19
 
+    # replace the line below with the standard, TC script heading described here:
+    # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)

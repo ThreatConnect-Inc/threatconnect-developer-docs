@@ -7,8 +7,10 @@ Retrieving a Single Host
 This example demonstrates how to retrieve a Host Indicator from the ThreatConnect platform. The ``add_indicator`` filter allows us to specify the specific Indicator we would like to retrieve.
 
 .. code-block:: python
-    :emphasize-lines: 8-10,13-14
+    :emphasize-lines: 10-12,15-16
 
+    # replace the line below with the standard, TC script heading described here:
+    # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
@@ -41,7 +43,7 @@ Retrieving DNS Resolutions
 The example below demonstrates how to retrieve a Host Indicator's DNS Resolutions:
 
 .. code-block:: python
-    :emphasize-lines: 22-23,25-30
+    :emphasize-lines: 24-25,27-32
 
     ...
 
@@ -83,7 +85,7 @@ Retrieving Multiple Hosts
 This example demonstrates how to retrieve all Host Indicators in the default organization. The ``IndicatorType.HOSTS`` which is passed into the filter specifies which Indicator type we want to retrieve.
 
 .. code-block:: python
-    :emphasize-lines: 1-2,11-12,15-16
+    :emphasize-lines: 1-2,13-14,17-18
 
     # this import allows us to specify which Indicator type we want to retrieve
     from threatconnect.Config.IndicatorType import IndicatorType

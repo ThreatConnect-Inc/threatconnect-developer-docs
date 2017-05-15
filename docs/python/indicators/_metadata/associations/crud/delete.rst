@@ -4,10 +4,12 @@ Delete Indicator Associations
 The code snippet below demonstrates how to remove an association between an Indicator and a Group, Indicator, or Victim in ThreatConnect. This example assumes a host indicator ``example.com`` exists in the target owner.
 
 .. code-block:: python
-    :emphasize-lines: 1,24-25,27-28,30-31
+    :emphasize-lines: 1,26-27,29-30,32-33
 
     from threatconnect.Config.ResourceType import ResourceType
 
+    # replace the line below with the standard, TC script heading described here:
+    # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)

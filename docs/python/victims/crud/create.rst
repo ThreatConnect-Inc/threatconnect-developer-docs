@@ -4,11 +4,13 @@ Create Victims
 The example below demonstrates how to create a Victim Resource in the ThreatConnect platform:
 
 .. code-block:: python
-    :emphasize-lines: 1-2,13-14,51-52
+    :emphasize-lines: 1-2,15-16,53-54
 
     from threatconnect.Config.ResourceType import ResourceType
     from threatconnect.VictimAssetObject import VictimAssetObject
 
+    # replace the line below with the standard, TC script heading described here:
+    # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)

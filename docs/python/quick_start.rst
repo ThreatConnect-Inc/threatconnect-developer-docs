@@ -107,8 +107,8 @@ Assuming that you have installed the ThreatConnect Python SDK and have created a
 
 4. In the command line/command prompt, run ``python tc_test.py``. This should print the ID number, name, and type of the owners which you have permission to see.
 
-Standard Heading
-----------------
+Standard Script Heading
+-----------------------
 
 Every script that communicates to the ThreatConnect Python SDK should begin with the same, basic code:
 

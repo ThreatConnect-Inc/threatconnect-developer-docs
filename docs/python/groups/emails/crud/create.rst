@@ -5,8 +5,10 @@ The example below demonstrates how to create an Email Resource in the
 ThreatConnect platform:
 
 .. code-block:: python
-    :emphasize-lines: 9-10,12-17,27-28
+    :emphasize-lines: 11-12,14-19,29-30
 
+    # replace the line below with the standard, TC script heading described here:
+    # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)

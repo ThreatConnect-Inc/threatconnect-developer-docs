@@ -4,8 +4,10 @@ Create Group Attributes
 The code snippet below demonstrates how to create an attribute on an Incident. This example is designed to create attributes on an Incident with an ID of ``123456``. To test this code snippet, change the ``incident_id`` variable to the ID of an incident in your owner. This same process also applies to all group types. Simply change ``tc.incidents()`` to the group type you would like to retrieve. The available group types are: ``tc.<adversaries|campaigns|documents|emails|incidents|signatures|threats>()``.
 
 .. code-block:: python
-    :emphasize-lines: 24-25,27-28
+    :emphasize-lines: 26-27,29-30
 
+    # replace the line below with the standard, TC script heading described here:
+    # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
