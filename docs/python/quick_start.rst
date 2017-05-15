@@ -107,10 +107,10 @@ Assuming that you have installed the ThreatConnect Python SDK and have created a
 
 4. In the command line/command prompt, run ``python tc_test.py``. This should print the ID number, name, and type of the owners which you have permission to see.
 
-Next Steps
-----------
+Standard Heading
+----------------
 
-Throughout the code snippets in this documentation, the configuration code snippet below will be summarized with a ``...`` for the sake of brevity:
+Every script that communicates to the ThreatConnect Python SDK should begin with the same, basic code:
 
 .. 
     no-test
@@ -136,6 +136,11 @@ Throughout the code snippets in this documentation, the configuration code snipp
     except ConfigParser.NoOptionError:
         print('Could not read configuration file.')
         sys.exit(1)
+
+For the sake of brevity, the configuration code above will be summarized with ``...`` in all of code snippets in this documentation. In other words, any time you see ``...`` in a code snippet, it can be replaced with the code above.
+
+Next Steps
+----------
 
 From here, find a topic that interests you and dig in! If you don't know where to start, retrieving indicators is a good place to start.
 
