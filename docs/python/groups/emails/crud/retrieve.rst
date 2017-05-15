@@ -83,12 +83,7 @@ contain any emails in the **Example Community** Owner that has a Tag of
         print(email.date_added)
         print(email.weblink)
 
-        # Email specific properties
-        print(email.header)
-        print(email.subject)
-        print(email.from_address)
-        print(email.to)
-        print(email.body)
+        # Email specific property
         print(email.score)
 
 .. note:: The ``filter1`` object contains a ``filters`` property that provides a list of supported filters for the resource type being retrieved. To display this list, ``print(filter1.filters)`` can be used. For more on using filters see the `Advanced Filter Tutorial <#advanced-filtering>`__.

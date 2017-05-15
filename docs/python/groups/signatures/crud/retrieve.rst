@@ -36,6 +36,9 @@ This example demonstrates how to retrieve a specific Signature using the Signatu
         print(signature.date_added)
         print(signature.weblink)
 
+        # Signature specific property
+        print(signature.type)
+
 Downloading a Signature's Content
 +++++++++++++++++++++++++++++++++
 
@@ -47,6 +50,7 @@ Example Python code for downloading the Signature contents for the Signature Res
 .. code-block:: python
 
     signature.download()
+
     if signature.contents is not None:
         print(signature.contents)
 

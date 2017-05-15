@@ -78,6 +78,8 @@ of **EXAMPLE**.
         print(incident.name)
         print(incident.date_added)
         print(incident.weblink)
+
+        # Incident specific property
         print(incident.event_date)
 
 .. note:: The ``filter1`` object contains a ``filters`` property that provides a list of supported filters for the resource type being retrieved. To display this list, ``print(filter1.filters)`` can be used. For more on using filters see the `Advanced Filter Tutorial <#advanced-filtering>`__.
