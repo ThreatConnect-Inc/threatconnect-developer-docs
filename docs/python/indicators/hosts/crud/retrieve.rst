@@ -45,6 +45,8 @@ The example below demonstrates how to retrieve a Host Indicator's DNS Resolution
 .. code-block:: python
     :emphasize-lines: 24-25,27-32
 
+    # replace the line below with the standard, TC script heading described here:
+    # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
@@ -90,6 +92,8 @@ This example demonstrates how to retrieve all Host Indicators in the default org
     # this import allows us to specify which Indicator type we want to retrieve
     from threatconnect.Config.IndicatorType import IndicatorType
 
+    # replace the line below with the standard, TC script heading described here:
+    # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)

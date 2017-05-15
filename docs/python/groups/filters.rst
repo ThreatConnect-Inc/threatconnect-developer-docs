@@ -94,12 +94,14 @@ The example below demonstrates how to use the ``add_pf_name()`` filter to find a
 The example below demonstrates how to use the ``add_pf_date_added()`` filter to find all Groups added within the past seven days.
 
 .. code-block:: python
-    :emphasize-lines: 20-23,25-26
+    :emphasize-lines: 1,3,20-23,25-26
 
     import datetime
 
     from threatconnect.Config.FilterOperator import FilterOperator
 
+    # replace the line below with the standard, TC script heading described here:
+    # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
