@@ -4,7 +4,7 @@ Add Indicator False Positive
 The code snippet below demonstrates how to add a false positive to an Indicator. This example assumes a host indicator ``example.com`` exists in the target owner.
 
 .. code-block:: python
-    :emphasize-lines: 22-23
+    :emphasize-lines: 25-26
 
     # replace the line below with the standard, TC script heading described here:
     # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
