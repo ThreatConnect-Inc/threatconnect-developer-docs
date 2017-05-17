@@ -23,8 +23,7 @@ The public ThreatConnect API is accessible at
 
 .. note:: If you are working with the ThreatConnect **sandbox**, the api path is: ``https://sandbox.threatconnect.com/api/``.
 
-Requests to ThreatConnect API endpoints must be made over HTTPS with a
-valid Signature, or a 403 error will be returned
+Requests to ThreatConnect API endpoints must be made over HTTPS with a valid Signature, or a 403 error will be returned.
 
 .. note:: ThreatConnect Dedicated Cloud and On-Premise users will need to contact their System Administrator for the correct API URL.
 
@@ -153,14 +152,14 @@ The example below is of a path will return a specific Host:
 
 .. code::
 
-    /v2/indicators/hosts/baddomain.com
+    /v2/indicators/hosts/example.com
 
 The example below displays the path to which a request must be sent in
 order to obtain the associated Incidents of the above Host:
 
 .. code::
 
-    /v2/indicators/hosts/baddomain.com/groups/incidents
+    /v2/indicators/hosts/example.com/groups/incidents
 
 This path returns all Incidents within the user’s Organization.
 
@@ -169,11 +168,11 @@ This path returns all Incidents within the user’s Organization.
     /v2/groups/incidents
 
 The second path will return only Incidents associated to a specific Host
-with a value of baddomain.com:
+with a value of example.com:
 
 .. code::
 
-    /v2/indicators/hosts/baddomain.com/groups/incidents
+    /v2/indicators/hosts/example.com/groups/incidents
 
 Each ThreatConnect API Service and Resource is defined by the HTTP path
 of the request. To request a specific Resource from a Collection, append
@@ -371,18 +370,18 @@ Indicators Collection:
     /v2/indicators?owner=Common%20Community
 
 The example below is of a request path with Owner query parameter for
-Host Indicator baddomain.com:
+Host Indicator example.com:
 
 .. code::
 
-    /v2/indicators/hosts/baddomain.com?owner=Common%20Community
+    /v2/indicators/hosts/example.com?owner=Common%20Community
 
 The example below is a request to see available Owners of the specified
 Indicators:
 
 .. code::
 
-    /v2/indicators/hosts/baddomain.com/owners
+    /v2/indicators/hosts/example.com/owners
 
 Threats Collection for the Common Community:
 
@@ -473,7 +472,7 @@ The example below demonstrates usage of the summary parameter:
 
 .. code::
 
-    /v2/indicators?filters=summary%3Dlmco.com
+    /v2/indicators?filters=summary%3Dexample.com
 
 The example below demonstrates usage of the rating parameter:
 
@@ -536,14 +535,14 @@ AND):
 
 .. code::
 
-    /v2/indicators?filters=summary%3Dlmco.com,dateAdded%3C20151015
+    /v2/indicators?filters=summary%3Dexample.com,dateAdded%3C20151015
 
 The example below demonstrates usage multiple parameters (with
 parameters OR’ed):
 
 .. code::
 
-    /v2/indicators?filters=summary%3Dlmco.com,dateAdded%3E20151015&orParams=true
+    /v2/indicators?filters=summary%3Dexample.com,dateAdded%3E20151015&orParams=true
 
 To prevent the ThreatConnect API to return an entire result-set, limit
 the scope of the query based on the modifiedSince parameter. When a
@@ -1001,8 +1000,8 @@ Hosts Resource Type JSON Response:
        "lastModified": "2013-08-21T11:31:41Z",
        "rating": 4,
        "confidence": 44,
-       "webLink": "https://app.threatconnect.com/tc/auth/indicators/details/host.xhtml?host=baddomain.com&owner=Organization+Name",
-       "hostName": "baddomain.com"
+       "webLink": "https://app.threatconnect.com/tc/auth/indicators/details/host.xhtml?host=example.com&owner=Organization+Name",
+       "hostName": "example.com"
       }]
      }
     }
@@ -1032,8 +1031,8 @@ Hosts Resource Type XML Response:
        <LastModified>2013-08-21T11:31:41Z</LastModified>
        <Rating>4.00</Rating>
        <Confidence>44</Confidence>
-       <WebLink>https://app.threatconnect.com/tc/auth/indicators/details/host.xhtml?host=baddomain.com&amp;owner=Organization+Name</WebLink>
-       <HostName>baddomain.com</HostName>
+       <WebLink>https://app.threatconnect.com/tc/auth/indicators/details/host.xhtml?host=example.com&amp;owner=Organization+Name</WebLink>
+       <HostName>example.com</HostName>
       </Host>
      </Data>
     </hostsResponse>
@@ -1065,14 +1064,14 @@ Organization:
 
 .. code::
 
-    /v2/indicators/hosts/baddomain.com
+    /v2/indicators/hosts/example.com
 
 Example of an Indicator Service query for a specific Host to the
 Communities to which a user has access:
 
 .. code::
 
-    /v2/indicators/hosts/baddomain.com?owner=Common%20Community
+    /v2/indicators/hosts/example.com?owner=Common%20Community
 
 Host Resource Type JSON Response:
 
@@ -1149,13 +1148,13 @@ Example of DNS History request for a Host within an Organization:
 
 .. code::
 
-    /v2/indicators/hosts/baddomain.com/dnsResolutions
+    /v2/indicators/hosts/example.com/dnsResolutions
 
 Example of DNS History request for a Host within a Community:
 
 .. code::
 
-    /v2/indicators/hosts/baddomain.com/dnsResolutions?owner=Common%20Community
+    /v2/indicators/hosts/example.com/dnsResolutions?owner=Common%20Community
 
 DNSResolutions Resource Type JSON Response:
 
@@ -1409,9 +1408,9 @@ DNSResolutions Resource Type JSON Response:
        "confidence": 85,
        "threatAssessRating": 4.36,
        "threatAssessConfidence": 80.67,
-       "webLink": "https://demo.threatconnect.com/tc/auth/indicators/details/host.xhtml?host=bad.com&owner=Organization+Name",
+       "webLink": "https://demo.threatconnect.com/tc/auth/indicators/details/host.xhtml?host=example.com&owner=Organization+Name",
        "description": "Host retrieved from malware analysis.",
-       "summary": "bad.com"
+       "summary": "example.com"
        }
       ]
      }
@@ -1435,8 +1434,8 @@ DNSResolutions Resource Type XML Response:
         <Confidence>85</Confidence>
         <ThreatAssessRating>4.36</ThreatAssessRating>
         <ThreatAssessConfidence>80.67</ThreatAssessConfidence>
-        <WebLink>https://demo.threatconnect.com/tc/auth/indicators/details/host.xhtml?host=bad.com&amp;owner=Organization+Name</WebLink>
-        <Summary>bad.com</Summary>
+        <WebLink>https://demo.threatconnect.com/tc/auth/indicators/details/host.xhtml?host=example.com&amp;owner=Organization+Name</WebLink>
+        <Summary>example.com</Summary>
       </Indicator>
      </Data>
     </dnsResolutionsResponse>
@@ -1722,8 +1721,8 @@ emailAddresses Resource Type JSON Response:
        "ownerName": "Organization Name",
        "dateAdded": "2013-12-22T15:56:36Z",
        "lastModified": "2013-12-22T15:56:36Z",
-       "webLink": "https://app.threatconnect.com/tc/auth/indicators/details/emailaddress.xhtml?emailaddress=test@baddomain.com&owner=Organization+Name",
-       "address": "test@baddomain.com"
+       "webLink": "https://app.threatconnect.com/tc/auth/indicators/details/emailaddress.xhtml?emailaddress=test@example.com&owner=Organization+Name",
+       "address": "test@example.com"
       }, {
        "id": 6575,
        "ownerName": "Organization Name",
@@ -1748,8 +1747,8 @@ emailAddresses Resource Type XML Response:
        <OwnerName>Organization Name</OwnerName>
        <DateAdded>2013-12-22T15:56:36Z</DateAdded>
        <LastModified>2013-12-22T15:56:36Z</LastModified>
-       <WebLink>https://app.threatconnect.com/tc/auth/indicators/details/emailaddress.xhtml?emailaddress=test@baddomain.com&amp;owner=Organization+Name</WebLink>
-       <Address>test@baddomain.com</Address>
+       <WebLink>https://app.threatconnect.com/tc/auth/indicators/details/emailaddress.xhtml?emailaddress=test@example.com&amp;owner=Organization+Name</WebLink>
+       <Address>test@example.com</Address>
       </EmailAddress>
       <EmailAddress>
        <Id>6575</Id>
@@ -1793,14 +1792,14 @@ Addresses for a user's organization:
 
 .. code::
 
-    /v2/indicators/emailAddresses/test@baddomain.com
+    /v2/indicators/emailAddresses/test@example.com
 
 Example of an Indicator Service query for a Collection of Email
 Addresses to the Communities to which a user has access:
 
 .. code::
 
-    /v2/indicators/emailAddresses/test@baddomain.com?owner=Common%20Community
+    /v2/indicators/emailAddresses/test@example.com?owner=Common%20Community
 
 emailAddress Resource Type JSON Response:
 
@@ -1892,8 +1891,8 @@ urls Resource Type JSON Response:
        "ownerName": "Organization Name",
        "dateAdded": "2013-12-22T16:08:21Z",
        "lastModified": "2013-12-22T16:08:21Z",
-       "webLink": "https://demo.threatconnect.com/tc/auth/indicators/details/url.xhtml?url=http%3A%2F%2Fbaddomain.com%2Fsomepath&owner=Organization+Name",
-       "text": "http://baddomain.com/somepath"
+       "webLink": "https://demo.threatconnect.com/tc/auth/indicators/details/url.xhtml?url=http%3A%2F%2Fexample.com%2Fsomepath&owner=Organization+Name",
+       "text": "http://example.com/somepath"
       }, {
        "id": 6576,
        "ownerName": "Organization Name",
@@ -1918,8 +1917,8 @@ urls Resource Type XML Response:
        <OwnerName>Organization Name</OwnerName>
        <DateAdded>2013-12-22T16:08:21Z</DateAdded>
        <LastModified>2013-12-22T16:08:21Z</LastModified>
-       <WebLink>https://demo.threatconnect.com/tc/auth/indicators/details/url.xhtml?url=http%3A%2F%2Fbaddomain.com%2Fsomepath&amp;owner=Organization+Name</WebLink>
-       <Text>http://baddomain.com/somepath</Text>
+       <WebLink>https://demo.threatconnect.com/tc/auth/indicators/details/url.xhtml?url=http%3A%2F%2Fexample.com%2Fsomepath&amp;owner=Organization+Name</WebLink>
+       <Text>http://example.com/somepath</Text>
       </Url>
       <Url>
        <Id>6576</Id>
@@ -3577,7 +3576,7 @@ Example Attribute Paths:
 .. code::
 
     /v2/groups/signatures/3106/attributes
-    /v2/indicators/emailAddresses/test@baddomain.com/attributes
+    /v2/indicators/emailAddresses/test@example.com/attributes
 
 Attributes Resource Type JSON Response:
 
