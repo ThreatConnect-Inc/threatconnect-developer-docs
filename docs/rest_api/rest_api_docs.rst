@@ -2132,51 +2132,6 @@ count to the existing one. If it does not find a record, then it will
 create a new Observation. No entity is returned to the API user—only a
 204 response, if successful.
 
-Indicator Activity
-~~~~~~~~~~~~~~~~~~
-
-Set API to return ``inactive`` results as well
-
-.. code::
-
-    POST /api/v2/indicators/[IndicatorType]/[IndicatorName]?includeInactive=true
-
-Set API to ignore (not return) ``inactive`` results
-
-.. code::
-
-    POST /api/v2/indicators/[IndicatorType]/[IndicatorName]?includeActive=true
-
-Reset the ``active`` flag on an Indicator import:
-
-.. code::
-
-    POST /api/v2/indicators/[IndicatorType]/[IndicatorName]?active=true
-
-Each Owner (Organization, Community, or Source) will have the option to
-reset the active flag on an Indicator import. When this flag is set to
-‘true’, Indicators that are automatically imported into the system (Bulk
-API, Source Feed, Email Ingest, etc.) will also have their active flags
-set to ‘true’. The active field accepts ‘true’ or ‘false’.
-
-By default, inactive Indicators are not returned through the API when
-getting a list of indicators. Additional filters are supported for
-includeActive and includeInactive. These flags allow an integration to
-specify if it wants active or inactive data. The includeActive and
-includeInactive fields both accept ‘true’ or ‘false’.
-
-Each Owner (Organization, Community, or Source) will have the option to
-reset the active flag on an Indicator import. When this flag is set to
-‘true’, Indicators that are automatically imported into the system (Bulk
-API, Source Feed, Email Ingest, etc.) will also have their active flags
-set to ‘true’. The active field accepts ‘true’ or ‘false’.
-
-By default, inactive Indicators are not returned through the API when
-getting a list of indicators. Additional filters are supported for
-includeActive and includeInactive. These flags allow an integration to
-specify if it wants active or inactive data. The includeActive and
-includeInactive fields both accept ‘true’ or ‘false’.
-
 False Positives
 ~~~~~~~~~~~~~~~
 
