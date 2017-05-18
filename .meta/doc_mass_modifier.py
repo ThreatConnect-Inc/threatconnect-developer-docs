@@ -9,6 +9,37 @@ import re
 docs_lang = "python"
 test_run = True
 
+
+def update_emphasize_lines(file_text, delta):
+    """Change the emphasize lines headings in the file_text by the delta."""
+    if delta == 0:
+        print("The delta is zero. No changes will be made to the file text.")
+    else:
+        # find the emphasize lines
+        matches = re.findall(':emphasize-lines: (.*)', file_text)
+
+        # increment them appropriately
+        for match in matches:
+            emphasis_intervals = list()
+
+            for range_ in match.split(","):
+                new_nums = list()
+
+                for num in range_.split("-"):
+                    if int(num) > 3:
+                        new_nums.append(str(int(num) + delta))
+                    else:
+                        new_nums.append(num)
+
+                emphasis_intervals.append("-".join(new_nums))
+
+            # replace the old interval with the updated one
+            file_text = re.sub(match, ",".join(emphasis_intervals), file_text)
+
+    # return the file_text with the updated emphasized line numbers
+    return file_text
+
+
 # iterate through the docs
 for path, dirs, files in os.walk("../docs/".format(docs_lang)):
     # iterate through the files
@@ -31,6 +62,8 @@ for path, dirs, files in os.walk("../docs/".format(docs_lang)):
             if not test_run:
                 # replace the matched content with something else
                 file_text = re.sub(pattern, "# instantiate some {}".format(matches[0]), file_text)
+
+                update_emphasize_lines("", 0)
 
                 # write the update content to the file
                 with open(full_file_path, 'w') as f:
