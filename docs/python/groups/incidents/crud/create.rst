@@ -36,6 +36,8 @@ ThreatConnect platform:
         print('Error: {0}'.format(e))
         sys.exit(1)
 
+.. note:: In the prior example, no API calls are made until the ``commit()`` method is invoked.
+
 **Supported Properties**
 
 +-----------------+--------------------+------------+
@@ -43,27 +45,3 @@ ThreatConnect platform:
 +=================+====================+============+
 | event\_date     | set\_event\_date   | True       |
 +-----------------+--------------------+------------+
-
-.. note:: In the prior example, no API calls are made until the ``commit()`` method is invoked.
-
-Code Highlights
-
-+----------------------------------------------+------------------------------------------------------------------+
-| Snippet                                      | Description                                                      |
-+==============================================+==================================================================+
-| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                            |
-+----------------------------------------------+------------------------------------------------------------------+
-| ``incidents = tc.incidents()``               | Instantiate an Incidents container object.                       |
-+----------------------------------------------+------------------------------------------------------------------+
-| ``incident = incidents.add('New Incident')`` | Add a Resource object setting the name and Owner.                |
-+----------------------------------------------+------------------------------------------------------------------+
-| ``incident.set_event_date('2017-03-21T0...`` | **(REQUIRED)** Set event date of Incident.                       |
-+----------------------------------------------+------------------------------------------------------------------+
-| ``incident.add_attribute('Description' ...`` | Add an Attribute of type **Description** to the Resource.        |
-+----------------------------------------------+------------------------------------------------------------------+
-| ``incident.add_tag('EXAMPLE')``              | Add a Tag to the Incident.                                       |
-+----------------------------------------------+------------------------------------------------------------------+
-| ``incident.set_security_label('TLP Green')`` | Add a Security Label to the Incident.                            |
-+----------------------------------------------+------------------------------------------------------------------+
-| ``incident.commit()``                        | Trigger API calls to write all added, deleted, or modified data. |
-+----------------------------------------------+------------------------------------------------------------------+

@@ -30,19 +30,3 @@ ThreatConnect platform:
         sys.exit(1)
 
 .. note:: In the prior example, no API calls are made until the ``delete()`` method is invoked.
-
-Code Highlights
-
-+----------------------------------------------+-----------------------------------------------------------------------+
-| Snippet                                      | Description                                                           |
-+==============================================+=======================================================================+
-| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                                 |
-+----------------------------------------------+-----------------------------------------------------------------------+
-| ``documents = tc.documents()``               | Instantiate a Documents container object.                             |
-+----------------------------------------------+-----------------------------------------------------------------------+
-| ``document = documents.add('', owner)``      | Add a Resource object setting the name and Owner.                     |
-+----------------------------------------------+-----------------------------------------------------------------------+
-| ``document.set_id(20)``                      | Set the ID of the Document to the **EXISTING** Document ID to delete. |
-+----------------------------------------------+-----------------------------------------------------------------------+
-| ``document.delete()``                        | Trigger API calls to write all added, deleted, or modified data.      |
-+----------------------------------------------+-----------------------------------------------------------------------+

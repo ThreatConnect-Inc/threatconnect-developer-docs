@@ -35,23 +35,3 @@ ThreatConnect platform:
         sys.exit(1)
 
 .. note:: In the prior example, no API calls are made until the ``commit()`` method is invoked.
-
-Code Highlights
-
-+----------------------------------------------+------------------------------------------------------------------+
-| Snippet                                      | Description                                                      |
-+==============================================+==================================================================+
-| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                            |
-+----------------------------------------------+------------------------------------------------------------------+
-| ``threats = tc.threats()``                   | Instantiate a Threats container object.                          |
-+----------------------------------------------+------------------------------------------------------------------+
-| ``threat = threats.add('New Threat' own...`` | Add a Resource object setting the name and Owner.                |
-+----------------------------------------------+------------------------------------------------------------------+
-| ``threat.add_attribute('Description' 'D...`` | Add an Attribute of type **Description** to the Resource.        |
-+----------------------------------------------+------------------------------------------------------------------+
-| ``threat.add_tag('EXAMPLE')``                | Add a Tag to the Threat.                                         |
-+----------------------------------------------+------------------------------------------------------------------+
-| ``threat.set_security_label('TLP Green')``   | Add a Security Label to the Threat.                              |
-+----------------------------------------------+------------------------------------------------------------------+
-| ``threat.commit()``                          | Trigger API calls to write all added, deleted, or modified data. |
-+----------------------------------------------+------------------------------------------------------------------+
