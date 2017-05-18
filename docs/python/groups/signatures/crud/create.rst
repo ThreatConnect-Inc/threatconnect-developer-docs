@@ -5,7 +5,7 @@ The example below demonstrates how to create a Signature Resource in the
 ThreatConnect platform.
 
 .. code-block:: python
-    :emphasize-lines: 11-12,14-22,24-29,39-40
+    :emphasize-lines: 12-13,15-23,25-30,40-41
 
     # replace the line below with the standard, TC script heading described here:
     # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
@@ -17,6 +17,7 @@ ThreatConnect platform.
     signatures = tc.signatures()
         
     owner = 'Example Community'
+
     # create a new Signature in 'Example Community' with the name: 'New Signature'
     signature = signatures.add('New Signature', owner)
 

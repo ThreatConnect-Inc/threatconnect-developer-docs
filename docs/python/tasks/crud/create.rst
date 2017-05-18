@@ -15,7 +15,7 @@ The example below demonstrates how to create a Task Resource in the ThreatConnec
     # instantiate Tasks object
     tasks = tc.tasks()
 
-    # create a new Task in the given owner
+    # create a new Task
     task = tasks.add('New Task')
 
     # add a description attribute

@@ -5,7 +5,7 @@ The example below demonstrates how to create an Email Resource in the
 ThreatConnect platform:
 
 .. code-block:: python
-    :emphasize-lines: 11-12,14-19,29-30
+    :emphasize-lines: 12-13,15-20,30-31
 
     # replace the line below with the standard, TC script heading described here:
     # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
@@ -17,6 +17,7 @@ ThreatConnect platform:
     emails = tc.emails()
 
     owner = 'Example Community'
+
     # create a new Email in 'Example Community' with the name: 'New Email'
     email = emails.add('New Email', owner)
 

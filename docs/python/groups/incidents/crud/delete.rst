@@ -5,7 +5,7 @@ The example below demonstrates how to delete an Incident Resource in the
 ThreatConnect platform:
 
 .. code-block:: python
-    :emphasize-lines: 11-14,17-18
+    :emphasize-lines: 12-15,18-19
 
     # replace the line below with the standard, TC script heading described here:
     # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
@@ -17,6 +17,7 @@ ThreatConnect platform:
     incidents = tc.incidents()
 
     owner = 'Example Community'
+
     # create an empty Incident
     incident = incidents.add('', owner)
     # set the ID of the new Incident to the ID of the Incident you would like to delete

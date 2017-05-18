@@ -10,7 +10,7 @@ docs_lang = "python"
 test_run = True
 
 
-def update_emphasize_lines(file_text, delta):
+def update_emphasized_lines(file_text, delta):
     """Change the emphasize lines headings in the file_text by the delta."""
     if delta == 0:
         print("The delta is zero. No changes will be made to the file text.")
@@ -63,7 +63,7 @@ for path, dirs, files in os.walk("../docs/".format(docs_lang)):
                 # replace the matched content with something else
                 file_text = re.sub(pattern, "# instantiate some {}".format(matches[0]), file_text)
 
-                update_emphasize_lines("", 0)
+                file_text = update_emphasized_lines("", 0)
 
                 # write the update content to the file
                 with open(full_file_path, 'w') as f:

@@ -5,7 +5,7 @@ Example Python SDK creating an adversary resource in the ThreatConnect
 platform:
 
 .. code-block:: python
-    :emphasize-lines: 11-12,22-23
+    :emphasize-lines: 12-13,23-24
 
     # replace the line below with the standard, TC script heading described here:
     # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
@@ -17,6 +17,7 @@ platform:
     adversaries = tc.adversaries()
 
     owner = 'Example Community'
+
     # create a new Adversary in 'Example Community' with the name: 'New Adversary'
     adversary = adversaries.add('New Adversary', owner)
 

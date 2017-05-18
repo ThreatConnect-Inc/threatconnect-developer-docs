@@ -5,7 +5,7 @@ The example below demonstrates how to create a Threat Resource in the
 ThreatConnect platform:
 
 .. code-block:: python
-    :emphasize-lines: 11-12,22-23
+    :emphasize-lines: 12-13,23-24
 
     # replace the line below with the standard, TC script heading described here:
     # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
@@ -17,6 +17,7 @@ ThreatConnect platform:
     threats = tc.threats()
 
     owner = 'Example Community'
+
     # create a new Threat in 'Example Community' with the name: 'New Threat'
     threat = threats.add('New Threat', owner)
 

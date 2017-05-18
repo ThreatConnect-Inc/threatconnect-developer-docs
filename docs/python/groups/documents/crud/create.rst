@@ -5,7 +5,7 @@ The example below demonstrates how to a Document Resource in the
 ThreatConnect platform.
 
 .. code-block:: python
-    :emphasize-lines: 11-13,15-19,29-30
+    :emphasize-lines: 12-14,16-20,30-31
 
     # replace the line below with the standard, TC script heading described here:
     # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
@@ -17,6 +17,7 @@ ThreatConnect platform.
     documents = tc.documents()
 
     owner = 'Example Community'
+
     # create a new Document in 'Example Community' with the name: 'New Document'
     document = documents.add('New Document', owner)
     document.set_file_name('New File.txt')

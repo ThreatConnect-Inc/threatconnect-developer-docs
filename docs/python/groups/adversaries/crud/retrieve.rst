@@ -42,7 +42,7 @@ Retrieving Multiple Adversaries
 This example demonstrates how to retrieve Adversaries while applying filters. Two filters are added: one for the Owner and another for a Tag. The result set returned from this example will contain all Adversaries in the "Example Community" Owner that have the **APT** Tag.
 
 .. code-block:: python
-    :emphasize-lines: 11-14,17-18
+    :emphasize-lines: 12-15,18-19
 
     # replace the line below with the standard, TC script heading described here:
     # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
@@ -54,6 +54,7 @@ This example demonstrates how to retrieve Adversaries while applying filters. Tw
     adversaries = tc.adversaries()
 
     owner = 'Example Community'
+
     # set a filter to only retrieve Adversaries in the 'Example Community' tagged: 'APT'
     filter1 = adversaries.add_filter()
     filter1.add_owner(owner)

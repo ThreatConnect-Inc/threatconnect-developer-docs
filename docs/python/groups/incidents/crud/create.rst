@@ -5,7 +5,7 @@ The example below demonstrates how to create an Incident Resource in the
 ThreatConnect platform:
 
 .. code-block:: python
-    :emphasize-lines: 11-14,24-25
+    :emphasize-lines: 12-15,25-26
 
     # replace the line below with the standard, TC script heading described here:
     # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
@@ -17,6 +17,7 @@ ThreatConnect platform:
     incidents = tc.incidents()
 
     owner = 'Example Community'
+
     # create a new Incident in 'Example Community' with the name: 'New Incident'
     incident = incidents.add('New Incident', owner)
     # set the event date for the Incident
