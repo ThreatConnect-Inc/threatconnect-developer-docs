@@ -40,9 +40,3 @@ Features
 + App logger that supports both filesystem and API logging (:ref:`logging`).
 + Batch add through :ref:`jobs` job module.
 + Common methods for proper App execution: exit codes (:ref:`exit`); exit messages (:ref:`message_tc`) and more
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
