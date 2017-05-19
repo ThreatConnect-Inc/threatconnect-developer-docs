@@ -17,7 +17,7 @@ The example below demonstrates how to delete a URL Indicator from the ThreatConn
 
     owner = 'Example Community'
 
-    # specify a specific url from a specific owner (in this case 'http://example.com/test/clickme.html' from the 'Example Community')
+    # specify a specific URL from a specific owner (in this case 'http://example.com/test/clickme.html' from the 'Example Community')
     filter1 = indicators.add_filter()
     filter1.add_owner(owner)
     filter1.add_indicator('http://example.com/test/clickme.html')
@@ -28,12 +28,10 @@ The example below demonstrates how to delete a URL Indicator from the ThreatConn
     # prove there is only one Indicator retrieved
     assert len(indicators) == 1
 
-    try:
-        for indicator in indicators:
-            # delete the Indicator
-            indicator.delete()
-    except RuntimeError as e:
-        print('Error: {0}'.format(e))
-        sys.exit(1)
+    # iterate through the retrieved Indicators and delete them
+    for indicator in indicators:
+        # delete the Indicator
+        indicator.delete()
+
 
 .. note:: In the prior example, no API calls are made until the ``delete()`` method is invoked.

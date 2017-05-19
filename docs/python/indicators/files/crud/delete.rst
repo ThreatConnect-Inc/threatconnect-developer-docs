@@ -28,12 +28,10 @@ The example below demonstrates how to delete a File Indicator from the ThreatCon
     # prove there is only one Indicator retrieved
     assert len(indicators) == 1
 
-    try:
-        for indicator in indicators:
-            # delete the Indicator
-            indicator.delete()
-    except RuntimeError as e:
-        print('Error: {0}'.format(e))
-        sys.exit(1)
+    # iterate through the retrieved Indicators and delete them
+    for indicator in indicators:
+        # delete the Indicator
+        indicator.delete()
+
 
 .. note:: In the prior example, no API calls are made until the ``delete()`` method is invoked.
