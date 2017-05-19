@@ -10,7 +10,7 @@ mappings = {
     '../docs/javascript': 'https://docs.threatconnect.com/en/latest/javascript/javascript_sdk.html',
     '../docs/python': 'https://docs.threatconnect.com/en/latest/python/python_sdk.html',
     '../docs/rest_api': 'https://docs.threatconnect.com/en/latest/rest_api/rest_api_docs.html',
-    '../docs/tcex': 'https://docs.threatconnect.com/en/latest/tcex/tcex.html'
+    # '../docs/tcex': 'https://docs.threatconnect.com/en/latest/tcex/tcex.html'
 }
 
 
