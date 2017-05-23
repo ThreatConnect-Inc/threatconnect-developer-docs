@@ -4,7 +4,7 @@ Retrieve Indicator Tags
 The code snippet below demonstrates how to retrieve the tags from an Indicator. This example assumes a host indicator ``example.com`` exists in the target owner (and it works better if the host has some tags on it).
 
 .. code-block:: python
-    :emphasize-lines: 20-21
+    :emphasize-lines: 25-26
 
     # replace the line below with the standard, TC script heading described here:
     # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading

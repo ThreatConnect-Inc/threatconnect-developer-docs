@@ -46,7 +46,7 @@ Retrieving File Occurrences
 The code snippet below demonstrates how to retrieve a File Indicator's occurrences:
 
 .. code-block:: python
-    :emphasize-lines: 24-25,27-32
+    :emphasize-lines: 25-26,28-33
 
     # replace the line below with the standard, TC script heading described here:
     # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
