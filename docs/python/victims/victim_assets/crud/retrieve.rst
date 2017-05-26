@@ -4,6 +4,7 @@ Retrieve Victim Assets
 The example below demonstrates how to pull all Assets for the current Victim Resource from the ThreatConnect platform:
 
 .. code-block:: python
+    :emphasize-lines: 26-27
 
     # replace the line below with the standard, TC script heading described here:
     # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
