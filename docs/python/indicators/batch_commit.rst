@@ -1,29 +1,68 @@
 Batch Commit
 ------------
 
-Python SDK Batch Commit Code Sample:
+As demonstrated by the code snippet below, the ThreatConnect Python SDK supports adding indicators in bulk to the ThreatConnect platform.
+
+The code snippet below assumes that indicator data is formatted in the same way as the JSON `used by the API <../rest_api/rest_api_docs.html#batch-indicator-input-file-format>`_ .
 
 .. code-block:: python
+
+    import json
+    import time
 
     # replace the line below with the standard, TC script heading described here:
     # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
     ...
 
-    dst_tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
+    # define the owner where you would like to put the data
+    dst_owner = 'Example Community'
+
+    dst_tc = ThreatConnect(api_access_id, api_secret_key, dst_owner, api_base_url)
 
     #
-    # populate 'indicators' list of dictionaries
+    # populate 'indicators' list of dictionaries as formatted here:
+    # https://docs.threatconnect.com/en/latest/rest_api/rest_api_docs.html#batch-indicator-input-file-format
     #
+    indicators = [
+        {
+            "rating": 3,
+            "confidence": 75,
+            "description": "Malicious domain",
+            "summary": "example.com",
+            "type": "Host",
+            "associatedGroup": [12345, 54321],
+            "attribute": [
+                {
+                    "type": "Source",
+                    "value": "SEIM log - 13/01/2017"
+                }
+            ],
+            "tag": [
+                {
+                    "name": "MyTag"
+                }
+            ]
+        }
+    ]
+
+    # time (in seconds) to wait before checking the status of a batch job
+    poll_time = 5
 
     batch_job_ids = []
+
+    # instantiate a Batch Jobs Object
     batch_jobs = dst_tc.batch_jobs()
+
+    # add a new Batch Job
     batch_job = batch_jobs.add()
 
-    batch_job.set_halt_on_error(False)             # If True, abort processing after first error
-    batch_job.set_attribute_write_type('Replace')  # Replace attributes (can also be Append)
-    batch_job.set_action('Create')                 # Create indicators (can also be Delete) 
-    batch_job.set_owner(dst_owner)                 # Owner to write indicators to
+    # configure the Batch Job
+    batch_job.set_halt_on_error(False)             # if True, abort processing after first error
+    batch_job.set_attribute_write_type('Replace')  # replace attributes (can also be Append)
+    batch_job.set_action('Create')                 # create indicators (can also be Delete) 
+    batch_job.set_owner(dst_owner)                 # owner to write indicators to
 
+    # set the indicators to be uploaded in this Batch Job
     batch_job.upload(json.dumps(indicators))
 
     try:
@@ -31,62 +70,67 @@ Python SDK Batch Commit Code Sample:
         batch_job.commit()
         print("Created batchjob %s" % batch_job.id)
         batch_job_ids.append(batch_job.id)
-    except RuntimeError as re:
-        print("Encountered problem creating batchJob")
-        traceback.print_exc(file=sys.stderr)
+    except RuntimeError as e:
+        print("Error creating Batch Job: {}".format(e))
+        sys.exit(1)
 
     finished_batches = []
-    total_time = 0 
+    total_time = 0
+
+    # iterate through the Batch Jobs that have been started and see if they have finished
     while len(batch_job_ids) > 0:
-        time.sleep(args.poll_time)
-        total_time += args.poll_time
-        print("polling (total wait time {0} minutes)".format(int(total_time / 60)))
-                     
+        # sleep for the poll_time
+        time.sleep(poll_time)
+        total_time += poll_time
+        print("polling (total wait time {0} seconds)".format(int(total_time)))
+
+        # retrieve all of the Batch Jobs
         batch_jobs = dst_tc.batch_jobs()
+
         for batchId in batch_job_ids:
+            # create a filter to find only the Batch Job that we are monitoring
             filter = batch_jobs.add_filter()
             filter.add_id(batchId)
+
+            # retrieve the desired Batch Job that we are monitoring
             batch_jobs.retrieve()
 
+            # iterate through the Batch Jobs (there will only be one)
             for batch_job in batch_jobs:
+                # if the Batch Job is done, print the details of the Batch Job
                 if batch_job.status == 'Completed':
                     finished_batches.append(batch_job)
                     batch_job_ids.remove(batchId)
                     print("Finished batch job {0}: succeeded: {1}, "
                           "failed: {2}, unprocessed: {3}".format(batchId, batch_job.success_count, batch_job.error_count, batch_job.unprocess_count))
 
+    # now that all of the Batch Jobs have finished, get some statistics on them
     success_total = 0
     error_total = 0
     unprocess_total = 0
+
+    # record statistics based on the Batch Jobs
     for batch_job in finished_batches:
-        if batch_job.unprocess_count:
+        # record success count
+        if batch_job.success_count:
             success_total += batch_job.success_count
+
+        # record unprocessed count
         if batch_job.unprocess_count:
             unprocess_total += batch_job.unprocess_count
-        if batch_job.unprocess_count:
+
+        # record error count
+        if batch_job.error_count:
             error_total += batch_job.error_count
+
+            # print some more details about the errors
             batch_job.download_errors()
             for error in batch_job.errors:
                 print("Batch Job {0} errors: {1}".format(batch_job.id, batch_job.errors))
+
+    # print the final statistics of the Batch Jobs
     print("All batch jobs completed, totals:  "
           "succeeded: {0}, failed: {1}, unprocessed: {2}".format(success_total, error_total, unprocess_total))
-
-.. note:: In the prior example, no API calls are made until the ``commit()`` method is invoked.
-
-The ThreatConnect platform supports adding indicators in bulk using the
-API. The Python SDK features an easy-to-use interface to assist in rapid
-development of software to manage this data.
-
-These API calls assume that indicator data is formatted in `JSON, specifically a list of dictionaries <../rest_api/rest_api_docs.html#batch-indicator-input-file-format>`_.
-
-Adding Batch Resources
-^^^^^^^^^^^^^^^^^^^^^^
-
-The example below demonstrates how to use a Batch Resource in the
-ThreatConnect platform. The Batch Resource has a few methods to support
-batch configuration before uploading a batch Indicator file to the
-platform. For more information on the purpose of each line of code, see
-the **Code Highlights** section below.
 
 **Supported Functions and Properties**
 
@@ -103,31 +147,3 @@ the **Code Highlights** section below.
 +--------------------------+-------------------------------+------------+-------------------------+
 | --                       | upload                        | True       | Indicator JSON String   |
 +--------------------------+-------------------------------+------------+-------------------------+
-
-**Code Highlights**
-
-+----------------------------------------------+---------------------------------------------------------------------------------+
-| Snippet                                      | Description                                                                     |
-+==============================================+=================================================================================+
-| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                                           |
-+----------------------------------------------+---------------------------------------------------------------------------------+
-| ``batch_jobs = dst_tc.batch_jobs()``         | Instantiate a Batch Job container object.                                       |
-+----------------------------------------------+---------------------------------------------------------------------------------+
-| ``for batch in indicators:``                 | Iterator through an array of arrays of indicator objects.                       |
-+----------------------------------------------+---------------------------------------------------------------------------------+
-| ``batch_job.set_...``                        | Configure batch job to process as many indicators as possible without aborting. |
-+----------------------------------------------+---------------------------------------------------------------------------------+
-| ``batch_job.upload(json.dumps(batch))``      | Upload job with indicator chunk as JSON data.                                   |
-+----------------------------------------------+---------------------------------------------------------------------------------+
-| ``batch_job.commit()``                       | Start batch job with configuration and data defined.                            |
-+----------------------------------------------+---------------------------------------------------------------------------------+
-| ``while len(batch_ids) > 0:``                | Begin polling for batch status until all pending batches are complete.          |
-+----------------------------------------------+---------------------------------------------------------------------------------+
-| ``filter.add_id(batchId)``                   | Add current batchId to filter.                                                  |
-+----------------------------------------------+---------------------------------------------------------------------------------+
-| ``for batch_job in batch_jobs:``             | Get job for filtered batch ID.                                                  |
-+----------------------------------------------+---------------------------------------------------------------------------------+
-| ``if batch_job.status == 'Completed':``      | Check job status completion.                                                    |
-+----------------------------------------------+---------------------------------------------------------------------------------+
-| ``for batch_job in finished_batches:``       | Iterate through the finished batches for status print.                          |
-+----------------------------------------------+---------------------------------------------------------------------------------+
