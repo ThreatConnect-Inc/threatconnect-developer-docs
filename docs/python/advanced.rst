@@ -329,6 +329,8 @@ Python SDK Modified Since API Filter:
 
 .. code-block:: python
 
+    from datetime import datetime
+
     modified_since = (datetime.isoformat(datetime(2015, 6, 17))) + 'Z'
     indicators.set_modified_since(modified_since)
 
