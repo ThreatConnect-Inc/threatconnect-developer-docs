@@ -1574,7 +1574,7 @@ Example of commitTags() method:
         .commitTags('Example Tag');
 
 The JavaScript SDK provides the ``commitTags()`` method to add Tags.
-Both the ``.type()`` and ``id()`` methods are required to add the Tags.
+Both the ``.type()`` and either the ``.id()`` or ``.indicator()`` methods are required to add the Tags.
 The Tag value should be passed to the ``commitTags()`` method.
 
 Commit Security Labels
