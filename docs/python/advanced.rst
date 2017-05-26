@@ -16,22 +16,14 @@ Example of Python SDK calling log-file and debug level:
 
 .. code-block:: python
 
+    # set a destination log path and logging level
     tc.set_tcl_file('log/tc.log', 'debug')
+    # set the console logging level
     tc.set_tcl_console_level('critical')
 
 The Python SDK allows for the setting of the log-file location and debug
 level. The level on the console logging can be set as well. The default
 logging level for each is *critical*.
-
-Code Highlights
-
-+--------------------------------------------+-------------------------------------------------+
-| Snippet                                    | Description                                     |
-+============================================+=================================================+
-| ``tc.set_tcl_file('log/tc.log', 'debug')`` | Set the destination log path and logging level. |
-+--------------------------------------------+-------------------------------------------------+
-| ``tc.set_tcl_console_level('info')``       | Set the console logging level.                  |
-+--------------------------------------------+-------------------------------------------------+
 
 Activity Log
 ------------
@@ -412,8 +404,7 @@ API Results.
 Retrieving Indicators
 ^^^^^^^^^^^^^^^^^^^^^
 
-The example below displays how to create a ``RequestObject`` that will
-retrieve all Indicators from a specified Owner:
+The example below demonstrates how to create a ``RequestObject`` that will retrieve all Indicators from a specified Owner:
 
 .. code-block:: python
 
@@ -429,50 +420,34 @@ retrieve all Indicators from a specified Owner:
 
     owner = 'Example Community'
 
+    # instantiate Request Object
     ro = RequestObject()
+
+    # set http method for Request Object
     ro.set_http_method('GET')
-    ro.set_owner(owner)
+
+    # set the owner
+    ro.set_owner(owner)  # OPTIONAL
+
+    # set the Owner-Allowed flag to specify whether or not this API call supports owners
     ro.set_owner_allowed(True)
+
+    # set the Pagination flag to specify whether or not this API call supports pagination
     ro.set_resource_pagination(True)
+
+    # set the URI (uniform resource identifier) for the request
     ro.set_request_uri('/v2/indicators')
 
-    # instantiate Api Request object 
+    # trigger the request and store the response as results
     results = tc.api_request(ro)
     if results.headers['content-type'] == 'application/json':
         data = results.json()
         print(json.dumps(data, indent=4))
-
-The example displays how to create a ``RequestObject`` that will
-retrieve all Indicators from a specified Owner.
-
-Code Highlights
-
-Refer to `ThreatConnect API documentation <../rest_api/rest_api_docs.html>`__ for proper
-values for the ``RequestObject``.
-
-+------------------------------------------+-------------------------------------------------------------------------------------------+
-| Snippet                                  | Description                                                                               |
-+==========================================+===========================================================================================+
-| ``ro = RequestObject()``                 | Instantiate and Instance of a Request object.                                             |
-+------------------------------------------+-------------------------------------------------------------------------------------------+
-| ``ro.set_http_method('GET')``            | Set the HTTP Method for the Request.                                                      |
-+------------------------------------------+-------------------------------------------------------------------------------------------+
-| ``ro.set_owner(owner)``                  | Set the Owner for the Request (optional).                                                 |
-+------------------------------------------+-------------------------------------------------------------------------------------------+
-| ``ro.set_owner_allowed(True)``           | Set the Owner-Allowed flag for the Request to indicate if this API call supports Owners.  |
-+------------------------------------------+-------------------------------------------------------------------------------------------+
-| ``ro.set_resource_pagination(True)``     | Set the Pagination flag for the Request to indicate if this API call supports pagination. |
-+------------------------------------------+-------------------------------------------------------------------------------------------+
-| ``ro.set_request_uri('/v2/indicators')`` | Set the URI (uniform resource identifier) for the Request.                                |
-+------------------------------------------+-------------------------------------------------------------------------------------------+
-| ``results = tc.api_request(ro)``         | Trigger the API Request and store result as ``results``.                                  |
-+------------------------------------------+-------------------------------------------------------------------------------------------+
 
 Downloading Document Contents
 -----------------------------
 
-The example below displays how to create a ``RequestObject`` that will
-retrieve the contents of a document stored in a Document Resource.
+The example below demonstrates how to create a ``RequestObject`` that will retrieve the contents of a document stored as a Document Resource in ThreatConnect.
 
 .. code-block:: python
 
@@ -486,51 +461,35 @@ retrieve the contents of a document stored in a Document Resource.
 
     owner = 'Example Community'
 
+    # instantiate Request Object
     ro = RequestObject()
+
+    # set http method for Request Object
     ro.set_http_method('GET')
-    ro.set_owner(owner)
+
+    # set the owner
+    ro.set_owner(owner)  # OPTIONAL
+
+    # set the Owner-Allowed flag to specify whether or not this API call supports owners
     ro.set_owner_allowed(True)
+
+    # set the Pagination flag to specify whether or not this API call supports pagination
     ro.set_resource_pagination(False)
+
+    # set the URI (uniform resource identifier) for the request
     ro.set_request_uri('/v2/groups/documents/19/download')
 
-    # instantiate Api Request object 
+    # trigger the request and store the response as results
     results = tc.api_request(ro)
     if results.headers['content-type'] == 'application/octet-stream':
         file_contents = results.content
+        # print the Document's content
         print(file_contents)
-
-The example displays how to create a ``RequestObject`` that will
-retrieve the contents of a document stored in a Document Resource.
-
-Code Highlights
-
-Refer to `ThreatConnect API documentation <../rest_api/rest_api_docs.html>`__ for proper
-values for the ``RequestObject``.
-
-+------------------------------------------+-------------------------------------------------------------------------------------------+
-| Snippet                                  | Description                                                                               |
-+==========================================+===========================================================================================+
-| ``ro = RequestObject()``                 | Instantiate and Instance of a Request object.                                             |
-+------------------------------------------+-------------------------------------------------------------------------------------------+
-| ``ro.set_http_method('GET')``            | Set the HTTP Method for the Request.                                                      |
-+------------------------------------------+-------------------------------------------------------------------------------------------+
-| ``ro.set_owner(owner)``                  | Set the Owner for the Request (optional).                                                 |
-+------------------------------------------+-------------------------------------------------------------------------------------------+
-| ``ro.set_owner_allowed(True)``           | Set the Owner-Allowed flag for the Request to indicate if this API call supports Owners.  |
-+------------------------------------------+-------------------------------------------------------------------------------------------+
-| ``ro.set_resource_pagination(True)``     | Set the Pagination flag for the Request to indicate if this API call supports pagination. |
-+------------------------------------------+-------------------------------------------------------------------------------------------+
-| ``ro.set_request_uri('/v2/indicators')`` | Set the URI for the Request.                                                              |
-+------------------------------------------+-------------------------------------------------------------------------------------------+
-| ``results = tc.api_request(ro)``         | Trigger the API Request and store result as ``results``.                                  |
-+------------------------------------------+-------------------------------------------------------------------------------------------+
 
 Creating and Uploading Documents
 --------------------------------
 
-The example below displays how to create a ``RequestObject`` that will
-create a Document Resource in ThreatConnect and upload a file to this
-Resource.
+The example below demonstrates how to create a ``RequestObject`` that will create a Document Resource in ThreatConnect and upload content into this Resource.
 
 .. code-block:: python
 
@@ -546,71 +505,61 @@ Resource.
 
     owner = 'Example Community'
 
+    # instantiate Request Object
     ro = RequestObject()
+
+    # set http method for Request Object
     ro.set_http_method('POST')
+
+    # set the body of the request
     body = {'name': 'Raw Upload Example', 'fileName': 'raw_example.txt'}
     ro.set_body(json.dumps(body))
+
+    # set the content type of the request
     ro.set_content_type('application/json')
-    ro.set_owner(owner)
+
+    # set the owner
+    ro.set_owner(owner)  # OPTIONAL
+
+    # set the Owner-Allowed flag to specify whether or not this API call supports owners
     ro.set_owner_allowed(True)
+
+    # set the Pagination flag to specify whether or not this API call supports pagination
     ro.set_resource_pagination(False)
+
+    # set the URI (uniform resource identifier) for the request
     ro.set_request_uri('/v2/groups/documents')
 
     print(ro)
 
-    # instantiate Api Request object 
+    # trigger the request and store the response as results
     results = tc.api_request(ro)
     if results.headers['content-type'] == 'application/json':
         data = results.json()
         print(json.dumps(data, indent=4))
 
+        # get the ID of the created document
         document_id = data['data']['document']['id']
 
+        # create another Request Object for uploading the document contents
         ro = RequestObject()
         ro.set_http_method('POST')
+
+        # define the Request's body (this is the content that will be uploaded into the Document Resource in ThreatConnect)
         body = 'Raw upload example file Contents.'
         ro.set_body(body)
+
         ro.set_content_type('application/octet-stream')
         ro.set_owner(owner)
         ro.set_owner_allowed(True)
         ro.set_resource_pagination(False)
+
+        # upload the Request's body into the Document Resource in ThreatConnect
         ro.set_request_uri('/v2/groups/documents/{0}/upload'.format(document_id))
 
-        # instantiate Api Request object 
+        # trigger the request to upload content into the Document Resource
         results = tc.api_request(ro)
         print('Status Code: {0}'.format(results.status_code))
-
-The example displays how to create a ``RequestObject`` that will create
-a Document Resource in ThreatConnect and upload a file to this Resource.
-
-Code Highlights
-
-Refer to `ThreatConnect API documentation <../rest_api/rest_api_docs.html>`__ for proper
-values for the ``RequestObject``.
-
-+-------------------------------------------+-------------------------------------------------------------------------------------------+
-| Snippet                                   | Description                                                                               |
-+===========================================+===========================================================================================+
-| ``ro = RequestObject()``                  | Instantiate and Instance of a Request Object.                                             |
-+-------------------------------------------+-------------------------------------------------------------------------------------------+
-| ``body = {'name': 'Raw Upload Exam...``   | Create the JSON body for POST.                                                            |
-+-------------------------------------------+-------------------------------------------------------------------------------------------+
-| ``ro.set_http_method('POST')``            | Set the HTTP Method for the Request.                                                      |
-+-------------------------------------------+-------------------------------------------------------------------------------------------+
-| ``ro.set_owner(owner)``                   | Set the Owner for the Request (optional).                                                 |
-+-------------------------------------------+-------------------------------------------------------------------------------------------+
-| ``ro.set_owner_allowed(True)``            | Set the Owner-Allowed flag for the Request to indicate if this API call supports Owners.  |
-+-------------------------------------------+-------------------------------------------------------------------------------------------+
-| ``ro.set_resource_pagination(False)``     | Set the Pagination flag for the Request to indicate if this API call supports pagination. |
-+-------------------------------------------+-------------------------------------------------------------------------------------------+
-| ``ro.set_request_uri('/v2/groups/doc...`` | Set the URI for the Request.                                                              |
-+-------------------------------------------+-------------------------------------------------------------------------------------------+
-| ``print(ro)``                             | Display the Request Object before submitting (optional).                                  |
-+-------------------------------------------+-------------------------------------------------------------------------------------------+
-| ``results = tc.api_request(ro)``          | Trigger the API Request and store result as ``results``.                                  |
-+-------------------------------------------+-------------------------------------------------------------------------------------------+
-| ``document_id = data['data']['doc...``    | Get the ID of the created Document to use in the contents upload.                         |
-+-------------------------------------------+-------------------------------------------------------------------------------------------+
 
 Advanced Outputs Formats
 ------------------------
