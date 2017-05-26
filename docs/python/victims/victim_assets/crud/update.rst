@@ -16,7 +16,7 @@ The example below demonstrates how to update the Victim Assets of an existing Vi
     # instantiate Victims object
     victims = tc.victims()
 
-    # set a filter to retrieve the victim with the id: 123456
+    # set a filter to retrieve the Victim with the id: 123456
     filter1 = victims.add_filter()
     filter1.add_id(123456)
 
@@ -35,11 +35,11 @@ The example below demonstrates how to update the Victim Assets of an existing Vi
         # retrieve the assets from ThreatConnect
         victim.load_assets()
 
-        # iterate through the victim's assets
+        # iterate through the Victim's assets
         for asset in victim.assets:
             # if the asset is an email address asset, update it
             if asset.type == "EmailAddress":
-                # create a new victim asset object
+                # create a new Victim asset object
                 new_asset = VictimAssetObject(ResourceType.VICTIM_EMAIL_ADDRESSES)
                 new_asset.set_address('victim2@example.com')
                 new_asset.set_address_type('Personal')

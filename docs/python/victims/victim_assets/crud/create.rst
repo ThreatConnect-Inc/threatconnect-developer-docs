@@ -4,6 +4,7 @@ Create Victim Assets
 The example below demonstrates how to create Victim Assets for an existing Victim with an ID of ``123456``:
 
 .. code-block:: python
+    :emphasize-lines: 1,28-29,31-32
 
     from threatconnect.Config.ResourceType import ResourceType
 
@@ -29,30 +30,30 @@ The example below demonstrates how to create Victim Assets for an existing Victi
 
     # iterate through the Victims
     for victim in victims:
-        # add email address asset to victim
+        # add email address asset to Victim
         asset = VictimAssetObject(ResourceType.VICTIM_EMAIL_ADDRESSES)
         asset.set_address('victim@example.com')
         asset.set_address_type('Personal')
         victim.add_asset(asset)
 
-        # add network account asset to victim
+        # add network account asset to Victim
         asset = VictimAssetObject(ResourceType.VICTIM_NETWORK_ACCOUNTS)
         asset.set_account('victim')
         asset.set_network('victimsareus Active Directory')
         victim.add_asset(asset)
 
-        # add phone asset to victim
+        # add phone asset to Victim
         asset = VictimAssetObject(ResourceType.VICTIM_PHONES)
         asset.set_phone_type('555-555-5555')
         victim.add_asset(asset)
 
-        # add social network asset to victim
+        # add social network asset to Victim
         asset = VictimAssetObject(ResourceType.VICTIM_SOCIAL_NETWORKS)
         asset.set_account('@victim')
         asset.set_network('Twitter')
         victim.add_asset(asset)
 
-        # add website asset to victim
+        # add website asset to Victim
         asset = VictimAssetObject(ResourceType.VICTIM_WEBSITES)
         asset.set_website('www.example.com')
         victim.add_asset(asset)

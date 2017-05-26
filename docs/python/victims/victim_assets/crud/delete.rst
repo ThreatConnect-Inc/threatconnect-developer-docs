@@ -14,7 +14,7 @@ The example below demonstrates how to delete Victim Assets from an existing Vict
     # instantiate Victims object
     victims = tc.victims()
 
-    # set a filter to retrieve the victim with the id: 123456
+    # set a filter to retrieve the Victim with the id: 123456
     filter1 = victims.add_filter()
     filter1.add_id(123456)
 
@@ -33,14 +33,14 @@ The example below demonstrates how to delete Victim Assets from an existing Vict
         # retrieve the assets from ThreatConnect
         victim.load_assets()
 
-        # iterate through the victim's assets
+        # iterate through the Victim's assets
         for asset in victim.assets:
             # if the asset is a phone number asset, delete it
             if asset.type == "Phone":
                 victim.delete(asset.id, asset)
 
         try:
-            # commit the victim with the Victim Asset(s) deleted
+            # commit the Victim with the Victim Asset(s) deleted
             victim.commit()
         except RuntimeError as e:
             print('Error: {0}'.format(e))
