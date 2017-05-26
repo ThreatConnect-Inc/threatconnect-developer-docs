@@ -5,11 +5,13 @@ This section explains how to work with ThreatConnect Bulk Indicators.
 
 **Supported API Filters**
 
-The Bulk Download feature of the ThreatConnect API does not support any API filters.
++-----------------+-------------+-----------------------------+
+| Filter          | Value Type  | Description                 |
++=================+=============+=============================+
+| ``add_owner()`` | list or str | Filter Indicators by Owner. |
++-----------------+-------------+-----------------------------+
 
 **Supported Post Filters**
-
-Post filters are applied on the results returned by the API request.
 
 +---------------------------------------+------------+------------------------------------------------+
 | Filter                                | Value Type | Description                                    |
@@ -36,8 +38,10 @@ Post filters are applied on the results returned by the API request.
 Bulk Download Example
 ^^^^^^^^^^^^^^^^^^^^^^
 
+The ThreatConnect Python SDK has functionality to download Indicators from the ThreatConnect platform in bulk. The code snippet below demonstrates this capability
+
 .. code-block:: python
-    :emphasize-lines: 1
+    :emphasize-lines: 1,9-10,28-29
 
     from threatconnect.Config.FilterOperator import FilterOperator
 
@@ -47,21 +51,23 @@ Bulk Download Example
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
 
-    # indicator object
+    # Bulk Indicator object
     indicators = tc.bulk_indicators()
+
     owner = 'Example Community'
 
-    # Add Post Filters
+    # add a Filter and Post Filters
     try:
         filter1 = indicators.add_filter()
         filter1.add_owner(owner)
+        # only download Indicators with a confidence rating greater than or equal to 75
         filter1.add_pf_confidence(75, FilterOperator.GE)
+        # only download Indicators with a threat rating greater than 2.5
         filter1.add_pf_rating('2.5', FilterOperator.GT)
     except AttributeError as e:
         print(e)
         sys.exit(1)
 
-    # Retrieve Indicators and Apply Filters
     try:
         # retrieve the Indicators
         indicators.retrieve()
@@ -69,8 +75,9 @@ Bulk Download Example
         print(e)
         sys.exit(1)
 
-    # Iterate Through Results
+    # iterate through the results
     for indicator in indicators:
+        # if the Indicator is a File Indicator or custom Indicator, print it out appropriately
         if isinstance(indicator.indicator, dict):
             for indicator_type, indicator_value in indicator.indicator.items():
                 print('{0}: {1}'.format(indicator_type, indicator_value))
@@ -87,33 +94,5 @@ Bulk Download Example
         print(indicator.threat_assess_confidence)
         print(indicator.type)
         print(indicator.weblink)
-        
 
-This example will demonstrate how to retrieve Indicators while applying
-filters. In this example, three filters will be added, one for the
-Owner, one for the Confidence, and one for the Rating. The result set
-returned from this example will contain any Indicators in the **"Example
-Community"** Owner that has a Confidence greater than or equal to 75 and
-a Rating greater than 2.5.
-
-.. note:: The ``filter1`` object contains a ``filters`` property that provides a list of supported filters for the resource type being retrieved. To display this list, ``print(filter1.filters)`` can be used. For more on using filters see the `Advanced Filter Tutorial <#advanced-filtering>`__.
-
-**Code Highlights**
-
-+------------------------------------------+-------------------------------------------------------------------------------------------+
-| Snippet                                  | Description                                                                               |
-+==========================================+===========================================================================================+
-| ``tc = ThreatConnect(api_access_id,...`` | Instantiate the ThreatConnect object.                                                     |
-+------------------------------------------+-------------------------------------------------------------------------------------------+
-| ``indicators = tc.indicators()``         | Instantiate an Indicators container object.                                               |
-+------------------------------------------+-------------------------------------------------------------------------------------------+
-| ``filter1 = indicator.add_filter()``     | Add a filter object to the Indicators container object (support multiple filter objects). |
-+------------------------------------------+-------------------------------------------------------------------------------------------+
-| ``filter1.add_tag('EXAMPLE')``           | Add API filter to retrieve Indicators with the 'Example' tag.                             |
-+------------------------------------------+-------------------------------------------------------------------------------------------+
-| ``indicator.retrieve()``                 | Trigger the API request and retrieve the Indicators intelligence data.                    |
-+------------------------------------------+-------------------------------------------------------------------------------------------+
-| ``for indicator in indicators:``         | Iterate over the Indicators container object generator.                                   |
-+------------------------------------------+-------------------------------------------------------------------------------------------+
-| ``print(indicator.indicator)``           | Display the **'indicator'** property of the Indicator object.                             |
-+------------------------------------------+-------------------------------------------------------------------------------------------+
+.. warning:: In order to use the bulk download capability, the "Enable Bulk Indicators" setting must be selected for the owner from which you want to download the data. Check with your ThreatConnect System Administrator if you have any questions.
