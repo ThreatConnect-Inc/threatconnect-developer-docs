@@ -1,8 +1,7 @@
 Create Documents
 ^^^^^^^^^^^^^^^^
 
-The example below demonstrates how to a Document Resource in the
-ThreatConnect platform.
+The example below demonstrates how to create a Document Resource in the ThreatConnect platform.
 
 .. code-block:: python
     :emphasize-lines: 12-14,16-20,30-31
@@ -43,14 +42,6 @@ ThreatConnect platform.
         sys.exit(1)
 
 .. note:: In the prior example, no API calls are made until the ``commit()`` method is invoked.
-
-Adding Document Resources
-+++++++++++++++++++++++++
-
-The example demonstrates how to a Document Resource in the ThreatConnect
-platform. The Document Resource has a special method ``upload()`` that
-allows you to upload files to the platform. For more information on the
-purpose of each line of code, see the **Code Highlights** section below.
 
 **Supported Properties**
 

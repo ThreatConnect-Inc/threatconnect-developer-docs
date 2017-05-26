@@ -36,9 +36,6 @@ Post filters are applied on the results returned by the API request.
 Bulk Download Example
 ^^^^^^^^^^^^^^^^^^^^^^
 
-The import statement and reading of the configuration files have been
-replaced with ``...`` for brevity.
-
 .. code-block:: python
     :emphasize-lines: 1
 

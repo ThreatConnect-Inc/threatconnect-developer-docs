@@ -1,11 +1,10 @@
 Generic Group Retrieval
 -----------------------
 
-The import statement and reading of the configuration files have been
-replaced with ``...`` for brevity.
+This example demonstrates how to retrieve Groups while applying filters. In this example two filters will be added: one for the Owner and another for a Tag. The result set returned from this example will contain all Groups in the **Example Community** Owner that have the **APT** Tag.
 
 .. code-block:: python
-    :emphasize-lines: 11-15,18-19
+    :emphasize-lines: 12-16,19-20
 
     # replace the line below with the standard, TC script heading described here:
     # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
@@ -17,6 +16,7 @@ replaced with ``...`` for brevity.
     groups = tc.groups()
 
     owner = 'Example Community'
+
     filter1 = groups.add_filter()
     # only retrieve groups from the owner named: 'Example Community'
     filter1.add_owner(owner)
@@ -38,25 +38,3 @@ replaced with ``...`` for brevity.
 
         # Group specific property
         print(group.type)
-
-This example will demonstrate how to retrieve Groups while applying filters. In this example two filters will be added, one for the Owner and another for a Tag. The result set returned from this example will contain any Groups in the **Example Community** Owner that has a Tag of **APT**.
-
-**Code Highlights**
-
-+----------------------------------------------+---------------------------------------------------------------------------------------+
-| Snippet                                      | Description                                                                           |
-+==============================================+=======================================================================================+
-| ``tc = ThreatConnect(api_access_id, api...`` | Instantiate the ThreatConnect object.                                                 |
-+----------------------------------------------+---------------------------------------------------------------------------------------+
-| ``groups = tc.groups()``                     | Instantiate a Groups container object.                                                |
-+----------------------------------------------+---------------------------------------------------------------------------------------+
-| ``filter1 = groups.add_filter()``            | Add a filter object to the Groups container object (support multiple filter objects). |
-+----------------------------------------------+---------------------------------------------------------------------------------------+
-| ``filter1.add_tag('APT')``                   | Add API filter to retrieve Groups with the 'Example' tag.                             |
-+----------------------------------------------+---------------------------------------------------------------------------------------+
-| ``groups.retrieve()``                        | Trigger the API request and retrieve the Groups intelligence data.                    |
-+----------------------------------------------+---------------------------------------------------------------------------------------+
-| ``for group in groups:``                     | Iterate over the Groups container object generator.                                   |
-+----------------------------------------------+---------------------------------------------------------------------------------------+
-| ``print(group.id)``                          | Display the **'id'** property of the Group object.                                    |
-+----------------------------------------------+---------------------------------------------------------------------------------------+
