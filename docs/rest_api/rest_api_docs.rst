@@ -194,8 +194,8 @@ Resource request. If an XML-formatted response is desired, an HTTP
 Accept Header with a value of "application/xml" can be sent with the
 request.
 
-All Services and Resources
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Complete List of Services and Resources
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Owners
 ^^^^^^
