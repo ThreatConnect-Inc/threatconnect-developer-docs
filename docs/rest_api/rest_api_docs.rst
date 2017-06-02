@@ -960,9 +960,9 @@ Indicators: ``/v2/indicators/``
 
 -  Addresses: ``/v2/indicators/addresses/``
 -  Email Addresses: ``/v2/indicators/emailAddresses/``
+-  Files: ``/v2/indicators/files/``
 -  Hosts: ``/v2/indicators/hosts/``
 -  Urls: ``/v2/indicators/urls/``
--  Files: ``/v2/indicators/files/``
 
 Groups: ``/v2/groups/``
 
@@ -976,9 +976,9 @@ Groups: ``/v2/groups/``
 
 Other
 
--  Victims: ``/v2/victims/``
--  Tasks: ``/v2/tasks/``
 -  Tags: ``/v2/tags/``
+-  Tasks: ``/v2/tasks/``
+-  Victims: ``/v2/victims/``
 
 Indicators Resource Type
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -5668,7 +5668,12 @@ Victims Service:
     Host: api.threatconnect.com
     Content-Type: application/json
     {
-    "name" : "Victim Name"
+      "name": "Burton Guster",
+      "description": "He also goes by 'Magic Head', 'Lavender Gooms', 'Ghee Buttersnaps', and 'Control Alt Delete' (among others).",
+      "org": "Psych",
+      "suborg": "Super Sniffer Department",
+      "workLocation": "Santa Barbara, California",
+      "nationality": "American"
     }
 
 Victim Assets can also be created by POSTing a request to the appropriate service as shown below. The `12345` in the example represents the ID of an existing Victim in ThreatConnect.
@@ -5679,8 +5684,8 @@ Victim Assets can also be created by POSTing a request to the appropriate servic
     Host: api.threatconnect.com
     Content-Type: application/json
     {
-    "address" : "victim@demo.net",
-    "addressType" : "Personal"
+      "address" : "victim@demo.net",
+      "addressType" : "Personal"
     }
 
 Creating a Victim in this fashion will return a Victim object as if it
@@ -5700,7 +5705,7 @@ Host Indicator to 80:
     Host: api.threatconnect.com
     Content-Type: application/json
     {
-    "confidence" : 80
+      "confidence" : 80
     }
 
 The PUT request below will update the "Threat Level" Attribute
@@ -5712,7 +5717,7 @@ The PUT request below will update the "Threat Level" Attribute
     Host: api.threatconnect.com
     Content-Type: application/json
     {
-    "value" : "Severe"
+      "value" : "Severe"
     }
 
 Just as the POST method is used to create Entities, the PUT method can
