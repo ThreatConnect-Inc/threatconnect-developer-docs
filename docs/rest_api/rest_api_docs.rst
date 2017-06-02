@@ -1051,15 +1051,15 @@ Indicators Resource Type XML Response:
 +=========================================================+===============+=====================+
 | ``/v2/indicators``                                      | TRUE          | TRUE                |
 +---------------------------------------------------------+---------------+---------------------+
-| ``/v2/groups/<group type>/<ID>/indicators``             | FALSE         |                     |
+| ``/v2/groups/{group type}/{id}/indicators``             | FALSE         |                     |
 +---------------------------------------------------------+---------------+---------------------+
-| ``/v2/tags/<tag name>/indicators``                      | TRUE          |                     |
+| ``/v2/tags/{tag name}/indicators``                      | TRUE          |                     |
 +---------------------------------------------------------+---------------+---------------------+
-| ``/v2/securityLabels/<security label name>/indicators`` | TRUE          |                     |
+| ``/v2/securityLabels/{security label name}/indicators`` | TRUE          |                     |
 +---------------------------------------------------------+---------------+---------------------+
-| ``/v2/victims/<ID>/indicators``                         | FALSE         |                     |
+| ``/v2/victims/{id}/indicators``                         | FALSE         |                     |
 +---------------------------------------------------------+---------------+---------------------+
-| ``/v2/tasks/<ID>/indicators``                           | TRUE          |                     |
+| ``/v2/tasks/{id}/indicators``                           | TRUE          |                     |
 +---------------------------------------------------------+---------------+---------------------+
 
 Indicator Types
@@ -1075,7 +1075,7 @@ Indicator Type query for details on a specific Indicator type:
 
 .. code::
 
-    /v2/types/indicatorTypes/<indicator type>
+    /v2/types/indicatorTypes/{indicator type}
 
 Indicator Type JSON Response:
 
@@ -1290,7 +1290,7 @@ types available in that instance of ThreatConnect. This API branch will
 also return the name of the API branch and API entity for each Indicator
 type. For more information about a specific Indicator type, add the
 Indicator type to the end of the query above, e.g.,
-``/v2/types/indicatorTypes/<indicator_type>``. The output on the right
+``/v2/types/indicatorTypes/{indicator_type}``. The output on the right
 shows the Indicator types currently in the ThreatConnect Cloud.
 
 Hosts Resource Type
@@ -1367,13 +1367,13 @@ as detailed in the table below.
 +===============================================================+===============+=====================+
 | ``/v2/indicators/hosts``                                      | TRUE          | TRUE                |
 +---------------------------------------------------------------+---------------+---------------------+
-| ``/v2/groups/<group type>/<ID>/indicators/hosts``             | FALSE         |                     |
+| ``/v2/groups/{group type}/{id}/indicators/hosts``             | FALSE         |                     |
 +---------------------------------------------------------------+---------------+---------------------+
-| ``/v2/tags/<tag name>/indicators/hosts``                      | TRUE          |                     |
+| ``/v2/tags/{tag name}/indicators/hosts``                      | TRUE          |                     |
 +---------------------------------------------------------------+---------------+---------------------+
-| ``/v2/securityLabels/<security label name>/indicators/hosts`` | TRUE          |                     |
+| ``/v2/securityLabels/{security label name}/indicators/hosts`` | TRUE          |                     |
 +---------------------------------------------------------------+---------------+---------------------+
-| ``/v2/victims/<ID>/indicators/hosts``                         | FALSE         |                     |
+| ``/v2/victims/{id}/indicators/hosts``                         | FALSE         |                     |
 +---------------------------------------------------------------+---------------+---------------------+
 
 Host Resource Type
@@ -1454,7 +1454,7 @@ access.
 +-------------------------------------+---------------+---------------------+
 | Paths                               | Owner Allowed | Pagination Required |
 +=====================================+===============+=====================+
-| ``/v2/indicators/hosts/<hostname>`` | TRUE          | FALSE               |
+| ``/v2/indicators/hosts/{hostname}`` | TRUE          | FALSE               |
 +-------------------------------------+---------------+---------------------+
 
 For each Host, its Attributes, DNS Resolutions, associated Groups, Tags,
@@ -1623,13 +1623,13 @@ in the table below, may also be retrieved.
 +===================================================================+===============+=====================+
 | ``/v2/indicators/addresses``                                      | TRUE          | TRUE                |
 +-------------------------------------------------------------------+---------------+---------------------+
-| ``/v2/groups/<group type>/<ID>/indicators/addresses``             | FALSE         |                     |
+| ``/v2/groups/{group type}/{id}/indicators/addresses``             | FALSE         |                     |
 +-------------------------------------------------------------------+---------------+---------------------+
-| ``/v2/tags/<tag name>/indicators/addresses``                      | TRUE          |                     |
+| ``/v2/tags/{tag name}/indicators/addresses``                      | TRUE          |                     |
 +-------------------------------------------------------------------+---------------+---------------------+
-| ``/v2/securityLabels/<security label name>/indicators/addresses`` | TRUE          |                     |
+| ``/v2/securityLabels/{security label name}/indicators/addresses`` | TRUE          |                     |
 +-------------------------------------------------------------------+---------------+---------------------+
-| ``/v2/victims/<ID>/indicators/addresses``                         | FALSE         |                     |
+| ``/v2/victims/{id}/indicators/addresses``                         | FALSE         |                     |
 +-------------------------------------------------------------------+---------------+---------------------+
 
 The Indicators Service allows for the querying of a specific Address for
@@ -1688,7 +1688,7 @@ Address Resource TypeXML Response:
 +----------------------------------------+---------------+---------------------+
 | Paths                                  | Owner Allowed | Pagination Required |
 +========================================+===============+=====================+
-| ``/v2/indicators/addresses/<address>`` | TRUE          | FALSE               |
+| ``/v2/indicators/addresses/{address}`` | TRUE          | FALSE               |
 +----------------------------------------+---------------+---------------------+
 
 For each Address, its Attributes, DNS Resolutions, associated Groups,
@@ -1884,13 +1884,13 @@ A list of Files from both the Groups and Tags Service, as detailed in the table 
 +===============================================================+===============+=====================+
 | ``/v2/indicators/files``                                      | TRUE          | TRUE                |
 +---------------------------------------------------------------+---------------+---------------------+
-| ``/v2/groups/<group type>/<ID>/indicators/files``             | FALSE         |                     |
+| ``/v2/groups/{group type}/{id}/indicators/files``             | FALSE         |                     |
 +---------------------------------------------------------------+---------------+---------------------+
-| ``/v2/tags/<tag name>/indicators/files``                      | TRUE          |                     |
+| ``/v2/tags/{tag name}/indicators/files``                      | TRUE          |                     |
 +---------------------------------------------------------------+---------------+---------------------+
-| ``/v2/securityLabels/<security label name>/indicators/files`` | TRUE          |                     |
+| ``/v2/securityLabels/{security label name}/indicators/files`` | TRUE          |                     |
 +---------------------------------------------------------------+---------------+---------------------+
-| ``/v2/victims/<ID>/indicators/files``                         | FALSE         |                     |
+| ``/v2/victims/{id}/indicators/files``                         | FALSE         |                     |
 +---------------------------------------------------------------+---------------+---------------------+
 
 The Files Resource Type response format is to the right. Note that with
@@ -1959,7 +1959,7 @@ File Resource Type XML Response:
 +---------------------------------+---------------+---------------------+
 | Paths                           | Owner Allowed | Pagination Required |
 +=================================+===============+=====================+
-| ``/v2/indicators/files/<hash>`` | TRUE          | FALSE               |
+| ``/v2/indicators/files/{hash}`` | TRUE          | FALSE               |
 +---------------------------------+---------------+---------------------+
 
 The File Resource Type response format is to the right. Note that any
@@ -2008,7 +2008,7 @@ For each File, its File Occurrences can be retrieved as detailed in the table be
 +-------------------------------------------------+---------------+---------------------+
 | Paths                                           | Owner Allowed | Pagination Required |
 +=================================================+===============+=====================+
-| ``/v2/indicators/files/<hash>/fileOccurrences`` | TRUE          | FALSE               |
+| ``/v2/indicators/files/{hash}/fileOccurrences`` | TRUE          | FALSE               |
 +-------------------------------------------------+---------------+---------------------+
 
 emailAddresses Resource Type
@@ -2095,13 +2095,13 @@ detailed in the table below, can be retrieved.
 +========================================================================+===============+=====================+
 | ``/v2/indicators/emailAddresses``                                      | TRUE          | TRUE                |
 +------------------------------------------------------------------------+---------------+---------------------+
-| ``/v2/groups/<group type>/<ID>/indicators/emailAddresses``             | FALSE         |                     |
+| ``/v2/groups/{group type}/{id}/indicators/emailAddresses``             | FALSE         |                     |
 +------------------------------------------------------------------------+---------------+---------------------+
-| ``/v2/tags/<tag name>/indicators/emailAddresses``                      | TRUE          |                     |
+| ``/v2/tags/{tag name}/indicators/emailAddresses``                      | TRUE          |                     |
 +------------------------------------------------------------------------+---------------+---------------------+
-| ``/v2/securityLabels/<security label name>/indicators/emailAddresses`` | TRUE          |                     |
+| ``/v2/securityLabels/{security label name}/indicators/emailAddresses`` | TRUE          |                     |
 +------------------------------------------------------------------------+---------------+---------------------+
-| ``/v2/victims/<ID>/indicators/emailAddresses``                         | FALSE         |                     |
+| ``/v2/victims/{id}/indicators/emailAddresses``                         | FALSE         |                     |
 +------------------------------------------------------------------------+---------------+---------------------+
 
 emailAddress Resource Type
@@ -2174,7 +2174,7 @@ user has access:
 +---------------------------------------------------+---------------+---------------------+
 | Paths                                             | Owner Allowed | Pagination Required |
 +===================================================+===============+=====================+
-| ``/v2/indicators/emailAddresses/<email address>`` | TRUE          | FALSE               |
+| ``/v2/indicators/emailAddresses/{email address}`` | TRUE          | FALSE               |
 +---------------------------------------------------+---------------+---------------------+
 
 For each Email Address, its Attributes, associated Groups, Tags,
@@ -2264,13 +2264,13 @@ A list of URLs from both the Groups and Tags Service, as detailed in the table b
 +==============================================================+===============+=====================+
 | ``/v2/indicators/urls``                                      | TRUE          | TRUE                |
 +--------------------------------------------------------------+---------------+---------------------+
-| ``/v2/groups/<group type>/<ID>/indicators/urls``             | FALSE         |                     |
+| ``/v2/groups/{group type}/{id}/indicators/urls``             | FALSE         |                     |
 +--------------------------------------------------------------+---------------+---------------------+
-| ``/v2/tags/<tag name>/indicators/urls``                      | TRUE          |                     |
+| ``/v2/tags/{tag name}/indicators/urls``                      | TRUE          |                     |
 +--------------------------------------------------------------+---------------+---------------------+
-| ``/v2/securityLabels/<security label name>/indicators/urls`` | TRUE          |                     |
+| ``/v2/securityLabels/{security label name}/indicators/urls`` | TRUE          |                     |
 +--------------------------------------------------------------+---------------+---------------------+
-| ``/v2/victims/<ID>/indicators/urls``                         | FALSE         |                     |
+| ``/v2/victims/{id}/indicators/urls``                         | FALSE         |                     |
 +--------------------------------------------------------------+---------------+---------------------+
 
 url Resource Type
@@ -2343,7 +2343,7 @@ access:
 +-------------------------------+---------------+---------------------+
 | Paths                         | Owner Allowed | Pagination Required |
 +===============================+===============+=====================+
-| ``/v2/indicators/urls/<url>`` | TRUE          | FALSE               |
+| ``/v2/indicators/urls/{url}`` | TRUE          | FALSE               |
 +-------------------------------+---------------+---------------------+
 
 For each URL, its Attributes, associated Groups, Tags, Security Labels ,
@@ -2363,7 +2363,7 @@ Observations
 Show total number of observations for a given Indicator (with
 timestamps)
 
-``GET /v2/indicators/<indicator type>/<indicator>/observations``
+``GET /v2/indicators/{indicator type}/{indicator}/observations``
 
 Response data (note: if ``resultCount`` is 0 there are no observations
 and response[data][observation] will be an empty list):
@@ -2386,7 +2386,7 @@ and response[data][observation] will be an empty list):
 
 Show full details of observations for a given Indicator
 
-``GET /v2/indicators/<indicator type>/<indicator>/observations?includeAdditional=true``
+``GET /v2/indicators/{indicator type}/{indicator}/observations?includeAdditional=true``
 
 Response data:
 
@@ -2872,15 +2872,15 @@ A list of Groups from both the Indicators and Tags Service, as detailed in the t
 +========================================================+===============+=====================+
 | ``/v2/groups``                                         | TRUE          | TRUE                |
 +--------------------------------------------------------+---------------+---------------------+
-| ``/v2/indicators/<indicator type>/<indicator>/groups`` |               |                     |
+| ``/v2/indicators/{indicator type}/{indicator}/groups`` |               |                     |
 +--------------------------------------------------------+---------------+---------------------+
-| ``/v2/tags/<tag name>/groups``                         |               |                     |
+| ``/v2/tags/{tag name}/groups``                         |               |                     |
 +--------------------------------------------------------+---------------+---------------------+
-| ``/v2/securityLabels/<security label name>/groups``    |               |                     |
+| ``/v2/securityLabels/{security label name}/groups``    |               |                     |
 +--------------------------------------------------------+---------------+---------------------+
-| ``/v2/groups/<group type>/<ID>/groups``                |               |                     |
+| ``/v2/groups/{group type}/{id}/groups``                |               |                     |
 +--------------------------------------------------------+---------------+---------------------+
-| ``/v2/victims/<ID>/groups``                            |               |                     |
+| ``/v2/victims/{id}/groups``                            |               |                     |
 +--------------------------------------------------------+---------------+---------------------+
 
 From the Groups Service, a query can be made for specific Group
@@ -3002,15 +3002,15 @@ A list of Incidents from both the Indicators and Tags Service, as detailed in th
 +==================================================================+===============+=====================+
 | ``/v2/groups/incidents``                                         | TRUE          | TRUE                |
 +------------------------------------------------------------------+---------------+---------------------+
-| ``/v2/indicators/<indicator type>/<indicator>/groups/incidents`` |               |                     |
+| ``/v2/indicators/{indicator type}/{indicator}/groups/incidents`` |               |                     |
 +------------------------------------------------------------------+---------------+---------------------+
-| ``/v2/tags/<tag name>/groups/incidents``                         |               |                     |
+| ``/v2/tags/{tag name}/groups/incidents``                         |               |                     |
 +------------------------------------------------------------------+---------------+---------------------+
-| ``/v2/securityLabels/<security label name>/groups/incidents``    |               |                     |
+| ``/v2/securityLabels/{security label name}/groups/incidents``    |               |                     |
 +------------------------------------------------------------------+---------------+---------------------+
-| ``/v2/groups/<group type>/<ID>/groups/incidents``                |               |                     |
+| ``/v2/groups/{group type}/{id}/groups/incidents``                |               |                     |
 +------------------------------------------------------------------+---------------+---------------------+
-| ``/v2/victims/<ID>/groups/incidents``                            |               |                     |
+| ``/v2/victims/{id}/groups/incidents``                            |               |                     |
 +------------------------------------------------------------------+---------------+---------------------+
 
 The Groups service allows for the querying of a specific Incident for a
@@ -3115,12 +3115,12 @@ Incident Resource Type XML Response Including Incident Status:
 +------------------------------------------------------+---------------+---------------------+
 | Paths                                                | Owner Allowed | Pagination Required |
 +======================================================+===============+=====================+
-| ``/v2/groups/incidents/<ID>``                        | FALSE         | FALSE               |
+| ``/v2/groups/incidents/{id}``                        | FALSE         | FALSE               |
 +------------------------------------------------------+---------------+---------------------+
-| ``/v2/groups/incidents/<ID>?includeAdditional=true`` | FALSE         | FALSE               |
+| ``/v2/groups/incidents/{id}?includeAdditional=true`` | FALSE         | FALSE               |
 +------------------------------------------------------+---------------+---------------------+
 
-Adding the ‘includeAdditional’ parameter will return the same information as ``/v2/groups/incidents/<ID>``, except that it will also include the Incident’s status.
+Adding the ‘includeAdditional’ parameter will return the same information as ``/v2/groups/incidents/{id}``, except that it will also include the Incident’s status.
 
 For each Incident, its Attributes, associated Indicators, Security Labels, Victims, Victim Assets, and Tags can be retrieved.
 
@@ -3210,15 +3210,15 @@ A list of Documents from both the Indicators and Tags Service, as detailed in th
 +==================================================================+===============+=====================+
 | ``/v2/groups/documents``                                         | TRUE          | TRUE                |
 +------------------------------------------------------------------+---------------+---------------------+
-| ``/v2/indicators/<indicator type>/<indicator>/groups/documents`` |               |                     |
+| ``/v2/indicators/{indicator type}/{indicator}/groups/documents`` |               |                     |
 +------------------------------------------------------------------+---------------+---------------------+
-| ``/v2/tags/<tag name>/groups/documents``                         |               |                     |
+| ``/v2/tags/{tag name}/groups/documents``                         |               |                     |
 +------------------------------------------------------------------+---------------+---------------------+
-| ``/v2/securityLabels/<security label name>/groups/documents``    |               |                     |
+| ``/v2/securityLabels/{security label name}/groups/documents``    |               |                     |
 +------------------------------------------------------------------+---------------+---------------------+
-| ``/v2/groups/<group type>/<ID>/groups/documents``                |               |                     |
+| ``/v2/groups/{group type}/{id}/groups/documents``                |               |                     |
 +------------------------------------------------------------------+---------------+---------------------+
-| ``/v2/victims/<ID>/groups/documents``                            |               |                     |
+| ``/v2/victims/{id}/groups/documents``                            |               |                     |
 +------------------------------------------------------------------+---------------+---------------------+
 
 Document Resource Type
@@ -3277,7 +3277,7 @@ Document Resource Type XML Response:
 +-------------------------------+---------------+---------------------+
 | Paths                         | Owner Allowed | Pagination Required |
 +===============================+===============+=====================+
-| ``/v2/groups/documents/<ID>`` | FALSE         | FALSE               |
+| ``/v2/groups/documents/{id}`` | FALSE         | FALSE               |
 +-------------------------------+---------------+---------------------+
 
 Note that the data has a field named "Status" that denotes if the
@@ -3368,15 +3368,15 @@ A list of Threats from both the Indicators and Tags Service, as detailed in the 
 +================================================================+===============+=====================+
 | ``/v2/groups/threats``                                         | TRUE          | TRUE                |
 +----------------------------------------------------------------+---------------+---------------------+
-| ``/v2/indicators/<indicator type>/<indicator>/groups/threats`` |               |                     |
+| ``/v2/indicators/{indicator type}/{indicator}/groups/threats`` |               |                     |
 +----------------------------------------------------------------+---------------+---------------------+
-| ``/v2/tags/<tag name>/groups/threats``                         |               |                     |
+| ``/v2/tags/{tag name}/groups/threats``                         |               |                     |
 +----------------------------------------------------------------+---------------+---------------------+
-| ``/v2/securityLabels/<security label name>/groups/threats``    |               |                     |
+| ``/v2/securityLabels/{security label name}/groups/threats``    |               |                     |
 +----------------------------------------------------------------+---------------+---------------------+
-| ``/v2/groups/<group type>/<ID>/groups/threats``                |               |                     |
+| ``/v2/groups/{group type}/{id}/groups/threats``                |               |                     |
 +----------------------------------------------------------------+---------------+---------------------+
-| ``/v2/victims/<ID>/groups/threats``                            |               |                     |
+| ``/v2/victims/{id}/groups/threats``                            |               |                     |
 +----------------------------------------------------------------+---------------+---------------------+
 
 The Groups Service allows for the querying of a specific Threat for a
@@ -3433,7 +3433,7 @@ Threat Resource Type XML Response:
 +-----------------------------+---------------+---------------------+
 | Paths                       | Owner Allowed | Pagination Required |
 +=============================+===============+=====================+
-| ``/v2/groups/threats/<ID>`` | FALSE         | FALSE               |
+| ``/v2/groups/threats/{id}`` | FALSE         | FALSE               |
 +-----------------------------+---------------+---------------------+
 
 For each Threat, its Attributes, associated Indicators, Security Labels,
@@ -3525,15 +3525,15 @@ A list of Adversaries from both the Indicators and Tags Service, as detailed in 
 +====================================================================+===============+=====================+
 | ``/v2/groups/adversaries``                                         | TRUE          | TRUE                |
 +--------------------------------------------------------------------+---------------+---------------------+
-| ``/v2/indicators/<indicator type>/<indicator>/groups/adversaries`` |               |                     |
+| ``/v2/indicators/{indicator type}/{indicator}/groups/adversaries`` |               |                     |
 +--------------------------------------------------------------------+---------------+---------------------+
-| ``/v2/tags/<tag name>/groups/adversaries``                         |               |                     |
+| ``/v2/tags/{tag name}/groups/adversaries``                         |               |                     |
 +--------------------------------------------------------------------+---------------+---------------------+
-| ``/v2/securityLabels/<security label name>/groups/adversaries``    |               |                     |
+| ``/v2/securityLabels/{security label name}/groups/adversaries``    |               |                     |
 +--------------------------------------------------------------------+---------------+---------------------+
-| ``/v2/groups/<group type>/<ID>/groups/adversaries``                |               |                     |
+| ``/v2/groups/{group type}/{id}/groups/adversaries``                |               |                     |
 +--------------------------------------------------------------------+---------------+---------------------+
-| ``/v2/victims/<ID>/groups/adversaries``                            |               |                     |
+| ``/v2/victims/{id}/groups/adversaries``                            |               |                     |
 +--------------------------------------------------------------------+---------------+---------------------+
 
 The Groups Service allows for the querying of a specific Adversary for a
@@ -3590,7 +3590,7 @@ Adversary Resource Type XML Response:
 +---------------------------------+---------------+---------------------+
 | Paths                           | Owner Allowed | Pagination Required |
 +=================================+===============+=====================+
-| ``/v2/groups/adversaries/<ID>`` | FALSE         | FALSE               |
+| ``/v2/groups/adversaries/{id}`` | FALSE         | FALSE               |
 +---------------------------------+---------------+---------------------+
 
 For each Adversary, its Attributes, associated Indicators, Security
@@ -3668,15 +3668,15 @@ A list of Emails from both the Indicators and Tags Service, as detailed in the t
 +===============================================================+===============+=====================+
 | ``/v2/groups/emails``                                         | TRUE          | TRUE                |
 +---------------------------------------------------------------+---------------+---------------------+
-| ``/v2/indicators/<indicator type>/<indicator>/groups/emails`` |               |                     |
+| ``/v2/indicators/{indicator type}/{indicator}/groups/emails`` |               |                     |
 +---------------------------------------------------------------+---------------+---------------------+
-| ``/v2/tags/<tag name>/groups/emails``                         |               |                     |
+| ``/v2/tags/{tag name}/groups/emails``                         |               |                     |
 +---------------------------------------------------------------+---------------+---------------------+
-| ``/v2/securityLabels/<security label name>/groups/emails``    |               |                     |
+| ``/v2/securityLabels/{security label name}/groups/emails``    |               |                     |
 +---------------------------------------------------------------+---------------+---------------------+
-| ``/v2/groups/<group type>/<ID>/groups/emails``                |               |                     |
+| ``/v2/groups/{group type}/{id}/groups/emails``                |               |                     |
 +---------------------------------------------------------------+---------------+---------------------+
-| ``/v2/victims/<ID>/groups/emails``                            |               |                     |
+| ``/v2/victims/{id}/groups/emails``                            |               |                     |
 +---------------------------------------------------------------+---------------+---------------------+
 
 The Groups Service allows for the querying of a specific Email for a
@@ -3750,7 +3750,7 @@ Email Resource Type XML Response:
 +----------------------------+---------------+---------------------+
 | Paths                      | Owner Allowed | Pagination Required |
 +============================+===============+=====================+
-| ``/v2/groups/emails/<ID>`` | FALSE         | FALSE               |
+| ``/v2/groups/emails/{id}`` | FALSE         | FALSE               |
 +----------------------------+---------------+---------------------+
 
 Note that the "to" field may be empty if the field was not supplied when
@@ -3849,15 +3849,15 @@ A list of Signatures from both the Indicators and Tags service, as detailed in t
 +===================================================================+===============+=====================+
 | ``/v2/groups/signatures``                                         | TRUE          | TRUE                |
 +-------------------------------------------------------------------+---------------+---------------------+
-| ``/v2/indicators/<indicator type>/<indicator>/groups/signatures`` |               |                     |
+| ``/v2/indicators/{indicator type}/{indicator}/groups/signatures`` |               |                     |
 +-------------------------------------------------------------------+---------------+---------------------+
-| ``/v2/tags/<tag name>/groups/signatures``                         |               |                     |
+| ``/v2/tags/{tag name}/groups/signatures``                         |               |                     |
 +-------------------------------------------------------------------+---------------+---------------------+
-| ``/v2/securityLabels/<security label name>/groups/signatures``    |               |                     |
+| ``/v2/securityLabels/{security label name}/groups/signatures``    |               |                     |
 +-------------------------------------------------------------------+---------------+---------------------+
-| ``/v2/groups/<group type>/<ID>/groups/signatures``                |               |                     |
+| ``/v2/groups/{group type}/{id}/groups/signatures``                |               |                     |
 +-------------------------------------------------------------------+---------------+---------------------+
-| ``/v2/victims/<ID>/groups/signatures``                            |               |                     |
+| ``/v2/victims/{id}/groups/signatures``                            |               |                     |
 +-------------------------------------------------------------------+---------------+---------------------+
 
 The Groups Service allows for the querying of a specific Signature for a
@@ -3924,7 +3924,7 @@ Signature Resource Type XML Response:
 +--------------------------------+---------------+---------------------+
 | Paths                          | Owner Allowed | Pagination Required |
 +================================+===============+=====================+
-| ``/v2/groups/signatures/<ID>`` | FALSE         | FALSE               |
+| ``/v2/groups/signatures/{id}`` | FALSE         | FALSE               |
 +--------------------------------+---------------+---------------------+
 
 For each Signature, the Signature content can be downloaded, and the
@@ -4004,9 +4004,9 @@ A list of Attributes from both the Indicators and Groups Services, as detailed i
 +------------------------------------------------------------+---------------+---------------------+
 | Paths                                                      | Owner Allowed | Pagination Required |
 +============================================================+===============+=====================+
-| ``/v2/indicators/<indicator type>/<indicator>/attributes`` | TRUE          | TRUE                |
+| ``/v2/indicators/{indicator type}/{indicator}/attributes`` | TRUE          | TRUE                |
 +------------------------------------------------------------+---------------+---------------------+
-| ``/v2/groups/<group type>/<ID>/attributes``                | FALSE         |                     |
+| ``/v2/groups/{group type}/{id}/attributes``                | FALSE         |                     |
 +------------------------------------------------------------+---------------+---------------------+
 
 Note that all relevant Security Labels for an Attribute can be queried.
@@ -4029,7 +4029,7 @@ GET request format:
 
 .. code::
 
-    GET /v2/types/associationTypes/<association_type_name>/
+    GET /v2/types/associationTypes/{association_type_name}/
 
 This GET request will return details about the "Adversary" association
 type:
@@ -4043,7 +4043,7 @@ request to ``/v2/types/associationTypes``. This will return the name of
 the association and, if applicable, the Indicator/Group Resources
 between which the association can be created. To get information about a
 specific association, add the association type to the end of the query
-above such as: ``/v2/types/associationTypes/<association_type_name>``.
+above such as: ``/v2/types/associationTypes/{association_type_name}``.
 
 Indicator to Indicator Associations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4077,7 +4077,7 @@ association, use the following GET request format:
 
 .. code::
 
-    GET /v2/indicators/<indicator type>/<indicator>/associations/<association type>/indicators
+    GET /v2/indicators/{indicator type}/{indicator}/associations/{association type}/indicators
 
 Retrieve all of the CIDR indicators associated with an ASN:
 
@@ -4139,7 +4139,7 @@ To create an association between two Indicators, use the following POST request 
 
 .. code::
 
-    POST /v2/indicators/<indicator type>/<indicator>/associations/<association type>/indicators/<indicator type>/<indicator>
+    POST /v2/indicators/{indicator type}/{indicator}/associations/{association type}/indicators/{indicator type}/{indicator}
 
 2. **File Action**
 
@@ -4169,7 +4169,7 @@ the following GET request format:
 
 .. code::
 
-    GET /v2/indicators/files/<file hash>/actions/<file action>/indicators
+    GET /v2/indicators/files/{file hash}/actions/{file action}/indicators
 
 Retrieve all of the indicators associated with the file using the mutex
 file action:
@@ -4254,7 +4254,7 @@ To create an association between two Indicators using a file action, use the fol
 
 .. code::
 
-    POST /v2/indicators/files/<file hash>/actions/<file action>/indicators/<indicator type>/<indicator>
+    POST /v2/indicators/files/{file hash}/actions/{file action}/indicators/{indicator type}/{indicator}
 
 Working With Tags
 ~~~~~~~~~~~~~~~~~
@@ -4325,9 +4325,9 @@ Tags Resource Type XML Response:
 +======================================================+===============+=====================+
 | ``/v2/tags``                                         | TRUE          | TRUE                |
 +------------------------------------------------------+---------------+---------------------+
-| ``/v2/indicators/<indicator type>/<indicator>/tags`` | TRUE          |                     |
+| ``/v2/indicators/{indicator type}/{indicator}/tags`` | TRUE          |                     |
 +------------------------------------------------------+---------------+---------------------+
-| ``/v2/groups/<group type>/<ID>/tags``                | FALSE         |                     |
+| ``/v2/groups/{group type}/{id}/tags``                | FALSE         |                     |
 +------------------------------------------------------+---------------+---------------------+
 
 The Tags Service allows for the querying of a specific Tag for both a
@@ -4370,7 +4370,7 @@ Tag Resource Type XML Response:
 +-------------------------+---------------+---------------------+
 | Paths                   | Owner Allowed | Pagination Required |
 +=========================+===============+=====================+
-| ``/v2/tags/<tag name>`` | TRUE          | FALSE               |
+| ``/v2/tags/{tag name}`` | TRUE          | FALSE               |
 +-------------------------+---------------+---------------------+
 
 For each Tag, its associated Indicators and Groups can be found.
@@ -4437,17 +4437,17 @@ A list of Security Labels from the Indicator, Group, and Task Services, as detai
 +================================================================================+=========+============+
 | ``/v2/securityLabels``                                                         | TRUE    | TRUE       |
 +--------------------------------------------------------------------------------+---------+------------+
-| ``/v2/indicators/<indicator type>/<indicator>/securityLabels``                 | TRUE    |            |
+| ``/v2/indicators/{indicator type}/{indicator}/securityLabels``                 | TRUE    |            |
 +--------------------------------------------------------------------------------+---------+------------+
-| ``/v2/groups/<group type>/<ID>/securityLabels``                                | FALSE   |            |
+| ``/v2/groups/{group type}/{id}/securityLabels``                                | FALSE   |            |
 +--------------------------------------------------------------------------------+---------+------------+
-| ``/v2/indicators/<indicator type>/<indicator>/attributes/<ID>/securityLabels`` | TRUE    |            |
+| ``/v2/indicators/{indicator type}/{indicator}/attributes/{id}/securityLabels`` | TRUE    |            |
 +--------------------------------------------------------------------------------+---------+------------+
-| ``/v2/groups/<group type>/<ID>/attributes/<ID>/securityLabels``                | FALSE   |            |
+| ``/v2/groups/{group type}/{id}/attributes/{id}/securityLabels``                | FALSE   |            |
 +--------------------------------------------------------------------------------+---------+------------+
-| ``/v2/tasks/<ID>/securityLabels``                                              | TRUE    |            |
+| ``/v2/tasks/{id}/securityLabels``                                              | TRUE    |            |
 +--------------------------------------------------------------------------------+---------+------------+
-| ``/v2/tasks/<ID>/attributes/<ID>/securityLabels``                              | TRUE    |            |
+| ``/v2/tasks/{id}/attributes/{id}/securityLabels``                              | TRUE    |            |
 +--------------------------------------------------------------------------------+---------+------------+
 
 The SecurityLabels Service allows for the querying of a specific
@@ -4488,7 +4488,7 @@ SecurityLabel Resource Type XML Response:
 +----------------------------------------------+---------------+---------------------+
 | Paths                                        | Owner Allowed | Pagination Required |
 +==============================================+===============+=====================+
-| ``/v2/securityLabels/<security label name>`` | TRUE          | TRUE                |
+| ``/v2/securityLabels/{security label name}`` | TRUE          | TRUE                |
 +----------------------------------------------+---------------+---------------------+
 
 For each SecurityLabel, its associated Indicators and Groups can be
@@ -4510,7 +4510,7 @@ Retrieve a specific Task
 
 .. code::
 
-    GET /v2/tasks/<task_id>
+    GET /v2/tasks/{task_id}
 
 Sample Response to GET /v2/tasks/599
 
@@ -4544,14 +4544,14 @@ Retrieve the list of people assigned to a specific Task
 
 .. code::
 
-    GET /v2/tasks/<task_id>/assignees
+    GET /v2/tasks/{task_id}/assignees
 
 Retrieve the list of Escalatees ("people who will be notified when the
 deadline passes") for a specific Task
 
 .. code::
 
-    GET /v2/tasks/<task_id>/escalatees
+    GET /v2/tasks/{task_id}/escalatees
 
 Create a new Task; Escalatees and Assignees may be a list of
 ``userName`` entries
@@ -4569,7 +4569,7 @@ Update the due date (a ``DateTime`` object) and description for a Task
 
 .. code::
 
-    POST /v2/tasks/<task_id>/attributes
+    POST /v2/tasks/{task_id}/attributes
     {
       "dueDate" : {"2016-03-20T13:36:53-04:00"}, 
       "description": {"A thing we need to do"}
@@ -4582,25 +4582,25 @@ Add the user denoted by ``username`` to the list of Escalatees
 
 .. code::
 
-    POST /v2/tasks/<task_id>/escalatees/<username>
+    POST /v2/tasks/{task_id}/escalatees/{username}
 
 Add the user denoted by ``username`` to the list of Assignees
 
 .. code::
 
-    POST /v2/tasks/<task_id>/assignees/<username>
+    POST /v2/tasks/{task_id}/assignees/{username}
 
 Remove the user denoted by ``username`` from the list of Escalatees
 
 .. code::
 
-    DELETE /v2/tasks/<task_id>/escalatees/<username>
+    DELETE /v2/tasks/{task_id}/escalatees/{username}
 
 Remove the user denoted by ``username`` from the list of Assignees
 
 .. code::
 
-    DELETE /v2/tasks/<task_id>/assignees/<username>
+    DELETE /v2/tasks/{task_id}/assignees/{username}
 
 Retrieve all Indicators associated with a specific Task
 
@@ -4672,9 +4672,9 @@ A list of Victims from both the Indicators and Groups Services, as detailed in t
 +=========================================================+===============+=====================+
 | ``/v2/victims``                                         | TRUE          | TRUE                |
 +---------------------------------------------------------+---------------+---------------------+
-| ``/v2/indicators/<indicator type>/<indicator>/victims`` | TRUE          |                     |
+| ``/v2/indicators/{indicator type}/{indicator}/victims`` | TRUE          |                     |
 +---------------------------------------------------------+---------------+---------------------+
-| ``/v2/groups/<group type>/<ID>/victims``                | FALSE         |                     |
+| ``/v2/groups/{group type}/{id}/victims``                | FALSE         |                     |
 +---------------------------------------------------------+---------------+---------------------+
 
 The Victims Service allows for the querying of a specific Victim for the
@@ -4688,7 +4688,7 @@ Retrieve a specific Victim by ID
 
 .. code::
 
-    /v2/groups/victims/<victim_ID>
+    /v2/groups/victims/{victim_ID}
 
 Victim Resource Type JSON Response:
 
@@ -4736,7 +4736,7 @@ Victim Resource Type XML Response:
 +----------------------+---------------+---------------------+
 | Paths                | Owner Allowed | Pagination Required |
 +======================+===============+=====================+
-| ``/v2/victims/<ID>`` | FALSE         | FALSE               |
+| ``/v2/victims/{id}`` | FALSE         | FALSE               |
 +----------------------+---------------+---------------------+
 
 For each Victim, its Attributes, associated Groups, Indicators, Tags,
@@ -4749,25 +4749,25 @@ View all Tags for a given Victim
 
 .. code::
 
-    GET /v2/victims/<victim_ID>/tags
+    GET /v2/victims/{victim_ID}/tags
 
 View a specific Tag for a given Victim
 
 .. code::
 
-    GET /v2/victims/<victim_ID>/tags/<tag_name>
+    GET /v2/victims/{victim_ID}/tags/{tag_name}
 
 Add a Tag to a given Victim
 
 .. code::
 
-    POST /v2/victims/<victim_ID>/tags/<tag_name>
+    POST /v2/victims/{victim_ID}/tags/{tag_name}
 
 Remove a Tag from a given Victim
 
 .. code::
 
-    DELETE /v2/victims/<victim_ID>/tags/<tag_name>
+    DELETE /v2/victims/{victim_ID}/tags/{tag_name}
 
 Tags can be applied to Victims `in the same manner as other
 objects <#working-with-tags>`__, allowing filtering and searching.
@@ -4779,43 +4779,43 @@ View all Security Labels for a given Victim
 
 .. code::
 
-    GET /v2/victims/<victim_ID>/securityLabels
+    GET /v2/victims/{victim_ID}/securityLabels
 
 View a specific Security Label for a given Victim
 
 .. code::
 
-    GET /v2/victims/<victim_ID>/securityLabels/<security_label_name>
+    GET /v2/victims/{victim_ID}/securityLabels/{security_label_name}
 
 View all Victims for a given Security Label
 
 .. code::
 
-    GET /v2/victims/securityLabels/<security_label_name>/victims
+    GET /v2/victims/securityLabels/{security_label_name}/victims
 
 Add a Security Labels to a given Victim
 
 .. code::
 
-    POST /v2/victims/<victim_ID>/securityLabels/<security_label_name>
+    POST /v2/victims/{victim_ID}/securityLabels/{security_label_name}
 
 Add a Victim to a given Security Label
 
 .. code::
 
-    POST /v2/victims/securityLabels/<security_label_name>/victims/<victim_ID>
+    POST /v2/victims/securityLabels/{security_label_name}/victims/{victim_ID}
 
 Remove a Security Label from a given Victim
 
 .. code::
 
-    DELETE /v2/victims/<victim_ID>/securityLabels/<security_label_name>
+    DELETE /v2/victims/{victim_ID}/securityLabels/{security_label_name}
 
 Remove a Victim from a given Security Label
 
 .. code::
 
-    DELETE /v2/victims/securityLabels/<security_label_name>/victims/<victim_ID>
+    DELETE /v2/victims/securityLabels/{security_label_name}/victims/{victim_ID}
 
 Security Labels can be applied to Victims `in the same manner as other
 objects <#working-with-security-labels>`__, allowing access and sharing
@@ -4828,55 +4828,55 @@ View Victim Attributes for a given Victim
 
 .. code::
 
-    GET /v2/victims/<victim_ID>/attributes
+    GET /v2/victims/{victim_ID}/attributes
 
 View a specific Victim Attribute for a given Victim
 
 .. code::
 
-    GET /v2/victims/<victim_ID>/attributes/<attribute_ID>
+    GET /v2/victims/{victim_ID}/attributes/{attribute_ID}
 
 View all Security Labels for a given Victim Attribute
 
 .. code::
 
-    GET /v2/victims/<victim_ID>/attributes/<attribute_ID>/securityLabels
+    GET /v2/victims/{victim_ID}/attributes/{attribute_ID}/securityLabels
 
 View Security Label for a given Victim Attribute
 
 .. code::
 
-    GET /v2/victims/<victim_ID>/attributes/<attribute_ID>/securityLabels/<security_label_name>
+    GET /v2/victims/{victim_ID}/attributes/{attribute_ID}/securityLabels/{security_label_name}
 
 Add an Attribute to a given Victim Attribute
 
 .. code::
 
-    POST /v2/victims/<victim_ID>/attributes
+    POST /v2/victims/{victim_ID}/attributes
 
 Add a Security Label to a given Victim Attribute
 
 .. code::
 
-    POST /v2/victims/<victim_ID>/attributes/<attribute_ID>/securityLabels/<security_label_name>
+    POST /v2/victims/{victim_ID}/attributes/{attribute_ID}/securityLabels/{security_label_name}
 
 Update an Attribute on a given Victim Attribute
 
 .. code::
 
-    PUT /v2/victims/<victim_ID>/attributes/<attribute_ID>
+    PUT /v2/victims/{victim_ID}/attributes/{attribute_ID}
 
 Remove an Attribute from a given Victim Attribute
 
 .. code::
 
-    DELETE /v2/victims/<victim_ID>/attributes/<attribute_ID>
+    DELETE /v2/victims/{victim_ID}/attributes/{attribute_ID}
 
 Remove a Security Label from a given Victim Attribute
 
 .. code::
 
-    DELETE /v2/victims/<victim_ID>/attributes/<attribute_ID>/securityLabels/<security_label_name>
+    DELETE /v2/victims/{victim_ID}/attributes/{attribute_ID}/securityLabels/{security_label_name}
 
 Attributes can be added to Victims `in the same manner as other
 objects <#attributes>`__, allowing enriched context.
@@ -4970,11 +4970,11 @@ specified Victim ID.
 +--------------------------------------------------------------+---------------+---------------------+
 | Paths                                                        | Owner Allowed | Pagination Required |
 +==============================================================+===============+=====================+
-| ``/v2/victims/<ID>/victimAssets``                            | TRUE          | FALSE               |
+| ``/v2/victims/{id}/victimAssets``                            | TRUE          | FALSE               |
 +--------------------------------------------------------------+---------------+---------------------+
-| ``/v2/groups/<group type>/<ID>/victimAssets``                | TRUE          | FALSE               |
+| ``/v2/groups/{group type}/{id}/victimAssets``                | TRUE          | FALSE               |
 +--------------------------------------------------------------+---------------+---------------------+
-| ``/v2/indicators/<indicator type>/<indicator>/victimAssets`` | TRUE          | FALSE               |
+| ``/v2/indicators/{indicator type}/{indicator}/victimAssets`` | TRUE          | FALSE               |
 +--------------------------------------------------------------+---------------+---------------------+
 
 As displayed in the table below, each specific type of Victim Asset can be queried.
@@ -4984,15 +4984,15 @@ As displayed in the table below, each specific type of Victim Asset can be queri
 +---------------------------------------------------+---------------+---------------------+
 | Paths                                             | Owner Allowed | Pagination Required |
 +===================================================+===============+=====================+
-| ``/v2/victims/<ID>/victimAssets/emailAddresses``  | FALSE         | FALSE               |
+| ``/v2/victims/{id}/victimAssets/emailAddresses``  | FALSE         | FALSE               |
 +---------------------------------------------------+---------------+---------------------+
-| ``/v2/victims/<ID>/victimAssets/networkAccounts`` | FALSE         | FALSE               |
+| ``/v2/victims/{id}/victimAssets/networkAccounts`` | FALSE         | FALSE               |
 +---------------------------------------------------+---------------+---------------------+
-| ``/v2/victims/<ID>/victimAssets/phoneNumbers``    | FALSE         | FALSE               |
+| ``/v2/victims/{id}/victimAssets/phoneNumbers``    | FALSE         | FALSE               |
 +---------------------------------------------------+---------------+---------------------+
-| ``/v2/victims/<ID>/victimAssets/socialNetworks``  | FALSE         | FALSE               |
+| ``/v2/victims/{id}/victimAssets/socialNetworks``  | FALSE         | FALSE               |
 +---------------------------------------------------+---------------+---------------------+
-| ``/v2/victims/<ID>/victimAssets/webSites``        | FALSE         | FALSE               |
+| ``/v2/victims/{id}/victimAssets/webSites``        | FALSE         | FALSE               |
 +---------------------------------------------------+---------------+---------------------+
 
 Sample query and response for emailAddress
@@ -5546,7 +5546,7 @@ POST body (for instance using ``curl --data @filename``)
 
 .. code::
 
-    POST /v2/groups/documents/<DOCUMENT_ID>/upload
+    POST /v2/groups/documents/{DOCUMENT_ID}/upload
     Host: api.threatconnect.com
     Content-Type: application/octet-stream
     <raw_document>
@@ -5556,7 +5556,7 @@ the new Document content in the PUT body
 
 .. code::
 
-    PUT /v2/groups/documents/<DOCUMENT_ID>/upload
+    PUT /v2/groups/documents/{DOCUMENT_ID}/upload
     Host: api.threatconnect.com
     Content-Type: application/octet-stream
     <raw_document>
@@ -5568,7 +5568,7 @@ To upload a new Document:
 -  Receive the generated Document ID for the new Document Group from the
    server
 -  Upload the raw Document content using HTTP POST given its ID to
-   ``/v2/groups/documents/<DOCUMENT_ID>/upload`` as an ``octet-stream``
+   ``/v2/groups/documents/{DOCUMENT_ID}/upload`` as an ``octet-stream``
    (A Document may be updated using an HTTP PUT to this same endpoint)
 
 .. note:: Any file type may be uploaded to the system, which are stored and not rendered for security considerations
@@ -6149,7 +6149,7 @@ Addresses, if they number more than the default page size:
 
 .. code::
 
-    /v2/tags/<TAGNAME>/indicators/addresses
+    /v2/tags/{TAGNAME}/indicators/addresses
 
 The query to the right will retrieve the first page IP Addresses within
 a user’s Organization that are tagged with the specified value. Note
@@ -6164,7 +6164,7 @@ the Signatures section:
 
 .. code::
 
-    /v2/indicators/files/<FILE_HASH>/groups/signatures
+    /v2/indicators/files/{FILE_HASH}/groups/signatures
 
 The query to the right will return the first page of Signatures for the
 file specified by FILE\_HASH . Note that an Owner can be specified for
@@ -6194,19 +6194,19 @@ Incident:
 
 .. code::
 
-    /v2/groups/incidents/<INCIDENT_ID>/indicators
+    /v2/groups/incidents/{INCIDENT_ID}/indicators
 
 This will return the Incident's associated file Indicators:
 
 .. code::
 
-    /v2/groups/incidents/<INCIDENT_ID>/indicators/files
+    /v2/groups/incidents/{INCIDENT_ID}/indicators/files
 
 This will return the Incident's associated address Indicators:
 
 .. code::
 
-    /v2/groups/incidents/<INCIDENT_ID>/indicators/addresses
+    /v2/groups/incidents/{INCIDENT_ID}/indicators/addresses
 
 A script can parse out the details returned by the respective services
 to identify new and dangerous Indicators and then format them to provide
@@ -6246,7 +6246,7 @@ to produce the Association:
     "confidence" : 100
     }
 
-    POST /v2/groups/incidents/<NEW_INCIDENT_ID>/indicators/addresses/192.168.0.1
+    POST /v2/groups/incidents/{NEW_INCIDENT_ID}/indicators/addresses/192.168.0.1
 
 The queries below will create an Incident named "Bad November Incident,"
 IP Address Indicator 192.168.0.1, and then associate them.
