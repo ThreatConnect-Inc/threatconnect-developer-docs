@@ -5,7 +5,7 @@
 Building Apps
 =============
 
-The ThreatConnect |trade| TcEx Framework provides the :py:mod:`~tcex.tcex_local.TcExLocal` module which includes functionality for testing and building apps locally.  The TcEx Framework ships with the Python script ``app.py`` which can be copied to the base of you App for an easy interface to the TcExLocal module.
+The ThreatConnect |trade| TcEx Framework provides the :py:mod:`~tcex.tcex_local.TcExLocal` module which includes functionality for testing and building apps locally.  The TcEx Framework ships with the Python script ``app.py`` which can be copied to the base of your App for an easy interface to the TcExLocal module.
 
 The ``__main__.py`` file provided with the TcEx framework should also be copied to your App base directory.  This script will be called when the ThreatConnect Platform executes the App.
 
