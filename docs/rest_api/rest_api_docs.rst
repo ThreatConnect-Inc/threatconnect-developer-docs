@@ -618,7 +618,7 @@ View all Owners that are accessible to the current API User
         }
     }
 
-View all members of an Organization
+View all members of an Organization.
 
 .. code::
 
@@ -654,26 +654,19 @@ View all members of an Organization
       ]
     }
 
-Depending on the member visibility of the Organization, results will
-include the member user's ``name`` and ``id``, or only the member's
-``pseudonym``.
-
-The example below is of a request path with Owner query parameter for
-Indicators Collection:
+The example below is of a request path with Owner query parameter for Indicators Collection:
 
 .. code::
 
     /v2/indicators?owner=Common%20Community
 
-The example below is of a request path with Owner query parameter for
-Host Indicator example.com:
+The example below is of a request path with Owner query parameter for Host Indicator example.com:
 
 .. code::
 
     /v2/indicators/hosts/example.com?owner=Common%20Community
 
-The example below is a request to see available Owners of the specified
-Indicators:
+The example below is a request to see available Owners of the specified Indicators:
 
 .. code::
 
@@ -690,42 +683,6 @@ Specific Threat (Owner implied by ID):
 .. code::
 
     /v2/groups/threats/300
-
-Working with Owners
-
-The Owners service is a simple service that returns a Collection of
-Owners to which the API account has access. These Owners include the
-client’s Organization, as well as any Sources or Communities to which a
-client’s API User has been granted permission.
-
-The ThreatConnect API allows querying data from a user’s Organization,
-or Communities to which the API account has access, as returned from the
-Owners Service. Queries to Collections of Indicators, Groups, and to
-specific Indicators allow the user to specify the Owner for which to
-query data. Specifying the Owner is done by appending an HTTP query
-parameter named "owner" onto the path of appropriate requests, with the
-value equal to the Name from the Owners Service. By default, all
-requests that do not include an Owner are assumed to be for the API
-User’s Organization.
-
-Since Indicators are retrieved by their unique value, which will be the
-same in each Organization and Community, the Owner for both Collections
-and specific Indicator requests must be specified.
-
-Clients who have access to an Indicator they would like to query, but
-who do not know if their Organization or any Community to which they
-have access has the Indicator, can request to see available Owners of
-the specified Indicators, as shown in the example below:
-
-This action will return a list of Owners, if any, that have the
-baddomain host, to which the user has access. When working with Groups,
-such as Incidents and Threats, only specify the Owner when retrieving
-the Collection, as a specific Group is retrieved by a unique ID.
-
-.. note:: With the additional of write functionality to API V2, Owner roles
-have become increasingly important. For example, when creating or
-modifying Resources in a Community or Source, at least a
-Contributor-level access for that ownership Group must be held.
 
 Whoami Service
 ~~~~~~~~~~~~~~
