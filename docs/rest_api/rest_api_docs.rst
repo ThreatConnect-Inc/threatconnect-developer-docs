@@ -91,18 +91,22 @@ JSON Response:
 .. code:: json
 
     {
-     "status": "Success",
-     "data": {
-      "owner": [{
-       "id": 1,
-       "name": "System",
-       "type": "Organization"
-      }, {
-       "id": 26,
-       "name": "Common Community",
-       "type": "Community"
-      }]
-     }
+      "status": "Success",
+      "data": {
+        "resultCount": 2,
+        "owner": [
+          {
+            "id": 0,
+            "name": "Exemplary Organization",
+            "type": "Organization"
+          },
+          {
+            "id": 1,
+            "name": "Common Community",
+            "type": "Community"
+          },
+        ]
+      }
     }
 
 XML Response:
@@ -536,23 +540,33 @@ can be specified for resultLimit is 500.
 Owners Service
 ~~~~~~~~~~~~~~
 
+View all Owners that are accessible to the current API User.
+
+.. code::
+
+    GET /v2/owners
+
 Owners Service JSON Response:
 
 .. code:: json
 
     {
-     "status": "Success",
-     "data": {
-      "owner": [{
-       "id": 1,
-       "name": "System",
-       "type": "Organization"
-      }, {
-       "id": 26,
-       "name": "Common Community",
-       "type": "Community"
-      }]
-     }
+      "status": "Success",
+      "data": {
+        "resultCount": 2,
+        "owner": [
+          {
+            "id": 0,
+            "name": "Exemplary Organization",
+            "type": "Organization"
+          },
+          {
+            "id": 1,
+            "name": "Common Community",
+            "type": "Community"
+          },
+        ]
+      }
     }
 
 Owners Service XML Response:
@@ -575,54 +589,32 @@ Owners Service XML Response:
      </Data>
     </ownersResponse>
 
-View the Owner Organization for the current API User
+View the Owner Organization for the current API User.
 
 .. code::
 
     GET /v2/owners/mine
 
-    Response:
+.. code:: json
+
     {
-        "status": "Success",
-        "data": {
-            "owner": {
-                "id": 665,
-                "name": "Acme Corp",
-                "type": "Organization"
-            }
+      "status": "Success",
+      "data": {
+        "owner": {
+          "id": 0,
+          "name": "My Organization",
+          "type": "Organization"
         }
+      }
     }
 
-View all Owners that are accessible to the current API User
-
-.. code::
-
-    GET /v2/owners
-
-    Response:
-    {
-        "status": "Success",
-        "resultCount": 2,
-        "data": {
-            "owner": 
-            {
-                "id": 665,
-                "name": "Acme Corp",
-                "type": "Organization"
-            },
-            {
-                "id": 666,
-                "name": "Ominous Corp",
-                "type": "Organization"
-            }
-        }
-    }
-
-View all members of an Organization.
+View all members of your organization.
 
 .. code::
 
     GET /v2/owners/mine/members
+
+.. code:: json
 
     Response if Organization allows anonymous membership:
     {
@@ -639,19 +631,21 @@ View all members of an Organization.
 
     Response if Organization does not allow anonymous membership:
     {
-      "anonymous": false, 
       "status": "Success",
-      "resultCount": 2,
-      "members": [
+      "data": {
+        "user": [
           {
-              "name": "test",
-              "id": "50"
-          }, 
+            "userName": "12345678901234567890",
+            "firstName": "Jane",
+            "lastName": "Doe"
+          },
           {
-              "name": "test2",
-              "id": "51"
+            "userName": "12345678901234567891",
+            "firstName": "John",
+            "lastName": "Doe"
           }
-      ]
+        ]
+      }
     }
 
 The example below is of a request path with Owner query parameter for Indicators Collection:
