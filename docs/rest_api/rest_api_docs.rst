@@ -574,19 +574,18 @@ Owners Service XML Response:
 .. code:: xml
 
     <ownersResponse>
-     <Status>Success</Status>
-     <Data xsi:type="ownerListResponseData" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-      <Owner xsi:type="organization">
-       <Id>1</Id>
-       <Name>System</Name>
-       <Type>Organization</Type>
-      </Owner>
-      <Owner xsi:type="community">
-       <Id>26</Id>
-       <Name>Common Community</Name>
-       <Type>Community</Type>
-      </Owner>
-     </Data>
+      <Status>Success</Status>
+      <Data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ownerListResponseData">
+        <ResultCount>2</ResultCount>
+        <Owner xsi:type="organization">
+          <Id>0</Id>
+          <Name>Exemplary Organization</Name>
+        </Owner>
+        <Owner xsi:type="community">
+          <Id>1</Id>
+          <Name>Common Community</Name>
+        </Owner>
+      </Data>
     </ownersResponse>
 
 View the Owner Organization for the current API User.
