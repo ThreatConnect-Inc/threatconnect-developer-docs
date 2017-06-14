@@ -1,0 +1,27 @@
+tcex package
+============
+
+Submodules
+----------
+
+.. toctree::
+
+   tcex.api_logging_handler
+   tcex.argparser
+   tcex.tcex
+   tcex.tcex_data_filter
+   tcex.tcex_job
+   tcex.tcex_local
+   tcex.tcex_playbook
+   tcex.tcex_redis
+   tcex.tcex_request
+   tcex.tcex_resources
+   tcex.tcex_vault
+
+Module contents
+---------------
+
+.. automodule:: tcex
+    :members:
+    :undoc-members:
+    :show-inheritance:
