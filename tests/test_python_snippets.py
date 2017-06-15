@@ -46,7 +46,7 @@ def test_snippets():
         'unexpected_error': 0,
     }
 
-    for path, dirs, files in os.walk("../docs/python/"):
+    for path, dirs, files in os.walk("./docs/python/"):
         for file_ in files:
             code_blocks = None
 

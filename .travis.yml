@@ -11,5 +11,4 @@ install:
   - pip install requests
 script:
   - linkchecker https://docs.threatconnect.com/en/latest/
-  - cd ./tests/
   - pytest
