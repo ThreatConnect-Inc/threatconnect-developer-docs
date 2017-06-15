@@ -1,5 +1,6 @@
 help:
-	@echo "tcex     update tcex documentation"
+	@echo "tcex 	update tcex documentation"
+	@echo "test 	run the tests"
 
 tcex:
 	# This script is to be run in the top directory of the TC Documentation (available here: https://github.com/ThreatConnect-Inc/ThreatConnect_Developer_Docs)
@@ -22,3 +23,8 @@ tcex:
 	mv ./tcex/tcex/* ./tcex;
 	# remove the empty directory
 	rm -rf ./tcex/tcex;
+
+test:
+	# run the tests and remove the __pycache__/ directory created by the tests
+	pytest
+	rm -rf ./tests/__pycache__/
