@@ -1,6 +1,7 @@
 help:
-	@echo "tcex 	update tcex documentation"
-	@echo "test 	run the tests"
+	@echo "tcex 		update tcex documentation"
+	@echo "test 		run the tests"
+	@echo "upstream 	set upstream for a fork of this repo"
 
 tcex:
 	# This script is to be run in the top directory of the TC Documentation (available here: https://github.com/ThreatConnect-Inc/ThreatConnect_Developer_Docs)
@@ -26,5 +27,10 @@ tcex:
 
 test:
 	# run the tests and remove the __pycache__/ directory created by the tests
-	pytest
-	rm -rf ./tests/__pycache__/
+	pytest;
+	rm -rf ./tests/__pycache__/;
+
+upstream:
+	# set upstream for a clone of this repo
+	git remote add upstream https://github.com/ThreatConnect-Inc/ThreatConnect_Developer_Docs.git;
+	git remote -v;
