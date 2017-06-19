@@ -244,6 +244,7 @@ Groups
 * ``/v2/groups/{type}/{id}/indicators/hosts/{indicatorId}``
 * ``/v2/groups/{type}/{id}/indicators/urls``
 * ``/v2/groups/{type}/{id}/indicators/urls/{indicatorId}``
+* ``/v2/groups/{type}/{id}/publish``
 * ``/v2/groups/{type}/{id}/securityLabels``
 * ``/v2/groups/{type}/{id}/securityLabels/{securityLabel}``
 * ``/v2/groups/{type}/{id}/tags``
@@ -261,6 +262,17 @@ Groups
 * ``/v2/groups/{type}/{id}/victimAssets/webSites/{assetId}``
 * ``/v2/groups/{type}/{id}/victims``
 * ``/v2/groups/{type}/{id}/victims/{victimId}``
+
+Adversary Specific Branches
+"""""""""""""""""""""""""""
+
+* ``/v2/groups/adversaries/{id}/adversaryAssets``
+* ``/v2/groups/adversaries/{id}/adversaryAssets/handles``
+* ``/v2/groups/adversaries/{id}/adversaryAssets/phoneNumbers``
+* ``/v2/groups/adversaries/{id}/adversaryAssets/urls``
+* ``/v2/groups/adversaries/{id}/adversaryAssets/handles/{assetId}``
+* ``/v2/groups/adversaries/{id}/adversaryAssets/phoneNumbers/{assetId}``
+* ``/v2/groups/adversaries/{id}/adversaryAssets/urls/{assetId}``
 
 Document Specific Branches
 """"""""""""""""""""""""""
