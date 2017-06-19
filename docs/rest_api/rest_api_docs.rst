@@ -855,7 +855,7 @@ parameters OR’ed):
 
     /v2/indicators?filters=summary%3Dexample.com,dateAdded%3E20151015&orParams=true
 
-To prevent the ThreatConnect API to return an entire result-set, limit
+To prevent the ThreatConnect API from returning an entire result-set, limit
 the scope of the query based on the modifiedSince parameter. When a
 query from the list below is issued with this parameter, it will only
 return Indicators whose lastModified field contains a value on or after
@@ -5589,7 +5589,7 @@ Sample ``signatures`` query output
      strings:\n $a = {6A 40 68 00                  
      30 00 00 6A 14 8D 91}\n $b =                  
      {8D 4D B0 2B C1 83 C0 27 99 6A 4E             
-     59 F7 F9}\n condition:\n                      
+     59 F7 F9}\n condition:\n                       
      $a or $b or $c\n}\""                          
     }                                             
 
@@ -6294,7 +6294,7 @@ POST v2/groups/{groupType}/{id}/publish
   "excludeUnlabeled": false
 }
 
-The ``sourceLabelIds`` key of the request body allows you to provide the name(s) of the Security Label(s) that, if an item has this label, you would like to exclude when publishing. The following example request body would not publish any items (Groups or Indicators) that have the ``TLP Green`` or ``TLP Amber`` Labels:
+The ``sourceLabelIds`` key of the request body allows you to provide the name(s) of the Security Label(s) that, if an item has this label, you would like to exclude when publishing. The following example request body would *not* publish any items (Groups or Indicators) that have the ``TLP Green`` or ``TLP Amber`` Labels:
 
 {
   "sourceLabelIds": [
@@ -6304,7 +6304,7 @@ The ``sourceLabelIds`` key of the request body allows you to provide the name(s)
   "excludeUnlabeled": false
 }
 
-The ``excludeUnlabeled`` key gives you the option to exclude all items that do not have a Security Label. The following example request body would not publish any items that have the ``TLP Green`` or ``TLP Amber`` Labels or any items that do not have a Security Label:
+The ``excludeUnlabeled`` key gives you the option to exclude all items that do not have a Security Label. The following example request body would *not* publish any items that have the ``TLP Green`` or ``TLP Amber`` Labels or any items that do not have a Security Label:
 
 {
   "sourceLabelIds": [
