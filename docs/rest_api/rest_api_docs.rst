@@ -677,6 +677,47 @@ Specific Threat (Owner implied by ID):
 
     /v2/groups/threats/300
 
+ThreatConnect version 5.2 allows you to pass multiple ``owner`` parameters into a GET request to an object’s base branch, as shown in this example:
+ 
+``GET /v2/{itemType}?owner=Example%20Community&owner=Test%20Community``
+ 
+This query will return all instances of the specified ``itemType`` that exist in any of the given owners. For example, the following query would return all IP addresses in the Example Community or the Test Community:
+ 
+``GET /v2/addresses?owner=Example%20Community&owner=Test%20Community``
+ 
+The following query will return all Adversaries in the Example Community or the Test Community: 
+ 
+``GET /v2/adversaries?owner=Example%20Community&owner=Test%20Community``
+ 
+The JSON response from the foregoing query above is as follows:
+ 
+.. code-block:: json
+
+    {
+      "status": "Success",
+      "data": {
+        "resultCount": 2,
+        "group": [
+          {
+            "id": 123456,
+            "name": "njRAT",
+            "type": "Adversary",
+            "ownerName": "Example Community",
+            "dateAdded": "2017-06-16T18:52:50Z",
+            "webLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=123456"
+          },
+          {
+            "id": 654321,
+            "name": "njRAT",
+            "type": "Adversary",
+            "ownerName": "Test Community",
+            "dateAdded": "2017-06-16T18:51:57Z",
+            "webLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=654321"
+          }
+        ]
+      }
+    }
+
 Whoami Service
 ~~~~~~~~~~~~~~
 
