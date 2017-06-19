@@ -6048,6 +6048,43 @@ Partial failures will have an error file with a response having a
 ‘reason text’, which includes Tag, Attribute, or Indicator errors (fail
 on first).
 
+Publish Endpoint
+~~~~~~~~~~~~~~~~
+
+As of ThreatConnect version 5.2, it is possible to publish intelligence for a specific Group. The general format for this request is as follows:
+
+POST v2/groups/{groupType}/{id}/publish
+{
+  "sourceLabelIds": [],
+  "excludeUnlabeled": false
+}
+
+The ``sourceLabelIds`` key of the request body allows you to provide the name(s) of the Security Label(s) that, if an item has this label, you would like to exclude when publishing. The following example request body would not publish any items (Groups or Indicators) that have the ``TLP Green`` or ``TLP Amber`` Labels:
+
+{
+  "sourceLabelIds": [
+    "TLP Green",
+    "TLP Amber"
+  ],
+  "excludeUnlabeled": false
+}
+
+The ``excludeUnlabeled`` key gives you the option to exclude all items that do not have a Security Label. The following example request body would not publish any items that have the ``TLP Green`` or ``TLP Amber`` Labels or any items that do not have a Security Label:
+
+{
+  "sourceLabelIds": [
+    "TLP Green",
+    "TLP Amber"
+  ],
+  "excludeUnlabeled": true
+}
+
+The JSON response to any of these queries, assuming the query is successful, is as follows:
+
+{
+  "status": "Success"
+}
+
 Responses
 ~~~~~~~~~
 
