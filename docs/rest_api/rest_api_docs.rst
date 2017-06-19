@@ -18,8 +18,7 @@ pricing.
 Using the API
 -------------
 
-The public ThreatConnect API is accessible at
-``https://api.threatconnect.com/v2/``.
+The public ThreatConnect API is accessible at ``https://api.threatconnect.com/``.
 
 .. note:: If you are working with the ThreatConnect **sandbox**, the api path is: ``https://sandbox.threatconnect.com/api/``.
 
@@ -690,19 +689,19 @@ Specific Threat (Owner implied by ID):
     /v2/groups/threats/300
 
 ThreatConnect version 5.2 allows you to pass multiple ``owner`` parameters into a GET request to an object’s base branch, as shown in this example:
- 
+
 ``GET /v2/{itemType}?owner=Example%20Community&owner=Test%20Community``
- 
+
 This query will return all instances of the specified ``itemType`` that exist in any of the given owners. For example, the following query would return all IP addresses in the Example Community or the Test Community:
- 
+
 ``GET /v2/addresses?owner=Example%20Community&owner=Test%20Community``
- 
+
 The following query will return all Adversaries in the Example Community or the Test Community: 
- 
+
 ``GET /v2/adversaries?owner=Example%20Community&owner=Test%20Community``
- 
+
 The JSON response from the foregoing query above is as follows:
- 
+
 .. code-block:: json
 
     {
@@ -5888,21 +5887,21 @@ Updating Adversary Assets
 """""""""""""""""""""""""
 
 In ThreatConnect version 5.2, it is possible to update Adversary Assets. The general format for this request is as follows:
- 
+
 PUT /v2/groups/adversaries/{id}/adversaryAssets/{assetType (plural)}/{assetId}
 {
   "{assetType (singular)}": "{updatedAssetValue}"
 }
- 
+
 In this format, the possible assetTypes are ``handles``, ``phoneNumbers``, and ``urls``. The following example would update the handle with id 16 to "Mr. Yang":
- 
+
 PUT /v2/groups/adversaries/{id}/adversaryAssets/handles/16
 {
   "handle": "Mr. Yang"
 }
- 
+
 This request should return the following JSON response:
- 
+
 {
   "status": "Success",
   "data": {
@@ -5941,15 +5940,15 @@ Deleting Adversary Assets
 """""""""""""""""""""""""
 
 In ThreatConnect version 5.2, it is possible to delete Adversary Assets. The general format for this request is as follows:
- 
+
 DELETE /v2/groups/adversaries/{id}/adversaryAssets/{assetType (plural)}/{assetId}
- 
+
 In this format, the possible assetTypes are ``handles``, ``phoneNumbers``, and ``urls``. The following example would delete the Adversary Handle Asset with an id of 16:
- 
+
 DELETE /v2/groups/adversaries/{id}/adversaryAssets/handles/16
- 
+
 This request should return the following JSON response:
- 
+
 {
   "status": "Success"
 }
