@@ -4429,6 +4429,43 @@ a specific Security Label for both a user’s Organization, as well as any
 Communities to which a user has access, can be found using the Security
 Label Service.
 
+As of ThreatConnect version 5.2, all Security Labels have a ``color`` field included in the response, providing the hexadecimal code used to represent the color of each Security Label. The JSON response from a query to ``GET /v2/securityLabels/`` is as follows:
+
+.. code-block:: json
+
+    {
+      "status": "Success",
+      "data": {
+        "resultCount": 4,
+        "securityLabel": [
+          {
+            "name": "TLP Amber",
+            "description": "Recipients may only share TLP: AMBER information with members of their own organization who need to know, and only as widely as necessary to act on that information.",
+            "dateAdded": "2014-09-24T15:34:51Z",
+            "color": "E6EA3C"
+          },
+          {
+            "name": "TLP Green",
+            "description": "Recipients may share TLP: GREEN information with peers and partner organizations within their sector or community, but not via publicly accessible channels.",
+            "dateAdded": "2014-09-24T15:34:37Z",
+            "color": "2CD924"
+          },
+          {
+            "name": "TLP Red",
+            "description": "Recipients may not share TLP: RED information with any parties outside of the specific exchange, meeting, or conversation in which it is originally disclosed.",
+            "dateAdded": "2014-09-24T15:35:27Z",
+            "color": "FC1727"
+          },
+          {
+            "name": "TLP White",
+            "description": "TLP: WHITE information may be distributed without restriction, subject to copyright controls.",
+            "dateAdded": "2014-09-24T15:34:12Z",
+            "color": "FFFFFF"
+          }
+        ]
+      }
+    }
+
 Security Labels Resource Type
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
