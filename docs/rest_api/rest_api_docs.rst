@@ -3587,6 +3587,54 @@ Adversary Resource Type XML Response:
 For each Adversary, its Attributes, associated Indicators, Security
 Labels, Victims, Victim Assets, and Tags can be retrieved.
 
+Adversary Assets
+""""""""""""""""
+
+In ThreatConnect version 5.2 it is possible to retrieve Adversary Assets. The following queries show the available branches related to Adversary Assets:
+
+``GET /v2/groups/adversaries/{id}/adversaryAssets``
+``GET /v2/groups/adversaries/{id}/adversaryAssets/handles``
+``GET /v2/groups/adversaries/{id}/adversaryAssets/phoneNumbers``
+``GET /v2/groups/adversaries/{id}/adversaryAssets/urls``
+``GET /v2/groups/adversaries/{id}/adversaryAssets/handles/{assetId}``
+``GET /v2/groups/adversaries/{id}/adversaryAssets/phoneNumbers/{assetId}``
+``GET /v2/groups/adversaries/{id}/adversaryAssets/urls/{assetId}``
+
+A request to ``GET /v2/groups/adversaries/{id}/adversaryAssets`` should return the following JSON response:
+
+{
+  "status": "Success",
+  "data": {
+    "resultCount": 4,
+    "bucketAsset": [
+      {
+        "id": 12,
+        "name": "Half-blood Prince",
+        "type": "Handle",
+        "webLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=123456"
+      },
+      {
+        "id": 15,
+        "name": "18008675309",
+        "type": "PhoneNumber",
+        "webLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=123456"
+      },
+      {
+        "id": 13,
+        "name": "18009876543",
+        "type": "PhoneNumber",
+        "webLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=123456"
+      },
+      {
+        "id": 14,
+        "name": "htpp://facebook.com/HalfBloodPrince",
+        "type": "URL",
+        "webLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=123456"
+      }
+    ]
+  }
+}
+
 Emails Resource Type
 ^^^^^^^^^^^^^^^^^^^^
 
@@ -5371,6 +5419,40 @@ Sample ``adversaries`` query output
      "name" : "Baron von Badguy"                     
      }                                             
 
+Adding Adversary Assets
+"""""""""""""""""""""""
+
+In ThreatConnect version 5.2, it is possible to create Adversary Assets. The general format for this request is as follows:
+
+POST /v2/groups/adversaries/{id}/adversaryAssets/{assetType (plural)}
+{
+  "{assetType (singular)}": "{assetValue}"
+}
+
+In this format, the possible assetTypes are ``handles``, ``phoneNumbers``, and ``urls``. The following example would add the handle "Pierre Despereaux" to the Adversary with the given id:
+
+POST /v2/groups/adversaries/{id}/adversaryAssets/handles
+{
+  "handle": "Pierre Despereaux"
+}
+
+This request should return the following JSON response:
+
+{
+  "status": "Success",
+  "data": {
+    "adversaryHandle": {
+      "id": 16,
+      "type": "Handle",
+      "webLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=123456",
+      "handle": "Pierre Despereaux"
+    }
+  }
+}
+
+Documents
+"""""""""
+
 Sample ``documents`` query output
 
 .. code:: json
@@ -5724,6 +5806,37 @@ submissions for Indicators and Groups . A Document’s content can be
 updated using a PUT request and the same format used during the initial
 upload, as described in the Documents section.
 
+Updating Adversary Assets
+"""""""""""""""""""""""""
+
+In ThreatConnect version 5.2, it is possible to update Adversary Assets. The general format for this request is as follows:
+ 
+PUT /v2/groups/adversaries/{id}/adversaryAssets/{assetType (plural)}/{assetId}
+{
+  "{assetType (singular)}": "{updatedAssetValue}"
+}
+ 
+In this format, the possible assetTypes are ``handles``, ``phoneNumbers``, and ``urls``. The following example would update the handle with id 16 to "Mr. Yang":
+ 
+PUT /v2/groups/adversaries/{id}/adversaryAssets/handles/16
+{
+  "handle": "Mr. Yang"
+}
+ 
+This request should return the following JSON response:
+ 
+{
+  "status": "Success",
+  "data": {
+    "adversaryHandle": {
+      "id": 16,
+      "type": "Handle",
+      "webLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=123456",
+      "handle": "Mr. Yang"
+    }
+  }
+}
+
 Deleting Entities
 ^^^^^^^^^^^^^^^^^
 
@@ -5746,7 +5859,22 @@ Entities can be deleted using the HTTP DELETE method. With proper
 permissions, this allows for the programmatic removal of data from
 ThreatConnect just as if it were done in the web client.
 
-.. note:: It is important to capture and use the ID to specify a Group or Attribute.
+Deleting Adversary Assets
+"""""""""""""""""""""""""
+
+In ThreatConnect version 5.2, it is possible to delete Adversary Assets. The general format for this request is as follows:
+ 
+DELETE /v2/groups/adversaries/{id}/adversaryAssets/{assetType (plural)}/{assetId}
+ 
+In this format, the possible assetTypes are ``handles``, ``phoneNumbers``, and ``urls``. The following example would delete the Adversary Handle Asset with an id of 16:
+ 
+DELETE /v2/groups/adversaries/{id}/adversaryAssets/handles/16
+ 
+This request should return the following JSON response:
+ 
+{
+  "status": "Success"
+}
 
 Creating Associations
 ^^^^^^^^^^^^^^^^^^^^^
