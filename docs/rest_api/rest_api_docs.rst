@@ -1284,6 +1284,35 @@ Indicator type to the end of the query above, e.g.,
 ``/v2/types/indicatorTypes/{indicator_type}``. The output on the right
 shows the Indicator types currently in the ThreatConnect Cloud.
 
+In ThreatConnect version 5.2+, it is possible to retrieve the regular expression(s) (regex(es)) used to detect and validate an Indicator of a given type. These regexes can be retrieved by adding the ``includeAdditional=true`` parameter as follows:
+
+``GET /v2/types/indicatorTypes/{indicatorType}?includeAdditional=true``
+
+The following example will return the regexes used to validate IP Address Indicators:
+
+``GET /v2/types/indicatorTypes/address?includeAdditional=true``
+
+The JSON response from this query is as follows:
+
+.. code-block:: json
+
+    {
+      "status": "Success",
+      "data": {
+        "indicatorType": {
+          "name": "Address",
+          "custom": "false",
+          "parsable": "true",
+          "apiBranch": "addresses",
+          "apiEntity": "address",
+          "regexes": [
+            "{ip.v4 address regex}",
+            "{ip.v6 address regex}"
+          ]
+        }
+      }
+    }
+
 Hosts Resource Type
 ^^^^^^^^^^^^^^^^^^^
 
