@@ -64,6 +64,9 @@ Assuming that you have installed the ThreatConnect Python SDK and have created a
 2. Copy the configuration file from the previous, **Configuration** step into the new folder and name it ``tc.conf``.
 3. Copy and paste the following code into a file and save it in the new folder with the name ``tc_test.py``. This code will print all of the owners in ThreatConnect which you have permission to see.
 
+.. 
+    no-test
+
 .. code-block:: python
 
     try:
