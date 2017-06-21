@@ -2,6 +2,8 @@
 
 from recommonmark.parser import CommonMarkParser
 
+from tcex import __version__
+
 # Add the path to the tcex code so the module documentation can be created
 import os
 import sys
@@ -28,6 +30,12 @@ napoleon_use_ivar = False
 # napoleon_use_ivar = True
 napoleon_use_param = True
 napoleon_use_rtype = True
+
+# set version and release values used in tcex documentation
+# The short X.Y version.
+version = __version__
+# The full version, including alpha/beta/rc tags.
+release = __version__
 
 # viewcode module - http://www.sphinx-doc.org/en/1.5.1/ext/viewcode.html
 viewcode_import = True
