@@ -34,9 +34,10 @@ uptcex:
 	rm -rf ./tcex/tcex;
 
 test:
-	# run the tests and remove the __pycache__/ directory created by the tests
+	# run the tests and remove the junk created by the tests
 	pytest;
 	rm -rf ./tests/__pycache__/;
+	rm -rf ./test/test.py;
 
 upstream:
 	# set upstream for a clone of this repo
