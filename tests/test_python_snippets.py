@@ -4,17 +4,17 @@ import re
 import subprocess
 import sys
 
-replacement_config = """
-try:
+replacement_config = """try:
     import ConfigParser
 except:
     import configparser as ConfigParser
+import os
 import sys
 
 from threatconnect import ThreatConnect
 
 config = ConfigParser.RawConfigParser()
-config.read("./tc.conf")
+config.read(os.path.abspath(os.path.join(os.path.dirname(__file__), './tc.conf')))
 
 try:
     api_access_id = config.get('threatconnect', 'api_access_id')
