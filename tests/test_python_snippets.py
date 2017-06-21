@@ -25,7 +25,7 @@ except ConfigParser.NoOptionError:
     print('Could not read configuration file.')
     sys.exit(1)"""
 
-default_file = "./test.py"
+default_file = os.path.abspath(os.path.join(os.path.dirname(__file__), './test.py'))
 
 
 def get_code_snippets(file_text):
