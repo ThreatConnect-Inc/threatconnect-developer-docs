@@ -81,7 +81,7 @@ def test_snippets():
                     if 'No handlers could be found for logger "threatconnect"' in error_output or "Access Denied" in error_output:
                         counter['expected_error'] += 1
                     else:
-                        print("\n\n{}:\n{}".format(os.path.join(path, file_), error_output))
+                        print("\nUNEXPECTED ERROR in {}:\n{}".format(os.path.join(path, file_), error_output))
                         counter['unexpected_error'] += 1
 
     # report the damage
