@@ -33,9 +33,7 @@ napoleon_use_rtype = True
 
 # set version and release values used in tcex documentation
 # The short X.Y version.
-version = __version__
-# The full version, including alpha/beta/rc tags.
-release = __version__
+tcex_version = __version__
 
 # viewcode module - http://www.sphinx-doc.org/en/1.5.1/ext/viewcode.html
 viewcode_import = True
