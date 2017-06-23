@@ -31,9 +31,10 @@ napoleon_use_ivar = False
 napoleon_use_param = True
 napoleon_use_rtype = True
 
-# set version and release values used in tcex documentation
-# The short X.Y version.
-tcex_version = __version__
+# epilog that gets passed to every page to provide variables
+rst_epilog = """
+.. |tcex_version| replace:: {}
+""".format(__version__)
 
 # viewcode module - http://www.sphinx-doc.org/en/1.5.1/ext/viewcode.html
 viewcode_import = True
