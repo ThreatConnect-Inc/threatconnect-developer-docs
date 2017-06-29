@@ -1,5 +1,6 @@
 help:
 	@echo "uptcex 		update tcex documentation"
+	@echo "clean 		clean unneeded files"
 	@echo "test 		run the tests"
 	@echo "upstream 	set upstream for a fork of this repo"
 
@@ -33,11 +34,18 @@ uptcex:
 	# remove the empty directory
 	rm -rf ./tcex/tcex;
 
+clean:
+	# This script is to be run in the top directory of the TC Documentation (available here: https://github.com/ThreatConnect-Inc/ThreatConnect_Developer_Docs)
+
+	rm -rf ./.cache/
+	rm -rf ./tests/__pycache__/
+	rm -rf ./tests/test.py
+
 test:
 	# run the tests and remove the junk created by the tests
 	pytest;
 	rm -rf ./tests/__pycache__/;
-	rm -rf ./test/test.py;
+	rm -rf ./tests/test.py;
 
 upstream:
 	# set upstream for a clone of this repo
