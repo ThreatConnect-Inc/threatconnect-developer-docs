@@ -191,42 +191,44 @@ Example Java App
 
 Once retrieved, the adversary objects will be printed to the console.
 
-.. code:: java
+.. code-block:: java
+    :linenos:
+    :lineno-start: 1
 
-      1 import com.cyber2.api.lib.client.reader.AbstractGroupReaderAdapter;
-      2 import com.cyber2.api.lib.client.reader.ReaderAdapterFactory;
-      3 import com.cyber2.api.lib.conn.Connection;
-      4 import com.cyber2.api.lib.exception.FailedResponseException;
-      5 import com.cyber2.api.lib.server.entity.Adversary;
-      6 import java.io.IOException;
-      7 import java.util.List;
-      8 
-      9 public class GroupExample {
-     10 
-     11     public static void main(String[] args) {
-     12     
-     13         Connection conn = null;
-     14         
-     15         try {
-     16             
-     17             System.getProperties().setProperty("threatconnect.api.config", "/config.properties");
-     18             conn = new Connection();
-     19             
-     20             AbstractGroupReaderAdapter<Adversary> reader = ReaderAdapterFactory.createAdversaryGroupReader(conn);
-     21             List<Adversary> data = reader.getAll("System");
-     22             for (Adversary g : data ) {
-     23                 System.out.println( "Adversary: " + g.toString() );
-     24             }   
-     25             
-     26         } catch (IOException | FailedResponseException ex) {
-     27             System.err.println("Error: " + ex);
-     28         } finally {
-     29             if ( conn != null )     conn.disconnect();
-     30         }   
-     31         
-     32     }   
-     33     
-     34 }   
+    import com.cyber2.api.lib.client.reader.AbstractGroupReaderAdapter;
+    import com.cyber2.api.lib.client.reader.ReaderAdapterFactory;
+    import com.cyber2.api.lib.conn.Connection;
+    import com.cyber2.api.lib.exception.FailedResponseException;
+    import com.cyber2.api.lib.server.entity.Adversary;
+    import java.io.IOException;
+    import java.util.List;
+    
+    public class GroupExample {
+    
+        public static void main(String[] args) {
+        
+            Connection conn = null;
+            
+            try {
+                
+                System.getProperties().setProperty("threatconnect.api.config", "/config.properties");
+                conn = new Connection();
+                
+                AbstractGroupReaderAdapter<Adversary> reader = ReaderAdapterFactory.createAdversaryGroupReader(conn);
+                List<Adversary> data = reader.getAll("System");
+                for (Adversary g : data ) {
+                    System.out.println( "Adversary: " + g.toString() );
+                }   
+                
+            } catch (IOException | FailedResponseException ex) {
+                System.err.println("Error: " + ex);
+            } finally {
+                if ( conn != null )     conn.disconnect();
+            }   
+            
+        }   
+        
+    }   
 
 To write the first program using the Java SDK for the ThreatConnect API,
 an Adversary reader that pulls all adversaries belonging to the "System"
@@ -527,7 +529,7 @@ of the ReaderAdapterFactory:
 Reader Factory Example
 ~~~~~~~~~~~~~~~~~~~~~~
 
-.. code:: java
+.. code-block:: java
 
       1 import com.threatconnect.sdk.client.reader.AbstractGroupReaderAdapter;
       2 import com.threatconnect.sdk.client.reader.ReaderAdapterFactory;
@@ -1247,24 +1249,25 @@ Reader IP Address and Tag Example
 The following example uses the Reader Package to retrieve associated
 Tags from our IP address Indicators:
 
-.. code:: java
+.. code-block:: java
+    :linenos:
+    :lineno-start: 1
 
-      1 
-      2     private static void doGetAssociatedTags(Connection conn) throws IOException, FailedResponseException {
-      3         AbstractIndicatorReaderAdapter reader = ReaderAdapterFactory.createAddressIndicatorReader(conn);
-      4         IterableResponse<Address> data = reader.getAll();
-      5         for (Address address : data) {
-      6             System.out.printf("IP Address: %20s", address.getIp() );
-      7 
-      8             IterableResponse<Tag> associatedTags = reader.getAssociatedTags( address.getIp() );
-      9             System.out.printf("\tAssociated Tag:");
-     10             for(Tag tag : associatedTags) {
-     11                 System.out.printf("%20s", tag.getName() );
-     12             }
-     13             System.out.println();
-     14         }
-     15     }
-     16 
+    private static void doGetAssociatedTags(Connection conn) throws IOException, FailedResponseException {
+        AbstractIndicatorReaderAdapter reader = ReaderAdapterFactory.createAddressIndicatorReader(conn);
+        IterableResponse<Address> data = reader.getAll();
+        for (Address address : data) {
+            System.out.printf("IP Address: %20s", address.getIp() );
+
+            IterableResponse<Tag> associatedTags = reader.getAssociatedTags( address.getIp() );
+            System.out.printf("\tAssociated Tag:");
+            for(Tag tag : associatedTags) {
+                System.out.printf("%20s", tag.getName() );
+            }
+            System.out.println();
+        }
+    }
+
 
 +-------+-------------------------------------------------------------------+
 | Line  | Description                                                       |
@@ -1520,8 +1523,7 @@ Writer Create Example
 
 The following is a simple Writer Create Example:
 
-.. code:: java
-
+.. code-block:: java
 
       3 import com.threatconnect.sdk.client.writer.AbstractGroupWriterAdapter;
       4 import com.threatconnect.sdk.client.writer.WriterAdapterFactory;
@@ -2463,8 +2465,7 @@ Writer Examples
 
 Writer Delete Example:
 
-.. code:: java
-
+.. code-block:: java
 
       2 
       3 import com.threatconnect.sdk.client.reader.AbstractGroupReaderAdapter;
@@ -2548,8 +2549,7 @@ Writer Update Example
 
 Writer Update Example:
 
-.. code:: java
-
+.. code-block:: java
 
       2 
       3 import com.threatconnect.sdk.client.reader.AbstractGroupReaderAdapter;
@@ -2624,7 +2624,7 @@ Writer Add Attribute Example
 
 Writer Add Attribute Example
 
-.. code:: java
+.. code-block:: java
 
       1 
       2     private static Email createTestEmail() {
@@ -2710,7 +2710,7 @@ Writer Associate Indicator Example
 
 Writer Associate Indicator Example
 
-.. code:: java
+.. code-block:: java
 
       1 
       2     private static Email createTestEmail() {
@@ -2812,8 +2812,7 @@ Writer Associate Group Example
 
 Writer Associate Group Example
 
-.. code:: java
-
+.. code-block:: java
 
       2     private static Email createTestEmail() {
       3         Email email = new Email();
@@ -2910,8 +2909,7 @@ Writer Associate Tag Example
 
 Writer Associate Tag Example
 
-.. code:: java
-
+.. code-block:: java
 
       2     private static Email createTestEmail() {
       3         Email email = new Email();
@@ -3008,9 +3006,8 @@ Writer Associate Victim Example
 
 Writer Associate Victim Example
 
-.. code:: java
+.. code-block:: java
 
-     
      59 
      60     private static Victim createTestVictim() {
      61         Victim victim = new Victim();
@@ -3092,69 +3089,70 @@ Writer Remove Association Example
 
 Writer Remove Association Example
 
-.. code:: java
+.. code-block:: java
+    :linenos:
+    :lineno-start: 243
 
+    private static void doRemoveAssociatedTag(Connection conn) {
 
-    243     private static void doRemoveAssociatedTag(Connection conn) {
-    244 
-    245         AbstractGroupWriterAdapter<Email> gWriter= WriterAdapterFactory.createEmailGroupWriter(conn);
-    246         TagWriterAdapter tWriter = WriterAdapterFactory.createTagWriter(conn);
-    247 
-    248         Email email = createTestEmail();
-    249         Tag tag = createTestTag();
-    250 
-    251         try {
-    252             // -----------------------------------------
-    253             // Create Email and Tag 
-    254             // -----------------------------------------
-    255             ApiEntitySingleResponse<Email,?> createResponseEmail = gWriter.create(email);
-    256             tWriter.delete(tag.getName()); // delete if it exists
-    257             ApiEntitySingleResponse<Tag, ?> createResponseTag = tWriter.create(tag);
-    258 
-    259             if (createResponseEmail.isSuccess() && createResponseTag.isSuccess() ) {
-    260                 System.out.println("Created Email: " + createResponseEmail.getItem());
-    261                 System.out.println("Created Tag: " + createResponseTag.getItem());
-    262 
-    263                 // -----------------------------------------
-    264                 // Associate Tag
-    265                 // -----------------------------------------
-    266                 ApiEntitySingleResponse assocResponse
-    267                     = gWriter.associateTag(createResponseEmail.getItem().getId()
-    268                                          , createResponseTag.getItem().getName() );
-    269 
-    270                 if ( assocResponse.isSuccess() ) {
-    271                     System.out.println("\tAssociated Tag: " + createResponseTag.getItem().getName() );
-    272 
-    273                     // -----------------------------------------
-    274                     // Delete Association
-    275                     // -----------------------------------------
-    276                     ApiEntitySingleResponse dissociateResponse
-    277                         = gWriter.dissociateTag(createResponseEmail.getItem()
-    278                                       .getId(), createResponseTag.getItem().getName() );
-    279 
-    280                     if ( dissociateResponse.isSuccess() ) {
-    281                         System.out.println("\tDeleted Associated Tag: " + createResponseTag.getItem().getName() );
-    282                     } else {
-    283                         System.err.println("Failed to delete Associated Tag: "+ dissociateResponse.getMessage());
-    284                     }
-    285 
-    286                 } else {
-    287                     System.err.println("Failed to Associate Tag: " + assocResponse.getMessage());
-    288                 }
-    289 
-    290             } else {
-    291                 if ( !createResponseEmail.isSuccess() ) {
-    292                     System.err.println("Failed to Create Email: " + createResponseEmail.getMessage());
-    293                 }
-    294                 if ( !createResponseTag.isSuccess() ) {
-    295                     System.err.println("Failed to Create Tag: " + createResponseTag.getMessage());
-    296                 }
-    297             }
-    298 
-    299         } catch (IOException | FailedResponseException ex) {
-    300             System.err.println("Error: " + ex.toString());
-    301         }
-    302     }
+        AbstractGroupWriterAdapter<Email> gWriter= WriterAdapterFactory.createEmailGroupWriter(conn);
+        TagWriterAdapter tWriter = WriterAdapterFactory.createTagWriter(conn);
+
+        Email email = createTestEmail();
+        Tag tag = createTestTag();
+
+        try {
+            // -----------------------------------------
+            // Create Email and Tag 
+            // -----------------------------------------
+            ApiEntitySingleResponse<Email,?> createResponseEmail = gWriter.create(email);
+            tWriter.delete(tag.getName()); // delete if it exists
+            ApiEntitySingleResponse<Tag, ?> createResponseTag = tWriter.create(tag);
+
+            if (createResponseEmail.isSuccess() && createResponseTag.isSuccess() ) {
+                System.out.println("Created Email: " + createResponseEmail.getItem());
+                System.out.println("Created Tag: " + createResponseTag.getItem());
+
+                // -----------------------------------------
+                // Associate Tag
+                // -----------------------------------------
+                ApiEntitySingleResponse assocResponse
+                    = gWriter.associateTag(createResponseEmail.getItem().getId()
+                                         , createResponseTag.getItem().getName() );
+
+                if ( assocResponse.isSuccess() ) {
+                    System.out.println("\tAssociated Tag: " + createResponseTag.getItem().getName() );
+
+                    // -----------------------------------------
+                    // Delete Association
+                    // -----------------------------------------
+                    ApiEntitySingleResponse dissociateResponse
+                        = gWriter.dissociateTag(createResponseEmail.getItem()
+                                      .getId(), createResponseTag.getItem().getName() );
+
+                    if ( dissociateResponse.isSuccess() ) {
+                        System.out.println("\tDeleted Associated Tag: " + createResponseTag.getItem().getName() );
+                    } else {
+                        System.err.println("Failed to delete Associated Tag: "+ dissociateResponse.getMessage());
+                    }
+
+                } else {
+                    System.err.println("Failed to Associate Tag: " + assocResponse.getMessage());
+                }
+
+            } else {
+                if ( !createResponseEmail.isSuccess() ) {
+                    System.err.println("Failed to Create Email: " + createResponseEmail.getMessage());
+                }
+                if ( !createResponseTag.isSuccess() ) {
+                    System.err.println("Failed to Create Tag: " + createResponseTag.getMessage());
+                }
+            }
+
+        } catch (IOException | FailedResponseException ex) {
+            System.err.println("Error: " + ex.toString());
+        }
+    }
 
 Code Sample Description
 
