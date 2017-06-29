@@ -67,3 +67,10 @@ html_show_sphinx = False
 # If true, "(C) Copyright ..." is shown in the HTML footer. Default is True.
 #
 html_show_copyright = True
+
+# Set the path to the static files
+html_static_path = ['_static']
+
+def setup(app):
+    """Add the stylesheet which fixes the problems with the problem with line numbers."""
+    app.add_stylesheet('css/custom.css')

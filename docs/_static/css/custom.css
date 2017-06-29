@@ -1,0 +1,11 @@
+/* Temporary fix for https://github.com/rtfd/sphinx_rtd_theme/issues/417 */
+
+.rst-content .highlight>pre {
+    line-height: 18px;
+}
+
+.rubric {
+    font-size: 125%;
+    font-weight: 700;
+    font-family: "Roboto Slab","ff-tisa-web-pro","Georgia",Arial,sans-serif;
+}
