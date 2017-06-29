@@ -36,12 +36,12 @@ This section explains how to work with ThreatConnect Bulk Indicators.
 +---------------------------------------+------------+------------------------------------------------+
 
 Bulk Download Example
-^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
 
 The ThreatConnect Python SDK has functionality to download Indicators from the ThreatConnect platform in bulk. The code snippet below demonstrates this capability
 
 .. code-block:: python
-    :emphasize-lines: 1,9-10,28-29
+    :emphasize-lines: 1,9-10,27-28
 
     from threatconnect.Config.FilterOperator import FilterOperator
 
