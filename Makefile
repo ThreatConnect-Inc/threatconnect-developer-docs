@@ -2,7 +2,7 @@ help:
 	@echo "uptcex 		update tcex documentation"
 	@echo "clean 		clean unneeded files"
 	@echo "test 		run the tests"
-	@echo "upstream 	set upstream for a fork of this repo"
+	@echo "upstream 	set upstream to https://github.com/ThreatConnect-Inc/ThreatConnect_Developer_Docs.git (useful when working on a fork of the TC docs)"
 
 uptcex:
 	# This script is to be run in the top directory of the TC Documentation (available here: https://github.com/ThreatConnect-Inc/ThreatConnect_Developer_Docs)
