@@ -3,7 +3,9 @@ REST API
 
 The Application Programming Interface (API) allows users to access data
 in their Organizations and Communities with REST-ful queries to HTTP
-endpoints
+endpoints.
+
+.. note:: We are in the process of updating the API documentation to make it (1) easier for you to use and (2) more up to date. We apologize for any inconvenience in the mean time.
 
 Creating an API Key
 -------------------
