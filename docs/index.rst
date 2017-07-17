@@ -13,7 +13,7 @@ Demo <https://www.threatconnect.com/request-a-demo/>`__
    :maxdepth: 3
 
    getting_started
-   rest_api/rest_api_docs
+   rest_api/rest_api
    python/python_sdk.rst
    java/java_sdk
    javascript/javascript_sdk
