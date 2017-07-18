@@ -50,7 +50,7 @@ To retrieve multiple groups of a certain type, use a query in the following form
 
     GET /v2/groups/{groupType}
 
-The groupType can be any one of the available group types:
+The ``{groupType}`` can be any one of the available group types:
 
 - ``adversaries``
 - ``campaigns``

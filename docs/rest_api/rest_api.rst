@@ -17,5 +17,3 @@ REST API
 .. include:: tasks/tasks.rst
 
 .. include:: victims/victims.rst
-
-.. include:: advanced.rst
