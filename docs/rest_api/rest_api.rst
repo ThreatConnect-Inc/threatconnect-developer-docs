@@ -6,11 +6,11 @@ REST API
 
 .. include:: overview.rst
 
+.. include:: owners/owners.rst
+
 .. include:: groups/groups.rst
 
 .. include:: indicators/indicators.rst
-
-.. include:: owners/owners.rst
 
 .. include:: tags/tags.rst
 

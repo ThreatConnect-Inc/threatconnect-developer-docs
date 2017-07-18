@@ -1,5 +1,5 @@
-Retrieving Owner Metrics
-------------------------
+Retrieve Owner Metrics
+----------------------
 
 To get some metrics for an owner, you can use the metrics branch as formatted below:
 
