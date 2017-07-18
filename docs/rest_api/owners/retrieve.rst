@@ -1,17 +1,14 @@
 Retrieve Owners
 ---------------
 
+Retrieving Multiple Owners
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 To retrieve a list of all available owners, use the following query:
 
 .. code::
 
-    /v2/owners
-
-Here is an example query:
-
-.. code::
-
-    source
+    GET /v2/owners
 
 JSON Response:
 
@@ -23,17 +20,114 @@ JSON Response:
         "resultCount": 2,
         "owner": [
           {
-            "id": 0,
-            "name": "Exemplary Organization",
+            "id": 1,
+            "name": "Example Organization",
             "type": "Organization"
           },
           {
-            "id": 1,
+            "id": 2,
             "name": "Common Community",
             "type": "Community"
-          },
+          }
         ]
       }
     }
 
-Notes or caviates here...
+Retrieving a Single Owner
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To retrieve information about a specific owner, you can add the id to the end of the query as shown below:
+
+.. code::
+
+    GET /v2/owners/{ownerId}
+
+Here is an example query:
+
+.. code::
+
+    GET /v2/owners/2
+
+JSON Response:
+
+.. code:: json
+
+    {
+      "status": "Success",
+      "data": {
+        "resultCount": 1,
+        "owner": {
+          "id": 2,
+          "name": "Common Community",
+          "type": "Community"
+        }
+      }
+    }
+
+Retrieving Information About Your Organization
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To retrieve information about your organization, use the query below:
+
+.. code::
+
+    GET /v2/owners/mine
+
+JSON Response:
+
+.. code:: json
+
+    {
+      "status": "Success",
+      "data": {
+        "resultCount": 1,
+        "owner": {
+          "id": 1,
+          "name": "Example Organization",
+          "type": "Organization"
+        }
+      }
+    }
+
+To view all members of your organization, you can use:
+
+.. code::
+
+    GET /v2/owners/mine/members
+
+
+JSON Response if Organization allows anonymous membership:
+
+.. code:: json
+    {
+        "anonymous": true,
+        "status": "Success",
+        "resultCount": 2,
+        "members":
+        [
+         "pseudonym": "test",
+         "pseudonym": "test2"
+        ]
+      
+    }
+
+JSON Response if Organization does not allow anonymous membership:
+
+.. code:: json
+    {
+      "status": "Success",
+      "data": {
+        "user": [
+          {
+            "userName": "12345678901234567890",
+            "firstName": "Jane",
+            "lastName": "Doe"
+          },
+          {
+            "userName": "12345678901234567891",
+            "firstName": "John",
+            "lastName": "Doe"
+          }
+        ]
+      }
+    }

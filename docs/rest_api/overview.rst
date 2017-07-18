@@ -6,6 +6,7 @@ Owners
 
 * ``/v2/owners``
 * ``/v2/owners/mine``
+* ``/v2/owners/mine/members``
 * ``/v2/owners/metrics``
 * ``/v2/owners/{id}/metrics``
 
