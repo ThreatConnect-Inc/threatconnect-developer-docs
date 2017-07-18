@@ -14,7 +14,7 @@ Demo <https://www.threatconnect.com/request-a-demo/>`__
 
    getting_started
    rest_api/rest_api
-   python/python_sdk.rst
+   python/python_sdk
    java/java_sdk
    javascript/javascript_sdk
    deployment_config
