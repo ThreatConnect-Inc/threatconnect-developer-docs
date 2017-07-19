@@ -158,7 +158,7 @@ For example, if you wanted to retrieve the attributes on the Email Address ``bad
 
 .. code::
 
-    GET /v2/indicators/emailAddresses/bad@exaxmple.com/attributes
+    GET /v2/indicators/emailAddresses/bad@example.com/attributes
 
 JSON Response:
 
@@ -199,7 +199,7 @@ Here is an example query:
 
 .. code::
 
-    GET /v2/indicators/emailAddresses/bad@exaxmple.com/attributes/54321/securityLabels
+    GET /v2/indicators/emailAddresses/bad@example.com/attributes/54321/securityLabels
 
 JSON Response:
 
@@ -232,7 +232,7 @@ For example, the query below will retrieve all Security Labels for the Email Add
 
 .. code::
 
-    GET /v2/indicators/emailAddresses/bad@exaxmple.com/securityLabels
+    GET /v2/indicators/emailAddresses/bad@example.com/securityLabels
 
 JSON Response:
 
@@ -265,7 +265,7 @@ For example, the query below will retrieve all Tags for the Email Address ``bad@
 
 .. code::
 
-    GET /v2/indicators/emailAddresses/bad@exaxmple.com/tags
+    GET /v2/indicators/emailAddresses/bad@example.com/tags
 
 JSON Response:
 
@@ -300,7 +300,7 @@ For example, the query below will retrieve all of the Groups associated with the
 
 .. code::
 
-    GET /v2/indicators/emailAddresses/bad@exaxmple.com/groups
+    GET /v2/indicators/emailAddresses/bad@example.com/groups
 
 JSON Response:
 
@@ -333,13 +333,13 @@ For example, we could use the following query to find all Incidents associated w
 
 .. code::
 
-    GET /v2/indicators/emailAddresses/bad@exaxmple.com/groups/incidents
+    GET /v2/indicators/emailAddresses/bad@example.com/groups/incidents
 
 We can also drill down even further by adding the ID of an associated Group to the end of the query like:
 
 .. code::
 
-    GET /v2/indicators/emailAddresses/bad@exaxmple.com/groups/incidents/54321
+    GET /v2/indicators/emailAddresses/bad@example.com/groups/incidents/54321
 
 Where ``54321`` is the ID of an Incident associated with the Email Address ``bad@example.com``.
 
@@ -356,7 +356,7 @@ For example, the query below will retrieve all of the Indicators associated with
 
 .. code::
 
-    GET /v2/indicators/emailAddresses/bad@exaxmple.com/indicators
+    GET /v2/indicators/emailAddresses/bad@example.com/indicators
 
 JSON Response:
 
@@ -394,13 +394,13 @@ For example, we could use the following query to find all Address Indicators ass
 
 .. code::
 
-    GET /v2/indicators/emailAddresses/bad@exaxmple.com/indicators/addresses
+    GET /v2/indicators/emailAddresses/bad@example.com/indicators/addresses
 
 We can also drill down even further by adding the ID of an associated Indicator to the end of the query like:
 
 .. code::
 
-    GET /v2/indicators/emailAddresses/bad@exaxmple.com/indicators/addresses/54321
+    GET /v2/indicators/emailAddresses/bad@example.com/indicators/addresses/54321
 
 Where ``54321`` is the ID of an Address associated with the Email Address ``bad@example.com``.
 
@@ -417,7 +417,7 @@ For example, the query below will retrieve all of the Victim Assets associated w
 
 .. code::
 
-    GET /v2/indicators/emailAddresses/bad@exaxmple.com/victimAssets
+    GET /v2/indicators/emailAddresses/bad@example.com/victimAssets
 
 JSON Response:
 
@@ -454,13 +454,13 @@ For example, we could use the following query to find all Victim Assets that are
 
 .. code::
 
-    GET /v2/indicators/emailAddresses/bad@exaxmple.com/victimAssets/emailAddresses
+    GET /v2/indicators/emailAddresses/bad@example.com/victimAssets/emailAddresses
 
 We can also drill down even further by adding the ID of an associated Victim Asset to the end of the query like:
 
 .. code::
 
-    GET /v2/indicators/emailAddresses/bad@exaxmple.com/victimAssets/emailAddresses/54321
+    GET /v2/indicators/emailAddresses/bad@example.com/victimAssets/emailAddresses/54321
 
 Where ``54321`` is the ID of a Victim Asset associated with the Email Address ``bad@example.com``.
 
@@ -477,7 +477,7 @@ For example, the query below will retrieve all of the Victims associated with th
 
 .. code::
 
-    GET /v2/indicators/emailAddresses/bad@exaxmple.com/victims
+    GET /v2/indicators/emailAddresses/bad@example.com/victims
 
 JSON Response:
 
@@ -502,6 +502,6 @@ We can also drill down even further by adding the ID of an associated Victim to 
 
 .. code::
 
-    GET /v2/indicators/emailAddresses/bad@exaxmple.com/victims/54321
+    GET /v2/indicators/emailAddresses/bad@example.com/victims/54321
 
 Where ``54321`` is the ID of a Victim associated with the Email Address ``bad@example.com``.

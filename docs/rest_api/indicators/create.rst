@@ -154,7 +154,7 @@ For example, if you wanted to add a Description attribute to the Email Address `
 
 .. code::
 
-    POST /v2/indicators/emailAddresses/bad@exaxmple.com/attributes
+    POST /v2/indicators/emailAddresses/bad@example.com/attributes
     {
       "type" : "Description",
       "value" : "Test Description",
@@ -189,7 +189,7 @@ For example, the query below will add a ``TLP Amber`` Security Label to the attr
 
 .. code::
 
-    POST /v2/indicators/emailAddresses/bad@exaxmple.com/attributes/54321/securityLabels/TLP%20Amber
+    POST /v2/indicators/emailAddresses/bad@example.com/attributes/54321/securityLabels/TLP%20Amber
 
 .. note:: In order to add a Security Label to an attribute, the Security Label must already exist. The query above will not create a new Security Label. If you specify a Security Label that does not exist, it will return an error.
 
@@ -206,7 +206,7 @@ For example, the query below will add a ``TLP Amber`` Security Label to the Emai
 
 .. code::
 
-    POST /v2/indicators/emailAddresses/bad@exaxmple.com/securityLabels/TLP%20Amber
+    POST /v2/indicators/emailAddresses/bad@example.com/securityLabels/TLP%20Amber
 
 JSON Response:
 
@@ -233,7 +233,7 @@ For example, the query below will add the ``Nation State`` tag to the Email Addr
 
 .. code::
 
-    POST /v2/indicators/emailAddresses/bad@exaxmple.com/tags/Nation%20State
+    POST /v2/indicators/emailAddresses/bad@example.com/tags/Nation%20State
 
 JSON Response:
 
@@ -261,7 +261,7 @@ For example, the query below will associate the Email Address ``bad@example.com`
 
 .. code::
 
-    POST /v2/indicators/emailAddresses/bad@exaxmple.com/groups/incidents/54321
+    POST /v2/indicators/emailAddresses/bad@example.com/groups/incidents/54321
 
 JSON Response:
 
@@ -280,13 +280,13 @@ To associate an Indicator with another Indicator, use a query in the following f
 
 .. code::
 
-    POST /v2/indicators/{indicatorType}/{indicatorId}/indicators/{associatedIndicatorType}/{associatedIndicator}
+    POST /v2/indicators/{indicatorType}/{indicator}/indicators/{associatedIndicatorType}/{associatedIndicator}
 
 For example, the query below will associate the Email Address ``bad@example.com`` with the IP Address ``0.0.0.0``:
 
 .. code::
 
-    POST /v2/indicators/emailAddresses/bad@exaxmple.com/indicators/addresses/0.0.0.0
+    POST /v2/indicators/emailAddresses/bad@example.com/indicators/addresses/0.0.0.0
 
 JSON Response:
 
@@ -305,13 +305,13 @@ To associate an Indicator with a Victim, use a query in the following format:
 
 .. code::
 
-    POST /v2/indicators/{indicatorType}/{indicatorId}/victims/{victimId}
+    POST /v2/indicators/{indicatorType}/{indicator}/victims/{victimId}
 
 For example, the query below will associate the Email Address ``bad@example.com`` with the Victim with ID 54321:
 
 .. code::
 
-    POST /v2/indicators/emailAddresses/bad@exaxmple.com/victims/54321
+    POST /v2/indicators/emailAddresses/bad@example.com/victims/54321
 
 JSON Response:
 

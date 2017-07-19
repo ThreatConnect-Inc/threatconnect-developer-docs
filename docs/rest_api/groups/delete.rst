@@ -28,21 +28,9 @@ JSON Response:
 .. code:: json
 
     {
-      "status": "Success",
-      "data": {
-        "incident": {
-          "id": "54321",
-          "name": "Test Incident",
-          "owner": {
-            "id": 1,
-            "name": "Example Organization",
-            "type": "Organization"
-          },
-          "dateAdded": "2017-07-13T17:50:17",
-          "webLink": "https://app.threatconnect.com/auth/incident/incident.xhtml?incident=54321",
-          "eventDate": "2017-7-13T00:00:00-04:00"
-        }
-      }
+        "apiCalls": 1,
+        "resultCount": 0,
+        "status": "Success"
     }
 
 Delete Group Metadata
@@ -51,11 +39,11 @@ Delete Group Metadata
 Delete Group Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-To add an attribute to a Group, use the following format:
+To delete an attribute from a Group, use the following format:
 
 .. code::
 
-    DELETE /v2/groups/{groupType}/{groupId}/attributes/{attributeID}
+    DELETE /v2/groups/{groupType}/{groupId}/attributes/{attributeId}
 
 For example, if you wanted to delete the attribute with ID 54321 from the threat with the ID 12345, you would use the following query:
 
@@ -147,7 +135,7 @@ To disassociate one Group from another, use a query in the following format:
 
     DELETE /v2/groups/{groupType}/{groupId}/groups/{associatedGroupType}/{associatedGroupId}
 
-For example, the query below will disassociate a Threat with the ID 12345 with an Incident with the ID 54321:
+For example, the query below will disassociate a Threat with the ID 12345 from an Incident with the ID 54321:
 
 .. code::
 
@@ -172,7 +160,7 @@ To disassociate a Group from an Indicator, use a query in the following format:
 
     DELETE /v2/groups/{groupType}/{groupId}/indicators/{associatedIndicatorType}/{associatedIndicator}
 
-For example, the query below will associate the Threat with the ID 12345 with the IP Address ``0.0.0.0``:
+For example, the query below will disassociate the Threat with the ID 12345 from the IP Address ``0.0.0.0``:
 
 .. code::
 
@@ -197,7 +185,7 @@ To disassociate a Group from a Victim Asset, use a query in the following format
 
     DELETE /v2/groups/{groupType}/{groupId}/victimAssets/{victimAssetType}/{victimAssetId}
 
-For example, the query below will disassociate the Threat with the ID 12345 with the Victim Asset with ID 54321:
+For example, the query below will disassociate the Threat with the ID 12345 from the Victim Asset with ID 54321:
 
 .. code::
 
@@ -223,7 +211,7 @@ To disassociate a Group from a Victim, use a query in the following format:
 
     DELETE /v2/groups/{groupType}/{groupId}/victims/{victimId}
 
-For example, the query below will disassociate the Threat with the ID 12345 with the Victim with ID 54321:
+For example, the query below will disassociate the Threat with the ID 12345 from the Victim with ID 54321:
 
 .. code::
 
