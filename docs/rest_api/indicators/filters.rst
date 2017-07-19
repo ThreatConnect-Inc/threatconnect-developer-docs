@@ -168,4 +168,4 @@ Indicator’s Confidence value
 | name                               | String     | ``=  ^``  | victim.name                      |
 +------------------------------------+------------+-----------+----------------------------------+
 
-.. note:: ``<``, ``>``, and ``^`` operators need to be escaped in the url as: ``< %3C``, ``> %3E``, ``^ %5E``.
+.. note:: ``<``, ``>``, and ``^`` operators need to be escaped in the url as: ``%3C``, ``%3E``, ``%5E``, respectively.

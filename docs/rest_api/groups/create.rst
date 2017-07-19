@@ -102,6 +102,31 @@ JSON Response:
       }
     }
 
+Creating a Malware Document
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To create a document that can be uploaded into `ThreatConnect's Malware Vault <http://kb.threatconnect.com/customer/en/portal/articles/2171402-uploading-malware>`_ via API, include the ``malware`` and ``password`` fields when creating the document as shown below.
+
+.. code::
+
+    POST /v2/groups/documents/
+    { 
+      "fileName" : "malwaresample.zip",
+      "name": "Malicious File",
+      "malware": true,
+      "password": "TCinfected"
+    }
+
+To upload a malware sample as a Document, the following steps must be taken:
+
+-  Create a `password-protected zip file <https://askubuntu.com/questions/17641/create-encrypted-password-protected-zip-file>`__ on your local machine containing the sample.
+-  Create a new Document Group including the additional fields ``malware`` set to True and ``password`` set to the zip file's password.
+-  Upload the document.
+
+.. warning:: Uploading raw malware executables or weaponized documents is strictly forbidden.
+
+For malware uploads, An ``HTTP 400 - Bad Request`` error will be returned if the document is not a password-protected zip file (as determined by file headers).
+
 Create Group Metadata
 ---------------------
 

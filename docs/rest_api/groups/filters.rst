@@ -15,6 +15,8 @@ When retrieving Groups from ThreatConnect, it is possible to filter the results.
 
 \* The ``fileType`` filter only works for Documents.
 
+.. note:: ``<``, ``>``, and ``^`` operators need to be escaped in the url as: ``%3C``, ``%3E``, ``%5E``, respectively.
+
 For example, the following query will return all groups that have been added since 2017-07-13 (``dateAdded>2017-07-13``):
 
 .. code::
