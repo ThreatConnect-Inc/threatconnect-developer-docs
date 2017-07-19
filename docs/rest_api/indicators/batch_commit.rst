@@ -1,149 +1,267 @@
-Batch Commit
-------------
+Batch Upload: Indicators
+------------------------
 
-As demonstrated by the code snippet below, the ThreatConnect Python SDK supports adding indicators in bulk to the ThreatConnect platform.
+Sample Batch Create request
 
-The code snippet below assumes that indicator data is formatted in the same way as the JSON `used by the API <../rest_api/rest_api_docs.html#batch-indicator-input-file-format>`_ .
+.. code::
 
-.. code-block:: python
+     POST /v2/batch/                 
+     {                               
+     "haltOnError": "false",         
+     "attributeWriteType": "Replace", 
+     "action": "Create",             
+     "owner": "Common Community"     
+     }                               
 
-    import json
-    import time
+Server Response on Success
 
-    # replace the line below with the standard, TC script heading described here:
-    # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
-    ...
+.. code::
 
-    # define the owner where you would like to put the data
-    dst_owner = 'Example Community'
+     HTTP/1.1 201 Created                       
+     {                                          
+     batchId: "123"                             
+     }                                          
 
-    dst_tc = ThreatConnect(api_access_id, api_secret_key, dst_owner, api_base_url)
+Server Response on Insufficient Privileges
 
-    #
-    # populate 'indicators' list of dictionaries as formatted here:
-    # https://docs.threatconnect.com/en/latest/rest_api/rest_api_docs.html#batch-indicator-input-file-format
-    #
-    indicators = [
+.. code::
+
+     HTTP/1.1 403 Forbidden                     
+     {                                          
+     status: "Not Authorized",                  
+     description: "Organization not authorized  
+     for batch"                                 
+     }                                          
+
+Server Response on Incorrect Settings
+
+.. code::
+
+     HTTP/1.1 403 Forbidden                     
+     {                                          
+     status: "Not Authorized",                  
+     description: "Document storage not enabled 
+     for this instance"                         
+     }                                          
+
+The following is an example of a Batch Indicator Input file:
+
+.. code:: json
+
+    {
+      
+      "ownerName": "<String>", 
+      "type": "<String>",
+      "rating": "<BigDecimal>",
+      "confidence": "<Short>",
+      "description": "<String>",
+      "summary": "<String>",
+      
+      "tag": [
         {
+          "name": "<String>"
+        }
+            ]
+    }
+
+Sample Batch Upload Input File request
+
+.. code::
+
+     POST /v2/batch/123                                               
+                                                                      
+     Content-Type: application/octet-stream; boundary=[boundary-text] 
+     Content-Length: <data_size>                                         
+     Content-Encoding: gzip       
+     [boundary-text]                                                  
+     <uploaded_data>                                              
+
+Server Response on Success
+
+.. code::
+
+     HTTP/1.1 202 Accepted                
+     {                                    
+     status: "Queued"    
+     }                                    
+
+Server Response on Overlarge Input File
+
+.. code::
+
+     HTTP/1.1 400 Bad Request             
+     {                                    
+     status: "Invalid",                   
+     description: "File size greater than 
+     allowable limit of 2000000"          
+     }                                    
+
+Sample Batch Status Check request
+
+.. code::
+
+    GET /v2/batch/123
+
+
+Server Response on Success (job still running)
+
+.. code::
+
+    HTTP/1.1 200 OK
+    {
+    status: "Running",
+    }
+
+Server Response on Success (job finished)
+
+.. code::
+
+    HTTP/1.1 200 OK
+    {
+    status: "Completed",
+    errorCount: 3420,
+    successCount: 405432
+    unprocessCount: 0
+    }
+
+Sample Batch Error Message request
+
+.. code::
+
+    GET /v2/batch/123/errors
+
+Server Response on Success (job still running)
+
+.. code::
+
+    HTTP/1.1 400 Bad Request
+    {
+    status: "Invalid",
+    description: "Batch still in Running state" }
+
+Server Response on Success (job finished):
+
+.. code::
+
+    HTTP/1.1 200 OK
+    Content-Type: application/octet-stream ; boundary=
+    Content-Length: 
+    Content-Encoding: gzip
+
+Create Batch Endpoint
+
+The Batch API allows bulk Indicator creation and deletion via the HTTP
+POST method. After creating a batch, an Indicator file is uploaded. The
+content of the file must be valid JSON, with content and format
+mimicking the data structure of the Bulk JSON file download. A file
+upload instantly triggers a batch job to begin processing the data. The
+Batch API is restricted to Indicators and will improve performance when
+importing large amounts of data.
+
+.. note:: Document Storage is required to use the Batch API.
+
+The Batch Create resource creates a batch entry in the system. No batch processing is triggered until the batch input file is uploaded. The table below displays the fields required for the Batch Create message.
+
++---------------------+-----------------+-------------------------------------------------------------------------------------------------------------------+
+| BatchConfig Message | Values          | Description                                                                                                       |
++=====================+=================+===================================================================================================================+
+| haltOnError         | true            | The batch process will stop processing the entire batch the first time it reaches an error during processing.     |
++---------------------+-----------------+-------------------------------------------------------------------------------------------------------------------+
+|                     | false (default) | If this field is not provided, the default behavior is to continue processing further entities in the input file. |
++---------------------+-----------------+-------------------------------------------------------------------------------------------------------------------+
+| attributeWriteType  | Append          | Append: Add attributes (allow duplicates)                                                                         |
++---------------------+-----------------+-------------------------------------------------------------------------------------------------------------------+
+|                     | Replace         | Replace: Delete current attributes; Add/Validate new                                                              |
++---------------------+-----------------+-------------------------------------------------------------------------------------------------------------------+
+| action              | Create          | Create: Create Indicator                                                                                          |
++---------------------+-----------------+-------------------------------------------------------------------------------------------------------------------+
+|                     | Delete          | Delete: Delete Indicator (only the ‘summary’ and ‘type’ field are required)                                       |
++---------------------+-----------------+-------------------------------------------------------------------------------------------------------------------+
+
+Batch Indicator Input File Format
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code:: json
+
+    [
+      {
             "rating": 3,
-            "confidence": 75,
-            "description": "Malicious domain",
-            "summary": "example.com",
-            "type": "Host",
+            "confidence": 60,
+            "description": "a malicious domain",
+            "summary": "super-malicious.ru",
+            "type": "Host", 
             "associatedGroup": [12345, 54321],
             "attribute": [
                 {
-                    "type": "Source",
-                    "value": "SEIM log - 13/01/2017"
+                    "type": "AttributeName",
+                    "value": "MyAttribute"
                 }
-            ],
+                ],
             "tag": [
-                {
-                    "name": "MyTag"
-                }
+             {
+               "name": "MyTag"
+             }
             ]
-        }
+      }
     ]
 
-    # time (in seconds) to wait before checking the status of a batch job
-    poll_time = 5
+The batch upload feature expects to ingest a JSON file consisting of a
+list of dictionaries
 
-    batch_job_ids = []
++---------------------+----------------------+-----------+
+| Field               | Data type            | Required? |
++=====================+======================+===========+
+| ``rating``          | integer              | Required  |
++---------------------+----------------------+-----------+
+| ``confidence``      | float                | Required  |
++---------------------+----------------------+-----------+
+| ``description``     | string               | Required  |
++---------------------+----------------------+-----------+
+| ``summary``         | string               | Required  |
++---------------------+----------------------+-----------+
+| ``type``            | string               | Required  |
++---------------------+----------------------+-----------+
+| ``tag``             | list of dictionaries | Optional  |
++---------------------+----------------------+-----------+
+| ``attribute``       | list of dictionaries | Optional  |
++---------------------+----------------------+-----------+
+| ``associatedGroup`` | list of integers     | Optional  |
++---------------------+----------------------+-----------+
 
-    # instantiate a Batch Jobs Object
-    batch_jobs = dst_tc.batch_jobs()
+Supported ``type`` values for Indicators:
 
-    # add a new Batch Job
-    batch_job = batch_jobs.add()
+-  Host
+-  Address
+-  EmailAddress
+-  URL
+-  File
 
-    # configure the Batch Job
-    batch_job.set_halt_on_error(False)             # if True, abort processing after first error
-    batch_job.set_attribute_write_type('Replace')  # replace attributes (can also be Append)
-    batch_job.set_action('Create')                 # create indicators (can also be Delete) 
-    batch_job.set_owner(dst_owner)                 # owner to write indicators to
+.. note:: Exporting indicators via the ``JSON Export`` feature in ThreatConnect will create a file in this format
 
-    # set the indicators to be uploaded in this Batch Job
-    batch_job.upload(json.dumps(indicators))
+Upload Batch Input File Endpoint
 
-    try:
-        # commit the Batch Job
-        batch_job.commit()
-        print("Created batchjob %s" % batch_job.id)
-        batch_job_ids.append(batch_job.id)
-    except RuntimeError as e:
-        print("Error creating Batch Job: {}".format(e))
-        sys.exit(1)
+Batch files should be sent as HTTP POST data to a REST endpoint,
+including the relevant ``batchId``
 
-    finished_batches = []
-    total_time = 0
+Check Batch Status Endpoint
 
-    # iterate through the Batch Jobs that have been started and see if they have finished
-    while len(batch_job_ids) > 0:
-        # sleep for the poll_time
-        time.sleep(poll_time)
-        total_time += poll_time
-        print("polling (total wait time {0} seconds)".format(int(total_time)))
+You may also check the status of a running batch upload job
 
-        # retrieve all of the Batch Jobs
-        batch_jobs = dst_tc.batch_jobs()
+The server can be configured to restrict the file size. Clients can
+submit multiple batches for larger files.
 
-        for batchId in batch_job_ids:
-            # create a filter to find only the Batch Job that we are monitoring
-            filter = batch_jobs.add_filter()
-            filter.add_id(batchId)
+Possible GET response status includes:
 
-            # retrieve the desired Batch Job that we are monitoring
-            batch_jobs.retrieve()
+-  Created
+-  Queued
+-  Running
+-  Completed
 
-            # iterate through the Batch Jobs (there will only be one)
-            for batch_job in batch_jobs:
-                # if the Batch Job is done, print the details of the Batch Job
-                if batch_job.status == 'Completed':
-                    finished_batches.append(batch_job)
-                    batch_job_ids.remove(batchId)
-                    print("Finished batch job {0}: succeeded: {1}, "
-                          "failed: {2}, unprocessed: {3}".format(batchId, batch_job.success_count, batch_job.error_count, batch_job.unprocess_count))
+If ``haltOnError`` is set to ‘true’ and an error occurs, then the status
+will be set to ‘Completed’, and ‘errorCount’ will be greater than zero.
+The ‘unprocessedCount’ field will be greater than zero, unless the
+uploaded file did not contain valid JSON.
 
-    # now that all of the Batch Jobs have finished, get some statistics on them
-    success_total = 0
-    error_total = 0
-    unprocess_total = 0
-
-    # record statistics based on the Batch Jobs
-    for batch_job in finished_batches:
-        # record success count
-        if batch_job.success_count:
-            success_total += batch_job.success_count
-
-        # record unprocessed count
-        if batch_job.unprocess_count:
-            unprocess_total += batch_job.unprocess_count
-
-        # record error count
-        if batch_job.error_count:
-            error_total += batch_job.error_count
-
-            # print some more details about the errors
-            batch_job.download_errors()
-            for error in batch_job.errors:
-                print("Batch Job {0} errors: {1}".format(batch_job.id, batch_job.errors))
-
-    # print the final statistics of the Batch Jobs
-    print("All batch jobs completed, totals:  "
-          "succeeded: {0}, failed: {1}, unprocessed: {2}".format(success_total, error_total, unprocess_total))
-
-**Supported Functions and Properties**
-
-+--------------------------+-------------------------------+------------+-------------------------+
-| Property Name            | Method                        | Required   | Allowable Values        |
-+==========================+===============================+============+=========================+
-| halt\_on\_error          | set\_halt\_on\_error          | True       | True, False             |
-+--------------------------+-------------------------------+------------+-------------------------+
-| attribute\_write\_type   | set\_attribute\_write\_type   | True       | Replace, Append         |
-+--------------------------+-------------------------------+------------+-------------------------+
-| action                   | set\_action                   | True       | Create, Delete          |
-+--------------------------+-------------------------------+------------+-------------------------+
-| owner                    | set\_owner                    | True       | Any Owner               |
-+--------------------------+-------------------------------+------------+-------------------------+
-| --                       | upload                        | True       | Indicator JSON String   |
-+--------------------------+-------------------------------+------------+-------------------------+
+Partial failures will have an error file with a response having a
+‘reason text’, which includes Tag, Attribute, or Indicator errors (fail
+on first).
