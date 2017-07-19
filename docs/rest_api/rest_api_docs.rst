@@ -5739,7 +5739,7 @@ for a malicious file
     { 
      "fileName" : "malwaresample.zip",
      "name": "Malicious File",
-     "malware": True,
+     "malware": true,
      "password": "TCinfected"
     }
 
