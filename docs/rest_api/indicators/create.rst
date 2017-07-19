@@ -76,7 +76,7 @@ Create Address Indicators
     POST /v2/indicators/addresses
     {
       "ip": "192.168.0.1",
-      "rating": "5.0",
+      "rating": 5.0,
       "confidence": 100
     }
 
@@ -88,7 +88,7 @@ Create Email Address Indicators
     POST /v2/indicators/emailAddresses
     {
       "address": "badguy@example.com",
-      "rating": "5.0",
+      "rating": 5.0,
       "confidence": 100
     }
 
@@ -103,9 +103,11 @@ Create File Indicators
       "sha1": "111EE6465425DF9A06CC14934DFFEE5EF36DE7E3",
       "sha256": "FD320CE6E64A816B3DC22DAE1AEA9B5D84C197E1265AE3880B3A2A45A543D051",
       "size": 5366,
-      "rating": "5.0",
+      "rating": 5.0,
       "confidence": 100
     }
+
+.. note:: A File Indicator requires only one, valid hash. It can be an md5, sha1, or sha256 (or any combination thereof).
 
 Create Host Indicators
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -117,7 +119,7 @@ Create Host Indicators
       "hostName": "example.com",
       "dnsActive": "false",
       "whoisActive": "true",
-      "rating": "5.0",
+      "rating": 5.0,
       "confidence": 100
     }
 
@@ -129,7 +131,7 @@ Create URL Indicators
     POST /v2/indicators/urls
     {
       "text": "http://example.com/bad.php",
-      "rating": "5.0",
+      "rating": 5.0,
       "confidence": 100
     }
 

@@ -1,5 +1,5 @@
 Filtering Indicators
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 The example below demonstrates usage of the modifiedSince parameter:
 
