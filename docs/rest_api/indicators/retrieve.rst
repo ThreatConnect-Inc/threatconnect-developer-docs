@@ -112,7 +112,7 @@ To retrieve a single Indicator, use a query in the following format:
 
     GET /v2/indicators/{indicatorType}/{indicator}
 
-For example, if you wanted to retrieve the Email Address ``bad@example\.com``, you would use the following query:
+For example, if you wanted to retrieve the Email Address ``bad@example.com``, you would use the following query:
 
 .. code::
 
@@ -154,7 +154,7 @@ To retrieve an Indicator's Attributes, use the following format:
 
     GET /v2/indicators/{indicatorType}/{indicator}/attributes
 
-For example, if you wanted to retrieve the attributes on the Email Address ``bad@example\.com``, you would use the following query:
+For example, if you wanted to retrieve the attributes on the Email Address ``bad@example.com``, you would use the following query:
 
 .. code::
 
@@ -228,7 +228,7 @@ To retrieve the Security Labels for an Indicator, use a query in the following f
 
     GET /v2/indicators/{indicatorType}/{indicator}/securityLabels
 
-For example, the query below will retrieve all Security Labels for the Email Address ``bad@example\.com``:
+For example, the query below will retrieve all Security Labels for the Email Address ``bad@example.com``:
 
 .. code::
 
@@ -261,7 +261,7 @@ To retrieve the Tags for an Indicator, use a query in the following format:
 
     GET /v2/indicators/{indicatorType}/{indicator}/tags
 
-For example, the query below will retrieve all Tags for the Email Address ``bad@example\.com``:
+For example, the query below will retrieve all Tags for the Email Address ``bad@example.com``:
 
 .. code::
 
@@ -296,7 +296,7 @@ To view Groups associated with a given Indicator, use a query in the following f
 
     GET /v2/indicators/{indicatorType}/{indicator}/groups
 
-For example, the query below will retrieve all of the Groups associated with the Email Address ``bad@example\.com``:
+For example, the query below will retrieve all of the Groups associated with the Email Address ``bad@example.com``:
 
 .. code::
 
@@ -329,7 +329,7 @@ You can also find associated Groups of a given type using the following format:
 
     GET /v2/indicators/{indicatorType}/{indicator}/groups/{associatedGroupType}
 
-For example, we could use the following query to find all Incidents associated with the Email Address ``bad@example\.com``:
+For example, we could use the following query to find all Incidents associated with the Email Address ``bad@example.com``:
 
 .. code::
 
@@ -341,7 +341,7 @@ We can also drill down even further by adding the ID of an associated Group to t
 
     GET /v2/indicators/emailAddresses/bad@exaxmple.com/groups/incidents/54321
 
-Where ``54321`` is the ID of an Incident associated with the Email Address ``bad@example\.com``.
+Where ``54321`` is the ID of an Incident associated with the Email Address ``bad@example.com``.
 
 Retrieve Associated Indicators
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -352,7 +352,7 @@ To view Indicators associated with a given Indicator, use a query in the followi
 
     GET /v2/indicators/{indicatorType}/{indicator}/indicators
 
-For example, the query below will retrieve all of the Indicators associated with the Email Address ``bad@example\.com``:
+For example, the query below will retrieve all of the Indicators associated with the Email Address ``bad@example.com``:
 
 .. code::
 
@@ -390,7 +390,7 @@ You can also find associated Indicators of a given type using the following form
 
     GET /v2/indicators/{indicatorType}/{indicator}/indicators/{associatedIndicatorType}
 
-For example, we could use the following query to find all Address Indicators associated with the Email Address ``bad@example\.com``:
+For example, we could use the following query to find all Address Indicators associated with the Email Address ``bad@example.com``:
 
 .. code::
 
@@ -402,7 +402,7 @@ We can also drill down even further by adding the ID of an associated Indicator 
 
     GET /v2/indicators/emailAddresses/bad@exaxmple.com/indicators/addresses/54321
 
-Where ``54321`` is the ID of an Address associated with the Email Address ``bad@example\.com``.
+Where ``54321`` is the ID of an Address associated with the Email Address ``bad@example.com``.
 
 Retrieve Associated Victim Assets
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -413,7 +413,7 @@ To view Victim Assets associated with a given Indicator, use a query in the foll
 
     GET /v2/indicators/{indicatorType}/{indicator}/victimAssets
 
-For example, the query below will retrieve all of the Victim Assets associated with the Email Address ``bad@example\.com``:
+For example, the query below will retrieve all of the Victim Assets associated with the Email Address ``bad@example.com``:
 
 .. code::
 
@@ -450,7 +450,7 @@ You can also find associated Victim Assets of a given type using the following f
 
     GET /v2/indicators/{indicatorType}/{indicator}/victimAssets/{associatedVictimAssetType}
 
-For example, we could use the following query to find all Victim Assets that are Email Addresses which are associated with the Email Address ``bad@example\.com``:
+For example, we could use the following query to find all Victim Assets that are Email Addresses which are associated with the Email Address ``bad@example.com``:
 
 .. code::
 
@@ -462,7 +462,7 @@ We can also drill down even further by adding the ID of an associated Victim Ass
 
     GET /v2/indicators/emailAddresses/bad@exaxmple.com/victimAssets/emailAddresses/54321
 
-Where ``54321`` is the ID of a Victim Asset associated with the Email Address ``bad@example\.com``.
+Where ``54321`` is the ID of a Victim Asset associated with the Email Address ``bad@example.com``.
 
 Retrieve Associated Victims
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -473,7 +473,7 @@ To view Victims associated with a given Indicator, use a query in the following 
 
     GET /v2/indicators/{indicatorType}/{indicator}/victims
 
-For example, the query below will retrieve all of the Victims associated with the Email Address ``bad@example\.com``:
+For example, the query below will retrieve all of the Victims associated with the Email Address ``bad@example.com``:
 
 .. code::
 
@@ -504,4 +504,4 @@ We can also drill down even further by adding the ID of an associated Victim to 
 
     GET /v2/indicators/emailAddresses/bad@exaxmple.com/victims/54321
 
-Where ``54321`` is the ID of a Victim associated with the Email Address ``bad@example\.com``.
+Where ``54321`` is the ID of a Victim associated with the Email Address ``bad@example.com``.

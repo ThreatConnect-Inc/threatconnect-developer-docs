@@ -150,7 +150,7 @@ To add an attribute to an Indicator, use the following format:
       "displayed" : true
     }
 
-For example, if you wanted to add a Description attribute to the Email Address ``bad@example\.com``, you would use the following query:
+For example, if you wanted to add a Description attribute to the Email Address ``bad@example.com``, you would use the following query:
 
 .. code::
 
@@ -202,7 +202,7 @@ To add a Security Label to an Indicator, use the following format where ``{secur
 
     POST /v2/indicators/{indicatorType}/{indicator}/securityLabels/{securityLabel}
 
-For example, the query below will add a ``TLP Amber`` Security Label to the Email Address ``bad@example\.com``:
+For example, the query below will add a ``TLP Amber`` Security Label to the Email Address ``bad@example.com``:
 
 .. code::
 
@@ -229,7 +229,7 @@ To add a tag to an Indicator, use the following format where ``{tagName}`` is re
 
     POST /v2/indicators/{indicatorType}/{indicator}/tags/{tagName}
 
-For example, the query below will add the ``Nation State`` tag to the Email Address ``bad@example\.com``:
+For example, the query below will add the ``Nation State`` tag to the Email Address ``bad@example.com``:
 
 .. code::
 
@@ -257,7 +257,7 @@ To associate an Indicator with a Group, use a query in the following format:
 
     POST /v2/indicators/{indicatorType}/{indicator}/groups/{associatedGroupType}/{associatedGroupId}
 
-For example, the query below will associate the Email Address ``bad@example\.com`` with an Incident with the ID 54321:
+For example, the query below will associate the Email Address ``bad@example.com`` with an Incident with the ID 54321:
 
 .. code::
 
@@ -282,7 +282,7 @@ To associate an Indicator with another Indicator, use a query in the following f
 
     POST /v2/indicators/{indicatorType}/{indicatorId}/indicators/{associatedIndicatorType}/{associatedIndicator}
 
-For example, the query below will associate the Email Address ``bad@example\.com`` with the IP Address ``0.0.0.0``:
+For example, the query below will associate the Email Address ``bad@example.com`` with the IP Address ``0.0.0.0``:
 
 .. code::
 
@@ -307,7 +307,7 @@ To associate an Indicator with a Victim, use a query in the following format:
 
     POST /v2/indicators/{indicatorType}/{indicatorId}/victims/{victimId}
 
-For example, the query below will associate the Email Address ``bad@example\.com`` with the Victim with ID 54321:
+For example, the query below will associate the Email Address ``bad@example.com`` with the Victim with ID 54321:
 
 .. code::
 
