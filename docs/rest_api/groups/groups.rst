@@ -10,3 +10,5 @@ Groups represent a collection of related behavior and/or intelligence.
 .. include:: groups/create.rst
 
 .. include:: groups/update.rst
+
+.. include:: groups/delete.rst
