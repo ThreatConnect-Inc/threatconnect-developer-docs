@@ -12,6 +12,8 @@ REST API
 
 .. include:: indicators/indicators.rst
 
+.. include:: security_labels/security_labels.rst
+
 .. include:: tags/tags.rst
 
 .. include:: tasks/tasks.rst
