@@ -662,18 +662,8 @@ Python SDK Sample CSV Output:
 
 .. code:: text
 
-    {
-        "confidence": 14, 
-        "dateAdded": "2015-06-21T10:40:33-05:00", 
-        "description": "TEST attribute #14", 
-        "id": 355999,
-        "indicator":"www.badguy_014.com"
-        "lastModified": "2015-06-21T10:40:33-05:00", 
-        "ownerName": "Example Community", 
-        "rating": 1.0, 
-        "type": null, 
-        "weblink": "https://tc.sumx.us/auth/indicators/details/host.xhtml?host=www.badguy_014.com&owner=Example+Community", 
-    }
+    confidence,dateAdded,description,id,indicator,lastModified,ownerName,rating,type,weblink
+    14,2015-06-21T10:40:33-05:00,TEST attribute #14,355999,www.badguy_014.com,2015-06-21T10:40:33-05:00,Example Community,1.0,null,https://tc.sumx.us/auth/indicators/details/host.xhtml?host=www.badguy_014.com&owner=Example+Community
 
 The Python SDK provides the ``csv`` and ``csv_header`` methods for CSV
 output, which are supported on Indicators as well as Group Resources
