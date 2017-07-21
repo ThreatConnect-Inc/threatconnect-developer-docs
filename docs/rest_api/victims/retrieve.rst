@@ -301,8 +301,8 @@ We can also drill down even further by adding the ID of an associated Indicator 
 
 Where ``54321`` is the ID of an Address associated with Victim 12345.
 
-Retrieve Associated Victim Assets
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Retrieve a Victim's Assets
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To view Victim Assets associated with a given Victim, use a query in the following format:
 
