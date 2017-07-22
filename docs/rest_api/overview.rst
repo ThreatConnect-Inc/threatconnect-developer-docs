@@ -1,5 +1,5 @@
-Complete List of API Endpoints
-==============================
+All API Endpoints and Responses
+===============================
 
 Owners
 ------
@@ -306,3 +306,39 @@ User Information
 ^^^^^^^^^^^^^^^^
 
 * ``/v2/whoami``
+
+HTTP Responses
+--------------
+
+The API will return appropriate HTTP response codes with a description in the message field as detailed in the table below. This can be helpful when troubleshooting queries.
+
++--------------------+----------------------------------------------------------+
+| HTTP Response      | Explanation                                              |
+| Code               |                                                          |
++====================+==========================================================+
+| ``200`` - Success  | Successful execution of a request.                       |
++--------------------+----------------------------------------------------------+
+| ``201`` - Created  | The query successfully created the specified entity.     |
++--------------------+----------------------------------------------------------+
+| ``400`` - Bad      | Status returned if the request was not properly          |
+| Request            | formatted. The message included with the response will   |
+|                    | include details.                                         |
++--------------------+----------------------------------------------------------+
+| ``401`` -          | Returned if a user does not have access to the specified |
+| Unauthorized       | resource or the method attempted on a resource.          |
++--------------------+----------------------------------------------------------+
+| ``403`` -          | Returned when specifying an Owner to which the user does |
+| Forbidden          | do not have access, or does not exist.                   |
++--------------------+----------------------------------------------------------+
+| ``403`` - Bad      | This Indicator is included in a system-wide exclusion    |
+| Request            | list.                                                    |
++--------------------+----------------------------------------------------------+
+| ``404`` - Not      | The service or resource specified in the path does not   |
+| Found              | exist.                                                   |
++--------------------+----------------------------------------------------------+
+| ``500`` - Internal | An unknown internal error                                |
+| Server Error       |                                                          |
++--------------------+----------------------------------------------------------+
+| ``503`` - Service  | The Instance of ThreatConnect is not licensed to enable  |
+| Unavailable        | the API.                                                 |
++--------------------+----------------------------------------------------------+
