@@ -662,18 +662,8 @@ Python SDK Sample CSV Output:
 
 .. code:: text
 
-    {
-        "confidence": 14, 
-        "dateAdded": "2015-06-21T10:40:33-05:00", 
-        "description": "TEST attribute #14", 
-        "id": 355999,
-        "indicator":"www.badguy_014.com"
-        "lastModified": "2015-06-21T10:40:33-05:00", 
-        "ownerName": "Example Community", 
-        "rating": 1.0, 
-        "type": null, 
-        "weblink": "https://tc.sumx.us/auth/indicators/details/host.xhtml?host=www.badguy_014.com&owner=Example+Community", 
-    }
+    confidence,dateAdded,description,id,indicator,lastModified,ownerName,rating,type,weblink
+    14,2015-06-21T10:40:33-05:00,TEST attribute #14,355999,www.badguy_014.com,2015-06-21T10:40:33-05:00,Example Community,1.0,null,https://tc.sumx.us/auth/indicators/details/host.xhtml?host=www.badguy_014.com&owner=Example+Community
 
 The Python SDK provides the ``csv`` and ``csv_header`` methods for CSV
 output, which are supported on Indicators as well as Group Resources
@@ -918,8 +908,8 @@ Python SDK Regex Code Sample
     host_re = re.compile(r'\b((?:(?!-)[a-zA-Z0-9-]{1,63}(?<!-)\.)+(?i)(?!exe|php|dll|doc' \
         '|docx|txt|rtf|odt|xls|xlsx|ppt|pptx|bin|pcap|ioc|pdf|mdb|asp|html|xml|jpg|gif$|png' \
         '|lnk|log|vbs|lco|bat|shell|quit|pdb|vbp|bdoda|bsspx|save|cpl|wav|tmp|close|ico|ini' \
-        '|sleep|run|dat$|scr|jar|jxr|apt|w32|css|js|xpi|class|apk|rar|zip|hlp|tmp|cpp|crl' \
-        '|cfg|cer|plg|tmp|lxdns|cgi|xn$)(?:xn--[a-zA-Z0-9]{2,22}|[a-zA-Z]{2,13}))(?:\s|$)')
+        '|sleep|run|dat$|scr|jar|jxr|apt|w32|css|js|xpi|class|apk|rar|zip|hlp|cpp|crl' \
+        '|cfg|cer|plg|lxdns|cgi|xn$)(?:xn--[a-zA-Z0-9]{2,22}|[a-zA-Z]{2,13}))(?:\s|$)')
     tc.set_indicator_regex(IndicatorType.HOSTS, host_re)
 
     indicator = indicators.add('new.domain.tld', owner)
