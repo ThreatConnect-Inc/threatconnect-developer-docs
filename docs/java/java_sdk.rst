@@ -38,7 +38,7 @@ Getting Started with Java SDK
    7+ <http://www.oracle.com/technetwork/java/javase/downloads/index.html>`__
 -  Import `Java SDK for
    ThreatConnect <https://github.com/ThreatConnect-Inc/threatconnect-java>`__
--  Create an API User, refer to `REST API documentation <../rest_api/rest_api_docs.html#creating-an-api-key>`__
+-  Create an API User, refer to `REST API documentation <../rest_api/rest_api.html#creating-an-api-key>`__
 
 Maven™ Configuration
 ~~~~~~~~~~~~~~~~~~~~

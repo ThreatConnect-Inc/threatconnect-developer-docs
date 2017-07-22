@@ -1,7 +1,7 @@
 Getting Started
 ===============
 
-You can find REST API documentation here: `REST API <https://docs.threatconnect.com/en/latest/rest_api/rest_api_docs.html#rest-api>`_ .
+You can find REST API documentation here: `REST API <https://docs.threatconnect.com/en/latest/rest_api/rest_api.html>`_ .
 
 To get started with an SDK, click a link below:
 
