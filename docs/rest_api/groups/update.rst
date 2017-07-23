@@ -118,13 +118,15 @@ To update a Group's attribute, use the following format:
 
 When updating attributes, you can change the following fields:
 
-+----------------------------+
-| Updatable Attribute Fields |
-+============================+
-| value                      |
-+----------------------------+
-| displayed                  |
-+----------------------------+
++----------------------------+----------+
+| Updatable Attribute Fields | Required |
++============================+==========+
+| value                      | TRUE     |
++----------------------------+----------+
+| displayed                  | FALSE    |
++----------------------------+----------+
+| source                     | FALSE    |
++----------------------------+----------+
 
 For example, if you wanted to update the value of an attribute with ID 54321 on the threat with ID 12345, you would use the following query:
 
