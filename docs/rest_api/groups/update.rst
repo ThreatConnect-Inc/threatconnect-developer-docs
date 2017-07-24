@@ -55,6 +55,35 @@ JSON Response:
       }
     }
 
+Update Document Contents
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+To update the contents of a Document in ThreatConnect, use a query in the following format:
+
+.. code::
+
+    PUT /v2/groups/documents/{documentId}/upload
+    Content-Type: application/octet-stream
+
+    <raw document contents>
+
+The ``Content-Type`` header must be set to ``application/octet-stream`` for this query to work properly. The query below demonstrates how to upload some text into the Document with ID 12345:
+
+.. code::
+
+    PUT /v2/groups/documents/12345/upload
+    Content-Type: application/octet-stream
+
+    New document contents here.
+
+JSON Response:
+
+.. code:: json
+
+    {
+      "status": "Success",
+    }
+
 Update Group Metadata
 ---------------------
 

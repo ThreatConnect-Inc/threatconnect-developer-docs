@@ -131,6 +131,30 @@ JSON Response:
       }
     }
 
+Retrieve Document or Signature Contents
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To download the contents of a Document or Signature in ThreatConnect, you can use a query in the following format:
+
+.. code::
+
+    GET /v2/groups/documents/{documentId}/download
+    GET /v2/groups/signatures/{signatureId}/download
+
+For example, the query below downloads the contents of a Document with ID 12345:
+
+.. code::
+
+    GET /v2/groups/documents/12345/download
+
+JSON Response:
+
+.. code::
+
+    This is the content of the document!
+
+The contents of a Document will be returned as ``Content-Type: application/octet-stream``. The contents of a Signature will be returned as ``Content-Type: text/plain``.
+
 Retrieve Group Metadata
 -----------------------
 
@@ -273,8 +297,8 @@ JSON Response:
       }
     }
 
-Retrieving Incident Status
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Retrieve Incident Status
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Incidents in ThreatConnect have a status that can be set and retrieved via API. Adding the ‘includeAdditional’ parameter when requesting data about an Incident will return data which includes the Incident’s status. Use a query in the following format to find an Incident's status:
 
