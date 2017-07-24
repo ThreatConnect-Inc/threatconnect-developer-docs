@@ -112,11 +112,11 @@ To retrieve a single Indicator, use a query in the following format:
 
     GET /v2/indicators/{indicatorType}/{indicator}
 
-For example, if you wanted to retrieve the Email Address ``bad@example.com``, you would use the following query:
+For example, if you wanted to retrieve the URL ``http://example.com/``, you would use the following query:
 
 .. code::
 
-    GET /v2/indicators/emailAddresses/bad@example.com
+    GET /v2/indicators/urls/http%3A%2F%2Fexample.com%2F
 
 JSON Response:
 
@@ -125,7 +125,7 @@ JSON Response:
     {
       "status": "Success",
       "data": {
-        "emailAddress": {
+        "url": {
           "id": "54321",
           "owner": {
             "id": 1,
@@ -136,8 +136,8 @@ JSON Response:
           "lastModified": "2017-03-29T12:53:49Z",
           "threatAssessRating": 1.67,
           "threatAssessConfidence": 18.33,
-          "webLink": "https://app.threatconnect.com/auth/indicators/details/emailaddress.xhtml?emailaddress=bad%40example.com&owner=Example+Organization",
-          "address": "bad@example.com"
+          "webLink": "https://app.threatconnect.com/auth/indicators/details/url.xhtml?orgid=54321&owner=Example+Organization",
+          "text": "http://example.com/"
         }
       }
     }
