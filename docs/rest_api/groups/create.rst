@@ -22,54 +22,8 @@ The ``{groupType}`` can be any one of the available group types:
 
 Some group types require additional fields when being created. Refer to the table below for the fields required to create each group type:
 
-+-------------+--------------+----------+
-| Group Type  | Valid Fields | Required |
-+=============+==============+==========+
-| adversaries | name         | TRUE     |
-+-------------+--------------+----------+
-| campaigns   | name         | TRUE     |
-+-------------+--------------+----------+
-|             | firstSeen    | FALSE    |
-+-------------+--------------+----------+
-| documents   | fileName     | TRUE     |
-+-------------+--------------+----------+
-|             | name         | TRUE     |
-+-------------+--------------+----------+
-|             | malware      | FALSE    |
-+-------------+--------------+----------+
-|             | password     | FALSE    |
-+-------------+--------------+----------+
-| emails      | name         | TRUE     |
-+-------------+--------------+----------+
-|             | to           | FALSE    |
-+-------------+--------------+----------+
-|             | from         | FALSE    |
-+-------------+--------------+----------+
-|             | subject      | TRUE     |
-+-------------+--------------+----------+
-|             | header       | TRUE     |
-+-------------+--------------+----------+
-|             | body         | TRUE     |
-+-------------+--------------+----------+
-| incidents   | name         | TRUE     |
-+-------------+--------------+----------+
-|             | eventDate    | TRUE     |
-+-------------+--------------+----------+
-| threats     | name         | TRUE     |
-+-------------+--------------+----------+
-| signatures  | name         | TRUE     |
-+-------------+--------------+----------+
-|             | fileName     | TRUE     |
-+-------------+--------------+----------+
-|             | fileType\*   | TRUE     |
-+-------------+--------------+----------+
-|             | fileText\*\* | TRUE     |
-+-------------+--------------+----------+
+.. include:: groups/group_fields.rst
 
-\*The valid values for a Signature’s fileType field are: {Snort ® , Suricata, YARA, ClamAV ® , OpenIOC, CybOX™, Bro, Regex}.
-
-\*\*A Signature’s fileText field contains the Signature itself, which must be properly escaped and encoded when submitting for creation or updating.
-  
 By way of example, the query below will create an incident in the default owner:
 
 .. code::
@@ -77,7 +31,8 @@ By way of example, the query below will create an incident in the default owner:
     POST /v2/groups/incidents
     {
       "name": "Test Incident",
-      "eventDate": "2017-7-13T00:00:00-04:00"
+      "eventDate": "2017-7-13T00:00:00-04:00",
+      "status": "New"
     }
 
 JSON Response:

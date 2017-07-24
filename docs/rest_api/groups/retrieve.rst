@@ -273,6 +273,44 @@ JSON Response:
       }
     }
 
+Retrieving Incident Status
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Incidents in ThreatConnect have a status that can be set and retrieved via API. Adding the ‘includeAdditional’ parameter when requesting data about an Incident will return data which includes the Incident’s status. Use a query in the following format to find an Incident's status:
+
+.. code::
+
+    GET /v2/groups/incidents/{incidentId}?includeAdditional=true
+
+For example, the query below will return information about the Incident with ID 12345 as well as the Incident’s status.
+
+.. code::
+
+    GET /v2/groups/incidents/12345?includeAdditional=true
+
+JSON Response:
+
+.. code:: json
+
+    {
+      "status": "Success",
+      "data": {
+        "incident": {
+          "id": 12345,
+          "name": "Test Incident",
+          "owner": {
+            "id": 1,
+            "name": "Example Organization",
+            "type": "Organization"
+          },
+          "dateAdded": "2017-07-13T18:15:49Z",
+          "webLink": "https://app.threatconnect.com/tc/auth/incident/incident.xhtml?incident=12345",
+          "eventDate": "2017-06-21T18:15:49Z",
+          "status": "Open"
+        }
+      }
+    }
+
 Retrieve Group Associations
 ---------------------------
 

@@ -22,54 +22,8 @@ The ``{groupType}`` can be any one of the available group types:
 
 When updating the fields on a Group itself, you can change any of the fields available for the type of Group you are updating. Below is a table of available fields for each Group type:
 
-+-------------+--------------+----------+
-| Group Type  | Valid Fields | Required |
-+=============+==============+==========+
-| adversaries | name         | TRUE     |
-+-------------+--------------+----------+
-| campaigns   | name         | TRUE     |
-+-------------+--------------+----------+
-|             | firstSeen    | FALSE    |
-+-------------+--------------+----------+
-| documents   | fileName     | TRUE     |
-+-------------+--------------+----------+
-|             | name         | TRUE     |
-+-------------+--------------+----------+
-|             | malware      | FALSE    |
-+-------------+--------------+----------+
-|             | password     | FALSE    |
-+-------------+--------------+----------+
-| emails      | name         | TRUE     |
-+-------------+--------------+----------+
-|             | to           | FALSE    |
-+-------------+--------------+----------+
-|             | from         | FALSE    |
-+-------------+--------------+----------+
-|             | subject      | TRUE     |
-+-------------+--------------+----------+
-|             | header       | TRUE     |
-+-------------+--------------+----------+
-|             | body         | TRUE     |
-+-------------+--------------+----------+
-| incidents   | name         | TRUE     |
-+-------------+--------------+----------+
-|             | eventDate    | TRUE     |
-+-------------+--------------+----------+
-| threats     | name         | TRUE     |
-+-------------+--------------+----------+
-| signatures  | name         | TRUE     |
-+-------------+--------------+----------+
-|             | fileName     | TRUE     |
-+-------------+--------------+----------+
-|             | fileType\*   | TRUE     |
-+-------------+--------------+----------+
-|             | fileText\*\* | TRUE     |
-+-------------+--------------+----------+
+.. include:: groups/group_fields.rst
 
-\*The valid values for a Signature’s fileType field are: {Snort ® , Suricata, YARA, ClamAV ® , OpenIOC, CybOX™, Bro, Regex}.
-
-\*\*A Signature’s fileText field contains the Signature itself, which must be properly escaped and encoded when submitting for creation or updating.
-  
 By way of example, the query below will update the name of an Incident with ID 12345:
 
 .. code::
