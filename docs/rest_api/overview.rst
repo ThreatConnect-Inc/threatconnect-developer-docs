@@ -78,10 +78,13 @@ Adversary Specific Branches
 Document Specific Branches
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* ``/v2/groups/documents``
-* ``/v2/groups/documents/{id}``
 * ``/v2/groups/documents/{id}/download``
 * ``/v2/groups/documents/{id}/upload``
+
+Signature Specific Branch
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* ``/v2/groups/signatures/{id}/download``
 
 Indicators
 ----------
