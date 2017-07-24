@@ -113,6 +113,29 @@ JSON Response:
       "status": "Success"
     }
 
+Deleting File Occurrences
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To delete a File Occurrence, use a query in the following format:
+
+.. code::
+
+    DELETE /v2/indicators/files/{fileHash}/fileOccurrences/{fileOccurrenceId}
+
+For example, the query below will delete the File Occurrence with an ID of 54321 from the File Indicator represented by the hash ``aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa``:
+
+.. code::
+
+    DELETE /v2/indicators/files/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/fileOccurrences/54321
+
+JSON Response:
+
+.. code:: json
+
+    {
+      "status": "Success"
+    }
+
 Delete/Disassociate Indicator Associations
 ------------------------------------------
 

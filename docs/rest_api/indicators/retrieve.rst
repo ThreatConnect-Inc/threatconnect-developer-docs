@@ -193,6 +193,54 @@ The ``observationCount`` field provides the total number of observations on the 
 Retrieve Indicator Observations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Retrieving Recent Observations
+""""""""""""""""""""""""""""""
+
+As of ThreatConnect 5.0, the API branch below provides the ten Indicators with the most observations since a given date. If no date is given, the default query returns the ten Indicators which have had the most observations over the past day. In this context, a “day” includes all of the previous day and all data from the current day up to the current moment in time.
+
+.. code::
+
+    GET /v2/indicators/observed
+
+To view Indicators with the most observations since a specific date, use the ``dateObserved`` parameter, as demonstrated below:
+
+.. code::
+
+    GET /v2/indicators/observed?dateObserved=2017-01-13
+
+This request will return the following data:
+
+.. code-block:: json
+
+    {
+      "status": "Success",
+      "data": {
+        "resultCount": 2,
+        "indicator": [
+          {
+            "summary": "192.168.0.1",
+            "userObservedList": [
+              {
+                "userName": "12345678901234567890",
+                "count": 12
+              }
+            ]
+          },
+          {
+            "summary": "example.com",
+            "userObservedList": [
+              {
+                "userName": "12345678901234567890",
+                "count": 2
+              }
+            ]
+          }
+        ]
+      }
+    }
+
+.. note:: Only observations reported using API accounts that are configured to be included in Observations and False Positives will show up in the list of recent observations. For more details on how to configure an API account in this way, refer to the knowledge base article `here <http://kb.threatconnect.com/customer/en/portal/articles/2324809-reporting-false-positives>`_.
+
 Retrieving Total Indicator Observations
 """""""""""""""""""""""""""""""""""""""
 
@@ -396,6 +444,43 @@ JSON Response:
         ]
       }
     }
+
+Retrieving File Occurrences
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To retrieve the File Occurrences of a File Indicator, use a query in the following format:
+
+.. code::
+
+    GET /v2/indicators/files/{fileHash}/fileOccurrences
+
+For example, the query below will return all of the File Occurrences for the File Indicator represented by the hash ``aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa``:
+
+.. code::
+
+    GET /v2/indicators/files/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/fileOccurrences
+
+JSON Response:
+
+.. code:: json
+
+    {
+      "status": "Success",
+      "data": {
+        "fileOccurrence": {
+          "id": 87534,
+          "fileName": "win999301.dll",
+          "path": "C:\\\\Windows\\System",
+          "date": "2017-07-13T05:00:00Z"
+        }
+      }
+    }
+
+To retrieve a specific File Occurrence, you can add the ID of the File Occurrence to the end of the query like:
+
+.. code::
+
+    GET /v2/indicators/files/{fileHash}/fileOccurrences/{fileOccurrenceId}
 
 Retrieve Indicator Associations
 -------------------------------

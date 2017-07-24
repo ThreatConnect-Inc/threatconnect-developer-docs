@@ -132,3 +132,58 @@ JSON Response:
         }
       }
     }
+
+Updating File Occurrences
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To update the File Occurrences on a File Indicator, use a query in the following format:
+
+.. code::
+
+    PUT /v2/indicators/files/{fileHash}/fileOccurrences/{fileOccurrenceId}
+    {
+      "fileName" : {fileName},
+      "path" : {filePath},
+      "date" : {date}
+    }
+
+When updating a File Occurrence, the following fields are available:
+
++--------------+----------+
+| Valid Fields | Required |
++==============+==========+
+| fileName     | FALSE\*  |
++--------------+----------+
+| path         | FALSE\*  |
++--------------+----------+
+| date         | FALSE\*  |
++--------------+----------+
+
+\* While none of the fields are required, at least one of them must be populated to update a File Occurrence.
+
+For example, the query below will update the File Occurrence with an ID of 54321 on the File Indicator represented by the hash ``aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa``:
+
+.. code::
+
+    PUT /v2/indicators/files/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/fileOccurrences/54321
+    {
+      "fileName": "newFileName.exe",
+      "path": "C:\\\\Windows\\User32",
+      "date": "2017-07-14T05:00:00Z"
+    }
+
+JSON Response:
+
+.. code:: json
+
+    {
+      "status": "Success",
+      "data": {
+        "fileOccurrence": {
+          "id": 87534,
+          "fileName": "newFileName.exe",
+          "path": "C:\\\\Windows\\User32",
+          "date": "2017-07-14T05:00:00Z"
+        }
+      }
+    }

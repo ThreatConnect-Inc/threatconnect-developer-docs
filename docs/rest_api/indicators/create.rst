@@ -307,6 +307,61 @@ JSON Response:
       "status": "Success"
     }
 
+Creating File Occurrences
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To add a File Occurrence to a File Indicator, use a query in the following format:
+
+.. code::
+
+    POST /v2/indicators/files/{fileHash}/fileOccurrences
+    {
+      "fileName" : {fileName},
+      "path" : {filePath},
+      "date" : {date}
+    }
+
+When adding a File Occurrence, the following fields are available:
+
++--------------+----------+
+| Valid Fields | Required |
++==============+==========+
+| fileName     | FALSE\*  |
++--------------+----------+
+| path         | FALSE\*  |
++--------------+----------+
+| date         | FALSE\*  |
++--------------+----------+
+
+\* While none of the fields are required, at least one of them must be populated to create a File Occurrence.
+
+For example, the following query will add a File Occurrence to the File Indicator represented by the hash ``aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa``:
+
+.. code::
+
+    POST /v2/indicators/files/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/fileOccurrences
+    {
+      "fileName" : "win999301.dll",
+      "path" : "C:\\\\Windows\\System",
+      "date" : "2017-07-13T00:00:00-05:00"
+    }
+
+JSON Response:
+
+.. code:: json
+
+    {
+      "status": "Success",
+      "data": {
+        "fileOccurrence": {
+          "id": 87534,
+          "fileName": "win999301.dll",
+          "path": "C:\\\\Windows\\System",
+          "date": "2017-07-13T05:00:00Z"
+        }
+      }
+    }
+
 Create Indicator Associations
 -----------------------------
 

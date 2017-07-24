@@ -131,3 +131,29 @@ JSON Response if Organization does not allow anonymous membership:
         ]
       }
     }
+
+Retrieving Information About Your Current User
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To find information about your current user, you can use the following query:
+
+.. code::
+
+    GET /v2/whoami
+
+JSON Response:
+
+.. code-block:: json
+
+    {
+      "status": "Success",
+      "data": {
+        "user": {
+          "userName": "12345678901234567890",
+          "firstName": "John",
+          "lastName": "Doe",
+          "pseudonym": "Buck",
+          "role": "Api User"
+        }
+      }
+    }
