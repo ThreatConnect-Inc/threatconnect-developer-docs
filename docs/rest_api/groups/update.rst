@@ -137,3 +137,64 @@ JSON Response:
         }
       }
     }
+
+Update Adversary Assets
+^^^^^^^^^^^^^^^^^^^^^^^
+
+To update an Adversary's Asset, use the following format:
+
+.. code::
+
+    PUT /v2/groups/adversaries/{adversaryId}/adversaryAssets/{assetType}/{assetId}
+    {
+      {updatedField}: {updatedValue}
+    }
+
+``{assetType}`` can be replaced with the following asset types:
+
+* handles
+* phoneNumbers
+* urls
+
+When updating an Adversary Asset, you can change the following field:
+
++----------------------------+----------+
+| Updatable Attribute Fields | Required |
++============================+==========+
+| handle\*                   | FALSE    |
++----------------------------+----------+
+| phoneNumber\*\*            | FALSE    |
++----------------------------+----------+
+| url\*\*\*                 | FALSE    |
++----------------------------+----------+
+
+\* The ``handle`` field can only be updated for Adversary Assets of the handles type
+
+\*\* The ``phoneNumber`` field can only be updated for Adversary Assets of the phoneNumbers type
+
+\*\*\* The ``url`` field can only be updated for Adversary Assets of the urls type
+
+For example, if you wanted to update the URL of the Adversary Asset with ID 1 on the Adversary with ID 12345, you would use the following request:
+
+.. code::
+
+    PUT /v2/groups/adversaries/12345/adversaryAssets/urls/1
+    {
+      "url": "https://newsite.com/"
+    }
+
+JSON Response:
+
+.. code:: json
+
+    {
+      "status": "Success",
+      "data": {
+        "adversaryUrl": {
+          "id": 1,
+          "type": "URL",
+          "webLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=12345",
+          "url": "https://newsite.com/"
+        }
+      }
+    }

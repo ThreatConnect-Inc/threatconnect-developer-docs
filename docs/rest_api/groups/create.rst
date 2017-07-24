@@ -199,6 +199,46 @@ JSON Response:
       "status": "Success"
     }
 
+Create Adversary Assets
+^^^^^^^^^^^^^^^^^^^^^^^
+
+To create an Adversary Asset for an Adversary, use a query in the following format:
+
+.. code::
+
+    POST /v2/groups/adversaries/{adversaryId}/adversaryAssets/{assetType}
+
+``{assetType}`` can be replaced with the following asset types:
+
+* handles
+* phoneNumbers
+* urls
+
+For example, the query below will add ``Pierre Despereaux`` as a Handle to the Adversary with ID 12345:
+
+.. code::
+
+    POST /v2/groups/adversaries/12345/adversaryAssets/handles
+    {
+      "handle": "Pierre Despereaux"
+    }
+
+JSON Response:
+
+.. code:: json
+
+    {
+      "status": "Success",
+      "data": {
+        "adversaryHandle": {
+          "id": 1,
+          "type": "Handle",
+          "webLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=12345",
+          "handle": "Pierre Despereaux"
+        }
+      }
+    }
+
 Create Group Associations
 -------------------------
 

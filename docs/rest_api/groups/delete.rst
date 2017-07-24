@@ -123,6 +123,29 @@ JSON Response:
       "status": "Success"
     }
 
+Delete Adversary Assets
+^^^^^^^^^^^^^^^^^^^^^^^
+
+To delete an Adversary Asset, use a request in the following format:
+
+.. code::
+
+    DELETE /v2/groups/adversaries/{adversaryId}/adversaryAssets/{assetType}/{assetId}
+
+For example, if you wanted to delete the Adversary Asset (which happens to be of type URL) with ID 1 on the Adversary with ID 12345, you would use the following request:
+
+.. code::
+
+    DELETE /v2/groups/adversaries/12345/adversaryAssets/urls/1
+
+JSON Response:
+
+.. code:: json
+
+    {
+      "status": "Success"
+    }
+
 Delete/Disassociate Group Associations
 --------------------------------------
 

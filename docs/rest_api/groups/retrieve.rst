@@ -297,6 +297,64 @@ JSON Response:
       }
     }
 
+Retrieve Adversary Assets
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Adversary Assets are accounts or web resources that Adversaries leverage in support of their operations. They can be retrieved from a given Adversary using the following query format:
+
+.. code::
+
+    GET /v2/groups/adversaries/{adversaryId}/adversaryAssets
+
+For example, the query below will return the Adversary Assets for the Adversary with ID 12345:
+
+.. code::
+
+    GET /v2/groups/adversaries/12345/adversaryAssets
+
+JSON Response:
+
+.. code:: json
+
+    {
+      "status": "Success",
+      "data": {
+        "resultCount": 2,
+        "bucketAsset": [
+          {
+            "id": "54321",
+            "name": "Real Bad Guy",
+            "type": "Handle",
+            "webLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=1157242"
+          },
+          {
+            "id": "54322",
+            "name": "http://facebook.com/therealbadguy",
+            "type": "URL",
+            "webLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=1157242"
+          }
+        ]
+      }
+    }
+
+To retrieve Adversary Assets of a particular type, use a query in the following format:
+
+.. code::
+
+    GET /v2/groups/adversaries/{adversaryId}/adversaryAssets/{assetType}
+
+``{assetType}`` can be replaced with the following asset types:
+
+* handles
+* phoneNumbers
+* urls
+
+To get details about a specific Adversary Asset, use a query in the following format:
+
+.. code::
+
+    GET /v2/groups/adversaries/{adversaryId}/adversaryAssets/{assetType}/{assetId}
+
 Retrieve Incident Status
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
