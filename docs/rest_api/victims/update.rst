@@ -10,17 +10,23 @@ To update a Victim, the basic format is:
       {updatedField}: {updatedValue}
     }
 
-When updating the fields on a Victim itself, you can also update any of the fields below:
+When updating a Victim, you can change any of the fields below in addition to the required ``name`` field:
 
-todo: update the table below with the proper data
-
-+-------------+--------------+----------+
-| Victim Type | Valid Fields | Required |
-+=============+==============+==========+
-| adversaries | name         | TRUE     |
-+-------------+--------------+----------+
-| campaigns   | name         | TRUE     |
-+-------------+--------------+----------+
++--------------+----------+
+| Valid Fields | Required |
++==============+==========+
+| name         | TRUE     |
++--------------+----------+
+| description  | FALSE    |
++--------------+----------+
+| org          | FALSE    |
++--------------+----------+
+| suborg       | FALSE    |
++--------------+----------+
+| workLocation | FALSE    |
++--------------+----------+
+| nationality  | FALSE    |
++--------------+----------+
 
 By way of example, the query below will update the name of a Victim with ID 12345:
 
@@ -35,7 +41,16 @@ JSON Response:
 
 .. code:: json
 
-    todo: get json output
+    {
+      "status": "Success",
+      "data": {
+        "victim": {
+          "id": 54321,
+          "name": "New Victim Name",
+          "webLink": "https://app.threatconnect.com/auth/victim/victim.xhtml?victim=54321"
+        }
+      }
+    }
 
 Update Victim Metadata
 ----------------------

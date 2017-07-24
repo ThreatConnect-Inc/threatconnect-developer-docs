@@ -16,7 +16,24 @@ JSON Response:
 
 .. code:: json
 
-    TODO: add json output here...
+    {
+      "status": "Success",
+      "data": {
+        "resultCount": 2,
+        "victim": [
+          {
+            "id": "54321",
+            "name": "Burton Guster",
+            "webLink": "https://app.threatconnect.com/auth/victim/victim.xhtml?victim=54321"
+          },
+          {
+            "id": "54322",
+            "name": "West Coast HR Department",
+            "webLink": "https://app.threatconnect.com/auth/victim/victim.xhtml?victim=54322"
+          }
+        ]
+      }
+    }
 
 Retrieve a Single Victim
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -37,7 +54,21 @@ JSON Response:
 
 .. code:: json
 
-    TODO: add json output here...
+    {
+      "status": "Success",
+      "data": {
+        "victim": {
+          "id": "12345",
+          "name": "Burton Guster",
+          "description": "He also goes by 'Magic Head', 'Lavender Gooms', 'Ghee Buttersnaps', and 'Control Alt Delete' (among others).",
+          "org": "Psych",
+          "suborg": "Super Sniffer Department",
+          "workLocation": "Santa Barbara, California",
+          "nationality": "American",
+          "webLink": "https://app.threatconnect.com/auth/victim/victim.xhtml?victim=12345"
+        }
+      }
+    }
 
 Retrieve Victim Metadata
 ------------------------

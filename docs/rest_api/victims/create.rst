@@ -7,22 +7,26 @@ To create a Victim, the most basic format is:
 
     POST /v2/victims/
     {
-      "name": "Test Victim"
+      // add fields here...
     }
 
 When creating a Victim, you can also add any of the fields listed below:
 
-todo: find valid fields for creating victims
-
-+-------------+--------------+----------+
-| Victim Type  | Valid Fields | Required |
-+=============+==============+==========+
-| adversaries | name         | TRUE     |
-+-------------+--------------+----------+
-| campaigns   | name         | TRUE     |
-+-------------+--------------+----------+
-|             | firstSeen    | FALSE    |
-+-------------+--------------+----------+
++--------------+----------+
+| Valid Fields | Required |
++==============+==========+
+| name         | TRUE     |
++--------------+----------+
+| description  | FALSE    |
++--------------+----------+
+| org          | FALSE    |
++--------------+----------+
+| suborg       | FALSE    |
++--------------+----------+
+| workLocation | FALSE    |
++--------------+----------+
+| nationality  | FALSE    |
++--------------+----------+
 
 By way of example, the query below will create a Victim in the default owner:
 
@@ -30,14 +34,33 @@ By way of example, the query below will create a Victim in the default owner:
 
     POST /v2/victims/
     {
-      "name": "Test Victim",
+      "name": "Example Victim",
+      "description": "This victim got hacked.",
+      "org": "Test Org",
+      "suborg": "HR Department",
+      "workLocation": "Washington D.C.",
+      "nationality": "American",
     }
 
 JSON Response:
 
 .. code:: json
 
-    todo: get json output
+    {
+      "status": "Success",
+      "data": {
+        "victim": {
+          "id": "54321",
+          "name": "Example Victim",
+          "description": "This victim got hacked.",
+          "org": "Test Org",
+          "suborg": "HR Department",
+          "workLocation": "Washington D.C.",
+          "nationality": "American",
+          "webLink": "https://app.threatconnect.com/auth/victim/victim.xhtml?victim=54321"
+        }
+      }
+    }
 
 Create Victim Metadata
 ----------------------
