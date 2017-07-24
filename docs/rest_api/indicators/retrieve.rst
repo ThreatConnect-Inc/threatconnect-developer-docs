@@ -145,6 +145,119 @@ JSON Response:
 Retrieve Indicator Metadata
 ---------------------------
 
+Retrieve Indicator Observations and False Positives
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To find the number of times an Indicator has been observed or reported as a False Positive, use a request in the following format:
+
+.. code::
+
+    GET /v2/indicators/{indicatorType}/{indicator}?includeAdditional=true
+
+For example, the query below will retrieve additional information about the Host ``example.com``:
+
+.. code::
+
+    GET /v2/indicators/hosts/example.com?includeAdditional=true
+
+JSON Response:
+
+.. code:: json
+
+    {
+      "status" : "Success",
+      "data" : {
+        "host" : {
+          "id" : 12345,
+          "owner" : {
+            "id" : 1,
+            "name" : "Example Organization",
+            "type" : "Organization"
+          },
+          "dateAdded" : "2017-06-21T17:50:25-05:00",
+          "lastModified" : "2017-07-13T17:50:25-05:00",
+          "webLink" : "https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=example.com&owner=Example%20Organization",
+          "observationCount" : 5,
+          "lastObserved" : "2016-07-13T17:50:25-05:00",
+          "falsePositiveCount" : 1,
+          "falsePositiveLastReported" : "2017-07-13T17:50:25-05:00",
+          "hostName" : "example.com",
+          "dnsActive" : "false",
+          "whoisActive" : "false"
+        }
+      }
+    }
+
+The ``observationCount`` field provides the total number of observations on the indicator and the ``lastObserved`` field gives the date on which the Indicator was most recently observed. The ``falsePositiveCount`` field gives the total number times the Indicator has been reported as a false positive and the ``falsePositiveLastReported`` field gives the date on which the most recent false positive was reported.
+
+Retrieve Indicator Observations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Retrieving Total Indicator Observations
+"""""""""""""""""""""""""""""""""""""""
+
+To retrieve the total count of observations for an Indicator, you can use the following query:
+
+.. code::
+
+    GET /v2/indicators/{indicatorType}/{indicator}/observations
+
+For example, the query below will retrieve the observations for the Host ``example.com``:
+
+.. code::
+
+    GET /v2/indicators/hosts/example.com/observations
+
+JSON Response:
+
+.. code:: json
+
+    {
+      "status": "Success",
+      "data": {
+        "resultCount": 1,
+        "observation": [
+          {
+            "count": 5,
+            "dateObserved": "2016-07-13T17:50:25-05:00Z"
+          }
+        ]
+      }
+    }
+
+Retrieving Observations from Your Organization
+""""""""""""""""""""""""""""""""""""""""""""""
+
+To view how many of an Indicator's observations came from your organization, you can use a query in the following format:
+
+.. code::
+
+    GET /v2/indicators/{indicatorType}/{indicator}/observationCount
+
+For example, the query below will retrieve the observation counts for the Host ``example.com``:
+
+.. code::
+
+    GET /v2/indicators/hosts/example.com/observationCount
+
+JSON Response:
+
+.. code:: json
+
+    {
+      "status": "Success",
+      "data": {
+        "observationCount": {
+          "count": 5,
+          "lastObserved": "2016-07-13T17:50:25-05:00Z",
+          "yourCount": 2,
+          "yourLastObserved": "2016-07-13T17:50:25-05:00Z"
+        }
+      }
+    }
+
+The ``yourCount`` field shows the total number of observations on the Indicator that came your organization (and ``yourLastObserved`` provides the date of the most recent observation). The ``count`` and ``lastObserved`` describe observations from any ThreatConnect user.
+
 Retrieve Indicator Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

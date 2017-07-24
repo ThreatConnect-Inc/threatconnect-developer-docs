@@ -99,9 +99,9 @@ Create File Indicators
 
     POST /v2/indicators/files
     {
-      "md5": "2FFA00BB67FC936B01E3DE234A01A8D8",
-      "sha1": "111EE6465425DF9A06CC14934DFFEE5EF36DE7E3",
-      "sha256": "FD320CE6E64A816B3DC22DAE1AEA9B5D84C197E1265AE3880B3A2A45A543D051",
+      "md5": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "sha1": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
       "size": 5366,
       "rating": 5.0,
       "confidence": 100
@@ -137,6 +137,66 @@ Create URL Indicators
 
 Create Indicator Metadata
 -------------------------
+
+Add Indicator False Positive
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To `report a false positive <http://kb.threatconnect.com/customer/portal/articles/2324809>`_ for an Indicator, use a request in the following format:
+
+.. code::
+
+    POST /v2/indicators/{indicatorType}/{indicator}/falsePositive
+
+For example, the following query will report a false positive for the Host Indicator ``example.com``:
+
+.. code::
+
+    POST v2/indicators/hosts/example.com/falsePositive
+
+JSON Response:
+
+.. code:: json
+
+    {
+      "status": "Success",
+      "data": {
+        "falsePositive": {
+          "count": 1,
+          "lastReported": "2017-07-13T17:04:54Z"
+        }
+      }
+    }
+
+.. note:: There can only be one false positive reported per user, per Indicator, per day. In other words, you can only use your API user to report a false positive for a given indicator once per day.
+
+Add Indicator Observations
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To add observations to an Indicator, use a request in the following format:
+
+.. code::
+
+    POST /v2/indicators/{indicatorType}/{indicator}/observations
+    {
+      "count" : 10
+    }
+
+For example, the following query will report two observations for the File Indicator ``AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA``:
+
+.. code::
+
+    POST /v2/indicators/files/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/observations
+    {
+      "count" : 2
+    }
+
+JSON Response:
+
+.. code:: json
+
+    {
+      "status": "Success"
+    }
 
 Create Indicator Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
