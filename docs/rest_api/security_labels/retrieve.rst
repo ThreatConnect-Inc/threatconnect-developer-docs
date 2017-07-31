@@ -175,13 +175,11 @@ For example, we could use the following query to find all Address Indicators lab
 
     GET /v2/securityLabels/TLP Amber/indicators/addresses
 
-We can also drill down even further by adding the ID of an associated Indicator to the end of the query like:
+We can also drill down even further by adding an associated Indicator to the end of the query like:
 
 .. code::
 
-    GET /v2/securityLabels/TLP Amber/indicators/addresses/54321
-
-Where ``54321`` is the ID of an Address labeled with the ``TLP Amber`` Security Label.
+    GET /v2/securityLabels/TLP Amber/indicators/addresses/0.0.0.0
 
 Retrieve Labeled Victims
 ^^^^^^^^^^^^^^^^^^^^^^^^

@@ -174,13 +174,11 @@ For example, we could use the following query to find all Address Indicators ass
 
     GET /v2/tags/Nation State/indicators/addresses
 
-We can also drill down even further by adding the ID of an associated Indicator to the end of the query like:
+We can also drill down even further by adding an associated Indicator to the end of the query like:
 
 .. code::
 
-    GET /v2/tags/Nation State/indicators/addresses/54321
-
-Where ``54321`` is the ID of an Address associated with the ``Nation State`` tag.
+    GET /v2/tags/Nation State/indicators/addresses/0.0.0.0
 
 Retrieve Associated Victims
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
