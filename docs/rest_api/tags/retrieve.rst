@@ -1,6 +1,8 @@
 Retrieve Tags
 -------------
 
+.. include:: tags/filters.rst
+
 Retrieve All Tags
 ^^^^^^^^^^^^^^^^^
 
