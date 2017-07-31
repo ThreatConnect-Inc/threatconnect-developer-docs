@@ -17,15 +17,15 @@ Some task types require additional fields when being created. Refer to the table
 +==============+==========+================================================+
 | name         | TRUE     | "New Task"                                     |
 +--------------+----------+------------------------------------------------+
-| assignee     | FALSE    | { "userName" : ["analyst@threatconnect.com"] } |
+| assignee     | FALSE    | [ {"userName" : "analyst@threatconnect.com"} ] |
 +--------------+----------+------------------------------------------------+
-| escalatee    | FALSE    | { "userName" : ["manager@threatconnect.com"] } |
+| escalatee    | FALSE    | [ {"userName" : "manager@threatconnect.com"} ] |
 +--------------+----------+------------------------------------------------+
-| dueDate      | FALSE    | {"2016-03-20T13:36:53-04:00"}                  |
+| dueDate      | FALSE    | "2016-03-20T13:36:53-04:00"                    |
 +--------------+----------+------------------------------------------------+
-| description  | FALSE    | {"Send to IR team for triage."}                |
+| description  | FALSE    | "Send to IR team for triage."                  |
 +--------------+----------+------------------------------------------------+
-  
+
 By way of example, the query below will create a Task in the default owner with the name ``Test Task`` that is due on ``2017-07-13``:
 
 .. code::
@@ -33,7 +33,8 @@ By way of example, the query below will create a Task in the default owner with 
     POST /v2/tasks/
     {
       "name": "Test Task",
-      "dueDate": {"2017-07-13T13:36:53-04:00"} 
+      "dueDate": "2017-07-13T13:36:53-04:00"
+      ]
     }
 
 JSON Response:
@@ -54,6 +55,50 @@ JSON Response:
           "dateAdded": "2017-07-13T17:50:17",
           "webLink": "https://app.threatconnect.com/auth/task/task.xhtml?task=54321",
           "dueDate": "2017-07-13T13:36:53-04:00"
+        }
+      }
+    }
+
+The code below will do the same thing as above, but it will also assign the task to the user with the username ``johndoe@example.com``:
+
+.. code::
+
+    POST /v2/tasks/
+    {
+      "name": "Test Task",
+      "dueDate": "2017-07-13T13:36:53-04:00",
+      "assignee": [
+        {
+          "userName": "johndoe@example.com"
+        }
+      ]
+    }
+
+JSON Response:
+
+.. code:: json
+
+    {
+      "status": "Success",
+      "data": {
+        "task": {
+          "id": "54321",
+          "name": "Test Task",
+          "owner": {
+            "id": 1,
+            "name": "Example Organization",
+            "type": "Organization"
+          },
+          "dateAdded": "2017-07-13T17:50:17",
+          "webLink": "https://app.threatconnect.com/auth/task/task.xhtml?task=54321",
+          "dueDate": "2017-07-13T13:36:53-04:00",
+          "assignee": [
+            {
+              "userName": "johndoe@example.com",
+              "firstName": "John",
+              "lastName": "Doe"
+            }
+          ]
         }
       }
     }
