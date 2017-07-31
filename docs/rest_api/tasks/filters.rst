@@ -3,25 +3,27 @@ Filtering Tasks
 
 When retrieving Tasks from ThreatConnect, it is possible to filter the results. Results can be filtered on the following data points:
 
-+-----------+-----------+-------------+
-| Filter    | Data Type | Operator(s) |
-+===========+===========+=============+
-| name      | string    | =^          |
-+-----------+-----------+-------------+
-| status    | string    | =           |
-+-----------+-----------+-------------+
-| assignee  | string    | =           |
-+-----------+-----------+-------------+
-| escalatee | string    | =           |
-+-----------+-----------+-------------+
-| overdue   | boolean   | =           |
-+-----------+-----------+-------------+
-| escalated | boolean   | =           |
-+-----------+-----------+-------------+
-| dueDate   | string    | =<>         |
-+-----------+-----------+-------------+
-| reminded  | boolean   | =           |
-+-----------+-----------+-------------+
++-----------+-----------+--------------+
+| Filter    | Data Type | Operator(s)  |
++===========+===========+==============+
+| name      | string    | ``=``, ``^`` |
++-----------+-----------+--------------+
+| dateAdded | date      | ``<``, ``>`` |
++-----------+-----------+--------------+
+| status    | string    | ``=``        |
++-----------+-----------+--------------+
+| assignee  | string    | ``=``        |
++-----------+-----------+--------------+
+| escalatee | string    | ``=``        |
++-----------+-----------+--------------+
+| overdue   | boolean   | ``=``        |
++-----------+-----------+--------------+
+| escalated | boolean   | ``=``        |
++-----------+-----------+--------------+
+| dueDate   | date      | ``<``, ``>`` |
++-----------+-----------+--------------+
+| reminded  | boolean   | ``=``        |
++-----------+-----------+--------------+
 
 .. include:: _includes/filter_symbol_encoding_note.rst
 
@@ -67,11 +69,11 @@ The following query will return all escalated Tasks (``escalated=true``):
 
     GET /v2/tasks/?filters=escalated%3Dtrue
 
-The following query will return all Tasks with a due date after 2017-07-25T00:00:00Z (``dueDate>2017-07-25T00:00:00Z ``):
+The following query will return all Tasks with a due date after 2017-07-25 (``dueDate>20170725``):
 
 .. code::
 
-    GET /v2/tasks/?filters=dueDate%3E2017-07-25T00:00:00Z
+    GET /v2/tasks/?filters=dueDate%3E20170725
 
 The following query will return all Tasks for which a reminder has been sent (``reminded=true``):
 

@@ -3,25 +3,25 @@ Filtering Groups
 
 When retrieving Groups from ThreatConnect, it is possible to filter the results. Results can be filtered on the following data points:
 
-+------------+-----------+-------------+
-| Filter     | Data Type | Operator(s) |
-+============+===========+=============+
-| name       | string    | =^          |
-+------------+-----------+-------------+
-| dateAdded  | date      | =<>         |
-+------------+-----------+-------------+
-| fileType\* | string    | =           |
-+------------+-----------+-------------+
++------------+-----------+--------------+
+| Filter     | Data Type | Operator(s)  |
++============+===========+==============+
+| name       | string    | ``=``, ``^`` |
++------------+-----------+--------------+
+| dateAdded  | date      | ``<``, ``>`` |
++------------+-----------+--------------+
+| fileType\* | string    | ``=``        |
++------------+-----------+--------------+
 
 \* The ``fileType`` filter only works for Documents.
 
 .. include:: _includes/filter_symbol_encoding_note.rst
 
-For example, the following query will return all groups that have been added since 2017-07-13 (``dateAdded>2017-07-13``):
+For example, the following query will return all groups that have been added since 2017-07-13 (``dateAdded>20170713``):
 
 .. code::
 
-    GET /v2/groups/?filters=dateAdded%3E2017-07-13
+    GET /v2/groups/?filters=dateAdded%3E20170713
 
 The following query will return all groups that start with "Fancy" (``name^Fancy``):
 

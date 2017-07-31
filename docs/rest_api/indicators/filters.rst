@@ -45,37 +45,6 @@ The example below demonstrates usage of the whoisActive parameter:
 
     /v2/indicators/hosts?filters=whoisActive%3Dtrue
 
-The example below demonstrates usage of a Group name parameter:
-
-.. code::
-
-    /v2/groups?filters=name%5ETest
-
-The example below demonstrates usage of a Group fileType parameter:
-
-.. code::
-
-    /v2/groups/documents?filters=fileType%3DPDF
-
-The example below demonstrates usage of a securityLabels filter
-parameter:
-
-.. code::
-
-    /v2/securityLabels?filters=name%3Ddictators
-
-The example below demonstrates usage of a victim filter parameter:
-
-.. code::
-
-    /v2/victims?filters=name%5ETest
-
-The example below demonstrates usage of a tag filter parameter:
-
-.. code::
-
-    /v2/tags?filters=weight%3E2
-
 The example below demonstrates usage multiple parameters (with implicit
 AND):
 
@@ -112,36 +81,36 @@ Indicator’s Confidence value
 
 **Filters**
 
-+------------------------------+------------+-----------+
-| Name                         | Data Type  | Operators |
-+==============================+============+===========+
-| **Indicator Common Filters** |            |           |
-+------------------------------+------------+-----------+
-| summary                      | String     | ``= ^``   |
-+------------------------------+------------+-----------+
-| dateAdded                    | Date       | ``< >``   |
-+------------------------------+------------+-----------+
-| rating                       | BigDecimal | ``<>``    |
-+------------------------------+------------+-----------+
-| confidence                   | Short      | ``=<>``   |
-+------------------------------+------------+-----------+
-| threatAssessRating           | Double     | ``<>``    |
-+------------------------------+------------+-----------+
-| threatAssessConfidence       | Double     | ``<>``    |
-+------------------------------+------------+-----------+
-| **Address Specific Filters** |            |           |
-+------------------------------+------------+-----------+
-| countryCode                  | String     | ``=``     |
-+------------------------------+------------+-----------+
-| organization                 | String     | ``=``     |
-+------------------------------+------------+-----------+
-| asn                          | Integer    | ``=``     |
-+------------------------------+------------+-----------+
-| **Host Specific Filters**    |            |           |
-+------------------------------+------------+-----------+
-| whoisActive                  | Boolean    | ``=``     |
-+------------------------------+------------+-----------+
-| dnsActive                    | Boolean    | ``=``     |
-+------------------------------+------------+-----------+
++------------------------------+------------+---------------------+
+| Name                         | Data Type  | Operator(s)         |
++==============================+============+=====================+
+| **Indicator Common Filters** |            |                     |
++------------------------------+------------+---------------------+
+| summary                      | string     | ``=``, ``^``        |
++------------------------------+------------+---------------------+
+| dateAdded                    | date       | ``<``, ``>``        |
++------------------------------+------------+---------------------+
+| rating                       | bigdecimal | ``<``, ``>``        |
++------------------------------+------------+---------------------+
+| confidence                   | short      | ``=``, ``<``, ``>`` |
++------------------------------+------------+---------------------+
+| threatAssessRating           | double     | ``<``, ``>``        |
++------------------------------+------------+---------------------+
+| threatAssessConfidence       | double     | ``<``, ``>``        |
++------------------------------+------------+---------------------+
+| **Address Specific Filters** |            |                     |
++------------------------------+------------+---------------------+
+| countryCode                  | string     | ``=``               |
++------------------------------+------------+---------------------+
+| organization                 | string     | ``=``               |
++------------------------------+------------+---------------------+
+| asn                          | integer    | ``=``               |
++------------------------------+------------+---------------------+
+| **Host Specific Filters**    |            |                     |
++------------------------------+------------+---------------------+
+| whoisActive                  | boolean    | ``=``               |
++------------------------------+------------+---------------------+
+| dnsActive                    | boolean    | ``=``               |
++------------------------------+------------+---------------------+
 
-.. note:: ``<``, ``>``, and ``^`` operators need to be escaped in the url as: ``%3C``, ``%3E``, ``%5E``, respectively.
+.. include:: _includes/filter_symbol_encoding_note.rst
