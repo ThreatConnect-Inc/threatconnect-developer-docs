@@ -1,0 +1,1 @@
+.. note:: ``=``, ``<``, ``>``, and ``^`` operators need to be escaped in the url as: ``%3D``, ``%3C``, ``%3E``, ``%5E``, respectively.

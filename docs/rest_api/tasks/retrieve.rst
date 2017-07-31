@@ -30,7 +30,8 @@ JSON Response:
             "status": "Not Started",
             "escalated": false,
             "reminded": false,
-            "overdue": false
+            "overdue": false,
+            "dueDate": "2017-07-24T00:00:00Z"
           }
         ]
       }
@@ -71,7 +72,15 @@ JSON Response:
           "status": "Not Started",
           "escalated": false,
           "reminded": false,
-          "overdue": false
+          "overdue": false,
+          "dueDate": "2017-07-24T00:00:00Z",
+          "assignee": [
+            {
+              "userName": "johndoe@example.com",
+              "firstName": "John",
+              "lastName": "Doe"
+            }
+          ]
         }
       }
     }
