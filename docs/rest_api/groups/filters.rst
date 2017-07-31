@@ -34,3 +34,9 @@ The following query will return all groups whose name is "Fancy" (``name=Fancy``
 .. code::
 
     GET /v2/groups/?filters=name%3DFancy
+
+The following query will return all Documents that are PDFs (``fileType=PDF``):
+
+.. code::
+
+    GET /v2/groups/documents?filters=fileType%3DPDF

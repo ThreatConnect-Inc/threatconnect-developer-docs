@@ -10,7 +10,7 @@ When retrieving Tasks from ThreatConnect, it is possible to filter the results. 
 +-----------+-----------+--------------+
 | dateAdded | date      | ``<``, ``>`` |
 +-----------+-----------+--------------+
-| status    | string    | ``=``        |
+| status    | string    | ``=``, ``!`` |
 +-----------+-----------+--------------+
 | assignee  | string    | ``=``        |
 +-----------+-----------+--------------+
