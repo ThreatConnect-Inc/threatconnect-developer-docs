@@ -12,19 +12,21 @@ To create a Task, the most basic format is:
 
 Some task types require additional fields when being created. Refer to the table below for the available fields for Tasks:
 
-+--------------+----------+------------------------------------------------+
-| Valid Fields | Required | Example Value                                  |
-+==============+==========+================================================+
-| name         | TRUE     | "New Task"                                     |
-+--------------+----------+------------------------------------------------+
-| assignee     | FALSE    | [ {"userName" : "analyst@threatconnect.com"} ] |
-+--------------+----------+------------------------------------------------+
-| escalatee    | FALSE    | [ {"userName" : "manager@threatconnect.com"} ] |
-+--------------+----------+------------------------------------------------+
-| dueDate      | FALSE    | "2016-03-20T13:36:53-04:00"                    |
-+--------------+----------+------------------------------------------------+
-| description  | FALSE    | "Send to IR team for triage."                  |
-+--------------+----------+------------------------------------------------+
++----------------+----------+------------------------------------------------+
+| Valid Fields   | Required | Example Value                                  |
++================+==========+================================================+
+| name           | TRUE     | "New Task"                                     |
++----------------+----------+------------------------------------------------+
+| assignee       | FALSE    | [ {"userName" : "analyst@threatconnect.com"} ] |
++----------------+----------+------------------------------------------------+
+| escalatee      | FALSE    | [ {"userName" : "manager@threatconnect.com"} ] |
++----------------+----------+------------------------------------------------+
+| dueDate        | FALSE    | "2018-03-20T13:36:53-04:00"                    |
++----------------+----------+------------------------------------------------+
+| escalationDate | FALSE    | "2018-07-13T13:36:53-04:00"                    |
++----------------+----------+------------------------------------------------+
+| description    | FALSE    | "Send to IR team for triage."                  |
++----------------+----------+------------------------------------------------+
 
 By way of example, the query below will create a Task in the default owner with the name ``Test Task`` that is due on ``2017-07-13``:
 
@@ -34,7 +36,6 @@ By way of example, the query below will create a Task in the default owner with 
     {
       "name": "Test Task",
       "dueDate": "2017-07-13T13:36:53-04:00"
-      ]
     }
 
 JSON Response:
