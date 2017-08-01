@@ -186,6 +186,10 @@ To associate a Victim with a Group, use a query in the following format:
 
     POST /v2/victims/{victimId}/groups/{associatedGroupType}/{associatedGroupId}
 
+Replace ``{associatedGroupType}`` with one of the following Group types:
+
+.. include:: _includes/group_types.rst
+
 For example, the query below will associate a Victim with ID 12345 with an Incident with the ID 54321:
 
 .. code::

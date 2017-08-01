@@ -374,6 +374,10 @@ To associate an Indicator with a Group, use a query in the following format:
 
     POST /v2/indicators/{indicatorType}/{indicator}/groups/{associatedGroupType}/{associatedGroupId}
 
+Replace ``{associatedGroupType}`` with one of the following Group types:
+
+.. include:: _includes/group_types.rst
+
 For example, the query below will associate the Email Address ``bad@example.com`` with an Incident with the ID 54321:
 
 .. code::

@@ -527,6 +527,10 @@ You can also find associated Groups of a given type using the following format:
 
     GET /v2/indicators/{indicatorType}/{indicator}/groups/{associatedGroupType}
 
+Replace ``{associatedGroupType}`` with one of the following Group types:
+
+.. include:: _includes/group_types.rst
+
 For example, we could use the following query to find all Incidents associated with the Email Address ``bad@example.com``:
 
 .. code::

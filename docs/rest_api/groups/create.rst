@@ -12,13 +12,7 @@ To create a Group, the most basic format is:
 
 The ``{groupType}`` can be any one of the available group types:
 
-- ``adversaries``
-- ``campaigns``
-- ``documents``
-- ``emails``
-- ``incidents``
-- ``signatures``
-- ``threats``
+.. include:: _includes/group_types.rst
 
 Some group types require additional fields when being created. Refer to the table below for the fields required to create each group type:
 
@@ -250,6 +244,10 @@ To associate one Group with another, use a query in the following format:
 .. code::
 
     POST /v2/groups/{groupType}/{groupId}/groups/{associatedGroupType}/{associatedGroupId}
+
+Replace ``{associatedGroupType}`` with one of the following Group types:
+
+.. include:: _includes/group_types.rst
 
 For example, the query below will associate a Threat with the ID 12345 with an Incident with the ID 54321:
 

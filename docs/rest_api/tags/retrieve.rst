@@ -109,6 +109,10 @@ You can also find associated Groups of a given type using the following format:
 
     GET /v2/tags/{tagName}/groups/{associatedGroupType}
 
+Replace ``{associatedGroupType}`` with one of the following Group types:
+
+.. include:: _includes/group_types.rst
+
 For example, we could use the following query to find all Incidents associated with the ``Nation State`` tag:
 
 .. code::

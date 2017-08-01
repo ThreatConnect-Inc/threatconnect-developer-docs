@@ -148,6 +148,10 @@ To disassociate an Indicator from a Group, use a query in the following format:
 
     DELETE /v2/indicators/{indicatorType}/{indicator}/groups/{associatedGroupType}/{associatedGroupId}
 
+Replace ``{associatedGroupType}`` with one of the following Group types:
+
+.. include:: _includes/group_types.rst
+
 For example, the query below will disassociate the Email Address ``bad@example.com`` from an Incident with the ID 54321:
 
 .. code::
