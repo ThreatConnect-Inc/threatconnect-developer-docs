@@ -555,7 +555,9 @@ You can also find associated Victim Assets of a given type using the following f
 
 .. code::
 
-    GET /v2/groups/{groupType}/{groupId}/victimAssets/{associatedVictimAssetType}
+    GET /v2/groups/{groupType}/{groupId}/victimAssets/{victimAssetType}
+
+.. include:: _includes/victim_asset_types.rst
 
 For example, we could use the following query to find all Victim Assets that are Email Addresses which are associated with the Threat with ID 12345:
 
