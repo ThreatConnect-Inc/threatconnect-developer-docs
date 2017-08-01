@@ -4,7 +4,7 @@
 ThreatConnect Exchange App Framework (TcEx)
 ===========================================
 
-Release |version|.
+Release |tcex_version|.
 
 .. toctree::
    :caption:  Table of Contents
