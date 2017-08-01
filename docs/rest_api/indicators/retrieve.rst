@@ -3,8 +3,297 @@ Retrieve Indicators
 
 .. include:: indicators/filters.rst
 
-Retrieve All Indicator Types
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Retrieve Available Indicator Types
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To find the available Indicator types on your instance of ThreatConnect, use the following query:
+
+.. code::
+
+    GET /v2/types/indicatorTypes
+
+JSON Response:
+
+.. code:: json
+
+    {
+      "status": "Success",
+      "data": {
+        "resultCount": 10,
+        "indicatorType": [
+          {
+            "name": "Address",
+            "custom": "false",
+            "parsable": "true",
+            "apiBranch": "addresses",
+            "apiEntity": "address"
+          },
+          {
+            "name": "EmailAddress",
+            "custom": "false",
+            "parsable": "true",
+            "apiBranch": "emailAddresses",
+            "apiEntity": "emailAddress"
+          },
+          {
+            "name": "File",
+            "custom": "false",
+            "parsable": "true",
+            "apiBranch": "files",
+            "apiEntity": "file"
+          },
+          {
+            "name": "Host",
+            "custom": "false",
+            "parsable": "true",
+            "apiBranch": "hosts",
+            "apiEntity": "host"
+          },
+          {
+            "name": "URL",
+            "custom": "false",
+            "parsable": "true",
+            "apiBranch": "urls",
+            "apiEntity": "url"
+          },
+          {
+            "name": "ASN",
+            "custom": "true",
+            "parsable": "true",
+            "apiBranch": "asns",
+            "apiEntity": "asn",
+            "casePreference": "upper",
+            "value1Label": "AS Number",
+            "value1Type": "text",
+            "value2Label": ""
+          },
+          {
+            "name": "CIDR",
+            "custom": "true",
+            "parsable": "true",
+            "apiBranch": "cidrBlocks",
+            "apiEntity": "cidrBlock",
+            "casePreference": "lower",
+            "value1Label": "Block",
+            "value1Type": "text",
+            "value2Label": ""
+          },
+          {
+            "name": "Mutex",
+            "custom": "true",
+            "parsable": "false",
+            "apiBranch": "mutexes",
+            "apiEntity": "mutex",
+            "casePreference": "sensitive",
+            "value1Label": "Mutex",
+            "value1Type": "text",
+            "value2Label": ""
+          },
+          {
+            "name": "Registry Key",
+            "custom": "true",
+            "parsable": "false",
+            "apiBranch": "registryKeys",
+            "apiEntity": "registryKey",
+            "casePreference": "sensitive",
+            "value1Label": "Key Name",
+            "value1Type": "text",
+            "value2Label": "Value Name",
+            "value2Type": "text"
+          },
+          {
+            "name": "User Agent",
+            "custom": "true",
+            "parsable": "false",
+            "apiBranch": "userAgents",
+            "apiEntity": "userAgent",
+            "casePreference": "sensitive",
+            "value1Label": "User Agent String",
+            "value1Type": "text",
+            "value2Label": ""
+          }
+        ]
+      }
+    }
+
+XML Response:
+
+.. code:: xml
+
+    <indicatorTypesResponse>
+      <Status>Success</Status>
+      <Data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="indicatorTypeListResponseData">
+        <ResultCount>10</ResultCount>
+        <IndicatorType>
+          <Name>Address</Name>
+          <Custom>false</Custom>
+          <Parsable>true</Parsable>
+          <ApiBranch>addresses</ApiBranch>
+          <ApiEntity>address</ApiEntity>
+        </IndicatorType>
+        <IndicatorType>
+          <Name>EmailAddress</Name>
+          <Custom>false</Custom>
+          <Parsable>true</Parsable>
+          <ApiBranch>emailAddresses</ApiBranch>
+          <ApiEntity>emailAddress</ApiEntity>
+        </IndicatorType>
+        <IndicatorType>
+          <Name>File</Name>
+          <Custom>false</Custom>
+          <Parsable>true</Parsable>
+          <ApiBranch>files</ApiBranch>
+          <ApiEntity>file</ApiEntity>
+        </IndicatorType>
+        <IndicatorType>
+          <Name>Host</Name>
+          <Custom>false</Custom>
+          <Parsable>true</Parsable>
+          <ApiBranch>hosts</ApiBranch>
+          <ApiEntity>host</ApiEntity>
+        </IndicatorType>
+        <IndicatorType>
+          <Name>URL</Name>
+          <Custom>false</Custom>
+          <Parsable>true</Parsable>
+          <ApiBranch>urls</ApiBranch>
+          <ApiEntity>url</ApiEntity>
+        </IndicatorType>
+        <IndicatorType>
+          <Name>ASN</Name>
+          <Custom>true</Custom>
+          <Parsable>true</Parsable>
+          <ApiBranch>asns</ApiBranch>
+          <ApiEntity>asn</ApiEntity>
+          <casePreference>upper</casePreference>
+          <value1Label>AS Number</value1Label>
+          <value1Type>text</value1Type>
+          <value2Label/>
+        </IndicatorType>
+        <IndicatorType>
+          <Name>CIDR</Name>
+          <Custom>true</Custom>
+          <Parsable>true</Parsable>
+          <ApiBranch>cidrBlocks</ApiBranch>
+          <ApiEntity>cidrBlock</ApiEntity>
+          <casePreference>lower</casePreference>
+          <value1Label>Block</value1Label>
+          <value1Type>text</value1Type>
+          <value2Label/>
+        </IndicatorType>
+        <IndicatorType>
+          <Name>Mutex</Name>
+          <Custom>true</Custom>
+          <Parsable>false</Parsable>
+          <ApiBranch>mutexes</ApiBranch>
+          <ApiEntity>mutex</ApiEntity>
+          <casePreference>sensitive</casePreference>
+          <value1Label>Mutex</value1Label>
+          <value1Type>text</value1Type>
+          <value2Label/>
+        </IndicatorType>
+        <IndicatorType>
+          <Name>Registry Key</Name>
+          <Custom>true</Custom>
+          <Parsable>false</Parsable>
+          <ApiBranch>registryKeys</ApiBranch>
+          <ApiEntity>registryKey</ApiEntity>
+          <casePreference>sensitive</casePreference>
+          <value1Label>Key Name</value1Label>
+          <value1Type>text</value1Type>
+          <value2Label>Value Name</value2Label>
+          <value2Type>text</value2Type>
+        </IndicatorType>
+        <IndicatorType>
+          <Name>User Agent</Name>
+          <Custom>true</Custom>
+          <Parsable>false</Parsable>
+          <ApiBranch>userAgents</ApiBranch>
+          <ApiEntity>userAgent</ApiEntity>
+          <casePreference>sensitive</casePreference>
+          <value1Label>User Agent String</value1Label>
+          <value1Type>text</value1Type>
+          <value2Label/>
+        </IndicatorType>
+      </Data>
+    </indicatorTypesResponse>
+
+.. note:: The responses above are taken from the ThreatConnect public cloud (https://app.threatconnect.com/).
+
+To get information about a specific Indicator type, you can use a query in the following format:
+
+.. code::
+
+    GET /v2/types/indicatorTypes/{indicatorType}
+
+For example, to retrieve information for Mutexes, you would use the following query:
+
+.. code::
+
+    GET /v2/types/indicatorTypes/mutex
+
+JSON Response:
+
+.. code:: json
+
+    {
+      "status": "Success",
+      "data": {
+        "indicatorType": {
+          "name": "Mutex",
+          "custom": "true",
+          "parsable": "false",
+          "apiBranch": "mutexes",
+          "apiEntity": "mutex",
+          "casePreference": "sensitive",
+          "value1Label": "Mutex",
+          "value1Type": "text"
+        }
+      }
+    }
+
+In ThreatConnect version 5.2+, it is possible to retrieve the regular expression(s) (regex(es)) used to detect and validate an Indicator of a given type. These regexes can be retrieved by adding the ``includeAdditional=true`` parameter as follows:
+
+.. code::
+
+    GET /v2/types/indicatorTypes/{indicatorType}?includeAdditional=true
+
+The following example will return the regexes used to validate File Indicators:
+
+.. code::
+
+    GET /v2/types/indicatorTypes/file?includeAdditional=true
+
+JSON Response:
+
+.. code-block:: json
+
+    {
+      "status": "Success",
+      "data": {
+        "indicatorType": {
+          "name": "File",
+          "custom": "false",
+          "parsable": "true",
+          "apiBranch": "files",
+          "apiEntity": "file",
+          "value1Label": "MD5",
+          "value1Type": "text",
+          "value2Label": "SHA-1",
+          "value2Type": "text",
+          "value3Label": "SHA-256",
+          "value3Type": "text",
+          "regexes": [
+            "\\b([a-fA-F\\d]{32})\\b",
+            "\\b([a-fA-F\\d]{40})\\b",
+            "\\b([a-fA-F\\d]{64})\\b"
+          ]
+        }
+      }
+    }
+
+Retrieve All Indicators
+^^^^^^^^^^^^^^^^^^^^^^^
 
 To retrieve Indicators of all types, use the following query:
 

@@ -3,8 +3,8 @@ Retrieve Groups
 
 .. include:: groups/filters.rst
 
-Retrieve All Group Types
-^^^^^^^^^^^^^^^^^^^^^^^^
+Retrieve All Group
+^^^^^^^^^^^^^^^^^^
 
 To retrieve groups of all types, use the following query:
 
