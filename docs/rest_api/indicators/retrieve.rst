@@ -58,11 +58,7 @@ To retrieve multiple indicators of a certain type, use a query in the following 
 
 The ``{indicatorType}`` can be any one of the available Indicator types below or any of the custom Indicator types available in your instance of threatconnect:
 
-- ``addresses``
-- ``emailAddresses``
-- ``files``
-- ``hosts``
-- ``urls``
+.. include:: _includes/indicator_types.rst
 
 For example, the query below will retrieve a list of all Email Address Indicators in the default owner:
 

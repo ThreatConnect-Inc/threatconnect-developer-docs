@@ -1,5 +1,5 @@
-All API Endpoints and Responses
-===============================
+API Overview
+============
 
 Owners
 ------
@@ -63,6 +63,11 @@ Groups
 * ``/v2/groups/{type}/{id}/victimAssets/webSites/{assetId}``
 * ``/v2/groups/{type}/{id}/victims``
 * ``/v2/groups/{type}/{id}/victims/{victimId}``
+
+Valid Group Types
+^^^^^^^^^^^^^^^^^
+
+.. include:: _includes/group_types.rst
 
 Adversary Specific Branches
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -147,6 +152,13 @@ Indicators
 * ``/v2/indicators/{type}/{indicator}/victimAssets/webSites/{assetId}``
 * ``/v2/indicators/{type}/{indicator}/victims``
 * ``/v2/indicators/{type}/{indicator}/victims/{victimId}``
+
+Valid Indicator Types
+^^^^^^^^^^^^^^^^^^^^^
+
+In addition to the custom Indicators available in your instance of ThreatConnect, the following Indicator types will be available:
+
+.. include:: _includes/indicator_types.rst
 
 Bulk Indicator Download
 ^^^^^^^^^^^^^^^^^^^^^^^
