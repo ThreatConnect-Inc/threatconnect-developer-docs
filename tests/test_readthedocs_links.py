@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 import requests
 
 
-def _get_headings(soup):
+def _get_heading_ids(soup):
     """Get the href/id of all of the headings in the given html."""
     headings = list()
 
@@ -37,7 +37,7 @@ def test_links():
         soup = BeautifulSoup(r.text, 'html.parser')
 
         links = soup.find_all('a')
-        headings = _get_headings(soup)
+        headings = _get_heading_ids(soup)
 
         for link in links:
             href = link['href']
@@ -78,3 +78,23 @@ def test_links():
     if bad_links > 0:
         print("\n\n{} bad links found".format(bad_links))
         sys.exit(3)
+
+
+def test_standard_script_heading_link():
+    """Make sure the standard script heading is still in the docs so that the links in the code snippets will work.
+
+    See: https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
+    """
+    response = requests.get("https://docs.threatconnect.com/en/dev/python/python_sdk.html")
+    soup = BeautifulSoup(response.text, "lxml")
+
+    heading_ids = _get_heading_ids(soup)
+    heading_found = False
+
+    for heading in heading_ids:
+        if heading == "#standard-script-heading":
+            heading_found = True
+            break
+
+    if not heading_found:
+        raise RuntimeError("Unable to find the Standard Script Heading used in the code snippets.")
