@@ -266,7 +266,7 @@ The following example will return the regexes used to validate File Indicators:
 
 JSON Response:
 
-.. code-block:: json
+.. code:: json
 
     {
       "status": "Success",
@@ -495,7 +495,7 @@ To view Indicators with the most observations since a specific date, use the ``d
 
 This request will return the following data:
 
-.. code-block:: json
+.. code:: json
 
     {
       "status": "Success",
