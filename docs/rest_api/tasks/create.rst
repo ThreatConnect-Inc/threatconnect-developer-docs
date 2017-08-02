@@ -104,6 +104,44 @@ JSON Response:
       }
     }
 
+The code below will do the same thing as above, but it will also assign the task to the two users whose usernames are ``johndoe@example.com`` and ``janedoe@example.com``:
+
+.. code::
+
+    POST /v2/tasks/
+    {
+      "name": "Test Task",
+      "dueDate": "2017-07-13T13:36:53-04:00",
+      "assignee": [
+        {
+          "userName": "johndoe@example.com"
+        },
+        {
+          "userName": "janedoe@example.com"
+        }
+      ]
+    }
+
+The code below will do the same thing as above, but instead of assigning the task to the users ``johndoe@example.com`` and ``janedoe@example.com``, it will assign the task to ``johndoe@example.com`` and set ``janedoe@example.com`` as the escalatee:
+
+.. code::
+
+    POST /v2/tasks/
+    {
+      "name": "Test Task",
+      "dueDate": "2017-07-13T13:36:53-04:00",
+      "assignee": [
+        {
+          "userName": "johndoe@example.com"
+        }
+      ],
+      "escalatee": [
+        {
+          "userName": "janedoe@example.com"
+        }
+      ]
+    }
+
 Create Task Metadata
 --------------------
 
