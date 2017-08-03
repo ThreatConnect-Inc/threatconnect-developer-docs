@@ -4,7 +4,7 @@ Delete Group Associations
 The code snippet below demonstrates how to remove an association between an Incident and another Group, Indicator, and Victim. This example is designed to remove the associations from an Incident with an ID of ``123456``. To test this code snippet, change the ``incident_id`` variable to the ID of an incident in your owner. This same process also applies to all group types. Simply change ``tc.incidents()`` to the group type you would like to retrieve. The available group types are: ``tc.<adversaries|campaigns|documents|emails|incidents|signatures|threats>()``.
 
 .. code-block:: python
-    :emphasize-lines: 1,30-31,33-34,36-37
+    :emphasize-lines: 1,30-31,33-34,36-37,39-40
 
     from threatconnect.Config.ResourceType import ResourceType
 
