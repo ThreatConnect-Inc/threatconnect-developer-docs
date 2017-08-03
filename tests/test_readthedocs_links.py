@@ -86,7 +86,7 @@ def test_standard_script_heading_link():
     See: https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
     """
     response = requests.get("https://docs.threatconnect.com/en/dev/python/python_sdk.html")
-    soup = BeautifulSoup(response.text, "lxml")
+    soup = BeautifulSoup(response.text, "html.parser")
 
     heading_ids = _get_heading_ids(soup)
     heading_found = False
