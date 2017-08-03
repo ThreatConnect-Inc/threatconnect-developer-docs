@@ -80,6 +80,30 @@ Create Address Indicators
       "confidence": 100
     }
 
+JSON Response:
+
+.. code:: json
+
+    {
+      "status": "Success",
+      "data": {
+        "address": {
+          "id": "54321",
+          "owner": {
+            "id": 5,
+            "name": "Example Organization",
+            "type": "Organization"
+          },
+          "dateAdded": "2017-07-13T17:50:17",
+          "lastModified": "2017-08-03T16:00:37Z",
+          "rating": 5.0,
+          "confidence": 100,
+          "webLink": "https://app.threatconnect.com/auth/indicators/details/address.xhtml?address=192.168.0.1&owner=Example+Organization",
+          "ip": "192.168.0.1"
+        }
+      }
+    }
+
 Create Email Address Indicators
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -90,6 +114,30 @@ Create Email Address Indicators
       "address": "badguy@example.com",
       "rating": 5.0,
       "confidence": 100
+    }
+
+JSON Response:
+
+.. code:: json
+
+    {
+      "status": "Success",
+      "data": {
+        "emailAddress": {
+          "id": "54321",
+          "owner": {
+            "id": 5,
+            "name": "Example Organization",
+            "type": "Organization"
+          },
+          "dateAdded": "2017-07-13T17:50:17",
+          "lastModified": "2017-08-03T16:00:07Z",
+          "rating": 5.0,
+          "confidence": 100,
+          "webLink": "https://app.threatconnect.com/auth/indicators/details/emailaddress.xhtml?emailaddress=badguy%40example.com&owner=Example+Organization",
+          "address": "badguy@example.com"
+        }
+      }
     }
 
 Create File Indicators
@@ -105,6 +153,33 @@ Create File Indicators
       "size": 5366,
       "rating": 5.0,
       "confidence": 100
+    }
+
+JSON Response:
+
+.. code:: json
+
+    {
+      "status": "Success",
+      "data": {
+        "file": {
+          "id": "54321",
+          "owner": {
+            "id": 5,
+            "name": "Example Organization",
+            "type": "Organization"
+          },
+          "dateAdded": "2017-07-13T17:50:17",
+          "lastModified": "2017-08-03T15:59:19Z",
+          "rating": 5.0,
+          "confidence": 100,
+          "webLink": "https://app.threatconnect.com/auth/indicators/details/file.xhtml?file=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&owner=Example+Organization",
+          "md5": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "sha1": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "size": 5366
+        }
+      }
     }
 
 .. note:: A File Indicator requires only one, valid hash. It can be an md5, sha1, or sha256 (or any combination thereof).
@@ -123,6 +198,32 @@ Create Host Indicators
       "confidence": 100
     }
 
+JSON Response:
+
+.. code:: json
+
+    {
+      "status": "Success",
+      "data": {
+        "host": {
+          "id": "54321",
+          "owner": {
+            "id": 5,
+            "name": "Example Organization",
+            "type": "Organization"
+          },
+          "dateAdded": "2017-07-13T17:50:17",
+          "lastModified": "2017-08-03T15:55:40Z",
+          "rating": 5.0,
+          "confidence": 100,
+          "webLink": "https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=example.com&owner=Example+Organization",
+          "hostName": "example.com",
+          "dnsActive": "false",
+          "whoisActive": "true"
+        }
+      }
+    }
+
 Create URL Indicators
 ^^^^^^^^^^^^^^^^^^^^^
 
@@ -133,6 +234,30 @@ Create URL Indicators
       "text": "http://example.com/bad.php",
       "rating": 5.0,
       "confidence": 100
+    }
+
+JSON Response:
+
+.. code:: json
+
+    {
+      "status": "Success",
+      "data": {
+        "url": {
+          "id": "54321",
+          "owner": {
+            "id": 5,
+            "name": "Example Organization",
+            "type": "Organization"
+          },
+          "dateAdded": "2017-07-13T17:50:17",
+          "lastModified": "2017-08-03T15:53:31Z",
+          "rating": 5.0,
+          "confidence": 100,
+          "webLink": "https://app.threatconnect.com/auth/indicators/details/url.xhtml?orgid=54321&owner=Example+Organization",
+          "text": "http://example.com/bad.php"
+        }
+      }
     }
 
 Create Indicator Metadata
