@@ -52,6 +52,50 @@ JSON Response:
       }
     }
 
+Update Victim Assets
+--------------------
+
+To update a Victim's Assets, use a query in the following format:
+
+.. code::
+
+    PUT /v2/victims/{victimId}/victimAssets/{victimAssetType}/{victimAssetId}
+    {
+      // add fields here...
+    }
+
+.. include:: _includes/victim_asset_types.rst
+
+When updating a Victim Asset, there are certain fields that are required as detailed below:
+
+.. include:: _includes/victim_asset_fields.rst
+
+For example, if you wanted to update an existing network account Victim Asset on a Victim with ID 12345, you would use the following query:
+
+.. code::
+
+    PUT /v2/victims/12345/victimAssets/networkAccounts
+    {
+      "account": "Jane Doe"
+    }
+
+JSON Response:
+
+.. code:: json
+
+    {
+      "status": "Success",
+      "data": {
+        "victimNetworkAccount": {
+          "id": 398,
+          "type": "NetworkAccount",
+          "webLink": "https://sandbox.threatconnect.com/auth/victim/victim.xhtml?victim=12345",
+          "account": "Jane Doe",
+          "network": "Active Directory"
+        }
+      }
+    }
+
 Update Victim Metadata
 ----------------------
 

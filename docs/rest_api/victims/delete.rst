@@ -23,6 +23,29 @@ JSON Response:
         "status": "Success"
     }
 
+Delete Victim Assets
+--------------------
+
+To delete a Victim's Asset, use a query in the following format:
+
+.. code::
+
+    DELETE /v2/victims/{victimId}/victimAssets/{victimAssetType}/{victimAssetId}
+
+For example, the query below will delete the email address Victim Asset with ID 54321 from the Victim with ID 12345:
+
+.. code::
+
+    DELETE /v2/victims/12345/victimAssets/emailAddresses/54321
+
+JSON Response:
+
+.. code:: json
+
+    {
+      "status": "Success"
+    }
+
 Delete Victim Metadata
 ----------------------
 
@@ -169,32 +192,6 @@ JSON Response:
       "resultCount": 0,
       "status": "Success"
     }
-
-Disassociate from a Victim Asset
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To disassociate a Victim from a Victim Asset, use a query in the following format:
-
-.. code::
-
-    DELETE /v2/victims/{victimId}/victimAssets/{victimAssetType}/{victimAssetId}
-
-For example, the query below will disassociate the Victim with ID 12345 from the Victim Asset with ID 54321:
-
-.. code::
-
-    DELETE /v2/victims/12345/victimAssets/emailAddresses/54321
-
-JSON Response:
-
-.. code:: json
-
-    {
-      "apiCalls": 1,
-      "resultCount": 0,
-      "status": "Success"
-    }
-
 
 Disassociate from a Victim
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
