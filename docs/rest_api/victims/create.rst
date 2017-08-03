@@ -62,6 +62,53 @@ JSON Response:
       }
     }
 
+Create Victim Assets
+--------------------
+
+To create Victim Assets, use a query in the following format:
+
+.. code::
+
+    POST /v2/victims/{victimId}/victimAssets/{victimAssetType}
+    {
+      // add fields here...
+    }
+
+.. include:: _includes/victim_asset_types.rst
+
+When creating a Victim Asset, there are certain fields that are required as detailed below:
+
+.. include:: _includes/victim_asset_fields.rst
+
+For example, if you wanted to add a network account Victim Asset to a Victim with ID 12345, you would use the following query:
+
+.. code::
+
+    POST /v2/victims/12345/victimAssets/networkAccounts
+    {
+      "account": "John Doe",
+      "network": "Active Directory"
+    }
+
+In the case of networkAccounts or socialNetworks, the account specifies the value of the actual account and the network provides a classification for the network itself.
+
+JSON Response:
+
+.. code:: json
+
+    {
+      "status": "Success",
+      "data": {
+        "victimNetworkAccount": {
+          "id": 398,
+          "type": "NetworkAccount",
+          "webLink": "https://sandbox.threatconnect.com/auth/victim/victim.xhtml?victim=12345",
+          "account": "John Doe",
+          "network": "Active Directory"
+        }
+      }
+    }
+
 Create Victim Metadata
 ----------------------
 
@@ -201,8 +248,6 @@ JSON Response:
 .. code:: json
 
     {
-      "apiCalls": 1,
-      "resultCount": 0,
       "status": "Success"
     }
 
@@ -226,8 +271,6 @@ JSON Response:
 .. code:: json
 
     {
-      "apiCalls": 1,
-      "resultCount": 0,
       "status": "Success"
     }
 
@@ -251,7 +294,7 @@ JSON Response:
 .. code:: json
 
     {
-      "apiCalls": 1,
-      "resultCount": 0,
       "status": "Success"
     }
+
+.. include:: _includes/victim_asset_required_warning.rst
