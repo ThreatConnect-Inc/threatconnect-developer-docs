@@ -13,6 +13,8 @@ An Indicator represents an atomic piece of information that has some intelligenc
 
 .. include:: indicators/delete.rst
 
+.. include:: indicators/indicator_to_indicator_assoc.rst
+
 .. include:: indicators/bulk_download.rst
 
 .. include:: indicators/batch_commit.rst
