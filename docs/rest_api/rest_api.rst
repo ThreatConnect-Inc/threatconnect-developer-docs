@@ -6,6 +6,8 @@ REST API
 
 .. include:: overview.rst
 
+.. include:: associations/associations.rst
+
 .. include:: attributes/attributes.rst
 
 .. include:: groups/groups.rst

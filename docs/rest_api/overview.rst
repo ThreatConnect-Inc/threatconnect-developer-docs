@@ -304,6 +304,12 @@ Victims
 Misc
 ----
 
+Association Types
+^^^^^^^^^^^^^^^^^
+
+* ``/v2/types/associationTypes``
+* ``/v2/types/associationTypes/{associationType}``
+
 Batch Indicator Commit
 ^^^^^^^^^^^^^^^^^^^^^^
 
@@ -311,6 +317,12 @@ Batch Indicator Commit
 * ``/v2/batch/{id}``
 * ``/v2/batch/{id}``
 * ``/v2/batch/{id}/errors``
+
+Indicator Types
+^^^^^^^^^^^^^^^
+
+* ``/v2/types/indicatorTypes``
+* ``/v2/types/indicatorTypes/{indicatorType}``
 
 User Information
 ^^^^^^^^^^^^^^^^
