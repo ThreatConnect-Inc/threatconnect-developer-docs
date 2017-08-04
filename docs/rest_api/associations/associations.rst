@@ -1,3 +1,6 @@
+Associations
+============
+
 Retrieving Available Associations
 ---------------------------------
 
