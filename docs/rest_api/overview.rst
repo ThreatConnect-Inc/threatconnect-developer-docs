@@ -128,12 +128,6 @@ Indicators
 * ``/v2/indicators/{type}/{indicator}/associations/{associationType}/indicators/``
 * ``/v2/indicators/{type}/{indicator}/associations/{associationType}/indicators/{targetType}``
 * ``/v2/indicators/{type}/{indicator}/associations/{associationType}/indicators/{targetType}/{targetId}``
-* ``/v2/indicators/{type}/{indicator}/indicators/files``
-* ``/v2/indicators/{type}/{indicator}/indicators/files/{indicator}``
-* ``/v2/indicators/{type}/{indicator}/indicators/hosts``
-* ``/v2/indicators/{type}/{indicator}/indicators/hosts/{indicator}``
-* ``/v2/indicators/{type}/{indicator}/indicators/urls``
-* ``/v2/indicators/{type}/{indicator}/indicators/urls/{indicator}``
 * ``/v2/indicators/{type}/{indicator}/owners``
 * ``/v2/indicators/{type}/{indicator}/securityLabels``
 * ``/v2/indicators/{type}/{indicator}/securityLabels/{securityLabel}``
