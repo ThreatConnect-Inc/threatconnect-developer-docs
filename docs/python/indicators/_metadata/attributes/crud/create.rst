@@ -4,7 +4,7 @@ Create Indicator Attributes
 The code snippet below demonstrates how to create an attribute on an Indicator. This example assumes a host indicator ``example.com`` exists in the target owner.
 
 .. code-block:: python
-    :emphasize-lines: 25-26,28-29
+    :emphasize-lines: 25-26,28-29,31-32
 
     # replace the line below with the standard, TC script heading described here:
     # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading

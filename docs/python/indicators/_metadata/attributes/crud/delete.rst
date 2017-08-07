@@ -4,7 +4,7 @@ Delete Indicator Attributes
 The code snippet below demonstrates how to delete an Indicator's attribute. This example assumes a host indicator ``example.com`` exists in the target owner.
 
 .. code-block:: python
-    :emphasize-lines: 34
+    :emphasize-lines: 34,36-37
 
     # replace the line below with the standard, TC script heading described here:
     # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
