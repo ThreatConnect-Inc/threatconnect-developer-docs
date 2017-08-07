@@ -5,96 +5,91 @@ Sample Batch Create request
 
 .. code::
 
-     POST /v2/batch/                 
-     {                               
-     "haltOnError": "false",         
-     "attributeWriteType": "Replace", 
-     "action": "Create",             
-     "owner": "Common Community"     
-     }                               
+    POST /v2/batch/
+    {
+      "haltOnError": "false",
+      "attributeWriteType": "Replace",
+      "action": "Create",
+      "owner": "Common Community"
+    }
 
 Server Response on Success
 
 .. code::
 
-     HTTP/1.1 201 Created                       
-     {                                          
-     batchId: "123"                             
-     }                                          
+    HTTP/1.1 201 Created
+    {
+      batchId: "123"
+    }
 
 Server Response on Insufficient Privileges
 
 .. code::
 
-     HTTP/1.1 403 Forbidden                     
-     {                                          
-     status: "Not Authorized",                  
-     description: "Organization not authorized  
-     for batch"                                 
-     }                                          
+    HTTP/1.1 403 Forbidden
+    {
+      status: "Not Authorized",
+      description: "Organization not authorized for batch"
+    }
 
 Server Response on Incorrect Settings
 
 .. code::
 
-     HTTP/1.1 403 Forbidden                     
-     {                                          
-     status: "Not Authorized",                  
-     description: "Document storage not enabled 
-     for this instance"                         
-     }                                          
+    HTTP/1.1 403 Forbidden
+    {
+      status: "Not Authorized",
+      description: "Document storage not enabled for this instance"
+    }
 
 The following is an example of a Batch Indicator Input file:
 
 .. code:: json
 
     {
-      
-      "ownerName": "<String>", 
+      "ownerName": "<String>",
       "type": "<String>",
       "rating": "<BigDecimal>",
       "confidence": "<Short>",
       "description": "<String>",
       "summary": "<String>",
-      
       "tag": [
         {
           "name": "<String>"
         }
-            ]
+      ]
     }
 
 Sample Batch Upload Input File request
 
 .. code::
 
-     POST /v2/batch/123                                               
-                                                                      
-     Content-Type: application/octet-stream; boundary=[boundary-text] 
-     Content-Length: <data_size>                                         
-     Content-Encoding: gzip       
-     [boundary-text]                                                  
-     <uploaded_data>                                              
+    POST /v2/batch/123
+
+    Content-Type: application/octet-stream; boundary=[boundary-text]
+    Content-Length: <data_size>
+    Content-Encoding: gzip
+    [boundary-text]
+    <uploaded_data>
 
 Server Response on Success
 
 .. code::
 
-     HTTP/1.1 202 Accepted                
-     {                                    
-     status: "Queued"    
-     }                                    
+    HTTP/1.1 202 Accepted
+    {
+      status: "Queued"
+    }
 
 Server Response on Overlarge Input File
 
 .. code::
 
-     HTTP/1.1 400 Bad Request             
-     {                                    
-     status: "Invalid",                   
-     description: "File size greater than 
-     allowable limit of 2000000"          
-     }                                    
+    HTTP/1.1 400 Bad Request
+    {
+      status: "Invalid",
+      description: "File size greater than allowable limit of 2000000"
+    }
 
 Sample Batch Status Check request
 
@@ -109,7 +104,7 @@ Server Response on Success (job still running)
 
     HTTP/1.1 200 OK
     {
-    status: "Running",
+      status: "Running"
     }
 
 Server Response on Success (job finished)
@@ -118,10 +113,10 @@ Server Response on Success (job finished)
 
     HTTP/1.1 200 OK
     {
-    status: "Completed",
-    errorCount: 3420,
-    successCount: 405432
-    unprocessCount: 0
+      status: "Completed",
+      errorCount: 3420,
+      successCount: 405432,
+      unprocessCount: 0
     }
 
 Sample Batch Error Message request
@@ -136,8 +131,9 @@ Server Response on Success (job still running)
 
     HTTP/1.1 400 Bad Request
     {
-    status: "Invalid",
-    description: "Batch still in Running state" }
+      status: "Invalid",
+      description: "Batch still in Running state"
+    }
 
 Server Response on Success (job finished):
 
@@ -145,7 +141,7 @@ Server Response on Success (job finished):
 
     HTTP/1.1 200 OK
     Content-Type: application/octet-stream ; boundary=
-    Content-Length: 
+    Content-Length:
     Content-Encoding: gzip
 
 Create Batch Endpoint
@@ -185,23 +181,23 @@ Batch Indicator Input File Format
 
     [
       {
-            "rating": 3,
-            "confidence": 60,
-            "description": "a malicious domain",
-            "summary": "super-malicious.ru",
-            "type": "Host", 
-            "associatedGroup": [12345, 54321],
-            "attribute": [
-                {
-                    "type": "AttributeName",
-                    "value": "MyAttribute"
-                }
-                ],
-            "tag": [
-             {
-               "name": "MyTag"
-             }
-            ]
+        "rating": 3,
+        "confidence": 60,
+        "description": "a malicious domain",
+        "summary": "super-malicious.ru",
+        "type": "Host",
+        "associatedGroup": [12345, 54321],
+        "attribute": [
+          {
+            "type": "AttributeName",
+            "value": "MyAttribute"
+          }
+        ],
+        "tag": [
+          {
+            "name": "MyTag"
+          }
+        ]
       }
     ]
 
