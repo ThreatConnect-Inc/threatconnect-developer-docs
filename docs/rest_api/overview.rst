@@ -119,6 +119,7 @@ Indicators
 * ``/v2/indicators/{type}/{indicator}/groups/threats``
 * ``/v2/indicators/{type}/{indicator}/groups/threats/{groupId}``
 * ``/v2/indicators/{type}/{indicator}/indicators``
+* ``/v2/indicators/{type}/{indicator}/indicators/{indicatorType}``
 * ``/v2/indicators/files/{indicator}/fileOccurrences``
 * ``/v2/indicators/files/{indicator}/fileOccurrences/{fileOccurrenceId}``
 * ``/v2/indicators/{type}/{indicator}/indicators/addresses``
