@@ -7,7 +7,7 @@ As of ThreatConnect version 5.2, it is possible to publish intelligence for a sp
 
     POST v2/groups/{groupType}/{groupId}/publish
     {
-      "sourceLabelIds": [],
+      "securityLabelList": [],
       "excludeUnlabeled": false
     }
 
@@ -21,24 +21,26 @@ The ``{groupType}`` can be any one of the available group types:
 - ``signatures``
 - ``threats``
 
-The ``sourceLabelIds`` key of the request body allows you to provide the name(s) of the Security Label(s) that, if an item has this label, you would like to exclude when publishing. The following example request body would *not* publish any items (Groups or Indicators) that have the ``TLP Green`` or ``TLP Amber`` Labels:
+The ``securityLabelList`` key of the request body allows you to provide the name(s) of the Security Label(s) that, if an item has this label, you would like to exclude when publishing. The following example request body would *not* publish any items (Groups or Indicators) that have the ``TLP Green`` or ``TLP Amber`` Labels:
 
 .. code:: json
     
     {
-      "sourceLabelIds": [
+      "securityLabelList": [
         "TLP Green",
         "TLP Amber"
       ],
       "excludeUnlabeled": false
     }
 
+.. note:: The Security Labels provided to the ``securityLabelList`` field are case insensitive. For example, providing ``tlp green`` or ``TLP Green`` will both exclude everything with the ``TLP Green`` Security Label.
+
 The ``excludeUnlabeled`` key gives you the option to exclude all items that do not have a Security Label. The following example request body would *not* publish any items that have the ``TLP Green`` or ``TLP Amber`` Labels or any items that do not have a Security Label:
 
 .. code:: json
     
     {
-      "sourceLabelIds": [
+      "securityLabelList": [
         "TLP Green",
         "TLP Amber"
       ],
