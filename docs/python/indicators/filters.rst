@@ -54,15 +54,12 @@ Post filters are applied on the results returned by the API request.
 +---------------------------------------+------------+------------------------------------------------+
 | ``add_pf_rating()``                   | str        | Filter Indicators on Rating.                   |
 +---------------------------------------+------------+------------------------------------------------+
-| ``add_pf_tag()``                      | str        | Filter Indicators on Tag.                      |
-+---------------------------------------+------------+------------------------------------------------+
 | ``add_pf_threat_assess_confidence()`` | int        | Filter Indicators on Threat Assess Confidence. |
 +---------------------------------------+------------+------------------------------------------------+
 | ``add_pf_threat_assess_rating()``     | str        | Filter Indicators on Threat Assess Rating.     |
 +---------------------------------------+------------+------------------------------------------------+
 | ``add_pf_type()``                     | str        | Filter Indicators on Indicator type.           |
 +---------------------------------------+------------+------------------------------------------------+
-
 
 The example below demonstrates how to use each of the post filters listed above:
 
