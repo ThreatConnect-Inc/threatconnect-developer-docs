@@ -4,7 +4,7 @@ Delete Victim Assets
 The example below demonstrates how to delete Victim Assets from an existing Victim with an ID of ``123456``:
 
 .. code-block:: python
-    :emphasize-lines: 33
+    :emphasize-lines: 33,36-37
 
     # replace the line below with the standard, TC script heading described here:
     # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
