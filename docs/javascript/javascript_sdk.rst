@@ -669,58 +669,6 @@ Single Indicator retrieve Example Results:
         "status": "Success"
     }
 
-Filters
-~~~~~~~
-
-Example of how to retrieve Threats:
-
-.. code:: javascript
-
-    var filter = new Filter(FILTER.AND);
-    filter.on('summary', FILTER.SW, 'bad');
-    filter.on('dateAdded', FILTER.GT, '2015-12-02');
-
-    var indicators = tc.indicators();
-
-    indicators.owner('Example Community')
-        .resultLimit(500)
-        .filter(filter)
-        .done(function(response) {
-            console.log('response', response);
-        })
-        .error(function(response) {
-            console.log('error response', response);
-        })
-        .retrieve();
-
-Starting with ThreatConnect version 4.0 the API supports filtering using
-query string parameters. For more information on which parameters
-support which operators see the ThreatConnect API Users Guide.
-
-Filter Options
-
-+------------------------------+-------------------+
-| Filter                       | Filter Constant   |
-+==============================+===================+
-| And                          | FILTER.AND        |
-+------------------------------+-------------------+
-| Or                           | FILTER.OR         |
-+------------------------------+-------------------+
-| Equal (=)                    | FILTER.OR         |
-+------------------------------+-------------------+
-| Greater Than (>)             | FILTER.GT         |
-+------------------------------+-------------------+
-| Greater Than or Equal (>=)   | FILTER.GE         |
-+------------------------------+-------------------+
-| Less Than (<)                | FILTER.LT         |
-+------------------------------+-------------------+
-| Less Than or Equal (<=)      | FILTER.LE         |
-+------------------------------+-------------------+
-| Starts With (^)              | FILTER.SW         |
-+------------------------------+-------------------+
-
-Note that multiple filters can be added to one API call.
-
 Batch/Bulk Retrieve
 ~~~~~~~~~~~~~~~~~~~
 
