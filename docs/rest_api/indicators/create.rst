@@ -6,6 +6,8 @@ To create an Indicator, the most basic format is:
 .. code::
 
     POST /v2/indicators/{indicatorType}
+    Content-type: application/json; charset=utf-8
+
     {
       // required fields here...
     }
@@ -74,6 +76,8 @@ Create Address Indicators
 .. code:: json
 
     POST /v2/indicators/addresses
+    Content-type: application/json; charset=utf-8
+
     {
       "ip": "192.168.0.1",
       "rating": 5.0,
@@ -110,6 +114,8 @@ Create Email Address Indicators
 .. code:: json
 
     POST /v2/indicators/emailAddresses
+    Content-type: application/json; charset=utf-8
+
     {
       "address": "badguy@example.com",
       "rating": 5.0,
@@ -146,6 +152,8 @@ Create File Indicators
 .. code:: json
 
     POST /v2/indicators/files
+    Content-type: application/json; charset=utf-8
+
     {
       "md5": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
       "sha1": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
@@ -190,6 +198,8 @@ Create Host Indicators
 .. code:: json
 
     POST /v2/indicators/hosts
+    Content-type: application/json; charset=utf-8
+
     {
       "hostName": "example.com",
       "dnsActive": "false",
@@ -230,6 +240,8 @@ Create URL Indicators
 .. code:: json
 
     POST /v2/indicators/urls
+    Content-type: application/json; charset=utf-8
+
     {
       "text": "http://example.com/bad.php",
       "rating": 5.0,
@@ -271,6 +283,8 @@ To create a Custom Indicator in ThreatConnect:
 .. code::
 
     POST /v2/indicators/{indicatorApiBranch}
+    Content-type: application/json; charset=utf-8
+
     {
       {value1Label}: {value1}
       {value2Label}: {value2}
@@ -316,6 +330,8 @@ This allows us to create the following POST request to create a new Registry Key
 .. code::
 
     POST /v2/indicators/registryKeys
+    Content-type: application/json; charset=utf-8
+
     {
       "Key Name": "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\DRM\\{cd704ff3-cd05-479e-acf7-6474908031dd}",
       "Value Name": "Example Value",
@@ -389,6 +405,8 @@ To add observations to an Indicator, use a request in the following format:
 .. code::
 
     POST /v2/indicators/{indicatorType}/{indicator}/observations
+    Content-type: application/json; charset=utf-8
+
     {
       "count" : 10
     }
@@ -398,6 +416,8 @@ For example, the following query will report two observations for the File Indic
 .. code::
 
     POST /v2/indicators/files/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/observations
+    Content-type: application/json; charset=utf-8
+
     {
       "count" : 2
     }
@@ -418,6 +438,8 @@ To add an attribute to an Indicator, use the following format:
 .. code::
 
     POST /v2/indicators/{indicatorType}/{indicator}/attributes
+    Content-type: application/json; charset=utf-8
+
     {
       "type" : {attributeType},
       "value" : "Test Attribute",
@@ -429,6 +451,8 @@ For example, if you wanted to add a Description attribute to the Email Address `
 .. code::
 
     POST /v2/indicators/emailAddresses/bad@example.com/attributes
+    Content-type: application/json; charset=utf-8
+
     {
       "type" : "Description",
       "value" : "Test Description",
@@ -527,6 +551,8 @@ To add a File Occurrence to a File Indicator, use a query in the following forma
 .. code::
 
     POST /v2/indicators/files/{fileHash}/fileOccurrences
+    Content-type: application/json; charset=utf-8
+
     {
       "fileName" : {fileName},
       "path" : {filePath},
@@ -552,6 +578,8 @@ For example, the following query will add a File Occurrence to the File Indicato
 .. code::
 
     POST /v2/indicators/files/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/fileOccurrences
+    Content-type: application/json; charset=utf-8
+
     {
       "fileName" : "win999301.dll",
       "path" : "C:\\\\Windows\\System",

@@ -6,6 +6,8 @@ As of ThreatConnect version 5.2, it is possible to publish intelligence for a sp
 .. code::
 
     POST v2/groups/{groupType}/{groupId}/publish
+    Content-type: application/json; charset=utf-8
+
     {
       "securityLabelList": [],
       "excludeUnlabeled": false

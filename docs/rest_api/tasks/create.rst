@@ -6,6 +6,8 @@ To create a Task, the most basic format is:
 .. code::
 
     POST /v2/tasks/
+    Content-type: application/json; charset=utf-8
+
     {
       "name": "Test Task"
     }
@@ -33,6 +35,8 @@ By way of example, the query below will create a Task in the default owner with 
 .. code::
 
     POST /v2/tasks/
+    Content-type: application/json; charset=utf-8
+
     {
       "name": "Test Task",
       "dueDate": "2017-07-13T13:36:53-04:00"
@@ -65,6 +69,8 @@ The code below will do the same thing as above, but it will also assign the task
 .. code::
 
     POST /v2/tasks/
+    Content-type: application/json; charset=utf-8
+
     {
       "name": "Test Task",
       "dueDate": "2017-07-13T13:36:53-04:00",
@@ -109,6 +115,8 @@ The code below will do the same thing as above, but it will also assign the task
 .. code::
 
     POST /v2/tasks/
+    Content-type: application/json; charset=utf-8
+
     {
       "name": "Test Task",
       "dueDate": "2017-07-13T13:36:53-04:00",
@@ -127,6 +135,8 @@ The code below will do the same thing as above, but instead of assigning the tas
 .. code::
 
     POST /v2/tasks/
+    Content-type: application/json; charset=utf-8
+
     {
       "name": "Test Task",
       "dueDate": "2017-07-13T13:36:53-04:00",
@@ -153,6 +163,8 @@ To add an attribute to a Task, use the following format:
 .. code::
 
     POST /v2/tasks/{taskId}/attributes
+    Content-type: application/json; charset=utf-8
+
     {
       "type" : {attributeType},
       "value" : "Test Attribute",
@@ -164,6 +176,8 @@ For example, if you wanted to add a Description attribute to the Task with ID 12
 .. code::
 
     POST /v2/tasks/12345/attributes
+    Content-type: application/json; charset=utf-8
+
     {
       "type" : "Description",
       "value" : "Test Description",

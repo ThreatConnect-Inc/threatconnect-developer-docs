@@ -6,6 +6,8 @@ To create a Victim, the most basic format is:
 .. code::
 
     POST /v2/victims/
+    Content-type: application/json; charset=utf-8
+
     {
       // add fields here...
     }
@@ -33,6 +35,8 @@ By way of example, the query below will create a Victim in the default owner:
 .. code::
 
     POST /v2/victims/
+    Content-type: application/json; charset=utf-8
+
     {
       "name": "Example Victim",
       "description": "This victim got hacked.",
@@ -70,6 +74,8 @@ To create Victim Assets, use a query in the following format:
 .. code::
 
     POST /v2/victims/{victimId}/victimAssets/{victimAssetType}
+    Content-type: application/json; charset=utf-8
+
     {
       // add fields here...
     }
@@ -85,6 +91,8 @@ For example, if you wanted to add a network account Victim Asset to a Victim wit
 .. code::
 
     POST /v2/victims/12345/victimAssets/networkAccounts
+    Content-type: application/json; charset=utf-8
+
     {
       "account": "John Doe",
       "network": "Active Directory"
@@ -120,6 +128,8 @@ To add an Attribute to a Victim, use the following format:
 .. code::
 
     POST /v2/victims/{victimId}/attributes
+    Content-type: application/json; charset=utf-8
+
     {
       "type" : {attributeType},
       "value" : "Test Attribute",
@@ -131,6 +141,8 @@ For example, if you wanted to add a Description attribute to the Victim with ID 
 .. code::
 
     POST /v2/victims/12345/attributes
+    Content-type: application/json; charset=utf-8
+
     {
       "type" : "Description",
       "value" : "Test Description",

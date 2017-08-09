@@ -6,6 +6,8 @@ To create a Group, the most basic format is:
 .. code::
 
     POST /v2/groups/{groupType}
+    Content-type: application/json; charset=utf-8
+
     {
       "name": "Test Group"
     }
@@ -23,6 +25,8 @@ By way of example, the query below will create an incident in the default owner:
 .. code::
 
     POST /v2/groups/incidents
+    Content-type: application/json; charset=utf-8
+
     {
       "name": "Test Incident",
       "eventDate": "2017-7-13T00:00:00-04:00",
@@ -64,6 +68,8 @@ To create a document that can be uploaded into `ThreatConnect's Malware Vault <h
 .. code::
 
     POST /v2/groups/documents/
+    Content-type: application/json; charset=utf-8
+
     { 
       "fileName" : "malwaresample.zip",
       "name": "Malicious File",
@@ -92,6 +98,8 @@ To add an attribute to a Group, use the following format:
 .. code::
 
     POST /v2/groups/{groupType}/{groupId}/attributes
+    Content-type: application/json; charset=utf-8
+
     {
       "type" : {attributeType},
       "value" : "Test Attribute",
@@ -103,6 +111,8 @@ For example, if you wanted to add a Description attribute to the threat with the
 .. code::
 
     POST /v2/groups/threats/12345/attributes
+    Content-type: application/json; charset=utf-8
+
     {
       "type" : "Description",
       "value" : "Test Description",
@@ -213,6 +223,8 @@ For example, the query below will add ``Pierre Despereaux`` as a Handle to the A
 .. code::
 
     POST /v2/groups/adversaries/12345/adversaryAssets/handles
+    Content-type: application/json; charset=utf-8
+
     {
       "handle": "Pierre Despereaux"
     }

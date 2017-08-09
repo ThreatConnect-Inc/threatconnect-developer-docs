@@ -6,6 +6,8 @@ Sample Batch Create request
 .. code::
 
     POST /v2/batch/
+    Content-type: application/json; charset=utf-8
+
     {
       "haltOnError": "false",
       "attributeWriteType": "Replace",
