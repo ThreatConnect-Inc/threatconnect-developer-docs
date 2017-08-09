@@ -672,13 +672,14 @@ Single Indicator retrieve Example Results:
 Filters
 ~~~~~~~
 
-Example of how to retrieve Threats:
+Example of how to retrieve Indicators that start-with 'bad' and have a
+dateAdded value greater than '2015-12-13' using an API filter:
 
 .. code:: javascript
 
     var filter = new Filter(FILTER.AND);
     filter.on('summary', FILTER.SW, 'bad');
-    filter.on('dateAdded', FILTER.GT, '2015-12-02');
+    filter.on('dateAdded', FILTER.GT, '2015-12-13');
 
     var indicators = tc.indicators();
 
