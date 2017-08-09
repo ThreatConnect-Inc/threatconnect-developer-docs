@@ -18,7 +18,12 @@ For further information:
 * Join the `developer forum <https://www.reddit.com/r/threatconnect>`_.
 * Contact support@threatconnect.com.
 
-Libraries in other languages are available for interfacing with the API,
-but are **not officially supported by ThreatConnect:**
+Libraries in other languages are available for interfacing with the API, but are **not officially supported by ThreatConnect:**
 
--  `Powershell <https://github.com/davidhowell-tx/PS-ThreatConnectV2API>`__
+- `Powershell <https://github.com/davidhowell-tx/PS-ThreatConnectV2API>`__
+
+The snippets and templates below are available to make development easier, but are **not officially supported by ThreatConnect:**
+
+- `Sublime Text Snippets for ThreatConnect's Python SDK <https://github.com/fhightower/threatconnect-python-snippets>`_
+- `Sublime Text Snippets for the TcEx Package <https://github.com/fhightower/tcex-snippets>`_
+- `Cookiecutter Template for Creating TcEx Apps <https://github.com/fhightower/tcex-app-template>`_
