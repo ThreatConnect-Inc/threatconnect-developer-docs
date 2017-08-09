@@ -12,11 +12,11 @@ An association allows two Indicators of certain types to be related to one anoth
 +=======================+=========================+========================+
 | Address to User Agent | ``/addressToUserAgent`` | Address <-> User Agent |
 +-----------------------+-------------------------+------------------------+
-| ASN to Address        | ``/asnToAddress``       | ASN <-Address          |
+| ASN to Address        | ``/asnToAddress``       | ASN <-> Address        |
 +-----------------------+-------------------------+------------------------+
 | ASN to CIDR           | ``/asnToCidr``          | ASN <-> CIDR           |
 +-----------------------+-------------------------+------------------------+
-| CIDR to Address       | ``/cidrToAddress``      | CIDR <-Address         |
+| CIDR to Address       | ``/cidrToAddress``      | CIDR <-> Address       |
 +-----------------------+-------------------------+------------------------+
 
 To retrieve indicators associated with another indicator using a custom association, use a query in the following format:

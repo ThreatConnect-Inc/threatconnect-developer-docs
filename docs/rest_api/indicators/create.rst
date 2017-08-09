@@ -260,6 +260,93 @@ JSON Response:
       }
     }
 
+Create a Custom Indicator
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To create a Custom Indicator in ThreatConnect:
+
+1. Use the `available Indicator types <#retrieve-available-indicator-types>`_ to identify the ``apiBranch`` and required fields (usually titled like ``value1Label``, ``value2Label``, etc) for the Indicator type you would like to create.
+2. Make a POST request in the format below with a body containing the required key-value pairs.
+
+.. code::
+
+    POST /v2/indicators/{indicatorApiBranch}
+    {
+      {value1Label}: {value1}
+      {value2Label}: {value2}
+      ...
+    }
+
+For example, let's walk through the process of creating a Registry Key via API. Step one is use the `available Indicator types <#retrieve-available-indicator-types>`_ to identify the ``apiBranch``  and required values we need to create the Registry Key Indicator. To get this information, we will make the following request:
+
+.. code::
+
+    GET /v2/types/indicatorTypes
+
+From this, we find the entry for Registry Keys:
+
+.. code:: json
+
+    ...
+    {
+      "name": "Registry Key",
+      "custom": "true",
+      "parsable": "false",
+      "apiBranch": "registryKeys",
+      "apiEntity": "registryKey",
+      "casePreference": "sensitive",
+      "value1Label": "Key Name",
+      "value1Type": "text",
+      "value2Label": "Value Name",
+      "value2Type": "text",
+      "value3Label": "Value Type",
+      "value3Type": "selectone",
+      "value3Option": "REG_NONE;REG_BINARY;REG_DWORD;REG_DWORD_LITTLE_ENDIAN;REG_DWORD_BIG_ENDIAN;REG_EXPAND_SZ;REG_LINK;REG_MULTI_SZ;REG_QWORD;REG_QWORD_LITTLE_ENDIAN;REG_SZ"
+    },
+    ...
+
+The ``apiBranch`` for Registry Keys is ``registryKeys`` and each Registry Key requires three values:
+
+* ``Key Name`` - text
+* ``Value Name`` - text
+* ``Value Type`` - One of the following: REG_NONE, REG_BINARY, REG_DWORD, REG_DWORD_LITTLE_ENDIAN, REG_DWORD_BIG_ENDIAN, REG_EXPAND_SZ, REG_LINK, REG_MULTI_SZ, REG_QWORD, REG_QWORD_LITTLE_ENDIAN, or REG_SZ
+
+This allows us to create the following POST request to create a new Registry Key:
+
+.. code::
+
+    POST /v2/indicators/registryKeys
+    {
+      "Key Name": "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\DRM\\{cd704ff3-cd05-479e-acf7-6474908031dd}",
+      "Value Name": "Example Value",
+      "Value Type": "REG_NONE"
+    }
+
+JSON Response:
+
+.. code:: json
+
+    {
+      "status": "Success",
+      "data": {
+        "registryKey": {
+          "id": "54321",
+          "owner": {
+            "id": 5,
+            "name": "Common Community",
+            "type": "Community"
+          },
+          "type": "Registry Key",
+          "dateAdded": "2017-07-13T17:50:17",
+          "lastModified": "2017-08-09T13:29:51Z",
+          "webLink": "https://app.threatconnect.com/auth/indicators/details/customIndicator.xhtml?id=25286094&owners=631&owner=Common%20Community",
+          "Key Name": "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\DRM\\{cd704ff3-cd05-479e-acf7-6474908031dd}",
+          "Value Name": "Example Value",
+          "Value Type": "REG_NONE"
+        }
+      }
+    }
+
 Create Indicator Metadata
 -------------------------
 
