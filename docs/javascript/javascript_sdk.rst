@@ -767,7 +767,7 @@ The JavaScript SDK provides the ``retrieveAssociations()`` method to
 retrieve both Indicator and Indicator Associations. The ``type()`` and
 ``indicator()`` methods are required to retrieve the associations. The
 ``retrieveAssociations()`` method requires that a parameter object
-containing the Association ``type`` be provided. Optionally an ``id``
+containing the Association ``type`` be provided. Optionally, an association ``id``
 can be provided to pull a specific association.
 
 Attributes
