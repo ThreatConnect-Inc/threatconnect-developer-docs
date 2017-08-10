@@ -672,7 +672,7 @@ Single Indicator retrieve Example Results:
 Filters
 ~~~~~~~
 
-Example of how to retrieve Indicators that start-with 'bad' and have a
+Example of how to retrieve Indicators that start with 'bad' and have a
 dateAdded value greater than '2015-12-13' using an API filter:
 
 .. code:: javascript
@@ -760,12 +760,12 @@ Associations
             console.log('error response', response);
         })
         .retrieveAssociations({
-            type: TYPE.GROUP
+            type: TYPE.INCIDENT
         });
 
 The JavaScript SDK provides the ``retrieveAssociations()`` method to
-retrieve both Indicator and Indicator Associations. The ``type()``, and
-``id()`` methods are required to retrieve the associations. The
+retrieve both Indicator and Indicator Associations. The ``type()`` and
+``indicator()`` methods are required to retrieve the associations. The
 ``retrieveAssociations()`` method requires that a parameter object
 containing the Association ``type`` be provided. Optionally an ``id``
 can be provided to pull a specific association.
@@ -793,7 +793,7 @@ Example of retrieveAttributes() method:
         .retrieveAttributes();
 
 The JavaScript SDK provides the ``retrieveAttributes()`` method to
-retrieve attributes. Both the ``type()`` method and ``id()`` are
+retrieve attributes. Both the ``type()`` method and ``indicator()`` are
 required to retrieve the attributes. An ``id`` can be passed to the
 ``retrieveAttributes()`` method to retrieve a specific attribute.
 
@@ -818,7 +818,7 @@ Retrieve Observations
         .retrieveObservations();
 
 The JavaScript SDK provides the ``retrieveObservations()`` method to
-retrieve Observations. Both the ``type()`` method and ``id()`` are
+retrieve Observations. Both the ``type()`` and ``indicator()`` methods are
 required to retrieve the Observations.
 
 Retrieve Observation Count
@@ -841,8 +841,7 @@ Retrieve Observation Count
         .retrieveObservationCount();
 
 The JavaScript SDK provides the ``retrieveObservationCount()`` method to
-retrieve the Observation Count for an Indicator. Both the ``type()``
-method and ``id()`` are required to retrieve the Observation Count.
+retrieve the Observation Count for an Indicator. Both the ``type()`` and ``indicator()`` methods are required to retrieve the Observation Count.
 
 NOTE: The Observation Count can also be retrieved with the "Single
 Indicator" method described above using the includeAdditional parameter.
@@ -891,7 +890,7 @@ Example of retrieveTags() method:
         .retrieveTags();
 
 The JavaScript SDK provides the ``retrieveTags()`` method to retrieve
-tags. Both the ``type()`` method and ``id()`` are required to retrieve
+tags. Both the ``type()`` and ``indicator()`` methods are required to retrieve
 the tags.
 
 Tags Retrieve
@@ -1190,6 +1189,7 @@ Example of retrieveAssociations() method:
     tc.groups()
         .owner('Example Community')
         .type(TYPE.INCIDENT)
+        .id(123)
         .done(function(response) {
             console.log('response', response);
         })
@@ -1202,11 +1202,11 @@ Example of retrieveAssociations() method:
         });
 
 The JavaScript SDK provides the ``retrieveAssociations()`` method to
-retrieve both Indicator and Group Associations. The ``type()``, and
+retrieve both Indicator and Group Associations. The ``type()`` and
 ``id()`` methods are required to retrieve the associations. The
 ``retrieveAssociations()`` method requires that a parameter object
-containing the association ``type`` be provided. Optionally an ``id``
-can be provided to pull a specific association.
+containing the association ``type`` be provided. Optionally, an ``id``
+can be provided to pull a specific associated group.
 
 Retrieve Attributes
 -------------------
@@ -1229,7 +1229,7 @@ Example of retrieveAttributes() method:
 
 The JavaScript SDK provides the ``retrieveAttributes()`` method to
 retrieve attributes. Both the ``type()`` method and ``id()`` are
-required to retrieve the attributes. An ``id`` can be passed to the
+required to retrieve the attributes. Optionally, an ``id`` can be passed to the
 ``retrieveAttributes()`` method to retrieve a specific attribute.
 
 Retrieve Tags
@@ -1505,10 +1505,10 @@ Commit Association
 ~~~~~~~~~~~~~~~~~~
 
 The JavaScript SDK provides the ``commitAssociation()`` method to add
-Group Associations. Both ``.type()``, and ``id()`` methods are required
+Group Associations. Both ``type()``, and ``indicator()`` methods are required
 to commit the Associations. The value passed to the
 ``commitAssociation()`` method must be the specific Group Type (e.g.,
-TYPE.ADVERSARY, TYPE.HOST).
+TYPE.ADVERSARY, TYPE.HOST) and ``id``.
 
 Example of commitAssociations() method:
 
@@ -1551,7 +1551,7 @@ Example of commitAttributes() method:
         });
 
 The JavaScript SDK provides the ``commitAttribute()`` method to add
-Attributes. Both ``.type()`` and ``id()`` are required to add
+Attributes. Both ``type()`` and ``indicator()`` are required to add
 Attributes. The Attribute object should be passed to
 ``commitAttribute()`` method with a type and value parameter.
 
@@ -1597,7 +1597,7 @@ Example of commitSecurityLabel() method:
         .commitSecurityLabel('TLP Red');
 
 The JavaScript SDK provides the ``commitSecurityLabel()`` method to add
-Security Labels. Both the ``.type()`` and ``indicator()`` methods are
+Security Labels. Both the ``type()`` and ``indicator()`` methods are
 required to add the Security Labels. The Security Label value should be
 passed to the ``commitSecurityLabel()`` method.
 
@@ -1737,7 +1737,7 @@ Example of commitAssociations() method:
         });
 
 The JavaScript SDK provides the ``commitAssociations()`` method to add
-both Indicator and Group Associations. The ``.type()``, ``id()``,
+both Indicator and Group Associations. The ``type()``, ``id()``,
 ``associationType()``, and ``associationId()`` methods are required to
 commit the associations. The value passed to the ``associationType()``
 method must be the specific Group or Indicator Type (e.g.,
@@ -1765,7 +1765,7 @@ Example of commitAttributes() method:
         });
 
 The JavaScript SDK provides the ``commitAttributes()`` method to add
-attributes. The ``.type()`` and ``id()`` are required to add attributes.
+attributes. The ``type()`` and ``id()`` are required to add attributes.
 The attribute object should be passed to the ``commitAttribute()``
 method with a type and value parameter.
 
@@ -1811,7 +1811,7 @@ Commit Observation Method
         });
 
 The JavaScript SDK provides the ``commitObservation()`` method to add an
-Indicator Observation. Both .type() and id() are required to add an
+Indicator Observation. Both ``type()`` and ``id()`` are required to add an
 Observation. The Observation Count and dateObserved values should be
 passed to the ``commitObservation() method``.
 
@@ -1834,7 +1834,7 @@ Example of commitTag() method:
         .commitTag('Example Tag');
 
 The JavaScript SDK provides the ``commitTag()`` method to add tags. Both
-the ``.type()`` and ``id()`` methods are required to add the tags. The
+the ``type()`` and ``id()`` methods are required to add the tags. The
 Tag value should be passed to the ``commitTag()`` method.
 
 Commit Security Label
@@ -2029,7 +2029,7 @@ Associations
 ------------
 
 The JavaScript SDK provides the ``commitAssociations()`` method to add
-both Indicator and Group Associations. The ``.type()``, ``id()``,
+both Indicator and Group Associations. The ``type()``, ``id()``,
 ``associationType()``, and ``associationId()`` methods are required to
 commit the associations. The value passed to the ``associationType()``
 method must be the specific Group or Indicator Type (e.g.
@@ -2170,7 +2170,7 @@ Associations
 ------------
 
 The JavaScript SDK provides the ``commitAssociations()`` method to add
-both Indicator and Group Associations. The ``.type()``, ``id()``,
+both Indicator and Group Associations. The ``type()``, ``id()``,
 ``associationType()``, and ``associationId()`` methods are required to
 commit the associations. The value passed to the ``associationType()``
 method must be the specific Group or Indicator Type (e.g.
