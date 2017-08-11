@@ -8,6 +8,8 @@ apps written in:
 -  Java
 -  JavaScript (Spaces)
 
+.. note:: This documentation is due for an update and we'll be updating it shortly. Thanks for your patience!
+
 Standard Section
 ----------------
 
@@ -246,6 +248,8 @@ in 8, below the example.
 Example install.json file for a Python app:
 
 .. code:: json
+    :linenos:
+    :lineno-start: 1
 
     {
      "programVersion": "1.0.0",

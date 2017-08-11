@@ -1,12 +1,12 @@
 ThreatConnect Developer Documentation
 =====================================
 
-`Star us on GitHub <https://github.com/ThreatConnect-Inc>`__
+`Star us on GitHub <https://github.com/ThreatConnect-Inc/ThreatConnect_Developer_Docs/>`__
 
 `Request a ThreatConnect
 Demo <https://www.threatconnect.com/request-a-demo/>`__
 
-.. note:: Find something missing or unclear in the documentation? Feel free to raise an issue in the `ThreatConnect Developer Documentation <https://github.com/ThreatConnect-Inc/ThreatConnect_Developer_Docs>`_ repository.
+.. note:: Find something missing or unclear in the documentation? Feel free to raise an issue in the `ThreatConnect Developer Documentation <https://github.com/ThreatConnect-Inc/ThreatConnect_Developer_Docs/issues/>`_ repository.
 
 .. toctree::
    :caption:  Table of Contents
