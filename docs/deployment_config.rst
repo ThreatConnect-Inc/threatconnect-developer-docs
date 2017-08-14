@@ -310,7 +310,7 @@ Example install.json file for a Python app:
       "sequence": 8
      }, {
       "name": "apply_rating",
-      "label": "Apply Rating from Remote Owner if ThreatAssesRating
+      "label": "Apply Rating from Remote Owner if ThreatAssessRating
       is not Available ", "
       type " : "
       Boolean ", "
