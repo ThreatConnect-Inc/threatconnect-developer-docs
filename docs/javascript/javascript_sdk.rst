@@ -1905,7 +1905,7 @@ Attributes, or Tags can be added in the callback.
 .. note:: To ensure that commits for the metadata happen after the commit of
 the Group pass a callback to the Group Commit method.
 
-Commit Task
+Task Commit
 -----------
 
 This example will demonstrate how to add a Task with a name of
@@ -2121,7 +2121,7 @@ Attributes, or Tags can be added in the callback.
 .. note:: To ensure the commits for the metadata happen after the commit of
 the task pass a callback to the group commit method.
 
-Commit Victim
+Victim Commit
 -------------
 
 This example will demonstrate how to add a Victim with a name of
