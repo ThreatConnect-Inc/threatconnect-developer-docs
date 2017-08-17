@@ -115,6 +115,8 @@ are not provided with the core functionality.
 +-----------------------+----------------------------------+
 | Object                | Description                      |
 +=======================+==================================+
+| ``db()``              | Data Store container object      |
++-----------------------+----------------------------------+
 | ``groups()``          | Group container object           |
 +-----------------------+----------------------------------+
 | ``indicators()``      | Indicator container object       |
@@ -125,11 +127,13 @@ are not provided with the core functionality.
 +-----------------------+----------------------------------+
 | ``securityLabel()``   | Security Label container object  |
 +-----------------------+----------------------------------+
-| ``tags()``            | Tag container object             |
-+-----------------------+----------------------------------+
 | ``tasks()``           | Task container object            |
 +-----------------------+----------------------------------+
+| ``tags()``            | Tag container object             |
++-----------------------+----------------------------------+
 | ``victims()``         | Victim container object          |
++-----------------------+----------------------------------+
+| ``whoami()``          | WhoAmI container object          |
 +-----------------------+----------------------------------+
 
 Example JavaScript App
@@ -140,19 +144,20 @@ JavaScript SDK for the ThreatConnect API:
 
 .. code:: javascript
 
-    var apiSettings
+    var apiSettings;
 
-    // retrieve Space Element ID (only supported for Spaces applications)
+    // retrieve Space Element ID (only supported for Spaces applications running in ThreatConnect)
     var tcSpaceElementId = getParameterByName('tcSpaceElementId');
 
-    // use the Space Element ID if it exists
+    // if the Space Element ID exists, pull the token and api from the spaces environment
     if ( tcSpaceElementId ) {
         apiSettings = {
             apiToken: getParameterByName('tcToken'),
             apiUrl: getParameterByName('tcApiPath')
         };
+    }
     // otherwise, use the API settings defined below
-    } else {
+    else {
         apiSettings = {
             apiId: '12345678900987654321',
             apiSec: 'aabbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyyzz!@#$%^&*()-=',
@@ -163,7 +168,7 @@ JavaScript SDK for the ThreatConnect API:
     // create ThreatConnect object
     var tc = new ThreatConnect(apiSettings);
 
-    // get Owners object
+    // create Owners object
     tc.owners()
         // if the call finishes successfully, the "done" callback will be run
         .done(function(response) {
@@ -171,7 +176,7 @@ JavaScript SDK for the ThreatConnect API:
         })
         // if the call does NOT finish successfully, the "error" callback will be run
         .error(function(response) {
-            console.log('owner response error', response.error);
+            console.error('owner response error', response.error);
         })
         // retrieve Owners
         .retrieve();
@@ -610,13 +615,13 @@ The JavaScript SDK provide the ``hasNext()`` method for checking if more
 entries are available. To retrieve the next set of entries the
 ``next()`` method is available.
 
-Note: Before the ``next()`` method can be called, the first API must
+.. note:: Before the ``next()`` method can be called, the first API must
 have completed. This should not be an issue if a user click triggers the
 next call; however, if the ``next()`` method is being called
 programmatically then it should be passed in a function to the
 ``retrieve()`` method.
 
-Note: The ``next()`` method will return the same number of results
+.. note:: The ``next()`` method will return the same number of results
 defined in the ``resultsLimit()`` or the number of results remaining.
 The same 'done' and 'error' callbacks are also used for the next set of
 results.
@@ -843,7 +848,7 @@ Retrieve Observation Count
 The JavaScript SDK provides the ``retrieveObservationCount()`` method to
 retrieve the Observation Count for an Indicator. Both the ``type()`` and ``indicator()`` methods are required to retrieve the Observation Count.
 
-NOTE: The Observation Count can also be retrieved with the "Single
+.. note:: The Observation Count can also be retrieved with the "Single
 Indicator" method described above using the includeAdditional parameter.
 
 Retrieve Security Labels Method
@@ -1117,12 +1122,12 @@ The JavaScript SDK provide the ``hasNext()`` method for checking if more
 entries are available. To retrieve the next set of entries the
 ``next()`` method is available.
 
-Note: Before the ``next()`` method can be called the first API must have
+.. note:: Before the ``next()`` method can be called the first API must have
 completed. This should not be an issue if a user click triggers the next
 call, however if the ``next()`` method is being called programmaticly
 then it should be passed in a function to the ``retrieve()`` method.
 
-Note: The ``next()`` method will return the same number of results
+.. note:: The ``next()`` method will return the same number of results
 defined in the ``resultsLimit()`` or the number of results remaining.
 The same 'done' and 'error' callbacks are also used for the next set of
 results.
@@ -1641,7 +1646,7 @@ the commit() method that will add a group and indicators association,
 attribute, tag, and security label. Any number of Associations,
 Attributes, or Tags can be added in the callback.
 
-Note: To ensure that commits for the metadata happen after the commit of
+.. note:: To ensure that commits for the metadata happen after the commit of
 the Indicator, pass a callback to the Indicator Commit method.
 
 Group Commit
@@ -1897,10 +1902,10 @@ This example will demonstrate how to add an Adversary with a name of
 Attribute, Tag, and Security Label. Any number of Associations,
 Attributes, or Tags can be added in the callback.
 
-Note: To ensure that commits for the metadata happen after the commit of
+.. note:: To ensure that commits for the metadata happen after the commit of
 the Group pass a callback to the Group Commit method.
 
-Commit Task
+Task Commit
 -----------
 
 This example will demonstrate how to add a Task with a name of
@@ -1975,7 +1980,148 @@ Example Results
         "status": "Success"
     }
 
-Commit Victim
+Associations
+~~~~~~~~~~~~
+
+The JavaScript SDK provides the ``commitAssociations()`` method to add
+both Indicator and Group Associations. The ``type()``, ``id()``,
+``associationType()``, and ``associationId()`` methods are required to
+commit the associations. The value passed to the ``associationType()``
+method must be the specific Group or Indicator Type (e.g.
+TYPE.ADVERSARY, TYPE.HOST).
+
+.. code:: javascript
+
+    tc.tasks()
+        .owner('Example Community')
+        .id(571)
+        .done(function(response) {
+            console.log('response', response);
+        })
+        .error(function(response) {
+            console.log('error response', response);
+        })
+        .commitAssociation({
+            type: TYPE.ADDRESS,
+            id: '74.121.142.111'
+        });
+
+.. code:: javascript
+
+    tc.tasks()
+        .owner('Example Community')
+        .id(571)
+        .done(function(response) {
+            console.log('response', response);
+            $('#response-content').append(JSON.stringify(response, null, 4));
+        })
+        .error(function(response) {
+            console.log('error response', response);
+        })
+        .commitAssociation({
+            type: TYPE.INCIDENT,
+            id: 569
+        });
+
+Attributes
+~~~~~~~~~~
+
+The JavaScript SDK provides the ``commitAttributes()`` method to add
+attributes. The ``id()`` method is required to add attributes. The
+attribute object should be passed to ``commitAttribute()`` method with a
+type and value parameter.
+
+.. code:: javascript
+
+    tc.tasks()
+        .id(571)
+        .done(function(response) {
+            console.log('response', response);
+        })
+        .error(function(response) {
+            console.log('error response', response);
+        })
+        .commitAttribute({
+            type: 'Description',
+            value: 'This is a description.'
+        });
+
+Tags
+~~~~
+
+The JavaScript SDK provides the ``commitTags()`` method to add tags. The
+``id()`` method is required to retrieve the task. The tag value should
+be passed to the ``commitTags()`` method.
+
+.. code:: javascript
+
+    tc.tasks()
+        .id(256)
+        .done(function(response) {
+            console.log('response', response);
+        })
+        .error(function(response) {
+            console.log('error response', response);
+        })
+        .commitTags('Example Tag');
+
+Security Labels
+~~~~~~~~~~~~~~~
+
+.. code:: javascript
+
+    tc.tasks()
+        .id(256)
+        .done(function(response) {
+            console.log('response', response);
+        })
+        .error(function(response) {
+            console.log('error response', response);
+        })
+        .commitSecurityLabel('TLP Red');
+
+Putting it all Together
+~~~~~~~~~~~~~~~~~~~~~~~
+
+This example will demonstrate how to add a Task with a name of
+'task-999' to the "Example Community" owner. It passes a callback to the
+``commit()`` method that will add a group and indicators association,
+attribute, tag, and security label. Any number of Associations,
+Attributes, or Tags can be added in the callback.
+
+.. code:: javascript
+
+    tasks = tc.tasks();
+
+    tasks.owner('Example Community')
+        .name('task-999')
+        .done(function(response) {
+            console.log('response', response);
+        })
+        .error(function(response) {
+            console.log('error response', response);
+        })
+        .commit(function() {
+            tasks.commitAssociation({
+                type: TYPE.ADDRESS,
+                id: '74.121.142.111'
+            });
+            tasks.commitAssociation({
+                type: TYPE.INCIDENT,
+                id: 256
+            });
+            tasks.commitAttribute({
+                type: 'Description',
+                value: 'Example Description.'
+            });
+            tasks.commitTag('Example');
+            tasks.commitSecurityLabel('TLP Red');
+        });
+
+.. note:: To ensure the commits for the metadata happen after the commit of
+the task pass a callback to the group commit method.
+
+Victim Commit
 -------------
 
 This example will demonstrate how to add a Victim with a name of
@@ -2026,148 +2172,7 @@ Example Results
     }
 
 Associations
-------------
-
-The JavaScript SDK provides the ``commitAssociations()`` method to add
-both Indicator and Group Associations. The ``type()``, ``id()``,
-``associationType()``, and ``associationId()`` methods are required to
-commit the associations. The value passed to the ``associationType()``
-method must be the specific Group or Indicator Type (e.g.
-TYPE.ADVERSARY, TYPE.HOST).
-
-.. code:: javascript
-
-    tc.tasks()
-        .owner('Example Community')
-        .id(571)
-        .done(function(response) {
-            console.log('response', response);
-        })
-        .error(function(response) {
-            console.log('error response', response);
-        })
-        .commitAssociation({
-            type: TYPE.ADDRESS,
-            id: '74.121.142.111'
-        });
-
-.. code:: javascript
-
-    tc.tasks()
-        .owner('Example Community')
-        .id(571)
-        .done(function(response) {
-            console.log('response', response);
-            $('#response-content').append(JSON.stringify(response, null, 4));
-        })
-        .error(function(response) {
-            console.log('error response', response);
-        })
-        .commitAssociation({
-            type: TYPE.INCIDENT,
-            id: 569
-        });
-
-Attributes
-----------
-
-The JavaScript SDK provides the ``commitAttributes()`` method to add
-attributes. The ``id()`` method is required to add attributes. The
-attribute object should be passed to ``commitAttribute()`` method with a
-type and value parameter.
-
-.. code:: javascript
-
-    tc.tasks()
-        .id(571)
-        .done(function(response) {
-            console.log('response', response);
-        })
-        .error(function(response) {
-            console.log('error response', response);
-        })
-        .commitAttribute({
-            type: 'Description',
-            value: 'This is a description.'
-        });
-
-Tags
-----
-
-The JavaScript SDK provides the ``commitTags()`` method to add tags. The
-``id()`` method is required to retrieve the task. The tag value should
-be passed to the ``commitTags()`` method.
-
-.. code:: javascript
-
-    tc.tasks()
-        .id(256)
-        .done(function(response) {
-            console.log('response', response);
-        })
-        .error(function(response) {
-            console.log('error response', response);
-        })
-        .commitTags('Example Tag');
-
-Security Labels
----------------
-
-.. code:: javascript
-
-    tc.tasks()
-        .id(256)
-        .done(function(response) {
-            console.log('response', response);
-        })
-        .error(function(response) {
-            console.log('error response', response);
-        })
-        .commitSecurityLabel('TLP Red');
-
-Putting it all Together
------------------------
-
-This example will demonstrate how to add a Task with a name of
-'task-999' to the "Example Community" owner. It passes a callback to the
-``commit()`` method that will add a group and indicators association,
-attribute, tag, and security label. Any number of Associations,
-Attributes, or Tags can be added in the callback.
-
-.. code:: javascript
-
-    tasks = tc.tasks();
-
-    tasks.owner('Example Community')
-        .name('task-999')
-        .done(function(response) {
-            console.log('response', response);
-        })
-        .error(function(response) {
-            console.log('error response', response);
-        })
-        .commit(function() {
-            tasks.commitAssociation({
-                type: TYPE.ADDRESS,
-                id: '74.121.142.111'
-            });
-            tasks.commitAssociation({
-                type: TYPE.INCIDENT,
-                id: 256
-            });
-            tasks.commitAttribute({
-                type: 'Description',
-                value: 'Example Description.'
-            });
-            tasks.commitTag('Example');
-            tasks.commitSecurityLabel('TLP Red');
-        });
-
-Note: To ensure the commits for the metadata happen after the commit of
-the task pass a callback to the group commit method.
-
-Associations
-------------
+~~~~~~~~~~~~
 
 The JavaScript SDK provides the ``commitAssociations()`` method to add
 both Indicator and Group Associations. The ``type()``, ``id()``,
@@ -2210,7 +2215,7 @@ TYPE.ADVERSARY, TYPE.HOST).
         });
 
 Attributes
-----------
+~~~~~~~~~~
 
 The JavaScript SDK provides the ``commitAttributes()`` method to add
 attributes. The ``id()`` method is required to add attributes. The
@@ -2233,7 +2238,7 @@ type and value parameter.
         });
 
 Tags
-----
+~~~~
 
 The JavaScript SDK provides the ``commitTags()`` method to add tags. The
 ``id()`` method is required to retrieve the victim. The tag value should
@@ -2252,7 +2257,7 @@ be passed to the ``commitTags()`` method.
         .commitTags('Example Tag');
 
 Security Labels
----------------
+~~~~~~~~~~~~~~~
 
 .. code:: javascript
 
@@ -2267,7 +2272,7 @@ Security Labels
         .commitSecurityLabel('TLP Red');
 
 Putting it all Together
------------------------
+~~~~~~~~~~~~~~~~~~~~~~~
 
 This example will demonstrate how to add a Victim with a name of
 'task-999' to the "Example Community" owner. It passes a callback to the
@@ -2342,7 +2347,7 @@ Attributes, or Tags can be added in the callback.
             victim.commitSecurityLabel('TLP Red');
         });
 
-Note: To ensure the commits for the metadata happen after the commit of
+.. note:: To ensure the commits for the metadata happen after the commit of
 the task pass a callback to the group commit method.
 
 Manual API Calls
