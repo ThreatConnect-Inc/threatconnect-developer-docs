@@ -6,9 +6,12 @@ The example below demonstrates how to create a custom Indicator. In order to do 
 1. The required fields for the custom Indicator type.
 2. The ``api_entity`` for the custom Indicator type.
 
-There are some examples below that demonstrate how to create ASN, CIDR, Mutex, Registry Key, and User Agent Indicators. If you are trying to create a custom Indicator that is not one of these, refer to the previous section on `Retrieving Available Custom Indicator Types <#retrieving-available-custom-indicator-types>`_ to find the necessary information and plug that information into the format below.
+There are some examples below that demonstrate how to create ASN, CIDR, Mutex, Registry Key, and User Agent Indicators. If you are trying to create a custom Indicator that is not one of these, refer to the previous section on `Retrieving Available Custom Indicator Types <#id1>`_ to find the necessary information and plug that information into the format below.
 
 The format when creating a custom Indicator is:
+
+.. 
+    no-test
 
 .. code-block:: python
 
