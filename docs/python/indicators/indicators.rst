@@ -15,6 +15,8 @@ An Indicator represents an atomic piece of information that has some intelligenc
 
 .. include:: indicators/urls/urls.rst
 
+.. include:: indicators/custom_indicators/custom_indicators.rst
+
 .. include:: indicators/_metadata/metadata.rst
 
 .. include:: indicators/bulk_download.rst
