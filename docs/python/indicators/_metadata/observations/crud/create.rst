@@ -4,7 +4,9 @@ Create Indicator Observations
 The code snippet below demonstrates how to add observations to an Indicator.
 
 .. code-block:: python
-    :emphasize-lines: 25-26,28-29
+    :emphasize-lines: 27-28,30-31,33-34
+
+    from datetime import datetime
 
     # replace the line below with the standard, TC script heading described here:
     # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
@@ -32,6 +34,9 @@ The code snippet below demonstrates how to add observations to an Indicator.
 
         # add two observations to the Indicator
         indicator.add_observation(2)
+
+        # you can also include a date observed when adding observations
+        # indicator.add_observation(2, datetime.isoformat(datetime.today()) + 'Z')
 
         # commit the changes to ThreatConnect
         indicator.commit()

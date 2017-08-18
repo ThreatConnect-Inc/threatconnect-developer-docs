@@ -4,7 +4,7 @@ Retrieve Indicator Observations
 The code snippet below demonstrates how to retrieve observations of an Indicator.
 
 .. code-block:: python
-    :emphasize-lines: 25-27
+    :emphasize-lines: 25-28
 
     # replace the line below with the standard, TC script heading described here:
     # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
@@ -32,4 +32,5 @@ The code snippet below demonstrates how to retrieve observations of an Indicator
 
         # print the number of observations on this Indicator
         for observation in indicator.observations:
-            print("Observations: {}".format(observation.count))
+            print("Observation count: {}".format(observation.count))
+            print("Most recent observation: {}".format(observation.date_observed))
