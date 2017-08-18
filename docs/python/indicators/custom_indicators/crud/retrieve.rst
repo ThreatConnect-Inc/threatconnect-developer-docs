@@ -1,5 +1,5 @@
-Retrieving Custom Indicator Types
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Retrieving Available Custom Indicator Types
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Before you can find custom Indicators of a certain type, you need to identify which types are available on your instance of ThreatConnect and find the ``api_entity`` of the Indicator type you are interested in retrieving. The example below demonstrates how to do this.
 
@@ -34,7 +34,7 @@ Before you can find custom Indicators of a certain type, you need to identify wh
 
 Running the script above on the ThreatConnect public cloud (`https://app.threatconnect.com/ <https://app.threatconnect.com/>`_) returns the following:
 
-.. code-block::
+.. code-block:: shell
 
    Name: ASN
    API Entity: asn
