@@ -6,5 +6,3 @@ Custom Indicators types can be created in ThreatConnect and allow you to capture
 .. include:: indicators/custom_indicators/crud/retrieve.rst
 
 .. include:: indicators/custom_indicators/crud/create.rst
-
-.. include:: indicators/custom_indicators/crud/delete.rst
