@@ -72,7 +72,7 @@ To create a document that can be uploaded into `ThreatConnect's Malware Vault <h
 
     { 
       "fileName" : "malwaresample.zip",
-      "name": "Malicious File",
+      "name": "malwaresample.exe",
       "malware": true,
       "password": "TCinfected"
     }
