@@ -161,10 +161,10 @@ Example of a validValues parameter definition example:
 
 .. code:: json
 
-    {
+    
        "name": "owner",
        "label": "Owner",
-       "type": "choice",
+       "type": "Choice",
        "validValues": ["${OWNERS}"]
     }
 
