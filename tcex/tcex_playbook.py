@@ -2,9 +2,7 @@
 import base64
 import codecs
 import json
-# import os
 import re
-
 """ third-party """
 """ custom """
 
@@ -546,9 +544,9 @@ class TcExPlaybook(object):
         """
         data = None
         if key is not None and value is not None:
-            if isinstance(value, (bool, list, dict)):
+            if isinstance(value, (bool, list, int, dict)):
                 value = str(value)
-            data = self._db.create(key.strip(), json.dumps(value))
+            data = self._db.create(key.strip(), str(json.dumps(value)))
         else:
             self._tcex.log.warning('The key or value field was None.')
         return data
@@ -576,7 +574,7 @@ class TcExPlaybook(object):
                     pass
         else:
             self._tcex.log.warning('The key field was None.')
-        return data
+        return str(data)
 
     # string array
     def create_string_array(self, key, value):

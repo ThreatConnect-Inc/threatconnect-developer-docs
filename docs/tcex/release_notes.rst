@@ -6,6 +6,32 @@ Release Notes
 0.5.x
 =====
 
+0.5.7
+-----
++ Removing pip as a dependency.
+
+0.5.6
+-----
++ Updated ``tcdata`` to support multiple operators for validation.
++ Added ``tcprofile`` command to automatically build testing profiles from install.json.
++ Updated ``tcrun`` to create log, out, and temp directories for testing output.
++ Updated ``tcpackage`` to exclude **.pyc** files and **__pycache__** directory.
+
+0.5.5
+-----
++ Updated ``tcpackage`` to append version number to zip_file.
++ Added a **bundle_name** parameter to tcex.json file for systems where the directory name doesn't represent the App name.
+
+0.5.4
+-----
++ Minor update on tcdata for issue with bytes string in Python 3.
+
+0.5.3
+-----
++ Added new tcdata, tclib, tcpackage, and tcrun commands for App testing and packaging (app.py will be deprecated in the future).
++ Updates to ``__main__.py`` for new lib directory structure create with pip (replaced easy_install).
++ Apps should now be built with ``requirements.txt`` instead of ``setup.py``.
+
 0.5.2
 ------
 + Updated :py:meth:`~tcex.tcex_resources.Resource.association_custom` method to support DELETE/POST Methods.
