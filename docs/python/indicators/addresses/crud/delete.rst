@@ -4,7 +4,7 @@ Delete IP Addresses
 The example below demonstrates how to delete an Address Indicator from the ThreatConnect platform:
 
 .. code-block:: python
-    :emphasize-lines: 25-26
+    :emphasize-lines: 34-35
 
     # replace the line below with the standard, TC script heading described here:
     # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
@@ -16,22 +16,30 @@ The example below demonstrates how to delete an Address Indicator from the Threa
     indicators = tc.indicators()
 
     owner = 'Example Community'
+    indicator = '8.8.8.8'
 
     # specify a specific address in a specific owner (in this case '8.8.8.8' in the 'Example Community')
     filter1 = indicators.add_filter()
     filter1.add_owner(owner)
-    filter1.add_indicator('8.8.8.8')
+    filter1.add_indicator(indicator)
 
     # retrieve the Indicator
     indicators.retrieve()
 
-    # prove there is only one Indicator retrieved
-    assert len(indicators) == 1
+    try:
+        # prove there is only one Indicator retrieved
+        assert len(indicators) == 1
+    except AssertionError as e:
+        # if the indicator doesn't exist in the given owner, raise an error
+        print("AssertionError: The indicator {0} was not found in the '{1}' owner. ".format(indicator, owner) +
+              "Try changing the `owner` variable to the name of an owner in your instance of ThreatConnect " +
+              "or make sure that the {0} indicator specified by the `indicator` ".format(indicator) +
+              "variable exists in that owner.")
+        sys.exit(1)
 
     # iterate through the retrieved Indicators and delete them
     for indicator in indicators:
         # delete the Indicator
         indicator.delete()
 
-
-.. note:: In the prior example, no API calls are made until the ``delete()`` method is invoked.
+.. note:: If you get an ``AssertionError`` when running this code, you likely need to change the name of the ``owner`` variable so that it is the name of an owner in your instance of ThreatConnect and/or you need to change the ``indicators`` variable so that it is an Indicator that exists in the given owner.

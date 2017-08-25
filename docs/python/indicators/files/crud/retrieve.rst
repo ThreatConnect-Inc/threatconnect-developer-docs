@@ -7,7 +7,7 @@ Retrieving a Single File Indicator
 This example demonstrates how to retrieve a File Indicator from the ThreatConnect platform. The ``add_indicator`` filter allows us to specify the specific Indicator we would like to retrieve. If a File Indicator exists in ThreatConnect and has all three types of hashes (md5, sha1, and sha256), you can pass any one of those hashes into the ``add_indicator`` filter and it will return the File Indicator with that hash.
 
 .. code-block:: python
-    :emphasize-lines: 10-12,15-16
+    :emphasize-lines: 13-16,19-20
 
     # replace the line below with the standard, TC script heading described here:
     # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
@@ -18,9 +18,13 @@ This example demonstrates how to retrieve a File Indicator from the ThreatConnec
     # instantiate Indicators object
     indicators = tc.indicators()
 
+    owner = 'Example Community'
+    indicator = '8743b52063cd84097a65d1633f5c74f5'
+
     # set a filter to retrieve a specific File Indicator
     filter1 = indicators.add_filter()
-    filter1.add_indicator('8743b52063cd84097a65d1633f5c74f5')
+    filter1.add_owner(owner)
+    filter1.add_indicator(indicator)
 
     try:
         # retrieve the Indicators
@@ -29,8 +33,16 @@ This example demonstrates how to retrieve a File Indicator from the ThreatConnec
         print('Error: {0}'.format(e))
         sys.exit(1)
 
-    # prove there is only one Indicator retrieved
-    assert len(indicators) == 1
+    try:
+        # prove there is only one Indicator retrieved
+        assert len(indicators) == 1
+    except AssertionError as e:
+        # if the indicator doesn't exist in the given owner, raise an error
+        print("AssertionError: The indicator {0} was not found in the '{1}' owner. ".format(indicator, owner) +
+              "Try changing the `owner` variable to the name of an owner in your instance of ThreatConnect " +
+              "or make sure that the {0} indicator specified by the `indicator` ".format(indicator) +
+              "variable exists in that owner.")
+        sys.exit(1)
 
     # if the File Indicator was found, print some information about it
     for indicator in indicators:
@@ -39,6 +51,8 @@ This example demonstrates how to retrieve a File Indicator from the ThreatConnec
 
         # File Indicator specific property giving the file size (in bytes)
         print(indicator.size)
+
+.. note:: If you get an ``AssertionError`` when running this code, you likely need to change the name of the ``owner`` variable so that it is the name of an owner in your instance of ThreatConnect and/or you need to change the ``indicators`` variable so that it is an Indicator that exists in the given owner.
 
 Retrieving File Occurrences
 +++++++++++++++++++++++++++
