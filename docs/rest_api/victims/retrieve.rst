@@ -380,6 +380,8 @@ You can also find associated Victim Assets of a given type using the following f
 
     GET /v2/victims/{victimId}/victimAssets/{victimAssetType}
 
+The available Victim Asset types are:
+
 .. include:: _includes/victim_asset_types.rst
 
 For example, we could use the following query to find all Victim Assets that are Email Addresses which are associated with the Victim with ID 12345:

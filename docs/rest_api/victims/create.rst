@@ -80,6 +80,8 @@ To create Victim Assets, use a query in the following format:
       // add fields here...
     }
 
+The available Victim Asset types are:
+
 .. include:: _includes/victim_asset_types.rst
 
 When creating a Victim Asset, there are certain fields that are required as detailed below:
