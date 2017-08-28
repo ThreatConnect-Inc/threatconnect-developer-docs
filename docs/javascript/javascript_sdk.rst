@@ -1114,7 +1114,7 @@ Example of Results:
       "remaining": 0,
       "url": "https://api.threatconnect.com/v2/groups/adversaries/?createActivityLog=false&resultLimit=500&resultStart=0&owner=Example+Community",
       "apiCalls": 1,
-      "resultCount": 15,
+      "resultCount": 3,
       "status": "Success"
     }
 
@@ -1131,6 +1131,64 @@ then it should be passed in a function to the ``retrieve()`` method.
 defined in the ``resultsLimit()`` or the number of results remaining.
 The same 'done' and 'error' callbacks are also used for the next set of
 results.
+
+Security Labels Retrieve
+------------------------
+
+Example of how to retrieve all Security Labels belonging to the given owner:
+
+.. code:: javascript
+
+    tc.securityLabel()
+        .owner('Example Community')
+        .done(function(response) {
+            console.log('response', response);
+            $('#response-content').append(JSON.stringify(response, null, 4));
+        })
+        .error(function(response) {
+            console.error('error response', response);
+            $('#response-content').append(JSON.stringify(response, null, 4));
+        })
+        .retrieve();
+
+Example of retrieve Tags results:
+
+.. code:: json
+
+    {
+        "data": [
+        {
+            "name": "TLP:AMBER",
+            "description": "Recipients may only share TLP:AMBER information with members of their own organization who need to know, and only as widely as necessary to act on that information.",
+            "dateAdded": "2013-09-24T15:34:51Z",
+            "color": "ffbf00"
+        },
+        {
+            "name": "TLP:GREEN",
+            "description": "Recipients may share TLP:GREEN information with peers and partner organizations within their sector or community, but not via publicly accessible channels.",
+            "dateAdded": "2013-09-24T15:34:37Z",
+            "color": "33ff00"
+        },
+        {
+            "name": "TLP:RED",
+            "description": "Recipients may not share TLP:RED information with any parties outside of the specific exchange, meeting, or conversation in which it is originally disclosed.",
+            "dateAdded": "2013-09-24T15:35:27Z",
+            "color": "ff0033"
+        },
+        {
+            "name": "TLP:WHITE",
+            "description": "TLP:WHITE information may be distributed without restriction, subject to copyright controls.",
+            "dateAdded": "2013-09-24T15:34:12Z",
+            "color": "ffffff"
+        }],
+        "remaining": 0,
+        "url": "https://api.threatconnect.com/v2/securityLabels?resultLimit=500&owner=Example+Community",
+        "apiCalls": 1,
+        "resultCount": 4,
+        "status": "Success"
+    }
+
+Optionally the ``name()`` method can be used to pass a specific Security Label name.
 
 Filters
 -------
