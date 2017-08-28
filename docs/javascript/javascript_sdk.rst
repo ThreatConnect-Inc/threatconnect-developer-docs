@@ -2481,5 +2481,55 @@ add filters to a manual request using the ``payload()`` option.
 | orParams               | manually via payload() |
 +------------------------+------------------------+
 
-For a full list of query string parameters supported by the
-ThreatConnect API reference the ThreatConnect API User Guide.
+For a full list of query string parameters supported by the ThreatConnect API reference the `ThreatConnect API Documentation <https://docs.threatconnect.com/en/latest/rest_api/rest_api.html>`_.
+
+Helper Functions
+----------------
+
+groupHelper
+~~~~~~~~~~~
+
+The ``groupHelper`` function makes it easy to retrieve the ``TYPE`` object for a given Group type (provided as a string). For example, when `retrieving Groups <https://docs.threatconnect.com/en/latest/javascript/javascript_sdk.html#retrieve-group>`_, you can find the full type (TYPE.<GROUP_TYPE>) for each Group using the groupHelper as demonstrated below.
+
+.. code-block:: javascript
+
+    groups = tc.groups();
+
+    groups.owner('Example Community')
+        .resultLimit(500)
+        .done(function(response) {
+            for (var i = response.data.length - 1; i >= 0; i--) {
+                # return the complete TYPE of the group
+                console.log(groupHelper(response.data[i].type))
+            }
+        })
+        .error(function(response) {
+            console.error('error response', response);
+        })
+        .retrieve();
+
+indicatorHelper
+~~~~~~~~~~~~~~~
+
+The ``indicatorHelper`` function makes it easy to retrieve the ``TYPE`` object for a given Indicator type (provided as a string). For example, when `retrieving Indicators <https://docs.threatconnect.com/en/latest/javascript/javascript_sdk.html#retrieve-indicator>`_, you can find the full type (TYPE.<INDICATOR_TYPE>) for each Indicator using the indicatorHelper as demonstrated below.
+
+.. code-block:: javascript
+
+    var indicators = tc.indicators();
+
+    indicators.owner('Example Community')
+        .resultLimit(500)
+        .done(function(response) {
+            for (var i = response.data.length - 1; i >= 0; i--) {
+                # return the complete TYPE of the indicator
+                console.log(indicatorHelper(response.data[i].type))
+            }
+        })
+        .error(function(response) {
+            console.error('error response', response);
+        })
+        .retrieve(function() {
+            if (indicators.hasNext()) {
+                indicators.next()
+            }
+        });
