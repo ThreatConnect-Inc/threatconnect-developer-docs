@@ -6,6 +6,39 @@ Release Notes
 0.5.x
 =====
 
+0.5.13
+------
++ Added addtional exclude values for IDE directories.
++ Added **app_name** parameter to **tcex.json** for App built on system where App directory is not the App name.
++ Updated ``tcpackage`` to use new **app_name** if exists and default back to App directory name.
++ Updated ``tcprofile`` to only output redis variable for Playbook Apps.
++ Updated ``tclib`` to have default config value for instance where there is not **tcex.json** file.
+
+0.5.12
+------
++ Update Building Apps section of the Documentation.
++ Updated required module versions (requests, python-dateutil, and redis).
++ Fixed issue with sleep parameter being ignored in ``tcrun``.
++ Updated ``tclib`` to automatically read **tcex.json**.
++ Updated ``tcpackage`` to output Apps zip files with **.tcx** extension.
+
+0.5.11
+------
++ Added support for Binary data type in ``tcdata`` for staging.
+
+0.5.10
+------
++ Added platform for docker support.
+
+0.5.9
+-----
++ Added platform check for subprocess calls.
++ Added additional error logging for ``tcrun`` command.
+
+0.5.8
+-----
++ Added better support for build / test commands on Windows platform.
+
 0.5.7
 -----
 + Removing pip as a dependency.

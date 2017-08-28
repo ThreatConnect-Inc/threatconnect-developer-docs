@@ -2,6 +2,7 @@
 
 """ standard """
 import argparse
+import colorama as c
 import json
 import os
 import sys
@@ -13,34 +14,19 @@ from random import randint
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
-    '--config', default='install.json', help='The configuration file. (default: "install.json")')
+    '--config', default='install.json', help='The install.json file name. (default: "install.json")')
 parser.add_argument(
-    '--outfile', help='File to output or append data.')
+    '--outfile', help='File to output or append profile.')
 args, extra_args = parser.parse_known_args()
 
-# colors
-# color settings
-DEFAULT = '\033[m'
-BOLD = '\033[1m'
-# colors
-CYAN = '\033[36m'
-GREEN = '\033[32m'
-MAGENTA = '\033[35m'
-RED = '\033[31m'
-YELLOW = "\033[33m"
-# bold colors
-BOLD_CYAN = '{}{}'.format(BOLD, CYAN)
-BOLD_GREEN = '{}{}'.format(BOLD, GREEN)
-BOLD_MAGENTA = '{}{}'.format(BOLD, MAGENTA)
-BOLD_RED = '{}{}'.format(BOLD, RED)
-BOLD_YELLOW = '{}{}'.format(BOLD, YELLOW)
+c.init(autoreset=True, strip=False)
 
 
 def main():
     """ """
     if not os.path.isfile(args.config):
-        print('{}Configuration file ({}) could not be found.{}'.format(
-            BOLD_RED, args.config, DEFAULT))
+        print('{}{}Configuration file ({}) could not be found.'.format(
+            c.Style.BRIGHT, c.Fore.CYAN, args.config))
 
     with open(args.config) as fh:
         data = json.load(fh)
@@ -57,11 +43,12 @@ def main():
     config_args['tc_log_to_api'] = False
     config_args['tc_out_path'] = 'log'
     config_args['tc_temp_path'] = 'log'
-    config_args['tc_playbook_db_type'] = 'Redis'
-    config_args['tc_playbook_db_context'] = str(uuid4())
-    config_args['tc_playbook_db_path'] = 'localhost'
-    config_args['tc_playbook_db_port'] = '6379'
-    config_args['tc_playbook_out_variables'] = ''
+    if data.get('runtimeLevel') == 'Playbook':
+        config_args['tc_playbook_db_type'] = 'Redis'
+        config_args['tc_playbook_db_context'] = str(uuid4())
+        config_args['tc_playbook_db_path'] = 'localhost'
+        config_args['tc_playbook_db_port'] = '6379'
+        config_args['tc_playbook_out_variables'] = ''
 
     for d in data.get('params', []):
         if d.get('type') == 'Boolean':
@@ -77,12 +64,12 @@ def main():
     profile_name = data.get('displayName', '').lower().replace(' ', '-')
     if len(profile_name) == 0:
         profile_name = args.config.replace('.install.json', '').lower()
-    print('Building Profile: {}{}{}'.format(BOLD_CYAN, profile_name, DEFAULT))
+    print('Building Profile: {}{}{}'.format(c.Style.BRIGHT, c.Fore.CYAN, profile_name))
 
     config = OrderedDict()
     config['args'] = config_args
     config['description'] = ''
-    config['exit_code'] = [0]
+    config['exit_codes'] = [0]
     config['group'] = 'qa-build'
     config['profile_name'] = profile_name
     config['quiet'] = False
@@ -130,13 +117,12 @@ def main():
     if args.outfile is not None:
         if os.path.isfile(args.outfile):
             # append
-            print('Append to File: {}{}{}'.format(BOLD_CYAN, args.outfile, DEFAULT))
+            print('Append to File: {}{}{}'.format(c.Style.BRIGHT, c.Fore.CYAN, args.outfile))
             with open(args.outfile, 'r+') as fh:
                 try:
                     data = json.load(fh, object_pairs_hook=OrderedDict)
                 except ValueError as e:
-                    err = '{}Can not parse JSON data ({}).{}'.format(BOLD_RED, e, DEFAULT)
-                    print(err)
+                    print('{}{}Can not parse JSON data ({}).'.format(c.Style.BRIGHT, c.Fore.RED, e))
                     sys.exit(1)
                 # update data
                 if isinstance(data, (dict)) and data.get('profiles') is not None:
@@ -148,7 +134,7 @@ def main():
                 fh.truncate()
         else:
             # create
-            print('Create File: {}{}{}'.format(BOLD_CYAN, args.outfile, DEFAULT))
+            print('Create File: {}{}{}'.format(c.Style.BRIGHT, c.Fore.CYAN, args.outfile))
             with open(args.outfile, 'w') as fh:
                 data = [config]
                 fh.write(json.dumps(data, indent=2))
