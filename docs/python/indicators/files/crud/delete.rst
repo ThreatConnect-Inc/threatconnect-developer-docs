@@ -83,3 +83,6 @@ A file occurrence can be deleted from File Indicators using the ``delete_file_oc
         for file_occurrence in indicator.file_occurrences:
             # delete the file occurrence
             indicator.delete_file_occurrence(file_occurrence.id)
+
+        # commit the changes
+        indicator.commit()
