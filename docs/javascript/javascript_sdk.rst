@@ -54,7 +54,7 @@ the following:
         };
     }
 
-.. note:: If you are working with the ThreatConnect **sandbox**, the second apiSettings.apiUrl (the one in the ``else`` branch) should be: ``https://sandbox.threatconnect.com/api/``.
+.. note:: If you are working with the ThreatConnect **sandbox**, the second apiSettings.apiUrl (the one in the ``else`` branch) should be: ``https://sandbox.threatconnect.com/api/`` instead of ``https://api.threatconnect.com``.
 
 .. code:: html
 
@@ -574,7 +574,7 @@ Example Results of the retrieve.next method:
       "data": [
         {
           "id": 97262,
-          "indicators": "badguys.org",
+          "indicator": "badguys.org",
           "dateAdded": "2015-12-14T02:16:38Z",
           "lastModified": "2015-12-14T02:16:38Z",
           "ownerName": "Example Community",
@@ -583,7 +583,7 @@ Example Results of the retrieve.next method:
         },
         {
           "id": 94977,
-          "indicators": "74.121.142.111",
+          "indicator": "74.121.142.111",
           "dateAdded": "2015-12-12T01:24:28Z",
           "lastModified": "2015-12-13T23:22:28Z",
           "ownerName": "Example Community",
@@ -594,7 +594,7 @@ Example Results of the retrieve.next method:
         },
         {
           "id": 94980,
-          "indicators": "74.121.139.80",
+          "indicator": "74.121.139.80",
           "dateAdded": "2015-12-12T01:24:28Z",
           "lastModified": "2015-12-12T01:24:28Z",
           "ownerName": "Example Community",
@@ -655,7 +655,7 @@ Single Indicator retrieve Example Results:
         "data": [
             {
                 "id": 97934,
-                "indicators": "10.20.30.40",
+                "indicator": "10.20.30.40",
                 "dateAdded": "2015-12-14T23:23:00Z",
                 "lastModified": "2016-01-14T23:47:53Z",
                 "ownerName": "Example Community",
@@ -1499,7 +1499,7 @@ Example Results:
       "data": [
         {
           "id": 97932,
-          "indicators": "10.20.30.40",
+          "indicator": "10.20.30.40",
           "dateAdded": "2015-12-14T22:41:39Z",
           "lastModified": "2015-12-14T22:41:39Z",
           "ownerName": "Example Community",
