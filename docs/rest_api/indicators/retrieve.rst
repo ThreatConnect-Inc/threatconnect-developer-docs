@@ -427,6 +427,48 @@ JSON Response:
       }
     }
 
+Retrieve the Owners in which an Indicator Exists
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To retrieve all of the owners in which an Indicator exists, use a query in the following format:
+
+.. code::
+
+    GET /v2/indicators/{indicatorType}/{indicator}/owners
+
+For example, if you wanted to retrieve all of the owners in which the URL ``http://example.com/`` exists, you would use the following query:
+
+.. code::
+
+    GET /v2/indicators/urls/http%3A%2F%2Fexample.com%2F/owners
+
+JSON Response:
+
+.. code:: json
+
+    {
+      "status": "Success",
+      "data": {
+        "owner": [
+          {
+            "id": 0,
+            "name": "Example Organization",
+            "type": "Organization"
+          },
+          {
+            "id": 1,
+            "name": "Common Community",
+            "type": "Community"
+          },
+          {
+            "id": 2,
+            "name": "Example Community",
+            "type": "Community"
+          }
+        ]
+      }
+    }
+
 Retrieve Indicator Metadata
 ---------------------------
 
