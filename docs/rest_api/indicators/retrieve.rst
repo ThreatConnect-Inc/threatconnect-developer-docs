@@ -427,6 +427,53 @@ JSON Response:
       }
     }
 
+Retrieving a Custom Indicator
+"""""""""""""""""""""""""""""
+
+To retrieve a Custom Indicator from ThreatConnect:
+
+1. Use the `available Indicator types <#retrieve-available-indicator-types>`_ to identify the ``apiBranch`` for the Indicator type you would like to retrieve.
+3. Make a GET request in the format below.
+
+.. code::
+
+    GET /v2/indicators/{customIndicatorType}/{customIndicator}
+
+For example, to retrieve the Mutex ``8F6F00C4-B901-45fd-08CF-72FDEFF``, you use the following query:
+
+.. code::
+
+    GET /v2/indicators/mutexes/8F6F00C4-B901-45fd-08CF-72FDEFF
+
+JSON Response:
+
+.. code:: json
+
+    {
+      "status": "Success",
+      "data": {
+        "mutex": {
+          "id": 123456,
+          "owner": {
+            "id": 1,
+            "name": "Example Organization",
+            "type": "Organization"
+          },
+          "type": "Mutex",
+          "dateAdded": "2017-05-19T15:40:28Z",
+          "lastModified": "2017-05-19T15:43:49Z",
+          "webLink": "https://app.threatconnect.com/auth/indicators/details/customIndicator.xhtml?id=123456&owner=Example+Organization",
+          "Mutex": "8F6F00C4-B901-45fd-08CF-72FDEFF",
+          "rating": 4.00,
+          "confidence": 85,
+          "threatAssessRating": 4.0,
+          "threatAssessConfidence": 85.0,
+          "source": "https://heimdalsecurity.com/blog/bluedoom-worm-eternablue-nsa-exploits/",
+          "description": "Mutex created by BlueDoom / EternalRocks malware to ensure first payload is not run more than once on a target system."
+        }
+      }
+    }
+
 Retrieve the Owners in which an Indicator Exists
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
