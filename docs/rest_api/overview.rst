@@ -235,3 +235,12 @@ The API will return appropriate HTTP response codes with a description in the me
 | ``503`` - Service  | The Instance of ThreatConnect is not licensed to enable  |
 | Unavailable        | the API.                                                 |
 +--------------------+----------------------------------------------------------+
+
+Specifying an Owner
+-------------------
+
+By default, all API calls will operate in the API user account's default organization. To specify a different owner, use the ``owner`` URL parameter like ``?owner={ownerName}``. For example, the following query will return all Host Indicators in the Common Community:
+
+.. code::
+
+    GET https://api.threatconnect.com/v2/indicators/hosts/?owner=Common%20Community

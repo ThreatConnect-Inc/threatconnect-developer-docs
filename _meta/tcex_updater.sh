@@ -3,7 +3,7 @@ docs
 cd ThreatConnect_Developer_Docs/;
 
 # checkout dev
-git checkout dev;
+# git checkout dev;
 
 # update tcex
 make uptcex;
