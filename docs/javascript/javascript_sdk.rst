@@ -1025,6 +1025,131 @@ metrics is supported. Owner metrics provides the summed data for the
 last 15 days. Optionally the ``id()`` method can be used to pass a
 specific Owner ID.
 
+Example Metrics Results:
+
+.. code-block:: language
+
+    {
+        "data":
+        {
+            "ownerMetric": [
+            {
+                "metricDate": "2016-08-20",
+                "totalIndicator": 140,
+                "totalHost": 140,
+                "totalAddress": 0,
+                "totalEmailAddress": 0,
+                "totalFile": 0,
+                "totalUrl": 0,
+                "totalGroup": 0,
+                "totalThreat": 0,
+                "totalIncident": 0,
+                "totalEmail": 0,
+                "totalCampaign": 0,
+                "totalAdversary": 0,
+                "totalSignature": 0,
+                "totalTask": 0,
+                "totalDocument": 0,
+                "totalTag": 0,
+                "totalTrack": 0,
+                "totalResult": 0,
+                "totalIndicatorAttribute": 140,
+                "totalGroupAttribute": 0,
+                "averageIndicatorRating": 3.61,
+                "averageIndicatorConfidence": 27,
+                "totalEnrichedIndicator": 140,
+                "totalGroupIndicator": 0,
+                "totalObservationDaily": 0,
+                "totalObservationIndicator": 5,
+                "totalObservationAddress": 0,
+                "totalObservationEmailAddress": 0,
+                "totalObservationFile": 0,
+                "totalObservationHost": 5,
+                "totalObservationUrl": 0,
+                "totalFalsePositiveDaily": 0,
+                "totalFalsePositive": 0
+            },
+            {
+                "metricDate": "2016-08-20",
+                "totalIndicator": 53876,
+                "totalHost": 0,
+                "totalAddress": 53876,
+                "totalEmailAddress": 0,
+                "totalFile": 0,
+                "totalUrl": 0,
+                "totalGroup": 0,
+                "totalThreat": 0,
+                "totalIncident": 0,
+                "totalEmail": 0,
+                "totalCampaign": 0,
+                "totalAdversary": 0,
+                "totalSignature": 0,
+                "totalTask": 0,
+                "totalDocument": 0,
+                "totalTag": 0,
+                "totalTrack": 0,
+                "totalResult": 0,
+                "totalIndicatorAttribute": 107752,
+                "totalGroupAttribute": 0,
+                "averageIndicatorRating": 3,
+                "averageIndicatorConfidence": 53,
+                "totalEnrichedIndicator": 53876,
+                "totalGroupIndicator": 0,
+                "totalObservationDaily": 6,
+                "totalObservationIndicator": 8763,
+                "totalObservationAddress": 8763,
+                "totalObservationEmailAddress": 0,
+                "totalObservationFile": 0,
+                "totalObservationHost": 0,
+                "totalObservationUrl": 0,
+                "totalFalsePositiveDaily": 0,
+                "totalFalsePositive": 5
+            },
+            ...
+            {
+                "metricDate": "2016-09-03",
+                "totalIndicator": 74,
+                "totalHost": 20,
+                "totalAddress": 38,
+                "totalEmailAddress": 3,
+                "totalFile": 7,
+                "totalUrl": 6,
+                "totalGroup": 6,
+                "totalThreat": 0,
+                "totalIncident": 4,
+                "totalEmail": 2,
+                "totalCampaign": 0,
+                "totalAdversary": 0,
+                "totalSignature": 0,
+                "totalTask": 0,
+                "totalDocument": 0,
+                "totalTag": 6,
+                "totalTrack": 0,
+                "totalResult": 0,
+                "totalIndicatorAttribute": 159,
+                "totalGroupAttribute": 4,
+                "averageIndicatorRating": 4.93,
+                "averageIndicatorConfidence": 94,
+                "totalEnrichedIndicator": 56,
+                "totalGroupIndicator": 5,
+                "totalObservationDaily": 0,
+                "totalObservationIndicator": 14,
+                "totalObservationAddress": 14,
+                "totalObservationEmailAddress": 0,
+                "totalObservationFile": 0,
+                "totalObservationHost": 0,
+                "totalObservationUrl": 0,
+                "totalFalsePositiveDaily": 0,
+                "totalFalsePositive": 0
+            }]
+        },
+        "remaining": 0,
+        "url": "https://api.threatconnect.com/v2/owners/metrics?resultLimit=500",
+        "apiCalls": 1,
+        "resultCount": 0,
+        "status": "Success"
+    }
+
 Group Retrieve
 --------------
 
