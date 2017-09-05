@@ -78,12 +78,15 @@ class TcExPlaybook(object):
         if self._tcex._args.tc_playbook_out_variables is not None:
             variables = self._tcex._args.tc_playbook_out_variables.strip()
             for o in variables.split(','):
+                # parse the variable to get individual parts
                 parsed_key = self.parse_variable(o)
                 variable_name = parsed_key['name']
                 variable_type = parsed_key['type']
+                # store the variables in dict by name (e.g. "status_code")
                 self._out_variables[variable_name] = {
                     'variable': o
                 }
+                # store the variables in dict by name-type (e.g. "status_code-String")
                 vt_key = '{}-{}'.format(variable_name, variable_type)
                 self._out_variables_type[vt_key] = {
                     'variable': o
@@ -152,27 +155,33 @@ class TcExPlaybook(object):
         if key is not None:
             key = key.strip()
             key_type = '{}-{}'.format(key, variable_type)
-            if key_type in self._out_variables_type.keys():
+            if self._out_variables_type.get(key_type) is not None:
+                # variable key-type has been requested
+                v = self._out_variables_type.get(key_type)
                 self._tcex.log.info(
-                    'Variable {0} was requested by downstream app.'.format(key))
+                    'Variable {} was requested by downstream app.'.format(v.get('variable')))
                 if value is not None:
-                    v = self._out_variables_type.get(key_type)
-                    results = self.create(v['variable'], value)
+                    results = self.create(v.get('variable'), value)
                 else:
                     self._tcex.log.info(
-                        'Variable {0} has a none value an will not be written.'.format(key))
-            elif key in self._out_variables.keys():
+                        'Variable {} has a none value an will not be written.'.format(key))
+            elif self._out_variables.get(key) is not None and variable_type is None:
+                # variable key has been requested
+                v = self._out_variables.get(key)
                 self._tcex.log.info(
-                    'Variable {0} was requested by downstream app.'.format(key))
+                    'Variable {} was requested by downstream app.'.format(v.get('variable')))
                 if value is not None:
-                    v = self._out_variables.get(key)
-                    results = self.create(v['variable'], value)
+                    results = self.create(v.get('variable'), value)
                 else:
                     self._tcex.log.info(
-                        'Variable {0} has a none value an will not be written.'.format(key))
+                        'Variable {} has a none value an will not be written.'.format(
+                            v.get('variable')))
             else:
+                var_value = key
+                if variable_type is not None:
+                    var_value = key_type
                 self._tcex.log.info(
-                    'Variable {0} was NOT requested by downstream app.'.format(key))
+                    'Variable {} was NOT requested by downstream app.'.format(var_value))
         return results
 
     def exit(self, code=None):
@@ -279,7 +288,7 @@ class TcExPlaybook(object):
             variables = re.findall(self._vars_match, str(data))
             for var in variables:
                 # regex will capture quotes around variables, which needs to be removed
-                key_type = self.variable_type(var.strip('"'))
+                # key_type = self.variable_type(var.strip('"'))
 
                 # read raw value so escaped characters won't be removed
                 val = self.read_raw(var.strip('"'))
@@ -292,11 +301,11 @@ class TcExPlaybook(object):
                     val = val.strip('"')
                     # a parent type of String should have escaped characters removed
                     val = codecs.getdecoder('unicode_escape')(val)[0]
-                ## per slack conversation with danny on 3/22 all string data should already have
-                ## quotes already since they are JSON values
-                ## elif key_type in ['String']:
-                ##     if not val.startswith('"') and not val.endswith('"'):
-                ##         val = '"{}"'.format(val)
+                # per slack conversation with danny on 3/22 all string data should already have
+                # quotes already since they are JSON values
+                # elif key_type in ['String']:
+                #     if not val.startswith('"') and not val.endswith('"'):
+                #         val = '"{}"'.format(val)
 
                 data = data.replace(var, val)
         return data
@@ -347,7 +356,8 @@ class TcExPlaybook(object):
         """
         data = None
         if key is not None and value is not None:
-            data = self._db.create(key.strip(), json.dumps(base64.b64encode(bytes(value)).decode('utf-8')))
+            data = self._db.create(
+                key.strip(), json.dumps(base64.b64encode(bytes(value)).decode('utf-8')))
         else:
             self._tcex.log.warning('The key or value field was None.')
         return data
