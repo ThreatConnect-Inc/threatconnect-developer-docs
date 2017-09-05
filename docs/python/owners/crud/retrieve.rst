@@ -17,7 +17,7 @@ The example below demonstrates how to retrieve Owners from the ThreatConnect pla
     try:
         # retrieve the Owners
         owners.retrieve()
-    except RunTimeError as e:
+    except RuntimeError as e:
         print('Error: {0}'.format(e))
         sys.exit(1)
 

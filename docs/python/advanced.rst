@@ -89,7 +89,7 @@ If the Python SDK loses network connectivity to the API server, it will
 automatically retry the connection.
 
 The Python SDK has a **default of 5** retries, with a **default
-59-second** sleep between retries before a RunTimeError is raised. To
+59-second** sleep between retries before a RuntimeError is raised. To
 change the default retry value, call the ``set_api_retries()`` method,
 passing an Integer for the number of retries.
 
