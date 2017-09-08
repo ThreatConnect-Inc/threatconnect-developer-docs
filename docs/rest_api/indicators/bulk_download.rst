@@ -48,29 +48,30 @@ Checking bulkStatus Object XML Response:
      <Status>Complete</Status>
     </BulkStatus>
 
-The response body will contain a bulkStatus object, which provides
-details of the configuration for the bulk-reporting feature of this
-Community or Source: - "name": The name of the Owner queried -
-"csvEnabled": Whether the owner has enabled Comma Separated Values (CSV)
-reports to be generated (true/false), thus determining if the respective
-endpoint will yield data - "jsonEnabled": Whether the owner has enabled
-JSON reports to be generated (true/false), thus determining if the
-respective endpoint will yield data - "nextRun": The ISO 8601 time-stamp
-representing when the report generator will run next - "lastRun": The
-ISO 8601 time-stamp representing when the report generator was last run
-- "status": A string representing the status of the most-recent report
-job (Complete, Failure, etc.)
+The response body will contain a bulkStatus object, which provides details of the configuration for the bulk-reporting feature of this Community or Source:
+
+* "name": The name of the Owner queried
+* "csvEnabled": Whether the owner has enabled Comma Separated Values (CSV) reports to be generated (true/false), thus determining if the respective endpoint will yield data
+* "jsonEnabled": Whether the owner has enabled JSON reports to be generated (true/false), thus determining if the respective endpoint will yield data
+* "nextRun": The ISO 8601 time-stamp representing when the report generator will run next
+* "lastRun": The ISO 8601 time-stamp representing when the report generator was last run
+* "status": A string representing the status of the most-recent report job (Complete, Failure, etc.)
 
 Retrieving Bulk Reports
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Reports can be retrieved in JSON or CSV format. The JSON format will
-contain additional context in a new format, including Attributes and
-Tags, if relevant. CSV reports contain an Indicator, its Type, its
-Threat Rating, and its Confidence value.
+Reports can be retrieved in JSON or CSV format. The JSON format will contain additional context in a new format, including Attributes and Tags, if relevant. CSV reports contain an Indicator, its Type, its Threat Rating, and its Confidence value.
 
 JSON Bulk Reports
 """""""""""""""""
+
+To retrieve a JSON report for an owner, execute the query below, and include the Owner to be queried. The API will return the latest version of the JSON report with a content-type header of "application/json." The output is very similar to that returned by the Indicators Collection (e.g., in /v2/indicators), with the addition of Attributes and Tags where relevant.
+
+.. code::
+
+    GET /v2/indicators/bulk/json?owner=Demo+Customer+Community
+
+.. note:: In order to retrieve a JSON report for an owner, the owner must have JSON Report publication enabled.
 
 Retrieving Bulk Reports JSON Response:
 
@@ -112,32 +113,22 @@ Retrieving Bulk Reports JSON Response:
        }]
      }
 
-To query for a JSON report, execute the following query and include the
-Owner with to query. Note that the Owner must have JSON report
-publication enabled.
+An optional URL parameter ``runNow=true`` can be added (as shown below) to force the report to be recreated. By default, reports are created once a day.
 
-In the example below, the JSON report is being downloaded for the Demo
-Customer Community:
+.. code::
 
-``GET /v2/indicators/bulk/json?owner=Demo+Customer+Community``
-
-The API will return the latest version of the JSON report with a
-content-type header of "application/json." The output is very similar to
-that returned by the Indicators Collection (e.g., in /v2/indicators),
-with the addition of Attributes and Tags where relevant. The example
-below displays a fully populated Indicator Object from the JSON report.
-New fields have been placed in bold type for emphasis, and the list has
-been truncated for brevity.
+ GET /v2/indicators/bulk/json?owner=Demo+Customer+Community&runNow=true
 
 CSV Bulk Reports
 """"""""""""""""
 
-Example of a CSV report being downloaded for the Demo Customer
-Community:
+To retrieve a CSV report for an owner, execute the query below, and include the Owner to be queried. The API will return the latest CSV report with a content-type header of "text/csv." The report will contain all of the Indicators in that Owner and their Indicator Type. It will also include each Indicator’s Threat and Confidence ratings, if set, or null otherwise.
 
 .. code::
 
     GET /v2/indicators/bulk/csv?owner=Demo+Customer+Community
+
+.. note:: In order to retrieve a CSV report for an owner, the owner must have CSV Report publication enabled.
 
 The example below displays the output from a CSV report:
 
@@ -150,11 +141,8 @@ The example below displays the output from a CSV report:
     URL,http://www.example.com/malware.exe,null,0
     EmailAddress,spearphisher@example.com,3.00,62
 
-To query for a CSV report, execute the query below, and include the
-Owner to be queried. Note that the owner must have CSV Report
-publication enabled.
+An optional URL parameter ``runNow=true`` can be added (as shown below) to force the report to be recreated. By default, reports are created once a day.
 
-The API will return the latest CSV report with a content-type header of
-"text/csv." The report will contain all of the Indicators in that Owner
-and their Indicator Type. It will also include each Indicator’s Threat
-Rating and Confidence value, if set, or null otherwise.
+.. code::
+
+ GET /v2/indicators/bulk/csv?owner=Demo+Customer+Community&runNow=true
