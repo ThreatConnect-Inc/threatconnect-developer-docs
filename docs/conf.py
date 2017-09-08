@@ -59,6 +59,10 @@ latex_documents = [
    u'', 'manual'),
 ]
 
+# The name of an image file (relative to this directory) to place at the top
+# of the sidebar.
+html_logo = "_static/dark_logo.png"
+
 # If true, "Created using Sphinx" is shown in the HTML footer. Default is True.
 #
 # html_show_sphinx = True
