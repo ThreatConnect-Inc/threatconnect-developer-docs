@@ -6,6 +6,14 @@ Release Notes
 0.5.x
 =====
 
+0.5.19
+------
++ Updates to tcex.playbook, tcrun, and tcdata to support deleting data from Redis from previous runs.
+
+0.5.18
+------
++ Updated ``tcrun`` to handle issue where **install_json** is not defined in the **tcex.json** file and script name was improperly being set.
+
 0.5.17
 ------
 + Updated create_output() method to fix issue when using output variables of the same name and different types.

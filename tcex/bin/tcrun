@@ -7,7 +7,6 @@ import json
 import os
 import platform
 import re
-# import shutil
 import sys
 import subprocess
 import tempfile
@@ -20,6 +19,8 @@ import traceback
 parser = argparse.ArgumentParser()
 parser.add_argument(
     '--config', default='tcex.json', help='The configuration file. (default: "tcex.json")')
+parser.add_argument(
+    '--clear', action='store_true', help='Clear Redis data before running.')
 parser.add_argument(
     '--halt_on_fail', action='store_true', help='Halt on any failure.')
 parser.add_argument(
@@ -79,19 +80,23 @@ class TcRun(object):
 
     def _load_install_json(self, config_file):
         """Load the install.json configuration file."""
-        if config_file is None:
-            return
+        install_json = {}
+        load_output = 'Load install.json: {}{}{}{}'.format(
+            c.Style.BRIGHT, c.Fore.CYAN, config_file, c.Style.RESET_ALL)
+        if config_file is not None and os.path.isfile(config_file):
+            with open(config_file) as config_data:
+                install_json = json.load(config_data)
+            load_output += ' {}{}(Loaded){}'.format(
+                c.Style.BRIGHT, c.Fore.GREEN, c.Style.RESET_ALL)
+        else:
+            load_output += ' {}{}(Not Found){}'.format(
+                c.Style.BRIGHT, c.Fore.YELLOW, c.Style.RESET_ALL)
 
-        if not os.path.isfile(config_file):
-            msg = 'Provided install.json config file does not exist ({}).'.format(config_file)
-            print('{}{}{}'.format(c.Style.BRIGHT, c.Fore.YELLOW, msg))
-
-        print('install.json File: {}{}{}'.format(c.Style.BRIGHT, c.Fore.CYAN, config_file))
-        with open(config_file) as config_file:
-            install_json = json.load(config_file)
+        # dispaly load status
+        print(load_output)
 
         self.display_name = install_json.get('displayName')
-        self.program_language = install_json.get('programLanguage').lower()
+        self.program_language = install_json.get('programLanguage', 'python').lower()
         self.program_main = install_json.get('programMain')
         self.program_version = install_json.get('programVersion')
         self.runtime_level = install_json.get('runtimeLevel')
@@ -107,7 +112,7 @@ class TcRun(object):
         profiles = []
         for file in sorted(os.listdir(include_directory)):
             if file.endswith('.json'):
-                print('Include File: {}{}{}'.format(c.Style.BRIGHT, c.Fore.CYAN, file))
+                print('Include File: {}{}{}'.format(c.Style.BRIGHT, c.Fore.MAGENTA, file))
                 config_file = os.path.join(include_directory, file)
                 with open(config_file) as data_file:
                     try:
@@ -259,6 +264,56 @@ class TcRun(object):
             'tc_temp_path': arg_data.get('tc_temp_path')
         }
 
+    def clear_data(self, profile):
+        """Clear data from previous runs."""
+
+        arg_data = self.data_args(profile.get('args'))
+        parameters = self.parameters_python(arg_data)
+        output_variables = profile.get('args', {}).get('tc_playbook_out_variables', '').split(',')
+
+        data = []
+        for variable in output_variables:
+            data.append({
+                'data': None,
+                'variable': variable
+            })
+            print('Removing Variables: {}{}{}'.format(c.Style.BRIGHT, c.Fore.MAGENTA, variable))
+
+        # delete is handled below.
+        with tempfile.NamedTemporaryFile(mode='w', delete=False) as f:
+            f.write(json.dumps(data))
+            f.flush()
+
+        command = [
+            'tcdata',
+            '--data_file',
+            f.name,
+            '--action',
+            'clear'
+        ]
+        exe_command = command + parameters.get('unmasked')
+
+        # display command being run
+        if self._args.show_commands:
+            print_command = ' '.join(command + parameters.get('masked'))
+            print('Executing: {}{}{}'.format(c.Style.BRIGHT, c.Fore.GREEN, print_command))
+
+        p = subprocess.Popen(
+            exe_command, shell=self.shell, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE)
+        out, err = p.communicate()
+
+        if p.returncode != 0:
+            print('{}{}Failed removing variables'.format(
+                c.Style.BRIGHT, c.Fore.RED))
+            if err is not None and err:
+                print('{}{}{}'.format(c.Style.BRIGHT, c.Fore.RED, err))
+            sys.exit(p.returncode)
+
+        # cleanup temp file
+        if os.path.isfile(f.name):
+            os.remove(f.name)
+
     def stage_data(self, profile):
         """Stage any required data."""
 
@@ -267,13 +322,15 @@ class TcRun(object):
 
         for file in profile.get('data_files', []):
             if os.path.isfile(file):
-                print('Staging Data: {}{}{}'.format(c.Style.BRIGHT, c.Fore.CYAN, file))
+                print('Staging Data: {}{}{}'.format(c.Style.BRIGHT, c.Fore.MAGENTA, file))
                 # fqfp = os.path.join(self.app_path, file)
 
                 command = [
                     'tcdata',
                     '--data_file',
-                    file
+                    file,
+                    '--action',
+                    'stage'
                 ]
                 exe_command = command + parameters.get('unmasked')
 
@@ -319,7 +376,8 @@ class TcRun(object):
                 'tcdata',
                 '--data_file',
                 f.name,
-                '--validate'
+                '--action',
+                'validate'
             ]
             exe_command = command + parameters.get('unmasked')
 
@@ -380,14 +438,15 @@ class TcRun(object):
         command_count = 0
         reports = []
         for sp in selected_profiles:
-            # load install_json (if provided)
-            self._load_install_json(sp.get('install_json'))
+            # create temp directories
+            self._create_tc_dirs(sp)
 
             # profile state tracker
             passed = False
 
-            # create temp directories
-            self._create_tc_dirs(sp)
+            # cleanup old redis data
+            if args.clear:
+                self.clear_data(sp)
 
             # use globally configured sleep time or per profile sleep time (default self.sleep)
             if command_count > 0:
@@ -395,17 +454,13 @@ class TcRun(object):
                 print('Sleep: {}{}{} seconds'.format(c.Style.BRIGHT, c.Fore.YELLOW, sleep))
                 time.sleep(sleep)
 
-            # display the profile and description during execution
-            print('Profile: {}{}{}'.format(c.Style.BRIGHT, c.Fore.CYAN, sp.get('profile_name')))
-            if sp.get('description'):
-                print('Description: {}{}{}'.format(
-                    c.Style.BRIGHT, c.Fore.MAGENTA, sp.get('description')))
             command_count += 1
 
-            #
-            # Stage Data
-            #
-            self.stage_data(sp)
+            # divider (add after sleep since sleep only runs after first profile)
+            print('{}{}'.format(c.Style.BRIGHT, '-' * 100))
+
+            # load install_json (if provided)
+            self._load_install_json(sp.get('install_json'))
 
             # if install.json provided use programMain, otherwise use script name from tcex.json
             # eventually install.json should be required and script will be removed from tcex.json
@@ -416,6 +471,28 @@ class TcRun(object):
             else:
                 print('{}{}No Program Main or Script defined.'.format(c.Style.BRIGHT, c.Fore.RED))
                 sys.exit(1)
+
+            # Display Output with App data
+            output = 'Profile: '
+            output += '{}{}{}{} '.format(
+                c.Style.BRIGHT, c.Fore.CYAN, sp.get('profile_name'), c.Style.RESET_ALL)
+            output += '[{}{}{}{}'.format(
+                c.Style.BRIGHT, c.Fore.MAGENTA, program_main, c.Style.RESET_ALL)
+            if self.program_version is not None:
+                output += '{}:{}'.format(
+                    c.Style.BRIGHT, c.Style.RESET_ALL)
+                output += '{}{}{}{}'.format(
+                    c.Style.BRIGHT, c.Fore.MAGENTA, self.program_version, c.Style.RESET_ALL)
+            output += ']'
+            print(output)
+            if sp.get('description'):
+                print('Description: {}{}{}'.format(
+                    c.Style.BRIGHT, c.Fore.MAGENTA, sp.get('description')))
+
+            #
+            # Stage Data
+            #
+            self.stage_data(sp)
 
             program_filename = program_main
             if self.program_language == 'python':
@@ -469,9 +546,6 @@ class TcRun(object):
             #     log_file = os.path.join(log_directory, log_file)
             #     print('Logs: {}{}{}'.format(
             #         self.BOLD_CYAN, log_file, self.DEFAULT))
-
-            # divider
-            print('{}{}'.format(c.Style.BRIGHT, '-' * 100))
 
             #
             # Script Output
