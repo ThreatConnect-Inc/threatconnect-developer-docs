@@ -678,13 +678,13 @@ Filters
 ~~~~~~~
 
 Example of how to retrieve Indicators that start with 'bad' and have a
-dateAdded value greater than '2015-12-13' using an API filter:
+dateAdded value greater than '20151213' using an API filter:
 
 .. code:: javascript
 
     var filter = new Filter(FILTER.AND);
     filter.on('summary', FILTER.SW, 'bad');
-    filter.on('dateAdded', FILTER.GT, '2015-12-13');
+    filter.on('dateAdded', FILTER.GT, '20151213');
 
     var indicators = tc.indicators();
 
@@ -1319,13 +1319,13 @@ Filters
 -------
 
 Example of how to retrieve Threats that start-with 'threat' and have a
-dateAdded value greater than '2015-12-02' using an API filter:
+dateAdded value greater than '20151213' using an API filter:
 
 .. code:: javascript
 
     filter = new Filter(FILTER.AND);
     filter.on('name', FILTER.SW, 'threat');
-    filter.on('dateAdded', FILTER.GT, '2015-12-02');
+    filter.on('dateAdded', FILTER.GT, '20151213');
 
     groups = tc.groups();
 
