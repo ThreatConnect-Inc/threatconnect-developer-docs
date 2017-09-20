@@ -343,7 +343,7 @@ class TcEx(object):
                     if entry.get('value3Label') is not None and entry.get('value3Label') != '':
                         value_fields.append(entry['value3Label'])
 
-                    # TODO: Add validate option when type is selectone??? Might be bets to let API
+                    # TODO: Add validate option when type is select one??? Might be bets to let API
                     #       handle validation.
                     """
                     value3Label
@@ -889,12 +889,45 @@ class TcEx(object):
                 resource_type = resource_type.lower()
         return str(resource_type)
 
+    def safe_group_name(self, group_name, group_max_length=100, ellipsis=True):
+        """Truncate group name to match limit breaking on space and optionally add an ellipsis.
+
+        .. note:: Current the ThreatConnect group name limit is 100 characters.
+
+        Args:
+           name_length (string): The raw group name to be truncated
+           name_value (int): The max length of the group name
+           ellipsis (boolean): If true the truncated name will have '...' appended.
+
+        Returns:
+            (string): The truncated group name
+        """
+        ellipsis_value = ' ...'
+        if len(group_name) > 100:
+            # get the maximun length of the group name
+            if ellipsis:
+                group_max_length -= len(ellipsis_value)
+
+            # split name by spaces and reset group_name
+            group_name_array = group_name.split(' ')
+            group_name = ''
+
+            for word in group_name_array:
+                word = u'{}'.format(word)
+
+                # truncate
+                if len(group_name) + len(word) >= group_max_length:
+                    if ellipsis:
+                        group_name = '{} ...'.format(group_name)
+                    group_name = group_name.lstrip(' ')
+                    break
+                group_name += ' {}'.format(word)
+
+        return group_name
+
     @staticmethod
     def safetag(tag, errors='strict'):
-        """Truncate tag to match limit (35 characters) of ThreatConnect API.
-
-        .. Attention:: Once ThreatConnect 5.0 is released this will need to be increased to
-                       new limit.
+        """Truncate tag to match limit (128 characters) of ThreatConnect API.
 
         Args:
            tag (string): The tag to be truncated
