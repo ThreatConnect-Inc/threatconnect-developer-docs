@@ -11,6 +11,8 @@ To get started with an SDK, click a link below:
 
 -  `Javascript SDK <https://docs.threatconnect.com/en/latest/javascript/javascript_sdk.html#getting-started>`_ 
 
+.. note:: If you have any questions regarding the documentation or find it confusing at any point, feel free to raise an issue in `github <https://github.com/ThreatConnect-Inc/ThreatConnect_Developer_Docs/issues>`_. We welcome your feedback!
+
 For further information:
 
 * Browse the `ThreatConnect Knowledge Base <http://kb.threatconnect.com/>`_.
