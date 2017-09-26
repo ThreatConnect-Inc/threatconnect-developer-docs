@@ -78,6 +78,8 @@ To test API connectivity, start with a request to the ``/v2/owners`` branch to r
     # use this to output the data if python is installed on your system
     curl -s -H "Timestamp: ${TIMESTAMP}" -H "Authorization: ${authorization}" -X ${API_METHOD} "${API_URL}" | python -m json.tool
 
+.. note:: If you receive an error while using the script above, make sure that the ``API_URL`` is pointed to the correct API for the instance of ThreatConnect you wish to use.
+
 Get a list of all Owners visible to this user:
 
 .. code::
