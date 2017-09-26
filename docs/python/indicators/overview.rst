@@ -1,9 +1,9 @@
 Indicators Overview
 -------------------
 
-An Indicator represents an atomic piece of information that has some intelligence value (see the article on the `ThreatConnect data model <http://kb.threatconnect.com/customer/en/portal/articles/2092925-the-threatconnect-data-model>`_ for more details).. Indicators are guaranteed to be unique within an Owner. For example, a single Organization can have only one instance of the email address Indicator ``badguy@bad\.com``.
+An Indicator represents an atomic piece of information that has some intelligence value (see the article on the `ThreatConnect data model <http://kb.threatconnect.com/customer/en/portal/articles/2092925-the-threatconnect-data-model>`_ for more details). Indicators are guaranteed to be unique within an Owner. For example, a single Organization can have only one instance of the email address Indicator ``badguy@bad.com``.
 
-In the ThreatConnect Python SDK, there is one object for Indicators which can be instantiated as demonstrated below:
+In the ThreatConnect Python SDK, there is one Indicator class to handle all types of indicators. An object of the Indicator class can be instantiated as demonstrated below:
 
 .. code-block:: python
 
@@ -18,9 +18,9 @@ In the ThreatConnect Python SDK, there is one object for Indicators which can be
 
 The following, high-level actions can be performed on Indicator objects:
 
-* ``retrieve()`` - Retrieve Indicator/Indicators from ThreatConnect
-* ``commit()`` - Commit a new or updated Indicator to ThreatConnect
-* ``delete()`` - Delete an Indicator from ThreatConnect
+* ``retrieve()`` - retrieve Indicator/Indicators from ThreatConnect
+* ``commit()`` - commit a new or updated Indicator to ThreatConnect
+* ``delete()`` - delete an Indicator from ThreatConnect
 
 When retrieving Indicators from ThreatConnect, there are various `filters <https://docs.threatconnect.com/en/latest/python/python_sdk.html#filtering-indicators>`_ which can be used to refine the Indicators returned by the ``retrieve()`` call.
 
