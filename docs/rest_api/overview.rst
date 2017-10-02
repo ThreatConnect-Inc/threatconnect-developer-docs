@@ -1,20 +1,49 @@
 API Overview
 ============
 
-The following **Group types** are available via ThreatConnect's API:
+Pagination
+----------
 
-.. include:: _includes/group_types.rst
+To enable pagination in an API call, use a query in the following format:
 
-In addition to the custom Indicators available in your instance of ThreatConnect, the following **Indicator types** will be available via ThreatConnect's API:
+.. code::
 
-.. include:: _includes/indicator_types.rst
+    GET /v2/{insert query here...}?resultStart=0&resultLimit=50
 
-The following **Victim Asset types** will be available via ThreatConnect's API:
+For example, the query below will return 50 Incidents:
 
-.. include:: _includes/victim_asset_types.rst
+.. code::
+
+    /v2/groups/incidents?resultStart=0&resultLimit=50
+
+Pagination works by specifying a starting result index, as well as a
+result limit of items to be returned as HTTP query parameters to the
+request. For example, requesting a result start index of 50 and a result
+limit of 100 will retrieve items 50 to 150.
+
+The table below displays the query parameters.
+
++---------------+-----------------------------------------------+---------+
+| HTTP Query    | Description                                   | Default |
+| Parameter     |                                               |         |
++===============+===============================================+=========+
+| resultStart\* | The starting index of the result list that is | 0       |
+|               | returned                                      |         |
++---------------+-----------------------------------------------+---------+
+| resultLimit   | The limit to the number of results to return  | 100     |
+|               | with the request                              |         |
++---------------+-----------------------------------------------+---------+
+
+\*Specifying a resultStart other than 0 will omit the resultCount field in the return data for performance reasons.
+
+A request that does not include the parameters indicated is assumed to use the default values above. A request having a resultStart value of 0 will return the current count of all items being queried. This count should be saved to iterate over the Collection and to know when all items have been retrieved. The maximum value that can be specified for resultLimit is 500.
+
+.. note:: Pagination counts and indices should not be stored in long-lived applications as a way to return to a result-set. The dataset will change with time, so those range markers might cause objects to be skipped or duplicated if reused at a later time.
 
 Owners
 ------
+
+The following Owner related endpoints are available:
 
 * ``/v2/owners``
 * ``/v2/owners/mine``
@@ -24,6 +53,12 @@ Owners
 
 Groups
 ------
+
+The following **Group types** are available via ThreatConnect's API:
+
+.. include:: _includes/group_types.rst
+
+The following Group related endpoints are available:
 
 * ``/v2/groups``
 * ``/v2/groups/{type}``
@@ -74,6 +109,12 @@ Signature Specific Branch
 Indicators
 ----------
 
+In addition to the custom Indicators available in your instance of ThreatConnect, the following **Indicator types** will be available via ThreatConnect's API:
+
+.. include:: _includes/indicator_types.rst
+
+The following Indicator related endpoints are available:
+
 * ``/v2/indicators``
 * ``/v2/indicators/observed``
 * ``/v2/indicators/{type}``
@@ -116,6 +157,8 @@ Bulk Indicator Download
 Security Labels
 ---------------
 
+The following Security Label related endpoints are available:
+
 * ``/v2/securityLabels``
 * ``/v2/securityLabels/{id}``
 * ``/v2/securityLabels/{id}/groups``
@@ -128,6 +171,8 @@ Security Labels
 Tags
 ----
 
+The following Tag related endpoints are available:
+
 * ``/v2/tags``
 * ``/v2/tags/{tagName}``
 * ``/v2/tags/{tagName}/groups``
@@ -139,6 +184,8 @@ Tags
 
 Tasks
 -----
+
+The following Task related endpoints are available:
 
 * ``/v2/tasks``
 * ``/v2/tasks/{id}``
@@ -160,6 +207,12 @@ Tasks
 
 Victims
 -------
+
+The following **Victim Asset types** will be available via ThreatConnect's API:
+
+.. include:: _includes/victim_asset_types.rst
+
+The following Victim related endpoints are available:
 
 * ``/v2/victims``
 * ``/v2/victims/{id}``
