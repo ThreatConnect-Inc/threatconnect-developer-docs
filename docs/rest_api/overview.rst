@@ -34,7 +34,7 @@ The table below displays the query parameters.
 |               | with the request                              |         |
 +---------------+-----------------------------------------------+---------+
 
-\*Specifying a resultStart other than 0 will omit the resultCount field in the return data for performance reasons.
+\*Specifying a resultStart other than 0 will omit the ``resultCount`` field in the return data for performance reasons.
 
 A request that does not include the parameters indicated is assumed to use the default values above. A request having a resultStart value of 0 will return the current count of all items being queried. This count should be saved to iterate over the Collection and to know when all items have been retrieved. The maximum value that can be specified for resultLimit is 500.
 
