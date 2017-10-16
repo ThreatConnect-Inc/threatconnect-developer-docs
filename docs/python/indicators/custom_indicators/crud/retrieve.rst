@@ -1,5 +1,5 @@
-Retrieving Available Custom Indicator Types
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Retrieving Custom Indicator Types
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Before you can find custom Indicators of a certain type, you need to identify which types are available on your instance of ThreatConnect and find the ``api_entity`` of the Indicator type you are interested in retrieving. The example below demonstrates how to do this.
 
