@@ -108,17 +108,19 @@ A file action adds one Indicator to the behavior graph of a File Indicator. Belo
 +-------------------+------------------+-------------------------------------+
 | Name              | API Branch       | Indicator Type Associated with File |
 +===================+==================+=====================================+
-| File Archive      | ``/archive``     | n/a                                 |
+| File Archive      | ``/archive``     | File                                |
 +-------------------+------------------+-------------------------------------+
-| File Drop         | ``/drop``        | n/a                                 |
+| File Drop         | ``/drop``        | File                                |
 +-------------------+------------------+-------------------------------------+
-| File Traffic      | ``/traffic``     | n/a                                 |
+| File Traffic      | ``/traffic``     | Address, Host, URL                  |
 +-------------------+------------------+-------------------------------------+
 | File Mutex        | ``/mutex``       | Mutex                               |
 +-------------------+------------------+-------------------------------------+
 | File Registry Key | ``/registryKey`` | Registry Key                        |
 +-------------------+------------------+-------------------------------------+
 | File User Agent   | ``/userAgent``   | User Agent                          |
++-------------------+------------------+-------------------------------------+
+| File DNS Query    | ``/dnsQuery``    | Host                                |
 +-------------------+------------------+-------------------------------------+
 
 To retrieve indicators associated with a file using a file action, use the following GET request format:
