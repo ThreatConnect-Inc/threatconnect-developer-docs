@@ -1,6 +1,6 @@
 # move to the tcex docs dir (uses the `docs` alias that `cd`'s into the root directory of the documentation)
 docs
-cd ThreatConnect_Developer_Docs/;
+cd threatconnect-developer-docs/;
 
 # checkout dev
 # git checkout dev;

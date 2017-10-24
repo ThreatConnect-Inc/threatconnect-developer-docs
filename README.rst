@@ -2,8 +2,8 @@
 ThreatConnect Developer Documentation
 *************************************
 
-.. image:: https://travis-ci.org/ThreatConnect-Inc/ThreatConnect_Developer_Docs.svg?branch=master
-    :target: https://travis-ci.org/ThreatConnect-Inc/ThreatConnect_Developer_Docs
+.. image:: https://travis-ci.org/ThreatConnect-Inc/threatconnect-developer-docs.svg?branch=master
+    :target: https://travis-ci.org/ThreatConnect-Inc/threatconnect-developer-docs
     
 .. image:: https://readthedocs.com/projects/threatconnect-threatconnect-developer-docs/badge/?version=latest
     :target: https://docs.threatconnect.com/en/latest/?badge=latest
@@ -11,7 +11,7 @@ ThreatConnect Developer Documentation
 
 Documentation for `ThreatConnect's <https://threatconnect.com>`_  REST API, Python SDK, Java SDK, and Javascript SDK.
 
-If you have any suggestions or feedback, feel free to `raise an issue <https://github.com/ThreatConnect-Inc/ThreatConnect_Developer_Docs/issues/new>`_.
+If you have any suggestions or feedback, feel free to `raise an issue <https://github.com/ThreatConnect-Inc/threatconnect-developer-docs/issues/new>`_.
 
 Trademarks
 ==========

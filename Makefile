@@ -2,10 +2,10 @@ help:
 	@echo "uptcex 		update tcex documentation"
 	@echo "clean 		clean unneeded files"
 	@echo "test 		run the tests"
-	@echo "upstream 	set upstream to https://github.com/ThreatConnect-Inc/ThreatConnect_Developer_Docs.git (useful when working on a fork of the TC docs)"
+	@echo "upstream 	set upstream to https://github.com/ThreatConnect-Inc/threatconnect-developer-docs.git (useful when working on a fork of the TC docs)"
 
 uptcex:
-	# This script is to be run in the top directory of the TC Documentation (available here: https://github.com/ThreatConnect-Inc/ThreatConnect_Developer_Docs)
+	# This script is to be run in the top directory of the TC Documentation (available here: https://github.com/ThreatConnect-Inc/threatconnect-developer-docs)
 
 	rm -rf ./tcex/;
 
@@ -35,7 +35,7 @@ uptcex:
 	rm -rf ./tcex/tcex;
 
 clean:
-	# This script is to be run in the top directory of the TC Documentation (available here: https://github.com/ThreatConnect-Inc/ThreatConnect_Developer_Docs)
+	# This script is to be run in the top directory of the TC Documentation (available here: https://github.com/ThreatConnect-Inc/threatconnect-developer-docs)
 
 	rm -rf ./.cache/
 	rm -rf ./tests/__pycache__/
@@ -49,5 +49,5 @@ test:
 
 upstream:
 	# set upstream for a clone of this repo
-	git remote add upstream https://github.com/ThreatConnect-Inc/ThreatConnect_Developer_Docs.git;
+	git remote add upstream https://github.com/ThreatConnect-Inc/threatconnect-developer-docs.git;
 	git remote -v;
