@@ -3,6 +3,7 @@ help:
 	@echo "clean 		clean unneeded files"
 	@echo "test 		run the tests"
 	@echo "upstream 	set upstream to https://github.com/ThreatConnect-Inc/threatconnect-developer-docs.git (useful when working on a fork of the TC docs)"
+	@echo "doctest 	run sphinx on the documentation to view errors"
 
 uptcex:
 	# This script is to be run in the top directory of the TC Documentation (available here: https://github.com/ThreatConnect-Inc/threatconnect-developer-docs)
@@ -40,6 +41,7 @@ clean:
 	rm -rf ./.cache/
 	rm -rf ./tests/__pycache__/
 	rm -rf ./tests/test.py
+	rm -rf ./docs/_build/
 
 test:
 	# run the tests and remove the junk created by the tests
@@ -51,3 +53,6 @@ upstream:
 	# set upstream for a clone of this repo
 	git remote add upstream https://github.com/ThreatConnect-Inc/threatconnect-developer-docs.git;
 	git remote -v;
+
+doctest:
+	cd docs && virtualenv ~/.venv/tc_developer_docs && source ~/.venv/tc_developer_docs/bin/activate && pip install sphinx && pip install recommonmark && pip install tcex && pip install sphinx_rtd_theme && sphinx-build -T -E -d _build/doctrees-readthedocs -D language=en . _build/html
