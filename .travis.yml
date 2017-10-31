@@ -3,12 +3,8 @@ python:
   - "3.6"
 install:
   - pip install pytest
-  - sudo pip2.7 install linkchecker
-  # install a version of requests that works with linkchecker (see https://github.com/wummel/linkchecker/issues/649)
-  - sudo pip2.7 install requests==2.2.1
   - pip install threatconnect
   - pip install bs4
   - pip install requests
 script:
-  - linkchecker https://docs.threatconnect.com/en/latest/
   - pytest
