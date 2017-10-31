@@ -165,7 +165,7 @@ When updating an Adversary Asset, you can change the following field:
 +----------------------------+----------+
 | phoneNumber\*\*            | FALSE    |
 +----------------------------+----------+
-| url\*\*\*                 | FALSE    |
+| url\*\*\*                  | FALSE    |
 +----------------------------+----------+
 
 \* The ``handle`` field can only be updated for Adversary Assets of the handles type

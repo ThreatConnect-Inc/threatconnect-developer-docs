@@ -99,6 +99,7 @@ To view all members of your organization, you can use:
 JSON Response if Organization allows anonymous membership:
 
 .. code:: json
+
     {
         "anonymous": true,
         "status": "Success",
@@ -114,6 +115,7 @@ JSON Response if Organization allows anonymous membership:
 JSON Response if Organization does not allow anonymous membership:
 
 .. code:: json
+
     {
       "status": "Success",
       "data": {

@@ -615,16 +615,9 @@ The JavaScript SDK provide the ``hasNext()`` method for checking if more
 entries are available. To retrieve the next set of entries the
 ``next()`` method is available.
 
-.. note:: Before the ``next()`` method can be called, the first API must
-have completed. This should not be an issue if a user click triggers the
-next call; however, if the ``next()`` method is being called
-programmatically then it should be passed in a function to the
-``retrieve()`` method.
+.. note:: Before the ``next()`` method can be called, the first API must have completed. This should not be an issue if a user click triggers the next call; however, if the ``next()`` method is being called programmatically then it should be passed in a function to the ``retrieve()`` method.
 
-.. note:: The ``next()`` method will return the same number of results
-defined in the ``resultsLimit()`` or the number of results remaining.
-The same 'done' and 'error' callbacks are also used for the next set of
-results.
+.. note:: The ``next()`` method will return the same number of results defined in the ``resultsLimit()`` or the number of results remaining. The same 'done' and 'error' callbacks are also used for the next set of results.
 
 Single Indicator
 ~~~~~~~~~~~~~~~~
@@ -848,8 +841,7 @@ Retrieve Observation Count
 The JavaScript SDK provides the ``retrieveObservationCount()`` method to
 retrieve the Observation Count for an Indicator. Both the ``type()`` and ``indicator()`` methods are required to retrieve the Observation Count.
 
-.. note:: The Observation Count can also be retrieved with the "Single
-Indicator" method described above using the includeAdditional parameter.
+.. note:: The Observation Count can also be retrieved with the "Single Indicator" method described above using the includeAdditional parameter.
 
 Retrieve Security Labels Method
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1027,7 +1019,7 @@ specific Owner ID.
 
 Example Metrics Results:
 
-.. code-block:: language
+.. code:: json
 
     {
         "data":
@@ -1247,15 +1239,9 @@ The JavaScript SDK provide the ``hasNext()`` method for checking if more
 entries are available. To retrieve the next set of entries the
 ``next()`` method is available.
 
-.. note:: Before the ``next()`` method can be called the first API must have
-completed. This should not be an issue if a user click triggers the next
-call, however if the ``next()`` method is being called programmaticly
-then it should be passed in a function to the ``retrieve()`` method.
+.. note:: Before the ``next()`` method can be called the first API must have completed. This should not be an issue if a user click triggers the next call, however if the ``next()`` method is being called programmatically then it should be passed in a function to the ``retrieve()`` method.
 
-.. note:: The ``next()`` method will return the same number of results
-defined in the ``resultsLimit()`` or the number of results remaining.
-The same 'done' and 'error' callbacks are also used for the next set of
-results.
+.. note:: The ``next()`` method will return the same number of results defined in the ``resultsLimit()`` or the number of results remaining. The same 'done' and 'error' callbacks are also used for the next set of results.
 
 Security Labels Retrieve
 ------------------------
@@ -1829,8 +1815,7 @@ the commit() method that will add a group and indicators association,
 attribute, tag, and security label. Any number of Associations,
 Attributes, or Tags can be added in the callback.
 
-.. note:: To ensure that commits for the metadata happen after the commit of
-the Indicator, pass a callback to the Indicator Commit method.
+.. note:: To ensure that commits for the metadata happen after the commit of the Indicator, pass a callback to the Indicator Commit method.
 
 Group Commit
 ------------
@@ -2085,8 +2070,7 @@ This example will demonstrate how to add an Adversary with a name of
 Attribute, Tag, and Security Label. Any number of Associations,
 Attributes, or Tags can be added in the callback.
 
-.. note:: To ensure that commits for the metadata happen after the commit of
-the Group pass a callback to the Group Commit method.
+.. note:: To ensure that commits for the metadata happen after the commit of the Group pass a callback to the Group Commit method.
 
 Task Commit
 -----------
@@ -2301,8 +2285,7 @@ Attributes, or Tags can be added in the callback.
             tasks.commitSecurityLabel('TLP Red');
         });
 
-.. note:: To ensure the commits for the metadata happen after the commit of
-the task pass a callback to the group commit method.
+.. note:: To ensure the commits for the metadata happen after the commit of the task pass a callback to the group commit method.
 
 Victim Commit
 -------------
@@ -2530,8 +2513,7 @@ Attributes, or Tags can be added in the callback.
             victim.commitSecurityLabel('TLP Red');
         });
 
-.. note:: To ensure the commits for the metadata happen after the commit of
-the task pass a callback to the group commit method.
+.. note:: To ensure the commits for the metadata happen after the commit of the task pass a callback to the group commit method.
 
 Manual API Calls
 ----------------
@@ -2539,7 +2521,7 @@ Manual API Calls
 The example below accesses the API by allowing the creation of a
 requestObject():
 
-.. code-block:: javascript
+.. code:: javascript
 
     tc.requestObject()
     ro.apiRequest(ro);
@@ -2674,7 +2656,7 @@ groupHelper
 
 The ``groupHelper`` function makes it easy to retrieve the ``TYPE`` object for a given Group type (provided as a string). For example, when `retrieving Groups <https://docs.threatconnect.com/en/latest/javascript/javascript_sdk.html#retrieve-group>`_, you can find the full type (TYPE.<GROUP_TYPE>) for each Group using the groupHelper as demonstrated below.
 
-.. code-block:: javascript
+.. code:: javascript
 
     groups = tc.groups();
 
@@ -2696,7 +2678,7 @@ indicatorHelper
 
 The ``indicatorHelper`` function makes it easy to retrieve the ``TYPE`` object for a given Indicator type (provided as a string). For example, when `retrieving Indicators <https://docs.threatconnect.com/en/latest/javascript/javascript_sdk.html#retrieve-indicator>`_, you can find the full type (TYPE.<INDICATOR_TYPE>) for each Indicator using the indicatorHelper as demonstrated below.
 
-.. code-block:: javascript
+.. code:: javascript
 
     var indicators = tc.indicators();
 

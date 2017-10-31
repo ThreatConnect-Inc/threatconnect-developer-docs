@@ -1054,7 +1054,7 @@ The methods below return owners who have created the Indicator under the uniqueI
 The methods below return False Positive counts for the Indicator under the uniqueId.
 
 +-------------------+-----------------------------------------------------+
-| Type              | Method                                            |
+| Type              | Method                                              |
 +===================+=====================================================+
 | ``FalsePositive`` | getFalsePositive(String uniqueId)                   |
 +-------------------+-----------------------------------------------------+

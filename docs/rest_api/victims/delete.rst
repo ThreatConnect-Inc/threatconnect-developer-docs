@@ -1,5 +1,5 @@
 Delete Victims
--------------
+--------------
 
 To delete a Victim, the most basic format is:
 
@@ -87,7 +87,7 @@ For example, the query below will remove the ``TLP Amber`` Security Label from t
     DELETE /v2/victims/12345/attributes/54321/securityLabels/TLP%20Amber
 
 Delete Victim Security Labels
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To delete a Security Label from a Victim, use the following format where ``{securityLabel}`` is replaced with the name of a Security Label:
 

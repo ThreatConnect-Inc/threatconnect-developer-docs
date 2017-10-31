@@ -1,5 +1,5 @@
 App Deployment Configuration File
-=============================
+=================================
 
 A configuration file named ``install.json`` is used for ThreatConnect
 apps written in:
@@ -161,7 +161,7 @@ Example of a validValues parameter definition example:
 
 .. code:: json
 
-    
+    {
        "name": "owner",
        "label": "Owner",
        "type": "Choice",
@@ -247,7 +247,7 @@ in 8, below the example.
 
 Example install.json file for a Python app:
 
-.. code:: json
+.. code-block:: json
     :linenos:
     :lineno-start: 1
 
