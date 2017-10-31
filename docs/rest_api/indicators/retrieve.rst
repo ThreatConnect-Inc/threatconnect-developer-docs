@@ -433,7 +433,7 @@ Retrieving a Custom Indicator
 To retrieve a Custom Indicator from ThreatConnect:
 
 1. Use the `available Indicator types <#retrieve-available-indicator-types>`_ to identify the ``apiBranch`` for the Indicator type you would like to retrieve.
-3. Make a GET request in the format below.
+2. Make a GET request in the format below.
 
 .. code::
 
