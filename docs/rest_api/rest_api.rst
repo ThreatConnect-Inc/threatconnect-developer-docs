@@ -2,6 +2,8 @@
 REST API
 ********
 
+.. include:: change_log.rst
+
 .. include:: quick_start.rst
 
 .. include:: overview.rst
@@ -23,3 +25,5 @@ REST API
 .. include:: tasks/tasks.rst
 
 .. include:: victims/victims.rst
+
+.. include:: custom_metrics/custom_metrics.rst
