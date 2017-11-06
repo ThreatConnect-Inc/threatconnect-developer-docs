@@ -116,8 +116,8 @@ JSON Response:
 Delete/Disassociate Task Associations
 -------------------------------------
 
-Disassociate from a Group
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Disassociate Group from Task
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To disassociate a Task from a Group, use a query in the following format:
 
@@ -145,8 +145,8 @@ JSON Response:
       "status": "Success"
     }
 
-Disassociate from an Indicator
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Disassociate Indicator from Task
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To disassociate a Task from an Indicator, use a query in the following format:
 
@@ -170,8 +170,8 @@ JSON Response:
       "status": "Success"
     }
 
-Disassociate from a Victim Asset
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Disassociate Victim Asset from Task
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To disassociate a Task from a Victim Asset, use a query in the following format:
 
@@ -196,8 +196,8 @@ JSON Response:
     }
 
 
-Disassociate from a Victim
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Disassociate Victim from Task
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To disassociate a Task from a Victim, use a query in the following format:
 

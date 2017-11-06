@@ -605,8 +605,8 @@ JSON Response:
 Create Indicator Associations
 -----------------------------
 
-Associate to a Group
-^^^^^^^^^^^^^^^^^^^^
+Associate Group to Indicator
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To associate an Indicator with a Group, use a query in the following format:
 
@@ -632,8 +632,8 @@ JSON Response:
       "status": "Success"
     }
 
-Associate to an Indicator
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Associate Indicator to Indicator
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To associate an Indicator with another Indicator, use a query in the following format:
 
@@ -655,8 +655,8 @@ JSON Response:
       "status": "Success"
     }
 
-Associate to a Victim
-^^^^^^^^^^^^^^^^^^^^^
+Associate Victim to Indicator
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To associate an Indicator with a Victim, use a query in the following format:
 

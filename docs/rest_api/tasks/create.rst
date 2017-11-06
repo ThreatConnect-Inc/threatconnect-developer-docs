@@ -271,8 +271,8 @@ JSON Response:
 Create Task Associations
 ------------------------
 
-Associate to a Group
-^^^^^^^^^^^^^^^^^^^^
+Associate Group to Task
+^^^^^^^^^^^^^^^^^^^^^^^
 
 To associate a Task with a Group, use a query in the following format:
 
@@ -298,8 +298,8 @@ JSON Response:
       "status": "Success"
     }
 
-Associate to an Indicator
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Associate Indicator to Task
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To associate a Task with an Indicator, use a query in the following format:
 
@@ -321,8 +321,8 @@ JSON Response:
       "status": "Success"
     }
 
-Associate to a Victim
-^^^^^^^^^^^^^^^^^^^^^
+Associate Victim to Task
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 To associate a Task with a Victim, use a query in the following format:
 

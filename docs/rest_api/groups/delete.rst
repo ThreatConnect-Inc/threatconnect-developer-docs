@@ -149,8 +149,8 @@ JSON Response:
 Delete/Disassociate Group Associations
 --------------------------------------
 
-Disassociate from a Group
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Disassociate Group from Group
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To disassociate one Group from another, use a query in the following format:
 
@@ -178,8 +178,8 @@ JSON Response:
       "status": "Success"
     }
 
-Disassociate from an Indicator
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Disassociate Indicator from Group
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To disassociate a Group from an Indicator, use a query in the following format:
 
@@ -203,8 +203,8 @@ JSON Response:
       "status": "Success"
     }
 
-Disassociate from a Victim Asset
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Disassociate Victim Asset from Group
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To disassociate a Group from a Victim Asset, use a query in the following format:
 
@@ -228,9 +228,8 @@ JSON Response:
       "status": "Success"
     }
 
-
-Disassociate from a Victim
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Disassociate Victim from Group
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To disassociate a Group from a Victim, use a query in the following format:
 

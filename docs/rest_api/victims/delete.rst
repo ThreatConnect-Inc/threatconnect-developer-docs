@@ -139,8 +139,8 @@ JSON Response:
 Delete/Disassociate Victim Associations
 ---------------------------------------
 
-Disassociate from a Group
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Disassociate Group from Victim
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To disassociate a Victim from a Group, use a query in the following format:
 
@@ -168,8 +168,8 @@ JSON Response:
       "status": "Success"
     }
 
-Disassociate from an Indicator
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Disassociate Indicator from Victim
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To disassociate a Victim from an Indicator, use a query in the following format:
 
@@ -193,8 +193,8 @@ JSON Response:
       "status": "Success"
     }
 
-Disassociate from a Victim
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Disassociate Victim from Victim
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To disassociate a Victim from a Victim, use a query in the following format:
 

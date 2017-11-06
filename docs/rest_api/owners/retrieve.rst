@@ -12,7 +12,7 @@ To retrieve a list of all available owners, use the following query:
 
 JSON Response:
 
-.. code:: json
+.. code-block:: json
 
     {
       "status": "Success",
@@ -50,7 +50,7 @@ Here is an example query:
 
 JSON Response:
 
-.. code:: json
+.. code-block:: json
 
     {
       "status": "Success",
@@ -75,7 +75,7 @@ To retrieve information about your organization, use the query below:
 
 JSON Response:
 
-.. code:: json
+.. code-block:: json
 
     {
       "status": "Success",
@@ -98,23 +98,24 @@ To view all members of your organization, you can use:
 
 JSON Response if Organization allows anonymous membership:
 
-.. code:: json
+.. code-block:: json
 
     {
-        "anonymous": true,
-        "status": "Success",
-        "resultCount": 2,
-        "members":
-        [
-         "pseudonym": "test",
-         "pseudonym": "test2"
-        ]
-      
+      "anonymous": true,
+      "status": "Success",
+      "resultCount": 2,
+      "members": [
+        {
+          "pseudonym": "test"
+        }, {
+          "pseudonym": "test2"
+        }
+      ]
     }
 
 JSON Response if Organization does not allow anonymous membership:
 
-.. code:: json
+.. code-block:: json
 
     {
       "status": "Success",

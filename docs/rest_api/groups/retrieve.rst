@@ -396,8 +396,8 @@ JSON Response:
 Retrieve Group Associations
 ---------------------------
 
-Retrieve Associated Groups
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Group to Group Associations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To view Groups associated with a given Group, use a query in the following format:
 
@@ -456,8 +456,8 @@ We can also drill down even further by adding the ID of an associated Group to t
 
 Where ``54321`` is the ID of an incident associated with Threat 12345.
 
-Retrieve Associated Indicators
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Indicator to Group Associations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To view Indicators associated with a given Group, use a query in the following format:
 
@@ -515,8 +515,8 @@ We can also drill down even further by adding an associated Indicator to the end
 
     GET /v2/groups/threats/12345/indicators/addresses/0.0.0.0
 
-Retrieve Associated Victim Assets
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Victim Asset to Group Associations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To view Victim Assets associated with a given Group, use a query in the following format:
 
@@ -579,8 +579,8 @@ We can also drill down even further by adding the ID of an associated Victim Ass
 
 Where ``54321`` is the ID of a Victim Asset associated with Threat 12345.
 
-Retrieve Associated Victims
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Victim to Group Associations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To view Victims associated with a given Group, use a query in the following format:
 

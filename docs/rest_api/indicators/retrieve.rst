@@ -27,7 +27,7 @@ JSON Response:
             "parsable": "true",
             "apiBranch": "addresses",
             "apiEntity": "address"
-          },
+          },``
           {
             "name": "EmailAddress",
             "custom": "false",
@@ -828,8 +828,8 @@ JSON Response:
 Retrieve Indicator Associations
 -------------------------------
 
-Retrieve Associated Groups
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Group to Indicator Associations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To view Groups associated with a given Indicator, use a query in the following format:
 
@@ -888,8 +888,10 @@ We can also drill down even further by adding the ID of an associated Group to t
 
 Where ``54321`` is the ID of an Incident associated with the Email Address ``bad@example.com``.
 
-Retrieve Associated Indicators
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. The heading needs to be singular (even though this breaks the pattern of this file) so the heading doesn't collide with another heading.
+
+Indicator to Indicator Association
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To view Indicators associated with a given Indicator, use a query in the following format:
 
@@ -941,8 +943,8 @@ For example, we could use the following query to find all Address Indicators ass
 
     GET /v2/indicators/emailAddresses/bad@example.com/indicators/addresses
 
-Retrieve Associated Victim Assets
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Victim Assets to Indicator Associations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To view Victim Assets associated with a given Indicator, use a query in the following format:
 
@@ -1005,8 +1007,8 @@ We can also drill down even further by adding the ID of an associated Victim Ass
 
 Where ``54321`` is the ID of a Victim Asset associated with the Email Address ``bad@example.com``.
 
-Retrieve Associated Victims
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Victim to Indicator Associations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To view Victims associated with a given Indicator, use a query in the following format:
 

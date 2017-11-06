@@ -67,8 +67,8 @@ JSON Response:
 Retrieve Tag Associations
 -------------------------
 
-Retrieve Associated Groups
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Group to Tag Associations
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To view Groups associated with a given Tag, use a query in the following format:
 
@@ -127,8 +127,8 @@ We can also drill down even further by adding the ID of an associated Group to t
 
 Where ``54321`` is the ID of an Incident associated with the ``Nation State`` tag.
 
-Retrieve Associated Indicators
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Indicator to Tag Associations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To view Indicators associated with a given Tag, use a query in the following format:
 
@@ -184,8 +184,8 @@ We can also drill down even further by adding an associated Indicator to the end
 
     GET /v2/tags/Nation State/indicators/addresses/0.0.0.0
 
-Retrieve Associated Victims
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Victim to Tag Associations
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To view Victims associated with a given Tag, use a query in the following format:
 

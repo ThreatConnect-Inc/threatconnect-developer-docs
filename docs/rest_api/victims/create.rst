@@ -238,8 +238,8 @@ JSON Response:
 Create Victim Associations
 --------------------------
 
-Associate to a Group
-^^^^^^^^^^^^^^^^^^^^
+Associate Group to Victim
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To associate a Victim with a Group, use a query in the following format:
 
@@ -265,8 +265,8 @@ JSON Response:
       "status": "Success"
     }
 
-Associate to an Indicator
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Associate Indicator to Victim
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To associate a Victim with an Indicator, use a query in the following format:
 
@@ -288,8 +288,8 @@ JSON Response:
       "status": "Success"
     }
 
-Associate to a Victim
-^^^^^^^^^^^^^^^^^^^^^
+Associate Victim to Victim
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To associate one Victim with another, use a query in the following format:
 

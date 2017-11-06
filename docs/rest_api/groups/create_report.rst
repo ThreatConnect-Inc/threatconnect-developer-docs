@@ -1,13 +1,13 @@
 Create PDF Report for Groups
 ----------------------------
 
-As of ThreatConnect version 5.4, it is possible to create a report PDF for a group in ThreatConnect from the API. The general format for this request is as follows:
+As of ThreatConnect version 5.4, it is possible to create a report PDF for a Group in ThreatConnect from the API. The general format for this request is as follows:
 
 .. code::
 
     GET /v2/groups/{type}/{id}/pdf
 
-This endpoint is available for all of the following group types:
+This endpoint is available for all of the following Group types:
 
 - Adversaries
 - Campaigns

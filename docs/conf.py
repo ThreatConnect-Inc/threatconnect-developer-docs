@@ -76,6 +76,7 @@ html_show_copyright = True
 html_static_path = ['_static']
 html_favicon = '_static/favicon.ico'
 
+
 def setup(app):
     """Add the stylesheet which fixes the problems with the problem with line numbers."""
     app.add_stylesheet('css/custom.css')

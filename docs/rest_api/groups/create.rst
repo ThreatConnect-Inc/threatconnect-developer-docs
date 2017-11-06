@@ -248,8 +248,8 @@ JSON Response:
 Create Group Associations
 -------------------------
 
-Associate to a Group
-^^^^^^^^^^^^^^^^^^^^
+Associate Group to Group
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 To associate one Group with another, use a query in the following format:
 
@@ -275,8 +275,8 @@ JSON Response:
       "status": "Success"
     }
 
-Associate to an Indicator
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Associate Indicator to Group
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To associate a Group with an Indicator, use a query in the following format:
 
@@ -298,8 +298,8 @@ JSON Response:
       "status": "Success"
     }
 
-Associate to a Victim
-^^^^^^^^^^^^^^^^^^^^^
+Associate Victim to Group
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To associate a Group with a Victim, use a query in the following format:
 

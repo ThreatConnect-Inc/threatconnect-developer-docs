@@ -230,8 +230,8 @@ JSON Response:
 Retrieve Task Associations
 --------------------------
 
-Retrieve Associated Tasks
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Group to Task Associations
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To view Groups associated with a given Task, use a query in the following format:
 
@@ -290,7 +290,7 @@ We can also drill down even further by adding the ID of an associated Group to t
 
 Where ``54321`` is the ID of an Incident associated with Task 12345.
 
-Retrieve Associated Indicators
+Indicator to Task Associations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To view Indicators associated with a given Task, use a query in the following format:
@@ -349,7 +349,7 @@ We can also drill down even further by adding an associated Indicator to the end
 
     GET /v2/tasks/12345/indicators/addresses/0.0.0.0
 
-Retrieve Associated Victim Assets
+Victim Asset to Task Associations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To view Victim Assets associated with a given Task, use a query in the following format:
@@ -413,7 +413,7 @@ We can also drill down even further by adding the ID of an associated Victim Ass
 
 Where ``54321`` is the ID of a Victim Asset associated with Task 12345.
 
-Retrieve Associated Victims
+Victim to Task Associations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To view Victims associated with a given Task, use a query in the following format:

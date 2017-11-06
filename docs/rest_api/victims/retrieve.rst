@@ -215,8 +215,8 @@ JSON Response:
 Retrieve Victim Associations
 ----------------------------
 
-Retrieve Associated Groups
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Group to Victim Associations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To view Groups associated with a given Victim, use a query in the following format:
 
@@ -275,8 +275,8 @@ We can also drill down even further by adding the ID of an associated Victim to 
 
 Where ``54321`` is the ID of an Incident associated with Victim 12345.
 
-Retrieve Associated Indicators
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Indicator to Victim Associations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To view Indicators associated with a given Victim, use a query in the following format:
 
@@ -398,8 +398,8 @@ We can also drill down even further by adding the ID of an associated Victim Ass
 
 Where ``54321`` is the ID of a Victim Asset associated with Victim 12345.
 
-Retrieve Associated Victims
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Victim to Victim Associations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To view Victims associated with a given Victim, use a query in the following format:
 

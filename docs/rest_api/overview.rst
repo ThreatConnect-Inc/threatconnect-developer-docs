@@ -40,8 +40,8 @@ A request that does not include the parameters indicated is assumed to use the d
 
 .. note:: Pagination counts and indices should not be stored in long-lived applications as a way to return to a result-set. The dataset will change with time, so those range markers might cause objects to be skipped or duplicated if reused at a later time.
 
-Owners
-------
+Owner Endpoints
+---------------
 
 The following Owner related endpoints are available:
 
@@ -51,8 +51,8 @@ The following Owner related endpoints are available:
 * ``/v2/owners/metrics``
 * ``/v2/owners/{id}/metrics``
 
-Groups
-------
+Group Endpoints
+---------------
 
 The following **Group types** are available via ThreatConnect's API:
 
@@ -84,8 +84,8 @@ The following Group related endpoints are available:
 * ``/v2/groups/{type}/{id}/victims``
 * ``/v2/groups/{type}/{id}/victims/{victimId}``
 
-Adversary Specific Branches
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Adversary Specific Endpoints
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * ``/v2/groups/adversaries/{id}/adversaryAssets``
 * ``/v2/groups/adversaries/{id}/adversaryAssets/handles``
@@ -95,19 +95,19 @@ Adversary Specific Branches
 * ``/v2/groups/adversaries/{id}/adversaryAssets/phoneNumbers/{assetId}``
 * ``/v2/groups/adversaries/{id}/adversaryAssets/urls/{assetId}``
 
-Document Specific Branches
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Document Specific Endpoints
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * ``/v2/groups/documents/{id}/download``
 * ``/v2/groups/documents/{id}/upload``
 
-Signature Specific Branch
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Signature Specific Endpoints
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * ``/v2/groups/signatures/{id}/download``
 
-Indicators
-----------
+Indicator Endpoints
+-------------------
 
 In addition to the custom Indicators available in your instance of ThreatConnect, the following **Indicator types** will be available via ThreatConnect's API:
 
@@ -154,8 +154,8 @@ Bulk Indicator Download
 * ``/v2/indicators/bulk/``
 * ``/v2/indicators/bulk/{format}``
 
-Security Labels
----------------
+Security Label Endpoints
+------------------------
 
 The following Security Label related endpoints are available:
 
@@ -168,8 +168,8 @@ The following Security Label related endpoints are available:
 * ``/v2/securityLabels/{id}/indicators/{associatedIndicatorType}``
 * ``/v2/securityLabels/{id}/indicators/{associatedIndicatorType}/{associatedIndicator}``
 
-Tags
-----
+Tag Endpoints
+-------------
 
 The following Tag related endpoints are available:
 
@@ -182,8 +182,8 @@ The following Tag related endpoints are available:
 * ``/v2/tags/{tagName}/indicators/{associatedIndicatorType}``
 * ``/v2/tags/{tagName}/indicators/{associatedIndicatorType}/{associatedIndicator}``
 
-Tasks
------
+Task Endpoints
+--------------
 
 The following Task related endpoints are available:
 
@@ -205,8 +205,8 @@ The following Task related endpoints are available:
 * ``/v2/tasks/{id}/tags``
 * ``/v2/tasks/{id}/tags/{tagName}``
 
-Victims
--------
+Victim Endpoints
+----------------
 
 The following **Victim Asset types** will be available via ThreatConnect's API:
 
@@ -226,30 +226,30 @@ The following Victim related endpoints are available:
 * ``/v2/victims/{id}/victimAssets/{victimAssetType}``
 * ``/v2/victims/{id}/victimAssets/{victimAssetType}/{assetId}``
 
-Misc
-----
+Misc Endpoints
+--------------
 
-Association Types
-^^^^^^^^^^^^^^^^^
+Association Type Endpoints
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * ``/v2/types/associationTypes``
 * ``/v2/types/associationTypes/{associationType}``
 
-Batch Indicator Commit
-^^^^^^^^^^^^^^^^^^^^^^
+Batch Indicator Commit Endpoints
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * ``/v2/batch``
 * ``/v2/batch/{id}``
 * ``/v2/batch/{id}/errors``
 
-Indicator Types
-^^^^^^^^^^^^^^^
+Indicator Type Endpoints
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 * ``/v2/types/indicatorTypes``
 * ``/v2/types/indicatorTypes/{indicatorType}``
 
-User Information
-^^^^^^^^^^^^^^^^
+User Information Endpoints
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * ``/v2/whoami``
 
