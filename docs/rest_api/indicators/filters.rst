@@ -59,6 +59,12 @@ parameters OR’ed):
 
     /v2/indicators?filters=summary%3Dexample.com,dateAdded%3E20151015&orParams=true
 
+The example below demonstrates how to filter based on the number of times an Indicator has been voted a False Positive:
+
+.. code-block::
+
+    GET /v2/indicators?filters=falsePositive%3E10
+
 To prevent the ThreatConnect API from returning an entire result-set, limit
 the scope of the query based on the modifiedSince parameter. When a
 query from the list below is issued with this parameter, it will only
@@ -92,11 +98,13 @@ Indicator’s Confidence value
 +------------------------------+------------+---------------------+
 | rating                       | bigdecimal | ``<``, ``>``        |
 +------------------------------+------------+---------------------+
-| confidence                   | short      | ``=``, ``<``, ``>`` |
+| confidence                   | integer    | ``=``, ``<``, ``>`` |
 +------------------------------+------------+---------------------+
 | threatAssessRating           | double     | ``<``, ``>``        |
 +------------------------------+------------+---------------------+
 | threatAssessConfidence       | double     | ``<``, ``>``        |
++------------------------------+------------+---------------------+
+| falsePositive                | integer    | ``=``, ``<``, ``>`` |
 +------------------------------+------------+---------------------+
 | **Address Specific Filters** |            |                     |
 +------------------------------+------------+---------------------+

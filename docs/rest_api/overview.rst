@@ -297,3 +297,113 @@ By default, all API calls will operate in the API user account's default organiz
 .. code::
 
     GET https://api.threatconnect.com/v2/indicators/hosts/?owner=Common%20Community
+
+Retrieving an Item's Tags and Attributes
+----------------------------------------
+
+As of ThreatConnect version 5.4, it is possible to retrieve the Tags and Attributes for an item (a Group, Indicator, Task, or Victim).
+
+To retrieve Tags along with the requested items, append the following query string to the query:
+
+.. code-block::
+
+    ?includeTags=true
+
+To retrieve Attributes along with the requested items, append the following query string to the query:
+
+.. code-block::
+
+    ?includeAttributes=true
+
+For example, to retrieve all Hosts along with their Tags and Attributes, use the following query:
+
+.. code-block::
+
+    GET /v2/indicators/hosts?includeTags=true&includeAttributes=true
+
+JSON Response:
+
+.. code-block::
+
+    {
+      "status": "Success",
+      "data": {
+        "resultCount": 1,
+        "host": [
+          {
+            "id": 123456,
+            "owner": {
+              "id": 2,
+              "name": "Example Org",
+              "type": "Organization"
+            },
+            "dateAdded": "2017-10-31T16:55:44Z",
+            "lastModified": "2017-11-06T13:23:13Z",
+            "rating": 4.00,
+            "confidence": 85,
+            "threatAssessRating": 4.37,
+            "threatAssessConfidence": 72.91,
+            "threatAssessScore": 650,
+            "webLink": "https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=example.org&owner=Example+Org",
+            "source": "US-EAST-3 Network Logs",
+            "description": "Malicious domain.",
+            "attribute": [
+              {
+                "id": 54321,
+                "type": "Description",
+                "value": "Malicious domain.",
+                "dateAdded": "2017-10-31T16:59:15Z",
+                "lastModified": "2017-10-31T16:59:15Z",
+                "displayed": true
+              }
+            ],
+            "tag": [
+              {
+                "name": "Nation State",
+                "description": "Activity likely backed or directly related to a nation state.",
+                "webLink": "https://app.threatconnect.com/auth/tags/tag.xhtml?tag=Nation+State&owner=Example+Org"
+              }
+            ],
+            "hostName": "example.org",
+            "dnsActive": "true",
+            "whoisActive": "true"
+          }
+        ]
+      }
+    }
+
+As another example, to retrieve all Tasks with their Tags, use the following query:
+
+.. code-block::
+
+    GET /v2/tasks?includeTags=true
+
+JSON Response:
+
+.. code-block::
+
+    {
+      "status": "Success",
+      "data": {
+        "resultCount": 1,
+        "task": [
+          {
+            "id": 123456,
+            "name": "Deploy Update Blacklist to Firewall",
+            "ownerName": "Example Org",
+            "dateAdded": "2017-11-04T13:51:52Z",
+            "webLink": "https://app.threatconnect.com/auth/workflow/task.xhtml?task=123456",
+            "tag": [
+              {
+                "name": "Deploy",
+                "webLink": "https://app.threatconnect.com/auth/tags/tag.xhtml?tag=Deploy&owner=Example+Org"
+              }
+            ],
+            "status": "Not Started",
+            "escalated": false,
+            "reminded": false,
+            "overdue": false
+          }
+        ]
+      }
+    }

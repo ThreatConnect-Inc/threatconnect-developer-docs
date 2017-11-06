@@ -23,6 +23,43 @@ JSON Response:
         "status": "Success"
     }
 
+Viewing Recently Deleted Indicators
+-----------------------------------
+
+As of ThreatConnect version 5.4, it is possible to view a list of Indicators that have been recently deleted from an Owner. The general format for this request is as follows:
+
+.. code-block::
+
+    GET /v2/indicators/deleted
+
+JSON Response:
+
+.. code-block::
+
+    {
+      "status": "Success",
+      "data": {
+        "resultCount": 1,
+        "indicator": [
+          {
+            "ownerName": "Example Org",
+            "type": "File",
+            "dateAdded": "2017-10-31T18:32:13Z",
+            "lastModified": null,
+            "summary": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        ]
+      }
+    }
+
+By default, this will return all of the Indicators recently deleted in the API key’s default org. The number of days for which the Indicators will be listed on this API branch before being removed is specified by the ``indicatorDeleteRetentionTime`` system setting.
+
+To view Indicators that have been recently deleted from a Community or Source that is not the default Owner, append the ``owner={ownerName}`` parameter to the query, as demonstrated below:
+
+.. code-block::
+
+    GET /v2/indicators/deleted?owner=Example%20Community
+
 Delete Indicator Metadata
 -------------------------
 
