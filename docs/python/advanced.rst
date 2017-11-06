@@ -654,16 +654,17 @@ Python SDK CSV Code Sample:
         print(e)
         sys.exit(1)
 
-    print(indicator.csv_header)
     for indicator in indicators:
+        print(indicator.csv_header)
         print(indicator.csv)
+        print("\n")
 
 Python SDK Sample CSV Output:
 
 .. code:: text
 
     confidence,dateAdded,description,id,indicator,lastModified,ownerName,rating,type,weblink
-    14,2015-06-21T10:40:33-05:00,TEST attribute #14,355999,www.badguy_014.com,2015-06-21T10:40:33-05:00,Example Community,1.0,null,https://tc.sumx.us/auth/indicators/details/host.xhtml?host=www.badguy_014.com&owner=Example+Community
+    14,2015-06-21T10:40:33-05:00,TEST attribute #14,355999,www.badguy.com,2015-06-21T10:40:33-05:00,Example Community,1.0,null,https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=www.badguy.com&owner=Example+Community
 
 The Python SDK provides the ``csv`` and ``csv_header`` methods for CSV
 output, which are supported on Indicators as well as Group Resources
