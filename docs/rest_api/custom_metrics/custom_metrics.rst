@@ -1,20 +1,20 @@
 Custom Metrics
 ==============
 
-As of ThreatConnect 5.4, it is possible to create custom metrics which can be used to monitor almost anything. You can read more about custom metrics here. This documentation will detail how to retrieve, create, and delete custom metrics via the API.
+As of ThreatConnect 5.4, it is possible to create Custom Metrics which can be used to monitor and track important data points. This documentation will detail how to retrieve, create, and delete Custom Metrics via the API.
 
 Retrieving Custom Metrics
 -------------------------
 
-In order to view the custom metrics available to an Organization in ThreatConnect, use the following query:
+In order to view the Custom Metrics available to an Organization in ThreatConnect, use the following query:
 
-.. code-block::
+.. code::
 
     GET /v2/customMetrics/
 
 JSON Response:
 
-.. code-block::
+.. code::
 
     {
       "status": "Success",
@@ -43,13 +43,13 @@ JSON Response:
 
 To view a specific metric, add the metric’s name to the end of the query as shown below:
 
-.. code-block::
+.. code::
 
     GET /v2/customMetrics/{metricName}
 
 Or, alternatively, you can use the ID of the metric to get the same result:
 
-.. code-block::
+.. code::
 
     GET /v2/customMetrics/{metricId}
 
@@ -58,7 +58,7 @@ Creating a Custom Metric
 
 To create a new custom metric, use a query in the following format:
 
-.. code-block::
+.. code::
 
     POST /v2/customMetrics
     {
@@ -113,7 +113,7 @@ Creating Content in a Keyed Metric
 
 To add content to a keyed metric, use a query in the following format:
 
-.. code-block::
+.. code::
 
     POST /v2/customMetrics/{metricName}/data
     {
@@ -125,7 +125,7 @@ To add content to a keyed metric, use a query in the following format:
 
 For example, the query below will add one to the value stored in the ``app1`` key in a ``playbookRuns`` metric:
 
-.. code-block::
+.. code::
 
     POST /v2/customMetrics/playbookRuns/data
     {
@@ -138,7 +138,7 @@ Creating Content in a Non-Keyed Metric
 
 To add content to a non-keyed metric, use a query in the following format:
 
-.. code-block::
+.. code::
 
     POST /v2/customMetrics/{metricName}/data
     {
@@ -149,7 +149,7 @@ To add content to a non-keyed metric, use a query in the following format:
 
 For example, the query below will add two to the count of a ``tasksCompleted`` metric:
 
-.. code-block::
+.. code::
 
     POST /v2/customMetrics/tasksCompleted/data
     {
@@ -161,7 +161,7 @@ Custom Metrics Return Value
 
 When creating a new entry in a metric, it is possible to view the current value by adding the ``?returnValue=true`` flag to the query. For example, the query format below will increment the value of a non-keyed metric by two and return the current value of the metric:
 
-.. code-block::
+.. code::
 
     POST /v2/customMetrics/{metricName}/data?returnValue=true
     {
@@ -172,7 +172,7 @@ When creating a new entry in a metric, it is possible to view the current value 
 
 Here is a notional example that keeps track of how many tasks have been closed. The query below will add two to the ``tasksCompleted`` metric *and* will return the updated value of the metric:
 
-.. code-block::
+.. code::
 
     POST /v2/customMetrics/tasksCompleted/data?returnValue=true
     {
@@ -193,12 +193,12 @@ Deleting a Custom Metric
 
 To delete a custom metric, use a query in the following format:
 
-.. code-block::
+.. code::
 
     DELETE /v2/customMetrics/{metricName}
 
 Or, alternatively, you can use the ID of the metric to get the same result:
 
-.. code-block::
+.. code::
 
     DELETE /v2/customMetrics/{metricId}

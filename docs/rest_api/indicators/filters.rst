@@ -61,7 +61,7 @@ parameters OR’ed):
 
 The example below demonstrates how to filter based on the number of times an Indicator has been voted a False Positive:
 
-.. code-block::
+.. code::
 
     GET /v2/indicators?filters=falsePositive%3E10
 

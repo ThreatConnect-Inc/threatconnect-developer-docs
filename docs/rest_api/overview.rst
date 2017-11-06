@@ -305,25 +305,25 @@ As of ThreatConnect version 5.4, it is possible to retrieve the Tags and Attribu
 
 To retrieve Tags along with the requested items, append the following query string to the query:
 
-.. code-block::
+.. code::
 
     ?includeTags=true
 
 To retrieve Attributes along with the requested items, append the following query string to the query:
 
-.. code-block::
+.. code::
 
     ?includeAttributes=true
 
 For example, to retrieve all Hosts along with their Tags and Attributes, use the following query:
 
-.. code-block::
+.. code::
 
     GET /v2/indicators/hosts?includeTags=true&includeAttributes=true
 
 JSON Response:
 
-.. code-block::
+.. code-block:: json
 
     {
       "status": "Success",
@@ -374,13 +374,13 @@ JSON Response:
 
 As another example, to retrieve all Tasks with their Tags, use the following query:
 
-.. code-block::
+.. code::
 
     GET /v2/tasks?includeTags=true
 
 JSON Response:
 
-.. code-block::
+.. code-block:: json
 
     {
       "status": "Success",

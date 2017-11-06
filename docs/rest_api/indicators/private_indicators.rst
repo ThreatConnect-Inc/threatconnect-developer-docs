@@ -10,7 +10,7 @@ Retrieving Private Indicators
 
 When retrieving an Indicator, it is possible to see if the Indicator is private by appending the ``includeAdditional=true`` parameter to the query, as demonstrated below:
 
-.. code-block::
+.. code::
 
     GET /v2/indicators/hosts/example.org?includeAdditional=true
 
@@ -53,13 +53,13 @@ Creating Private Indicators
 
 To mark an Indicator as private when creating it, add the following key-value pair to the body of the POST query used to create the Indicator:
 
-.. code-block::
+.. code::
 
     "privateFlag": "true"
 
 For example, the following query will create a host Indicator that is marked as private:
 
-.. code-block::
+.. code::
 
     POST /v2/indicators/hosts
     {
