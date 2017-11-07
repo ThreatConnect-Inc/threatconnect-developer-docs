@@ -22,7 +22,7 @@ The ``{groupType}`` can be any one of the available group types:
 
 When updating the fields on a Group itself, you can change any of the fields available for the type of Group you are updating. Below is a table of available fields for each Group type:
 
-.. include:: groups/group_fields.rst
+.. include:: group_fields.rst
 
 By way of example, the query below will update the name of an Incident with ID 12345:
 
