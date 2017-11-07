@@ -14,11 +14,11 @@ To create a Group, the most basic format is:
 
 The ``{groupType}`` can be any one of the available group types:
 
-.. include:: _includes/group_types.rst
+.. include:: ../_includes/group_types.rst
 
 Some group types require additional fields when being created. Refer to the table below for the fields required to create each group type:
 
-.. include:: groups/group_fields.rst
+.. include:: group_fields.rst
 
 By way of example, the query below will create an incident in the default owner:
 
@@ -259,7 +259,7 @@ To associate one Group with another, use a query in the following format:
 
 Replace ``{associatedGroupType}`` with one of the following Group types:
 
-.. include:: _includes/group_types.rst
+.. include:: ../_includes/group_types.rst
 
 For example, the query below will associate a Threat with the ID 12345 with an Incident with the ID 54321:
 
@@ -321,4 +321,4 @@ JSON Response:
       "status": "Success"
     }
 
-.. include:: _includes/victim_asset_required_warning.rst
+.. include:: ../_includes/victim_asset_required_warning.rst

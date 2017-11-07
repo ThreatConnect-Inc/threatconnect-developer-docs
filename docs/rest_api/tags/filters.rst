@@ -13,7 +13,7 @@ When retrieving Tags from ThreatConnect, it is possible to filter on the followi
 
 \* In the context of Tags, 'weight' refers to how many times a Tag has been used.
 
-.. include:: _includes/filter_symbol_encoding_note.rst
+.. include:: ../_includes/filter_symbol_encoding_note.rst
 
 The following query will return all Tags that start with "Bad" (``name^Bad``):
 

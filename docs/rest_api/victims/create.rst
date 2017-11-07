@@ -82,11 +82,11 @@ To create Victim Assets, use a query in the following format:
 
 The available Victim Asset types are:
 
-.. include:: _includes/victim_asset_types.rst
+.. include:: ../_includes/victim_asset_types.rst
 
 When creating a Victim Asset, there are certain fields that are required as detailed below:
 
-.. include:: _includes/victim_asset_fields.rst
+.. include:: ../_includes/victim_asset_fields.rst
 
 For example, if you wanted to add a network account Victim Asset to a Victim with ID 12345, you would use the following query:
 
@@ -249,7 +249,7 @@ To associate a Victim with a Group, use a query in the following format:
 
 Replace ``{associatedGroupType}`` with one of the following Group types:
 
-.. include:: _includes/group_types.rst
+.. include:: ../_includes/group_types.rst
 
 For example, the query below will associate a Victim with ID 12345 with an Incident with the ID 54321:
 
@@ -311,4 +311,4 @@ JSON Response:
       "status": "Success"
     }
 
-.. include:: _includes/victim_asset_required_warning.rst
+.. include:: ../_includes/victim_asset_required_warning.rst

@@ -25,7 +25,7 @@ When retrieving Tasks from ThreatConnect, it is possible to filter the results. 
 | reminded  | boolean   | ``=``        |
 +-----------+-----------+--------------+
 
-.. include:: _includes/filter_symbol_encoding_note.rst
+.. include:: ../_includes/filter_symbol_encoding_note.rst
 
 The following query will return all Tasks that start with "Test" (``name^Test``):
 
