@@ -1,4 +1,4 @@
 Indicator ThreatAssess Ratings
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. include:: crud/retrieve.rst
+.. include:: _metadata/ratings/threatassess/crud/retrieve.rst
