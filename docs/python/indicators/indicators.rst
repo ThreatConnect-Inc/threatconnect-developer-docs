@@ -1,24 +1,24 @@
 Indicators
 ==========
 
-.. include:: indicators/overview.rst
+.. include:: overview.rst
 
-.. include:: indicators/filters.rst
+.. include:: filters.rst
 
-.. include:: indicators/email_addresses/email_addresses.rst
+.. include:: email_addresses/email_addresses.rst
 
-.. include:: indicators/files/files.rst
+.. include:: files/files.rst
 
-.. include:: indicators/hosts/hosts.rst
+.. include:: hosts/hosts.rst
 
-.. include:: indicators/addresses/addresses.rst
+.. include:: addresses/addresses.rst
 
-.. include:: indicators/urls/urls.rst
+.. include:: urls/urls.rst
 
-.. include:: indicators/custom_indicators/custom_indicators.rst
+.. include:: custom_indicators/custom_indicators.rst
 
-.. include:: indicators/_metadata/metadata.rst
+.. include:: _metadata/metadata.rst
 
-.. include:: indicators/bulk_download.rst
+.. include:: bulk_download.rst
 
-.. include:: indicators/batch_commit.rst
+.. include:: batch_commit.rst
