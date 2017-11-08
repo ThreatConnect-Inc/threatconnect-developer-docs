@@ -6,7 +6,7 @@ It is possible to retrieve various metrics for a given owner such as Indicator a
 .. code-block:: python
 
     # replace the line below with the standard, TC script heading described here:
-    # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
+    # https://docs.threatconnect.com/en/latest/python/quick_start.html#standard-script-heading
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
@@ -37,7 +37,7 @@ It is also possible to retrieve the metrics for all of the owners to which you h
 .. code-block:: python
 
     # replace the line below with the standard, TC script heading described here:
-    # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
+    # https://docs.threatconnect.com/en/latest/python/quick_start.html#standard-script-heading
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)

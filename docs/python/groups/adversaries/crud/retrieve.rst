@@ -10,7 +10,7 @@ This example demonstrates how to retrieve a specific Adversary using the Adversa
     :emphasize-lines: 10-12,15-16
 
     # replace the line below with the standard, TC script heading described here:
-    # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
+    # https://docs.threatconnect.com/en/latest/python/quick_start.html#standard-script-heading
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)
@@ -45,7 +45,7 @@ This example demonstrates how to retrieve Adversaries while applying filters. Tw
     :emphasize-lines: 12-15,18-19
 
     # replace the line below with the standard, TC script heading described here:
-    # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
+    # https://docs.threatconnect.com/en/latest/python/quick_start.html#standard-script-heading
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)

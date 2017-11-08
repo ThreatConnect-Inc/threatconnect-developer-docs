@@ -7,7 +7,7 @@ The example below demonstrates how to create a Victim Resource in the ThreatConn
     :emphasize-lines: 12-13,16-17
 
     # replace the line below with the standard, TC script heading described here:
-    # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
+    # https://docs.threatconnect.com/en/latest/python/quick_start.html#standard-script-heading
     ...
 
     tc = ThreatConnect(api_access_id, api_secret_key, api_default_org, api_base_url)

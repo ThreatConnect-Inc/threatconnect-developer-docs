@@ -11,7 +11,7 @@ The code snippet below assumes that indicator data is formatted in the same way 
     import time
 
     # replace the line below with the standard, TC script heading described here:
-    # https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
+    # https://docs.threatconnect.com/en/latest/python/quick_start.html#standard-script-heading
     ...
 
     # define the owner where you would like to put the data

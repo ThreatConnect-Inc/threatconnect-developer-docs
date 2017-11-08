@@ -58,7 +58,7 @@ JSON Response:
 Uploading Document Contents
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you are creating a Document in ThreatConnect that is a malware sample, refer to the `the next section <https://docs.threatconnect.com/en/dev/rest_api/rest_api.html#creating-a-malware-document>`_. If you are creating a benign Document and want to upload content into the Document via API, refer to the section on `uploading Document contents <https://docs.threatconnect.com/en/dev/rest_api/rest_api.html#update-document-contents>`_ for more details.
+If you are creating a Document in ThreatConnect that is a malware sample, refer to the `the next section <https://docs.threatconnect.com/en/latest/rest_api/rest_api.html#creating-a-malware-document>`_. If you are creating a benign Document and want to upload content into the Document via API, refer to the section on `uploading Document contents <https://docs.threatconnect.com/en/latest/rest_api/rest_api.html#update-document-contents>`_ for more details.
 
 Creating a Malware Document
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -81,7 +81,7 @@ To upload a malware sample as a Document, the following steps must be taken:
 
 -  Create a `password-protected zip file <https://askubuntu.com/questions/17641/create-encrypted-password-protected-zip-file>`__ on your local machine containing the sample.
 -  Create a new Document Group including the additional fields ``malware`` set to True and ``password`` set to the zip file's password.
-- `Upload the Document contents <https://docs.threatconnect.com/en/dev/rest_api/rest_api.html#update-document-contents>`_ .
+- `Upload the Document contents <https://docs.threatconnect.com/en/latest/rest_api/rest_api.html#update-document-contents>`_ .
 
 .. warning:: Uploading raw malware executables or weaponized documents is strictly forbidden.
 
