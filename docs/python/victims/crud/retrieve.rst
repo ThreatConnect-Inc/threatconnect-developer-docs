@@ -55,7 +55,7 @@ The example below demonstrates how to retrieve a specific Victim Resource from t
 
 .. note:: If you get an ``AssertionError`` when running this code, you likely need to change the name of the ``owner`` variable so that it is the name of an owner in your instance of ThreatConnect and/or you need to change the ``victim_id`` variable so that it is the ID of a Victim that exists in the given owner.
 
-For details on how to retrieve victim assets, refer to the `Victim Asset retrieval <https://docs.threatconnect.com/en/latest/python/python_sdk.html#retrieve-victim-assets>`_ section.
+For details on how to retrieve victim assets, refer to the `Victim Asset retrieval <https://docs.threatconnect.com/en/latest/python/victims/victims.html#retrieve-victim-assets>`_ section.
 
 Retrieving Multiple Victims
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^

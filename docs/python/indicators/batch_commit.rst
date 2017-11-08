@@ -3,7 +3,7 @@ Batch Commit
 
 As demonstrated by the code snippet below, the ThreatConnect Python SDK supports adding indicators in bulk to the ThreatConnect platform.
 
-The code snippet below assumes that indicator data is formatted in the same way as the JSON `used by the API <https://docs.threatconnect.com/en/latest/rest_api/rest_api.html#batch-indicator-input-file-format>`_ .
+The code snippet below assumes that indicator data is formatted in the same way as the JSON `used by the API <https://docs.threatconnect.com/en/latest/rest_api/indicators/indicators.html#batch-indicator-input-file-format>`_ .
 
 .. code-block:: python
 
@@ -21,7 +21,7 @@ The code snippet below assumes that indicator data is formatted in the same way 
 
     #
     # populate 'indicators' list of dictionaries as formatted here:
-    # https://docs.threatconnect.com/en/latest/rest_api/rest_api.html#batch-indicator-input-file-format
+    # https://docs.threatconnect.com/en/latest/rest_api/indicators/indicators.html#batch-indicator-input-file-format
     #
     indicators = [
         {

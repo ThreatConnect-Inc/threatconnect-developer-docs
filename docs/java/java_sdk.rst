@@ -291,9 +291,6 @@ Deploying a Java App
 Apps must be packaged and deployed into ThreatConnect's application
 runtime environment.
 
-`Example
-Applications <https://github.com/ThreatConnect-Inc/threatconnect-java/tree/master/threatconnect-sdk-core/src/main/java/com/threatconnect/sdk/examples>`__
-
 **Supported Version**
 
 ThreatConnect Java integrations require Oracle JRE 7 or later. OpenJRE
