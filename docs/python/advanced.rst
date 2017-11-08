@@ -618,7 +618,7 @@ Python SDK Sample CEF Output:
 
 The Python SDK provides the ``cef`` methods to output data structured in
 CEF, whose output is only supported on
-`Indicators <#indicators>`__. The CEF-formatted data maps the
+`Indicators <https://docs.threatconnect.com/en/latest/python/indicators/indicators.html#indicators>`__. The CEF-formatted data maps the
 ThreatConnect Resource properties to the standard fields, when possible,
 and then uses the extension feature to store non-standard properties.
 
@@ -828,7 +828,7 @@ Python SDK Sample LEEF Output:
 
 The Python SDK provides the ``leef`` method to output data structured in
 LEEF, whose output is only supported on
-`Indicators <#indicators>`__. The LEEF-formatted data maps the
+`Indicators <https://docs.threatconnect.com/en/latest/python/indicators/indicators.html#indicators>`__. The LEEF-formatted data maps the
 ThreatConnect Resource properties to the standard fields, when possible,
 and then uses the custom attribute feature to store non-standard
 properties.

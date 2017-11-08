@@ -1,15 +1,14 @@
 .. include:: <isonum.txt>
 
-========
+********
 REST API
-========
-
-.. include:: change_log.rst
+********
 
 .. toctree::
    :caption:  Table of Contents
    :maxdepth: 2
 
+   change_log
    quick_start
    overview
    associations/associations
