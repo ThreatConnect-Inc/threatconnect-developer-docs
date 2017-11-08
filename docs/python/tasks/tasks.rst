@@ -3,14 +3,14 @@ Tasks
 
 The Task Group represents an assignment given to a ThreatConnect user.
 
-.. include:: tasks/filters.rst
+.. include:: filters.rst
 
-.. include:: tasks/crud/retrieve.rst
+.. include:: crud/retrieve.rst
 
-.. include:: tasks/crud/create.rst
+.. include:: crud/create.rst
 
-.. include:: tasks/crud/update.rst
+.. include:: crud/update.rst
 
-.. include:: tasks/crud/delete.rst
+.. include:: crud/delete.rst
 
-.. include:: tasks/_metadata/metadata.rst
+.. include:: _metadata/metadata.rst

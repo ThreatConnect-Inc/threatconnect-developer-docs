@@ -1,4 +1,0 @@
-Overview
-========
-
-SDK overview here

@@ -127,7 +127,7 @@ To disassociate a Task from a Group, use a query in the following format:
 
 Replace ``{associatedGroupType}`` with one of the following Group types:
 
-.. include:: _includes/group_types.rst
+.. include:: ../_includes/group_types.rst
 
 For example, the query below will disassociate a Task with ID 12345 from an Incident with the ID 54321:
 

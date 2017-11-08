@@ -1,24 +1,24 @@
 Groups
 ======
 
-.. include:: groups/overview.rst
+.. include:: overview.rst
 
-.. include:: groups/filters.rst
+.. include:: filters.rst
 
-.. include:: groups/generic_group_retrieve.rst
+.. include:: generic_group_retrieve.rst
 
-.. include:: groups/adversaries/adversaries.rst
+.. include:: adversaries/adversaries.rst
 
-.. include:: groups/campaigns/campaigns.rst
+.. include:: campaigns/campaigns.rst
 
-.. include:: groups/documents/documents.rst
+.. include:: documents/documents.rst
 
-.. include:: groups/emails/emails.rst
+.. include:: emails/emails.rst
 
-.. include:: groups/incidents/incidents.rst
+.. include:: incidents/incidents.rst
 
-.. include:: groups/signatures/signatures.rst
+.. include:: signatures/signatures.rst
 
-.. include:: groups/threats/threats.rst
+.. include:: threats/threats.rst
 
-.. include:: groups/_metadata/metadata.rst
+.. include:: _metadata/metadata.rst

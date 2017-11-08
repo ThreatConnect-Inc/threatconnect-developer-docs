@@ -1,7 +1,7 @@
 Retrieve Security Labels
 ------------------------
 
-.. include:: security_labels/filters.rst
+.. include:: filters.rst
 
 Retrieve All Security Labels
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -112,7 +112,7 @@ You can also find associated Groups of a given type using the following format:
 
 Replace ``{associatedGroupType}`` with one of the following Group types:
 
-.. include:: _includes/group_types.rst
+.. include:: ../_includes/group_types.rst
 
 For example, we could use the following query to find all Incidents labeled with the ``TLP Amber`` Security Label:
 

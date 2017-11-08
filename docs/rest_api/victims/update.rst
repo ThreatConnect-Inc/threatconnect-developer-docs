@@ -66,11 +66,11 @@ To update a Victim's Assets, use a query in the following format:
 
 The available Victim Asset types are:
 
-.. include:: _includes/victim_asset_types.rst
+.. include:: ../_includes/victim_asset_types.rst
 
 When updating a Victim Asset, there are certain fields that are required as detailed below:
 
-.. include:: _includes/victim_asset_fields.rst
+.. include:: ../_includes/victim_asset_fields.rst
 
 For example, if you wanted to update an existing network account Victim Asset on a Victim with ID 12345, you would use the following query:
 

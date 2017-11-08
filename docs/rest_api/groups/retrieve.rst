@@ -1,7 +1,7 @@
 Retrieve Groups
 ---------------
 
-.. include:: groups/filters.rst
+.. include:: filters.rst
 
 Retrieve All Groups
 ^^^^^^^^^^^^^^^^^^^
@@ -440,7 +440,7 @@ You can also find associated Groups of a given type using the following format:
 
 Replace ``{associatedGroupType}`` with one of the following Group types:
 
-.. include:: _includes/group_types.rst
+.. include:: ../_includes/group_types.rst
 
 For example, we could use the following query to find all Incidents associated with the Threat with ID 12345:
 
@@ -563,7 +563,7 @@ You can also find associated Victim Assets of a given type using the following f
 
 The available Victim Asset types are:
 
-.. include:: _includes/victim_asset_types.rst
+.. include:: ../_includes/victim_asset_types.rst
 
 For example, we could use the following query to find all Victim Assets that are Email Addresses which are associated with the Threat with ID 12345:
 

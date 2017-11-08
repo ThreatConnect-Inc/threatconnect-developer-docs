@@ -5,18 +5,18 @@ An Indicator represents an atomic piece of information that has some intelligenc
 
 .. note:: When making requests for URL Indicators where the URL itself is included in the request (for example, when retrieving information about a specific URL), you will need to `URL encode <https://wikipedia.org/wiki/Percent-encoding>`_ the Indicator. For example, the URL ``http://example.com/`` must be encoded like ``http%3A%2F%2Fexample.com%2F`` before it is sent in a request.
 
-.. include:: indicators/retrieve.rst
+.. include:: retrieve.rst
 
-.. include:: indicators/create.rst
+.. include:: create.rst
 
-.. include:: indicators/update.rst
+.. include:: update.rst
 
-.. include:: indicators/delete.rst
+.. include:: delete.rst
 
-.. include:: indicators/indicator_to_indicator_assoc.rst
+.. include:: indicator_to_indicator_assoc.rst
 
-.. include:: indicators/private_indicators.rst
+.. include:: private_indicators.rst
 
-.. include:: indicators/bulk_download.rst
+.. include:: bulk_download.rst
 
-.. include:: indicators/batch_commit.rst
+.. include:: batch_commit.rst

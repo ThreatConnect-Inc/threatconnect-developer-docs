@@ -1,19 +1,17 @@
-**********
+.. include:: <isonum.txt>
+
+==========
 Python SDK
-**********
+==========
 
-.. include:: quick_start.rst
+.. toctree::
+   :caption:  Table of Contents
+   :maxdepth: 2
 
-.. include:: groups/groups.rst
-
-.. include:: indicators/indicators.rst
-
-.. include:: owners/owners.rst
-
-.. include:: tags/tags.rst
-
-.. include:: tasks/tasks.rst
-
-.. include:: victims/victims.rst
-
-.. include:: advanced.rst
+   quick_start
+   groups/groups
+   indicators/indicators
+   owners/owners
+   tasks/tasks
+   victims/victims
+   advanced

@@ -616,7 +616,7 @@ To associate an Indicator with a Group, use a query in the following format:
 
 Replace ``{associatedGroupType}`` with one of the following Group types:
 
-.. include:: _includes/group_types.rst
+.. include:: ../_includes/group_types.rst
 
 For example, the query below will associate the Email Address ``bad@example.com`` with an Incident with the ID 54321:
 
@@ -678,4 +678,4 @@ JSON Response:
       "status": "Success"
     }
 
-.. include:: _includes/victim_asset_required_warning.rst
+.. include:: ../_includes/victim_asset_required_warning.rst

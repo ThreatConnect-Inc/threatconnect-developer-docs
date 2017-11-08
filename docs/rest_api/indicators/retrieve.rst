@@ -1,7 +1,7 @@
 Retrieve Indicators
 -------------------
 
-.. include:: indicators/filters.rst
+.. include:: filters.rst
 
 Retrieve Available Indicator Types
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -347,7 +347,7 @@ To retrieve multiple indicators of a certain type, use a query in the following 
 
 The ``{indicatorType}`` can be any one of the available Indicator types below or any of the custom Indicator types available in your instance of threatconnect:
 
-.. include:: _includes/indicator_types.rst
+.. include:: ../_includes/indicator_types.rst
 
 For example, the query below will retrieve a list of all Email Address Indicators in the default owner:
 
@@ -819,11 +819,11 @@ JSON Response:
       }
     }
 
-.. include:: indicators/address_specific_retrieve.rst
+.. include:: address_specific_retrieve.rst
 
-.. include:: indicators/file_specific_retrieve.rst
+.. include:: file_specific_retrieve.rst
 
-.. include:: indicators/host_specific_retrieve.rst
+.. include:: host_specific_retrieve.rst
 
 Retrieve Indicator Associations
 -------------------------------
@@ -872,7 +872,7 @@ You can also find associated Groups of a given type using the following format:
 
 Replace ``{associatedGroupType}`` with one of the following Group types:
 
-.. include:: _includes/group_types.rst
+.. include:: ../_includes/group_types.rst
 
 For example, we could use the following query to find all Incidents associated with the Email Address ``bad@example.com``:
 
@@ -991,7 +991,7 @@ You can also find associated Victim Assets of a given type using the following f
 
 The available Victim Asset types are:
 
-.. include:: _includes/victim_asset_types.rst
+.. include:: ../_includes/victim_asset_types.rst
 
 For example, we could use the following query to find all Victim Assets that are Email Addresses which are associated with the Email Address ``bad@example.com``:
 

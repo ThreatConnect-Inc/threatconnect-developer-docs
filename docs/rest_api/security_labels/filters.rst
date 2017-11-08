@@ -9,7 +9,7 @@ When retrieving Security Labels from ThreatConnect, it is possible to filter the
 | name   | string    | ``=``, ``^`` |
 +--------+-----------+--------------+
 
-.. include:: _includes/filter_symbol_encoding_note.rst
+.. include:: ../_includes/filter_symbol_encoding_note.rst
 
 The following query will return all Security Labels that start with "TLP" (``name^TLP``):
 

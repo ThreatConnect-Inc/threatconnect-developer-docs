@@ -1,29 +1,24 @@
-********
+.. include:: <isonum.txt>
+
+========
 REST API
-********
+========
 
 .. include:: change_log.rst
 
-.. include:: quick_start.rst
+.. toctree::
+   :caption:  Table of Contents
+   :maxdepth: 2
 
-.. include:: overview.rst
-
-.. include:: associations/associations.rst
-
-.. include:: attributes/attributes.rst
-
-.. include:: groups/groups.rst
-
-.. include:: indicators/indicators.rst
-
-.. include:: owners/owners.rst
-
-.. include:: security_labels/security_labels.rst
-
-.. include:: tags/tags.rst
-
-.. include:: tasks/tasks.rst
-
-.. include:: victims/victims.rst
-
-.. include:: custom_metrics/custom_metrics.rst
+   quick_start
+   overview
+   associations/associations
+   attributes/attributes
+   groups/groups
+   indicators/indicators
+   owners/owners
+   security_labels/security_labels
+   tags/tags
+   tasks/tasks
+   victims/victims
+   custom_metrics/custom_metrics

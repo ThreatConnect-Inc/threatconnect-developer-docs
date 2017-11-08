@@ -121,4 +121,4 @@ Indicator’s Confidence value
 | dnsActive                    | boolean    | ``=``               |
 +------------------------------+------------+---------------------+
 
-.. include:: _includes/filter_symbol_encoding_note.rst
+.. include:: ../_includes/filter_symbol_encoding_note.rst

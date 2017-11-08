@@ -23,7 +23,7 @@ When retrieving Groups from ThreatConnect, it is possible to filter the results.
 | eventDate                     | date      | ``<``, ``>`` |
 +-------------------------------+-----------+--------------+
 
-.. include:: _includes/filter_symbol_encoding_note.rst
+.. include:: ../_includes/filter_symbol_encoding_note.rst
 
 The following query will return all Groups that start with "Fancy" (``name^Fancy``):
 

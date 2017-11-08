@@ -9,7 +9,7 @@ When retrieving Victims from ThreatConnect, it is possible to filter the results
 | name   | string    | ``=``    |
 +--------+-----------+----------+
 
-.. include:: _includes/filter_symbol_encoding_note.rst
+.. include:: ../_includes/filter_symbol_encoding_note.rst
 
 The following query will return all Victims that start with "Example" (``name^Example``):
 
