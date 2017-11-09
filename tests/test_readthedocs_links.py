@@ -17,63 +17,108 @@ def _get_heading_ids(soup):
 def test_links():
     """."""
     bad_links = 0
-    base_url = 'https://docs.threatconnect.com'
-    # TODO: consider dynamically pulling the links below:
-    docs_pages = ['https://docs.threatconnect.com/en/latest/getting_started.html',
-                  'https://docs.threatconnect.com/en/latest/rest_api/rest_api.html',
-                  'https://docs.threatconnect.com/en/latest/python/python_sdk.html',
-                  'https://docs.threatconnect.com/en/latest/java/java_sdk.html',
-                  'https://docs.threatconnect.com/en/latest/javascript/javascript_sdk.html',
-                  'https://docs.threatconnect.com/en/latest/deployment_config.html',
-                  'https://docs.threatconnect.com/en/latest/tcex/tcex.html',
-                  'https://docs.threatconnect.com/en/latest/sdk_trademarks.html']
+    base_url = 'https://docs.threatconnect.com/'
+    pages = {
+        "https://docs.threatconnect.com/en/latest/rest_api/": [
+            'change_log.html',
+            'quick_start.html',
+            'overview.html',
+            'associations/associations.html',
+            'attributes/attributes.html',
+            'groups/groups.html',
+            'indicators/indicators.html',
+            'owners/owners.html',
+            'security_labels/security_labels.html',
+            'tags/tags.html',
+            'tasks/tasks.html',
+            'victims/victims.html',
+            'custom_metrics/custom_metrics.html'
+        ],
+        "https://docs.threatconnect.com/en/latest/python/": [
+            'python_sdk.html',
+            'quick_start.html',
+            'groups/groups.html',
+            'indicators/indicators.html',
+            'owners/owners.html',
+            'tasks/tasks.html',
+            'victims/victims.html',
+            'advanced.html'
+        ],
+        "https://docs.threatconnect.com/en/latest/javascript/": [
+            'javascript_sdk.html'
+        ],
+        "https://docs.threatconnect.com/en/latest/java/": [
+            'java_sdk.html'
+        ]
+    }
+    excluded_patterns = ["readthedocs.com"]
 
-    for page in docs_pages:
-        print("\n\n>>> Reviewing {}".format(page))
-        # request page
-        r = requests.get(page)
+    for base_page, subpages in pages.items():
+        for subpage in subpages:
+            page = base_page + subpage
 
-        # find all hrefs
-        soup = BeautifulSoup(r.text, 'html.parser')
+            print("\n\n>>> Reviewing {}".format(page))
 
-        links = soup.find_all('a')
-        headings = _get_heading_ids(soup)
+            # request page
+            r = requests.get(page)
 
-        for link in links:
-            href = link['href']
+            # find all hrefs
+            soup = BeautifulSoup(r.text, 'html.parser')
 
-            # ignore "mailto:" links
-            if href.startswith("mailto:"):
-                continue
-            # ignore links to external locations
-            elif href.startswith("//") or href.startswith("http"):
-                # TODO: consider checking these links too
-                continue
-            # check links that are relative to the base url
-            elif href.startswith("/"):
-                target_url = base_url + href
-                r = requests.get(target_url)
+            # get all of the links and headings from the page
+            links = soup.find_all('a')
+            headings = _get_heading_ids(soup)
 
-                if str(r.status_code).startswith("4"):
-                    print("{} error when requesting: {}".format(r.status_code, target_url))
-                    bad_links += 1
-            # check links to locations on the current page
-            elif href.startswith("#"):
-                # skip any links that are just href="#"
-                if href == "#":
-                    pass
-                elif href not in headings:
-                    print("Link to {} does not exist".format(href))
-                    bad_links += 1
-            # check links that are relative to the current page
-            else:
-                # create a target url by removing the file from the current page and adding the desired href
-                target_url = "/".join(page.split("/")[:-1]) + "/" + href
-                r = requests.get(target_url)
+            for link in links:
+                href = link['href']
 
-                if str(r.status_code).startswith("4"):
-                    print("{} error when requesting: {}".format(r.status_code, target_url))
-                    bad_links += 1
+                # ignore "mailto:" links
+                if href.startswith("mailto:"):
+                    continue
+                # ignore links to external locations
+                elif href.startswith("//") or href.startswith("http"):
+                    matches_exclusion_pattern = False
+                    for pattern in excluded_patterns:
+                        if pattern in href:
+                            matches_exclusion_pattern = True
+                            break
+
+                    if matches_exclusion_pattern:
+                        continue
+
+                    if href.startswith("//"):
+                        href = "http:" + href
+
+                    r = requests.get(href)
+
+                    if not r.ok:
+                        print("{} error when requesting: {}".format(r.status_code, href))
+                        bad_links += 1
+                # check links that are relative to the base url
+                elif href.startswith("/"):
+                    target_url = base_url + href
+                    r = requests.get(target_url)
+
+                    if not r.ok:
+                        print("{} error when requesting: {}".format(r.status_code, target_url))
+                        bad_links += 1
+                # check links to locations on the current page
+                elif href.startswith("#"):
+                    # skip any links that are just href="#"
+                    if href == "#":
+                        pass
+                    elif href not in headings:
+                        print("Link to {} does not exist".format(href))
+                        bad_links += 1
+                # check links that are relative to the current page
+                else:
+                    # create a target url by removing the file from the current page and adding the desired href
+                    target_url = "/".join(page.split("/")[:-1]) + "/" + href
+                    r = requests.get(target_url)
+
+                    if str(r.status_code).startswith("4"):
+                        print("{} error when requesting: {}".format(r.status_code, target_url))
+                        bad_links += 1
 
     if bad_links > 0:
         print("\n\n{} bad links found".format(bad_links))
@@ -83,9 +128,9 @@ def test_links():
 def test_standard_script_heading_link():
     """Make sure the standard script heading is still in the docs so that the links in the code snippets will work.
 
-    See: https://docs.threatconnect.com/en/dev/python/python_sdk.html#standard-script-heading
+    See: https://docs.threatconnect.com/en/latest/python/python_sdk.html#standard-script-heading
     """
-    response = requests.get("https://docs.threatconnect.com/en/dev/python/python_sdk.html")
+    response = requests.get("https://docs.threatconnect.com/en/latest/python/quick_start.html#standard-script-heading")
     soup = BeautifulSoup(response.text, "html.parser")
 
     heading_ids = _get_heading_ids(soup)
@@ -98,3 +143,21 @@ def test_standard_script_heading_link():
 
     if not heading_found:
         raise RuntimeError("Unable to find the Standard Script Heading used in the code snippets.")
+
+
+def test_no_dev_links():
+    """Make sure there are no links to the dev version of the docs."""
+    import os
+    dev_pattern = "en/dev/"
+
+    # iterate through the files in the /docs/ directory to make sure the are no links to the dev version of the documentation
+    for path, dirs, files in os.walk(os.path.abspath(os.path.join(os.path.dirname(__file__), "../docs"))):
+        # ignore all directories that start with "_"
+        if "/_" not in path:
+            for file in files:
+                # check to see if the dev pattern is in the file
+                with open("{}/{}".format(path, file), 'r') as f:
+                    print("Checking: {}/{}".format(path, file))
+                    file_text = f.read()
+                    assert dev_pattern not in file_text
+                    print("check passed\n")
