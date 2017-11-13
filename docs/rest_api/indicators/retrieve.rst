@@ -943,6 +943,8 @@ For example, we could use the following query to find all Address Indicators ass
 
     GET /v2/indicators/emailAddresses/bad@example.com/indicators/addresses
 
+.. note:: There is more documentation on retrieving Indicator-to-Indicator associations `here <#indicator-to-indicator-associations>`_.
+
 Victim Assets to Indicator Associations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

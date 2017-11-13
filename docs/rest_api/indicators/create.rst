@@ -635,25 +635,7 @@ JSON Response:
 Associate Indicator to Indicator
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To associate an Indicator with another Indicator, use a query in the following format:
-
-.. code::
-
-    POST /v2/indicators/{indicatorType}/{indicator}/indicators/{associatedIndicatorType}/{associatedIndicator}
-
-For example, the query below will associate the Email Address ``bad@example.com`` with the IP Address ``0.0.0.0``:
-
-.. code::
-
-    POST /v2/indicators/emailAddresses/bad@example.com/indicators/addresses/0.0.0.0
-
-JSON Response:
-
-.. code:: json
-
-    {
-      "status": "Success"
-    }
+The documentation for creating and retrieving Indicator-to-Indicator relationships has been moved `here <#indicator-to-indicator-associations>`_.
 
 Associate Victim to Indicator
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

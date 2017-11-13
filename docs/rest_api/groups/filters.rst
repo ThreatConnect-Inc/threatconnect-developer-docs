@@ -1,6 +1,9 @@
 Filtering Groups
 ^^^^^^^^^^^^^^^^
 
+Filters Parameter
+"""""""""""""""""
+
 When retrieving Groups from ThreatConnect, it is possible to filter the results. Results can be filtered on the following data points:
 
 +-------------------------------+-----------+--------------+
@@ -24,6 +27,8 @@ When retrieving Groups from ThreatConnect, it is possible to filter the results.
 +-------------------------------+-----------+--------------+
 
 .. include:: ../_includes/filter_symbol_encoding_note.rst
+
+**Examples**
 
 The following query will return all Groups that start with "Fancy" (``name^Fancy``):
 
@@ -60,3 +65,12 @@ The following query will return all Incidents that have an event date after 2017
 .. code::
 
     GET /v2/groups/incidents?filters=eventDate%3E2017-07-13T00:00
+
+Owner Parameter
+"""""""""""""""
+
+By default, all API calls will operate in the API user account's default organization. To specify a different owner, use the ``owner`` URL parameter like ``?owner={ownerName}``. For example, the following query will return all Incidents in the Common Community:
+
+.. code::
+
+    GET /v2/groups/incidents/?owner=Common%20Community

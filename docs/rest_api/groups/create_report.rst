@@ -16,4 +16,4 @@ This endpoint is available for all of the following Group types:
 - Signatures
 - Threats
 
-.. note: This endpoint does not apply to Documents.
+.. note:: This endpoint applies to all Groups except for Documents.

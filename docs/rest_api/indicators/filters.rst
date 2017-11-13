@@ -1,18 +1,50 @@
 Filtering Indicators
 ^^^^^^^^^^^^^^^^^^^^
 
-The example below demonstrates usage of the modifiedSince parameter:
+Filters Parameter
+"""""""""""""""""
 
-.. code::
+When retrieving Indicators from ThreatConnect, it is possible to filter the results. Results can be filtered on the following data points:
 
-    /v2/indicators?modifiedSince=2014-08-21T12:00:00Z
++------------------------------+------------+---------------------+
+| Name                         | Data Type  | Operator(s)         |
++==============================+============+=====================+
+| **Indicator Common Filters** |            |                     |
++------------------------------+------------+---------------------+
+| summary                      | string     | ``=``, ``^``        |
++------------------------------+------------+---------------------+
+| modifiedSince                | string     | ``=``, ``^``        |
++------------------------------+------------+---------------------+
+| dateAdded                    | date       | ``<``, ``>``        |
++------------------------------+------------+---------------------+
+| rating                       | bigdecimal | ``<``, ``>``        |
++------------------------------+------------+---------------------+
+| confidence                   | integer    | ``=``, ``<``, ``>`` |
++------------------------------+------------+---------------------+
+| threatAssessRating           | double     | ``<``, ``>``        |
++------------------------------+------------+---------------------+
+| threatAssessConfidence       | double     | ``<``, ``>``        |
++------------------------------+------------+---------------------+
+| falsePositive                | integer    | ``=``, ``<``, ``>`` |
++------------------------------+------------+---------------------+
+| **Address Specific Filters** |            |                     |
++------------------------------+------------+---------------------+
+| countryCode                  | string     | ``=``               |
++------------------------------+------------+---------------------+
+| organization                 | string     | ``=``               |
++------------------------------+------------+---------------------+
+| asn                          | integer    | ``=``               |
++------------------------------+------------+---------------------+
+| **Host Specific Filters**    |            |                     |
++------------------------------+------------+---------------------+
+| whoisActive                  | boolean    | ``=``               |
++------------------------------+------------+---------------------+
+| dnsActive                    | boolean    | ``=``               |
++------------------------------+------------+---------------------+
 
-The example below demonstrates usage of the modifiedSince parameter and
-an additional parameter:
+.. include:: ../_includes/filter_symbol_encoding_note.rst
 
-.. code::
-
-    /v2/indicators?modifiedSince=2014-08-21T12:00:00Z&owner=Common%20Community
+**Examples**
 
 The example below demonstrates usage of the summary parameter:
 
@@ -65,60 +97,36 @@ The example below demonstrates how to filter based on the number of times an Ind
 
     GET /v2/indicators?filters=falsePositive%3E10
 
-To prevent the ThreatConnect API from returning an entire result-set, limit
-the scope of the query based on the modifiedSince parameter. When a
-query from the list below is issued with this parameter, it will only
-return Indicators whose lastModified field contains a value on or after
-the time specified by the included ISO 8601 time-stamp.
+Modified Since Parameter
+""""""""""""""""""""""""
 
-Use the modifiedSince parameter on the Indicators Service, e.g.,
-``/v2/indicators``
+To prevent the ThreatConnect API from returning an entire result-set, limit the scope of the query based on the ``modifiedSince`` parameter. This query requires an ISO 8601 date-stamp (as shown in the examples below) and will only return Indicators whose lastModified field contains a value on or after the date specified.
 
-Note that the ISO 8601 time-stamp is in the same format used to display
-an Indicator’s lastModified value, and it can also be used in
-conjunction with other parameters.
+The following actions update an Indicator’s lastModified field:
 
-Note that an Indicator’s lastModified field is used to determine whether
-or not it will be included with such a query. The following actions
-update an Indicator’s lastModified field: - Creating the Indicator
-manually - Importing the Indicator via structured or unstructured import
-- Changing or resetting the Indicator’s "Threat" Rating - Changing the
-Indicator’s Confidence value
+* Creating the Indicator manually
+* Importing the Indicator via structured or unstructured import
+* Changing the Indicator’s threat rating
+* Changing the Indicator’s confidence rating.
 
-**Filters**
+The example below demonstrates usage of the modifiedSince parameter:
 
-+------------------------------+------------+---------------------+
-| Name                         | Data Type  | Operator(s)         |
-+==============================+============+=====================+
-| **Indicator Common Filters** |            |                     |
-+------------------------------+------------+---------------------+
-| summary                      | string     | ``=``, ``^``        |
-+------------------------------+------------+---------------------+
-| dateAdded                    | date       | ``<``, ``>``        |
-+------------------------------+------------+---------------------+
-| rating                       | bigdecimal | ``<``, ``>``        |
-+------------------------------+------------+---------------------+
-| confidence                   | integer    | ``=``, ``<``, ``>`` |
-+------------------------------+------------+---------------------+
-| threatAssessRating           | double     | ``<``, ``>``        |
-+------------------------------+------------+---------------------+
-| threatAssessConfidence       | double     | ``<``, ``>``        |
-+------------------------------+------------+---------------------+
-| falsePositive                | integer    | ``=``, ``<``, ``>`` |
-+------------------------------+------------+---------------------+
-| **Address Specific Filters** |            |                     |
-+------------------------------+------------+---------------------+
-| countryCode                  | string     | ``=``               |
-+------------------------------+------------+---------------------+
-| organization                 | string     | ``=``               |
-+------------------------------+------------+---------------------+
-| asn                          | integer    | ``=``               |
-+------------------------------+------------+---------------------+
-| **Host Specific Filters**    |            |                     |
-+------------------------------+------------+---------------------+
-| whoisActive                  | boolean    | ``=``               |
-+------------------------------+------------+---------------------+
-| dnsActive                    | boolean    | ``=``               |
-+------------------------------+------------+---------------------+
+.. code::
 
-.. include:: ../_includes/filter_symbol_encoding_note.rst
+    GET /v2/indicators?modifiedSince=2017-08-21T12:00:00Z
+
+The example below demonstrates usage of the modifiedSince parameter and
+an additional parameter:
+
+.. code::
+
+    GET /v2/indicators?modifiedSince=2017-08-21T12:00:00Z&owner=Common%20Community
+
+Owner Parameter
+"""""""""""""""
+
+By default, all API calls will operate in the API user account's default organization. To specify a different owner, use the ``owner`` URL parameter like ``?owner={ownerName}``. For example, the following query will return all Host Indicators in the Common Community:
+
+.. code::
+
+    GET /v2/indicators/hosts/?owner=Common%20Community
