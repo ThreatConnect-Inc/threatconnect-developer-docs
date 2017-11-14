@@ -1,7 +1,7 @@
 Retrieve Indicator Associations
 """""""""""""""""""""""""""""""
 
-The code snippet below demonstrates how to view Groups, Indicators, and Victims which are associated with a given Indicator in ThreatConnect. This example assumes a Host Indicator ``example.com`` exists in the target owner.
+The code snippet below demonstrates how to view Groups and Indicators which are associated with a given Indicator in ThreatConnect. This example assumes a Host Indicator ``example.com`` exists in the target owner.
 
 .. code-block:: python
     :emphasize-lines: 25-26,35-36,49-50
@@ -54,20 +54,7 @@ The code snippet below demonstrates how to view Groups, Indicators, and Victims 
             print(associated_indicator.last_modified)
             print(associated_indicator.weblink)
 
-        # iterate through all associated victims
-        for associated_victim in indicator.victim_associations:
-            # print details about the associated victim
-            print(associated_victim.id)
-            print(associated_victim.name)
-            print(associated_victim.description)
-            print(associated_victim.owner_name)
-            print(associated_victim.nationality)
-            print(associated_victim.org)
-            print(associated_victim.suborg)
-            print(associated_victim.work_location)
-            print(associated_victim.weblink)
-
-.. note:: When the ``group_associations``, ``indicator_associations``, and ``victim_associations`` methods are called, an API request is invoked immediately.
+.. note:: When the ``group_associations`` and ``indicator_associations`` properties are referenced, an API request is immediately invoked.
 
 **Indicator Associations Properties**
 

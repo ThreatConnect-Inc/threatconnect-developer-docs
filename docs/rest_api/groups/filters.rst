@@ -52,7 +52,7 @@ The following query will return all Campaigns that have an first-seen date after
 
 .. code::
 
-    GET /v2/groups/incidents?filters=firstSeen%3E2017-07-13T00:00
+    GET /v2/groups/campaigns?filters=firstSeen%3E2017-07-13T00:00
 
 The following query will return all Documents that are PDFs (``fileType=PDF``):
 

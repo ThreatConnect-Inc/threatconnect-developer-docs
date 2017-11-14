@@ -1,7 +1,7 @@
 Create Indicator Associations
 """""""""""""""""""""""""""""
 
-The code snippet below demonstrates how to create an association between an Indicator and a Group, Indicator, or Victim in ThreatConnect. This example assumes a host indicator ``example.com`` exists in the target owner.
+The code snippet below demonstrates how to create an association between an Indicator and a Group in ThreatConnect. This example assumes a Host Indicator ``example.com`` exists in the target owner and an Incident with the ID ``123456``.
 
 .. code-block:: python
     :emphasize-lines: 1,27-28,30-31,33-34,36-37
@@ -17,9 +17,13 @@ The code snippet below demonstrates how to create an association between an Indi
     # instantiate Indicators object
     indicators = tc.indicators()
 
+    # define variables
+    host_name = 'example.com'
+    incident_id = 123456
+
     # set a filter to retrieve a specific host indicator: example.com
     filter1 = indicators.add_filter()
-    filter1.add_indicator('example.com')
+    filter1.add_indicator(host_name)
 
     try:
         # retrieve the Indicators
@@ -32,14 +36,8 @@ The code snippet below demonstrates how to create an association between an Indi
     for indicator in indicators:
         print(indicator.indicator)
 
-        # create an association between this indicator and the incident with the ID: 123456
-        indicator.associate_group(ResourceType.INCIDENTS, 123456)
-
-        # create an association between this indicator and the URL indicator: http://example.com/
-        indicator.associate_indicator(ResourceType.URLS, 'http://example.com/')
-
-        # create an association between this indicator and the victim with the ID: 123456
-        indicator.associate_victim(123456)
+        # create an association between this indicator and the incident
+        indicator.associate_group(ResourceType.INCIDENTS, incident_id)
 
         # commit the changes to ThreatConnect
         indicator.commit()

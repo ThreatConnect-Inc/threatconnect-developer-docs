@@ -1,7 +1,7 @@
 Delete Victim Associations
 """"""""""""""""""""""""""
 
-The code snippet below demonstrates how to remove an association between a Victim and another Group, Indicator, and Victim. This example assumes there is a Victim with an ID of ``123456`` in the target owner. To test this code snippet, change the ``victim_id`` variable to the ID of a victim in your owner.
+The code snippet below demonstrates how to remove an association between a Victim and another Group. This example assumes there is a Victim with an ID of ``123456`` and an Incident with an ID of ``654321`` in the target owner. To test this code snippet, change the ``victim_id`` and ``incident_id`` variables.
 
 .. code-block:: python
     :emphasize-lines: 28-29,31-32,34-35,37-38
@@ -14,6 +14,8 @@ The code snippet below demonstrates how to remove an association between a Victi
 
     # define the ID of the victim we would like to retrieve
     victim_id = 123456
+    # define the ID of the incident we would like to disassociate from the victim
+    incident_id = 654321
 
     # create a victims object
     victims = tc.victims()
@@ -33,14 +35,8 @@ The code snippet below demonstrates how to remove an association between a Victi
     for victim in victims:
         print(victim.name)
 
-        # remove the association between this victim and the incident with the ID: 654321
-        victim.disassociate_group(ResourceType.INCIDENTS, 654321)
-
-        # remove the association between this victim and the URL indicator: http://example.com/
-        victim.disassociate_indicator(ResourceType.URLS, 'http://example.com/')
-
-        # remove the association between this victim and the victim with the ID: 333333
-        victim.disassociate_victim(333333)
+        # remove the association between this victim and the incident
+        victim.disassociate_group(ResourceType.INCIDENTS, incident_id)
 
         # commit the changes to ThreatConnect
         victim.commit()
