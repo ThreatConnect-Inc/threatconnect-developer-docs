@@ -4,7 +4,7 @@ Retrieve Indicator Associations
 The code snippet below demonstrates how to view Groups and Indicators which are associated with a given Indicator in ThreatConnect. This example assumes a Host Indicator ``example.com`` exists in the target owner.
 
 .. code-block:: python
-    :emphasize-lines: 25-26,35-36,49-50
+    :emphasize-lines: 25-26,35-36
 
     # replace the line below with the standard, TC script heading described here:
     # https://docs.threatconnect.com/en/latest/python/quick_start.html#standard-script-heading

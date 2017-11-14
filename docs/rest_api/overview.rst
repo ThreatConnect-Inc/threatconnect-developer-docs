@@ -40,19 +40,22 @@ A request that does not include the parameters indicated is assumed to use the d
 
 .. note:: Pagination counts and indices should not be stored in long-lived applications as a way to return to a result-set. The dataset will change with time, so those range markers might cause objects to be skipped or duplicated if reused at a later time.
 
+Available Endpoints
+-------------------
+
 Owner Endpoints
----------------
+^^^^^^^^^^^^^^^
 
 The following Owner related endpoints are available:
 
 * ``/v2/owners``
-* ``/v2/owners/mine``
-* ``/v2/owners/mine/members``
 * ``/v2/owners/metrics``
 * ``/v2/owners/{id}/metrics``
+* ``/v2/owners/mine``
+* ``/v2/owners/mine/members``
 
 Group Endpoints
----------------
+^^^^^^^^^^^^^^^
 
 The following **Group types** are available via ThreatConnect's API:
 
@@ -73,6 +76,7 @@ The following Group related endpoints are available:
 * ``/v2/groups/{type}/{id}/indicators``
 * ``/v2/groups/{type}/{id}/indicators/{associatedIndicatorType}``
 * ``/v2/groups/{type}/{id}/indicators/{associatedIndicatorType}/{associatedIndicator}``
+* ``/v2/groups/{type}/{id}/pdf``
 * ``/v2/groups/{type}/{id}/publish``
 * ``/v2/groups/{type}/{id}/securityLabels``
 * ``/v2/groups/{type}/{id}/securityLabels/{securityLabel}``
@@ -85,29 +89,29 @@ The following Group related endpoints are available:
 * ``/v2/groups/{type}/{id}/victims/{victimId}``
 
 Adversary Specific Endpoints
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""
 
 * ``/v2/groups/adversaries/{id}/adversaryAssets``
 * ``/v2/groups/adversaries/{id}/adversaryAssets/handles``
-* ``/v2/groups/adversaries/{id}/adversaryAssets/phoneNumbers``
-* ``/v2/groups/adversaries/{id}/adversaryAssets/urls``
 * ``/v2/groups/adversaries/{id}/adversaryAssets/handles/{assetId}``
+* ``/v2/groups/adversaries/{id}/adversaryAssets/phoneNumbers``
 * ``/v2/groups/adversaries/{id}/adversaryAssets/phoneNumbers/{assetId}``
+* ``/v2/groups/adversaries/{id}/adversaryAssets/urls``
 * ``/v2/groups/adversaries/{id}/adversaryAssets/urls/{assetId}``
 
 Document Specific Endpoints
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""
 
 * ``/v2/groups/documents/{id}/download``
 * ``/v2/groups/documents/{id}/upload``
 
 Signature Specific Endpoints
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""
 
 * ``/v2/groups/signatures/{id}/download``
 
 Indicator Endpoints
--------------------
+^^^^^^^^^^^^^^^^^^^
 
 In addition to the custom Indicators available in your instance of ThreatConnect, the following **Indicator types** will be available via ThreatConnect's API:
 
@@ -116,27 +120,26 @@ In addition to the custom Indicators available in your instance of ThreatConnect
 The following Indicator related endpoints are available:
 
 * ``/v2/indicators``
+* ``/v2/indicators/deleted``
 * ``/v2/indicators/observed``
 * ``/v2/indicators/{type}``
 * ``/v2/indicators/{type}/{indicator}``
+* ``/v2/indicators/{type}/{indicator}/associations/{associationType}/indicators/``
+* ``/v2/indicators/{type}/{indicator}/associations/{associationType}/indicators/{targetType}``
+* ``/v2/indicators/{type}/{indicator}/associations/{associationType}/indicators/{targetType}/{targetId}``
 * ``/v2/indicators/{type}/{indicator}/attributes``
-* ``/v2/indicators/{type}/{indicator}/observations``
-* ``/v2/indicators/{type}/{indicator}/observationCount``
-* ``/v2/indicators/{type}/{indicator}/falsePositive``
 * ``/v2/indicators/{type}/{indicator}/attributes/{attributeId}``
 * ``/v2/indicators/{type}/{indicator}/attributes/{attributeId}/securityLabels``
 * ``/v2/indicators/{type}/{indicator}/attributes/{attributeId}/securityLabels/{securityLabel}``
+* ``/v2/indicators/{type}/{indicator}/falsePositive``
 * ``/v2/indicators/{type}/{indicator}/groups``
 * ``/v2/indicators/{type}/{indicator}/groups/{associatedGroupType}``
 * ``/v2/indicators/{type}/{indicator}/groups/{associatedGroupType}/{associatedGroupId}``
 * ``/v2/indicators/{type}/{indicator}/indicators``
 * ``/v2/indicators/{type}/{indicator}/indicators/{associatedIndicatorType}``
 * ``/v2/indicators/{type}/{indicator}/indicators/{associatedIndicatorType}/{associatedIndicator}``
-* ``/v2/indicators/files/{indicator}/fileOccurrences``
-* ``/v2/indicators/files/{indicator}/fileOccurrences/{fileOccurrenceId}``
-* ``/v2/indicators/{type}/{indicator}/associations/{associationType}/indicators/``
-* ``/v2/indicators/{type}/{indicator}/associations/{associationType}/indicators/{targetType}``
-* ``/v2/indicators/{type}/{indicator}/associations/{associationType}/indicators/{targetType}/{targetId}``
+* ``/v2/indicators/{type}/{indicator}/observations``
+* ``/v2/indicators/{type}/{indicator}/observationCount``
 * ``/v2/indicators/{type}/{indicator}/owners``
 * ``/v2/indicators/{type}/{indicator}/securityLabels``
 * ``/v2/indicators/{type}/{indicator}/securityLabels/{securityLabel}``
@@ -148,14 +151,20 @@ The following Indicator related endpoints are available:
 * ``/v2/indicators/{type}/{indicator}/victims``
 * ``/v2/indicators/{type}/{indicator}/victims/{victimId}``
 
+File Indicator Specific Endpoints
+"""""""""""""""""""""""""""""""""
+
+* ``/v2/indicators/files/{indicator}/fileOccurrences``
+* ``/v2/indicators/files/{indicator}/fileOccurrences/{fileOccurrenceId}``
+
 Bulk Indicator Download
-^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""
 
 * ``/v2/indicators/bulk/``
 * ``/v2/indicators/bulk/{format}``
 
 Security Label Endpoints
-------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following Security Label related endpoints are available:
 
@@ -169,7 +178,7 @@ The following Security Label related endpoints are available:
 * ``/v2/securityLabels/{id}/indicators/{associatedIndicatorType}/{associatedIndicator}``
 
 Tag Endpoints
--------------
+^^^^^^^^^^^^^
 
 The following Tag related endpoints are available:
 
@@ -183,30 +192,30 @@ The following Tag related endpoints are available:
 * ``/v2/tags/{tagName}/indicators/{associatedIndicatorType}/{associatedIndicator}``
 
 Task Endpoints
---------------
+^^^^^^^^^^^^^^
 
 The following Task related endpoints are available:
 
 * ``/v2/tasks``
 * ``/v2/tasks/{id}``
-* ``/v2/tasks/{id}/escalatees``
 * ``/v2/tasks/{id}/assignees``
 * ``/v2/tasks/{id}/assignees/{assigneeId}``
+* ``/v2/tasks/{id}/assignees/{userName}``
+* ``/v2/tasks/{id}/attributes``
+* ``/v2/tasks/{id}/escalatees``
 * ``/v2/tasks/{id}/escalatees/{escalateeId}``
 * ``/v2/tasks/{id}/escalatees/{userName}``
-* ``/v2/tasks/{id}/assignees/{userName}``
 * ``/v2/tasks/{id}/groups``
 * ``/v2/tasks/{id}/groups/{associatedGroupType}``
 * ``/v2/tasks/{id}/groups/{associatedGroupType}/{associatedGroupId}``
 * ``/v2/tasks/{id}/indicators``
 * ``/v2/tasks/{id}/indicators/{associatedIndicatorType}``
 * ``/v2/tasks/{id}/indicators/{associatedIndicatorType}/{associatedIndicator}``
-* ``/v2/tasks/{id}/attributes``
 * ``/v2/tasks/{id}/tags``
 * ``/v2/tasks/{id}/tags/{tagName}``
 
 Victim Endpoints
-----------------
+^^^^^^^^^^^^^^^^
 
 The following **Victim Asset types** will be available via ThreatConnect's API:
 
@@ -222,34 +231,41 @@ The following Victim related endpoints are available:
 * ``/v2/victims/{id}/indicators``
 * ``/v2/victims/{id}/indicators/{associatedIndicatorType}``
 * ``/v2/victims/{id}/indicators/{associatedIndicatorType}/{associatedIndicator}``
-* ``/v2/victims/{uniqueId}/victimAssets``
+* ``/v2/victims/{id}/victimAssets``
 * ``/v2/victims/{id}/victimAssets/{victimAssetType}``
 * ``/v2/victims/{id}/victimAssets/{victimAssetType}/{assetId}``
 
+Custom Metric Endpoints
+^^^^^^^^^^^^^^^^^^^^^^^
+
+* ``/v2/customMetrics/``
+* ``/v2/customMetrics/{metricId}``
+* ``/v2/customMetrics/{metricId}/data``
+
 Misc Endpoints
---------------
+^^^^^^^^^^^^^^
 
 Association Type Endpoints
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""
 
 * ``/v2/types/associationTypes``
 * ``/v2/types/associationTypes/{associationType}``
 
 Batch Indicator Commit Endpoints
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""
 
 * ``/v2/batch``
 * ``/v2/batch/{id}``
 * ``/v2/batch/{id}/errors``
 
 Indicator Type Endpoints
-^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""
 
 * ``/v2/types/indicatorTypes``
 * ``/v2/types/indicatorTypes/{indicatorType}``
 
 User Information Endpoints
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""
 
 * ``/v2/whoami``
 

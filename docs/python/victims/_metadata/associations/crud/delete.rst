@@ -4,7 +4,9 @@ Delete Victim Associations
 The code snippet below demonstrates how to remove an association between a Victim and another Group. This example assumes there is a Victim with an ID of ``123456`` and an Incident with an ID of ``654321`` in the target owner. To test this code snippet, change the ``victim_id`` and ``incident_id`` variables.
 
 .. code-block:: python
-    :emphasize-lines: 28-29,31-32,34-35,37-38
+    :emphasize-lines: 1,32-33,35-36
+
+    from threatconnect.Config.ResourceType import ResourceType
 
     # replace the line below with the standard, TC script heading described here:
     # https://docs.threatconnect.com/en/latest/python/quick_start.html#standard-script-heading
