@@ -50,46 +50,46 @@ The example below demonstrates usage of the summary parameter:
 
 .. code::
 
-    /v2/indicators?filters=summary%3Dexample.com
+    GET /v2/indicators?filters=summary%3Dexample.com
 
 The example below demonstrates usage of the rating parameter:
 
 .. code::
 
-    /v2/indicators?filters=rating%3E3
+    GET /v2/indicators?filters=rating%3E3
 
 The example below demonstrates usage of the threatAssessConfidence
 parameter:
 
 .. code::
 
-    /v2/indicators/urls?filters=threatAssessConfidence%3E50
+    GET /v2/indicators/urls?filters=threatAssessConfidence%3E50
 
 The example below demonstrates usage of the organization parameter:
 
 .. code::
 
-    /v2/indicators/addresses?filters=organization%3Dmosso%20hosting
+    GET /v2/indicators/addresses?filters=organization%3Dmosso%20hosting
 
 The example below demonstrates usage of the whoisActive parameter:
 
 .. code::
 
-    /v2/indicators/hosts?filters=whoisActive%3Dtrue
+    GET /v2/indicators/hosts?filters=whoisActive%3Dtrue
 
 The example below demonstrates usage multiple parameters (with implicit
 AND):
 
 .. code::
 
-    /v2/indicators?filters=summary%3Dexample.com,dateAdded%3C20151015
+    GET /v2/indicators?filters=summary%3Dexample.com,dateAdded%3C2015-10-15
 
 The example below demonstrates usage multiple parameters (with
 parameters OR’ed):
 
 .. code::
 
-    /v2/indicators?filters=summary%3Dexample.com,dateAdded%3E20151015&orParams=true
+    GET /v2/indicators?filters=summary%3Dexample.com,dateAdded%3E2015-10-15&orParams=true
 
 The example below demonstrates how to filter based on the number of times an Indicator has been voted a False Positive:
 

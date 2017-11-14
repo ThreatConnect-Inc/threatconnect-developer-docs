@@ -42,11 +42,11 @@ The following query will return all Groups whose name is "Fancy" (``name=Fancy``
 
     GET /v2/groups/?filters=name%3DFancy
 
-For example, the following query will return all Groups that have been added since 2017-07-13 (``dateAdded>20170713``):
+For example, the following query will return all Groups that have been added since 2017-07-13 (``dateAdded>2017-07-13``):
 
 .. code::
 
-    GET /v2/groups/?filters=dateAdded%3E20170713
+    GET /v2/groups/?filters=dateAdded%3E2017-07-13
 
 The following query will return all Campaigns that have an first-seen date after 2017-07-13 (``firstSeen>2017-07-13T00:00``):
 

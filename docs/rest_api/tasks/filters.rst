@@ -69,11 +69,11 @@ The following query will return all escalated Tasks (``escalated=true``):
 
     GET /v2/tasks/?filters=escalated%3Dtrue
 
-The following query will return all Tasks with a due date after 2017-07-25 (``dueDate>20170725``):
+The following query will return all Tasks with a due date after 2017-07-25 (``dueDate>2017-07-25``):
 
 .. code::
 
-    GET /v2/tasks/?filters=dueDate%3E20170725
+    GET /v2/tasks/?filters=dueDate%3E2017-07-25
 
 The following query will return all Tasks for which a reminder has been sent (``reminded=true``):
 
