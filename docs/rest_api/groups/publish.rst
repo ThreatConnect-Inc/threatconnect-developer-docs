@@ -35,8 +35,6 @@ The ``securityLabelList`` key of the request body allows you to provide the name
       "excludeUnlabeled": false
     }
 
-.. note:: The Security Labels provided to the ``securityLabelList`` field are case insensitive. For example, providing ``tlp green`` or ``TLP Green`` will both exclude everything with the ``TLP Green`` Security Label.
-
 The ``excludeUnlabeled`` key gives you the option to exclude all items that do not have a Security Label. The following example request body would *not* publish any items that have the ``TLP Green`` or ``TLP Amber`` Labels or any items that do not have a Security Label:
 
 .. code:: json

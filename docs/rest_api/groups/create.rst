@@ -169,7 +169,7 @@ For example, the query below will add a ``TLP Amber`` Security Label to the Thre
 JSON Response:
 
 .. code:: json
-    
+
     {
       "apiCalls": 1,
       "resultCount": 0,
