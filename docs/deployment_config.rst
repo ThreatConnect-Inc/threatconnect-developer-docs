@@ -8,45 +8,147 @@ apps written in:
 -  Java
 -  JavaScript (Spaces)
 
-.. note:: This documentation is due for an update and we'll be updating it shortly. Thanks for your patience!
-
 Standard Section
 ----------------
 
-Standard section defines required and optional properties to all apps in
-ThreatConnect. The required properties are properties that must be
-provided for any packaged app installed through the ThreatConnect
-platform. The optional properties provide additional information based
-on the type of target app.
+Standard section defines required and optional properties to all apps in ThreatConnect. The required properties are properties that must be provided for any packaged app installed through the ThreatConnect platform. The optional properties provide additional information based on the type of target app.
 
 The table below lists all of the properties of the Standard section.
 
-+------------------+------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Property         | Required?                    | Allowed Values                                                                                                                                  | Description                                                                                                                                                                                                                                                                                                                                                              |
-+==================+==============================+=================================================================================================================================================+==========================================================================================================================================================================================================================================================================================================================================================================+
-| programVersion   | Yes                          | Any                                                                                                                                             | This property is the version for this app as it should be displayed to the System Settings Page under Apps.                                                                                                                                                                                                                                                              |
-+------------------+------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| programLanguage  | Yes                          | JAVA, PYTHON, or NONE                                                                                                                           | This property is the language runtime environment used by the ThreatConnect Job Executor. It is relevant for apps that run on the Job Execution Engine and can be set to NONE for Spaces apps.                                                                                                                                                                           |
-+------------------+------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| programMain      | Yes for Python and Java Apps | Any                                                                                                                                             | This property is the entry point into the app. For Python apps, it is generally the .py file (or exclude the extension if running it as a module). For Java apps, it is the main class the Job Execution Engine should use when calling the app using the Java Runtime Environment.                                                                                      |
-+------------------+------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| languageVersion  | No                           | Any                                                                                                                                             | This property is used purely for tracking purposes and does not affect the version of Python or Java used by the Job Execution Engine.                                                                                                                                                                                                                                   |
-+------------------+------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| runtimeLevel     | Yes                          | Organization, SpaceOrganization, or System                                                                                                      | This property describes the type of app and how it should be used within ThreatConnect. For further details on this property, see the "Runtime Level" section.                                                                                                                                                                                                           |
-+------------------+------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| runtimeContext   | No                           | Array of Strings: Url, Host, Address, EmailAddress, File, Threat, Incident, Email, Document, Signature, Tag, Adversary, Victim, Menu, Search    | This property is relevant for SpaceOrganization apps only. This array of Strings enables Spaces apps to be context aware. For further details on this property, see the "Runtime Context" section.                                                                                                                                                                       |
-+------------------+------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| repeatingMinutes | No                           | Array of Integers: [15,30,60,120,240,360]                                                                                                       | This property is a list of minute increments to display in the "Repeat Every…" section in the "Schedule" panel in the Job Wizard. This property is relevant only for Python and Java apps for which the developer wants to control how frequently an app can be executed. If this property is not defined, the default listing is as follows: [ 60, 120, 240, 360, 720 ] |
-+------------------+------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| allowOnDemand    | Yes                          | Boolean                                                                                                                                         | This property allows an app to display the "Run Now" button in the ThreatConnect platform when configured as a Job.                                                                                                                                                                                                                                                      |
-+------------------+------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++-------------------------------------------+-----------+--------------------------------------------------+
+| Property                                  | Required? | Allowed Values                                   |
++===========================================+===========+==================================================+
+| `allowOnDemand <#allowOnDemand>`_         | TRUE      | Boolean                                          |
++-------------------------------------------+-----------+--------------------------------------------------+
+| `apiUserTokenParam <#apiUserTokenParam>`_ | FALSE     | Boolean                                          |
++-------------------------------------------+-----------+--------------------------------------------------+
+| `displayName <#displayName>`_             | TRUE      | String                                           |
++-------------------------------------------+-----------+--------------------------------------------------+
+| `feeds <#feed-app-configuration>`_        | FALSE     | Object                                           |
++-------------------------------------------+-----------+--------------------------------------------------+
+| `languageVersion <#languageVersion>`_     | FALSE     | String                                           |
++-------------------------------------------+-----------+--------------------------------------------------+
+| `listDelimiter <#listDelimiter>`_         | FALSE     | String                                           |
++-------------------------------------------+-----------+--------------------------------------------------+
+| `minServerVersion <#minServerVersion>`_   | FALSE     | String                                           |
++-------------------------------------------+-----------+--------------------------------------------------+
+| `note <#note>`_                           | FALSE     | String                                           |
++-------------------------------------------+-----------+--------------------------------------------------+
+| `params <#parameter-array-section>`_      | TRUE      | Object                                           |
++-------------------------------------------+-----------+--------------------------------------------------+
+| `Playbook <#playbook-app-configuration>`_ | FALSE     | Array of objects                                 |
++-------------------------------------------+-----------+--------------------------------------------------+
+| `programIcon <#programIcon>`_             | FALSE     | String                                           |
++-------------------------------------------+-----------+--------------------------------------------------+
+| `programLanguage <#programLanguage>`_     | TRUE      | "JAVA", "PYTHON", or "NONE"                      |
++-------------------------------------------+-----------+--------------------------------------------------+
+| `programMain <#programMain>`_             | TRUE      | String                                           |
++-------------------------------------------+-----------+--------------------------------------------------+
+| `programVersion <#programVersion>`_       | TRUE      | String                                           |
++-------------------------------------------+-----------+--------------------------------------------------+
+| `publishOutFiles <#publishOutFiles>`_     | FALSE     | Array of strings                                 |
++-------------------------------------------+-----------+--------------------------------------------------+
+| `repeatingMinutes <#repeatingMinutes>`_   | FALSE     | Array of integers                                |
++-------------------------------------------+-----------+--------------------------------------------------+
+| `runtimeContext <#runtimeContext>`_       | FALSE     | Array of strings                                 |
++-------------------------------------------+-----------+--------------------------------------------------+
+| `runtimeLevel <#runtimeLevel>`_           | TRUE      | "Organization", "SpaceOrganization", or "System" |
++-------------------------------------------+-----------+--------------------------------------------------+
 
-Runtime Level
-~~~~~~~~~~~~~
+allowOnDemand
+^^^^^^^^^^^^^
 
-The **runtimeLevel** property allows three distinct values that dictate
-how the app is used within the ThreatConnect platform, as detailed in
-the table below.
+Required property which allows or disallows an app to be run on demand using the "Run Now" button when the app is configured as a job in the ThreatConnect platform. This property only applies to Python and Java apps.
+
+apiUserTokenParam
+^^^^^^^^^^^^^^^^^
+
+Optional property specifies whether or not the app should use an API user token (which allows access to the datastore).
+
+displayName
+^^^^^^^^^^^
+
+Required property providing the name of the app as it will appear in the ThreatConnect Platform.
+
+languageVersion
+^^^^^^^^^^^^^^^
+
+Optional property used purely for tracking purposes. It does **not** affect the version of Python or Java used by the Job Execution Engine to run the app.
+
+listDelimiter
+^^^^^^^^^^^^^
+
+Optional property to set the character that will be used to delimit the values of "Select Many" attributes that are passed into an app.
+
+minServerVersion
+^^^^^^^^^^^^^^^^
+
+Optional string property restricting the ThreatConnect instance from installing the app if it doesn’t meet this version requirement. The notation is <major>.<minor>.<patch> (example: "5.4.0").
+
+note
+^^^^
+
+Optional property available in Playbook apps under the "?" tooltip when the app parameters are being edited. Use this field to describe the purpose of the app in 2-3 sentences.
+
+programIcon
+^^^^^^^^^^^
+
+Optional property providing the icon which will be used to represent Central Spaces apps.
+
+programLanguage
+^^^^^^^^^^^^^^^
+
+Required property describing the language runtime environment used by the ThreatConnect Job Executor. It is relevant for apps that run on the Job Execution Engine (Python and Java apps) and can be set to NONE for Spaces apps.
+
+programMain
+^^^^^^^^^^^
+
+Required property providing the entry point into the app. For Python apps, it is the name of the ``.py`` file (or exclude the extension if running it as a module). For Java apps, it is the main class the Job Execution Engine should use when calling the app using the Java Runtime Environment.
+
+programVersion
+^^^^^^^^^^^^^^
+
+Required property providing the version number for the app that will be displayed "Installed Apps" section available to a system administrator. We recommend the use of `Semantic Versioning <https://semver.org/>`_. The Semantic Version notation is <major>.<minor>.<patch> (example: "1.0.1").
+
+publishOutFiles
+^^^^^^^^^^^^^^^
+
+Optional field available for job-style apps that can be scheduled to serve files. If this array is populated, the app is responsible for writing the files to the relative "tc_output_path" parameter passed in. This will enable HTTP-based file serving of these files for as a unique URL available to the user in ThreatConnect. This parameter accepts an array of strings and can include file globs.
+
+repeatingMinutes
+^^^^^^^^^^^^^^^^
+
+Optional property which provides a list of minute increments to display in the "Repeat Every…" section in the "Schedule" panel in the Job Wizard. This property is relevant only for Python and Java apps for which the developer wants to control how frequently an app can be executed. If this property is not defined, the default listing is as follows: [60, 120, 240, 360, 720] .
+
+runtimeContext
+^^^^^^^^^^^^^^
+
+Optional property enabling Spaces apps to be context-aware (context-aware Spaces apps can be added to the **Details** page of an object in the ThreatConnect platform). Because this property is an array of strings, the app can be displayed in Spaces under multiple contexts within the ThreatConnect platform, including the **Menu** and **Search** pages. This property is only relevant to spaces apps.
+
+.. note:: Context-aware Spaces apps are passed contextual information via the URL query string when the app is displayed in the ThreatConnect platform. The details of those parameters are out of scope for this document.
+
+The available runtime contexts are:
+
+* Address
+* Adversary
+* Document
+* Email
+* EmailAddress
+* File
+* Host
+* Incident
+* Menu
+* Search
+* Signature
+* Tag
+* Threat
+* URL
+* Victim
+
+runtimeLevel
+^^^^^^^^^^^^
+
+Required property which dictates how the app is used within the ThreatConnect platform, as detailed in the table below.
 
 +-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Value             | Description                                                                                                                                                                                                                                                                                          |
@@ -58,71 +160,175 @@ the table below.
 | System            | Although not commonly used, the System level is a Python or Java app that is strictly visible by the System Admin. This app can be scheduled only in a System Job.                                                                                                                                   |
 +-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-Runtime Context
-~~~~~~~~~~~~~~~
+Feed App Configuration
+----------------------
 
-The **runtimeContext** property enables Spaces apps to be context aware.
-Users are able to add context-aware Spaces apps to their Spaces in the
-respective **Details** page of the ThreatConnect platform. Because this
-property is an array of Strings, the app can be displayed in multiple
-Spaces within the ThreatConnect platform, including the **Menu** and
-**Search** pages.
++-----------------------------------------------------+-----------+----------------+
+| Property                                            | Required? | Allowed Values |
++=====================================================+===========+================+
+| `attributesFile <#attributesFile>`_                 | FALSE     | String         |
++-----------------------------------------------------+-----------+----------------+
+| `documentStorageLimitMb <#documentStorageLimitMb>`_ | FALSE     | Integer        |
++-----------------------------------------------------+-----------+----------------+
+| `enableBulkJson <#enableBulkJson>`_                 | FALSE     | Boolean        |
++-----------------------------------------------------+-----------+----------------+
+| `indicatorLimit <#indicatorLimit>`_                 | FALSE     | Integer        |
++-----------------------------------------------------+-----------+----------------+
+| `jobFile <#jobFile>`_                               | FALSE     | String         |
++-----------------------------------------------------+-----------+----------------+
+| `sourceCategory <#sourceCategory>`_                 | FALSE     | String         |
++-----------------------------------------------------+-----------+----------------+
+| `sourceDescription <#sourceDescription>`_           | FALSE     | String         |
++-----------------------------------------------------+-----------+----------------+
+| `sourceName <#sourceName>`_                         | FALSE     | String         |
++-----------------------------------------------------+-----------+----------------+
 
-NOTE: Context-aware Spaces apps are passed contextual information via
-the URL query string when the app is displayed in the ThreatConnect
-platform. The details of those parameters are out of scope for this
-document.
+attributesFile
+^^^^^^^^^^^^^^
+
+Optional property which provides the name of the CSV file with any of the custom attributes required for the feed.
+
+documentStorageLimitMb
+^^^^^^^^^^^^^^^^^^^^^^
+
+Optional property to set the Document storage limit.
+
+enableBulkJson
+^^^^^^^^^^^^^^
+
+Optional property which turns on or off bulk JSON capability.
+
+indicatorLimit
+^^^^^^^^^^^^^^
+
+Optional property which sets the Indicator limit.
+
+jobFile
+^^^^^^^
+
+Optional property to provide the name of the JSON file which is used to setup and run the job to pull in content from the feed.
+
+sourceCategory
+^^^^^^^^^^^^^^
+
+Optional property to specify how to source should be categorized.
+
+sourceDescription
+^^^^^^^^^^^^^^^^^
+
+Optional property providing the source's description as it will appear in ThreatConnect.
+
+sourceName
+^^^^^^^^^^
+
+Optional property providing the name of the source in which the feed's content will be created.
 
 Parameter Array Section
 -----------------------
 
-The Parameter Array section of the **install.json** file is the
-mechanism used by the Job Execution engine and the Spaces framework to
-pass configuration data at runtime. For Java and Python apps, the
-entries defined in this section dictate the **Parameters** panel in the
-Job Wizard in the ThreatConnect platform. Spaces apps have their own
-configuration screen as part of the user’s Space for each app.
+The Parameter Array section of the **install.json** file is the mechanism used by the Job Execution engine and the Spaces framework to pass configuration data at runtime. For Java and Python apps, the entries defined in this section dictate the **Parameters** panel in the Job Wizard in the ThreatConnect platform. Spaces apps have their own configuration screen as part of the user’s Space for each app.
 
-The table below highlights the Parameter Array properties (the
-**params** array).
+.. note:: In Python, parameters are called by using the "--param <value>" syntax handled by the argparse library. For Java apps, the system environment arguments are passed by using the "-Dparam=<value>" syntax. Discussion of app argument parsing is out of scope for this document.
 
-+---------------+----------+--------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Property      | Required | Allowed Values                       | Description                                                                                                                                                                                                                                                                                                                                                                              |
-+===============+==========+======================================+==========================================================================================================================================================================================================================================================================================================================================================================================+
-| name          | Yes      | Any                                  | This property is the internal parameter name taken from the Job Wizard and passed to the app at runtime. It is the effective command-line argument name passed to the app.                                                                                                                                                                                                               |
-+---------------+----------+--------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| label         | Yes      | Any                                  | This property is a description of the parameter displayed in the ThreatConnect platform Job Wizard or Spaces Config dialog box.                                                                                                                                                                                                                                                          |
-+---------------+----------+--------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| sequence      | No       | Integer                              | This property is the number used to control the ordering of the parameters in the Job Wizard or Spaces Config dialog box. If it is not defined, the order of the parameters in the install.json file is used.                                                                                                                                                                            |
-+---------------+----------+--------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| required      | No       | Boolean                              | This property designates this parameter as a required field that must be populated to save the Job. Required parameters would fail an app at runtime or cause unexpected results.                                                                                                                                                                                                        |
-+---------------+----------+--------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| default       | No       | Any                                  | This property is the default value pre-populated for new Jobs or Spaces. The purpose of a default value is to provide the user with a guidance while allowing edits based on preference.                                                                                                                                                                                                 |
-+---------------+----------+--------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| type          | No       | String, Choice, MultiChoice, Boolean | Data types enable the UI to display relevant components and allow the Job Executor to adapt how parameters are passed to an app at runtime. For further details on this parameter, see the "Type Parameter" section.                                                                                                                                                                     |
-+---------------+----------+--------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| encrypt       | No       | Boolean                              | This property designates this parameter as an encrypted value. Parameters defined as encrypted will be managed by the Keychain feature that encrypts password while at rest. This flag should be used with the "String" type and will render a password input textbox in the Job and Spaces configuration.                                                                               |
-+---------------+----------+--------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| allowMultiple | No       | Boolean                              | The value of this property is automatically set to "true" if the "MultiChoice" type is used. If a "String" type is used, this flag allows the user to define multiple values in a single input field delimited by a pipe ("\|") character.                                                                                                                                               |
-+---------------+----------+--------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| validValues   | No       | String Array                         | This property is used with the "Choice" and "MultiChoice" types to restrict the possible values a user can select. For instance, to define a "loggingLevel" parameter, this field could have the following values: ["FATAL", "ERROR", "WARN", "INFO", "DEBUG", "TRACE"].                                                                                                                 |
-+---------------+----------+--------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| hidden        | No       | Boolean                              | If this property is set to "true", this parameter will be hidden from the Job Wizard. Hidden parameters allow the developer to persist parameters between job executions without the need to render the values in the Job Wizard. This option is valid only for Python and Java apps. Further details on persisting parameters from the app directly are out of scope for this document. |
-+---------------+----------+--------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| setup         | No       | Boolean                              | This property is reserved for the App Profiles feature. Further details on this feature are out of scope for this document.                                                                                                                                                                                                                                                              |
-+---------------+----------+--------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+The table below highlights the Parameter array properties (the **params** array).
 
-NOTE: In Python, parameters are called by using the "--param <value>"
-syntax handled by the argparse library. For Java apps, the system
-environment arguments are passed by using the "-Dparam=<value>" syntax.
-Discussion of app argument parsing is out of scope for this document.
++-----------------------------------------+-----------+------------------------------+
+| Property                                | Required? | Allowed Values               |
++=========================================+===========+==============================+
+| `allowMultiple <#allowMultiple>`_       | FALSE     | Boolean                      |
++-----------------------------------------+-----------+------------------------------+
+| `default <#default>`_                   | FALSE     | Boolean or Integer or String |
++-----------------------------------------+-----------+------------------------------+
+| `encrypt <#encrypt>`_                   | FALSE     | Boolean                      |
++-----------------------------------------+-----------+------------------------------+
+| `hidden <#hidden>`_                     | FALSE     | Boolean                      |
++-----------------------------------------+-----------+------------------------------+
+| `label <#label>`_                       | TRUE      | String                       |
++-----------------------------------------+-----------+------------------------------+
+| `name <#name>`_                         | TRUE      | String                       |
++-----------------------------------------+-----------+------------------------------+
+| `note <#note-parameter>`__              | FALSE     | String                       |
++-----------------------------------------+-----------+------------------------------+
+| `PlaybookDataType <#PlaybookDataType>`_ | FALSE     | Array                        |
++-----------------------------------------+-----------+------------------------------+
+| `required <#required>`_                 | FALSE     | Boolean                      |
++-----------------------------------------+-----------+------------------------------+
+| `sequence <#sequence>`_                 | FALSE     | Integer                      |
++-----------------------------------------+-----------+------------------------------+
+| `type <#type>`_                         | TRUE      | String                       |
++-----------------------------------------+-----------+------------------------------+
+| `validValues <#validValues>`_           | FALSE     | Array                        |
++-----------------------------------------+-----------+------------------------------+
+| `viewRows <#viewRows>`_                 | FALSE     | Integer                      |
++-----------------------------------------+-----------+------------------------------+
 
-Type Parameter
-~~~~~~~~~~~~~~
+allowMultiple
+^^^^^^^^^^^^^
 
-The **type** parameter serves a dual purpose in the ThreatConnect
-platform, depending on the actual type defined. The table below lists
-the available types and how they affect elements within the platform.
+The value of this optional property is automatically set to "true" if the "MultiChoice" type is used. If a "String" type is used, this flag allows the user to define multiple values in a single input field delimited by a pipe ("|") character.
+
+default
+^^^^^^^
+
+Optional property which is the default value pre-populated for new Jobs or Spaces. The purpose of a default value is to provide the user with a guidance while allowing edits based on preference.
+
+encrypt
+^^^^^^^
+
+This optional property designates this parameter as an encrypted value. Parameters defined as encrypted will be managed by the Keychain feature that encrypts password while at rest. This flag should be used with the "String" type and will render a password input textbox in the Job and Spaces configuration.
+
+hidden
+^^^^^^
+
+If this optional property is set to "true", this parameter will be hidden from the Job Wizard. Hidden parameters allow the developer to persist parameters between job executions without the need to render the values in the Job Wizard. This option is valid only for Python and Java apps. Further details on persisting parameters from the app directly are out of scope for this document.
+
+label
+^^^^^
+
+Required property providing a description of the parameter displayed in the ThreatConnect platform Job Wizard or Spaces Config dialog box.
+
+name
+^^^^
+
+Required property is the internal parameter name taken from the Job Wizard and passed to the app at runtime. It is the effective command-line argument name passed to the app.
+
+note Parameter
+^^^^^^^^^^^^^^
+
+Optional parameter description field available in Playbook apps under the “?” tooltip when the app parameters are being edited. Use this field to describe the purpose of the parameter in 2-3 sentences.
+
+PlaybookDataType
+^^^^^^^^^^^^^^^^
+
+Optional property restricting the data type of incoming playbook variables. This is different than the ``type`` property that controls the UI input type. The playbook data type can be any standard or custom type and is expected to be an array of strings.
+
+As of ThreatConnect 5.4, the standard Playbook types supported by the Python and Java SDK are:
+
+* String
+* StringArray
+* Binary
+* BinaryArray
+* KeyValue
+* KeyValueArray
+* TCEntity
+* TCEntityArray
+* TCEnhancedEntity
+* TCEnhancedEntityArray
+
+required
+^^^^^^^^
+
+Optional property designating this parameter as a required field that must be populated to save the Job or Playbook app.
+
+sequence
+^^^^^^^^
+
+Optional number used to control the ordering of the parameters in the Job Wizard or Spaces Config dialog box. If it is not defined, the order of the parameters in the install.json file is used.
+
+type
+^^^^
+
+Required property to enable the UI to display relevant components and allow the Job Executor to adapt how parameters are passed to an app at runtime. The table below lists the available types and how they affect elements within the platform.
 
 +-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Type        | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
@@ -136,6 +342,89 @@ the available types and how they affect elements within the platform.
 | Boolean     | This type renders an HTML Checkbox in the Job Wizard or Spaces configuration dialog box. This allows the user to turn on a flag as a parameter. Values are passed as a "--flag" style parameter to Python apps. (See the "action='store_true'" option in the argparse module.) Java and Spaces apps receive the actual Boolean value "true" or "false". These apps should parse the string to resolve the Boolean flag value.                                                                                                                                                                                                                                                      |
 +-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
+validValues
+^^^^^^^^^^^
+
+Optional property to be used with the "Choice" and "MultiChoice" types to restrict the possible values a user can select. For instance, to define a "loggingLevel" parameter, this field could have the following values: ["CRITICAL", "ERROR", "WARN", "INFO", "DEBUG", "TRACE"].
+
+viewRows
+^^^^^^^^
+
+Optional property for Playbook apps to control the height of the display in the input parameter. Expects an integer value. A value of 1 is default (and will show a text input element) and anything greater than one displays a textarea input when editing the Playbook app in ThreatConnect.
+
+Playbook App Configuration
+--------------------------
+
++---------------------------------------+-----------+----------------+
+| Property                              | Required? | Allowed Values |
++=======================================+===========+================+
+| `outputVariables <#outputVariables>`_ | FALSE     | Array          |
++---------------------------------------+-----------+----------------+
+| `retry <#retry>`_                     | FALSE     | Object         |
++---------------------------------------+-----------+----------------+
+
+outputVariables
+^^^^^^^^^^^^^^^
+
+The optional ``outputVariables`` property specifies the variables that a Playbook app will provide for downstream Playbooks.
+
++----------------------------------+-----------+----------------+
+| Property                         | Required? | Allowed Values |
++==================================+===========+================+
+| `name <#output-variable-name>`__ | TRUE      | String         |
++----------------------------------+-----------+----------------+
+| `type <#output-variable-type>`__ | TRUE      | String         |
++----------------------------------+-----------+----------------+
+
+Output Variable Name
+""""""""""""""""""""
+
+Required property providing the name of the output variable which is accessible to downstream apps.
+
+Output Variable Type
+""""""""""""""""""""
+
+Required property specifying the type of the output variable. The valid types are:
+
+* Binary
+* BinaryArray
+* KeyValue
+* KeyValueArray
+* String
+* StringArray
+* TCEntity
+* TCEntityArray
+
+retry
+^^^^^
+
+The optional ``retry`` property can be used to allow a Playbook to retry its execution in case of failure.
+
++-----------------------------------------------+-----------+----------------+
+| Property                                      | Required? | Allowed Values |
++===============================================+===========+================+
+| `allowed <#allowed>`_                         | FALSE     | Boolean        |
++-----------------------------------------------+-----------+----------------+
+| `defaultDelayMinutes <#defaultDelayMinutes>`_ | FALSE     | Integer        |
++-----------------------------------------------+-----------+----------------+
+| `defaultMaxRetries <#defaultMaxRetries>`_     | FALSE     | Integer        |
++-----------------------------------------------+-----------+----------------+
+
+allowed
+"""""""
+
+Optional property which specifies whether or not the Playbook app can retry its execution.
+
+defaultDelayMinutes
+"""""""""""""""""""
+
+Optional property which specifies the number of minutes between each new retry in case of failure. This property assumes that the ``allowed`` property is set true to allow the app to retry.
+
+defaultMaxRetries
+"""""""""""""""""
+
+Optional property which specifies the maximum number of times the Playbook app can retry in case of failure. This property assumes that the ``allowed`` property is set true to allow the app to retry.
+
 Variable Expression
 -------------------
 
@@ -148,7 +437,7 @@ expressions are allowed only in the **params** section of the
 **install.json** file.
 
 Internal Variables
-~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^
 
 Internal variables are predefined (reserved) variables that can be
 explicitly declared in the **install.json** file. Apps declaring these
@@ -171,15 +460,15 @@ Example of a validValues parameter definition example:
 The variables listed in the table below are internal variables
 understood by the ThreatConnect platform.
 
-+------------+------------------+------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Variable   | Resolves As Type | Example of Usage                               | Description                                                                                                                                                                                                                                                                                                                                                                                                             |
-+============+==================+================================================+=========================================================================================================================================================================================================================================================================================================================================================================================================================+
-| OWNERS     | String Array     | ["${OWNERS}"]                                  | The OWNERS variable resolves to the available owners to which the current user has access. Since this determination is dynamically resolved at runtime, the owners rendered depend on the user. This variable is useful when an app needs to have a defined owner passed as a parameter. The string value of the owner(s) is passed as an argument to the app.                                                          |
-+------------+------------------+------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ATTRIBUTES | String Array     | ["${ATTRIBUTES}"] or ["${ATTRIBUTES:<type>}"]  | The ATTRIBUTES variable resolves to attributes the current organization has available. This variable has a second, optional component, :<type>, that further refines the attributes resolved to the specific Indicator or Group type (for example: ["${ATTRIBUTES:Address}"]). The string value of the attribute(s) is passed as an argument to the app.                                                                |
-+------------+------------------+------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| INDICATORS | String Array     | ["${INDICATOR_TYPES}"]                         | The INDICATOR_TYPES variable resolves to all of the indicator types available in the given instance of ThreatConnect. The string value of the indicator type(s) is passed as an argument to the app.                                                                                                                                                                                                                    |
-+------------+------------------+------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++------------+------------------+-----------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Variable   | Resolves As Type | Example of Usage                              | Description                                                                                                                                                                                                                                                                                                                                                    |
++============+==================+===============================================+================================================================================================================================================================================================================================================================================================================================================================+
+| OWNERS     | String Array     | ["${OWNERS}"]                                 | The OWNERS variable resolves to the available owners to which the current user has access. Since this determination is dynamically resolved at runtime, the owners rendered depend on the user. This variable is useful when an app needs to have a defined owner passed as a parameter. The string value of the owner(s) is passed as an argument to the app. |
++------------+------------------+-----------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ATTRIBUTES | String Array     | ["${ATTRIBUTES}"] or ["${ATTRIBUTES:<type>}"] | The ATTRIBUTES variable resolves to attributes the current organization has available. This variable has a second, optional component, :<type>, that further refines the attributes resolved to the specific Indicator or Group type (for example: ["${ATTRIBUTES:Address}"]). The string value of the attribute(s) is passed as an argument to the app.       |
++------------+------------------+-----------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| INDICATORS | String Array     | ["${INDICATOR_TYPES}"]                        | The INDICATOR_TYPES variable resolves to all of the indicator types available in the given instance of ThreatConnect. The string value of the indicator type(s) is passed as an argument to the app.                                                                                                                                                           |
++------------+------------------+-----------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 When the ``$ATTRIBUTES`` internal variable is used with a ``:<type>`` suffix, the type can be any of the Indicator, Group, Task, or Victim types in the ThreatConnect platform:
 
@@ -199,16 +488,13 @@ When the ``$ATTRIBUTES`` internal variable is used with a ``:<type>`` suffix, th
 * Victim: ``["${ATTRIBUTES:Victim}"]``
 
 External Variables
-~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^
 
 External variables offer the user an additional level of convenience by
 directing the Job Wizard and Spaces configuration dialog box to take
 advantage of the Variables feature.
 
-NOTE: The Variables feature in the ThreatConnect platform allows any
-user to create variable key/value pairs. Once created, these values can
-be selected by the user in the Job Wizard or Spaces configuration dialog
-box to reduce the need to copy and paste keys and plain-text data.
+.. note:: The Variables feature in the ThreatConnect platform allows any user to create variable key/value pairs. Once created, these values can be selected by the user in the Job Wizard or Spaces configuration dialog box to reduce the need to copy and paste keys and plain-text data.
 
 Since the variable names are not known by the app developer, the generic
 form of the variables is referenced instead in a **<level:type>**
@@ -235,8 +521,236 @@ any of the options listed in the table below.
 | System       | This option displays the list of system variables available to the current user in the Job Wizard or Spaces configuration dialog box.       |
 +--------------+---------------------------------------------------------------------------------------------------------------------------------------------+
 
-Multiple external-variable expressions can be included in string array
-form.
+Multiple external-variable expressions can be included in string array form.
+
+install.json Schema
+-------------------
+
+.. code-block:: json
+
+    {
+      "additionalProperties": false,
+      "properties": {
+        "allowOnDemand": {
+          "type": "boolean"
+        },
+        "apiUserTokenParam": {
+          "type": "boolean"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "feeds": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "attributesFile": {
+                "type": "string"
+              },
+              "enableBulkJson": {
+                "type": "boolean"
+              },
+              "documentStorageLimitMb": {
+                "type": "integer"
+              },
+              "indicatorLimit": {
+                "type": "integer"
+              },
+              "jobFile": {
+                "type": "string"
+              },
+              "sourceCategory": {
+                "type": "string"
+              },
+              "sourceDescription": {
+                "type": "string"
+              },
+              "sourceName": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "languageVersion": {
+          "type": "string"
+        },
+        "listDelimiter": {
+          "type": "string"
+        },
+        "minServerVersion": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        },
+        "params": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "allowMultiple": {
+                "type": "boolean"
+              },
+              "default": {
+                "type": [
+                  "boolean",
+                  "integer",
+                  "string"
+                ]
+              },
+              "encrypt": {
+                "type": "boolean"
+              },
+              "hidden": {
+                "type": "boolean"
+              },
+              "label": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "note": {
+                "type": "string"
+              },
+              "PlaybookDataType": {
+                "items": {
+                  "enum": [
+                    "Any",
+                    "Binary",
+                    "BinaryArray",
+                    "KeyValue",
+                    "KeyValueArray",
+                    "String",
+                    "StringArray",
+                    "TCEntity",
+                    "TCEntityArray"
+                  ]
+                },
+                "type": "array"
+              },
+              "required": {
+                "type": "boolean"
+              },
+              "sequence": {
+                "type": "integer"
+              },
+              "type": {
+                "enum": [
+                  "Boolean",
+                  "Choice",
+                  "KeyValueList",
+                  "MultiChoice",
+                  "String",
+                  "StringMixed"
+                ],
+                "type": "string"
+              },
+              "validValues": {
+                "type": "array"
+              },
+              "viewRows": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "label",
+              "name",
+              "type"
+            ],
+            "type": "object"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "Playbook": {
+          "properties": {
+            "outputVariables": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "enum": [
+                      "Binary",
+                      "BinaryArray",
+                      "KeyValue",
+                      "KeyValueArray",
+                      "String",
+                      "StringArray",
+                      "TCEntity",
+                      "TCEntityArray"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "type"
+                ],
+                "type": "object"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "retry": {
+              "additionalProperties": false,
+              "properties": {
+                "allowed": {
+                  "type": "boolean"
+                },
+                "defaultDelayMinutes": {
+                  "type": "integer"
+                },
+                "defaultMaxRetries": {
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "programIcon": {
+          "type": "string"
+        },
+        "programLanguage": {
+          "type": "string"
+        },
+        "programMain": {
+          "type": "string"
+        },
+        "programVersion": {
+          "type": "string"
+        },
+        "publishOutFiles": {
+          "type": "array"
+        },
+        "repeatingMinutes": {
+          "type": "array"
+        },
+        "runtimeContext": {
+          "type": "array"
+        },
+        "runtimeLevel": {
+          "type": [
+            "array",
+            "string"
+          ]
+        }
+      },
+      "required": [
+        "allowOnDemand",
+        "displayName",
+        "params",
+        "programLanguage",
+        "programMain",
+        "programVersion",
+        "runtimeLevel"
+      ],
+      "type": "object"
+    }
 
 Example JSON File
 -----------------
