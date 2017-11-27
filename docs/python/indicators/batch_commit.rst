@@ -34,12 +34,12 @@ The code snippet below assumes that indicator data is formatted in the same way 
             'attribute': [
                 {
                     'type': 'Source',
-                    'value': 'SEIM log - 13/01/2017"
+                    'value': 'SEIM log - 13/01/2017'
                 }
             ],
             'tag': [
                 {
-                    'name': 'MyTag"
+                    'name': 'MyTag'
                 }
             ]
         }
@@ -101,7 +101,7 @@ The code snippet below assumes that indicator data is formatted in the same way 
                 if batch_job.status == 'Completed':
                     finished_batches.append(batch_job)
                     batch_job_ids.remove(batchId)
-                    print('Finished batch job {0}: succeeded: {1}, "
+                    print('Finished batch job {0}: succeeded: {1}, ' +
                           'failed: {2}, unprocessed: {3}'.format(batchId, batch_job.success_count, batch_job.error_count, batch_job.unprocess_count))
 
     # now that all of the Batch Jobs have finished, get some statistics on them
@@ -129,7 +129,7 @@ The code snippet below assumes that indicator data is formatted in the same way 
                 print('Batch Job {0} errors: {1}'.format(batch_job.id, batch_job.errors))
 
     # print the final statistics of the Batch Jobs
-    print('All batch jobs completed, totals:  "
+    print('All batch jobs completed, totals: ' +
           'succeeded: {0}, failed: {1}, unprocessed: {2}'.format(success_total, error_total, unprocess_total))
 
 **Supported Functions and Properties**

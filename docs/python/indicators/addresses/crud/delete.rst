@@ -31,7 +31,7 @@ The example below demonstrates how to delete an Address Indicator from the Threa
         assert len(indicators) == 1
     except AssertionError as e:
         # if the indicator doesn't exist in the given owner, raise an error
-        print('AssertionError: The indicator {0} was not found in the '{1}' owner. '.format(indicator, owner) +
+        print('AssertionError: The indicator {0} was not found in the "{1}" owner. '.format(indicator, owner) +
               'Try changing the `owner` variable to the name of an owner in your instance of ThreatConnect ' +
               'or make sure that the {0} indicator specified by the `indicator` '.format(indicator) +
               'variable exists in that owner.')
