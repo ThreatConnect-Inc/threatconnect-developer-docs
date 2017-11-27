@@ -23,14 +23,14 @@ Before you can find custom Indicators of a certain type, you need to identify wh
 
     # iterate through the custom indicator types and 
     for indicatorType in indicatorParser.custom_indicator_types:
-        print("Name: {}".format(indicatorType.name))
-        print("API Entity: {}".format(indicatorType.api_entity))
+        print('Name: {}'.format(indicatorType.name))
+        print('API Entity: {}'.format(indicatorType.api_entity))
 
         # print the fields returned for the given indicator type (and the fields required to create it)
-        print("API Fields:")
+        print('API Fields:')
         for field in indicatorType.fields:
-            print("    - {} (type: {})".format(field.label, field.type))
-        print("")
+            print('    - {} (type: {})'.format(field.label, field.type))
+        print('')
 
 Running the script above on the ThreatConnect public cloud (`https://app.threatconnect.com/ <https://app.threatconnect.com/>`_) returns the following:
 

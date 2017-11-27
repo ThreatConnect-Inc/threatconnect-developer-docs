@@ -36,7 +36,7 @@ Creating ASN Indicators
     indicators = tc.indicators()
 
     # add the indicator
-    indicator = indicators.add({'AS Number': "ASN1234"}, type=IndicatorType.CUSTOM_INDICATORS, api_entity='asn')
+    indicator = indicators.add({'AS Number': 'ASN1234'}, type=IndicatorType.CUSTOM_INDICATORS, api_entity='asn')
 
     # create the indicator
     indicator.commit()
@@ -60,7 +60,7 @@ Creating CIDR Indicators
     indicators = tc.indicators()
 
     # add the indicator
-    indicator = indicators.add({'Block': "192.168.0.1/28"}, type=IndicatorType.CUSTOM_INDICATORS, api_entity='cidrBlock')
+    indicator = indicators.add({'Block': '192.168.0.1/28'}, type=IndicatorType.CUSTOM_INDICATORS, api_entity='cidrBlock')
 
     # create the indicator
     indicator.commit()
@@ -84,7 +84,7 @@ Creating Mutex Indicators
     indicators = tc.indicators()
 
     # add the indicator
-    indicator = indicators.add({'Mutex': "test mutex"}, type=IndicatorType.CUSTOM_INDICATORS, api_entity='mutex')
+    indicator = indicators.add({'Mutex': 'test mutex'}, type=IndicatorType.CUSTOM_INDICATORS, api_entity='mutex')
 
     # create the indicator
     indicator.commit()
@@ -108,7 +108,7 @@ Creating Registry Key Indicators
     indicators = tc.indicators()
 
     # add the indicator
-    indicator = indicators.add({'Key Name': "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Hardware Profiles\Current", 'Value Name': "Autopopulate", 'Value Type': "REG_DWORD"}, type=IndicatorType.CUSTOM_INDICATORS, api_entity='registryKey')
+    indicator = indicators.add({'Key Name': 'HKEY_LOCAL_MACHINE\System\CurrentControlSet\Hardware Profiles\Current', 'Value Name': 'Autopopulate', 'Value Type': 'REG_DWORD'}, type=IndicatorType.CUSTOM_INDICATORS, api_entity='registryKey')
 
     # create the indicator
     indicator.commit()
@@ -132,7 +132,7 @@ Creating User Agent Indicators
     indicators = tc.indicators()
 
     # add the indicator
-    indicator = indicators.add({'User Agent String': "PeachWebKit/100.00 (KHTML, like Nothing Else)"}, type=IndicatorType.CUSTOM_INDICATORS, api_entity='userAgent')
+    indicator = indicators.add({'User Agent String': 'PeachWebKit/100.00 (KHTML, like Nothing Else)'}, type=IndicatorType.CUSTOM_INDICATORS, api_entity='userAgent')
 
     # create the indicator
     indicator.commit()

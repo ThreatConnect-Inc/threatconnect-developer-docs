@@ -38,7 +38,7 @@ The code snippet below demonstrates how to update an Indicator's attribute. This
             print(attribute.id)
 
             # if the current attribute is a description attribute, update the value of the description
-            if attribute.type == "Description":
+            if attribute.type == 'Description':
                 indicator.update_attribute(attribute.id, 'Updated Description')
 
         # commit the changes

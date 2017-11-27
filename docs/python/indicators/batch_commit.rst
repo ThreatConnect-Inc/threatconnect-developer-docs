@@ -25,21 +25,21 @@ The code snippet below assumes that indicator data is formatted in the same way 
     #
     indicators = [
         {
-            "rating": 3,
-            "confidence": 75,
-            "description": "Malicious domain",
-            "summary": "example.com",
-            "type": "Host",
-            "associatedGroup": [12345, 54321],
-            "attribute": [
+            'rating': 3,
+            'confidence': 75,
+            'description': 'Malicious domain',
+            'summary': 'example.com',
+            'type': 'Host',
+            'associatedGroup': [12345, 54321],
+            'attribute': [
                 {
-                    "type": "Source",
-                    "value": "SEIM log - 13/01/2017"
+                    'type': 'Source',
+                    'value': 'SEIM log - 13/01/2017"
                 }
             ],
-            "tag": [
+            'tag': [
                 {
-                    "name": "MyTag"
+                    'name': 'MyTag"
                 }
             ]
         }
@@ -68,10 +68,10 @@ The code snippet below assumes that indicator data is formatted in the same way 
     try:
         # commit the Batch Job
         batch_job.commit()
-        print("Created batchjob %s" % batch_job.id)
+        print('Created batchjob %s' % batch_job.id)
         batch_job_ids.append(batch_job.id)
     except RuntimeError as e:
-        print("Error creating Batch Job: {}".format(e))
+        print('Error creating Batch Job: {}'.format(e))
         sys.exit(1)
 
     finished_batches = []
@@ -82,7 +82,7 @@ The code snippet below assumes that indicator data is formatted in the same way 
         # sleep for the poll_time
         time.sleep(poll_time)
         total_time += poll_time
-        print("polling (total wait time {0} seconds)".format(int(total_time)))
+        print('polling (total wait time {0} seconds)'.format(int(total_time)))
 
         # retrieve all of the Batch Jobs
         batch_jobs = dst_tc.batch_jobs()
@@ -101,8 +101,8 @@ The code snippet below assumes that indicator data is formatted in the same way 
                 if batch_job.status == 'Completed':
                     finished_batches.append(batch_job)
                     batch_job_ids.remove(batchId)
-                    print("Finished batch job {0}: succeeded: {1}, "
-                          "failed: {2}, unprocessed: {3}".format(batchId, batch_job.success_count, batch_job.error_count, batch_job.unprocess_count))
+                    print('Finished batch job {0}: succeeded: {1}, "
+                          'failed: {2}, unprocessed: {3}'.format(batchId, batch_job.success_count, batch_job.error_count, batch_job.unprocess_count))
 
     # now that all of the Batch Jobs have finished, get some statistics on them
     success_total = 0
@@ -126,11 +126,11 @@ The code snippet below assumes that indicator data is formatted in the same way 
             # print some more details about the errors
             batch_job.download_errors()
             for error in batch_job.errors:
-                print("Batch Job {0} errors: {1}".format(batch_job.id, batch_job.errors))
+                print('Batch Job {0} errors: {1}'.format(batch_job.id, batch_job.errors))
 
     # print the final statistics of the Batch Jobs
-    print("All batch jobs completed, totals:  "
-          "succeeded: {0}, failed: {1}, unprocessed: {2}".format(success_total, error_total, unprocess_total))
+    print('All batch jobs completed, totals:  "
+          'succeeded: {0}, failed: {1}, unprocessed: {2}'.format(success_total, error_total, unprocess_total))
 
 **Supported Functions and Properties**
 

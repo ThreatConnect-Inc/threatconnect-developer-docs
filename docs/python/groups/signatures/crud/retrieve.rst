@@ -77,10 +77,10 @@ of **EXAMPLE**.
 
     owner = 'Example Community'
 
-    # set a filter to only retrieve Signatures in the 'Example Community' tagged: 'APT'
+    # set a filter to only retrieve Signatures in the 'Example Community' tagged: 'Nation State'
     filter1 = signatures.add_filter()
     filter1.add_owner(owner)
-    filter1.add_tag('APT')
+    filter1.add_tag('Nation State')
 
     try:
         # retrieve the Signatures

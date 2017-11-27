@@ -39,7 +39,7 @@ This example demonstrates how to retrieve a specific Adversary using the Adversa
 Retrieving Multiple Adversaries
 """""""""""""""""""""""""""""""
 
-This example demonstrates how to retrieve Adversaries while applying filters. Two filters are added: one for the Owner and another for a Tag. The result set returned from this example will contain all Adversaries in the "Example Community" Owner that have the **APT** Tag.
+This example demonstrates how to retrieve Adversaries while applying filters. Two filters are added: one for the Owner and another for a Tag. The result set returned from this example will contain all Adversaries in the "Example Community" Owner that have the **Nation State** Tag.
 
 .. code-block:: python
     :emphasize-lines: 12-15,18-19
@@ -55,10 +55,10 @@ This example demonstrates how to retrieve Adversaries while applying filters. Tw
 
     owner = 'Example Community'
 
-    # set a filter to only retrieve Adversaries in the 'Example Community' tagged: 'APT'
+    # set a filter to only retrieve Adversaries in the 'Example Community' tagged: 'Nation State'
     filter1 = adversaries.add_filter()
     filter1.add_owner(owner)
-    filter1.add_tag('APT')
+    filter1.add_tag('Nation State')
 
     try:
         # retrieve the Adversaries

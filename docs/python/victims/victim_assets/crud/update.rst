@@ -39,7 +39,7 @@ The example below demonstrates how to update the Victim Assets of an existing Vi
         # iterate through the Victim's assets
         for asset in victim.assets:
             # if the asset is an email address asset, update it
-            if asset.type == "EmailAddress":
+            if asset.type == 'EmailAddress':
                 # create a new Victim asset object
                 new_asset = VictimAssetObject(ResourceType.VICTIM_EMAIL_ADDRESSES)
                 new_asset.set_address('victim2@example.com')

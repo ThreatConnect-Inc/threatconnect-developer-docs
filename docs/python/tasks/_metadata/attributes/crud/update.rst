@@ -41,7 +41,7 @@ The code snippet below demonstrates how to update a Task's attribute. This examp
             print(attribute.id)
 
             # if the current attribute is a description attribute, update the value of the description
-            if attribute.type == "Description":
+            if attribute.type == 'Description':
                 task.update_attribute(attribute.id, 'Updated Description')
 
         # commit the changes

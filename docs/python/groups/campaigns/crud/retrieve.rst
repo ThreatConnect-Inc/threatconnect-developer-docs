@@ -39,7 +39,7 @@ This example demonstrates how to retrieve a specific Campaign using the Campaign
 Retrieving Multiple Campaigns
 """""""""""""""""""""""""""""
 
-This example demonstrates how to retrieve Campaigns while applying filters. Two filters are added: one for the Owner and another for a Tag. The result set returned from this example will contain all Campaigns in the "Example Community" Owner that have the **APT** Tag.
+This example demonstrates how to retrieve Campaigns while applying filters. Two filters are added: one for the Owner and another for a Tag. The result set returned from this example will contain all Campaigns in the "Example Community" Owner that have the **Nation State** Tag.
 
 .. code-block:: python
     :emphasize-lines: 12-15,18-19
@@ -55,10 +55,10 @@ This example demonstrates how to retrieve Campaigns while applying filters. Two 
 
     owner = 'Example Community'
 
-    # set a filter to only retrieve Campaigns in the 'Example Community' tagged: 'APT'
+    # set a filter to only retrieve Campaigns in the 'Example Community' tagged: 'Nation State'
     filter1 = campaigns.add_filter()
     filter1.add_owner(owner)
-    filter1.add_tag('APT')
+    filter1.add_tag('Nation State')
 
     try:
         # retrieve the Campaigns

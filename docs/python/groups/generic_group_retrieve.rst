@@ -1,7 +1,7 @@
 Generic Group Retrieval
 -----------------------
 
-This example demonstrates how to retrieve Groups while applying filters. In this example two filters will be added: one for the Owner and another for a Tag. The result set returned from this example will contain all Groups in the **Example Community** Owner that have the **APT** Tag.
+This example demonstrates how to retrieve Groups while applying filters. In this example two filters will be added: one for the Owner and another for a Tag. The result set returned from this example will contain all Groups in the **Example Community** Owner that have the **Nation State** Tag.
 
 .. code-block:: python
     :emphasize-lines: 12-16,19-20
@@ -20,8 +20,8 @@ This example demonstrates how to retrieve Groups while applying filters. In this
     filter1 = groups.add_filter()
     # only retrieve groups from the owner named: 'Example Community'
     filter1.add_owner(owner)
-    # only retrieve groups tagged with: 'APT'
-    filter1.add_tag('APT')
+    # only retrieve groups tagged with: 'Nation State'
+    filter1.add_tag('Nation State')
 
     try:
         # retrieve Groups

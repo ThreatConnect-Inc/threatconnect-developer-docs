@@ -37,7 +37,7 @@ The example below demonstrates how to delete Victim Assets from an existing Vict
         # iterate through the Victim's assets
         for asset in victim.assets:
             # if the asset is a phone number asset, delete it
-            if asset.type == "Phone":
+            if asset.type == 'Phone':
                 victim.delete(asset.id, asset)
 
         try:

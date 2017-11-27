@@ -59,10 +59,10 @@ contain any Threats in the **Example Community** Owner that has a Tag of
 
     owner = 'Example Community'
 
-    # set a filter to only retrieve Threats in the 'Example Community' tagged: 'APT'
+    # set a filter to only retrieve Threats in the 'Example Community' tagged: 'Nation State'
     filter1 = threats.add_filter()
     filter1.add_owner(owner)
-    filter1.add_tag('APT')
+    filter1.add_tag('Nation State')
 
     try:
         # retrieve the Threats
