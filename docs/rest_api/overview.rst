@@ -16,10 +16,7 @@ For example, the query below will return 50 Incidents:
 
     /v2/groups/incidents?resultStart=0&resultLimit=50
 
-Pagination works by specifying a starting result index, as well as a
-result limit of items to be returned as HTTP query parameters to the
-request. For example, requesting a result start index of 50 and a result
-limit of 100 will retrieve items 50 to 150.
+Pagination works by specifying a starting result index, as well as a result limit of items to be returned as HTTP query parameters to the request. For example, requesting a result start index of 50 and a result limit of 100 will retrieve items 50 to 150.
 
 The table below displays the query parameters.
 
@@ -34,9 +31,9 @@ The table below displays the query parameters.
 |               | with the request                              |         |
 +---------------+-----------------------------------------------+---------+
 
-\*Specifying a resultStart other than 0 will omit the ``resultCount`` field in the return data for performance reasons.
+\*Specifying a ``resultStart`` other than 0 will omit the ``resultCount`` field in the return data for performance reasons.
 
-A request that does not include the parameters indicated is assumed to use the default values above. A request having a resultStart value of 0 will return the current count of all items being queried. This count should be saved to iterate over the Collection and to know when all items have been retrieved. The maximum value that can be specified for resultLimit is 500.
+A request that does not include the parameters indicated is assumed to use the default values above. A request having a ``resultStart`` value of 0 will return the current count of all items being queried. This count should be saved to iterate over the Collection and to know when all items have been retrieved. The maximum value that can be specified for ``resultLimit`` is 10,000.
 
 .. note:: Pagination counts and indices should not be stored in long-lived applications as a way to return to a result-set. The dataset will change with time, so those range markers might cause objects to be skipped or duplicated if reused at a later time.
 
