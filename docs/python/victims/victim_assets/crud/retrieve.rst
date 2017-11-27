@@ -40,3 +40,4 @@ The example below demonstrates how to pull all Assets for the current Victim Res
             print(asset.name)
             print(asset.type)
             print(asset.weblink)
+            print('')

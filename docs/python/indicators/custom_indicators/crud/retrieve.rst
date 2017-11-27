@@ -98,3 +98,4 @@ The example below demonstrates how to retrieve all custom Indicators of a specif
     # iterate through the retrieved Indicators and print them
     for indicator in indicators:
         print(indicator)
+        print('')

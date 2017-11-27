@@ -43,3 +43,4 @@ The code snippet below demonstrates how to retrieve the attributes from a Task. 
             print(attribute.date_added)
             print(attribute.last_modified)
             print(attribute.displayed)
+            print('')

@@ -42,6 +42,7 @@ The code snippet below demonstrates how to view Groups, Indicators, and Victims 
             print(associated_group.owner_name)
             print(associated_group.date_added)
             print(associated_group.weblink)
+            print('')
 
         # iterate through all associated indicators
         for associated_indicator in task.indicator_associations:
@@ -56,6 +57,7 @@ The code snippet below demonstrates how to view Groups, Indicators, and Victims 
             print(associated_indicator.date_added)
             print(associated_indicator.last_modified)
             print(associated_indicator.weblink)
+            print('')
 
         # iterate through all associated victims
         for associated_victim in task.victim_associations:
@@ -69,5 +71,6 @@ The code snippet below demonstrates how to view Groups, Indicators, and Victims 
             print(associated_victim.suborg)
             print(associated_victim.work_location)
             print(associated_victim.weblink)
+            print('')
 
 .. note:: When the ``group_associations``, ``indicator_associations``, and ``victim_associations`` methods are called, an API request is invoked immediately.

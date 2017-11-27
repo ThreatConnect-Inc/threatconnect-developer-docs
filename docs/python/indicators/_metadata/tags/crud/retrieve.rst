@@ -37,3 +37,4 @@ The code snippet below demonstrates how to retrieve the tags from an Indicator. 
         for tag in indicator.tags:
             print(tag.name)
             print(tag.weblink)
+            print('')

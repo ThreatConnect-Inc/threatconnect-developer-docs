@@ -27,3 +27,4 @@ The ThreatAssess Threat and Confidence ratings can be accessed via an Indicator'
         print('\nIndicator: {}\n'.format(indicator.indicator) +
               'ThreatAssess Threat rating: {}\n'.format(indicator.threat_assess_rating) +
               'ThreatAssess Confidence rating: {}\n'.format(indicator.threat_assess_confidence))
+        print('')

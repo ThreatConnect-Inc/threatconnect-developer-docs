@@ -42,6 +42,7 @@ The code snippet below demonstrates how to view Groups and Indicators which are 
             print(associated_group.owner_name)
             print(associated_group.date_added)
             print(associated_group.weblink)
+            print('')
 
         # iterate through all associated indicators
         for associated_indicator in victim.indicator_associations:
@@ -56,5 +57,6 @@ The code snippet below demonstrates how to view Groups and Indicators which are 
             print(associated_indicator.date_added)
             print(associated_indicator.last_modified)
             print(associated_indicator.weblink)
+            print('')
 
 .. note:: When the ``group_associations`` and ``indicator_associations`` properties are referenced, an API request is immediately invoked.

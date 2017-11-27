@@ -39,6 +39,8 @@ This example demonstrates how to retrieve a specific Signature using the Signatu
         # Signature specific property
         print(signature.type)
 
+        print('')
+
 Downloading a Signature's Content
 +++++++++++++++++++++++++++++++++
 
@@ -95,5 +97,6 @@ of **EXAMPLE**.
         print(signature.name)
         print(signature.date_added)
         print(signature.weblink)
+        print('')
 
 .. note:: The ``filter1`` object contains a ``filters`` property that provides a list of supported filters for the resource type being retrieved. To display this list, ``print(filter1.filters)`` can be used. For more on using filters see the `Advanced Filter Tutorial <https://docs.threatconnect.com/en/latest/python/advanced.html#advanced-filtering>`__.

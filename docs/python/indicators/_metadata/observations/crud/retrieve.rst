@@ -34,3 +34,4 @@ The code snippet below demonstrates how to retrieve observations of an Indicator
         for observation in indicator.observations:
             print('Observation count: {}'.format(observation.count))
             print('Most recent observation: {}'.format(observation.date_observed))
+            print('')

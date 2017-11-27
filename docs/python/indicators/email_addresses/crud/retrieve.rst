@@ -48,6 +48,7 @@ This example demonstrates how to retrieve an Email Address Indicator from the Th
     for indicator in indicators:
         print(indicator.indicator)
         print(indicator.weblink)
+        print('')
 
 .. note:: If you get an ``AssertionError`` when running this code, you likely need to change the name of the ``owner`` variable so that it is the name of an owner in your instance of ThreatConnect and/or you need to change the ``indicators`` variable so that it is an Indicator that exists in the given owner.
 

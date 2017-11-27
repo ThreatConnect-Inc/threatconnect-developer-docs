@@ -26,3 +26,4 @@ The example below demonstrates how to retrieve Owners from the ThreatConnect pla
         print(owner.id)
         print(owner.name)
         print(owner.type)
+        print('')

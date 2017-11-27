@@ -40,3 +40,4 @@ The code snippet below demonstrates how to retrieve the tags from a Task. This e
         for tag in task.tags:
             print(tag.name)
             print(tag.weblink)
+            print('')

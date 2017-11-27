@@ -40,3 +40,4 @@ The code snippet below demonstrates how to retrieve the tags from an Incident. T
         for tag in incident.tags:
             print(tag.name)
             print(tag.weblink)
+            print('')

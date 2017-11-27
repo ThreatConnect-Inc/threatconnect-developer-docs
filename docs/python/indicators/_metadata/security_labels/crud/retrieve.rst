@@ -38,5 +38,6 @@ The code snippet below demonstrates how to retrieve the security label from an I
             print(indicator.security_label.name)
             print(indicator.security_label.description)
             print(indicator.security_label.date_added)
+            print('')
 
 .. warning:: Currently, the ThreatConnect Python SDK does not support multiple security labels. If an Indicator has multiple security labels, the Python SDK will only return one of them.

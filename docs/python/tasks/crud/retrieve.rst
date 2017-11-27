@@ -47,6 +47,7 @@ Retrieving a Single Task
         print(task.name)
         print(task.date_added)
         print(task.weblink)
+        print('')
 
 .. note:: If you get an ``AssertionError`` when running this code, you likely need to change the name of the ``owner`` variable so that it is the name of an owner in your instance of ThreatConnect and/or you need to change the ``task_id`` variable so that it is the ID of a Task that exists in the given owner.
 
@@ -81,3 +82,4 @@ Retrieving Multiple Tasks
         print(task.name)
         print(task.date_added)
         print(task.weblink)
+        print('')

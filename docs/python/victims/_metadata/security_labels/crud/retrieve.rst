@@ -41,5 +41,6 @@ The code snippet below demonstrates how to retrieve the security label from a Vi
             print(victim.security_label.name)
             print(victim.security_label.description)
             print(victim.security_label.date_added)
+            print('')
 
 .. warning:: Currently, the ThreatConnect Python SDK does not support multiple security labels. If a Victim has multiple security labels, the Python SDK will only return one of them.

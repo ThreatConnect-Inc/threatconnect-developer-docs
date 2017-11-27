@@ -40,3 +40,4 @@ The code snippet below demonstrates how to retrieve the attributes from an Indic
             print(attribute.date_added)
             print(attribute.last_modified)
             print(attribute.displayed)
+            print('')

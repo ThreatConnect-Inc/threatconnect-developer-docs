@@ -45,13 +45,14 @@ The example below demonstrates how to retrieve a specific Victim Resource from t
 
     # if the Victim was found, print some information about it
     for victim in victims:
-        print(obj.id)
-        print(obj.name)
-        print(obj.nationality)
-        print(obj.org)
-        print(obj.suborg)
-        print(obj.work_location)
-        print(obj.weblink)
+        print(victim.id)
+        print(victim.name)
+        print(victim.nationality)
+        print(victim.org)
+        print(victim.suborg)
+        print(victim.work_location)
+        print(victim.weblink)
+        print('')
 
 .. note:: If you get an ``AssertionError`` when running this code, you likely need to change the name of the ``owner`` variable so that it is the name of an owner in your instance of ThreatConnect and/or you need to change the ``victim_id`` variable so that it is the ID of a Victim that exists in the given owner.
 
@@ -90,10 +91,11 @@ The example below demonstrates how to retrieve multiple Victim Resources from th
 
     # iterate through the retrieved Victims and print their properties
     for victim in victims:
-        print(obj.id)
-        print(obj.name)
-        print(obj.nationality)
-        print(obj.org)
-        print(obj.suborg)
-        print(obj.work_location)
-        print(obj.weblink)
+        print(victim.id)
+        print(victim.name)
+        print(victim.nationality)
+        print(victim.org)
+        print(victim.suborg)
+        print(victim.work_location)
+        print(victim.weblink)
+        print('')

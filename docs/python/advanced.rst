@@ -609,6 +609,7 @@ Python SDK CEF Code Sample:
     # iterate through the Indicators
     for indicator in indicators:
         print(indicator.cef)
+        print('')
 
 Python SDK Sample CEF Output:
 
@@ -657,7 +658,7 @@ Python SDK CSV Code Sample:
     for indicator in indicators:
         print(indicator.csv_header)
         print(indicator.csv)
-        print("\n")
+        print('')
 
 Python SDK Sample CSV Output:
 
@@ -708,6 +709,7 @@ Python SDK JSON Code Sample:
     # iterate through the Indicators
     for indicator in indicators:
         print(indicator.json)
+        print('')
 
 Python SDK Sample JSON Output:
 
@@ -819,6 +821,7 @@ Python SDK LEEF Code Sample:
     # iterate through the Indicators
     for indicator in indicators:
         print(indicator.leef)
+        print('')
 
 Python SDK Sample LEEF Output:
 
@@ -1026,6 +1029,7 @@ Python SDK failed reports example:
     # iterate through the failures
     for fail in tc.report.failures:
         print(fail)
+        print('')
 
 Sample Failed-Report Output:
 

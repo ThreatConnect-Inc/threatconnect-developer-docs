@@ -48,6 +48,7 @@ This example demonstrates how to retrieve a Host Indicator from the ThreatConnec
     for indicator in indicators:
         print(indicator.indicator)
         print(indicator.weblink)
+        print('')
 
 .. note:: If you get an ``AssertionError`` when running this code, you likely need to change the name of the ``owner`` variable so that it is the name of an owner in your instance of ThreatConnect and/or you need to change the ``indicators`` variable so that it is an Indicator that exists in the given owner.
 
@@ -92,6 +93,7 @@ The example below demonstrates how to retrieve a Host Indicator's DNS Resolution
             print(dns.owner_name)
             print(dns.resolution_date)
             print(dns.weblink)
+            print('')
 
 .. note:: DNS Resolutions are only supported for the Host Indicator type.
 

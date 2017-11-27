@@ -35,3 +35,5 @@ The code snippet below demonstrates how to retrieve the threat and confidence ra
 
         # print the indicator's confidence rating
         print(indicator.confidence)
+
+        print('')
