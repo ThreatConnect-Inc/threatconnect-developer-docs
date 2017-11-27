@@ -7,11 +7,11 @@ To delete a Security Label, use the query format below:
 
     DELETE /v2/securityLabels/{securityLabel}
 
-For example, the following query will delete the ``TLP Amber`` Security Label:
+For example, the following query will delete the ``TLP:Amber`` Security Label:
 
 .. code::
 
-    DELETE /v2/securityLabels/TLP Amber
+    DELETE /v2/securityLabels/TLP:Amber
 
 JSON Response:
 
