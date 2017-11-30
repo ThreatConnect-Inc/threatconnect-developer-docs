@@ -98,23 +98,14 @@ passing an Integer for the number of retries.
 API Result Limit
 ----------------
 
-To change the default value, call the ``set_api_result_limit()`` method,
-passing an Integer between 1-500.
+The ThreatConnect API supports a **maximum of 10,000** results to be returned per API call during pagination. The Python SDK is configured for a **default of 200** results per API request. To change the default value, call the ``set_api_result_limit()`` method, passing an Integer between 1 and 10,000. The higher the number, the less API calls will be made, but in some cases, a lower number is required due to network limitations.
 
 .. 
     no-test
 
 .. code-block:: python
 
-    tc.set_api_result_limit(500)
-
-The ThreatConnect API supports a **maximum of 500** results to be
-returned per API call during pagination. The Python SDK is configured
-for a **default of 200** results per API request. To change the default
-value, call the ``set_api_result_limit()`` method, passing an Integer
-between 1-500. The higher the number, the less API calls will be made,
-but in some cases, a lower number is required due to network
-limitations.
+    tc.set_api_result_limit(10,000)
 
 Proxies
 -------
