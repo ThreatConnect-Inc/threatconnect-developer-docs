@@ -613,7 +613,7 @@ This request will return the following data:
       }
     }
 
-.. note:: Only observations reported using API accounts that are configured to be included in Observations and False Positives will show up in the list of recent observations. For more details on how to configure an API account in this way, refer to the knowledge base article `here <http://kb.threatconnect.com/customer/en/portal/articles/2324809-reporting-false-positives>`_.
+.. note:: Only observations reported using API accounts that are configured to be included in Observations and False Positives will show up in the list of recent observations. For more details on how to configure an API account in this way, refer to the knowledge base article `here <http://kb.threatconnect.com/customer/en/portal/articles/2324809-reporting-false-positives>`__.
 
 Retrieving Total Indicator Observations
 """""""""""""""""""""""""""""""""""""""
@@ -943,7 +943,7 @@ For example, we could use the following query to find all Address Indicators ass
 
     GET /v2/indicators/emailAddresses/bad@example.com/indicators/addresses
 
-.. note:: There is more documentation on retrieving Indicator-to-Indicator associations `here <#indicator-to-indicator-associations>`_.
+.. note:: There is more documentation on retrieving Indicator-to-Indicator associations `here <#indicator-to-indicator-associations>`__.
 
 Victim Assets to Indicator Associations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -3,8 +3,13 @@ Retrieve Victim Associations
 
 The code snippet below demonstrates how to view Groups and Indicators which are associated with a given Victim in ThreatConnect. This example assumes there is a Victim with an ID of ``123456`` in the target owner. To test this code snippet, change the ``victim_id`` variable.
 
+.. note:: It is not possible to associate an Indicator directly with a Victim in ThreatConnect. The code below returns Indicators that share a Group association with the given Victim. In the image below, the Victim and Indicator are not directly associated, but are both associated with the same Group. Therefore, the Indicator would be returned when iterating through ``victim.indicator_associations``.
+
+.. figure:: ../../_static/victim-to-indicator-associations.png
+    :alt: Victim to Indicator Associations
+
 .. code-block:: python
-    :emphasize-lines: 28-29,38-39
+    :emphasize-lines: 28-29,39-40
 
     # replace the line below with the standard, TC script heading described here:
     # https://docs.threatconnect.com/en/latest/python/quick_start.html#standard-script-heading
