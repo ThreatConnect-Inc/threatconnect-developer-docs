@@ -1,9 +1,9 @@
 Private Indicators
 ------------------
 
-.. warning: In order to mark an Indicator as private, the ThreatConnect instance of ThreatConnect needs to have the ``privateIndicatorsEnabled`` configuration selected. This can be modified under System Settings.
+.. warning:: In order to mark an Indicator as private, the ThreatConnect instance of ThreatConnect needs to have the ``privateIndicatorsEnabled`` configuration selected. This can be modified under System Settings.
 
-.. note: Custom Indicators cannot be marked as private. Only Address, Email Address, File, Host, and URL Indicators can be marked as private.
+.. note:: Custom Indicators cannot be marked as private. Only Address, Email Address, File, Host, and URL Indicators can be marked as private.
 
 Retrieving Private Indicators
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
