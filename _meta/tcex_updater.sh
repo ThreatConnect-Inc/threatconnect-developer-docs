@@ -20,8 +20,5 @@ DATE=$(date +"%B %d, %Y");
 # commit
 git commit -m "Auto-update TCEX docs: $DATE";
 
-# push
-git push;
-
 # send slack notification (uses the `slack` alias which sends the given message to a slack channel)
 slack "TCEX_documentation_updated";
