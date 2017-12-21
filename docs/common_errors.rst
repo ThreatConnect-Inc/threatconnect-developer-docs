@@ -11,17 +11,17 @@ General Errors
 Signature data did not match expected result
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This error occurs when something is wrong with the signature used in the `Authorization header <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#authorization>`_. Make sure you are using the ``HMAC-SHA256`` algorithm and base-64 encoding to create the signature. Refer to the `Authorization header section <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#authorization>`_ for steps to fix this error.
+This error occurs when something is wrong with the signature used in the `Authentication section <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#authentication>`_. Make sure you are using the ``HMAC-SHA256`` algorithm and base-64 encoding to create the signature. Refer to the `Authentication section <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#authentication>`_ for steps to fix this error.
 
 Timestamp out of acceptable time range
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Every API call to ThreatConnect requires a ``Timestamp`` header that is within five minutes of the ThreatConnect server's system time. If you get this error, you are passing in a Timestamp that does not line up with ThreatConnect system time. Refer to the `Timestamp header section <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#timestamp>`_ for steps to fix this error.
+Every API call to ThreatConnect requires a ``Timestamp`` header that is within five minutes of the ThreatConnect server's system time. If you get this error, you are passing in a Timestamp that does not line up with ThreatConnect system time. Refer to the `Authentication section <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#authentication>`_ for steps to fix this error.
 
 Access Denied
 ^^^^^^^^^^^^^
 
-This likely means that either one of the values in the `Authorization header <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#authorization>`_ is incorrect or you are making a request to an owner to which the API account you are using does not have access.
+This likely means that either one of the values in the `Authorization header <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#authentication>`_ is incorrect or you are making a request to an owner to which the API account you are using does not have access.
 
 Creating Indicators
 -------------------

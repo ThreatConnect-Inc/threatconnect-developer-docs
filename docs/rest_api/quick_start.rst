@@ -4,7 +4,7 @@ Quick Start
 Creating an API Key
 -------------------
 
-To create an API User please refer to the `Creating User Accounts KB article <http://kb.threatconnect.com/customer/en/portal/articles/2188549-creating-user-accounts>`__.
+To create an API User please refer to the `Creating User Accounts <http://kb.threatconnect.com/customer/en/portal/articles/2188549-creating-user-accounts>`__ Knowledge Base article.
 
 If you are not able to create an API key using instructions provided in the KB article above, please contact sales@threatconnect.com to discuss pricing.
 
@@ -26,7 +26,7 @@ The API will be versioned as needed to support continued development of the Thre
 Authentication
 --------------
 
-To authenticate an API call to ThreatConnect, there are two, required headers which are detailed below: an `Authorization <#authorization>`_  and a `Timestamp <#timestamp>`_  header.
+To authenticate an API call to ThreatConnect, there are two, required headers which are detailed below: an Authorization and a Timestamp header.
 
 A complete request should look something like:
 
@@ -50,13 +50,17 @@ The required ``Authorization`` header has the format: ``TC $ACCESS_ID:$SIGNATURE
 
 The ``$ACCESS_ID`` is the ID of the API user you are using to make requests. If you do not have or don't know the API_ID, ask your System Administrator.
 
-The ``$SIGNATURE`` is created by concatenating the API path and query strings, HTTP method, and `Timestamp <#timestamp>`_  as follows:
+The ``$SIGNATURE`` is created by concatenating the API path and query strings, HTTP method, and Timestamp (dicsussed in the previous section) as follows:
 
 ``/v2/indicators/hosts/example.com?Owner=Common%20Community:GET:1513703787``
 
 The result is then signed with the user's ``Secret Key`` using SHA256 to calculate an HMAC (a.k.a. ``HMAC-SHA256``) and base-64 encoded.
 
-The value of the final ``Authorization`` header should look something like ``TC 12345678901234567890:PthSlXIA7rNMow1h8wShfvOnTOhxHd+7njUe4MT4ZSs=``.
+The value of the final ``Authorization`` header should look something like:
+
+.. code::
+
+    TC 12345678901234567890:PthSlXIA7rNMow1h8wShfvOnTOhxHd+7njUe4MT4ZSs=
 
 .. hint:: For you Python fans, you can view how our `Python SDK <https://docs.threatconnect.com/en/latest/python/python_sdk.html>`_  handles authentication `here <https://github.com/ThreatConnect-Inc/threatconnect-python/blob/fbf428cfff839a5fb5eb19720d23478e563914dc/threatconnect/ThreatConnect.py#L187>`__.
 
