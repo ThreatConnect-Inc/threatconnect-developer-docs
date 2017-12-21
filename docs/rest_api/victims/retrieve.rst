@@ -333,12 +333,6 @@ For example, we could use the following query to find all Address Indicators ass
 
     GET /v2/victims/12345/indicators/addresses
 
-We can also drill down even further by adding an associated Indicator to the end of the query like:
-
-.. code::
-
-    GET /v2/victims/12345/indicators/addresses/0.0.0.0
-
 Retrieve a Victim's Assets
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 

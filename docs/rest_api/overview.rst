@@ -72,7 +72,6 @@ The following Group related endpoints are available:
 * ``/v2/groups/{type}/{id}/groups/{associatedGroupType}/{associatedGroupId}``
 * ``/v2/groups/{type}/{id}/indicators``
 * ``/v2/groups/{type}/{id}/indicators/{associatedIndicatorType}``
-* ``/v2/groups/{type}/{id}/indicators/{associatedIndicatorType}/{associatedIndicator}``
 * ``/v2/groups/{type}/{id}/pdf``
 * ``/v2/groups/{type}/{id}/publish``
 * ``/v2/groups/{type}/{id}/securityLabels``
@@ -190,7 +189,6 @@ The following Tag related endpoints are available:
 * ``/v2/tags/{tagName}/groups/{associatedGroupType}/{associatedGroupId}``
 * ``/v2/tags/{tagName}/indicators``
 * ``/v2/tags/{tagName}/indicators/{associatedIndicatorType}``
-* ``/v2/tags/{tagName}/indicators/{associatedIndicatorType}/{associatedIndicator}``
 * ``/v2/tags/{tagName}/tasks``
 * ``/v2/tags/{tagName}/tasks/{associatedTaskId}``
 * ``/v2/tags/{tagName}/victims``
@@ -218,7 +216,6 @@ The following Task related endpoints are available:
 * ``/v2/tasks/{id}/groups/{associatedGroupType}/{associatedGroupId}``
 * ``/v2/tasks/{id}/indicators``
 * ``/v2/tasks/{id}/indicators/{associatedIndicatorType}``
-* ``/v2/tasks/{id}/indicators/{associatedIndicatorType}/{associatedIndicator}``
 * ``/v2/tasks/{id}/tags``
 * ``/v2/tasks/{id}/tags/{tagName}``
 * ``/v2/tasks/{id}/tasks``
@@ -244,7 +241,6 @@ The following Victim related endpoints are available:
 * ``/v2/victims/{id}/groups/{associatedGroupType}/{associatedGroupId}``
 * ``/v2/victims/{id}/indicators``
 * ``/v2/victims/{id}/indicators/{associatedIndicatorType}``
-* ``/v2/victims/{id}/indicators/{associatedIndicatorType}/{associatedIndicator}``
 * ``/v2/victims/{id}/tags``
 * ``/v2/victims/{id}/tags/{tagName}``
 * ``/v2/victims/{id}/tasks``

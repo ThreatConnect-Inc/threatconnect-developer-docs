@@ -27,7 +27,7 @@ JSON Response:
             "parsable": "true",
             "apiBranch": "addresses",
             "apiEntity": "address"
-          },``
+          },
           {
             "name": "EmailAddress",
             "custom": "false",
