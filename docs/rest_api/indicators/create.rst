@@ -70,6 +70,8 @@ The table below illustrates valid fields for the body of the POST request when c
 
 \*Files are required to be submitted with at least one valid hash.
 
+.. hint:: If you are unable to create an Indicator, check out some `Common Indicator Creation Errors <https://docs.threatconnect.com/en/latest/common_errors.html#creating-indicators>`__.
+
 Create Address Indicators
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
