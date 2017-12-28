@@ -21,3 +21,4 @@ REST API
    tasks/tasks
    victims/victims
    custom_metrics/custom_metrics
+   taxii/taxii
