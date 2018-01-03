@@ -4,31 +4,31 @@ Quick Start
 Creating an API Key
 -------------------
 
-To create an API User please refer to the `Creating User Accounts <http://kb.threatconnect.com/customer/en/portal/articles/2188549-creating-user-accounts>`__ Knowledge Base article.
+To create an API User, please refer to the `Creating User Accounts <http://kb.threatconnect.com/customer/en/portal/articles/2188549-creating-user-accounts>`__ Knowledge Base article.
 
 If you are not able to create an API key using instructions provided in the KB article above, please contact sales@threatconnect.com to discuss pricing.
 
 Using the API
 -------------
 
-For those with a ThreatConnect, Public Cloud API user account, the ThreatConnect API is accessible at ``https://api.threatconnect.com``.
+For those with a ThreatConnect, Public-Cloud API-user account, the ThreatConnect API is accessible at ``https://api.threatconnect.com``.
 
 .. note:: If you are working with the ThreatConnect **sandbox**, the api path is: ``https://sandbox.threatconnect.com/api``. If you are working with a **Dedicated Cloud** or **On-Premise** instance of ThreatConnect, please contact your System Administrator for the correct API URL.
 
-For the rest of this document, the base API URL will not be included in any of the endpoints (e.g. the branch for owners will be described as ``/v2/owners`` rather than ``https://api.threatconnect.com/v2/owners``). You will be responsible for adding the correct base API URL.
+For the rest of this document, the base API URL will not be included in any of the endpoints (e.g., the branch for owners will be described as ``/v2/owners`` rather than ``https://api.threatconnect.com/v2/owners``). You will be responsible for adding the correct base API URL.
 
 Requests to ThreatConnect API endpoints must be made over HTTPS with a valid Signature (as described in the next section), or a 403 error will be returned.
 
 Each API response is formatted with a status. If the status is "Success," each response includes a ``data`` field with the appropriate response type. If the status is "Failure," an appropriate error message is provided as to why the request failed.
 
-The API will be versioned as needed to support continued development of the ThreatConnect platform, and existing API versions will be appropriately deprecated. Version 2 (v2) of the API supports write capabilities via HTTP POST and PUT methods the HTTP GET method is used for read access to resources.
+The API will be versioned as needed to support continued development of the ThreatConnect platform, and existing API versions will be appropriately deprecated. Version 2 (v2) of the API supports write capabilities via HTTP POST and PUT methods. The HTTP GET method is used for read access to resources.
 
 Authentication
 --------------
 
-To authenticate an API call to ThreatConnect, there are two, required headers which are detailed below: an Authorization and a Timestamp header.
+To authenticate an API call to ThreatConnect, there are two required headers—`Authorization <#authorization>`__ and `Timestamp <#timestamp>`__—which are detailed below:
 
-A complete request should look something like:
+A complete request should look like:
 
 .. code::
 
@@ -48,7 +48,7 @@ Authorization
 
 The required ``Authorization`` header has the format: ``TC $ACCESS_ID:$SIGNATURE``.
 
-The ``$ACCESS_ID`` is the ID of the API user you are using to make requests. If you do not have or don't know the API_ID, ask your System Administrator.
+The ``$ACCESS_ID`` is the ID of the API user you are using to make requests. If you do not have or do not know the API_ID, ask your System Administrator.
 
 The ``$SIGNATURE`` is created by concatenating the API path and query strings, HTTP method, and Timestamp (dicsussed in the previous section) as follows:
 
@@ -62,7 +62,7 @@ The value of the final ``Authorization`` header should look something like:
 
     TC 12345678901234567890:PthSlXIA7rNMow1h8wShfvOnTOhxHd+7njUe4MT4ZSs=
 
-.. hint:: For you Python fans, you can view how our `Python SDK <https://docs.threatconnect.com/en/latest/python/python_sdk.html>`__  handles authentication `here <https://github.com/ThreatConnect-Inc/threatconnect-python/blob/fbf428cfff839a5fb5eb19720d23478e563914dc/threatconnect/ThreatConnect.py#L187>`__.
+.. hint:: For Python users, you can view how our `Python SDK <https://docs.threatconnect.com/en/latest/python/python_sdk.html>`__  handles authentication `here <https://github.com/ThreatConnect-Inc/threatconnect-python/blob/fbf428cfff839a5fb5eb19720d23478e563914dc/threatconnect/ThreatConnect.py#L187>`__.
 
 Hello World
 -----------

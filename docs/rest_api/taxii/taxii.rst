@@ -1,9 +1,9 @@
 Taxii Services
 ==============
 
-In order to use the Taxii endpoints, you need to have a Taxii user created in your Organization in ThreatConnect. If you need to do this, follow the instructions for `Creating a Taxii User <http://kb.threatconnect.com/customer/en/portal/articles/2898876-creating-a-taxii-user>`_.
+In order to use the Taxii endpoints, you need to have a Taxii-user created in your Organization in ThreatConnect. If you need to do this, follow the instructions for `Creating a Taxii-user <http://kb.threatconnect.com/customer/en/portal/articles/2898876-creating-a-taxii-user>`_.
 
-ThreatConnect offers three Taxii Services: 
+ThreatConnect offers three Taxii Services:
 
   1. `Discovery Service <#discovery-service>`__ : Provides information about offered TAXII Services
   2. `Collection Management Service <#collection-management-service>`__ : Supports management of TAXII Data Collection subscriptions
@@ -14,7 +14,7 @@ ThreatConnect offers three Taxii Services:
 Authentication
 --------------
 
-Requests to a Taxii endpoint must be authenticated using `Basic Authentication <https://en.wikipedia.org/wiki/Basic_access_authentication>`_ with the username and password of a Taxii user account. The value created by the basic authentication should be sent with the request with the ``Authentication`` header. Note that this is different than the authentication scheme used for normal API requests.
+Requests to a Taxii endpoint must be authenticated using `Basic Authentication <https://en.wikipedia.org/wiki/Basic_access_authentication>`_ with the username and password of a Taxii-user account. The value created by the basic authentication should be sent with the request with the ``Authentication`` header. Note that this is different than the authentication scheme used for normal API requests.
 
 For example, the ``Authentication`` header for requests to Taxii endpoints should look like: ``Authorization: Basic b1gB1rdz007``.
 

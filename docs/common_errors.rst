@@ -21,7 +21,7 @@ Every API call to ThreatConnect requires a ``Timestamp`` header that is within f
 Access Denied
 ^^^^^^^^^^^^^
 
-This likely means that either one of the values in the `Authorization Header <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#authorization>`__ is incorrect or you are making a request to an owner to which the API account you are using does not have access.
+This error occurs when one of the values in the `Authorization Header <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#authorization>`__ is incorrect, or when you are making a request to an owner to which the API account you are using does not have access.
 
 Creating Indicators
 -------------------
@@ -31,7 +31,7 @@ There are a few details to keep in mind when creating certain Indicator types.
 URL Indicators
 ^^^^^^^^^^^^^^
 
-When creating a URL Indicator in ThreatConnect, the domain name of the URL must be **lower-cased**. There are some examples of correct and incorrect indicator formats below.
+When creating a URL Indicator in ThreatConnect, the domain name of the URL must be **lowercase**. There are some examples of correct and incorrect indicator formats below.
 
 .. code-block:: text
 
