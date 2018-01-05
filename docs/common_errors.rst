@@ -31,7 +31,7 @@ There are a few details to keep in mind when creating certain Indicator types.
 URL Indicators
 ^^^^^^^^^^^^^^
 
-When creating a URL Indicator in ThreatConnect, the domain name of the URL must be **lowercase**. There are some examples of correct and incorrect indicator formats below.
+When `creating a URL Indicator <https://docs.threatconnect.com/en/latest/rest_api/indicators/indicators.html#create-url-indicators>`__ in ThreatConnect, the domain name of the URL must be **lowercase**. There are some examples of correct and incorrect indicator formats below.
 
 .. code-block:: text
 
@@ -42,7 +42,7 @@ When creating a URL Indicator in ThreatConnect, the domain name of the URL must 
 ASN Indicators
 ^^^^^^^^^^^^^^
 
-When creating an ASN Indicator in ThreatConnect, the AS Number must be **prefixed with "ASN"** and should not include a space between the prefix ("ASN") and the AS Number. There are some examples of correct and incorrect indicator formats below.
+When `creating an ASN Indicator <https://docs.threatconnect.com/en/latest/rest_api/indicators/indicators.html#create-a-custom-indicator>`__ in ThreatConnect, the AS Number must be **prefixed with "ASN"** and should not include a space between the prefix ("ASN") and the AS Number. There are some examples of correct and incorrect indicator formats below.
 
 .. code-block:: text
 
@@ -52,3 +52,26 @@ When creating an ASN Indicator in ThreatConnect, the AS Number must be **prefixe
     AS12345 # INCORRECT
     AS 12345 # INCORRECT
     ASN 12345 # INCORRECT
+
+Registry Key Indicators
+^^^^^^^^^^^^^^^^^^^^^^^
+
+When `creating a Registry Key Indicator <https://docs.threatconnect.com/en/latest/rest_api/indicators/indicators.html#create-a-custom-indicator>`__ in ThreatConnect, the **Key Name** for the Registry Key must start with one of the following values:
+
+* HKEY_CLASSES_ROOT
+* HKEY_CURRENT_CONFIG
+* HKEY_CURRENT_USER
+* HKEY_CURRENT_USER_LOCAL_SETTINGS
+* HKEY_LOCAL_MACHINE
+* HKEY_PERFORMANCE_DATA
+* HKEY_PERFORMANCE_NLSTEXT
+* HKEY_PERFORMANCE_TEXT
+* HKEY_USERS
+
+.. note:: If a Registry Key starts with ``HKLM\``, this must be changed to ``HKEY_LOCAL_MACHINE\`` before the Key can be created in ThreatConnect.
+
+.. code-block:: text
+
+    HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\WbemPerf\001 # CORRECT
+
+    HKLM\Software\Microsoft\Windows NT\CurrentVersion\WbemPerf\001 # INCORRECT
