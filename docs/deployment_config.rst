@@ -15,45 +15,45 @@ Standard section defines required and optional properties to all apps in ThreatC
 
 The table below lists all of the properties of the Standard section.
 
-+-------------------------------------------+-----------+--------------------------------------------------+
-| Property                                  | Required? | Allowed Values                                   |
-+===========================================+===========+==================================================+
-| `allowOnDemand <#allowOnDemand>`_         | TRUE      | Boolean                                          |
-+-------------------------------------------+-----------+--------------------------------------------------+
-| `apiUserTokenParam <#apiUserTokenParam>`_ | FALSE     | Boolean                                          |
-+-------------------------------------------+-----------+--------------------------------------------------+
-| `displayName <#displayName>`_             | TRUE      | String                                           |
-+-------------------------------------------+-----------+--------------------------------------------------+
-| `feeds <#feed-app-configuration>`_        | FALSE     | Object                                           |
-+-------------------------------------------+-----------+--------------------------------------------------+
-| `languageVersion <#languageVersion>`_     | FALSE     | String                                           |
-+-------------------------------------------+-----------+--------------------------------------------------+
-| `listDelimiter <#listDelimiter>`_         | FALSE     | String                                           |
-+-------------------------------------------+-----------+--------------------------------------------------+
-| `minServerVersion <#minServerVersion>`_   | FALSE     | String                                           |
-+-------------------------------------------+-----------+--------------------------------------------------+
-| `note <#note>`_                           | FALSE     | String                                           |
-+-------------------------------------------+-----------+--------------------------------------------------+
-| `params <#parameter-array-section>`_      | TRUE      | Object                                           |
-+-------------------------------------------+-----------+--------------------------------------------------+
-| `Playbook <#playbook-app-configuration>`_ | FALSE     | Array of objects                                 |
-+-------------------------------------------+-----------+--------------------------------------------------+
-| `programIcon <#programIcon>`_             | FALSE     | String                                           |
-+-------------------------------------------+-----------+--------------------------------------------------+
-| `programLanguage <#programLanguage>`_     | TRUE      | "JAVA", "PYTHON", or "NONE"                      |
-+-------------------------------------------+-----------+--------------------------------------------------+
-| `programMain <#programMain>`_             | TRUE      | String                                           |
-+-------------------------------------------+-----------+--------------------------------------------------+
-| `programVersion <#programVersion>`_       | TRUE      | String                                           |
-+-------------------------------------------+-----------+--------------------------------------------------+
-| `publishOutFiles <#publishOutFiles>`_     | FALSE     | Array of strings                                 |
-+-------------------------------------------+-----------+--------------------------------------------------+
-| `repeatingMinutes <#repeatingMinutes>`_   | FALSE     | Array of integers                                |
-+-------------------------------------------+-----------+--------------------------------------------------+
-| `runtimeContext <#runtimeContext>`_       | FALSE     | Array of strings                                 |
-+-------------------------------------------+-----------+--------------------------------------------------+
-| `runtimeLevel <#runtimeLevel>`_           | TRUE      | "Organization", "SpaceOrganization", or "System" |
-+-------------------------------------------+-----------+--------------------------------------------------+
++-------------------------------------------+-----------+--------------------------------------------------------------+
+| Property                                  | Required? | Allowed Values                                               |
++===========================================+===========+==============================================================+
+| `allowOnDemand <#allowOnDemand>`_         | TRUE      | Boolean                                                      |
++-------------------------------------------+-----------+--------------------------------------------------------------+
+| `apiUserTokenParam <#apiUserTokenParam>`_ | FALSE     | Boolean                                                      |
++-------------------------------------------+-----------+--------------------------------------------------------------+
+| `displayName <#displayName>`_             | TRUE      | String                                                       |
++-------------------------------------------+-----------+--------------------------------------------------------------+
+| `feeds <#feed-app-configuration>`_        | FALSE     | Object                                                       |
++-------------------------------------------+-----------+--------------------------------------------------------------+
+| `languageVersion <#languageVersion>`_     | FALSE     | String                                                       |
++-------------------------------------------+-----------+--------------------------------------------------------------+
+| `listDelimiter <#listDelimiter>`_         | FALSE     | String                                                       |
++-------------------------------------------+-----------+--------------------------------------------------------------+
+| `minServerVersion <#minServerVersion>`_   | FALSE     | String                                                       |
++-------------------------------------------+-----------+--------------------------------------------------------------+
+| `note <#note>`_                           | FALSE     | String                                                       |
++-------------------------------------------+-----------+--------------------------------------------------------------+
+| `params <#parameter-array-section>`_      | TRUE      | Object                                                       |
++-------------------------------------------+-----------+--------------------------------------------------------------+
+| `Playbook <#playbook-app-configuration>`_ | FALSE     | Array of objects                                             |
++-------------------------------------------+-----------+--------------------------------------------------------------+
+| `programIcon <#programIcon>`_             | FALSE     | String                                                       |
++-------------------------------------------+-----------+--------------------------------------------------------------+
+| `programLanguage <#programLanguage>`_     | TRUE      | ``"JAVA"``, ``"PYTHON"``, or ``"NONE"``                      |
++-------------------------------------------+-----------+--------------------------------------------------------------+
+| `programMain <#programMain>`_             | TRUE      | String                                                       |
++-------------------------------------------+-----------+--------------------------------------------------------------+
+| `programVersion <#programVersion>`_       | TRUE      | String                                                       |
++-------------------------------------------+-----------+--------------------------------------------------------------+
+| `publishOutFiles <#publishOutFiles>`_     | FALSE     | Array of strings                                             |
++-------------------------------------------+-----------+--------------------------------------------------------------+
+| `repeatingMinutes <#repeatingMinutes>`_   | FALSE     | Array of integers                                            |
++-------------------------------------------+-----------+--------------------------------------------------------------+
+| `runtimeContext <#runtimeContext>`_       | FALSE     | Array of strings                                             |
++-------------------------------------------+-----------+--------------------------------------------------------------+
+| `runtimeLevel <#runtimeLevel>`_           | TRUE      | ``"Organization"``, ``"SpaceOrganization"``, or ``"System"`` |
++-------------------------------------------+-----------+--------------------------------------------------------------+
 
 allowOnDemand
 ^^^^^^^^^^^^^
@@ -295,7 +295,7 @@ Required property is the internal parameter name taken from the Job Wizard and p
 note Parameter
 ^^^^^^^^^^^^^^
 
-Optional parameter description field available in Playbook apps under the “?” tooltip when the app parameters are being edited. Use this field to describe the purpose of the parameter in 2-3 sentences.
+Optional parameter description field available in Playbook apps under the "?" tooltip when the app parameters are being edited. Use this field to describe the purpose of the parameter in 2-3 sentences.
 
 PlaybookDataType
 ^^^^^^^^^^^^^^^^
@@ -460,15 +460,15 @@ Example of a validValues parameter definition example:
 The variables listed in the table below are internal variables
 understood by the ThreatConnect platform.
 
-+------------+------------------+-----------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Variable   | Resolves As Type | Example of Usage                              | Description                                                                                                                                                                                                                                                                                                                                                    |
-+============+==================+===============================================+================================================================================================================================================================================================================================================================================================================================================================+
-| OWNERS     | String Array     | ["${OWNERS}"]                                 | The OWNERS variable resolves to the available owners to which the current user has access. Since this determination is dynamically resolved at runtime, the owners rendered depend on the user. This variable is useful when an app needs to have a defined owner passed as a parameter. The string value of the owner(s) is passed as an argument to the app. |
-+------------+------------------+-----------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ATTRIBUTES | String Array     | ["${ATTRIBUTES}"] or ["${ATTRIBUTES:<type>}"] | The ATTRIBUTES variable resolves to attributes the current organization has available. This variable has a second, optional component, :<type>, that further refines the attributes resolved to the specific Indicator or Group type (for example: ["${ATTRIBUTES:Address}"]). The string value of the attribute(s) is passed as an argument to the app.       |
-+------------+------------------+-----------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| INDICATORS | String Array     | ["${INDICATOR_TYPES}"]                        | The INDICATOR_TYPES variable resolves to all of the indicator types available in the given instance of ThreatConnect. The string value of the indicator type(s) is passed as an argument to the app.                                                                                                                                                           |
-+------------+------------------+-----------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++------------+------------------+-------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Variable   | Resolves As Type | Example of Usage                                      | Description                                                                                                                                                                                                                                                                                                                                                    |
++============+==================+=======================================================+================================================================================================================================================================================================================================================================================================================================================================+
+| OWNERS     | String Array     | ``["${OWNERS}"]``                                     | The OWNERS variable resolves to the available owners to which the current user has access. Since this determination is dynamically resolved at runtime, the owners rendered depend on the user. This variable is useful when an app needs to have a defined owner passed as a parameter. The string value of the owner(s) is passed as an argument to the app. |
++------------+------------------+-------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ATTRIBUTES | String Array     | ``["${ATTRIBUTES}"]`` or ``["${ATTRIBUTES:<type>}"]`` | The ATTRIBUTES variable resolves to attributes the current organization has available. This variable has a second, optional component, :<type>, that further refines the attributes resolved to the specific Indicator or Group type (for example: ["${ATTRIBUTES:Address}"]). The string value of the attribute(s) is passed as an argument to the app.       |
++------------+------------------+-------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| INDICATORS | String Array     | ``["${INDICATOR_TYPES}"]``                            | The INDICATOR_TYPES variable resolves to all of the indicator types available in the given instance of ThreatConnect. The string value of the indicator type(s) is passed as an argument to the app.                                                                                                                                                           |
++------------+------------------+-------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 When the ``$ATTRIBUTES`` internal variable is used with a ``:<type>`` suffix, the type can be any of the Indicator, Group, Task, or Victim types in the ThreatConnect platform:
 
@@ -506,7 +506,7 @@ would reference them as follows:
 
 .. code:: json
 
-    "validValues": ["{USER:TEXT}", "${ORGANIZATION: TEXT}"]
+    "validValues": ["{USER:TEXT}", "${ORGANIZATION:TEXT}"]
 
 The left-hand component of the variable is the level. The level can be
 any of the options listed in the table below.
