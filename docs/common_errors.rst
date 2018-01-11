@@ -28,17 +28,6 @@ Creating Indicators
 
 There are a few details to keep in mind when creating certain Indicator types.
 
-URL Indicators
-^^^^^^^^^^^^^^
-
-When `creating a URL Indicator <https://docs.threatconnect.com/en/latest/rest_api/indicators/indicators.html#create-url-indicators>`__ in ThreatConnect, the domain name of the URL must be **lowercase**. There are some examples of correct and incorrect indicator formats below.
-
-.. code-block:: text
-
-    http://example.com # CORRECT
-
-    http://EXAMPLE.com # INCORRECT
-
 ASN Indicators
 ^^^^^^^^^^^^^^
 
@@ -52,6 +41,17 @@ When `creating an ASN Indicator <https://docs.threatconnect.com/en/latest/rest_a
     AS12345 # INCORRECT
     AS 12345 # INCORRECT
     ASN 12345 # INCORRECT
+
+Host Indicators
+^^^^^^^^^^^^^^^
+
+When `creating a Host Indicator <https://docs.threatconnect.com/en/latest/rest_api/indicators/indicators.html#create-host-indicators>`__ in ThreatConnect, the host must be in [ASCII](https://en.wikipedia.org/wiki/ASCII). This means that Unicode Host Indicators (e.g. [internationalized domain names](https://en.wikipedia.org/wiki/Internationalized_domain_name)), must be represented as [Punycode](https://en.wikipedia.org/wiki/Punycode).
+
+.. code-block:: text
+
+    xn--sterreich-z7a.icom.museum # CORRECT
+
+    österreich.icom.museum # INCORRECT
 
 Registry Key Indicators
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -75,3 +75,14 @@ When `creating a Registry Key Indicator <https://docs.threatconnect.com/en/lates
     HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\WbemPerf\001 # CORRECT
 
     HKLM\Software\Microsoft\Windows NT\CurrentVersion\WbemPerf\001 # INCORRECT
+
+URL Indicators
+^^^^^^^^^^^^^^
+
+When `creating a URL Indicator <https://docs.threatconnect.com/en/latest/rest_api/indicators/indicators.html#create-url-indicators>`__ in ThreatConnect, the domain name of the URL must be **lowercase**. There are some examples of correct and incorrect indicator formats below.
+
+.. code-block:: text
+
+    http://example.com # CORRECT
+
+    http://EXAMPLE.com # INCORRECT
