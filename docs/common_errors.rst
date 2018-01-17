@@ -42,6 +42,40 @@ When `creating an ASN Indicator <https://docs.threatconnect.com/en/latest/rest_a
     AS 12345 # INCORRECT
     ASN 12345 # INCORRECT
 
+CIDR Range Indicators with IPv6 Addresses
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When `creating a CIDR Range Indicator <https://docs.threatconnect.com/en/latest/rest_api/indicators/indicators.html#create-a-custom-indicator>`__ that is based on an IPv6 Address, the CIDR Range must be formatted very specifically. There can be no leading zeros in any of the sections unless that section contains only a zero. CIDR Ranges based on compressed IPv6 Addresses (e.g. ``2001:db8:1234::/48``) are **not** accepted. CIDR Ranges based on expanded/exploded IPv6 Addresses (e.g. ``2001:0DB8:1234:0000:0000:0000:0000:0000``) are also **not** accepted. Any section with ``0000`` must be replaced with a single zero (``0``). There are some examples below which demonstrate acceptable and unacceptable forms.
+
+.. code-block:: text
+
+    abc:def:10:0:0:0:0:0/48 # CORRECT
+
+    abc:def:10::/48 # INCORRECT - compressed IPv6 addresses not accepted
+    0abc:def:10:0:0:0:0:0/48 # INCORRECT - leading zero on first section
+    abc:0def:10:0:0:0:0:0/48 # INCORRECT - leading zero on second section
+    abc:def:0010:0:0:0:0:0/48 # INCORRECT - leading zeros on third section
+    abc:def:10:0000:0000:0000:0000:0000/48 # INCORRECT - expanded/exploded IPv6 addresses not accepted
+
+The Python3 script below will format a CIDR Range (as the ``incoming_cidr_range`` variable) into the desired format:
+
+.. code-block:: python
+
+    import ipaddress
+
+    incoming_cidr_range = "2001:db8:1234::/48"
+    desired_cidr_range = "2001:db8:1234:0:0:0:0:0/48"
+
+    address_sections =[section.replace("0000", "xxxx").lstrip("0") for section in ipaddress.IPv6Network(incoming_cidr_range).exploded.split(":")]
+
+    formatted_cidr_range = ":".join(address_sections)
+    formatted_cidr_range = formatted_cidr_range.replace("xxxx", "0")
+
+    assert formatted_cidr_range == desired_cidr_range
+    print(formatted_cidr_range)
+
+.. note:: The script above only works with Python3.
+
 Host Indicators
 ^^^^^^^^^^^^^^^
 
