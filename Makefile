@@ -35,6 +35,18 @@ uptcex:
 	# remove the empty directory
 	rm -rf ./tcex/tcex;
 
+	# change the variable name of the tcex version used in the tcex docs
+	sed -i.bak 's/|version|/|tcex_version|/g' ./docs/tcex/tcex.rst && rm ./docs/tcex/tcex.rst.bak
+
+	# stage all changes (including deletions)
+	git add -A;
+
+	# define a datestamp
+	DATE=$(date +"%B %d, %Y");
+
+	# commit
+	git commit -m "Auto-update TCEX docs: $DATE";
+
 clean:
 	# This script is to be run in the top directory of the TC Documentation (available here: https://github.com/ThreatConnect-Inc/threatconnect-developer-docs)
 
