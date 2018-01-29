@@ -36,7 +36,7 @@ uptcex:
 	rm -rf ./tcex/tcex;
 
 	# change the variable name of the tcex version used in the tcex docs
-	sed -i.bak 's/|version|/|tcex_version|/g' ./docs/tcex/tcex.rst && rm ./docs/tcex/tcex.rst.bak
+	sed -i.bak 's/|version|/|tcex_version|/g' ./docs/tcex/tcex.rst && rm ./docs/tcex/tcex.rst.bak;
 
 	# stage all changes (including deletions)
 	git add -A;
