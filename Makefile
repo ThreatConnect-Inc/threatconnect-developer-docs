@@ -42,10 +42,10 @@ uptcex:
 	git add -A;
 
 	# define a datestamp
-	DATE=$(date +"%B %d, %Y");
+	DATE=$$(date +"%B %d, %Y");
 
 	# commit
-	git commit -m "Auto-update TCEX docs: $DATE";
+	git commit -m "Auto-update TCEX docs: $$(DATE)";
 
 clean:
 	# This script is to be run in the top directory of the TC Documentation (available here: https://github.com/ThreatConnect-Inc/threatconnect-developer-docs)
