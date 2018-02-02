@@ -2,6 +2,7 @@
 """ TcEx Framework Resource Module """
 import copy
 import gzip
+import ipaddress
 import json
 import os
 import re
@@ -1448,6 +1449,28 @@ class Address(Indicator):
         self._request_uri = self._api_uri
         self._value_fields = ['ip']
 
+    def indicator(self, data):
+        """Update the request URI to include the Indicator for specific indicator retrieval.
+
+        Overload to handle formatting of ipv6 addresses
+
+        Args:
+            data (string): The indicator value
+        """
+        ip = ipaddress.ip_address(data)
+        if ip.version == 6:
+            data = ip.exploded
+            sections = []
+            # mangle perfectly good ipv6 address to match TC format
+            for s in data.split(':'):
+                if s == '0000':
+                    s = '0'
+                else:
+                    s = s.lstrip('0')
+                sections.append(s)
+            data = ':'.join(sections)
+        super(Address, self).indicator(data)
+
 
 class Bulk(Indicator):
     """Bulk Resource Class
@@ -1595,6 +1618,18 @@ class File(Indicator):
         """
         self.association_custom(action_name, association_resource)
 
+    def get_hash(self, hash_string):
+        """Return first non None hash from string.
+
+        md5 : sha1 : sha256
+
+        Args:
+            hash_string: (Optional [string]): The resource id (tag name).
+        """
+        for hs in hash_string.split(' : '):
+            if hs:
+                return hs
+
     @staticmethod
     def indicator_body(indicators):
         """Generate the appropriate dictionary content for POST of an File indicator
@@ -1631,6 +1666,59 @@ class File(Indicator):
         self._request_uri = '{}/fileOccurrences'.format(self._request_uri)
         if indicator is not None:
             self._request_uri = '{}/{}/fileOccurrences'.format(self._api_uri, indicator)
+
+    def attributes(self, resource_id=None):
+        """Attribute endpoint for this resource with optional attribute id.
+
+        Args:
+            resource_id (Optional [string]): The resource id (tag name).
+        """
+        # handle hashes in form md5 : sha1 : sha256
+        if resource_id:
+            resource_id = self.get_hash(resource_id)
+        return super(File, self).attributes(resource_id)
+
+    def indicator(self, data):
+        """Update the request URI to include the Indicator for specific indicator retrieval.
+
+        Args:
+            data (string): The indicator value
+        """
+        # handle hashes in form md5 : sha1 : sha256
+        data = self.get_hash(data)
+        super(File, self).indicator(data)
+
+    # def resource_id(self, data):
+    #     """Alias for indicator method.
+    #
+    #    Args:
+    #        data (string): The indicator value.
+    #    """
+    #    # handle hashes in form md5 : sha1 : sha256
+    #    data = self.get_hash(data)
+    #    super(File, self).resource_id(data)
+
+    def tags(self, resource_id=None):
+        """Tag endpoint for this resource with optional tag name.
+
+        Args:
+            resource_id (Optional [string]): The resource id (tag name).
+        """
+        # handle hashes in form md5 : sha1 : sha256
+        if resource_id:
+            resource_id = self.get_hash(resource_id)
+        return super(File, self).tags(resource_id)
+
+    def security_labels(self, resource_id=None):
+        """Security Label endpoint for this resource with optional label name.
+
+        Args:
+            resource_id (Optional [string]): The resource id (tag name).
+        """
+        # handle hashes in form md5 : sha1 : sha256
+        if resource_id:
+            resource_id = self.get_hash(resource_id)
+        return super(File, self).tags(resource_id)
 
 
 class Host(Indicator):

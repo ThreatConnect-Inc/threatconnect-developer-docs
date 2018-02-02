@@ -5,6 +5,7 @@ help:
 	@echo "upstream 	set upstream to https://github.com/ThreatConnect-Inc/threatconnect-developer-docs.git (useful when working on a fork of the TC docs)"
 	@echo "doctest 	run sphinx on the documentation to view errors"
 
+today := $(shell date +"%B %d, %Y")
 uptcex:
 	# This script is to be run in the top directory of the TC Documentation (available here: https://github.com/ThreatConnect-Inc/threatconnect-developer-docs)
 
@@ -41,11 +42,8 @@ uptcex:
 	# stage all changes (including deletions)
 	git add -A;
 
-	# define a datestamp
-	DATE=$$(date +"%B %d, %Y");
-
 	# commit
-	git commit -m "Auto-update TCEX docs: $$(DATE)";
+	git commit -m "Auto-update TCEX docs: $(today)";
 
 clean:
 	# This script is to be run in the top directory of the TC Documentation (available here: https://github.com/ThreatConnect-Inc/threatconnect-developer-docs)
