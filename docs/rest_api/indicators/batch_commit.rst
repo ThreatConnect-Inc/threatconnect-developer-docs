@@ -1,153 +1,6 @@
 Batch Upload: Indicators
 ------------------------
 
-Sample Batch Create request
-
-.. code::
-
-    POST /v2/batch/
-    Content-type: application/json; charset=utf-8
-
-    {
-      "haltOnError": "false",
-      "attributeWriteType": "Replace",
-      "action": "Create",
-      "owner": "Common Community"
-    }
-
-Server Response on Success
-
-.. code::
-
-    HTTP/1.1 201 Created
-    {
-      batchId: "123"
-    }
-
-Server Response on Insufficient Privileges
-
-.. code::
-
-    HTTP/1.1 403 Forbidden
-    {
-      status: "Not Authorized",
-      description: "Organization not authorized for batch"
-    }
-
-Server Response on Incorrect Settings
-
-.. code::
-
-    HTTP/1.1 403 Forbidden
-    {
-      status: "Not Authorized",
-      description: "Document storage not enabled for this instance"
-    }
-
-The following is an example of a Batch Indicator Input file:
-
-.. code:: json
-
-    {
-      "ownerName": "<String>",
-      "type": "<String>",
-      "rating": "<BigDecimal>",
-      "confidence": "<Short>",
-      "description": "<String>",
-      "summary": "<String>",
-      "tag": [
-        {
-          "name": "<String>"
-        }
-      ]
-    }
-
-Sample Batch Upload Input File request
-
-.. code::
-
-    POST /v2/batch/123
-
-    Content-Type: application/octet-stream; boundary=[boundary-text]
-    Content-Length: <data_size>
-    Content-Encoding: gzip
-    [boundary-text]
-    <uploaded_data>
-
-Server Response on Success
-
-.. code::
-
-    HTTP/1.1 202 Accepted
-    {
-      status: "Queued"
-    }
-
-Server Response on Overlarge Input File
-
-.. code::
-
-    HTTP/1.1 400 Bad Request
-    {
-      status: "Invalid",
-      description: "File size greater than allowable limit of 2000000"
-    }
-
-Sample Batch Status Check request
-
-.. code::
-
-    GET /v2/batch/123
-
-
-Server Response on Success (job still running)
-
-.. code::
-
-    HTTP/1.1 200 OK
-    {
-      status: "Running"
-    }
-
-Server Response on Success (job finished)
-
-.. code::
-
-    HTTP/1.1 200 OK
-    {
-      status: "Completed",
-      errorCount: 3420,
-      successCount: 405432,
-      unprocessCount: 0
-    }
-
-Sample Batch Error Message request
-
-.. code::
-
-    GET /v2/batch/123/errors
-
-Server Response on Success (job still running)
-
-.. code::
-
-    HTTP/1.1 400 Bad Request
-    {
-      status: "Invalid",
-      description: "Batch still in Running state"
-    }
-
-Server Response on Success (job finished):
-
-.. code::
-
-    HTTP/1.1 200 OK
-    Content-Type: application/octet-stream ; boundary=
-    Content-Length:
-    Content-Encoding: gzip
-
-Create Batch Endpoint
-
 The Batch API allows bulk Indicator creation and deletion via the HTTP
 POST method. After creating a batch, an Indicator file is uploaded. The
 content of the file must be valid JSON, with content and format
@@ -175,6 +28,8 @@ The Batch Create resource creates a batch entry in the system. No batch processi
 +---------------------+-----------------+-------------------------------------------------------------------------------------------------------------------+
 |                     | Delete          | Delete: Delete Indicator (only the ‘summary’ and ‘type’ field are required)                                       |
 +---------------------+-----------------+-------------------------------------------------------------------------------------------------------------------+
+
+.. note:: If ``haltOnError`` is set to ‘true’ and an error occurs, then the status will be set to ‘Completed’, and ‘errorCount’ will be greater than zero. The ‘unprocessedCount’ field will be greater than zero, unless the uploaded file did not contain valid JSON.
 
 Batch Indicator Input File Format
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -234,32 +89,149 @@ Supported ``type`` values for Indicators:
 -  URL
 -  File
 
-.. note:: Exporting indicators via the ``JSON Export`` feature in ThreatConnect will create a file in this format
+.. note:: Exporting indicators via the ``JSON Export`` feature in ThreatConnect will create a file in this format.
 
-Upload Batch Input File Endpoint
+.. warning:: The maximum number of indicators which can be created in one batch job is 25,000. If you need to create more than this, you will have to use multiple batch jobs.
 
-Batch files should be sent as HTTP POST data to a REST endpoint,
-including the relevant ``batchId``
+**Sample Batch Create request**
 
-Check Batch Status Endpoint
+.. code::
 
-You may also check the status of a running batch upload job
+    POST /v2/batch/
+    Content-type: application/json; charset=utf-8
 
-The server can be configured to restrict the file size. Clients can
-submit multiple batches for larger files.
+    {
+      "haltOnError": "false",
+      "attributeWriteType": "Replace",
+      "action": "Create",
+      "owner": "Common Community"
+    }
 
-Possible GET response status includes:
+**Server Response on Success**
+
+.. code::
+
+    HTTP/1.1 201 Created
+    {
+      batchId: "123"
+    }
+
+**Server Response on Insufficient Privileges**
+
+.. code::
+
+    HTTP/1.1 403 Forbidden
+    {
+      status: "Not Authorized",
+      description: "Organization not authorized for batch"
+    }
+
+**Server Response on Incorrect Settings**
+
+.. code::
+
+    HTTP/1.1 403 Forbidden
+    {
+      status: "Not Authorized",
+      description: "Document storage not enabled for this instance"
+    }
+
+**Sample Batch Upload Input File request**
+
+Batch files should be sent as HTTP POST data to a REST endpoint, including the relevant ``batchId`` as shown in the format below.
+
+.. code::
+
+    POST /v2/batch/{batchId}
+
+For example:
+
+.. code::
+
+    POST /v2/batch/123
+
+    Content-Type: application/octet-stream; boundary=[boundary-text]
+    Content-Length: <data_size>
+    Content-Encoding: gzip
+    [boundary-text]
+    <uploaded_data>
+
+**Server Response on Success**
+
+.. code::
+
+    HTTP/1.1 202 Accepted
+    {
+      status: "Queued"
+    }
+
+**Server Response on Overlarge Input File**
+
+.. code::
+
+    HTTP/1.1 400 Bad Request
+    {
+      status: "Invalid",
+      description: "File size greater than allowable limit of 2000000"
+    }
+
+**Sample Batch Status Check request**
+
+Use this request to check the status of a running batch upload job. Possible GET response statuses are:
 
 -  Created
 -  Queued
 -  Running
 -  Completed
 
-If ``haltOnError`` is set to ‘true’ and an error occurs, then the status
-will be set to ‘Completed’, and ‘errorCount’ will be greater than zero.
-The ‘unprocessedCount’ field will be greater than zero, unless the
-uploaded file did not contain valid JSON.
+.. code::
 
-Partial failures will have an error file with a response having a
-‘reason text’, which includes Tag, Attribute, or Indicator errors (fail
-on first).
+    GET /v2/batch/123
+
+**Server Response on Success (job still running)**
+
+.. code::
+
+    HTTP/1.1 200 OK
+    {
+      status: "Running"
+    }
+
+**Server Response on Success (job finished)**
+
+.. code::
+
+    HTTP/1.1 200 OK
+    {
+      status: "Completed",
+      errorCount: 3420,
+      successCount: 405432,
+      unprocessCount: 0
+    }
+
+**Sample Batch Error Message request**
+
+.. code::
+
+    GET /v2/batch/123/errors
+
+**Server Response on Success (job still running)**
+
+.. code::
+
+    HTTP/1.1 400 Bad Request
+    {
+      status: "Invalid",
+      description: "Batch still in Running state"
+    }
+
+**Server Response on Success (job finished)**
+
+.. code::
+
+    HTTP/1.1 200 OK
+    Content-Type: application/octet-stream ; boundary=
+    Content-Length:
+    Content-Encoding: gzip
+
+.. note:: Batch jobs that end in partial failures will have an error file with a response having a 'reason text', which includes Tag, Attribute, or Indicator errors (fail on first).
