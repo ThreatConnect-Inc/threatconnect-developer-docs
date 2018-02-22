@@ -79,7 +79,7 @@ The Python3 script below will format a CIDR Range (as the ``incoming_cidr_range`
 Host Indicators
 ^^^^^^^^^^^^^^^
 
-When `creating a Host Indicator <https://docs.threatconnect.com/en/latest/rest_api/indicators/indicators.html#create-host-indicators>`__ in ThreatConnect, the host must be in [ASCII](https://en.wikipedia.org/wiki/ASCII). This means that Unicode Host Indicators (e.g. [internationalized domain names](https://en.wikipedia.org/wiki/Internationalized_domain_name)), must be represented as [Punycode](https://en.wikipedia.org/wiki/Punycode).
+When `creating a Host Indicator <https://docs.threatconnect.com/en/latest/rest_api/indicators/indicators.html#create-host-indicators>`__ in ThreatConnect, the host must be in `ASCII <https://en.wikipedia.org/wiki/ASCII>`__. This means that Unicode Host Indicators (e.g. `internationalized domain names <https://en.wikipedia.org/wiki/Internationalized_domain_name>`__), must be represented as `Punycode <https://en.wikipedia.org/wiki/Punycode>`__.
 
 .. code-block:: text
 
@@ -92,15 +92,15 @@ Registry Key Indicators
 
 When `creating a Registry Key Indicator <https://docs.threatconnect.com/en/latest/rest_api/indicators/indicators.html#create-a-custom-indicator>`__ in ThreatConnect, the **Key Name** for the Registry Key must start with one of the following values:
 
-* HKEY_CLASSES_ROOT
-* HKEY_CURRENT_CONFIG
-* HKEY_CURRENT_USER
-* HKEY_CURRENT_USER_LOCAL_SETTINGS
-* HKEY_LOCAL_MACHINE
-* HKEY_PERFORMANCE_DATA
-* HKEY_PERFORMANCE_NLSTEXT
-* HKEY_PERFORMANCE_TEXT
-* HKEY_USERS
+* ``HKEY_CLASSES_ROOT``
+* ``HKEY_CURRENT_CONFIG``
+* ``HKEY_CURRENT_USER``
+* ``HKEY_CURRENT_USER_LOCAL_SETTINGS``
+* ``HKEY_LOCAL_MACHINE``
+* ``HKEY_PERFORMANCE_DATA``
+* ``HKEY_PERFORMANCE_NLSTEXT``
+* ``HKEY_PERFORMANCE_TEXT``
+* ``HKEY_USERS``
 
 .. note:: If a Registry Key starts with ``HKLM\``, this must be changed to ``HKEY_LOCAL_MACHINE\`` before the Key can be created in ThreatConnect.
 
@@ -120,3 +120,5 @@ When `creating a URL Indicator <https://docs.threatconnect.com/en/latest/rest_ap
     http://example.com # CORRECT
 
     http://EXAMPLE.com # INCORRECT
+
+Additionally, the domain name of a URL must be in ASCII (if it is `internationalized <https://en.wikipedia.org/wiki/Internationalized_domain_name>`_ , it must be represented as Punycode as described `here <https://docs.threatconnect.com/en/latest/common_errors.html#host-indicators>`__).

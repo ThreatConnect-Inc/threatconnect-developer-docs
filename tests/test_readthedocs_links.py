@@ -1,5 +1,8 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 """Find and test each of the links in the docs to make sure they are working properly."""
 
+import os
 import re
 import sys
 
@@ -152,7 +155,6 @@ def test_standard_script_heading_link():
 
 def test_no_dev_links():
     """Make sure there are no links to the dev version of the docs."""
-    import os
     dev_pattern = "en/dev/"
 
     # iterate through the files in the /docs/ directory to make sure the are no links to the dev version of the documentation
@@ -166,6 +168,29 @@ def test_no_dev_links():
                     file_text = f.read()
                     assert dev_pattern not in file_text
                     print("check passed\n")
+
+
+def test_markdown_links():
+    """Make sure there are no links to the dev version of the docs."""
+    markdown_link_pattern = '\[.*?\]\(.+\)'
+    errors = 0
+
+    for path, dirs, files in os.walk(os.path.abspath(os.path.join(os.path.dirname(__file__), "../docs"))):
+        # ignore all directories that start with "_"
+        if "/_" not in path:
+            for file in files:
+                if not file.startswith('.'):
+                    # check to see if the dev pattern is in the file
+                    with open("{}/{}".format(path, file), 'r') as f:
+                        file_text = f.read()
+                        try:
+                            markdown_links = re.findall(markdown_link_pattern, file_text)
+                            assert markdown_links == []
+                        except AssertionError:
+                            print("Found what appears to be a markdown link in {}/{}: {}".format(path, file, markdown_links))
+                            errors += 1
+
+    assert errors == 0
 
 
 # def test_no_broken_headings():
