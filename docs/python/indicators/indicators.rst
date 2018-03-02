@@ -17,6 +17,8 @@ Indicators
 
 .. include:: custom_indicators/custom_indicators.rst
 
+.. include:: associations/associations.rst
+
 .. include:: _metadata/metadata.rst
 
 .. include:: bulk_download.rst
