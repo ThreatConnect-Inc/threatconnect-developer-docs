@@ -13,6 +13,8 @@ Victims are used to describe a specific organization or group that has been targ
 
 .. include:: crud/delete.rst
 
+.. include:: associations/associations.rst
+
 .. include:: _metadata/metadata.rst
 
 .. include:: victim_assets/victim_assets.rst

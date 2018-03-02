@@ -1,5 +1,5 @@
 Delete Indicator Associations
-"""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The code snippet below demonstrates how to remove an association between an Indicator and a Group in ThreatConnect. This example assumes a Host Indicator ``example.com`` exists in the target owner and an Incident with the ID ``123456``.
 

@@ -1,7 +1,7 @@
-Create Task Associations
-""""""""""""""""""""""""
+Delete Task Associations
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-The code snippet below demonstrates how to create an association between a Task and another Group, Indicator, and Victim in ThreatConnect. This example assumes there is a Task with an ID of ``123456`` in the target owner. To test this code snippet, change the ``task_id`` variable to the ID of a task in your owner.
+The code snippet below demonstrates how to remove an association between a Task and another Group, Indicator, and Victim. This example assumes there is a Task with an ID of ``123456`` in the target owner. To test this code snippet, change the ``task_id`` variable to the ID of a task in your owner.
 
 .. code-block:: python
     :emphasize-lines: 1,30-31,33-34,36-37,39-40
@@ -35,14 +35,14 @@ The code snippet below demonstrates how to create an association between a Task 
     for task in tasks:
         print(task.name)
 
-        # create an association between this task and the incident with the ID: 654321
-        task.associate_group(ResourceType.INCIDENTS, 654321)
+        # remove the association between this task and the incident with the ID: 654321
+        task.disassociate_group(ResourceType.INCIDENTS, 654321)
 
-        # create an association between this task and the URL indicator: http://example.com/
-        task.associate_indicator(ResourceType.URLS, 'http://example.com/')
+        # remove the association between this task and the URL indicator: http://example.com/
+        task.disassociate_indicator(ResourceType.URLS, 'http://example.com/')
 
-        # create an association between this task and the victim with the ID: 333333
-        task.associate_victim(333333)
+        # remove the association between this task and the victim with the ID: 333333
+        task.disassociate_victim(333333)
 
         # commit the changes to ThreatConnect
         task.commit()

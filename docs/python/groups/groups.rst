@@ -21,4 +21,6 @@ Groups
 
 .. include:: threats/threats.rst
 
+.. include:: associations/associations.rst
+
 .. include:: _metadata/metadata.rst

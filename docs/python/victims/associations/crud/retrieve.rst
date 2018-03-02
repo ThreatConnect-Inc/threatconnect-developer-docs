@@ -1,5 +1,5 @@
 Retrieve Victim Associations
-""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The code snippet below demonstrates how to view Groups and Indicators which are associated with a given Victim in ThreatConnect. This example assumes there is a Victim with an ID of ``123456`` in the target owner. To test this code snippet, change the ``victim_id`` variable.
 

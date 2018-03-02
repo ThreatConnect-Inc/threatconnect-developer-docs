@@ -1,5 +1,5 @@
 Retrieve Indicator Associations
-"""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The code snippet below demonstrates how to view Groups and Indicators which are associated with a given Indicator in ThreatConnect. This example assumes a Host Indicator ``example.com`` exists in the target owner.
 

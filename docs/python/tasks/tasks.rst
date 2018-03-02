@@ -13,4 +13,6 @@ The Task Group represents an assignment given to a ThreatConnect user.
 
 .. include:: crud/delete.rst
 
+.. include:: associations/associations.rst
+
 .. include:: _metadata/metadata.rst
