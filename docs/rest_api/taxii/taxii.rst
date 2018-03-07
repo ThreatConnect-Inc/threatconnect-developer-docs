@@ -21,7 +21,7 @@ For example, the ``Authentication`` header for requests to Taxii endpoints shoul
 Discovery Service
 -----------------
 
-The discovery service is available at ``/taxii/discover/``.
+The discovery service is available at ``/taxii/discovery/``.
 
 Sample Discovery Request
 ^^^^^^^^^^^^^^^^^^^^^^^^
