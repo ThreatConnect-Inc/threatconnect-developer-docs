@@ -14,9 +14,9 @@ ThreatConnect offers three Taxii Services:
 Authentication
 --------------
 
-Requests to a Taxii endpoint must be authenticated using `Basic Authentication <https://en.wikipedia.org/wiki/Basic_access_authentication>`_ with the username and password of a Taxii-user account. The value created by the basic authentication should be sent with the request with the ``Authentication`` header. Note that this is different than the authentication scheme used for normal API requests.
+Requests to a Taxii endpoint must be authenticated using `Basic Authentication <https://en.wikipedia.org/wiki/Basic_access_authentication>`_ with the username and password of a Taxii-user account. The value created by the basic authentication should be sent with the request with the ``Authorization`` header. Note that this is different than the authentication scheme used for normal API requests.
 
-For example, the ``Authentication`` header for requests to Taxii endpoints should look like: ``Authorization: Basic b1gB1rdz007``.
+For example, the ``Authorization`` header for requests to Taxii endpoints should look like: ``Authorization: Basic b1gB1rdz007``.
 
 Discovery Service
 -----------------
