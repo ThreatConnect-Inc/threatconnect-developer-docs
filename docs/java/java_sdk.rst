@@ -1,36 +1,6 @@
 Java SDK
 ========
 
-About This Document
-
-This guide details the process of coding Java applications utilizing the
-ThreatConnect API. The Java SDK offers coverage of all features in
-version 2.0 of the ThreatConnect API—including the ability to write data
-to ThreatConnect. This document will provide an overview of the
-reference implementation of the Java SDK for ThreatConnect.
-
-The goal of this Java SDK library is to provide a programmatic
-abstraction layer around the ThreatConnect API without losing functional
-coverage over the available API resources. This abstraction layer
-enables developers to focus on writing enterprise functionality without
-worrying about low-level RESTful calls and authentication management.
-
-This document is not a replacement for the official ThreatConnect API
-User Guide. This document serves as a companion to the official
-documentation for the REST API. Read the official documentation to gain
-a further understanding of the functional aspects of using the
-ThreatConnect API.
-
-How to Use This Document
-
-This document explains how to create groups, indicators, associations,
-tags, security labels, and victims—as well as how to create, update,
-delete, and request data from the API using Java; thus, knowledge of the
-Java programming Language is a prerequisite.
-
-All code examples will be noted in a separate box with a monospaced font
-and line numbers to facilitate explanation of code functionality.
-
 Getting Started with Java SDK
 -----------------------------
 
@@ -38,7 +8,7 @@ Getting Started with Java SDK
    7+ <http://www.oracle.com/technetwork/java/javase/downloads/index.html>`__
 -  Import `Java SDK for
    ThreatConnect <https://github.com/ThreatConnect-Inc/threatconnect-java>`__
--  Create an API User, refer to `REST API documentation <../rest_api/rest_api.html#creating-an-api-key>`__
+-  Create an API User, refer to `REST API documentation <../rest_api/quick_start.html#creating-an-api-key>`__
 
 Maven™ Configuration
 ~~~~~~~~~~~~~~~~~~~~
