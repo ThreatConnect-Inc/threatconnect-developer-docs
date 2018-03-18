@@ -28,11 +28,8 @@ The :py:meth:`~tcex.tcex_job.TcExJob.group` method accepts the following data st
       ],
       "name": "Robin Sparkles",
       "tag": [
-        {
-          "name": "APT"
-        },{
-          "name": "CrimeWare"
-        }
+          {"name": "APT"},
+          {"name": "CrimeWare"}
       ],
       "type": "Adversary"
     }
@@ -108,11 +105,8 @@ The :py:meth:`~tcex.tcex_job.TcExJob.indicator` method accepts the following dat
       "rating": "3",
       "summary": "1.1.1.1",
       "tag": [
-        {
-          "name": "APT"
-        },{
-          "name": "CrimeWare"
-        }
+          {"name": "APT"},
+          {"name": "CrimeWare"}
       ],
       "type": "Address"
     }
