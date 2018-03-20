@@ -89,7 +89,7 @@ Supported ``type`` values for Indicators:
 -  URL
 -  File
 
-.. note:: Exporting indicators via the ``JSON Export`` feature in ThreatConnect will create a file in this format.
+.. note:: Exporting indicators via the `JSON Bulk Reports <https://docs.threatconnect.com/en/latest/rest_api/indicators/indicators.html#json-bulk-reports>`__ endpoint will create a file in this format.
 
 .. warning:: The maximum number of indicators which can be created in one batch job is 25,000. If you need to create more than this, you will have to use multiple batch jobs.
 
