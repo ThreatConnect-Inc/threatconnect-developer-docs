@@ -81,6 +81,16 @@ list of dictionaries
 | ``associatedGroup`` | list of integers     | Optional  |
 +---------------------+----------------------+-----------+
 
+.. note:: To create File Indicators using Batch Indicator Upload, the ``summary`` should be a string with each file hash (md5, sha1, and/or sha256) separated by ``<space>:<space>``. For example, the following summary would create a File Indicator with the md5 hash ``905ad8176a569a36421bf54c04ba7f95``, sha1 hash ``a52b6986d68cdfac53aa740566cbeade4452124e`` and sha256 hash ``25bdabd23e349f5e5ea7890795b06d15d842bde1d43135c361e755f748ca05d0``:
+
+    .. code-block:: javascript
+    
+        {
+          "summary": "905ad8176a569a36421bf54c04ba7f95 : a52b6986d68cdfac53aa740566cbeade4452124e : 25bdabd23e349f5e5ea7890795b06d15d842bde1d43135c361e755f748ca05d0",
+          "type": "File",
+          ...
+        }
+
 Supported ``type`` values for Indicators:
 
 -  Host
