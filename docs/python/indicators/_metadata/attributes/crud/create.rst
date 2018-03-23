@@ -40,3 +40,5 @@ The code snippet below demonstrates how to create an attribute on an Indicator. 
         indicator.commit()
 
 .. note:: In the prior example, no API calls are made until the ``commit()`` method is invoked.
+
+.. hint:: The order in which you add attributes can be important. See `'Order is Important when Adding Attributes' <https://docs.threatconnect.com/en/latest/python/advanced.html#order-is-important-when-adding-attributes>`_ for more details.

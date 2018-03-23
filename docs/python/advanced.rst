@@ -1084,3 +1084,47 @@ All report entries can be accessed via the Report generator. By
 iterating over ``tc.report``, each individual report entry will be
 returned. These report entries can be printed and the individual
 properties can be accessed.
+
+Gotchas
+-------
+
+This section details some things to be aware of when using the Python SDK for advanced use-cases.
+
+Order is Important when Adding Attributes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you are adding attributes to an indicator using this SDK, the order in which the attributes are added can be important. This is true if one of the attributes may be improperly formatted, thus causing an API error.
+
+To illustrate this, consider the following code:
+
+.. code-block:: python
+
+    # ThreatConnect configuration would go here
+    ...
+
+    # create a new file indicator
+    indicator = indicators.add('a'*32, owner)
+
+    # add a Description attribute
+    indicator.add_attribute('Description', 'Test description')
+
+    # add an ssdeep Hash attribute
+    indicator.add_attribute('ssdeep Hash', '!!MALFORMED SSDEEP HASH!!')
+
+    # add a Source attribute
+    indicator.add_attribute('Source', 'Test source')
+
+    # set the confidence rating for the indicator
+    indicator.set_confidence(75)
+
+    indicator.commit()
+
+We want to create a File Indicator, add three attributes (description, ssdeep hash, and source), and set the confidence rating. When ``indicator.commit()`` is called, it will follow these steps (the important sections are in bold):
+
+- Create the indicator
+- Add a description attribute
+- **Fail while trying to add the ssdeep Hash attribute**
+- **Will not add a source attribute**
+- Set the confidence rating
+
+The key point is that any attributes created *after* the creation of another attribute has failed will not be created. Thus, if you have an attribute that may be invalid, you should add other attributes first. Other operations like setting the confidence and threat ratings and adding tags will work properly after the creation of an attribute has failed.

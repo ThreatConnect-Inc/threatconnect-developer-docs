@@ -45,3 +45,5 @@ The code snippet below demonstrates how to update an Indicator's attribute. This
         indicator.commit()
 
 .. note:: In the prior example, no API calls are made until the ``commit()`` method is invoked.
+
+.. hint:: The order in which you update attributes can be important. See `'Order is Important when Adding Attributes' <https://docs.threatconnect.com/en/latest/python/advanced.html#order-is-important-when-adding-attributes>`_ for more details.
