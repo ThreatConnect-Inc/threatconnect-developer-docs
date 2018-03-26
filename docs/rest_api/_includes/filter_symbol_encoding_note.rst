@@ -1,1 +1,15 @@
-.. note:: ``=``, ``<``, ``>``, and ``^``  operators need to be escaped in the API query URL as: ``%3D``, ``%3C``, ``%3E``, and ``%5E`` respectively.
+.. hint:: The "^" character means "starts with". For example, this character would be used to find all URL Indicators that start with ``http://xn--`` or all Groups whose name starts with ``APT``.
+
+.. note:: The ``=``, ``<``, ``>``, and ``^`` operators in any filters must `URL encoded <https://en.wikipedia.org/wiki/Percent-encoding>`__ as follows:
+    
+    +-----------+------------------+
+    | Character | URL Encoded Form |
+    +===========+==================+
+    | =         | ``%3D``          |
+    +-----------+------------------+
+    | <         | ``%3C``          |
+    +-----------+------------------+
+    | >         | ``%3E``          |
+    +-----------+------------------+
+    | ^         | ``%5E``          |
+    +-----------+------------------+
