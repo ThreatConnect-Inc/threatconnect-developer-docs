@@ -1097,6 +1097,9 @@ If you are adding attributes to an indicator using this SDK, the order in which 
 
 To illustrate this, consider the following code:
 
+.. 
+    no-test
+
 .. code-block:: python
 
     # replace the line below with the standard, TC script heading described here:
