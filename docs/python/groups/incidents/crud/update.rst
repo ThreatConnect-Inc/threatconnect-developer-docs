@@ -23,7 +23,7 @@ ThreatConnect platform:
     # set the ID of the new Incident to the ID of the existing Incident you want to update
     incident.set_id(123456)
 
-    # you can update the Incident metadata as described here: https://docs.threatconnect.com/en/latest/python/python_sdk.html#group-metadata
+    # you can update the Incident metadata as described here: https://docs.threatconnect.com/en/latest/python/groups/groups.html#group-metadata
 
     try:
         # update the Incident

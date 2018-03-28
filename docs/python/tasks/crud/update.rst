@@ -20,7 +20,7 @@ The example below demonstrates how to update a Task Resource in the ThreatConnec
     # set the ID of the new Task to the ID of the existing Task you want to update
     task.set_id(123456)
 
-    # you can update the Task metadata as described here: https://docs.threatconnect.com/en/latest/python/python_sdk.html#group-metadata
+    # you can update the Task metadata as described here: https://docs.threatconnect.com/en/latest/python/tasks/tasks.html#task-metadata
 
     try:
         # update the Task

@@ -22,7 +22,7 @@ The example below demonstrates how to update a Campaign Resource in the ThreatCo
     # set the ID of the new Campaign to the ID of the existing Campaign you want to update
     campaign.set_id(123456)
 
-    # you can update the Campaign metadata as described here: https://docs.threatconnect.com/en/latest/python/python_sdk.html#group-metadata
+    # you can update the Campaign metadata as described here: https://docs.threatconnect.com/en/latest/python/groups/groups.html#group-metadata
 
     try:
         # update the Campaign
