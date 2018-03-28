@@ -20,6 +20,11 @@ ThreatConnect platform:
 
     # create a Signature with an updated name
     signature = signatures.add('Updated Signature', owner)
+
+    # even if you are not updating these values, you need to set them
+    signature.set_file_name('updated.sig')
+    signature.set_file_type('Yara')
+
     # set the ID of the new Signature to the ID of the existing Signature you want to update
     signature.set_id(123456)
 
