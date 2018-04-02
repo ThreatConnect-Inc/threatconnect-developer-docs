@@ -40,3 +40,5 @@ The code snippet below demonstrates how to add a tag to a Victim. This example a
         victim.commit()
 
 .. note:: In the prior example, no API calls are made until the ``commit()`` method is invoked.
+
+.. include:: ../_includes/tag_length.rst

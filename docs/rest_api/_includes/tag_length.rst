@@ -1,0 +1,1 @@
+.. note:: The length of a tag is limited to 128 characters.

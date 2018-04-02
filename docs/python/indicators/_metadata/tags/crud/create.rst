@@ -37,3 +37,5 @@ The code snippet below demonstrates how to add a tag to an Indicator. This examp
         indicator.commit()
 
 .. note:: In the prior example, no API calls are made until the ``commit()`` method is invoked.
+
+.. include:: ../_includes/tag_length.rst
