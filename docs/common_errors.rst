@@ -90,6 +90,9 @@ When `creating a Host Indicator <https://docs.threatconnect.com/en/latest/rest_a
 Registry Key Indicators
 ^^^^^^^^^^^^^^^^^^^^^^^
 
+Key Name
+""""""""
+
 When `creating a Registry Key Indicator <https://docs.threatconnect.com/en/latest/rest_api/indicators/indicators.html#create-a-custom-indicator>`__ in ThreatConnect, the **Key Name** for the Registry Key must start with one of the following values:
 
 * ``HKEY_CLASSES_ROOT``
@@ -109,6 +112,11 @@ When `creating a Registry Key Indicator <https://docs.threatconnect.com/en/lates
     HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\WbemPerf\001 # CORRECT
 
     HKLM\Software\Microsoft\Windows NT\CurrentVersion\WbemPerf\001 # INCORRECT
+
+Value Name
+""""""""""
+
+When `creating a Registry Key Indicator <https://docs.threatconnect.com/en/latest/rest_api/indicators/indicators.html#create-a-custom-indicator>`__ in ThreatConnect via the API, the **Value Name** for the Registry Key is required. It is optional in the UI, but required when using the API or any SDKs.
 
 URL Indicators
 ^^^^^^^^^^^^^^
