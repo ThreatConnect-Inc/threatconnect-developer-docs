@@ -1,7 +1,7 @@
 Angular SDKs
 ============
 
-To support the creation of `spaces apps <https://kb.threatconnect.com/customer/en/portal/articles/2256255-spaces>`__, ThreatConnect has two SDKs for the `Angular framework<https://angular.io/>`__. Both of these SDKs are in early development and will undergo frequent changes when required.
+To support the creation of `spaces apps <https://kb.threatconnect.com/customer/en/portal/articles/2256255-spaces>`__, ThreatConnect has two SDKs for the `Angular framework <https://angular.io/>`__. Both of these SDKs are in early development and will undergo frequent changes when required.
 
 spaces-ng
 ---------
