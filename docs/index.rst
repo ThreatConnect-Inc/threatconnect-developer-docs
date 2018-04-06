@@ -19,4 +19,5 @@ Demo <https://www.threatconnect.com/request-a-demo/>`__
    deployment_config
    tcex/tcex
    common_errors
+   angular
    trademarks
