@@ -453,7 +453,8 @@ class TcExJob(object):
                                     break
                                 else:
                                     # all indicators were saved minus failed; not_save == failed
-                                    self._indicator_results['not_saved'] = self._indicator_results.get('failed', [])
+                                    self._indicator_results['not_saved'] = self._indicator_results.get(
+                                        'failed', [])
                                     self._indicator_results['saved'].extend(
                                         [i.get('summary') for i in chunk
                                          if i.get('summary') not in self._indicator_results.get(
@@ -599,7 +600,7 @@ class TcExJob(object):
                     resource.indicator(i_data.get('summary'))
                 else:
                     resource.indicator(i_value)
-                tag_resource = resource.tags(self._tcex.safetag(tag.get('name')))
+                tag_resource = resource.tags(tag.get('name'))
                 tag_resource.http_method = 'POST'
                 t_results = tag_resource.request()
                 if t_results.get('status') != 'Success':
@@ -1272,7 +1273,8 @@ class TcExJob(object):
     def process(self, owner, indicator_batch=True, group_action='skip'):
         """Process all groups, indicator data, and associations.
 
-        Process each of the supported data types for this job, in the following order (left to right):
+        Process each of the supported data types for this job, in the following
+        order (left to right):
 
             groups > indicators > file occurrences > group associations > associations
 
