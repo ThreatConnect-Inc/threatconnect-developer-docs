@@ -492,6 +492,17 @@ class TcRun(object):
                 'provided_group': self._args.group,
                 'provided_profile': self._args.profile,
                 'selected_profiles': []
+            },
+            'run_status': {
+                'total': 0,
+                'executions': {
+                    'pass': 0,
+                    'fail': 0
+                },
+                'validations': {
+                    'pass': 0,
+                    'fail': 0
+                }
             }
         }
 
@@ -515,8 +526,11 @@ class TcRun(object):
                 profile_selected = True
 
             if profile_selected:
-                selected_profiles.append(config)
                 report_profile['selected'] = True
+                selected_profiles.append({
+                    'config': config,
+                    'report_profile': report_profile
+                })
                 self.json_report['run_config']['selected_profiles'].append(profile_name)
             else:
                 # add unselected profiles
@@ -529,8 +543,11 @@ class TcRun(object):
             sys.exit()
 
         command_count = 0
-        reports = []
-        for sp in selected_profiles:
+        reports = []  # output to terminal
+        for profile_data in selected_profiles:
+            sp = profile_data.get('config')
+            report_profile = profile_data.get('report_profile')
+
             # create temp directories
             self._create_tc_dirs(sp)
 
@@ -650,10 +667,13 @@ class TcRun(object):
             #
             # Exit Code
             #
+            self.json_report['run_status']['total'] += 1
             valid_exit_codes = sp.get('exit_codes', [0])
             report_profile['exit_code'] = p.returncode
+            execution_result = 'fail'
             if p.returncode in valid_exit_codes:
                 print('App Exit Code: {}{}{}'.format(c.Style.BRIGHT, c.Fore.GREEN, p.returncode))
+                execution_result = 'pass'
                 execution_success = True
             else:
                 print('App Exit Code: {}{}{}{} (Valid Exit Codes: {})'.format(
@@ -663,12 +683,17 @@ class TcRun(object):
                 self.exit_code = 1
                 if args.halt_on_fail:
                     break
+            self.json_report['run_status']['executions'][execution_result] += 1
 
             #
             # Validate Data
             #
+            validation_result = 'fail'
             if execution_success:
                 validation_success = self.validate_data(sp)
+                if validation_success:
+                    validation_result = 'pass'
+            self.json_report['run_status']['validations'][validation_result] += 1
 
             #
             # Error Output
@@ -694,7 +719,7 @@ class TcRun(object):
         #
         if args.report:
             with open(args.report, 'w') as outfile:
-                json.dump(self.json_report, outfile)
+                json.dump(self.json_report, outfile, sort_keys=True)
 
         # on screen report
         if reports:

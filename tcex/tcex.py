@@ -121,13 +121,20 @@ class TcEx(object):
         # inject args from API endpoint
         data = response.json()
         for arg, value in data.get('inputs', {}).items():
-            # handle bool values a flags (e.g., --flag) with no value
             if isinstance(value, (bool)):
+                # this is future proof in case values are changed to bool in the future
+                # handle bool values as flags (e.g., --flag) with no value
                 if value:
                     sys.argv.append('--{}'.format(arg))
+            elif value == 'true':
+                # handle bool values (string of "true") as flags (e.g., --flag) with no value
+                sys.argv.append('--{}'.format(arg))
+            elif value == 'false':
+                # boolean value as flag is not required
+                pass
             else:
                 sys.argv.append('--{}'.format(arg))
-                sys.argv.append(value)
+                sys.argv.append('{}'.format(value))
 
         # reset default_args now that values have been injected into sys.argv
         self.default_args, unknown = self.parser.parse_known_args()
@@ -188,18 +195,13 @@ class TcEx(object):
             r = self.request
             r.add_payload('expiredToken', self._tc_token)
             r.url = '{}/appAuth'.format(self.default_args.tc_api_path)
-            try:
-                results = r.send()
-            except KeyError:
-                err = u'Could not renew token: {}'.format(results.text)
-                self.log.error(err)
-                raise RuntimeError(err)
+            results = r.send()
 
             try:
                 data = results.json()
                 if data['success']:
                     self.log.info(u'Expired API token has been renewed.')
-                    self._tc_token = str(data['apiToken'])
+                    self._tc_token = data['apiToken']  # remove str() due to newstr issue
                     self._tc_token_expires = int(data['apiTokenExpires'])
                     authorization = 'TC-Token {}'.format(data['apiToken'])
                 else:
@@ -1080,8 +1082,7 @@ class TcEx(object):
 
         return group_name
 
-    @staticmethod
-    def safetag(tag, errors='strict'):
+    def safetag(self, tag, errors='strict'):
         """URL Encode and truncate tag to match limit (128 characters) of ThreatConnect API.
 
         Args:
@@ -1092,10 +1093,14 @@ class TcEx(object):
         """
         if tag is not None:
             # handle unicode characters and url encode tag value
-            tag = quote(TcEx.to_string(tag, errors=errors), safe='~')
-            if len(tag) > 128:
-                # truncate tag
-                tag = tag[:128]
+            try:
+                tag = quote(self.to_string(tag, errors=errors), safe='~')
+                if len(tag) > 128:
+                    # truncate tag
+                    tag = tag[:128]
+            except KeyError as e:
+                warn = 'Failed converting tag to safetag ({})'.format(e)
+                self.log.warning(warn)
         return tag
 
     @staticmethod
