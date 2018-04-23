@@ -318,7 +318,7 @@ JSON Response:
             "lastModified": "2017-07-19T17:35:31Z",
             "threatAssessRating": 3,
             "threatAssessConfidence": 50,
-            "webLink": "https://app.threatconnect.com/auth/indicators/details/url.xhtml?orgid=54321&owner=Research+Labs",
+            "webLink": "https://app.threatconnect.com/auth/indicators/details/url.xhtml?orgid=54321&owner=Example+Organization",
             "summary": "http://example.com/login.php"
           },
           {
@@ -329,7 +329,7 @@ JSON Response:
             "lastModified": "2017-07-19T17:35:29Z",
             "threatAssessRating": 4,
             "threatAssessConfidence": 75,
-            "webLink": "https://app.threatconnect.com/auth/indicators/details/emailaddress.xhtml?emailaddress=bad%40gmail.com&owner=Research+Labs",
+            "webLink": "https://app.threatconnect.com/auth/indicators/details/emailaddress.xhtml?emailaddress=bad%40gmail.com&owner=Example+Organization",
             "summary": "bad@gmail.com"
           }
         ]
@@ -371,7 +371,7 @@ JSON Response:
             "lastModified": "2017-07-19T17:53:50Z",
             "threatAssessRating": 3,
             "threatAssessConfidence": 50,
-            "webLink": "https://app.threatconnect.com/auth/indicators/details/emailaddress.xhtml?emailaddress=phish%40example.com&owner=Research+Labs",
+            "webLink": "https://app.threatconnect.com/auth/indicators/details/emailaddress.xhtml?emailaddress=phish%40example.com&owner=Example+Organization",
             "address": "phish@example.com"
           },
           {
@@ -381,7 +381,7 @@ JSON Response:
             "lastModified": "2017-07-19T17:53:49Z",
             "threatAssessRating": 3,
             "threatAssessConfidence": 50,
-            "webLink": "https://app.threatconnect.com/auth/indicators/details/emailaddress.xhtml?emailaddress=bad%40gmail.com&owner=Research+Labs",
+            "webLink": "https://app.threatconnect.com/auth/indicators/details/emailaddress.xhtml?emailaddress=bad%40gmail.com&owner=Example+Organization",
             "address": "bad@gmail.com"
           }
         ]
