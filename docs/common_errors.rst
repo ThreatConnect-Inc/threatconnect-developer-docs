@@ -116,7 +116,20 @@ When `creating a Registry Key Indicator <https://docs.threatconnect.com/en/lates
 Value Name
 """"""""""
 
-When `creating a Registry Key Indicator <https://docs.threatconnect.com/en/latest/rest_api/indicators/indicators.html#create-a-custom-indicator>`__ in ThreatConnect via the API, the **Value Name** for the Registry Key is required. It is optional in the UI, but required when using the API or any SDKs.
+When `creating a Registry Key Indicator <https://docs.threatconnect.com/en/latest/rest_api/indicators/indicators.html#create-a-custom-indicator>`__ in ThreatConnect via the API, the **Value Name** for the Registry Key is required, although you do not need to specify a value. For example, to create a Registry Key with an empty value name, use the following request:
+
+.. code-block::
+
+    POST /v2/indicators/registryKeys
+    Content-type: application/json; charset=utf-8
+
+    {
+      "Key Name": "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\DRM\\{cd704ff3-cd05-479e-acf7-6474908031dd}",
+      "Value Name": " ",
+      "Value Type": "REG_NONE"
+    }
+
+.. note:: The space in the value for the **Value Name** field is important. Without it, the API will return an error. The API will handle this request as though no value name was given.
 
 URL Indicators
 ^^^^^^^^^^^^^^
