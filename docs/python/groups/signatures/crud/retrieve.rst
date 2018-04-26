@@ -7,7 +7,7 @@ Retrieving a Single Signature
 This example demonstrates how to retrieve a specific Signature using the Signature's ID. The ``add_id`` filter specifies the ID of the Signature which you would like to retrieve.
 
 .. code-block:: python
-   :emphasize-lines: 10-12,15-16
+    :emphasize-lines: 10-12,15-16
 
     # replace the line below with the standard, TC script heading described here:
     # https://docs.threatconnect.com/en/latest/python/quick_start.html#standard-script-heading
