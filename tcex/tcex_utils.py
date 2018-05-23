@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-""" TcEx Utilities Class """
+"""TcEx Utilities Module"""
 from datetime import datetime
 import calendar
 import re
@@ -12,17 +12,19 @@ import parsedatetime as pdt
 
 
 class TcExUtils():
-    """TcEx framework utilities."""
+    """TcEx framework Utils module"""
 
     def __init__(self, tcex):
-        """ Initialize class data
+        """Initialize the Class properties.
 
-        Initialize parent class for default values and logging method.
+        Args:
+            tcex (object): Instance of TcEx.
+            rhash (string): The REDIS hash.
         """
         self._tcex = tcex
 
     def any_to_datetime(self, time_input, tz=None):
-        """ Return datetime object from multiple formats
+        """Return datetime object from multiple formats.
 
             Formats:
 
@@ -38,7 +40,6 @@ class TcExUtils():
         Returns:
             (datetime.datetime): Python datetime.datetime object.
         """
-
         # handle timestamp (e.g. 1510686617 or 1510686617.298753)
         dt_value = self.unix_time_to_datetime(time_input, tz)
 
@@ -73,7 +74,7 @@ class TcExUtils():
             # don't covert timezone if dt timezone already in the correct timezone
             if tz is not None and tz != dt.tzname():
                 if dt.tzinfo is None:
-                    self._tcex.log.info(
+                    self._tcex.log.debug(
                         'Assuming local time for naive datetime {}.'.format(str(dt)))
                     dt = dt.replace(tzinfo=timezone(get_localzone().zone))  # required for py2.x
                 dt = dt.astimezone(timezone(tz))
@@ -92,9 +93,8 @@ class TcExUtils():
             #. Loose Date format (e.g. 2017 12 25)
             #. Unix Time/Posix Time/Epoch Time (e.g. 1510686617 or 1510686617.298753)
 
-        .. note:: To get a unix timestamp format use the strftime format **%s**. While Python
-                  does not properly support this the method has functionality to handle this
-                  use case.
+        .. note:: To get a unix timestamp format use the strftime format **%s**. Python
+                  does not natively support **%s**, however this method has support.
 
         Args:
             time_input (string): The time input string (see formats above).
@@ -161,7 +161,7 @@ class TcExUtils():
         dt, status = cal.parseDT(time_input, sourceTime=source_datetime, tzinfo=tzinfo)
         if tz is not None:  # don't add tz if no tz value is passed
             if dt.tzinfo is None:
-                self._tcex.log.info('Assuming local time for naive datetime {}.'.format(str(dt)))
+                self._tcex.log.debug('Assuming local time for naive datetime {}.'.format(str(dt)))
                 dt = dt.replace(tzinfo=timezone(get_localzone().zone))  # required for py2.x
             # don't covert timezone if source timezone already in the correct timezone
             if tz != src_tzname:
@@ -217,7 +217,7 @@ class TcExUtils():
 
     @staticmethod
     def to_bool(value):
-        """ Convert string value to bool """
+        """Convert string value to bool."""
         bool_value = False
         if str(value).lower() in ['1', 'true']:
             bool_value = True

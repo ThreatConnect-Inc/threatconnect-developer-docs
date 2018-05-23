@@ -10,12 +10,8 @@ class TcExArgParser(ArgumentParser):
     """
 
     def __init__(self, **kwargs):
-        """Initialize default values for common args.
-        """
+        """Initialize the Class properties."""
         super(TcExArgParser, self).__init__(**kwargs)
-
-        # api defaults
-
         # batch defaults
         self._batch_action = 'Create'
         self._batch_chunk = 25000
@@ -64,18 +60,22 @@ class TcExArgParser(ArgumentParser):
             '--tc_token_expires', default=None,
             help='ThreatConnect API Token Expiration Time', type=int)
 
-        # TC Integrations Server  or TC main < 4.4
+        # TC Integrations Server or TC main < 4.4
         self.add_argument(
             '--api_access_id', default=None, help='ThreatConnect API Access ID', required=False)
         self.add_argument(
             '--api_secret_key', default=None, help='ThreatConnect API Secret Key', required=False)
+
+        # Validate ThreatConnect SSL certificate
+        self.add_argument(
+            '--tc_verify', action='store_true', help='Validate the ThreatConnect SSL Cert')
 
     def _batch_arguments(self):
         """Arguments specific to Batch API writes.
 
         --batch_action action          Action for the batch job ['Create', 'Delete'].
         --batch_chunk number           The maximum number of indicator per batch job.
-        --batch_halt_on_error          Flag to indicate that batch job should halt on error.
+        --batch_halt_on_error          Flag to indicate that the batch job should halt on error.
         --batch_poll_interval seconds  Seconds between batch status polls.
         --batch_interval_max seconds   Seconds before app should time out waiting on batch job
                                        completion.
@@ -173,10 +173,7 @@ class TcExArgParser(ArgumentParser):
         self.add_argument(
             '--tc_user_id', default=self._tc_user_id, help='User ID')
 
-        #
         # Proxy Configuration
-        #
-
         self.add_argument(
             '--tc_proxy_host', default=None, help='Proxy Host')
         self.add_argument(
@@ -185,7 +182,6 @@ class TcExArgParser(ArgumentParser):
             '--tc_proxy_username', default=None, help='Proxy User')
         self.add_argument(
             '--tc_proxy_password', default=None, help='Proxy Password')
-
         self.add_argument(
             '--tc_proxy_external', '--apply_proxy_ext', action='store_true', default=False,
             help='Proxy External Connections', dest='tc_proxy_external')

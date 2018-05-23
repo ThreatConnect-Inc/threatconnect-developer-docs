@@ -4,64 +4,75 @@ import json
 
 
 class TcExNotificationV2(object):
-    """TcEx Notification Class."""
+    """TcEx Notification Class"""
 
     def __init__(self, tcex):
-        """ Initialize class properties
+        """ Initialize the Class properties.
+
+        Args:
+            tcex (obj): An instance of TcEx object.
         """
         self._tcex = tcex
         self._is_organization = False
         self._notification_type = None
         self._recipients = None
-        self._severity = 'Low'
+        self._priority = 'Low'
 
-    def recipients(self, notification_type, recipients, severity='Low'):
+    def recipients(self, notification_type, recipients, priority='Low'):
         """Set vars for the passed in data. Used for one or more recipient notification.
 
-        {
-            "notificationType": notification_type,
-            "severity": severity
-            "isOrganization": false,
-            "recipients": recipients
-        }
+        .. code-block:: javascript
+
+            {
+                "notificationType": notification_type,
+                "priority": priority
+                "isOrganization": false,
+                "recipients": recipients
+            }
 
         Args:
-            notification_type (string): The notification type.
-            recipients (string): The comma delimited string of recipients.
-            severity (string): The severity: Low, Medium, High.
+            notification_type (str): The type of notification being sent.
+            recipients (str): A comma delimited string of recipients.
+            priority (str): The priority: Low, Medium, High.
         """
         self._notification_type = notification_type
         self._recipients = recipients
-        self._severity = severity
+        self._priority = priority
         self._is_organization = False
 
-    def org(self, notification_type, severity='Low'):
+    def org(self, notification_type, priority='Low'):
         """Set vars for the passed in data. Used for org notification.
 
-        {
-            "notificationType": notification_type,
-            "severity": severity
-            "isOrganization": true
-        }
+        .. code-block:: javascript
+
+            {
+                "notificationType": notification_type,
+                "priority": priority
+                "isOrganization": true
+            }
 
         Args:
-            notification_type (string): The notification type.
-            severity (string): The severity: Low, Medium, High.
+            notification_type (str): The notification type.
+            priority (str): The priority: Low, Medium, High.
         """
         self._notification_type = notification_type
         self._recipients = None
-        self._severity = severity
+        self._priority = priority
         self._is_organization = True
 
     def send(self, message):
         """Send our message
 
         Args:
-            message (string): The message
+            message (str): The message to be sent.
+
+        Returns:
+            requests.models.Response: The response from the request.
+
         """
         body = {
             'notificationType': self._notification_type,
-            'severity': self._severity,
+            'priority': self._priority,
             'isOrganization': self._is_organization,
             'message': message
         }
@@ -83,13 +94,12 @@ class TcExNotificationV2(object):
         elif results.get('response').status_code == 400:
             # failed..but known... user doesn't exist
             # just return and let calling app handle it
-            err = u'Failed to send notification ({})'.format(results.get('response').text)
+            err = 'Failed to send notification ({})'.format(results.get('response').text)
             self._tcex.log.error(err)
             response = results.get('response').json()
         else:
             # somekind of unknown error...raise
-            err = u'Failed to send notification ({})'.format(results.get('response').text)
+            err = 'Failed to send notification ({})'.format(results.get('response').text)
             self._tcex.log.error(err)
             raise RuntimeError(err)
-
         return response
