@@ -19,7 +19,7 @@ The following query will return all Tags that start with "Bad" (``name^Bad``):
 
 .. code::
 
-    GET /v2/tags/?filters=name%5ETest
+    GET /v2/tags/?filters=name%5EBad
 
 The following query will return all Tags whose name is "Bad" (``name=Bad``):
 
