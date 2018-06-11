@@ -21,11 +21,15 @@ When updating the fields on a Task itself, you can change any of the following f
 +--------------+------------------------------------------------+
 | escalatee    | { "userName" : ["manager@threatconnect.com"] } |
 +--------------+------------------------------------------------+
-| dueDate      | {"2016-03-20T13:36:53-04:00"}                  |
+| dueDate      | "2016-03-20T13:36:53-04:00"                    |
 +--------------+------------------------------------------------+
-| description  | {"Send to IR team for triage."}                |
+| description  | "Send to IR team for triage."                  |
 +--------------+------------------------------------------------+
-  
+| status       | "Not Started"                                  |
++--------------+------------------------------------------------+
+
+.. include:: ../_includes/task_statuses.rst
+
 By way of example, the query below will update the name and due date of the Task with ID 12345:
 
 .. code::
@@ -33,7 +37,7 @@ By way of example, the query below will update the name and due date of the Task
     PUT /v2/tasks/12345
     {
       "name": "New Task Name",
-      "dueDate": {"2017-07-13T13:36:53-04:00"}
+      "dueDate": "2017-07-13T13:36:53-04:00"
     }
 
 JSON Response:
