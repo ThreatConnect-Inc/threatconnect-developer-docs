@@ -6,6 +6,16 @@ Release Notes
 0.8.x
 =====
 
+0.8.6
+------
++ Fixed issue with API logging not working when secure params is enabled.
++ Fixed issue with API logging timestamp precision.
+
+0.8.5
+------
++ Updated tcdata for playbook variable creation during staging testing data.
++ Updated tcex logging for level and removal of stream logger once API logger is initialized.
+
 0.8.4
 ------
 + Update to handle binary array in tcdata.
