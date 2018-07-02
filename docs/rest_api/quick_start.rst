@@ -73,12 +73,12 @@ To test API connectivity, start with a request to the ``/v2/owners`` branch to r
 
     # specify API details
     API_METHOD="GET"
-    API_PATH="/v2/owners"
-    API_URL="https://api.threatconnect.com"${API_PATH}
+    API_PATH='/v2/owners'
+    API_URL='https://api.threatconnect.com'${API_PATH}
 
     # provide authentication details
-    API_SECRET="<INSERT YOUR API SECRET KEY HERE>"
-    API_ID="<INSERT YOUR API ACCESS ID HERE>"
+    API_SECRET='<INSERT YOUR API SECRET KEY HERE>'
+    API_ID='<INSERT YOUR API ACCESS ID HERE>'
 
     # create the signature
     TIMESTAMP=`date +%s`
