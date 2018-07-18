@@ -41,7 +41,6 @@ class TcEx(object):
         # Parser
         self._parsed = False
         self.parser = TcExArgParser()
-        # self.default_args, unknown = self.parser.parse_known_args()
 
         # init logger
         # self.log = self._logger()
@@ -163,7 +162,6 @@ class TcEx(object):
 
         # reset default_args now that values have been injected into sys.argv
         self._default_args, unknown = self.parser.parse_known_args()
-        # self._unknown_args(unknown)
 
         # reinitialize logger with new log level and api settings
         self.log = self._logger()
@@ -587,7 +585,6 @@ class TcEx(object):
         """Parse args and return default args."""
         if self._default_args is None:
             self._default_args, unknown = self.parser.parse_known_args()
-            self._unknown_args(unknown)
             # reinitialize logger with new log level and api settings
             self.log = self._logger()
             self._inject_secure_params()  # inject secure params from API
@@ -915,12 +912,28 @@ class TcEx(object):
             value (string): The data value to be stored.
         """
         if os.access(self.default_args.tc_out_path, os.W_OK):
-            result_file = '{}/results.tc'.format(self.default_args.tc_out_path)
+            results_file = '{}/results.tc'.format(self.default_args.tc_out_path)
         else:
-            result_file = 'results.tc'
-        results = '{} = {}\n'.format(key, value)
-        with open(result_file, 'a') as rh:
-            rh.write(results)
+            results_file = 'results.tc'
+
+        new = True
+        open(results_file, 'a').close()  # ensure file exists
+        with open(results_file, 'r+') as fh:
+            results = ''
+            for line in fh.read().strip().split('\n'):
+                if not line:
+                    continue
+                k, v = line.strip().split(' = ')
+                if k == key:
+                    v = value
+                    new = False
+                if v is not None:
+                    results += '{} = {}\n'.format(k, v)
+            if new and value is not None:  # indicates the key/value pair didn't already exist
+                results += '{} = {}\n'.format(key, value)
+            fh.seek(0)
+            fh.write(results)
+            fh.truncate()
 
     def results_tc_args(self):
         """Read data from results_tc file from previous run of app.
@@ -941,6 +954,8 @@ class TcEx(object):
                 results = rh.read().strip().split('\n')
             os.remove(result_file)
         for line in results:
+            if not line or ' = ' not in line:
+                continue
             key, value = line.split(' = ')
             setattr(self.default_args, key, value)
 
