@@ -83,6 +83,8 @@ To upload a malware sample as a Document, the following steps must be taken:
 -  Create a new Document Group including the additional fields ``malware`` set to True and ``password`` set to the zip file's password.
 - `Upload the Document contents <https://docs.threatconnect.com/en/latest/rest_api/groups/groups.html#update-document-contents>`_ .
 
+.. note:: The API will validate that the malware document is a password-protected zip file.
+
 .. warning:: Uploading raw malware executables or weaponized documents is strictly forbidden.
 
 For malware uploads, An ``HTTP 400 - Bad Request`` error will be returned if the document is not a password-protected zip file (as determined by file headers).
