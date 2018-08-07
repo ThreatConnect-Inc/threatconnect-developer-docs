@@ -14,7 +14,16 @@ To create a Group, the most basic format is:
 
 The ``{groupType}`` can be any one of the available group types:
 
-.. include:: ../_includes/group_types.rst
+- ``adversaries``
+- ``campaigns``
+- ``documents``
+- ``emails``
+- ``events``
+- ``incidents``
+- ``intrusion sets``
+- ``reports``
+- ``signatures``
+- ``threats``
 
 Some group types require additional fields when being created. Refer to the table below for the fields required to create each group type:
 
