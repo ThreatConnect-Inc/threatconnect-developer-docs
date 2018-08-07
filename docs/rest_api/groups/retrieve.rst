@@ -56,7 +56,10 @@ The ``{groupType}`` can be any one of the available group types:
 - ``campaigns``
 - ``documents``
 - ``emails``
+- ``events``
 - ``incidents``
+- ``intrusion sets``
+- ``reports``
 - ``signatures``
 - ``threats``
   
