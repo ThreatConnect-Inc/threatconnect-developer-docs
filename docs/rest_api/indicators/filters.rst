@@ -97,6 +97,15 @@ The example below demonstrates how to filter based on the number of times an Ind
 
     GET /v2/indicators?filters=falsePositive%3E10
 
+Owner Parameter
+"""""""""""""""
+
+By default, all API calls will operate in the API user account's default organization. To specify a different owner, use the ``owner`` URL parameter like ``?owner={ownerName}``. For example, the following query will return all Host Indicators in the Common Community:
+
+.. code::
+
+    GET /v2/indicators/hosts/?owner=Common%20Community
+
 Modified Since Parameter
 """"""""""""""""""""""""
 
@@ -122,11 +131,4 @@ an additional parameter:
 
     GET /v2/indicators?modifiedSince=2017-08-21T12:00:00Z&owner=Common%20Community
 
-Owner Parameter
-"""""""""""""""
 
-By default, all API calls will operate in the API user account's default organization. To specify a different owner, use the ``owner`` URL parameter like ``?owner={ownerName}``. For example, the following query will return all Host Indicators in the Common Community:
-
-.. code::
-
-    GET /v2/indicators/hosts/?owner=Common%20Community
