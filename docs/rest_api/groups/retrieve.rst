@@ -443,7 +443,16 @@ You can also find associated Groups of a given type using the following format:
 
 Replace ``{associatedGroupType}`` with one of the following Group types:
 
-.. include:: ../_includes/group_types.rst
+- ``adversaries``
+- ``campaigns``
+- ``documents``
+- ``emails``
+- ``events``
+- ``incidents``
+- ``intrusion sets``
+- ``reports``
+- ``signatures``
+- ``threats``
 
 For example, we could use the following query to find all Incidents associated with the Threat with ID 12345:
 
