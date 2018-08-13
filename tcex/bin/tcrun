@@ -18,9 +18,8 @@ import time
 import traceback
 from datetime import datetime
 
-import colorama as c
-import jmespath
 from six import string_types
+import colorama as c
 # not including these libraries as a dependencies since they are only required for local testing.
 try:
     from deepdiff import DeepDiff
@@ -259,8 +258,9 @@ class TcRun(object):
                 for variables in sd.get('data', {}).get('variables', []):
                     self.clear_redis(variables.get('value'), 'auto-clear')
             elif data_type == 'threatconnect':
-                self.clear_tc(sd.get('data_owner'), sd.get('data', {}), 'auto-clear')
-                self.clear_redis(sd.get('variable'), 'auto-clear')
+                # self.clear_tc(sd.get('data_owner'), sd.get('data', {}), 'auto-clear')
+                # self.clear_redis(sd.get('variable'), 'auto-clear')
+                pass
             elif data_type == 'threatconnect-association':
                 # assuming these have already been cleared
                 pass
@@ -369,15 +369,16 @@ class TcRun(object):
     @staticmethod
     def data_endswith(db_data, user_data):
         """Validate data ends with user data"""
-        if db_data.endswith(user_data):
+        if db_data is not None and db_data.endswith(user_data):
             return True
         return False
 
     @staticmethod
     def data_in_db(db_data, user_data):
         """Validate db data in user data"""
-        if db_data in user_data:
-            return True
+        if isinstance(user_data, list):
+            if db_data in user_data:
+                return True
         return False
 
     @staticmethod
@@ -432,14 +433,15 @@ class TcRun(object):
     @staticmethod
     def data_not_in(db_data, user_data):
         """Validate data not in user data"""
-        if db_data not in user_data:
-            return True
+        if isinstance(user_data, list):
+            if db_data not in user_data:
+                return True
         return False
 
     @staticmethod
     def data_startswith(db_data, user_data):
         """Validate data starts with user data"""
-        if db_data.startswith(user_data):
+        if db_data is not None and db_data.startswith(user_data):
             return True
         return False
 
@@ -452,16 +454,16 @@ class TcRun(object):
             return True
         return False
 
-    @staticmethod
-    def deep_diff(db_data, user_data):
+    def deep_diff(self, db_data, user_data):
         """Validate data in user data"""
         try:
             ddiff = DeepDiff(db_data, user_data, ignore_order=True)
+        except KeyError:
+            return False
         except NameError:
-            tcex.log.warning(u'Could not find DeepDiff module.')
             return False
         if ddiff:
-            tcex.log.info(u'[validate] Diff      : {}'.format(ddiff))
+            self.tcex.log.info(u'[validate] Diff      : {}'.format(ddiff))
             return False
         return True
 
@@ -474,8 +476,7 @@ class TcRun(object):
         return self.deep_diff(db_data, user_data)
 
     def gen_launcher(self):
-        """
-        """
+        """Generate launcher for vscode."""
         program = self.profile.get(
             'install_json', {}).get('programMain', self.profile.get('script'))
         print(json.dumps({
@@ -594,7 +595,7 @@ class TcRun(object):
                 config['install_json'] = ij
                 selected_profiles.append(config)
 
-            report = self.reports.add_profile(config, profile_selected)
+            self.reports.add_profile(config, profile_selected)
 
         if not selected_profiles:
             print('{}{}No profiles selected to run.'.format(c.Style.BRIGHT, c.Fore.YELLOW))
@@ -606,7 +607,8 @@ class TcRun(object):
         print('\n{}{}{}'.format(c.Style.BRIGHT, c.Fore.CYAN, 'Report:'))
         # report headers
         print('{!s:<85}{!s:<20}'.format('', 'Validations'))
-        print('{!s:<60}{!s:<25}{!s:<10}{!s:<10}'.format('Profile:', 'Execution:', 'Passed:', 'Failed:'))
+        print('{!s:<60}{!s:<25}{!s:<10}{!s:<10}'.format(
+            'Profile:', 'Execution:', 'Passed:', 'Failed:'))
         for r in self.reports:
             d = r.data
             if not d.get('selected'):
@@ -669,6 +671,8 @@ class TcRun(object):
             ]
             exe_command = command + self.profile.get('profile_args').standard
             print_command = ' '.join(command + self.profile.get('profile_args').masked)
+            if self._args.unmask:
+                print_command = ' '.join(command + self.profile.get('profile_args').quoted)
         elif program_language == 'java':
             command = [
                 self.config.get('java_path', program_language),
@@ -676,7 +680,11 @@ class TcRun(object):
                 self.config.get('class_path', './target/*')
             ]
             exe_command = command + self.profile.get('profile_args').standard + [program_main]
-            print_command = ' '.join(command + self.profile.get('profile_args').masked + [program_main])
+            print_command = ' '.join(
+                command + self.profile.get('profile_args').masked + [program_main])
+            if self._args.unmask:
+                print_command = ' '.join(
+                    command + self.profile.get('profile_args').quoted + [program_main])
 
         self.log.info('[run] Running command {}'.format(print_command))
 
@@ -684,17 +692,17 @@ class TcRun(object):
         print('Executing: {}{}{}'.format(c.Style.BRIGHT, c.Fore.GREEN, print_command))
 
         # Run Command
-        p = subprocess.Popen(
+        process = subprocess.Popen(
             exe_command, shell=self.shell, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
             stderr=subprocess.PIPE)
-        out, err = p.communicate()
+        out, err = process.communicate()
 
         # display app output
         self.run_display_app_output(out)
         self.run_display_app_errors(err)
 
         # Exit Code
-        return self.run_exit_code(p.returncode, err)
+        return self.run_exit_code(process.returncode)
 
     def run_display_app_errors(self, err):
         """Handle the exit code for the current run."""
@@ -731,11 +739,12 @@ class TcRun(object):
             output += '{}:{}'.format(
                 c.Style.BRIGHT, c.Style.RESET_ALL)
             output += '{}{}{}{}'.format(
-                c.Style.BRIGHT, c.Fore.MAGENTA, install_json.get('programVersion'), c.Style.RESET_ALL)
+                c.Style.BRIGHT, c.Fore.MAGENTA, install_json.get('programVersion'),
+                c.Style.RESET_ALL)
         output += ']'
         print(output)
 
-    def run_exit_code(self, returncode, err):
+    def run_exit_code(self, returncode):
         """Handle the exit code for the current run."""
         exit_status = False
         self.log.info('[run] Exit Code {}'.format(returncode))
@@ -764,7 +773,7 @@ class TcRun(object):
         program_language = self.profile.get('install_json').get('programLanguage', 'python').lower()
         if program_language == 'python' and not os.path.isfile('{}.py'.format(program_main)):
             print('{}{}Could not find program main file ({}).'.format(
-                c.Style.BRIGHT, c.Fore.RED, program_filename))
+                c.Style.BRIGHT, c.Fore.RED, program_main))
             sys.exit(1)
 
     def stage(self):
@@ -858,7 +867,7 @@ class TcRun(object):
             if data_type == 'redis':
                 self.log.debug('Stage Redis Data')
                 self.stage_redis(sd.get('variable'), sd.get('data'))
-            elif data_type == 'redis-array':
+            elif data_type == 'redis-array' or data_type == 'redis_array':
                 self.log.debug('Stage Redis Array')
                 out_variable = sd.get('variable')
                 # build array
@@ -888,7 +897,8 @@ class TcRun(object):
             staging_data = []
             for staging_file in self.profile.get('data_files', []):
                 if os.path.isfile(staging_file):
-                    print('Staging Data: {}{}{}'.format(c.Style.BRIGHT, c.Fore.MAGENTA, staging_file))
+                    print('Staging Data: {}{}{}'.format(
+                        c.Style.BRIGHT, c.Fore.MAGENTA, staging_file))
                     self.log.info('[stage] Staging data file: {}'.format(staging_file))
                     f = open(staging_file, 'r')
                     staging_data.extend(json.load(f))
@@ -965,7 +975,6 @@ class TcRun(object):
             if response.get('status') == 'Success':
                 # add resource id
                 if resource_type in self.tcex.indicator_types:
-                    resource_values = []
                     resource_id = resource.summary(response.get('data'))
                     self.log.info('[stage] Creating resource {}:{}'.format(
                         resource_type, resource_id))
@@ -1011,7 +1020,7 @@ class TcRun(object):
         # add the attribute
         a_response = attrib_resource.request()
         if a_response.get('status') != 'Success':
-            self.log.warning('[stage] Failed adding attribute type "{}" with value "{}" ({}).'.format(
+            self.log.warning('[stage] Failed adding attribute type "{}":"{}" ({}).'.format(
                 attribute_type, attribute_value, a_response.get('response').text))
 
     def stage_tc_create_security_label(self, label, resource):
@@ -1093,7 +1102,8 @@ class TcRun(object):
             variable = indicator.pop('variable', None)
             path = indicator.pop('path', None)
             if indicator.get('xid') is None:
-                indicator['xid'] = self.stage_tc_batch_xid(group.get('type'), group.get('summary'), owner)
+                indicator['xid'] = self.stage_tc_batch_xid(
+                    indicator.get('type'), indicator.get('summary'), owner)
             indicator['ownerName'] = owner
             # add to batch after extra data has been popped
             batch.add_indicator(indicator)
@@ -1109,9 +1119,10 @@ class TcRun(object):
         for error in batch_results.get('errors', []):
             self.log.error('[stage] {}'.format(error))
 
+    @staticmethod
     def stage_tc_batch_xid(xid_type, xid_value, owner):
         """Create an xid for a batch job."""
-        xid_string = '{}-{}'.format(xid_type, xid_value, owner)
+        xid_string = '{}-{}-{}'.format(xid_type, xid_value, owner)
         hash_object = hashlib.sha256(xid_string.encode('utf-8'))
         return hash_object.hexdigest()
 
@@ -1148,10 +1159,10 @@ class TcRun(object):
                 variable = data.get('variable')
                 if variable.endswith('Binary'):
                     # call specific method and do not decode data
-                    db_data = self.tcex.playbook.read_binary(variable, False)
+                    db_data = self.tcex.playbook.read_binary(variable, False, False)
                 elif variable.endswith('BinaryArray'):
                     # call specific method and do not decode data
-                    db_data = self.tcex.playbook.read_binary_array(variable, False)
+                    db_data = self.tcex.playbook.read_binary_array(variable, False, False)
                 else:
                     db_data = self.tcex.playbook.read(variable)
                 db_data_path = data.get('variable_path')
@@ -1162,15 +1173,15 @@ class TcRun(object):
                 oper = data.get('operator', 'eq')
 
                 # validate if possible
-                separator = '-' * 10
-                self.log.info('{} {} {}'.format(separator, variable, separator))
+                sep = '-' * 10
+                self.log.info('{} {} {}'.format(sep, variable, sep))
                 # self.log.info('[validate] Variable  : {}'.format(variable))
-                if not self.validate_redis(db_data, user_data, oper, variable):
+                if not self.validate_redis(db_data, user_data, oper):
                     passed = False
                     self.exit_code = 1  # if any validation fails everything fails
         return passed
 
-    def validate_redis(self, db_data, user_data, oper, variable):
+    def validate_redis(self, db_data, user_data, oper):
         """Validate data in Redis."""
         passed = True
         # convert any int to string since playbooks don't support int values
@@ -1232,7 +1243,7 @@ class TcRun(object):
             elif isinstance(user_data, (list)):
                 user_data_truncated = []
                 for u in user_data:
-                    if u is not None and len(u) > truncate:
+                    if isinstance(db_data, (string_types)) and len(u) > truncate:
                         user_data_truncated.append('{} ...'.format(u[:args.truncate]))
                     else:
                         user_data_truncated.append(u)
@@ -1258,6 +1269,8 @@ class TcRun(object):
                         elif diff[0] == '+':
                             self.log.info('[validate] Diff      : Extra data at index {}'.format(i))
                 except TypeError:
+                    pass
+                except KeyError:
                     pass
 
             # halt all further actions
@@ -1422,6 +1435,7 @@ class Report(object):
 
     @property
     def data(self):
+        """Return the report data."""
         return self._data
 
     @property
@@ -1558,13 +1572,13 @@ class Reports(object):
 
     def __iter__(self):
         """Interate over all report profiles."""
-        for p in self.profiles.values():
-            yield p
+        for profile in self.profiles.values():
+            yield profile
 
     def __str__(self):
         """Return reports as a string."""
         report = self.report
-        for name, profile in self.profiles.items():
+        for profile in self.profiles.values():
             if profile.data.get('selected'):
                 selected = 'selected'
             else:
@@ -1603,7 +1617,7 @@ if __name__ == '__main__':
                 sleep = tcr.profile.get('sleep', tcr.config.get('sleep', tcr.sleep))
                 print('Sleep: {}{}{} seconds'.format(c.Style.BRIGHT, c.Fore.YELLOW, sleep))
                 time.sleep(sleep)
-            profile_count =+ 1
+            profile_count += 1
 
         # display report
         tcr.report()

@@ -16,8 +16,9 @@ class TcExPlaybook(object):
             tcex (object): Instance of TcEx.
         """
         self.tcex = tcex
-        self._out_variables = {}  # dict of output variable by name
-        self._out_variables_type = {}  # dict of output variable by name-type
+        self._db = None
+        self._out_variables = None
+        self._out_variables_type = None
 
         # match full variable
         self._variable_match = re.compile(r'^{}$'.format(self._variable_pattern))
@@ -27,43 +28,6 @@ class TcExPlaybook(object):
         self._vars_keyvalue_embedded = re.compile(
             r'(?:\"\:\s?)[^\"]?{}'.format(self._variable_pattern))
 
-        # parse out variable
-        self._parse_out_variable()
-
-        # get key/value store
-        self.db = self._db
-
-    @property
-    def _db(self):
-        """Return the correct KV store for this execution."""
-        if self.tcex.default_args.tc_playbook_db_type == 'Redis':
-            from .tcex_redis import TcExRedis
-            return TcExRedis(
-                self.tcex.default_args.tc_playbook_db_path,
-                self.tcex.default_args.tc_playbook_db_port,
-                self.tcex.default_args.tc_playbook_db_context
-            )
-        elif self.tcex.default_args.tc_playbook_db_type == 'TCKeyValueAPI':
-            from .tcex_key_value import TcExKeyValue
-            return TcExKeyValue(self.tcex)
-        else:
-            err = u'Invalid DB Type: ({})'.format(self.tcex.default_args.tc_playbook_db_type)
-            raise RuntimeError(err)
-
-    @property
-    def _variable_pattern(self):
-        """Regex pattern to match and parse a playbook variable."""
-        variable_pattern = r'#([A-Za-z]+)'  # match literal (#App) at beginning of String
-        variable_pattern += r':([\d]+)'  # app id (:7979)
-        variable_pattern += r':([A-Za-z0-9_\.\-\[\]]+)'  # variable name (:variable_name)
-        variable_pattern += r'!(StringArray|BinaryArray|KeyValueArray'  # variable type (array)
-        variable_pattern += r'|TCEntityArray|TCEnhancedEntityArray'  # variable type (array)
-        variable_pattern += r'|String|Binary|KeyValue|TCEntity|TCEnhancedEntity'  # variable type
-        variable_pattern += r'|(?:(?!String)(?!Binary)(?!KeyValue)'  # non matching for custom
-        variable_pattern += r'(?!TCEntity)(?!TCEnhancedEntity)'  # non matching for custom
-        variable_pattern += r'[A-Za-z0-9_-]+))'  # variable type (custom)
-        return variable_pattern
-
     def _parse_out_variable(self):
         """Internal method to parse the tc_playbook_out_variable arg.
 
@@ -72,6 +36,8 @@ class TcExPlaybook(object):
             #App:1234:status!String,#App:1234:status_code!String
         """
         if self.tcex.default_args.tc_playbook_out_variables is not None:
+            self._out_variables = {}
+            self._out_variables_type = {}
             variables = self.tcex.default_args.tc_playbook_out_variables.strip()
             for o in variables.split(','):
                 # parse the variable to get individual parts
@@ -88,6 +54,53 @@ class TcExPlaybook(object):
                     'variable': o
                 }
 
+    @property
+    def _variable_pattern(self):
+        """Regex pattern to match and parse a playbook variable."""
+        variable_pattern = r'#([A-Za-z]+)'  # match literal (#App) at beginning of String
+        variable_pattern += r':([\d]+)'  # app id (:7979)
+        variable_pattern += r':([A-Za-z0-9_\.\-\[\]]+)'  # variable name (:variable_name)
+        variable_pattern += r'!(StringArray|BinaryArray|KeyValueArray'  # variable type (array)
+        variable_pattern += r'|TCEntityArray|TCEnhancedEntityArray'  # variable type (array)
+        variable_pattern += r'|String|Binary|KeyValue|TCEntity|TCEnhancedEntity'  # variable type
+        variable_pattern += r'|(?:(?!String)(?!Binary)(?!KeyValue)'  # non matching for custom
+        variable_pattern += r'(?!TCEntity)(?!TCEnhancedEntity)'  # non matching for custom
+        variable_pattern += r'[A-Za-z0-9_-]+))'  # variable type (custom)
+        return variable_pattern
+
+    def aot_blpop(self):
+        """Subscribe to AOT action channel."""
+        if self.tcex.default_args.tc_playbook_db_type == 'Redis':
+            try:
+                self.tcex.log.info('Blocking for AOT message.')
+                msg_data = self.db.blpop(
+                    self.tcex.default_args.tc_action_channel,
+                    timeout=self.tcex.default_args.tc_terminate_seconds)
+
+                if msg_data is None:
+                    self.tcex.exit(0, 'AOT subscription timeout reached.')
+
+                msg_data = json.loads(msg_data[1])
+                msg_type = msg_data.get('type', 'terminate')
+                if msg_type == 'execute':
+                    return msg_data.get('params', {})
+                elif msg_type == 'terminate':
+                    self.tcex.exit(0, 'Received AOT terminate message.')
+                else:
+                    self.tcex.log.warn('Unsupported AOT message type: ({}).'.format(
+                        msg_type))
+                    return self.aot_blpop()
+            except Exception as e:
+                self.tcex.exit(1, 'Exception during AOT subscription ({}).'.format(e))
+
+    def aot_rpush(self, exit_code):
+        """Subscribe to AOT action channel."""
+        if self.tcex.default_args.tc_playbook_db_type == 'Redis':
+            try:
+                self.db.rpush(self.tcex.default_args.tc_exit_channel, exit_code)
+            except Exception as e:
+                self.tcex.exit(1, 'Exception during AOT exit push ({}).'.format(e))
+
     def check_output_variable(self, variable):
         """Check to see if output variable was requested by downstream app.
 
@@ -101,7 +114,7 @@ class TcExPlaybook(object):
             (boolean): Boolean value indicator whether a match was found.
         """
         match = False
-        if variable in self._out_variables:
+        if variable in self.out_variables:
             match = True
         return match
 
@@ -165,9 +178,9 @@ class TcExPlaybook(object):
         if key is not None:
             key = key.strip()
             key_type = '{}-{}'.format(key, variable_type)
-            if self._out_variables_type.get(key_type) is not None:
+            if self.out_variables_type.get(key_type) is not None:
                 # variable key-type has been requested
-                v = self._out_variables_type.get(key_type)
+                v = self.out_variables_type.get(key_type)
                 self.tcex.log.info(
                     u'Variable {} was requested by downstream app.'.format(v.get('variable')))
                 if value is not None:
@@ -175,9 +188,9 @@ class TcExPlaybook(object):
                 else:
                     self.tcex.log.info(
                         u'Variable {} has a none value and will not be written.'.format(key))
-            elif self._out_variables.get(key) is not None and variable_type is None:
+            elif self.out_variables.get(key) is not None and variable_type is None:
                 # variable key has been requested
-                v = self._out_variables.get(key)
+                v = self.out_variables.get(key)
                 self.tcex.log.info(
                     u'Variable {} was requested by downstream app.'.format(v.get('variable')))
                 if value is not None:
@@ -193,6 +206,25 @@ class TcExPlaybook(object):
                 self.tcex.log.info(
                     u'Variable {} was NOT requested by downstream app.'.format(var_value))
         return results
+
+    @property
+    def db(self):
+        """Return the correct KV store for this execution."""
+        if self._db is None:
+            if self.tcex.default_args.tc_playbook_db_type == 'Redis':
+                from .tcex_redis import TcExRedis
+                self._db = TcExRedis(
+                    self.tcex.default_args.tc_playbook_db_path,
+                    self.tcex.default_args.tc_playbook_db_port,
+                    self.tcex.default_args.tc_playbook_db_context
+                )
+            elif self.tcex.default_args.tc_playbook_db_type == 'TCKeyValueAPI':
+                from .tcex_key_value import TcExKeyValue
+                self._db = TcExKeyValue(self.tcex)
+            else:
+                err = u'Invalid DB Type: ({})'.format(self.tcex.default_args.tc_playbook_db_type)
+                raise RuntimeError(err)
+        return self._db
 
     def delete(self, key):
         """Delete method of CRUD operation for all data types.
@@ -227,6 +259,22 @@ class TcExPlaybook(object):
         elif code not in [0, 1]:
             code = 1
         self.tcex.exit(code, msg)
+
+    @property
+    def out_variables(self):
+        """Return output variables stored as name dict."""
+        if self._out_variables is None:
+            # parse out variable
+            self._parse_out_variable()
+        return self._out_variables
+
+    @property
+    def out_variables_type(self):
+        """Return output variables store as name-type dict."""
+        if self._out_variables_type is None:
+            # parse out variable
+            self._parse_out_variable()
+        return self._out_variables_type
 
     def parse_variable(self, variable):
         """Method to parse an input or output variable.
@@ -472,6 +520,7 @@ class TcExPlaybook(object):
     #
     # db methods
     #
+
     def hgetall(self):
         """Return all values for a context."""
         return self.db.hgetall
@@ -505,23 +554,32 @@ class TcExPlaybook(object):
             self.tcex.log.warning(u'The key or value field was None.')
         return data
 
-    def read_binary(self, key, decode=True):
+    def read_binary(self, key, b64decode=True, decode=True):
         """Read method of CRUD operation for binary data.
 
         Args:
             key (string): The variable to read from the DB.
-            decode (bool): If true the data will be base64 decoded.
+            b64decode (bool): If true the data will be base64 decoded.
+            decode (bool): If true the data will be decoded to a String.
 
         Returns:
-            (bytes): Results retrieved from DB.
+            (bytes|string): Results retrieved from DB.
         """
         data = None
         if key is not None:
             data = self.db.read(key.strip())
             if data is not None:
                 data = json.loads(data)
-                if decode:
-                    data = base64.b64decode(data).decode('utf-8')
+                if b64decode:
+                    # if requested decode the base64 string
+                    data = base64.b64decode(data)
+                    if decode:
+                        try:
+                            # if requested decode bytes to a string
+                            data = data.decode('utf-8')
+                        except UnicodeDecodeError:
+                            # for data written an upstream java App
+                            data = data.decode('latin-1')
         else:
             self.tcex.log.warning(u'The key field was None.')
         return data
@@ -555,12 +613,13 @@ class TcExPlaybook(object):
             self.tcex.log.warning(u'The key or value field was None.')
         return data
 
-    def read_binary_array(self, key, decode=True):
+    def read_binary_array(self, key, b64decode=True, decode=True):
         """Read method of CRUD operation for binary array data.
 
         Args:
             key (string): The variable to read from the DB.
-            decode (bool): If true the data will be base64 decoded.
+            b64decode (bool): If true the data will be base64 decoded.
+            decode (bool): If true the data will be decoded to a String.
 
         Returns:
             (list): Results retrieved from DB.
@@ -571,12 +630,17 @@ class TcExPlaybook(object):
             if data is not None:
                 data_decoded = []
                 for d in json.loads(data):
-                    if decode:
-                        try:
-                            data_decoded.append(base64.b64decode(d).decode('utf-8'))
-                        except UnicodeDecodeError:
-                            # for data written an upstream java App
-                            data_decoded.append(base64.b64decode(d).decode('latin-1'))
+                    if b64decode:
+                        # if requested decode the base64 string
+                        dd = base64.b64decode(d)
+                        if decode:
+                            # if requested decode bytes to a string
+                            try:
+                                dd = dd.decode('utf-8')
+                            except UnicodeDecodeError:
+                                # for data written an upstream java App
+                                dd = dd.decode('latin-1')
+                        data_decoded.append(dd)
                     else:
                         # for validation in tcrun it's easier to validate the base64 data
                         data_decoded.append(d)

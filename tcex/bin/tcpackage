@@ -52,7 +52,7 @@ class TcPackage(object):
         self._args = args
         self.app_path = os.getcwd()
         self.exit_code = 0
-        self.features = ['secureParams']
+        self.features = ['secureParams', 'aotExecutionEnabled']
 
         # defaults
         self._app_packages = []
@@ -98,6 +98,10 @@ class TcPackage(object):
                 install_data = json.load(fh, object_pairs_hook=OrderedDict)
         else:
             print('{}{}Could not load {} file.'.format(c.Style.BRIGHT, c.Fore.YELLOW, file))
+
+        if not install_data.get('apiUserTokenParam'):
+            print('{}{}The current install.json file is missing param "apiUserTokenParam"'.format(
+                c.Style.BRIGHT, c.Fore.YELLOW))
 
         return install_data
 
