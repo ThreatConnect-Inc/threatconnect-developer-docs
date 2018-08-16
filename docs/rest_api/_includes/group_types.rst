@@ -2,6 +2,9 @@
 - ``campaigns``
 - ``documents``
 - ``emails``
+- ``events``
 - ``incidents``
+- ``intrusionSets``
+- ``reports``
 - ``signatures``
 - ``threats``
