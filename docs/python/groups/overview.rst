@@ -21,7 +21,10 @@ The following group objects are available via the ThreatConnect SDK:
     campaigns = tc.campaigns()
     documents = tc.documents()
     emails = tc.emails()
+    events = tc.events()
     incidents = tc.incidents()
+    intrusionsets = tc.intrusionsets()
+    reports = tc.reports()
     signatures = tc.signatures()
     threats = tc.threats()
 
