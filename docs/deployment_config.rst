@@ -141,17 +141,17 @@ The available runtime contexts are:
 * File
 * Host
 * Incident
-* Intrusion Set
+* IntrusionSet
 * Menu
 * Mutex
-* Registry Key
+* RegistryKey
 * Report
 * Search
 * Signature
 * Tag
 * Threat
 * URL
-* User Agent
+* UserAgent
 * Victim
 
 runtimeLevel
