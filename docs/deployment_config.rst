@@ -131,18 +131,27 @@ The available runtime contexts are:
 
 * Address
 * Adversary
+* ASN
+* Campaign
+* CIDR
 * Document
 * Email
 * EmailAddress
+* Event
 * File
 * Host
 * Incident
+* Intrusion Set
 * Menu
+* Mutex
+* Registry Key
+* Report
 * Search
 * Signature
 * Tag
 * Threat
 * URL
+* User Agent
 * Victim
 
 runtimeLevel
@@ -474,17 +483,26 @@ When the ``$ATTRIBUTES`` internal variable is used with a ``:<type>`` suffix, th
 
 * Address: ``["${ATTRIBUTES:Address}"]``
 * Adversary: ``["${ATTRIBUTES:Adversary}"]``
+* ASN: ``["${ATTRIBUTES:ASN}"]``
 * Campaign: ``["${ATTRIBUTES:Campaign}"]``
+* CIDR: ``["${ATTRIBUTES:CIDR}"]``
 * Document: ``["${ATTRIBUTES:Document}"]``
 * Email: ``["${ATTRIBUTES:Email}"]``
 * EmailAddress: ``["${ATTRIBUTES:EmailAddress}"]``
+* Event: ``["${ATTRIBUTES:Event}"]``
 * File: ``["${ATTRIBUTES:File}"]``
 * Host: ``["${ATTRIBUTES:Host}"]``
 * Incident: ``["${ATTRIBUTES:Incident}"]``
+* IntrusionSet: ``["${ATTRIBUTES:IntusionSet}"]``
+* Mutex: ``["${ATTRIBUTES:Mutex}"]``
+* RegistryKey: ``["${ATTRIBUTES:RegistryKey}"]``
+* Report: ``["${ATTRIBUTES:Report}"]``
+* Adversary: ``["${ATTRIBUTES:Adversary}"]``
 * Signature: ``["${ATTRIBUTES:Signature}"]``
 * Task: ``["${ATTRIBUTES:Task}"]``
 * Threat: ``["${ATTRIBUTES:Threat}"]``
 * URL: ``["${ATTRIBUTES:URL}"]``
+* UserAgent: ``["${ATTRIBUTES:URL}"]``
 * Victim: ``["${ATTRIBUTES:Victim}"]``
 
 External Variables
