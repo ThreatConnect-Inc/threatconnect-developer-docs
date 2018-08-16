@@ -1,5 +1,10 @@
 - ``addresses``
+- ``ASNs``
+- ``CIDRs``
 - ``emailAddresses``
 - ``files``
 - ``hosts``
+- ``mutexes``
+- ``registryKeys``
 - ``urls``
+- ``userAgents``
