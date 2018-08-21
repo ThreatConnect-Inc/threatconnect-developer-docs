@@ -28,6 +28,8 @@ If any of the following required name/value pairs are not included in the reques
 Optional Parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+**isOrganization** true|false defaults to “false”: Specifies whether the message is to be sent to all users in the organization. If set to “true,” the message is sent to all users in the same organization as the API user sending the message. Notification messages can only be sent to non-API users.
+
 JSON Response:
 
 .. code-block:: json
