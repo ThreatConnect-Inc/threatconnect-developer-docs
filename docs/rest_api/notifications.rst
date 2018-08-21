@@ -34,6 +34,4 @@ JSON Response:
       "recipients":"user@user.com",
       "isOrganization":"false",
       "priority":"HIGH
-        }
-      }
-    }
+     }      
