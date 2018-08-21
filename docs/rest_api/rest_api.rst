@@ -16,6 +16,7 @@ REST API
    custom_metrics/custom_metrics
    groups/groups
    indicators/indicators
+   notifications/notifications
    owners/owners
    security_labels/security_labels
    tags/tags
