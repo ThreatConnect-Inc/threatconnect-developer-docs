@@ -19,7 +19,7 @@ If any of the following required name/value pairs are not included in the reques
 
 **notificationType**: Free-form text value limited to 50 characters. Values larger than 50 characters are truncated at 50. If the type does not exist, it will be saved for the API user’s organization. Users in the organization will be able to set notification preferences for this type after it is saved. The only value that cannot be used is “System” in any variation of case, as this is a reserved notification type for “system” push notifications.
 
-**priority**: LOW|MEDIUM|HIGH
+**priority**: LOW/MEDIUM/HIGH
 
 **message**: Message in free-form text that can contain Markdown, limited to 64k in MySQL and 2G in SAP HANA.
 
@@ -28,7 +28,7 @@ If any of the following required name/value pairs are not included in the reques
 Optional Parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**isOrganization** true|false defaults to “false”: Specifies whether the message is to be sent to all users in the organization. If set to “true,” the message is sent to all users in the same organization as the API user sending the message. Notification messages can only be sent to non-API users.
+**isOrganization** true/false defaults to “false”: Specifies whether the message is to be sent to all users in the organization. If set to “true,” the message is sent to all users in the same organization as the API user sending the message. Notification messages can only be sent to non-API users.
 
 JSON Response:
 
