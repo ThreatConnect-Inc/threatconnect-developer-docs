@@ -526,7 +526,7 @@ Retrieve Indicator Status
 
 An active and an activeLocked key will be returned when retrieving Indicators with 
 
-?includeAdditional=true.
+?includeAdditional=true. 
  
 Retrieve Indicator Observations and False Positives
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
