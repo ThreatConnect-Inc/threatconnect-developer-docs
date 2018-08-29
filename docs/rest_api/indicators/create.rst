@@ -24,6 +24,7 @@ The following are all considered valid paths for creating indicators:
 
 The table below illustrates valid fields for the body of the POST request when creating an Indicator.
 
+.. note:: The activeLocked field only prevents CAL from updating the status.
 +----------------+--------------+----------+
 | Indicator Type | Valid Fields | Required |
 +================+==============+==========+
