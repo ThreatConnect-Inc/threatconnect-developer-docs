@@ -1,6 +1,8 @@
 Retrieve Indicators
 -------------------
 
+.. note:: By default, all API branches return only active Indicators.
+
 .. include:: filters.rst
 
 Retrieve Available Indicator Types
