@@ -33,11 +33,19 @@ The table below illustrates valid fields for the body of the POST request when c
 +----------------+--------------+----------+
 |                | confidence   | FALSE    |
 +----------------+--------------+----------+
+|                | active       | FALSE    |
++----------------+--------------+----------+
+|                | activeLocked | FALSE    |
++----------------+--------------+----------+
 | emailAddresses | address      | TRUE     |
 +----------------+--------------+----------+
 |                | rating       | FALSE    |
 +----------------+--------------+----------+
 |                | confidence   | FALSE    |
++----------------+--------------+----------+
+|                | active       | FALSE    |
++----------------+--------------+----------+
+|                | activeLocked | FALSE    |
 +----------------+--------------+----------+
 | files          | md5          | TRUE\*   |
 +----------------+--------------+----------+
@@ -51,6 +59,10 @@ The table below illustrates valid fields for the body of the POST request when c
 +----------------+--------------+----------+
 |                | confidence   | FALSE    |
 +----------------+--------------+----------+
+|                | active       | FALSE    |
++----------------+--------------+----------+
+|                | activeLocked | FALSE    |
++----------------+--------------+----------+
 | hosts          | hostName     | TRUE     |
 +----------------+--------------+----------+
 |                | dnsActive    | FALSE    |
@@ -61,11 +73,19 @@ The table below illustrates valid fields for the body of the POST request when c
 +----------------+--------------+----------+
 |                | confidence   | FALSE    |
 +----------------+--------------+----------+
+|                | active       | FALSE    |
++----------------+--------------+----------+
+|                | activeLocked | FALSE    |
++----------------+--------------+----------+
 | urls           | text         | TRUE     |
 +----------------+--------------+----------+
 |                | rating       | FALSE    |
 +----------------+--------------+----------+
 |                | confidence   | FALSE    |
++----------------+--------------+----------+
+|                | active       | FALSE    |
++----------------+--------------+----------+
+|                | activeLocked | FALSE    |
 +----------------+--------------+----------+
 
 \*Files are required to be submitted with at least one valid hash.
