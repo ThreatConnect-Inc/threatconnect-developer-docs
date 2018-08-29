@@ -1,6 +1,13 @@
 Retrieve Tags
 -------------
 
+Tag descriptions can be viewed using the following request:
+
+.. code::
+
+   GET /api/v2/tags?detailed=true
+
+
 .. include:: filters.rst
 
 Retrieve All Tags
