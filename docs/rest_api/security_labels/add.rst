@@ -9,7 +9,7 @@ Users can specify this JSON Response inside their Indicator or Group:
 
     `"securityLabel": [{
             "name": "TLP:GREEN",
-        `}],
+        }],
 
 The name can be any Security Label that already exists in the user's system. Users who wish to create a new Security Label (and have permission to do so), can provide the entire label definition as follows:
 
