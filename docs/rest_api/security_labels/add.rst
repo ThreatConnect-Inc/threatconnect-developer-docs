@@ -7,7 +7,7 @@ Users can specify this JSON Response inside their Indicator or Group:
 
 .. code:: json
 
-    `"securityLabel": [{
+    "securityLabel": [{
             "name": "TLP:GREEN",
         }],
 
@@ -15,8 +15,8 @@ The name can be any Security Label that already exists in the user's system. Use
 
 .. code::
 
-    `"securityLabel": [{`
-               `"name": "MyCustomLabel",`
-               `"description": "A security label I just made up.",`
-               `"color": "33FF00"`
-           `}],`
+    "securityLabel": [{
+               "name": "MyCustomLabel",
+               "description": "A security label I just made up.",
+               "color": "33FF00"
+           }],
