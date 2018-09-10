@@ -2,6 +2,7 @@
 """ThreatConnect Batch Import Module"""
 import hashlib
 import json
+import math
 import os
 import re
 import shelve
@@ -64,9 +65,22 @@ class TcExBatch(object):
         self._batch_max_chunk = 5000
         self._halt_on_error = halt_on_error
         self._owner = owner
+        self._group_shelf_fqpn = None
+        self._indicator_shelf_fqpn = None
+
+        # global overrides on batch/file errors
+        self._halt_on_batch_error = None
+        self._halt_on_file_error = None
+        self._halt_on_poll_error = None
+
+        # debug branch
+        self._debug = False
+        self._batch_count = 0
 
         # default properties
-        self._poll_interval = 15
+        self._batch_data_count = None
+        self._poll_interval = None
+        self._poll_interval_times = []
         self._poll_timeout = 3600
 
         # containers
@@ -414,6 +428,13 @@ class TcExBatch(object):
         indicator_obj = CIDR(block, rating, confidence, xid)
         return self._indicator(indicator_obj)
 
+    def close(self):
+        """Cleanup batch job."""
+        self.groups_shelf.close()
+        os.remove(self.group_shelf_fqpn)
+        self.indicators_shelf.close()
+        os.remove(self.indicator_shelf_fqpn)
+
     @property
     def data(self):
         """Return the batch data to be sent to the ThreatConnect API.
@@ -542,6 +563,17 @@ class TcExBatch(object):
             if entity_count >= self._batch_max_chunk:
                 break
         return data, entity_count
+
+    @property
+    def debug(self):
+        """Return current debug value."""
+        return self._debug
+
+    @debug.setter
+    def debug(self, value):
+        """Set debug value."""
+        if isinstance(value, bool):
+            self._debug = value
 
     def document(self, name, file_name, file_content=None, malware=False, password=None, xid=True):
         """Add Document data to Batch object.
@@ -710,6 +742,17 @@ class TcExBatch(object):
         return self._group(group_obj)
 
     @property
+    def group_shelf_fqpn(self):
+        """Return groups shelf fully qualified path name."""
+        if self._group_shelf_fqpn is None:
+            self._group_shelf_fqpn = os.path.join(
+                self.tcex.args.tc_temp_path, 'groups-{}'.format(str(uuid.uuid4())))
+            if self._debug:
+                self._group_shelf_fqpn = os.path.join(
+                    self.tcex.args.tc_temp_path, 'groups-saved')
+        return self._group_shelf_fqpn
+
+    @property
     def groups(self):
         """Return dictionary of all Groups data."""
         if self._groups is None:
@@ -721,10 +764,9 @@ class TcExBatch(object):
     def groups_shelf(self):
         """Return dictionary of all Groups data."""
         if self._groups_shelf is None:
-            # TODO: let gc close or implicit close?
-            group_filename = 'groups-{}'.format(str(uuid.uuid4()))
-            group_fqpn = os.path.join(self.tcex.args.tc_temp_path, group_filename)
-            self._groups_shelf = shelve.open(group_fqpn, writeback=False)
+            # TODO: let gc close or implicit close? there could be significant overhead/delay in
+            #       manually closing.
+            self._groups_shelf = shelve.open(self.group_shelf_fqpn, writeback=False)
         return self._groups_shelf
 
     @property
@@ -736,6 +778,39 @@ class TcExBatch(object):
     def halt_on_error(self, halt_on_error):
         """Set batch halt on error setting."""
         self._halt_on_error = halt_on_error
+
+    @property
+    def halt_on_batch_error(self):
+        """Return halt on batch error value."""
+        return self._halt_on_batch_error
+
+    @halt_on_batch_error.setter
+    def halt_on_batch_error(self, value):
+        """Set batch halt on batch error value."""
+        if isinstance(value, bool):
+            self._halt_on_batch_error = value
+
+    @property
+    def halt_on_file_error(self):
+        """Return halt on file post error value."""
+        return self._halt_on_file_error
+
+    @halt_on_file_error.setter
+    def halt_on_file_error(self, value):
+        """Set halt on file post error value."""
+        if isinstance(value, bool):
+            self._halt_on_file_error = value
+
+    @property
+    def halt_on_poll_error(self):
+        """Return halt on poll error value."""
+        return self._halt_on_poll_error
+
+    @halt_on_poll_error.setter
+    def halt_on_poll_error(self, value):
+        """Set batch halt on poll error value."""
+        if isinstance(value, bool):
+            self._halt_on_poll_error = value
 
     def host(self, hostname, dns_active=False, whois_active=False, rating=None, confidence=None,
              xid=True):
@@ -788,6 +863,17 @@ class TcExBatch(object):
         return self._indicator(indicator_obj)
 
     @property
+    def indicator_shelf_fqpn(self):
+        """Return indicator shelf fully qualified path name."""
+        if self._indicator_shelf_fqpn is None:
+            self._indicator_shelf_fqpn = os.path.join(
+                self.tcex.args.tc_temp_path, 'indicators-{}'.format(str(uuid.uuid4())))
+            if self._debug:
+                self._indicator_shelf_fqpn = os.path.join(
+                    self.tcex.args.tc_temp_path, 'indicators-saved')
+        return self._indicator_shelf_fqpn
+
+    @property
     def indicators(self):
         """Return dictionary of all Indicator data."""
         if self._indicators is None:
@@ -799,10 +885,9 @@ class TcExBatch(object):
     def indicators_shelf(self):
         """Return dictionary of all Indicator data."""
         if self._indicators_shelf is None:
-            # TODO: let gc close or implicit close?
-            indicator_filename = 'indicators-{}'.format(str(uuid.uuid4()))
-            indicator_fqpn = os.path.join(self.tcex.args.tc_temp_path, indicator_filename)
-            self._indicators_shelf = shelve.open(indicator_fqpn, writeback=False)
+            # TODO: let gc close or implicit close? there could be significant overhead/delay in
+            #       manually closing.
+            self._indicators_shelf = shelve.open(self.indicator_shelf_fqpn, writeback=False)
         return self._indicators_shelf
 
     def intrusion_set(self, name, xid=True):
@@ -833,7 +918,7 @@ class TcExBatch(object):
         indicator_obj = Mutex(mutex, rating, confidence, xid)
         return self._indicator(indicator_obj)
 
-    def poll(self, batch_id, interval=None, timeout=None, halt_on_error=True):
+    def poll(self, batch_id, retry_seconds=None, back_off=None, timeout=None, halt_on_error=True):
         """Poll Batch status to ThreatConnect API.
 
         .. code-block:: javascript
@@ -853,17 +938,41 @@ class TcExBatch(object):
 
         Args:
             batch_id (str): The ID returned from the ThreatConnect API for the current batch job.
-            interval (int, optional): Number of seconds to delay between each status request.
+            retry_seconds (int): The base number of seconds used for retries when job is not completed.
+            back_off (float): A multiplier to use for backing off on each poll attempt when job has
+                              not completed.
             timeout (int, optional): The number of seconds before the poll should timeout.
             halt_on_error (bool, default:True): If True any exception will raise an error.
 
         Returns:
             dict: The batch status returned from the ThreatConnect API.
         """
-        if interval is None:
-            interval = self.poll_interval
+        # check global setting for override
+        if self.halt_on_poll_error is not None:
+            halt_on_error = self.halt_on_poll_error
+
+        # initial poll interval
+        if self._poll_interval is None and self._batch_data_count is not None:
+            # calculate poll_interval base off the number of entries in the batch data
+            # with a minimum value of 5 seconds.
+            self._poll_interval = max(math.ceil(self._batch_data_count / 250), 5)
+        elif self._poll_interval is None:
+            # if not able to calculate poll_interval default to 15 seconds
+            self._poll_interval = 15
+
+        # poll retry back_off factor
+        if back_off is None:
+            poll_interval_back_off = 2.5
         else:
-            interval = int(interval)
+            poll_interval_back_off = float(batch_id)
+
+        # poll retry seconds
+        if retry_seconds is None:
+            poll_retry_seconds = 5
+        else:
+            poll_retry_seconds = int(retry_seconds)
+
+        # poll timeout
         if timeout is None:
             timeout = self.poll_timeout
         else:
@@ -872,10 +981,16 @@ class TcExBatch(object):
             'includeAdditional': 'true'
         }
 
-        poll_time = 0
+        poll_count = 0
+        poll_time_total = 0
         data = {}
         while True:
+            poll_count += 1
+            poll_time_total += self._poll_interval
+            time.sleep(self._poll_interval)
+            self.tcex.log.info('Batch poll time: {} seconds'.format(poll_time_total))
             try:
+                # retrieve job status
                 r = self.tcex.session.get('/v2/batch/{}'.format(batch_id), params=params)
                 if not r.ok or 'application/json' not in r.headers.get('content-type', ''):
                     self.tcex.handle_error(545, [r.status_code, r.text], halt_on_error)
@@ -883,30 +998,29 @@ class TcExBatch(object):
                 data = r.json()
                 if data.get('status') != 'Success':
                     self.tcex.handle_error(545, [r.status_code, r.text], halt_on_error)
-                if data.get('data', {}).get('batchStatus', {}).get('status') == 'Completed':
-                    self.tcex.log.debug('Batch Status: {}'.format(data))
-                    return data
-                time.sleep(interval)
             except Exception as e:
                 self.tcex.handle_error(540, [e], halt_on_error)
-                self.tcex.log.error(self.tcex.error_codes.message(540).format(e))
-            # time out poll to prevent App running indefinitely
-            if poll_time >= timeout:
-                self.tcex.log.info(
-                    'Status check has reached the timeout value ({} seconds).'.format(timeout))
+
+            if data.get('data', {}).get('batchStatus', {}).get('status') == 'Completed':
+                # store last 5 poll times to use in calculating average poll time
+                self._poll_interval_times = self._poll_interval_times[-4:] + [poll_time_total]
+                # new poll interval is average of last 5 poll times
+                self._poll_interval = (
+                    math.floor(sum(self._poll_interval_times) / len(self._poll_interval_times)))
+
+                if poll_count == 1:
+                    # if completed on first poll, reduce poll interval.
+                    self._poll_interval -= .5
+
+                self.tcex.log.debug('Batch Status: {}'.format(data))
                 return data
-            poll_time += interval
-            self.tcex.log.debug('Batch poll time: {} seconds'.format(poll_time))
 
-    @property
-    def poll_interval(self):
-        """Return current poll interval value."""
-        return self._poll_interval
+            # update poll_interval for retry
+            self._poll_interval = poll_retry_seconds + int(poll_count * poll_interval_back_off)
 
-    @poll_interval.setter
-    def poll_interval(self, interval):
-        """Set the poll interval value."""
-        self._poll_interval = int(interval)
+            # time out poll to prevent App running indefinitely
+            if poll_time_total >= timeout:
+                self.tcex.handle_error(550, [timeout], True)
 
     @property
     def poll_timeout(self):
@@ -1008,7 +1122,7 @@ class TcExBatch(object):
             # not supported in v2 batch
             # 'attributeWriteType': self._attribute_write_type,
             'attributeWriteType': 'Replace',
-            'haltOnError': self._halt_on_error,
+            'haltOnError': str(self._halt_on_error).lower(),
             'owner': self._owner,
             'version': 'V2'
         }
@@ -1042,8 +1156,6 @@ class TcExBatch(object):
 
     def submit(self, poll=True, errors=True, process_files=True, halt_on_error=True):
         """Submit Batch request to ThreatConnect API.
-
-        TODO: .. note:: blah
 
         By default this method will submit the job request and data and if the size of the data
         is below the value **synchronousBatchSaveLimit** set in System Setting it will process
@@ -1144,9 +1256,10 @@ class TcExBatch(object):
                         batch_id, halt_on_error=halt_on_error).get('data', {}).get('batchStatus')
                     if errors:
                         # retrieve errors
+                        error_count = batch_data.get('errorCount', 0)
                         error_groups = batch_data.get('errorGroupCount', 0)
                         error_indicators = batch_data.get('errorIndicatorCount', 0)
-                        if error_groups > 0 or error_indicators > 0:
+                        if error_count > 0 or error_groups > 0 or error_indicators > 0:
                             self.tcex.log.debug('retrieving batch errors')
                             batch_data['errors'] = self.errors(batch_id)
                 else:
@@ -1165,7 +1278,17 @@ class TcExBatch(object):
         Returns.
             dict: The Batch Status from the ThreatConnect API.
         """
+        # check global setting for override
+        if self.halt_on_batch_error is not None:
+            halt_on_error = self.halt_on_batch_error
+
         content = self.data
+        # store the length of the batch data to use for poll interval calculations
+        self._batch_data_count = len(content.get('group')) + len(content.get('indicator'))
+        self.tcex.log.info('Batch Size: {}'.format(self._batch_data_count))
+        if self._debug:
+            # special code for debugging App using batchV2.
+            self.write_batch_json(content)
         if content.get('group') or content.get('indicator'):
             try:
                 files = (
@@ -1189,7 +1312,14 @@ class TcExBatch(object):
         Args:
             batch_id (string): The batch id of the current job.
         """
+        # check global setting for override
+        if self.halt_on_batch_error is not None:
+            halt_on_error = self.halt_on_batch_error
+
         content = self.data
+        # store the length of the batch data to use for poll interval calculations
+        self._batch_data_count = len(content.get('group')) + len(content.get('indicator'))
+        self.tcex.log.info('Batch Size: {}'.format(self._batch_data_count))
         if content.get('group') or content.get('indicator'):
             headers = {'Content-Type': 'application/octet-stream'}
             try:
@@ -1215,6 +1345,10 @@ class TcExBatch(object):
         Returns:
             dict: The upload status for each xid.
         """
+        # check global setting for override
+        if self.halt_on_file_error is not None:
+            halt_on_error = self.halt_on_file_error
+
         upload_status = []
         for xid, content_data in self._files.items():
             del self._files[xid]  # win or loose remove the entry
@@ -1232,7 +1366,6 @@ class TcExBatch(object):
                 api_branch = 'documents'
             elif content_data.get('type') == 'Report':
                 api_branch = 'reports'
-
 
             # Post File
             url = '/v2/groups/{}/{}/upload'.format(api_branch, xid)
@@ -1275,6 +1408,10 @@ class TcExBatch(object):
 
     def submit_job(self, halt_on_error=True):
         """Submit Batch request to ThreatConnect API."""
+        # check global setting for override
+        if self.halt_on_batch_error is not None:
+            halt_on_error = self.halt_on_batch_error
+
         try:
             r = self.tcex.session.post('/v2/batch', json=self.settings)
         except Exception as e:
@@ -1329,6 +1466,14 @@ class TcExBatch(object):
         """
         indicator_obj = URL(text, rating, confidence, xid)
         return self._indicator(indicator_obj)
+
+    def write_batch_json(self, content):
+        """Write batch json data to a file."""
+        batch_json_file = os.path.join(
+            self.tcex.args.tc_temp_path, 'batch-{}.json'.format(self._batch_count))
+        with open(batch_json_file, 'w') as fh:
+            json.dump(content, fh, indent=2)
+        self._batch_count += 1
 
     @property
     def file_len(self):

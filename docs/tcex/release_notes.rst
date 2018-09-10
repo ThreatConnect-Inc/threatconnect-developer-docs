@@ -6,6 +6,24 @@ Release Notes
 0.8.x
 =====
 
+0.8.15
+------
++ Added signal handler to tcex to gracefully handle interrupts.
++ Added new ``tcinit`` command to download files required for a new App or update files in an existing App.
++ Updated batch poll method to automatically calculate poll interval. **REMOVED** interval method parameter.
++ Updated batch module to raise error on batch status poll timeout.
++ Updated __main__.py to version 1.0.2.
++ Moved and added supporting file to app_init directory.
+
+0.8.14
+------
++ Added :py:meth:`~tcex.tcex_batch_v2.TcExBatch.close` method to allow cleanup of temp files when batch job is done.
++ Added global overrides for halt_on_error in batch module.
++ Fixed issue with token renewal not failing properly on error.
++ Updated logging method to ensure all messages are logged to file.
++ Updated logging method to skip API logging during token renewal.
++ Changed tcrun to not use shell on Windows systems.
+
 0.8.13
 ------
 + Updated Batch to use Submit Job/Submit Data for Deletes.
