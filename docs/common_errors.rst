@@ -143,3 +143,11 @@ When `creating a URL Indicator <https://docs.threatconnect.com/en/latest/rest_ap
     http://EXAMPLE.com # INCORRECT
 
 Additionally, the domain name of a URL must be in ASCII (if it is `internationalized <https://en.wikipedia.org/wiki/Internationalized_domain_name>`_ , it must be represented as Punycode as described `here <https://docs.threatconnect.com/en/latest/common_errors.html#host-indicators>`__).
+
+TCEX Errors
+-----------
+
+Can't find '__main__' module in '.'
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The ``can't find '__main__' module in '.'`` error means that you are trying to run the tcex script or app without the ``__main__.py`` file available `here <https://github.com/ThreatConnect-Inc/tcex/blob/master/app_init/__main__.py>`__. Download ``__main__.py`` into the base directory or your app and try running it again.
