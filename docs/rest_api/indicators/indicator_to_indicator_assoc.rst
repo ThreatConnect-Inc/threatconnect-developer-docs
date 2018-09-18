@@ -3,7 +3,11 @@ Indicator to Indicator Associations
 
 In ThreatConnect, some types of Indicators can be related with certain other types. At a high level, there are two ways to relate Indicators with one another:
 
-1. **Association**
+1. As an `Association <#association>`__
+2. As a `File Action <#file-action>`__
+
+Association
+^^^^^^^^^^^
 
 An association allows two Indicators of certain types to be related to one another in the manner that Indicators can be associated to Groups. Below is a list of the Indicator-to-Indicator associations possible in the ThreatConnect Cloud, along with the Indicator types that can be associated with one another using each association.
 
@@ -101,7 +105,8 @@ JSON Response:
       "status": "Success"
     }
 
-2. **File Action**
+File Action
+^^^^^^^^^^^
 
 A file action adds one Indicator to the behavior graph of a File Indicator. Below is a list of the file actions available in the ThreatConnect Cloud, along with the Indicator type that can be related via each file action.
 
