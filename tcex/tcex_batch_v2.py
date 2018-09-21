@@ -65,17 +65,19 @@ class TcExBatch(object):
         self._batch_max_chunk = 5000
         self._halt_on_error = halt_on_error
         self._owner = owner
-        self._group_shelf_fqpn = None
-        self._indicator_shelf_fqpn = None
+        self._group_shelf_fqfn = None
+        self._indicator_shelf_fqfn = None
 
         # global overrides on batch/file errors
         self._halt_on_batch_error = None
         self._halt_on_file_error = None
         self._halt_on_poll_error = None
 
-        # debug branch
-        self._debug = False
-        self._batch_count = 0
+        # debug/saved flags
+        self._saved_xids = None
+        self._saved_groups = None  # indicates groups shelf file was provided
+        self._saved_indicators = None  # indicates indicators shelf file was provided
+        self.enable_saved_file = False
 
         # default properties
         self._batch_data_count = None
@@ -431,9 +433,17 @@ class TcExBatch(object):
     def close(self):
         """Cleanup batch job."""
         self.groups_shelf.close()
-        os.remove(self.group_shelf_fqpn)
         self.indicators_shelf.close()
-        os.remove(self.indicator_shelf_fqpn)
+        if self.debug and self.enable_saved_file:
+            fqfn = os.path.join(self.tcex.args.tc_temp_path, 'xids-saved')
+            os.remove(fqfn)  # remove previous file to prevent duplicates
+            with open(fqfn, 'w') as fh:
+                for xid in self.saved_xids:
+                    fh.write('{}\n'.format(xid))
+        else:
+            # don't delete saved files
+            os.remove(self.group_shelf_fqfn)
+            os.remove(self.indicator_shelf_fqfn)
 
     @property
     def data(self):
@@ -566,14 +576,11 @@ class TcExBatch(object):
 
     @property
     def debug(self):
-        """Return current debug value."""
-        return self._debug
-
-    @debug.setter
-    def debug(self, value):
-        """Set debug value."""
-        if isinstance(value, bool):
-            self._debug = value
+        """Return debug setting"""
+        debug = False
+        if os.path.isfile(os.path.join(self.tcex.args.tc_temp_path, 'DEBUG')):
+            debug = True
+        return debug
 
     def document(self, name, file_name, file_content=None, malware=False, password=None, xid=True):
         """Add Document data to Batch object.
@@ -742,15 +749,21 @@ class TcExBatch(object):
         return self._group(group_obj)
 
     @property
-    def group_shelf_fqpn(self):
-        """Return groups shelf fully qualified path name."""
-        if self._group_shelf_fqpn is None:
-            self._group_shelf_fqpn = os.path.join(
+    def group_shelf_fqfn(self):
+        """Return groups shelf fully qualified filename.
+
+        For testing/debugging a previous shelf file can be copied into the tc_temp_path directory
+        instead of creating a new shelf file.
+        """
+        if self._group_shelf_fqfn is None:
+            # new shelf file
+            self._group_shelf_fqfn = os.path.join(
                 self.tcex.args.tc_temp_path, 'groups-{}'.format(str(uuid.uuid4())))
-            if self._debug:
-                self._group_shelf_fqpn = os.path.join(
-                    self.tcex.args.tc_temp_path, 'groups-saved')
-        return self._group_shelf_fqpn
+
+            # saved shelf file
+            if self.saved_groups:
+                self._group_shelf_fqfn = os.path.join(self.tcex.args.tc_temp_path, 'groups-saved')
+        return self._group_shelf_fqfn
 
     @property
     def groups(self):
@@ -766,7 +779,7 @@ class TcExBatch(object):
         if self._groups_shelf is None:
             # TODO: let gc close or implicit close? there could be significant overhead/delay in
             #       manually closing.
-            self._groups_shelf = shelve.open(self.group_shelf_fqpn, writeback=False)
+            self._groups_shelf = shelve.open(self.group_shelf_fqfn, writeback=False)
         return self._groups_shelf
 
     @property
@@ -863,15 +876,22 @@ class TcExBatch(object):
         return self._indicator(indicator_obj)
 
     @property
-    def indicator_shelf_fqpn(self):
-        """Return indicator shelf fully qualified path name."""
-        if self._indicator_shelf_fqpn is None:
-            self._indicator_shelf_fqpn = os.path.join(
+    def indicator_shelf_fqfn(self):
+        """Return indicator shelf fully qualified filename.
+
+        For testing/debugging a previous shelf file can be copied into the tc_temp_path directory
+        instead of creating a new shelf file.
+        """
+        if self._indicator_shelf_fqfn is None:
+            # new shelf file
+            self._indicator_shelf_fqfn = os.path.join(
                 self.tcex.args.tc_temp_path, 'indicators-{}'.format(str(uuid.uuid4())))
-            if self._debug:
-                self._indicator_shelf_fqpn = os.path.join(
+
+            # saved shelf file
+            if self.saved_indicators:
+                self._indicator_shelf_fqfn = os.path.join(
                     self.tcex.args.tc_temp_path, 'indicators-saved')
-        return self._indicator_shelf_fqpn
+        return self._indicator_shelf_fqfn
 
     @property
     def indicators(self):
@@ -887,7 +907,7 @@ class TcExBatch(object):
         if self._indicators_shelf is None:
             # TODO: let gc close or implicit close? there could be significant overhead/delay in
             #       manually closing.
-            self._indicators_shelf = shelve.open(self.indicator_shelf_fqpn, writeback=False)
+            self._indicators_shelf = shelve.open(self.indicator_shelf_fqfn, writeback=False)
         return self._indicators_shelf
 
     def intrusion_set(self, name, xid=True):
@@ -938,7 +958,8 @@ class TcExBatch(object):
 
         Args:
             batch_id (str): The ID returned from the ThreatConnect API for the current batch job.
-            retry_seconds (int): The base number of seconds used for retries when job is not completed.
+            retry_seconds (int): The base number of seconds used for retries when job is not
+                                 completed.
             back_off (float): A multiplier to use for backing off on each poll attempt when job has
                               not completed.
             timeout (int, optional): The number of seconds before the poll should timeout.
@@ -1003,20 +1024,21 @@ class TcExBatch(object):
 
             if data.get('data', {}).get('batchStatus', {}).get('status') == 'Completed':
                 # store last 5 poll times to use in calculating average poll time
-                self._poll_interval_times = self._poll_interval_times[-4:] + [poll_time_total]
+                self._poll_interval_times = self._poll_interval_times[-4:] + [(poll_time_total / 2)]
                 # new poll interval is average of last 5 poll times
                 self._poll_interval = (
                     math.floor(sum(self._poll_interval_times) / len(self._poll_interval_times)))
 
-                if poll_count == 1:
+                if poll_count == 1 and self._poll_interval > 30:
                     # if completed on first poll, reduce poll interval.
-                    self._poll_interval -= .5
+                    self._poll_interval -= 15
 
                 self.tcex.log.debug('Batch Status: {}'.format(data))
                 return data
 
-            # update poll_interval for retry
-            self._poll_interval = poll_retry_seconds + int(poll_count * poll_interval_back_off)
+            # update poll_interval for retry with max poll time of 20 seconds
+            self._poll_interval = min(
+                poll_retry_seconds + int(poll_count * poll_interval_back_off), 20)
 
             # time out poll to prevent App running indefinitely
             if poll_time_total >= timeout:
@@ -1113,6 +1135,42 @@ class TcExBatch(object):
                     except KeyError:
                         # if indicator was saved twice it would already be delete
                         pass
+
+    @property
+    def saved_groups(self):
+        """Return True if saved group files exits, else False."""
+        if self._saved_groups is None:
+            self._saved_groups = False
+            fqfn_saved = os.path.join(self.tcex.args.tc_temp_path, 'groups-saved')
+            if (self.enable_saved_file and os.path.isfile(fqfn_saved) and
+                    os.access(fqfn_saved, os.R_OK)):
+                self._saved_groups = True
+                self.tcex.log.debug('groups-saved file found')
+        return self._saved_groups
+
+    @property
+    def saved_indicators(self):
+        """Return True if saved indicators files exits, else False."""
+        if self._saved_indicators is None:
+            self._saved_indicators = False
+            fqfn_saved = os.path.join(self.tcex.args.tc_temp_path, 'indicators-saved')
+            if (self.enable_saved_file and os.path.isfile(fqfn_saved) and
+                    os.access(fqfn_saved, os.R_OK)):
+                self._saved_indicators = True
+                self.tcex.log.debug('indicators-saved file found')
+        return self._saved_indicators
+
+    @property
+    def saved_xids(self):
+        """Return previously saved xids."""
+        if self._saved_xids is None:
+            self._saved_xids = []
+            if self.debug:
+                fpfn = os.path.join(self.tcex.args.tc_temp_path, 'xids-saved')
+                if os.path.isfile(fpfn) and os.access(fpfn, os.R_OK):
+                    with open(fpfn) as fh:
+                        self._saved_xids = fh.read().splitlines()
+        return self._saved_xids
 
     @property
     def settings(self):
@@ -1286,7 +1344,7 @@ class TcExBatch(object):
         # store the length of the batch data to use for poll interval calculations
         self._batch_data_count = len(content.get('group')) + len(content.get('indicator'))
         self.tcex.log.info('Batch Size: {}'.format(self._batch_data_count))
-        if self._debug:
+        if self.debug:
             # special code for debugging App using batchV2.
             self.write_batch_json(content)
         if content.get('group') or content.get('indicator'):
@@ -1354,6 +1412,11 @@ class TcExBatch(object):
             del self._files[xid]  # win or loose remove the entry
             status = True
 
+            # used for debug/testing to prevent upload of previously uploaded file
+            if self.debug and xid in self.saved_xids:
+                self.tcex.log.debug('skipping previously saved file {}.'.format(xid))
+                continue
+
             # process the file content
             content = content_data.get('fileContent')
             if callable(content):
@@ -1380,6 +1443,8 @@ class TcExBatch(object):
             if not r.ok:
                 status = False
                 self.tcex.handle_error(585, [r.status_code, r.text], halt_on_error)
+            elif self.debug:
+                self.saved_xids.append(xid)
             self.tcex.log.info('Status {} for file upload with xid {}.'.format(
                 r.status_code, xid))
             upload_status.append({'uploaded': status, 'xid': xid})
@@ -1469,11 +1534,11 @@ class TcExBatch(object):
 
     def write_batch_json(self, content):
         """Write batch json data to a file."""
+        timestamp = str(time.time()).replace('.', '')
         batch_json_file = os.path.join(
-            self.tcex.args.tc_temp_path, 'batch-{}.json'.format(self._batch_count))
+            self.tcex.args.tc_temp_path, 'batch-{}.json'.format(timestamp))
         with open(batch_json_file, 'w') as fh:
             json.dump(content, fh, indent=2)
-        self._batch_count += 1
 
     @property
     def file_len(self):
