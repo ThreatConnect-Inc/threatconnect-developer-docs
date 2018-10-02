@@ -4,7 +4,7 @@ Create Files
 The example below demonstrates how to create a File Indicator in the ThreatConnect platform:
 
 .. code-block:: python
-    :emphasize-lines: 12-15,29-30
+    :emphasize-lines: 12-16,30-31
 
     # replace the line below with the standard, TC script heading described here:
     # https://docs.threatconnect.com/en/latest/python/quick_start.html#standard-script-heading
@@ -21,6 +21,7 @@ The example below demonstrates how to create a File Indicator in the ThreatConne
     indicator = indicators.add('8743b52063cd84097a65d1633f5c74f5', owner) # MD5 hash of string 'hashcat'
     indicator.set_indicator('b89eaac7e61417341b710b727768294d0e6a277b') #SHA1 hash of same string
     indicator.set_indicator('127e6fbfe24a750e72930c220a8e138275656b8e5d8f48a98c3c92df2caba935') # SHA256 hash of same string
+    indicator.set_size(12345) # the file size (in bytes)
     # set the confidence rating for the Indicator
     indicator.set_confidence(75)
     # set the threat rating for the Indicator
