@@ -548,25 +548,31 @@ JSON Response:
 .. code:: json
 
     {
-      "status" : "Success",
-      "data" : {
-        "host" : {
-          "id" : 12345,
-          "owner" : {
-            "id" : 1,
-            "name" : "Example Organization",
-            "type" : "Organization"
+      "status": "Success",
+      "data": {
+        "host": {
+          "id": 12345,
+          "owner": {
+            "id": 1,
+            "name": "Example Organization",
+            "type": "Organization"
           },
-          "dateAdded" : "2017-06-21T17:50:25-05:00",
-          "lastModified" : "2017-07-13T17:50:25-05:00",
-          "webLink" : "https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=example.com&owner=Example%20Organization",
-          "observationCount" : 5,
-          "lastObserved" : "2016-07-13T17:50:25-05:00",
-          "falsePositiveCount" : 1,
-          "falsePositiveLastReported" : "2017-07-13T17:50:25-05:00",
-          "hostName" : "example.com",
-          "dnsActive" : "false",
-          "whoisActive" : "false"
+          "dateAdded": "2017-06-21T17:50:25-05:00",
+          "lastModified": "2017-07-13T17:50:25-05:00",
+          "threatAssessRating": 3.0,
+          "threatAssessConfidence": 50.0,
+          "threatAssessScore": 354,
+          "webLink": "https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=example.com&owner=Example%20Organization",
+          "observationCount": 5,
+          "lastObserved": "2016-07-13T17:50:25-05:00",
+          "falsePositiveCount": 1,
+          "falsePositiveLastReported": "2017-07-13T17:50:25-05:00",
+          "privateFlag": false,
+          "active": true,
+          "activeLocked": false,
+          "hostName": "example.com",
+          "dnsActive": "false",
+          "whoisActive": "false"
         }
       }
     }
