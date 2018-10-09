@@ -24,7 +24,9 @@ The following are all considered valid paths for creating indicators:
 
 The table below illustrates valid fields for the body of the POST request when creating an Indicator.
 
-.. note:: The activeLocked field only prevents CAL from updating the status.
+Indicator Fields
+^^^^^^^^^^^^^^^^
+
 +----------------+--------------+----------+
 | Indicator Type | Valid Fields | Required |
 +================+==============+==========+
@@ -90,6 +92,8 @@ The table below illustrates valid fields for the body of the POST request when c
 +----------------+--------------+----------+
 
 \*Files are required to be submitted with at least one valid hash.
+
+.. note:: The activeLocked field only prevents CAL from updating the status.
 
 .. hint:: If you are unable to create an Indicator, check out some `Common Indicator Creation Errors <https://docs.threatconnect.com/en/latest/common_errors.html#creating-indicators>`__.
 
