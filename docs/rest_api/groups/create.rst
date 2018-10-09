@@ -27,6 +27,9 @@ The ``{groupType}`` can be any one of the available group types:
 
 Some group types require additional fields when being created. Refer to the table below for the fields required to create each group type:
 
+Group Fields
+^^^^^^^^^^^^
+
 .. include:: group_fields.rst
 
 By way of example, the query below will create an incident in the default owner:
