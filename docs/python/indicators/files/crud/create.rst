@@ -68,7 +68,7 @@ A File occurrence can be added to File Indicators using the ``add_file_occurrenc
 Uploading File Occurrences
 """""""""""""""""""""""
 
-Uploading file occurrences is supported utilizing Batch V2 import mode. There is also a way to set file size, although the solution is not intuitive. See the following example JSON, where the "intValue1" parameter is the desired file size (in bytes):
+Uploading file occurrences is supported utilizing Batch V2 import mode. There is also a way to set file size, although the solution is not intuitive. See the following example, where the "intValue1" parameter is the desired file size (in bytes):
 
 JSON Response: 
 
