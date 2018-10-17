@@ -23,7 +23,7 @@ The following group objects are available via the ThreatConnect SDK:
     emails = tc.emails()
     events = tc.events()
     incidents = tc.incidents()
-    intrusionsets = tc.intrusionsets()
+    intrusionSets = tc.intrusionSets()
     reports = tc.reports()
     signatures = tc.signatures()
     threats = tc.threats()
