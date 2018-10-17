@@ -171,7 +171,7 @@ Release Notes
 0.7.18
 ------
 + Updated jobs module to not call safetag method when using resource module.
-+ Updated Intrusion Set class in resource module.
++ Updated IntrusionSet class in resource module.
 + Updated group list to include new group types.
 + Added ``upload()`` and ``download()`` methods to Report class in resource module.
 + Added Task as a group type.
@@ -188,7 +188,7 @@ Release Notes
 + Updated Tag class to urlencode tag value so slashes are supported.
 + Updated safetag method to strip **^** from tag values.
 + Changed modules dependency to use latest version instead of restricting to current version.
-+ Added Event, Intrusion Set and Report group types in preparation for TC > 5.6.0.
++ Added Event, IntrusionSet and Report group types in preparation for TC > 5.6.0.
 + Added metrics module to create and add metrics to ThreatConnect.
 + Added **deleted** endpoint for indicators.
 
