@@ -70,7 +70,7 @@ Uploading File Occurrences
 
 Uploading file occurrences is supported utilizing Batch V2 import mode. There is also a way to set file size, although the solution is not intuitive. See the following example JSON, where the "intValue1" parameter is the desired file size (in bytes):
 
-JSON Response:
+JSON Response: 
 
 .. code:: json
 
