@@ -449,7 +449,7 @@ Replace ``{associatedGroupType}`` with one of the following Group types:
 - ``emails``
 - ``events``
 - ``incidents``
-- ``intrusion sets``
+- ``intrusionSets``
 - ``reports``
 - ``signatures``
 - ``threats``
