@@ -919,7 +919,7 @@ class TcExBatch(object):
         return self._indicators_shelf
 
     def intrusion_set(self, name, xid=True):
-        """Add Intrusion Set data to Batch object.
+        """Add IntrusionSet data to Batch object.
 
         Args:
             name (str): The name for this Group.
