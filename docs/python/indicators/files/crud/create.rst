@@ -73,20 +73,19 @@ Uploading file occurrences is supported utilizing Batch V2 import mode. There is
 JSON Response: 
 
 .. code:: json
-
-{
-    .....
-    "type": "File",
-    .....
-    "intValue1": 1024,
-    .....
-    "fileOccurrence": [{
-        "fileName": "test1.exe",
-        "path": "C:\\windows\\test",
-        "date": "2018-10-09T19:00:00-05:00"
-    }, {
-        "fileName": "test2.exe",
-        "path": "C:\\windows\\test2",
-        "date": "2018-10-08T19:00:00-05:00"
-    }]
-}
+    {
+        .....
+        "type": "File",
+        .....
+        "intValue1": 1024,
+        .....
+        "fileOccurrence": [{
+            "fileName": "test1.exe",
+            "path": "C:\\windows\\test",
+            "date": "2018-10-09T19:00:00-05:00"
+        }, {
+            "fileName": "test2.exe",
+            "path": "C:\\windows\\test2",
+            "date": "2018-10-08T19:00:00-05:00"
+        }]
+    }
