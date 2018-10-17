@@ -1938,7 +1938,7 @@ class Incident(Group):
 class Intrusion_Set(Group):
     """Intrusion Set Resource Class
 
-    This resource class will return groups of type Intrusion Set. To filter on
+    This resource class will return groups of type intrusionSet. To filter on
     specific groups use the **group_id** or **resource_id** methods provided in
     the parent class.
     """
