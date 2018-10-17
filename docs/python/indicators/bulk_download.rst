@@ -3,6 +3,8 @@ Bulk Indicator Download
 
 This section explains how to work with ThreatConnect Bulk Indicators.
 
+.. note:: Bulk Download: None of the specified enrichment data is supported for download via this mechanism; only the basic "Indicator" data is given which includes tags and attributes, but no file-specific data such as file size/occurrences, associations of any kind, or DNS resolutions..
+
 **Supported API Filters**
 
 +-----------------+-------------+-----------------------------+
