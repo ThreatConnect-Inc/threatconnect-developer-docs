@@ -64,3 +64,25 @@ A File occurrence can be added to File Indicators using the ``add_file_occurrenc
     indicator.add_file_occurrence('badfile.exe', 'C:\windows', fo_date)
 
 .. note:: A File occurrence will only be added to a File Indicator if the ``indicator.add_file_occurrence(...)`` function is followed by an ``indicator.commit()``.
+
+Uploading File Occurrences
+"""""""""""""""""""""""
+
+Uploading file occurrences is supported utilizing Batch V2 import mode. There is also a way to set file size, although the solution is not intuitive. See the following example JSON, where the "intValue1" parameter is the desired file size (in bytes):
+
+{
+    .....
+    "type": "File",
+    .....
+    "intValue1": 1024,
+    .....
+    "fileOccurrence": [{
+        "fileName": "test1.exe",
+        "path": "C:\\windows\\test",
+        "date": "2018-10-09T19:00:00-05:00"
+    }, {
+        "fileName": "test2.exe",
+        "path": "C:\\windows\\test2",
+        "date": "2018-10-08T19:00:00-05:00"
+    }]
+}
