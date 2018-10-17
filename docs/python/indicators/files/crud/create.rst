@@ -73,6 +73,7 @@ Uploading file occurrences is supported utilizing Batch V2 import mode. There is
 JSON Response: 
 
 .. code:: json
+
     {
         .....
         "type": "File",
