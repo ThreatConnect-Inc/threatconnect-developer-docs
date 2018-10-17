@@ -11,6 +11,8 @@ importing large amounts of data.
 
 .. note:: Document Storage is required to use the Batch API.
 
+.. note:: Batch Upload: When utilizing Batch V2 mode—file size, file occurrences, and Indicator-Iindicator relationships are supported. DNS resolutions are not supported for import.
+
 The Batch Create resource creates a batch entry in the system. No batch processing is triggered until the batch input file is uploaded. The table below displays the fields required for the Batch Create message.
 
 +---------------------+-----------------+-------------------------------------------------------------------------------------------------------------------+
