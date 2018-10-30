@@ -6,6 +6,8 @@ Retrieving a Single Signature
 
 This example demonstrates how to retrieve a specific Signature using the Signature's ID. The ``add_id`` filter specifies the ID of the Signature which you would like to retrieve.
 
+.. note:: The API accepts customized Signature types.
+
 .. code-block:: python
     :emphasize-lines: 10-12,15-16
 
