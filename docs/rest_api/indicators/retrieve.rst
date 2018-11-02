@@ -254,7 +254,7 @@ JSON Response:
       }
     }
 
-In ThreatConnect version 5.2+, it is possible to retrieve the regular expression(s) (regex(es)) used to detect and validate an Indicator of a given type. These regexes can be retrieved by adding the ``includeAdditional=true`` parameter as follows:
+In ThreatConnect version 5.2+, it is possible to retrieve the regular expression(s) (regex(es)) used to detect and validate any of the Indicator types supplied by the platform. These regexes can be retrieved by adding the ``includeAdditional=true`` parameter as follows:
 
 .. code::
 
