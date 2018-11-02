@@ -190,7 +190,6 @@ Sample Poll Response
                 <indicator:Type>Domain Watchlist</indicator:Type>
                 <indicator:Description>Host: example.com|threatassess: 450|falsepositives: 1|owner: Finance Branch Log Analysis</indicator:Description>
                 <indicator:Observable id="threatconnect:Observable-6788a246-4975-4f67-8d03-73537e56e885">
-                  <cybox:Title>ThreatConnect - Domain Watchlist</cybox:Title>
                   <cybox:Object>
                     <cybox:Properties xsi:type="cyboxDN:DomainNameObjectType">
                       <cyboxDN:Value apply_condition="ANY" condition="Equals">example.com</cyboxDN:Value>
