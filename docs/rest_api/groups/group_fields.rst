@@ -15,6 +15,8 @@
 +-------------+--------------+---------------------------------+-------------------------------+
 |             | password     | FALSE                           | FALSE                         |
 +-------------+--------------+---------------------------------+-------------------------------+
+|             | status†      | FALSE                           | FALSE                         |
++-------------+--------------+---------------------------------+-------------------------------+
 | emails      | name         | TRUE                            | FALSE                         |
 +-------------+--------------+---------------------------------+-------------------------------+
 |             | to           | FALSE                           | FALSE                         |
@@ -72,6 +74,14 @@
 * Closed
 * Rejected
 * Deleted
+
+† The valid values for a Document's status are: 
+
+* Success
+* Awaiting Upload
+* In Progress
+* Failed
+* None
 
 \* The valid values for a Signature’s fileType field are:
 
