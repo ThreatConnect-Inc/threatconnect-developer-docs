@@ -117,6 +117,12 @@ The following Indicator related endpoints are available:
 
 * ``/v2/indicators``
 * ``/v2/indicators/deleted``
+* ``/v2/indicators/hosts/deleted``
+* ``/v2/indicators/addresses/deleted``
+* ``/v2/indicators/urls/deleted``
+* ``/v2/indicators/files/deleted``
+* ``/v2/indicators/emailAddresses/deleted``
+* ``/v2/indicators/{custom Indicator type}/deleted``
 * ``/v2/indicators/observed``
 * ``/v2/indicators/{type}``
 * ``/v2/indicators/{type}/{indicator}``
