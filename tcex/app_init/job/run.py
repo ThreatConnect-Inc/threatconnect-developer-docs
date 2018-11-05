@@ -23,10 +23,16 @@ if __name__ == '__main__':
         # parse args
         app.parse_args()
 
+        # perform prep/startup operations
+        app.start()
+
         # run the main logic
         app.run()
 
-        # write message and gracefully exit the App
+        # perform cleanup operations
+        app.done()
+
+        # explicitly call the exit method
         tcex.exit(msg=app.exit_message)
 
     except Exception as e:
