@@ -396,6 +396,8 @@ JSON Response:
       }
     }
 
+Note that using the 'includes=additional' parameter will also work. Likewise, 'includes=tags', 'includes=attributes', and 'includes=labels' are permitted for Groups.
+
 Retrieve Group Associations
 ---------------------------
 
