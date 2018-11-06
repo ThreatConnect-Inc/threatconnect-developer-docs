@@ -78,7 +78,7 @@ By default, all API calls will operate in the API user account's default organiz
 Additional Parameters
 """""""""""""""""""""
 
-Group paths will display XID when includes=additional or includeAdditional=true:
+Group API paths will display XID when includes=additional or includeAdditional=true:
 
 .. code::
 
