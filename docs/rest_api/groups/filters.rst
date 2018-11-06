@@ -74,3 +74,13 @@ By default, all API calls will operate in the API user account's default organiz
 .. code::
 
     GET /v2/groups/incidents/?owner=Common%20Community
+    
+Additional Parameters
+"""""""""""""""""""""
+
+Group paths will display XID when includes=additional or includeAdditional=true:
+
+.. code::
+
+    /api/v2/groups/adversaries/4?includeAdditional=True
+    /api/v2/groups/adversaries/4?includes=additional
