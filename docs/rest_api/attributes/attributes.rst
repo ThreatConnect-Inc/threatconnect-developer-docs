@@ -13,6 +13,16 @@ The general formats for retrieving the attributes on an item are:
 - Tasks: ``GET /v2/tasks/{taskId}/attributes``
 - Victims: ``GET /v2/victims/{victimId}/attributes``
 
+Additional Parameters
+"""""""""""""""""""""
+
+Attributes API paths will display XID when includes=additional or includeAdditional=true:
+
+.. code::
+
+    /api/v2/indicators/hosts/bad.com/attributes?includes=additional
+    /api/v2/indicators/hosts/bad.com/attributes/3?includes=additional
+
 Adding Attributes
 -----------------
 
