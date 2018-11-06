@@ -49,6 +49,29 @@ The body of the POST request can contain the following fields:
 
 \* The ``displayed`` field is only applicable for Source and Description attributes.
 
+Retrieving Available Attributes
+---------------------------------
+
+All of the available Attributes can be viewed by making a ``GET`` request to ``/v2/types/attributeTypes``. This will return the name of the attribute. Note that this branch also supports the following filters: owner, system, allowMarkdown, and maxLength. To return an Attribute type:
+
+.. code::
+
+    GET /v2/types/attributeTypes/
+
+To retrieve information about a specific Attribute, use the following GET request format:
+
+.. code::
+
+    GET /v2/types/attributeTypes/{attributeTypeName}/
+
+For example, the GET request below will return details about the ``Source`` Attribute type:
+
+.. code::
+
+    GET /v2/types/attributeTypes/Source/
+
+Note that an "includes=validationRule" parameter returns the validationRule objects for the attributeTypes.
+
 Updating Attributes
 -------------------
 
