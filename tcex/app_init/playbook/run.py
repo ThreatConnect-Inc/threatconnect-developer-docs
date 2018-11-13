@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-""" Playbook App """
+"""Playbook App"""
 import traceback
 import sys
 
@@ -26,8 +26,16 @@ if __name__ == '__main__':
         # perform prep/startup operations
         app.start()
 
-        # run the main logic
-        app.run()
+        # run the App logic
+        if hasattr(app.args, 'tc_action') and app.args.tc_action is not None:
+            try:
+                # run action method
+                getattr(app, app.args.tc_action)()
+            except AttributeError:
+                tcex.exit(1, 'Action method ({}) was not found.'.format(app.args.tc_action))
+        else:
+            # default to run method
+            app.run()
 
         # write requested value for downstream Apps
         app.write_output()
@@ -36,7 +44,7 @@ if __name__ == '__main__':
         app.done()
 
         # explicitly call the exit method
-        tcex.exit(msg=app.exit_message)
+        tcex.playbook.exit(msg=app.exit_message)
 
     except Exception as e:
         main_err = 'Generic Error.  See logs for more details ({}).'.format(e)
