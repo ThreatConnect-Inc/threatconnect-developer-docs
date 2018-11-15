@@ -95,6 +95,8 @@ list of dictionaries
           ...
         }
 
+.. note:: Regarding ``dateAdded``: for new indicators that do not yet exist in the consuming Organization, two options exist: a) if the incoming indicator has a ``dateAdded`` field, it is used; b) if the incoming indicator does not have a ``dateAdded``, the current date/time is used at the moment of import. For indicators that already exist in the consuming organization, ``dateAdded`` is never updated and the original value is retained.
+
 Supported ``type`` values for Indicators:
 
 -  Host
