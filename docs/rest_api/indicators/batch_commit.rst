@@ -1,7 +1,7 @@
 Batch Upload: Indicators
 ------------------------
 
-The Batch API allows bulk Indicator creation and deletion via the HTTP
+The Battch API allows bulk Indicator creation and deletion via the HTTP
 POST method. After creating a batch, an Indicator file is uploaded. The
 content of the file must be valid JSON, with content and format
 mimicking the data structure of the Bulk JSON file download. A file
