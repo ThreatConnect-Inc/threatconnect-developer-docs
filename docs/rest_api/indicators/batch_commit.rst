@@ -1,7 +1,7 @@
 Batch Upload: Indicators
 ------------------------
 
-The Battch API allows bulk Indicator creation and deletion via the HTTP
+The Batch API allows bulk Indicator creation and deletion via the HTTP
 POST method. After creating a batch, an Indicator file is uploaded. The
 content of the file must be valid JSON, with content and format
 mimicking the data structure of the Bulk JSON file download. A file
@@ -81,6 +81,8 @@ list of dictionaries
 | ``attribute``       | list of dictionaries | Optional  |
 +---------------------+----------------------+-----------+
 | ``associatedGroup`` | list of integers     | Optional  |
++---------------------+----------------------+-----------+
+| ``dateAdded``       | date/time            | Optional  |
 +---------------------+----------------------+-----------+
 
 .. note:: To create File Indicators using Batch Indicator Upload, the ``summary`` should be a string with each file hash (md5, sha1, and/or sha256) separated by ``<space>:<space>``. For example, the following summary would create a File Indicator with the md5 hash ``905ad8176a569a36421bf54c04ba7f95``, sha1 hash ``a52b6986d68cdfac53aa740566cbeade4452124e`` and sha256 hash ``25bdabd23e349f5e5ea7890795b06d15d842bde1d43135c361e755f748ca05d0``:
