@@ -11,8 +11,6 @@ importing large amounts of data.
 
 .. note:: Document Storage is required to use the Batch API.
 
-.. note:: Batch Upload: When utilizing Batch V2 mode—file size, file occurrences, and Indicator-Iindicator relationships are supported. DNS resolutions are not supported for import. 
-
 The Batch Create resource creates a batch entry in the system. No batch processing is triggered until the batch input file is uploaded. The table below displays the fields required for the Batch Create message.
 
 +---------------------+-----------------+-------------------------------------------------------------------------------------------------------------------+
@@ -94,8 +92,6 @@ list of dictionaries
           "type": "File",
           ...
         }
-
-.. note:: Regarding ``dateAdded``: for new indicators that do not yet exist in the consuming Organization, two options exist: a) if the incoming indicator has a ``dateAdded`` field, it is used; b) if the incoming indicator does not have a ``dateAdded`` field, the current date/time is used at the moment of import. For indicators that already exist in the consuming organization, ``dateAdded`` is never updated and the original value is retained.
 
 Supported ``type`` values for Indicators:
 
