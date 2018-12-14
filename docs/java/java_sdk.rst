@@ -165,11 +165,11 @@ Once retrieved, the adversary objects will be printed to the console.
     :linenos:
     :lineno-start: 1
 
-    import com.cyber2.api.lib.client.reader.AbstractGroupReaderAdapter;
-    import com.cyber2.api.lib.client.reader.ReaderAdapterFactory;
-    import com.cyber2.api.lib.conn.Connection;
-    import com.cyber2.api.lib.exception.FailedResponseException;
-    import com.cyber2.api.lib.server.entity.Adversary;
+    import com.threatconnect.sdk.client.reader.AbstractGroupReaderAdapter;
+    import com.threatconnect.sdkb.client.reader.ReaderAdapterFactory;
+    import com.threatconnect.sdk.conn.Connection;
+    import com.threatconnect.sdkb.exception.FailedResponseException;
+    import com.threatconnect.sdkb.server.entity.Adversary;
     import java.io.IOException;
     import java.util.List;
     
@@ -208,9 +208,9 @@ Organization must be created.
 | Line         | Description                                                 |
 +==============+=============================================================+
 | 1-7          | Notable imports include: The                                |
-|              | ``com.cyber2.api.lib.client.reader`` package holds all      |
+|              | ``com.threatconnect.sdk.client.reader`` package holds all      |
 |              | Adapter classes that read data from the API. The            |
-|              | ``com.cyber2.api.lib.server.entity`` package holds all      |
+|              | ``com.threatconnect.sdk.server.entity`` package holds all      |
 |              | entities returned by the Java SDK.                          |
 +--------------+-------------------------------------------------------------+
 | 17-18        | The platform programmatically define the system property to |
