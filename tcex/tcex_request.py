@@ -4,10 +4,10 @@ from builtins import str
 import json
 from base64 import b64encode
 
-from requests import (adapters, packages, Request, Session)
-from requests.packages.urllib3.util.retry import Retry
+from requests import adapters, packages, Session
+from requests.packages.urllib3.util.retry import Retry  # pylint: disable=E0401
 
-packages.urllib3.disable_warnings()  # disable ssl warning message
+packages.urllib3.disable_warnings()  # pylint: disable=E1101
 
 
 def session_retry(retries=3, backoff_factor=0.3, status_forcelist=(500, 502, 504), session=None):
@@ -135,8 +135,7 @@ class TcExRequest(object):
 
     def set_basic_auth(self, username, password):
         """Manually set basic auth in the header when normal method does not work."""
-        credentials = str(
-            b64encode('{}:{}'.format(username, password).encode('utf-8')), 'utf-8')
+        credentials = str(b64encode('{}:{}'.format(username, password).encode('utf-8')), 'utf-8')
         self.authorization = 'Basic {}'.format(credentials)
 
     @property
@@ -197,10 +196,11 @@ class TcExRequest(object):
                 self.add_header('Content-Type', 'application/json')
         else:
             raise AttributeError(
-                'Request Object Error: {} is not a valid HTTP method.'.format(data))
+                'Request Object Error: {} is not a valid HTTP method.'.format(data)
+            )
 
     #
-    # Send Properties
+    # Set Properties
     #
 
     @property
@@ -209,9 +209,9 @@ class TcExRequest(object):
         return self.session.proxies
 
     @proxies.setter
-    def proxies(self, data):
+    def proxies(self, proxy_settings):
         """Set the proxy settings for the session."""
-        self.session.proxies = data
+        self.session.proxies = proxy_settings
 
     @property
     def timeout(self):
@@ -248,6 +248,7 @@ class TcExRequest(object):
         """Files setting for this request"""
         if isinstance(data, dict):
             self._files = data
+
     #
     # Send
     #
@@ -269,9 +270,16 @@ class TcExRequest(object):
         #
         try:
             response = self.session.request(
-                self._http_method, self._url, auth=self._basic_auth, data=self._body,
-                files=self._files, headers=self._headers, params=self._payload, stream=stream,
-                timeout=self._timeout)
+                self._http_method,
+                self._url,
+                auth=self._basic_auth,
+                data=self._body,
+                files=self._files,
+                headers=self._headers,
+                params=self._payload,
+                stream=stream,
+                timeout=self._timeout,
+            )
         except Exception as e:
             err = 'Failed making HTTP request ({}).'.format(e)
             raise RuntimeError(err)

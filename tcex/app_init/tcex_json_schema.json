@@ -26,11 +26,11 @@
           "attributesFile": {
             "type": "string"
           },
-          "enableBulkJson": {
-            "type": "boolean"
-          },
           "documentStorageLimitMb": {
             "type": "integer"
+          },
+          "enableBulkJson": {
+            "type": "boolean"
           },
           "indicatorLimit": {
             "type": "integer"
@@ -49,6 +49,9 @@
           }
         }
       }
+    },
+    "labels": {
+      "type": "array"
     },
     "languageVersion": {
       "type": "string"
@@ -87,6 +90,9 @@
               ]
             },
             "type": "string"
+          },
+          "feedDeployer": {
+            "type": "boolean"
           },
           "hidden": {
             "type": "boolean"

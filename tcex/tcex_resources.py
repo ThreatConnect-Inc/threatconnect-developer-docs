@@ -68,8 +68,9 @@ class Resource(object):
         """
         try:
             # write bulk download to disk with unique ID
-            temp_file = os.path.join(self.tcex.default_args.tc_temp_path, '{}.json'.format(
-                uuid.uuid4()))
+            temp_file = os.path.join(
+                self.tcex.default_args.tc_temp_path, '{}.json'.format(uuid.uuid4())
+            )
             self.tcex.log.debug(u'temp json file: {}'.format(temp_file))
             with open(temp_file, 'wb') as fh:
                 for block in response.iter_content(1024):
@@ -81,7 +82,8 @@ class Resource(object):
             if self.tcex.default_args.logging == 'debug':
                 try:
                     with open(temp_file, 'rb') as f_in, gzip.open(
-                        '{}.gz'.format(temp_file), 'wb') as f_out:
+                        '{}.gz'.format(temp_file), 'wb'  # pylint: disable=C0330
+                    ) as f_out:
                         shutil.copyfileobj(f_in, f_out)
                 except Exception:
                     self.tcex.log.warning(u'Could not compress temporary bulk JSON file.')
@@ -116,8 +118,11 @@ class Resource(object):
         else:
             status = 'Failure'
             err = u'Failed Request {}: Status Code ({}) not in {}. API Response: "{}".'.format(
-                self._name, response.status_code, self._status_codes[self._http_method],
-                response.text)
+                self._name,
+                response.status_code,
+                self._status_codes[self._http_method],
+                response.text,
+            )
             self.tcex.log.error(err)
 
         return data, status
@@ -196,7 +201,8 @@ class Resource(object):
         status = response_data.get('status', 'Failure')
         return data, status
 
-    def _request_process_json_status(self, response_data):
+    @staticmethod
+    def _request_process_json_status(response_data):
         """Handle JSON response with no "data" entity
 
         Return:
@@ -209,7 +215,8 @@ class Resource(object):
         status = response_data.get('status')
         return data, status
 
-    def _request_process_octet(self, response):
+    @staticmethod
+    def _request_process_octet(response):
         """Handle Document download.
 
         Return:
@@ -224,7 +231,8 @@ class Resource(object):
 
         return data, status
 
-    def _request_process_text(self, response):
+    @staticmethod
+    def _request_process_text(response):
         """Handle Signature download.
 
         Return:
@@ -250,11 +258,7 @@ class Resource(object):
             operator (string): The filter comparison operator.
             value (string): The filter value.
         """
-        self._filters.append({
-            'name': name,
-            'operator': operator,
-            'value': value
-        })
+        self._filters.append({'name': name, 'operator': operator, 'value': value})
 
     def add_payload(self, key, val, append=False):
         """Add a key value pair to payload for this request.
@@ -330,25 +334,31 @@ class Resource(object):
         """
         resource = self.copy()
         association_api_branch = self.tcex.indicator_associations_types_data.get(
-            association_name, {}).get('apiBranch')
+            association_name, {}
+        ).get('apiBranch')
         if association_api_branch is None:
             self.tcex.handle_error(305, [association_name])
 
         # handle URL difference between Custom Associations and File Actions
         custom_type = 'associations'
-        file_action = self.tcex.utils.to_bool(self.tcex.indicator_associations_types_data.get(
-            association_name, {}).get('fileAction'))
+        file_action = self.tcex.utils.to_bool(
+            self.tcex.indicator_associations_types_data.get(association_name, {}).get('fileAction')
+        )
         if file_action:
             custom_type = 'actions'
 
         resource._request_entity = 'indicator'
         if association_resource is not None:
             resource._request_uri = '{}/{}/{}/{}'.format(
-                resource._request_uri, custom_type, association_api_branch,
-                association_resource.request_uri)
+                resource._request_uri,
+                custom_type,
+                association_api_branch,
+                association_resource.request_uri,
+            )
         else:
             resource._request_uri = '{}/{}/{}/indicators'.format(
-                resource._request_uri, custom_type, association_api_branch)
+                resource._request_uri, custom_type, association_api_branch
+            )
         return resource
 
     def association_pivot(self, association_resource):
@@ -380,7 +390,8 @@ class Resource(object):
         """
         resource = self.copy()
         resource._request_uri = '{}/{}'.format(
-            association_resource.request_uri, resource._request_uri)
+            association_resource.request_uri, resource._request_uri
+        )
         return resource
 
     def associations(self, association_resource):
@@ -415,7 +426,8 @@ class Resource(object):
         resource = self.copy()
         resource._request_entity = association_resource.api_entity
         resource._request_uri = '{}/{}'.format(
-            resource._request_uri, association_resource.request_uri)
+            resource._request_uri, association_resource.request_uri
+        )
         return resource
 
     def attributes(self, resource_id=None):
@@ -625,7 +637,8 @@ class Resource(object):
         """
         resource = self.copy()
         resource._request_uri = '{}/{}'.format(
-            indicator_resource.request_uri, resource._request_uri)
+            indicator_resource.request_uri, resource._request_uri
+        )
         return resource
 
     @property
@@ -736,11 +749,7 @@ class Resource(object):
         # self._request_uri = self._api_uri
         # self._request_entity = self._api_entity
 
-        return {
-            'data': data,
-            'response': response,
-            'status': status
-        }
+        return {'data': data, 'response': response, 'status': status}
 
     @property
     def request_entity(self):
@@ -821,7 +830,8 @@ class Resource(object):
         """
         resource = self.copy()
         resource._request_uri = '{}/{}'.format(
-            security_label_resource.request_uri, resource._request_uri)
+            security_label_resource.request_uri, resource._request_uri
+        )
         return resource
 
     def security_labels(self, resource_id=None):
@@ -932,7 +942,8 @@ class Resource(object):
         resource._request_uri = '{}/tags'.format(resource._request_uri)
         if resource_id is not None:
             resource._request_uri = '{}/{}'.format(
-                resource._request_uri, self.tcex.safetag(resource_id))
+                resource._request_uri, self.tcex.safetag(resource_id)
+            )
         return resource
 
     def task_pivot(self, task_resource):
@@ -959,8 +970,7 @@ class Resource(object):
             resource_id (integer): The resource pivot id (task id).
         """
         resource = self.copy()
-        resource._request_uri = '{}/{}'.format(
-            task_resource.request_uri, resource._request_uri)
+        resource._request_uri = '{}/{}'.format(task_resource.request_uri, resource._request_uri)
         return resource
 
     @property
@@ -1002,8 +1012,7 @@ class Resource(object):
         """
         resource = self.copy()
         resource._request_entity = 'victim'
-        resource._request_uri = '{}/{}'.format(
-            resource._request_uri, victim_resource.request_uri)
+        resource._request_uri = '{}/{}'.format(resource._request_uri, victim_resource.request_uri)
         return resource
 
     def victim_pivot(self, victim_resource):
@@ -1030,8 +1039,7 @@ class Resource(object):
             resource_id (integer): The resource pivot id (victim id).
         """
         resource = self.copy()
-        resource._request_uri = '{}/{}'.format(
-            victim_resource.request_uri, resource._request_uri)
+        resource._request_uri = '{}/{}'.format(victim_resource.request_uri, resource._request_uri)
         return resource
 
     def victim_assets(self, asset_type=None, asset_id=None):
@@ -1079,20 +1087,17 @@ class Resource(object):
             'networkAccounts': 'victimNetworkAccount',
             'phoneNumbers': 'victimPhone',
             'socialNetworks': 'victimSocialNetwork',
-            'webSites': 'victimWebSite'
+            'webSites': 'victimWebSite',
         }
         resource = self.copy()
         resource._request_entity = 'victimAsset'
         resource._request_uri = '{}/victimAssets'.format(resource._request_uri)
         if asset_type is not None:
             resource._request_entity = type_entity_map.get(asset_type, 'victimAsset')
-            resource._request_uri = '{}/{}'.format(
-                resource._request_uri, asset_type)
+            resource._request_uri = '{}/{}'.format(resource._request_uri, asset_type)
             if asset_id is not None:
-                resource._request_uri = '{}/{}'.format(
-                    resource._request_uri, asset_id)
+                resource._request_uri = '{}/{}'.format(resource._request_uri, asset_id)
         return resource
-
 
     def __iter__(self):
         """Add iterator to Resource Object"""
@@ -1175,12 +1180,7 @@ class Batch(Resource):
         self._parent = 'Batch'
         self._request_entity = self._api_entity
         self._request_uri = self._api_uri
-        self._status_codes = {
-            'DELETE': [200],
-            'GET': [200],
-            'POST': [200, 201],
-            'PUT': [200]
-        }
+        self._status_codes = {'DELETE': [200], 'GET': [200], 'POST': [200, 201], 'PUT': [200]}
         # self._value_fields = ['summary']
 
     def batch_id(self, batch_id):
@@ -1226,12 +1226,7 @@ class Indicator(Resource):
         self._parent = 'Indicator'
         self._request_entity = self._api_entity
         self._request_uri = self._api_uri
-        self._status_codes = {
-            'DELETE': [200],
-            'GET': [200],
-            'POST': [200, 201],
-            'PUT': [200]
-        }
+        self._status_codes = {'DELETE': [200], 'GET': [200], 'POST': [200, 201], 'PUT': [200]}
         self._value_fields = ['summary']
 
     def deleted(self):
@@ -1262,7 +1257,8 @@ class Indicator(Resource):
         """
         if self._name != 'Bulk' or self._name != 'Indicator':
             self._request_uri = '{}/{}'.format(
-                self._api_uri, self.tcex.safe_indicator(data, 'ignore'))
+                self._api_uri, self.tcex.safe_indicator(data, 'ignore')
+            )
 
     def indicator_body(self, indicators):
         """Generate the appropriate dictionary content for POST of a **single** indicator.
@@ -1332,7 +1328,7 @@ class Indicator(Resource):
                     hash_patterns = {
                         'md5': re.compile(r'^([a-fA-F\d]{32})$'),
                         'sha1': re.compile(r'^([a-fA-F\d]{40})$'),
-                        'sha256': re.compile(r'^([a-fA-F\d]{64})$')
+                        'sha256': re.compile(r'^([a-fA-F\d]{64})$'),
                     }
                     for i in indicators:
                         if not i:
@@ -1348,18 +1344,16 @@ class Indicator(Resource):
                             i_type = 'sha256'
                         else:
                             msg = u'Cannot determine hash type: "{}"'.format(
-                                indicator_data.get('summary'))
+                                indicator_data.get('summary')
+                            )
                             self.tcex.log.warning(msg)
 
-                        data = {
-                            'type': i_type,
-                            'value': i
-                        }
+                        data = {'type': i_type, 'value': i}
                         yield data
                 else:
                     resource = getattr(
-                        self.tcex.resources, self.tcex.safe_rt(indicator_data.get('type')))(
-                            self.tcex)
+                        self.tcex.resources, self.tcex.safe_rt(indicator_data.get('type'))
+                    )(self.tcex)
                     values = resource.value_fields
 
                     index = 0
@@ -1372,18 +1366,12 @@ class Indicator(Resource):
                         if len(values) - 1 < index:
                             break
 
-                        data = {
-                            'type': values[index],
-                            'value': i
-                        }
+                        data = {'type': values[index], 'value': i}
                         index += 1
                         yield data
             else:
                 if indicator_data.get(indicator_field) is not None:
-                    yield {
-                        'type': indicator_field,
-                        'value': indicator_data.get(indicator_field)
-                    }
+                    yield {'type': indicator_field, 'value': indicator_data.get(indicator_field)}
 
     def observations(self):
         """Report indicator observations"""
@@ -1627,7 +1615,8 @@ class File(Indicator):
         """
         for hs in hash_string.split(' : '):
             if hs:
-                return hs
+                hash_string = hs
+        return hash_string
 
     def indicator(self, data):
         """Update the request URI to include the Indicator for specific indicator retrieval.
@@ -1649,7 +1638,7 @@ class File(Indicator):
         hash_patterns = {
             'md5': re.compile(r'^([a-fA-F\d]{32})$'),
             'sha1': re.compile(r'^([a-fA-F\d]{40})$'),
-            'sha256': re.compile(r'^([a-fA-F\d]{64})$')
+            'sha256': re.compile(r'^([a-fA-F\d]{64})$'),
         }
         body = {}
         for indicator in indicators:
@@ -1761,12 +1750,7 @@ class Group(Resource):
         self._parent = 'Group'
         self._request_entity = self._api_entity
         self._request_uri = self._api_uri
-        self._status_codes = {
-            'DELETE': [200],
-            'GET': [200],
-            'POST': [200, 201],
-            'PUT': [200, 201]
-        }
+        self._status_codes = {'DELETE': [200], 'GET': [200], 'POST': [200, 201], 'PUT': [200, 201]}
         self._value_fields = ['name']
 
     def group_id(self, resource_id):
@@ -1960,7 +1944,7 @@ class Incident(Group):
         Args:
             date: The event date in ISO 8601 format.
         """
-        pass
+        pass  # pylint: disable=W0107
 
     def pdf(self, resource_id):
         """Update the request URI to get the pdf for this resource.
@@ -2144,11 +2128,7 @@ class CustomMetric(Resource):
         self._parent = 'CustomerMetric'
         self._request_entity = self._api_entity
         self._request_uri = self._api_uri
-        self._status_codes = {
-            'GET': [200],
-            'POST': [200, 201, 204],
-            'PUT': [200]
-        }
+        self._status_codes = {'GET': [200], 'POST': [200, 201, 204], 'PUT': [200]}
         self._value_fields = ['customMetricConfig']
 
     def metric_id(self, resource_id):
@@ -2262,9 +2242,7 @@ class Owner(Resource):
         self._parent = 'Owner'
         self._request_entity = self._api_entity
         self._request_uri = self._api_uri
-        self._status_codes = {
-            'GET': [200]
-        }
+        self._status_codes = {'GET': [200]}
         self._value_fields = ['name']
 
     def owner_id(self, resource_id):
@@ -2305,12 +2283,7 @@ class SecurityLabel(Resource):
         self._parent = 'SecurityLabel'
         self._request_entity = self._api_entity
         self._request_uri = self._api_uri
-        self._status_codes = {
-            'DELETE': [200],
-            'GET': [200],
-            'POST': [200],
-            'PUT': [200]
-        }
+        self._status_codes = {'DELETE': [200], 'GET': [200], 'POST': [200], 'PUT': [200]}
         self._value_fields = ['name']
 
     def label(self, resource_id):
@@ -2353,12 +2326,7 @@ class Tag(Resource):
         self._parent = 'Tag'
         self._request_entity = self._api_entity
         self._request_uri = self._api_uri
-        self._status_codes = {
-            'DELETE': [200],
-            'GET': [200],
-            'POST': [200],
-            'PUT': [200]
-        }
+        self._status_codes = {'DELETE': [200], 'GET': [200], 'POST': [200], 'PUT': [200]}
         self._value_fields = ['name']
 
     def tag(self, resource_id):
@@ -2401,12 +2369,7 @@ class Task(Resource):
         self._parent = 'Task'
         self._request_entity = self._api_entity
         self._request_uri = self._api_uri
-        self._status_codes = {
-            'DELETE': [200],
-            'GET': [200],
-            'POST': [200, 201],
-            'PUT': [200]
-        }
+        self._status_codes = {'DELETE': [200], 'GET': [200], 'POST': [200, 201], 'PUT': [200]}
         self._value_fields = ['name']
 
     def assignees(self, assignee=None, resource_id=None):
@@ -2494,12 +2457,7 @@ class Victim(Resource):
         self._parent = 'Victim'
         self._request_entity = self._api_entity
         self._request_uri = self._api_uri
-        self._status_codes = {
-            'DELETE': [200],
-            'GET': [200],
-            'POST': [200, 201],
-            'PUT': [200]
-        }
+        self._status_codes = {'DELETE': [200], 'GET': [200], 'POST': [200, 201], 'PUT': [200]}
         self._value_fields = ['name']
 
     def victim_id(self, resource_id):
@@ -2553,10 +2511,7 @@ class DataStore(object):
             db_method (string): The DB method 'DELETE', 'GET', 'POST', or 'PUT'
             body (dict): JSON body
         """
-        headers = {
-            'Content-Type': 'application/json',
-            'DB-Method': db_method
-        }
+        headers = {'Content-Type': 'application/json', 'DB-Method': db_method}
         search_command = self._clean_datastore_path(search_command)
         url = '/v2/exchange/db/{}/{}/{}'.format(domain, type_name, search_command)
         r = self.tcex.session.post(url, data=body, headers=headers, params=self._params)
@@ -2568,11 +2523,7 @@ class DataStore(object):
         data = r.json()
         status = 'Success'
 
-        return {
-            'data': data,
-            'response': r,
-            'status': status
-        }
+        return {'data': data, 'response': r, 'status': status}
 
     def add_payload(self, key, val, append=True):
         """Add a key value pair to payload for this request.
@@ -2674,9 +2625,7 @@ class Notification(Resource):
         self._parent = 'Notification'
         self._request_entity = self._api_entity
         self._request_uri = self._api_uri
-        self._status_codes = {
-            'POST': [200]
-        }
+        self._status_codes = {'POST': [200]}
         self._value_fields = ['notificationsConfig']
 
 
@@ -2693,5 +2642,5 @@ def class_factory(name, base_class, class_dict):
         for k, v in class_dict.items():
             setattr(self, k, v)
 
-    newclass = type(str(name), (base_class,), {"__init__": __init__})
+    newclass = type(str(name), (base_class,), {'__init__': __init__})
     return newclass
