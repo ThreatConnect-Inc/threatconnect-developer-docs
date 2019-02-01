@@ -80,3 +80,4 @@ html_favicon = '_static/favicon.ico'
 def setup(app):
     """Add the stylesheet which fixes the problems with the problem with line numbers."""
     app.add_stylesheet('css/custom.css')
+    app.add_css_file('_static/css/custom.css')
