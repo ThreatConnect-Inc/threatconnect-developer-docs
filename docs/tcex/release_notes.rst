@@ -6,6 +6,27 @@ Release Notes
 0.9.x
 =====
 
+0.9.5
+-----
++ Enabled package_data in setup.py for JSON schema files.
+
+0.9.4
+-----
++ Switched from setup.py package_data to MANIFEST.in for JSON schema files.
+
+0.9.3
+-----
++ Added new ``tcvalidate`` command for App Builder.
++ Added validation of layout.json schema, inputs, and outputs.
++ Migrated JSON validation files from App to TcEx.
+
+0.9.2
+-----
++ Added new ``FailOn`` App decorator.
++ Updated run.py in Playbook templates to handle TypeError on incorrect action.
++ Updated ``tcpackage`` command to suggest proper fix for missing modules.
++ Updated ``tcrun`` to handle null value in args.
+
 0.9.1
 -----
 + Fixed issue in ``tcpackage`` with handling errors.
