@@ -421,18 +421,17 @@ JSON Response:
                 "apiEntity": "registryKey",
                 "casePreference": "sensitive",
                 "value1Label": "Key Name",
-                "value1Type": "text", 
+                "value1Type": "text",
                 "value2Label": "Value Name",
                 "value2Type": "text",
-                "value3Label": "Value Type"
+                "value3Label": "Value Type",
                 "value3Type": "selectone",
-                "value3Option":      
-"REG_NONE;REG_BINARY;REG_DWORD;REG_DWORD_LITTLE_ENDIAN;REG_DWORD_BIG_ENDIAN;REG_EXPAND_SZ;REG_LINK;REG_MULTI_SZ;REG_QWORD;REG_QWORD_LITTLE_ENDIAN;REG_SZ",                
+                "value3Option": "REG_NONE;REG_BINARY;REG_DWORD;REG_DWORD_LITTLE_ENDIAN;REG_DWORD_BIG_ENDIAN;REG_EXPAND_SZ;REG_LINK;REG_MULTI_SZ;REG_QWORD;REG_QWORD_LITTLE_ENDIAN;REG_SZ",
                 "keys": { 
-                    "key1": "Key Name", "key2": "Value Name", "key3": "Value Type" 
+                    "key1": "Key Name", "key2": "Value Name", "key3": "Value Type"
                 }
               },
-              {
+              {   
                 "name": "User Agent",
                 "custom": "true",
                 "parsable": "false",
@@ -441,8 +440,8 @@ JSON Response:
                 "casePreference": "sensitive",
                 "value1Label": "User Agent String",
                 "value1Type": "text",
-                "keys": {
-                    "key1": "User Agent String"   
+                "keys": { 
+                    "key1" :"User Agent String" 
             }
         ]
       }
