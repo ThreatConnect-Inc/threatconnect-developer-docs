@@ -295,6 +295,157 @@ JSON Response:
     }
     
 Note that using the 'includes=additional' parameter will also work. Likewise, 'includes=tags', 'includes=attributes', and 'includes=labels' are permitted.
+
+Indicator Keys
+^^^^^^^^^^^^^^
+
+An Indicator key is needed for pivoting to associated Indicators or Groups. The indicatorTypes API branch provides a field called 'Value1Type' and, optionally, 'Value2Type' and 'Value3Type.' These fields are the correct key name for pivoting when referring to Custom Indicators and the new Default Indicators that were created using the Custom Indicator. For the five original Indicator types (File, Address, Host, EmailAddress, and URL), the indicatorTypes API branch returns a new key/value pair for each Indicator type. These are listed below:
+
+* File > md5|sha1|sha256
+* Address > ip
+* URL > text
+* EmailAddress -> address
+* Host -> hostName
+
+Note that the ?includes=additional parameter is required in order to have the new key values returned in the results. The indicatorTypes API endpoint will return a new key/value pair for each Indicator type, called 'Key1' and, optionally, 'Key2' and 'Key3.' This field contains what is needed for both Custom Indicators and the Original Indicators. With this information, users can programmatically make a call to that API endpoint and then populate the response into the fields used to pivot for all Indicator types.
+
+JSON Response:
+
+.. code:: json
+
+    {
+      "status": "Success",
+      "data": {
+          "resultCount": 10,
+          "indicator": [
+              {
+                "name": "Address",
+                "custom": "false",
+                "parsable": "true",
+                "apiBranch": "addresses",
+                "apiEntity": "address",
+                "keys": { 
+                    "key1" : "ip" 
+                }
+              },
+              {
+                "name": "EmailAddress",
+                "custom": "false",
+                "parsable": "true",
+                "apiBranch": "emailAddresses",
+                "apiEntity": "emailAddress",
+                "keys": { 
+                    "key1": "address" 
+                }
+              },
+              {
+                "name": "File",
+                "custom": "false",
+                "parsable": "true",
+                "apiBranch": "files",
+                "apiEntity": "file",
+                "value1Label": "MD5",
+                "value1Type": "text",
+                "value2Label": "SHA-1",
+                "value2Type": "text",
+                "value3Label": "SHA-256"
+                "value3Type": "text",
+                "keys": { 
+                    "key1": "md5", "key2": "sha1", "key3": "sha256" 
+                }
+              },
+              {
+                "name": "Host",
+                "custom": "false",
+                "parsable": "true",
+                "apiBranch": "hosts",
+                "apiEntity": "host",
+                "keys": {
+                    "key1": "hostName"
+                }
+              },
+              {   
+                "name": "URL",
+                "custom": "false",
+                "parsable": "true",
+                "apiBranch": "urls",
+                "apiEntity": "url",
+                "keys": { 
+                    "key1": "text"
+                }
+              },
+              {              
+                "name": "ASN",
+                "custom": "true",
+                "parsable": "true",
+                "apiBranch": "asns",
+                "apiEntity": "asn",
+                "casePreference": "upper",
+                "value1Label": "AS Number",
+                "value1Type": "text",
+                "keys": { 
+                    "key1": "AS Number"
+                }
+              },
+              {       
+                "name": "CIDR",
+                "custom": "true",
+                "parsable": "true",
+                "apiBranch": "cidrBlocks",
+                "apiEntity": "cidrBlock",
+                "casePreference": "lower",
+                "value1Label": "Block",
+                "value1Type": "text",
+                "keys": { 
+                    "key1": "Block"                     
+                }
+              },
+              {                      
+                "name": "Mutex",
+                "custom": "true",
+                "parsable": "false",
+                "apiBranch: "mutexes",
+                "apiEntity": "mutex",
+                "casePreference": "sensitive",
+                "value1Label": "Mutex",
+                "value1Type": "text",
+                "keys": { 
+                    "key1": "Mutex"                   
+                }
+              },
+              {      
+                "name": "Registry Key",
+                "custom": "true",
+                "parsable": "false",
+                "apiBranch": "registryKeys",
+                "apiEntity": "registryKey",
+                "casePreference": "sensitive",
+                "value1Label": "Key Name",
+                "value1Type": "text",
+                "value2Label": "Value Name",
+                "value2Type": "text",
+                "value3Label": "Value Type"
+                "value3Type": "selectone",
+                "value3Option":             "REG_NONE;REG_BINARY;REG_DWORD;REG_DWORD_LITTLE_ENDIAN;REG_DWORD_BIG_ENDIAN;REG_EXPAND_SZ;REG_LINK;REG_MULTI_SZ;REG_QWORD;REG_QWORD_LITTLE_ENDIAN;REG_SZ",
+                "keys": { 
+                    "key1": "Key Name", "key2": "Value Name", "key3": "Value Type" 
+                }
+              },
+              {
+                "name": "User Agent",
+                "custom": "true",
+                "parsable": "false",
+                "apiBranch": "userAgents",
+                "apiEntity": "userAgent",
+                "casePreference": "sensitive",
+                "value1Label": "User Agent String",
+                "value1Type": "text",
+                "keys": {
+                    "key1": "User Agent String"   
+            }
+        ]
+      }
+    }
     
 Retrieve All Indicators
 ^^^^^^^^^^^^^^^^^^^^^^^
