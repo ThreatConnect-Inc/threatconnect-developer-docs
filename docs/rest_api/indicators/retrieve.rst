@@ -299,15 +299,9 @@ Note that using the 'includes=additional' parameter will also work. Likewise, 'i
 Indicator Keys
 ^^^^^^^^^^^^^^
 
-An Indicator key is needed for pivoting to associated Indicators or Groups. The indicatorTypes API branch provides a field called 'Value1Type' and, optionally, 'Value2Type' and 'Value3Type.' These fields are the correct key names for pivoting when referring to Custom Indicators and the new Default Indicators that were created using the Custom Indicator. For the five original Indicator types (File, Address, Host, EmailAddress, and URL), the indicatorTypes API branch returns a new key/value pair for each Indicator type. These are listed below:
+In ThreatConnect version 5.8+ it is possible to retrieve the Indicator keys needed for pivoting to associated Indicators or Groups. These key values can be retrieved by adding the includeAdditional=true parameter. The indicatorTypes API endpoint will return key/values pair for each Indicator type, called ‘Key1’ and, optionally, ‘Key2’ and ‘Key3.’ For example:
 
-* File > md5|sha1|sha256
-* Address > ip
-* URL > text
-* EmailAddress -> address
-* Host -> hostName
-
-Note that the ?includes=additional parameter is required in order to have the new key values returned in the results. The indicatorTypes API endpoint will return a new key/value pair for each Indicator type, called 'Key1' and, optionally, 'Key2' and 'Key3.' This field contains what is needed for both Custom Indicators and the Original Indicators. With this information, users can programmatically make a call to that API endpoint and then populate the response into the fields used to pivot for all Indicator types.
+GET /v2/types/indicatorTypes?includeAdditional=true.
 
 JSON Response:
 
@@ -446,7 +440,17 @@ JSON Response:
         ]
       }
     }
-    
+ 
+Keys can also be retrieved for a single type by adding the indicatortype to the command as follows:
+
+GET /v2/types/indicatorTypes/{indicatorType}?includeAdditional=true
+
+For example:
+
+GET /v2/types/indicatorTypes/address?includeAdditional=true
+
+will return the Indicator keys for Address Indicators. Note that using the ‘includes=additional’ parameter will also work.
+
 Retrieve All Indicators
 ^^^^^^^^^^^^^^^^^^^^^^^
 
