@@ -421,7 +421,7 @@ JSON Response:
                 "apiEntity": "registryKey",
                 "casePreference": "sensitive",
                 "value1Label": "Key Name",
-                "value1Type": "text",
+                "value1Type": "text", 
                 "value2Label": "Value Name",
                 "value2Type": "text",
                 "value3Label": "Value Type"
