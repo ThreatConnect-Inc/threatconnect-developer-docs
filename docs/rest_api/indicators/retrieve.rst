@@ -299,7 +299,7 @@ Note that using the 'includes=additional' parameter will also work. Likewise, 'i
 Indicator Keys
 ^^^^^^^^^^^^^^
 
-An Indicator key is needed for pivoting to associated Indicators or Groups. The indicatorTypes API branch provides a field called 'Value1Type' and, optionally, 'Value2Type' and 'Value3Type.' These fields are the correct key name for pivoting when referring to Custom Indicators and the new Default Indicators that were created using the Custom Indicator. For the five original Indicator types (File, Address, Host, EmailAddress, and URL), the indicatorTypes API branch returns a new key/value pair for each Indicator type. These are listed below:
+An Indicator key is needed for pivoting to associated Indicators or Groups. The indicatorTypes API branch provides a field called 'Value1Type' and, optionally, 'Value2Type' and 'Value3Type.' These fields are the correct key names for pivoting when referring to Custom Indicators and the new Default Indicators that were created using the Custom Indicator. For the five original Indicator types (File, Address, Host, EmailAddress, and URL), the indicatorTypes API branch returns a new key/value pair for each Indicator type. These are listed below:
 
 * File > md5|sha1|sha256
 * Address > ip
