@@ -81,7 +81,7 @@ JSON Response:
             "value2Label": ""
           },
           {
-            "name": "Mutex",
+            "name": "Mutex", 
             "custom": "true",
             "parsable": "false",
             "apiBranch": "mutexes",
