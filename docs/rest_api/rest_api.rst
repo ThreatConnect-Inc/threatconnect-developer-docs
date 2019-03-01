@@ -18,6 +18,7 @@ REST API
    indicators/indicators
    notifications/notifications
    owners/owners
+   playbooks/playbooks
    security_labels/security_labels
    tags/tags
    tasks/tasks
