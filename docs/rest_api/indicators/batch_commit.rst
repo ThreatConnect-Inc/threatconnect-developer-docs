@@ -82,7 +82,7 @@ list of dictionaries
 +----------------------+----------------------+-----------+
 | ``dateAdded``        | date/time            | Optional  |
 +----------------------+----------------------+-----------+
-| `` fileMergeMode``   | string               | Optional  |
+| ``fileMergeMode``    | string               | Optional  |
 +----------------------+----------------------+-----------+
 | ``hashCollisionMode``| list of integers     | Optional  |
 +----------------------+----------------------+-----------+
