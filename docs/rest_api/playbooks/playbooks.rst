@@ -3,35 +3,13 @@ Playbooks
 
 The Playbooks feature allows ThreatConnect users to automate cyberdefense tasks via a drag-and-drop interface. The interface uses Triggers (e.g., a new IP address Indicator or a phishing email sent to an inbox) to pass data to Apps, which perform a variety of functions, including data enrichment, malware analysis, and blocking actions. Once enabled, Playbooks run in real time and provide users with detailed logs of each execution. Playbooks may also be saved for use as Components (i.e., modules) within other Playbooks.
 
-Filtering Groups
-^^^^^^^^^^^^^^^^
+Retrieving Playbooks
+^^^^^^^^^^^^^^^^^^^^
 
-Filters Parameter
+Filter Parameters
 """""""""""""""""
 
-When retrieving Groups from ThreatConnect, it is possible to filter the results. Results can be filtered on the following data points:
-
-+-------------------------------+-----------+--------------+
-| Filter                        | Data Type | Operator(s)  |
-+===============================+===========+==============+
-| name                          | string    | ``=``, ``^`` |
-+-------------------------------+-----------+--------------+
-| dateAdded                     | date      | ``<``, ``>`` |
-+-------------------------------+-----------+--------------+
-| **Campaign Specific Filters** |           |              |
-+-------------------------------+-----------+--------------+
-| firstSeen                     | date      | ``<``, ``>`` |
-+-------------------------------+-----------+--------------+
-| **Document Specific Filters** |           |              |
-+-------------------------------+-----------+--------------+
-| fileType                      | string    | ``=``        |
-+-------------------------------+-----------+--------------+
-| **Incident Specific Filters** |           |              |
-+-------------------------------+-----------+--------------+
-| eventDate                     | date      | ``<``, ``>`` |
-+-------------------------------+-----------+--------------+
-
-.. include:: ../_includes/filter_symbol_encoding_note.rst
+When retrieving Playbooks from ThreatConnect, it is possible to filter the results by using specified data points:
 
 **Examples**
 
@@ -45,8 +23,7 @@ The following query executes a search:
 
 .. code::
 
-   GET /v2/playbooks/search
-  
+   GET /v2/playbooks/search  
  
 The following are optional URL parameters:
 
