@@ -46,12 +46,12 @@ The following query executes a search:
 .. code::
 
     GET /v2/playbooks/search
-    
- 
+  
  Optional ``URL`` parameters:
 
--``resultStart``: The first result to return
--``resultLimit``: The number of results to return
+``resultStart``: The first result to return.
+
+``resultLimit``: The number of results to return.
 -``name``: Searches for Playbooks by including a specified name
 -``triggerType``: Filters results based on the Playbook's type
 -``status``: Filters results based on the status of the Playbook. Possible values are ``Active``, ``Inactive``, ``Draft``, and ----``Archive``.
