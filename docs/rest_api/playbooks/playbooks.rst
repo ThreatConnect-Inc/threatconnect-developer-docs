@@ -48,7 +48,7 @@ The following query executes a search:
    GET /v2/playbooks/search
   
  
- The following are optional ``URL`` parameters:
+The following are optional URL parameters:
 
 ``resultStart``: The first result to return
 
