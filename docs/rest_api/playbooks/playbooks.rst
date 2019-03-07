@@ -45,9 +45,10 @@ The following query executes a search:
 
 .. code::
 
-    GET /v2/playbooks/search
+   GET /v2/playbooks/search
   
- Optional ``URL`` parameters:
+ 
+ The following are optional ``URL`` parameters:
 
 ``resultStart``: The first result to return
 
