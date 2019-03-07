@@ -92,7 +92,7 @@ list of dictionaries
 .. code-block:: javascript
 
    {
-   "summary": "905ad8176a569a36421bf54c04ba7f95: a52b6986d68cdfac53aa740566cbeade4452124e:                                                    25bdabd23e349f5e5ea7890795b06d15d842bde1d43135c361e755f748ca05d0",
+   "summary": "905ad8176a569a36421bf54c04ba7f95: a52b6986d68cdfac53aa740566cbeade4452124e:                                          25bdabd23e349f5e5ea7890795b06d15d842bde1d43135c361e755f748ca05d0",
    "type": "File",
    ...
    }
