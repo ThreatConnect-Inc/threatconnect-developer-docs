@@ -61,37 +61,45 @@ Batch Indicator Input File Format
 The batch upload feature expects to ingest a JSON file consisting of a
 list of dictionaries
 
-+---------------------+----------------------+-----------+
-| Field               | Data type            | Required? |
-+=====================+======================+===========+
-| ``rating``          | integer              | Required  |
-+---------------------+----------------------+-----------+
-| ``confidence``      | float                | Required  |
-+---------------------+----------------------+-----------+
-| ``description``     | string               | Required  |
-+---------------------+----------------------+-----------+
-| ``summary``         | string               | Required  |
-+---------------------+----------------------+-----------+
-| ``type``            | string               | Required  |
-+---------------------+----------------------+-----------+
-| ``tag``             | list of dictionaries | Optional  |
-+---------------------+----------------------+-----------+
-| ``attribute``       | list of dictionaries | Optional  |
-+---------------------+----------------------+-----------+
-| ``associatedGroup`` | list of integers     | Optional  |
-+---------------------+----------------------+-----------+
-| ``dateAdded``       | date/time            | Optional  |
-+---------------------+----------------------+-----------+
++----------------------+----------------------+-----------+
+| Field                | Data type            | Required? |
++======================+======================+===========+
+| ``rating``           | integer              | Required  |
++----------------------+----------------------+-----------+
+| ``confidence``       | float                | Required  |
++----------------------+----------------------+-----------+
+| ``description``      | string               | Required  |
++----------------------+----------------------+-----------+
+| ``summary``          | string               | Required  |
++----------------------+----------------------+-----------+
+| ``type``             | string               | Required  |
++----------------------+----------------------+-----------+
+| ``tag``              | list of dictionaries | Optional  |
++----------------------+----------------------+-----------+
+| ``attribute``        | list of dictionaries | Optional  |
++----------------------+----------------------+-----------+
+| ``associatedGroup``  | list of integers     | Optional  |
++----------------------+----------------------+-----------+
+| ``dateAdded``        | date/time            | Optional  |
++----------------------+----------------------+-----------+
+| `` fileMergeMode``   | string               | Optional  |
++----------------------+----------------------+-----------+
+| ``hashCollisionMode``| list of integers     | Optional  |
++----------------------+----------------------+-----------+
 
-.. note:: To create File Indicators using Batch Indicator Upload, the ``summary`` should be a string with each file hash (md5, sha1, and/or sha256) separated by ``<space>:<space>``. For example, the following summary would create a File Indicator with the md5 hash ``905ad8176a569a36421bf54c04ba7f95``, sha1 hash ``a52b6986d68cdfac53aa740566cbeade4452124e`` and sha256 hash ``25bdabd23e349f5e5ea7890795b06d15d842bde1d43135c361e755f748ca05d0``:
+.. note:: File Indicators may have any or all of MD5, SHA1, and/or SHA256 hash values. The hashes may be provided in either of two ways: (1) concatenated using 'space-colon-space' into the 'summary' field of the indicator, or; (2) presented as individual 'md5', 'sha1', and 'sha256' hash values. The presence of any hashes using this second method will cause the summary field to be ignored during import. For example, consider a File Indicator with the md5 hash 905ad8176a569a36421bf54c04ba7f95, sha1 hash a52b6986d68cdfac53aa740566cbeade4452124e and sha256 hash 25bdabd23e349f5e5ea7890795b06d15d842bde1d43135c361e755f748ca05d0, which could be imported in either of the two following ways``:
 
     .. code-block:: javascript
-    
-        {
-          "summary": "905ad8176a569a36421bf54c04ba7f95 : a52b6986d68cdfac53aa740566cbeade4452124e : 25bdabd23e349f5e5ea7890795b06d15d842bde1d43135c361e755f748ca05d0",
-          "type": "File",
-          ...
-        }
+            
+      {
+        "md5": "905ad8176a569a36421bf54c04ba7f95",
+        "sha1": "a52b6986d68cdfac53aa740566cbeade4452124e",
+        "sha256": "25bdabd23e349f5e5ea7890795b06d15d842bde1d43135c361e755f748ca05d0",
+        "type": "File",
+        ...
+       }
+            
+.. note:: Occasionally, imported File Indicators may overlap one or more hashes with other File Indicators already present within the system. In the typical situation, either the incoming data or the existing data will contain additional hash type[s] that the other item did not have (e.g., incoming data has both an md5 and sha1, while the existing data has only the md5, or vice versa). In this typical situation, the resulting File Indicator will end up the "superset" of file hashes by either retaining the existing hash[es] or adding in the new hash[es]. However, certain non-typical situations may exist that require special processing when incoming file hash[es] cause conflicts with existing data (e.g., incoming data has an md5 and sha1, while the existing data has the same md5 but a different sha1). The behavior in situations like these are controlled by the fileMergeMode and hashCollisionMode parameters defined in the above table.``
 
 Supported ``type`` values for Indicators:
 
