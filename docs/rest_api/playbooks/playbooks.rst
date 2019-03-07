@@ -27,21 +27,21 @@ The following query executes a search:
  
 The following are optional URL search parameters:
 
-``resultStart``: The first result to return
+- ``resultStart``: The first result to return
 
-``resultLimit``: The number of results to return
+- ``resultLimit``: The number of results to return
 
-``name``: Searches for Playbooks by including a specified name
+- ``name``: Searches for Playbooks by including a specified name
 
-``triggerType``: Filters results based on the Playbook's type
+- ``triggerType``: Filters results based on the Playbook's type
 
-``status``: Filters results based on the status of the Playbook. Possible values are ``Active``, ``Inactive``, ``Draft``, and ``Archive``
+- ``status``: Filters results based on the status of the Playbook. Possible values are ``Active``, ``Inactive``, ``Draft``, and ``Archive``
 
-``sortOn``: Determines the field to sort by. Possible values are ``name`` and ``triggerType``
+- ``sortOn``: Determines the field to sort by. Possible values are ``name`` and ``triggerType``
 
-``sortAscending``: Filters by ``true/false``
+- ``sortAscending``: Filters by ``true/false``
 
-``labels``: A comma-delimited list of labels by which to filter
+- ``labels``: A comma-delimited list of labels by which to filter
 
 The following query uploads and installs a new Playbook:
 
