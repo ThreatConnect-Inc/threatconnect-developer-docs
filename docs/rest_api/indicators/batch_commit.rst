@@ -34,11 +34,14 @@ The Batch Create resource creates a batch entry in the system. No batch processi
 +---------------------+-----------------+-------------------------------------------------------------------------------------------------------------------+
 | hashCollisionMode   | Split           | Split: Inhibits a merge and instead splits the incoming data out across any offending Indicators.                                                                                                                                  |
 +---------------------+-----------------+-------------------------------------------------------------------------------------------------------------------+
-|                     | Merge           | Merge: Combines multiple Indicators into one                                       |
+|                     | IgnoreIncoming  | IgnoreIncoming: Drops the incoming Indicator from the import, leaving all pre-existing data the same as it was before importing the offending Indicator                                                                                   |
++---------------------+-----------------+-------------------------------------------------------------------------------------------------------------------+
+|                     | IgnoreExisting  | IgnoreExisting: If a conflict exists between two or more existing Indicators, this mode will delete the existing file Indicators in the system that caused the conflict.                                                                   |
++---------------------+-----------------+-------------------------------------------------------------------------------------------------------------------+
+|                     | FavorIncoming   | FavorIncoming: Favors the hashes presented in the incoming data, overwriting any hashes that may have conflicted within the existing data                                                                                                   |
++---------------------+-----------------+-------------------------------------------------------------------------------------------------------------------+
+|                     | FavorExisting   | FavorExisting: Favors the hashes contained in the existing data, ignoring any hashes that may have conflicted from the incoming data                                                                                   |
 +---------------------+-----------------+-------------------------------------------------------------------------------------------------------------------
-
-
-
 
 .. note:: If ``haltOnError`` is set to ‘true’ and an error occurs, then the status will be set to ‘Completed’, and ‘errorCount’ will be greater than zero. The ‘unprocessedCount’ field will be greater than zero, unless the uploaded file did not contain valid JSON.
 
