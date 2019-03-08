@@ -28,6 +28,17 @@ The Batch Create resource creates a batch entry in the system. No batch processi
 +---------------------+-----------------+-------------------------------------------------------------------------------------------------------------------+
 |                     | Delete          | Delete: Delete Indicator (only the ‘summary’ and ‘type’ field are required)                                       |
 +---------------------+-----------------+-------------------------------------------------------------------------------------------------------------------+
+| fileMergeMode       | Distribute      | Distribute: The Rating, Confidence, Tags, Attributes, etc., from the incoming file hash are applied to all matching Indicators (up to 3 possible).                                                                                       |
++---------------------+-----------------+-------------------------------------------------------------------------------------------------------------------+
+|                     | Merge           | Merge: Combines multiple Indicators into one                                       |
++---------------------+-----------------+-------------------------------------------------------------------------------------------------------------------+
+| hashCollisionMode   | Split           | Split: Inhibits a merge and instead splits the incoming data out across any offending Indicators.                                                                                                                                  |
++---------------------+-----------------+-------------------------------------------------------------------------------------------------------------------+
+|                     | Merge           | Merge: Combines multiple Indicators into one                                       |
++---------------------+-----------------+-------------------------------------------------------------------------------------------------------------------
+
+
+
 
 .. note:: If ``haltOnError`` is set to ‘true’ and an error occurs, then the status will be set to ‘Completed’, and ‘errorCount’ will be greater than zero. The ‘unprocessedCount’ field will be greater than zero, unless the uploaded file did not contain valid JSON.
 
@@ -81,10 +92,6 @@ list of dictionaries
 | ``associatedGroup``  | list of integers     | Optional  |
 +----------------------+----------------------+-----------+
 | ``dateAdded``        | date/time            | Optional  |
-+----------------------+----------------------+-----------+
-| ``fileMergeMode``    | string               | Optional  |
-+----------------------+----------------------+-----------+
-| ``hashCollisionMode``| string               | Optional  |
 +----------------------+----------------------+-----------+
 
 .. note:: File Indicators may have any or all of MD5, SHA1, and/or SHA256 hash values. The hashes may be provided in either of two ways: (1) concatenated using 'space-colon-space' into the 'summary' field of the indicator, or; (2) presented as individual 'md5', 'sha1', and 'sha256' hash values. The presence of any hashes using this second method will cause the summary field to be ignored during import. For example, consider a File Indicator with the md5 hash ``905ad8176a569a36421bf54c04ba7f95``, sha1 hash ``a52b6986d68cdfac53aa740566cbeade4452124e`` and sha256 hash ``25bdabd23e349f5e5ea7890795b06d15d842bde1d43135c361e755f748ca05d0``, which could be imported in either of the two following ways:
