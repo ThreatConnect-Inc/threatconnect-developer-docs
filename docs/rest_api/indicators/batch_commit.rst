@@ -108,6 +108,7 @@ list of dictionaries.
    "type": "File",
    ...
    }
+   
    `Option 2``
    {
    "md5": "905ad8176a569a36421bf54c04ba7f95",
