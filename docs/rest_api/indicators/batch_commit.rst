@@ -100,7 +100,7 @@ list of dictionaries.
 +----------------------+----------------------+-----------+
 
 .. note:: File Indicators may have any or all of MD5, SHA1, and/or SHA256 hash values. The hashes may be provided in either of two ways: (1) concatenated using 'space-colon-space' into the 'summary' field of the indicator, or; (2) presented as individual 'md5', 'sha1', and 'sha256' hash values. The presence of any hashes using this second method will cause the summary field to be ignored during import. For example, consider a File Indicator with the md5 hash ``905ad8176a569a36421bf54c04ba7f95``, sha1 hash ``a52b6986d68cdfac53aa740566cbeade4452124e`` and sha256 hash ``25bdabd23e349f5e5ea7890795b06d15d842bde1d43135c361e755f748ca05d0``, which could be imported in either of the two following ways:
-   .. code-block:: javascript
+.. code-block:: javascript
    `Option 1``
    {
    "summary": "905ad8176a569a36421bf54c04ba7f95: a52b6986d68cdfac53aa740566cbeade4452124e:
