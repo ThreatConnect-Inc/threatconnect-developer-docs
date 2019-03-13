@@ -43,7 +43,19 @@ The following are optional URL search parameters:
 
 - ``labels``: A comma-delimited list of labels by which to filter
 
-The following query uploads and installs a new Playbook:
+To search for a specific playbook by name:
+
+.. code:: 
+
+    /v2/playbooks/search?name=Playbook%20Name
+
+or to return only active Playboks: 
+
+.. code::
+
+    /v2/playbooks/search?status=active
+
+The following query uploads and installs a new Playbook with the playbook file submitted as Multi-part Form/File Data in the request:
 
 .. code::
 
@@ -55,7 +67,7 @@ The following query returns information about the specified Playbook by the give
 
     GET /v2/playbooks/{id}
 
-The following query uploads a Playbook as a new, major version to an existing Playbook:
+The following query uploads a Playbook as a new, major version to an existing Playbook with the playbook file submitted as Multi-part Form/File Data in the request:
 
 .. code::
 
