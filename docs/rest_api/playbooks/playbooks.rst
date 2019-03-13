@@ -49,13 +49,13 @@ To search for a specific playbook by name:
 
     /v2/playbooks/search?name=Playbook%20Name
 
-or to return only active Playboks: 
+Or to return only active Playboks: 
 
 .. code::
 
     /v2/playbooks/search?status=active
 
-The following query uploads and installs a new Playbook with the playbook file submitted as Multi-part Form/File Data in the request:
+The following query uploads and installs a new Playbook with the Playbook file submitted as multi-part Form/File Data in the request:
 
 .. code::
 
@@ -67,7 +67,7 @@ The following query returns information about the specified Playbook by the give
 
     GET /v2/playbooks/{id}
 
-The following query uploads a Playbook as a new, major version to an existing Playbook with the playbook file submitted as Multi-part Form/File Data in the request:
+The following query uploads a Playbook as a new, major version to an existing Playbook with the Playbook file submitted as multi-part Form/File Data in the request:
 
 .. code::
 
