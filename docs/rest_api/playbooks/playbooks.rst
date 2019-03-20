@@ -43,13 +43,13 @@ The following are optional URL search parameters:
 
 - ``labels``: A comma-delimited list of labels by which to filter
 
-To search for a specific playbook by name:
+To search for a specific Playbook by name:
 
 .. code:: 
 
     /v2/playbooks/search?name=Playbook%20Name
 
-Or to return only active Playboks: 
+Or to return only active Playbooks: 
 
 .. code::
 
