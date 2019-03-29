@@ -118,7 +118,7 @@ Value Name
 
 When `creating a Registry Key Indicator <https://docs.threatconnect.com/en/latest/rest_api/indicators/indicators.html#create-a-custom-indicator>`__ in ThreatConnect via the API, the **Value Name** for the Registry Key is required, although you do not need to specify a value. For example, to create a Registry Key with an empty value name, use the following request:
 
-.. code-block::
+.. code-block:: text
 
     POST /v2/indicators/registryKeys
     Content-type: application/json; charset=utf-8
