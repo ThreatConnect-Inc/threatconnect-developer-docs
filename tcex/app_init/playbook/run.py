@@ -51,9 +51,6 @@ if __name__ == '__main__':
         # load App class
         app = App(tcex)
 
-        # parse args
-        app.parse_args()
-
         # perform prep/startup operations
         app.start()
 
@@ -74,6 +71,8 @@ if __name__ == '__main__':
                     getattr(app, tc_action_formatted)()
                 elif hasattr(app, tc_action_map):
                     app.tc_action_map.get(app.args.tc_action)()
+                else:
+                    tcex.exit(1, 'Action method ({}) was not found.'.format(app.args.tc_action))
             except (AttributeError, TypeError):
                 tcex.exit(1, 'Action method ({}) was not found.'.format(app.args.tc_action))
         else:

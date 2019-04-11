@@ -52,6 +52,14 @@ class TcExProfile(TcExBin):
                 os.makedirs(d)
 
     @staticmethod
+    def _to_bool(value):
+        """Convert string value to bool."""
+        bool_value = False
+        if str(value).lower() in ['1', 'true']:
+            bool_value = True
+        return bool_value
+
+    @staticmethod
     def expand_valid_values(valid_values):
         """Expand supported playbook variables to their full list.
 
@@ -126,13 +134,18 @@ class TcExProfile(TcExBin):
                 self.gen_permutations(index + 1, list(args))
 
         except IndexError:
+            # when IndexError is reached all data has been processed.
             self._input_permutations.append(args)
             outputs = []
-            for output in self.layout_json.get('outputs'):
-                display = output.get('display')
-                if self.validate_layout_display(self.input_table, display):
-                    output_variable = self.install_json_output_variables().get(output.get('name'))
-                    outputs.append(output_variable)
+
+            for o_name in self.install_json_output_variables():
+                if self.layout_json_outputs.get(o_name) is not None:
+                    display = self.layout_json_outputs.get(o_name, {}).get('display')
+                    valid = self.validate_layout_display(self.input_table, display)
+                    if display is None or not valid:
+                        continue
+                for ov in self.install_json_output_variables().get(o_name):
+                    outputs.append(ov)
             self._output_permutations.append(outputs)
 
     def load_profiles(self):
@@ -345,7 +358,7 @@ class TcExProfile(TcExBin):
             if p.get('required', False) != required and required is not None:
                 continue
             if p.get('type').lower() == 'boolean':
-                profile_args[p.get('name')] = p.get('default', False)
+                profile_args[p.get('name')] = self._to_bool(p.get('default', False))
             elif p.get('type').lower() == 'choice':
                 valid_values = '|'.join(self.expand_valid_values(p.get('validValues', [])))
                 profile_args[p.get('name')] = '[{}]'.format(valid_values)
@@ -452,7 +465,7 @@ class TcExProfile(TcExBin):
 
         job_id = randint(1000, 9999)
         output_variables = ij.get('playbook', {}).get('outputVariables') or []
-        if self.args.permutation_id:
+        if self.args.permutation_id is not None:
             output_variables = self._output_permutations[self.args.permutation_id]
         # for o in ij.get('playbook', {}).get('outputVariables') or []:
         for o in output_variables:

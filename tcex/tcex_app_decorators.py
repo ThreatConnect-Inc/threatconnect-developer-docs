@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""App Decorators"""
+"""App Decorators Module."""
 import datetime
 
 # import time
@@ -23,7 +23,7 @@ class Benchmark(object):
     """
 
     def __call__(self, fn):
-        """Implement __call__ function for decorator
+        """Implement __call__ function for decorator.
 
         Args:
             fn (function): The decorated function.
@@ -69,7 +69,7 @@ class Debug(object):
     """
 
     def __call__(self, fn):
-        """Implement __call__ function for decorator
+        """Implement __call__ function for decorator.
 
         Args:
             fn (function): The decorated function.
@@ -96,8 +96,8 @@ class Debug(object):
         return debug
 
 
-class FailOn(object):
-    """Fail App if conditions are met.
+class FailOnInput(object):
+    """Fail App if input value conditions are met.
 
     This decorator allows for the App to exit on conditions defined in the function
     parameters.
@@ -106,28 +106,31 @@ class FailOn(object):
         :linenos:
         :lineno-start: 1
 
-        @FailOn(arg='fail_on_false', values=['false'], msg='Operation returned a value of "false".')
+        @FailOnInput(enable=True, values=[None, ''], msg='Invalid input provided.', arg=None)
         def my_method(data):
             return data.lowercase()
     """
 
-    def __init__(self, arg, values, msg):
-        """Initialize Class Properties
+    def __init__(self, enable, values, msg, arg=None):
+        """Initialize Class Properties.
 
         Args:
-            arg (str): The args Namespace value that controls whether the App should exit. Arg
-                value must be a boolean.
+            enable (boolean|str): Accepts a boolean or string value.  If a boolean value is
+                provided that value will control enabling/disabling this feature. A string
+                value should reference an item in the args namespace which resolves to a boolean.
+                The value of this boolean will control enabling/disabling this feature.
             values (list): The values that, if matched, would trigger an exit.
             msg (str): The message to send to exit method.
-
+            arg (str, optional): Defaults to None. The args Namespace value to use for the
+                condition. If None the first value passed to the function will be used.
         """
-
         self.arg = arg
+        self.enable = enable
         self.msg = msg
         self.values = values
 
     def __call__(self, fn):
-        """Implement __call__ function for decorator
+        """Implement __call__ function for decorator.
 
         Args:
             fn (function): The decorated function.
@@ -143,18 +146,114 @@ class FailOn(object):
                 app (class): The instance of the App class "self".
             """
 
+            # self.enable (e.g., True or 'fail_on_false') enables/disables this feature
+            if isinstance(self.enable, bool):
+                enabled = self.enable
+                app.tcex.log.info('Fail on input is ({}).'.format(self.enable))
+            else:
+                enabled = getattr(app.args, self.enable)
+                app.tcex.log.info('Fail on input is ({}) for ({}).'.format(enabled, self.enable))
+                if not isinstance(enabled, bool):
+                    app.tcex.playbook.exit(
+                        1, 'The enable value must be a boolean for fail on input.'
+                    )
+
+            if enabled is True:
+                if self.arg is None:
+                    # grab the first arg passed to function to use in condition
+                    arg_name = 'input'
+                    conditional_value = app.tcex.playbook.read(list(args)[0])
+                else:
+                    # grab the arg from the args names space to use in condition
+                    arg_name = self.arg
+                    conditional_value = app.tcex.playbook.read(getattr(app.args, self.arg))
+
+                if conditional_value in self.values:
+                    app.tcex.log.error(
+                        'Invalid value ({}) provided for ({}).'.format(conditional_value, arg_name)
+                    )
+                    app.tcex.exit(1, self.msg)
+
+            return fn(app, *args, **kwargs)
+
+        return fail
+
+
+class FailOnOutput(object):
+    """Fail App if return value (output) value conditions are met.
+
+    This decorator allows for the App to exit on conditions defined in the function
+    parameters.
+
+    .. code-block:: python
+        :linenos:
+        :lineno-start: 1
+
+        @FailOnOutput(
+            arg='fail_on_false', values=['false'], msg='Operation returned a value of "false".'
+        )
+        def my_method(data):
+            return data.lowercase()
+    """
+
+    def __init__(self, enable, values, msg):
+        """Initialize Class Properties.
+
+        Args:
+            enable (boolean|str): Accepts a boolean or string value.  If a boolean value is
+                provided that value will control enabling/disabling this feature. A string
+                value should reference an item in the args namespace which resolves to a boolean.
+                The value of this boolean will control enabling/disabling this feature.
+            values (list): The values that, if matched, would trigger an exit.
+            msg (str): The message to send to exit method.
+
+        """
+        self.enable = enable
+        self.msg = msg
+        self.values = values
+
+    def __call__(self, fn):
+        """Implement __call__ function for decorator.
+
+        Args:
+            fn (function): The decorated function.
+
+        Returns:
+            function: The custom decorator function.
+        """
+
+        def fail(app, *args, **kwargs):
+            """Call the function and store or append return value.
+
+            Args:
+                app (class): The instance of the App class "self".
+            """
             data = fn(app, *args, **kwargs)
-            # self.args (e.g., fail_on_false) controls whether the value should be checked).
-            if getattr(app.args, self.arg):
+            # self.enable (e.g., True or 'fail_on_false') enables/disables this feature
+            if isinstance(self.enable, bool):
+                enabled = self.enable
+                app.tcex.log.info('Fail on output is ({}).'.format(self.enable))
+            else:
+                enabled = getattr(app.args, self.enable)
+                app.tcex.log.info('Fail on output is ({}) for ({}).'.format(enabled, self.enable))
+                if not isinstance(enabled, bool):
+                    app.tcex.playbook.exit(
+                        1, 'The enable value must be a boolean for fail on output.'
+                    )
+
+            failed = False
+            if enabled is True:
                 if isinstance(data, list):
+                    # validate each value in the list of results.
                     for d in data:
                         if d in self.values:
-                            app.tcex.log.info('{} is enabled.'.format(self.arg))
-                            app.tcex.exit(1, self.msg)
+                            failed = True
                 else:
                     if data in self.values:
-                        app.tcex.log.info('{} is enabled.'.format(self.arg))
-                        app.tcex.exit(1, self.msg)
+                        failed = True
+
+                if failed:
+                    app.tcex.exit(1, self.msg)
             return data
 
         return fail
@@ -180,19 +279,23 @@ class IterateOnArg(object):
             return value
     """
 
-    def __init__(self, arg):
-        """Initialize Class Properties
+    def __init__(self, arg, default=None, fail_on=None):
+        """Initialize Class Properties.
 
         Args:
             arg (str): The arg name from the App which contains the input. This input can be
                 a Binary, BinaryArray, KeyValue, KeyValueArray, String, StringArray, TCEntity, or
                 TCEntityArray.
+            default (str, optional): Defaults to None. Default value to pass to method if arg
+                value is None. Only supported for String or StringArray.
+            fail_on (list, optional): Defaults to None. Fail if data read from Redis is in list.
         """
-
         self.arg = arg
+        self.default = default
+        self.fail_on = fail_on
 
     def __call__(self, fn):
-        """Implement __call__ function for decorator
+        """Implement __call__ function for decorator.
 
         Args:
             fn (function): The decorated function.
@@ -210,7 +313,41 @@ class IterateOnArg(object):
 
             # retrieve data from Redis if variable and always return and array.
             r = []
-            for s in app.tcex.playbook.read(getattr(app.args, self.arg), True):
+            arg_data = app.tcex.playbook.read(getattr(app.args, self.arg))
+            arg_type = app.tcex.playbook.variable_type(getattr(app.args, self.arg))
+            if not isinstance(arg_data, list):
+                arg_data = [arg_data]
+
+            if not arg_data:
+                app.tcex.exit(1, 'No data retrieved for arg ({}).'.format(self.arg))
+
+            for s in arg_data:
+                if s is None and self.default is not None:
+                    # set value passed to method to default if value is None.
+                    s = self.default
+                    app.tcex.log.debug(
+                        'a null input was provided, using default value "{}" instead.'.format(s)
+                    )
+
+                if self.fail_on is not None:
+                    if s in self.fail_on:
+                        app.tcex.playbook.exit(
+                            1,
+                            'Arg value for IterateOnArg matched fail_on value ({}).'.format(
+                                self.fail_on
+                            ),
+                        )
+
+                # Add logging for debug/troubleshooting
+                if (
+                    arg_type not in ['Binary', 'BinaryArray']
+                    and app.tcex.log.getEffectiveLevel() == 10
+                ):
+                    log_string = str(s)
+                    if len(log_string) > 100:
+                        log_string = '{} ...'.format(log_string[:100])
+                    app.tcex.log.debug('input value: {}'.format(log_string))
+
                 # update the first item in the tuple
                 args_list = list(args)
                 try:
@@ -240,16 +377,15 @@ class OnException(object):
     """
 
     def __init__(self, msg=None):
-        """Initialize Class Properties
+        """Initialize Class Properties.
 
         Args:
             msg (str): The message to send to exit method.
         """
-
         self.msg = msg
 
     def __call__(self, fn):
-        """Implement __call__ function for decorator
+        """Implement __call__ function for decorator.
 
         Args:
             fn (function): The decorated function.
@@ -290,7 +426,7 @@ class OnSuccess(object):
     """
 
     def __init__(self, msg=None):
-        """Initialize Class Properties
+        """Initialize Class Properties.
 
         Args:
             msg (str): The message to send to exit method.
@@ -299,7 +435,7 @@ class OnSuccess(object):
         self.msg = msg
 
     def __call__(self, fn):
-        """Implement __call__ function for decorator
+        """Implement __call__ function for decorator.
 
         Args:
             fn (function): The decorated function.
@@ -314,7 +450,6 @@ class OnSuccess(object):
             Args:
                 app (class): The instance of the App class "self".
             """
-
             app.exit_message = self.msg
             return fn(app, *args, **kwargs)
 
@@ -342,7 +477,7 @@ class Output(object):
     """
 
     def __init__(self, attribute):
-        """Initialize Class Properties
+        """Initialize Class Properties.
 
         Args:
             attribute (str): The name of the App attribute to write data.
@@ -351,7 +486,7 @@ class Output(object):
         self.attribute = attribute
 
     def __call__(self, fn):
-        """Implement __call__ function for decorator
+        """Implement __call__ function for decorator.
 
         Args:
             fn (function): The decorated function.
@@ -366,7 +501,6 @@ class Output(object):
             Args:
                 app (class): The instance of the App class "self".
             """
-
             data = fn(app, *args, **kwargs)
             attr = getattr(app, self.attribute)
             if isinstance(data, list) and isinstance(attr, list):
@@ -395,20 +529,26 @@ class ReadArg(object):
             print('color', color)
     """
 
-    def __init__(self, arg, array=False):
-        """Initialize Class Properties
+    def __init__(self, arg, array=False, default=None, fail_on=None):
+        """Initialize Class Properties.
 
         Args:
             arg (str): The arg name from the App which contains the input. This input can be
                 a Binary, BinaryArray, KeyValue, KeyValueArray, String, StringArray, TCEntity, or
                 TCEntityArray.
+            array (bool, optional): Defaults to False. If True the arg value will always be
+                returned as an array.
+            default (str, optional): Defaults to None. Default value to pass to method if arg
+                value is None. Only supported for String or StringArray.
+            fail_on (list, optional): Defaults to None. Fail if data read from Redis is in list.
         """
-
-        self.array = array
         self.arg = arg
+        self.array = array
+        self.default = default
+        self.fail_on = fail_on
 
     def __call__(self, fn):
-        """Implement __call__ function for decorator
+        """Implement __call__ function for decorator.
 
         Args:
             fn (function): The decorated function.
@@ -423,11 +563,21 @@ class ReadArg(object):
             Args:
                 app (class): The instance of the App class "self".
             """
-
             # retrieve data from Redis and call decorated function
             args_list = list(args)
             try:
-                args_list[0] = app.tcex.playbook.read(getattr(app.args, self.arg), self.array)
+                value = app.tcex.playbook.read(getattr(app.args, self.arg), self.array)
+                if self.default is not None and value is None:
+                    value = self.default
+                if self.fail_on is not None:
+                    if value in self.fail_on:
+                        app.tcex.playbook.exit(
+                            1,
+                            'Arg value for ReadArg matched fail_on value ({}).'.format(
+                                self.fail_on
+                            ),
+                        )
+                args_list[0] = value
             except IndexError:
                 args_list.append(app.tcex.playbook.read(getattr(app.args, self.arg), self.array))
             args = tuple(args_list)
@@ -457,7 +607,7 @@ class WriteOutput(object):
     """
 
     def __init__(self, key, variable_type, value=None, overwrite=True):
-        """Initialize Class Properties
+        """Initialize Class Properties.
 
         Args:
             key (str): The name of the playbook output variable.
@@ -469,14 +619,13 @@ class WriteOutput(object):
             overwrite (bool): When True and more than one value is provided for the same variable
                 the previous value will be overwritten.
         """
-
         self.key = key
         self.overwrite = overwrite
         self.value = value
         self.variable_type = variable_type
 
     def __call__(self, fn):
-        """Implement __call__ function for decorator
+        """Implement __call__ function for decorator.
 
         Args:
             fn (function): The decorated function.
@@ -491,7 +640,6 @@ class WriteOutput(object):
             Args:
                 app (class): The instance of the App class "self".
             """
-
             data = fn(app, *args, **kwargs)
             index = '{}-{}'.format(self.key, self.variable_type)
             if self.value is not None:

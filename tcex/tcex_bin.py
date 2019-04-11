@@ -38,6 +38,7 @@ class TcExBin(object):
         self._layout_json = None
         self._layout_json_names = None
         self._layout_json_params = None
+        self._layout_json_outputs = None
         self._redis = None
         self._tcex_json = None
         self.app_path = os.getcwd()
@@ -55,7 +56,7 @@ class TcExBin(object):
             try:
                 self._db_conn = sqlite3.connect(':memory:')
             except sqlite3.Error as e:
-                sys.exit(1, e)
+                self.handle_error(e)
         return self._db_conn
 
     def db_create_table(self, table_name, columns):
@@ -77,7 +78,7 @@ class TcExBin(object):
             cr = self.db_conn.cursor()
             cr.execute(create_table_sql)
         except sqlite3.Error as e:
-            sys.exit(1, e)
+            self.handle_error(e)
 
     def db_insert_record(self, table_name, columns):
         """Insert records into DB.
@@ -160,11 +161,11 @@ class TcExBin(object):
         """
         if self._install_json_output_variables is None or ij is not None:
             self._install_json_output_variables = {}
-            # TODO: support for projects with multiple install.json files is not supported
+            # TODO: currently there is no support for projects with multiple install.json files.
             if ij is None:
                 ij = self.install_json
             for p in ij.get('playbook', {}).get('outputVariables') or []:
-                self._install_json_output_variables.setdefault(p.get('name'), p)
+                self._install_json_output_variables.setdefault(p.get('name'), []).append(p)
         return self._install_json_output_variables
 
     @property
@@ -198,6 +199,15 @@ class TcExBin(object):
         if self._layout_json_names is None:
             self._layout_json_names = self.layout_json_params.keys()
         return self._layout_json_names
+
+    @property
+    def layout_json_outputs(self):
+        """Return layout.json outputs in a flattened dict with name param as key."""
+        if self._layout_json_outputs is None:
+            self._layout_json_outputs = {}
+            for o in self.layout_json.get('outputs', []):
+                self._layout_json_outputs.setdefault(o.get('name'), o)
+        return self._layout_json_outputs
 
     def load_install_json(self, filename=None):
         """Return install.json data.

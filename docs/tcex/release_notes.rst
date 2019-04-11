@@ -6,6 +6,30 @@ Release Notes
 0.9.x
 =====
 
+0.9.13
+------
++ Updated ReadArg decorator to support ``fail_on`` parameter.
++ Updated IterateOnArg decorator to support ``fail_on`` parameter and removed ``fail_on_empty``.
++ Updated ``datastore`` module to support no Id for POST and GET methods.
+
+0.9.12
+------
++ Added new FailOnInput decorator.
++ Changed FailOn decorator to FailOnError with arg input changes to enable.
++ Added additional logging to IterateOnArg decorator.
+
+0.9.11
+------
++ Reverted change to playbook module ``read()`` method for null value returned when Array is True.
+
+0.9.10
+------
++ Updated App templates to call ``parse_args()`` from init method.
++ Updated ``IterateOnArg`` decorator to take an addition default value.
++ Updated ``IterateOnArg`` to exit or log when no data is retrieved from Redis.
++ Updated ``TcExRun`` module to detect V3 profile args section by either optional or required field.
++ Updated ``TcExProfile`` module to use new layout.json output logic and always display output variables unless display value exists and return negative validation.
+
 0.9.9
 -----
 + Added new ``cache`` module.
