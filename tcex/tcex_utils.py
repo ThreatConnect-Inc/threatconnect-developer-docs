@@ -75,8 +75,7 @@ class TcExUtils:
             except pytz.exceptions.UnknownTimeZoneError:
                 # seeing as all else has failed: use UTC as the timezone
                 tzinfo = timezone('UTC')
-        dateutil_parser = dateutil_parser.replace(tzinfo=tzinfo)
-        return dateutil_parser
+        return tzinfo.localize(dateutil_parser)
 
     def date_to_datetime(self, time_input, tz=None):
         """ Convert ISO 8601 and other date strings to datetime.datetime type.
@@ -90,15 +89,19 @@ class TcExUtils:
         """
         dt = None
         try:
+            # dt = parser.parse(time_input, fuzzy_with_tokens=True)[0]
             dt = parser.parse(time_input)
-            # don't covert timezone if dt timezone already in the correct timezone
+            # don't convert timezone if dt timezone already in the correct timezone
             if tz is not None and tz != dt.tzname():
                 if dt.tzinfo is None:
                     dt = self._replace_timezone(dt)
                 dt = dt.astimezone(timezone(tz))
+        except IndexError:
+            pass
+        except TypeError:
+            pass
         except ValueError:
             pass
-
         return dt
 
     def format_datetime(self, time_input, tz=None, date_format=None):
@@ -170,7 +173,9 @@ class TcExUtils:
             (datetime.datetime): Python datetime.datetime object.
         """
 
-        cal = pdt.Calendar()
+        c = pdt.Constants('en')
+        cal = pdt.Calendar(c)
+        # cal = pdt.Calendar(version=pdt.VERSION_CONTEXT_STYLE)
         tzinfo = None
         src_tzname = None
         if source_datetime is not None:
@@ -218,7 +223,7 @@ class TcExUtils:
 
         Args:
             content (bytes|str): The file content. If passing binary data the mode needs to be set
-                                 to 'wb'.
+                to 'wb'.
             filename (str, optional): The filename to use when writing the file.
             mode (str, optional): The file write mode which could be either 'w' or 'wb'.
 

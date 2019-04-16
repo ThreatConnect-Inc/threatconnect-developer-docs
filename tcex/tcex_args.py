@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """TcEx Framework"""
+import json
 import os
 import sys
 from argparse import Namespace
@@ -18,6 +19,7 @@ class TcExArgs(object):
         """
 
         self.tcex = tcex
+        self._config_data = {}
         self._default_args = None
         self._default_args_resolved = None
         self._parsed = False
@@ -91,7 +93,7 @@ class TcExArgs(object):
                 value = False
             elif not value:
                 value = None
-            setattr(self.default_args, key, value)
+            setattr(self._default_args, key, value)
 
     def _unknown_args(self, args):
         """Log argparser unknown arguments.
@@ -110,7 +112,6 @@ class TcExArgs(object):
         Returns:
             (namespace): ArgParser parsed arguments.
         """
-
         if not self._parsed:  # only resolve once
             self._default_args, unknown = self.parser.parse_known_args()
 
@@ -124,7 +125,55 @@ class TcExArgs(object):
             # set parsed bool to ensure args are only parsed once
             self._parsed = True
 
+            # update args with value from config data or configuration file
+            self.args_update()
+
         return self._default_args
+
+    def args_update(self):
+        """Update the argparser namespace with any data from configuration file."""
+        for key, value in self._config_data.items():
+            setattr(self._default_args, key, value)
+
+    def config(self, config_data):
+        """Add configuration data to be injected into sys.argv.
+
+        Below are the default args that the TcEx frameworks supports. Any App specific args
+        should be included in the provided data.
+
+        .. code-block:: javascript
+
+            {
+              "api_access_id": "$env.API_ACCESS_ID",
+              "api_default_org": "$env.API_DEFAULT_ORG",
+              "api_secret_key": "$envs.API_SECRET_KEY",
+              "tc_api_path": "$env.TC_API_PATH",
+              "tc_log_level": "debug",
+              "tc_log_path": "log",
+              "tc_owner": "MyOwner",
+              "tc_proxy_host": "$env.TC_PROXY_HOST",
+              "tc_proxy_password": "$envs.TC_PROXY_PASSWORD",
+              "tc_proxy_port": "$env.TC_PROXY_PORT",
+              "tc_proxy_tc": false,
+              "tc_proxy_username": "$env.TC_PROXY_USERNAME"
+            }
+
+        Args:
+            config (dict): A dictionary of configuration values.
+        """
+        self._config_data = config_data
+
+    def config_file(self, filename):
+        """Load configuration data from provided file and inject values into sys.argv.
+
+        Args:
+            config (str): The configuration file name.
+        """
+        if os.path.isfile(filename):
+            with open(filename, 'r') as fh:
+                self._config_data = json.load(fh)
+        else:
+            self.tcex.log.error('Could not load configuration file "{}".'.format(filename))
 
     @property
     def default_args(self):
@@ -137,7 +186,7 @@ class TcExArgs(object):
                 # block for AOT message and get params
                 params = self.tcex.playbook.aot_blpop()
                 self.inject_params(params)
-            elif self.default_args.tc_secure_params:
+            elif self._default_args.tc_secure_params:
                 # inject secure params from API
                 params = self._load_secure_params()
                 self.inject_params(params)
@@ -160,7 +209,7 @@ class TcExArgs(object):
             # ThreatConnect secure/AOT params should be updated in the future to proper JSON format.
             # MultiChoice data should be represented as JSON array and Boolean values should be a
             # JSON boolean and not a string.
-            param_data = self.tcex.install_json_params.get(arg, {})
+            param_data = self.tcex.install_json_params.get(arg) or {}
             if param_data.get('type', '').lower() == 'multichoice':
                 # update "|" delimited value to a proper array for params that have type of
                 # MultiChoice.

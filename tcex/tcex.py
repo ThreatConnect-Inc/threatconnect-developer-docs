@@ -43,10 +43,7 @@ class TcEx(object):
         self._playbook = None
         self._session = None
         self._utils = None
-
-        # NOTE: odd issue where args is not updating properly
-        self._tc_token = None
-        self._tc_token_expires = None
+        self._ti = None
 
         # Parser
         self.tcex_args = TcExArgs(self)
@@ -612,6 +609,39 @@ class TcEx(object):
         return self._indicator_types_data
 
     @property
+    def group_types_data(self):
+        """All supported ThreatConnect Group types."""
+        return {
+            'Adversary': {'apiBranch': 'adversaries', 'apiEntity': 'adversary'},
+            'Campaign': {'apiBranch': 'campaigns', 'apiEntity': 'campaign'},
+            'Document': {'apiBranch': 'documents', 'apiEntity': 'document'},
+            'Emails': {'apiBranch': 'emails', 'apiEntity': 'email'},
+            'Event': {'apiBranch': 'events', 'apiEntity': 'event'},
+            'Incident': {'apiBranch': 'incidents', 'apiEntity': 'incident'},
+            'Intrusion Set': {'apiBranch': 'intrusionSets', 'apiEntity': 'intrusionSet'},
+            'Report': {'apiBranch': 'reports', 'apiEntity': 'report'},
+            'Signature': {'apiBranch': 'signatures', 'apiEntity': 'signature'},
+            'Threat': {'apiBranch': 'threats', 'apiEntity': 'threat'},
+        }
+
+    def get_type_from_api_entity(self, api_entity):
+        """
+        Returns the object type as a string given a api entity.
+
+        Args:
+            api_entity:
+
+        Returns:
+
+        """
+        merged = self.group_types_data.copy()
+        merged.update(self.indicator_types_data)
+        for (key, value) in merged.items():
+            if value.get('apiEntity') == api_entity:
+                return key
+        return None
+
+    @property
     def install_json(self):
         """Return contents of install.json configuration file, loading from disk if required."""
         if self._install_json is None:
@@ -621,26 +651,16 @@ class TcEx(object):
                     self._install_json = json.load(fh)
             except IOError:
                 self.log.warning(u'Could not retrieve App Data.')
+                self._install_json = {}
         return self._install_json
 
     @property
     def install_json_params(self):
         """Parse params from install.json into a dict by name."""
         if not self._install_json_params:
-            for param in self.install_json.get('params', []):
+            for param in self.install_json.get('params') or []:
                 self._install_json_params[param.get('name')] = param
         return self._install_json_params
-
-    def job(self):
-        """**[Deprecated]** Return instance of Job module
-
-        .. warning:: The job module is deprecated and will be removed in TcEx version 0.9.0. Use
-                     tcex.batch instead.
-        """
-        self.log.warning('Jobs module will be deprecated in TcEx version 0.9.0.')
-        from .tcex_job import TcExJob
-
-        return TcExJob(self)
 
     def metric(self, name, description, data_type, interval, keyed=False):
         """Get instance of the Metrics module.
@@ -770,7 +790,7 @@ class TcEx(object):
             from .tcex_request import TcExRequest
 
             r = TcExRequest(self, session)
-            if self.default_args.tc_proxy_external:
+            if session is None and self.default_args.tc_proxy_external:
                 self.log.info(
                     'Using proxy server for external request {}:{}.'.format(
                         self.default_args.tc_proxy_host, self.default_args.tc_proxy_port
@@ -982,3 +1002,15 @@ class TcEx(object):
 
             self._session = TcExSession(self)
         return self._session
+
+    @property
+    def ti(self):
+        """Include the Threat Intel Module.
+
+        .. Note:: Threat Intell methods can be accessed using ``tcex.ti.<method>``.
+        """
+        if self._ti is None:
+            from .tcex_ti import TcExTi
+
+            self._ti = TcExTi(self)
+        return self._ti

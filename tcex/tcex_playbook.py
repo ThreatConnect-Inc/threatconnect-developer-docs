@@ -2,8 +2,11 @@
 """ TcEx Framework Playbook module """
 # from builtins import int, str
 import base64
+
+# import codecs
 import json
 import re
+from collections import OrderedDict
 
 
 class TcExPlaybook(object):
@@ -391,7 +394,8 @@ class TcExPlaybook(object):
             (any): Results retrieved from DB
         """
         self.tcex.log.debug('read variable {}'.format(key))
-        data = None
+        # if a non-variable value is passed it should be the default
+        data = key
         if key is not None:
             key = key.strip()
             key_type = self.variable_type(key)
@@ -404,9 +408,16 @@ class TcExPlaybook(object):
                         data = self.read_data_types[key_type](key, embedded)
                 else:
                     data = self.read_raw(key)
-            elif embedded:
-                # check for any embedded variables
-                data = self.read_embedded(key, key_type)
+            else:
+                if key_type == 'String':
+                    # replace "\s" with a space only for user input.
+                    # using '\\s' will prevent replacement.
+                    data = re.sub(r'(?<!\\)\\s', ' ', data)
+                    data = re.sub(r'\\\\s', '\\s', data)
+
+                if embedded:
+                    # check for any embedded variables
+                    data = self.read_embedded(data, key_type)
 
         # return data as a list
         if array and not isinstance(data, list):
@@ -492,60 +503,24 @@ class TcExPlaybook(object):
         Returns:
             (string): Results retrieved from DB
         """
-        if data is not None:
-            # self.tcex.log.debug(u'data {}'.format(data))
-            try:
-                data = u'{}'.format(data.strip())
-            except UnicodeEncodeError:
-                data = data.strip()
+        if data is None:
+            return data
 
-            # get all matching variables
-            variables = []
-            for v in re.finditer(self._variable_parse, data):
-                variables.append(v.group(0))
+        # iterate all matching variables
+        for var in (v.group(0) for v in re.finditer(self._variable_parse, data)):
+            self.tcex.log.debug(
+                'embedded variable: {}, parent_var_type: {}'.format(var, parent_var_type)
+            )
+            key_type = self.variable_type(var)
+            val = self.read(var)
 
-            for var in set(variables):  # recursion over set to handle duplicates
-                self.tcex.log.debug(u'var {}'.format(var))
-                # get the embedded variable type.
-                key_type = self.variable_type(var)
-                # self.tcex.log.debug(u'key_type {}'.format(key_type))
+            if val is None:
+                val = ''
+            elif key_type != 'String':
+                var = r'"?{}"?'.format(var)  # replace quotes if they exist
+                val = json.dumps(val)
 
-                # val - read raw value from DB leaving escaped characters intact
-                val = self.read_raw(var)
-                # val - read recursive embedded
-                val = self.read_embedded(val, key_type)
-                # val - remove double quotes added by JSON encoding from embedded String
-                if val and val.startswith('"') and val.endswith('"'):
-                    # per slack conversation with danny on 3/22/17 all string data should already
-                    # have quotes since they are JSON values
-                    val = val[1:-1]  # ensure only first and last quote are removed
-                # self.tcex.log.debug(u'var {}: val: {}'.format(var, val))
-
-                if val is None:
-                    # replace variable reference with nothing
-                    val = ''
-                # elif parent_var_type in ['String']:
-                #     # a parent type of String should have escaped characters removed
-                #     # convert "embedded \\\\\\"variable\\\\" TO "embedded \\"variable"
-                #     val = codecs.getdecoder('unicode_escape')(val)[0]
-                #     # self.tcex.log.debug(u'val (codec.getdecoder): {}'.format(val))
-                elif parent_var_type in ['StringArray']:
-                    if key_type in ['String']:
-                        # handle case where String may or may not be wrapped in double quotes.
-                        data = data.replace(', {}'.format(var), ', "{}"'.format(var))
-                    elif key_type in ['StringArray']:
-                        # handle case where StringArray may or may not be wrapped in double quotes.
-                        data = data.replace('"{}"'.format(var), var)
-                        if val.startswith('[') and val.endswith(']'):
-                            # remove [] from embedded StringArray
-                            val = val[1:-1]  # ensure only first and last bracket are removed
-                elif parent_var_type in ['KeyValue', 'KeyValueArray']:
-                    if key_type in ['StringArray']:
-                        if not var.startswith('"') and not var.endswith('"'):
-                            # add quotes to var so they will be removed in replace()
-                            var = '"{}"'.format(var)
-
-                data = data.replace(var, val)
+            data = re.sub(var, val, data)
         return data
 
     def variable_type(self, variable):
@@ -723,7 +698,7 @@ class TcExPlaybook(object):
             data = self.db.read(key.strip())
             if data is not None:
                 data_decoded = []
-                for d in json.loads(data):
+                for d in json.loads(data, object_pairs_hook=OrderedDict):
                     if b64decode:
                         # if requested decode the base64 string
                         dd = base64.b64decode(d)
@@ -784,7 +759,7 @@ class TcExPlaybook(object):
                 data = self.read_embedded(data, key_type)
             if data is not None:
                 try:
-                    data = json.loads(data)
+                    data = json.loads(data, object_pairs_hook=OrderedDict)
                 except ValueError as e:
                     err = u'Failed loading JSON data ({}). Error: ({})'.format(data, e)
                     self.tcex.log.error(err)
@@ -835,7 +810,7 @@ class TcExPlaybook(object):
                 data = self.read_embedded(data, key_type)
             if data is not None:
                 try:
-                    data = json.loads(data)
+                    data = json.loads(data, object_pairs_hook=OrderedDict)
                 except ValueError as e:
                     err = u'Failed loading JSON data ({}). Error: ({})'.format(data, e)
                     self.tcex.log.error(err)
@@ -913,12 +888,12 @@ class TcExPlaybook(object):
         if key is not None:
             key_type = self.variable_type(key)
             data = self.db.read(key.strip())
-            if embedded:
-                data = self.read_embedded(data, key_type)
             if data is not None:
                 # handle improperly saved string
                 try:
                     data = json.loads(data)
+                    if embedded:
+                        data = self.read_embedded(data, key_type)
                     if data is not None:
                         # reverted the previous change where data was encoded due to issues where
                         # it broke the operator method in py3 (e.g. b'1' ne '1').
@@ -970,7 +945,7 @@ class TcExPlaybook(object):
                 data = self.read_embedded(data, key_type)
             if data is not None:
                 try:
-                    data = json.loads(data)
+                    data = json.loads(data, object_pairs_hook=OrderedDict)
                 except ValueError as e:
                     err = u'Failed loading JSON data ({}). Error: ({})'.format(data, e)
                     self.tcex.log.error(err)
@@ -1017,7 +992,7 @@ class TcExPlaybook(object):
                 data = self.read_embedded(data, key_type)
             if data is not None:
                 try:
-                    data = json.loads(data)
+                    data = json.loads(data, object_pairs_hook=OrderedDict)
                 except ValueError as e:
                     err = u'Failed loading JSON data ({}). Error: ({})'.format(data, e)
                     self.tcex.log.error(err)
@@ -1064,7 +1039,7 @@ class TcExPlaybook(object):
                 data = self.read_embedded(data, key_type)
             if data is not None:
                 try:
-                    data = json.loads(data)
+                    data = json.loads(data, object_pairs_hook=OrderedDict)
                 except ValueError as e:
                     err = u'Failed loading JSON data ({}). Error: ({})'.format(data, e)
                     self.tcex.log.error(err)
