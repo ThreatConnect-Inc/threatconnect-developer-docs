@@ -615,13 +615,14 @@ class TcEx(object):
             'Adversary': {'apiBranch': 'adversaries', 'apiEntity': 'adversary'},
             'Campaign': {'apiBranch': 'campaigns', 'apiEntity': 'campaign'},
             'Document': {'apiBranch': 'documents', 'apiEntity': 'document'},
-            'Emails': {'apiBranch': 'emails', 'apiEntity': 'email'},
+            'Email': {'apiBranch': 'emails', 'apiEntity': 'email'},
             'Event': {'apiBranch': 'events', 'apiEntity': 'event'},
             'Incident': {'apiBranch': 'incidents', 'apiEntity': 'incident'},
             'Intrusion Set': {'apiBranch': 'intrusionSets', 'apiEntity': 'intrusionSet'},
             'Report': {'apiBranch': 'reports', 'apiEntity': 'report'},
             'Signature': {'apiBranch': 'signatures', 'apiEntity': 'signature'},
             'Threat': {'apiBranch': 'threats', 'apiEntity': 'threat'},
+            'Task': {'apiBranch': 'tasks', 'apiEntity': 'task'},
         }
 
     def get_type_from_api_entity(self, api_entity):
@@ -636,6 +637,7 @@ class TcEx(object):
         """
         merged = self.group_types_data.copy()
         merged.update(self.indicator_types_data)
+        print(merged)
         for (key, value) in merged.items():
             if value.get('apiEntity') == api_entity:
                 return key

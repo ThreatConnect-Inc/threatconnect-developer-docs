@@ -12,7 +12,7 @@ class Task(TIMappings):
     """Unique API calls for Tasks API Endpoints"""
 
     def __init__(
-        self, tcex, owner, name, status, due_date, reminder_date, escalation_date, **kwargs
+        self, tcex, name, status, due_date, reminder_date, escalation_date, owner=None, **kwargs
     ):
         """Initialize Class Properties.
 
@@ -32,7 +32,8 @@ class Task(TIMappings):
             **kwargs:
             name (str): The name for this Group.
         """
-        super(Task, self).__init__(tcex, owner, 'Task', 'tasks', None, 'task')
+
+        super(Task, self).__init__(tcex, 'Task', 'tasks', None, 'task', owner)
         self._data['name'] = name
         if status:
             self._data['status'] = status
@@ -46,6 +47,20 @@ class Task(TIMappings):
         for arg, value in kwargs.items():
             self.add_key_value(arg, value)
 
+    @property
+    def name(self):
+        """Return Task name."""
+        return self._data.get('name')
+
+    @name.setter
+    def name(self, name):
+        """
+
+        Args:
+            name:
+        """
+        self._data['name'] = name
+
     @staticmethod
     def is_task():
         """
@@ -54,6 +69,14 @@ class Task(TIMappings):
 
         """
         return True
+
+    def _set_unique_id(self, json_response):
+        """
+
+        Args:
+            json_response:
+        """
+        self.unique_id = json_response.get('id', '')
 
     def status(self, status):
         """
