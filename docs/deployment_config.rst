@@ -1,4 +1,4 @@
-App Deployment Configuration File
+App-Deployment Configuration File
 =================================
 
 A configuration file named ``install.json`` is used for ThreatConnect
