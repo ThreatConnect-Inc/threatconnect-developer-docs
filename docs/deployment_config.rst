@@ -5,13 +5,13 @@ A configuration file named ``install.json`` is used for ThreatConnect
 apps written in:
 
 -  Python
--  Java
--  JavaScript (Spaces)
+-  Java®
+-  JavaScript® (Spaces)
 
 Standard Section
 ----------------
 
-Standard section defines required and optional properties to all apps in ThreatConnect. The required properties are properties that must be provided for any packaged app installed through the ThreatConnect platform. The optional properties provide additional information based on the type of target app.
+The Standard section defines required and optional properties of all Apps in ThreatConnect. The required properties are properties that must be provided for any packaged App installed through the ThreatConnect platform. The optional properties provide additional information based on the type of target App.
 
 The table below lists all of the properties of the Standard section.
 
@@ -58,74 +58,74 @@ The table below lists all of the properties of the Standard section.
 allowOnDemand
 ^^^^^^^^^^^^^
 
-Required property which allows or disallows an app to be run on demand using the "Run Now" button when the app is configured as a job in the ThreatConnect platform. This property only applies to Python and Java apps.
+Required property that allows or disallows an App to be run on demand using the **Run Now** button when the App is configured as a Job in the ThreatConnect platform. This property only applies to Python and Java Apps.
 
 apiUserTokenParam
 ^^^^^^^^^^^^^^^^^
 
-Optional property specifies whether or not the app should use an API user token (which allows access to the datastore).
+Optional property that specifies whether or not the App should use an API user token (which allows access to the datastore)
 
 displayName
 ^^^^^^^^^^^
 
-Required property providing the name of the app as it will appear in the ThreatConnect Platform.
+Required property providing the name of the App as it will appear in the ThreatConnect platform
 
 languageVersion
 ^^^^^^^^^^^^^^^
 
-Optional property used purely for tracking purposes. It does **not** affect the version of Python or Java used by the Job Execution Engine to run the app.
+Optional property used solely for tracking purposes. It does **not** affect the version of Python or Java used by the Job Execution Engine to run the App.
 
 listDelimiter
 ^^^^^^^^^^^^^
 
-Optional property to set the character that will be used to delimit the values of "Select Many" attributes that are passed into an app.
+Optional property that sets the character used to delimit the values of **Select Many** Attributes that are passed into an App
 
 minServerVersion
 ^^^^^^^^^^^^^^^^
 
-Optional string property restricting the ThreatConnect instance from installing the app if it doesn’t meet this version requirement. The notation is <major>.<minor>.<patch> (example: "5.4.0").
+Optional string property restricting the ThreatConnect instance from installing the App if it does not meet this version requirement. The notation is **<major>.<minor>.<patch>** (e.g., **5.4.0**).
 
 note
 ^^^^
 
-Optional property available in Playbook apps under the "?" tooltip when the app parameters are being edited. Use this field to describe the purpose of the app in 2-3 sentences.
+Optional property available in Playbook Apps under the **?**" tooltip when the App parameters are being edited. Use this field to describe the purpose of the app in two-three sentences.
 
 programIcon
 ^^^^^^^^^^^
 
-Optional property providing the icon which will be used to represent Central Spaces apps.
+Optional property providing the icon that will be used to represent Central Spaces Apps
 
 programLanguage
 ^^^^^^^^^^^^^^^
 
-Required property describing the language runtime environment used by the ThreatConnect Job Executor. It is relevant for apps that run on the Job Execution Engine (Python and Java apps) and can be set to NONE for Spaces apps.
+Required property describing the language runtime environment used by the ThreatConnect Job Executor. It is relevant for Apps that run on the Job Execution Engine (Python and Java Apps) and can be set to NONE for Spaces Apps.
 
 programMain
 ^^^^^^^^^^^
 
-Required property providing the entry point into the app. For Python apps, it is the name of the ``.py`` file (or exclude the extension if running it as a module). For Java apps, it is the main class the Job Execution Engine should use when calling the app using the Java Runtime Environment.
+Required property providing the entry point into the App. For Python Apps, it is the name of the ``.py`` file (or exclude the extension if running it as a module). For Java Apps, it is the main class the Job Execution Engine should use when calling the App using the Java Runtime Environment.
 
 programVersion
 ^^^^^^^^^^^^^^
 
-Required property providing the version number for the app that will be displayed "Installed Apps" section available to a system administrator. We recommend the use of `Semantic Versioning <https://semver.org/>`_. The Semantic Version notation is <major>.<minor>.<patch> (example: "1.0.1").
+Required property providing the version number for the App that will be displayed in the **Installed Apps** section available to a System Administrator. ThreatConnect recommends the use of `Semantic Versioning <https://semver.org/>`_. The Semantic Version notation is **<major>.<minor>.<patch>** (e.g., **1.0.1**).
 
 publishOutFiles
 ^^^^^^^^^^^^^^^
 
-Optional field available for job-style apps that can be scheduled to serve files. If this array is populated, the app is responsible for writing the files to the relative "tc_output_path" parameter passed in. This will enable HTTP-based file serving of these files for as a unique URL available to the user in ThreatConnect. This parameter accepts an array of strings and can include file globs.
+Optional field available for job-style Apps that can be scheduled to serve files. If this array is populated, the App is responsible for writing the files to the relative **tc_output_path** parameter that is passed in. This will enable HTTP-based file serving of these files as a unique URL available to the user in ThreatConnect. This parameter accepts an array of strings and can include file globs.
 
 repeatingMinutes
 ^^^^^^^^^^^^^^^^
 
-Optional property which provides a list of minute increments to display in the "Repeat Every…" section in the "Schedule" panel in the Job Wizard. This property is relevant only for Python and Java apps for which the developer wants to control how frequently an app can be executed. If this property is not defined, the default listing is as follows: [60, 120, 240, 360, 720] .
+Optional property that provides a list of minute increments to display in the **Repeat Every…** section in the **Schedule** panel of the Job Wizard. This property is relevant only for Python and Java Apps for which the developer wants to control how frequently an App can be executed. If this property is not defined, the default listing is as follows: [60, 120, 240, 360, 720] .
 
 runtimeContext
 ^^^^^^^^^^^^^^
 
-Optional property enabling Spaces apps to be context-aware (context-aware Spaces apps can be added to the **Details** page of an object in the ThreatConnect platform). Because this property is an array of strings, the app can be displayed in Spaces under multiple contexts within the ThreatConnect platform, including the **Menu** and **Search** pages. This property is only relevant to spaces apps.
+Optional property enabling Spaces Apps to be context aware. (Context-aware Spaces Apps can be added to the **Details** screen of an object in the ThreatConnect platform.) Because this property is an array of strings, the App can be displayed in Spaces under multiple contexts within the ThreatConnect platform, including the **Menu** and **Search** screens. This property is only relevant to Spaces Apps.
 
-.. note:: Context-aware Spaces apps are passed contextual information via the URL query string when the app is displayed in the ThreatConnect platform. The details of those parameters are out of scope for this document.
+.. note:: Context-aware Spaces Apps are passed contextual information via the URL query string when the App is displayed in the ThreatConnect platform. The details of those parameters are bewyond the scope of this document.
 
 The available runtime contexts are:
 
@@ -162,11 +162,11 @@ Required property which dictates how the app is used within the ThreatConnect pl
 +-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Value             | Description                                                                                                                                                                                                                                                                                          |
 +===================+======================================================================================================================================================================================================================================================================================================+
-| Organization      | This value is a Python or Java app that is run by the Job Execution Engine. This type of app must be provisioned to specific organizations (or "Allow All Orgs" must be selected) by the System Admin. Once provisioned, the app can be scheduled to run as part of a Job.                           |
+| Organization      | This value is a Python or Java App that is run by the Job Execution Engine. This type of app must be provisioned to specific organizations (or **Allow All Orgs** must be selected) by the System Administrator. Once provisioned, the App can be scheduled to run as part of a Job.                           |
 +-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| SpaceOrganization | This value is a Spaces app that is run within ThreatConnect as a Space. This type of app must be provisioned to specific organizations (or "Allow All Orgs" must be selected) by the System Admin. Once provisioned, the app can be added as a Spaces app by any user belonging to the Organization. |
+| SpaceOrganization | This value is a Spaces App that is run within ThreatConnect as a Space. This type of App must be provisioned to specific organizations (or **Allow All Orgs** must be selected) by the System Administrator. Once provisioned, the App can be added as a Spaces App by any user belonging to the Organization. |
 +-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| System            | Although not commonly used, the System level is a Python or Java app that is strictly visible by the System Admin. This app can be scheduled only in a System Job.                                                                                                                                   |
+| System            | Although not commonly used, a System-level App is a Python or Java App that is strictly visible by the System Administrator. This App can be scheduled only in a System Job.                                                                                                                                   |
 +-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Feed App Configuration
@@ -195,49 +195,49 @@ Feed App Configuration
 attributesFile
 ^^^^^^^^^^^^^^
 
-Optional property which provides the name of the CSV file with any of the custom attributes required for the feed.
+Optional property that provides the name of the CSV file with any of the custom Attributes required for the feed
 
 documentStorageLimitMb
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Optional property to set the Document storage limit.
+Optional property that sets the Document storage limit
 
 enableBulkJson
 ^^^^^^^^^^^^^^
 
-Optional property which turns on or off bulk JSON capability.
+Optional property that turns on or off the bulk JSON capability
 
 indicatorLimit
 ^^^^^^^^^^^^^^
 
-Optional property which sets the Indicator limit.
+Optional property that sets the Indicator limit
 
 jobFile
 ^^^^^^^
 
-Optional property to provide the name of the JSON file which is used to setup and run the job to pull in content from the feed.
+Optional property that providea the name of the JSON file that is used to set up and run the Job that pulls in content from the feed
 
 sourceCategory
 ^^^^^^^^^^^^^^
 
-Optional property to specify how to source should be categorized.
+Optional property that specifies how the source should be categorized
 
 sourceDescription
 ^^^^^^^^^^^^^^^^^
 
-Optional property providing the source's description as it will appear in ThreatConnect.
+Optional property that provides the source's description as it will appear in ThreatConnect
 
 sourceName
 ^^^^^^^^^^
 
-Optional property providing the name of the source in which the feed's content will be created.
+Optional property that provides the name of the source in which the feed's content will be created
 
 Parameter Array Section
 -----------------------
 
-The Parameter Array section of the **install.json** file is the mechanism used by the Job Execution engine and the Spaces framework to pass configuration data at runtime. For Java and Python apps, the entries defined in this section dictate the **Parameters** panel in the Job Wizard in the ThreatConnect platform. Spaces apps have their own configuration screen as part of the user’s Space for each app.
+The Parameter Array section of the **install.json** file is the mechanism used by the Job Execution Engine and the Spaces framework to pass configuration data at runtime. For Java and Python Apps, the entries defined in this section dictate the **Parameters** panel of the Job Wizard in the ThreatConnect platform. Spaces Apps have their own configuration screen as part of the user’s Space for each App.
 
-.. note:: In Python, parameters are called by using the "--param <value>" syntax handled by the argparse library. For Java apps, the system environment arguments are passed by using the "-Dparam=<value>" syntax. Discussion of app argument parsing is out of scope for this document.
+.. note:: In Python, parameters are called by using the **--param <value>** syntax handled by the **argparse** library. For Java Apps, the System-environment arguments are passed by using the **-Dparam=<value>** syntax. Discussion of App argument parsing is beyond the scope of this document.
 
 The table below highlights the Parameter array properties (the **params** array).
 
@@ -274,42 +274,42 @@ The table below highlights the Parameter array properties (the **params** array)
 allowMultiple
 ^^^^^^^^^^^^^
 
-The value of this optional property is automatically set to "true" if the "MultiChoice" type is used. If a "String" type is used, this flag allows the user to define multiple values in a single input field delimited by a pipe ("|") character.
+The value of this optional property is automatically set to **true** if the **MultiChoice** type is used. If a String type is used, this flag allows the user to define multiple values in a single input field delimited by a pipe ("|") character.
 
 default
 ^^^^^^^
 
-Optional property which is the default value pre-populated for new Jobs or Spaces. The purpose of a default value is to provide the user with a guidance while allowing edits based on preference.
+Optional property that is the default value pre-populated for new Jobs or Spaces. The purpose of a default value is to provide the user with a guidance while allowing edits based on preference.
 
 encrypt
 ^^^^^^^
 
-This optional property designates this parameter as an encrypted value. Parameters defined as encrypted will be managed by the Keychain feature that encrypts password while at rest. This flag should be used with the "String" type and will render a password input textbox in the Job and Spaces configuration.
+Optional property that designates a parameter as an encrypted value. Parameters defined as encrypted will be managed by the Keychain feature that encrypts password while at rest. This flag should be used with the String type and will render a password input textbox in the Job and Spaces configuration.
 
 hidden
 ^^^^^^
 
-If this optional property is set to "true", this parameter will be hidden from the Job Wizard. Hidden parameters allow the developer to persist parameters between job executions without the need to render the values in the Job Wizard. This option is valid only for Python and Java apps. Further details on persisting parameters from the app directly are out of scope for this document.
+If this optional property is set to **true**, this parameter will be hidden from the Job Wizard. Hidden parameters allow the developer to persist parameters between Job executions without the need to render the values in the Job Wizard. This option is valid only for Python and Java Apps. Further details on persisting parameters directly from the app are beyond the scope of this document.
 
 label
 ^^^^^
 
-Required property providing a description of the parameter displayed in the ThreatConnect platform Job Wizard or Spaces Config dialog box.
+Required property providing a description of the parameter displayed in the ThreatConnect platform Job Wizard or Spaces Configuration dialog box
 
 name
 ^^^^
 
-Required property is the internal parameter name taken from the Job Wizard and passed to the app at runtime. It is the effective command-line argument name passed to the app.
+Required property that is the internal parameter name taken from the Job Wizard and passed to the App at runtime. It is the effective command-line argument name passed to the App.
 
 note Parameter
 ^^^^^^^^^^^^^^
 
-Optional parameter description field available in Playbook apps under the "?" tooltip when the app parameters are being edited. Use this field to describe the purpose of the parameter in 2-3 sentences.
+Optional parameter-description field available in Playbook Apps under the **?** tooltip when the App parameters are being edited. Use this field to describe the purpose of the parameter in two-three sentences.
 
 PlaybookDataType
 ^^^^^^^^^^^^^^^^
 
-Optional property restricting the data type of incoming playbook variables. This is different than the ``type`` property that controls the UI input type. The playbook data type can be any standard or custom type and is expected to be an array of strings.
+Optional property restricting the data type of incoming Playbook variables. This is different than the ``type`` property that controls the UI input type. The PlaybookDataType can be any standard or custom type and is expected to be an array of strings.
 
 As of ThreatConnect 5.4, the standard Playbook types supported by the Python and Java SDK are:
 
@@ -327,28 +327,28 @@ As of ThreatConnect 5.4, the standard Playbook types supported by the Python and
 required
 ^^^^^^^^
 
-Optional property designating this parameter as a required field that must be populated to save the Job or Playbook app.
+Optional property designating this parameter as a required field that must be populated to save the Job or Playbook App
 
 sequence
 ^^^^^^^^
 
-Optional number used to control the ordering of the parameters in the Job Wizard or Spaces Config dialog box. If it is not defined, the order of the parameters in the install.json file is used.
+Optional number used to control the ordering of the parameters in the Job Wizard or Spaces Configuration dialog box. If it is not defined, the order of the parameters in the **install.json** file is used.
 
 type
 ^^^^
 
-Required property to enable the UI to display relevant components and allow the Job Executor to adapt how parameters are passed to an app at runtime. The table below lists the available types and how they affect elements within the platform.
+Required property to enable the UI to display relevant components and allow the Job Executor to adapt how parameters are passed to an App at runtime. The table below lists the available types and how they affect elements within the platform.
 
 +-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Type        | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 +=============+====================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================+
-| String      | This type renders an HTML Input textbox in the Job Wizard or Spaces configuration dialog box. This allows the user to enter free-form text as a parameter. Values are passed as a String to Python and Java apps.                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| String      | This type renders an HTML Input textbox in the Job Wizard or Spaces Configuration dialog box. This allows the user to enter free-form text as a parameter. Values are passed as a String to Python and Java Apps.                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 +-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Choice      | This type renders an HTML Select option in the Job Wizard or Spaces configuration dialog box. This allows the user to select predefined text values as a parameter. (See the description of the "validValues" string array property in 3.) Values are passed as a String to Python and Java apps.                                                                                                                                                                                                                                                                                                                                                                                  |
+| Choice      | This type renders an HTML Select option in the Job Wizard or Spaces Configuration dialog box. This allows the user to select predefined text values as a parameter. (See the description of the **validValues"** string array property in 3.) Values are passed as a String to Python and Java Apps.                                                                                                                                                                                                                                                                                                                                                                                  |
 +-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| MultiChoice | This type renders an HTML Multi-Checkbox Select option in the Job Wizard or Spaces configuration dialog box. This allows the user to select multiple predefined text values as a parameter. (See the description of the "validValues" string array property in 3.) The same parameter is passed multiple times for a Python app. Python apps should use the argparse "action='append'" option to receive the parameters as an array. Java and Spaces apps will receive the parameter as a single value separated by a pipe character. Values are passed as a String to Python and Java apps. This selection must be used together with the "allowMultiple" flag defined as "true". |
+| MultiChoice | This type renders an HTML Multi-Checkbox Select option in the Job Wizard or Spaces Configuration dialog box. This allows the user to select multiple predefined text values as a parameter. (See the description of the **validValues** string array property in 3.) The same parameter is passed multiple times for a Python App. Python Apps should use the argparse **action='append'** option to receive the parameters as an array. Java and Spaces Apps will receive the parameter as a single value separated by a pipe character. Values are passed as a String to Python and Java Apps. This selection must be used together with the **allowMultiple** flag defined as **true**. |
 +-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Boolean     | This type renders an HTML Checkbox in the Job Wizard or Spaces configuration dialog box. This allows the user to turn on a flag as a parameter. Values are passed as a "--flag" style parameter to Python apps. (See the "action='store_true'" option in the argparse module.) Java and Spaces apps receive the actual Boolean value "true" or "false". These apps should parse the string to resolve the Boolean flag value.                                                                                                                                                                                                                                                      |
+| Boolean     | This type renders an HTML Checkbox option in the Job Wizard or Spaces Configuration dialog box. This allows the user to turn on a flag as a parameter. Values are passed as a **--flag** style parameter to Python Apps. (See the **action='store_true'** option in the argparse module.) Java and Spaces Apps receive the actual Boolean value **true** or **false**. These Apps should parse the string to resolve the Boolean flag value.                                                                                                                                                                                                                                                      |
 +-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 validValues
@@ -910,3 +910,5 @@ Example install.json file for a Python app:
 +-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 98–103      | This parameter describes the "logging" argument for the app. The app will be passed a parameter named "--logging" with a string argument. The "Logging Level" label will be displayed in the Job Wizard. This parameter will be the 16th (and last) parameter in the Job Wizard parameter panel. The type for this parameter is "Choice", and the definition dictates that a valid value for this parameter is one of "debug", "info", "warning", "error", or "critical". The user will not be able to edit this drop-down list, and the default value for new Jobs will be logging level "info".                                                                                                                                                    |
 +-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+Java® and JavaScript® are registered trademarks of the Oracle Corporation.
