@@ -783,7 +783,7 @@ Example **install.json** file for a Python app:
     :linenos:
     :lineno-start: 1
 
-        {
+    {
      "programVersion": "1.0.0",
      "programLanguage": "PYTHON",
      "programMain": "auto_enrich",
