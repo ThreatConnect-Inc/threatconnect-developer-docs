@@ -777,9 +777,9 @@ This section provides an example of an **install.json** file for a
 Python App. The key elements are described with line-number references
 in 8, below the example.
 
-Example install.json file for a Python app:
+Example **install.json** file for a Python app:
 
-.. code-block:: json
+code-block:: json
     :linenos:
     :lineno-start: 1
 
