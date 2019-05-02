@@ -15,7 +15,7 @@ Custom Metric Examples
 .. _datastore_examples:
 
 -------------------
-Data Store Examples
+DataStore Examples
 -------------------
 .. include:: resource_data_store.inc
 
