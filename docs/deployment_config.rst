@@ -354,12 +354,12 @@ Required property to enable the UI to display relevant components and allow the 
 validValues
 ^^^^^^^^^^^
 
-Optional property to be used with the "Choice" and "MultiChoice" types to restrict the possible values a user can select. For instance, to define a "loggingLevel" parameter, this field could have the following values: ["CRITICAL", "ERROR", "WARN", "INFO", "DEBUG", "TRACE"].
+Optional property to be used with the **Choice** and **MultiChoice** types to restrict the possible values a user can select. For example, to define a **loggingLevel** parameter, this field could have the following values: ["CRITICAL", "ERROR", "WARN", "INFO", "DEBUG", "TRACE"].
 
 viewRows
 ^^^^^^^^
 
-Optional property for Playbook apps to control the height of the display in the input parameter. Expects an integer value. A value of 1 is default (and will show a text input element) and anything greater than one displays a textarea input when editing the Playbook app in ThreatConnect.
+Optional property for Playbook Apps to control the height of the display in the input parameter, and it expects an integer value. A value of 1 is default (and will show a text input element) and anything greater than 1 displays a textarea input when editing the Playbook App in ThreatConnect.
 
 Playbook App Configuration
 --------------------------
@@ -375,7 +375,7 @@ Playbook App Configuration
 outputVariables
 ^^^^^^^^^^^^^^^
 
-The optional ``outputVariables`` property specifies the variables that a Playbook app will provide for downstream Playbooks.
+Optional ``outputVariables`` property that specifies the variables that a Playbook App will provide for downstream Playbooks
 
 +----------------------------------+-----------+----------------+
 | Property                         | Required? | Allowed Values |
@@ -388,12 +388,12 @@ The optional ``outputVariables`` property specifies the variables that a Playboo
 Output Variable Name
 """"""""""""""""""""
 
-Required property providing the name of the output variable which is accessible to downstream apps.
+Required property that provides the name of the output variable that is accessible to downstream Apps
 
 Output Variable Type
 """"""""""""""""""""
 
-Required property specifying the type of the output variable. The valid types are:
+Required property that specifies the type of the output variable. The valid types are:
 
 * Binary
 * BinaryArray
@@ -407,7 +407,7 @@ Required property specifying the type of the output variable. The valid types ar
 retry
 ^^^^^
 
-The optional ``retry`` property can be used to allow a Playbook to retry its execution in case of failure.
+Optional ``retry`` property that can be used to allow a Playbook to retry its execution in case of failure
 
 +------------------------------------------------+-----------+----------------+
 | Property                                       | Required? | Allowed Values |
@@ -422,25 +422,25 @@ The optional ``retry`` property can be used to allow a Playbook to retry its exe
 allowed
 """""""
 
-Optional property which specifies whether or not the Playbook app can retry its execution.
+Optional property that specifies whether or not the Playbook App can retry its execution
 
 defaultDelayMinutes
 """""""""""""""""""
 
-Optional property which specifies the number of minutes between each new retry in case of failure. This property assumes that the ``allowed`` property is set true to allow the app to retry.
+Optional property that specifies the number of minutes between each new retry in case of failure. This property assumes that the ``allowed`` property is set **true** to allow the App to retry.
 
 defaultMaxRetries
 """""""""""""""""
 
-Optional property which specifies the maximum number of times the Playbook app can retry in case of failure. This property assumes that the ``allowed`` property is set true to allow the app to retry.
+Optional property that specifies the maximum number of times the Playbook App can retry in case of failure. This property assumes that the ``allowed`` property is set **true** to allow the app to retry
 
 Variable Expression
 -------------------
 
-The variable-expression feature enables developers to reference "$"
+The variable-expression feature enables developers to reference **$**
 style variables in the **install.json** file and have the ThreatConnect
 platform resolve the values when displayed in the Job Wizard or Spaces
-configuration dialog box. The external-variables component can go one
+Configuration dialog box. The external-variables component can go one
 step further by resolving the value at the time a Job executes. Variable
 expressions are allowed only in the **params** section of the
 **install.json** file.
@@ -450,12 +450,12 @@ Internal Variables
 
 Internal variables are predefined (reserved) variables that can be
 explicitly declared in the **install.json** file. Apps declaring these
-variables will direct the Job Wizard and Spaces configuration dialog box
+variables direct the Job Wizard and Spaces Configuration dialog box
 to convert the variables into literal values. Internal variables should
 be used only with the **Choice** and **MultiChoice** types. They should
 be defined in the **validValues** property.
 
-Example of a validValues parameter definition example:
+Example of a validValues parameter definition:
 
 .. code:: json
 
@@ -472,11 +472,11 @@ understood by the ThreatConnect platform.
 +------------+------------------+-------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Variable   | Resolves As Type | Example of Usage                                      | Description                                                                                                                                                                                                                                                                                                                                                    |
 +============+==================+=======================================================+================================================================================================================================================================================================================================================================================================================================================================+
-| OWNERS     | String Array     | ``["${OWNERS}"]``                                     | The OWNERS variable resolves to the available owners to which the current user has access. Since this determination is dynamically resolved at runtime, the owners rendered depend on the user. This variable is useful when an app needs to have a defined owner passed as a parameter. The string value of the owner(s) is passed as an argument to the app. |
+| OWNERS     | String Array     | ``["${OWNERS}"]``                                     | The OWNERS variable resolves to the available owners to which the current user has access. Since this determination is dynamically resolved at runtime, the owners rendered depend on the user. This variable is useful when an App needs to have a defined owner passed as a parameter. The string value of the owner(s) is passed as an argument to the App. |
 +------------+------------------+-------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ATTRIBUTES | String Array     | ``["${ATTRIBUTES}"]`` or ``["${ATTRIBUTES:<type>}"]`` | The ATTRIBUTES variable resolves to attributes the current organization has available. This variable has a second, optional component, :<type>, that further refines the attributes resolved to the specific Indicator or Group type (for example: ["${ATTRIBUTES:Address}"]). The string value of the attribute(s) is passed as an argument to the app.       |
+| ATTRIBUTES | String Array     | ``["${ATTRIBUTES}"]`` or ``["${ATTRIBUTES:<type>}"]`` | The ATTRIBUTES variable resolves to available Attributes in the current organization. This variable has a second, optional component, **:<type>**, that further refines the attributes resolved to the specific Indicator or Group type (e.g., **["${ATTRIBUTES:Address}"]**). The string value of the Attribute(s) is passed as an argument to the App.       |
 +------------+------------------+-------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| INDICATORS | String Array     | ``["${INDICATOR_TYPES}"]``                            | The INDICATOR_TYPES variable resolves to all of the indicator types available in the given instance of ThreatConnect. The string value of the indicator type(s) is passed as an argument to the app.                                                                                                                                                           |
+| INDICATORS | String Array     | ``["${INDICATOR_TYPES}"]``                            | The INDICATOR_TYPES variable resolves to all of the Indicator types available in the given instance of ThreatConnect. The string value of the Indicator type(s) is passed as an argument to the app.                                                                                                                                                           |
 +------------+------------------+-------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 When the ``$ATTRIBUTES`` internal variable is used with a ``:<type>`` suffix, the type can be any of the Indicator, Group, Task, or Victim types in the ThreatConnect platform:
@@ -509,16 +509,16 @@ External Variables
 ^^^^^^^^^^^^^^^^^^^
 
 External variables offer the user an additional level of convenience by
-directing the Job Wizard and Spaces configuration dialog box to take
+directing the Job Wizard and Spaces Configuration dialog box to take
 advantage of the Variables feature.
 
-.. note:: The Variables feature in the ThreatConnect platform allows any user to create variable key/value pairs. Once created, these values can be selected by the user in the Job Wizard or Spaces configuration dialog box to reduce the need to copy and paste keys and plain-text data.
+.. note:: The Variables feature in the ThreatConnect platform allows any user to create variable key/value pairs. Once created, these values can be selected by the user in the Job Wizard or Spaces Configuration dialog box to reduce the need to copy and paste keys and plain-text data.
 
-Since the variable names are not known by the app developer, the generic
+Since the variable names are not known by the App developer, the generic
 form of the variables is referenced instead in a **<level:type>**
 format.
 
-For instance, to allow the user to select one of their plain-text
+For example, to allow users to select one of their plain-text
 variables from Organization and User levels, the **install.json** file
 would reference them as follows:
 
@@ -532,11 +532,11 @@ any of the options listed in the table below.
 +--------------+---------------------------------------------------------------------------------------------------------------------------------------------+
 | Level Option | Description                                                                                                                                 |
 +==============+=============================================================================================================================================+
-| User         | This option displays the list of the user’s variables in the Job Wizard or Spaces configuration dialog box.                                 |
+| User         | This option displays the list of the user’s variables in the Job Wizard or Spaces Configuration dialog box.                                 |
 +--------------+---------------------------------------------------------------------------------------------------------------------------------------------+
-| Organization | This option displays the list of Organization variables available to the current user in the Job wizard or Spaces configuration dialog box. |
+| Organization | This option displays the list of organization variables available to the current user in the Job wizard or Spaces Configuration dialog box. |
 +--------------+---------------------------------------------------------------------------------------------------------------------------------------------+
-| System       | This option displays the list of system variables available to the current user in the Job Wizard or Spaces configuration dialog box.       |
+| System       | This option displays the list of System variables available to the current user in the Job Wizard or Spaces Configuration dialog box.       |
 +--------------+---------------------------------------------------------------------------------------------------------------------------------------------+
 
 Multiple external-variable expressions can be included in string array form.
@@ -774,7 +774,7 @@ Example JSON File
 -----------------
 
 This section provides an example of an **install.json** file for a
-Python app. The key elements are described with line-number references
+Python App. The key elements are described with line-number references
 in 8, below the example.
 
 Example install.json file for a Python app:
@@ -894,21 +894,21 @@ Example install.json file for a Python app:
 +-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Line Number | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 +=============+======================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================+
-| 2           | The "programVersion" is 1.0.0. This value is rendered in the apps listing for System Administrators.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| 2           | The **programVersion** is 1.0.0. This value is rendered in the Apps listing for System Administrators.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 +-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| 4           | The "programMain" will direct the Job Executor to run this app as a main module.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| 4           | The **programMain** will direct the Job Executor to run this App as a main module.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 +-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| 6           | The "runtimeLevel" for this app is "Organization". This app will allow Jobs to be configured only for an Organization (assuming the System Admin has provisioned the Org).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| 6           | The **runtimeLevel** for this App is **Organization**. This App will allow Jobs to be configured only for an organization (assuming that the System Administrator has provisioned the organization).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 +-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| 8           | This line is the start of the "params" array. The contents in this array are purely for parameter definitions.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| 8           | This line is the start of the **params** array. The contents in this array are solely for parameter definitions.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 +-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| 9–13        | This parameter describes the "api_access_id" argument for the app. The app will be passed an argument called "--api_access_id" at execution time. The label in the Job Wizard will be "Local ThreatConnect API Access ID". Since the sequence is defined as "1", this parameter will be the first parameter displayed in the Job Wizard. This parameter is required, and the user can benefit from User- and Organization-level plain-text variables, if defined. Otherwise, the user is allowed to enter free-form text (the default type if no variables are defined).                                                                                                                                                                             |
+| 9–13        | This parameter describes the **api_access_id** argument for the App. The App will be passed an argument called **--api_access_id** at execution time. The label in the Job Wizard will be **Local ThreatConnect API Access ID**. Since the sequence is defined as **1**, this parameter will be the first parameter displayed in the Job Wizard. This parameter is required, and the user can benefit from user- and organization-level plain-text variables, if defined. Otherwise, the user is allowed to enter free-form text (the default type if no variables are defined).                                                                                                                                                                             |
 +-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| 35–40       | This parameter describes the "remote_api_secret_key" argument for the app. The app will be passed an argument called "--remote_api_secret_key" at execution time. The label in the Job Wizard will be "Remote ThreatConnect API Secret Key". This parameter will be the 5th parameter in the Job Wizard "Parameters" panel. Since the parameter is set to "encrypt", the input field will be displayed as a password with a masked value. Encrypted parameters will also be stored in encrypted form in the database. At runtime, the decrypted password will be passed to the app. Finally, the user can benefit from User- and Organization-level keychain variables, if defined. Otherwise, the user is allowed to enter free-form password text. |
+| 35–40       | This parameter describes the **remote_api_secret_key** argument for the App. The App will be passed an argument called **--remote_api_secret_key** at execution time. The label in the Job Wizard will be **Remote ThreatConnect API Secret Key**. This parameter will be the fifth parameter in the Job Wizard **Parameters** panel. Since the parameter is set to **encrypt**, the input field will be displayed as a password with a masked value. Encrypted parameters will also be stored in encrypted form in the database. At runtime, the decrypted password will be passed to the App. Finally, the user can benefit from user- and organization-level keychain variables, if defined. Otherwise, the user is allowed to enter free-form password text. |
 +-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| 65–68       | This parameter describes the "apply_threat_assess_confidence" Boolean argument for the app. The app will be passed an argument called "--apply_threat_assess_confidence" at execution time only if the user selects this value in the Job Wizard. The Job Wizard will display a label called "Apply ThreatAssessRating from Remote Owner", along with a checkbox. The argparse style flag (without an argument) and the checkbox displayed in the Job Wizard are dictated by the "Boolean" type in the parameter definition. This parameter will be the 8th parameter in the Job Wizard "Parameters" panel.                                                                                                                                          |
+| 65–68       | This parameter describes the **apply_threat_assess_confidence** Boolean argument for the App. The App will be passed an argument called **--apply_threat_assess_confidence** at execution time, only if the user selects this value in the Job Wizard. The Job Wizard will display a label called **Apply ThreatAssessRating from Remote Owner**, along with a checkbox. The argparse style flag (without an argument) and the checkbox displayed in the Job Wizard are dictated by the Boolean type in the parameter definition. This parameter will be the eigth parameter in the Job Wizard **Parameters** panel.                                                                                                                                          |
 +-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| 98–103      | This parameter describes the "logging" argument for the app. The app will be passed a parameter named "--logging" with a string argument. The "Logging Level" label will be displayed in the Job Wizard. This parameter will be the 16th (and last) parameter in the Job Wizard parameter panel. The type for this parameter is "Choice", and the definition dictates that a valid value for this parameter is one of "debug", "info", "warning", "error", or "critical". The user will not be able to edit this drop-down list, and the default value for new Jobs will be logging level "info".                                                                                                                                                    |
+| 98–103      | This parameter describes the **logging** argument for the App. The App will be passed a parameter named **--logging** with a string argument. The **Logging Level** label will be displayed in the Job Wizard. This parameter will be the sixteenth (and last) parameter in the Job Wizard **Parameters** panel. The type for this parameter is **Choice**, and the definition dictates that a valid value for this parameter is one of **debug**, **info**, **warning**, **error**, or **critical**. The user will not be able to edit this drop-down list, and the default value for new Jobs will be logging-level info.                                                                                                                                                    |
 +-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Java® and JavaScript® are registered trademarks of the Oracle Corporation.
