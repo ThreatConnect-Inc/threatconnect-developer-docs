@@ -783,7 +783,7 @@ Example **install.json** file for a Python app:
     :linenos:
     :lineno-start: 1
 
-    {
+        {
      "programVersion": "1.0.0",
      "programLanguage": "PYTHON",
      "programMain": "auto_enrich",
@@ -842,11 +842,9 @@ Example **install.json** file for a Python app:
       "sequence": 8
      }, {
       "name": "apply_rating",
-      "label": "Apply Rating from Remote Owner if ThreatAssessRating
-      is not Available ", "
-      type " : "
-      Boolean ", "
-      sequence " : 9
+      "label": "Apply Rating from Remote Owner if ThreatAssessRating is not Available ",
+      "type" : "Boolean",
+      "sequence" : 9
      }, {
       "name": "apply_threat_assess_confidence",
       "label": "Apply ThreatAssessConfidence from Remote Owner",
@@ -854,10 +852,8 @@ Example **install.json** file for a Python app:
       "sequence": 10
      }, {
       "name": "apply_confidence",
-      "label": "Apply Confidence from Remote Owner if
-      ThreatAssessConfidence is not Available ", "
-      type " : "
-      Boolean ",
+      "label": "Apply Confidence from Remote Owner if ThreatAssessConfidence is not Available",
+      "type" : "Boolean",
       "sequence": 11
      }, {
       "name": "apply_tags",
