@@ -140,4 +140,4 @@ The example below demonstrates how to use the ``add_pf_date_added()`` filter to 
         print(group.type)
         print('')
 
-.. note:: Both of the examples above will first retrieve *all* of the Indicators from the owner and will then apply the post filter.
+.. note:: Both of the examples above will first retrieve *all* of the groups from the owner and will then apply the post filter.
