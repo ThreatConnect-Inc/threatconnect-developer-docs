@@ -413,7 +413,7 @@ class TcExPlaybook(object):
                     # replace "\s" with a space only for user input.
                     # using '\\s' will prevent replacement.
                     data = re.sub(r'(?<!\\)\\s', ' ', data)
-                    data = re.sub(r'\\\\s', '\\s', data)
+                    data = re.sub(r'\\\\s', r'\\s', data)
 
                 if embedded:
                     # check for any embedded variables
@@ -516,6 +516,9 @@ class TcExPlaybook(object):
 
             if val is None:
                 val = ''
+            elif key_type == 'String':
+                # SUP-5067 - embedded string needs to have newline escaped and double quotes removed
+                val = json.dumps(val)[1:-1]
             elif key_type != 'String':
                 var = r'"?{}"?'.format(var)  # replace quotes if they exist
                 val = json.dumps(val)

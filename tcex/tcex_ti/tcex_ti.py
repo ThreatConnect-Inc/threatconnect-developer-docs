@@ -38,12 +38,8 @@ class TcExTi(object):
 
     def __init__(self, tcex):
         """
-
         Args:
-            tcex:
-
-        Return:
-
+            tcex (obj): An instance of TcEx.
         """
         self.tcex = tcex
         self._custom_indicator_classes = {}
@@ -54,7 +50,7 @@ class TcExTi(object):
         Create the Address TI object.
 
         Args:
-            owner:
+            owner (str): The ThreatConnect owner name.
             ip:
             **kwargs:
 
@@ -68,7 +64,7 @@ class TcExTi(object):
         Create the URL TI object.
 
         Args:
-            owner:
+            owner (str): The ThreatConnect owner name.
             url:
             **kwargs:
 
@@ -82,7 +78,7 @@ class TcExTi(object):
         Create the Email Address TI object.
 
         Args:
-            owner:
+            owner (str): The ThreatConnect owner name.
             address:
             **kwargs:
 
@@ -96,7 +92,7 @@ class TcExTi(object):
         Create the File TI object.
 
         Args:
-            owner:
+            owner (str): The ThreatConnect owner name.
             **kwargs:
 
         Return:
@@ -109,7 +105,7 @@ class TcExTi(object):
         Create the Host TI object.
 
         Args:
-            owner:
+            owner (str): The ThreatConnect owner name.
             hostname:
             **kwargs:
 
@@ -127,7 +123,7 @@ class TcExTi(object):
         Create the Indicator TI object.
 
         Args:
-            owner:
+            owner (str): The ThreatConnect owner name.
             indicator_type:
             **kwargs:
 
@@ -142,26 +138,60 @@ class TcExTi(object):
         indicator = None
         if upper_indicator_type == 'ADDRESS':
             indicator = Address(self.tcex, kwargs.pop('ip', None), owner=owner, **kwargs)
-        elif upper_indicator_type == 'EMAILADDRESS':
+        elif upper_indicator_type == 'EMAIL ADDRESS':
             indicator = EmailAddress(self.tcex, kwargs.pop('address', None), owner=owner, **kwargs)
         elif upper_indicator_type == 'FILE':
-            indicator = File(self.tcex, **kwargs)
+            indicator = File(self.tcex, owner=owner, **kwargs)
         elif upper_indicator_type == 'HOST':
             indicator = Host(self.tcex, kwargs.pop('hostname', None), owner=owner, **kwargs)
         elif upper_indicator_type == 'URL':
             indicator = URL(self.tcex, kwargs.pop('url', None), owner=owner, **kwargs)
+        # elif upper_indicator_type == 'ASN':
+        #     indicator = ASN(self.tcex, kwargs.pop('AS Number', None), owner=owner, **kwargs)
+        # elif upper_indicator_type == 'CIDR':
+        #     indicator = CIDR(self.tcex, kwargs.pop('Block', None), owner=owner, **kwargs)
+        # elif upper_indicator_type == 'MUTEX':
+        #     indicator = Mutex(self.tcex, kwargs.pop('Mutex', None), owner=owner, **kwargs)
+        # elif upper_indicator_type == 'REGISTRY KEY':
+        #     indicator = RegistryKey(
+        #         self.tcex,
+        #         kwargs.pop('Key Name', None),
+        #         kwargs.pop('Value Name', None),
+        #         kwargs.pop('Value Type', None),
+        #         owner=owner,
+        #         **kwargs
+        #     )
+        # elif upper_indicator_type == 'USER AGENT':
+        #     indicator = UserAgent(
+        #         self.tcex, kwargs.pop('User Agent String', None), owner=owner, **kwargs
+        #     )
         else:
             try:
                 if upper_indicator_type in self._custom_indicator_classes.keys():
-                    custom_indicator_details = self._custom_indicator_classes[indicator_type]
+                    custom_indicator_details = self._custom_indicator_classes[upper_indicator_type]
                     value_fields = custom_indicator_details.get('value_fields')
-                    c = getattr(module, custom_indicator_details.get('branch'))
+                    c = getattr(module, indicator_type.replace(' ', ''))
                     if len(value_fields) == 1:
-                        indicator = c(value_fields[0], owner=owner, **kwargs)
+                        indicator = c(
+                            self.tcex, kwargs.pop(value_fields[0], None), owner=owner, **kwargs
+                        )
                     elif len(value_fields) == 2:
-                        indicator = c(value_fields[0], value_fields[1], owner=owner, **kwargs)
+                        indicator = c(
+                            self.tcex,
+                            kwargs.pop(value_fields[0], None),
+                            kwargs.pop(value_fields[1], None),
+                            owner=owner,
+                            **kwargs
+                        )
                     elif len(value_fields) == 3:
-                        indicator = c(value_fields[0], value_fields[2], owner=owner, **kwargs)
+                        indicator = c(
+                            self.tcex,
+                            kwargs.pop(value_fields[0], None),
+                            kwargs.pop(value_fields[1], None),
+                            kwargs.pop(value_fields[2], None),
+                            owner=owner,
+                            **kwargs
+                        )
             except Exception:
                 return None
         return indicator
@@ -171,7 +201,7 @@ class TcExTi(object):
         Create the Group TI object.
 
         Args:
-            owner:
+            owner (str): The ThreatConnect owner name.
             group_type:
             **kwargs:
 
@@ -241,7 +271,7 @@ class TcExTi(object):
         Create the Adversary TI object.
 
         Args:
-            owner:
+            owner (str): The ThreatConnect owner name.
             name:
             **kwargs:
 
@@ -255,7 +285,7 @@ class TcExTi(object):
         Create the Campaign TI object.
 
         Args:
-            owner:
+            owner (str): The ThreatConnect owner name.
             name:
             **kwargs:
 
@@ -269,7 +299,7 @@ class TcExTi(object):
         Create the Document TI object.
 
         Args:
-            owner:
+            owner (str): The ThreatConnect owner name.
             name:
             file_name:
             **kwargs:
@@ -297,7 +327,7 @@ class TcExTi(object):
         Create the Email TI object.
 
         Args:
-            owner:
+            owner (str): The ThreatConnect owner name.
             to:
             from_addr:
             name:
@@ -316,7 +346,7 @@ class TcExTi(object):
         Create the Incident TI object.
 
         Args:
-            owner:
+            owner (str): The ThreatConnect owner name.
             name:
             **kwargs:
 
@@ -330,7 +360,7 @@ class TcExTi(object):
         Create the Intrustion Set TI object.
 
         Args:
-            owner:
+            owner (str): The ThreatConnect owner name.
             name:
             **kwargs:
 
@@ -344,7 +374,7 @@ class TcExTi(object):
         Create the Report TI object.
 
         Args:
-            owner:
+            owner (str): The ThreatConnect owner name.
             name:
             **kwargs:
 
@@ -358,7 +388,7 @@ class TcExTi(object):
         Create the Signature TI object.
 
         Args:
-            owner:
+            owner (str): The ThreatConnect owner name.
             file_content:
             file_name:
             file_type:
@@ -375,7 +405,7 @@ class TcExTi(object):
         Create the Threat TI object.
 
         Args:
-            owner:
+            owner (str): The ThreatConnect owner name.
             name:
             **kwargs:
 
@@ -389,7 +419,7 @@ class TcExTi(object):
         Create the Victim TI object.
 
         Args:
-            owner:
+            owner (str): The ThreatConnect owner name.
             name:
             **kwargs:
 
@@ -424,60 +454,70 @@ class TcExTi(object):
         Yields a entity. Takes both a list of indicators/groups or a individual
         indicator/group response.
 
-        example formats:
-        {
-           "status":"Success",
-           "data":{
-              "resultCount":984240,
-              "address":[
-                 {
-                    "id":4222035,
-                    "ownerName":"System",
-                    "dateAdded":"2019-03-28T10:32:05-04:00",
-                    "lastModified":"2019-03-28T11:02:46-04:00",
-                    "rating":4,
-                    "confidence":90,
-                    "threatAssessRating":4,
-                    "threatAssessConfidence":90,
-                    "webLink":"{host}/auth/indicators/details/address.xhtml?address=221.123.32.14",
-                    "ip":"221.123.32.14"
-                 },
-                 {
-                    "id":4221517,
-                    "ownerName":"System",
-                    "dateAdded":"2018-11-05T14:24:54-05:00",
-                    "lastModified":"2019-03-07T12:38:36-05:00",
-                    "threatAssessRating":0,
-                    "threatAssessConfidence":0,
-                    "webLink":"{host}/auth/indicators/details/address.xhtml?address=221.123.32.12",
-                    "ip":"221.123.32.12"
-                 }
-              ]
-           }
-        }
+        example formats
 
-        or:
-        {
-            "status": "Success",
-            "data": {
-                "address": {
-                    "id": 4222035,
-                    "owner": {
-                        "id": 1,
-                        "name": "System",
-                        "type": "Organization"
-                    },
-                    "dateAdded": "2019-03-28T10:32:05-04:00",
-                    "lastModified": "2019-03-28T11:02:46-04:00",
-                    "rating": 4,
-                    "confidence": 90,
-                    "threatAssessRating": 4,
-                    "threatAssessConfidence": 90,
-                    "webLink": "{host}/auth/indicators/details/address.xhtml?address=221.123.32.14",
-                    "ip": "221.123.32.14"
+        .. code-block:: javascript
+
+            {
+                "status": "Success",
+                "data": {
+                    "resultCount": 984240,
+                    "address": [
+                        {
+                            "id": 4222035,
+                            "ownerName": "System",
+                            "dateAdded": "2019-03-28T10:32:05-04:00",
+                            "lastModified": "2019-03-28T11:02:46-04:00",
+                            "rating": 4,
+                            "confidence": 90,
+                            "threatAssessRating": 4,
+                            "threatAssessConfidence": 90,
+                            "webLink": "{host}/auth/indicators/details/address.xhtml?
+                                        address=221.123.32.14",
+                            "ip": "221.123.32.14"
+                        },
+                        {
+                            "id": 4221517,
+                            "ownerName": "System",
+                            "dateAdded": "2018-11-05T14:24:54-05:00",
+                            "lastModified": "2019-03-07T12:38:36-05:00",
+                            "threatAssessRating": 0,
+                            "threatAssessConfidence": 0,
+                            "webLink": "{host}/auth/indicators/details/address.xhtml?
+                                        address=221.123.32.12",
+                            "ip": "221.123.32.12"
+                        }
+                    ]
                 }
             }
-        }
+
+        or:
+
+        .. code-block:: javascript
+
+            {
+                "status": "Success",
+                "data": {
+                    "address": {
+                        "id": 4222035,
+                        "owner": {
+                            "id": 1,
+                            "name": "System",
+                            "type": "Organization"
+                        },
+                        "dateAdded": "2019-03-28T10:32:05-04:00",
+                        "lastModified": "2019-03-28T11:02:46-04:00",
+                        "rating": 4,
+                        "confidence": 90,
+                        "threatAssessRating": 4,
+                        "threatAssessConfidence": 90,
+                        "webLink": "{host}/auth/indicators/details/address.xhtml?
+                                    address=221.123.32.14",
+                        "ip": "221.123.32.14"
+                    }
+                }
+            }
+
         Args:
             json_response:
 
@@ -557,13 +597,16 @@ class TcExTi(object):
                 value_fields.append(entry['value3Label'])
             value_count = len(value_fields)
 
-            if value_fields:
+            if not value_fields:
                 continue
 
-            class_data = {}
             # Add Class for each Custom Indicator type to this module
             custom_class = custom_indicator_class_factory(
-                entry.get('apiBranch'), entry.get('apiEntity'), class_data, value_fields
+                entry.get('name'),
+                entry.get('apiEntity'),
+                entry.get('apiBranch'),
+                Indicator,
+                value_fields,
             )
 
             custom_indicator_data = {
@@ -590,15 +633,15 @@ class TcExTi(object):
         tcex = self.tcex
 
         # Add Method for each Custom Indicator class
-        def method_1(owner, value1, **kwargs):  # pylint: disable=W0641
+        def method_1(value1, owner=None, **kwargs):  # pylint: disable=W0641
             """Add Custom Indicator data to Batch object"""
             return custom_class(tcex, value1, owner=owner, **kwargs)
 
-        def method_2(owner, value1, value2, **kwargs):  # pylint: disable=W0641
+        def method_2(value1, value2, owner=None, **kwargs):  # pylint: disable=W0641
             """Add Custom Indicator data to Batch object"""
             return custom_class(tcex, value1, value2, owner=owner, **kwargs)
 
-        def method_3(owner, value1, value2, value3, **kwargs):  # pylint: disable=W0641
+        def method_3(value1, value2, value3, owner=None, **kwargs):  # pylint: disable=W0641
             """Add Custom Indicator data to Batch object"""
             return custom_class(tcex, value1, value2, value3, owner=owner, **kwargs)
 
