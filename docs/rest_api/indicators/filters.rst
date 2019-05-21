@@ -23,6 +23,8 @@ When retrieving Indicators from ThreatConnect, it is possible to filter the resu
 +------------------------------+------------+---------------------+
 | confidence                   | integer    | ``=``, ``<``, ``>`` |
 +------------------------------+------------+---------------------+
+| threatAssessScore            | integer    | ``=``, ``<``, ``>`` |
++------------------------------+------------+---------------------+
 | threatAssessRating           | double     | ``<``, ``>``        |
 +------------------------------+------------+---------------------+
 | threatAssessConfidence       | double     | ``<``, ``>``        |
@@ -67,6 +69,13 @@ The example below demonstrates usage of the rating parameter:
 .. code::
 
     GET /v2/indicators?filters=rating%3E3
+
+The example below demonstrates usage of the threatAssessScore
+parameter:
+
+.. code::
+
+    GET /v2/indicators/?filters=threatAssessScore%3E450
 
 The example below demonstrates usage of the threatAssessConfidence
 parameter:
