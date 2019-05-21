@@ -189,11 +189,8 @@ For example:
 
     POST /v2/batch/123
 
-    Content-Type: application/octet-stream; boundary=[boundary-text]
-    Content-Length: <data_size>
-    Content-Encoding: gzip
-    [boundary-text]
-    <uploaded_data>
+    Content-Type: application/octet-stream
+    Body: The JSON payload goes here.
 
 **Server Response on Success**
 
