@@ -21,7 +21,7 @@ Requests to ThreatConnect API endpoints must be made over HTTPS with a valid Sig
 
 Each API response is formatted with a status. If the status is "Success," each response includes a ``data`` field with the appropriate response type. If the status is "Failure," an appropriate error message is provided as to why the request failed.
 
-The API will be versioned as needed to support continued development of the ThreatConnect platform, and existing API versions will be appropriately deprecated. Version 2 (v2) of the API supports write capabilities via HTTP POST and PUT methods. The HTTP GET method is used for read access to resources.
+The API will be versioned, as needed, to support continued development of the ThreatConnect platform, and existing API versions will be appropriately deprecated. Version 2 /(v2) of the API supports write capabilities via HTTP POST and PUT methods. The HTTP GET method is used for read access to resources.
 
 Authentication
 --------------
@@ -56,7 +56,7 @@ The ``$SIGNATURE`` is created by concatenating the API path and query strings, H
 
 The result is then signed with the user's ``Secret Key`` using SHA256 to calculate an HMAC (a.k.a. ``HMAC-SHA256``) and base-64 encoded.
 
-The value of the final ``Authorization`` header should look something like:
+The value of the final ``Authorization`` header should look like:
 
 .. code::
 
@@ -146,6 +146,6 @@ XML Response:
 Next Steps
 ----------
 
-From here, find a topic that interests you and dig in! If you don't know where to start, retrieving indicators is a good place to start.
+From here, find a topic that interests you and dig in! If you don't know where to start, retrieving Indicators is a good place to begin.
 
 .. hint:: When using this documentation, it will be helpful to have a basic understanding of the `ThreatConnect Data Model <http://kb.threatconnect.com/customer/en/portal/articles/2092925-the-threatconnect-data-model>`_.
