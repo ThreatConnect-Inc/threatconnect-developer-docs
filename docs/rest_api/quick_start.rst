@@ -11,7 +11,7 @@ If you are not able to create an API key using instructions provided in the KB a
 Using the API
 -------------
 
-For those with a ThreatConnect, Public-Cloud API-user account, the ThreatConnect API is accessible at ``https://api.threatconnect.com``.
+For those with a ThreatConnect Public-Cloud API-user account, the ThreatConnect API is accessible at ``https://api.threatconnect.com``.
 
 .. note:: If you are working with the ThreatConnect **sandbox**, the api path is: ``https://sandbox.threatconnect.com/api``. If you are working with a **Dedicated Cloud** or **On-Premise** instance of ThreatConnect, please contact your System Administrator for the correct API URL.
 
