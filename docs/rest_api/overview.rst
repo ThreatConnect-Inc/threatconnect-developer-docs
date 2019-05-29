@@ -43,7 +43,7 @@ Available Endpoints
 Owner Endpoints
 ^^^^^^^^^^^^^^^
 
-The following Owner related endpoints are available:
+The following Owner-related endpoints are available:
 
 * ``/v2/owners``
 * ``/v2/owners/metrics``
@@ -58,7 +58,7 @@ The following **Group types** are available via ThreatConnect's API:
 
 .. include:: _includes/group_types.rst
 
-The following Group related endpoints are available:
+The following Group-related endpoints are available:
 
 * ``/v2/groups``
 * ``/v2/groups/{type}``
@@ -84,7 +84,7 @@ The following Group related endpoints are available:
 * ``/v2/groups/{type}/{id}/victims``
 * ``/v2/groups/{type}/{id}/victims/{victimId}``
 
-Adversary Specific Endpoints
+Adversary-Specific Endpoints
 """"""""""""""""""""""""""""
 
 * ``/v2/groups/adversaries/{id}/adversaryAssets``
@@ -95,13 +95,13 @@ Adversary Specific Endpoints
 * ``/v2/groups/adversaries/{id}/adversaryAssets/urls``
 * ``/v2/groups/adversaries/{id}/adversaryAssets/urls/{assetId}``
 
-Document Specific Endpoints
+Document-Specific Endpoints
 """""""""""""""""""""""""""
 
 * ``/v2/groups/documents/{id}/download``
 * ``/v2/groups/documents/{id}/upload``
 
-Signature Specific Endpoints
+Signature-Specific Endpoints
 """"""""""""""""""""""""""""
 
 * ``/v2/groups/signatures/{id}/download``
@@ -113,7 +113,7 @@ In addition to the `Custom Indicators <https://docs.threatconnect.com/en/latest/
 
 .. include:: _includes/indicator_types.rst
 
-The following Indicator related endpoints are available:
+The following Indicator-related endpoints are available:
 
 * ``/v2/indicators``
 * ``/v2/indicators/deleted``
@@ -153,22 +153,22 @@ The following Indicator related endpoints are available:
 * ``/v2/indicators/{type}/{indicator}/victims``
 * ``/v2/indicators/{type}/{indicator}/victims/{associatedVictimId}``
 
-File Indicator Specific Endpoints
+File-Indicator-Specific Endpoints
 """""""""""""""""""""""""""""""""
 
 * ``/v2/indicators/files/{indicator}/fileOccurrences``
 * ``/v2/indicators/files/{indicator}/fileOccurrences/{fileOccurrenceId}``
 
-Bulk Indicator Download
+Bulk-Indicator Download
 """""""""""""""""""""""
 
 * ``/v2/indicators/bulk/``
 * ``/v2/indicators/bulk/{format}``
 
-Security Label Endpoints
+Security-Label Endpoints
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-The following Security Label related endpoints are available:
+The following Security-Label-related endpoints are available:
 
 * ``/v2/securityLabels``
 * ``/v2/securityLabels/{securityLabelName}``
@@ -186,7 +186,7 @@ The following Security Label related endpoints are available:
 Tag Endpoints
 ^^^^^^^^^^^^^
 
-The following Tag related endpoints are available:
+The following Tag-related endpoints are available:
 
 * ``/v2/tags``
 * ``/v2/tags/{tagName}``
@@ -203,7 +203,7 @@ The following Tag related endpoints are available:
 Task Endpoints
 ^^^^^^^^^^^^^^
 
-The following Task related endpoints are available:
+The following Task-related endpoints are available:
 
 * ``/v2/tasks``
 * ``/v2/tasks/{id}``
@@ -230,11 +230,11 @@ The following Task related endpoints are available:
 Victim Endpoints
 ^^^^^^^^^^^^^^^^
 
-The following **Victim Asset types** will be available via ThreatConnect's API:
+The following **Victim-Asset types** will be available via ThreatConnect's API:
 
 .. include:: _includes/victim_asset_types.rst
 
-The following Victim related endpoints are available:
+The following Victim-related endpoints are available:
 
 * ``/v2/victims``
 * ``/v2/victims/{id}``
@@ -255,36 +255,36 @@ The following Victim related endpoints are available:
 * ``/v2/victims/{id}/victimAssets/{victimAssetType}``
 * ``/v2/victims/{id}/victimAssets/{victimAssetType}/{assetId}``
 
-Custom Metric Endpoints
+Custom-Metric Endpoints
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 * ``/v2/customMetrics/``
 * ``/v2/customMetrics/{metricId}``
 * ``/v2/customMetrics/{metricId}/data``
 
-Misc Endpoints
+Miscellaneous Endpoints
 ^^^^^^^^^^^^^^
 
-Association Type Endpoints
+Association-Type Endpoints
 """"""""""""""""""""""""""
 
 * ``/v2/types/associationTypes``
 * ``/v2/types/associationTypes/{associationType}``
 
-Batch Indicator Commit Endpoints
+Batch-Indicator-Commit Endpoints
 """"""""""""""""""""""""""""""""
 
 * ``/v2/batch``
 * ``/v2/batch/{id}``
 * ``/v2/batch/{id}/errors``
 
-Indicator Type Endpoints
+Indicator-Type Endpoints
 """"""""""""""""""""""""
 
 * ``/v2/types/indicatorTypes``
 * ``/v2/types/indicatorTypes/{indicatorType}``
 
-User Information Endpoints
+User-Information Endpoints
 """"""""""""""""""""""""""
 
 * ``/v2/whoami``
@@ -298,7 +298,7 @@ The API will return appropriate HTTP response codes with a description in the me
 | HTTP Response      | Explanation                                              |
 | Code               |                                                          |
 +====================+==========================================================+
-| ``200`` - Success  | Successful execution of a request.                       |
+| ``200`` - Success  | Successful execution of a request                       |
 +--------------------+----------------------------------------------------------+
 | ``201`` - Created  | The query successfully created the specified entity.     |
 +--------------------+----------------------------------------------------------+
@@ -307,10 +307,10 @@ The API will return appropriate HTTP response codes with a description in the me
 |                    | include details.                                         |
 +--------------------+----------------------------------------------------------+
 | ``401`` -          | Returned if a user does not have access to the specified |
-| Unauthorized       | resource or the method attempted on a resource.          |
+| Unauthorized       | resource or the method attempted on a resource          |
 +--------------------+----------------------------------------------------------+
 | ``403`` -          | Returned when specifying an Owner to which the user does |
-| Forbidden          | do not have access, or does not exist.                   |
+| Forbidden          | do not have access, or does not exist                   |
 +--------------------+----------------------------------------------------------+
 | ``403`` - Bad      | This Indicator is included in a system-wide exclusion    |
 | Request            | list.                                                    |
@@ -328,7 +328,7 @@ The API will return appropriate HTTP response codes with a description in the me
 Specifying an Owner
 -------------------
 
-By default, all API calls will operate in the API user account's default organization. To specify a different owner, use the ``owner`` URL parameter like ``?owner={ownerName}``. For example, the following query will return all Host Indicators in the Common Community:
+By default, all API calls will operate in the API user account's default organization. To specify a different Owner, use the ``owner`` URL parameter like ``?owner={ownerName}``. For example, the following query will return all Host Indicators in the Common Community:
 
 .. code::
 
@@ -408,7 +408,7 @@ JSON Response:
       }
     }
 
-As another example, to retrieve all Tasks with their Tags, use the following query:
+In another example, to retrieve all Tasks with their Tags, use the following query:
 
 .. code::
 
