@@ -7,7 +7,7 @@ To delete an Indicator, the most basic format is:
 
     DELETE /v2/indicators/{indicatorType}/{indicator}
 
-By way of example, the query below will delete the Email Address ``bad@example.com``:
+For example, the query below will delete the Email Address ``bad@example.com``:
 
 .. code::
 
@@ -52,7 +52,7 @@ JSON Response:
       }
     }
 
-By default, this will return all of the Indicators recently deleted in the API key’s default org. The number of days for which the Indicators will be listed on this API branch before being removed is specified by the ``indicatorDeleteRetentionTime`` system setting.
+By default, this will return all of the Indicators recently deleted in the API key’s default Organization. The number of days for which the Indicators will be listed on this API branch before being removed is specified by the ``indicatorDeleteRetentionTime`` system setting.
 
 To view Indicators that have been recently deleted from a Community or Source that is not the default Owner, append the ``owner={ownerName}`` parameter to the query, as demonstrated below:
 
@@ -72,7 +72,7 @@ To delete an attribute from an Indicator, use the following format:
 
     DELETE /v2/indicators/{indicatorType}/{indicator}/attributes/{attributeId}
 
-For example, if you wanted to delete the attribute with ID 54321 from the Email Address ``bad@example.com``, you would use the following query:
+For example, if you want to delete the Attribute with ID 54321 from the Email Address ``bad@example.com``, you would use the following query:
 
 .. code::
 
@@ -88,13 +88,13 @@ JSON Response:
       "status": "Success"
     }
 
-To delete a Security Label from an attribute, use the following format where ``{securityLabel}`` is replaced with the name of a Security Label that already exists in the owner:
+To delete a Security Label from an Attribute, use the following format, where ``{securityLabel}`` is replaced with the name of a Security Label that already exists in the Owner:
 
 .. code::
 
     DELETE /v2/indicators/{indicatorType}/{indicator}/attributes/{attributeId}/securityLabels/{securityLabel}
 
-For example, the query below will remove the ``TLP Amber`` Security Label from the attribute with ID 54321 on the Email Address ``bad@example.com``:
+For example, the query below will remove the ``TLP Amber`` Security Label from the Attribute with ID 54321 on the Email Address ``bad@example.com``:
 
 .. code::
 
@@ -103,7 +103,7 @@ For example, the query below will remove the ``TLP Amber`` Security Label from t
 Delete Indicator Security Labels
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To delete a Security Label from an Indicator, use the following format where ``{securityLabel}`` is replaced with the name of a Security Label:
+To delete a Security Label from an Indicator, use the following format, where ``{securityLabel}`` is replaced with the name of a Security Label:
 
 .. code::
 
@@ -128,13 +128,13 @@ JSON Response:
 Delete Indicator Tags
 ^^^^^^^^^^^^^^^^^^^^^
 
-To delete a tag from an Indicator, use the following format where ``{tagName}`` is replaced with the name of the tag you wish to remove from the Indicator:
+To delete a Tag from an Indicator, use the following format, where ``{tagName}`` is replaced with the name of the Tag you wish to remove from the Indicator:
 
 .. code::
 
     DELETE /v2/indicators/{indicatorType}/{indicator}/tags/{tagName}
 
-For example, the query below will delete the ``Nation State`` tag to the Email Address ``bad@example.com``:
+For example, the query below will delete the ``Nation State`` Tag to the Email Address ``bad@example.com``:
 
 .. code::
 
