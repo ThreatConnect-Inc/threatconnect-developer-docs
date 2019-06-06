@@ -39,7 +39,7 @@ JSON Response:
      }
     }
 
-XML Response:
+XML Response:  
 
 .. code:: xml
 
