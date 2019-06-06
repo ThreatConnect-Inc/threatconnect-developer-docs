@@ -10,7 +10,7 @@ To update a Group, the basic format is:
       {updatedField}: {updatedValue}
     }
 
-The ``{groupType}`` can be any one of the available group types:
+The ``{groupType}`` can be any one of the available Group types:
 
 - ``adversaries``
 - ``campaigns``
@@ -20,7 +20,7 @@ The ``{groupType}`` can be any one of the available group types:
 - ``signatures``
 - ``threats``
 
-When updating the fields on a Group itself, you can change any of the fields available for the type of Group you are updating. Below is a table of available fields for each Group type:
+When updating the fields on a Group, you can change any of the fields available for the type of Group you are updating. Below is a table of available fields for each Group type:
 
 .. include:: group_fields.rst
 
@@ -74,7 +74,7 @@ The ``Content-Type`` header must be set to ``application/octet-stream`` for this
     PUT /v2/groups/documents/12345/upload
     Content-Type: application/octet-stream
 
-    New document contents here.
+    New Document contents here.
 
 JSON Response:
 
@@ -90,7 +90,7 @@ Update Group Metadata
 Update Group Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-To update a Group's attribute, use the following format:
+To update a Group's Attribute, use the following format:
 
 .. code::
 
@@ -99,7 +99,7 @@ To update a Group's attribute, use the following format:
       {updatedField}: {updatedValue}
     }
 
-When updating attributes, you can change the following fields:
+When updating Attributes, you can change the following fields:
 
 +----------------------------+----------+
 | Updatable Attribute Fields | Required |
@@ -111,7 +111,7 @@ When updating attributes, you can change the following fields:
 | source                     | FALSE    |
 +----------------------------+----------+
 
-For example, if you wanted to update the value of an attribute with ID 54321 on the threat with ID 12345, you would use the following query:
+For example, if you wanted to update the value of an Attribute with ID 54321 on the Threat with ID 12345, you would use the following query:
 
 .. code::
 
@@ -150,7 +150,7 @@ To update an Adversary's Asset, use the following format:
       {updatedField}: {updatedValue}
     }
 
-``{assetType}`` can be replaced with the following asset types:
+``{assetType}`` can be replaced with the following Asset types:
 
 * handles
 * phoneNumbers
