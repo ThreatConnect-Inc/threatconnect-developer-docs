@@ -18,34 +18,34 @@ The Batch Create resource creates a batch entry in the system. No batch processi
 +=====================+=================+==================================================================================================================================+
 | haltOnError         | true            | Batch process stops processing entire batch first time it reaches an error during processing.                                    |
 +---------------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------+
-|                     | false (default) | If field not provided, default behavior continues processing further entities in input file.                                     |
+|                     | false (default) | If field not provided, default behavior continues processing further entities in input file.                                      |
 +---------------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------+
-| attributeWriteType  | Append          | Adds attributes (allow duplicates)                                                                                               |
+| attributeWriteType  | Append          | Adds Attributes (allow duplicates)                                                                                                |
 +---------------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------+
 |                     | Replace         | Deletes current Attributes; Adds/Validates new Attributes                                                                        |
 +---------------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------+
 | action              | Create          | Creates Indicator                                                                                                                |
 +---------------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------+
-|                     | Delete          | Deletes Indicator (only the ‘summary’ and ‘type’ field are required)                                                             |
+|                     | Delete          | Deletes Indicator (Only the ‘summary’ and ‘type’ field are required.)                                                             |
 +---------------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------+
 | fileMergeMode       | Distribute      | Rating, Confidence, Tags, Attributes, etc., from incoming file hashes are applied to all matching Indicators (up to 3 possible). |
 +---------------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------+
 |                     | Merge           | Combines multiple Indicators into one                                                                                            |
 +---------------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------+
-| hashCollisionMode   | Split           | Inhibits a merge and instead splits the incoming data out across any offending Indicators                                        |
+| hashCollisionMode   | Split           | Inhibits a merge and, instead, splits the incoming data out across any offending Indicators                                      |
 +---------------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------+
-|                     | IgnoreIncoming  | Drops incoming Indicator from the import, leaving pre-existing data same as it was before importing offending Indicator          |
+|                     | IgnoreIncoming  | Drops incoming Indicator from the import, leaving pre-existing data same as it was before importing offending Indicator      |
 +---------------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------+
-|                     | IgnoreExisting  | If conflict exists between two or more existing Indicators, existing file Indicators that caused conflict are deleted.           |
+|                     | IgnoreExisting  | If conflict exists between two or more existing Indicators, existing file Indicators that caused conflict are deleted.       |
 +---------------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------+
 |                     | FavorIncoming   | Favors hashes in incoming data, overwriting hashes that conflicted within existing data                                          |
 +---------------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------+
-|                     | FavorExisting   | Favors hashes in existing data, ignoring hashes that conflicted from incoming data                                               |
+|                     | FavorExisting   | Favors hashes in existing data, ignoring hashes that conflicted from incoming data                                                |
 +---------------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------+
 
 .. note:: If ``haltOnError`` is set to ‘true’ and an error occurs, then the status will be set to ‘Completed’, and ‘errorCount’ will be greater than zero. The ‘unprocessedCount’ field will be greater than zero, unless the uploaded file did not contain valid JSON.
 
-.. note:: Occasionally, imported File Indicators may overlap one or more hashes with other File Indicators already present within the system. In the typical situation, either the incoming data or the existing data will contain additional hash type[s] that the other item did not have (e.g., incoming data has both an md5 and sha1, while the existing data has only the md5, or vice versa). In this typical situation, the resulting File Indicator will end up with the "superset" of file hashes by either retaining the existing hash[es] or adding in the new hash[es]. However, certain non-typical situations may exist that require special processing when incoming file hash[es] cause conflicts with existing data (e.g., incoming data has an md5 and sha1, while the existing data has the same md5 but a different sha1). The behavior in situations like these are controlled by the ``fileMergeMode`` and ``hashCollisionMode`` parameters defined in the above table.
+.. note:: Occasionally, imported File Indicators may overlap one or more hashes with other File Indicators already present within the system. In the typical situation, either the incoming data or the existing data will contain additional hash type[s] that the other item did not have (e.g., Incoming data has both an md5 and sha1, while the existing data has only the md5, or vice versa). In this typical situation, the resulting File Indicator will end up with the "superset" of file hashes by either retaining the existing hash[es] or adding in the new hash[es]. However, certain non-typical situations may exist that require special processing when incoming file hash[es] cause conflicts with existing data (e.g., Incoming data has an md5 and sha1, while the existing data has the same md5 but a different sha1). The behavior in situations like these are controlled by the ``fileMergeMode`` and ``hashCollisionMode`` parameters defined in the above table.
 
 Batch Indicator Input File Format
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -130,7 +130,7 @@ Supported ``type`` values for Indicators:
 
 .. note:: Exporting indicators via the `JSON Bulk Reports <https://docs.threatconnect.com/en/latest/rest_api/indicators/indicators.html#json-bulk-reports>`__ endpoint will create a file in this format.
 
-.. warning:: The maximum number of indicators which can be created in one batch job is 25,000. If you need to create more than this, you will have to use multiple batch jobs.
+.. warning:: The maximum number of Indicators that can be created in one batch job is 25,000. If you need to create more Indicators, you will have to use multiple batch jobs.
 
 **Sample Batch Create request**
 
@@ -177,7 +177,7 @@ Supported ``type`` values for Indicators:
 
 **Sample Batch Upload Input File request**
 
-Batch files should be sent as HTTP POST data to a REST endpoint, including the relevant ``batchId`` as shown in the format below.
+Batch files should be sent as HTTP POST data to a REST endpoint, including the relevant ``batchId``, as shown in the format below.
 
 .. code::
 
@@ -213,7 +213,7 @@ For example:
 
 **Sample Batch Status Check request**
 
-Use this request to check the status of a running batch upload job. Possible GET response statuses are:
+Use this request to check the status of a running batch-upload job. Possible GET response statuses are:
 
 -  Created
 -  Queued
