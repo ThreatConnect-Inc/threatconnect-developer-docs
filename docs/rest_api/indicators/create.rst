@@ -12,7 +12,7 @@ To create an Indicator, the most basic format is:
       // required fields here...
     }
 
-The following are all considered valid paths for creating indicators:
+The following are all considered valid paths for creating Indicators:
 
 .. code::
 
@@ -95,7 +95,7 @@ Indicator Fields
 
 .. note:: The activeLocked field only prevents CAL from updating the status.
 
-.. hint:: If you are unable to create an Indicator, check out some `Common Indicator Creation Errors <https://docs.threatconnect.com/en/latest/common_errors.html#creating-indicators>`__.
+.. hint:: If you are unable to create an Indicator, view some `Common Indicator Creation Errors <https://docs.threatconnect.com/en/latest/common_errors.html#creating-indicators>`__.
 
 Create Address Indicators
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -217,7 +217,7 @@ JSON Response:
       }
     }
 
-.. note:: A File Indicator requires only one, valid hash. It can be an md5, sha1, or sha256 (or any combination thereof).
+.. note:: A File Indicator requires only one, valid hash. It can be an md5, sha1, or sha256 hash, or any combination thereof.
 
 Create Host Indicators
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -304,7 +304,7 @@ Create a Custom Indicator
 
 To create a Custom Indicator in ThreatConnect:
 
-1. Use the `available Indicator types <#retrieve-available-indicator-types>`_ to identify the ``apiBranch`` and required fields (usually titled like ``value1Label``, ``value2Label``, etc) for the Indicator type you would like to create.
+1. Use the `available Indicator types <#retrieve-available-indicator-types>`_ to identify the ``apiBranch`` and required fields (usually titled ``value1Label``, ``value2Label``, etc) for the Indicator type you would like to create.
 2. Make a POST request in the format below with a body containing the required key-value pairs.
 
 .. code::
@@ -318,13 +318,13 @@ To create a Custom Indicator in ThreatConnect:
       ...
     }
 
-For example, let's walk through the process of creating a Registry Key via API. Step one is use the `available Indicator types <#retrieve-available-indicator-types>`_ to identify the ``apiBranch``  and required values we need to create the Registry Key Indicator. To get this information, we will make the following request:
+For example, to create a Registry Key via API, you would first use the `available Indicator types <#retrieve-available-indicator-types>`_ to identify the ``apiBranch`` and required values needed to create the Registry Key Indicator. To get this information, make the following request:
 
 .. code::
 
     GET /v2/types/indicatorTypes
 
-From this, we find the entry for Registry Keys:
+From this, find the entry for Registry Keys:
 
 .. code:: json
 
@@ -352,7 +352,7 @@ The ``apiBranch`` for Registry Keys is ``registryKeys`` and each Registry Key re
 * ``Value Name`` - text
 * ``Value Type`` - One of the following: REG_NONE, REG_BINARY, REG_DWORD, REG_DWORD_LITTLE_ENDIAN, REG_DWORD_BIG_ENDIAN, REG_EXPAND_SZ, REG_LINK, REG_MULTI_SZ, REG_QWORD, REG_QWORD_LITTLE_ENDIAN, or REG_SZ
 
-This allows us to create the following POST request to create a new Registry Key:
+This allows you to create the following POST request to create a new Registry Key:
 
 .. code::
 
@@ -422,12 +422,12 @@ JSON Response:
       }
     }
 
-.. note:: There can only be one false positive reported per user, per Indicator, per day. In other words, you can only use your API user to report a false positive for a given indicator once per day.
+.. note:: There can only be one false positive reported per user, per Indicator, per day. In other words, your API user can only report a false positive for a given Indicator once per day.
 
 Add Indicator Observations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To add observations to an Indicator, use a request in the following format:
+To add Observations to an Indicator, use a request in the following format:
 
 .. code::
 
@@ -438,7 +438,7 @@ To add observations to an Indicator, use a request in the following format:
       "count" : 10
     }
 
-For example, the following query will report two observations for the File Indicator ``AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA``:
+For example, the following query will report two Observations for the File Indicator ``AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA``:
 
 .. code::
 
@@ -460,7 +460,7 @@ JSON Response:
 Create Indicator Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To add an attribute to an Indicator, use the following format:
+To add an Attribute to an Indicator, use the following format:
 
 .. code::
 
@@ -473,7 +473,7 @@ To add an attribute to an Indicator, use the following format:
       "displayed" : true
     }
 
-For example, if you wanted to add a Description attribute to the Email Address ``bad@example.com``, you would use the following query:
+For example, to add a Description Attribute to the Email Address ``bad@example.com``, you would use the following query:
 
 .. code::
 
@@ -504,24 +504,24 @@ JSON Response:
       }
     }
 
-To add a Security Label to an attribute, use the following format where ``{securityLabel}`` is replaced with the name of a Security Label that already exists in the owner:
+To add a Security Label to an Attribute, use the following format, where ``{securityLabel}`` is replaced with the name of a Security Label that already exists in the Owner:
 
 .. code::
 
     POST /v2/indicators/{indicatorType}/{indicator}/attributes/{attributeId}/securityLabels/{securityLabel}
 
-For example, the query below will add a ``TLP Amber`` Security Label to the attribute on the Threat:
+For example, the query below will add a ``TLP Amber`` Security Label to the Attribute on the Threat:
 
 .. code::
 
     POST /v2/indicators/emailAddresses/bad@example.com/attributes/54321/securityLabels/TLP%20Amber
 
-.. note:: In order to add a Security Label to an attribute, the Security Label must already exist. The query above will not create a new Security Label. If you specify a Security Label that does not exist, it will return an error.
+.. note:: In order to add a Security Label to an Attribute, the Security Label must already exist. The query above will not create a new Security Label. If you specify a Security Label that does not exist, it will return an error.
 
 Create Indicator Security Labels
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To add a Security Label to an Indicator, use the following format where ``{securityLabel}`` is replaced with the name of a Security Label that already exists in the owner:
+To add a Security Label to an Indicator, use the following format, where ``{securityLabel}`` is replaced with the name of a Security Label that already exists in the Owner:
 
 .. code::
 
@@ -548,13 +548,13 @@ JSON Response:
 Create Indicator Tags
 ^^^^^^^^^^^^^^^^^^^^^
 
-To add a tag to an Indicator, use the following format where ``{tagName}`` is replaced with the name of the tag you wish to add to the Indicator:
+To add a Tag to an Indicator, use the following format, where ``{tagName}`` is replaced with the name of the Tag you wish to add to the Indicator:
 
 .. code::
 
     POST /v2/indicators/{indicatorType}/{indicator}/tags/{tagName}
 
-For example, the query below will add the ``Nation State`` tag to the Email Address ``bad@example.com``:
+For example, the query below will add the ``Nation State`` Tag to the Email Address ``bad@example.com``:
 
 .. code::
 
