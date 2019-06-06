@@ -6,7 +6,7 @@ Attributes are key/value data sets that can be added to any Group, Indicator, Ta
 Retrieving Attributes
 ---------------------
 
-The general formats for retrieving the attributes on an item are:
+The general formats for retrieving the Attributes on an item are:
 
 - Groups: ``GET /v2/groups/{groupType}/{groupId}/attributes``
 - Indicators: ``GET /v2/indicators/{indicatorType}/{indicator}/attributes``
@@ -26,7 +26,7 @@ Attributes API paths will display XID when includes=additional or includeAdditio
 Adding Attributes
 -----------------
 
-The general formats for adding attributes on items are:
+The general formats for adding Attributes on items are:
 
 - Groups: ``POST /v2/groups/{groupType}/{groupId}/attributes``
 - Indicators: ``POST /v2/indicators/{indicatorType}/{indicator}/attributes``
@@ -52,7 +52,7 @@ The body of the POST request can contain the following fields:
 Retrieving Available Attributes
 ---------------------------------
 
-All of the available Attributes can be viewed by making a ``GET`` request to ``/v2/types/attributeTypes``. This will return the name of the attribute. Note that this branch also supports the following filters: owner, system, allowMarkdown, and maxLength. To return an Attribute type:
+All of the available Attributes can be viewed by making a ``GET`` request to ``/v2/types/attributeTypes``. This will return the name of the Attribute. Note that this branch also supports the following filters: owner, system, allowMarkdown, and maxLength. To return an Attribute type:
 
 .. code::
 
