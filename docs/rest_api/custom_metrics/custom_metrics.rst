@@ -1,7 +1,7 @@
 Custom Metrics
 ==============
 
-As of ThreatConnect 5.4, it is possible to create Custom Metrics which can be used to monitor and track important data points. A card for Custom Metrics can be created on the `ThreatConnect dashboard <http://kb.threatconnect.com/customer/en/portal/articles/2092053-dashboard>`_ to show the value(s) of a Metric. This documentation will detail how to retrieve, create, and delete Custom Metrics via the API.
+As of ThreatConnect 5.4, it is possible to create Custom Metrics which can be used to monitor and track important data points. A card for Custom Metrics can be created on the `ThreatConnect dashboard <http://kb.threatconnect.com/customer/en/portal/articles/2092053-dashboard>`_ to show the value(s) of a metric. This documentation will detail how to retrieve, create, and delete Custom Metrics via the API.
 
 Retrieving Custom Metrics
 -------------------------
@@ -56,7 +56,7 @@ Or, alternatively, you can use the ID of the metric to get the same result:
 Creating a Custom Metric
 ------------------------
 
-To create a new custom metric, use a query in the following format:
+To create a new Custom Metric, use a query in the following format:
 
 .. code::
 
@@ -173,7 +173,7 @@ When creating a new entry in a metric, it is possible to view the current value 
       "weight": "{weight}" //optional and only needed for average
     }
 
-Here is a notional example that keeps track of how many tasks have been closed. The query below will add two to the ``tasksCompleted`` metric *and* will return the updated value of the metric:
+THe following is a notional example that keeps track of how many tasks have been closed. The query below will add two to the ``tasksCompleted`` metric *and* will return the updated value of the metric:
 
 .. code::
 
