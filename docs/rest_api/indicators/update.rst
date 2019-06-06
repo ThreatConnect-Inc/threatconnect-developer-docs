@@ -11,7 +11,7 @@ To update an Indicator, the basic format is:
     }
 
 
-When updating the fields on an Indicator itself, you can change any of the fields available for the type of Indicator you are updating except the field that sets the indicator itself. Below is a table of available fields for each Indicator type:
+When updating the fields on an Indicator, you can change any of the fields available for the type of Indicator you are updating, except the field that sets the Indicator. Below is a table of available fields for each Indicator type:
 
 +----------------+--------------+----------+
 | Indicator Type | Valid Fields | Required |
@@ -43,7 +43,7 @@ When updating the fields on an Indicator itself, you can change any of the field
 |                | confidence   | FALSE    |
 +----------------+--------------+----------+
   
-By way of example, the query below will update the threat and confidence rating of the Email Address ``bad@example.com``:
+For example, the query below will update the Threat and Confidence Rating of the Email Address ``bad@example.com``:
 
 .. code::
 
@@ -85,7 +85,7 @@ Update Indicator Metadata
 Update Indicator Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To update an Indicator's attributes, use the following format:
+To update an Indicator's Attributes, use the following format:
 
 .. code::
 
@@ -94,7 +94,7 @@ To update an Indicator's attributes, use the following format:
       {updatedField}: {updatedValue}
     }
 
-When updating attributes, you can change the following fields:
+When updating Attributes, you can change the following fields:
 
 +----------------------------+----------+
 | Updatable Attribute Fields | Required |
@@ -106,7 +106,7 @@ When updating attributes, you can change the following fields:
 | source                     | FALSE    |
 +----------------------------+----------+
 
-For example, if you wanted to update the value of an attribute with ID 54321 on the Email Address ``bad@example.com``, you would use the following query:
+For example, if you want to update the value of an Attribute with ID 54321 on the Email Address ``bad@example.com``, you would use the following query:
 
 .. code::
 
