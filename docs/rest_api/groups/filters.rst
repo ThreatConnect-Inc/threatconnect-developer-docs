@@ -42,7 +42,7 @@ The following query will return all Groups whose name is "Fancy" (``name=Fancy``
 
     GET /v2/groups/?filters=name%3DFancy
 
-For example, the following query will return all Groups that have been added since 2017-07-13 (``dateAdded>2017-07-13``):
+The following query will return all Groups that have been added since 2017-07-13 (``dateAdded>2017-07-13``):
 
 .. code::
 
@@ -69,7 +69,7 @@ The following query will return all Incidents that have an event date after 2017
 Owner Parameter
 """""""""""""""
 
-By default, all API calls will operate in the API user account's default organization. To specify a different owner, use the ``owner`` URL parameter like ``?owner={ownerName}``. For example, the following query will return all Incidents in the Common Community:
+By default, all API calls will operate in the API user account's default organization. To specify a different Owner, use the ``owner`` URL parameter as in ``?owner={ownerName}``. For example, the following query will return all Incidents in the Common Community:
 
 .. code::
 
