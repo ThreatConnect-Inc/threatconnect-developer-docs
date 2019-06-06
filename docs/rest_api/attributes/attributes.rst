@@ -75,7 +75,7 @@ Note that an "includes=validationRule" parameter returns the validationRule obje
 Updating Attributes
 -------------------
 
-The general formats for updating attributes on items are:
+The general formats for updating Attributes on items are:
 
 - Groups: ``PUT /v2/groups/{groupType}/{groupId}/attributes/{attributeId}``
 - Indicators: ``PUT /v2/indicators/{indicatorType}/{indicator}/attributes/{attributeId}``
@@ -97,7 +97,7 @@ The body of the PUT request can contain the following fields:
 Deleting Attributes
 -------------------
 
-The general formats for deleting attributes from items are:
+The general formats for deleting Attributes from items are:
 
 - Groups: ``DELETE /v2/groups/{groupType}/{groupId}/attributes/{attributeId}``
 - Indicators: ``DELETE /v2/indicators/{indicatorType}/{indicator}/attributes/{attributeId}``
