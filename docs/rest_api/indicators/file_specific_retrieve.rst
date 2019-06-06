@@ -29,7 +29,7 @@ JSON Response:
       }
     }
 
-To retrieve a specific File Occurrence, you can add the ID of the File Occurrence to the end of the query like:
+To retrieve a specific File Occurrence, you can add the ID of the File Occurrence to the end of the query:
 
 .. code::
 
