@@ -9,7 +9,7 @@ In ThreatConnect, some types of Indicators can be related with certain other typ
 Association
 ^^^^^^^^^^^
 
-An association allows two Indicators of certain types to be related to one another in the manner that Indicators can be associated to Groups. Below is a list of the Indicator-to-Indicator associations possible in the ThreatConnect Cloud, along with the Indicator types that can be associated with one another using each association.
+An Association allows two Indicators of certain types to be related to one another in the manner that Indicators can be associated to Groups. Below is a list of the Indicator-to-Indicator Associations possible in the ThreatConnect Cloud, along with the Indicator types that can be associated with one another using each Association.
 
 +-----------------------+-------------------------+------------------------+
 | Name                  | API Branch              | Indicators Associated  |
@@ -23,7 +23,7 @@ An association allows two Indicators of certain types to be related to one anoth
 | CIDR to Address       | ``/cidrToAddress``      | CIDR <-> Address       |
 +-----------------------+-------------------------+------------------------+
 
-To retrieve indicators associated with another indicator using a custom association, use a query in the following format:
+To retrieve Indicators associated with another Indicator using a custom Association, use a query in the following format:
 
 .. code::
 
@@ -85,7 +85,7 @@ asnToCidr Associations retrieve XML:
       </Data>
     </indicatorsResponse>
 
-To create an association between two Indicators, use the following POST request format:
+To create an Association between two Indicators, use the following POST request format:
 
 .. code::
 
@@ -128,7 +128,7 @@ A file action adds one Indicator to the behavior graph of a File Indicator. Belo
 | File DNS Query    | ``/dnsQuery``    | Host                                |
 +-------------------+------------------+-------------------------------------+
 
-To retrieve indicators associated with a file using a file action, use the following GET request format:
+To retrieve Indicators associated with a file using a file action, use the following GET request format:
 
 .. code::
 
