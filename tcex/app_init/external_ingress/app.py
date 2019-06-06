@@ -2,7 +2,7 @@
 """ThreatConnect Job App"""
 import csv
 
-# Import default Job Class (Required)
+# Import default External App Class (Required)
 from external_app import ExternalApp
 
 
