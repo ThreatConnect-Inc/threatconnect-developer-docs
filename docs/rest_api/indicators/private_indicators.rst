@@ -48,7 +48,7 @@ JSON Response:
       }
     }
 
-Creating Private Indicators
+Creating Private Indicators 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To mark an Indicator as private when creating it, add the following key-value pair to the body of the POST query used to create the Indicator:
