@@ -93,6 +93,6 @@
 * CybOX™
 * Bro
 * Regex
-* Splunk ® Search Processing Language (SPL)
+* Splunk® Search Processing Language (SPL)
 
 \*\* A Signature’s fileText field contains the Signature itself, which must be properly escaped and encoded when submitting for creation or updating.
