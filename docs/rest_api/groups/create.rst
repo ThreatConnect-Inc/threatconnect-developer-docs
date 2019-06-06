@@ -12,7 +12,7 @@ To create a Group, the most basic format is:
       "name": "Test Group"
     }
 
-The ``{groupType}`` can be any one of the available group types:
+The ``{groupType}`` can be any one of the available Group types:
 
 - ``adversaries``
 - ``campaigns``
@@ -25,7 +25,7 @@ The ``{groupType}`` can be any one of the available group types:
 - ``signatures``
 - ``threats``
 
-Some group types require additional fields when being created. Refer to the table below for the fields required to create each group type:
+Some Group types require additional fields when being created. Refer to the table below for the fields required to create each Group type:
 
 Group Fields
 ^^^^^^^^^^^^
@@ -75,7 +75,7 @@ If you are creating a Document in ThreatConnect that is a malware sample, refer 
 Creating a Malware Document
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To create a document that can be uploaded into `ThreatConnect's Malware Vault <http://kb.threatconnect.com/customer/en/portal/articles/2171402-uploading-malware>`_ via API, include the ``malware`` and ``password`` fields when creating the document as shown below.
+To create a Document that can be uploaded into `ThreatConnect's Malware Vault <http://kb.threatconnect.com/customer/en/portal/articles/2171402-uploading-malware>`_ via API, include the ``malware`` and ``password`` fields when creating the Document as shown below.
 
 .. code::
 
@@ -92,14 +92,14 @@ To create a document that can be uploaded into `ThreatConnect's Malware Vault <h
 To upload a malware sample as a Document, the following steps must be taken:
 
 -  Create a `password-protected zip file <https://askubuntu.com/questions/17641/create-encrypted-password-protected-zip-file>`__ on your local machine containing the sample.
--  Create a new Document Group including the additional fields ``malware`` set to True and ``password`` set to the zip file's password.
+-  Create a new Document Group, including the additional fields ``malware`` set to True and ``password`` set to the zip file's password.
 - `Upload the Document contents <https://docs.threatconnect.com/en/latest/rest_api/groups/groups.html#update-document-contents>`_ .
 
-.. note:: The API will validate that the malware document is a password-protected zip file.
+.. note:: The API will validate that the malware Document is a password-protected zip file.
 
-.. warning:: Uploading raw malware executables or weaponized documents is strictly forbidden.
+.. warning:: Uploading raw malware executables or weaponized Documents is strictly forbidden.
 
-For malware uploads, An ``HTTP 400 - Bad Request`` error will be returned if the document is not a password-protected zip file (as determined by file headers).
+For malware uploads, An ``HTTP 400 - Bad Request`` error will be returned if the Document is not a password-protected zip file (as determined by file headers).
 
 Create Group Metadata
 ---------------------
@@ -107,7 +107,7 @@ Create Group Metadata
 Create Group Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-To add an attribute to a Group, use the following format:
+To add an Attribute to a Group, use the following format:
 
 .. code::
 
@@ -120,7 +120,7 @@ To add an attribute to a Group, use the following format:
       "displayed" : true
     }
 
-For example, if you wanted to add a Description attribute to the threat with the ID 12345, you would use the following query:
+For example, if you wanted to add a Description Attribute to the threat with the ID 12345, you would use the following query:
 
 .. code::
 
@@ -151,24 +151,24 @@ JSON Response:
       }
     }
 
-To add a Security Label to an attribute, use the following format where ``{securityLabel}`` is replaced with the name of a Security Label that already exists in the owner:
+To add a Security Label to an Attribute, use the following format, where ``{securityLabel}`` is replaced with the name of a Security Label that already exists in the Owner:
 
 .. code::
 
     POST /v2/groups/{groupType}/{groupId}/attributes/{attributeId}/securityLabels/{securityLabel}
 
-For example, the query below will add a ``TLP Amber`` Security Label to the attribute on the Threat:
+For example, the query below will add a ``TLP Amber`` Security Label to the Attribute on the Threat:
 
 .. code::
 
     POST /v2/groups/threats/12345/attributes/54321/securityLabels/TLP%20Amber
 
-.. note:: In order to add a Security Label to an attribute, the Security Label must already exist. The query above will not create a new Security Label. If you specify a Security Label that does not exist, it will return an error.
+.. note:: In order to add a Security Label to an Attribute, the Security Label must already exist. The query above will not create a new Security Label. If you specify a Security Label that does not exist, it will return an error.
 
 Create Group Security Labels
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To add a Security Label to a Group, use the following format where ``{securityLabel}`` is replaced with the name of a Security Label that already exists in the owner:
+To add a Security Label to a Group, use the following format, where ``{securityLabel}`` is replaced with the name of a Security Label that already exists in the Owner:
 
 .. code::
 
@@ -195,13 +195,13 @@ JSON Response:
 Create Group Tags
 ^^^^^^^^^^^^^^^^^
 
-To add a tag to a Group, use the following format where ``{tagName}`` is replaced with the name of the tag you wish to add to the Group:
+To add a Tag to a Group, use the following format where ``{tagName}`` is replaced with the name of the Tag you wish to add to the Group:
 
 .. code::
 
     POST /v2/groups/{groupType}/{groupId}/tags/{tagName}
 
-For example, the query below will add the ``Nation State`` tag to the Threat with ID 12345:
+For example, the query below will add the ``Nation State`` Tag to the Threat with ID 12345:
 
 .. code::
 
@@ -228,7 +228,7 @@ To create an Adversary Asset for an Adversary, use a query in the following form
 
     POST /v2/groups/adversaries/{adversaryId}/adversaryAssets/{assetType}
 
-``{assetType}`` can be replaced with the following asset types:
+``{assetType}`` can be replaced with the following Asset types:
 
 * handles
 * phoneNumbers
