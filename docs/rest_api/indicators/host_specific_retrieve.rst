@@ -1,13 +1,13 @@
 Retrieving Host DNS Resolutions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Example of DNS History request for a Host within an Organization:
+Example of a DNS History request for a Host within an Organization:
 
 .. code::
 
     GET /v2/indicators/hosts/example.com/dnsResolutions
 
-Example of DNS History request for a Host within a Community:
+Example of a DNS History request for a Host within a Community:
 
 .. code::
 
