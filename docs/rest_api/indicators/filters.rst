@@ -1,7 +1,7 @@
 Filtering Indicators
 ^^^^^^^^^^^^^^^^^^^^
 
-Filters Parameter
+Filter Parameters
 """""""""""""""""
 
 When retrieving Indicators from ThreatConnect, it is possible to filter the results. Results can be filtered on the following data points:
@@ -96,14 +96,14 @@ The example below demonstrates usage of the whoisActive parameter:
 
     GET /v2/indicators/hosts?filters=whoisActive%3Dtrue
 
-The example below demonstrates usage multiple parameters (with implicit
+The example below demonstrates the use of multiple parameters (with implicit
 AND):
 
 .. code::
 
     GET /v2/indicators?filters=summary%3Dexample.com,dateAdded%3C2015-10-15
 
-The example below demonstrates usage multiple parameters (with
+The example below demonstrates the use of multiple parameters (with
 parameters OR’ed):
 
 .. code::
@@ -119,7 +119,7 @@ The example below demonstrates how to filter based on the number of times an Ind
 Owner Parameter
 """""""""""""""
 
-By default, all API calls will operate in the API user account's default organization. To specify a different owner, use the ``owner`` URL parameter like ``?owner={ownerName}``. For example, the following query will return all Host Indicators in the Common Community:
+By default, all API calls will operate in the API user account's default Organization. To specify a different Owner, use the ``owner`` URL parameter as in ``?owner={ownerName}``. For example, the following query will return all Host Indicators in the Common Community:
 
 .. code::
 
@@ -128,7 +128,7 @@ By default, all API calls will operate in the API user account's default organiz
 Modified Since Parameter
 """"""""""""""""""""""""
 
-To prevent the ThreatConnect API from returning an entire result-set, limit the scope of the query based on the ``modifiedSince`` parameter. This query requires an ISO 8601 date-stamp (as shown in the examples below) and will only return Indicators whose lastModified field contains a value on or after the date specified.
+To prevent the ThreatConnect API from returning an entire result set, limit the scope of the query based on the ``modifiedSince`` parameter. This query requires an ISO 8601 date-stamp (as shown in the examples below) and will only return Indicators whose lastModified field contains a value on or after the date specified.
 
 The following actions update an Indicator’s lastModified field:
 
@@ -137,13 +137,13 @@ The following actions update an Indicator’s lastModified field:
 * Changing the Indicator’s threat rating
 * Changing the Indicator’s confidence rating.
 
-The example below demonstrates usage of the modifiedSince parameter:
+The example below demonstrates the use of the modifiedSince parameter:
 
 .. code::
 
     GET /v2/indicators?modifiedSince=2017-08-21T12:00:00Z
 
-The example below demonstrates usage of the modifiedSince parameter and
+The example below demonstrates the use of the modifiedSince parameter and
 an additional parameter:
 
 .. code::
