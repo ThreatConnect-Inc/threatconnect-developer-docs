@@ -6,7 +6,7 @@ Retrieve Groups
 Retrieve All Groups
 ^^^^^^^^^^^^^^^^^^^
 
-To retrieve groups of all types, use the following query:
+To retrieve Groups of all types, use the following query:
 
 .. code::
 
@@ -44,13 +44,13 @@ JSON Response:
 Retrieve Multiple Groups
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-To retrieve multiple groups of a certain type, use a query in the following format:
+To retrieve multiple Groups of a certain type, use a query in the following format:
 
 .. code::
 
     GET /v2/groups/{groupType}
 
-The ``{groupType}`` can be any one of the available group types:
+The ``{groupType}`` can be any one of the available Group types:
 
 - ``adversaries``
 - ``campaigns``
@@ -63,7 +63,7 @@ The ``{groupType}`` can be any one of the available group types:
 - ``signatures``
 - ``threats``
   
-For example, the query below will retrieve a list of all incidents in the default owner:
+For example, the query below will retrieve a list of all Incidents in the default owner:
 
 .. code::
 
@@ -107,7 +107,7 @@ To retrieve a single Group, use a query in the following format:
 
     GET /v2/groups/{groupType}/{groupId}
 
-For example, if you wanted to retrieve the threat with the ID 12345, you would use the following query:
+For example, if you want to retrieve the Threat with the ID 12345, you would use the following query:
 
 .. code::
 
@@ -170,7 +170,7 @@ To retrieve a Group's Attributes, use the following format:
 
     GET /v2/groups/{groupType}/{groupId}/attributes
 
-For example, if you wanted to retrieve the attributes on the threat with the ID 12345, you would use the following query:
+For example, if you want to retrieve the Attributes on the Threat with the ID 12345, you would use the following query:
 
 .. code::
 
@@ -346,7 +346,7 @@ To retrieve Adversary Assets of a particular type, use a query in the following 
 
     GET /v2/groups/adversaries/{adversaryId}/adversaryAssets/{assetType}
 
-``{assetType}`` can be replaced with the following asset types:
+``{assetType}`` can be replaced with the following Asset types:
 
 * handles
 * phoneNumbers
@@ -456,13 +456,13 @@ Replace ``{associatedGroupType}`` with one of the following Group types:
 - ``signatures``
 - ``threats``
 
-For example, we could use the following query to find all Incidents associated with the Threat with ID 12345:
+For example, you could use the following query to find all Incidents associated with the Threat with ID 12345:
 
 .. code::
 
     GET /v2/groups/threats/12345/groups/incidents
 
-We can also drill down even further by adding the ID of an associated Group to the end of the query like:
+You can also delve further by adding the ID of an associated Group to the end of the query:
 
 .. code::
 
@@ -517,7 +517,7 @@ You can also find associated Indicators of a given type using the following form
 
     GET /v2/groups/{groupType}/{groupId}/indicators/{associatedIndicatorType}
 
-For example, we could use the following query to find all Address Indicators associated with the Threat with ID 12345:
+For example, you could use the following query to find all Address Indicators associated with the Threat with ID 12345:
 
 .. code::
 
@@ -573,13 +573,13 @@ The available Victim Asset types are:
 
 .. include:: ../_includes/victim_asset_types.rst
 
-For example, we could use the following query to find all Victim Assets that are Email Addresses which are associated with the Threat with ID 12345:
+For example, you could use the following query to find all Victim Assets that are Email Addresses that are associated with the Threat with ID 12345:
 
 .. code::
 
     GET /v2/groups/threats/12345/victimAssets/emailAddresses
 
-We can also drill down even further by adding the ID of an associated Victim Asset to the end of the query like:
+You can delve further by adding the ID of an associated Victim Asset to the end of the query:
 
 .. code::
 
@@ -621,7 +621,7 @@ JSON Response:
       }
     }
 
-We can also drill down even further by adding the ID of an associated Victim to the end of the query like:
+You can delve further by adding the ID of an associated Victim to the end of the query:
 
 .. code::
 
