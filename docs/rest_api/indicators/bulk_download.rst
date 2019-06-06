@@ -2,7 +2,7 @@ Bulk Indicator Reports
 -----------------------
 
 If retrieving all of the Indicators and their entire context (i.e.,
-tags, attributes, etc.) from a Source, then the above API calls can
+Tags, Attributes, etc.) from a Source, then the above API calls can
 become unwieldy and require a high volume of successive calls.
 ThreatConnect can be configured to publish a daily bulk report of all
 Indicators per Owner for Sources and Communities within the Graphical
@@ -65,13 +65,13 @@ Reports can be retrieved in JSON or CSV format. The JSON format will contain add
 JSON Bulk Reports
 """""""""""""""""
 
-To retrieve a JSON report for an owner, execute the query below, and include the Owner to be queried. The API will return the latest version of the JSON report with a content-type header of "application/json." The output is very similar to that returned by the Indicators Collection (e.g., in /v2/indicators), with the addition of Attributes and Tags where relevant.
+To retrieve a JSON report for an Owner, execute the query below, and include the Owner to be queried. The API will return the latest version of the JSON report with a content-type header of "application/json." The output is very similar to that returned by the Indicators Collection (e.g., in /v2/indicators), with the addition of Attributes and Tags where relevant.
 
 .. code::
 
     GET /v2/indicators/bulk/json?owner=Demo+Customer+Community
 
-.. note:: In order to retrieve a JSON report for an owner, the owner must have JSON Report publication enabled.
+.. note:: In order to retrieve a JSON report for an Owner, the Owner must have JSON Report publication enabled.
 
 Retrieving Bulk Reports JSON Response:
 
@@ -122,13 +122,13 @@ An optional URL parameter ``runNow=true`` can be added (as shown below) to force
 CSV Bulk Reports
 """"""""""""""""
 
-To retrieve a CSV report for an owner, execute the query below, and include the Owner to be queried. The API will return the latest CSV report with a content-type header of "text/csv." The report will contain all of the Indicators in that Owner and their Indicator Type. It will also include each Indicator’s Threat and Confidence ratings, if set, or null otherwise.
+To retrieve a CSV report for an Owner, execute the query below, and include the Owner to be queried. The API will return the latest CSV report with a content-type header of "text/csv." The report will contain all of the Indicators in that Owner and their Indicator Type. It will also include each Indicator’s Threat and Confidence ratings, if set, or null otherwise.
 
 .. code::
 
     GET /v2/indicators/bulk/csv?owner=Demo+Customer+Community
 
-.. note:: In order to retrieve a CSV report for an owner, the owner must have CSV Report publication enabled.
+.. note:: In order to retrieve a CSV report for an Owner, the Owner must have CSV Report publication enabled.
 
 The example below displays the output from a CSV report:
 
