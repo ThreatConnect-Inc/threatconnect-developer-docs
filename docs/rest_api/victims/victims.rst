@@ -1,7 +1,7 @@
 Victims
 =======
 
-Victims are used to describe a specific organization or group that has been targeted or whose assets have been exploited.
+Victims are used to describe a specific organization or group that has been targeted or whose Assets have been exploited.
 
 .. include:: retrieve.rst
 
