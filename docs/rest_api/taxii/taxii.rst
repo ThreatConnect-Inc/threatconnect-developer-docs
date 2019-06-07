@@ -1,7 +1,7 @@
 Taxii Services
 ==============
 
-In order to use the Taxii endpoints, you need to have a Taxii-user created in your Organization in ThreatConnect. If you need to do this, follow the instructions for `Creating a Taxii-user <http://kb.threatconnect.com/customer/en/portal/articles/2898876-creating-a-taxii-user>`_.
+To use Taxii endpoints, you need to have a Taxii user created in your ThreatConnect Organization. To do this, follow the instructions for `Creating a Taxii-user <http://kb.threatconnect.com/customer/en/portal/articles/2898876-creating-a-taxii-user>`_.
 
 ThreatConnect offers three Taxii Services:
 
