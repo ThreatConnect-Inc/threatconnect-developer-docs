@@ -1,7 +1,7 @@
 Filtering Security Labels
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When retrieving Security Labels from ThreatConnect, it is possible to filter the results on the following data points:
+When retrieving Security Labels from ThreatConnect, it is possible to filter the results on the following data points: 
 
 +--------+-----------+--------------+
 | Filter | Data Type | Operator(s)  |
