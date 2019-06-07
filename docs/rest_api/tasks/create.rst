@@ -1,7 +1,7 @@
 Create Tasks
 ------------
 
-To create a Task, the most basic format is:
+The most basic format used for crating a Task is:
 
 .. code::
 
@@ -12,7 +12,7 @@ To create a Task, the most basic format is:
       "name": "Test Task"
     }
 
-Some task types require additional fields when being created. Refer to the table below for the available fields for Tasks:
+Some Task types require additional fields when being created. Refer to the table below for the available fields for Tasks:
 
 +----------------+----------+------------------------------------------------+
 | Valid Fields   | Required | Example Value                                  |
@@ -30,7 +30,7 @@ Some task types require additional fields when being created. Refer to the table
 | description    | FALSE    | "Send to IR team for triage."                  |
 +----------------+----------+------------------------------------------------+
 
-By way of example, the query below will create a Task in the default owner with the name ``Test Task`` that is due on ``2017-07-13``:
+For example, the query below will create a Task in the default Owner with the name ``Test Task`` that is due on ``2017-07-13``:
 
 .. code::
 
@@ -64,7 +64,7 @@ JSON Response:
       }
     }
 
-The code below will do the same thing as above, but it will also assign the task to the user with the username ``johndoe@example.com``:
+The code below will function as the code above, but it will also assign the Task to the user with the username ``johndoe@example.com``:
 
 .. code::
 
@@ -110,7 +110,7 @@ JSON Response:
       }
     }
 
-The code below will do the same thing as above, but it will also assign the task to the two users whose usernames are ``johndoe@example.com`` and ``janedoe@example.com``:
+The code below will function as the code above, but it will also assign the Task to the two users whose usernames are ``johndoe@example.com`` and ``janedoe@example.com``:
 
 .. code::
 
@@ -130,7 +130,7 @@ The code below will do the same thing as above, but it will also assign the task
       ]
     }
 
-The code below will do the same thing as above, but instead of assigning the task to the users ``johndoe@example.com`` and ``janedoe@example.com``, it will assign the task to ``johndoe@example.com`` and set ``janedoe@example.com`` as the escalatee:
+The code below will function as the code above, but instead of assigning the Task to the users ``johndoe@example.com`` and ``janedoe@example.com``, it will assign the Task to ``johndoe@example.com`` and set ``janedoe@example.com`` as the escalatee:
 
 .. code::
 
@@ -171,7 +171,7 @@ To add an attribute to a Task, use the following format:
       "displayed" : true
     }
 
-For example, if you wanted to add a Description attribute to the Task with ID 12345, you would use the following query:
+For example, if you wanted to add a Description Attribute to the Task with ID 12345, you would use the following query:
 
 .. code::
 
@@ -202,24 +202,24 @@ JSON Response:
       }
     }
 
-To add a Security Label to an attribute, use the following format where ``{securityLabel}`` is replaced with the name of a Security Label that already exists in the owner:
+To add a Security Label to an Attribute, use the following format, where ``{securityLabel}`` is replaced with the name of a Security Label that already exists in the Owner:
 
 .. code::
 
     POST /v2/tasks/{taskId}/attributes/{attributeId}/securityLabels/{securityLabel}
 
-For example, the query below will add a ``TLP Amber`` Security Label to the attribute on the Task:
+For example, the query below will add a ``TLP Amber`` Security Label to the Attribute on the Task:
 
 .. code::
 
     POST /v2/tasks/12345/attributes/54321/securityLabels/TLP%20Amber
 
-.. note:: In order to add a Security Label to an attribute, the Security Label must already exist. The query above will not create a new Security Label. If you specify a Security Label that does not exist, it will return an error.
+.. note:: In order to add a Security Label to an Attribute, the Security Label must already exist. The query above will not create a new Security Label. If you specify a Security Label that does not exist, it will return an error.
 
 Create Task Security Labels
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To add a Security Label to a Task, use the following format where ``{securityLabel}`` is replaced with the name of a Security Label that already exists in the owner:
+To add a Security Label to a Task, use the following format, where ``{securityLabel}`` is replaced with the name of a Security Label that already exists in the Owner:
 
 .. code::
 
@@ -246,13 +246,13 @@ JSON Response:
 Create Task Tags
 ^^^^^^^^^^^^^^^^
 
-To add a Tag to a Task, use the following format where ``{tagName}`` is replaced with the name of the tag you wish to add to the Task:
+To add a Tag to a Task, use the following format, where ``{tagName}`` is replaced with the name of the Tag you wish to add to the Task:
 
 .. code::
 
     POST /v2/tasks/{taskId}/tags/{tagName}
 
-For example, the query below will add the ``Nation State`` tag to the Task with ID 12345:
+For example, the query below will add the ``Nation State`` Tag to the Task with ID 12345:
 
 .. code::
 
