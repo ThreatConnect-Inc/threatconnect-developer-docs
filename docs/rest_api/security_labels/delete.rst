@@ -10,7 +10,7 @@ Users can specify this JSON Response inside their Indicator or Group:
     "securityLabel": [{
             "name": "TLP:GREEN",
         }],
-The name can be any Security Label that already exists in the user's system. Users who wish to create a new Security Label (and have permission to do so), can provide the entire label definition as follows:
+The name can be any Security Label that already exists in the user's system. Users who wish to create a new Security Label (and have permission to do so), can provide the entire Label definition as follows:
 
 .. code::
 
@@ -45,4 +45,4 @@ JSON Response:
       "status": "Success"
     }
 
-As you would likely expect, deleting a Security Label via the API removes that Security Label from all Groups, Indicators, and Victims which had the deleted Security Label.
+Deleting a Security Label via the API removes that Security Label from all Groups, Indicators, and Victims which had the deleted Security Label.
