@@ -1,7 +1,7 @@
 Create Victims
 --------------
 
-To create a Victim, the most basic format is:
+The most basic format used to create a Victim is:
 
 .. code::
 
@@ -30,7 +30,7 @@ When creating a Victim, you can also add any of the fields listed below:
 | nationality  | FALSE    |
 +--------------+----------+
 
-By way of example, the query below will create a Victim in the default owner:
+For example, the query below will create a Victim in the default owner:
 
 .. code::
 
@@ -84,11 +84,11 @@ The available Victim Asset types are:
 
 .. include:: ../_includes/victim_asset_types.rst
 
-When creating a Victim Asset, there are certain fields that are required as detailed below:
+When creating a Victim Asset, there are certain fields that are required, as detailed below:
 
 .. include:: ../_includes/victim_asset_fields.rst
 
-For example, if you wanted to add a network account Victim Asset to a Victim with ID 12345, you would use the following query:
+For example, if you want to add a network account Victim Asset to a Victim with ID 12345, you would use the following query:
 
 .. code::
 
@@ -100,7 +100,7 @@ For example, if you wanted to add a network account Victim Asset to a Victim wit
       "network": "Active Directory"
     }
 
-In the case of networkAccounts or socialNetworks, the account specifies the value of the actual account and the network provides a classification for the network itself.
+In the case of networkAccounts or socialNetworks, the account specifies the value of the actual account, and the network provides a classification for the network itself.
 
 JSON Response:
 
@@ -138,7 +138,7 @@ To add an Attribute to a Victim, use the following format:
       "displayed" : true
     }
 
-For example, if you wanted to add a Description attribute to the Victim with ID 12345, you would use the following query:
+For example, if you want to add a Description Attribute to the Victim with ID 12345, you would use the following query:
 
 .. code::
 
@@ -169,24 +169,24 @@ JSON Response:
       }
     }
 
-To add a Security Label to an attribute, use the following format where ``{securityLabel}`` is replaced with the name of a Security Label that already exists in the owner:
+To add a Security Label to an Attribute, use the following format, where ``{securityLabel}`` is replaced with the name of a Security Label that already exists in the Owner:
 
 .. code::
 
     POST /v2/victims/{victimId}/attributes/{attributeId}/securityLabels/{securityLabel}
 
-For example, the query below will add a ``TLP Amber`` Security Label to the attribute on the Victim:
+For example, the query below will add a ``TLP Amber`` Security Label to the Attribute on the Victim:
 
 .. code::
 
     POST /v2/victims/12345/attributes/54321/securityLabels/TLP%20Amber
 
-.. note:: In order to add a Security Label to an attribute, the Security Label must already exist. The query above will not create a new Security Label. If you specify a Security Label that does not exist, it will return an error.
+.. note:: In order to add a Security Label to an Attribute, the Security Label must already exist. The query above will not create a new Security Label. If you specify a Security Label that does not exist, it will return an error.
 
 Create Victim Security Labels
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To add a Security Label to a Victim, use the following format where ``{securityLabel}`` is replaced with the name of a Security Label that already exists in the owner:
+To add a Security Label to a Victim, use the following format, where ``{securityLabel}`` is replaced with the name of a Security Label that already exists in the Owner:
 
 .. code::
 
@@ -213,13 +213,13 @@ JSON Response:
 Create Victim Tags
 ^^^^^^^^^^^^^^^^^^
 
-To add a tag to a Victim, use the following format where ``{tagName}`` is replaced with the name of the tag you wish to add to the Victim:
+To add a Tag to a Victim, use the following format, where ``{tagName}`` is replaced with the name of the Tag you wish to add to the Victim:
 
 .. code::
 
     POST /v2/victims/{victimId}/tags/{tagName}
 
-For example, the query below will add the ``Nation State`` tag to the Victim with ID 12345:
+For example, the query below will add the ``Nation State`` Tag to the Victim with ID 12345:
 
 .. code::
 
