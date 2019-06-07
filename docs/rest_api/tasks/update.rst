@@ -1,7 +1,7 @@
 Update Tasks
 -------------
 
-To update a Task, the basic format is:
+The basic format used to update a Task is:
 
 .. code::
 
@@ -10,7 +10,7 @@ To update a Task, the basic format is:
       {updatedField}: {updatedValue}
     }
 
-When updating the fields on a Task itself, you can change any of the following fields:
+When updating the fields on a Task, you can change any of the following fields:
 
 +--------------+------------------------------------------------+
 | Valid Fields | Example Value                                  |
@@ -30,7 +30,7 @@ When updating the fields on a Task itself, you can change any of the following f
 
 .. include:: ../_includes/task_statuses.rst
 
-By way of example, the query below will update the name and due date of the Task with ID 12345:
+For example, the query below will update the name and due date of the Task with ID 12345:
 
 .. code::
 
@@ -68,7 +68,7 @@ Update Task Metadata
 Update Task Attributes
 ^^^^^^^^^^^^^^^^^^^^^^
 
-To update a Task's attribute, use the following format:
+To update a Task's Attributse, use the following format:
 
 .. code::
 
@@ -77,7 +77,7 @@ To update a Task's attribute, use the following format:
       {updatedField}: {updatedValue}
     }
 
-When updating attributes, you can change the following fields:
+When updating Attributes, you can change the following fields:
 
 +----------------------------+----------+
 | Updatable Attribute Fields | Required |
@@ -89,7 +89,7 @@ When updating attributes, you can change the following fields:
 | source                     | FALSE    |
 +----------------------------+----------+
 
-For example, if you wanted to update the value of an attribute with ID 54321 on the Task with ID 12345, you would use the following query:
+For example, if you wanted to update the value of an Attribute with ID 54321 on the Task with ID 12345, you would use the following query:
 
 .. code::
 
