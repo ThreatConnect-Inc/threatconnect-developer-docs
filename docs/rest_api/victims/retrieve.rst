@@ -44,7 +44,7 @@ To retrieve a single Victim, use a query in the following format:
 
     GET /v2/victims/{victimId}
 
-For example, if you wanted to retrieve the Victim with ID 12345, you would use the following query:
+For example, if you want to retrieve the Victim with ID 12345, you would use the following query:
 
 .. code::
 
@@ -82,7 +82,7 @@ To retrieve a Victim's Attributes, use the following format:
 
     GET /v2/victims/{victimId}/attributes
 
-For example, if you wanted to retrieve the attributes on the Victim with ID 12345, you would use the following query:
+For example, if you want to retrieve the Attributes on the Victim with ID 12345, you would use the following query:
 
 .. code::
 
@@ -117,7 +117,7 @@ JSON Response:
       }
     }
 
-To retrieve the Security Labels that are on an attribute, use the following format:
+To retrieve the Security Labels that are on an Attribute, use the following format:
 
 .. code::
 
@@ -140,7 +140,7 @@ JSON Response:
         "securityLabel": [
           {
             "name": "TLP Amber",
-            "description": "TLP Amber information requires support to be effectively acted upon, yet carries risks to privacy, reputation, or operations if shared outside of the organizations involved.",
+            "description": "TLP Amber information requires support to be effectively acted upon, yet carries risks to privacy, reputation, or operations if shared outside of the Organizations involved.",
             "dateAdded": "2017-07-13T17:50:17"
           }
         ]
@@ -173,7 +173,7 @@ JSON Response:
         "securityLabel": [
           {
             "name": "TLP Amber",
-            "description": "TLP Amber information requires support to be effectively acted upon, yet carries risks to privacy, reputation, or operations if shared outside of the organizations involved.",
+            "description": "TLP Amber information requires support to be effectively acted upon, yet carries risks to privacy, reputation, or operations if shared outside of the Organizations involved.",
             "dateAdded": "2017-07-13T17:50:17"
           }
         ]
@@ -261,13 +261,13 @@ Replace ``{associatedGroupType}`` with one of the following Group types:
 
 .. include:: ../_includes/group_types.rst
 
-For example, we could use the following query to find all Incidents associated with the Victim with ID 12345:
+For example, you could use the following query to find all Incidents associated with the Victim with ID 12345:
 
 .. code::
 
     GET /v2/victims/12345/groups/incidents
 
-We can also drill down even further by adding the ID of an associated Victim to the end of the query like:
+You can delve further by adding the ID of an associated Victim to the end of the query:
 
 .. code::
 
@@ -327,7 +327,7 @@ You can also find associated Indicators of a given type using the following form
 
     GET /v2/victims/{victimId}/indicators/{associatedIndicatorType}
 
-For example, we could use the following query to find all Address Indicators associated with the Victim with ID 12345:
+For example, you could use the following query to find all Address Indicators associated with the Victim with ID 12345:
 
 .. code::
 
@@ -383,13 +383,13 @@ The available Victim Asset types are:
 
 .. include:: ../_includes/victim_asset_types.rst
 
-For example, we could use the following query to find all Victim Assets that are Email Addresses which are associated with the Victim with ID 12345:
+For example, you could use the following query to find all Victim Assets that are Email Addresses which are associated with the Victim with ID 12345:
 
 .. code::
 
     GET /v2/victims/12345/victimAssets/emailAddresses
 
-We can also drill down even further by adding the ID of an associated Victim Asset to the end of the query like:
+You can delve further by adding the ID of an associated Victim Asset to the end of the query:
 
 .. code::
 
@@ -436,7 +436,7 @@ JSON Response:
       }
     }
 
-We can also drill down even further by adding the ID of an associated Victim to the end of the query like:
+You can delve further by adding the ID of an associated Victim to the end of the query:
 
 .. code::
 
