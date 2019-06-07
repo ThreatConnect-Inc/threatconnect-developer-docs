@@ -7,7 +7,7 @@ To delete a Task, the most basic format is:
 
     DELETE /v2/tasks/{taskId}
   
-By way of example, the query below will delete the Task with ID 12345:
+For example, the query below will delete the Task with ID 12345:
 
 .. code::
 
@@ -29,13 +29,13 @@ Delete Task Metadata
 Delete Task Attributes
 ^^^^^^^^^^^^^^^^^^^^^^
 
-To delete an attribute from a Task, use the following format:
+To delete an Attribute from a Task, use the following format:
 
 .. code::
 
     DELETE /v2/tasks/{taskId}/attributes/{attributeId}
 
-For example, if you wanted to delete the attribute with ID 54321 from the Task with ID 12345, you would use the following query:
+For example, if you want to delete the Attribute with ID 54321 from the Task with ID 12345, you would use the following query:
 
 .. code::
 
@@ -51,13 +51,13 @@ JSON Response:
       "status": "Success"
     }
 
-To delete a Security Label from an attribute, use the following format where ``{securityLabel}`` is replaced with the name of a Security Label that already exists in the owner:
+To delete a Security Label from an Attribute, use the following format, where ``{securityLabel}`` is replaced with the name of a Security Label that already exists in the Owner:
 
 .. code::
 
     DELETE /v2/tasks/{taskId}/attributes/{attributeId}/securityLabels/{securityLabel}
 
-For example, the query below will remove the ``TLP Amber`` Security Label from the attribute with ID 54321 on the Task:
+For example, the query below will remove the ``TLP Amber`` Security Label from the Attribute with ID 54321 on the Task:
 
 .. code::
 
@@ -66,7 +66,7 @@ For example, the query below will remove the ``TLP Amber`` Security Label from t
 Delete Task Security Labels
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To delete a Security Label from a Task, use the following format where ``{securityLabel}`` is replaced with the name of a Security Label:
+To delete a Security Label from a Task, use the following format, where ``{securityLabel}`` is replaced with the name of a Security Label:
 
 .. code::
 
@@ -91,13 +91,13 @@ JSON Response:
 Delete Task Tags
 ^^^^^^^^^^^^^^^^
 
-To delete a tag from a Task, use the following format where ``{tagName}`` is replaced with the name of the tag you wish to remove from the Task:
+To delete a Tag from a Task, use the following format, where ``{tagName}`` is replaced with the name of the Tag you wish to remove from the Task:
 
 .. code::
 
     DELETE /v2/tasks/{taskId}/tags/{tagName}
 
-For example, the query below will delete the ``Nation State`` tag to the Task with ID 12345:
+For example, the query below will delete the ``Nation State`` Tag to the Task with ID 12345:
 
 .. code::
 
