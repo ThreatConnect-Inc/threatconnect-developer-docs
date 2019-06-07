@@ -27,7 +27,7 @@ The following query will return all Tags whose name is "Bad" (``name=Bad``):
 
     GET /v2/tags/?filters=name%3DBad
 
-The following query will return all Tags with a weight greater than 2 (``weight>2``):
+The following query will return all Tags with a weight greater than 2 (``weight>2``): 
 
 .. code::
 
