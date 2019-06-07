@@ -1,13 +1,13 @@
 Delete Victims
 --------------
 
-To delete a Victim, the most basic format is:
+The most basic format used to delete a Victim is:
 
 .. code::
 
     DELETE /v2/victims/{victimId}
 
-By way of example, the query below will delete the Victim with ID 12345:
+For example, the query below will delete the Victim with ID 12345:
 
 .. code::
 
@@ -52,13 +52,13 @@ Delete Victim Metadata
 Delete Victim Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-To delete an attribute from a Victim, use the following format:
+To delete an Attribute from a Victim, use the following format:
 
 .. code::
 
     DELETE /v2/victims/{victimId}/attributes/{attributeId}
 
-For example, if you wanted to delete the attribute with ID 54321 from the Victim with ID 12345, you would use the following query:
+For example, if you want to delete the Attribute with ID 54321 from the Victim with ID 12345, you would use the following query:
 
 .. code::
 
@@ -74,13 +74,13 @@ JSON Response:
       "status": "Success"
     }
 
-To delete a Security Label from an attribute, use the following format where ``{securityLabel}`` is replaced with the name of a Security Label that already exists in the owner:
+To delete a Security Label from an Attribute, use the following format, where ``{securityLabel}`` is replaced with the name of a Security Label that already exists in the Owner:
 
 .. code::
 
     DELETE /v2/victims/{victimId}/attributes/{attributeId}/securityLabels/{securityLabel}
 
-For example, the query below will remove the ``TLP Amber`` Security Label from the attribute with ID 54321 on the Victim:
+For example, the query below will remove the ``TLP Amber`` Security Label from the Attribute with ID 54321 on the Victim:
 
 .. code::
 
@@ -89,7 +89,7 @@ For example, the query below will remove the ``TLP Amber`` Security Label from t
 Delete Victim Security Labels
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To delete a Security Label from a Victim, use the following format where ``{securityLabel}`` is replaced with the name of a Security Label:
+To delete a Security Label from a Victim, use the following format, where ``{securityLabel}`` is replaced with the name of a Security Label:
 
 .. code::
 
@@ -114,13 +114,13 @@ JSON Response:
 Delete Victim Tags
 ^^^^^^^^^^^^^^^^^^
 
-To delete a tag from a Victim, use the following format where ``{tagName}`` is replaced with the name of the tag you wish to remove from the Victim:
+To delete a Tag from a Victim, use the following format, where ``{tagName}`` is replaced with the name of the Tag you wish to remove from the Victim:
 
 .. code::
 
     DELETE /v2/victims/{victimId}/tags/{tagName}
 
-For example, the query below will delete the ``Nation State`` tag to the Victim with ID 12345:
+For example, the query below will delete the ``Nation State`` Tag to the Victim with ID 12345:
 
 .. code::
 
