@@ -1,7 +1,7 @@
 Retrieve Owner Metrics
 ----------------------
 
-To get some metrics for an owner, you can use the metrics branch as formatted below:
+To get some metrics for an Owner, you can use the Metrics Branch as formatted below:
 
 .. code::
 
@@ -172,4 +172,4 @@ JSON Response:
       }
     }
 
-The metrics branch returns data for every day for the past 30 days.
+The Metrics Branch returns data for every day for the past 30 days.
