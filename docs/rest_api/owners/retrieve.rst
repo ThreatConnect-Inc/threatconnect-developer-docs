@@ -4,7 +4,7 @@ Retrieve Owners
 Retrieving Multiple Owners
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To retrieve a list of all available owners, use the following query:
+To retrieve a list of all available Owners, use the following query:
 
 .. code::
 
@@ -36,7 +36,7 @@ JSON Response:
 Retrieving a Single Owner
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To retrieve information about a specific owner, you can add the id to the end of the query as shown below:
+To retrieve information about a specific Owner, you can add the ID to the end of the query as shown below:
 
 .. code::
 
@@ -67,7 +67,7 @@ JSON Response:
 Retrieving Information About Your Organization
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To retrieve information about your organization, use the query below:
+To retrieve information about your Organization, use the query below:
 
 .. code::
 
@@ -89,7 +89,7 @@ JSON Response:
       }
     }
 
-To view all members of your organization, you can use:
+To view all members of your Organization, you can use:
 
 .. code::
 
