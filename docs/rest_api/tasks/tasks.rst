@@ -1,7 +1,7 @@
 Tasks
 =====
 
-The Task Group represents an assignment given to a ThreatConnect user.
+The Task Group represents an assignment given to a ThreatConnect user. 
 
 .. include:: retrieve.rst
 
