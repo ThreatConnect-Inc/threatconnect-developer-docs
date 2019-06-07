@@ -73,7 +73,7 @@ The following query will return all Tasks with a due date after 2017-07-25 (``du
 
 .. code::
 
-    GET /v2/tasks/?filters=dueDate%3E2017-07-25
+    GET /v2/tasks/?filters=dueDate%3E2017-07-25 
 
 The following query will return all Tasks for which a reminder has been sent (``reminded=true``):
 
