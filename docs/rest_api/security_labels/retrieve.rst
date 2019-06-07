@@ -23,12 +23,12 @@ JSON Response:
         "securityLabel": [
           {
             "name": "TLP:Amber",
-            "description": "TLP:Amber information requires support to be effectively acted upon, yet carries risks to privacy, reputation, or operations if shared outside of the organizations involved.",
+            "description": "TLP:Amber information requires support to be effectively acted upon, yet carries risks to privacy, reputation, or operations if shared outside of the Organizations involved.",
             "dateAdded": "2017-07-13T17:50:17"
           },
           {
             "name": "TLP:Green",
-            "description": "TLP:Green information is useful for the awareness of all participating organizations as well as with peers within the broader community or sector.",
+            "description": "TLP:Green information is useful for the awareness of all participating Organizations as well as with peers within the broader Community or sector.",
             "dateAdded": "2017-07-13T17:50:17"
           }
         ]
@@ -59,7 +59,7 @@ JSON Response:
       "data": {
         "securityLabel": {
           "name": "TLP:Amber",
-          "description": "TLP:Amber information requires support to be effectively acted upon, yet carries risks to privacy, reputation, or operations if shared outside of the organizations involved.",
+          "description": "TLP:Amber information requires support to be effectively acted upon, yet carries risks to privacy, reputation, or operations if shared outside of the Organizations involved.",
           "dateAdded": "2017-07-13T17:50:17"
         }
       }
@@ -120,7 +120,7 @@ For example, we could use the following query to find all Incidents labeled with
 
     GET /v2/securityLabels/TLP:Amber/groups/incidents
 
-We can also drill down even further by adding the ID of an associated Group to the end of the query such as:
+You can delve further by adding the ID of an associated Group to the end of the query:
 
 .. code::
 
@@ -173,13 +173,13 @@ You can also find associated Indicators of a given type using the following form
 
     GET /v2/securityLabels/{securityLabel}/indicators/{associatedIndicatorType}
 
-For example, we could use the following query to find all Address Indicators labeled with the ``TLP:Amber`` Security Label:
+For example, you could use the following query to find all Address Indicators labeled with the ``TLP:Amber`` Security Label:
 
 .. code::
 
     GET /v2/securityLabels/TLP:Amber/indicators/addresses
 
-We can also drill down even further by adding an associated Indicator to the end of the query like:
+You can delve further by adding an associated Indicator to the end of the query like:
 
 .. code::
 
@@ -227,7 +227,7 @@ JSON Response:
       }
     }
 
-We can also drill down even further by adding the ID of an associated Task to the end of the query such as:
+You can delve further by adding the ID of an associated Task to the end of the query:
 
 .. code::
 
@@ -269,7 +269,7 @@ JSON Response:
       }
     }
 
-We can also drill down even further by adding the ID of an associated Victim to the end of the query like:
+You can delve further by adding the ID of an associated Victim to the end of the query:
 
 .. code::
 
