@@ -70,7 +70,7 @@ The following query returns information about the specified Playbook by the give
 
     GET /v2/playbooks/{id}
 
-The following query uploads a Playbook as a new, major version to an existing Playbook with the playbook file submitted as Multi-part Form/File Data in the request:
+The following query uploads a Playbook as a new, major version to an existing Playbook, with the playbook file submitted as Multi-part Form/File Data in the request:
 
 
 .. code::
