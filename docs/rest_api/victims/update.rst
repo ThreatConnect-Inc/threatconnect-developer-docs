@@ -1,7 +1,7 @@
 Update Victims
 --------------
 
-To update a Victim, the basic format is:
+The basic format used to update a Victim is:
 
 .. code::
 
@@ -28,7 +28,7 @@ When updating a Victim, you can change any of the fields below in addition to th
 | nationality  | FALSE    |
 +--------------+----------+
 
-By way of example, the query below will update the name of a Victim with ID 12345:
+For example, the query below will update the name of a Victim with ID 12345:
 
 .. code::
 
@@ -68,11 +68,11 @@ The available Victim Asset types are:
 
 .. include:: ../_includes/victim_asset_types.rst
 
-When updating a Victim Asset, there are certain fields that are required as detailed below:
+When updating a Victim Asset, there are certain fields that are required, as detailed below:
 
 .. include:: ../_includes/victim_asset_fields.rst
 
-For example, if you wanted to update an existing network account Victim Asset on a Victim with ID 12345, you would use the following query:
+For example, if you want to update an existing network account Victim Asset on a Victim with ID 12345, you would use the following query:
 
 .. code::
 
@@ -104,7 +104,7 @@ Update Victim Metadata
 Update Victim Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-To update a Victim's attribute, use the following format:
+To update a Victim's Attribute, use the following format:
 
 .. code::
 
@@ -113,7 +113,7 @@ To update a Victim's attribute, use the following format:
       {updatedField}: {updatedValue}
     }
 
-When updating attributes, you can change the following fields:
+When updating Attributes, you can change the following fields:
 
 +----------------------------+----------+
 | Updatable Attribute Fields | Required |
@@ -125,7 +125,7 @@ When updating attributes, you can change the following fields:
 | source                     | FALSE    |
 +----------------------------+----------+
 
-For example, if you wanted to update the value of an attribute with ID 54321 on the Victim with ID 12345, you would use the following query:
+For example, if you want to update the value of an Attribute with ID 54321 on the Victim with ID 12345, you would use the following query:
 
 .. code::
 
