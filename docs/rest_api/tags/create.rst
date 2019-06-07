@@ -26,7 +26,7 @@ Response:
            }
    }
    
-Tag descriptions can be edited like:
+Tag descriptions can be edited as follows:
 
 .. code::
 
