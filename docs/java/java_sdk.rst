@@ -2767,7 +2767,7 @@ Code Sample Description
 |              | items are printed to the console.                           |
 +--------------+-------------------------------------------------------------+
 | 126-128      | The host is associated to the Email Group by using the      |
-|              | Email ID and the Host Name (the unique ID for the Host      |
+|              | Email ID and the Host name (the unique ID for the Host      |
 |              | Indicator).                                                 |
 +--------------+-------------------------------------------------------------+
 | 130-133      | The Association is verified as successful.                  |
