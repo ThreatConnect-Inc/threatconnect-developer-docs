@@ -641,7 +641,7 @@ Reader Class Overview
 While the main entry point to the Reader Package is the ReaderFactory,
 getting familiar with the main Adapters helps developers understand how
 to interact with the data returning from the ThreatConnect API. Although
-there is extensive use of Java Generics, the method naming conventions
+there is extensive use of Java Generics, the Method naming conventions
 will be familiar and self-explanatory. Parameter naming conventions have
 been kept abstract to more accurately reflect the identifiers being
 passed.
@@ -861,7 +861,7 @@ The methods below get associated Indicator elements by distinct types.
 Associated Security Labels
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The methods below get associated SecurityLabel data elements.
+The methods below get associated Security Labels data elements.
 
 +-------------------------------------+--------------------------------------------------------------------------------------+
 | Type                                | Method                                                                               |
@@ -948,7 +948,7 @@ The methods below get associated VictimAsset data elements.
 Associated Attributes
 ~~~~~~~~~~~~~~~~~~~~~
 
-The methods below get Attributes and Attribute SecurityLabels for this Group type.
+The methods below get Attributes and Attribute Security Labels for this Group type.
 
 +-------------------------------------+----------------------------------------------------------------------------------------------------------+
 | Type                                | Method                                                                                                   |
@@ -975,7 +975,7 @@ AbstractIndicatorReaderAdapter
 
 AbstractIndicatorReaderAdapter and AbstractGroupReaderAdapter share many
 of the association actions. Indicators share the ability to associate
-Groups, Indicators, SecurityLabels, Tags, VictimAssets, and Attributes.
+Groups, Indicators, Security Labels, Tags, Victim Assets, and Attributes.
 The listings below are some distinctions or subtle differences.
 
 All Indicators in the ThreatConnect API have a uniqueId data type of
@@ -1102,8 +1102,8 @@ SecurityLabelReaderAdapter
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The SecurityLabelReaderAdapter class is a concrete class (available through the ReaderFactory) that returns
-SecurityLabels to which the developer's API user has access, as well as by uniqueId (P). The uniqueId data type for
-SecurityLabels is a String.
+Security Labels to which the developer's API user has access, as well as by uniqueId (P). The uniqueId data type for
+Security Labels is a String.
 
 +-------------------------+---------------------------------------+
 | Type                    | Method                                |
@@ -1117,7 +1117,7 @@ SecurityLabels is a String.
 | ``IterableResponse<T>`` | getAll(String ownerName)              |
 +-------------------------+---------------------------------------+
 
-In addition to retrieving basic SecurityLabel data, associated `Groups <#associate-groups>`__ and
+In addition to retrieving basic Security Label data, associated `Groups <#associate-groups>`__ and
 `Indicators <#associate-indicators>`__ can be retrieved. For more details on these methods, see the
 `AbstractGroupReaderAdapter <#abstractgroupreaderadapter>`__ class.
 
@@ -1567,8 +1567,8 @@ Writer Class Overview
 ---------------------
 
 Most of the conventions in the Reader Package are mirrored in the Writer
-Package. Much like the Reader Package, the method-naming conventions
-will be familiar and self-explanatory. `Parameter-naming
+Package. Much like the Reader Package, the Method naming conventions
+will be familiar and self-explanatory. `Parameter naming
 conventions <#parameter-naming-convention>`__ have been kept
 abstract to allow for a better representation of the identifiers being
 passed. Below is a listing of the classes in the Writer Package.
@@ -1917,7 +1917,7 @@ The methods below **update** the False Positive field on a specific Indicator ty
 Delete Group Association
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-The methods below **delete** Group associations to a specific Group type.
+The methods below **delete** Group Associations to a specific Group type.
 
 +--------------------------------+----------------------------------------------------------------------------------------------------------+
 | Type                           | Method                                                                                                   |
@@ -1966,7 +1966,7 @@ The methods below **delete** Group associations to a specific Group type.
 Delete Indicator Associations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The methods below **delete** Indicator associations to a specific Group type.
+The methods below **delete** Indicator Associations to a specific Group type.
 
 +-------------------------------+-------------------------------------------------------------------------------+
 | Type                          | Method                                                                        |
@@ -2028,7 +2028,7 @@ The methods below **delete** Indicator associations to a specific Group type.
 Delete Security Label Associations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The methods below **delete** SecurityLabel associations to a specific Group type.
+The methods below **delete** Security Label Associations to a specific Group type.
 
 +-------------------------------+--------------------------------------------------------------------------------------------------------+
 | Type                          | Method                                                                                                 |
@@ -2062,7 +2062,7 @@ The methods below **delete** Tag associations to a specific Group type.
 Delete Victim Associations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The methods below **delete** Victim associations to a specific Group type.
+The methods below **delete** Victim Associations to a specific Group type.
 
 +--------------------------------+----------------------------------------------------------------------------------------------+
 | Type                           | Method                                                                                       |
@@ -2234,7 +2234,7 @@ write methods:
 AbstractBatchWriterAdapter
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The AbstractBatchWriterAdapter class allows batch writing of indicators
+The AbstractBatchWriterAdapter class allows batch writing of Indicators
 to the API. The adapter facilitates the initial creation and upload of
 the batch file using the following write methods:
 
@@ -2340,8 +2340,6 @@ Note that the deletes require the Tag Name as the ``uniqueId`` String
 TaskWriterAdapter
 ~~~~~~~~~~~~~~~~~
 
-The TaskWriterAdapter allows
-
 Below is the standard create methods available to all WriterAdapters.
 
 +-----------------------------+------------------------------------------------------+
@@ -2370,8 +2368,8 @@ Below is the standard create methods available to all WriterAdapters.
 | ``ApiEntitySingleResponse`` | update(\ ``T item``, ``String ownerName``)           |
 +-----------------------------+------------------------------------------------------+
 
-In addition to the User-specific methods below. Note the delete methods
-require the username while the create methods require the entire User
+In addition to the user-specific methods below, note the delete methods
+require the username while the create methods require the entire user
 object.
 
 +------------------+----------------------------------------------+
@@ -2772,7 +2770,7 @@ Code Sample Description
 |              | Email ID and the Host Name (the unique ID for the Host      |
 |              | Indicator).                                                 |
 +--------------+-------------------------------------------------------------+
-| 130-133      | The association is verified as successful.                  |
+| 130-133      | The Association is verified as successful.                  |
 +--------------+-------------------------------------------------------------+
 
 Writer Associate Group Example
