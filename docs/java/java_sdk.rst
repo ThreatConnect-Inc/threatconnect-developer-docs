@@ -398,7 +398,7 @@ tip.
 The Reader Package
 ------------------
 
-The Reader package is the primary package to retrieve data from the
+The Reader Package is the primary package to retrieve data from the
 ThreatConnect API. It covers all available resources exposed through the
 ThreatConnect API. The primary classes in the Reader Package, which
 encompass all read functionality from the API, are listed below.
@@ -563,14 +563,13 @@ Reader Factory Example
 
 This example continues building from the first one and uses more
 Adapters available in the Reader Package. The following example reads
-all Groups available to the "System" Organization. It then proceeds to
+all Groups available to the System Organization. It then proceeds to
 iterate through each Group, printing and performing "getById()" lookups
-to get the full Group object from the ThreatConnect API. (Note: An
-ellipsis (...) has been substituted for code sections removed for
-brevity.)
+to get the full Group object from the ThreatConnect API. (Note: For brevity, an
+ellipsis (...) has been substituted for code sections removed.)
 
 There are more concise ways of handling reading data and purely checking
-its ID. This code is written in a more verbose form strictly to
+its ID. This code is written in a more verbose form, strictly to
 illustrate the usage of different methods in the ReaderFactory.
 
 +--------+-------------------------------------------------------------------+
@@ -582,9 +581,9 @@ illustrate the usage of different methods in the ReaderFactory.
 |        | ``com.threatconnect.sdk.server.entity`` package.                  |
 +--------+-------------------------------------------------------------------+
 | 52-53  | Groups to which the current API user has access under the         |
-|        | "System" Organization should be retrieved. All                    |
+|        | System Organization should be retrieved. All                    |
 |        | AbstractGroupReaderAdapter’s have access to the                   |
-|        | ``getAllGroups()`` method—it returns a collection of Group        |
+|        | ``getAllGroups()`` method. It returns a collection of Group        |
 |        | objects for the "System" Organization from the ThreatConnect API. |
 +--------+-------------------------------------------------------------------+
 | 60     | To illustrate the different instantiations, a switch statement on |
@@ -631,8 +630,8 @@ scenario, but to resolve the paging limits of the ThreatConnect API, the
 ``IterableResponse`` was created.
 
 All paging is performed behind the scenes, allowing the developer to
-rely on an Iterable to fulfill its contract and return a ``hasNext()``
-of false when there are no more results. The Iterable will make use of
+rely on an iterable to fulfill its contract and return a ``hasNext()``
+of false when there are no more results. The iterable will make use of
 the ``resultLimit`` value defined during the creation of the
 ``Configuration`` object.
 
@@ -642,7 +641,7 @@ Reader Class Overview
 While the main entry point to the Reader Package is the ReaderFactory,
 getting familiar with the main Adapters helps developers understand how
 to interact with the data returning from the ThreatConnect API. Although
-there is extensive use of Java Generics, the method-naming conventions
+there is extensive use of Java Generics, the method naming conventions
 will be familiar and self-explanatory. Parameter naming conventions have
 been kept abstract to more accurately reflect the identifiers being
 passed.
@@ -1168,7 +1167,7 @@ API user has access, as well as by uniqueId (P). The uniqueId data type for a Ta
 
 In addition to retrieving basic Task data, associated Assignees and Escalatees can be retrieved.
 
-The methods below return all Assignees or Escalatees associated with a given Task's id
+The methods below return all Assignees or Escalatees associated with a given Task's ID
 
 +----------------------------+---------------------------+
 | Type                       | Method                    |
@@ -1248,13 +1247,13 @@ Tags from our IP address Indicators:
 | 5-6   | Each address is iterated through and its uniqueId is printed. As  |
 |       | mentioned in the AbstractIndicatorReaderAdapter section, all      |
 |       | uniqueIds for Indicators are Strings. In the case of address      |
-|       | objects, it is the IP address or the ``getIp()`` getter method.   |
+|       | objects, it is the IP Address or the ``getIp()`` getter method.   |
 +-------+-------------------------------------------------------------------+
 | 8     | To get a collection of associated Tags for the IP Address, the    |
 |       | ``getAssociatedTags()`` method is called.                         |
 +-------+-------------------------------------------------------------------+
 | 10-11 | Each Tag returned from the ThreatConnect API for that specific IP |
-|       | address is iterated through and printed to the console.           |
+|       | Address is iterated through and printed to the console.           |
 +-------+-------------------------------------------------------------------+
 
 **Summary**
@@ -1279,44 +1278,44 @@ the static methods and return types of the WriterAdapterFactory.
 | Class       | *Description*                                                  |
 +=============+================================================================+
 | ``WriterA   | Primary entry point to instantiate all writers in the Writer   |
-| dapterFac   | Package.                                                       |
+| dapterFac   | Package                                                       |
 | tory``      |                                                                |
 +-------------+----------------------------------------------------------------+
 | ``Abstrac   | Generic Group writer abstract class. Concrete object available |
-| tGroupWri   | in WriterAdapterFactory.                                       |
+| tGroupWri   | in WriterAdapterFactory                                       |
 | terAdapte   |                                                                |
 | r<T exten   |                                                                |
 | ds Group>`` |                                                                |
 +-------------+----------------------------------------------------------------+
 | ``Abstrac   | Generic Indicator writer abstract class. Concrete object       |
-| tIndicato   | available in WriterAdapterFactory.                             |
+| tIndicato   | available in WriterAdapterFactory                             |
 | rWriterAd   |                                                                |
 | apter<T e   |                                                                |
 | xtends In   |                                                                |
 | dicator>``  |                                                                |
 +-------------+----------------------------------------------------------------+
 | ``Abstrac   | Base abstract writer for all reader Adapters in the Reader     |
-| tWriterAd   | Package.                                                       |
+| tWriterAd   | Package                                                       |
 | apter``     |                                                                |
 +-------------+----------------------------------------------------------------+
 | ``Securit   | Concrete writer for SecurityLabel data. Convenience object     |
-| yLabelWri   | available in WriterAdapterFactory.                             |
+| yLabelWri   | available in WriterAdapterFactory                             |
 | terAdapte   |                                                                |
 | r``         |                                                                |
 +-------------+----------------------------------------------------------------+
 | ``TagWrit   | Concrete writer for Tag data. Convenience object available in  |
-| erAdapter`` | WriterAdapterFactory.                                          |
+| erAdapter`` | WriterAdapterFactory                                          |
 +-------------+----------------------------------------------------------------+
 | ``TaskWri   | Concrete writer for Task data. Convenience object available in |
-| terAdapte   | WriterAdapterFactory.                                          |
+| terAdapte   | WriterAdapterFactory                                          |
 | r``         |                                                                |
 +-------------+----------------------------------------------------------------+
 | ``VictimW   | Concrete writer for Victim data. Convenience object available  |
-| riterAdap   | in WriterAdapterFactory.                                       |
+| riterAdap   | in WriterAdapterFactory                                       |
 | ter``       |                                                                |
 +-------------+----------------------------------------------------------------+
-| ``Abstrac   | Writer for batch indicator uploads. Concrete object available  |
-| tBatchWri   | in WriterAdapterFactory.                                       |
+| ``Abstrac   | Writer for batch Indicator uploads. Concrete object available  |
+| tBatchWri   | in WriterAdapterFactory                                       |
 | terAdapte   |                                                                |
 | r<T>``      |                                                                |
 +-------------+----------------------------------------------------------------+
@@ -1405,7 +1404,7 @@ data-related issues.
 Fluent Entities
 ~~~~~~~~~~~~~~~
 
-The following is a simple Fluent Example:
+The following is a simple Fluent example:
 
 .. code:: java
 
@@ -1418,10 +1417,10 @@ The following is a simple Fluent Example:
                     .withValue(value)
                     .createAttribute();
 
-There are entity classes available using a fluent style to simplify
+There are entity classes available using a Fluent style to simplify
 object creation. These classes are part of the SDK and can be used in
 place of creating a traditional new ThreatConnect entity with all
-setters. Using the fluent entities in the
+setters. Using the Fluent entities in the
 ``com.threatconnect.sdk.client.fluent`` package are optional and a
 matter of preference.
 
@@ -1490,7 +1489,7 @@ matter of preference.
 Writer Create Example
 ~~~~~~~~~~~~~~~~~~~~~
 
-The following is a simple Writer Create Example:
+The following is a simple Writer Create example:
 
 .. code-block:: java
 
@@ -1531,7 +1530,7 @@ Code Sample
 | Line   | Description                                                       |
 +========+===================================================================+
 | 104    | An AbstractGroupWriterAdapter for the Adversary Group type is     |
-|        | created. With this Adapter, Group data elements, Victim assets,   |
+|        | created. With this Adapter, Group data elements, Victim Assets,   |
 |        | Attributes, and associations can be written/updated/deleted.      |
 +--------+-------------------------------------------------------------------+
 | 106-10 | A simple Adversary with a name and owner (Organization) is        |
@@ -1561,7 +1560,7 @@ Code Sample
 This example explained how to:
 
 -  Create an Adapter using the WriterFactory
--  Create an Adversary, and verify if the save was successful
+-  Create an Adversary and verify if the save was successful
 -  Handle errors from a write operation to the ThreatConnect API
 
 Writer Class Overview
