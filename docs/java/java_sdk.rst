@@ -1,19 +1,19 @@
-Java SDK
+Java® SDK
 ========
 
 Getting Started with Java SDK
 -----------------------------
 
 -  Install `Java JDK
-   7+ <http://www.oracle.com/technetwork/java/javase/downloads/index.html>`__
+   7+ <http://www.oracle.com/technetwork/java/javase/downloads/index.html>`__.
 -  Import `Java SDK for
-   ThreatConnect <https://github.com/ThreatConnect-Inc/threatconnect-java>`__
--  Create an API User, refer to `REST API documentation <../rest_api/quick_start.html#creating-an-api-key>`__
+   ThreatConnect <https://github.com/ThreatConnect-Inc/threatconnect-java>`__.
+-  Create an API User. (Refer to `REST API documentation <../rest_api/quick_start.html#creating-an-api-key>`__.)
 
 Maven™ Configuration
 ~~~~~~~~~~~~~~~~~~~~
 
-Add the following entries to your POM (project object model) file. This
+Add the following entries to your Project Object Model file. This
 is the preferred method to use the SDK:
 
 .. code:: xml
@@ -51,7 +51,7 @@ Configuration using Properties
 
 This property can be defined in two ways:
 
-In the JVM (Java virtual machine), you can call your program with the
+In the Java virtual machine (JVM), you can call your program with the
 following -D property flag:
 
 ``threatconnect.api.config=<YOUR CONFIG FILE LOCATION>``
@@ -68,13 +68,13 @@ should be executable, as long as the Java SDK for ThreatConnect is part
 of the classpath. See the following examples for a typical start-up
 script.
 
-On Windows:
+On Windows®:
 
 .. code:: shell
 
      java -cp ".;threatconnect-sdk-<version>.jar" -Dthreatconnect.api.config=myConfig.properties TestClass
 
-On Linux:
+On Linux®:
 
 .. code:: shell
 
@@ -92,12 +92,12 @@ The configuration file should contain the following lines at a minimum:
 
 ``connection.tcApiUserSecretKey=<YOUR API SECRET KEY>``
 
-.. note:: If you are working with the ThreatConnect **sandbox**, the connection.tcApiUrl should be: ``https://sandbox.threatconnect.com/api``.
+.. note:: If you are working with the ThreatConnect **sandbox**, the **connection.tcApiUrl** should be: ``https://sandbox.threatconnect.com/api``.
 
 Third-Party Dependencies
 
 The SDK utilizes these open-source libraries primarily for RESTful
-communication and JSON (JavaScript Object Notation) parsing.
+communication and JSON parsing.
 
 +----------------------+-----------+--------------------+
 | Library              | Version   | Used by            |
@@ -122,7 +122,7 @@ Technical Design
 The Java SDK for ThreatConnect was designed with a focus on abstracting
 the API REST calls while enabling the developer to use an
 enterprise-level programming language. The abstraction layer is
-relatively "thin" because it coincides directly with all of the REST API
+relatively 'thin', because it coincides directly with all of the REST API
 calls. In fact, the entities themselves were ported directly from the
 ThreatConnect API to enable consistent communication between the Java
 SDK and the REST API.
@@ -132,20 +132,22 @@ SDK and the REST API.
 
    SDK Design
 
-The Java library was designed with common programming design patterns.
-You’ll notice the "Adapter" pattern used to manage the interaction with
+The Java library was designed with common programming-design patterns.
+You will notice the 'Adapter' pattern used to manage the interaction with
 the API connection and REST calls. The Java SDK depends on the Apache
 HTTP components open-source library to handle these calls. Because
 instantiating an Adapter requires a low-level RequestExecutor, a
-"Factory" design pattern was utilized to expose reading/writing
+'Factory' design pattern was utilized to expose reading/writing
 functionality in a simplified way.
 
 Java generics are used to type many of the Adapters in an effort to
 reuse code, as most readers share functional resources. Below is a
 diagram that will help illustrate common interactions between different
-classes (Note: Names are conceptual to illustrate interaction. Actual
-class names and methods will be discussed later in this document) . All
-interactions with the Java SDK will follow this programmatic idiom.
+classes. 
+
+Note that names are conceptual to illustrate interaction. Actual
+class names and methods will be discussed later in this document. All
+interactions with the Java SDK will follow this programmatic idiom:
 
 .. figure:: ../_static/sdk-arch.png
    :alt: SDK Architecture
@@ -159,7 +161,7 @@ respectively, is highly recommended.
 Example Java App
 ----------------
 
-Once retrieved, the adversary objects will be printed to the console.
+Once retrieved, the Adversary objects will be printed to the console.
 
 .. code-block:: java
     :linenos:
@@ -201,7 +203,7 @@ Once retrieved, the adversary objects will be printed to the console.
     }   
 
 To write the first program using the Java SDK for the ThreatConnect API,
-an Adversary reader that pulls all adversaries belonging to the "System"
+an Adversary reader that pulls all Adversaries belonging to the System
 Organization must be created.
 
 +--------------+-------------------------------------------------------------+
@@ -213,7 +215,7 @@ Organization must be created.
 |              | ``com.threatconnect.sdk.server.entity`` package holds all      |
 |              | entities returned by the Java SDK.                          |
 +--------------+-------------------------------------------------------------+
-| 17-18        | The platform programmatically define the system property to |
+| 17-18        | The platform programmatically defines the system property to |
 |              | load the configuration file. This allows the developer to   |
 |              | instantiate Connection objects (line 18) with a no-arg      |
 |              | constructor. If the ``threatconnect.api.config`` property   |
@@ -224,12 +226,12 @@ Organization must be created.
 | 20           | To create an AbstractGroupReaderAdapter object: Use the     |
 |              | ReaderAdapterFactory pattern and generics to enforce        |
 |              | compile-time type constraints on this abstract class. Then  |
-|              | pass the connection object used by the Adapter to interact  |
+|              | pass the Connection object used by the Adapter to interact  |
 |              | with the ThreatConnect API.                                 |
 +--------------+-------------------------------------------------------------+
-| 21           | Using the reader object, call ``getAll()`` method and pass  |
+| 21           | Using the Reader object, call ``getAll()`` method and pass  |
 |              | it the Organization string name to return all Adversaries   |
-|              | for the "System" Organization.                              |
+|              | for the System Organization.                              |
 +--------------+-------------------------------------------------------------+
 | 22-24        | Iterate through the data collection to print the contents   |
 |              | to the console.                                             |
@@ -240,7 +242,7 @@ Organization must be created.
 |              | invalid.                                                    |
 +--------------+-------------------------------------------------------------+
 | 29           | In all cases when processing is complete, call              |
-|              | ``disconnect()`` on the connection object to release        |
+|              | ``disconnect()`` on the Connection object to release        |
 |              | resources.                                                  |
 +--------------+-------------------------------------------------------------+
 
@@ -250,7 +252,7 @@ This section explained:
 
 -  How to connect to the ThreatConnect API by passing the configuration
    file in system properties
--  How to get a list of adversaries for the "System" Organization
+-  How to get a list of Adversaries for the System Organization
 -  What types of exceptions a connection and read operation can
    potentially throw
 -  How to close a ThreatConnect API connection
@@ -312,16 +314,16 @@ never hard-code ThreatConnect Parameters.
 | ThreatConnect        | Description                                                 |
 | Parameter            |                                                             |
 +======================+=============================================================+
-| ``tc_log_path``      | Log path for the specific instance of the job execution.    |
+| ``tc_log_path``      | Log path for the specific instance of the job execution    |
 |                      |                                                             |
 +----------------------+-------------------------------------------------------------+
-| ``tc_tmp_path``      | Temporary storage path for the specific instance of thejob  |
-|                      | execution.                                                  |
+| ``tc_tmp_path``      | Temporary storage path for the specific instance of the job  |
+|                      | execution                                                  |
 +----------------------+-------------------------------------------------------------+
-| ``tc_out_path``      | Output path for the specific instance of the job execution. |
+| ``tc_out_path``      | Output path for the specific instance of the job execution |
 |                      |                                                             |
 +----------------------+-------------------------------------------------------------+
-| ``tc_api_path``      | Path to the ThreatConnect API server.                       |
+| ``tc_api_path``      | Path to the ThreatConnect API server                       |
 |                      |                                                             |
 +----------------------+-------------------------------------------------------------+
 
@@ -359,12 +361,12 @@ returned by default during normal code execution. System-critical errors
 (e.g., file not found) return non-zero exit codes. The developer is
 responsible for catching and handling program errors accordingly.
 
-At times a program may want to report a partial failure (e.g., batch
+At times, a program may want to report a partial failure (e.g., batch
 process where X out of Y updates completed). In cases of partial
-failure, the system administrator can retrieve the log file for that job
+failure, the System Administrator can retrieve the log file for that job
 execution and view more detailed output from the program run.
 
-The contents of message.tc are typically written any time the program
+The contents of **message.tc** are typically written any time the program
 exits normally or through an error:
 
 +-------------------+------------------------------------------------------------------+
@@ -406,44 +408,44 @@ encompass all read functionality from the API, are listed below.
 +=========================================================+=================================+
 | ``ReaderAdapterFactory``                                | Primary entry point to          |
 |                                                         | instantiate all readers in the  |
-|                                                         | Reader Package.                 |
+|                                                         | Reader Package                 |
 +---------------------------------------------------------+---------------------------------+
 | ``AbstractGroupReaderAdapter<T extends Group>``         | Generic Group Reader Abstract   |
 |                                                         | class. Concrete object          |
 |                                                         | available in                    |
-|                                                         | ReaderAdapterFactory.           |
+|                                                         | ReaderAdapterFactory           |
 +---------------------------------------------------------+---------------------------------+
 | ``AbstractIndicatorReaderAdapter<T extends Indicator>`` | Generic Indicator Reader        |
 |                                                         | Abstract class. Concrete object |
 |                                                         | available in                    |
-|                                                         | ReaderAdapterFactory.           |
+|                                                         | ReaderAdapterFactory           |
 +---------------------------------------------------------+---------------------------------+
 | ``AbstractReaderAdapter``                               | Base Abstract Reader for all    |
 |                                                         | Reader Adapters in the Reader   |
-|                                                         | Package.                        |
+|                                                         | Package                        |
 +---------------------------------------------------------+---------------------------------+
 | ``OwnerReaderAdapter``                                  | Concrete Reader for             |
 |                                                         | Organization owner data.        |
 |                                                         | Convenience object available in |
-|                                                         | ReaderAdapterFactory.           |
+|                                                         | ReaderAdapterFactory           |
 +---------------------------------------------------------+---------------------------------+
 | ``SecurityLabelReaderAdapter``                          | Concrete Reader for             |
 |                                                         | SecurityLabel data. Convenience |
 |                                                         | object available in             |
-|                                                         | ReaderAdapterFactory.           |
+|                                                         | ReaderAdapterFactory           |
 +---------------------------------------------------------+---------------------------------+
 | ``TagReaderAdapter``                                    | Concrete Reader for Tag data.   |
 |                                                         | Convenience object available in |
-|                                                         | ReaderAdapterFactory.           |
+|                                                         | ReaderAdapterFactory           |
 +---------------------------------------------------------+---------------------------------+
 | ``TaskReaderAdapter``                                   | Concrete Reader for Task data.  |
 |                                                         | Convenience object available in |
-|                                                         | ReaderAdapterFactory.           |
+|                                                         | ReaderAdapterFactory           |
 +---------------------------------------------------------+---------------------------------+
 | ``VictimReaderAdapter``                                 | Concrete Reader for Victim      |
 |                                                         | data. Convenience object        |
 |                                                         | available in                    |
-|                                                         | ReaderAdapterFactory.           |
+|                                                         | ReaderAdapterFactory           |
 +---------------------------------------------------------+---------------------------------+
 
 Reader Factory
