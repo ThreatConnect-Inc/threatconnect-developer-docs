@@ -454,6 +454,7 @@ Replace ``{associatedGroupType}`` with one of the following Group types:
 - ``intrusionSets``
 - ``reports``
 - ``signatures``
+- ``tasks``
 - ``threats``
 
 For example, you could use the following query to find all Incidents associated with the Threat with ID 12345:
