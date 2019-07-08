@@ -7,4 +7,5 @@
 - ``intrusionSets``
 - ``reports``
 - ``signatures``
+- ``tasks``
 - ``threats``
