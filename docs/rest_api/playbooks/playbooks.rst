@@ -53,7 +53,7 @@ Or to return only active Playbooks:
 
 .. code::
 
-    /v2/playbooks/search?status=active
+    /v2/playbooks/search?status=Active
 
 The following query uploads and installs a new Playbook with the Playbook file submitted as multi-part Form/File Data in the request:
 
