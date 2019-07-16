@@ -791,9 +791,9 @@ Example of retrieveAttributes() method:
         .retrieveAttributes();
 
 The JavaScript SDK provides the ``retrieveAttributes()`` method to
-retrieve attributes. Both the ``type()`` method and ``indicator()`` are
-required to retrieve the attributes. An ``id`` can be passed to the
-``retrieveAttributes()`` method to retrieve a specific attribute.
+retrieve Attributes. Both the ``type()`` method and ``indicator()`` are
+required to retrieve the Attributes. An ``id`` can be passed to the
+``retrieveAttributes()`` method to retrieve a specific aAttribute.
 
 Retrieve Observations
 ~~~~~~~~~~~~~~~~~~~~~
