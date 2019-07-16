@@ -1245,7 +1245,7 @@ entries are available. To retrieve the next set of entries the
 Security Labels Retrieve
 ------------------------
 
-Example of how to retrieve all Security Labels belonging to the given owner:
+The following is an example of how to retrieve all Security Labels belonging to the given Owner:
 
 .. code:: javascript
 
@@ -1261,7 +1261,7 @@ Example of how to retrieve all Security Labels belonging to the given owner:
         })
         .retrieve();
 
-Example of retrieve Tags results:
+The following is an example of retrieve Tags results:
 
 .. code:: json
 
@@ -1303,7 +1303,7 @@ Optionally the ``name()`` method can be used to pass a specific Security Label n
 Filters
 -------
 
-Example of how to retrieve Threats that start-with 'threat' and have a
+The following is an example of how to retrieve Threats that start-with 'threat' and have a
 dateAdded value greater than '20151213' using an API filter:
 
 .. code:: javascript
@@ -1326,9 +1326,9 @@ dateAdded value greater than '20151213' using an API filter:
         })
         .retrieve();
 
-Starting with ThreatConnect version 4.0 the API supports filtering using
+Starting with ThreatConnect version 4.0, the API supports filtering using
 query string parameters. For more information on which parameters
-support which operators see the ThreatConnect API Users Guide.
+support which operators, see the ThreatConnect API Users Guide.
 
 +------------------------------+-------------------+
 | Filter Options               | Filter Constant   |
@@ -1355,7 +1355,7 @@ Note that multiple filters can be added to one API call.
 Retrieve Associations
 ---------------------
 
-Example of retrieveAssociations() method:
+The following is an example of retrieveAssociations() method:
 
 .. code:: javascript
 
@@ -1376,15 +1376,15 @@ Example of retrieveAssociations() method:
 
 The JavaScript SDK provides the ``retrieveAssociations()`` method to
 retrieve both Indicator and Group Associations. The ``type()`` and
-``id()`` methods are required to retrieve the associations. The
+``id()`` methods are required to retrieve the Associations. The
 ``retrieveAssociations()`` method requires that a parameter object
-containing the association ``type`` be provided. Optionally, an ``id``
-can be provided to pull a specific associated group.
+containing the Association ``type`` be provided. Optionally, an ``id``
+can be provided to pull a specific associated Group.
 
 Retrieve Attributes
 -------------------
 
-Example of retrieveAttributes() method:
+The following is an example of retrieveAttributes() method:
 
 .. code:: javascript
 
@@ -1401,14 +1401,14 @@ Example of retrieveAttributes() method:
         .retrieveAttributes();
 
 The JavaScript SDK provides the ``retrieveAttributes()`` method to
-retrieve attributes. Both the ``type()`` method and ``id()`` are
-required to retrieve the attributes. Optionally, an ``id`` can be passed to the
-``retrieveAttributes()`` method to retrieve a specific attribute.
+retrieve Attributes. Both the ``type()`` method and ``id()`` are
+required to retrieve the Attributes. Optionally, an ``id`` can be passed to the
+``retrieveAttributes()`` method to retrieve a specific Attribute.
 
 Retrieve Tags
 -------------
 
-Example of retrieveTags() method:
+The following is an example of retrieveTags() method:
 
 .. code:: javascript
 
@@ -1425,13 +1425,13 @@ Example of retrieveTags() method:
         .retrieveTags();
 
 The JavaScript SDK provides the ``retrieveTags()`` method to retrieve
-tags. Both the ``type()`` method and ``id()`` are required to retrieve
-the tags.
+Tags. Both the ``type()`` method and ``id()`` are required to retrieve
+the Tags.
 
 Retrieve Security Labels
 ------------------------
 
-Example of retrieveSecurityLabel() method:
+The following is an example of retrieveSecurityLabel() method:
 
 .. code:: javascript
 
@@ -1448,16 +1448,16 @@ Example of retrieveSecurityLabel() method:
         .retrieveSecurityLabel();
 
 The JavaScript SDK provides the ``retrieveSecurityLabel()`` method to
-retrieve security labels. Both the ``type()`` method and ``id()`` are
-required to retrieve the security label.
+retrieve Security Labels. Both the ``type()`` method and ``id()`` are
+required to retrieve the Security Label.
 
 Retrieve Tasks
 --------------
 
 This example will demonstrate how to retrieve Tasks. The result set
-returned from this example will contain all Tasks that the API
-credential being used have access. Optionally the ``id()`` method can be
-used to pass a specific task id to retrieve.
+returned from this example will contain all Tasks to which the API
+credential being used have access. Optionally, the ``id()`` method can be
+used to pass a specific Task id to retrieve.
 
 Example
 ~~~~~~~
@@ -1505,9 +1505,9 @@ Retrieve Victims
 ----------------
 
 This example will demonstrate how to retrieve Victims. The result set
-returned from this example will contain all Victims that the API
+returned from this example will contain all Victims to which the API
 credential being used have access. Optionally the ``id()`` method can be
-used to pass a specific task id to retrieve.
+used to pass a specific Victim id to retrieve.
 
 Example
 ~~~~~~~
@@ -1581,7 +1581,7 @@ Resources.
 Commit Indicator
 ~~~~~~~~~~~~~~~~
 
-Example of how to add an Address indicator to the "Example Community"
+The following is an example of how to add an Address Indicator to the "Example Community"
 Owner:
 
 .. code:: javascript
@@ -1705,7 +1705,7 @@ Example of commitAssociations() method:
 Commit Attribute
 ~~~~~~~~~~~~~~~~
 
-Example of commitAttributes() method:
+The following is an example of commitAttributes() method:
 
 .. code:: javascript
 
@@ -1774,11 +1774,11 @@ Security Labels. Both the ``type()`` and ``indicator()`` methods are
 required to add the Security Labels. The Security Label value should be
 passed to the ``commitSecurityLabel()`` method.
 
-Putting it all Together
+Putting It All Together
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Example of how to add an Adversary with a name of 'adver-999' to the
-"Example Community" owner
+The following is an example of how to add an Adversary with a name of 'adver-999' to the
+"Example Community" Owner
 
 .. code:: javascript
 
@@ -1809,9 +1809,9 @@ Example of how to add an Adversary with a name of 'adver-999' to the
         });
 
 This example will demonstrate how to add an Adversary with a name of
-'adver-999' to the "Example Community" owner. It passes a callback to
-the commit() method that will add a group and indicators association,
-attribute, tag, and security label. Any number of Associations,
+'adver-999' to the "Example Community" Owner. It passes a callback to
+the commit() method that will add a Group and Indicator Association,
+Attribute, Tag, and SecurityLabel. Any number of Associations,
 Attributes, or Tags can be added in the callback.
 
 .. note:: To ensure that commits for the metadata happen after the commit of the Indicator, pass a callback to the Indicator Commit method.
@@ -1842,7 +1842,7 @@ This section explains how to work with ThreatConnect Group Resources.
 Commit Group
 ~~~~~~~~~~~~
 
-Example of how to add an Adversaries with a name of 'adver-001' to the
+The following is an example of how to add an Adversary with a name of 'adver-001' to the
 "Example Community" Owner:
 
 .. code:: javascript
@@ -1883,13 +1883,13 @@ Example Results:
     }
 
 This example will demonstrate how to add an Adversary with a name of
-'adver-001' to the "Example Community" Owner. For group specific
-parameters refer to the ThreatConnect API User Guide.
+'adver-001' to the "Example Community" Owner. For Group-specific
+parameters, refer to the ThreatConnect API User Guide.
 
 Commit Associations
 ~~~~~~~~~~~~~~~~~~~
 
-Example of commitAssociations() method:
+The following is an example of commitAssociations() method:
 
 .. code:: javascript
 
@@ -1911,7 +1911,7 @@ Example of commitAssociations() method:
 The JavaScript SDK provides the ``commitAssociations()`` method to add
 both Indicator and Group Associations. The ``type()``, ``id()``,
 ``associationType()``, and ``associationId()`` methods are required to
-commit the associations. The value passed to the ``associationType()``
+commit the Associations. The value passed to the ``associationType()``
 method must be the specific Group or Indicator Type (e.g.,
 TYPE.ADVERSARY, TYPE.HOST).
 
@@ -1937,8 +1937,8 @@ Example of commitAttributes() method:
         });
 
 The JavaScript SDK provides the ``commitAttributes()`` method to add
-attributes. The ``type()`` and ``id()`` are required to add attributes.
-The attribute object should be passed to the ``commitAttribute()``
+Attributes. The ``type()`` and ``id()`` are required to add Attributes.
+The Attribute object should be passed to the ``commitAttribute()``
 method with a type and value parameter.
 
 Commit False Positive
