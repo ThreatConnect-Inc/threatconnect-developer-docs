@@ -2005,14 +2005,14 @@ Example of commitTag() method:
         })
         .commitTag('Example Tag');
 
-The JavaScript SDK provides the ``commitTag()`` method to add tags. Both
-the ``type()`` and ``id()`` methods are required to add the tags. The
+The JavaScript SDK provides the ``commitTag()`` method to add Tags. Both
+the ``type()`` and ``id()`` methods are required to add the Tags. The
 Tag value should be passed to the ``commitTag()`` method.
 
 Commit Security Label
 ~~~~~~~~~~~~~~~~~~~~~
 
-Example of commitSecurityLabel() method:
+The following is an example of commitSecurityLabel() method:
 
 .. code:: javascript
 
@@ -2027,11 +2027,11 @@ Example of commitSecurityLabel() method:
         })
         .commitSecurityLabel('TLP Red');
 
-Putting it all Together
+Putting It All Together
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 Example of how to add an Adversary with a name of 'adver-999' to the
-"Example Community" owner
+"Example Community" Owner
 
 .. code:: javascript
 
@@ -2069,7 +2069,7 @@ This example will demonstrate how to add an Adversary with a name of
 Attribute, Tag, and Security Label. Any number of Associations,
 Attributes, or Tags can be added in the callback.
 
-.. note:: To ensure that commits for the metadata happen after the commit of the Group pass a callback to the Group Commit method.
+.. note:: To ensure that commits for the metadata happen after the commit of the Group, pass a callback to the Group Commit method.
 
 Task Commit
 -----------
@@ -2152,7 +2152,7 @@ Associations
 The JavaScript SDK provides the ``commitAssociations()`` method to add
 both Indicator and Group Associations. The ``type()``, ``id()``,
 ``associationType()``, and ``associationId()`` methods are required to
-commit the associations. The value passed to the ``associationType()``
+commit the Associations. The value passed to the ``associationType()``
 method must be the specific Group or Indicator Type (e.g.
 TYPE.ADVERSARY, TYPE.HOST).
 
@@ -2193,8 +2193,8 @@ Attributes
 ~~~~~~~~~~
 
 The JavaScript SDK provides the ``commitAttributes()`` method to add
-attributes. The ``id()`` method is required to add attributes. The
-attribute object should be passed to ``commitAttribute()`` method with a
+Attributes. The ``id()`` method is required to add Attributes. The
+Attribute object should be passed to ``commitAttribute()`` method with a
 type and value parameter.
 
 .. code:: javascript
@@ -2215,8 +2215,8 @@ type and value parameter.
 Tags
 ~~~~
 
-The JavaScript SDK provides the ``commitTags()`` method to add tags. The
-``id()`` method is required to retrieve the task. The tag value should
+The JavaScript SDK provides the ``commitTags()`` method to add Tags. The
+``id()`` method is required to retrieve the Task. The Tag value should
 be passed to the ``commitTags()`` method.
 
 .. code:: javascript
@@ -2246,13 +2246,13 @@ Security Labels
         })
         .commitSecurityLabel('TLP Red');
 
-Putting it all Together
+Putting It All Together
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 This example will demonstrate how to add a Task with a name of
-'task-999' to the "Example Community" owner. It passes a callback to the
-``commit()`` method that will add a group and indicators association,
-attribute, tag, and security label. Any number of Associations,
+'task-999' to the "Example Community" Owner. It passes a callback to the
+``commit()`` method that will add a Group and Indicator Association,
+Attribute, Tag, and Security Label. Any number of Associations,
 Attributes, or Tags can be added in the callback.
 
 .. code:: javascript
@@ -2284,7 +2284,7 @@ Attributes, or Tags can be added in the callback.
             tasks.commitSecurityLabel('TLP Red');
         });
 
-.. note:: To ensure the commits for the metadata happen after the commit of the task pass a callback to the group commit method.
+.. note:: To ensure the commits for the metadata happen after the commit of the Task, pass a callback to the group commit method.
 
 Victim Commit
 -------------
@@ -2342,7 +2342,7 @@ Associations
 The JavaScript SDK provides the ``commitAssociations()`` method to add
 both Indicator and Group Associations. The ``type()``, ``id()``,
 ``associationType()``, and ``associationId()`` methods are required to
-commit the associations. The value passed to the ``associationType()``
+commit the Associations. The value passed to the ``associationType()``
 method must be the specific Group or Indicator Type (e.g.
 TYPE.ADVERSARY, TYPE.HOST).
 
@@ -2383,8 +2383,8 @@ Attributes
 ~~~~~~~~~~
 
 The JavaScript SDK provides the ``commitAttributes()`` method to add
-attributes. The ``id()`` method is required to add attributes. The
-attribute object should be passed to ``commitAttribute()`` method with a
+Attributes. The ``id()`` method is required to add Attributes. The
+Attribute object should be passed to ``commitAttribute()`` method with a
 type and value parameter.
 
 .. code:: javascript
@@ -2405,8 +2405,8 @@ type and value parameter.
 Tags
 ~~~~
 
-The JavaScript SDK provides the ``commitTags()`` method to add tags. The
-``id()`` method is required to retrieve the victim. The tag value should
+The JavaScript SDK provides the ``commitTags()`` method to add Tags. The
+``id()`` method is required to retrieve the Victim. The Tag value should
 be passed to the ``commitTags()`` method.
 
 .. code:: javascript
@@ -2436,13 +2436,13 @@ Security Labels
         })
         .commitSecurityLabel('TLP Red');
 
-Putting it all Together
+Putting It All Together
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 This example will demonstrate how to add a Victim with a name of
 'task-999' to the "Example Community" owner. It passes a callback to the
-``commit()`` method that will add a group and indicators association,
-attribute, tag, and security label. Any number of Associations,
+``commit()`` method that will add a Group and Indicators Association,
+Attribute, Tag, and Security Label. Any number of Associations,
 Attributes, or Tags can be added in the callback.
 
 .. code:: javascript
@@ -2512,7 +2512,7 @@ Attributes, or Tags can be added in the callback.
             victim.commitSecurityLabel('TLP Red');
         });
 
-.. note:: To ensure the commits for the metadata happen after the commit of the task pass a callback to the group commit method.
+.. note:: To ensure the commits for the metadata happen after the commit of the Task, pass a callback to the group commit method.
 
 Manual API Calls
 ----------------
@@ -2527,7 +2527,7 @@ requestObject():
 
 The JavaScript SDK supports a manual way to access the API by allowing
 the creation of a ``requestObject()`` and submitting these objects to
-the ``apiRequest()`` method. The returned result will contain API
+the ``apiRequest()`` method. The returned result will contain an API
 response.
 
 Retrieving Indicators
@@ -2645,7 +2645,7 @@ add filters to a manual request using the ``payload()`` option.
 | orParams               | manually via payload() |
 +------------------------+------------------------+
 
-For a full list of query string parameters supported by the ThreatConnect API reference the `ThreatConnect API Documentation <https://docs.threatconnect.com/en/latest/rest_api/rest_api.html>`_.
+For a full list of query string parameters supported by the ThreatConnect API, reference the `ThreatConnect API documentation: <https://docs.threatconnect.com/en/latest/rest_api/rest_api.html>`_.
 
 Helper Functions
 ----------------
