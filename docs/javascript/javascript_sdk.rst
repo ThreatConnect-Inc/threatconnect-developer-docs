@@ -1,12 +1,12 @@
-JavaScript SDK
+JavaScript® SDK
 ==============
 
 About This Document
 
 This section explains the process of coding JavaScript applications, and
 the implementation of the JavaScript SDK, using the ThreatConnect API.
-The JavaScript SDK offers coverage of all features in version 4.0 of the
-ThreatConnect API—including the ability to write data to ThreatConnect.
+The JavaScript SDK offers coverage of all features of the 
+ThreatConnect API, including the ability to write data to ThreatConnect.
 
 The goal of this JavaScript SDK library is to provide a programmatic
 abstraction layer around the ThreatConnect API without losing functional
@@ -14,8 +14,8 @@ coverage over the available API resources. This abstraction layer
 enables developers to focus on writing enterprise functionality without
 worrying about low-level RESTful calls and authentication management.
 
-This document is not a replacement for the ThreatConnect API User Guide.
-This document serves as a companion to the official documentation for
+This document is not a replacement for the ThreatConnect API User Guide
+but serves as a companion to the official documentation for
 the REST API. Read the official documentation to gain a further
 understanding of the functional aspects of using the ThreatConnect API.
 
@@ -197,7 +197,7 @@ This section explained how to:
 Developing a JavaScript App
 ---------------------------
 
-This section provides an overview of the JavaScript app development
+This section provides an overview of the JavaScript app-development
 process as it pertains to the Spaces feature within ThreatConnect. This
 section will also review how to package an app for deployment to the
 ThreatConnect platform.
@@ -210,7 +210,7 @@ Apps use a deployment configuration file to define variables and execution envir
 Query Parameters
 ~~~~~~~~~~~~~~~~
 
-For the sample install configuration example above, here is a sample
+For the install configuration example above, here is a sample
 query String passed to the app:
 
 .. code::
@@ -246,7 +246,7 @@ Optional Properties
 
 There are some optional flags that may be used by the app to
 
--  handle Boolean flags that turn features on/off and to
+-  handle Boolean flags that turn features on/off and;
 -  encrypt parameters, like API Keys
 
 Parsing Argument Flags
@@ -265,7 +265,7 @@ Spaces app with a ``true`` or ``false`` parameter value.
 
 Encrypted Parameters
 
-This property should be used to encrypt private passwords used by the
+This property is used to encrypt private passwords that are used by the
 app (e.g., API keys). This added level of security will allow the
 application to persist the password in encrypted form when at rest. The
 input field during job creation will be "password" text, and the key
@@ -277,7 +277,7 @@ the following flag:
 ``param.<param-name>.encrypted``
 
 At runtime, ThreatConnect will call the Spaces app with the decrypted
-key. At no point in time is the password persisted in decrypted form.
+key. At no point is the password persisted in decrypted form.
 
 Encrypted apps require that the Keychain feature be turned on, or apps
 with ``.encrypted`` parameters will not run properly.
@@ -297,7 +297,7 @@ should never hard-code ThreatConnect Parameters
 | ThreatConnect           | Description                                           |
 | Parameter               |                                                       |
 +=========================+=======================================================+
-| ``tcSpaceElementId``    | The unique space element instance ID for the user who |
+| ``tcSpaceElementId``    | The unique Space-element instance ID for users that   |
 |                         | added this app to their Space. This numeric ID can be |
 |                         | used by the app to store state for the user.          |
 +-------------------------+-------------------------------------------------------+
@@ -612,10 +612,10 @@ Example Results of the retrieve.next method:
     }
 
 The JavaScript SDK provide the ``hasNext()`` method for checking if more
-entries are available. To retrieve the next set of entries the
+entries are available. To retrieve the next set of entries, the
 ``next()`` method is available.
 
-.. note:: Before the ``next()`` method can be called, the first API must have completed. This should not be an issue if a user click triggers the next call; however, if the ``next()`` method is being called programmatically then it should be passed in a function to the ``retrieve()`` method.
+.. note:: Before the ``next()`` method can be called, the first API must have completed. This should not be an issue if a user click triggers the next call; however, if the ``next()`` method is being called programmatically, then it should be passed in a function to the ``retrieve()`` method.
 
 .. note:: The ``next()`` method will return the same number of results defined in the ``resultsLimit()`` or the number of results remaining. The same 'done' and 'error' callbacks are also used for the next set of results.
 
@@ -670,7 +670,7 @@ Single Indicator retrieve Example Results:
 Filters
 ~~~~~~~
 
-Example of how to retrieve Indicators that start with 'bad' and have a
+The fololowing is an example of how to retrieve Indicators that start with 'bad' and have a
 dateAdded value greater than '20151213' using an API filter:
 
 .. code:: javascript
@@ -694,7 +694,7 @@ dateAdded value greater than '20151213' using an API filter:
 
 Starting with ThreatConnect version 4.0 the API supports filtering using
 query string parameters. For more information on which parameters
-support which operators see the ThreatConnect API Users Guide.
+support which operators, see the ThreatConnect API Users Guide.
 
 Filter Options
 
@@ -838,10 +838,9 @@ Retrieve Observation Count
         })
         .retrieveObservationCount();
 
-The JavaScript SDK provides the ``retrieveObservationCount()`` method to
-retrieve the Observation Count for an Indicator. Both the ``type()`` and ``indicator()`` methods are required to retrieve the Observation Count.
+The JavaScript SDK provides the ``retrieveObservationCount()`` method to retrieve the Observation Count for an Indicator. Both the ``type()`` and ``indicator()`` methods are required to retrieve the Observation Count.
 
-.. note:: The Observation Count can also be retrieved with the "Single Indicator" method described above using the includeAdditional parameter.
+.. note:: The Observation Count can also be retrieved with the "Single Indicator" method described above, using the includeAdditional parameter.
 
 Retrieve Security Labels Method
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -941,7 +940,7 @@ This section explains how to work with ThreatConnect Tags Resources.
 
 This example will demonstrate how to retrieve Tags. The result set
 returned from this example will contain all Tags to which the API
-credential being used has access. Optionally the ``name()`` method can
+credential being used has access. Optionally, the ``name()`` method can
 be used to pass a specific Tag name.
 
 Owners Retrieve
@@ -1168,7 +1167,7 @@ This section explains how to work with ThreatConnect Group Resources.
 Retrieve Group
 ~~~~~~~~~~~~~~
 
-Example of how to retrieve Adversaries:
+The following is an example of how to retrieve Adversaries:
 
 .. code:: javascript
 
@@ -1239,7 +1238,7 @@ The JavaScript SDK provide the ``hasNext()`` method for checking if more
 entries are available. To retrieve the next set of entries the
 ``next()`` method is available.
 
-.. note:: Before the ``next()`` method can be called the first API must have completed. This should not be an issue if a user click triggers the next call, however if the ``next()`` method is being called programmatically then it should be passed in a function to the ``retrieve()`` method.
+.. note:: Before the ``next()`` method can be called, the first API must have completed. This should not be an issue if a user click triggers the next call; however, if the ``next()`` method is being called programmatically, then it should be passed in a function to the ``retrieve()`` method.
 
 .. note:: The ``next()`` method will return the same number of results defined in the ``resultsLimit()`` or the number of results remaining. The same 'done' and 'error' callbacks are also used for the next set of results.
 
@@ -2698,3 +2697,5 @@ The ``indicatorHelper`` function makes it easy to retrieve the ``TYPE`` object f
                 indicators.next()
             }
         });
+
+JavaScript® is a registered trademark of the Oracle Corporation.
