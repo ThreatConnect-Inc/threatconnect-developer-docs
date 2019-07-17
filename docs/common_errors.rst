@@ -8,12 +8,12 @@ You may also find the list of `HTTP Responses <https://docs.threatconnect.com/en
 General Errors
 --------------
 
-Signature data did not match expected result
+Signature Data Did Not Match Expected Result
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This error occurs when something is wrong with the signature used in the `Authorization Section <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#authorization>`__. Make sure you are using the ``HMAC-SHA256`` algorithm and base-64 encoding to create the signature. Refer to the `Authorization Section <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#authorization>`__ for steps to fix this error.
 
-Timestamp out of acceptable time range
+Timestamp Out of Acceptable Time Range
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Every API call to ThreatConnect requires a ``Timestamp`` header that is within five minutes of the ThreatConnect server's system time. If you get this error, you are passing in a Timestamp that does not line up with ThreatConnect system time. Refer to the `Timestamp Section <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#timestamp>`__ for steps to fix this error.
@@ -21,7 +21,7 @@ Every API call to ThreatConnect requires a ``Timestamp`` header that is within f
 Access Denied
 ^^^^^^^^^^^^^
 
-This error occurs when one of the values in the `Authorization Header <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#authorization>`__ is incorrect, or when you are making a request to an owner to which the API account you are using does not have access.
+This error occurs when one of the values in the `Authorization Header <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#authorization>`__ is incorrect, or when you are making a request to an Owner to which the API account you are using does not have access.
 
 Creating Indicators
 -------------------
@@ -31,7 +31,7 @@ There are a few details to keep in mind when creating certain Indicator types.
 ASN Indicators
 ^^^^^^^^^^^^^^
 
-When `creating an ASN Indicator <https://docs.threatconnect.com/en/latest/rest_api/indicators/indicators.html#create-a-custom-indicator>`__ in ThreatConnect, the AS Number must be **prefixed with "ASN"** and should not include a space between the prefix ("ASN") and the AS Number. There are some examples of correct and incorrect indicator formats below.
+When `creating an ASN Indicator <https://docs.threatconnect.com/en/latest/rest_api/indicators/indicators.html#create-a-custom-indicator>`__ in ThreatConnect, the AS Number must be **prefixed with "ASN"** and should not include a space between the prefix ("ASN") and the AS Number. There are some examples below of correct and incorrect Indicator formats.
 
 .. code-block:: text
 
@@ -134,7 +134,7 @@ When `creating a Registry Key Indicator <https://docs.threatconnect.com/en/lates
 URL Indicators
 ^^^^^^^^^^^^^^
 
-When `creating a URL Indicator <https://docs.threatconnect.com/en/latest/rest_api/indicators/indicators.html#create-url-indicators>`__ in ThreatConnect, the domain name of the URL must be **lowercase**. There are some examples of correct and incorrect indicator formats below.
+When `creating a URL Indicator <https://docs.threatconnect.com/en/latest/rest_api/indicators/indicators.html#create-url-indicators>`__ in ThreatConnect, the domain name of the URL must be **lowercase**. There are some examples of correct and incorrect Indicator formats below.
 
 .. code-block:: text
 
@@ -150,4 +150,4 @@ TCEX Errors
 Can't find '__main__' module in '.'
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The ``can't find '__main__' module in '.'`` error means that you are trying to run the tcex script or app without the ``__main__.py`` file available `here <https://github.com/ThreatConnect-Inc/tcex/blob/master/app_init/__main__.py>`__. Download ``__main__.py`` into the base directory or your app and try running it again.
+The ``can't find '__main__' module in '.'`` error means that you are trying to run the Tcex script or app without the ``__main__.py`` file available `here <https://github.com/ThreatConnect-Inc/tcex/blob/master/app_init/__main__.py>`__. Download ``__main__.py`` into the base directory or your app and try running it again.
