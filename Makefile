@@ -31,10 +31,6 @@ uptcex:
 
 	# remove unused files
 	rm -f ./tcex/LICENSE ./tcex/README.md ./tcex/setup.cfg ./tcex/setup.py;
-	# move all of the code for tcex up one level
-	mv ./tcex/tcex/* ./tcex;
-	# remove the empty directory
-	rm -rf ./tcex/tcex;
 
 	# change the variable name of the tcex version used in the tcex docs
 	sed -i.bak 's/|version|/|tcex_version|/g' ./docs/tcex/tcex.rst && rm ./docs/tcex/tcex.rst.bak;

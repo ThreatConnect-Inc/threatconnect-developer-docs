@@ -43,13 +43,13 @@ class TestFeature(${parent_class}):
         super(TestFeature, self).teardown_method()
 
     @pytest.mark.parametrize('profile_name', profile_names)
-    def test_profiles(self, profile_name, monkeypatch): # pylint: disable=unused-argument
+    def test_profiles(self, profile_name, monkeypatch):  # pylint: disable=unused-argument
         """Run pre-created testing profiles."""
         pd = self.profile(profile_name)
 
         # uncomment to start using the monkey patch annotations
         # register_monkeypatches(monkeypatch, pd)
 
-        assert self.run_profile(profile_name) in pd.get('exit_codes', [0])
+        assert self.run_profile(pd) in pd.get('exit_codes', [0])
         ValidateFeature(self.validator).validate(pd.get('outputs'))
         ${validate_batch_method}

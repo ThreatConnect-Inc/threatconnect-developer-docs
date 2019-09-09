@@ -3,6 +3,37 @@
 Release Notes
 #############
 
+1.1.3
+=====
++ Added cache handler to logging module.
++ Updated args module to use dict input over sys.argv when possible.
++ Updated args module replaced required args with a default value when possible.
++ Updated testing module for args changes and more.
++ Updated logging add handler calls in multiple modules.
++ Renamed args module to inputs.
++ Removed reference to args in logging module.
+
+1.1.2
+=====
++ Updates to token and args modules to better support testing framework and external Apps.
++ Added kwargs on tcex init for external Apps.
++ Updates to testing templates.
+
+1.1.1
+=====
++ Moved registration of default token to default_args method to address issue with secure params.
++ Updated template files.
++ Updated build process for wheel files.
++ Updated permutations generation to include hidden inputs.
+
+1.1.0
+=====
++ Restructured tcex modules into individual directories.
++ Added services module for service Apps.
++ Added token module to manage tokens for all types of Apps.
++ Moved token renewal from session to new token module.
++ Updated multiple module to simplify testing.
+
 1.0.7
 =====
 + Updated logging formatter for issue in py2.
@@ -289,7 +320,7 @@ Release Notes
 ------
 + Updated **submit_create_and_upload** method to clear raw list after submission
 + Rewrote **results_tc** method to handle updates to key/value pairs
-+ Updated tcrun to auto-create required directories
++ Updated tcrun to automatically create required directories
 + Updated tclib to support building tcex develop version with **--tcex_develop** CLI flag
 
 0.8.9
@@ -456,8 +487,8 @@ Release Notes
 0.7.5
 -----
 + Updated all TcEx framework command-line interface (CLI) commands to use utf-8 encoding by default
-+ Replaced usage of unicode with built-in "str" (Python 2/3 compatible
-+ Replaced usage of long with built-in "int" (Python 2/3 compatible)
++ Replaced usage of unicode with built-in str (Python 2/3 compatible
++ Replaced usage of long with built-in int (Python 2/3 compatible)
 + Update usage of **urllib.quote** to be Python 2/3 compatible
 
 0.7.4

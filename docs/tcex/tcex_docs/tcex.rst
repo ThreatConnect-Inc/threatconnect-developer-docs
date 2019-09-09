@@ -1,46 +1,31 @@
-TcEx Module
-===========
-
-Submodules
-----------
+Modules
+=======
 
 .. toctree::
+   :maxdepth: 3
 
-   tcex.tcex_logger
+   tcex.batch
+   tcex.decorators
+   tcex.inputs
+   tcex.logger
    tcex.tcex
-   tcex.tcex_app_decorators
-   tcex.tcex_argparser
-   tcex.tcex_args
-   tcex.tcex_auth
-   tcex.tcex_bin_init
-   tcex.tcex_bin_lib
-   tcex.tcex_bin_package
-   tcex.tcex_bin_profile
-   tcex.tcex_bin_run
-   tcex.tcex_bin_validate
+   tcex.bin
+   tcex.metrics
+   tcex.notifications
+   tcex.playbooks
+   tcex.resources
+   tcex.sessions
    tcex.tcex_data_filter
    tcex.tcex_error_codes
    tcex.tcex_key_value
-   tcex.tcex_logger
-   tcex.tcex_metrics_v2
-   tcex.tcex_notification_v2
-   tcex.tcex_playbook
    tcex.tcex_redis
    tcex.tcex_request
-   tcex.tcex_resources
-   tcex.tcex_session
    tcex.tcex_ti
-   tcex.tcex_ti_attribute
-   tcex.tcex_ti_batch
-   tcex.tcex_ti_group
-   tcex.tcex_ti_indicator
-   tcex.tcex_ti_security_label
-   tcex.tcex_ti_tag
-   tcex.tcex_vault
-   tcex.tcex_utils
+   tcex.vault
+   tcex.utils
 
 Module contents
----------------
+===============
 
 .. automodule:: tcex
     :members:

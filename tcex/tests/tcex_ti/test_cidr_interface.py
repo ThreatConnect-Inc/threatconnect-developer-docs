@@ -24,6 +24,17 @@ class TestCIDRIndicators:
             ti = self.ti.indicator(indicator_type='CIDR', owner=tcex.args.tc_owner, Block=block)
             ti.delete()
 
+    def test_cidr_association(self, block='1.1.1.1/8'):
+        """Test cidr associations."""
+        cidr = self.ti.indicator(indicator_type='CIDR', owner=tcex.args.tc_owner, block=block)
+        cidr.create()
+        adversary = self.ti.adversary('adversary_1', owner=tcex.args.tc_owner)
+        adversary.create()
+        response = adversary.add_association(cidr)
+        ti_data = response.json()
+        assert response.status_code == 201
+        assert ti_data.get('status') == 'Success'
+
     def test_cidr_get(self, block='1.1.1.1/8'):
         """Test cidr get."""
         # create
@@ -91,7 +102,7 @@ class TestCIDRIndicators:
 
     def cidr_create(self, block='1.1.1.7/8'):
         """Test cidr create."""
-        ti = self.ti.indicator(indicator_type='CIDR', owner=tcex.args.tc_owner, Block=block)
+        ti = self.ti.indicator(indicator_type='CIDR', owner=tcex.args.tc_owner, block=block)
         r = ti.create()
         ti_data = r.json()
         assert r.status_code == 201
@@ -157,7 +168,7 @@ class TestCIDRIndicators:
 
         # update indicator
         ti = self.ti.indicator(
-            indicator_type='CIDR', owner=tcex.args.tc_owner, Block=block, rating=5, confidence=10
+            indicator_type='CIDR', owner=tcex.args.tc_owner, block=block, rating=5, confidence=10
         )
         r = ti.update()
         ti_data = r.json()

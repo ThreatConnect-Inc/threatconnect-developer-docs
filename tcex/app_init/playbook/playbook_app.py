@@ -4,7 +4,7 @@ from args import Args
 
 
 class PlaybookApp(object):
-    """Playbook App Class"""
+    """Playbook App Class."""
 
     def __init__(self, _tcex):
         """Initialize class properties."""
