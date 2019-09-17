@@ -5,13 +5,13 @@ To delete an Indicator, the most basic format is:
 
 .. code::
 
-    DELETE /v2/indicators/{indicatorType}/{indicator}
+    DELETE /v2/indicators/{indicatorType}/{indicator}?owner=owner
 
 For example, the query below will delete the Email Address ``bad@example.com``:
 
 .. code::
 
-    DELETE /v2/indicators/emailAddresses/bad@example.com
+    DELETE /v2/indicators/emailAddresses/bad@example.com?owner=owner
 
 JSON Response:
 
