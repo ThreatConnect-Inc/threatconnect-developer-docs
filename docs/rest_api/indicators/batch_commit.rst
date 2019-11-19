@@ -144,6 +144,7 @@ Supported ``type`` values for Indicators:
       "attributeWriteType": "Replace",
       "action": "Create",
       "owner": "Common Community"
+      "version": "V2"
     }
 
 **Server Response on Success**
