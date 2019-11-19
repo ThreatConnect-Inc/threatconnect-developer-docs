@@ -63,6 +63,21 @@
 |             | fileText\*\* | TRUE                            | FALSE                         |
 +-------------+--------------+---------------------------------+-------------------------------+
 
+† The valid values for a Document's status are: 
+
+* Success
+* Awaiting Upload
+* In Progress
+* Failed
+* None
+
+† The valid values for an Event's status are:
+
+* Needs Review
+* False Positive
+* No Further Action
+* Escalated
+
 † The valid values for an Incident's status are: 
 
 * New
@@ -74,14 +89,6 @@
 * Closed
 * Rejected
 * Deleted
-
-† The valid values for a Document's status are: 
-
-* Success
-* Awaiting Upload
-* In Progress
-* Failed
-* None
 
 \* The valid values for a Signature’s fileType field are:
 
