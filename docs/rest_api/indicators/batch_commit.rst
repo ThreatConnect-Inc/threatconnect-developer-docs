@@ -18,15 +18,15 @@ The Batch Create resource creates a batch entry in the system. No batch processi
 +=====================+=================+==================================================================================================================================+
 | haltOnError         | true            | Batch process stops processing entire batch first time it reaches an error during processing.                                    |
 +---------------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------+
-|                     | false (default) | If field not provided, default behavior continues processing further entities in input file.                                      |
+|                     | false (default) | If field not provided, default behavior continues processing further entities in input file.                                     |
 +---------------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------+
-| attributeWriteType  | Append          | Adds Attributes (allow duplicates)                                                                                                |
+| attributeWriteType  | Append          | Adds Attributes (allow duplicates)                                                                                               |
 +---------------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------+
 |                     | Replace         | Deletes current Attributes; Adds/Validates new Attributes                                                                        |
 +---------------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------+
 | action              | Create          | Creates Indicator                                                                                                                |
 +---------------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------+
-|                     | Delete          | Deletes Indicator (Only the ‘summary’ and ‘type’ field are required.)                                                             |
+|                     | Delete          | Deletes Indicator (Only the ‘summary’ and ‘type’ field are required.)                                                            |
 +---------------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------+
 | fileMergeMode       | Distribute      | Rating, Confidence, Tags, Attributes, etc., from incoming file hashes are applied to all matching Indicators (up to 3 possible). |
 +---------------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------+
@@ -34,13 +34,13 @@ The Batch Create resource creates a batch entry in the system. No batch processi
 +---------------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------+
 | hashCollisionMode   | Split           | Inhibits a merge and, instead, splits the incoming data out across any offending Indicators                                      |
 +---------------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------+
-|                     | IgnoreIncoming  | Drops incoming Indicator from the import, leaving pre-existing data same as it was before importing offending Indicator      |
+|                     | IgnoreIncoming  | Drops incoming Indicator from the import, leaving pre-existing data same as it was before importing offending Indicator          |
 +---------------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------+
-|                     | IgnoreExisting  | If conflict exists between two or more existing Indicators, existing file Indicators that caused conflict are deleted.       |
+|                     | IgnoreExisting  | If conflict exists between two or more existing Indicators, existing file Indicators that caused conflict are deleted.           |
 +---------------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------+
 |                     | FavorIncoming   | Favors hashes in incoming data, overwriting hashes that conflicted within existing data                                          |
 +---------------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------+
-|                     | FavorExisting   | Favors hashes in existing data, ignoring hashes that conflicted from incoming data                                                |
+|                     | FavorExisting   | Favors hashes in existing data, ignoring hashes that conflicted from incoming data                                               |
 +---------------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------+
 
 .. note:: If ``haltOnError`` is set to ‘true’ and an error occurs, then the status will be set to ‘Completed’, and ‘errorCount’ will be greater than zero. The ‘unprocessedCount’ field will be greater than zero, unless the uploaded file did not contain valid JSON.
