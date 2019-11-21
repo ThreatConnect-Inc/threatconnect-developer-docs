@@ -14,7 +14,7 @@ importing large amounts of data.
 The Batch Create resource creates a batch entry in the system. No batch processing is triggered until the batch input file is uploaded. The table below displays the fields required for the Batch Create message.
 
 +-----------------------+----------+------------------------------+-------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-| BatchConfig Parameter | Required | Applicable Batch Version (s) |       Value             | Description                                                                                                                                      |
+| BatchConfig Parameter | Required | Applicable Batch Version(s)  |         Value           |                                                              Description                                                                         |
 +=======================+==========+==============================+=========================+==================================================================================================================================================+
 | version               |    No    |              NA              |       V1 (default)      | Basic functionality: For Indicator import only with limited available features/settings                                                          |
 +-----------------------+----------+------------------------------+-------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -58,6 +58,7 @@ The Batch Create resource creates a batch entry in the system. No batch processi
 +-----------------------+----------+------------------------------+-------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
 |                       |          |                              |      FavorExisting      | Favors hashes in existing data, ignoring hashes that conflicted from incoming data                                                               |
 +-----------------------+----------+------------------------------+-------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+*Denotes a setting applicable to Version V2 only
 
 .. note:: If ``haltOnError`` is set to ‘true’ and an error occurs, then the status will be set to ‘Completed’, and ‘errorCount’ will be greater than zero. The ‘unprocessedCount’ field will be greater than zero, unless the uploaded file did not contain valid JSON.
 
