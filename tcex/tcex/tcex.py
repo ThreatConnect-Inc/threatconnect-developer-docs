@@ -8,6 +8,7 @@ import os
 import re
 import signal
 import sys
+import threading
 
 try:
     from urllib import quote  # Python 2
@@ -35,10 +36,11 @@ class TcEx(object):
     def __init__(self, **kwargs):
         """Initialize Class Properties."""
         # catch interupt signals
-        signal.signal(signal.SIGINT, self._signal_handler)
-        if platform.system() != 'Windows':
-            signal.signal(signal.SIGHUP, self._signal_handler)
-        signal.signal(signal.SIGTERM, self._signal_handler)
+        if threading.current_thread().name == 'MainThread':
+            signal.signal(signal.SIGINT, self._signal_handler)
+            if platform.system() != 'Windows':
+                signal.signal(signal.SIGHUP, self._signal_handler)
+            signal.signal(signal.SIGTERM, self._signal_handler)
 
         # Property defaults
         self._config = kwargs.get('config', {})
@@ -53,6 +55,7 @@ class TcEx(object):
         self._playbook = None
         self._service = None
         self._session = None
+        self._session_external = None
         self._utils = None
         self._ti = None
         self._token = None
@@ -307,6 +310,9 @@ class TcEx(object):
             # push exit message
             self.playbook.aot_rpush(code)
 
+        # exit token renewal thread
+        self.token.shutdown = True
+
         self.log.info(u'Exit Code: {}'.format(code))
         sys.exit(code)
 
@@ -529,24 +535,25 @@ class TcEx(object):
 
         This method is used to set and exit message in the ThreatConnect Platform.
         ThreatConnect only supports files of max_message_length.  Any data exceeding
-        this limit will be truncated by this method.
+        this limit will be truncated. The last <max_length> characters will be preserved.
 
         Args:
             message (string): The message to add to message_tc file
         """
         if os.access(self.default_args.tc_out_path, os.W_OK):
-            message_file = '{}/message.tc'.format(self.default_args.tc_out_path)
+            message_file = os.path.join(self.default_args.tc_out_path, 'message.tc')
         else:
             message_file = 'message.tc'
 
-        message = '{}\n'.format(message)
-        if max_length - len(message) > 0:
-            with open(message_file, 'a') as mh:
-                mh.write(message)
-        elif max_length > 0:
-            with open(message_file, 'a') as mh:
-                mh.write(message[:max_length])
-        max_length -= len(message)
+        if os.path.isfile(message_file):
+            with open(message_file, 'r') as mh:
+                message = mh.read() + message
+
+        if not message.endswith('\n'):
+            message += '\n'
+        with open(message_file, 'w') as mh:
+            # write last <max_length> characters to file
+            mh.write(message[-max_length:])
 
     def notification(self):
         """Get instance of the Notification module.
@@ -861,6 +868,22 @@ class TcEx(object):
 
             self._session = TcSession(self)
         return self._session
+
+    @property
+    def session_external(self):
+        """Return an instance of Requests Session configured for the ThreatConnect API."""
+        if self._session_external is None:
+            from requests import Session
+
+            self._session_external = Session()
+            if self.default_args.tc_proxy_external:
+                self.log.info(
+                    'Using proxy server for external connectivity ({}:{}).'.format(
+                        self.default_args.tc_proxy_host, self.default_args.tc_proxy_port
+                    )
+                )
+                self._session_external.proxies = self.proxies
+        return self._session_external
 
     @property
     def ti(self):

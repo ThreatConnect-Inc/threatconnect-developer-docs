@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 """TcEx Framework Validate Module."""
 import ast
-import imp
 import importlib
 import json
 import os
@@ -57,11 +56,12 @@ class Validate(Bin):
 
         if 'pkg_resources' in sys.modules:
             # only set these if pkg_resource module is available
-            self.install_json_schema_file = pkg_resources.resource_filename(
-                __name__, '/'.join(['schemas', 'install-json-schema.json'])
+            pkg_path = pkg_resources.resource_filename(__name__, '').rstrip('bin')
+            self.install_json_schema_file = os.path.join(
+                pkg_path, 'schemas', 'install-json-schema.json'
             )
-            self.layout_json_schema_file = pkg_resources.resource_filename(
-                __name__, '/'.join(['schemas', 'layout-json-schema.json'])
+            self.layout_json_schema_file = os.path.join(
+                pkg_path, 'schemas', 'layout-json-schema.json'
             )
         else:
             self.install_json_schema_file = None
@@ -160,39 +160,45 @@ class Validate(Bin):
     @staticmethod
     def check_imported(module):
         """Check whether the provide module can be imported (package installed).
-
         Args:
             module (str): The name of the module to check availability.
-
         Returns:
             bool: True if the module can be imported, False otherwise.
         """
-        imported = True
-        module_info = ('', '', '')
+        try:
+            del sys.modules[module]
+        except (AttributeError, KeyError):
+            pass
         # TODO: if possible, update to a cleaner method that doesn't require importing the module
         # and running inline code.
+        module_path = None
         try:
-            importlib.import_module(module)
-            module_info = imp.find_module(module)
+            imported_module = importlib.import_module(module)
         except ImportError:
-            imported = False
+            return False
+        if hasattr(imported_module, '__path__'):
+            # module in lib directory
+            module_path = imported_module.__path__
+        elif hasattr(imported_module, '__file__'):
+            # module in base App directory
+            module_path = imported_module.__file__
+        else:
+            return False
 
-        # get module path
-        module_path = module_info[1]
-        description = module_info[2]
+        # possible unneeded check
+        if module_path is None:
+            return False
 
-        if not description:
-            # if description is None or empty string the module could not be imported
-            imported = False
-        elif not description and not module_path:
-            # if description/module_path are None or empty string the module could not be imported
-            imported = False
-        elif module_path is not None and (
-            'dist-packages' in module_path or 'site-packages' in module_path
-        ):
+        if isinstance(module_path, str):
+            module_path = [module_path]
+
+        for m_path in module_path:
             # if dist-packages|site-packages in module_path the import doesn't count
-            imported = False
-        return imported
+            if 'dist-packages' in m_path:
+                return False
+            if 'site-packages' in m_path:
+                return False
+        return True
 
     def check_install_json(self):
         """Check all install.json files for valid schema."""
@@ -278,15 +284,36 @@ class Validate(Bin):
         """
 
         ij_input_names = []
+        ij_output_name_type = []
         ij_output_names = []
         if os.path.isfile('install.json'):
             try:
                 with open('install.json') as fh:
                     ij = json.loads(fh.read())
                 for p in ij.get('params', []):
-                    ij_input_names.append(p.get('name'))
+                    print('name', p.get('name'))
+                    if p.get('name') in ij_input_names:
+                        # update validation data errors
+                        self.validation_data['errors'].append(
+                            'Duplicate input name found in install.json ({})'.format(p.get('name'))
+                        )
+                        status = False
+                    else:
+                        ij_input_names.append(p.get('name'))
                 for o in ij.get('playbook', {}).get('outputVariables', []):
-                    ij_output_names.append(o.get('name'))
+                    # build name type to ensure check for duplicates on name-type value
+                    name_type = '{}-{}'.format(o.get('name'), o.get('type'))
+                    if name_type in ij_output_name_type:
+                        # update validation data errors
+                        self.validation_data['errors'].append(
+                            'Duplicate output variable name found in install.json ({})'.format(
+                                o.get('name')
+                            )
+                        )
+                        status = False
+                    else:
+                        ij_output_name_type.append(name_type)
+                        ij_output_names.append(o.get('name'))
             except Exception:
                 # checking parameters isn't possible if install.json can't be parsed
                 return
@@ -306,6 +333,8 @@ class Validate(Bin):
                         'layout.json, but not found in install.json).'.format(p.get('name'))
                     )
                     status = False
+                else:
+                    ij_input_names.remove(p.get('name'))
 
                 if 'sqlite3' in sys.modules:
                     if p.get('display'):
@@ -323,6 +352,15 @@ class Validate(Bin):
 
         # update validation data for module
         self.validation_data['layouts'].append({'params': 'inputs', 'status': status})
+
+        if ij_input_names:
+            input_names = ','.join(ij_input_names)
+            # update validation data errors
+            self.validation_data['errors'].append(
+                'Layouts input.parameters[].name validations failed ("{}" values from install.json '
+                'were not included in layout.json.'.format(input_names)
+            )
+            status = False
 
         # outputs
         status = True

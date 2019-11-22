@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 """TcEx Service Common Module"""
+import base64
 import json
 import os
 import threading
 import time
+import uuid
 from multiprocessing import Process
 from random import randint
 
@@ -27,12 +29,12 @@ class TestCaseServiceCommon(TestCasePlaybookCommon):
         args.update(
             {
                 'tc_svc_broker_host': os.getenv('TC_SVC_BROKER_HOST', 'localhost'),
-                'tc_svc_broker_port': os.getenv('TC_SVC_BROKER_PORT', '1883'),
+                'tc_svc_broker_port': int(os.getenv('TC_SVC_BROKER_PORT', '1883')),
                 'tc_svc_broker_service': os.getenv('TC_SVC_BROKER_SERVICE', 'mqtt'),
                 'tc_svc_broker_token': os.getenv('TC_SVC_BROKER_TOKEN'),
                 'tc_svc_client_topic': self.client_topic,
                 'tc_svc_server_topic': self.server_topic,
-                'tc_svc_hb_timeout_seconds': int(os.getenv('TC_SVC_HB_TIMEOUT_SECONDS', '60')),
+                'tc_svc_hb_timeout_seconds': int(os.getenv('TC_SVC_HB_TIMEOUT_SECONDS', '300')),
             }
         )
         return args
@@ -64,30 +66,38 @@ class TestCaseServiceCommon(TestCasePlaybookCommon):
 
     def patch_service(self):
         """Patch the micro-service."""
-        from tcex.service import Service  # pylint: disable=import-error,no-name-in-module
+        from tcex.services import Services  # pylint: disable=import-error,no-name-in-module
 
-        current_context = self.context
+        tc_svc_broker_host = self.default_args.get('tc_svc_broker_host', 'localhost')
+        tc_svc_broker_port = int(self.default_args.get('tc_svc_broker_port', 1883))
+        tc_svc_broker_timeout = int(self.default_args.get('tc_svc_hb_timeout_seconds', 60))
 
         @property
         def mqtt_client(self):
             self.tcex.log.trace('using monkeypatch method')
             if self._mqtt_client is None:
                 self._mqtt_client = mqtt.Client(client_id='', clean_session=True)
+                self.mqtt_client.connect(
+                    tc_svc_broker_host, tc_svc_broker_port, tc_svc_broker_timeout
+                )
             return self._mqtt_client
 
-        @property
-        def session_id(self):  # pylint: disable=unused-argument
-            self.tcex.log.trace('using monkeypatch method')
-            return current_context
+        redis_client = self.redis_client
 
         @staticmethod
-        def session_logfile(session_id):  # pylint: disable=unused-argument
-            self.tcex.log.trace('using monkeypatch method')
-            return '{0}/{0}.log'.format(current_context)
+        def session_id_(trigger_id=None):  # pylint: disable=unused-argument
+            """Patch session_id method to track trigger id -> session_id for validation."""
+            # write to redis
+            context = str(uuid.uuid4())  # create unique uuid for event trigger
+            self.context_tracker.append(context)  # add context/session_id to tracker
 
-        MonkeyPatch().setattr(Service, 'mqtt_client', mqtt_client)
-        MonkeyPatch().setattr(Service, 'session_id', session_id)
-        MonkeyPatch().setattr(Service, 'session_logfile', session_logfile)
+            self.tcex.log.trace('using monkeypatch method')
+            if trigger_id is not None:
+                redis_client.hset(context, '_trigger_id', trigger_id)
+            return context
+
+        MonkeyPatch().setattr(Services, 'mqtt_client', mqtt_client)
+        MonkeyPatch().setattr(Services, 'session_id', session_id_)
 
     def publish(self, message, topic=None):
         """Publish message on server channel."""
@@ -103,25 +113,31 @@ class TestCaseServiceCommon(TestCasePlaybookCommon):
         elif self.tcex.args.tc_svc_broker_service.lower() == 'redis':
             self.redis_client.publish(topic, message)
 
-    def publish_create_config(self, trigger_id, config):
+    def publish_create_config(self, message):
         """Send create config message.
 
         Args:
             trigger_id (str): The trigger id for the config message.
-            config (dict): The data for the config message.
+            message (dict): The entire message with trigger_id and config.
         """
-        config_msg = {'command': 'CreateConfig', 'triggerId': trigger_id, 'config': config}
-        config_msg['config']['tc_playbook_out_variables'] = self.output_variables
-        self.publish(json.dumps(config_msg))
+        # build config message
+        message['apiToken'] = '000000000'
+        message['expireSeconds'] = int(time.time() + 86400)
+        message['command'] = 'CreateConfig'
+        message['config']['tc_playbook_out_variables'] = self.output_variables
+        message['triggerId'] = message.pop('trigger_id')
+        self.publish(json.dumps(message))
         time.sleep(0.5)
 
-    def publish_delete_config(self, trigger_id):
+    def publish_delete_config(self, message):
         """Send delete config message.
 
         Args:
             trigger_id (str): The trigger id for the config message.
         """
-        config_msg = {'command': 'DeleteConfig', 'triggerId': trigger_id}
+        time.sleep(0.5)
+        # using triggerId here instead of trigger_id do to pop in publish_create_config
+        config_msg = {'command': 'DeleteConfig', 'triggerId': message.get('triggerId')}
         self.publish(json.dumps(config_msg))
 
     def publish_shutdown(self):
@@ -140,6 +156,42 @@ class TestCaseServiceCommon(TestCasePlaybookCommon):
         config_msg = {'command': 'UpdateConfig', 'triggerId': trigger_id, 'config': config}
         config_msg['config']['outputVariables'] = self.output_variables
         self.publish(json.dumps(config_msg))
+        time.sleep(0.5)
+
+    def publish_webhook_event(
+        self,
+        trigger_id,
+        body=None,
+        headers=None,
+        method='GET',
+        query_params=None,
+        request_key='abc123',
+    ):
+        """Send create config message.
+
+        Args:
+            trigger_id (str): The trigger ID.
+            headers (list, optional): A list of headers name/value pairs. Defaults to [].
+            method (str, optional): The method. Defaults to 'GET'.
+            query_params (list, optional): A list of query param name/value pairs. Defaults to [].
+        """
+        body = body or ''
+        if isinstance(body, dict):
+            body = json.dumps(body)
+
+        body = self.redis_client.hset(
+            request_key, 'request.body', base64.b64encode(json.dumps(body).encode('utf-8'))
+        )
+        event = {
+            'command': 'WebhookEvent',
+            'method': method,
+            'queryParams': query_params or [],
+            'headers': headers or [],
+            'body': 'request.body',
+            'requestKey': request_key,
+            'triggerId': trigger_id,
+        }
+        self.publish(json.dumps(event))
         time.sleep(0.5)
 
     def run(self, args):
@@ -221,12 +273,10 @@ class TestCaseServiceCommon(TestCasePlaybookCommon):
         super(TestCaseServiceCommon, cls).teardown_class()
         try:
             os.remove(cls.service_file)
-        except FileNotFoundError:
+        except OSError:
             pass
 
     def teardown_method(self):
         """Run after each test method runs."""
         time.sleep(0.5)
-        r = self.stager.redis.delete_context(self.context)
-        self.log_data('teardown method', 'delete count', r)
         super(TestCaseServiceCommon, self).teardown_method()

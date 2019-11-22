@@ -79,6 +79,7 @@ class TiTcRequest:
             url = '/v2/{}/{}'.format(main_type, unique_id)
         else:
             url = '/v2/{}/{}/{}'.format(main_type, sub_type, unique_id)
+
         return self.tcex.session.put(url, params=params, json=data)
 
     def mine(self):
@@ -398,6 +399,78 @@ class TiTcRequest:
 
         return self.tcex.session.get(url, params=params)
 
+    def set_dns_resolution(self, main_type, sub_type, unique_id, value, owner=None):
+        """
+
+         Args:
+             value:
+             owner:
+             main_type:
+             sub_type:
+             unique_id:
+
+         Return:
+
+         """
+        params = {'owner': owner} if owner else {}
+
+        data = {}
+        if self.is_true(value) or self.is_false(value):
+            data['dnsActive'] = self.is_true(value)
+        else:
+            self.tcex.handle_error(925, ['option', 'dns value', 'value', value])
+
+        if not sub_type:
+            url = '/v2/{}/{}'.format(main_type, unique_id)
+        else:
+            url = '/v2/{}/{}/{}'.format(main_type, sub_type, unique_id)
+
+        return self.tcex.session.put(url, params=params, json=data)
+
+    def set_whois(self, main_type, sub_type, unique_id, value, owner=None):
+        """
+
+          Args:
+              value:
+              owner:
+              main_type:
+              sub_type:
+              unique_id:
+
+          Return:
+
+          """
+        params = {'owner': owner} if owner else {}
+
+        data = {}
+        if self.is_true(value) or self.is_false(value):
+            data['whoisActive'] = self.is_true(value)
+        else:
+            self.tcex.handle_error(925, ['option', 'whois value', 'value', value])
+
+        if not sub_type:
+            url = '/v2/{}/{}'.format(main_type, unique_id)
+        else:
+            url = '/v2/{}/{}/{}'.format(main_type, sub_type, unique_id)
+
+        return self.tcex.session.put(url, params=params, json=data)
+
+    @staticmethod
+    def is_false(value):
+        """checks to see if a string is False"""
+        if not value:
+            return False
+        value = str(value)
+        return value.lower() in ['false', '0', 'f', 'n', 'no']
+
+    @staticmethod
+    def is_true(value):
+        """checks to see if a string is True"""
+        if not value:
+            return False
+        value = str(value)
+        return value.lower() in ['true', '1', 't', 'y', 'yes']
+
     def deleted(self, main_type, sub_type, deleted_since, owner=None, filters=None, params=None):
         """
 
@@ -426,7 +499,17 @@ class TiTcRequest:
         else:
             url = '/v2/{}/{}/deleted'.format(main_type, sub_type)
 
-        return self.tcex.session.get(url, params=params)
+        r = self.tcex.session.get(url, params=params)
+
+        if not self.success(r):
+            err = r.text or r.reason
+            self.tcex.handle_error(950, [r.status_code, err, r.url])
+
+        # currently, only indicators have an implemented 'deleted' endpoint, so hardcode the api entity name
+        data = r.json().get('data', {}).get('indicator', [])
+
+        for result in data:
+            yield result
 
     def pivot_from_tag(self, target, tag_name, filters=None, owner=None, params=None):
         """
@@ -1896,6 +1979,53 @@ class TiTcRequest:
             json['displayed'] = displayed
 
         return self.tcex.session.post(url, json=json, params=params)
+
+    def update_attribute(
+        self,
+        main_type,
+        sub_type,
+        unique_id,
+        attribute_value,
+        attribute_id,
+        source=None,
+        displayed=None,
+        owner=None,
+        params=None,
+    ):
+        """
+
+        Args:
+            displayed:
+            source:
+            params:
+            owner:
+            main_type:
+            sub_type:
+            unique_id:
+            attribute_type:
+            attribute_value:
+
+        Return:
+
+        """
+        if params is None:
+            params = {}
+        if owner:
+            params['owner'] = owner
+        if not sub_type:
+            url = '/v2/{}/{}/attributes/{}'.format(main_type, unique_id, attribute_id)
+        else:
+            url = '/v2/{}/{}/{}/attributes/{}'.format(main_type, sub_type, unique_id, attribute_id)
+
+        json = {'value': attribute_value}
+
+        if source:
+            json['source'] = source
+
+        if displayed:
+            json['displayed'] = displayed
+
+        return self.tcex.session.put(url, json=json, params=params)
 
     def attribute_labels(
         self, main_type, sub_type, unique_id, attribute_id, owner=None, params=None

@@ -53,7 +53,6 @@ class Services(object):
         self.api_event_callback = None
         self.create_config_callback = None
         self.delete_config_callback = None
-        self.update_config_callback = None
         self.shutdown_callback = None
         self.webhook_event_callback = None
 
@@ -131,7 +130,7 @@ class Services(object):
             try:
                 self.tcex.log.trace('triggering callback for config id: {}'.format(trigger_id))
                 # get a session_id specifically for this thread
-                session_id = self.session_id
+                session_id = self.session_id(trigger_id)
 
                 # get instance of playbook specifically for this thread
                 playbook = self.tcex.playbook
@@ -324,7 +323,7 @@ class Services(object):
             self.mqtt_client.loop_forever()
         except Exception as e:
             self.tcex.log.trace('error in listen_mqtt: {}'.format(e))
-            self.tcex.log.trace(traceback.format_exc())
+            self.tcex.log.error(traceback.format_exc())
 
     def listen_redis(self):
         """Listen for message coming from broker."""
@@ -489,20 +488,23 @@ class Services(object):
             )
 
             if callable(self.create_config_callback):
-                message = 'Config created'
+                msg = 'Config created'
+                kwargs = {}
+                if self.tcex.ij.runtime_level.lower() == 'webhooktriggerservice':
+                    kwargs['url'] = message.get('url')
                 try:
                     # call callback for create config and handle exceptions to protect thread
-                    self.create_config_callback(trigger_id, config)  # pylint: disable=not-callable
-                except Exception as e:
-                    message = 'The create config callback method encountered an error ({}).'.format(
-                        e
+                    self.create_config_callback(  # pylint: disable=not-callable
+                        trigger_id, config, **kwargs
                     )
-                    self.tcex.log.error(message)
+                except Exception as e:
+                    msg = 'The create config callback method encountered an error ({}).'.format(e)
+                    self.tcex.log.error(msg)
                     self.tcex.log.trace(traceback.format_exc())
                     status = 'Failed'
 
             # create config after callback to report status and message
-            self.create_config(trigger_id, config, message, status)
+            self.create_config(trigger_id, config, msg, status)
         elif command.lower() == 'deleteconfig':
             self.tcex.log.info('DeleteConfig - trigger_id: {}'.format(trigger_id))
 
@@ -752,9 +754,26 @@ class Services(object):
             method = message.get('method')
             params = message.get('queryParams')
             trigger_id = message.get('triggerId')
-            if self.webhook_event_callback(  # pylint: disable=not-callable
-                playbook, method, headers, params, body, config
-            ):
+            callback_response = self.webhook_event_callback(  # pylint: disable=not-callable
+                trigger_id, playbook, method, headers, params, body, config
+            )
+            if isinstance(callback_response, dict):
+                # webhook responses are for providers that require a subscription req/resp.
+                webhook_event_response = {
+                    'sessionId': self.thread_name,  # session/context
+                    'requestKey': request_key,
+                    'command': 'WebhookEventResponse',
+                    'triggerId': trigger_id,
+                    'bodyVariable': 'response.body',
+                    'headers': callback_response.get('headers', []),
+                    'statusCode': callback_response.get('statusCode', 200),
+                }
+                # write response body to redis
+                playbook.create_string('response.body', callback_response.get('body'))
+
+                # publish the WebhookEventResponse message
+                self.publish(json.dumps(webhook_event_response))
+            elif isinstance(callback_response, bool) and callback_response:
                 self.increment_metric('hits')
                 self.fire_event_publish(trigger_id, self.thread_name, request_key)
             else:
@@ -840,20 +859,28 @@ class Services(object):
             self.tcex.log.info('LoggingChange - level: {}'.format(level))
             self.tcex.logger.update_handler_level(level)
         elif command.lower() == 'runservice':
-            self.message_thread(self.session_id, self.process_run_service, (message,))
+            self.message_thread(
+                self.session_id(message.get('triggerId')), self.process_run_service, (message,)
+            )
         elif command.lower() == 'shutdown':
             # {"command": "Shutdown", "reason": "Service disabled by user."}
             reason = message.get('reason')
             self.process_shutdown(reason)
         elif command.lower() == 'webhookevent':
-            self.message_thread(self.session_id, self.process_webhook, (message,))
+            self.message_thread(
+                self.session_id(message.get('triggerId')), self.process_webhook, (message,)
+            )
         else:
             # any other message is a config message
             self.message_thread('process-config', self.process_config, (message,))
 
-    @property
-    def session_id(self):
-        """Return a uuid4 session id."""
+    @staticmethod
+    def session_id(trigger_id=None):  # pylint: disable=unused-argument
+        """Return a uuid4 session id.
+
+        Args:
+            trigger_id (str): Optional trigger_id value used in testing framework.
+        """
         return str(uuid.uuid4())
 
     @property

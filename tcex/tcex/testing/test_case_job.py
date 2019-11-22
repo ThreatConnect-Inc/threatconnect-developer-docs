@@ -34,37 +34,35 @@ class TestCaseJob(TestCase):
                 args[k] = self.resolve_env_args(v)
 
         self.log_data('run', 'args', args)
-        app = self.app(args)
+        self.app = self.app_init(args)
 
         # Start
-        exit_code = self.run_app_method(app, 'start')
+        exit_code = self.run_app_method(self.app, 'start')
         if exit_code != 0:
             return exit_code
 
         # Run
-        exit_code = self.run_app_method(app, 'run')
-        if exit_code != 0:
-            return exit_code
-
-        # Write Output
-        exit_code = self.run_app_method(app, 'write_output')
+        exit_code = self.run_app_method(self.app, 'run')
         if exit_code != 0:
             return exit_code
 
         # Done
-        exit_code = self.run_app_method(app, 'done')
+        exit_code = self.run_app_method(self.app, 'done')
         if exit_code != 0:
             return exit_code
 
-        app.tcex.log.info('Exit Code: {}'.format(app.tcex.exit_code))
-        return self._exit(app.tcex.exit_code)
+        try:
+            # call exit for message_tc output, but don't exit
+            self.app.tcex.playbook.exit(msg=self.app.exit_message)
+        except SystemExit:
+            pass
 
-    def run_profile(self, profile_name):
+        return self._exit(self.app.tcex.exit_code)
+
+    def run_profile(self, profile):
         """Run an App using the profile name."""
-        profile = self.profile(profile_name)
-        if not profile:
-            self.log.error('No profile named {} found.'.format(profile_name))
-            return self._exit(1)
+        if isinstance(profile, str):
+            profile = self.init_profile(profile)
 
         args = {'tc_temp_path': os.path.join(self._app_path, 'log', self.context)}
         self.create_shelf_dir(args['tc_temp_path'])
@@ -72,9 +70,6 @@ class TestCaseJob(TestCase):
         # build args from install.json
         args.update(profile.get('inputs', {}).get('required', {}))
         args.update(profile.get('inputs', {}).get('optional', {}))
-        if not args:
-            self.log.error('No profile named {} found.'.format(profile_name))
-            return self._exit(1)
 
         # run the App
         exit_code = self.run(args)

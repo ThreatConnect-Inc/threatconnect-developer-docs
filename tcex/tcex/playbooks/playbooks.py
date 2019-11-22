@@ -231,7 +231,7 @@ class Playbooks(object):
         }
 
     def create_output(self, key, value, variable_type=None):
-        """Wrapper for Create method of CRUD operation for working with KeyValue DB.
+        """Alias for Create method of CRUD operation for working with KeyValue DB.
 
         This method will automatically check to see if provided variable was requested by
         a downstream app and if so create the data in the KeyValue DB.
@@ -244,6 +244,10 @@ class Playbooks(object):
         Returns:
             (string): Result string of DB write.
         """
+        #  This is if no downstream variables are requested then nothing should be returned.
+        if not self.output_variables_type:
+            return None
+
         results = None
         if key is not None:
             key = key.strip()
@@ -360,7 +364,7 @@ class Playbooks(object):
         return self._output_variables_type
 
     def parse_variable(self, variable):
-        """Method to parse an input or output variable.
+        """Parse an input or output variable.
 
         **Example Variable**::
 
@@ -400,13 +404,14 @@ class Playbooks(object):
         Returns:
             (any): Results retrieved from DB
         """
-        self.tcex.log.debug('read variable {}'.format(key))
         # if a non-variable value is passed it should be the default
         data = key
         if key is not None:
             key = key.strip()
             key_type = self.variable_type(key)
             if re.match(self._variable_match, key):
+                # only log key if it's a variable
+                self.tcex.log.debug('read variable {}'.format(key))
                 if key_type in self.read_data_types:
                     # handle types with embedded variable
                     if key_type in ['Binary', 'BinaryArray']:
@@ -439,8 +444,7 @@ class Playbooks(object):
         return data
 
     def read_array(self, key, embedded=True):
-        """Alias for read method that will read any type (e.g., String, KeyValue) and always
-           return array.
+        """Read playbook variable and return array for any variable type.
 
         Args:
             key (string): The variable to read from the DB.
@@ -677,16 +681,18 @@ class Playbooks(object):
         if key is not None and value is not None:
             value_encoded = []
             for v in value:
-                try:
-                    # py2
-                    # convert to bytes as required for b64encode
-                    # decode bytes for json serialization as required for json dumps
-                    value_encoded.append(base64.b64encode(bytes(v)).decode('utf-8'))
-                except TypeError:
-                    # py3
-                    # set encoding on string and convert to bytes as required for b64encode
-                    # decode bytes for json serialization as required for json dumps
-                    value_encoded.append(base64.b64encode(bytes(v, 'utf-8')).decode('utf-8'))
+                if v is not None:
+                    try:
+                        # py2
+                        # convert to bytes as required for b64encode
+                        # decode bytes for json serialization as required for json dumps
+                        v = base64.b64encode(bytes(v)).decode('utf-8')
+                    except TypeError:
+                        # py3
+                        # set encoding on string and convert to bytes as required for b64encode
+                        # decode bytes for json serialization as required for json dumps
+                        v = base64.b64encode(bytes(v, 'utf-8')).decode('utf-8')
+                value_encoded.append(v)
             data = self.db.create(key.strip(), json.dumps(value_encoded))
         else:
             self.tcex.log.warning(u'The key or value field was None.')
@@ -709,20 +715,17 @@ class Playbooks(object):
             if data is not None:
                 data_decoded = []
                 for d in json.loads(data, object_pairs_hook=OrderedDict):
-                    if b64decode:
+                    if d is not None and b64decode:
                         # if requested decode the base64 string
-                        dd = base64.b64decode(d)
+                        d = base64.b64decode(d)
                         if decode:
                             # if requested decode bytes to a string
                             try:
-                                dd = dd.decode('utf-8')
+                                d = d.decode('utf-8')
                             except UnicodeDecodeError:
                                 # for data written an upstream java App
-                                dd = dd.decode('latin-1')
-                        data_decoded.append(dd)
-                    else:
-                        # for validation in tcrun it's easier to validate the base64 data
-                        data_decoded.append(d)
+                                d = d.decode('latin-1')
+                    data_decoded.append(d)
                 data = data_decoded
         else:
             self.tcex.log.warning(u'The key field was None.')
@@ -886,9 +889,10 @@ class Playbooks(object):
                 value = u'{}'.format(value)
             # data = self.db.create(key.strip(), str(json.dumps(value)))
             data = self.db.create(key.strip(), u'{}'.format(json.dumps(value)))
-            self.tcex.log.trace(
-                'pb create: context: {}, key: {}, value: {}'.format(self.db.key, key, value)
-            )
+            # TODO: update for env servers
+            # self.tcex.log.trace(
+            #     'pb create: context: {}, key: {}, value: {}'.format(self.db.key, key, value)
+            # )
         else:
             self.tcex.log.warning(u'The key or value field was None.')
         return data

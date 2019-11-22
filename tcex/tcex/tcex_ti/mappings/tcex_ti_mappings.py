@@ -4,6 +4,11 @@ import json
 from tcex.tcex_ti.tcex_ti_tc_request import TiTcRequest
 from tcex.utils import Utils
 
+try:
+    from urllib import unquote  # Python 2
+except ImportError:
+    from urllib.parse import unquote  # Python
+
 
 class TIMappings(object):
     """Common API calls for for Indicators/SecurityLabels/Groups and Victims"""
@@ -166,6 +171,21 @@ class TIMappings(object):
         self._data = data
         if not self.unique_id:
             self._set_unique_id(data)
+
+    def set(self, **kwargs):
+        """
+        A generic way to update the attributes of a TC data object.
+        Args:
+            **kwargs:
+
+        Returns:
+
+        """
+        for arg, value in kwargs.items():
+            if hasattr(self, 'add_key_value'):
+                self.add_key_value(arg, value)  # pylint: disable=E1101
+            else:
+                self._data[arg] = value
 
     def create(self):
         """
@@ -680,6 +700,7 @@ class TIMappings(object):
         """
         if params is None:
             params = {}
+        action = action.upper()
         if not self.can_update():
             self._tcex.handle_error(910, [self.type])
 
@@ -734,6 +755,59 @@ class TIMappings(object):
             displayed=displayed,
             owner=self.owner,
             params=params,
+        )
+
+    def update_attribute(
+        self, attribute_value, attribute_id, source=None, displayed=None, params=None
+    ):
+        """
+        Adds a attribute to a Group/Indicator or Victim
+
+
+        Args:
+            source:
+            displayed:
+            params:
+            attribute_type:
+            attribute_value:
+
+        Returns: attribute json
+
+        """
+        if not self.can_update():
+            self._tcex.handle_error(910, [self.type])
+
+        if params is None:
+            params = {}
+
+        return self.tc_requests.update_attribute(
+            self.api_type,
+            self.api_branch,
+            self.unique_id,
+            attribute_value,
+            attribute_id,
+            source=source,
+            displayed=displayed,
+            owner=self.owner,
+            params=params,
+        )
+
+    def delete_attribute(self, attribute_id):
+        """
+        Deletes a attribute from a Group/Indicator or Victim
+
+
+        Args:
+            attribute_id:
+
+        Returns: attribute json
+
+        """
+        if not self.can_update():
+            self._tcex.handle_error(910, [self.type])
+
+        return self.tc_requests.delete_attribute(
+            self.api_type, self.api_branch, self.unique_id, attribute_id, owner=self.owner
         )
 
     def attribute_labels(self, attribute_id, params=None):
@@ -860,6 +934,25 @@ class TIMappings(object):
     def is_task():
         """ Determines if the object is a Task. """
         return False
+
+    @staticmethod
+    def is_encoded(uri):
+        """Determines if a uri is currently encoded"""
+        uri = uri or ''
+
+        return uri != unquote(uri)
+
+    def fully_decode_uri(self, uri):
+        """Decodes a url till it is no longer encoded."""
+        saftey_valve = 0
+
+        while self.is_encoded(uri):
+            uri = unquote(uri)
+            saftey_valve += 1
+            if saftey_valve > 10:
+                break
+
+        return uri
 
     def _set_unique_id(self, json_response):
         """ Sets the Unique Id given a json """
