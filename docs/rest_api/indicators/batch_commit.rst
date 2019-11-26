@@ -123,14 +123,7 @@ Batch Indicator Input File Format (V2)
 			"name": "MyOtherTag"
 		}]
 	}]
-}
-
-
-
-
-
-
-
+}]
 
 The batch upload feature expects to ingest a JSON file consisting of a
 list of dictionaries.
