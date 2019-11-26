@@ -126,7 +126,7 @@ Batch Indicator Input File Format (V2)
  }]
 
 The Batch Upload feature expects to ingest a JSON file consisting of list(s) of dictionaries. As shown in the above examples, the default/legacy "V1" Batch operation expects a single list of Indicator objects only. For enhanced "V2" Batch operation, both Indicator and Group objects are supported, where each is to be contained inside of its own "indicator" and/or "group" array definition.
-Generally speaking, the list of fields expected within each Indicator or Group item parallels those described in the Indicator and Group creation operations (specified `here <https://docs.threatconnect.com/en/latest/rest_api/indicators/indicators.html#create-indicators>` and here). Additionally, a 'type' field is required within each item corresponding to the particular Indicator or Group type being specified (e.g. "Host", "Address", etc., for Indicators and "Incident", "Adversary", etc., for Groups).
+Generally speaking, the list of fields expected within each Indicator or Group item parallels those described in the Indicator and Group creation operations (specified `here <https://docs.threatconnect.com/en/latest/rest_api/indicators/indicators.html#create-indicators>`_ and here). Additionally, a 'type' field is required within each item corresponding to the particular Indicator or Group type being specified (e.g. "Host", "Address", etc., for Indicators and "Incident", "Adversary", etc., for Groups).
 
 +----------------------+----------------------+-----------+
 | Field                | Data type            | Required? |
