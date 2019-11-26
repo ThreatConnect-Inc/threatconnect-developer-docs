@@ -69,7 +69,7 @@ Batch Indicator Input File Format (V1)
 
 .. code:: json
 
-[{
+ [{
         "rating": 3,
         "confidence": 60,
         "description": "a malicious domain",
@@ -82,14 +82,14 @@ Batch Indicator Input File Format (V1)
         "tag": [{
                "name": "MyTag"
         }]
-}]
+ }]
     
 Batch Indicator Input File Format (V2)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code:: json
 
-[{
+ [{
 	"indicator": 
 		"rating": 3,
 		"confidence": 60,
@@ -123,7 +123,7 @@ Batch Indicator Input File Format (V2)
 			"name": "MyOtherTag"
 		}]
 	}]
-}]
+ }]
 
 The batch upload feature expects to ingest a JSON file consisting of a
 list of dictionaries.
