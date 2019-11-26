@@ -89,8 +89,8 @@ Batch Indicator Input File Format (V2)
 
 .. code:: json
 
-{
-	"indicator": [{
+[{
+	"indicator": 
 		"rating": 3,
 		"confidence": 60,
 		"summary": "super-malicious.ru",
