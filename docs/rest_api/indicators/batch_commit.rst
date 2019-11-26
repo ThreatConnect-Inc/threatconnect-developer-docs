@@ -69,7 +69,7 @@ Batch Indicator Input File Format (V1)
 
 .. code:: json
 
- [{
+[{
         "rating": 3,
         "confidence": 60,
         "description": "a malicious domain",
@@ -82,7 +82,7 @@ Batch Indicator Input File Format (V1)
         "tag": [{
                "name": "MyTag"
         }]
- }]
+}]
     
 Batch Indicator Input File Format (V2)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
