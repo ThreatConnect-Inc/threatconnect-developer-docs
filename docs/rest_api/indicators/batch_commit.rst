@@ -64,32 +64,73 @@ The Batch Create resource creates a batch entry in the system. No batch processi
 
 .. note:: Occasionally, imported File Indicators may overlap one or more hashes with other File Indicators already present within the system. In the typical situation, either the incoming data or the existing data will contain additional hash type[s] that the other item did not have (e.g., Incoming data has both an md5 and sha1, while the existing data has only the md5, or vice versa). In this typical situation, the resulting File Indicator will end up with the "superset" of file hashes by either retaining the existing hash[es] or adding in the new hash[es]. However, certain non-typical situations may exist that require special processing when incoming file hash[es] cause conflicts with existing data (e.g., Incoming data has an md5 and sha1, while the existing data has the same md5 but a different sha1). The behavior in situations like these are controlled by the ``fileMergeMode`` and ``hashCollisionMode`` parameters defined in the above table.
 
-Batch Indicator Input File Format
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Batch Indicator Input File Format (V1)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code:: json
 
-    [
-      {
+ [{
         "rating": 3,
         "confidence": 60,
         "description": "a malicious domain",
         "summary": "super-malicious.ru",
         "type": "Host",
-        "associatedGroup": [12345, 54321],
-        "attribute": [
-          {
-            "type": "AttributeName",
-            "value": "MyAttribute"
-          }
-        ],
-        "tag": [
-          {
-            "name": "MyTag"
-          }
-        ]
-      }
-    ]
+        "attribute": [{
+               "type": "AttributeName",
+               "value": "MyAttribute"
+        }],
+        "tag": [{
+               "name": "MyTag"
+        }]
+    }]
+    
+Batch Indicator Input File Format (V2)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code:: json
+
+{
+	"indicator": [{
+		"rating": 3,
+		"confidence": 60,
+		"summary": "super-malicious.ru",
+		"type": "Host",
+		"associatedGroups": ["00000000-0000-0000-0000-000000000000:1234"],
+		"attribute": [{
+				"type": "Description",
+				"value": "a malicious domain"
+			},
+			{
+				"type": "AttributeName",
+				"value": "MyAttribute"
+			}
+		],
+		"tag": [{
+			"name": "MyTag"
+		}]
+	}],
+	"group": [{
+		"name": "New Incident",
+		"type": "Incident",
+		"xid": "00000000-0000-0000-0000-000000000000:1234",
+		"eventDate": "2019-11-26T00:00:00Z",
+		"attribute": [{
+			"type": "Description",
+			"displayed": true,
+			"value": "Ryuk C2"
+		}],
+		"tag": [{
+			"name": "MyOtherTag"
+		}]
+	}]
+}
+
+
+
+
+
+
+
 
 The batch upload feature expects to ingest a JSON file consisting of a
 list of dictionaries.
