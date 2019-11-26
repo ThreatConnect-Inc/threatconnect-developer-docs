@@ -82,7 +82,7 @@ Batch Indicator Input File Format (V1)
         "tag": [{
                "name": "MyTag"
         }]
-    }]
+ }]
     
 Batch Indicator Input File Format (V2)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
