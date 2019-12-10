@@ -58,6 +58,13 @@ When retrieving Indicators from ThreatConnect, it is possible to filter the resu
 
 **Examples**
 
+The example below demonstrates the use of the ``active`` parameter, to retrieve both active and inactive indicators (with
+parameters OR'ed):
+
+.. code::
+
+    GET /v2/indicators?filters=active%3Dtrue,active%3Dfalse&orParams=true
+
 The example below demonstrates usage of the summary parameter:
 
 .. code::
