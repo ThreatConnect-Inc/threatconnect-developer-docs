@@ -1303,7 +1303,7 @@ Optionally the ``name()`` method can be used to pass a specific Security Label n
 Retrieve Associations
 ---------------------
 
-The following is an example of retrieveAssociations() method:
+The following is an example of group retrieveAssociations() method:
 
 .. code:: javascript
 
@@ -1312,14 +1312,19 @@ The following is an example of retrieveAssociations() method:
         .type(TYPE.INCIDENT)
         .id(123)
         .done(function(response) {
+            var associatedIndicators = response['data'];
+            
             console.log('response', response);
         })
         .error(function(response) {
             console.log('error response', response);
         })
         .retrieveAssociations({
+            type: TYPE.INDICATOR
+            /*
             type: TYPE.ADVERSARY,
             id: 253
+            */
         });
 
 The JavaScript SDK provides the ``retrieveAssociations()`` method to
