@@ -61,4 +61,4 @@ upstream:
 	git remote -v;
 
 doctest:
-	cd docs && virtualenv ~/.venv/tc_developer_docs && source ~/.venv/tc_developer_docs/bin/activate && pip install sphinx && pip install recommonmark && pip install tcex && pip install sphinx_rtd_theme && sphinx-build -T -E -d _build/doctrees-readthedocs -D language=en . _build/html
+	cd docs && virtualenv ~/.venv/tc_developer_docs && source ~/.venv/tc_developer_docs/bin/activate && pip install sphinx && pip install recommonmark && pip install inflect && pip install tcex && pip install sphinx_rtd_theme && sphinx-build -T -E -d _build/doctrees-readthedocs -D language=en . _build/html
