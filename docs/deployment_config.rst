@@ -563,7 +563,7 @@ would reference them as follows:
 
 .. code:: json
 
-    "validValues": ["{USER:TEXT}", "${ORGANIZATION:TEXT}"]
+    "validValues": ["${USER:TEXT}", "${ORGANIZATION:TEXT}"]
 
 The left-hand component of the variable is the level. The level can be
 any of the options listed in the table below.
