@@ -4,7 +4,9 @@ python:
 install:
   - pip install pytest
   - pip install threatconnect
+  - pip install tcex
   - pip install bs4
   - pip install requests
+  - pip install inflect
 script:
   - pytest
