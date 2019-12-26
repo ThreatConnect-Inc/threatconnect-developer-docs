@@ -671,13 +671,13 @@ Filters
 ~~~~~~~
 
 The following is an example of how to retrieve Indicators that start with 'bad' and have a
-dateAdded value greater than '20151213' using an API filter:
+dateAdded value greater than '2015-12-13' using an API filter:
 
 .. code:: javascript
 
     var filter = new Filter(FILTER.AND);
     filter.on('summary', FILTER.SW, 'bad');
-    filter.on('dateAdded', FILTER.GT, '20151213');
+    filter.on('dateAdded', FILTER.GT, '2015-12-13');
 
     var indicators = tc.indicators();
 
