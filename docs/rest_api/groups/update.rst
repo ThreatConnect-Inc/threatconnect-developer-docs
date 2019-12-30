@@ -15,9 +15,12 @@ The ``{groupType}`` can be any one of the available Group types:
 - ``adversaries``
 - ``campaigns``
 - ``documents``
+- ``events``
 - ``emails``
 - ``incidents``
+- ``intrusionSets``
 - ``signatures``
+- ``reports``
 - ``threats``
 
 When updating the fields on a Group, you can change any of the fields available for the type of Group you are updating. Below is a table of available fields for each Group type:
@@ -55,10 +58,12 @@ JSON Response:
       }
     }
 
-Update Document Contents
+Uploading/Updating Document Contents
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 To update the contents of a Document in ThreatConnect, use a query in the following format:
+
+.. note:: To upload the initial document, rather than updating the existing document, replace PUT with POST
 
 .. code::
 
@@ -75,6 +80,37 @@ The ``Content-Type`` header must be set to ``application/octet-stream`` for this
     Content-Type: application/octet-stream
 
     New Document contents here.
+
+JSON Response:
+
+.. code:: json
+
+    {
+      "status": "Success",
+    }
+
+Uploading/Updating Report Contents
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+To update the contents of a Report in ThreatConnect, use a query in the following format:
+
+.. note:: To upload the initial report, rather than updating the existing report, replace PUT with POST
+
+.. code::
+
+    PUT /v2/groups/reports/{documentId}/upload
+    Content-Type: application/octet-stream
+
+    <raw report contents>
+
+The ``Content-Type`` header must be set to ``application/octet-stream`` for this query to work properly. The query below demonstrates how to upload some text into the Document with ID 12345:
+
+.. code::
+
+    PUT /v2/groups/reports/12345/upload
+    Content-Type: application/octet-stream
+
+    New report contents here.
 
 JSON Response:
 
