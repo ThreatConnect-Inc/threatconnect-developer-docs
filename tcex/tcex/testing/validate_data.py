@@ -4,20 +4,16 @@ import datetime
 import difflib
 import hashlib
 import json
+import math
+import numbers
 import operator
 import os
-import re
-import math
 import random
-from six import string_types
-
-try:
-    from urllib import unquote  # Python 2
-except ImportError:
-    from urllib.parse import unquote  # Python
+import re
+from urllib.parse import unquote  # Python
 
 
-class Validator(object):
+class Validator:
     """Validator"""
 
     def __init__(self, tcex, log, log_data):
@@ -70,11 +66,11 @@ class Validator(object):
         op = op or 'eq'
         variable = kwargs.pop('variable', app_data)  # get optional variable name for log header
         if not self.get_operator(op):
-            self.log.error('Invalid operator provided ({})'.format(op))
+            self.log.error(f'Invalid operator provided ({op})')
             return False
 
         # logging header
-        self.log.info('{0} {1} {0}'.format('-' * 10, app_data))
+        self.log.info(f'{"=" * 10} {app_data} {"=" * 10}')
 
         # run operator
         passed, details = self.get_operator(op)(app_data, test_data, **kwargs)
@@ -84,8 +80,8 @@ class Validator(object):
 
         # build assert error
         assert_error = (
-            '\n App Data     : {}\n Operator     : {}\n Expected Data: {}\n '
-            'Details      : {}\n'.format(app_data, op, test_data, details)
+            f'\n App Data     : {app_data}\n Operator     : {op}\n '
+            f'Expected Data: {test_data}\n Details      : {details}\n'
         )
         return passed, assert_error
 
@@ -98,10 +94,11 @@ class Validator(object):
                 for i, diff in enumerate(difflib.ndiff(app_data, test_data)):
                     if diff[0] == ' ':  # no difference
                         continue
-                    elif diff[0] == '-':
-                        details += '\n    * Missing data at index {}'.format(i)
+
+                    if diff[0] == '-':
+                        details += f'\n    * Missing data at index {i}'
                     elif diff[0] == '+':
-                        details += '\n    * Extra data at index {}'.format(i)
+                        details += f'\n    * Extra data at index {i}'
                     if diff_count > self.max_diff:
                         details += '\n    * Max number of differences reached.'
                         # don't spam the logs if string are vastly different
@@ -123,6 +120,7 @@ class Validator(object):
             'df': self.operator_date_format,
             'dd': self.operator_deep_diff,
             'is_date': self.operator_is_date,
+            'is_number': self.operator_is_number,
             'length_eq': self.operator_length_eq,
             'leq': self.operator_length_eq,
             'eq': self.operator_eq,
@@ -145,7 +143,8 @@ class Validator(object):
         }
         return operators.get(op, None)
 
-    def operator_date_format(self, app_data, test_data):
+    @staticmethod
+    def operator_date_format(app_data, test_data):
         """Check if date or dates match the provide format.
 
         Args:
@@ -162,7 +161,7 @@ class Validator(object):
             except ValueError:
                 bad_data.append(data)
                 passed = False
-        return passed, self.details(bad_data, test_data, 'date_format')
+        return passed, ','.join(bad_data)
 
     def operator_deep_diff(self, app_data, test_data, **kwargs):
         """Compare app data equals tests data.
@@ -219,7 +218,7 @@ class Validator(object):
             return False, str(ddiff)
         return True, ''
 
-    def operator_eq(self, app_data, tests_data):
+    def operator_eq(self, app_data, test_data):
         """Compare app data is equal to tests data.
 
         Args:
@@ -229,8 +228,8 @@ class Validator(object):
         Returns:
             bool, str: The results of the operator and any error message
         """
-        results = operator.eq(app_data, tests_data)
-        return results, self.details(app_data, tests_data, 'eq')
+        results = operator.eq(app_data, test_data)
+        return results, self.details(app_data, test_data, 'eq')
 
     def operator_ge(self, app_data, test_data):
         """Compare app data is greater than or equal to tests data.
@@ -247,9 +246,7 @@ class Validator(object):
         results = operator.ge(app_data, test_data)
         details = ''
         if not results:
-            details = '{} {} !(>=) {} {}'.format(
-                app_data, type(app_data), test_data, type(test_data)
-            )
+            details = f'{app_data} {type(app_data)} !(>=) {test_data} {type(test_data)}'
         return results, details
 
     def operator_gt(self, app_data, test_data):
@@ -267,12 +264,10 @@ class Validator(object):
         results = operator.gt(app_data, test_data)
         details = ''
         if not results:
-            details = '{} {} !(>) {} {}'.format(
-                app_data, type(app_data), test_data, type(test_data)
-            )
+            details = f'{app_data} {type(app_data)} !(>) {test_data} {type(test_data)}'
         return results, details
 
-    def operator_is_date(self, app_data, test_data):
+    def operator_is_date(self, app_data, test_data):  # pylint: disable=unused-argument
         """Check if the app_data is a known date."""
         if not isinstance(app_data, list):
             app_data = [app_data]
@@ -280,11 +275,27 @@ class Validator(object):
         passed = True
         for data in app_data:
             try:
-                self.tcex.utils.any_to_datetime(data)
+                self.tcex.utils.datetime.any_to_datetime(data)
             except RuntimeError:
                 bad_data.append(data)
                 passed = False
-        return passed, self.details(bad_data, test_data, 'is_date')
+        return passed, ','.join(bad_data)
+
+    @staticmethod
+    def operator_is_number(app_data, test_data):  # pylint: disable=unused-argument
+        """Check if the app_data is a known date."""
+        if not isinstance(app_data, list):
+            app_data = [app_data]
+        bad_data = []
+        passed = True
+        for data in app_data:
+            if isinstance(data, str) and data.isdigit():
+                continue
+            if isinstance(data, numbers.Number):
+                continue
+            bad_data.append(data)
+            passed = False
+        return passed, ','.join(bad_data)
 
     def operator_json_eq(self, app_data, test_data, **kwargs):
         """Compare app data equals tests data.
@@ -299,9 +310,9 @@ class Validator(object):
         Returns:
             bool: The results of the operator.
         """
-        if isinstance(app_data, (string_types)):
+        if isinstance(app_data, (str)):
             app_data = json.loads(app_data)
-        if isinstance(test_data, (string_types)):
+        if isinstance(test_data, (str)):
             test_data = json.loads(test_data)
 
         exclude = kwargs.pop('exclude', [])
@@ -324,13 +335,14 @@ class Validator(object):
         Returns:
             dict: The data with excluded values removed.
         """
-        if isinstance(data, (string_types)):
+        if isinstance(data, (str)):
             data = json.loads(data)
         for e in exclude:
             try:
-                del data[e]
+                es = e.split('.')
+                data = self.remove_excludes(data, es)
             except (KeyError, TypeError) as err:
-                self.log.error('Invalid validation configuration: ({})'.format(err))
+                self.log.error(f'Invalid validation configuration: ({err})')
         return data
 
     def operator_keyvalue_eq(self, app_data, test_data, **kwargs):
@@ -370,9 +382,7 @@ class Validator(object):
         results = operator.le(app_data, test_data)
         details = ''
         if not results:
-            details = '{} {} !(<=) {} {}'.format(
-                app_data, type(app_data), test_data, type(test_data)
-            )
+            details = f'{app_data} {type(app_data)} !(<=) {test_data} {type(test_data)}'
         return results, details
 
     def operator_length_eq(self, app_data, test_data):
@@ -387,6 +397,7 @@ class Validator(object):
             results = operator.eq(len(app_data), len(test_data))
         else:
             results = operator.eq(len(app_data), test_data)
+        # TODO: fix response as self.details should be correct for this use case.
         return results, self.details(app_data, test_data, 'length_eq')
 
     def operator_lt(self, app_data, test_data):
@@ -404,12 +415,10 @@ class Validator(object):
         results = operator.lt(app_data, test_data)
         details = ''
         if not results:
-            details = '{} {} !(<) {} {}'.format(
-                app_data, type(app_data), test_data, type(test_data)
-            )
+            details = f'{app_data} {type(app_data)} !(<) {test_data} {type(test_data)}'
         return results, details
 
-    def operator_ne(self, app_data, tests_data):
+    def operator_ne(self, app_data, test_data):
         """Compare app data is not equal to tests data.
 
         Args:
@@ -419,10 +428,11 @@ class Validator(object):
         Returns:
             bool, str: The results of the operator and any error message
         """
-        results = operator.ne(app_data, tests_data)
-        return results, self.details(app_data, tests_data, 'eq')
+        results = operator.ne(app_data, test_data)
+        return results, self.details(app_data, test_data, 'eq')
 
-    def operator_regex_match(self, app_data, test_data):
+    @staticmethod
+    def operator_regex_match(app_data, test_data):
         """Compare app data matches test regex data.
 
         Args:
@@ -443,7 +453,7 @@ class Validator(object):
             if re.match(test_data, data) is None:
                 bad_data.append(data)
                 passed = False
-        return passed, self.details(bad_data, test_data, 'rex')
+        return passed, ','.join(bad_data)
 
     @property
     def redis(self):
@@ -453,7 +463,7 @@ class Validator(object):
         return self._redis
 
     def remove_excludes(self, dict_1, paths):
-        """Removes a list of paths from a given dict
+        """Remove a list of paths from a given dict
 
         ex:
             dict_1: {
@@ -507,34 +517,32 @@ class Validator(object):
         """
         truncate = self.truncate
         if app_data is not None and passed:
-            if isinstance(app_data, (string_types)) and len(app_data) > truncate:
+            if isinstance(app_data, (str)) and len(app_data) > truncate:
                 app_data = app_data[:truncate]
             elif isinstance(app_data, (list)):
                 db_data_truncated = []
                 for d in app_data:
-                    if d is not None and isinstance(d, string_types) and len(d) > truncate:
-                        db_data_truncated.append('{} ...'.format(d[: self.truncate]))
+                    if d is not None and isinstance(d, str) and len(d) > truncate:
+                        db_data_truncated.append(f'{d[:self.truncate]} ...')
                     else:
                         db_data_truncated.append(d)
                 app_data = db_data_truncated
 
         if test_data is not None and passed:
-            if isinstance(test_data, (string_types)) and len(test_data) > truncate:
+            if isinstance(test_data, (str)) and len(test_data) > truncate:
                 test_data = test_data[: self.truncate]
             elif isinstance(test_data, (list)):
                 user_data_truncated = []
                 for u in test_data:
-                    if isinstance(app_data, (string_types)) and len(u) > truncate:
-                        user_data_truncated.append('{} ...'.format(u[: self.truncate]))
+                    if isinstance(app_data, (str)) and len(u) > truncate:
+                        user_data_truncated.append(f'{u[:self.truncate]} ...')
                     else:
                         user_data_truncated.append(u)
                 test_data = user_data_truncated
 
-        self.log_data('validate', 'App Data', '({}), Type: [{}]'.format(app_data, type(app_data)))
+        self.log_data('validate', 'App Data', f'({app_data}), Type: [{type(app_data)}]')
         self.log_data('validate', 'Operator', op)
-        self.log_data(
-            'validate', 'Test Data', '({}), Type: [{}]'.format(test_data, type(test_data))
-        )
+        self.log_data('validate', 'Test Data', f'({test_data}), Type: [{type(test_data)}]')
 
         if passed:
             self.log_data('validate', 'Result', 'Passed')
@@ -543,7 +551,7 @@ class Validator(object):
             self.log_data('validate', 'Details', details, 'error')
 
 
-class Redis(object):
+class Redis:
     """Validates Redis data"""
 
     def __init__(self, provider):
@@ -552,7 +560,7 @@ class Redis(object):
 
         # Properties
         self.log_data = self.provider.log_data
-        self.redis_client = provider.tcex.playbook.db.r
+        self.redis_client = provider.tcex.redis_client
 
     def not_null(self, variable):
         """Validate that a variable is not empty/null"""
@@ -566,9 +574,7 @@ class Redis(object):
             return False
 
         if not variable_data:
-            self.provider.log.error(
-                'NotFoundError: Redis Variable {} was not found.'.format(variable)
-            )
+            self.provider.log.error(f'NotFoundError: Redis Variable {variable} was not found.')
             return False
 
         return True
@@ -589,14 +595,11 @@ class Redis(object):
             redis_type = str
 
         if not variable_data:
-            self.provider.log.error(
-                'NotFoundError: Redis Variable {} was not found.'.format(variable)
-            )
+            self.provider.log.error(f'NotFoundError: Redis Variable {variable} was not found.')
             return False
         if not isinstance(variable_data, redis_type):
             self.provider.log.error(
-                'TypeMismatchError: Redis Type: {} and Variable: {} '
-                'do not match'.format(redis_type, variable)
+                f'TypeMismatchError: Redis Type: {redis_type} and Variable: {variable} do not match'
             )
             return False
 
@@ -625,7 +628,7 @@ class Redis(object):
             return False
 
         if not self.provider.get_operator(op):
-            self.provider.log.error('Invalid operator provided ({})'.format(op))
+            self.provider.log.error(f'Invalid operator provided ({op})')
             return False
 
         if variable.endswith('Binary'):
@@ -636,7 +639,7 @@ class Redis(object):
             app_data = self.provider.tcex.playbook.read(variable)
 
         # logging header
-        self.provider.log.info('{0} {1} {0}'.format('-' * 10, variable))
+        self.provider.log.info(f'{"-" * 10} {variable} {"-" * 10}')
 
         # run operator
         passed, details = self.provider.get_operator(op)(app_data, test_data, **kwargs)
@@ -646,8 +649,8 @@ class Redis(object):
 
         # build assert error
         assert_error = (
-            '\n App Data     : {}\n Operator     : {}\n Expected Data: {}\n '
-            'Details      : {}\n'.format(app_data, op, test_data, details)
+            f'\n App Data     : {app_data}\n Operator     : {op}\n '
+            f'Expected Data: {test_data}\n Details      : {details}\n'
         )
         return passed, assert_error
 
@@ -697,10 +700,10 @@ class Redis(object):
 
     def rex(self, variable, data):
         """Test App data with regex"""
-        return self.data(variable, r'{}'.format(data), op='rex')
+        return self.data(variable, fr'{data}', op='rex')
 
 
-class ThreatConnect(object):
+class ThreatConnect:
     """Validate ThreatConnect data"""
 
     def __init__(self, provider):
@@ -769,16 +772,14 @@ class ThreatConnect(object):
                     batch_error = self._batch_error(name, batch_errors)
                     if batch_error:
                         self.provider.log.error(
-                            'Errors validating {} due to batch '
-                            'submission error: {}'.format(name, batch_error)
+                            f'Errors validating {name} due to batch submission error: {batch_error}'
                         )
                         continue
                     # TODO: Should use pip install pytest-check is_true method so it wont fail after
                     # one failed assert.
-                    assert result.get(
-                        'valid'
-                    ), '{} in ThreatConnect did not match what was submitted. Errors:{}'.format(
-                        name, result.get('errors')
+                    assert result.get('valid'), (
+                        f'{name} in ThreatConnect did not match what was submitted. '
+                        f"Errors:{result.get('errors')}"
                     )
         self._log_batch_submit_details(batch_errors, owner)
 
@@ -818,7 +819,7 @@ class ThreatConnect(object):
         for test_file in os.listdir(directory):
             if not (test_file.endswith('.json') and test_file.startswith('validate_')):
                 continue
-            results.append(self.file('{}/{}'.format(directory, test_file), owner))
+            results.append(self.file(f'{directory}/{test_file}', owner))
         return results
 
     def file(self, file, owner):
@@ -858,8 +859,10 @@ class ThreatConnect(object):
         entity_name = tc_entity.get('name')
         errors = []
         if not self.success(ti_response):
-            error = 'NotFoundError: Provided {}: {} could not be fetched from ThreatConnect'.format(
-                tc_entity.get('type'), tc_entity.get('summary', entity_name)
+            error = (
+                f"NotFoundError: Provided {tc_entity.get('type')}: "
+                f"{tc_entity.get('summary', entity_name)} could not "
+                f'be fetched from ThreatConnect'
             )
             return False, [error]
 
@@ -867,13 +870,13 @@ class ThreatConnect(object):
         ti_response = ti_response.json().get('data', {}).get(ti_entity.api_entity, {})
         for entity in self.provider.tcex.ti.entities(ti_response, tc_entity.get('type', None)):
             ti_response_entity = entity
-            # pylint: disable=W0612
+            # pylint: disable=unused-variable
             valid_attributes, attributes_errors = self._response_attributes(ti_response, tc_entity)
-            # pylint: disable=W0612
+            # pylint: disable=unused-variable
             valid_tags, tag_errors = self._response_tags(ti_response, tc_entity)
-            # pylint: disable=W0612
+            # pylint: disable=unused-variable
             valid_labels, label_errors = self._response_labels(ti_response, tc_entity)
-            # pylint: disable=W0612
+            # pylint: disable=unused-variable
             valid_file, file_errors = self._file(ti_entity, file)
 
             errors = attributes_errors + tag_errors + label_errors + file_errors
@@ -882,39 +885,36 @@ class ThreatConnect(object):
             provided_rating = tc_entity.get('rating', None)
             expected_rating = ti_response.get('rating', None)
             if not provided_rating == expected_rating:
-                error = 'RatingError: Provided rating {} does not match ' 'actual rating {}'.format(
-                    provided_rating, expected_rating
+                errors += (
+                    f'RatingError: Provided rating {provided_rating} '
+                    f'does not match actual rating {expected_rating}'
                 )
-                errors += error
 
             provided_confidence = tc_entity.get('confidence', None)
             expected_confidence = ti_response.get('confidence', None)
             if not provided_confidence == expected_confidence:
-                error = (
-                    'ConfidenceError: Provided confidence {} does not match '
-                    'actual confidence {}'.format(provided_confidence, expected_confidence)
+                errors += (
+                    f'ConfidenceError: Provided confidence {provided_confidence} '
+                    f'does not match actual confidence {expected_confidence}'
                 )
-                errors += error
 
             provided_summary = unquote(
                 ':'.join([x for x in ti_entity.unique_id.split(':') if x.strip()])
             )
             expected_summary = unquote(ti_response_entity.get('value', ''))
             if provided_summary != expected_summary:
-                error = (
-                    'SummaryError: Provided summary {} does not match '
-                    'actual summary {}'.format(provided_summary, expected_summary)
+                errors += (
+                    f'SummaryError: Provided summary {provided_summary} '
+                    f'does not match actual summary {expected_summary}'
                 )
-                errors += error
         elif ti_entity.type == 'Group':
             provided_summary = tc_entity.get('name', None)
             expected_summary = ti_response_entity.get('value', None)
             if not provided_summary == expected_summary:
-                error = (
-                    'SummaryError: Provided summary {} does not match '
-                    'actual summary {}'.format(provided_summary, expected_summary)
+                errors += (
+                    f'SummaryError: Provided summary {provided_summary} '
+                    f'does not match actual summary {expected_summary}'
                 )
-                errors += error
 
         return not bool(errors), errors
 
@@ -936,22 +936,19 @@ class ThreatConnect(object):
             if item in actual:
                 if str(expected.get(item)) != actual.get(item):
                     errors.append(
-                        '{0}{1} : {2} did not match {1} : {3}'.format(
-                            error_type, item, expected.get(item), actual.get(item)
-                        )
+                        f'{error_type}{item} : {expected.get(item)} '
+                        f'did not match {item} : {actual.get(item)}'
                     )
                 actual.pop(item)
             else:
                 errors.append(
-                    '{}{} : {} was in expected results but not in actual results.'.format(
-                        error_type, item, expected.get(item)
-                    )
+                    f'{error_type}{item} : {expected.get(item)} was '
+                    f'in expected results but not in actual results.'
                 )
         for item in list(actual.items()):
             errors.append(
-                '{}{} : {} was in actual results but not in expected results.'.format(
-                    error_type, item, actual.get(item)
-                )
+                f'{error_type}{item} : {actual.get(item)} was in '
+                f'actual results but not in expected results.'
             )
 
         return bool(errors), errors
@@ -965,14 +962,10 @@ class ThreatConnect(object):
                 actual.remove(item)
             else:
                 errors.append(
-                    '{}{} was in expected results but not in actual results.'.format(
-                        error_type, item
-                    )
+                    f'{error_type}{item} was in expected results but not in actual results.'
                 )
         for item in actual:
-            errors.append(
-                '{}{} was in actual results but not in expected results.'.format(error_type, item)
-            )
+            errors.append(f'{error_type}{item} was in actual results but not in expected results.')
 
         return bool(errors), errors
 
@@ -1132,20 +1125,20 @@ class ThreatConnect(object):
             provided_hash = provided_hash.hexdigest()
             if not provided_hash == actual_hash:
                 errors.append(
-                    'sha256 {} of provided file did not match sha256 of '
-                    'actual file {}'.format(provided_hash, actual_hash)
+                    f'sha256 {provided_hash} of provided file did not '
+                    f'match sha256 of actual file {actual_hash}'
                 )
         return bool(errors), errors
 
     @staticmethod
     def success(r):
-        """
+        """[summary]
 
         Args:
-            r:
+            r ([type]): [description]
 
-        Return:
-
+        Returns:
+            [type]: [description]
         """
         status = True
         if r.ok:

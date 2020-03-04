@@ -11,7 +11,7 @@ class TcArgumentParser(ArgumentParser):
 
     def __init__(self, **kwargs):
         """Initialize the Class properties."""
-        super(TcArgumentParser, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         # batch defaults
         self._batch_action = 'Create'
         self._batch_chunk = 25000
@@ -223,6 +223,7 @@ class TcArgumentParser(ArgumentParser):
 
         --tc_svc_broker_cacert_file file            The Broker SSL CA (full chain) certificate.
         --tc_svc_broker_cert_file file              The Broker SSL Server certificate.
+        --tc_svc_broker_conn_timeout seconds        The Broker service conn timeout (seconds).
         --tc_svc_broker_host host                   The Broker service hostname.
         --tc_svc_broker_jks_file file               Unused.
         --tc_svc_broker_jks_pwd password            Unused.
@@ -236,6 +237,12 @@ class TcArgumentParser(ArgumentParser):
         """
         self.add_argument('--tc_svc_broker_cacert_file', help='Broker client ssl certificate')
         self.add_argument('--tc_svc_broker_cert_file', help='Broker client ssl certificate')
+        self.add_argument(
+            '--tc_svc_broker_conn_timeout',
+            default=10,
+            help='Broker service conn timeout (seconds)',
+            type=int,
+        )
         self.add_argument('--tc_svc_broker_host', help='Broker service host')
         self.add_argument('--tc_svc_broker_jks_file', help='Unused')
         self.add_argument('--tc_svc_broker_jks_pwd', help='Unused')
@@ -342,4 +349,4 @@ class TcArgumentParser(ArgumentParser):
                     kwargs['default'] = getattr(self.namespace, name, None)
                     del kwargs['required']  # remove required fields to prevent argparser failure
                     break  # first match wins
-        super(TcArgumentParser, self).add_argument(*args, **kwargs)
+        super().add_argument(*args, **kwargs)

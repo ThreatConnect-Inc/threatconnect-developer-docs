@@ -35,9 +35,9 @@ def get_lib_directories():
 def update_system_path():
     """Update the system path to ensure project modules and dependencies can be found."""
     # set lib directory version based off current Python interpreter
-    lib_major_version = 'lib_{}'.format(sys.version_info.major)
-    lib_minor_version = '{}.{}'.format(lib_major_version, sys.version_info.minor)
-    lib_micro_version = '{}.{}'.format(lib_minor_version, sys.version_info.micro)
+    lib_major_version = f'lib_{sys.version_info.major}'
+    lib_minor_version = f'{lib_major_version}.{sys.version_info.minor}'
+    lib_micro_version = f'{lib_minor_version}.{sys.version_info.micro}'
 
     cwd = os.getcwd()  # the current working directory
 
@@ -77,7 +77,7 @@ def update_system_path():
 
 
 def pytest_unconfigure(config):  # pylint: disable=unused-argument
-    """Execute uncofigure logic before test process is exited."""
+    """Execute unconfigure logic before test process is exited."""
     directory = os.path.join(os.getcwd(), 'log')
     for root, dirs, files in os.walk(directory):  # pylint: disable=unused-variable
         for f in files:

@@ -1,45 +1,16 @@
 # -*- coding: utf-8 -*-
 """Playbook App"""
-import os
 import traceback
-import sys
 
-# Python 2 unicode
-if sys.version_info[0] == 2:
-    reload(sys)  # noqa: F821; pylint: disable=E0602
-    sys.setdefaultencoding('utf-8')  # pylint: disable=E1101
+from app_lib import AppLib
 
 
-def _update_app_path():
-    """Update sys path to ensure all required modules can be found.
-
-    All Apps must be able to access included modules, this method will ensure that the system path
-    has been updated to include the "cwd" and "lib_" directories.  This is normally handled by
-    the __main__.py file, but in some cases an App may be called directly.
-    """
-
-    cwd = os.getcwd()
-    lib_dir = os.path.join(os.getcwd(), 'lib_')
-    lib_latest = os.path.join(os.getcwd(), 'lib_latest')
-
-    # insert the lib_latest directory into the system Path if no other lib directory found. This
-    # entry will be bumped to index 1 after adding the current working directory.
-    if not [p for p in sys.path if lib_dir in p]:
-        sys.path.insert(0, lib_latest)
-
-    # insert the current working directory into the system Path for the App, ensuring that it is
-    # always the first entry in the list.
-    try:
-        sys.path.remove(cwd)
-    except ValueError:
-        pass
-    sys.path.insert(0, cwd)
-
-
+# pylint: disable=no-member
 if __name__ == '__main__':
 
     # update the path to ensure the App has access to required modules
-    _update_app_path()
+    app_lib = AppLib()
+    app_lib.update_path()
 
     # import modules after path has been updated
     from tcex import TcEx
@@ -79,6 +50,6 @@ if __name__ == '__main__':
         tcex.playbook.exit(msg=app.exit_message)
 
     except Exception as e:
-        main_err = 'Generic Error.  See logs for more details ({}).'.format(e)
+        main_err = f'Generic Error.  See logs for more details ({e}).'
         tcex.log.error(traceback.format_exc())
         tcex.playbook.exit(1, main_err)

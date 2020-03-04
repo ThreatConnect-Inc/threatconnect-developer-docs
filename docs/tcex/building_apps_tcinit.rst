@@ -36,6 +36,7 @@ To get the latest usage and template choices for ``tcinit``, run ``tcinit -h``.
       --force               Enable this flag to forcibly overwrite existing files
                             in the current working directory.
 
+~~~~~~~~~~~~
 Common Usage
 ~~~~~~~~~~~~
 
@@ -56,6 +57,7 @@ Job App Templates
 
 The ``run()`` method is the default method that is called when an App is executed. For simple Apps, the core logic of the App can be written in this method.  For more advanced Apps, additional methods can be added to the **app.py** file, if required.
 
+~~~~~~~~~
 Job (job)
 ~~~~~~~~~
 
@@ -68,6 +70,7 @@ app.py
     :language: python
     :linenos:
 
+~~~~~~~~~~~~~~~~~~~~~~~~~
 Job Ingress (job_ingress)
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -83,6 +86,7 @@ app.py
 Playbook App Templates
 ----------------------
 
+~~~~~~~~~~~~~~~~~~~
 Playbook (playbook)
 ~~~~~~~~~~~~~~~~~~~
 
@@ -95,6 +99,7 @@ app.py
     :language: python
     :linenos:
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Playbook Actions (playbook_actions)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -102,7 +107,7 @@ This template provides a working example of **actions** in a Playbook App. Using
 
 .. seealso::
 
-    :py:mod:`~tcex.tcex_app_decorators`
+    :py:mod:`~tcex.decorators`
         Inline documentation of App decorators
 
 app.py
@@ -112,6 +117,7 @@ app.py
     :language: python
     :linenos:
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Playbook Utility (playbook_utility)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -127,7 +133,7 @@ app.py
 External App Templates
 ----------------------
 
-The TcEx Framework provides methods to build an App to run in the ThreatConnect Exchange environment.  However, the TcEx Frameworks also supports writing Apps that run external to the ThreatConnect Exchange environment. Two init params are supported during the initialization of TcEx.  The first option, ``tcex(config_file='app_config.json)``, takes a JSON file as input for the App configuration file. The second option, ``tcex(config=app_config_dict)``, takes a dictionary of configuration data.  Either param will load the data and make it accessible via the ``self.args`` namespace.
+The TcEx Framework provides methods to build an App to run in the ThreatConnect Exchange environment.  However, the TcEx Frameworks also supports writing Apps that run external to the ThreatConnect Exchange environment. Two init params are supported during the initialization of TcEx.  The first option, ``TcEx(config_file='app_config.json)``, takes a JSON file as input for the App configuration file. The second option, ``TcEx(config=app_config_dict)``, takes a dictionary of configuration data.  Either param will load the data and make it accessible via the ``self.args`` namespace.
 
 The ``run()`` method is the default method that is called when an App is executed. For simple Apps, the core logic of the App can be written in this method.  For more advanced Apps, additional methods can be added to the **app.py** file, if required.
 
@@ -156,6 +162,7 @@ Example Config data
 
 In the example above the proxy configuration is only required if using a proxy server in the environment.
 
+~~~~~~~~~~~~~~~~~~~
 External (external)
 ~~~~~~~~~~~~~~~~~~~
 
@@ -168,6 +175,7 @@ app.py
     :language: python
     :linenos:
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 External Ingress (external_ingress)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

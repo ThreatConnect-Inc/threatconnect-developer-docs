@@ -1,13 +1,8 @@
 # -*- coding: utf-8 -*-
 """Playbook App"""
 import os
-import traceback
 import sys
-
-# Python 2 unicode
-if sys.version_info[0] == 2:
-    reload(sys)  # noqa: F821; pylint: disable=E0602
-    sys.setdefaultencoding('utf-8')  # pylint: disable=E1101
+import traceback
 
 
 def _update_app_path():
@@ -51,8 +46,8 @@ if __name__ == '__main__':
         # load App class
         app = App(tcex)
 
-        # perform prep/startup operations
-        app.start()
+        # perform prep/setup operations
+        app.setup()
 
         # run the App logic
         if hasattr(app.args, 'tc_action') and app.args.tc_action is not None:
@@ -69,24 +64,24 @@ if __name__ == '__main__':
             elif hasattr(app, tc_action_formatted):
                 getattr(app, tc_action_formatted)()
             elif hasattr(app, tc_action_map):
-                app.tc_action_map.get(app.args.tc_action)()  # pylint: disable=E1101
+                app.tc_action_map.get(app.args.tc_action)()  # pylint: disable=no-member
             else:
-                tcex.exit(1, 'Action method ({}) was not found.'.format(app.args.tc_action))
+                tcex.exit(1, f'Action method ({app.args.tc_action}) was not found.')
         else:
             # default to run method
             app.run()
 
         # write requested value for downstream Apps
         tcex.playbook.write_output()
-        app.write_output()  # pylint: disable=E1101
+        app.write_output()  # pylint: disable=no-member
 
-        # perform cleanup operations
-        app.done()
+        # perform cleanup/teardown operations
+        app.teardown()
 
         # explicitly call the exit method
         tcex.playbook.exit(msg=app.exit_message)
 
     except Exception as e:
-        main_err = 'Generic Error.  See logs for more details ({}).'.format(e)
+        main_err = f'Generic Error.  See logs for more details ({e}).'
         tcex.log.error(traceback.format_exc())
         tcex.playbook.exit(1, main_err)

@@ -9,8 +9,9 @@ import uuid
 from multiprocessing import Process
 from random import randint
 
-from _pytest.monkeypatch import MonkeyPatch
 import paho.mqtt.client as mqtt
+from _pytest.monkeypatch import MonkeyPatch
+
 from .test_case_playbook_common import TestCasePlaybookCommon
 
 
@@ -18,14 +19,14 @@ class TestCaseServiceCommon(TestCasePlaybookCommon):
     """Service App TestCase Class"""
 
     _mqtt_client = None
-    client_topic = 'client-topic-{}'.format(randint(100, 999))
-    server_topic = 'server-topic-{}'.format(randint(100, 999))
+    client_topic = f'client-topic-{randint(100, 999)}'
+    server_topic = f'server-topic-{randint(100, 999)}'
     service_run_method = 'thread'  # run service as thread or multiprocess
 
     @property
     def default_args(self):
         """Return App default args."""
-        args = super(TestCaseServiceCommon, self).default_args
+        args = super().default_args
         args.update(
             {
                 'tc_svc_broker_host': os.getenv('TC_SVC_BROKER_HOST', 'localhost'),
@@ -59,9 +60,7 @@ class TestCaseServiceCommon(TestCasePlaybookCommon):
             # Currently there is no support for projects with multiple install.json files.
             for p in self.install_json.get('playbook', {}).get('outputVariables') or []:
                 # "#Trigger:9876:app.data.count!String"
-                self._output_variables.append(
-                    '#Trigger:{}:{}!{}'.format(9876, p.get('name'), p.get('type'))
-                )
+                self._output_variables.append(f"#Trigger:{9876}:{p.get('name')}!{p.get('type')}")
         return self._output_variables
 
     def patch_service(self):
@@ -104,9 +103,9 @@ class TestCaseServiceCommon(TestCasePlaybookCommon):
         if topic is None:
             topic = self.server_topic
 
-        # self.log.debug('topic: ({})'.format(topic))
-        # self.log.debug('message: ({})'.format(message))
-        # self.log.debug('broker_service: ({})'.format(self.tcex.args.tc_svc_broker_service))
+        # self.log.debug(f'topic: ({topic})')
+        # self.log.debug(f'message: ({message})')
+        # self.log.debug(f'broker_service: ({self.tcex.args.tc_svc_broker_service})')
 
         if self.tcex.args.tc_svc_broker_service.lower() == 'mqtt':
             self.mqtt_client.publish(topic, message)
@@ -180,7 +179,7 @@ class TestCaseServiceCommon(TestCasePlaybookCommon):
             body = json.dumps(body)
 
         body = self.redis_client.hset(
-            request_key, 'request.body', base64.b64encode(json.dumps(body).encode('utf-8'))
+            request_key, 'request.body', base64.b64encode(body.encode('utf-8'))
         )
         event = {
             'command': 'WebhookEvent',
@@ -209,7 +208,7 @@ class TestCaseServiceCommon(TestCasePlaybookCommon):
         """
         profile = self.profile(profile_name)
         if not profile:
-            self.log.error('No profile named {} found.'.format(profile_name))
+            self.log.error(f'No profile named {profile_name} found.')
             return self._exit(1)
 
         # stage any staging data
@@ -220,7 +219,7 @@ class TestCaseServiceCommon(TestCasePlaybookCommon):
         args.update(profile.get('inputs', {}).get('required', {}))
         args.update(profile.get('inputs', {}).get('optional', {}))
         if not args:
-            self.log.error('No profile named {} found.'.format(profile_name))
+            self.log.error(f'No profile named {profile_name} found.')
             return self._exit(1)
 
         # run the App
@@ -246,20 +245,22 @@ class TestCaseServiceCommon(TestCasePlaybookCommon):
     @classmethod
     def setup_class(cls):
         """Run once before all test cases."""
-        super(TestCaseServiceCommon, cls).setup_class()
+        super().setup_class()
         cls.args = {}
-        cls.service_file = 'SERVICE_STARTED'
+        cls.service_file = 'SERVICE_STARTED'  # started file flag
 
     def setup_method(self):
         """Run before each test method runs."""
-        super(TestCaseServiceCommon, self).setup_method()
+        super().setup_method()
         self.stager.redis.from_dict(self.redis_staging_data)
-        self.redis_client = self.tcex.playbook.db.r
+        self.redis_client = self.tcex.redis_client
 
+        # patch service for each profile (test case)
         self.patch_service()
+
+        # only start service if it hasn't been started already base on file flag.
         if not os.path.isfile(self.service_file):
-            with open(self.service_file, 'w+') as f:  # noqa: F841; pylint: disable=unused-variable
-                pass
+            open(self.service_file, 'w+').close()  # create service started file flag
             self.run_service()
 
     def stage_data(self, staged_data):
@@ -270,7 +271,7 @@ class TestCaseServiceCommon(TestCasePlaybookCommon):
     @classmethod
     def teardown_class(cls):
         """Run once before all test cases."""
-        super(TestCaseServiceCommon, cls).teardown_class()
+        super().teardown_class()
         try:
             os.remove(cls.service_file)
         except OSError:
@@ -279,4 +280,4 @@ class TestCaseServiceCommon(TestCasePlaybookCommon):
     def teardown_method(self):
         """Run after each test method runs."""
         time.sleep(0.5)
-        super(TestCaseServiceCommon, self).teardown_method()
+        super().teardown_method()

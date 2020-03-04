@@ -2,13 +2,13 @@
 """Stage Data Testing Module"""
 import base64
 import binascii
-import sys
 import json
 import os
+import sys
 
 
-# pylint: disable=R0201
-class Stager(object):
+# pylint: disable=no-self-use
+class Stager:
     """Stage Data class"""
 
     def __init__(self, tcex, log, log_data):
@@ -39,13 +39,13 @@ class Stager(object):
         return self._threatconnect
 
 
-class Redis(object):
+class Redis:
     """Stages the Redis Data"""
 
     def __init__(self, provider):
         """Initialize class properties."""
         self.provider = provider
-        self.redis_client = provider.tcex.playbook.db.r
+        self.redis_client = provider.tcex.redis_client
         self.log_data = self.provider.log_data
 
     def from_dict(self, staging_data):
@@ -79,14 +79,13 @@ class Redis(object):
             data = base64.b64decode(binary_data)
         except binascii.Error:
             print(
-                'The Binary staging data for variable {} is not properly base64 '
-                'encoded.'.format(variable)
+                f'The Binary staging data for variable {variable} is not properly base64 encoded.'
             )
             sys.exit()
         return data
 
 
-class ThreatConnect(object):
+class ThreatConnect:
     """Stages the ThreatConnect Data"""
 
     def __init__(self, provider):
@@ -99,7 +98,7 @@ class ThreatConnect(object):
         for stage_file in os.listdir(directory):
             if not (stage_file.endswith('.json') and stage_file.startswith('tc_stage_')):
                 continue
-            entities.append(self._convert_to_entities('{}/{}'.format(directory, stage_file)))
+            entities.append(self._convert_to_entities(f'{directory}/{stage_file}'))
         return self.entities(entities, owner, batch=batch)
 
     def file(self, file, owner, batch=False):
@@ -112,7 +111,7 @@ class ThreatConnect(object):
         response = []
         if batch:
             self.batch = self.provider.tcex.batch(owner)
-            for entity in entities:
+            for key, entity in entities.items():
                 labels = entity.pop('securityLabels')
                 attributes = entity.pop('attributes')
                 tags = entity.pop('tags')
@@ -140,21 +139,22 @@ class ThreatConnect(object):
 
             response = self.batch.submit_all()
         else:
-            for entity in entities:
-                response.append(self.entity(entity, owner))
+            for key, value in entities.items():
+                response.append(self.entity(key, value, owner))
         return response if not batch else None
 
-    def entity(self, entity, owner=None):
+    def entity(self, key, value, owner=None):
         """Stage data in ThreatConnect"""
-        outputs = entity.pop('outputs', {})
-        owner = entity.pop('owner', None) or owner
-        created_entity = self.provider.tcex.ti.create_entity(entity, owner)
-        created_entity['outputs'] = outputs
-        return created_entity
+        owner = value.pop('owner', None) or owner
+        created_entity = self.provider.tcex.cm.create_entity(value, owner)
+        if created_entity is None:
+            created_entity = self.provider.tcex.ti.create_entity(value, owner)
+        return {'key': key, 'data': created_entity}
 
     def delete_staged(self, staged_data):
         """Delete data in redis"""
         for data in staged_data:
+            data = data.get('data', {})
             if data.get('status_code') != 201:
                 continue
 
@@ -162,17 +162,27 @@ class ThreatConnect(object):
             ti = None
             if entity_type == 'Group':
                 ti = self.provider.tcex.ti.group(
-                    data.get('sub_type'), unique_id=data.get('unique_id'), owner=data.get('owner')
+                    data.get('sub_type'), unique_id=data.get('id'), owner=data.get('owner')
                 )
             elif entity_type == 'Indicator':
-                ti = self.provider.tcex.ti.indicator(
-                    data.get('sub_type'), unique_id=data.get('unique_id'), owner=data.get('owner')
-                )
+                ti = self.provider.tcex.ti.indicator(data.get('sub_type'), owner=data.get('owner'))
+                ti._set_unique_id(data.get(ti.api_entity))
             elif entity_type == 'Task':
                 ti = self.provider.tcex.ti.group(
-                    entity_type, unique_id=data.get('unique_id'), owner=data.get('owner')
+                    entity_type, unique_id=data.get('id'), owner=data.get('owner')
                 )
-            ti.delete()
+            if ti:
+                ti.delete()
+            if entity_type == 'Case_Management':
+                cm = getattr(self.provider.tcex.cm, data.get('sub_type'))()
+                if data.get('sub_type').lower() in [
+                    'workflow_event',
+                    'workflowevent',
+                    'workflow event',
+                ]:
+                    continue
+                cm.id = data.get('id')
+                cm.delete()
 
     def clear(self, owner):
         """delete and recreate the owner"""

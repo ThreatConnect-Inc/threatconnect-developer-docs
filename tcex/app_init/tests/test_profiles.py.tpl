@@ -8,19 +8,14 @@ import pytest
 from tcex.testing import ${class_name}
 from ..profiles import profiles
 
-from .custom_feature import CustomFeature  # pylint: disable=E0402
-from .validate_feature import ValidateFeature  # pylint: disable=E0402
-
-# Python 2 unicode
-if sys.version_info[0] == 2:
-    reload(sys)  # noqa: F821; pylint: disable=E0602
-    sys.setdefaultencoding('utf-8')  # pylint: disable=no-member
+from .custom_feature import CustomFeature  # pylint: disable=relative-beyond-top-level
+from .validate_feature import ValidateFeature  # pylint: disable=relative-beyond-top-level
 
 # get profile names
 profile_names = profiles(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'profiles.d'))
 
 
-# pylint: disable=W0235,too-many-function-args
+# pylint: disable=useless-super-delegation,too-many-function-args
 class TestProfiles(${class_name}):
     """TcEx App Testing Template."""
 
@@ -61,17 +56,26 @@ class TestProfiles(${class_name}):
         # profile data
         profile_data = self.profile(profile_name)
 
+        # call pre-configuration setup per test
+        self.custom.test_pre_create_config(self, profile_data, monkeypatch)
+
         # publish createConfig
         for config in profile_data.get('configs'):
             self.publish_create_config(config)
 
-        # trigger custom event
-        self.custom.trigger_method(self, profile_data, monkeypatch)
-
         % if app_type == 'webhooktriggerservice':
+        # call pre-configuration setup per test
+        self.custom.test_pre_webhook(self, profile_data, monkeypatch)
+
         # send webhook event
         self.publish_webhook_event(**profile_data.get('webhook_event'))
+        % else:
+        # trigger custom event
+        self.custom.trigger_method(self, profile_data, monkeypatch)
         % endif
+
+        # call pre-configuration setup or validation per test
+        self.custom.test_pre_delete_config(self, profile_data, monkeypatch)
 
         # publish deleteConfig
         for config in profile_data.get('configs'):

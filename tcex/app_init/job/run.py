@@ -4,11 +4,6 @@ import os
 import sys
 import traceback
 
-# Python 2 unicode
-if sys.version_info[0] == 2:
-    reload(sys)  # noqa: F821; pylint: disable=E0602
-    sys.setdefaultencoding('utf-8')  # pylint: disable=E1101
-
 
 def _update_app_path():
     """Update sys path to ensure all required modules can be found.
@@ -51,19 +46,19 @@ if __name__ == '__main__':
         # load App class
         app = App(tcex)
 
-        # perform prep/startup operations
-        app.start()
+        # perform prep/setup operations
+        app.setup()
 
         # run the App logic
         app.run()
 
-        # perform cleanup operations
-        app.done()
+        # perform cleanup/teardown operations
+        app.teardown()
 
         # explicitly call the exit method
         tcex.exit(msg=app.exit_message)
 
     except Exception as e:
-        main_err = 'Generic Error.  See logs for more details ({}).'.format(e)
+        main_err = f'Generic Error.  See logs for more details ({e}).'
         tcex.log.error(traceback.format_exc())
         tcex.playbook.exit(1, main_err)

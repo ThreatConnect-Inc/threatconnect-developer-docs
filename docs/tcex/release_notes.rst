@@ -3,14 +3,49 @@
 Release Notes
 #############
 
-1.1.7
+2.0.1
 =====
++ Updated bin module to delete reference to removed profile and run files.
++ Updated setup.py for long_description.
++ Updated README.md to include all dependencies.
+
+2.0.0
+=====
++ Added support for ThreatConnect Case Management.
++ Added support for ThreatConnect Service Apps.
++ Updated templates to support changes in tcex 2.0.
++ Updated code to support Python 3.6+, removing support for all older versions of Python.
++ Removed old tcrun and tcprofile commands.
++ Breaking Change: Multiple updates to ``playbook`` module logic.
++ Breaking Change: Moved datetime methods in tcex.utils.xxx to tcex.utils.datetime.xxx.
++ Breaking Change: Reworked App decorators to improve usability.
++ Breaking Change: Renamed ``start()`` and ``done()`` methods in templates to ``setup()`` and ``teardown()``.
++ Breaking Change: Removed ``tcex.s()`` method.
++ Breaking Change: Removed ``tcex.data_filter`` property and module.
++ Breaking Change: Removed ``tcex.request`` property and module.
++ Breaking Change: Removed ``tcex.resources`` property and module.
++ Breaking Change: Removed ``tcex.safetag()`` method.
++ Breaking Change: Removed ``tcex.safeurl()`` method.
++ Breaking Change: Updated ``tcex.safe_indicator()`` method input params.
++ Breaking Change: Updated ``tcex.safe_url()`` method input params.
++ Breaking Change: Updated ``tcex.safe_tag()`` method input params.
+
+1.1.x
+=====
+
+1.1.8
+-----
++ Improved support for TI module to support creating files given a unique_id.
++ Updates to playbook modules to remove logging affecting environment servers.
+
+1.1.7
+-----
 + Updates to testing framework for custom validation.
 + Updates to the docs for multiple modules.
 + Multiple updates to testing framework.
 
 1.1.6
-=====
+-----
 + Updated deleted() method of TI module to yield results instead of returning raw response.
 + Updates to testing framework for custom methods when testing profiles.
 + Updated inputs to ensure args provided via sys.argv take precedent over all other args.
@@ -19,11 +54,11 @@ Release Notes
 + Updated excludes for tcpackage command for pytest report folders.
 
 1.1.5
-=====
+-----
 + Updated validation module to handle local imports and shared modules.
 
 1.1.4
-=====
+-----
 + Added additional support for v2 API endpoints.
 + Added support for new appId field in the install.json.
 + Updated validation command to better handle packages with nested modules.
@@ -34,7 +69,7 @@ Release Notes
 + Multiple updates for testing framework.
 
 1.1.3
-=====
+-----
 + Added cache handler to logging module.
 + Updated args module to use dict input over sys.argv when possible.
 + Updated args module replaced required args with a default value when possible.
@@ -44,33 +79,36 @@ Release Notes
 + Removed reference to args in logging module.
 
 1.1.2
-=====
+-----
 + Updates to token and args modules to better support testing framework and external Apps.
 + Added kwargs on tcex init for external Apps.
 + Updates to testing templates.
 
 1.1.1
-=====
+-----
 + Moved registration of default token to default_args method to address issue with secure params.
 + Updated template files.
 + Updated build process for wheel files.
 + Updated permutations generation to include hidden inputs.
 
 1.1.0
-=====
+-----
 + Restructured tcex modules into individual directories.
 + Added services module for service Apps.
 + Added token module to manage tokens for all types of Apps.
 + Moved token renewal from session to new token module.
 + Updated multiple module to simplify testing.
 
-1.0.7
+1.0.x
 =====
+
+1.0.7
+-----
 + Updated logging formatter for issue in py2.
 + Updated test_case to automatically create profile output.
 
 1.0.6
-=====
+-----
 + Reworked logging for the TcEx framework to provide better flexibility.
 + Updated logging of batch sizes to not log when there is not content.
 + Moved the logging of App info to the args call.
@@ -78,35 +116,35 @@ Release Notes
 + Added new testing module using pytest.
 
 1.0.5
-=====
+-----
 + Updated arg parsing to better handle delimited input strings for secureParams/AOT input.
 + Updated TI module to better handle filters and retrieving generic indicator/group types.
 + Updated logging initialization to ensure user provided log path is available before adding file handler.
 
 1.0.4
-=====
+-----
 + Updated datastore module to prevent creating of empty record on index creation.
 + Updated batch module to support additional debugging features.
 
 1.0.3
-=====
+-----
 + Updated playbook read for ``\s`` replacement issue in Python 3.7.
 + Updated utils ``unix_time_to_datetime()`` method to handle unix timestamps with milliseconds that are not floats.
 + Updated TI module with changes for indicators data.
 + Updated tcinit for temporary proxy fields names.
 
 1.0.2
-=====
+-----
 + Updated **read_embedded** to escape newline characters in embedded string values
 
 1.0.1
-=====
+-----
 + Updated **install.json** schema validation to ensure that **displayName** contains a minimum of three characters
 + Updated **read_embedded** to cast data value to a string
 + Made minor updates to the TI module
 
 1.0.0
-=====
+-----
 + Added new Threat Intel (TI) module to interact with ThreatConnect REST API
 + Added support of "\s" characters to be replaced automatically with a space (" ") character on user string input in Playbook Apps
 + Added templates for external Apps

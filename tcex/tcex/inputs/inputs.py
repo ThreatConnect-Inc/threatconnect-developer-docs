@@ -4,10 +4,12 @@ import json
 import os
 import sys
 from argparse import Namespace
+
 from .argument_parser import TcArgumentParser
+from .file_params import FileParams
 
 
-class Inputs(object):
+class Inputs:
     """Module for handling inputs passed to App from CLI, Config, SecureParams, and AOT
 
     Args:
@@ -27,6 +29,7 @@ class Inputs(object):
         3. Inputs from CLI arg and from secure params
         4. All inputs from Config params
         5. Inputs from Config params and from AOT params
+        6. Inputs from Config File (including encrypted file for services)
         """
         self.tcex = tcex
 
@@ -37,8 +40,12 @@ class Inputs(object):
         # parser
         self.parser = TcArgumentParser()
 
+        # a single config file is supported, typically from and external App or service App using
+        # fileParam feature
+        config_file = os.getenv('TC_APP_PARAM_FILE') or config_file
+
         # handle config and config_file
-        config_file_data = self.config_file(config_file)
+        config_file_data = self.config_file(config_file, os.getenv('TC_APP_PARAM_KEY'))
         config.update(config_file_data)  # config_file params update config
 
         # create empty namespaces
@@ -104,28 +111,29 @@ class Inputs(object):
         # check for bad status code and response that is not JSON
         if not r.ok:
             err = r.text or r.reason
-            raise RuntimeError('Error retrieving secure params from API ({}).'.format(err))
+            raise RuntimeError(f'Error retrieving secure params from API ({err}).')
 
         secure_params = {}
         try:
             secure_params = r.json()['inputs']
         except (AttributeError, KeyError, TypeError, ValueError):  # pragma: no cover
             err = r.text or r.reason
-            raise RuntimeError('Error retrieving secure params from API ({}).'.format(err))
+            raise RuntimeError(f'Error retrieving secure params from API ({err}).')
 
         return secure_params
 
     def _load_aot_params(self):
         """Block and retrieve params from Redis."""
-        if self._default_args.tc_aot_enabled:
+        if self._default_args.tc_aot_enabled is True:
             # update default_args with AOT params
-            params = self.tcex.playbook.aot_blpop()
+            params = self.aot_blpop()
             updated_params = self.update_params(params)
+            # log number of params returned from AOT
             self.config(updated_params)
 
     def _load_secure_params(self):
         """Parse args and return default args."""
-        if self._default_args.tc_secure_params:
+        if self._default_args.tc_secure_params is True:
             # update default_args with secure params from API
             params = self._get_secure_params()
             updated_params = self.update_params(params)
@@ -139,7 +147,7 @@ class Inputs(object):
         """
         results = []
         if os.access(self.default_args.tc_out_path, os.W_OK):
-            result_file = '{}/results.tc'.format(self.default_args.tc_out_path)
+            result_file = f'{self.default_args.tc_out_path}/results.tc'
         else:
             result_file = 'results.tc'
         if os.path.isfile(result_file):
@@ -158,6 +166,34 @@ class Inputs(object):
                 value = None
             setattr(self._default_args, key, value)
 
+    def aot_blpop(self):
+        """Subscribe to AOT action channel."""
+        res = None
+        if self._default_args.tc_playbook_db_type == 'Redis':
+            try:
+                self.tcex.log.info('Blocking for AOT message.')
+                msg_data = self.tcex.redis_client.blpop(
+                    keys=self._default_args.tc_action_channel,
+                    timeout=self._default_args.tc_terminate_seconds,
+                )
+
+                if msg_data is None:
+                    self.tcex.exit(0, 'AOT subscription timeout reached.')
+
+                msg_data = json.loads(msg_data[1])
+                msg_type = msg_data.get('type', 'terminate')
+                if msg_type == 'execute':
+                    res = msg_data.get('params', {})
+                elif msg_type == 'terminate':
+                    self.tcex.exit(0, 'Received AOT terminate message.')
+                else:  # pragma: no cover
+                    self.tcex.log.warn(f'Unsupported AOT message type: ({msg_type}).')
+                    res = self.aot_blpop()
+            except Exception as e:  # pragma: no cover
+                self.tcex.exit(1, f'Exception during AOT subscription ({e}).')
+
+        return res
+
     def args(self, parse=False):
         """Parse args if they have not already been parsed and return the Namespace for args.
 
@@ -172,7 +208,7 @@ class Inputs(object):
             self.config(args.__dict__, False)
 
             # special case for service Apps
-            if self._default_args.tc_svc_client_topic is not None:
+            if self._default_args.tc_svc_client_topic is not None:  # pragma: no cover
                 # get the service id as third part of the service
                 # --tc_svc_client_topic svc-client-cc66d36344787779ccaa8dbb5e09a7ab
                 setattr(
@@ -219,10 +255,10 @@ class Inputs(object):
         if isinstance(config_data, dict):
             if preserve:
                 # on env server core doesn't send all required values on cli. inputs that
-                # come in via secureParams need to be updated, but not all of them (e.g. log_path).
+                # come in via secureParams needs to be updated, but not all of them (e.g. log_path).
                 # this code will only update new inputs that are not provided via sys argv.
                 for key in list(config_data):
-                    if '--{}'.format(key) in sys.argv:
+                    if f'--{key}' in sys.argv:
                         del config_data[key]
 
             # update the arg Namespace via dict
@@ -231,19 +267,45 @@ class Inputs(object):
             # register token as soon as possible
             self.register_token()
 
-    def config_file(self, filename):
+    def config_file(self, filename, key=None):
         """Load configuration data from provided file and update default_args.
 
         Args:
             config (str): The configuration file name.
+            key (str): The configuration file encryption key.
+
+        Returns:
+            dict: The JSON contents of the file as a dict.
         """
-        if filename is not None:
-            if os.path.isfile(filename):
-                with open(filename, 'r') as fh:
-                    return json.load(fh)
+        file_content = {}
+        if filename is not None and os.path.isfile(filename):
+            if key is not None:
+                try:
+                    # read encrypted file from "in" directory
+                    with open(filename, 'rb') as fh:
+                        encrypted_contents = fh.read()
+
+                    fp = FileParams()
+                    fp.EVP_DecryptInit(fp.EVP_aes_128_cbc(), key.encode(), b'\0' * 16)
+                    result = fp.EVP_DecryptUpdate(encrypted_contents) + fp.EVP_DecryptFinal()
+                    file_content = json.loads(result.decode('utf-8'))
+                    file_content = self.update_params(file_content)
+
+                    # delete file
+                    os.unlink(filename)
+                except Exception:  # pragma: no cover
+                    self.tcex.log.error(
+                        f'Could not read or decrypt configuration file "{filename}".'
+                    )
             else:
-                self.tcex.log.error('Could not load configuration file "{}".'.format(filename))
-        return {}
+                try:
+                    with open(filename, 'r') as fh:
+                        file_content = json.load(fh)
+                except ValueError:  # pragma: no cover
+                    self.tcex.log.error(f'Could not parse configuration file "{filename}".')
+        elif filename is not None:  # pragma: no cover
+            self.tcex.log.error(f'Could not load configuration file "{filename}".')
+        return file_content
 
     @property
     def default_args(self):
@@ -355,11 +417,13 @@ class Inputs(object):
     def unknown_args(self):
         """Log argparser unknown arguments.
 
+        This method is only applicable for args passed on the CLI.
+
         Args:
             args (list): List of unknown arguments
         """
         for u in self._unknown_args:
-            self.tcex.log.warning(u'Unsupported arg found ({}).'.format(u))
+            self.tcex.log.warning(f'Unsupported arg found ({u}).')
 
     def update_logging(self):
         """Update the TcEx logger with appropriate handlers."""
