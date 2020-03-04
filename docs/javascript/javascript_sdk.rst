@@ -670,14 +670,14 @@ Single Indicator retrieve Example Results:
 Filters
 ~~~~~~~
 
-The fololowing is an example of how to retrieve Indicators that start with 'bad' and have a
-dateAdded value greater than '20151213' using an API filter:
+The following is an example of how to retrieve Indicators that start with 'bad' and have a
+dateAdded value greater than '2015-12-13' using an API filter:
 
 .. code:: javascript
 
     var filter = new Filter(FILTER.AND);
     filter.on('summary', FILTER.SW, 'bad');
-    filter.on('dateAdded', FILTER.GT, '20151213');
+    filter.on('dateAdded', FILTER.GT, '2015-12-13');
 
     var indicators = tc.indicators();
 
@@ -705,7 +705,7 @@ Filter Options
 +------------------------------+-------------------+
 | Or                           | FILTER.OR         |
 +------------------------------+-------------------+
-| Equal (=)                    | FILTER.OR         |
+| Equal (=)                    | FILTER.EQ         |
 +------------------------------+-------------------+
 | Greater Than (>)             | FILTER.GT         |
 +------------------------------+-------------------+
@@ -1300,62 +1300,10 @@ The following is an example of retrieve Tags results:
 
 Optionally the ``name()`` method can be used to pass a specific Security Label name.
 
-Filters
--------
-
-The following is an example of how to retrieve Threats that start-with 'threat' and have a
-dateAdded value greater than '20151213' using an API filter:
-
-.. code:: javascript
-
-    filter = new Filter(FILTER.AND);
-    filter.on('name', FILTER.SW, 'threat');
-    filter.on('dateAdded', FILTER.GT, '20151213');
-
-    groups = tc.groups();
-
-    groups.owner('Example Community')
-        .type(TYPE.THREAT)
-        .resultLimit(500)
-        .filter(filter)
-        .done(function(response) {
-            console.log('response', response);
-        })
-        .error(function(response) {
-            console.log('error response', response);
-        })
-        .retrieve();
-
-Starting with ThreatConnect version 4.0, the API supports filtering using
-query string parameters. For more information on which parameters
-support which operators, see the ThreatConnect API Users Guide.
-
-+------------------------------+-------------------+
-| Filter Options               | Filter Constant   |
-+==============================+===================+
-| And                          | FILTER.AND        |
-+------------------------------+-------------------+
-| Or                           | FILTER.OR         |
-+------------------------------+-------------------+
-| Equal (=)                    | FILTER.OR         |
-+------------------------------+-------------------+
-| Greater Than (>)             | FILTER.GT         |
-+------------------------------+-------------------+
-| Greater Than or Equal (>=)   | FILTER.GE         |
-+------------------------------+-------------------+
-| Less Than (<)                | FILTER.LT         |
-+------------------------------+-------------------+
-| Less Than or Equal (<=)      | FILTER.LE         |
-+------------------------------+-------------------+
-| Starts With (^)              | FILTER.SW         |
-+------------------------------+-------------------+
-
-Note that multiple filters can be added to one API call.
-
 Retrieve Associations
 ---------------------
 
-The following is an example of retrieveAssociations() method:
+The following is an example of group retrieveAssociations() method:
 
 .. code:: javascript
 
@@ -1364,14 +1312,19 @@ The following is an example of retrieveAssociations() method:
         .type(TYPE.INCIDENT)
         .id(123)
         .done(function(response) {
+            var associatedIndicators = response['data'];
+            
             console.log('response', response);
         })
         .error(function(response) {
             console.log('error response', response);
         })
         .retrieveAssociations({
+            type: TYPE.INDICATOR
+            /*
             type: TYPE.ADVERSARY,
             id: 253
+            */
         });
 
 The JavaScript SDK provides the ``retrieveAssociations()`` method to

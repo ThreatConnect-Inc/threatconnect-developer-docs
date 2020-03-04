@@ -43,35 +43,39 @@ The following are optional URL search parameters:
 
 - ``labels``: A comma-delimited list of labels by which to filter
 
-To search for a specific Playbook by name:
+To search for a specific playbook by name:
 
 .. code:: 
 
     /v2/playbooks/search?name=Playbook%20Name
 
-Or to return only active Playbooks: 
+or to return only active Playboks: 
 
 .. code::
 
     /v2/playbooks/search?status=Active
 
-The following query uploads and installs a new Playbook with the Playbook file submitted as multi-part Form/File Data in the request:
+
+
+
+The following query uploads and installs a new Playbook with the playbook file submitted as an JSON payload in the request:
 
 .. code::
 
     POST /v2/playbooks
+
+The following query uploads a Playbook as a new, major version to an existing Playbook, with the playbook file submitted as an JSON payload in the request:
+
+
+.. code::
+
+    POST /v2/playbooks/{id}
 
 The following query returns information about the specified Playbook by the given ID. If the Playbook does not exist, a 404 error is returned:
 
 .. code::
 
     GET /v2/playbooks/{id}
-
-The following query uploads a Playbook as a new, major version to an existing Playbook, with the Playbook file submitted as multi-part Form/File Data in the request:
-
-.. code::
-
-    POST /v2/playbooks/{id}
 
 The following query deletes the specified Playbook:
 

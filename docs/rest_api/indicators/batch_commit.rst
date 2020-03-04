@@ -36,7 +36,7 @@ The Batch Create resource creates a batch entry in the system. No batch processi
 +------------------------+----------+------------------------------+-------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
 |                        |          |                              |          Static         | Incoming Attributes will be ignored, leaving any that may already be present on existing data alone.                                             |
 +------------------------+----------+------------------------------+-------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-| tagWriteType           |    No    |             V2               |          Append         | Incoming Tags will add to those that may already be present on existing data.                                                                    |
+| tagWriteType           |    No    |             V2               |          Append         | Incoming Tags will be added to those that may already be present on existing data.                                                               |
 +------------------------+----------+------------------------------+-------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
 |                        |          |                              |    Replace (default)    | Tags will be removed from existing data before adding incoming Tags.                                                                             |
 +------------------------+----------+------------------------------+-------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -64,59 +64,71 @@ The Batch Create resource creates a batch entry in the system. No batch processi
 
 .. note:: Occasionally, imported File Indicators may overlap one or more hashes with other File Indicators already present within the system. In the typical situation, either the incoming data or the existing data will contain additional hash type[s] that the other item did not have (e.g., Incoming data has both an md5 and sha1, while the existing data has only the md5, or vice versa). In this typical situation, the resulting File Indicator will end up with the "superset" of file hashes by either retaining the existing hash[es] or adding in the new hash[es]. However, certain non-typical situations may exist that require special processing when incoming file hash[es] cause conflicts with existing data (e.g., Incoming data has an md5 and sha1, while the existing data has the same md5 but a different sha1). The behavior in situations like these are controlled by the ``fileMergeMode`` and ``hashCollisionMode`` parameters defined in the above table.
 
-Batch Indicator Input File Format
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Batch Indicator Input File Format (V1)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code:: json
 
-    [
-      {
+ [{
         "rating": 3,
         "confidence": 60,
         "description": "a malicious domain",
         "summary": "super-malicious.ru",
         "type": "Host",
-        "associatedGroup": [12345, 54321],
-        "attribute": [
-          {
-            "type": "AttributeName",
-            "value": "MyAttribute"
-          }
-        ],
-        "tag": [
-          {
-            "name": "MyTag"
-          }
-        ]
-      }
-    ]
+        "attribute": [{
+               "type": "AttributeName",
+               "value": "MyAttribute"
+        }],
+        "tag": [{
+               "name": "MyTag"
+        }]
+ }]
+    
+Batch Indicator Input File Format (V2)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The batch upload feature expects to ingest a JSON file consisting of a
-list of dictionaries.
+.. code:: json
 
-+----------------------+----------------------+-----------+
-| Field                | Data type            | Required? |
-+======================+======================+===========+
-| ``rating``           | integer              | Required  |
-+----------------------+----------------------+-----------+
-| ``confidence``       | float                | Required  |
-+----------------------+----------------------+-----------+
-| ``description``      | string               | Required  |
-+----------------------+----------------------+-----------+
-| ``summary``          | string               | Required  |
-+----------------------+----------------------+-----------+
-| ``type``             | string               | Required  |
-+----------------------+----------------------+-----------+
-| ``tag``              | list of dictionaries | Optional  |
-+----------------------+----------------------+-----------+
-| ``attribute``        | list of dictionaries | Optional  |
-+----------------------+----------------------+-----------+
-| ``associatedGroup``  | list of integers     | Optional  |
-+----------------------+----------------------+-----------+
-| ``dateAdded``        | date/time            | Optional  |
-+----------------------+----------------------+-----------+
+ [{
+	"indicator": [{
+		"rating": 3,
+		"confidence": 60,
+		"summary": "super-malicious.ru",
+		"type": "Host",
+		"associatedGroups": ["00000000-0000-0000-0000-000000000000:1234"],
+		"attribute": [{
+				"type": "Description",
+				"value": "a malicious domain"
+			},
+			{
+				"type": "AttributeName",
+				"value": "MyAttribute"
+			}
+		],
+		"tag": [{
+			"name": "MyTag"
+		}]
+	}],
+	"group": [{
+		"name": "New Incident",
+		"type": "Incident",
+		"xid": "00000000-0000-0000-0000-000000000000:1234",
+		"eventDate": "2019-11-26T00:00:00Z",
+		"attribute": [{
+			"type": "Description",
+			"displayed": true,
+			"value": "Ryuk C2"
+		}],
+		"tag": [{
+			"name": "MyOtherTag"
+		}]
+	}]
+ }]
 
-.. note:: File Indicators may have any or all of MD5, SHA1, and/or SHA256 hash values. The hashes may be provided in either of two ways: (1) concatenated using 'space-colon-space' into the 'summary' field of the indicator, or; (2) presented as individual 'md5', 'sha1', and 'sha256' hash values. The presence of any hashes using this second method will cause the summary field to be ignored during import. For example, consider a File Indicator with the md5 hash ``905ad8176a569a36421bf54c04ba7f95``, sha1 hash ``a52b6986d68cdfac53aa740566cbeade4452124e`` and sha256 hash ``25bdabd23e349f5e5ea7890795b06d15d842bde1d43135c361e755f748ca05d0``, which could be imported in either of the two following ways:
+The Batch Upload feature expects to ingest a JSON file consisting of list(s) of dictionaries. As shown in the above examples, the default/legacy "V1" Batch operation expects a single list of Indicator objects only. For enhanced "V2" Batch operation, both Indicator and Group objects are supported, where each is to be contained inside of its own "indicator" and/or "group" array definition.
+Generally speaking, the list of fields expected within each Indicator or Group item parallels those described in the Indicator and Group creation operations (specified `here <https://docs.threatconnect.com/en/latest/rest_api/indicators/indicators.html#create-indicators>`_ and `here <https://docs.threatconnect.com/en/latest/rest_api/groups/groups.html#create-groups>`_). Additionally, a 'type' field is required within each item corresponding to the particular Indicator or Group type being specified (e.g., "Host", "Address", etc., for Indicators and "Incident", "Adversary", etc., for Groups).
+
+.. note:: File Indicators may have any or all of MD5, SHA1, and/or SHA256 hash values. The hashes may be provided in either of two ways: (1) concatenated using 'space-colon-space' into the 'summary' field of the Indicator, or; (2) presented as individual 'md5', 'sha1', and 'sha256' hash values. The presence of any hashes using this second method will cause the summary field to be ignored during import. For example, consider a File Indicator with the md5 hash ``905ad8176a569a36421bf54c04ba7f95``, sha1 hash ``a52b6986d68cdfac53aa740566cbeade4452124e`` and sha256 hash ``25bdabd23e349f5e5ea7890795b06d15d842bde1d43135c361e755f748ca05d0``, which could be imported in either of the two following ways:
 
    ``Option 1``
    
@@ -136,14 +148,6 @@ list of dictionaries.
    "type": "File",
    ...
    }        
-
-Supported ``type`` values for Indicators:
-
--  Host
--  Address
--  EmailAddress
--  URL
--  File
 
 .. note:: Exporting indicators via the `JSON Bulk Reports <https://docs.threatconnect.com/en/latest/rest_api/indicators/indicators.html#json-bulk-reports>`__ endpoint will create a file in this format.
 

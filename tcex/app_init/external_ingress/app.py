@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-"""ThreatConnect Job App"""
+"""ThreatConnect External App"""
 import csv
 
-# Import default Job Class (Required)
+# Import default External App Class (Required)
 from external_app import ExternalApp
 
 

@@ -379,7 +379,6 @@ JSON Response:
             "confidence": 85,
             "threatAssessRating": 4.37,
             "threatAssessConfidence": 72.91,
-            "threatAssessScore": 650,
             "webLink": "https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=example.org&owner=Example+Org",
             "source": "US-EAST-3 Network Logs",
             "description": "Malicious domain.",
