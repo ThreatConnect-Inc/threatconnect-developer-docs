@@ -26,8 +26,8 @@ class TestCasePlaybook(TestCasePlaybookCommon):
         self.log_data('run', 'args', args)
         self.app = self.app_init(args)
 
-        # Start
-        exit_code = self.run_app_method(self.app, 'start')
+        # Setup
+        exit_code = self.run_app_method(self.app, 'setup')
         if exit_code != 0:
             return exit_code
 
@@ -62,8 +62,8 @@ class TestCasePlaybook(TestCasePlaybookCommon):
         if exit_code != 0:
             return exit_code
 
-        # Done
-        exit_code = self.run_app_method(self.app, 'done')
+        # Teardown
+        exit_code = self.run_app_method(self.app, 'teardown')
         if exit_code != 0:
             return exit_code
 
@@ -89,7 +89,7 @@ class TestCasePlaybook(TestCasePlaybookCommon):
         exit_code = self.run(args)
 
         # add context for populating output variables
-        self.context_tracker.append(self.context)
+        self._context_tracker.append(self.context)
 
         return exit_code
 
