@@ -18,7 +18,7 @@ Demo <https://www.threatconnect.com/request-a-demo/>`__
    javascript/javascript_sdk
    deployment_config
    tcex/tcex
-   case_management
+   case_management/case_management
    common_errors
    angular
    trademarks
