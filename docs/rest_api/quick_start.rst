@@ -21,7 +21,33 @@ Requests to ThreatConnect API endpoints must be made over HTTPS with a valid Sig
 
 Each API response is formatted with a status. If the status is "Success," each response includes a ``data`` field with the appropriate response type. If the status is "Failure," an appropriate error message is provided as to why the request failed.
 
-The API will be versioned, as needed, to support continued development of the ThreatConnect platform, and existing API versions will be appropriately deprecated. Version 2 /(v2) of the API supports write capabilities via HTTP POST and PUT methods. The HTTP GET method is used for read access to resources.
+API Versioning
+--------------
+
+The API will be versioned, as needed, to support continued development of the ThreatConnect platform, and existing API versions will be appropriately deprecated.
+
+Version 1 (/v1)
+^^^^^^^^^^^^^^^
+
+v1 of the ThreatConnect API has been deprecated for several years now and, as of v6.0, is no longer available.
+
+Version 2 (/v2)
+^^^^^^^^^^^^^^^
+
+v2 of the ThreatConnect API remains the current active version for Threat Intelligence features within the platform. Write capabilities are supported via HTTP POST and PUT methods. The HTTP GET method is used for read access to resources. To better understand the implementation and usage of the v2 API, refer to the individual sections within this document that describe the methods and data formats available at each endpoint.
+
+Version 3 (/v3)
+^^^^^^^^^^^^^^^
+
+v3 of the ThreatConnect API begins with the release of v6.0 and is the current active version for Case Management features within the platform. In future versions, users can expect to see many of the Threat Intelligence features currently available within v2 to be made available in v3 format; however, this is still currently not supported.
+
+The v3 API was designed to leverage a few "lessons learned" identified within the design and deployment of the v2 API. Of particular note, the number of calls needed to make relatively complex setting/getting operations has been greatly reduced and simplified. TQL filtering is also now supported, allowing the user to format, filter, and sort data in a nearly infinite number of ways. The path structure has been simplified as well, having eliminated the need for many levels of nested paths within a given primary endpoint. Finally, error messaging has also been improved in order to better assist the user in identifying and repairing malformed requests.
+
+To understand the implementation and usage of the v3 API, consider the HTTP methods below supported by each v3 endpoint. Take special note of the OPTIONS methods, which now carry the main responsibility of describing data formats and filtering options available to the user. Once familiarized with this design pattern, users may wish to visit the individual sections within this document that describe the different endpoints currently available within the v3 API, with some examples specific to those respective endpoints.
+
+●	OPTIONS /fields
+○	Returns a list of names and descriptions of available options to set in the ?fields= query parameter (See GET sections below.)
+
 
 Authentication
 --------------
