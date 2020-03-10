@@ -55,13 +55,15 @@ A note is the primary mechanism to capture the progress of a case in human-reada
 
 Endpoint: /api/v3/notes
 
+Methods
+^^^^^^^
+
+For an explanation of methods and how they relate to v3 Api, refer to the ####### section in this documentation.
 
 
 
 
   1. `Discovery Service <#discovery-service>`__ : Provides information about offered TAXII Services
   
-.. hint:: The descriptions above are taken from the `Taxii Services Specification <https://taxiiproject.github.io/releases/1.1/TAXII_Services_Specification.pdf>`_ documentation, which you may find helpful for further reference.
 
-Requests to a Taxii endpoint must be authenticated using `Basic Authentication <https://en.wikipedia.org/wiki/Basic_access_authentication>`_ with the username and password of a Taxii-user account. The value created by the basic authentication should be sent with the request with the ``Authorization`` header. Note that this is different than the authentication scheme used for normal API requests.
 
