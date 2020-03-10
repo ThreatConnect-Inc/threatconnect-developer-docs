@@ -45,9 +45,50 @@ The v3 API was designed to leverage a few "lessons learned" identified within th
 
 To understand the implementation and usage of the v3 API, consider the HTTP methods below supported by each v3 endpoint. Take special note of the OPTIONS methods, which now carry the main responsibility of describing data formats and filtering options available to the user. Once familiarized with this design pattern, users may wish to visit the individual sections within this document that describe the different endpoints currently available within the v3 API, with some examples specific to those respective endpoints.
 
+**●	OPTIONS /**
+    o	Returns an object descriptor for a given endpoint, which contains names, data types, and text descriptions of each field within an object
+    o	The response here can be used as a "template" of sorts to construct a body to use in a POST or PUT request; or it can be used to better understand what fields users can expect to see in a GET request.
+    o	``?show=readOnly`` will also include read-only (non-settable) parameters for the object
+
 ●	**OPTIONS /fields**
     o	Returns a list of names and descriptions of available options to set in the ``?fields=`` query parameter (See GET sections below.)
-
+    
+●	**OPTIONS /tql**
+    o	Returns available tql filter options to use in the ``?tql=`` query parameter
+    
+●	**GET /**
+    o	Retrieves a list of objects
+    o	``?tql= tql`` query to filter results
+    o	``?fields=`` requests additional fields not automatically provided with each returned object
+    o   ``?resultStart=`` starting result index, for pagination
+    o   ``?resultLimit=`` maximum number of results, for pagination
+    o	``?sorting=`` query parameter to specify sorting order
+    o	``?owner=`` query parameter to specify the owner of the data being requested
+    
+●	**GET /{id}**
+    o	Retrieves a single object specified by the given ID
+    o	``?fields=`` requests additional fields not automatically provided with each returned object
+    o	``?owner=`` query parameter to specify the owner of the data being requested
+    
+●	**POST /**
+    o	Saves a new object of the given data type
+    o	May include nested objects, where applicable, to save multiple items at once (e.g., a Case with nested Task(s))
+    o	``?owner=`` query parameter to specify the owner of the data being set
+    
+●	**PUT /{id}**
+    o	Updates the object specified by the given ID
+    o	Typically, only necessary to provide the data fields being modified.
+    o	Similar to POST, may include nested objects where applicable
+    o	``?owner=`` query parameter to specify the owner of the data being set
+    
+●	**DELETE /**
+    o	Performs bulk deletion of objects (Note: System Configuration option v3ApiBulkDeleteAllowed must be enabled.)
+    o	``?tql= tql`` query to filter items to be deleted
+    o	``?owner=`` query parameter to specify the owner of the data being set
+    
+●	**DELETE /{id}**
+    o	Deletes the single object specified by the given ID
+    o	``?owner=`` query parameter to specify the owner of the data being set
 
 Authentication
 --------------
@@ -175,3 +216,4 @@ Next Steps
 From here, find a topic that interests you and dig in! If you don't know where to start, retrieving Indicators is a good place to begin.
 
 .. hint:: When using this documentation, it will be helpful to have a basic understanding of the `ThreatConnect Data Model <http://kb.threatconnect.com/customer/en/portal/articles/2092925-the-threatconnect-data-model>`_.
+
