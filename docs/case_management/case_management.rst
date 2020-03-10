@@ -2,6 +2,7 @@ Case Management
 ===============
 
 Case Management and the Workflow feature in ThreatConnect allow users to combine manual and automated operations to define consistent and standardized processes for their security teams, including, but not limited to:
+
 •	Malware analysis
 •	Phishing triage
 •	Alert triage
@@ -10,6 +11,7 @@ Case Management and the Workflow feature in ThreatConnect allow users to combine
 •	Breach SOP
 
 Workflow in ThreatConnect supports the concept of Case Management, which gives users the capability to investigate and track information security threats and incidents by:
+
 •	Minimizing the time it takes to match a case to historical data 
 •	Minimizing the time it takes to assess scope 
 •	Minimize the time it takes to assess impact 
