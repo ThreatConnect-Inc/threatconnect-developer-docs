@@ -47,7 +47,9 @@ To understand the implementation and usage of the v3 API, consider the HTTP meth
 
 **●	OPTIONS /**
     o	Returns an object descriptor for a given endpoint, which contains names, data types, and text descriptions of each field within an object
+    
     o	The response here can be used as a "template" of sorts to construct a body to use in a POST or PUT request; or it can be used to better understand what fields users can expect to see in a GET request.
+    
     o	``?show=readOnly`` will also include read-only (non-settable) parameters for the object
 
 ●	**OPTIONS /fields**
@@ -58,36 +60,52 @@ To understand the implementation and usage of the v3 API, consider the HTTP meth
     
 ●	**GET /**
     o	Retrieves a list of objects
+    
     o	``?tql= tql`` query to filter results
+    
     o	``?fields=`` requests additional fields not automatically provided with each returned object
+    
     o   ``?resultStart=`` starting result index, for pagination
+    
     o   ``?resultLimit=`` maximum number of results, for pagination
+    
     o	``?sorting=`` query parameter to specify sorting order
+    
     o	``?owner=`` query parameter to specify the owner of the data being requested
     
 ●	**GET /{id}**
     o	Retrieves a single object specified by the given ID
+    
     o	``?fields=`` requests additional fields not automatically provided with each returned object
+    
     o	``?owner=`` query parameter to specify the owner of the data being requested
     
 ●	**POST /**
     o	Saves a new object of the given data type
+    
     o	May include nested objects, where applicable, to save multiple items at once (e.g., a Case with nested Task(s))
+    
     o	``?owner=`` query parameter to specify the owner of the data being set
     
 ●	**PUT /{id}**
     o	Updates the object specified by the given ID
-    o	Typically, only necessary to provide the data fields being modified.
+    
+    o	Typically, only necessary to provide the data fields being modified
+    
     o	Similar to POST, may include nested objects where applicable
+    
     o	``?owner=`` query parameter to specify the owner of the data being set
     
 ●	**DELETE /**
     o	Performs bulk deletion of objects (Note: System Configuration option v3ApiBulkDeleteAllowed must be enabled.)
+    
     o	``?tql= tql`` query to filter items to be deleted
+    
     o	``?owner=`` query parameter to specify the owner of the data being set
     
 ●	**DELETE /{id}**
     o	Deletes the single object specified by the given ID
+    
     o	``?owner=`` query parameter to specify the owner of the data being set
 
 Authentication
