@@ -45,8 +45,8 @@ The v3 API was designed to leverage a few "lessons learned" identified within th
 
 To understand the implementation and usage of the v3 API, consider the HTTP methods below supported by each v3 endpoint. Take special note of the OPTIONS methods, which now carry the main responsibility of describing data formats and filtering options available to the user. Once familiarized with this design pattern, users may wish to visit the individual sections within this document that describe the different endpoints currently available within the v3 API, with some examples specific to those respective endpoints.
 
-●	OPTIONS /fields
-○	Returns a list of names and descriptions of available options to set in the ?fields= query parameter (See GET sections below.)
+●	**OPTIONS /fields**
+    ○	Returns a list of names and descriptions of available options to set in the ``?fields=`` query parameter (See GET sections below.)
 
 
 Authentication
