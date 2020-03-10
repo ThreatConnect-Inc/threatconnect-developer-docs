@@ -58,4 +58,4 @@ Endpoint: ``/api/v3/notes``
 Methods
 ^^^^^^^
 
-For an explanation of methods and how they relate to v3 API, refer to the `API Versioning <#api-versioning>`__ section in this documentation.
+For an explanation of methods and how they relate to v3 API, refer to the `API Versioning <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#api-versioning>`__section in this documentation.
