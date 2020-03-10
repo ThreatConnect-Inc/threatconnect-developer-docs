@@ -59,10 +59,3 @@ Methods
 ^^^^^^^
 
 For an explanation of methods and how they relate to v3 API, refer to the `API Versioning <#api-versioning>`__ section in this documentation.
-
-
-
-  1. `Discovery Service <#discovery-service>`__ : Provides information about offered TAXII Services
-  
-
-
