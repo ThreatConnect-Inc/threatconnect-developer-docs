@@ -58,7 +58,7 @@ Endpoint: ``/api/v3/notes``
 Methods
 ^^^^^^^
 
-For an explanation of methods and how they relate to v3 Api, refer to the ####### section in this documentation.
+For an explanation of methods and how they relate to v3 API, refer to the ####### section in this documentation.
 
 
 
