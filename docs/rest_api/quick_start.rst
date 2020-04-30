@@ -179,7 +179,9 @@ To test API connectivity, start with a request to the ``/v2/owners`` branch to r
     # use this to output the data if python is installed on your system
     curl -s -H "Timestamp: ${TIMESTAMP}" -H "Authorization: ${authorization}" -X ${API_METHOD} "${API_URL}" | python -m json.tool
 
-.. note:: If you receive an error while using the script above, make sure that the ``API_URL`` is pointed to the correct API for the instance of ThreatConnect you wish to use. When working with the Sandbox environment, modify the API_PATH variable in this script to begin with '/api' in front of the endpoint name. In the example given, you would use API_PATH='/api/v2/owners'. For API_URL, you would use 'https://sandbox.threatconnect.com'. Failure to make the changes in this way will result in the error 'Signature data did not match expected result' and a status code of 400 from the API.
+.. note:: If you receive an error while using the script above, make sure that the ``API_URL`` is pointed to the correct API for the instance of ThreatConnect you wish to use.
+
+.. note:: When working with the Sandbox environment, modify the API_PATH variable in this script to begin with '/api' in front of the endpoint name. In the example given, you would use API_PATH='/api/v2/owners'. For API_URL, you would use 'https://sandbox.threatconnect.com'. Failure to make the changes in this way will result in the error 'Signature data did not match expected result' and a status code of 400 from the API.
 
 Get a list of all Owners visible to this user:
 
