@@ -22,6 +22,8 @@ uptcex:
 	rm -rf ./docs/tcex/*;
 	# move all of the .rst files from the tcex repo's documentation into this repo's documentation directory
 	mv ./tcex/docs/src/*.rst ./docs/tcex/;
+	# move all of the .inc files from the tcex repo's documentation into this repo's documentation directory
+	mv ./tcex/docs/src/*.inc ./docs/tcex/;
 	# move all of the tcex module documentation files into this repo's documentation directory
 	mv ./tcex/docs/src/tcex_docs/ ./docs/tcex/;
 	# rename the landing page for the tcex docs
