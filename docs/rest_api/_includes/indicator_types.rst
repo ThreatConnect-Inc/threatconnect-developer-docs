@@ -1,6 +1,6 @@
 - ``addresses``
-- ``ASNs``
-- ``CIDRs``
+- ``asns``
+- ``cidrBlocks``
 - ``emailAddresses``
 - ``files``
 - ``hosts``
