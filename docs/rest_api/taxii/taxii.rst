@@ -3,7 +3,7 @@ Taxii Services
 
 To use Taxii endpoints, you need to have a Taxii user created in your ThreatConnect Organization. To do this, follow the instructions for `Creating a Taxii-user <https://training.threatconnect.com/learn/article/using-the-threatconnect-taxii-server-kb-article>`_.
 
-ThreatConnect offers three Taxii Services:
+ThreatConnect offers three Taxii Services: 
 
   1. `Discovery Service <#discovery-service>`__ : Provides information about offered TAXII Services
   2. `Collection Management Service <#collection-management-service>`__ : Supports management of TAXII Data Collection subscriptions
