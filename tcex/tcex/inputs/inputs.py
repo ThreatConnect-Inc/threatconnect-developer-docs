@@ -7,7 +7,6 @@ from argparse import Namespace
 
 from ..utils import Utils
 from .argument_parser import TcArgumentParser
-from .file_params import FileParams
 
 
 class Inputs:
@@ -131,6 +130,7 @@ class Inputs:
             params = self.aot_blpop()
             updated_params = self.update_params(params)
             # log number of params returned from AOT
+            self.tcex.log.info(f'Loaded {len(updated_params)} inputs from AOT params.')
             self.config(updated_params)
 
     def _load_secure_params(self):
@@ -139,6 +139,7 @@ class Inputs:
             # update default_args with secure params from API
             params = self._get_secure_params()
             updated_params = self.update_params(params)
+            self.tcex.log.info(f'Loaded {len(updated_params)} inputs from secure params.')
             self.config(updated_params)
 
     def _results_tc_args(self):  # pragma: no cover
@@ -210,13 +211,23 @@ class Inputs:
             self.config(args.__dict__, False)
 
             # special case for service Apps
-            if self._default_args.tc_svc_client_topic is not None:  # pragma: no cover
+            if (
+                not self._default_args.tc_svc_id
+                and self._default_args.tc_svc_client_topic is not None
+            ):  # pragma: no cover
                 # get the service id as third part of the service
                 # --tc_svc_client_topic svc-client-cc66d36344787779ccaa8dbb5e09a7ab
                 setattr(
                     self._default_args,
-                    'service_id',
+                    'tc_svc_id',
                     self._default_args.tc_svc_client_topic.split('-')[2],
+                )
+
+            # special case for service Apps
+            if not self._default_args.tc_job_id and self._default_args.tc_token is not None:
+                # get the job id from the token
+                setattr(
+                    self._default_args, 'tc_job_id', self._default_args.tc_token.split(':')[-2],
                 )
 
             # set parsed bool to ensure args are only parsed once
@@ -287,9 +298,7 @@ class Inputs:
                     with open(filename, 'rb') as fh:
                         encrypted_contents = fh.read()
 
-                    fp = FileParams()
-                    fp.EVP_DecryptInit(fp.EVP_aes_128_cbc(), key.encode(), b'\0' * 16)
-                    result = fp.EVP_DecryptUpdate(encrypted_contents) + fp.EVP_DecryptFinal()
+                    result = self.utils.decrypt_aes_cbc(key, encrypted_contents)
                     file_content = json.loads(result.decode('utf-8'))
                     file_content = self.update_params(file_content)
 
@@ -299,6 +308,7 @@ class Inputs:
                     self.tcex.log.error(
                         f'Could not read or decrypt configuration file "{filename}".'
                     )
+                self.tcex.log.info(f'Loaded {len(file_content)} inputs from config file.')
             else:
                 try:
                     with open(filename, 'r') as fh:
@@ -381,39 +391,39 @@ class Inputs:
     def tc_reserved_args(self):
         """Return a list of *all* ThreatConnect reserved arg values."""
         return [
-            'tc_token',
-            'tc_token_expires',
             'api_access_id',
+            'api_default_org',
             'api_secret_key',
             'batch_action',
             'batch_chunk',
             'batch_halt_on_error',
-            'batch_poll_interval',
             'batch_interval_max',
+            'batch_poll_interval',
             'batch_write_type',
-            'tc_playbook_db_type',
-            'tc_playbook_db_context',
-            'tc_playbook_db_path',
-            'tc_playbook_db_port',
-            'tc_playbook_out_variables',
-            'api_default_org',
+            'logging',
             'tc_api_path',
             'tc_in_path',
             'tc_log_file',
+            'tc_log_level',
             'tc_log_path',
+            'tc_log_to_api',
             'tc_out_path',
-            'tc_secure_params',
-            'tc_temp_path',
-            'tc_user_id',
+            'tc_playbook_db_context',
+            'tc_playbook_db_path',
+            'tc_playbook_db_port',
+            'tc_playbook_db_type',
+            'tc_playbook_out_variables',
             'tc_proxy_host',
             'tc_proxy_port',
             'tc_proxy_username',
             'tc_proxy_password',
             'tc_proxy_external',
             'tc_proxy_tc',
-            'tc_log_to_api',
-            'tc_log_level',
-            'logging',
+            'tc_secure_params',
+            'tc_temp_path',
+            'tc_token',
+            'tc_token_expires',
+            'tc_user_id',
         ]
 
     def unknown_args(self):
@@ -425,6 +435,8 @@ class Inputs:
             args (list): List of unknown arguments
         """
         for u in self._unknown_args:
+            if u == 'run':
+                continue
             self.tcex.log.warning(f'Unsupported arg found ({u}).')
 
     def update_logging(self):
@@ -474,7 +486,7 @@ class Inputs:
 
             if param_type == 'multichoice' or param_allow_multiple:
                 # update delimited value to an array for params that have type of MultiChoice.
-                if not isinstance(value, dict):
+                if value is not None and not isinstance(value, dict):
                     value = value.split(self.tcex.ij.list_delimiter)
             elif param_type == 'boolean':
                 # convert boolean input that are passed in as a string ("true" -> True)

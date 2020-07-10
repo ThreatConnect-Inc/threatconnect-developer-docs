@@ -11,7 +11,7 @@ import os
 import random
 import re
 from collections import OrderedDict
-from urllib.parse import unquote
+from urllib.parse import quote, unquote
 
 from ..utils import Utils
 
@@ -158,18 +158,17 @@ class Validator:
         }
         return operators.get(op, None)
 
-    @staticmethod
-    def operator_date_format(app_data, test_data):
+    def operator_date_format(self, app_data, test_data):
         """Check if date or dates match the provide format.
 
         Args:
             app_data: (list,str): One or more date strings.
             test_data: (str): A strptime string for comparision.
         """
-        if app_data is None:
-            return False, 'Invalid app_data: {app_data}'
-        if test_data is None:
-            return False, 'Invalid test_data: {test_data}'
+        if self.check_null(test_data):
+            return False, f'Invalid test_data: {test_data}. One or more values in test_data is null'
+        if self.check_null(app_data):
+            return False, f'Invalid app_data: {app_data}. One or more values in app_data is null'
 
         if not isinstance(app_data, list):
             app_data = [app_data]
@@ -205,9 +204,31 @@ class Validator:
             # handle "null" -> None match
             return False, f'App Data {app_data} does not match Test Data {test_data}'
 
+        # deepdiff doesn't handle ordered dicts properly
+        safe_app_data = app_data
+        if isinstance(app_data, OrderedDict):
+            safe_app_data = json.loads(json.dumps(app_data))
+        elif isinstance(app_data, list):
+            safe_app_data = []
+            for ad in app_data:
+                if isinstance(ad, OrderedDict):
+                    ad = json.loads(json.dumps(ad))
+                safe_app_data.append(ad)
+
+        # deepdiff doesn't handle ordered dicts properly
+        safe_test_data = test_data
+        if isinstance(test_data, OrderedDict):
+            safe_test_data = json.loads(json.dumps(test_data))
+        elif isinstance(test_data, list):
+            safe_test_data = []
+            for td in test_data:
+                if isinstance(td, OrderedDict):
+                    td = json.loads(json.dumps(td))
+                safe_test_data.append(td)
+
         # run operator
         try:
-            ddiff = DeepDiff(app_data, test_data, **kwargs)
+            ddiff = DeepDiff(safe_app_data, safe_test_data, **kwargs)
         except KeyError:
             return False, 'Encountered KeyError when running deepdiff'
         except NameError:
@@ -230,11 +251,10 @@ class Validator:
         results = operator.eq(app_data, test_data)
         return results, self.details(app_data, test_data, 'eq')
 
-    @staticmethod
-    def operator_is_url(app_data, test_data):  # pylint: disable=unused-argument
+    def operator_is_url(self, app_data, test_data):  # pylint: disable=unused-argument
         """Check if the app_data is a known date."""
-        if app_data is None:
-            return False, 'Invalid app_data: {app_data}'
+        if self.check_null(app_data):
+            return False, f'Invalid app_data: {app_data}. One or more values in app_data is null'
 
         if not isinstance(app_data, list):
             app_data = [app_data]
@@ -270,10 +290,10 @@ class Validator:
         Returns:
             bool, str: The results of the operator and any error message
         """
-        if app_data is None:
-            return False, 'Invalid app_data: {app_data}'
-        if test_data is None:
-            return False, 'Invalid test_data: {test_data}'
+        if self.check_null(test_data):
+            return False, f'Invalid test_data: {test_data}. One or more values in test_data is null'
+        if self.check_null(app_data):
+            return False, f'Invalid app_data: {app_data}. One or more values in app_data is null'
 
         app_data = self._string_to_int_float(app_data)
         test_data = self._string_to_int_float(test_data)
@@ -293,10 +313,10 @@ class Validator:
         Returns:
             bool, str: The results of the operator and any error message
         """
-        if app_data is None:
-            return False, 'Invalid app_data: {app_data}'
-        if test_data is None:
-            return False, 'Invalid test_data: {test_data}'
+        if self.check_null(test_data):
+            return False, f'Invalid test_data: {test_data}. One or more values in test_data is null'
+        if self.check_null(app_data):
+            return False, f'Invalid app_data: {app_data}. One or more values in app_data is null'
 
         app_data = self._string_to_int_float(app_data)
         test_data = self._string_to_int_float(test_data)
@@ -308,10 +328,10 @@ class Validator:
 
     def operator_is_date(self, app_data, test_data):  # pylint: disable=unused-argument
         """Check if the app_data is a known date."""
-        if app_data is None:
-            return False, 'Invalid app_data: {app_data}'
-        if test_data is None:
-            return False, 'Invalid test_data: {test_data}'
+        if self.check_null(test_data):
+            return False, f'Invalid test_data: {test_data}. One or more values in test_data is null'
+        if self.check_null(app_data):
+            return False, f'Invalid app_data: {app_data}. One or more values in app_data is null'
 
         if not isinstance(app_data, list):
             app_data = [app_data]
@@ -326,10 +346,19 @@ class Validator:
         return passed, ','.join(bad_data)
 
     @staticmethod
-    def operator_is_number(app_data, test_data):  # pylint: disable=unused-argument
+    def check_null(data_list):
+        """Check if data_list is None or if None exists in the data_list."""
+        if not isinstance(data_list, list):
+            data_list = [data_list]
+        for data in data_list:
+            if data is None:
+                return True
+        return False
+
+    def operator_is_number(self, app_data, test_data):  # pylint: disable=unused-argument
         """Check if the app_data is a known date."""
-        if app_data is None:
-            return False, 'Invalid app_data: {app_data}'
+        if self.check_null(app_data):
+            return False, f'Invalid app_data: {app_data}. One or more values in app_data is null'
 
         if not isinstance(app_data, list):
             app_data = [app_data]
@@ -368,15 +397,21 @@ class Validator:
                 return False, f'Invalid JSON data provide ({app_data}).'
         elif isinstance(app_data, (list)):
             # ADI-1076/ADI-1149
-            try:
-                app_data_updated = []
-                for ad in app_data:
-                    if isinstance(ad, OrderedDict):
+            app_data_updated = []
+            for ad in app_data:
+                try:
+                    if isinstance(ad, (OrderedDict, dict)):
                         ad = json.dumps(ad)
-                    app_data_updated.append(json.loads(ad))
-                app_data = app_data_updated
-            except ValueError:
-                return False, f'Invalid JSON data provide ({app_data}).'
+                except ValueError:
+                    return False, f'Invalid JSON data provide ({app_data}).'
+
+                try:
+                    # APP-599 - best effort try to stringify value in list
+                    ad = json.loads(ad)
+                except Exception:
+                    pass
+                app_data_updated.append(ad)
+            app_data = app_data_updated
 
         if isinstance(test_data, (str)):
             try:
@@ -385,15 +420,21 @@ class Validator:
                 return False, f'Invalid JSON data provide ({test_data}).'
         elif isinstance(test_data, (list)):
             # ADI-1076/ADI-1149
-            try:
-                test_data_updated = []
-                for td in test_data:
-                    if isinstance(td, OrderedDict):
+            test_data_updated = []
+            for td in test_data:
+                try:
+                    if isinstance(td, (OrderedDict, dict)):
                         td = json.dumps(td)
-                    test_data_updated.append(json.loads(td))
-                test_data = test_data_updated
-            except ValueError:
-                return False, f'Invalid JSON data provide ({test_data}).'
+                except ValueError:
+                    return False, f'Invalid JSON data provide ({test_data}).'
+
+                try:
+                    # APP-599 - best effort try to stringify value in list
+                    td = json.loads(td)
+                except Exception:
+                    pass
+                test_data_updated.append(td)
+            test_data = test_data_updated
 
         exclude = kwargs.pop('exclude', [])
         if isinstance(app_data, list) and isinstance(test_data, list):
@@ -460,10 +501,10 @@ class Validator:
         Returns:
             bool, str: The results of the operator and any error message
         """
-        if app_data is None:
-            return False, 'Invalid app_data: {app_data}'
-        if test_data is None:
-            return False, 'Invalid test_data: {test_data}'
+        if self.check_null(test_data):
+            return False, f'Invalid test_data: {test_data}. One or more values in test_data is null'
+        if self.check_null(app_data):
+            return False, f'Invalid app_data: {app_data}. One or more values in app_data is null'
 
         app_data = self._string_to_int_float(app_data)
         test_data = self._string_to_int_float(test_data)
@@ -473,7 +514,8 @@ class Validator:
             details = f'{app_data} {type(app_data)} !(<=) {test_data} {type(test_data)}'
         return results, details
 
-    def operator_length_eq(self, app_data, test_data):
+    @staticmethod
+    def operator_length_eq(app_data, test_data):
         """Check length of app_data.
 
         If data passed in is 2 lists, validates length lists are the same.
@@ -482,16 +524,28 @@ class Validator:
         If data passed in is 1 str and 1 int, validates length str and int value are the same.
         """
         if app_data is None:
-            return False, 'Invalid app_data: {app_data}'
+            return False, f'Invalid test_data: {app_data}. Value in app_data is null'
         if test_data is None:
-            return False, 'Invalid test_data: {test_data}'
+            return False, f'Invalid test_data: {test_data}. Value in test_data is null'
 
-        if isinstance(test_data, (list, str)):
-            results = operator.eq(len(app_data), len(test_data))
+        if not (
+            (isinstance(test_data, str) and isinstance(app_data, str))
+            or (isinstance(test_data, list) and isinstance(app_data, list))
+            or (isinstance(test_data, int) and isinstance(app_data, (list, str)))
+        ):
+            msg = (
+                f'Cannot compare App Data Type: {type(app_data)} '
+                f'to Test Data Type {type(test_data)}'
+            )
+            return False, msg
+        app_len = len(app_data)
+        if isinstance(test_data, int):
+            test_len = test_data
         else:
-            results = operator.eq(len(app_data), test_data)
-        # TODO: fix response as self.details should be correct for this use case.
-        return results, self.details(app_data, test_data, 'length_eq')
+            test_len = len(test_data)
+
+        results = operator.eq(app_len, test_len)
+        return results, f'App Data Length: {app_len} | Test Data Length: {test_len}'
 
     def operator_lt(self, app_data, test_data):
         """Compare app data is less than tests data.
@@ -503,10 +557,10 @@ class Validator:
         Returns:
             bool, str: The results of the operator and any error message
         """
-        if app_data is None:
-            return False, 'Invalid app_data: {app_data}'
-        if test_data is None:
-            return False, 'Invalid test_data: {test_data}'
+        if self.check_null(test_data):
+            return False, f'Invalid test_data: {test_data}. One or more values in test_data is null'
+        if self.check_null(app_data):
+            return False, f'Invalid app_data: {app_data}. One or more values in app_data is null'
 
         app_data = self._string_to_int_float(app_data)
         test_data = self._string_to_int_float(test_data)
@@ -529,8 +583,7 @@ class Validator:
         results = operator.ne(app_data, test_data)
         return results, self.details(app_data, test_data, 'eq')
 
-    @staticmethod
-    def operator_regex_match(app_data, test_data):
+    def operator_regex_match(self, app_data, test_data):
         """Compare app data matches test regex data.
 
         Args:
@@ -540,10 +593,10 @@ class Validator:
         Returns:
             bool: The results of the operator.
         """
-        if app_data is None:
-            return False, 'Invalid app_data: {app_data}'
-        if test_data is None:
-            return False, 'Invalid test_data: {test_data}'
+        if self.check_null(test_data):
+            return False, f'Invalid test_data: {test_data}. One or more values in test_data is null'
+        if self.check_null(app_data):
+            return False, f'Invalid app_data: {app_data}. One or more values in app_data is null'
 
         if isinstance(app_data, dict):
             return False, 'Invalid app_data, dict type is not supported.'
@@ -609,7 +662,10 @@ class Validator:
                 'status': 'Uploaded
             }
         """
-        if not isinstance(dict_1, dict):
+        if isinstance(dict_1, list):
+            for item in dict_1:
+                self.remove_excludes(item, paths)
+        elif not isinstance(dict_1, dict):
             raise RuntimeError(f'Provided value ({dict_1}) must be a dict.')
 
         path_0 = paths[0]
@@ -694,7 +750,7 @@ class Redis:
         self.log.data('validate', 'DB Data', variable_data)
         if not variable:
             self.log.data(
-                'validate', 'None Error', f'Redis variable not provided', 'error',
+                'validate', 'None Error', 'Redis variable not provided', 'error',
             )
             return False
 
@@ -761,7 +817,7 @@ class Redis:
         op = op or 'eq'
         if not variable:
             self.log.data(
-                'validate', 'None Error', f'Redis variable not provided', 'error',
+                'validate', 'None Error', 'Redis variable not provided', 'error',
             )
             return False
 
@@ -804,7 +860,7 @@ class Redis:
         # ADI-1118 - log warning if string value is wrapped in quotes
         if isinstance(app_data, (str)) and app_data.startswith('"') and app_data.endswith('"'):
             self.log.data(
-                'validate', 'Suspect Value', f'App data is wrapped in double quotes.', 'warning',
+                'validate', 'Suspect Value', 'App data is wrapped in double quotes.', 'warning',
             )
 
         # build assert error
@@ -973,7 +1029,10 @@ class ThreatConnect:
         log_message = ''
         for code, count in counts.items():
             log_message += (
-                self.provider.tcex.batch(owner).error_codes.get(code) + ': ' + str(count) + '\n'
+                self.provider.tcex.batch(owner).error_codes.get(code, 'General Error')
+                + ': '
+                + str(count)
+                + '\n'
             )
 
         self.log.data('validate', 'Batch Submission', log_message, 'error')
@@ -1024,7 +1083,7 @@ class ThreatConnect:
             results.append({'name': name, 'valid': valid, 'errors': errors})
         return results
 
-    def tc_entity(self, tc_entity, owner, file=None):
+    def tc_entity(self, tc_entity, owner, file=None):  # pylint: disable=unused-argument
         """Validate the ti_response entity"""
         parameters = {'includes': ['additional', 'attributes', 'labels', 'tags']}
         ti_entity = self._convert_to_ti_entity(tc_entity, owner)
@@ -1107,11 +1166,20 @@ class ThreatConnect:
         errors = []
         for item in expected:
             if item in actual:
-                if str(expected.get(item)) != actual.get(item):
-                    errors.append(
-                        f'{error_type}{item} : {expected.get(item)} '
-                        f'did not match {item} : {actual.get(item)}'
-                    )
+                if isinstance(expected.get(item), list):
+                    actual_list_string = [str(i) for i in actual.get(item, [])]
+                    for value in expected.get(item):
+                        if str(value) not in actual_list_string:
+                            errors.append(
+                                f'{error_type}{item} : {expected.get(item)} '
+                                f'did not match {item} : {actual.get(item)}'
+                            )
+                else:
+                    if str(expected.get(item)) != actual.get(item):
+                        errors.append(
+                            f'{error_type}{item} : {expected.get(item)} '
+                            f'did not match {item} : {actual.get(item)}'
+                        )
                 actual.pop(item)
             else:
                 errors.append(
@@ -1180,7 +1248,7 @@ class ThreatConnect:
                         unique_id=entity.get('id'),
                     )
         elif tc_entity.get('type') in self.provider.tcex.indicator_types:
-            tc_entity['summary'] = tc_entity.get('summary')
+            tc_entity['summary'] = quote(tc_entity.get('summary'), safe='')
             if tc_entity.get('type').lower() == 'file':
                 tc_entity['summary'] = tc_entity.get('summary').upper()
             ti_entity = self.provider.tcex.ti.indicator(
@@ -1249,9 +1317,11 @@ class ThreatConnect:
         expected = {}
         actual = {}
         for attribute in tc_entity.get('attribute', []):
-            expected[attribute.get('type')] = attribute.get('value')
+            attribute_type = attribute.get('type')
+            expected.setdefault(attribute_type, []).append(attribute.get('value'))
         for attribute in ti_response.get('attribute', []):
-            actual[attribute.get('type')] = attribute.get('value')
+            attribute_type = attribute.get('type')
+            actual.setdefault(attribute_type, []).append(attribute.get('value'))
         return self.compare_dicts(expected, actual, error_type='AttributeError: ')
 
     def _response_tags(self, ti_response, tc_entity):
@@ -1276,7 +1346,7 @@ class ThreatConnect:
         expected = []
         actual = []
         for tag in tc_entity.get('securityLabel', []):
-            expected.append(tag)
+            expected.append(tag.get('name'))
         for tag in ti_response.get('securityLabel', []):
             actual.append(tag.get('name'))
 

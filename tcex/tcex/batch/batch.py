@@ -675,6 +675,9 @@ class Batch:
             '0x1009': 'Association Error',
             '0x100A': 'Duplicate Item Error',
             '0x100B': 'File IO Error',
+            '0x2001': 'Indicator Partial Loss Error',
+            '0x2002': 'Group Partial Loss Error',
+            '0x2003': 'File Hash Merge Error',
         }
 
     def errors(self, batch_id, halt_on_error=True):
@@ -1447,6 +1450,8 @@ class Batch:
 
     def write_error_json(self, errors):
         """Writes the errors for debuging purposes"""
+        if not errors:
+            errors = []
         timestamp = str(time.time()).replace('.', '')
         error_json_file = os.path.join(self.tcex.args.tc_temp_path, f'errors-{timestamp}.json')
         with open(error_json_file, 'w') as fh:

@@ -38,7 +38,7 @@ class TcEx:
             signal.signal(signal.SIGTERM, self._signal_handler)
 
         # Property defaults
-        self._config = kwargs.get('config', {})
+        self._config = kwargs.get('config') or {}
         self._default_args = None
         self._error_codes = None
         self._exit_code = 0
@@ -777,15 +777,9 @@ class TcEx:
     def session_external(self):
         """Return an instance of Requests Session configured for the ThreatConnect API."""
         if self._session_external is None:
-            from requests import Session
+            from .sessions import ExternalSession
 
-            self._session_external = Session()
-            if self.default_args.tc_proxy_external:
-                self.log.info(
-                    'Using proxy server for external connectivity '
-                    f'({self.default_args.tc_proxy_host}:{self.default_args.tc_proxy_port}).'
-                )
-                self._session_external.proxies = self.proxies
+            self._session_external = ExternalSession(self)
         return self._session_external
 
     @property

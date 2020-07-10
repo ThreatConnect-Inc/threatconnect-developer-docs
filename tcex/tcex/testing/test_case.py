@@ -10,18 +10,17 @@ import uuid
 from datetime import datetime
 
 import pytest
-from requests import Session
 import urllib3
-
+from requests import Session
 from tcex import TcEx
 from tcex.app_config_object.install_json import InstallJson
-from tcex.app_config_object.profile import Profile
 from tcex.env_store import EnvStore
-from tcex.inputs import FileParams
-from tcex.sessions.tc_session import HmacAuth
+from tcex.profile import Profile
+from tcex.utils import Utils
 
 from .stage_data import Stager
 from .test_logger import logger
+from .test_session import TestSession
 from .validate_data import Validator
 
 # disable ssl warning message
@@ -35,6 +34,8 @@ class TestCase:
     _current_test = None
     _default_args = None
     _profile = None
+    _session_admin = None
+    _session_exchange = None
     _stager = None
     _staged_tc_data = []
     _timer_class_start = None
@@ -52,24 +53,13 @@ class TestCase:
     session = Session()
     tcex = None
     tcex_testing_context = None
+    utils = Utils()
 
     def _reset_property_flags(self):
         """Reset all control flag."""
         # used to prevent pytest from executing @property methods
         self.initialized = False
         self.tcex = False
-
-    @staticmethod
-    def _encrypt_file_contents(key, data):
-        """Return encrypted data for file params."""
-        fp = FileParams()
-        fp.EVP_EncryptInit(fp.EVP_aes_128_cbc(), key.encode('utf-8'), b'\0' * 16)
-        return fp.EVP_EncryptUpdate(data) + fp.EVP_EncryptFinal()
-
-    def _exit(self, code):
-        """Log and return exit code"""
-        self.log.data('run', 'Exit Code', code)
-        return code
 
     def _log_args(self, args):
         """Log args masking any that are marked encrypted and log warning for unknown args.
@@ -79,8 +69,10 @@ class TestCase:
         """
         for name, value in sorted(args.items()):
             input_data = self.ij.params_dict.get(name)
-            if input_data is None and self.default_args.get(name) is None:
-                self.log.data('run', 'input', f'Unknown arg "{name}" provided.', 'warning')
+            if input_data is None and name not in self.default_args:
+                # if name is not in install.json and not a default arg log a warning
+                if name not in ['tcex_testing_context']:  # values that should not cause a warning
+                    self.log.data('run', 'input', f'{name}: unknown arg.', 'warning')
             elif input_data is not None and input_data.get('encrypt') is True:
                 self.log.data('run', 'input', f'{name}: ***')
             else:
@@ -91,6 +83,28 @@ class TestCase:
         """Return bool value from int or string."""
         return str(value).lower() in ['1', 'true']
 
+    def _update_args(self, args):
+        """Update args before running App."""
+
+        if self.ij.runtime_level.lower() in ['playbook']:
+            # set requested output variables
+            args['tc_playbook_out_variables'] = self.profile.tc_playbook_out_variables
+
+        # update path args
+        self._update_path_args(args)
+
+        # update default args with app args
+        app_args = self.default_args.copy()
+        app_args.update(args)
+
+        # update default args with app args
+        app_args['tc_logger_name'] = self.context
+
+        # safely log all args to tests.log
+        self._log_args(app_args)
+
+        return app_args
+
     def _update_path_args(self, args):
         """Update path in args for each test profile."""
         # service Apps do not have a profile when this is needed.
@@ -100,67 +114,45 @@ class TestCase:
         args['tc_out_path'] = profile.tc_out_path
         args['tc_temp_path'] = profile.tc_temp_path
 
-    def app_init(self, args):
-        """Return an instance of App."""
-        from app import App  # pylint: disable=import-error
+    @property
+    def api_access_id(self):
+        """Return TC API Access ID"""
+        return self.env_store.getenv('/ninja/tc/tci/exchange_admin/api_access_id')
 
-        # return App(self.get_tcex(args))
-        args = args or {}
+    @property
+    def api_secret_key(self):
+        """Return TC API Secret Key"""
+        return self.env_store.getenv('/ninja/tc/tci/exchange_admin/api_secret_key')
 
-        # update path args
-        self._update_path_args(args)
+    @staticmethod
+    def check_environment(environments, os_environments=None):
+        """Check if test case matches current environments, else skip test.
 
-        # update default args with app args
-        app_args = self.default_args.copy()
-        app_args.update(args)
+        Args:
+            environments (list): The test case environments.
+            os_environments (list): The user/os defined environment.
+        """
+        test_envs = environments or ['build']
+        os_envs = set(os.environ.get('TCEX_TEST_ENVS', 'build').split(','))
+        if os_environments:
+            os_envs = set(os_environments)
+        if not os_envs.intersection(set(test_envs)):
+            pytest.skip('Profile skipped based on current environment.')
 
-        app_args['tc_logger_name'] = self.context
-
-        if self.ij.runtime_level.lower() in [
-            'triggerservice',
-            'webhooktriggerservice',
-        ]:
-            # service Apps will get their args/params from encrypted file in the "in" directory
-            data = json.dumps(app_args, sort_keys=True).encode('utf-8')
-            key = ''.join(random.choice(string.ascii_lowercase) for i in range(16))
-            encrypted_data = self._encrypt_file_contents(key, data)
-
-            app_params_json = os.path.join(self.test_case_log_feature_dir, '.app_params.json')
-            with open(app_params_json, 'wb') as fh:
-                fh.write(encrypted_data)
-
-            # create environment variable for tcex inputs method to pick up to read encrypted file
-            os.environ['TC_APP_PARAM_KEY'] = key
-            os.environ['TC_APP_PARAM_FILE'] = app_params_json
-
-            # tcex will read args/params from encrypted file
-            tcex = TcEx()
-        else:
-            tcex = TcEx(config=app_args)
-        return App(tcex)
-
-    def app_init_create_config(self, args, output_variables, tcex_testing_context):
+    def create_config(self, args):
         """Create files necessary to start a Service App."""
-        args['tc_playbook_out_variables'] = ','.join(output_variables)
-        args['tcex_testing_context'] = tcex_testing_context
-
-        # update path args
-        self._update_path_args(args)
-
-        # merge default and app args
-        app_args = self.default_args.copy()
-        app_args.update(args)
+        config = self._update_args(args)
 
         # service Apps will get their args/params from encrypted file in the "in" directory
-        data = json.dumps(app_args, sort_keys=True).encode('utf-8')
+        data = json.dumps(config, sort_keys=True).encode('utf-8')
         key = ''.join(random.choice(string.ascii_lowercase) for i in range(16))
-        encrypted_data = self._encrypt_file_contents(key, data)
+        encrypted_data = self.utils.encrypt_aes_cbc(key, data)
 
-        # create files necessary to run Service App
-        if not os.path.exists(app_args.get('tc_in_path')):
-            os.mkdir(app_args.get('tc_in_path'))
+        # ensure that the in directory exists
+        os.makedirs(config.get('tc_in_path'), exist_ok=True)
 
-        app_params_json = os.path.join(app_args.get('tc_in_path'), '.app_params.json')
+        # write the file in/.app_params.json
+        app_params_json = os.path.join(config.get('tc_in_path'), '.test_app_params.json')
         with open(app_params_json, 'wb') as fh:
             fh.write(encrypted_data)
 
@@ -168,37 +160,22 @@ class TestCase:
         os.environ['TC_APP_PARAM_KEY'] = key
         os.environ['TC_APP_PARAM_FILE'] = app_params_json
 
-    @staticmethod
-    def check_environment(environments):
-        """Check if test case matches current environments, else skip test.
-
-        Args:
-            environments (list): The test case environments.
-        """
-        test_envs = environments or ['build']
-        os_envs = set(os.environ.get('TCEX_TEST_ENVS', 'build').split(','))
-        if not os_envs.intersection(set(test_envs)):
-            pytest.skip('Profile skipped based on current environment.')
-
     @property
     def default_args(self):
         """Return App default args."""
         if self._default_args is None and self.initialized:
             self._default_args = {
                 # local override TCI_EXCHANGE_ADMIN_API_ACCESS_ID
-                'api_access_id': self.env_store.getenv(
-                    '/ninja/tc/tci/exchange_admin/api_access_id'
-                ),
+                'api_access_id': self.api_access_id,
                 'api_default_org': os.getenv('API_DEFAULT_ORG', 'TCI'),
                 # local override TCI_EXCHANGE_ADMIN_API_SECRET_KEY
-                'api_secret_key': self.env_store.getenv(
-                    '/ninja/tc/tci/exchange_admin/api_secret_key'
-                ),
-                'tc_api_path': os.getenv('TC_API_PATH'),
+                'api_secret_key': self.api_secret_key,
+                'tc_api_path': self.tc_api_path,
                 'tc_in_path': os.getenv('TC_IN_PATH', 'log'),
                 'tc_log_level': os.getenv('TC_LOG_LEVEL', 'trace'),
                 'tc_log_path': os.getenv('TC_LOG_PATH', 'log'),
                 'tc_log_to_api': self._to_bool(os.getenv('TC_LOG_TO_API', 'false')),
+                'tc_logger_name': 'tcex',
                 'tc_out_path': os.getenv('TC_OUT_PATH', 'log'),
                 'tc_proxy_external': self._to_bool(os.getenv('TC_PROXY_EXTERNAL', 'false')),
                 # local override TC_PROXY_HOST
@@ -220,61 +197,60 @@ class TestCase:
                 ),
                 'tc_temp_path': os.getenv('TC_TEMP_PATH', 'log'),
             }
-            if os.getenv('TC_TOKEN'):
-                self._default_args['tc_token'] = os.getenv('TC_TOKEN')
-                self._default_args['tc_token_expires'] = os.getenv('TC_TOKEN_EXPIRES')
-            else:
-                # best effort on getting API token
-                token = self.tc_token(
-                    self._default_args.get('tc_api_path'),
-                    self._default_args.get('api_access_id'),
-                    self._default_args.get('api_secret_key'),
-                )
-                if token is not None:
-                    # if token was successfully retrieved from TC use token and remove hmac values
-                    self._default_args['tc_token'] = token
-                    self._default_args['tc_token_expires'] = '1700000000'
-                    del self._default_args['api_access_id']
-                    del self._default_args['api_secret_key']
+
+            # try to use token when possible
+            token = os.getenv('TC_TOKEN', self.tc_token)
+            if token is not None:
+                # if token was successfully retrieved from TC use token and remove hmac values
+                self._default_args['tc_token'] = token
+                self._default_args['tc_token_expires'] = '1700000000'
+                del self._default_args['api_access_id']
+                del self._default_args['api_secret_key']
         return self._default_args
 
-    def init_profile(
-        self,
-        profile_name,
-        merge_inputs=False,
-        merge_outputs=False,
-        replace_exit_message=False,
-        replace_outputs=False,
-    ):
+    def init_profile(self, profile_name, pytestconfig=None, monkeypatch=None, options=None):
         """Stages and sets up the profile given a profile name"""
         self._profile = Profile(
             default_args=self.default_args.copy(),
-            merge_inputs=merge_inputs,
-            merge_outputs=merge_outputs,
             name=profile_name,
+            pytestconfig=pytestconfig,
+            monkeypatch=monkeypatch,
             redis_client=self.redis_client,
-            replace_exit_message=replace_exit_message,
-            replace_outputs=replace_outputs,
             tcex_testing_context=self.tcex_testing_context,
             logger=self.log,
+            options=options,
         )
 
+        # Override test environments if specified
+        os_environments = None
+        if pytestconfig:
+            os_environments = pytestconfig.option.environment
+
         # check profile environment
-        self.check_environment(self._profile.environments)
+        self.check_environment(self._profile.environments, os_environments)
 
         # migrate profile to latest schema
-        self._profile.data = self._profile.migrate()
+        self._profile.migrate()
 
-        # validate required fields
-        valid, message = self._profile.validate_required_inputs()
+        # merge profile inputs (add new / remove non-defined)
+        self._profile.merge_inputs()
 
-        # stage ThreatConnect data based on current profile
+        # populate profile (env vars, etc)
+        self._profile.data = self._profile.populate.replace_env_variables(self._profile.data)
+
+        # validate input fields, this method requires env vars to be populated
+        valid, message = self._profile.validate_inputs()
+
+        # stage ThreatConnect data based on current profile, also used in teardown method
         self._staged_tc_data = self.stager.threatconnect.entities(
             self._profile.stage_threatconnect, self._profile.owner
         )
 
         # insert staged data for replacement
         self._profile.tc_staged_data = self._staged_tc_data
+
+        # Replace staged_data
+        self._profile.data = self._profile.populate.replace_tc_variables(self._profile.data)
 
         # replace all references and all staged variable
         self._profile.init()
@@ -289,7 +265,7 @@ class TestCase:
         """Return profile instance."""
         return self._profile
 
-    def run(self, args):
+    def run(self):
         """Implement in Child Class"""
         raise NotImplementedError('Child class must implement this method.')
 
@@ -317,6 +293,54 @@ class TestCase:
             )
             return 1
         return 0
+
+    @property
+    def session_admin(self):
+        """Return requests Session object for TC admin account.
+
+        The credential this session uses require special activation in the ThreatConnect Platform
+        and is not intended for normal use.
+        """
+        # APP-102 - adding a session for TC API Admin role request
+        api_access_id = self.env_store.getenv('/ninja/tc/system/admin_api/api_access_id')
+        api_secret_key = self.env_store.getenv('/ninja/tc/system/admin_api/api_secret_key')
+        if (
+            self._session_admin is None
+            and api_access_id is not None
+            and api_secret_key is not None
+            and self.tc_api_path is not None
+        ):
+            # support for a proxy is not a typical use case, but can be added later if needed
+            self._session_admin = TestSession(
+                api_access_id=api_access_id,
+                api_secret_key=api_secret_key,
+                api_path=self.tc_api_path,
+                logger=self.log,
+            )
+        return self._session_admin
+
+    @property
+    def session_exchange(self):
+        """Return requests Session object for TC admin account.
+
+        The credential this session uses require special activation in the ThreatConnect Platform
+        and is not intended for normal use.
+        """
+        # APP-102 - adding a session for TC Exchange Admin role request
+        if (
+            self._session_exchange is None
+            and self.api_access_id is not None
+            and self.api_secret_key is not None
+            and self.tc_api_path is not None
+        ):
+            # support for a proxy is not a typical use case, but can be added later if needed
+            self._session_exchange = TestSession(
+                api_access_id=self.api_access_id,
+                api_secret_key=self.api_secret_key,
+                api_path=self.tc_api_path,
+                logger=self.log,
+            )
+        return self._session_exchange
 
     @classmethod
     def setup_class(cls):
@@ -349,6 +373,9 @@ class TestCase:
 
         # initialize new validator instance
         self._validator = self.validator_init()
+        # Adding this for batch to created the -batch and errors files
+        with open(os.path.join(self.test_case_log_test_dir, 'DEBUG'), 'w+') as fp:
+            fp.close()
 
     @property
     def stager(self):
@@ -374,19 +401,19 @@ class TestCase:
         tcex = TcEx(config=args)
         return Stager(tcex, logger)
 
-    def tc_token(self, tc_api_path, api_access_id, api_secret_key):
+    @property
+    def tc_api_path(self):
+        """Return TC Api Path."""
+        return os.getenv('TC_API_PATH')
+
+    @property
+    def tc_token(self):
         """Return a valid API token.
 
         note:: requires TC >= 6.0
-
-        Args:
-            tc_api_path (str): The URL for the tc instance (e.g. https://my.tc.org)
-            api_access_id (str): The TC Access ID for HMAC Auth
-            api_secret_key (str): The TC Secret Key for HMAC Auth
-
-        Returns:
-            str: A valid token if available.
         """
+        if self.tc_api_path is None:  # no API path, no token
+            return None
         data = None
         token = None
         token_url_path = self.env_store.getenv('/ninja/tc/token/url_path', env_type='remote')
@@ -400,11 +427,8 @@ class TestCase:
             data = {'serviceId': os.getenv('TC_TOKEN_SVC_ID', '407')}
             token_type = 'svc'
 
-        # add auth
-        self.session.auth = HmacAuth(api_access_id, api_secret_key)
-
         # retrieve token from API using HMAC auth
-        r = self.session.post(f'{tc_api_path}{token_url_path}/{token_type}', json=data, verify=True)
+        r = self.session_exchange.post(f'{token_url_path}/{token_type}', json=data, verify=True)
         if r.status_code == 200:
             token = r.json().get('data')
             self.log.data('setup', 'Using Token', token)
@@ -434,6 +458,19 @@ class TestCase:
         # log running times
         self.log.data('teardown method', 'finished', datetime.now().isoformat())
         self.log.data('teardown method', 'elapsed', time.time() - self._timer_class_start)
+
+        # APP-262 - close out loggers
+        self.tcex.logger.shutdown()
+        self.stager.tcex.logger.shutdown()
+        self.validator.tcex.logger.shutdown()
+
+        # APP-262 - disconnect redis
+        self.tcex.redis_client.connection_pool.disconnect()
+        self.stager.tcex.redis_client.connection_pool.disconnect()
+        self.validator.tcex.redis_client.connection_pool.disconnect()
+
+        # update profile for session data
+        self.profile.session_manager.update_profile()
 
     @property
     def test_case_data(self):

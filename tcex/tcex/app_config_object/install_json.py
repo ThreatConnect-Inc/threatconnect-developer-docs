@@ -201,7 +201,7 @@ class InstallJson:
                     continue
 
             if _type is not None:
-                if p.get('type') is not _type:
+                if p.get('type') != _type:
                     continue
 
             if input_permutations is not None:
@@ -219,14 +219,6 @@ class InstallJson:
             if p.get('required', False) is False:
                 params.setdefault(p.get('name'), p)
         return params
-
-    # TODO: should this be a property
-    def output_variables_dict(self):
-        """Return output variables as name/data dict."""
-        output_variables = {}
-        for o in self.contents.get('playbook', {}).get('outputVariables') or []:
-            output_variables.setdefault(o.get('name'), o)
-        return output_variables
 
     @property
     def params_dict(self):
@@ -323,7 +315,15 @@ class InstallJson:
                 params.setdefault(p.get('name'), p)
         return params
 
-    def update(self, commit_hash=False, features=True, migrate=False, sequence=True):
+    def update(
+        self,
+        commit_hash=False,
+        features=True,
+        migrate=False,
+        sequence=True,
+        valid_values=True,
+        playbook_data_types=True,
+    ):
         """Update the profile with all required changes.
 
         Args:
@@ -331,6 +331,8 @@ class InstallJson:
             features (bool, optional): If True the features array will be updated.
             migrate (bool, optional): If True the programMain will be set to "run".
             sequence (bool, optional): If True the sequence numbers will be updated.
+            valid_values (bool, optional): If True the valid values will be updated.
+            playbook_data_types (bool, optional):  If True the pbDataTypes will be updated.
         """
         with open(self.filename, 'r+') as fh:
             json_data = json.load(fh)
@@ -356,6 +358,14 @@ class InstallJson:
             # update sequence numbers
             if sequence is True:
                 json_data = self.update_sequence_numbers(json_data)
+
+            # update valid values
+            if valid_values is True:
+                json_data = self.update_valid_values(json_data)
+
+            # update playbook data types
+            if playbook_data_types is True:
+                json_data = self.update_playbook_data_types(json_data)
 
             # write updated profile
             fh.seek(0)
@@ -400,11 +410,25 @@ class InstallJson:
         """Update feature set based on App type."""
         features = self.features
         if self.runtime_level.lower() in ['organization']:
-            features = ['secureParams']
+            features = ['fileParams', 'secureParams']
         elif self.runtime_level.lower() in ['playbook']:
-            features = ['aotExecutionEnabled', 'appBuilderCompliant', 'secureParams']
+            features = [
+                'aotExecutionEnabled',
+                'appBuilderCompliant',
+                'fileParams',
+                'secureParams',
+            ]
         elif self.runtime_level.lower() in ['triggerservice', 'webhooktriggerservice']:
-            features = ['appBuilderCompliant', 'fileParams', 'secureParams']
+            features = ['appBuilderCompliant', 'fileParams']
+
+        # add layoutEnabledApp if layout.json file exists in project
+        if os.path.isfile(os.path.join(self._path, 'layout.json')):
+            features.append('layoutEnabledApp')
+
+        # re-add other non-standard (optional) features
+        for feature in self.features:
+            if feature in ['CALSettings']:
+                features.append(feature)
 
         json_data['features'] = features
         return json_data
@@ -425,6 +449,36 @@ class InstallJson:
         for param in json_data.get('params', []):
             param['sequence'] = sequence_number
             sequence_number += 1
+        return json_data
+
+    @staticmethod
+    def update_valid_values(json_data):
+        """Update program main on App type."""
+        for param in json_data.get('params', []):
+            if param.get('type', None) not in ['String', 'KeyValueList']:
+                continue
+            if param.get('encrypt', False):
+                if '${KEYCHAIN}' not in param.get('validValues', []):
+                    param['validValues'] = param.get('validValues') or []
+                    param['validValues'].append('${KEYCHAIN}')
+            else:
+                if '${TEXT}' not in (param.get('validValues') or []):
+                    param['validValues'] = param.get('validValues') or []
+                    param['validValues'].append('${TEXT}')
+        return json_data
+
+    @staticmethod
+    def update_playbook_data_types(json_data):
+        """Update program main on App type."""
+        if json_data.get('runtimeLevel', None) != 'Playbook':
+            return json_data
+
+        for param in json_data.get('params', []):
+            if param.get('type', None) != 'String':
+                continue
+            if 'String' not in (param.get('playbookDataType') or []):
+                param['playbookDataType'] = param.get('playbookDataType') or []
+                param['playbookDataType'].append('String')
         return json_data
 
     def validate(self):
@@ -539,6 +593,11 @@ class InstallJson:
     def playbook(self):
         """Return property."""
         return self.contents.get('playbook', {})
+
+    @property
+    def playbook_type(self):
+        """Return property."""
+        return self.playbook.get('type')
 
     @property
     def program_icon(self):

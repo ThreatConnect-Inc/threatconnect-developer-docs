@@ -3,15 +3,12 @@
 # flake8: noqa: F401
 import os
 
-import pytest
 from tcex.testing import ${class_name}
-from ..profiles import profiles
 
 from .custom_feature import CustomFeature  # pylint: disable=relative-beyond-top-level
+% if runtime_level!='organization':
 from .validate_feature import ValidateFeature  # pylint: disable=relative-beyond-top-level
-
-# get profile names
-profile_names = profiles(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'profiles.d'))
+% endif
 
 
 # pylint: disable=useless-super-delegation,too-many-function-args
@@ -48,15 +45,15 @@ class TestProfiles(${class_name}):
         super(TestProfiles, self).teardown_method()
 
     % if runtime_level in ['triggerservice', 'webhooktriggerservice']:
-    @pytest.mark.parametrize('profile_name', profile_names)
     def test_profiles(
-        self, profile_name, merge_inputs, merge_outputs, replace_exit_message, replace_outputs, monkeypatch
+        self, profile_name, pytestconfig, monkeypatch, options
     ):  # pylint: disable=unused-argument
         """Run pre-created testing profiles."""
 
         # initialize profile
         valid, message = self.init_profile(
-            profile_name, merge_inputs, merge_outputs, replace_exit_message, replace_outputs
+            profile_name, pytestconfig=pytestconfig, monkeypatch=monkeypatch,
+            options=options
         )
         assert valid, message
 
@@ -91,26 +88,31 @@ class TestProfiles(${class_name}):
 
         # run output variable validation
         for context in self.profile.context_tracker:
+            # get Validation instance
+            validation = ValidateFeature(self.validator)
             # for service Apps the context on playbooks needs to be set manually
             self.validator.tcex.playbook.key_value_store.context = context
             # the trigger id is stored via the monkey patched session_id method
             trigger_id = self.redis_client.hget(context, '_trigger_id').decode('utf-8')
             output_data = (self.profile.outputs or {}).get(trigger_id)
             if output_data is not None:
-                ValidateFeature(self.validator).validate(output_data)
+                validation.validate(output_data)
+
+            # validate App outputs and Profile outputs are consistent
+            validation.validate_outputs(self.profile.tc_playbook_out_variables, output_data)
 
         # exit message can not be validated since it's written during teardown for Service Apps
 
     % else:
-    @pytest.mark.parametrize('profile_name', profile_names)
     def test_profiles(
-        self, profile_name, merge_inputs, merge_outputs, replace_exit_message, replace_outputs, monkeypatch
+        self, profile_name, pytestconfig, monkeypatch, options
     ):  # pylint: disable=unused-argument
         """Run pre-created testing profiles."""
 
         # initialize profile
         valid, message = self.init_profile(
-            profile_name, merge_inputs, merge_outputs, replace_exit_message, replace_outputs
+            profile_name, pytestconfig=pytestconfig, monkeypatch=monkeypatch,
+            options=options
         )
         assert valid, message
 
