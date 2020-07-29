@@ -356,7 +356,7 @@ class Validator:
         return False
 
     def operator_is_number(self, app_data, test_data):  # pylint: disable=unused-argument
-        """Check if the app_data is a known date."""
+        """Check if the app_data is a number."""
         if self.check_null(app_data):
             return False, f'Invalid app_data: {app_data}. One or more values in app_data is null'
 
@@ -365,7 +365,7 @@ class Validator:
         bad_data = []
         passed = True
         for data in app_data:
-            if isinstance(data, str) and data.isdigit():
+            if isinstance(data, str) and isinstance(self._string_to_int_float(data), (int, float)):
                 continue
             if isinstance(data, numbers.Number):
                 continue
@@ -1164,6 +1164,7 @@ class ThreatConnect:
     def compare_dicts(expected, actual, error_type=''):
         """Compare two dicts and returns a list of errors if they don't match"""
         errors = []
+
         for item in expected:
             if item in actual:
                 if isinstance(expected.get(item), list):
@@ -1188,7 +1189,7 @@ class ThreatConnect:
                 )
         for item in list(actual.items()):
             errors.append(
-                f'{error_type}{item} : {actual.get(item)} was in '
+                f'{error_type}{item} : {item} was in '
                 f'actual results but not in expected results.'
             )
 
@@ -1230,7 +1231,7 @@ class ThreatConnect:
         """Convert a tc_entity to a ti_entity"""
         ti_entity = None
 
-        if tc_entity.get('type') in self.provider.tcex.group_types:
+        if tc_entity.get('type').lower() in map(str.lower, self.provider.tcex.group_types):
             # We can't search by xid sadly so have to search by name and validate xid to
             # get the id of the group.
             filters = self.provider.tcex.ti.filters()
@@ -1247,7 +1248,7 @@ class ThreatConnect:
                         name=entity.get('name'),
                         unique_id=entity.get('id'),
                     )
-        elif tc_entity.get('type') in self.provider.tcex.indicator_types:
+        elif tc_entity.get('type').lower() in map(str.lower, self.provider.tcex.indicator_types):
             tc_entity['summary'] = quote(tc_entity.get('summary'), safe='')
             if tc_entity.get('type').lower() == 'file':
                 tc_entity['summary'] = tc_entity.get('summary').upper()
@@ -1256,7 +1257,7 @@ class ThreatConnect:
                 owner=owner,
                 unique_id=tc_entity.get('summary'),
             )
-        elif tc_entity.get('type') == 'Victim':
+        elif tc_entity.get('type').lower() == 'victim':
             # TODO: Will need to do something similar to what was done to get the groups entity.
             pass
 
@@ -1332,9 +1333,9 @@ class ThreatConnect:
         expected = []
         actual = []
         for tag in tc_entity.get('tag', []):
-            expected.append(tag.get('name'))
+            expected.append(tag.get('name').lower())
         for tag in ti_response.get('tag', []):
-            actual.append(tag.get('name'))
+            actual.append(tag.get('name').lower())
 
         return self.compare_lists(expected, actual, error_type='TagError: ')
 
