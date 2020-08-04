@@ -33,7 +33,7 @@ By way of example, the query below will update the name of an Incident with ID 1
 
     PUT /v2/groups/incidents/12345
     {
-      "name": "New Incident Name",
+      "name": "New Incident Name"
     }
 
 JSON Response:
