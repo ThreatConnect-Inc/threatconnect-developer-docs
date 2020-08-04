@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """ThreatConnect Threat Intelligence Module"""
+# standard library
 import hashlib
 from urllib.parse import quote
 
@@ -951,7 +952,7 @@ class TiTcRequest:
         value = str(value)
         return value.lower() in ['true', '1', 't', 'y', 'yes']
 
-    def deleted(self, main_type, sub_type, deleted_since, owner=None, filters=None, params=None):
+    def deleted(self, main_type, sub_type, deleted_since=None, owner=None, filters=None, params=None):
         """
 
         Args:
@@ -1427,11 +1428,11 @@ class TiTcRequest:
             url = f'/v2/{main_type}/{sub_type}/{unique_id}/download'
 
         if hash_type == 'sha256':
-            hashed_file = hashlib.sha256()
+            hashed_file = hashlib.sha256()  # nosec
         elif hash_type == 'sha1':
-            hashed_file = hashlib.sha1()
+            hashed_file = hashlib.sha1()  # nosec
         else:
-            hashed_file = hashlib.md5()
+            hashed_file = hashlib.md5()  # nosec
 
         with self.tcex.session.get(url, stream=True) as r:
             for chunk in r.iter_content(chunk_size=4096):

@@ -1,15 +1,17 @@
 # -*- coding: utf-8 -*-
 """TcEx Framework TcexJson Object."""
+# standard library
 import json
 import logging
 import os
 import re
 from collections import OrderedDict
 
+# third-party
 import colorama as c
 
-from .install_json import InstallJson
 from ..env_store import EnvStore
+from .install_json import InstallJson
 
 
 class TcexJson:
@@ -50,7 +52,7 @@ class TcexJson:
 
             # raise error if tcex.json is missing app_name field
             if self._contents and not self._contents.get('package', {}).get('app_name'):
-                raise RuntimeError(f'The tcex.json file is missing the package.app_name field.')
+                raise RuntimeError('The tcex.json file is missing the package.app_name field.')
 
             # log warning for old Apps
             if self._contents.get('package', {}).get('app_version'):
@@ -95,6 +97,9 @@ class TcexJson:
 
     def update(self, template=None):
         """Update the contents of the tcex.json file."""
+        if not os.path.isfile(self.filename):
+            return
+
         with open(self.filename, 'r+') as fh:
             json_data = json.load(fh)
 

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """TcEx Framework Service module"""
+# standard library
 import base64
 import json
 import ssl
@@ -7,10 +8,11 @@ import threading
 import time
 import traceback
 import uuid
-from typing import Callable, Optional, Union
 from datetime import datetime
 from io import StringIO
+from typing import Callable, Optional, Union
 
+# third-party
 import paho.mqtt.client as mqtt
 
 
@@ -36,7 +38,6 @@ class Services:
         self.configs = {}
         self.config_thread = None
         self.heartbeat_max_misses = 3
-        self.heartbeat_miss_count = 0
         self.heartbeat_sleep_time = 1
         self.heartbeat_watchdog = 0
         self.ready = False
@@ -962,7 +963,6 @@ class Services:
         self.tcex.log.info(f'Command received: {command}')
         if command.lower() == 'heartbeat':
             self.heartbeat_watchdog = 0
-            self.heartbeat_miss_count = 0
 
             # send heartbeat -acknowledge- command
             response = {'command': 'Heartbeat', 'metric': self.metrics}
