@@ -1,8 +1,8 @@
-# -*- coding: utf-8 -*-
 """Validate Data Testing Module"""
 # standard library
 import datetime
 import difflib
+import gzip
 import hashlib
 import json
 import math
@@ -12,6 +12,7 @@ import os
 import random
 import re
 from collections import OrderedDict
+from typing import Optional, Union
 from urllib.parse import quote, unquote
 
 from ..utils import Utils
@@ -20,8 +21,13 @@ from ..utils import Utils
 class Validator:
     """Validator"""
 
-    def __init__(self, tcex, log):
-        """Initialize class properties."""
+    def __init__(self, tcex: object, log: object):
+        """Initialize class properties.
+
+        Args:
+            tcex: A configure instance of tcex.
+            log: A configure instance of logger.
+        """
         self.log = log
         self.tcex = tcex
         # TODO: validate this
@@ -35,8 +41,15 @@ class Validator:
         self.utils = Utils()
 
     @staticmethod
-    def _string_to_int_float(x):
-        """Take string input and return float or int."""
+    def _string_to_int_float(x: str) -> Union[float, int]:
+        """Take string input and return float or int.
+
+        Args:
+            x: The value to coerce to float/int.
+
+        Returns:
+            Union[float, int]: The coerced valued.
+        """
         if isinstance(x, bytes):
             x = x.decode('utf-8')
 
@@ -52,7 +65,13 @@ class Validator:
                 return f  # return float
             return i  # return int
 
-    def compare(self, app_data, test_data, op=None, **kwargs):
+    def compare(
+        self,
+        app_data: Union[dict, list, str],
+        test_data: Union[dict, list, str],
+        op: Optional[str] = None,
+        **kwargs,
+    ) -> tuple:
         """Compare app_data to test data.
 
         Args:
@@ -136,6 +155,7 @@ class Validator:
             'is_url': self.operator_is_url,
             'is_date': self.operator_is_date,
             'is_number': self.operator_is_number,
+            'is_json': self.operator_is_json,
             'length_eq': self.operator_length_eq,
             'leq': self.operator_length_eq,
             'eq': self.operator_eq,
@@ -374,6 +394,39 @@ class Validator:
             bad_data.append(data)
             passed = False
         return passed, ','.join(bad_data)
+
+    def operator_is_json(self, app_data, test_data):  # pylint: disable=unused-argument
+        """Check if the app_data is a json."""
+        if self.check_null(app_data):
+            return False, f'Invalid app_data: {app_data}. One or more values in app_data is null'
+
+        if not isinstance(app_data, list):
+            app_data = [app_data]
+
+        bad_data = []
+        for data in app_data:
+            if isinstance(data, str):
+                try:
+                    data = json.loads(data)
+                    if not isinstance(data, list):
+                        data = [data]
+                    for item in data:
+                        if not isinstance(item, dict):
+                            bad_data.append(f'Invalid JSON data provide ({item}).')
+                except ValueError:
+                    print('failed to load data')
+                    bad_data.append(f'Invalid JSON data provide ({data}).')
+            elif isinstance(data, (OrderedDict, dict)):
+                try:
+                    data = json.dumps(data)
+                except ValueError:
+                    bad_data.append(f'Invalid JSON data provide ({data}).')
+            else:
+                bad_data.append(f'Invalid JSON data provide ({data}).')
+
+        if bad_data:
+            return False, ','.join(bad_data)
+        return True, ','.join(bad_data)
 
     def operator_json_eq(self, app_data, test_data, **kwargs):
         """Compare app data equals tests data.
@@ -939,27 +992,52 @@ class ThreatConnect:
 
     def batch(self, profile):
         """Validate the batch submission"""
+        batch_base_path = os.path.join(
+            self.provider.tcex.args.tc_temp_path,
+            profile.feature,
+            f'test_profiles-{profile.name}',
+            'DEBUG',
+        )
+        batch_data_path = os.path.join(batch_base_path, 'batch_data',)
+        batch_file_path = os.path.join(batch_base_path, 'batch_files',)
 
-        validation_percent = profile.validation_criteria.get('percent', 100)
-        validation_count = profile.validation_criteria.get('count', None)
-        batch_submit_totals = self._get_batch_submit_totals(profile.feature, profile.name)
+        validation_percent = profile.validation_criteria.get('percent')
+        validation_count = profile.validation_criteria.get('count')
+        if not validation_count and not validation_percent:
+            self.log.info(f'action=validate-batch, percent={validation_percent}')
+            self.log.data(
+                'validate', 'Batch Submission', 'Skipping validation due to no criteria provided',
+            )
+            return
+
+        if not os.path.isdir(batch_data_path):
+            self.log.info(f'action=validate-batch, data_path={batch_data_path}')
+            self.log.data(
+                'validate', 'Batch Submission', 'Skipping validation due to no batch data files'
+            )
+            return
+
+        batch_submit_totals = self._get_batch_submit_totals(batch_data_path)
 
         if validation_count:
             validation_percent = self._convert_to_percent(validation_count, batch_submit_totals)
+        self.log.info(
+            f'''action=validate-batch, count={validation_count}, percent={validation_percent}'''
+        )
 
         batch_errors = []
-        dir_path = os.path.join('.', 'log', profile.feature, f'test_profiles-{profile.name}')
-        for filename in os.listdir(dir_path):
-            with open(os.path.join(dir_path, filename), 'r') as fh:
-                if not filename.startswith('errors-') or not filename.endswith('.json'):
-                    continue
-                batch_errors += json.load(fh)
-
-        for filename in os.listdir(dir_path):
-            if not filename.startswith('batch-') or not filename.endswith('.json'):
+        for filename in os.listdir(batch_data_path):
+            if not filename.startswith('errors-'):
                 continue
 
-            with open(os.path.join(dir_path, filename), 'r') as fh:
+            with gzip.open(os.path.join(batch_data_path, filename)) as fh:
+                batch_errors += json.load(fh)
+
+        for filename in os.listdir(batch_data_path):
+            if not filename.startswith('batch-'):
+                continue
+
+            with gzip.open(os.path.join(batch_data_path, filename)) as fh:
                 data = json.load(fh)
                 validation_data = self._partition_batch_data(data)
                 sample_validation_data = []
@@ -967,6 +1045,7 @@ class ThreatConnect:
                     for sub_partition in validation_data.get(key).values():
                         sample_size = math.ceil(len(sub_partition) * (validation_percent / 100))
                         sample_validation_data.extend(random.sample(sub_partition, sample_size))
+                self.log.info(f'validating {len(sample_validation_data)} entries')
 
                 files = []
                 for sample_data in sample_validation_data:
@@ -975,10 +1054,9 @@ class ThreatConnect:
                         files.append(None)
                         continue
 
+                    sample_data_type = 'reports'
                     if sample_data_type == 'document':
                         sample_data_type = 'documents'
-                    else:
-                        sample_data_type = 'reports'
 
                     filename = (
                         sample_data_type
@@ -987,7 +1065,7 @@ class ThreatConnect:
                         + '--'
                         + sample_data.get('name', '')
                     )
-                    filename = os.path.join(dir_path, filename)
+                    filename = os.path.join(batch_file_path, filename)
                     if os.path.isfile(filename):
                         files.append(filename)
                     else:
@@ -1223,7 +1301,7 @@ class ThreatConnect:
     @staticmethod
     def _convert_to_entities(file):
         """Convert file to tc_entity array"""
-        with open(file, 'r') as read_file:
+        with open(file) as read_file:
             data = json.load(read_file)
         return data
 
@@ -1272,17 +1350,16 @@ class ThreatConnect:
 
         return ti_entity
 
-    def _get_batch_submit_totals(self, feature, name):
+    def _get_batch_submit_totals(self, batch_data_path):
         """Break the batch submitions up into separate partitions.
 
         Each partition containing its total.
         """
         counts = {}
-        dir_path = os.path.join('.', 'log', feature, f'test_profiles-{name}')
-        for filename in os.listdir(dir_path):
-            if not filename.startswith('batch-') or not filename.endswith('.json'):
+        for filename in os.listdir(batch_data_path):
+            if not filename.startswith('batch-'):
                 continue
-            with open(os.path.join(dir_path, filename), 'r') as fh:
+            with gzip.open(os.path.join(batch_data_path, filename)) as fh:
                 data = json.load(fh)
                 partitioned_data = self._partition_batch_data(data)
                 for key in partitioned_data:
@@ -1363,9 +1440,9 @@ class ThreatConnect:
         return self.compare_lists(expected, actual, error_type='SecurityLabelError: ')
 
     @staticmethod
-    def _file(ti_entity, file):
+    def _file(ti_entity, file_):
         """Handle file data"""
-        if not file:
+        if not file_:
             return True, []
 
         errors = []
@@ -1373,7 +1450,7 @@ class ThreatConnect:
             actual_hash = ti_entity.get_file_hash()
             actual_hash = actual_hash.hexdigest()
             provided_hash = hashlib.sha256()
-            with open(file, 'rb') as f:
+            with open(file_, 'rb') as f:
                 for byte_block in iter(lambda: f.read(4096), b''):
                     provided_hash.update(byte_block)
             provided_hash = provided_hash.hexdigest()

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """TcEx Framework Playbook module"""
 # standard library
 import base64
@@ -23,7 +22,6 @@ class PlaybooksBase:
         self._output_variables = output_variables or []
 
         # properties
-        self._key_value_store = None
         self._output_variables_by_name = None
         self._output_variables_by_type = None
         self.log = tcex.log
@@ -84,7 +82,10 @@ class PlaybooksBase:
         except ValueError as e:  # pragma: no cover
             raise RuntimeError(f'Failed to serialize value ({e}).')
 
-        return self.key_value_store.create(key.strip(), value)
+        try:
+            return self.tcex.key_value_store.create(self._context, key.strip(), value)
+        except RuntimeError as e:
+            self.log.error(e)
 
     def _create_array(self, key, value, validate=True):
         """Create the value in Redis if applicable."""
@@ -135,7 +136,10 @@ class PlaybooksBase:
         except ValueError as e:  # pragma: no cover
             raise RuntimeError(f'Failed to serialize value ({e}).')
 
-        return self.key_value_store.create(key.strip(), value)
+        try:
+            return self.tcex.key_value_store.create(self._context, key.strip(), value)
+        except RuntimeError as e:
+            self.log.error(e)
 
     @staticmethod
     def _decode_binary(data):
@@ -150,6 +154,8 @@ class PlaybooksBase:
     @staticmethod
     def _is_key_value(data):
         """Return True if provided data has proper structure for Key Value."""
+        if data is None:
+            return False
         return all(x in data for x in ['key', 'value'])
 
     def _is_key_value_array(self, data):
@@ -162,6 +168,8 @@ class PlaybooksBase:
     @staticmethod
     def _is_tc_entity(data):
         """Return True if provided data has proper structure for TC Entity."""
+        if data is None:
+            return False
         return all(x in data for x in ['id', 'value', 'type'])
 
     def _is_tc_entity_array(self, data):
@@ -219,7 +227,12 @@ class PlaybooksBase:
         # get variable type from variable value
         variable_type = self.variable_type(key)
 
-        value = self.key_value_store.read(key.strip())
+        try:
+            value = self.tcex.key_value_store.read(self._context, key.strip())
+        except RuntimeError as e:
+            self.log.error(e)
+            return None
+
         if value is None:
             return value
 
@@ -258,7 +271,12 @@ class PlaybooksBase:
         # get variable type from variable value
         variable_type = self.variable_type(key)
 
-        value = self.key_value_store.read(key.strip())
+        try:
+            value = self.tcex.key_value_store.read(self._context, key.strip())
+        except RuntimeError as e:
+            self.log.error(e)
+            return None
+
         if value is None:
             return value
 
@@ -345,7 +363,6 @@ class PlaybooksBase:
 
         Args:
             value (str): The value to parsed and updated from the DB.
-            parent_var_type (str): The parent type of the embedded variable.
 
         Returns:
             (str): Results retrieved from DB
@@ -364,6 +381,10 @@ class PlaybooksBase:
 
             if v is not None:
                 # only replace variable if a non-null value is returned from kv store
+                # APP-1030 need to revisit this to handle variable references in kv/kvarrays that
+                # are None.  Would like to be able to say if value is just the variable reference,
+                # sub None value, else insert '' in string.  That would require a kv-specific
+                # version of this method that gets the entire list/dict instead of just the string.
                 value = re.sub(variable, v, value)
         return value
 
@@ -431,24 +452,6 @@ class PlaybooksBase:
                 data = data.replace(var, f'": "{variable_string}"')
         return data
 
-    @property
-    def key_value_store(self):
-        """Return the correct KV store for this execution."""
-        if self._key_value_store is None:
-            if self.tcex.default_args.tc_playbook_db_type == 'Redis':
-                from ..key_value_store import KeyValueRedis
-
-                self._key_value_store = KeyValueRedis(self._context, self.tcex.redis_client)
-            elif self.tcex.default_args.tc_playbook_db_type == 'TCKeyValueAPI':
-                from ..key_value_store import KeyValueApi
-
-                self._key_value_store = KeyValueApi(self.tcex.session)
-            else:  # pragma: no cover
-                raise RuntimeError(
-                    f'Invalid DB Type: ({self.tcex.default_args.tc_playbook_db_type})'
-                )
-        return self._key_value_store
-
     def create_raw(self, key, value):
         """Create method of CRUD operation for raw data.
 
@@ -464,7 +467,10 @@ class PlaybooksBase:
         """
         data = None
         if key is not None and value is not None:
-            data = self.key_value_store.create(key.strip(), value)
+            try:
+                data = self.tcex.key_value_store.create(self._context, key.strip(), value)
+            except RuntimeError as e:
+                self.log.error(e)
         else:
             self.log.warning('The key or value field was None.')
         return data
@@ -483,7 +489,7 @@ class PlaybooksBase:
         """
         value = None
         if key is not None:
-            value = self.key_value_store.read(key.strip())
+            value = self.tcex.key_value_store.read(self._context, key.strip())
         else:
             self.log.warning('The key field was None.')
         return value

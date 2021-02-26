@@ -3,6 +3,80 @@
 Release Notes
 #############
 
+2.0.18
+======
++ APP-1829 - [Session] Added logic to use http instead of https for proxy.
+
+2.0.17
+======
++ Update setup.py package_data to include STIX parser lark file.
++ APP-1829 - [Session] Added logic to attempt to handle "[SSL: WRONG_VERSION_NUMBER] wrong version number" error new to urllib3.
+
+2.0.16
+======
++ APP-1807, APP-1801  - [STIX] Remove dependency on Dendrol and replace with lark parser.
+
+2.0.15
+======
++ APP-891  - [STIX] Added additional support for consuming and producing STIX documents.
++ APP-1212 - [Testing] fixed output deletion issue for skipped test when --merge_outputs is used.
++ APP-1244 - [Testing] Added the is_json operator to assist in testing validation.
++ APP-1406 - [Testing] Fixed testing issue centered around the `validation_criteria` field present during bulk tests.
++ APP-1407 - [Testing] Fixed issue encountered when `validation_criteria` is set in a test profile (apps that use batch).
++ APP-1413 - [Testing] Converts option inputs that have a value of null to use #App:1234:null!String.
++ APP-1641 - [Batch] Fixed issue that batch delete that prevented single submission or last submission from working.
++ APP-1642 - [Service] Increased tc_svc_broker_conn_timeout arg to 60 to address disconnect issue in API service.
++ APP-1643 - [App Init] Added "no-commit-to-branch" feature to the pre-commit configuration.
++ APP-1760 - [KeyValueStore] Updated module to support new endpoint for PLAT-1237 in support of service Apps running on MEO.
+
+2.0.14
+======
++ APP-1394 - [Batch] Updated batch data processing to handle max sizes appropriately.
+
+2.0.13
+======
++ APP-1296 - [Session] Updated external session retry to accept a URL for retry mount.
++ APP-1366 - [Batch] Fixed issue in batch where self._file_threads was not getting updated appropriately.
+
+2.0.12
+======
++ APP-1126 - [Logger] Compress backup log files and increase backup count to 25.
++ APP-1127 - [Batch] Fixed issue with recursion when having a large number of associations.
++ APP-1128 - [Batch] Updated DEBUG feature to assist in testing batch module..
++ APP-1129 - [Batch] Added support for batch_max_size to truncate the batch job at ~75Mb.
++ APP-1130 - [Batch] Removed file_contents getter and setter method.
++ APP-1131 - [Session] Updated request_to_curl method in Utils module to truncate body and not write body to disk.
++ APP-1262 - [App Feature] Update advanced_request module to take output_prefix as an arg.
++ APP-1263 - [Session] Update session module to only log curl command when request receives an invalid response or enabled globally.
++ APP-1264 - [Logger] - Update logger modules to set default encoding to "UTF-8" when no value set at the OS level.
++ APP-1266 - [Utils] Update utils datetime module to include a chunk_date_range method to be used in job Apps that need to break request into smaller timeframes.
++ APP-1267 - [Batch] Add batch callback method to batch module to allow downloading/processing of data while batch job polls for status.
++ APP-1268 - Update the default temp directory to use an OS appropriate value.
++ APP-1272 - [App Feature] - Remove feature to update install.json and layout.json for advanced_request.
++ APP-1280 - [Session] Add ability to mask the body when logging curl command.
+
+2.0.11
+======
++ APP-1107 - Added MITRE ATTACK Utils methods to return the properly formatted tag value.
++ APP-1119 - Update to batch module to handle recursion issue with integrations that have a large number of group associations.
+
+2.0.10
+======
++ APP-890 - Added discoverTypes to Ready command for API Services.
++ APP-939 - Restructure of Service module to better support API Services.
++ APP-943, APP-1027, App-1036 - Updated ReadArg and IterateArgs decorators for better transform and validator support.
++ APP-944 - Added rate limit and 429 (too-many-requests) in external session module.
++ APP-964 - Updated inputs module to allow duplicate args (advanced request requirement).
++ SUP-8557 - Updated how the Threat Intelligence module was adding observations to ThreatConnect objects.
++ Multiple misc. enhancements (APP-865, APP-1021, APP-1030, APP-1086)
+
+Testing framework
+-----------------
++ APP-921 - Updated default operator rule for test cases.
++ APP-926 - Updated profile generation to not add String type to all inputs.
++ APP-935 - Updated tcinit to include custom_feature.py when missing.
++ APP-936 - Updated test handling when incorrect stage data is provided.
+
 2.0.9
 =====
 + APP-849 - Updated request_to_curl method to handle proxy values properly.

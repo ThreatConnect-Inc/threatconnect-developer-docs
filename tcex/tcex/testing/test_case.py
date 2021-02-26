@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """TcEx testing Framework."""
 # standard library
 import json
@@ -57,6 +56,8 @@ class TestCase:
     session = Session()
     tcex = None
     tcex_testing_context = None
+    use_token = True
+    _skip = False
     utils = Utils()
 
     def _reset_property_flags(self):
@@ -87,8 +88,15 @@ class TestCase:
         """Return bool value from int or string."""
         return str(value).lower() in ['1', 'true']
 
-    def _update_args(self, args):
-        """Update args before running App."""
+    def _update_args(self, args: dict) -> dict:
+        """Update args before running App.
+
+        Args:
+            args: The current argument dictionary.
+
+        Returns:
+            dict: The updated argument dictionary.
+        """
 
         if self.ij.runtime_level.lower() in ['playbook']:
             # set requested output variables
@@ -128,8 +136,7 @@ class TestCase:
         """Return TC API Secret Key"""
         return self.env_store.getenv('/ninja/tc/tci/exchange_admin/api_secret_key')
 
-    @staticmethod
-    def check_environment(environments, os_environments=None):
+    def check_environment(self, environments, os_environments=None):
         """Check if test case matches current environments, else skip test.
 
         Args:
@@ -140,7 +147,10 @@ class TestCase:
         os_envs = set(os.environ.get('TCEX_TEST_ENVS', 'build').split(','))
         if os_environments:
             os_envs = set(os_environments)
+        # APP-1212 - fix issue where outputs were being deleted when profile was skipped
+        self._skip = False
         if not os_envs.intersection(set(test_envs)):
+            self._skip = True
             pytest.skip('Profile skipped based on current environment.')
 
     def create_config(self, args):
@@ -203,13 +213,14 @@ class TestCase:
             }
 
             # try to use token when possible
-            token = os.getenv('TC_TOKEN', self.tc_token)
-            if token is not None:
-                # if token was successfully retrieved from TC use token and remove hmac values
-                self._default_args['tc_token'] = token
-                self._default_args['tc_token_expires'] = '1700000000'
-                del self._default_args['api_access_id']
-                del self._default_args['api_secret_key']
+            if self.use_token is True:
+                token = os.getenv('TC_TOKEN', self.tc_token)
+                if token is not None:
+                    # if token was successfully retrieved from TC use token and remove hmac values
+                    self._default_args['tc_token'] = token
+                    self._default_args['tc_token_expires'] = int(time.time()) + 3600
+                    del self._default_args['api_access_id']
+                    del self._default_args['api_secret_key']
         return self._default_args
 
     def init_profile(self, profile_name, pytestconfig=None, monkeypatch=None, options=None):
@@ -376,9 +387,9 @@ class TestCase:
 
         # initialize new validator instance
         self._validator = self.validator_init()
+
         # Adding this for batch to created the -batch and errors files
-        with open(os.path.join(self.test_case_log_test_dir, 'DEBUG'), 'w+') as fp:
-            fp.close()
+        os.makedirs(os.path.join(self.test_case_log_test_dir, 'DEBUG'), exist_ok=True)
 
     @property
     def stager(self):
@@ -426,9 +437,14 @@ class TestCase:
 
         # determine the token type
         token_type = 'api'
-        if self.ij.runtime_level.lower() in ['triggerservice', 'webhooktriggerservice']:
-            data = {'serviceId': os.getenv('TC_TOKEN_SVC_ID', '407')}
-            token_type = 'svc'
+        # per conversation with Marut, we should be able to just use api tokens
+        # if self.ij.runtime_level.lower() in [
+        #     'apiservice',
+        #     'triggerservice',
+        #     'webhooktriggerservice',
+        # ]:
+        #     data = {'serviceId': os.getenv('TC_TOKEN_SVC_ID', '441')}
+        #     token_type = 'svc'
 
         # retrieve token from API using HMAC auth
         r = self.session_exchange.post(f'{token_url_path}/{token_type}', json=data, verify=True)
@@ -436,6 +452,8 @@ class TestCase:
             token = r.json().get('data')
             self.log.data('setup', 'Using Token', token)
             self.log.data('setup', 'Token Elapsed', r.elapsed, 'trace')
+        else:
+            self.log.error(f'Failed to retrieve token ({r.text})')
         return token
 
     @classmethod
@@ -449,6 +467,7 @@ class TestCase:
     def teardown_method(self):
         """Run after each test method runs."""
         if self.enable_update_profile and self.ij.runtime_level.lower() not in [
+            'apiservice',
             'triggerservice',
             'webhooktriggerservice',
         ]:
@@ -473,7 +492,8 @@ class TestCase:
         self.validator.tcex.redis_client.connection_pool.disconnect()
 
         # update profile for session data
-        self.profile.session_manager.update_profile()
+        if self.profile:  # doesn't exist for API services
+            self.profile.session_manager.update_profile()
 
     @property
     def test_case_data(self):
@@ -516,7 +536,7 @@ class TestCase:
             )
             app_exit_message = None
             if os.path.isfile(message_tc_file):
-                with open(message_tc_file, 'r') as mh:
+                with open(message_tc_file) as mh:
                     app_exit_message = mh.read()
 
                 if app_exit_message:

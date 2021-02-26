@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """ThreatConnect Requests Session"""
 # standard library
 import base64
@@ -66,6 +65,7 @@ class TcSession(Session):
         self.log = logger or logging.getLogger('session')
 
         # properties
+        self._log_curl: bool = False
         self._token = None
         self.auth = None
         self.utils = Utils()
@@ -79,16 +79,26 @@ class TcSession(Session):
         if self.token_available:
             # service Apps only use tokens and playbook/runtime Apps will use token if available
             self.auth = TokenAuth(self.token)
-            self.log.debug('Using token authorization.')
+            self.log.debug('feature=tc-session, event=auth, type=token')
         elif self.api_access_id and self.api_secret_key:
             try:
                 # for external Apps or testing Apps locally
                 self.auth = HmacAuth(self.api_access_id, self.api_secret_key)
-                self.log.debug('Using HMAC authorization.')
+                self.log.debug('feature=tc-session, event=auth, type=hmac')
             except AttributeError:  # pragma: no cover
                 raise RuntimeError('No valid ThreatConnect API credentials provided.')
         else:  # pragma: no cover
             raise RuntimeError('No valid ThreatConnect API credentials provided.')
+
+    @property
+    def log_curl(self) -> bool:
+        """Return whether or not requests will be logged as a curl command."""
+        return self._log_curl
+
+    @log_curl.setter
+    def log_curl(self, log_curl: bool):
+        """Enable or disable logging curl commands."""
+        self._log_curl = log_curl
 
     @property
     def token(self):
@@ -122,17 +132,20 @@ class TcSession(Session):
         # don't show curl message for logging commands
         if '/v2/logs/app' not in url:
             # APP-79 - adding logging of request as curl commands
-            try:
-                self.log.debug(
-                    self.utils.requests_to_curl(
-                        response.request, proxies=self.proxies, verify=self.verify
+            if not response.ok or self.log_curl:
+                try:
+                    self.log.debug(
+                        self.utils.requests_to_curl(
+                            response.request, proxies=self.proxies, verify=self.verify
+                        )
                     )
-                )
-            except Exception:  # nosec
-                pass  # logging curl command is best effort
+                except Exception:  # nosec
+                    pass  # logging curl command is best effort
 
-        self.log.debug(f'request url: {response.request.url}')
-        self.log.debug(f'status_code: {response.status_code}')
+        self.log.debug(
+            f'feature=tc-session, request-url={response.request.url}, '
+            f'status_code={response.status_code}, elapsed={response.elapsed}'
+        )
 
         return response
 

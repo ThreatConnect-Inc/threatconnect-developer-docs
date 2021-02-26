@@ -1,6 +1,6 @@
-# -*- coding: utf-8 -*-
 """TcEx Common Arg Handler"""
 # standard library
+import tempfile
 from argparse import ArgumentParser, Namespace
 
 
@@ -15,18 +15,18 @@ class TcArgumentParser(ArgumentParser):
         super().__init__(**kwargs)
         # batch defaults
         self._batch_action = 'Create'
-        self._batch_chunk = 25000
+        self._batch_chunk = 25_000
         self._batch_halt_on_error = False
         self._batch_poll_interval = 15
-        self._batch_poll_interval_max = 3600
+        self._batch_poll_interval_max = 3_600
         self._batch_write_type = 'Append'
 
         # logger defaults
-        self._tc_log_backup_count = 5
+        self._tc_log_backup_count = 25  # target 50Mb in total log size (1x10Mb + 25x~1.6Mb = ~50Mb)
         self._tc_log_file = 'app.log'
         self._tc_log_level = 'info'
-        self._tc_log_path = '/tmp'  # nosec
-        self._tc_log_max_bytes = 10485760
+        self._tc_log_path = tempfile.gettempdir() or '/tmp'  # nosec
+        self._tc_log_max_bytes = 10_485_760  # 10Mb
         self._tc_log_to_api = False
 
         # playbook defaults
@@ -40,16 +40,17 @@ class TcArgumentParser(ArgumentParser):
 
         # standard defaults
         self._tc_api_path = 'https://api.threatconnect.com'
-        self._tc_in_path = '/tmp'  # nosec
-        self._tc_out_path = '/tmp'  # nosec
+        self._tc_in_path = tempfile.gettempdir() or '/tmp'  # nosec
+        self._tc_out_path = tempfile.gettempdir() or '/tmp'  # nosec
         self._tc_secure_params = False
-        self._tc_temp_path = '/tmp'  # nosec
+        self._tc_temp_path = tempfile.gettempdir() or '/tmp'  # nosec
         self._tc_user_id = None
 
         # include arguments
         self._advanced_request()
         self._api_arguments()
         self._batch_arguments()
+        self._cal_settings_arguments()
         self._logger_arguments()
         self._playbook_arguments()
         self._service_arguments()
@@ -173,6 +174,23 @@ class TcArgumentParser(ArgumentParser):
             help='Append or Replace attributes.',
         )
 
+    def _cal_settings_arguments(self):
+        """Define arguments TC sends for the CALSettings feature
+
+        --tc_cal_host                  CAL host (just the hostname, without "https://").
+        --tc_cal_token                 Authentication token for CAL.
+        --tc_cal_timestamp             Timestamp to use with tc_cal_token to authenticate to CAL.
+        """
+        self.add_argument(
+            '--tc_cal_host', help='CAL API host',
+        )
+        self.add_argument(
+            '--tc_cal_token', help='CAL authentication token', type=int,
+        )
+        self.add_argument(
+            '--tc_cal_timestamp', help='Timestamp to use with tc_cal_token to authenticate to CAL.',
+        )
+
     def _logger_arguments(self):
         """Define logger args supported by every TcEx App.
 
@@ -184,6 +202,7 @@ class TcArgumentParser(ArgumentParser):
         --tc_log_to_api              Flag to indicate that app should log to API.
         --tc_log_level level         The logging level for the app.
         --logging level              Alias for **tc_log_level**.
+        --log_curl                   Log external requests as CURL commands
         """
         self.add_argument(
             '--tc_log_backup_count',
@@ -224,6 +243,13 @@ class TcArgumentParser(ArgumentParser):
             dest='tc_log_level',
             help='Logging Level',
             type=str.lower,
+        )
+        self.add_argument(
+            '--tc_log_curl',
+            default=False,
+            dest='tc_log_curl',
+            help='Log external requests as CURL commands.',
+            action='store_true',
         )
 
     def _playbook_arguments(self):
@@ -280,7 +306,7 @@ class TcArgumentParser(ArgumentParser):
         self.add_argument('--tc_svc_broker_cert_file', help='Broker client ssl certificate')
         self.add_argument(
             '--tc_svc_broker_conn_timeout',
-            default=10,
+            default=60,
             help='Broker service conn timeout (seconds)',
             type=int,
         )

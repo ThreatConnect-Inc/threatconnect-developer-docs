@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Test the TcEx Threat Intel Module."""
 # standard library
 import os
@@ -817,7 +816,7 @@ class TestTask(TestCaseManagement):
         # retrieve tasks using TQL
         tasks = self.cm.tasks()
         tasks.filter.case_id(TQL.Operator.EQ, case.id)
-        tasks.filter.target_id(TQL.Operator.EQ, 5)
+        tasks.filter.target_ref(TQL.Operator.EQ, 5)
 
         for task in tasks:
             assert task.description == task_data.get('description')

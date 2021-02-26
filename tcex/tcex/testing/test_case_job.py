@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """TcEx Runtime App Test Case"""
 # standard library
 import os
@@ -17,9 +16,7 @@ class TestCaseJob(TestCase):
     def create_shelf_dir(shelf_path):
         """Create a directory in log with the context name containing the batch data."""
         if not os.path.isdir(shelf_path):
-            os.makedirs(shelf_path)
-            with open(os.path.join(shelf_path, 'DEBUG'), 'a'):
-                os.utime(os.path.join(shelf_path, 'DEBUG'), None)
+            os.makedirs(os.path.join(shelf_path, 'DEBUG'), exist_ok=True)
 
     def run(self):
         """Run the Playbook App.

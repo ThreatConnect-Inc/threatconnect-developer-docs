@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Pytest MockApp class for testing TcEx Framework."""
 # standard library
 import json
@@ -176,9 +175,33 @@ class MockApp:
                 'name': 'my_multi',
                 'note': '',
                 'required': False,
-                'sequence': 8,
+                'sequence': 2,
                 'type': 'MultiChoice',
                 'validValues': ['one', 'two'],
+            },
+            {
+                'label': 'Colors',
+                'name': 'colors',
+                'note': '',
+                'required': False,
+                'sequence': 3,
+                'type': 'String',
+            },
+            {
+                'label': 'Color',
+                'name': 'color',
+                'note': '',
+                'required': False,
+                'sequence': 4,
+                'type': 'String',
+            },
+            {
+                'label': 'Fruit',
+                'name': 'fruit',
+                'note': '',
+                'required': False,
+                'sequence': 4,
+                'type': 'String',
             },
         ]
         playbook = self.ijd.get('playbook') or {
@@ -211,7 +234,10 @@ class MockApp:
         """Return a valid API token."""
         r = self.session.post(f'{self.tc_api_path}{self.tc_token_url}api', verify=False)
         if r.status_code != 200:
-            raise RuntimeError(f'This feature requires ThreatConnect 6.0 or higher ({r.text})')
+            raise RuntimeError(
+                f'This feature requires ThreatConnect 6.0 or higher. response={r.text}, '
+                f'url={r.request.url}, status_code={r.status_code}'
+            )
         return r.json().get('data')
 
     @property

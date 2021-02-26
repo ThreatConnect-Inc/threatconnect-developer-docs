@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """TcEx Framework Playbook module"""
 # standard library
 import re
@@ -298,6 +297,8 @@ class Playbooks(PlaybooksBase):
     def delete(self, key):
         """Delete method of CRUD operation for all data types.
 
+        This method is only supported when using key_value_redis.
+
         Args:
             key (str): The variable to write to the DB.
 
@@ -306,7 +307,7 @@ class Playbooks(PlaybooksBase):
         """
         data = None
         if key is not None:
-            data = self.key_value_store.delete(key.strip())
+            data = self.tcex.key_value_store.delete(self._context, key.strip())
         else:  # pragma: no cover
             self.log.warning('The key field was None.')
         return data

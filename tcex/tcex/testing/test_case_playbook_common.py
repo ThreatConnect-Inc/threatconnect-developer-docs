@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """TcEx Playbook Common module"""
 # import json
 # standard library
@@ -25,7 +24,7 @@ class TestCasePlaybookCommon(TestCase):
         # '#App:1234:empty!TCEntity': {},
         # '#App:1234:empty!TCEntityArray': [],
         '#App:1234:non-ascii!String': 'ドメイン.テスト',
-        # staging the data is not required
+        # staging this data is not required
         # '#App:1234:null!Binary': None,
         # '#App:1234:null!BinaryArray': None,
         # '#App:1234:null!KeyValue': None,
@@ -79,12 +78,14 @@ class TestCasePlaybookCommon(TestCase):
 
     def teardown_method(self):
         """Run after each test method runs."""
-        if self.enable_update_profile:
+        # APP-1212 - fix issue where outputs were being deleted when profile was skipped
+        if self.enable_update_profile and self._skip is False:
             self.log.title('Update Outputs')
             self.profile.update_outputs()
 
         # clear context tracker
-        self.profile._context_tracker = []
+        if self.profile:  # doesn't exist for API services
+            self.profile._context_tracker = []
 
         # run test_case teardown_method
         super().teardown_method()

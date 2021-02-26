@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """ThreatConnect Exchange App Feature Advanced Request Module"""
 # standard library
 import json
@@ -16,13 +15,21 @@ class AdvancedRequest:
     """App Feature Advanced Request Module
 
     Args:
-        session (object): An instance of Requests Session object.
-        tcex (object): An instance of Tcex object.
-        timeout (Optional[int] = 600): The timeout value for the request.
+        session: An instance of Requests Session object.
+        tcex: An instance of Tcex object.
+        timeout: The timeout value for the request.
+        output_prefix: The prefix for any output variables created with advanced requests.
     """
 
-    def __init__(self, session: object, tcex: object, timeout: Optional[int] = 600):
+    def __init__(
+        self,
+        session: object,
+        tcex: object,
+        timeout: Optional[int] = 600,
+        output_prefix: Optional[str] = None,
+    ):
         """Initialize class properties."""
+        self.output_prefix: str = output_prefix or tcex.ij.output_prefix
         self.session: object = session
         self.tcex: object = tcex
 
@@ -33,7 +40,6 @@ class AdvancedRequest:
         self.headers: dict = {}
         self.max_mb: int = 500
         self.mt: callable = MimeTypes()
-        self.output_prefix: str = self.tcex.ij.output_prefix
         self.params: dict = {}
         self.timeout: int = timeout or 600
 
@@ -58,7 +64,7 @@ class AdvancedRequest:
             except ValueError:  # pragma: no cover
                 self.tcex.log.error('Failed loading body as JSON data.')
 
-    @ReadArg('tc_adv_req_headers', array=True)
+    @ReadArg('tc_adv_req_headers', array=True, embedded=False)
     def configure_headers(self, tc_adv_req_headers: List[Dict[str, str]]):
         """Configure Headers
 
@@ -71,9 +77,10 @@ class AdvancedRequest:
             tc_adv_req_headers (List[Dict[str, str]]): A dict of headers.
         """
         for header_data in tc_adv_req_headers:
-            self.headers[str(header_data.get('key'))] = header_data.get('value')
+            value: str = self.tcex.playbook.read(header_data.get('value'))
+            self.headers[str(header_data.get('key'))] = str(value)
 
-    @ReadArg('tc_adv_req_params', array=True)
+    @ReadArg('tc_adv_req_params', array=True, embedded=False)
     def configure_params(self, tc_adv_req_params: List[Dict[str, str]]):
         """Configure Params
 
@@ -87,7 +94,7 @@ class AdvancedRequest:
         """
         for param_data in tc_adv_req_params:
             param: str = str(param_data.get('key'))
-            values: str = param_data.get('value')
+            values: str = self.tcex.playbook.read(param_data.get('value'))
             if not isinstance(values, list):
                 values: list = [values]
             for value in values:
