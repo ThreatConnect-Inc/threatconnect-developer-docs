@@ -9,4 +9,4 @@ install:
   - pip install requests
   - pip install inflect
 script:
-  - pytest
+  - make uptcex
