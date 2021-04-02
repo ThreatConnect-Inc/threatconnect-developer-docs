@@ -270,7 +270,7 @@ You can also find associated Groups of a given type using the following format:
 
 .. code::
 
-    GET /v2/tasks/{taskId}/groups/{associatedGroupType}
+    GET /v2/tasks/{taskId}/{associatedGroupType}
 
 Replace ``{associatedGroupType}`` with one of the following Group types:
 
@@ -280,13 +280,13 @@ For example, you could use the following query to find all Incidents associated 
 
 .. code::
 
-    GET /v2/tasks/12345/groups/incidents
+    GET /v2/tasks/12345/incidents
 
 You can also delve further by adding the ID of an associated Group to the end of the query:
 
 .. code::
 
-    GET /v2/tasks/12345/groups/incidents/54321
+    GET /v2/tasks/12345/incidents/54321
 
 Where ``54321`` is the ID of an Incident associated with Task 12345.
 
