@@ -1,7 +1,7 @@
 Create Tasks
 ------------
 
-The most basic format used for crating a Task is:
+The most basic format used for creating a Task is:
 
 .. code::
 
