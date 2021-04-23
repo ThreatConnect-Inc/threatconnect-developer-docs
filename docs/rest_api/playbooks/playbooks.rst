@@ -49,7 +49,7 @@ To search for a specific playbook by name:
 
     /v2/playbooks/search?name=Playbook%20Name
 
-or to return only active Playboks: 
+or to return only active Playbooks: 
 
 .. code::
 
