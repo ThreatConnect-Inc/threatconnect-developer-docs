@@ -70,4 +70,4 @@ JSON Response:
 Filter Results
 ^^^^^^^^^^^^^^
 
-To filter returned Artifact types using ThreatConnect Query Language (TQL), refer to the Filter Results with TQL section in this documentation.
+To filter returned Artifact types using ThreatConnect Query Language (TQL), refer to the `Filter Results with TQL <https://docs.threatconnect.com/en/latest/case_management/filter_results.html>`__ section in this documentation.
