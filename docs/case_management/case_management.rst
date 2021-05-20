@@ -23,13 +23,13 @@ Components of Case Management
 .. toctree::
     :maxdepth: 1
 
-    cases/cases
-    workflow_templates/workflow_templates
-    tasks/tasks
-    workflow_events/workflow_events
     artifacts/artifacts
     artifact_types/artifact_types
+    cases/cases
     notes/notes
+    tasks/tasks
+    workflow_events/workflow_events
+    workflow_templates/workflow_templates
 
 Methods
 -------
