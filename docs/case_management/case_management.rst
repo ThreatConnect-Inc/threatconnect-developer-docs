@@ -21,7 +21,7 @@ Components of Case Management
 -----------------------------
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
 
     cases/cases
     workflow_templates/workflow_templates
@@ -30,9 +30,6 @@ Components of Case Management
     artifacts/artifacts
     artifact_types/artifact_types
     notes/notes
-    additional_fields
-    bulk_delete
-    filter_results
 
 Methods
 ^^^^^^^
