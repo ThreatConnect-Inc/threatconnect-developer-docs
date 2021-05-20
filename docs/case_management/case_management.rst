@@ -20,42 +20,23 @@ Workflow in ThreatConnect supports the concept of Case Management, which gives u
 Components of Case Management
 -----------------------------
 
-Case
-^^^^
+.. toctree::
+    :maxdepth: 2
 
-A case contains all required elements of a notable event in a logical structure. It is used to build an incident or capture key evidence to enable the security team to decide if a case should be escalated.
-
-Endpoint: ``/api/v3/cases``
-
-Workflow Template
-^^^^^^^^^^^^^^^^^
-
-Workflow starts with the creation of Workflow templates, which are processes users define for their team. A user, for example, might create one template for phishing analysis, one for alert triage, and maybe several different ones for handling breaches. By codifying these processes in a template, users can reduce the risk of missing critical steps or artifacts during an investigation, because processes and procedures that are stored externally can be captured in ThreatConnect and tied back to threat intel.
-
-Endpoint: ``/api/v3/workflowTemplates``
-
-Task
-^^^^
-
-A task is an individual unit of work that a user must perform to complete a case. Tasks can be manual (a user performs them) or automated (a Playbook performs them).
-
-Endpoint: ``/api/v3/tasks``
-
-Artifact
-^^^^^^^^
-
-An artifact is used in a case to collect key evidence to support the Workflow. Not all artifacts are significant and some can be loosely correlated to Threat Intelligence. Examples of artifacts include domains, email addresses, log files, email, PCAP, screen shots, SIEM event files, and malware documents.
-
-Endpoint: ``/api/v3/artifacts``
-
-Note
-^^^^
-
-A note is the primary mechanism to capture the progress of a case in human-readable form. Notes enable a security team to journal key data findings in unstructured form.
-
-Endpoint: ``/api/v3/notes``
+    cases/cases
+    workflow_templates/workflow_templates
+    workflow_tasks/workflow_tasks
+    workflow_events/workflow_events
+    artifacts/artifacts
+    artifact_types/artifact_types
+    notes/notes
+    additional_fields
+    bulk_delete
+    filter_results
 
 Methods
 ^^^^^^^
 
 For an explanation of methods and how they relate to v3 API, refer to the `API Versioning <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#api-versioning>`__ section in this documentation.
+
+.. note:: To add, edit, and delete Case Management data, the API user’s Organization role must be set to **Organization Administrator**.
