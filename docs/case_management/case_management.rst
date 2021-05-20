@@ -30,10 +30,17 @@ Components of Case Management
     tasks/tasks
     workflow_events/workflow_events
     workflow_templates/workflow_templates
+    
+.. note:: To add, edit, and delete Case Management data, the API user’s Organization role must be set to **Organization Administrator**.
 
 Methods
 -------
 
-For an explanation of methods and how they relate to v3 API, refer to the `API Versioning <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#api-versioning>`__ section in this documentation.
+.. toctree::
+    :maxdepth: 1
 
-.. note:: To add, edit, and delete Case Management data, the API user’s Organization role must be set to **Organization Administrator**.
+    additional_fields
+    bulk_delete
+    filter_results
+
+For an explanation of methods and how they relate to v3 API, refer to the `API Versioning <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#api-versioning>`__ section in this documentation.
