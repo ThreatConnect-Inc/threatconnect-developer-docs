@@ -7,6 +7,4 @@ Potential Artifact types include all ThreatConnect Indicator types, as well as a
     :caption:  Table of Contents
     :maxdepth: 2
 
-    artifact_types/artifact_types
-
 .. include:: retrieve.rst
