@@ -39,9 +39,7 @@ Some Artifact types require additional fields when being created. Refer to the f
 | type         | The Artifact's data type                                                      | TRUE     | String   |
 +--------------+-------------------------------------------------------------------------------+----------+----------+
 
-.. note::To view a list of available Artifact data types, use the following query and refer to the ``type`` field: ``OPTIONS /v3/artifacts/``.
-
-Alternatively, refer to Artifact Types.
+.. note:: To view a list of available Artifact data types, use the following query and refer to the ``type`` field: ``OPTIONS /v3/artifacts/``. Alternatively, refer to `Artifact Types <https://docs.threatconnect.com/en/latest/case_management/artifact_types/artifact_types.html>`__ section in this documentation.
 
 For example, the following query will create an Artifact with the data type ``Email Address`` and a summary of ``badguy@bad.com`` for the Case with ID 1.
 
