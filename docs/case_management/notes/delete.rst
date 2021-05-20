@@ -25,4 +25,4 @@ JSON Response:
 Delete Notes in Bulk
 ^^^^^^^^^^^^^^^^^^^^
 
-To delete Notes in bulk, refer to the Delete Case Objects in Bulk section in this documentation.
+To delete Notes in bulk, refer to the `Delete Case Objects in Bulk <https://docs.threatconnect.com/en/latest/case_management/bulk_delete.html>`__ section in this documentation.
