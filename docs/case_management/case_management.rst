@@ -25,7 +25,7 @@ Components of Case Management
 
     cases/cases
     workflow_templates/workflow_templates
-    workflow_tasks/workflow_tasks
+    tasks/tasks
     workflow_events/workflow_events
     artifacts/artifacts
     artifact_types/artifact_types
