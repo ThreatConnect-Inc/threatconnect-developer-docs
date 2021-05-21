@@ -15,7 +15,7 @@ The most basic format for creating a Note is:
 Refer to the following table for a list of available fields for the ``notes`` object:
 
 +------------------+---------------------------------------------------+----------+----------+
-| Valid Fields     | Description                                       | Required | Type     |
+| Field            | Description                                       | Required | Type     |
 +==================+===================================================+==========+==========+
 | artifactId       | The ID of the Artifact on which to apply the Note | FALSE    | Integer  |
 +------------------+---------------------------------------------------+----------+----------+
