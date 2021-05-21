@@ -13,7 +13,7 @@ The most basic format for creating a Workflow Template is:
 Additional fields can be included when creating a Workflow Template. Refer to the following table for a list of available fields for the ``workflowTemplates`` object:
 
 +----------------+--------------------------------------------+----------+----------+
-| Valid Fields   | Description                                | Required | Type     |
+| Field          | Description                                | Required | Type     |
 +================+============================================+==========+==========+
 | description    | The description of the Workflow Template   | FALSE    | String   |
 +----------------+--------------------------------------------+----------+----------+
