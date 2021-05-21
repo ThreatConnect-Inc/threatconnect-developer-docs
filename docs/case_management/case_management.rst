@@ -43,4 +43,4 @@ Methods
     bulk_delete
     filter_results
 
-For an explanation of methods and how they relate to v3 API, refer to the `API Versioning <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#api-versioning>`__ section in this documentation.
+Additional information about each method and how they relate to v3 API is available in the `API Versioning <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#api-versioning>`__ section in this documentation.
