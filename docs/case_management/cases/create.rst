@@ -19,9 +19,9 @@ Refer to the following table for a list of available fields for the ``cases`` ob
 +================+==========+==========+=========================================================================+
 | assignee       | FALSE    | String   | "{"type": "User", "data": {"userName": "jonsmith@threatconnect.com"}}"  |
 +----------------+----------+----------+-------------------------------------------------------------------------+
-| description    | FALSE    | Integer  | "New case description"                                                  |
+| description    | FALSE    | String   | "New case description"                                                  |
 +----------------+----------+----------+-------------------------------------------------------------------------+
-| name           | TRUE     | Integer  | "New Case"                                                              |
+| name           | TRUE     | String   | "New Case"                                                              |
 +----------------+----------+----------+-------------------------------------------------------------------------+
 | resolution     | FALSE    | String   | "Containment Achieved", "False Positive"                                |
 +----------------+----------+----------+-------------------------------------------------------------------------+
