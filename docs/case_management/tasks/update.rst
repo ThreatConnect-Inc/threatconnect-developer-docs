@@ -28,6 +28,8 @@ Refer to the following table for a list of available fields that can be updated 
 +----------------+------------------------------------------------------+----------+-------------------------------------------------------------------------+
 | required       | Flag indicating whether or not the Task is required  | Boolean  | True, False                                                             |
 +----------------+------------------------------------------------------+----------+-------------------------------------------------------------------------+
+| status         | The status of the Task                               | String   | "Pending", "Open", "Reopened", or "Closed"                              |
++----------------+------------------------------------------------------+----------+-------------------------------------------------------------------------+
 
 For example, the following query will make the Task with ID 1 required to complete and assign it a due date of April 30, 2021:
 
