@@ -17,6 +17,8 @@ Additional fields can be included when creating a Task. Refer to the following t
 +----------------+-----------------------------------------------------------+----------+----------+-------------------------------------------------------------------------+
 | Field          | Description                                               | Required | Type     | Example Value(s)                                                        |
 +================+===========================================================+==========+==========+=========================================================================+
+| artifacts      | A list of Artifacts associated with the Task              | FALSE    | String   | "{"data": [{"summary": "badguy@bad.com", "type": "Email Address"]}}"    |
++----------------+-----------------------------------------------------------+----------+----------+-------------------------------------------------------------------------+
 | assignee       | The user or group Assignee object for the Task            | FALSE    | String   | "{"type": "User", "data": {"userName": "jonsmith@threatconnect.com"}}"  |
 +----------------+-----------------------------------------------------------+----------+----------+-------------------------------------------------------------------------+
 | caseId         | The ID of the Case that contains the Task                 | TRUE     | Integer  | 1, 2, 3                                                                 |
