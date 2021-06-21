@@ -16,6 +16,8 @@ Refer to the following table for a list of available fields that can be updated 
 +----------------+------------------------------------------------------+----------+-------------------------------------------------------------------------+
 | Field          | Description                                          | Type     | Example Value(s)                                                        |
 +================+======================================================+==========+=========================================================================+
+| artifacts      | A list of Artifacts associated with the Task         | String   | "{"data": [{"summary": "badguy@bad.com", "type": "Email Address"]}}"    |
++----------------+------------------------------------------------------+----------+-------------------------------------------------------------------------+
 | assignee       | The user or group Assignee object for the Task       | String   | "{"type": "User", "data": {"userName": "jonsmith@threatconnect.com"}}"  |
 +----------------+------------------------------------------------------+----------+-------------------------------------------------------------------------+
 | description    | The description of the Task                          | String   | "New task description"                                                  |
