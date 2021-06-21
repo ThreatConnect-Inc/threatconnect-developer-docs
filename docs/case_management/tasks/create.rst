@@ -37,6 +37,8 @@ Additional fields can be included when creating a Task. Refer to the following t
 +----------------+-----------------------------------------------------------+----------+----------+-------------------------------------------------------------------------+
 | required       | Flag indicating whether or not the Task is required       | FALSE    | Boolean  | True, False                                                             |
 +----------------+-----------------------------------------------------------+----------+----------+-------------------------------------------------------------------------+
+| status         | The status of the Task                                    | FALSE    | String   | "Pending", "Open", "Reopened", or "Closed"                              |
++----------------+-----------------------------------------------------------+----------+----------+-------------------------------------------------------------------------+
 | workflowPhase  | The Workflow phase where the Task takes place             | FALSE    | Integer  | 1, 2, 3                                                                 |
 +----------------+-----------------------------------------------------------+----------+----------+-------------------------------------------------------------------------+
 | workflowStep   | The step of the Workflow where the Task takes place       | FALSE    | Integer  | 1, 2, 3                                                                 |
