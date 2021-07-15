@@ -149,39 +149,12 @@ The value of the final ``Authorization`` header should look like:
 
 .. hint:: For Python users, you can view how our `Python SDK <https://docs.threatconnect.com/en/latest/python/python_sdk.html>`__  handles authentication `here <https://github.com/ThreatConnect-Inc/threatconnect-python/blob/fbf428cfff839a5fb5eb19720d23478e563914dc/threatconnect/ThreatConnect.py#L187>`__.
 
-Hello World
------------
+Testing API Connectivity
+------------------------
 
-To test API connectivity, start with a request to the ``/v2/owners`` branch to return all Organizations and Communities to which the API credentials have access. After you insert your API secret key and access ID, the bash script below will format and send the request:
+To test API connectivity, start with a request to the ``/v2/owners`` branch to return all Organizations and Communities to which the API credentials have access. An example Bash script for performing this test is available on `GitHub <https://github.com/ThreatConnect-Inc/threatconnect-bash>`_. In this example, you will first update the fields in the ``config.sh`` file, and then execute the ``threatconnect.sh`` file to make the request to the ``/v2/owners`` branch. 
 
-.. code-block:: shell
-
-    #!/bin/bash
-    
-    # specify API details
-    API_METHOD="GET"
-    API_PATH='/v2/owners'
-    API_URL='https://api.threatconnect.com'${API_PATH}
-
-    # provide authentication details
-    API_SECRET='<INSERT YOUR API SECRET KEY HERE>'
-    API_ID='<INSERT YOUR API ACCESS ID HERE>'
-
-    # create the signature
-    TIMESTAMP=`date +%s`
-    signature="${API_PATH}:${API_METHOD}:${TIMESTAMP}"
-    hmac_signature=$(echo -n ${signature} | openssl dgst -binary -sha256 -hmac ${API_SECRET} | base64)
-    authorization="TC ${API_ID}:${hmac_signature}"
-
-    # use this if python is not installed on your system
-    curl -s -i -H "Timestamp: ${TIMESTAMP}" -H "Authorization: ${authorization}" -X ${API_METHOD} "${API_URL}"
-
-    # use this to output the data if python is installed on your system
-    curl -s -H "Timestamp: ${TIMESTAMP}" -H "Authorization: ${authorization}" -X ${API_METHOD} "${API_URL}" | python -m json.tool
-
-.. note:: If you receive an error while using the script above, make sure that the ``API_URL`` is pointed to the correct API for the instance of ThreatConnect you wish to use. 
-
-.. note:: When working with the Sandbox environment, modify the API_PATH variable in this script to begin with '/api' in front of the endpoint name. In the example given, you would use API_PATH='/api/v2/owners'. For API_URL, you would use 'https://sandbox.threatconnect.com'. Failure to make the changes in this way will result in the error 'Signature data did not match expected result' and a status code of 400 from the API.
+.. note:: If you receive an error while using the script above, make sure that the ``API_HOST`` variable in the ``config.sh`` file is pointed to the correct API for the instance of ThreatConnect you wish to use.
 
 Get a list of all Owners visible to this user:
 
