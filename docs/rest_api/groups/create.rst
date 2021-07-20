@@ -70,7 +70,7 @@ JSON Response:
 Uploading Document Contents
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you are creating a Document in ThreatConnect that is a malware sample, refer to the `the next section <https://docs.threatconnect.com/en/latest/rest_api/groups/groups.html#creating-a-malware-document>`_. If you are creating a benign Document and want to upload content into the Document via API, refer to the section on `uploading Document contents <https://docs.threatconnect.com/en/latest/rest_api/groups/groups.html#update-document-contents>`_ for more details.
+If you are creating a Document in ThreatConnect that is a malware sample, refer to the `the next section <https://docs.threatconnect.com/en/latest/rest_api/groups/groups.html#creating-a-malware-document>`_. If you are creating a benign Document and want to upload content into the Document via API, refer to the section on `uploading Document contents <https://docs.threatconnect.com/en/latest/rest_api/groups/groups.html#uploading-updating-document-contents>`_ for more details.
 
 Creating a Malware Document
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
