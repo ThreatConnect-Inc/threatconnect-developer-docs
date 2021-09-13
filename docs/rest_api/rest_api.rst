@@ -1,8 +1,8 @@
 .. include:: <isonum.txt> 
 
-********
-REST API
-********
+***********
+v2 REST API
+***********
 
 .. toctree::
    :caption:  Table of Contents
