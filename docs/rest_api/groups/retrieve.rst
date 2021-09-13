@@ -53,15 +53,21 @@ To retrieve multiple Groups of a certain type, use a query in the following form
 The ``{groupType}`` can be any one of the available Group types:
 
 - ``adversaries``
+- ``attackPatterns``
 - ``campaigns``
+- ``coursesOfAction``
 - ``documents``
 - ``emails``
 - ``events``
 - ``incidents``
 - ``intrusionSets``
+- ``malware``
 - ``reports``
 - ``signatures``
+- ``tactics``
 - ``threats``
+- ``tools``
+- ``vulnerabilities``
   
 For example, the query below will retrieve a list of all Incidents in the default owner:
 
@@ -446,16 +452,21 @@ You can also find associated Groups of a given type using the following format:
 Replace ``{associatedGroupType}`` with one of the following Group types:
 
 - ``adversaries``
+- ``attackPatterns``
 - ``campaigns``
+- ``coursesOfAction``
 - ``documents``
 - ``emails``
 - ``events``
 - ``incidents``
 - ``intrusionSets``
+- ``malware``
 - ``reports``
 - ``signatures``
-- ``tasks``
+- ``tactics``
 - ``threats``
+- ``tools``
+- ``vulnerabilities``
 
 For example, you could use the following query to find all Incidents associated with the Threat with ID 12345:
 
