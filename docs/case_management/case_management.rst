@@ -1,5 +1,8 @@
+v3 REST API
+===========
+
 Case Management
-===============
+---------------
 
 Case Management and the Workflow feature in ThreatConnect allow users to combine manual and automated operations to define consistent and standardized processes for their security teams, including, but not limited to:
 
@@ -18,7 +21,7 @@ Workflow in ThreatConnect supports the concept of Case Management, which gives u
 •	Maximizing the amount of information that can be turned into actionable intelligence for later use
 
 Components of Case Management
------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
     :maxdepth: 1
@@ -32,6 +35,15 @@ Components of Case Management
     workflow_templates/workflow_templates
     
 .. note:: To add, edit, and delete Case Management data, the API user’s Organization role must be set to **Organization Administrator**.
+
+Attribute Types
+---------------
+
+.. toctree::
+    :maxdepth: 1
+
+    attribute_types/attribute_types
+
 
 Methods
 -------
