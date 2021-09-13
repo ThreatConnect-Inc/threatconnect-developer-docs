@@ -45,7 +45,7 @@ Some Artifact types require additional fields when being created. Refer to the f
 | type         | The Artifact's data type                           | TRUE     | String   |
 +--------------+----------------------------------------------------+----------+----------+
 
-.. note:: To view a list of available Artifact data types, use the following query and refer to the ``type`` field: ``OPTIONS /v3/artifacts/``. Alternatively, refer to `Artifact Types <https://docs.threatconnect.com/en/latest/case_management/artifact_types/artifact_types.html>`__ section in this documentation.
+.. note:: To view a list of available Artifact data types, use the following query and refer to the ``type`` field: ``OPTIONS /v3/artifacts/``. Alternatively, refer to `Artifact Types <../artifact_types/artifact_types.html>`__ section in this documentation.
 
 .. hint:: To create an Artifact that is displayed in the *Task Artifacts* section of a Task, the Artifact must be associated with a Task, the associated Task must have an Artifact Field defined that accepts the same Artifact data type as the associated Artifact, and the ``fieldname`` field must be defined. Otherwise, the Artifact will be displayed in the *Related Artifacts* section of the Task. For more information about Artifact Fields, see the "Artifact Fields" section of `Workflow Cases <https://training.threatconnect.com/learn/article/workflow-cases-kb-article>`__.
 
