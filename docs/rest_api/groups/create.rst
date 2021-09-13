@@ -15,15 +15,21 @@ To create a Group, the most basic format is:
 The ``{groupType}`` can be any one of the available Group types:
 
 - ``adversaries``
+- ``attackPatterns``
 - ``campaigns``
+- ``coursesOfAction``
 - ``documents``
 - ``emails``
 - ``events``
 - ``incidents``
 - ``intrusionSets``
+- ``malware``
 - ``reports``
 - ``signatures``
+- ``tactics``
 - ``threats``
+- ``tools``
+- ``vulnerabilities``
 
 Some Group types require additional fields when being created. Refer to the table below for the fields required to create each Group type:
 
