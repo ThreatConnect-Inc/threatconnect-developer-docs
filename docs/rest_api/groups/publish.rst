@@ -16,12 +16,21 @@ As of ThreatConnect version 5.2, it is possible to publish intelligence for a sp
 The ``{groupType}`` can be any one of the available Group types:
 
 - ``adversaries``
+- ``attackPatterns``
 - ``campaigns``
+- ``coursesOfAction``
 - ``documents``
 - ``emails``
+- ``events``
 - ``incidents``
+- ``intrusionSets``
+- ``malware``
+- ``reports``
 - ``signatures``
+- ``tactics``
 - ``threats``
+- ``tools``
+- ``vulnerabilities``
 
 The ``securityLabelList`` key of the request body allows you to provide the name(s) of the Security Label(s) that, if an item has this Label, you would like to exclude when publishing. The following example-request body would *not* publish any items (Groups or Indicators) that have the ``TLP Green`` or ``TLP Amber`` Labels:
 
