@@ -1,11 +1,16 @@
 - ``adversaries``
+- ``attackPatterns``
 - ``campaigns``
+- ``coursesOfAction``
 - ``documents``
 - ``emails``
 - ``events``
 - ``incidents``
 - ``intrusionSets``
+- ``malware``
 - ``reports``
 - ``signatures``
-- ``tasks``
+- ``tactics``
 - ``threats``
+- ``tools``
+- ``vulnerabilities``
