@@ -13,15 +13,21 @@ To update a Group, the basic format is:
 The ``{groupType}`` can be any one of the available Group types:
 
 - ``adversaries``
+- ``attackPatterns``
 - ``campaigns``
+- ``coursesOfAction``
 - ``documents``
-- ``events``
 - ``emails``
+- ``events``
 - ``incidents``
 - ``intrusionSets``
-- ``signatures``
+- ``malware``
 - ``reports``
+- ``signatures``
+- ``tactics``
 - ``threats``
+- ``tools``
+- ``vulnerabilities``
 
 When updating the fields on a Group, you can change any of the fields available for the type of Group you are updating. Below is a table of available fields for each Group type:
 
@@ -63,6 +69,8 @@ Uploading/Updating Document Contents
 
 To update the contents of a Document in ThreatConnect, use a query in the following format:
 
+.. note:: If you’re uploading a file larger than 5GB, contact your System Administrator about increasing the allowed file size for uploads.
+
 .. note:: To upload the initial document, rather than updating the existing document, replace PUT with POST
 
 .. code::
@@ -93,6 +101,8 @@ Uploading/Updating Report Contents
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 To update the contents of a Report in ThreatConnect, use a query in the following format:
+
+.. note:: If you’re uploading a file larger than 5GB, contact your System Administrator about increasing the allowed file size for uploads.
 
 .. note:: To upload the initial report, rather than updating the existing report, replace PUT with POST
 
