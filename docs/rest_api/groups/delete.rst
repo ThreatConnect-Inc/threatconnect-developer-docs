@@ -10,12 +10,21 @@ To delete a Group, the most basic format is:
 The ``{groupType}`` can be any one of the available Group types:
 
 - ``adversaries``
+- ``attackPatterns``
 - ``campaigns``
+- ``coursesOfAction``
 - ``documents``
 - ``emails``
+- ``events``
 - ``incidents``
+- ``intrusionSets``
+- ``malware``
+- ``reports``
 - ``signatures``
+- ``tactics``
 - ``threats``
+- ``tools``
+- ``vulnerabilities``
   
 By way of example, the query below will delete the Threat with the ID 12345:
 
