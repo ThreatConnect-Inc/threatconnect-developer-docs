@@ -7,13 +7,4 @@ As of ThreatConnect version 5.4, it is possible to create a PDF Report for a Gro
 
     GET /v2/groups/{type}/{id}/pdf
 
-This endpoint is available for all of the following Group types:
-
-- Adversaries
-- Campaigns
-- Emails
-- Incidents
-- Signatures
-- Threats
-
-.. note:: This endpoint applies to all Groups except for Documents.
+.. note:: This endpoint applies to all Groups except for **Documents** and **Emails**.
