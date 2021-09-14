@@ -10,8 +10,8 @@ Getting Started
 
    quick_start
 
-v3 REST API
------------
+v3 API
+------
 
 Case Management
 ^^^^^^^^^^^^^^^
@@ -51,8 +51,8 @@ Additional Actions
    v3/filter_results
    v3/users_list
 
-v2 REST API
------------
+v2 API
+------
 
 .. toctree::
    :maxdepth: 2
