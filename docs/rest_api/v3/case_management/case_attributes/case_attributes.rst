@@ -5,9 +5,9 @@ A Case Attribute is a key/value data set that users can add to a Workflow Case. 
 
 Endpoint: ``/api/v3/caseAttributes`
 
-.. include:: retrieve.rst
-
 .. include:: create.rst
+
+.. include:: retrieve.rst
 
 .. include:: update.rst
 
