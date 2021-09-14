@@ -20,7 +20,10 @@ JSON Response:
           "name": "Example Workflow Template",
           "description": "A description for this Workflow Template.",
           "active": False,
-          "version": 1
+          "version": 1,
+          "configAttribute": [{
+              "attributeTypeId": 23,
+          }]
         }, {
           "id": 2,
           "name": "Phishing Analysis Template",
