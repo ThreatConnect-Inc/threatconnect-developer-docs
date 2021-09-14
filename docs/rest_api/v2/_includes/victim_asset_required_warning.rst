@@ -1,1 +1,0 @@
-.. warning:: In order to associate a Victim with any item, that Victim must have at least one Victim Asset.
