@@ -24,3 +24,4 @@ v2 REST API
    tasks/tasks
    taxii/taxii
    victims/victims
+   v2/associations
