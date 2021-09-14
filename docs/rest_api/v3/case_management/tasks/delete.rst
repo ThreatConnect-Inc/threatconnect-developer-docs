@@ -25,4 +25,4 @@ JSON Response:
 Delete Tasks in Bulk
 ^^^^^^^^^^^^^^^^^^^^
 
-To delete Tasks in bulk, refer to the `Delete Case Objects in Bulk <../bulk_delete.html>`__ section in this documentation.
+To delete Tasks in bulk, refer to the `Delete Case Objects in Bulk <../../bulk_delete.html>`__ section in this documentation.
