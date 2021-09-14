@@ -13,15 +13,20 @@ To update a Workflow Template, the basic format is:
 
 Refer to the following table for a list of available fields that can be updated for the ``workflowTemplates`` object:
 
-+----------------+--------------------------------------------+----------+
-| Field          | Description                                | Type     |
-+================+============================================+==========+
-| description    | The description of the Workflow Template   | String   |
-+----------------+--------------------------------------------+----------+
-| name           | The name of the Workflow Template          | String   |
-+----------------+--------------------------------------------+----------+
-| version        | The version of the Workflow Template       | Integer  |
-+----------------+--------------------------------------------+----------+
++------------------+--------------------------------------------+----------+----------+-----------------------------------------+
+| Field            | Description                                | Required | Type     | Example Value(s)                        |
++==================+============================================+==========+==========+=========================================+
+| configAttribute  | The Attribute type that should be included | FALSE    | String   | "[{"attributeTypeId": 3}]"              |
+|                  | in the Workflow Template                   |          |          |                                         |
++------------------+--------------------------------------------+----------+----------+-----------------------------------------+
+| description      | The description of the Workflow Template   | FALSE    | String   | "Template for phishing investigations"  |
++------------------+--------------------------------------------+----------+----------+-----------------------------------------+
+| name             | The name of the Workflow Template          | TRUE     | String   | "Phishing Workflow Template"            |
++------------------+--------------------------------------------+----------+----------+-----------------------------------------+
+| version          | The version of the Workflow Template       | FALSE    | Integer  | 1, 2, 3                                 |
++------------------+--------------------------------------------+----------+----------+-----------------------------------------+
+
+.. note:: To view a list of available Attribute types, refer to the `Attribute Types <../attribute_types/attribute_types.html>`__ section of this documentation.
 
 For example, the following query will update the name and version number of the Workflow Template with ID 1:
 
