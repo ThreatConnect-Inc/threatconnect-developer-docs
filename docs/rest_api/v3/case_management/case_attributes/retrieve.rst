@@ -23,7 +23,7 @@ JSON Response:
       }, {
         "id": 2,
         "type": "Phishing Open Rate",
-        "value": "20",
+        "value": "20"
       }],
       "count": 2,
       "status": "Success"
