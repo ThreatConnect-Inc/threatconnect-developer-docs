@@ -5,7 +5,7 @@ To update a Case Attribute that has been added to a Case, the most basic format 
 
 .. code::
 
-    PUT /v3/caseAttributes/{caseAttributeId}
+    PUT /v3/caseAttributes/{caseAttributeID}
     {
       "value": "Case Attribute Value"
     }
