@@ -76,9 +76,9 @@ JSON Response:
 Request Additional Fields
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To request additional fields not automatically provided with each returned Artifact, refer to the `Request Additional Fields for Returned Objects <..additional_fields.html>`__ section in this documentation.
+To request additional fields not automatically provided with each returned Artifact, refer to the `Request Additional Fields for Returned Objects <../..additional_fields.html>`__ section in this documentation.
 
 Filter Results
 ^^^^^^^^^^^^^^
 
-To filter returned Artifacts using ThreatConnect Query Language (TQL), refer to the `Filter Results with TQL <..filter_results.html>`__ section in this documentation.
+To filter returned Artifacts using ThreatConnect Query Language (TQL), refer to the `Filter Results with TQL <../..filter_results.html>`__ section in this documentation.
