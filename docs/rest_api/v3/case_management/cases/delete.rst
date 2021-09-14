@@ -25,4 +25,4 @@ JSON Response:
 Delete Cases in Bulk
 ^^^^^^^^^^^^^^^^^^^^
 
-To delete Cases in bulk, refer to the `Delete Case Objects in Bulk <../bulk_delete.html>`__ section in this documentation.
+To delete Cases in bulk, refer to the `Delete Case Objects in Bulk <../../bulk_delete.html>`__ section in this documentation.
