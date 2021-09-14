@@ -13,7 +13,6 @@ Demo <https://www.threatconnect.com/request-a-demo/>`__
 
    getting_started
    rest_api/rest_api
-   case_management/case_management
    python/python_sdk
    java/java_sdk
    javascript/javascript_sdk
