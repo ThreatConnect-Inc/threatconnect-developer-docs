@@ -20,9 +20,10 @@ Case Management
 
 .. toctree::
    :maxdepth: 2
-
-   v3/case_management/artifacts/artifacts
+   
    v3/case_management/artifact_types/artifact_types
+   v3/case_management/artifacts/artifacts
+   v3/case_management/case_attributes/case_attributes
    v3/case_management/cases/cases
    v3/case_management/notes/notes
    v3/case_management/tasks/tasks
