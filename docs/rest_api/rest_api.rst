@@ -16,7 +16,7 @@ v3 REST API
 Case Management
 ^^^^^^^^^^^^^^^
 
-Case Management and the `Workflow feature <https://training.threatconnect.com/learn/article/workflow-overview-kb-article>`__ in ThreatConnect enables analysts and their teams to define and operationalize consistent, standardized processes for managing threat intelligence and performing security operations.
+.. include:: v3/case_management/case_management.rst
 
 .. toctree::
    :maxdepth: 2
