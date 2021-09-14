@@ -46,10 +46,10 @@ Additional Actions
 .. toctree::
    :maxdepth: 1
 
-   additional_fields
-   bulk_delete
-   filter_results
-   users_list
+   v3/additional_fields
+   v3/bulk_delete
+   v3/filter_results
+   v3/users_list
 
 v2 REST API
 -----------
