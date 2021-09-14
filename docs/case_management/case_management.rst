@@ -4,24 +4,7 @@ v3 REST API
 Case Management
 ---------------
 
-Case Management and the Workflow feature in ThreatConnect allow users to combine manual and automated operations to define consistent and standardized processes for their security teams, including, but not limited to:
-
-•	Malware analysis
-•	Phishing triage
-•	Alert triage
-•	Intel requirement development
-•	Escalation procedures
-•	Breach SOP
-
-Workflow in ThreatConnect supports the concept of Case Management, which gives users the capability to investigate and track information security threats and incidents by:
-
-•	Minimizing the time it takes to match a case to historical data 
-•	Minimizing the time it takes to assess scope 
-•	Minimize the time it takes to assess impact 
-•	Maximizing the amount of information that can be turned into actionable intelligence for later use
-
-Components of Case Management
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Case Management and the `Workflow feature <https://training.threatconnect.com/learn/article/workflow-overview-kb-article>`__ in ThreatConnect enables analysts and their teams to define and operationalize consistent, standardized processes for managing threat intelligence and performing security operations.
 
 .. toctree::
     :maxdepth: 2
