@@ -10,6 +10,47 @@ Getting Started
 
    quick_start
 
+v3 REST API
+-----------
+
+Case Management
+^^^^^^^^^^^^^^^
+
+Case Management and the `Workflow feature <https://training.threatconnect.com/learn/article/workflow-overview-kb-article>`__ in ThreatConnect enables analysts and their teams to define and operationalize consistent, standardized processes for managing threat intelligence and performing security operations.
+
+.. toctree::
+   :maxdepth: 2
+
+   v3/case_management/artifacts/artifacts
+   v3/case_management/artifact_types/artifact_types
+   v3/case_management/cases/cases
+   v3/case_management/notes/notes
+   v3/case_management/tasks/tasks
+   v3/case_management/workflow_events/workflow_events
+   v3/case_management/workflow_templates/workflow_templates
+    
+.. note:: To add, edit, and delete Case Management data, the API user’s Organization role must be set to **Organization Administrator**.
+
+Attribute Types
+^^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 2
+
+   v3/attribute_types/attribute_types
+
+
+Additional Actions
+^^^^^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 1
+
+   additional_fields
+   bulk_delete
+   filter_results
+   users_list
+
 v2 REST API
 -----------
 
