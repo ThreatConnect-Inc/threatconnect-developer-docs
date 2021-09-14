@@ -5,7 +5,7 @@ To remove a Case Attribute from a Case, use the following query:
 
 .. code::
 
-    DELETE /v3/caseAttributes/{caseAttributeId}
+    DELETE /v3/caseAttributes/{caseAttributeID}
 
 For example, the following query will delete the Case Attribute with ID 1:
 
