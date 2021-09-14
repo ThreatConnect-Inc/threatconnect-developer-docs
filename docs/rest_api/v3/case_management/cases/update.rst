@@ -12,21 +12,49 @@ To update a Case, the basic format is:
 
 Refer to the following table for a list of available fields that can be updated for the ``cases`` object:
 
-+----------------+----------+------------------------------------------------------------------------+
-| Field          | Type     | Example Value(s)                                                       |
-+================+==========+========================================================================+
-| assignee       | String   | "{"type": "User", "data": {"userName": "jonsmith@threatconnect.com"}}" |
-+----------------+----------+------------------------------------------------------------------------+
-| description    | String   | "New case description"                                                 |
-+----------------+----------+------------------------------------------------------------------------+
-| name           | String   | "New Case"                                                             |
-+----------------+----------+------------------------------------------------------------------------+
-| resolution     | String   | "Containment Achieved", "False Positive"                               |
-+----------------+----------+------------------------------------------------------------------------+
-| severity       | String   | ""Low", "Medium", "High", or "Critical"                                |
-+----------------+----------+------------------------------------------------------------------------+
-| status         | String   | "Open", "Closed"                                                       |
-+----------------+----------+------------------------------------------------------------------------+
++---------------------+-------------------------------------------------+---------+-------------------------------------------------------------------------+
+| Field               | Description                                     | Type    | Example Value(s)                                                        |
++=====================+=================================================+=========+=========================================================================+
+| artifacts           | A list of Artifacts corresponding to the Case   | String  | "{"data": [{"summary": "badguy@bad.com", "type": "Email Address"}]}"    |
++---------------------+-------------------------------------------------+---------+-------------------------------------------------------------------------+
+| assignee            | The user or group Assignee object for the Case  | String  | "{"type": "User", "data": {"userName": "jonsmith@threatconnect.com"}}"  |
++---------------------+-------------------------------------------------+---------+-------------------------------------------------------------------------+
+| attributes          | A list of Attributes corresponding to the Case  | String  | "{"data": [{"type": "Case Attribute Name",                              |
+|                     |                                                 |         | "value": "Case Attribute Value", "source": " Case Attribute Source"}]}" |
++---------------------+-------------------------------------------------+---------+-------------------------------------------------------------------------+
+| caseDetectionTime   | The date and time a security incident or        | Date    | "2021-04-30T00:00:00Z"                                                  |
+|                     | threat was detected (e.g., by a security team)  |         |                                                                         |
++---------------------+-------------------------------------------------+---------+-------------------------------------------------------------------------+
+| caseOccurrenceTime  | The date and time a security incident or        | Date    | "2021-04-30T00:00:00Z"                                                  |
+|                     | threat occurred                                 |         |                                                                         |
++---------------------+-------------------------------------------------+---------+-------------------------------------------------------------------------+
+| description         | A description of the Case                       | String  | "New case description"                                                  |
++---------------------+-------------------------------------------------+---------+-------------------------------------------------------------------------+
+| name                | The name of the Case                            | String  | "New Case"                                                              |
++---------------------+-------------------------------------------------+---------+-------------------------------------------------------------------------+
+| notes               | A list of Notes corresponding to the Case       | String  | "{"data": [{"text": "Note about malware case"}]}"                       |
++---------------------+-------------------------------------------------+---------+-------------------------------------------------------------------------+
+| resolution          | The resolution of the Case                      | String  | "Containment Achieved", "False Positive"                                |
++---------------------+-------------------------------------------------+---------+-------------------------------------------------------------------------+
+| severity            | The severity of the Case                        | String  | ""Low", "Medium", "High", or "Critical"                                 |
++---------------------+-------------------------------------------------+---------+-------------------------------------------------------------------------+
+| status              | The status of the Case                          | String  | "Open", "Closed"                                                        |
++---------------------+-------------------------------------------------+---------+-------------------------------------------------------------------------+
+| tags                | A list of Tags corresponding to the Case        | String  | "{"data": [{"name": "Phishing"}]}"                                      |
++---------------------+-------------------------------------------------+---------+-------------------------------------------------------------------------+
+| tasks               | A list of Tasks corresponding to the Case       | String  | "{"data": [{"name": "Investigate Phishing Email", "workflowPhase": 1,   |
+|                     |                                                 |         | "workflowStep": 1}]}"                                                   |
++---------------------+-------------------------------------------------+---------+-------------------------------------------------------------------------+
+| userAccess          | A list of users that, when defined, are the     | String  | "{"data": [{"userName": "jsmith@threatconnect.com"}]}"                  |
+|                     | only ones allowed to view or edit the Case      |         |                                                                         |
++---------------------+-------------------------------------------------+---------+-------------------------------------------------------------------------+
+| workflowEvents      | A list of Timeline events corresponding to      | String  | "{"data": [{"summary": "Case created via API", "eventDate":             |
+|                     | the Case                                        |         | "2021-08-12T12:30:12Z"}]}"                                              |
++---------------------+-------------------------------------------------+---------+-------------------------------------------------------------------------+
+
+.. note:: Attribute Types for Cases must first be created in the System or Organization in which a Case resides before they can be added to the Case. See `Creating Custom Attribute Types <https://training.threatconnect.com/learn/article/creating-custom-attributes-kb-article>`__ for more information.
+
+.. note:: Trying to add an Attribute to a Case when the Case Attribute Type's **Max Allowed** limit has been reached will result in an error.
 
 .. include:: ../_includes/case_resolutions.rst
   
@@ -49,7 +77,25 @@ JSON Response:
         "id": 1,
         "xid": "aa1a1a1a1-a1a1-a1a1-a1a1-a1a1a1a1a1a1",
         "name": "Example Workflow Case",
-        "dateAdded": "2021-04-09T14:41:27.622Z",
+        "dateAdded": "2021-04-09T14:41:27.27Z",
+        "caseOpenTime": "2021-04-09T14:41:27Z",
+        "caseOpenUser": {
+            "id": 3,
+            "userName": "11112222333344445555",
+            "firstName": "John",
+            "lastName": "Smith",
+            "pseudonym": "jsmithAPI",
+            "role": "Api User"
+        },
+        "caseCloseTime": "2021-04-12T18:36.18Z",
+        "caseCloseUser": {
+            "id": 3,
+            "userName": "11112222333344445555",
+            "firstName": "John",
+            "lastName": "Smith",
+            "pseudonym": "jsmithAPI",
+            "role": "Api User" 
+        },
         "status": "Closed",
         "severity": "Medium",
         "resolution": "False Positive",
@@ -74,6 +120,9 @@ JSON Response:
           "role": "Api User"
         },
         "owner": "Example Organization",
+        "attributes": {
+          "count": 0,
+        },
       },
       "message": "Updated",
       "status": "Success"
