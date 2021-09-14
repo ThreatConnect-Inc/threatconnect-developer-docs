@@ -26,7 +26,7 @@ Refer to the following table for a list of available fields that can be updated 
 | version          | The version of the Workflow Template       | FALSE    | Integer  | 1, 2, 3                                 |
 +------------------+--------------------------------------------+----------+----------+-----------------------------------------+
 
-.. note:: To view a list of available Attribute types, refer to the `Attribute Types <../attribute_types/attribute_types.html>`__ section of this documentation.
+.. note:: To view a list of available Attribute types, refer to the `Attribute Types <../../attribute_types/attribute_types.html>`__ section of this documentation.
 
 For example, the following query will update the name and version number of the Workflow Template with ID 1:
 
