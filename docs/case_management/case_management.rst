@@ -24,7 +24,7 @@ Components of Case Management
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
-    :maxdepth: 1
+    :maxdepth: 2
 
     artifacts/artifacts
     artifact_types/artifact_types
@@ -40,7 +40,7 @@ Attribute Types
 ---------------
 
 .. toctree::
-    :maxdepth: 1
+    :maxdepth: 2
 
     attribute_types/attribute_types
 
