@@ -25,7 +25,7 @@ Additional fields can be included when creating a Workflow Template. Refer to th
 | version          | The version of the Workflow Template       | FALSE    | Integer  | 1, 2, 3                                 |
 +------------------+--------------------------------------------+----------+----------+-----------------------------------------+
 
-.. note:: To view a list of available Attribute types, refer to the `Attribute Types <../attribute_types/attribute_types.html>`__ section of this documentation.
+.. note:: To view a list of available Attribute types, refer to the `Attribute Types <../../attribute_types/attribute_types.html>`__ section of this documentation.
 
 For example, the following query will create an Workflow Template with the name ``Example Workflow Template`` and a description of the template:
 
