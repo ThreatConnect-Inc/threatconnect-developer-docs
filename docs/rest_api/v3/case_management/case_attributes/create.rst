@@ -21,9 +21,9 @@ Additional fields can be included when adding a Case Attribute to a Case, Refer 
 +-----------+---------------------------------------------------+----------+----------+------------------------+
 | source    | The Attribute's source                            | FALSE    | String   | "Hybrid analysis"      |
 +-----------+---------------------------------------------------+----------+----------+------------------------+
-| type      | The contents of the Note itself                   | TRUE     | String   | "Detection percentage" |
+| type      | The Attribute's type                              | TRUE     | String   | "Detection percentage" |
 +-----------+---------------------------------------------------+----------+----------+------------------------+
-| value     | The ID of the Event on which to apply the Note    | TRUE     | String   | "50"                   |
+| value     | The Attribute's value                             | TRUE     | String   | "50"                   |
 +-----------+---------------------------------------------------+----------+----------+------------------------+
 
 .. note:: Attribute Types for Cases must first be created in the System or Organization in which a Case resides before they can be added to the Case. See `Creating Custom Attribute Types <https://training.threatconnect.com/learn/article/creating-custom-attributes-kb-article>`__ for more information.
