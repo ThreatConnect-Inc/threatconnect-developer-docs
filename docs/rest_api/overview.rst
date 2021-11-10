@@ -298,7 +298,7 @@ The API will return appropriate HTTP response codes with a description in the me
 | HTTP Response      | Explanation                                              |
 | Code               |                                                          |
 +====================+==========================================================+
-| ``200`` - Success  | Successful execution of a request                       |
+| ``200`` - Success  | Successful execution of a request                        |
 +--------------------+----------------------------------------------------------+
 | ``201`` - Created  | The query successfully created the specified entity.     |
 +--------------------+----------------------------------------------------------+
@@ -307,10 +307,10 @@ The API will return appropriate HTTP response codes with a description in the me
 |                    | include details.                                         |
 +--------------------+----------------------------------------------------------+
 | ``401`` -          | Returned if a user does not have access to the specified |
-| Unauthorized       | resource or the method attempted on a resource          |
+| Unauthorized       | resource or the method attempted on a resource           |
 +--------------------+----------------------------------------------------------+
 | ``403`` -          | Returned when specifying an Owner to which the user does |
-| Forbidden          | do not have access, or does not exist                   |
+| Forbidden          | do not have access, or does not exist                    |
 +--------------------+----------------------------------------------------------+
 | ``403`` - Bad      | This Indicator is included in a system-wide exclusion    |
 | Request            | list.                                                    |
