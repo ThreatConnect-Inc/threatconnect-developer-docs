@@ -17,7 +17,7 @@ Additional fields can be included when updating a Case Attribute to a Case, Refe
 +===========+===================================================+==========+========================+
 | source    | The Attribute's source                            | String   | "Hybrid analysis"      |
 +-----------+---------------------------------------------------+----------+------------------------+
-| value     | The ID of the Event on which to apply the Note    | String   | "50"                   |
+| value     | The Attribute's value                             | String   | "50"                   |
 +-----------+---------------------------------------------------+----------+------------------------+
   
 For example, the following query will update the ``value`` of a Case Attribute with ID 1.
