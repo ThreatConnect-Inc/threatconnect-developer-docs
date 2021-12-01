@@ -13,10 +13,31 @@ Getting Started
 v3 API
 ------
 
-Case Management
-^^^^^^^^^^^^^^^
+Features
+^^^^^^^^
+
+.. toctree::
+   :maxdepth: 1
+
+   v3/create_activity_logs
+   v3/bulk_delete
+   v3/enable_pagination
+   v3/filter_results
+   v3/additional_fields
+   v3/retrieve_fields
+   v3/retrieve_open_api_doc
+   v3/return_count
+   v3/sort_results
+   v3/specify_owner
+   v3/update_metadata
+
+Case Management Objects
+^^^^^^^^^^^^^^^^^^^^^^^
 
 .. include:: v3/case_management/case_management.rst
+
+.. note::
+   To add, edit, and delete Case Management data, the API user’s Organization role must be set to **Organization Administrator**.
 
 .. toctree::
    :maxdepth: 2
@@ -29,28 +50,35 @@ Case Management
    v3/case_management/tasks/tasks
    v3/case_management/workflow_events/workflow_events
    v3/case_management/workflow_templates/workflow_templates
-    
-.. note:: To add, edit, and delete Case Management data, the API user’s Organization role must be set to **Organization Administrator**.
 
-Attribute Types
-^^^^^^^^^^^^^^^
+Threat Intelligence Objects
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 2
+
+   v3/group_attributes/group_attributes
+   v3/groups/groups
+   v3/indicator_attributes/indicator_attributes
+   v3/indicators/indicators
+   v3/security_labels/security_labels
+   v3/tags/tags
+   v3/victim_assets/victim_assets
+   v3/victim_attributes/victim_attributes
+   v3/victims/victims
+
+Miscellaneous Objects
+^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
    :maxdepth: 2
 
    v3/attribute_types/attribute_types
-
-
-Additional Actions
-^^^^^^^^^^^^^^^^^^
-
-.. toctree::
-   :maxdepth: 1
-
-   v3/additional_fields
-   v3/bulk_delete
-   v3/filter_results
-   v3/users_list
+   v3/owner_roles/owner_roles
+   v3/owners/owners
+   v3/system_roles/system_roles
+   v3/user_groups/user_groups
+   v3/users/users
 
 v2 API
 ------
