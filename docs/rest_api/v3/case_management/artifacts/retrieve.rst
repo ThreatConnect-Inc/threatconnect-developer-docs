@@ -45,7 +45,7 @@ To retrieve a specific Artifact, use a query in the following format:
 
 .. code::
 
-    GET /v3/artifacts/{artifactID}
+    GET /v3/artifacts/{artifactId}
 
 For example, the following query will return information about the Artifact with ID 3:
 
