@@ -22,7 +22,7 @@ Refer to the `Available Fields <#available-fields>`_ and `Group-Specific Fields 
     - ``securityLabels``
     - ``tags``
 
-    See `Update an Object's Metadata <https://docs.threatconnect.com/en/latest/rest_api/v3/update-metadata.html>`_ for instructions on using the ``mode`` field.
+    See `Update an Object's Metadata <https://docs.threatconnect.com/en/latest/rest_api/v3/update_metadata.html>`_ for instructions on using the ``mode`` field.
 
 Example PUT Request
 ^^^^^^^^^^^^^^^^^^^^^
