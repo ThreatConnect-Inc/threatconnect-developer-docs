@@ -80,3 +80,8 @@ html_favicon = '_static/favicon.ico'
 def setup(app):
     """Add the stylesheet which fixes the problems with the line numbers."""
     app.add_stylesheet('css/custom.css')
+
+#Adjust TOC depth
+html_theme_options = {
+    'navigation_depth': 5
+}
