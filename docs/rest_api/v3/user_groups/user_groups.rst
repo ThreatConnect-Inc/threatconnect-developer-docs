@@ -1,0 +1,11 @@
+===========
+User Groups
+===========
+
+User groups are teams of users to which `Workflow Cases <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/cases/cases.html>`_` and `Workflow Tasks <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/tasks/tasks.html>`_ can be assigned.
+
+Endpoint: ``/api/v3/security/userGroups``
+
+.. include:: fields.rst
+
+.. include:: retrieve.rst
