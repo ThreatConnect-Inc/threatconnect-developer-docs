@@ -11,4 +11,4 @@ By default, this request will return a list of fields that can be included in a 
 
 .. code::
     
-    OPTIONS/v3/{objectType}?show=readonly
+    OPTIONS /v3/{objectType}?show=readonly
