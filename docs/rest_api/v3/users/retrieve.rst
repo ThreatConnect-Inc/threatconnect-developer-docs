@@ -51,6 +51,8 @@ For example, the following query will return information about the user with ID 
 
     GET /v3/security/users/3
 
+JSON Response:
+
 .. code:: json
 
     {
