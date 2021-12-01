@@ -5,7 +5,7 @@ The basic format for updating a Case is:
 
 .. code::
 
-    PUT /v3/cases/{caseID}
+    PUT /v3/cases/{caseId}
     {
         {updatedField}: {updatedValue}
     }
