@@ -17,7 +17,7 @@ Refer to the `Available Fields <#available-fields>`_ section for a list of avail
 
     - ``associatedGroups``
 
-    See `Update an Object's Metadata <https://docs.threatconnect.com/en/latest/rest_api/v3/update-metadata.html>`_ for instructions on using the ``mode`` field.
+    See `Update an Object's Metadata <https://docs.threatconnect.com/en/latest/rest_api/v3/update_metadata.html>`_ for instructions on using the ``mode`` field.
 
 For example, the following query will complete the following actions for a Victim Asset with ID 3:
 
