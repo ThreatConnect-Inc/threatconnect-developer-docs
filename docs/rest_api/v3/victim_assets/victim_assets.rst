@@ -1,6 +1,6 @@
-=======
-Victims
-=======
+=============
+Victim Assets
+=============
 
 Victim Assets are endpoints used to leverage a Victim and infiltrate a network.
 
