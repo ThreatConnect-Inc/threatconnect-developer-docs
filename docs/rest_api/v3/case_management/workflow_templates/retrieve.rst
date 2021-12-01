@@ -90,7 +90,7 @@ To retrieve a specific Workflow Template, use a query in the following format:
 
 .. code::
 
-    GET /v3/workflowTemplates/{workflowTemplateID}
+    GET /v3/workflowTemplates/{workflowTemplateId}
 
 For example, the following query will return information about the Workflow template with ID 1:
 
