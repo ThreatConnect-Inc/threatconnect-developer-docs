@@ -64,7 +64,7 @@ JSON Response:
             },
             "dependentOnTaskName": "Analyze Phishing Email"
         }, {
-            "configPlaybook": "{"playbookApp":{"name":"Example Workflow Escalation Demo","type":"Workflow","version":"1.1.0","updated":"2021-03-15T14:54:36.000Z","programName":"e974ff4b663ee7ac4a126793957305b5","id":619},"automatic":false,"io":{"inputs":[{"name":"escalationSubject","value":"${WORKFLOW:Gather the subject line and email body:helloSubject}"},{"name":"esclationBody","value":"${WORKFLOW:Gather the subject line and email body:helloBody}"}],"outputs":[{"intelTypes":[],"name":"emailReceipient","dataType":"String","optional":true,"failOnError":true,"artifactName":"helloRecipient","artifactType":"Email Address"}]}}",
+            "configPlaybook": {"playbookApp":{"name":"Example Workflow Escalation Demo","type":"Workflow","version":"1.1.0","updated":"2021-03-15T14:54:36.000Z","programName":"e974ff4b663ee7ac4a126793957305b5","id":619},"automatic":false,"io":{"inputs":[{"name":"escalationSubject","value":"${WORKFLOW:Gather the subject line and email body:helloSubject}"},{"name":"esclationBody","value":"${WORKFLOW:Gather the subject line and email body:helloBody}"}],"outputs":[{"intelTypes":[],"name":"emailReceipient","dataType":"String","optional":true,"failOnError":true,"artifactName":"helloRecipient","artifactType":"Email Address"}]}},
             "fields": [],
             "name": "Send Escalation Email",
             "description": "Notify Manager",
