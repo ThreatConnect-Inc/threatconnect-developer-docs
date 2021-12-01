@@ -60,7 +60,7 @@ To retrieve a specific Case, use a query in the following format:
 
 .. code::
 
-    GET /v3/cases/{caseID}
+    GET /v3/cases/{caseId}
 
 For example, the following query will return information about the Case with ID 3:
 
