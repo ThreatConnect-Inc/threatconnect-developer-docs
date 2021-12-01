@@ -5,7 +5,7 @@ The basic format for updating an Artifact is:
 
 .. code::
 
-    PUT /v3/artifacts/{artifactID}
+    PUT /v3/artifacts/{artifactId}
     {
         {updatedField}: {updatedValue}
     }
