@@ -66,6 +66,8 @@ For example, the following query will return information about the owner role wi
 
     GET /v3/security/ownerRoles/15
 
+JSON Response:
+
 .. code:: json
 
     {
