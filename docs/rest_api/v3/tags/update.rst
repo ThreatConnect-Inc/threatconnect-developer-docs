@@ -16,7 +16,7 @@ For example, the following query will rename the Tag with ID 1 to ``Phishing Att
 
 .. code::
 
-    PUT/v3/tags/1
+    PUT /v3/tags/1
     {
         "name": "Phishing Attack"
     }
