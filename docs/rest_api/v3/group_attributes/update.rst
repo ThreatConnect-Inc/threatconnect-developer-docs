@@ -16,7 +16,7 @@ For example, the following query will update the value of the Group Attribute wi
 
 .. code::
 
-    PUT/v3/groupAttributes/10
+    PUT /v3/groupAttributes/10
     {
         "default": true,
         "value": "This is an extremely dangerous adversary"
