@@ -20,21 +20,20 @@ JSON Response:
             "name": "Additional Analysis and Context",
             "description": "Relevant research and analysis associated with this Indicator, Signature, or Activity Group. Can be internal analysis or links to published articles, whitepapers, websites, or any reference providing amplifying information or geo-political context.",
             "maxSize": 65536,
-            "allowMarkdown": True,
+            "allowMarkdown": true,
             "errorMessage": "Please enter valid Additional Analysis and Context.",
-            "systemRequired": True
+            "systemRequired": true
         }, {
             "id": 2,
             "name": "Adversary Motivation Type",
             "description": "Select an overall motivation.",
             "maxSize": 21,
-            "allowMarkdown": False,
+            "allowMarkdown": false,
             "errorMessage": "Please enter valid Adversary Motivation Type.",
-            "systemRequired": False
-        }, {...},
+            "systemRequired": false
+        },
            {...}
         ],
-        "count": 80,
         "status": "Success"
     }
 
@@ -64,9 +63,9 @@ JSON Response:
         "name": "Adversary Type",
         "description": "The type of Adversary.",
         "maxSize": 50,
-        "allowMarkdown": False,
+        "allowMarkdown": false,
         "errorMessage": "Please enter valid Adversary Type: Group, Persona.",
-        "systemRequired": False
+        "systemRequired": false
     },
     "status": "Success"
     }
@@ -74,4 +73,4 @@ JSON Response:
 Filter Results
 ^^^^^^^^^^^^^^
 
-To filter returned Attribute types using ThreatConnect Query Language (TQL), refer to the `Filter Results with TQL <../filter_results.html>`__ section in this documentation.
+To filter returned objects using ThreatConnect Query Language (TQL), refer to `Filter Results with TQL <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_.

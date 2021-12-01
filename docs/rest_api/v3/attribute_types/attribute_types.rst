@@ -5,4 +5,6 @@ Attributes are key/value data sets that can be added to any Group, Indicator, Ta
 
 Endpoint: ``/api/v3/attributeTypes``
 
+.. include:: fields.rst
+
 .. include:: retrieve.rst
