@@ -45,7 +45,7 @@ To retrieve a specific Attribute type, use a query in the following format:
 
 .. code::
 
-    GET /v3/attributeTypes/{attributeTypeID}
+    GET /v3/attributeTypes/{attributeTypeId}
 
 For example, the following query will return information about the Attribute type with ID 3:
 
