@@ -14,7 +14,7 @@ The basic format for creating an Indicator is:
 Refer to the `Available Fields <#available-fields>`_ and `Indicator-Specific Fields <#indicator-specific-fields>`_ sections for a list of available fields that can included in the body of a POST request for the ``indicators`` object.
 
 .. note::
-    You can add multiple Attributes, Tags, and Security Labels to the Indicator being created in a single POST request. Similarly, you can associate multiple Indicators and Groups to the Indicator being created in a single POST request.
+    You can add multiple Attributes, Tags, and Security Labels to the Indicator being created in a single POST request. Similarly, you can associate multiple Groups to the Indicator being created in a single POST request.
 
 Example POST Request
 ^^^^^^^^^^^^^^^^^^^^^
