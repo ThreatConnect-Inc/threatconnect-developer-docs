@@ -15,14 +15,10 @@ To get started with an SDK, click a link below:
 
 For further information:
 
-* Browse the `ThreatConnect Knowledge Base <http://kb.threatconnect.com/>`_.
+* Browse the `ThreatConnect Knowledge Base <http://training.threatconnect.com/>`_.
 * Check the `ThreatConnect Github Page <https://github.com/ThreatConnect-Inc>`_.
 * Join the `developer forum <https://www.reddit.com/r/threatconnect>`_.
 * Contact support@threatconnect.com.
-
-Libraries in other languages are available for interfacing with the API, but are **not officially supported by ThreatConnect:**
-
-- `Powershell <https://github.com/davidhowell-tx/PS-ThreatConnectV2API>`__
 
 The snippets and templates below are available to make development easier, but are **not officially supported by ThreatConnect:**
 
