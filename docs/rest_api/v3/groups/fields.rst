@@ -158,7 +158,7 @@ Document
 .. note::
     If ``malware`` is set to ``true``, then the ``password`` field will be required
 
-To upload the contents of a Document to ThreatConnect or update the contents of an existing Document in ThreatConnect, see the `Upload a Document or Report <#upload-a-document-or-report>`_ and `Update a Document or Report <#update-a-document-or-report>`_ sections, respectively.
+To upload the contents of a Document to ThreatConnect or update the contents of an existing Document in ThreatConnect, see the `Upload a Document or Report <#upload-a-document-or-report-2>`_ and `Update a Document or Report <#update-a-document-or-report-2>`_ sections, respectively.
 
 Email
 =====
@@ -286,7 +286,7 @@ Report
      - FALSE
      - TRUE
 
-To upload the contents of a Report to ThreatConnect or update the contents of an existing Report in ThreatConnect, see the `Upload a Document or Report <#upload-a-document-or-report>`_ and `Update a Document or Report <#update-a-document-or-report>`_ sections, respectively.
+To upload the contents of a Report to ThreatConnect or update the contents of an existing Report in ThreatConnect, see the `Upload a Document or Report <#upload-a-document-or-report-2>`_ and `Update a Document or Report <#update-a-document-or-report-2>`_ sections, respectively.
 
 Signature
 =========
