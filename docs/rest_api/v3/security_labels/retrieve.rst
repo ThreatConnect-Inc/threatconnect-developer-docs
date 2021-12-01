@@ -62,6 +62,8 @@ For example, the following query will return information about the Security Labe
 
     GET /v3/securityLabels/2
 
+JSON Response:
+
 .. code:: json
 
     {
