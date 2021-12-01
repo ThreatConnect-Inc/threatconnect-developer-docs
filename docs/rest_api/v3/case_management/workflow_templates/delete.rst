@@ -5,7 +5,7 @@ The basic format to delete a Workflow Template is:
 
 .. code::
 
-    DELETE /v3/workflowTemplates/{workflowTemplateID}
+    DELETE /v3/workflowTemplates/{workflowTemplateId}
 
 For example, the following query will delete the Workflow Template with ID 1:
 
