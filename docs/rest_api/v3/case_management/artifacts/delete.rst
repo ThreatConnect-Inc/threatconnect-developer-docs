@@ -5,7 +5,7 @@ The basic format to delete an Artifact is:
 
 .. code::
 
-    DELETE /v3/artifacts/{artifactID}
+    DELETE /v3/artifacts/{artifactId}
 
 For example, the following query will delete the Artifact with ID 1:
 
