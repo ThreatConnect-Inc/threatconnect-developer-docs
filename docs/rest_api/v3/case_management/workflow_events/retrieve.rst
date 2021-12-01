@@ -40,7 +40,7 @@ To retrieve a specific Workflow Event, use a query in the following format:
 
 .. code::
 
-    GET /v3/workflowEvents/{workflowEventID}
+    GET /v3/workflowEvents/{workflowEventId}
 
 For example, the following query will return information about the Workflow Event with ID 1:
 
