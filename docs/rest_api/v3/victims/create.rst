@@ -19,7 +19,7 @@ Refer to the `Available Fields <#available-fields>`_ section for a list of avail
 Example POST Request
 ^^^^^^^^^^^^^^^^^^^^
 
-The following query will create a Victim. Note that all optional fields available for the victims object are included in this request.
+The following query will create a Victim. Note that all optional fields available for the ``victims`` object are included in this request.
 
 .. code::
 
