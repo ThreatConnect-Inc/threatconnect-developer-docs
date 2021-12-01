@@ -35,7 +35,7 @@ To retrieve a specific Case Attribute, use a query in the following format:
 
 .. code::
 
-    GET /v3/caseAttributes/{caseAttributeID}
+    GET /v3/caseAttributes/{caseAttributeId}
 
 For example, the following query will return information about the Case Attribute with ID 1:
 
