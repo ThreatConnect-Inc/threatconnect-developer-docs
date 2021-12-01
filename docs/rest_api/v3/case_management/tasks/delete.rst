@@ -5,7 +5,7 @@ The basic format to delete a Task is:
 
 .. code::
 
-    DELETE /v3/tasks/{taskID}
+    DELETE /v3/tasks/{taskId}
 
 For example, the following query will delete the Task with ID 1:
 
