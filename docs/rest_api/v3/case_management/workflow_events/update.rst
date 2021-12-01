@@ -5,7 +5,7 @@ The basic format for updating a Workflow Event is:
 
 .. code::
 
-    PUT /v3/workflowEvents/{workflowEventID}
+    PUT /v3/workflowEvents/{workflowEventId}
     {
         {updatedField}: {updatedValue}
     }
