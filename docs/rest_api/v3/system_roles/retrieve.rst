@@ -70,6 +70,8 @@ For example, the following query will return information about the system role w
 .. code::
 
     GET /v3/security/systemRoles/17
+    
+JSON Response:
 
 .. code:: json
 
