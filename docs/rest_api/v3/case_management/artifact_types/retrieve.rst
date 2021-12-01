@@ -42,7 +42,7 @@ To retrieve a specific Artifact type, use a query in the following format:
 
 .. code::
 
-    GET /v3/artifactTypes/{artifactTypeID}
+    GET /v3/artifactTypes/{artifactTypeId}
 
 For example, the following query will return information about the Artifact type with ID 3:
 
