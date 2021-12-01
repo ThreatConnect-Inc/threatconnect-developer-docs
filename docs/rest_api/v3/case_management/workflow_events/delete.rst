@@ -5,7 +5,7 @@ The basic format to delete a Workflow Event is:
 
 .. code::
 
-    DELETE /v3/workflowEvents/{workflowEventID}
+    DELETE /v3/workflowEvents/{workflowEventId}
 
     {
         "deletedReason": "Reason for deleting the Workflow Event."
