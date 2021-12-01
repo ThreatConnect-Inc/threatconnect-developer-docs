@@ -23,4 +23,4 @@ JSON Response
     }
 
 .. note::
-    Indicator Attributes can be removed from an Indicator via the ``mode`` field. See `Update an Object's Metadata <https://docs.threatconnect.com/en/latest/rest_api/v3/update-metadata.html>`_ for more information.
+    Indicator Attributes can be removed from an Indicator via the ``mode`` field. See `Update an Object's Metadata <https://docs.threatconnect.com/en/latest/rest_api/v3/update_metadata.html>`_ for more information.
