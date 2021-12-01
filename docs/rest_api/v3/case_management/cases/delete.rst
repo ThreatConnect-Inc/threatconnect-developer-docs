@@ -1,11 +1,11 @@
 Delete Cases
 ------------
 
-The most basic format to delete a Case is:
+The basic format to delete a Case is:
 
 .. code::
 
-    DELETE /v3/cases/{caseID}
+    DELETE /v3/cases/{caseId}
 
 For example, the following query will delete the Case with ID 1:
 
