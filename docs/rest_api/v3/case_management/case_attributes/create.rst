@@ -27,7 +27,7 @@ Additional fields can be included when adding a Case Attribute to a Case, Refer 
 +-----------+---------------------------------------------------+----------+----------+------------------------+
 
 .. note::
-    Attribute Types for Cases must first be created in the System or Organization in which a Case resides before they can be added to the Case. See `Creating Custom Attribute Types <https://training.threatconnect.com/learn/article/creating-custom-attributes-kb-article>`__ for more information.
+    Attribute Types for Cases must first be created in the System or Organization in which a Case resides before they can be added to the Case. See the `Creating Custom Attribute Types <https://training.threatconnect.com/learn/article/creating-custom-attributes-kb-article>`__ knowledge base article for more information.
 
 .. warning::
     Trying to add an Attribute to a Case when the Case Attribute Type's **Max Allowed** limit has been reached will result in an error.
