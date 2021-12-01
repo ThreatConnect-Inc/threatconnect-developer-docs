@@ -13,8 +13,6 @@ Using the API
 
 For those with a ThreatConnect Public-Cloud API-user account, the ThreatConnect API is accessible at ``https://api.threatconnect.com``.
 
-.. note:: If you are working with the ThreatConnect **sandbox**, the API path is ``https://sandbox.threatconnect.com/api``. If you are working with a **Dedicated Cloud** or **On-Premise** instance of ThreatConnect, please contact your System Administrator for the correct API URL. For **Dedicated Cloud** and **On-Premise** instances, the most common API endpoint is typically the URL for your ThreatConnect instance followed by **/api/v2/** (e.g., ``https://myinstance.threatconnect.com/api/v2/``).
-
 For the rest of this document, the base API URL will not be included in any of the endpoints (e.g., the branch for owners will be described as ``/v2/owners`` rather than ``https://api.threatconnect.com/v2/owners``). You will be responsible for adding the correct base API URL.
 
 Requests to ThreatConnect API endpoints must be made over HTTPS with a valid Signature (as described in the next section), or a 403 error will be returned.
