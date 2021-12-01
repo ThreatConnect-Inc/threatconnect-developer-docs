@@ -8,7 +8,6 @@ For example, the following query will create a new Tag with ``Demo Community`` a
 .. code::
 
     POST /v3/tags?owner=Demo%20Community
-
     {
         "name": "Nation State"
     }
