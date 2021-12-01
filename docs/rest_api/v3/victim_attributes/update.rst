@@ -16,7 +16,7 @@ For example, the following query will update the value of the Victim Attribute w
 
 .. code::
 
-    PUT/v3/victimAttributes/1
+    PUT /v3/victimAttributes/1
     {
         "default": true,
         "value": "Based on additional analysis, it was determined that this victim’s social media, bank, and email accounts were hacked as the result of a phishing attack."
