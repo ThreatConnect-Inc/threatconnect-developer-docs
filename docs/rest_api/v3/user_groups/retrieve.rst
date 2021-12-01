@@ -50,6 +50,8 @@ For example, the following query will return information about the user group wi
 
     GET /v3/security/userGroups/3
 
+JSON Response:
+
 .. code:: json
 
     {
