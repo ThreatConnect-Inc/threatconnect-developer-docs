@@ -72,7 +72,6 @@ The following query will complete the following actions for the ``ultrabadguy.co
 .. code::
 
     PUT /v3/indicators/ultrabadguy.com
-
     {
         "associatedGroups": {"data": [{"id": 15}], "mode": "delete"},
         "securityLabels": {"data": [{"name": "TLP:RED"}], "mode": "replace"},
