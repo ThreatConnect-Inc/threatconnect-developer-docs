@@ -96,6 +96,8 @@ For example, the following query will return information about the owner with ID
 
     GET /v3/security/owners/3
 
+JSON Response:
+
 .. code:: json
 
     {
