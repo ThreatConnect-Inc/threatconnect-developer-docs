@@ -16,7 +16,7 @@ For example, the following query will update the value of the Indicator Attribut
 
 .. code::
 
-    PUT/v3/indicatorAttributes/10
+    PUT /v3/indicatorAttributes/10
     {
         "default": true,
         "value": "Host used by hacker conglomerate traced to China."
