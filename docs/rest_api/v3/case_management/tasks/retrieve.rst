@@ -42,7 +42,7 @@ To retrieve a specific Task, use a query in the following format:
 
 .. code::
 
-    GET /v3/tasks/{taskID}
+    GET /v3/tasks/{taskId}
 
 For example, the following query will return information about the Task with ID 1:
 
