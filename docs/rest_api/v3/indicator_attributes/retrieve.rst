@@ -52,7 +52,8 @@ JSON Response
             "value": "At the time of Analysis, the host of this URL resolved to Address 199.34.228.53",
             "dateAdded": "2021-11-09T06:03:54Z",
             "lastModified": "2021-11-09T06:03:54Z",
-            "default": Ff
+            "default": false
+        },
         {...}
         ],
         "status": "Success"
@@ -92,7 +93,7 @@ JSON Response
 Request Additional Fields
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To request additional fields not automatically provided with each returned object, refer to `Request Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
+To request additional fields not automatically provided with each returned object, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
 
 Filter Results
 ^^^^^^^^^^^^^^
