@@ -23,4 +23,4 @@ JSON Response
     }
 
 .. note::
-    Victim Attributes can be removed from a Victim via the ``mode`` field. See `Update an Object's Metadata <https://docs.threatconnect.com/en/latest/rest_api/v3/update-metadata.html>`_ for more information.
+    Victim Attributes can be removed from a Victim via the ``mode`` field. See `Update an Object's Metadata <https://docs.threatconnect.com/en/latest/rest_api/v3/update_metadata.html>`_ for more information.
