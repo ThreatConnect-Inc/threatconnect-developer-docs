@@ -12,3 +12,4 @@ Trademarks
 -  Java®, JavaScript®, and Oracle® are registered trademarks of the
    Oracle Corporation.
 -  Python® is a registered trademark of the Python Software Foundation.
+-  Swagger™ is a trademark of Smartbear Software, Inc.
