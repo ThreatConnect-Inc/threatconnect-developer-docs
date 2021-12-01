@@ -5,7 +5,7 @@ The basic format for updating a Workflow Template is:
 
 .. code::
 
-    PUT /v3/workflowTemplates/{workflowTemplateID}
+    PUT /v3/workflowTemplates/{workflowTemplateId}
     {
         {updatedField}: {updatedValue}
     }
