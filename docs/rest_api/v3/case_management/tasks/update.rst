@@ -5,7 +5,7 @@ The basic format for updating a Task is:
 
 .. code::
 
-    PUT /v3/tasks/{taskID}
+    PUT /v3/tasks/{taskId}
     {
         {updatedField}: {updatedValue}
     }
