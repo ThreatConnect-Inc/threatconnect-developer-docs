@@ -20,7 +20,7 @@ JSON Response:
         "name": "Create Shared Drive Folder for Case",
         "workflowPhase": 1,
         "workflowStep": 1,
-        "required": False,
+        "required": false,
         "status": "Open"
       }, {
         "id": 2,
@@ -28,7 +28,7 @@ JSON Response:
         "description": "If Case listed a Severity of High or Critical, create a Meeting Notes folder inside the Case folder.",
         "workflowPhase": 1,
         "workflowStep": 2,
-        "required": True,
+        "required": true,
         "status": "Open"
       }],
       "count": 2,
@@ -60,7 +60,7 @@ JSON Response:
         "name": "Create Shared Drive Folder for Case",
         "workflowPhase": 1,
         "workflowStep": 1,
-        "required": False,
+        "required": false,
         "status": "Open"
       }],
       "status": "Success"
@@ -69,9 +69,9 @@ JSON Response:
 Request Additional Fields
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To request additional fields not automatically provided with each returned Task, refer to the `Request Additional Fields for Returned Objects <../../additional_fields.html>`__ section in this documentation.
+To request additional fields not automatically provided with each returned object, refer to `Request Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
 
 Filter Results
 ^^^^^^^^^^^^^^
 
-To filter returned Tasks using ThreatConnect Query Language (TQL), refer to the `Filter Results with TQL <../../filter_results.html>`__ section in this documentation.
+To filter returned objects using ThreatConnect Query Language (TQL), refer to `Filter Results with TQL <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_.

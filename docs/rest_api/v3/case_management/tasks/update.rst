@@ -1,7 +1,7 @@
 Update Workflow Tasks
 ---------------------
 
-To update a Task, the basic format is:
+The basic format for updating a Task is:
 
 .. code::
 
@@ -16,9 +16,9 @@ Refer to the following table for a list of available fields that can be updated 
 +----------------+------------------------------------------------------+----------+-------------------------------------------------------------------------+
 | Field          | Description                                          | Type     | Example Value(s)                                                        |
 +================+======================================================+==========+=========================================================================+
-| artifacts      | A list of Artifacts associated with the Task         | String   | "{"data": [{"summary": "badguy@bad.com", "type": "Email Address"]}}"    |
+| artifacts      | A list of Artifacts associated with the Task         | String   | {"data": [{"summary": "badguy@bad.com", "type": "Email Address"]}}      |
 +----------------+------------------------------------------------------+----------+-------------------------------------------------------------------------+
-| assignee       | The user or group Assignee object for the Task       | String   | "{"type": "User", "data": {"userName": "jonsmith@threatconnect.com"}}"  |
+| assignee       | The user or group Assignee object for the Task       | String   | {"type": "User", "data": {"userName": "jonsmith@threatconnect.com"}}    |
 +----------------+------------------------------------------------------+----------+-------------------------------------------------------------------------+
 | description    | The description of the Task                          | String   | "New task description"                                                  |
 +----------------+------------------------------------------------------+----------+-------------------------------------------------------------------------+
@@ -26,7 +26,9 @@ Refer to the following table for a list of available fields that can be updated 
 +----------------+------------------------------------------------------+----------+-------------------------------------------------------------------------+
 | name           | The name of the Task                                 | String   | "New Workflow Task Name"                                                |
 +----------------+------------------------------------------------------+----------+-------------------------------------------------------------------------+
-| required       | Flag indicating whether or not the Task is required  | Boolean  | True, False                                                             |
+| notes          | A list of Notes corresponding to the Task            | String   | {"data": [{"text": "Note about task"}]}                                 |
++----------------+------------------------------------------------------+----------+-------------------------------------------------------------------------+
+| required       | Flag indicating whether or not the Task is required  | Boolean  | true, false                                                             |
 +----------------+------------------------------------------------------+----------+-------------------------------------------------------------------------+
 | status         | The status of the Task                               | String   | "Pending", "Open", "Reopened", or "Closed"                              |
 +----------------+------------------------------------------------------+----------+-------------------------------------------------------------------------+
@@ -38,7 +40,7 @@ For example, the following query will make the Task with ID 1 required to comple
     PUT /v3/tasks/1
     {
       "dueDate": "2021-04-30",
-      "required": True
+      "required": true
     }
 
 JSON Response:
@@ -54,7 +56,7 @@ JSON Response:
           "workflowPhase": 1,
           "workflowStep": 1,
           "dueDate": "2021-04-30T00:00:00Z",
-          "required": True,
+          "required": true,
           "status": "Open",
           "notes": {
               "count": 0

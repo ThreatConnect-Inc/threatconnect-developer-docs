@@ -1,7 +1,7 @@
 Update Workflow Events
 ----------------------
 
-To update a Workflow Event, the basic format is:
+The basic format for updating a Workflow Event is:
 
 .. code::
 
@@ -41,7 +41,7 @@ JSON Response:
         "eventDate": "2021-03-05T14:48:44Z",
         "dateAdded": "2021-03-05T14:48:44Z",
         "summary": "New Workflow Event summary",
-        "systemGenerated": True,
+        "systemGenerated": true,
         "notes": {
           "count": 0
         }

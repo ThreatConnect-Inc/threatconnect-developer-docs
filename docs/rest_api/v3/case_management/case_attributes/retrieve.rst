@@ -25,7 +25,6 @@ JSON Response:
         "type": "Phishing Open Rate",
         "value": "20"
       }],
-      "count": 2,
       "status": "Success"
     }
 
@@ -61,9 +60,9 @@ JSON Response:
 Request Additional Fields
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To request additional fields not automatically provided with each returned Case Attribute, refer to the `Request Additional Fields for Returned Objects <../../additional_fields.html>`__ section in this documentation.
+To request additional fields not automatically provided with each returned object, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
 
 Filter Results
 ^^^^^^^^^^^^^^
 
-To filter returned Case Attribute using ThreatConnect Query Language (TQL), refer to the `Filter Results with TQL <../../filter_results.html>`__ section in this documentation.
+To filter returned objects using ThreatConnect Query Language (TQL), refer to `Filter Results with TQL <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_.

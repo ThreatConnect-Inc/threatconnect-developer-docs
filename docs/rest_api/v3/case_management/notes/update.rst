@@ -1,7 +1,7 @@
 Update Notes
 ------------
 
-To update a Note, the basic format is:
+The basic format for updating a Note is:
 
 .. code::
 
@@ -41,7 +41,7 @@ JSON Response:
         "author": "pjones+analyst@threatconnect.com",
         "dateAdded": "2021-03-17T10:15:02Z",
         "lastModified": "2021-03-18T09:31:22Z",
-        "edited": True
+        "edited": true
       },
       "message": "Updated",
       "status": "Success"

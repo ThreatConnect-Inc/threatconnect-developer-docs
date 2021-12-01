@@ -5,6 +5,8 @@ A Workflow Case is a single instance of an investigation, inquiry, or other proc
 
 Endpoint: ``/api/v3/cases``
 
+.. include:: fields.rst
+
 .. include:: create.rst
 
 .. include:: retrieve.rst

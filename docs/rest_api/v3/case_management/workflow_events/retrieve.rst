@@ -20,17 +20,16 @@ JSON Response:
         "eventDate": "2021-03-05T14:48:44Z",
         "dateAdded": "2021-03-05T14:48:44Z",
         "summary": "Case created",
-        "systemGenerated": True,
+        "systemGenerated": true,
         "link": "https://app.threatconnect.com/api/v3/cases/1"
       }, {
         "id": 2,
         "eventDate": "2021-03-05T14:49:24Z",
         "dateAdded": "2021-03-05T14:49:24Z",
         "summary": "Added a note",
-        "systemGenerated": True,
+        "systemGenerated": true,
         "link": "https://app.threatconnect.com/api/v3/notes/1"
       }],
-      "count": 2,
       "status": "Success"
     }
 
@@ -59,7 +58,7 @@ JSON Response:
         "eventDate": "2021-03-05T14:48:44Z",
         "dateAdded": "2021-03-05T14:48:44Z",
         "summary": "Case created",
-        "systemGenerated": True,
+        "systemGenerated": true,
         "link": "https://app.threatconnect.com/api/v3/cases/1"
       },
       "status": "Success"
@@ -68,9 +67,9 @@ JSON Response:
 Request Additional Fields
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To request additional fields not automatically provided with each returned Workflow Event, refer to the `Request Additional Fields for Returned Objects <../../additional_fields.html>`__ section in this documentation.
+To request additional fields not automatically provided with each returned object, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
 
 Filter Results
 ^^^^^^^^^^^^^^
 
-To filter returned Workflow Events using ThreatConnect Query Language (TQL), refer to the `Filter Results with TQL <../../filter_results.html>`__ section in this documentation.
+To filter returned objects using ThreatConnect Query Language (TQL), refer to `Filter Results with TQL <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_.

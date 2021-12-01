@@ -24,7 +24,7 @@ JSON Response:
         "author": "11112222333344445555",
         "dateAdded": "2021-04-22T20:17:15Z",
         "lastModified": "2021-04-22T20:17:15Z",
-        "edited": False
+        "edited": false
       }, {
         "id": 2,
         "caseId": 2,
@@ -34,9 +34,8 @@ JSON Response:
         "author": "pjones+analyst@threatconnect.com",
         "dateAdded": "2021-03-17T10:15:02Z",
         "lastModified": "2021-03-18T09:31:22Z",
-        "edited": True
+        "edited": true
       }],
-      "count": 2,
       "status": "Success"
     }
 
@@ -69,7 +68,7 @@ JSON Response:
         "author": "11112222333344445555",
         "dateAdded": "2021-04-22T20:17:15Z",
         "lastModified": "22021-04-22T20:17:15Z",
-        "edited": False
+        "edited": false
       },
       "status": "Success"
     }
@@ -77,9 +76,9 @@ JSON Response:
 Request Additional Fields
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To request additional fields not automatically provided with each returned Note, refer to the `Request Additional Fields for Returned Objects <../../additional_fields.html>`__ section in this documentation.
+To request additional fields not automatically provided with each returned object, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
 
 Filter Results
 ^^^^^^^^^^^^^^
 
-To filter returned Notes using ThreatConnect Query Language (TQL), refer to the `Filter Results with TQL <../../filter_results.html>`__ section in this documentation.
+To filter returned objects using ThreatConnect Query Language (TQL), refer to `Filter Results with TQL <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_.

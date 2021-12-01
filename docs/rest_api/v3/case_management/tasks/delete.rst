@@ -1,7 +1,7 @@
 Delete Workflow Tasks
 ---------------------
 
-To delete a Task, use the following query:
+The basic format to delete a Task is:
 
 .. code::
 
@@ -25,4 +25,4 @@ JSON Response:
 Delete Tasks in Bulk
 ^^^^^^^^^^^^^^^^^^^^
 
-To delete Tasks in bulk, refer to the `Delete Case Objects in Bulk <../../bulk_delete.html>`__ section in this documentation.
+To delete Tasks in bulk, refer to `Delete Case Objects in Bulk <https://docs.threatconnect.com/en/latest/rest_api/v3/bulk_delete.html>`_.

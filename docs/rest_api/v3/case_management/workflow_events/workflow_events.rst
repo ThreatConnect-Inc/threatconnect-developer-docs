@@ -5,6 +5,8 @@ Workflow Events represent changes made to a Workflow Case. When an action is per
 
 Endpoint: ``/api/v3/workflowEvents``
 
+.. include:: fields.rst
+
 .. include:: create.rst
 
 .. include:: retrieve.rst

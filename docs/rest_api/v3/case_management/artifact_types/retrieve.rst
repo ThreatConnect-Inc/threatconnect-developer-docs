@@ -21,18 +21,17 @@ JSON Response:
         "description": "A name that identifies an electronic post office box on a network where Electronic-Mail (e-mail) can be sent.",
         "dataType": "String",
         "intelType": "indicator-EmailAddress",
-        "derivedLink": "True"
+        "derivedLink": true
       }, {
         "id": 2,
         "name": "Host",
         "description": "A hostname. A host is any hardware device that has the capability of permitting access to a network via a user interface, specialized software, network address, protocol stack, or any other means.",
         "dataType": "String",
         "intelType": "indicator-Host",
-        "derivedLink": "True"
-      }, {...},
+        "derivedLink": true
+      }, 
          {...}
       ],
-      "count": 75,
       "status": "Success"
     }
 
@@ -62,7 +61,7 @@ JSON Response:
         "description": "A uniform resource locator, or URL, is a short string containing an address which refers to an object in the web. URLs are a subset of URIs.",
         "dataType": "String",
         "intelType": "indicator-URL",
-        "derivedLink": "True"
+        "derivedLink": true
       },
       "status": "Success"
     }
@@ -70,4 +69,4 @@ JSON Response:
 Filter Results
 ^^^^^^^^^^^^^^
 
-To filter returned Artifact types using ThreatConnect Query Language (TQL), refer to the `Filter Results with TQL <../../filter_results.html>`__ section in this documentation.
+To filter returned objects using ThreatConnect Query Language (TQL), refer to `Filter Results with TQL <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_.

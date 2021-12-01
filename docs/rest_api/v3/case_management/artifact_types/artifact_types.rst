@@ -5,4 +5,6 @@ Potential Artifact types include all ThreatConnect Indicator types, as well as a
 
 Endpoint: ``/api/v3/artifactTypes``
 
+.. include:: fields.rst
+
 .. include:: retrieve.rst

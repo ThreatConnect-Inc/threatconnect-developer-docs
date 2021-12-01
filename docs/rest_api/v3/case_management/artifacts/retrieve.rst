@@ -23,7 +23,7 @@ JSON Response:
         "intelType": "indicator-EmailAddress",
         "source": "11112222333344445555",
         "dateAdded": "2021-04-22T19:24:06Z",
-        "derivedLink": "True",
+        "derivedLink": true,
         "hashCode": "2e7d3603331dea4ec9a14442c0a409dcfc3f69e7"
       }, {
         "id": 2,
@@ -32,10 +32,9 @@ JSON Response:
         "intelType": "indicator-Address",
         "source": "johnsmith",
         "dateAdded": "2021-03-08T13:24:38Z",
-        "derivedLink": "True",
+        "derivedLink": true,
         "hashCode": "cbdb4defdbb9433683a9daa0764c58a45bddd729"
       }],
-      "count": 2,
       "status": "Success"
     }
 
@@ -67,7 +66,7 @@ JSON Response:
         "intelType": "indicator-Email Subject",
         "source": "patjones",
         "dateAdded": "2021-03-15T10:16:40Z",
-        "derivedLink": "True",
+        "derivedLink": true,
         "hashCode": "fec31a1f2937c37b110d467cf78c03d820954596"
       },
       "status": "Success"
@@ -76,9 +75,9 @@ JSON Response:
 Request Additional Fields
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To request additional fields not automatically provided with each returned Artifact, refer to the `Request Additional Fields for Returned Objects <../../additional_fields.html>`__ section in this documentation.
+To request additional fields not automatically provided with each returned object, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
 
 Filter Results
 ^^^^^^^^^^^^^^
 
-To filter returned Artifacts using ThreatConnect Query Language (TQL), refer to the `Filter Results with TQL <../../filter_results.html>`__ section in this documentation.
+To filter returned objects using ThreatConnect Query Language (TQL), refer to `Filter Results with TQL <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_.

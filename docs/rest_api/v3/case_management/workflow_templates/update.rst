@@ -1,7 +1,7 @@
 Update Workflow Templates
 -------------------------
 
-To update a Workflow Template, the basic format is:
+The basic format for updating a Workflow Template is:
 
 .. code::
 
@@ -26,7 +26,8 @@ Refer to the following table for a list of available fields that can be updated 
 | version          | The version of the Workflow Template       | FALSE    | Integer  | 1, 2, 3                                 |
 +------------------+--------------------------------------------+----------+----------+-----------------------------------------+
 
-.. note:: To view a list of available Attribute types, refer to the `Attribute Types <../../attribute_types/attribute_types.html>`__ section of this documentation.
+.. note::
+    To view a list of available Attribute types, refer to the `Attribute Types <https://docs.threatconnect.com/en/latest/rest_api/v3/attribute_types/attribute_types.html>`_ section of this documentation.
 
 For example, the following query will update the name and version number of the Workflow Template with ID 1:
 
@@ -47,7 +48,7 @@ JSON Response:
           "id": 1,
           "name": "Example Workflow Template Version 2.0",
           "description": "A description for this Workflow Template.",
-          "active": False,
+          "active": false,
           "version": 2,
       },
       "message": "Updated",

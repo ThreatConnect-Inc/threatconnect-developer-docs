@@ -1,7 +1,7 @@
 Create Workflow Tasks
 ---------------------
 
-The most basic format for creating a Task is:
+The basic format for creating a Task is:
 
 .. code::
 
@@ -17,13 +17,13 @@ Additional fields can be included when creating a Task. Refer to the following t
 +----------------+-----------------------------------------------------------+----------+----------+-------------------------------------------------------------------------+
 | Field          | Description                                               | Required | Type     | Example Value(s)                                                        |
 +================+===========================================================+==========+==========+=========================================================================+
-| artifacts      | A list of Artifacts associated with the Task              | FALSE    | String   | "{"data": [{"summary": "badguy@bad.com", "type": "Email Address"]}}"    |
+| artifacts      | A list of Artifacts associated with the Task              | FALSE    | String   | {"data": [{"summary": "badguy@bad.com", "type": "Email Address"]}}      |
 +----------------+-----------------------------------------------------------+----------+----------+-------------------------------------------------------------------------+
-| assignee       | The user or group Assignee object for the Task            | FALSE    | String   | "{"type": "User", "data": {"userName": "jonsmith@threatconnect.com"}}"  |
+| assignee       | The user or group Assignee object for the Task            | FALSE    | String   | {"type": "User", "data": {"userName": "jonsmith@threatconnect.com"}}    |
 +----------------+-----------------------------------------------------------+----------+----------+-------------------------------------------------------------------------+
 | caseId         | The ID of the Case that contains the Task                 | TRUE     | Integer  | 1, 2, 3                                                                 |
 +----------------+-----------------------------------------------------------+----------+----------+-------------------------------------------------------------------------+
-| caseXid        | The XID of the Case that contains the Task                | TRUE     | Integer  | "a1a1a1a1-a1a1-a1a1-a1a1-a1a1a1a1a1a1"                                  |
+| caseXid        | The XID of the Case that contains the Task                | TRUE     | String   | "a1a1a1a1-a1a1-a1a1-a1a1-a1a1a1a1a1a1"                                  |
 +----------------+-----------------------------------------------------------+----------+----------+-------------------------------------------------------------------------+
 | completedDate  | The completion date of the Task                           | FALSE    | Date     | "2021-04-30T00:00:00Z"                                                  |
 +----------------+-----------------------------------------------------------+----------+----------+-------------------------------------------------------------------------+
@@ -35,7 +35,9 @@ Additional fields can be included when creating a Task. Refer to the following t
 +----------------+-----------------------------------------------------------+----------+----------+-------------------------------------------------------------------------+
 | name           | The name of the Task                                      | TRUE     | String   | "Example Task"                                                          |
 +----------------+-----------------------------------------------------------+----------+----------+-------------------------------------------------------------------------+
-| required       | Flag indicating whether or not the Task is required       | FALSE    | Boolean  | True, False                                                             |
+| notes          | A list of Notes corresponding to the Task                 | FALSE    | String   | {"data": [{"text": "Note about task"}]}                                 |
++----------------+-----------------------------------------------------------+----------+----------+-------------------------------------------------------------------------+
+| required       | Flag indicating whether or not the Task is required       | FALSE    | Boolean  | true, false                                                             |
 +----------------+-----------------------------------------------------------+----------+----------+-------------------------------------------------------------------------+
 | status         | The status of the Task                                    | FALSE    | String   | "Pending", "Open", "Reopened", or "Closed"                              |
 +----------------+-----------------------------------------------------------+----------+----------+-------------------------------------------------------------------------+
@@ -70,7 +72,7 @@ JSON Response:
           "description": "If Case lists a Severity of High or Critical, create a Meeting Notes folder inside the Case folder.",
           "workflowPhase": 1,
           "workflowStep": 2,
-          "required": False,
+          "required": false,
           "status": "Open",
           "notes": {
               "count": 0

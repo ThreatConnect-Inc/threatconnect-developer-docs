@@ -1,7 +1,7 @@
 Delete Notes
 ------------
 
-To delete a Note, use the following query:
+The basic format to delete a Note is:
 
 .. code::
 
@@ -22,7 +22,7 @@ JSON Response:
       "status": "Success"
     }
 
-Delete Notes in Bulk
+Delete Cases in Bulk
 ^^^^^^^^^^^^^^^^^^^^
 
-To delete Notes in bulk, refer to the `Delete Case Objects in Bulk <../../bulk_delete.html>`__ section in this documentation.
+To delete Cases in bulk, refer to `Delete Case Objects in Bulk <https://docs.threatconnect.com/en/latest/rest_api/v3/bulk_delete.html>`_.

@@ -1,7 +1,7 @@
 Update Case Attributes
 ----------------------
 
-To update a Case Attribute that has been added to a Case, the most basic format is:
+The basic format for updating a Case Attribute is:
 
 .. code::
 

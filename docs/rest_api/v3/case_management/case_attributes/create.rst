@@ -1,7 +1,7 @@
 Create Case Attributes
 ----------------------
 
-The most basic format for adding a Case Attribute to a Case is:
+The basic format for creating a Case Attribute and adding it to a Case is:
 
 .. code::
 
@@ -26,9 +26,11 @@ Additional fields can be included when adding a Case Attribute to a Case, Refer 
 | value     | The Attribute's value                             | TRUE     | String   | "50"                   |
 +-----------+---------------------------------------------------+----------+----------+------------------------+
 
-.. note:: Attribute Types for Cases must first be created in the System or Organization in which a Case resides before they can be added to the Case. See `Creating Custom Attribute Types <https://training.threatconnect.com/learn/article/creating-custom-attributes-kb-article>`__ for more information.
+.. note::
+    Attribute Types for Cases must first be created in the System or Organization in which a Case resides before they can be added to the Case. See `Creating Custom Attribute Types <https://training.threatconnect.com/learn/article/creating-custom-attributes-kb-article>`__ for more information.
 
-.. note:: Trying to add an Attribute to a Case when the Case Attribute Type's **Max Allowed** limit has been reached will result in an error.
+.. warning::
+    Trying to add an Attribute to a Case when the Case Attribute Type's **Max Allowed** limit has been reached will result in an error.
   
 For example, the following query will add a Case Attribute to the Case with ID 1.
 

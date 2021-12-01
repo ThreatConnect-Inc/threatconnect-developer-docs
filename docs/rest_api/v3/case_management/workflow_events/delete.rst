@@ -1,7 +1,7 @@
 Delete Workflow Events
 ----------------------
 
-To delete a Workflow Event, use a query in the following format:
+The basic format to delete a Workflow Event is:
 
 .. code::
 
@@ -10,6 +10,9 @@ To delete a Workflow Event, use a query in the following format:
     {
         "deletedReason": "Reason for deleting the Workflow Event."
     }
+
+.. note::
+    You must specify a ``deletedReason`` to delete a Workflow Event.
 
 For example, the following query will delete the Workflow Event with ID 1:
 

@@ -16,41 +16,40 @@ JSON Response:
 
     {
       "data": [{
-        "id": 1,
-        "xid": "a1a1a1a1-a1a1-a1a1-a1a1-a1a1a1a1a1a1",
-        "name": "Example Workflow Case",
-        "dateAdded": "2021-04-09T14:41:27.622Z",
-        "status": "Open",
-        "severity": "Low",
-        "resolution": "Not Specified",
-        "createdBy": {
-          "id": 3,
-          "userName": "11112222333344445555",
-          "firstName": "John",
-          "lastName": "Smith",
-          "pseudonym": "jsmithAPI",
-          "role": "Api User"
-        },
-        "owner": "Example Organization",
-      }, {
-        "id": 2,
-        "xid": "b2b2b2b2-b2b2-b2b2-b2b2-b2b2b2b2b2b2",
-        "name": "Malware Invesigation",
-        "description": "Case to investigate new malware",
-        "dateAdded": "2021-03-25T18:56:22Z",
-        "status": "Open",
-        "severity": "Critical",
-        "resolution": "Not Specified",
-        "createdBy": {
+          "id": 1,
+          "xid": "a1a1a1a1-a1a1-a1a1-a1a1-a1a1a1a1a1a1",
+          "name": "Example Workflow Case",
+          "dateAdded": "2021-04-09T14:41:27.622Z",
+          "status": "Open",
+          "severity": "Low",
+          "resolution": "Not Specified",
+          "createdBy": {
+              "id": 3,
+              "userName": "11112222333344445555",
+              "firstName": "John",
+              "lastName": "Smith",
+              "pseudonym": "jsmithAPI",
+              "role": "Api User"
+          },
+          "owner": "Example Organization",
+      },{
           "id": 2,
-          "userName": "pjones+analyst@threatconnect.com",
-          "firstName": "Patrick",
-          "lastName": "Jones",
-          "pseudonym": "patjones"
+          "xid": "b2b2b2b2-b2b2-b2b2-b2b2-b2b2b2b2b2b2",
+          "name": "Malware Invesigation",
+          "description": "Case to investigate new malware",
+          "dateAdded": "2021-03-25T18:56:22Z",
+          "status": "Open",
+          "severity": "Critical",
+          "resolution": "Not Specified",
+          "createdBy": {
+            "id": 2,
+            "userName": "pjones+analyst@threatconnect.com",
+            "firstName": "Patrick",
+            "lastName": "Jones",
+            "pseudonym": "patjones"
         },
         "owner": "Example Organization"
       }],
-      "count": 2,
       "status": "Success"
     }
 
@@ -109,9 +108,9 @@ JSON Response:
 Request Additional Fields
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To request additional fields not automatically provided with each returned Case, refer to the `Request Additional Fields for Returned Objects <../../additional_fields.html>`__ section in this documentation.
+To request additional fields not automatically provided with each returned object, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
 
 Filter Results
 ^^^^^^^^^^^^^^
 
-To filter returned Cases using ThreatConnect Query Language (TQL), refer to the `Filter Results with TQL <../../filter_results.html>`__ section in this documentation.
+To filter returned objects using ThreatConnect Query Language (TQL), refer to `Filter Results with TQL <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_.

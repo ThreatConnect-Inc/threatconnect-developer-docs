@@ -1,7 +1,7 @@
 Create Workflow Events
 ----------------------
 
-The most basic format for creating a Workflow Event is:
+The basic format for creating a Workflow Event is:
 
 .. code::
 
@@ -23,7 +23,7 @@ Some Workflow Event types require additional fields when being created. Refer to
 +---------------+----------------------------------------------+----------+----------+---------------------------------------------------------+
 | eventDate     | The time that the Event is logged            | FALSE    | Date     | "2021-04-30T00:00:00Z"                                  |
 +---------------+----------------------------------------------+----------+----------+---------------------------------------------------------+
-| notes         | A list of Notes corresponding to the Event   | FALSE    | String   | "{"data": [{"text": "Note for New Workflow Event"}]}}"  |
+| notes         | A list of Notes corresponding to the Event   | FALSE    | String   | {"data": [{"text": "Note for New Workflow Event"}]}}    |
 +---------------+----------------------------------------------+----------+----------+---------------------------------------------------------+
 | summary       | The summary of the Event                     | TRUE     | String   | "Workflow Event Summary"                                |
 +---------------+----------------------------------------------+----------+----------+---------------------------------------------------------+
@@ -49,10 +49,11 @@ JSON Response:
         "eventDate": "2021-03-05T14:54:31Z",
         "dateAdded": "2021-03-05T14:54:31Z",
         "summary": "Updated Case name",
-        "systemGenerated": False
+        "systemGenerated": false
       },
       "message": "Created",
       "status": "Success"
     }
 
-.. note:: Creating a Workflow Event only adds an Event to the Case's Timeline. It does not perform the action indicated in the Event's summary.
+.. note::
+    Creating a Workflow Event only adds an Event to the Case's Timeline. It does not perform the action indicated in the Event's summary.

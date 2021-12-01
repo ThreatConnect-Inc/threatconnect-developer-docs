@@ -5,6 +5,8 @@ A Workflow Task is a step to perform within a Case. Workflow Tasks can be manual
 
 Endpoint: ``/api/v3/tasks``
 
+.. include:: fields.rst
+
 .. include:: create.rst
 
 .. include:: retrieve.rst

@@ -1,7 +1,7 @@
 Delete Artifacts
 ----------------
 
-The most basic format to delete an Artifact is:
+The basic format to delete an Artifact is:
 
 .. code::
 
@@ -25,4 +25,4 @@ JSON Response:
 Delete Artifacts in Bulk
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-To delete Artifacts in bulk, refer to the `Delete Case Objects in Bulk <../../bulk_delete.html>`__ section in this documentation.
+To delete Artifacts in bulk, refer to `Delete Case Objects in Bulk <https://docs.threatconnect.com/en/latest/rest_api/v3/bulk_delete.html>`_.

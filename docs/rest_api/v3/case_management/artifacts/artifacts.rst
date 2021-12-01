@@ -5,6 +5,8 @@ An Artifact in Workflow is any piece of data not captured in a Note that provide
 
 Endpoint: ``/api/v3/artifacts``
 
+.. include:: fields.rst
+
 .. include:: create.rst
 
 .. include:: retrieve.rst

@@ -19,7 +19,7 @@ JSON Response:
         "id": 1,
           "name": "Example Workflow Template",
           "description": "A description for this Workflow Template.",
-          "active": False,
+          "active": false,
           "version": 1,
           "configAttribute": [{
               "attributeTypeId": 23,
@@ -32,7 +32,7 @@ JSON Response:
             "fields": [],
             "name": "Analyze phishing email",
             "description": "Analyze phishing email",
-            "required": True,
+            "required": true,
             "workflowPhase": 1,
             "workflowStep": 1,
             "assignee": None
@@ -43,20 +43,20 @@ JSON Response:
             "dataType": "String",
             "intelType": "indicator-Email Subject",
             "name": "helloSubject",
-            "required": False,
+            "required": false,
             "uiElement": "String",
             "uiLabel": "Subject Line"
             }, {
             "artifactType": "Email Body",
             "dataType": "String",
             "name": "helloBody",
-            "required": True,
+            "required": true,
             "uiElement": "String",
             "uiLabel": "Email Body"
             }],
             "name": "Gather the subject line and email body",
             "description": "Description ",
-            "required": True,
+            "required": true,
             "workflowPhase": 1,
             "workflowStep": 2,
             "assignee": {
@@ -68,7 +68,7 @@ JSON Response:
             "fields": [],
             "name": "Send Escalation Email",
             "description": "Notify Manager",
-            "required": False,
+            "required": false,
             "workflowId": 13,
             "workflowPhase": 2,
             "workflowStep": 1,
@@ -77,10 +77,9 @@ JSON Response:
             },
             "dependentOnTaskName": "Gather the subject line and email body"
         }],
-        "active": True,
+        "active": true,
         "version": 1
         }],
-      "count": 2,
       "status": "Success"
     }
 
@@ -108,7 +107,7 @@ JSON Response:
           "id": 1,
           "name": "Example Workflow Template",
           "description": "A description for this Workflow Template.",
-          "active": False,
+          "active": false,
           "version": 1,
       },
       "status": "Success"
@@ -117,9 +116,9 @@ JSON Response:
 Request Additional Fields
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To request additional fields not automatically provided with each returned Workflow Template, refer to the `Request Additional Fields for Returned Objects <../../additional_fields.html>`__ section in this documentation.
+To request additional fields not automatically provided with each returned object, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
 
 Filter Results
 ^^^^^^^^^^^^^^
 
-To filter returned Workflow Templates using ThreatConnect Query Language (TQL), refer to the `Filter Results with TQL <../../filter_results.html>`__ section in this documentation.
+To filter returned objects using ThreatConnect Query Language (TQL), refer to `Filter Results with TQL <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_.

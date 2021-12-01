@@ -5,6 +5,8 @@ Workflow Templates are codified procedures for the steps to be taken within a Ca
 
 Endpoint: ``/api/v3/workflowTemplates``
 
+.. include:: fields.rst
+
 .. include:: create.rst
 
 .. include:: retrieve.rst

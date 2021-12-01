@@ -1,7 +1,7 @@
 Update Artifacts
 ----------------
 
-To update an Artifact, the basic format is:
+The basic format for updating an Artifact is:
 
 .. code::
 
@@ -21,12 +21,15 @@ Refer to the following table for a list of available fields that can be updated 
 +--------------+-------------------------------------------------------------------------------+----------+
 | fileData     | Base64-encoded file attachment (required only for certain Artifact types)     | String   |
 +--------------+-------------------------------------------------------------------------------+----------+
+| notes        | A list of Notes corresponding to the Artifact                                 | String   |
++--------------+-------------------------------------------------------------------------------+----------+
 | source       | The name of the user who entered the Artifact into the Case                   | String   |
 +--------------+-------------------------------------------------------------------------------+----------+
 | summary      | The data contained in the Artifact                                            | String   |
 +--------------+-------------------------------------------------------------------------------+----------+
 
-.. note:: To update an Artifact's ``fieldName``, the Artifact must be associated with a Task, and the associated Task must have multiple Artifact Fields defined. For more information about Artifact Fields, see the "Artifact Fields" section of `Workflow Cases <https://training.threatconnect.com/learn/article/workflow-cases-kb-article>`__.
+.. note::
+    To update an Artifact's ``fieldName``, the Artifact must be associated with a Task, and the associated Task must have multiple Artifact Fields defined. For more information about Artifact Fields, see the "Artifact Fields" section of `Workflow Cases <https://training.threatconnect.com/learn/article/workflow-cases-kb-article>`_.
 
 For example, the query below will update the summary for the Artifact with ID 1.
 
@@ -48,7 +51,7 @@ JSON Response:
         "type": "Email Address",
         "intelType": "indicator-EmailAddress",
         "dateAdded": "2021-04-22T19:24:06Z",
-        "derivedLink": True,
+        "derivedLink": true,
         "hashCode": "bR3jGyx3DqnOrXQ/dI/pYeYOpGOgxalv64tymVN661M="
       },
       "message": "Updated",

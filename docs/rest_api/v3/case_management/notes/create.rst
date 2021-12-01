@@ -1,7 +1,7 @@
 Create Notes
 -------------
 
-The most basic format for creating a Note is:
+The basic format for creating a Note is:
 
 .. code::
 
@@ -56,7 +56,7 @@ JSON Response:
           "author": "11112222333344445555",
           "dateAdded": "2021-04-22T20:17:15Z",
           "lastModified": "2021-04-22T20:17:15Z",
-          "edited": False,
+          "edited": false,
           "artifactId": 4
       },
       "message": "Created",

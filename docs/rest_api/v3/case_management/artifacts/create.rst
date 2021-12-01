@@ -1,7 +1,7 @@
 Create Artifacts
 ----------------
 
-The most basic format for creating an Artifact is:
+The basic format for creating an Artifact is:
 
 .. code::
 
@@ -33,6 +33,8 @@ Some Artifact types require additional fields when being created. Refer to the f
 +--------------+----------------------------------------------------+----------+----------+
 | hashCode     | The hash code of File-type Artifacts               | FALSE    | String   |
 +--------------+----------------------------------------------------+----------+----------+
+| notes        | A list of Notes corresponding to the Artifact      | FALSE    | String   |
++--------------+----------------------------------------------------+----------+----------+
 | source       | The name of the user who entered the Artifact      | FALSE    | String   |
 |              | into the Case                                      |          |          |
 +--------------+----------------------------------------------------+----------+----------+
@@ -45,36 +47,57 @@ Some Artifact types require additional fields when being created. Refer to the f
 | type         | The Artifact's data type                           | TRUE     | String   |
 +--------------+----------------------------------------------------+----------+----------+
 
-.. note:: To view a list of available Artifact data types, use the following query and refer to the ``type`` field: ``OPTIONS /v3/artifacts/``. Alternatively, refer to `Artifact Types <../artifact_types/artifact_types.html>`__ section in this documentation.
+.. note::
+    To view a list of available Artifact data types, use the following query and refer to the ``type`` field:
+    
+    ``OPTIONS /v3/artifacts/``
+    
+    Alternatively, refer to `Artifact Types <../artifact_types/artifact_types.html>`_ section in this documentation.
 
-.. hint:: To create an Artifact that is displayed in the *Task Artifacts* section of a Task, the Artifact must be associated with a Task, the associated Task must have an Artifact Field defined that accepts the same Artifact data type as the associated Artifact, and the ``fieldname`` field must be defined. Otherwise, the Artifact will be displayed in the *Related Artifacts* section of the Task. For more information about Artifact Fields, see the "Artifact Fields" section of `Workflow Cases <https://training.threatconnect.com/learn/article/workflow-cases-kb-article>`__.
+.. hint::
+    To create an Artifact that is displayed in the *Task Artifacts* section of a Task, the Artifact must be associated with a Task, the associated Task must have an Artifact Field defined that accepts the same Artifact data type as the associated Artifact, and the ``fieldname`` field must be defined. Otherwise, the Artifact will be displayed in the *Related Artifacts* section of the Task. For more information about Artifact Fields, see the "Artifact Fields" section of `Workflow Cases <https://training.threatconnect.com/learn/article/workflow-cases-kb-article>`_.
 
-For example, the following query will create an Artifact with the data type ``Email Address`` and a summary of ``badguy@bad.com`` for the Case with ID 1.
+For example, the following query will create an ``Email Address`` Artifact with a summary of ``badguy@bad.com`` for the Case with ID 1 and create a Note for the Artifact:
 
 .. code::
 
-    POST /v3/artifacts/
-    {
-      "caseId": 1,
-      "caseXid": "a1a1a1a1-a1a1-a1a1-a1a1-a1a1a1a1a1a1",
-      "summary": "badguy@bad.com",
-      "type": "Email Address"
-    }
+  POST /v3/artifacts/
+  {
+    "caseId": 1,
+    "caseXid": "a1a1a1a1-a1a1-a1a1-a1a1-a1a1a1a1a1a1",
+    "summary": "badguy@bad.com",
+    "type": "Email Address",
+    "notes": {"data": [{"text": "Note about this artifact"}]}
+  }
 
 JSON Response:
 
 .. code:: json
 
-    {
-      "data": {
-          "id": 1,
-          "summary": "badguy@bad.com",
-          "type": "Email Address",
-          "intelType": "indicator-EmailAddress",
-          "dateAdded": "2021-04-22T19:24:06Z",
-          "derivedLink": True,
-          "hashCode": "bR3jGyx3DqnOrXQ/dI/pYeYOpGOgxalv64tymVN661M="
-      },
-      "message": "Created",
-      "status": "Success"
-    }
+  {
+    "data": {
+        "id": 1,
+        "summary": "badguy@bad.com",
+        "type": "Email Address",
+        "intelType": "indicator-EmailAddress",
+        "dateAdded": "2021-04-22T19:24:06Z",
+        "notes": {
+              "data": [
+                  {
+                      "id": 5,
+                      "text": "Note about this artifact",
+                      "summary": "Note about this artifact",
+                      "author": "APIuser",
+                      "dateAdded": "2021-04-22T19:24:06Z",
+                      "lastModified": "2021-04-22T19:24:06Z",
+                      "edited": false,
+                      "artifactId": 1
+                  }
+              ]
+        },
+        "derivedLink": True,
+        "hashCode": "bR3jGyx3DqnOrXQ/dI/pYeYOpGOgxalv64tymVN661M="
+    },
+    "message": "Created",
+    "status": "Success"
+  }

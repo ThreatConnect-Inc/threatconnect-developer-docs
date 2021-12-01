@@ -5,6 +5,8 @@ A Note in Workflow is freeform information entered by a user (e.g., in a Case or
 
 Endpoint: ``/api/v3/notes``
 
+.. include:: fields.rst
+
 .. include:: retrieve.rst
 
 .. include:: create.rst
