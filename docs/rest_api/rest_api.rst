@@ -13,6 +13,13 @@ Getting Started
 v3 API
 ------
 
+Overview
+^^^^^^^^
+.. toctree::
+   :maxdepth: 1
+
+   v3/available_endpoints
+
 Features
 ^^^^^^^^
 
