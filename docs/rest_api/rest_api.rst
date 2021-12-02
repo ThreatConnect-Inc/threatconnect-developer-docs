@@ -10,6 +10,8 @@ Getting Started
 
    quick_start
 
+----
+
 v3 API
 ------
 
@@ -86,6 +88,8 @@ Miscellaneous Objects
    v3/system_roles/system_roles
    v3/user_groups/user_groups
    v3/users/users
+
+----
 
 v2 API
 ------
