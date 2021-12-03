@@ -228,8 +228,8 @@ Valid values for an Event's ``status`` include:
 - ``No Further Action``
 - ``Escalated``
 
-Event
-=====
+Incident
+========
 
 .. list-table::
    :widths: 20 20 20 20 20
@@ -251,7 +251,7 @@ Event
      - FALSE
      - TRUE
 
-Valid values for an Event's ``status`` include:
+Valid values for an Incident's ``status`` include:
 
 - ``New``
 - ``Open``
