@@ -11,6 +11,7 @@ Case Management Endpoints
 -   ``/v3/caseAttributes``
 -   ``/v3/cases``
 -   ``/v3/notes``
+-   ``/v3/tags``
 -   ``/v3/tasks``
 -   ``/v3/workflowEvents``
 -   ``/v3/workflowTemplates``
