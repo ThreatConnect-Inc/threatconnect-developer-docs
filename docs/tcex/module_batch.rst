@@ -75,7 +75,7 @@ The example below passes only the required fields to **document()**.  The option
 
 Group Interface 2
 -----------------
-The second and more dynamic interface uses the more generic :py:meth:`~tcex.tcex_ti_batch.TcExBatch.group` method.  In this interface the Group type, Group name, and optional xid are the only allowed fields.  For a type-specific field, such as **eventDate** for an Event Group, the :py:meth:`~tcex.tcex_ti_group.Group.add_key_value` method is available. The field name must be exactly what the batch API expects (which are listed `here <https://docs.threatconnect.com/en/latest/rest_api/groups/groups.html#group-fields>`__).  Added metadata behaves the same as in Interface 1.
+The second and more dynamic interface uses the more generic :py:meth:`~tcex.tcex_ti_batch.TcExBatch.group` method.  In this interface the Group type, Group name, and optional xid are the only allowed fields.  For a type-specific field, such as **eventDate** for an Event Group, the :py:meth:`~tcex.tcex_ti_group.Group.add_key_value` method is available. The field name must be exactly what the batch API expects (which are listed `here <https://docs.threatconnect.com/en/latest/rest_api/v2/groups/groups.html#group-fields>`__).  Added metadata behaves the same as in Interface 1.
 
 .. code-block:: python
     :linenos:
@@ -106,7 +106,7 @@ The code below demonstrates how to create a Document using this interface (and t
 
 Group Interface 3
 -----------------
-The third interface accepts the raw data formatted as a dictionary.  This method requires that an xid be provided.  All metadata should be included with in the JSON object.  View the required fields for each group type `here <https://docs.threatconnect.com/en/latest/rest_api/groups/groups.html#group-fields>`__.
+The third interface accepts the raw data formatted as a dictionary.  This method requires that an xid be provided.  All metadata should be included with in the JSON object.  View the required fields for each group type `here <https://docs.threatconnect.com/en/latest/rest_api/v2/groups/groups.html#group-fields>`__.
 
 .. code-block:: python
     :linenos:
@@ -183,7 +183,7 @@ The first interface is for type-specific access.  This interface allows for pass
 
 Indicator Interface 2
 ---------------------
-The second and more dynamic interface uses the more generic :py:meth:`~tcex.tcex_ti_batch.TcExBatch.indicator` method.  In this interface, the Indicator type, Indicator value, optional rating, optional confidence, and optional xid are the only allowed fields.  For a type-specific field, such as **size** for a File Indicator, the :py:meth:`~tcex.tcex_ti_indicator.Indicator.add_key_value` method is available. The field name must be exactly what the batch API expects (which are listed `here <https://docs.threatconnect.com/en/latest/rest_api/indicators/indicators.html#indicator-fields>`__).  Added metadata behaves the same as in Interface 1.
+The second and more dynamic interface uses the more generic :py:meth:`~tcex.tcex_ti_batch.TcExBatch.indicator` method.  In this interface, the Indicator type, Indicator value, optional rating, optional confidence, and optional xid are the only allowed fields.  For a type-specific field, such as **size** for a File Indicator, the :py:meth:`~tcex.tcex_ti_indicator.Indicator.add_key_value` method is available. The field name must be exactly what the batch API expects (which are listed `here <https://docs.threatconnect.com/en/latest/rest_api/v2/indicators/indicators.html#indicator-fields>`__).  Added metadata behaves the same as in Interface 1.
 
 .. code-block:: python
     :linenos:
@@ -200,11 +200,11 @@ The second and more dynamic interface uses the more generic :py:meth:`~tcex.tcex
     pre_existing_group_xid = 'the_xid_of_pre_existing_group'
     host.association(pre_existing_group_xid)
 
-.. note:: The case of the Indicator type (the first argument provided to the `batch.indicator()` function) should be the same as the `name` key provided when retrieving the Indicator types <https://docs.threatconnect.com/en/latest/rest_api/indicators/indicators.html#retrieve-available-indicator-types>`__.
+.. note:: The case of the Indicator type (the first argument provided to the `batch.indicator()` function) should be the same as the `name` key provided when retrieving the `Indicator types <https://docs.threatconnect.com/en/latest/rest_api/v2/indicators/indicators.html#retrieve-available-indicator-types>`__.
 
 Indicator Interface 3
 ---------------------
-The third interface accepts the raw data formatted as a dictionary. This method requires that an xid be provided. All metadata should be included with in the data. View the required fields for each Indicator type `here <https://docs.threatconnect.com/en/latest/rest_api/indicators/indicators.html#indicator-fields>`__.
+The third interface accepts the raw data formatted as a dictionary. This method requires that an xid be provided. All metadata should be included with in the data. View the required fields for each Indicator type `here <https://docs.threatconnect.com/en/latest/rest_api/v2/indicators/indicators.html#indicator-fields>`__.
 
 .. code-block:: python
     :linenos:
