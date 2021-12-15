@@ -1,22 +1,22 @@
-Taxii Services
-==============
+TAXII 1.x
+=========
 
-To use Taxii endpoints, you need to have a Taxii user created in your ThreatConnect Organization. To do this, follow the instructions for `Creating a Taxii-user <https://training.threatconnect.com/learn/article/using-the-threatconnect-taxii-server-kb-article>`_.
+To use TAXII 1.x endpoints, you must have a TAXII user account created in your ThreatConnect Organization. To do this, follow the instructions for `creating a TAXII user <https://training.threatconnect.com/learn/article/using-the-threatconnect-taxii-server-kb-article>`_.
 
-ThreatConnect offers three Taxii Services: 
+ThreatConnect offers three TAXII 1.x Services: 
 
-  1. `Discovery Service <#discovery-service>`__ : Provides information about offered TAXII Services
-  2. `Collection Management Service <#collection-management-service>`__ : Supports management of TAXII Data Collection subscriptions
-  3. `Poll Service <#poll-service>`__ : Supports consumer-initiated pulls of cyber-threat information (i.e., pull messaging)
+  1. `Discovery Service <#discovery-service>`__: Provides information about offered TAXII Services
+  2. `Collection Management Service <#collection-management-service>`__: Supports management of TAXII Data Collection subscriptions
+  3. `Poll Service <#poll-service>`__: Supports consumer-initiated pulls of cyber-threat information (i.e., pull messaging)
 
-.. hint:: The descriptions above are taken from the `Taxii Services Specification <https://taxiiproject.github.io/releases/1.1/TAXII_Services_Specification.pdf>`_ documentation, which you may find helpful for further reference.
+.. hint:: The descriptions above are taken from the `TAXII Services Specification <https://taxiiproject.github.io/releases/1.1/TAXII_Services_Specification.pdf>`_ documentation, which you may find helpful for further reference.
 
 Authentication
 --------------
 
-Requests to a Taxii endpoint must be authenticated using `Basic Authentication <https://en.wikipedia.org/wiki/Basic_access_authentication>`_ with the username and password of a Taxii-user account. The value created by the basic authentication should be sent with the request with the ``Authorization`` header. Note that this is different than the authentication scheme used for normal API requests.
+Requests to a TAXII endpoint must be authenticated using `Basic Authentication <https://en.wikipedia.org/wiki/Basic_access_authentication>`_ with the username and password of a TAXII-user account. The value created by the basic authentication should be sent with the request with the ``Authorization`` header. Note that this is different than the authentication scheme used for normal API requests.
 
-For example, the ``Authorization`` header for requests to Taxii endpoints should look like: ``Authorization: Basic b1gB1rdz007``.
+For example, the ``Authorization`` header for requests to TAXII endpoints should look like: ``Authorization: Basic b1gB1rdz007``.
 
 Discovery Service
 -----------------
