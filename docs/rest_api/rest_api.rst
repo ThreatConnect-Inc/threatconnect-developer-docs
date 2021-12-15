@@ -109,5 +109,14 @@ v2 API
    v2/security_labels/security_labels
    v2/tags/tags
    v2/tasks/tasks
-   v2/taxii/taxii
    v2/victims/victims
+
+----
+
+TAXII Services
+--------------
+
+.. toctree::
+   :maxdepth: 2
+
+   taxii/taxii
