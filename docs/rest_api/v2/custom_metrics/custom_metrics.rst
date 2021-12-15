@@ -1,7 +1,7 @@
 Custom Metrics
 ==============
 
-As of ThreatConnect 5.4, it is possible to create Custom Metrics which can be used to monitor and track important data points. A card for Custom Metrics can be created on the `ThreatConnect dashboard <http://kb.threatconnect.com/customer/en/portal/articles/2092053-dashboard>`_ to show the value(s) of a metric. This documentation will detail how to retrieve, create, and delete Custom Metrics via the API.
+As of ThreatConnect 5.4, it is possible to create Custom Metrics which can be used to monitor and track important data points. A card for Custom Metrics can be created on the `ThreatConnect dashboard <https://training.threatconnect.com/learn/article/dashboard-kb-article>`_ to show the value(s) of a metric. This documentation will detail how to retrieve, create, and delete Custom Metrics via the API.
 
 Retrieving Custom Metrics
 -------------------------

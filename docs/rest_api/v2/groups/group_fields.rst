@@ -96,7 +96,7 @@
 * Rejected
 * Deleted
 
-\* The valid values for a Signature’s fileType field are:
+\* The valid values for a Signature's fileType field are:
 
 * Snort ®
 * Suricata
@@ -108,4 +108,4 @@
 * Regex
 * Splunk® Search Processing Language (SPL)
 
-\*\* A Signature’s fileText field contains the Signature itself, which must be properly escaped and encoded when submitting for creation or updating.
+\*\* A Signature's fileText field contains the Signature itself, which must be properly escaped and encoded when submitting for creation or updating.

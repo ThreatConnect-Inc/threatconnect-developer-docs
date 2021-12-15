@@ -81,7 +81,7 @@ If you are creating a Document in ThreatConnect that is a malware sample, refer 
 Creating a Malware Document
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To create a Document that can be uploaded into `ThreatConnect's Malware Vault <http://kb.threatconnect.com/customer/en/portal/articles/2171402-uploading-malware>`_ via API, include the ``malware`` and ``password`` fields when creating the Document as shown below.
+To create a Document that can be uploaded into `ThreatConnect's Malware Vault <https://training.threatconnect.com/learn/article/uploading-malware-kb-article>`_ via API, include the ``malware`` and ``password`` fields when creating the Document as shown below.
 
 .. code::
 

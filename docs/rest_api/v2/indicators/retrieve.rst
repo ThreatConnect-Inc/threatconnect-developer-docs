@@ -785,7 +785,7 @@ This request will return the following data:
       }
     }
 
-.. note:: Only Observations reported using API accounts that are configured to be included in Observations and False Positives will show up in the list of recent Observations. For more details on how to configure an API account in this way, refer to the Knowledge Base article `here <http://kb.threatconnect.com/customer/en/portal/articles/2324809-reporting-false-positives>`__.
+.. note:: Only Observations reported using API accounts that are configured to be included in Observations and False Positives will show up in the list of recent Observations. For more details on how to configure an API account in this way, refer to the Knowledge Base article `here <https://training.threatconnect.com/learn/article/reporting-false-positives-kb-article>`__.
 
 Retrieving Total Indicator Observations
 """""""""""""""""""""""""""""""""""""""

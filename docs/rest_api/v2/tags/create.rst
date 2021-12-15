@@ -37,7 +37,7 @@ Tag descriptions can be edited as follows:
 
 For more details, see:
 
-* `Adding Tags to Groups <https://docs.threatconnect.com/en/latest/rest_api/groups/groups.html#create-group-tags>`_ 
-* `Adding Tags to Indicators <https://docs.threatconnect.com/en/latest/rest_api/indicators/indicators.html#create-indicator-tags>`_ 
-* `Adding Tags to Tasks <https://docs.threatconnect.com/en/latest/rest_api/tasks/tasks.html#create-task-tags>`_ 
-* `Adding Tags to Victims <https://docs.threatconnect.com/en/latest/rest_api/victims/victims.html#create-victim-tags>`_ 
+* `Adding Tags to Groups <https://docs.threatconnect.com/en/latest/rest_api/v2/groups/groups.html#create-group-tags>`_ 
+* `Adding Tags to Indicators <https://docs.threatconnect.com/en/latest/rest_api/v2/indicators/indicators.html#create-indicator-tags>`_ 
+* `Adding Tags to Tasks <https://docs.threatconnect.com/en/latest/rest_api/v2/tasks/tasks.html#create-task-tags>`_ 
+* `Adding Tags to Victims <https://docs.threatconnect.com/en/latest/rest_api/v2/victims/victims.html#create-victim-tags>`_ 

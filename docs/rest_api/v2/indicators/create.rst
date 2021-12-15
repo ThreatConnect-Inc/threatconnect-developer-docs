@@ -396,7 +396,7 @@ Create Indicator Metadata
 Add Indicator False Positive
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To `report a false positive <http://kb.threatconnect.com/customer/portal/articles/2324809>`_ for an Indicator, use a request in the following format:
+To `report a false positive <https://training.threatconnect.com/learn/article/reporting-false-positives-kb-article>`_ for an Indicator, use a request in the following format:
 
 .. code::
 
