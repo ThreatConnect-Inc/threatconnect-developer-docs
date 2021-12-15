@@ -109,7 +109,7 @@ Signature-Specific Endpoints
 Indicator Endpoints
 ^^^^^^^^^^^^^^^^^^^
 
-In addition to the `Custom Indicators <https://docs.threatconnect.com/en/latest/rest_api/indicators/indicators.html#retrieve-available-indicator-types>`_ available in your instance of ThreatConnect, the following **Indicator types** will be available via ThreatConnect's API:
+In addition to the `Custom Indicators <https://docs.threatconnect.com/en/latest/rest_api/v2/indicators/indicators.html#retrieve-available-indicator-types>`_ available in your instance of ThreatConnect, the following **Indicator types** will be available via ThreatConnect's API:
 
 .. include:: _includes/indicator_types.rst
 
