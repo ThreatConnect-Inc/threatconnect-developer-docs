@@ -53,7 +53,7 @@ Example Requests and Responses
 
 **GET /tc/taxii/**
 
-.. code:: curl
+.. code::
 
     curl --location --request GET 'https://app.threatconnect.com/api/services/taxii2/v1/tc_taxii'--header 'Accept: application/taxii+json;version=2.1'--header 'Authorization: Basic {REPLACE THIS WITH BASIC AUTH}'
 
@@ -72,7 +72,7 @@ JSON Response
 
 **GET /tc_taxii/collections**
 
-.. code:: curl
+.. code::
 
     curl --location --request GET 'https://app.threatconnect.com/api/services/taxii2/v1/tc_taxii/collections'--header 'Accept: application/taxii+json;version=2.1'--header 'Authorization: Basic {REPLACE THIS WITH BASIC AUTH}'
 
@@ -112,7 +112,7 @@ JSON Response
 
 **GET /tc_taxii/collections/{collection_id or org_name}/**
 
-.. code:: curl
+.. code::
 
     curl --location --request GET 'https://app.threatconnect.com/api/services/taxii2/v1/tc_taxii/collections/Example%20Organization'--header 'Accept: application/taxii+json;version=2.1'--header 'Authorization: Basic {REPLACE THIS WITH BASIC AUTH}'
 
@@ -215,9 +215,9 @@ JSON Response
         "more": true
     }
 
-    .. note::
+.. note::
 
-        The request in this example includes the ``limit`` query parameter.
+    The request in this example includes the ``limit`` query parameter.
 
 **GET /taxii2/**
 
