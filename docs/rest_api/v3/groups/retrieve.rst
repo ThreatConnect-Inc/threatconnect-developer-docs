@@ -45,8 +45,8 @@ JSON Response
                 "scoreIncludesBody": true,
                 "emailDate": "2021-09-17T12:50:19Z",
                 "scoreBreakdown": "Rule SPF Neutral was matched against 'neutral'.\t100\nRule Host was matched against 'bad.com'.\t282\n"
-            }
-        {...}
+            },
+            {...}
         ],
         "status": "Success"
     }
