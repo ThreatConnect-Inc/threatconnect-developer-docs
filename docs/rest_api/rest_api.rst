@@ -119,4 +119,5 @@ TAXII Services
 .. toctree::
    :maxdepth: 2
 
+   taxii/taxii_2.1
    taxii/taxii
