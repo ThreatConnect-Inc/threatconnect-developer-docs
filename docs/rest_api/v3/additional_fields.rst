@@ -22,6 +22,16 @@ JSON Response:
           "ownerName": "Demo Organization",
           "dateAdded": "2021-10-26T13:05:02Z",
           "webLink": "/auth/indicators/details/host.xhtml?host=veryultrabadguy.com",
+          "tags": {
+              "data": [
+                  {
+                      "id": 11,
+                      "name": "Targeted Attack",
+                      "lastUsed": "2021-11-03T15:04:49Z"
+                  }
+              ],
+              "count": 1
+          },
           "lastModified": "2021-10-26T15:16:43Z",
           "summary": "badguy.com",
           "privateFlag": false,
@@ -67,6 +77,16 @@ JSON Response:
           "ownerName": "Demo Organization",
           "dateAdded": "2021-10-26T13:05:02Z",
           "webLink": "/auth/indicators/details/host.xhtml?host=veryultrabadguy.com",
+          "tags": {
+              "data": [
+                  {
+                      "id": 11,
+                      "name": "Targeted Attack",
+                      "lastUsed": "2021-11-03T15:04:49Z"
+                  }
+              ],
+              "count": 1
+          },
           "lastModified": "2021-10-26T15:16:43Z",
           "summary": "badguy.com",
           "privateFlag": false,
@@ -133,3 +153,5 @@ To view a list of available options to set in the ``?fields=`` query parameter f
     The ``?tql=`` and ``?fields=`` query parameters can be combined in a single request. For example, the following query will return all Indicators, along with their respective Tags and Attributes, that belong to the ``Demo Community`` owner:
 
     ``GET /v3/indicators?tql=ownerName EQ "Demo Community"&fields=tags&fields=attributes``
+
+    Depending on the tool you're using to interact with the ThreatConnect API, it may be necessary to encode the URL in your request when including query parameters. For example, some tools may accept ``?tql=ownerName EQ "Demo Community"&fields=tags&fields=attributes`` as a valid URL, while others require the URL be encoded (e.g., ``?tql=ownerName%20EQ%20%22Demo%20Community%22&fields=tags&fields=attributes``). If you submit a request with query parameters and a ``401 Unauthorized`` error is returned, verify whether the URL in your request is encoded properly for your preferred API tool.

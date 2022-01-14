@@ -16,6 +16,9 @@ To view a list of available options to set in the ``?tql=`` query parameter for 
     OPTIONS /v3/{objectName}/tql
 
 .. note::
+    Depending on the tool you're using to interact with the ThreatConnect API, it may be necessary to encode the URL in your request when including query parameters. For example, some tools may accept ``?tql=ownerName EQ "Demo Community"`` as a valid URL, while others require the URL be encoded (e.g., ``?tql=ownerName%20EQ%20%22Demo%20Community%22``). If you submit a request with query parameters and a ``401 Unauthorized`` error is returned, verify whether the URL in your request is encoded properly for your preferred API tool.
+
+.. note::
     The ``?tql=`` and ``?fields=`` query parameters can be combined in a single request. For example, the following query will return all Indicators, along with their respective Tags and Attributes, that belong to the ``Demo Community`` owner:
 
     ``GET /v3/indicators?tql=ownerName EQ "Demo Community"&fields=tags&fields=attributes``

@@ -7,7 +7,7 @@ For example, the following query will create a new Tag with ``Demo Community`` a
 
 .. code::
 
-    POST /v3/tags?owner=Demo%20Community
+    POST /v3/tags?owner=Demo Community
     {
         "name": "Nation State"
     }
@@ -29,3 +29,6 @@ JSON Response
 
 .. note::
     Based on the type of action you want to perform (retrieve, create, update, or delete), you will need appropriate permissions in the specified owner. See the `ThreatConnect Owner Roles and Permissions <https://training.threatconnect.com/learn/article/threatconnect-owner-roles-and-permissions-kb-article>`_ knowledge base article for more information about each owner role and their corresponding permissions in ThreatConnect.
+
+.. note::
+    Depending on the tool you're using to interact with the ThreatConnect API, it may be necessary to encode the URL in your request when including query parameters. For example, some tools may accept ``?owner=Demo Community`` as a valid URL, while others require the URL be encoded (e.g., ``?owner=Demo%20Community``). If you submit a request with query parameters and a ``401 Unauthorized`` error is returned, verify whether the URL in your request is encoded properly for your preferred API tool.
