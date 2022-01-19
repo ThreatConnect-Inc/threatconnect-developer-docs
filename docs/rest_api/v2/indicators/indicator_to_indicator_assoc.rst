@@ -11,17 +11,29 @@ Association
 
 An Association allows two Indicators of certain types to be related to one another in the manner that Indicators can be associated to Groups. Below is a list of the Indicator-to-Indicator Associations possible in the ThreatConnect Cloud, along with the Indicator types that can be associated with one another using each Association.
 
-+-----------------------+-------------------------+------------------------+
-| Name                  | API Branch              | Indicators Associated  |
-+=======================+=========================+========================+
-| Address to User Agent | ``/addressToUserAgent`` | Address <-> User Agent |
-+-----------------------+-------------------------+------------------------+
-| ASN to Address        | ``/asnToAddress``       | ASN <-> Address        |
-+-----------------------+-------------------------+------------------------+
-| ASN to CIDR           | ``/asnToCidr``          | ASN <-> CIDR           |
-+-----------------------+-------------------------+------------------------+
-| CIDR to Address       | ``/cidrToAddress``      | CIDR <-> Address       |
-+-----------------------+-------------------------+------------------------+
++-------------------------+-------------------------+------------------------+
+| Name                    | API Branch              | Indicators Associated  |
++=========================+=========================+========================+
+| Address to User Agent   | ``/addressToUserAgent`` | Address <-> User Agent |
++-------------------------+-------------------------+------------------------+
+| ASN to Address          | ``/asnToAddress``       | ASN <-> Address        |
++-------------------------+-------------------------+------------------------+
+| ASN to CIDR             | ``/asnToCidr``          | ASN <-> CIDR           |
++-------------------------+-------------------------+------------------------+
+| CIDR to Address         | ``/cidrToAddress``      | CIDR <-> Address       |
++-------------------------+-------------------------+------------------------+
+| DNS PTR Record          | ``/dnsPtrRecord``       | Address <-> Host       |
++-------------------------+-------------------------+------------------------+
+| Domain Registrant Email | ``/domainRegistrant``   | Host <-> EmailAddress  |
++-------------------------+-------------------------+------------------------+
+| File Download           | ``/fileDownload``       | URL <-> File           |
++-------------------------+-------------------------+------------------------+
+| URL Host                | ``/urlHost``            | URL <-> Address        |
+|                         |                         | URL <-> Host           |
++-------------------------+-------------------------+------------------------+
+
+.. note::
+  In addition to the Associations in the preceding table, customer-configured custom Associations are also supported. Your System Administrator can retrieve the API branch for these Associations on the **Indicators** tab of the **System Settings** screen.
 
 To retrieve Indicators associated with another Indicator using a custom Association, use a query in the following format:
 
