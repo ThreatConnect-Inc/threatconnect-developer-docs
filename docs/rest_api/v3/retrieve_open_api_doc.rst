@@ -11,6 +11,6 @@ The contents of the OpenAPI document will be returned in JSON format, which you 
 
 ----
 
-*Postman™ is a trademark of Postman, Inc.*
-*Paw™ is a trademark of Paw, Inc.*
+*Postman™ is a trademark of Postman, Inc.*<br>
+*Paw™ is a trademark of Paw, Inc.*<br>
 *Swagger™ is a trademark of Smartbear Software, Inc.*
