@@ -11,9 +11,9 @@ If you are not able to create an API key using instructions provided in the KB a
 Using the API
 -------------
 
-For those with a ThreatConnect Public-Cloud API-user account, the ThreatConnect API is accessible at ``https://api.threatconnect.com``.
+For those with a ThreatConnect Public Cloud API user account, the ThreatConnect API is accessible at ``https://app.threatconnect.com/api``.
 
-For the rest of this document, the base API URL will not be included in any of the endpoints (e.g., the branch for owners will be described as ``/v2/owners`` rather than ``https://api.threatconnect.com/v2/owners``). You will be responsible for adding the correct base API URL.
+For the rest of this document, the base API URL will not be included in any of the endpoints (e.g., the branch for owners will be described as ``/v2/owners`` rather than ``https://app.threatconnect.com/api/v2/owners``). You will be responsible for adding the correct base API URL.
 
 Requests to ThreatConnect API endpoints must be made over HTTPS with a valid Signature (as described in the next section), or a 403 error will be returned.
 
@@ -43,68 +43,50 @@ The v3 API was designed to leverage a few "lessons learned" identified within th
 
 To understand the implementation and usage of the v3 API, consider the HTTP methods below supported by each v3 endpoint. Take special note of the OPTIONS methods, which now carry the main responsibility of describing data formats and filtering options available to the user. Once familiarized with this design pattern, users may wish to visit the individual sections within this document that describe the different endpoints currently available within the v3 API, with some examples specific to those respective endpoints.
 
-**●	OPTIONS /**
-    o	Returns an object descriptor for a given endpoint, which contains names, data types, and text descriptions of each field within an object
-    
-    o	The response here can be used as a "template" of sorts to construct a body to use in a POST or PUT request; or it can be used to better understand what fields users can expect to see in a GET request.
-    
-    o	``?show=readOnly`` will also include read-only (non-settable) parameters for the object
+**OPTIONS /**
+    - Returns an object descriptor for a given endpoint, which contains names, data types, and text descriptions of each field within an object
+    - The response here can be used as a "template" of sorts to construct a body to use in a POST or PUT request; or it can be used to better understand what fields users can expect to see in a GET request.
+    - ``?show=readOnly`` will also include read-only (non-settable) parameters for the object
 
-●	**OPTIONS /fields**
-    o	Returns a list of names and descriptions of available options to set in the ``?fields=`` query parameter (See GET sections below.)
+**OPTIONS /fields**
+    - Returns a list of names and descriptions of available options to set in the ``?fields=`` query parameter (See GET sections below.)
     
-●	**OPTIONS /tql**
-    o	Returns available tql filter options to use in the ``?tql=`` query parameter
+**OPTIONS /tql**
+    - Returns available tql filter options to use in the ``?tql=`` query parameter
     
-●	**GET /**
-    o	Retrieves a list of objects
+**GET /**
+    - Retrieves a list of objects
+    - ``?tql= tql`` query to filter results
+    - ``?fields=`` requests additional fields not automatically provided with each returned object
+    - ``?resultStart=`` starting result index, for pagination
+    - ``?resultLimit=`` maximum number of results, for pagination
+    - ``?sorting=`` query parameter to specify sorting order
+    - ``?owner=`` query parameter to specify the owner of the data being requested
     
-    o	``?tql= tql`` query to filter results
+**GET /{id}**
+    - Retrieves a single object specified by the given ID
+    - ``?fields=`` requests additional fields not automatically provided with each returned object
+    - ``?owner=`` query parameter to specify the owner of the data being requested
     
-    o	``?fields=`` requests additional fields not automatically provided with each returned object
+**POST /**
+    - Saves a new object of the given data type
+    - May include nested objects, where applicable, to save multiple items at once (e.g., a Case with nested Task(s))
+    - ``?owner=`` query parameter to specify the owner of the data being set
     
-    o   ``?resultStart=`` starting result index, for pagination
+**PUT /{id}**
+    - Updates the object specified by the given ID
+    - Typically, only necessary to provide the data fields being modified
+    - Similar to POST, may include nested objects where applicable
+    - ``?owner=`` query parameter to specify the owner of the data being set
     
-    o   ``?resultLimit=`` maximum number of results, for pagination
+**DELETE /**
+    - Performs bulk deletion of objects (Note: System Configuration option v3ApiBulkDeleteAllowed must be enabled.)
+    - ``?tql= tql`` query to filter items to be deleted
+    - ``?owner=`` query parameter to specify the owner of the data being set
     
-    o	``?sorting=`` query parameter to specify sorting order
-    
-    o	``?owner=`` query parameter to specify the owner of the data being requested
-    
-●	**GET /{id}**
-    o	Retrieves a single object specified by the given ID
-    
-    o	``?fields=`` requests additional fields not automatically provided with each returned object
-    
-    o	``?owner=`` query parameter to specify the owner of the data being requested
-    
-●	**POST /**
-    o	Saves a new object of the given data type
-    
-    o	May include nested objects, where applicable, to save multiple items at once (e.g., a Case with nested Task(s))
-    
-    o	``?owner=`` query parameter to specify the owner of the data being set
-    
-●	**PUT /{id}**
-    o	Updates the object specified by the given ID
-    
-    o	Typically, only necessary to provide the data fields being modified
-    
-    o	Similar to POST, may include nested objects where applicable
-    
-    o	``?owner=`` query parameter to specify the owner of the data being set
-    
-●	**DELETE /**
-    o	Performs bulk deletion of objects (Note: System Configuration option v3ApiBulkDeleteAllowed must be enabled.)
-    
-    o	``?tql= tql`` query to filter items to be deleted
-    
-    o	``?owner=`` query parameter to specify the owner of the data being set
-    
-●	**DELETE /{id}**
-    o	Deletes the single object specified by the given ID
-    
-    o	``?owner=`` query parameter to specify the owner of the data being set
+**DELETE /{id}**
+    - Deletes the single object specified by the given ID
+    - ``?owner=`` query parameter to specify the owner of the data being set
 
 Authentication
 --------------
@@ -115,7 +97,7 @@ A complete request should look like:
 
 .. code::
 
-    GET https://api.threatconnect.com/v2/indicators?owner=Common%20Community HTTP/1.1
+    GET https://app.threatconnect.com/api/v2/indicators?owner=Common%20Community HTTP/1.1
      Timestamp: 1513703787
      Authorization: TC 12345678901234567890:PthSlXIA7rNMow1h8wShfvOnTOhxHd+7njUe4MT4ZSs=
 
