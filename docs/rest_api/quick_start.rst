@@ -127,8 +127,6 @@ The value of the final ``Authorization`` header should look like:
 
     TC 12345678901234567890:PthSlXIA7rNMow1h8wShfvOnTOhxHd+7njUe4MT4ZSs=
 
-.. hint:: For Python users, you can view how our `Python SDK <https://docs.threatconnect.com/en/latest/python/python_sdk.html>`__  handles authentication `here <https://github.com/ThreatConnect-Inc/threatconnect-python/blob/fbf428cfff839a5fb5eb19720d23478e563914dc/threatconnect/ThreatConnect.py#L187>`__.
-
 Testing API Connectivity
 ------------------------
 
