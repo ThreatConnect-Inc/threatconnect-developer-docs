@@ -4,9 +4,7 @@ Quick Start
 Creating an API Key
 -------------------
 
-To create an API User, please refer to the `Creating User Accounts <https://training.threatconnect.com/learn/article/creating-user-accounts-kb-article>`__ Knowledge Base article.
-
-If you are not able to create an API key using instructions provided in the KB article above, please contact sales@threatconnect.com to discuss pricing.
+To create an API User, please refer to the `Creating User Accounts <https://training.threatconnect.com/learn/article/creating-user-accounts-kb-article>`__ knowledge base article. If you are not able to create an API key using instructions provided in this article, please contact sales@threatconnect.com to discuss pricing.
 
 Using the API
 -------------
