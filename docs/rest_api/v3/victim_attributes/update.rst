@@ -10,7 +10,7 @@ The basic format for updating a Victim Attribute is:
         {updatedField}: {updatedValue}
     }
 
-Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can included in the body of a PUT request for the ``victimAttributes`` object.
+Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a PUT request for the ``victimAttributes`` object.
 
 For example, the following query will update the value of the Victim Attribute with ID 1 and make it the default Attribute of its type:
 

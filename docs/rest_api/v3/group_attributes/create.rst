@@ -12,7 +12,7 @@ The basic format for creating a Group Attribute is:
         "value": "Attribute value goes here"
     }
 
-Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can included in the body of a POST request for the ``groupAttributes`` object.
+Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a POST request for the ``groupAttributes`` object.
 
 For example, the following query will create an Attribute and add it to the Group with ID 20:
 

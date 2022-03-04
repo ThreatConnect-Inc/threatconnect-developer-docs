@@ -10,7 +10,7 @@ The basic format for updating a Victim is:
         {updatedField}: {updatedValue}
     }
 
-Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can included in the body of a PUT request for the ``victims`` object.
+Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a PUT request for the ``victims`` object.
 
 .. note::
     When updating a Victim, you can use the ``mode`` field to add or remove the following metadata:

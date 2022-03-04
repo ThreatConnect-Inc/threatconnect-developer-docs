@@ -11,7 +11,7 @@ The basic format for creating a Victim is:
         "type": "Victim"
     }
 
-Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can included in the body of a POST request for the ``victims`` object.
+Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a POST request for the ``victims`` object.
 
 .. note::
     You can add multiple Attributes, Tags, and Security Labels to the Victim being created in a single POST request. Similarly, you can associate multiple Groups to the Victim being created in a single POST request.

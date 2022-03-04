@@ -12,7 +12,7 @@ The basic format for creating a Group is:
         //required fields for the selected Group type go here, if applicable
     }
 
-Refer to the `Available Fields <#available-fields>`_ and `Group-Specific Fields <#group-specific-fields>`_ sections for a list of available fields that can included in the body of a POST request for the ``groups`` object.
+Refer to the `Available Fields <#available-fields>`_ and `Group-Specific Fields <#group-specific-fields>`_ sections for a list of available fields that can be included in the body of a POST request for the ``groups`` object.
 
 .. warning::
     If you submit a POST request to create a new Group but the Group already exists in ThreatConnect, the existing Group will be updated based on the fields included in the POST request.

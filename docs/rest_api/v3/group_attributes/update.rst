@@ -10,7 +10,7 @@ The basic format for updating a Group Attribute is:
         {updatedField}: {updatedValue}
     }
 
-Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can included in the body of a PUT request for the ``groupAttributes`` object.
+Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a PUT request for the ``groupAttributes`` object.
 
 For example, the following query will update the value of the Group Attribute with ID 10 and make it the default Attribute of its type:
 
