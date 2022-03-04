@@ -29,7 +29,7 @@ Refer to the following table for a list of available fields that can be updated 
 +--------------+-------------------------------------------------------------------------------+----------+
 
 .. note::
-    To update an Artifact's ``fieldName``, the Artifact must be associated with a Task, and the associated Task must have multiple Artifact Fields defined. For more information about Artifact Fields, see the "Artifact Fields" section of `Workflow Cases <https://training.threatconnect.com/learn/article/workflow-cases-kb-article>`_.
+    To update an Artifact's ``fieldName``, the Artifact must be associated with a Task, and the associated Task must have multiple Artifact Fields defined. For more information about Artifact Fields, see the "Artifact Fields" section of `Workflow Cases: Phases and Tasks <https://training.threatconnect.com/learn/article/workflow-cases-phases-and-tasks-kb-article>`_.
 
 For example, the query below will update the summary for the Artifact with ID 1.
 
