@@ -52,12 +52,6 @@ Alternatively, refer to the following tables for a list of available fields that
      - FALSE
      - TRUE
      - {"data": [{"type": "Attribute Type", "value": "Attribute Value", "source": "Attribute Source"]}}
-   * - description
-     - The Indicator’s Description 
-     - String
-     - FALSE
-     - TRUE
-     - "Potentially malicious host related to malware dissemination."
    * - ownerName
      - The name of the Organization, Community, or Source to which the Indicator belongs 
      - String
@@ -82,12 +76,6 @@ Alternatively, refer to the following tables for a list of available fields that
      - FALSE
      - TRUE
      - {"data": [{"name": "TLP:AMBER"}]}
-   * - source
-     - The Indicator’s Source
-     - String
-     - FALSE
-     - TRUE
-     - "Host used by hacker conglomerate tracked to Iran"
    * - tags
      - A list of Tags applied to the Indicator
      - String
