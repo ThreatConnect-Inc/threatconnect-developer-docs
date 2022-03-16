@@ -34,11 +34,9 @@ The following query will create a Host Indicator with a host name of ``ultrabadg
         "associatedGroups": {"data": [{"id": 12}, {"name": "Bad Guy", "type": "Adversary"}]},
         "attributes": {"data": [{"type": "Additional Analysis and Context", "value": "This host is very dangerous", "source": "Phase of Intrusion"}]},
         "confidence": 85,
-        "description": "Potentially malicious host related to malware dissemination.",
         "privateFlag": false,
         "rating": 5,
         "securityLabels": {"data": [{"name": "TLP:AMBER"}]},
-        "source": "A Reliable Source",
         "tags": {"data": [{"name": "Targeted Attack"}, {"name": "Malicious Host"}]}
     }
 
@@ -80,8 +78,6 @@ JSON Response
             "lastModified": "2021-11-05T16:43:17Z",
             "rating": 5.0,
             "confidence": 85,
-            "source": "A Reliable Source",
-            "description": "Potentially malicious host related to malware dissemination.",
             "summary": "ultrabadguy.com",
             "privateFlag": false,
             "active": true,
