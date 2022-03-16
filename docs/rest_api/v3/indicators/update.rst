@@ -87,8 +87,6 @@ JSON Response
             "lastModified": "2021-11-05T17:21:06Z",
             "rating": 5.0,
             "confidence": 92,
-            "source": "A Reliable Source",
-            "description": "Potentially malicious host related to malware dissemination.",
             "summary": "ultrabadguy.com",
             "privateFlag": false,
             "active": true,
