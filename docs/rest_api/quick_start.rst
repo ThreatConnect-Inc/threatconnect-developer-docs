@@ -35,7 +35,7 @@ v2 of the ThreatConnect API remains the current active version for Threat Intell
 Version 3 (/v3)
 ^^^^^^^^^^^^^^^
 
-v3 of the ThreatConnect API begins with the release of v6.0 and is the current active version for Case Management features within the platform. In future versions, users can expect to see many of the Threat Intelligence features currently available within v2 to be made available in v3 format; however, this is still currently not supported.
+v3 of the ThreatConnect API begins with the release of v6.0 and is the current active version for Case Management features within the platform. As of the release of v6.4, it supports many of the Threat Intelligence features currently available within v2 of the ThreatConnect API.
 
 The v3 API was designed to leverage a few "lessons learned" identified within the design and deployment of the v2 API. Of particular note, the number of calls needed to make relatively complex setting/getting operations has been greatly reduced and simplified. TQL filtering is also now supported, allowing the user to format, filter, and sort data in a nearly infinite number of ways. The path structure has been simplified as well, having eliminated the need for many levels of nested paths within a given primary endpoint. Finally, error messaging has also been improved in order to better assist the user in identifying and repairing malformed requests.
 
