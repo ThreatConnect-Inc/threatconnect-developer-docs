@@ -24,42 +24,42 @@ Alternatively, refer to the following tables for a list of available fields that
      - Example value(s)
    * - assets
      - A list of Victim Assets corresponding to the Victim
-     - String
+     - `Victim Asset Object <https://docs.threatconnect.com/en/latest/rest_api/v3/victim_assets/victim_assets.html>`_
      - FALSE
      - TRUE
      - {"data": [{"id": 12345}]}, {"data": [{"phone": "0123456789", "type": "Phone"}]}
    * - associatedGroups
      - A list of Groups associated to the Victim
-     - String
+     - `Group Object <https://docs.threatconnect.com/en/latest/rest_api/v3/groups/groups.html>`_
      - FALSE
      - TRUE
      - {"data": [{"id": 12345}]}, {"data": [{"name": "Bad Adversary", "type": "Adversary"}]}
    * - attributes
      - A list of Attributes corresponding to the Victim
-     - String
+     - `Victim Attribute Object <https://docs.threatconnect.com/en/latest/rest_api/v3/victim_attributes/victim_attributes.html>`_
      - FALSE
      - TRUE
      - {"data": [{"type": "Attribute Type", "value": "Attribute Value", "source": "Attribute Source"]}}
    * - description
-     - The Victim’s description
+     - The Victim's description
      - String
      - FALSE
      - TRUE
-     - "This Victim’s bank account was hacked."
+     - "This Victim's bank account was hacked."
    * - name
-     - The Victim’s name
+     - The Victim's name
      - String
      - TRUE
      - TRUE
      - "Bob Loblaw"
    * - nationality
-     - The Victim’s nationality
+     - The Victim's nationality
      - String
      - FALSE
      - TRUE
      - "American"
    * - org
-     - The Victim’s organization
+     - The Victim's organization
      - String
      - FALSE
      - TRUE
@@ -72,19 +72,19 @@ Alternatively, refer to the following tables for a list of available fields that
      - "Demo Community"
    * - securityLabels
      - A list of Security Labels applied to the Victim
-     - String
+     - `Security Label Object <https://docs.threatconnect.com/en/latest/rest_api/v3/security_labels/security_labels.html>`_
      - FALSE
      - TRUE
      - {"data": [{"name": "TLP:AMBER"}]}
    * - suborg
-     - The Victim’s suborganization
+     - The Victim's suborganization
      - String
      - FALSE
      - TRUE
      - "HR Department"
    * - tags
      - A list of Tags applied to the Victim
-     - String
+     - `Tag Object <https://docs.threatconnect.com/en/latest/rest_api/v3/tags/tags.html>`_
      - FALSE
      - TRUE
      - {"data": [{"name": "Targeted Attack"}]}
@@ -95,7 +95,7 @@ Alternatively, refer to the following tables for a list of available fields that
      - FALSE
      - "Victim"
    * - workLocation
-     - The Victim’s work location
+     - The Victim's work location
      - String
      - FALSE
      - TRUE
@@ -111,6 +111,6 @@ Alternatively, refer to the following tables for a list of available fields that
     - ``WebSite``
 
 .. note::
-    A list of available `Attribute types <https://docs.threatconnect.com/en/latest/rest_api/v3/attribute_types/attribute_types.html>`_ can be retrieved with the following query:
+    A list of available `Attribute Types <https://docs.threatconnect.com/en/latest/rest_api/v3/attribute_types/attribute_types.html>`_ can be retrieved with the following query:
     
     ``GET /v3/attributeTypes``
