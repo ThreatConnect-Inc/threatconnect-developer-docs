@@ -15,25 +15,56 @@ JSON Response:
 .. code:: json
 
     {
-      "data": [{
-        "id": 1,
-        "name": "Create Shared Drive Folder for Case",
-        "workflowPhase": 1,
-        "workflowStep": 1,
-        "required": false,
-        "status": "Open"
-      }, {
-        "id": 2,
-        "name": "Create Meeting Notes Folder",
-        "description": "If Case listed a Severity of High or Critical, create a Meeting Notes folder inside the Case folder.",
-        "workflowPhase": 1,
-        "workflowStep": 2,
-        "required": true,
-        "status": "Open"
-      }],
-      "count": 2,
-      "status": "Success"
+        "data": [
+            {
+                "id": 1,
+                "xid": "bf710c31-7641-4100-9edf-461c1f6bb354",
+                "name": "Read ThreatConnect's Building a Basic Workflow Blog",
+                "workflowPhase": 0,
+                "workflowStep": 1,
+                "dueDate": "2022-03-20T23:59:59Z",
+                "required": false,
+                "status": "Open",
+                "assignee": {
+                    "type": "User",
+                    "data": {
+                        "id": 12,
+                        "userName": "pjones",
+                        "firstName": "Patrick",
+                        "lastName": "Jones",
+                        "pseudonym": "PFJ",
+                        "role": "Administrator"
+                    }
+                },
+                "owner": "Example Organization"
+            },
+            {
+                "id": 2,
+                "xid": "93e9aced-7419-4121-bef1-5276737936ab",
+                "name": "Gather the subject line and email body",
+                "workflowPhase": 0,
+                "workflowStep": 2,
+                "required": true,
+                "dependentOnId": 8,
+                "status": "Pending",
+                "assignee": {
+                    "type": "User",
+                    "data": {
+                        "id": 12,
+                        "userName": "pjones",
+                        "firstName": "Patrick",
+                        "lastName": "Jones",
+                        "pseudonym": "PFJ",
+                        "role": "Administrator"
+                    }
+                },
+                "owner": "Example Organization"
+            },
+            {...}
+        ],
+        "Status": "Success"
     }
+
 
 Retrieve a Single Task
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -55,16 +86,33 @@ JSON Response:
 .. code:: json
 
     {
-      "data": [{
-        "id": 1,
-        "name": "Create Shared Drive Folder for Case",
-        "workflowPhase": 1,
-        "workflowStep": 1,
-        "required": false,
-        "status": "Open"
-      }],
-      "status": "Success"
+        "data": [
+            {
+                "id": 1,
+                "xid": "bf710c31-7641-4100-9edf-461c1f6bb354",
+                "name": "Read ThreatConnect's Building a Basic Workflow Blog",
+                "workflowPhase": 0,
+                "workflowStep": 1,
+                "dueDate": "2022-03-20T23:59:59Z",
+                "required": false,
+                "status": "Open",
+                "assignee": {
+                    "type": "User",
+                    "data": {
+                        "id": 12,
+                        "userName": "pjones",
+                        "firstName": "Patrick",
+                        "lastName": "Jones",
+                        "pseudonym": "PFJ",
+                        "role": "Administrator"
+                    }
+                },
+                "owner": "Example Organization"
+            }
+        ],
+        "Status": "Success"
     }
+
 
 Request Additional Fields
 ^^^^^^^^^^^^^^^^^^^^^^^^^

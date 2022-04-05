@@ -22,32 +22,44 @@ Alternatively, refer to the following tables for a list of available fields that
      - Required for Creation?
      - Updatable?
      - Example value(s)
+   * - associatedArtifacts
+     - A list of Artifacts associated to the Group
+     - `Artifact Object <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/artifacts/artifacts.html>`_
+     - FALSE
+     - TRUE
+     - {"data": [{"id": 12345}]}, {"data": [{ "caseId": 1, "summary": "badguy@bad.com", "type": "Email Address"}]}
+   * - associatedCases
+     - A list of Cases associated to the Group
+     - `Case Object <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/cases/cases.html>`_
+     - FALSE
+     - TRUE
+     - {"data": [{"id": 12345}]}, {"data": [{"name": "Hacker Investigation", "status": "Open", "severity": "Low" }]}}
    * - associatedGroups
      - A list of Groups associated to the Group
-     - String
+     - `Group Object <https://docs.threatconnect.com/en/latest/rest_api/v3/groups/groups.html>`_
      - FALSE
      - TRUE
      - {"data": [{"id": 12345}]}, {"data": [{"name": "Bad Adversary", "type": "Adversary"}]}
    * - associatedIndicators
      - A list of Indicators associated to the Group
-     - String
+     - `Indicator Object <https://docs.threatconnect.com/en/latest/rest_api/v3/indicators/indicators.html>`_
      - FALSE
      - TRUE
      - {"data": [{"id": 12345}]}, {"data": [{"hostName":"badguy.com", "type": "Host"}]}
    * - associatedVictimAssets
      - A list of Victim Assets associated to the Group
-     - String
+     - `Victim Asset Object <https://docs.threatconnect.com/en/latest/rest_api/v3/victim-assets/victim-assets.html>`_
      - FALSE
      - TRUE
      - {"data": [{"id": 12345}]}, {"data": [{"phone": "0123456789", "type": "Phone"}]}
    * - attributes
      - A list of Attributes corresponding to the Group 
-     - String
+     - `Group Attribute Object <https://docs.threatconnect.com/en/latest/rest_api/v3/group-attributes/group-attributes.html>`_
      - FALSE
      - TRUE
      - {"data": [{"type": "Attribute Type", "value": "Attribute Value", "source": "Attribute Source"]}}
    * - name
-     - The Group’s name
+     - The Group's name
      - String
      - TRUE
      - TRUE
@@ -60,13 +72,13 @@ Alternatively, refer to the following tables for a list of available fields that
      - "Demo Community"
    * - securityLabels
      - A list of Security Labels applied to the Group
-     - String
+     - `Security Label Object <https://docs.threatconnect.com/en/latest/rest_api/v3/security_labels/security_labels.html>`_
      - FALSE
      - TRUE
      - {"data": [{"name": "TLP:AMBER"}]}
    * - tags
      - A list of Tags applied to the Group
-     - String
+     - `Tag Object <https://docs.threatconnect.com/en/latest/rest_api/v3/tags/tags.html>`_
      - FALSE
      - TRUE
      - {"data": [{"name": "Targeted Attack"}]}
@@ -98,9 +110,12 @@ Available values for the ``type`` field include:
 - ``Vulnerability``
 
 .. note::
-    A list of available `Attribute types <https://docs.threatconnect.com/en/latest/rest_api/v3/attribute_types/attribute_types.html>`_ can be retrieved with the following query:
+    A list of available `Attribute Types <https://docs.threatconnect.com/en/latest/rest_api/v3/attribute_types/attribute_types.html>`_ can be retrieved with the following query:
     
     ``GET /v3/attributeTypes``
+
+.. note::
+    To **associate an existing Artifact, Case, Group, or Victim Asset** to a Group, use the object's ID when setting the ``associatedArtifacts``, ``associatedCases``, ``associatedGroups``, or ``associatedVictimAssets`` field, respectively (e.g., ``{"data": [{"id": 12345}]}``). To **associate an existing Indicator to a Group**, use either the Indicator's ID, or the Indicator's type and name (e.g., for a Host Indicator, use its ``hostName``), when setting the ``associatedIndicators`` field.
 
 Group-Specific Fields
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -173,27 +188,27 @@ Email
      - Required for Creation?
      - Updatable?
    * - body
-     - The Email’s body
+     - The Email's body
      - String
      - FALSE
      - TRUE
    * - from
-     - The Email’s **From:** field
+     - The Email's **From:** field
      - String
      - FALSE
      - TRUE
    * - header
-     - The Email’s header
+     - The Email's header
      - String
      - FALSE
      - TRUE
    * - subject
-     - The Email’s subject
+     - The Email's subject
      - String
      - FALSE
      - TRUE
    * - to
-     - The Email’s **To:** field
+     - The Email's **To:** field
      - String
      - FALSE
      - TRUE
@@ -316,7 +331,7 @@ Signature
      - TRUE
      - TRUE
 
-Valid values for a Signature’s ``fileType`` include:
+Valid values for a Signature's ``fileType`` include:
 
 - ``Bro``
 - ``ClamAV``
@@ -348,7 +363,7 @@ Task
      - Example Value(s)
    * - assignments
      - A list of users assigned to the Task or to whom the Task will be escalated. Valid values for the type of assignment are "Assigned" and "Escalate"
-     - String
+     - Assignee Object
      - FALSE
      - TRUE
      - {"data": [{"type": "Assigned", "user": {"id": 12}}]}, {"data": [{"type": "Escalate", "user": {"id": 8}}]}
@@ -377,7 +392,7 @@ Task
      - FALSE
      - "In Progress", "Not Started"
 
-Valid values for an Task’s ``status`` include:
+Valid values for an Task's ``status`` include:
 
 - ``Not Started``
 - ``In Progress``

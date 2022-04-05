@@ -1,7 +1,7 @@
 Available Fields
 ----------------
 
-You can `retrieve a list of available fields <https://docs.threatconnect.com/en/latest/rest_api/v3/retrieve_fields.html>`_ for the ``/v3/indicators`` endpoint, including the field’s name, description, and accepted data type, by using the following query:
+You can `retrieve a list of available fields <https://docs.threatconnect.com/en/latest/rest_api/v3/retrieve_fields.html>`_ for the ``/v3/indicators`` endpoint, including the field's name, description, and accepted data type, by using the following query:
 
 .. code::
 
@@ -34,20 +34,32 @@ Alternatively, refer to the following tables for a list of available fields that
      - FALSE
      - TRUE
      - true, false
+   * - associatedArtifacts
+     - A list of Artifacts associated to the Indicator
+     - `Artifact Object <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/artifacts/artifacts.html>`_
+     - FALSE
+     - TRUE
+     - {"data": [{"id": 12345}]}, {"data": [{ "caseId": 1, "summary": "badguy@bad.com", "type": "Email Address"}]}
+   * - associatedCases
+     - A list of Cases associated to the Indicator
+     - `Case Object <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/cases/cases.html>`_
+     - FALSE
+     - TRUE
+     - {"data": [{"id": 12345}]}, {"data": [{"name": "Hacker Investigation", "status": "Open", "severity": "Low" }]}}
    * - associatedGroups
      - A list of Groups associated to the Indicator 
-     - String
+     - `Group Object <https://docs.threatconnect.com/en/latest/rest_api/v3/groups/groups.html>`_
      - FALSE
      - TRUE
      - {"data": [{"id": 12345}]}, {"data": [{"name": "Bad Adversary", "type": "Adversary"}]}
    * - attributes
      - A list of Attributes corresponding to the Indicator 
-     - String
+     - `Indicator Object <https://docs.threatconnect.com/en/latest/rest_api/v3/indicator_attributes/indicator_attributes.html>`_
      - FALSE
      - TRUE
      - {"data": [{"type": "Attribute Type", "value": "Attribute Value", "source": "Attribute Source"]}}
    * - confidence
-     - The Indicator’s Confidence Rating 
+     - The Indicator's Confidence Rating 
      - Integer
      - FALSE
      - TRUE
@@ -65,20 +77,20 @@ Alternatively, refer to the following tables for a list of available fields that
      - TRUE
      - true, false
    * - rating
-     - The Indicator’s Threat Rating
+     - The Indicator's Threat Rating
      - Big Decimal
      - FALSE
      - TRUE
      - 1.0, 2.0, 3.0, 4.0, 5.0
    * - securityLabels
      - A list of Security Labels applied to the Indicator
-     - String
+     - `Security Label Object <https://docs.threatconnect.com/en/latest/rest_api/v3/security_labels/security_labels.html>`_
      - FALSE
      - TRUE
      - {"data": [{"name": "TLP:AMBER"}]}
    * - tags
      - A list of Tags applied to the Indicator
-     - String
+     - `Tag Object <https://docs.threatconnect.com/en/latest/rest_api/v3/tags/tags.html>`_
      - FALSE
      - TRUE
      - {"data": [{"name": "Targeted Attack"}]}
@@ -105,9 +117,12 @@ Available values for the ``type`` field include:
 - ``User Agent``
 
 .. note::
-    A list of available `Attribute types <https://docs.threatconnect.com/en/latest/rest_api/v3/attribute_types/attribute_types.html>`_ can be retrieved with the following query:
+    A list of available `Attribute Types <https://docs.threatconnect.com/en/latest/rest_api/v3/attribute_types/attribute_types.html>`_ can be retrieved with the following query:
     
     ``GET /v3/attributeTypes``
+
+.. note::
+    To **associate an existing Artifact, Case, or Group** to an Indicator, use the object's ID when setting the associatedArtifacts, associatedCases, or associatedGroups field, respectively (e.g., ``{"data": [{"id": 12345}]}``).
 
 Indicator-Specific Fields
 ^^^^^^^^^^^^^^^^^^^^^^^^^

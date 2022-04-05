@@ -15,6 +15,8 @@ Refer to the `Available Fields <#available-fields>`_ and `Indicator-Specific Fie
 .. note::
     When updating an Indicator, you can use the ``mode`` field to add or remove the following metadata:
 
+    - ``associatedArtifacts``
+    - ``associatedCases``
     - ``associatedGroups``
     - ``attributes``
     - ``securityLabels``
@@ -29,7 +31,7 @@ The following query will complete the following actions for the ``ultrabadguy.co
 
 - Disable the **DNS** feature for the Indicator
 - Disassociate the ``Bad Guy`` Adversary Group from the Indicator
-- Update the Indicator’s Confidence Rating
+- Update the Indicator's Confidence Rating
 - Replace a ``TLP: AMBER`` Security Label that is applied to the Indicator with a ``TLP: Red`` Security Label
 - Apply a new ``Russia`` Tag to the Indicator without replacing any existing Tags applied to the Indicator.
 
@@ -52,10 +54,9 @@ JSON Response
     {
         "data": {
             "id": 4,
-            "type": "Host",
             "ownerName": "Demo Organization",
             "dateAdded": "2021-11-05T16:43:17Z",
-            "webLink": "/auth/indicators/details/host.xhtml?host=ultrabadguy.com",
+            "webLink": "https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=ultrabadguy.com",
             "tags": {
                 "data": [{
                     "id": 10,
@@ -71,7 +72,6 @@ JSON Response
                     "name": "Russia",
                     "lastUsed": "2021-11-05T17:21:07Z"
                 }],
-                "count": 3
             },
             "securityLabels": {
                 "data": [{
@@ -82,9 +82,9 @@ JSON Response
                     "owner": "System",
                     "dateAdded": "2016-08-31T00:00:00Z"
                 }],
-                "count": 1
             },
             "lastModified": "2021-11-05T17:21:06Z",
+            "type": "Host",
             "rating": 5.0,
             "confidence": 92,
             "summary": "ultrabadguy.com",
@@ -97,11 +97,10 @@ JSON Response
                     "type": "Incident",
                     "ownerName": "Demo Organization",
                     "dateAdded": "2021-08-27T12:16:56Z",
-                    "webLink": "/auth/incident/incident.xhtml?incident=12",
+                    "webLink": "https://app.threatconnect.com/auth/incident/incident.xhtml?incident=12",
                     "name": "Dangerous Incident",
                     "createdBy": "Pat Jones"
                 }],
-                "count": 1
             },
             "associatedIndicators": {
                 "data": [{
@@ -109,7 +108,7 @@ JSON Response
                     "type": "Host",
                     "ownerName": "Demo Organization",
                     "dateAdded": "2021-11-05T16:43:17Z",
-                    "webLink": "/auth/indicators/details/host.xhtml?host=ultrabadguy.com",
+                    "webLink": "https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=ultrabadguy.com",
                     "lastModified": "2021-11-05T17:21:07Z",
                     "rating": 5.0,
                     "confidence": 92,
@@ -123,7 +122,6 @@ JSON Response
                     "dnsActive": false,
                     "whoisActive": true
                 }],
-                "count": 1
             },
             "attributes": {
                 "data": [{
@@ -142,8 +140,9 @@ JSON Response
                     "lastModified": "2021-11-05T16:43:17Z",
                     "default": false
                 }],
-                "count": 1
             },
+            "associatedCases": {},
+            "associatedArtifacts": {},
             "hostName": "ultrabadguy.com",
             "dnsActive": false,
             "whoisActive": true

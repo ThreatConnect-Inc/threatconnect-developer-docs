@@ -14,7 +14,7 @@ The basic format for creating an Indicator is:
 Refer to the `Available Fields <#available-fields>`_ and `Indicator-Specific Fields <#indicator-specific-fields>`_ sections for a list of available fields that can be included in the body of a POST request for the ``indicators`` object.
 
 .. note::
-    You can add multiple Attributes, Tags, and Security Labels to the Indicator being created in a single POST request. Similarly, you can associate multiple Groups to the Indicator being created in a single POST request.
+    You can add multiple Attributes, Tags, and Security Labels to the Indicator being created in a single POST request. Similarly, you can associate multiple Artifacts, Cases, and Groups to the Indicator being created in a single POST request.
 
 Example POST Request
 ^^^^^^^^^^^^^^^^^^^^^
@@ -47,7 +47,6 @@ JSON Response
     {
         "data": {
             "id": 4,
-            "type": "Host",
             "ownerName": "Demo Organization",
             "dateAdded": "2021-11-05T16:43:17Z",
             "webLink": "/auth/indicators/details/host.xhtml?host=ultrabadguy.com",
@@ -62,7 +61,6 @@ JSON Response
                     "name": "Targeted Attack",
                     "lastUsed": "2021-11-05T16:43:17Z"
                 }],
-                "count": 2
             },
             "securityLabels": {
                 "data": [{
@@ -73,8 +71,8 @@ JSON Response
                     "owner": "System",
                     "dateAdded": "2016-08-31T00:00:00Z"
                 }],
-                "count": 1
             },
+            "type": "Host",
             "lastModified": "2021-11-05T16:43:17Z",
             "rating": 5.0,
             "confidence": 85,
@@ -88,7 +86,7 @@ JSON Response
                     "type": "Adversary",
                     "ownerName": "Demo Organization",
                     "dateAdded": "2021-11-05T16:43:17Z",
-                    "webLink": "/auth/adversary/adversary.xhtml?adversary=15",
+                    "webLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=15",
                     "name": "Bad Guy",
                     "createdBy": "John Smith"
                 }, {
@@ -96,11 +94,10 @@ JSON Response
                     "type": "Incident",
                     "ownerName": "Demo Organization",
                     "dateAdded": "2021-08-27T12:16:56Z",
-                    "webLink": "/auth/incident/incident.xhtml?incident=12",
+                    "webLink": "https://app.threatconnect.com/auth/incident/incident.xhtml?incident=12",
                     "name": "Dangerous Incident",
                     "createdBy": "Pat Jones"
                 }],
-                "count": 2
             },
             "associatedIndicators": {
                 "data": [{
@@ -108,7 +105,7 @@ JSON Response
                     "type": "Host",
                     "ownerName": "Demo Organization",
                     "dateAdded": "2021-11-05T16:43:17Z",
-                    "webLink": "/auth/indicators/details/host.xhtml?host=ultrabadguy.com",
+                    "webLink": "https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=ultrabadguy.com",
                     "lastModified": "2021-11-05T16:43:17Z",
                     "rating": 5.0,
                     "confidence": 85,
@@ -122,7 +119,6 @@ JSON Response
                     "dnsActive": true,
                     "whoisActive": true
                 }],
-                "count": 1
             },
             "attributes": {
                 "data": [{
@@ -141,8 +137,9 @@ JSON Response
                     "lastModified": "2021-11-05T16:43:17Z",
                     "default": false
                 }],
-                "count": 1
             },
+            "associatedCases": {},
+            "associatedArtifacts": {},
             "hostName": "ultrabadguy.com",
             "dnsActive": true,
             "whoisActive": true
@@ -152,6 +149,6 @@ JSON Response
     }
 
 .. note::
-    When creating an Indicator, you can apply Tags that do not yet exist in ThreatConnect to it. In this scenario, you would need to fill out `all required fields for each new Tag <https://docs.threatconnect.com/en/latest/rest_api/v3/tags/tags.html>`_. Upon creation of the new Indicator, any Tags included in the body of the POST request that do not yet exist in ThreatConnect will also be created.
+    When creating or updating an Indicator, you can apply Tags that do not yet exist in ThreatConnect to it. To do so, fill out `all required fields for each new Tag <https://docs.threatconnect.com/en/latest/rest_api/v3/tags/tags.html>`_. Upon creation of the new Indicator, any Tags included in the body of the POST request that do not yet exist in ThreatConnect will also be created.
 
-    Similarly, you can associate Groups that do not yet exist in ThreatConnect to the Indicator. In this scenario, you would need to fill out `all required fields for the type of Group <https://docs.threatconnect.com/en/latest/rest_api/v3/groups/groups.html>`_ being associated to the Indicator. Upon creation of the new Indicator, any associated Groups included in the body of the POST request that do not yet exist in ThreatConnect will also be created.
+    Similarly, you can associate Artifacts, Cases, and Groups that do not yet exist in ThreatConnect to the Indicator. To do so, fill out all required fields for the type of object being associated to the Indicator. Upon creation of the new Indicator, any associated Artifacts, Cases, or Groups included in the body of the POST request that do not yet exist in ThreatConnect will also be created.

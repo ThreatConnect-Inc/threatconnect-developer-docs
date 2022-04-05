@@ -14,11 +14,8 @@ The basic format for creating a Group is:
 
 Refer to the `Available Fields <#available-fields>`_ and `Group-Specific Fields <#group-specific-fields>`_ sections for a list of available fields that can be included in the body of a POST request for the ``groups`` object.
 
-.. warning::
-    If you submit a POST request to create a new Group but the Group already exists in ThreatConnect, the existing Group will be updated based on the fields included in the POST request.
-
 .. note::
-    You can add multiple Attributes, Tags, and Security Labels to the Group being created in a single POST request. Similarly, you can associate multiple Indicators and Groups to the Group being created in a single POST request.
+    You can add multiple Attributes, Tags, and Security Labels to the Group being created in a single POST request. Similarly, you can associate multiple Artifacts, Cases, Indicators, and Groups to the Group being created in a single POST request.
 
 Example POST Request
 ^^^^^^^^^^^^^^^^^^^^^
@@ -43,10 +40,9 @@ JSON Response
     {
         "data": {
             "id": 3,
-            "type": "Incident",
             "ownerName": "Demo Organization",
             "dateAdded": "2021-11-03T14:57:45Z",
-            "webLink": "/auth/incident/incident.xhtml?incident=3",
+            "webLink": "https://app.threatconnect.com/auth/incident/incident.xhtml?incident=3",
             "tags": {
                 "data": [{
                     "id": 11,
@@ -57,30 +53,31 @@ JSON Response
                     "name": "Robbery",
                     "lastUsed": "2021-11-02T15:01:44Z"
                 }],
-                "count": 2
             },
-            "securityLabels": {
-                "count": 0
-            },
+            "securityLabels": {},
+            "type": "Incident",
             "name": "Bad Incident",
-            "createdBy": "API User",
-            "associatedGroups": {
-                "count": 0
+            "createdBy": {
+        	        "id": 39,
+                    "userName": "06086238053146319309",
+                    "firstName": "API",
+                    "lastName": "User",
+                    "pseudonym": "APIUserNFmof"
             },
-            "associatedIndicators": {
-                "count": 0
-            },
-            "attributes": {
-                "count": 0
-            },
+            "associatedGroups": {},
+            "associatedIndicators": {},
+            "associatedCases": {},
+            "associatedArtifacts": {},
+            "attributes": {},
             "status": "New",
-            "eventDate": "2021-11-03T00:00:00Z"
+            "eventDate": "2021-11-03T00:00:00Z",
+            "lastModified": "2021-11-03T11:04:12Z"
         },
         "message": "Created",
         "status": "Success"
     }
 
 .. note::
-    When creating an Group, you can apply Tags that do not yet exist in ThreatConnect to it. In this scenario, you would need to fill out `all required fields for each new Tag <https://docs.threatconnect.com/en/latest/rest_api/v3/tags/tags.html>`_. Upon creation of the new Group, any Tags included in the body of the POST request that do not yet exist in ThreatConnect will also be created.
+    When creating or updating a Group, you can apply Tags that do not yet exist in ThreatConnect to it. To do so, fill out `all required fields for each new Tag <https://docs.threatconnect.com/en/latest/rest_api/v3/tags/tags.html>`_. Upon creation of the new Group, any Tags included in the body of the POST request that do not yet exist in ThreatConnect will also be created.
 
-    Similarly, you can associate Indicators and Groups that do not yet exist in ThreatConnect to the Group. In this scenario, you would need to fill out `all required fields for the type of Indicator <https://docs.threatconnect.com/en/latest/rest_api/v3/indicators/indicators.html>`_ or Group being associated to the Group. Upon creation of the new Group, any associated objects included in the body of the POST request that do not yet exist in ThreatConnect will also be created.
+    Similarly, you can associate Artifacts, Cases, Indicators, and Groups that do not yet exist in ThreatConnect to the Group. In this scenario, you would need to fill out all required fileds for the type of object being associated to the Group. Upon creation of the new Group, any associated objects included in the body of the POST request that do not yet exist in ThreatConnect will also be created.

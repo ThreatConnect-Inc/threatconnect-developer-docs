@@ -4,7 +4,7 @@ Update an Object's Metadata
 Overview
 ^^^^^^^^
 
-When updating an Indicator, Group, Victim, or Victim Asset, you can use the ``mode`` field to add or remove metadata. The ``mode`` field accepts three values, each of which is defined in the following table.
+When updating an Artifact, Case, Indicator, Group, Victim, or Victim Asset, you can use the ``mode`` field to add or remove metadata. The ``mode`` field accepts three values, each of which is defined in the following table.
 
 +----------+-------------------------------------------------------------------------------+
 | Value    | Description                                                                   |
@@ -26,7 +26,23 @@ The following table lists the metadata that can be updated for each object’s r
 +-----------------+-------------------------+
 | Object          | Updatable Metadata      |
 +=================+=========================+
-| indicators      | associatedGroups        |
+| artifacts       | associatedGroups        |
++-----------------+-------------------------+
+|                 | associatedIndicators    |
++-----------------+-------------------------+
+| cases           | associatedCases         |
++-----------------+-------------------------+
+|                 | associatedGroups        |
++-----------------+-------------------------+
+|                 | associatedIndicators    |
++-----------------+-------------------------+
+|                 | tags                    |
++-----------------+-------------------------+
+| indicators      | associatedArtifacts     |
++-----------------+-------------------------+
+|                 | associatedCases         |
++-----------------+-------------------------+
+|                 | associatedGroups        |
 +-----------------+-------------------------+
 |                 | attributes              |
 +-----------------+-------------------------+
@@ -34,7 +50,11 @@ The following table lists the metadata that can be updated for each object’s r
 +-----------------+-------------------------+
 |                 | tags                    |
 +-----------------+-------------------------+
-| groups          | associatedGroups        |
+| groups          | associatedArtifacts     |
++-----------------+-------------------------+
+|                 | associatedCases         |
++-----------------+-------------------------+
+|                 | associatedGroups        |
 +-----------------+-------------------------+
 |                 | associatedIndicators    |
 +-----------------+-------------------------+
@@ -58,7 +78,7 @@ The following table lists the metadata that can be updated for each object’s r
 +-----------------+-------------------------+
 
 .. note::
-    To disassociate a Group from an Indicator, Group, Victim, or Victim Asset, you must use the Group’s ID when setting the ``associatedGroups`` field.
+    To disassociate an object from an Artifact, Case, Indicator, Group, Victim, or Victim Asset, you must use the object's ID when setting its respective field (e.g., if dissociating a Group from an object, use the Group's ID when setting the ``associatedGroups`` field).
 
 Example Request
 ^^^^^^^^^^^^^^^
@@ -82,107 +102,109 @@ JSON Response
 
 .. code:: json
 
-    {
-        "data": {
-            "id": 4,
-            "type": "Host",
-            "ownerName": "Demo Organization",
-            "dateAdded": "2021-11-05T16:43:17Z",
-            "webLink": "/auth/indicators/details/host.xhtml?host=ultrabadguy.com",
-            "tags": {
-                "data": [{
-                    "id": 10,
-                    "name": "Malicious Host",
-                    "description": "A tag that can be applied to malicious Host Indicators.",
-                    "lastUsed": "2021-11-05T16:43:17Z"
-                }, {
-                    "id": 11,
-                    "name": "Targeted Attack",
-                    "lastUsed": "2021-11-05T16:43:17Z"
-                }, {
-                    "id": 12,
-                    "name": "Russia",
-                    "lastUsed": "2021-11-05T17:21:07Z"
-                }],
-                "count": 3
-            },
-            "securityLabels": {
-                "data": [{
-                    "id": 4,
-                    "name": "TLP:RED",
-                    "description": "This security label is used for information that cannot be effectively acted upon by additional parties, and could lead to impacts on a party's privacy, reputation, or operations if misused.",
-                    "color": "FF0033",
-                    "owner": "System",
-                    "dateAdded": "2016-08-31T00:00:00Z"
-                }],
-                "count": 1
-            },
-            "lastModified": "2021-11-05T17:21:06Z",
-            "rating": 5.0,
-            "confidence": 92,
-            "source": "A Reliable Source",
-            "description": "Potentially malicious host related to malware dissemination.",
-            "summary": "ultrabadguy.com",
-            "privateFlag": false,
-            "active": true,
-            "activeLocked": false,
-            "associatedGroups": {
-                "data": [{
-                    "id": 12,
-                    "type": "Incident",
-                    "ownerName": "Demo Organization",
-                    "dateAdded": "2021-08-27T12:16:56Z",
-                    "webLink": "/auth/incident/incident.xhtml?incident=12",
-                    "name": "Dangerous Incident",
-                    "createdBy": "Pat Jones"
-                }],
-                "count": 1
-            },
-            "associatedIndicators": {
-                "data": [{
-                    "id": 4,
-                    "type": "Host",
-                    "ownerName": "Demo Organization",
-                    "dateAdded": "2021-11-05T16:43:17Z",
-                    "webLink": "/auth/indicators/details/host.xhtml?host=ultrabadguy.com",
-                    "lastModified": "2021-11-05T17:21:07Z",
-                    "rating": 5.0,
-                    "confidence": 92,
-                    "source": "A Reliable Source",
-                    "description": "Potentially malicious host related to malware dissemination.",
-                    "summary": "ultrabadguy.com",
-                    "privateFlag": false,
-                    "active": true,
-                    "activeLocked": false,
-                    "hostName": "ultrabadguy.com",
-                    "dnsActive": false,
-                    "whoisActive": true
-                }],
-                "count": 1
-            },
-            "attributes": {
-                "data": [{
-                    "id": 88842457,
-                    "type": "Additional Analysis and Context",
-                    "value": "This host is very dangerous",
-                    "source": "Phase of Intrusion",
-                    "createdBy": {
-                        "id": 371,
-                        "userName": "89474115115672885137",
-                        "firstName": "j",
-                        "lastName": "smith",
-                        "pseudonym": "APIUsergj03B"
-                    },
-                    "dateAdded": "2021-11-05T16:43:17Z",
-                    "lastModified": "2021-11-05T16:43:17Z",
-                    "default": false
-                }],
-                "count": 1
-            },
-            "hostName": "ultrabadguy.com",
-            "dnsActive": false,
-            "whoisActive": true
+{
+    "data": {
+        "id": 4,
+        "ownerName": "Demo Organization",
+        "dateAdded": "2021-11-05T16:43:17Z",
+        "webLink": "https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=ultrabadguy.com",
+        "tags": {
+            "data": [{
+                "id": 10,
+                "name": "Malicious Host",
+                "description": "A tag that can be applied to malicious Host Indicators.",
+                "lastUsed": "2021-11-05T16:43:17Z"
+            }, {
+                "id": 11,
+                "name": "Targeted Attack",
+                "lastUsed": "2021-11-05T16:43:17Z"
+            }, {
+                "id": 12,
+                "name": "Russia",
+                "lastUsed": "2021-11-05T17:21:07Z"
+            }],
+
         },
-        "message": "Updated",
-        "status": "Success"
-    }
+        "securityLabels": {
+            "data": [{
+                "id": 4,
+                "name": "TLP:RED",
+                "description": "This security label is used for information that cannot be effectively acted upon by additional parties, and could lead to impacts on a party's privacy, reputation, or operations if misused.",
+                "color": "FF0033",
+                "owner": "System",
+                "dateAdded": "2016-08-31T00:00:00Z"
+            }],
+
+        },
+        "type": "Host",
+        "lastModified": "2021-11-05T17:21:06Z",
+        "rating": 5.00,
+        "confidence": 92,
+        "source": "A Reliable Source",
+        "description": "Potentially malicious host related to malware dissemination.",
+        "summary": "ultrabadguy.com",
+        "privateFlag": false,
+        "active": true,
+        "activeLocked": false,
+        "associatedGroups": {
+            "data": [{
+                "id": 12,
+                "type": "Incident",
+                "ownerName": "Demo Organization",
+                "dateAdded": "2021-08-27T12:16:56Z",
+                "webLink": "https://app.threatconnect.com/auth/incident/incident.xhtml?incident=12",
+                "name": "Dangerous Incident",
+                "createdBy": "Pat Jones"
+            }],
+
+        },
+        "associatedIndicators": {
+            "data": [{
+                "id": 4,
+                "type": "Host",
+                "ownerName": "Demo Organization",
+                "dateAdded": "2021-11-05T16:43:17Z",
+                "webLink": "https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=ultrabadguy.com",
+                "lastModified": "2021-11-05T17:21:07Z",
+                "rating": 5.0,
+                "confidence": 92,
+                "source": "A Reliable Source",
+                "description": "Potentially malicious host related to malware dissemination.",
+                "summary": "ultrabadguy.com",
+                "privateFlag": False,
+                "active": True,
+                "activeLocked": False,
+                "hostName": "ultrabadguy.com",
+                "dnsActive": False,
+                "whoisActive": True
+            }],
+
+        },
+        "attributes": {
+            "data": [{
+                "id": 88842457,
+                "type": "Additional Analysis and Context",
+                "value": "This host is very dangerous",
+                "source": "Phase of Intrusion",
+                "createdBy": {
+                    "id": 371,
+                    "userName": "89474115115672885137",
+                    "firstName": "j",
+                    "lastName": "smith",
+                    "pseudonym": "APIUsergj03B"
+                },
+                "dateAdded": "2021-11-05T16:43:17Z",
+                "lastModified": "2021-11-05T16:43:17Z",
+                "default": false
+            }],
+
+        },
+        "associatedCases": {},
+        "associatedArtifacts": {},
+        "hostName": "ultrabadguy.com",
+        "dnsActive": false,
+        "whoisActive": true
+    },
+    "message": "Updated",
+    "status": "Success"
+}

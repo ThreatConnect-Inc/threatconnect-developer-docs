@@ -17,10 +17,10 @@ JSON Response
     {
         "data": [{
             "id": 10,
-            "type": "File",
             "ownerName": "Demo Organization",
             "dateAdded": "2021-11-02T13:07:08Z",
-            "webLink": "/auth/indicators/details/file.xhtml?file=F5A2496CF66CB8CFFE66CB1B27D7DEDE",
+            "webLink": "https://app.threatconnect.com/auth/indicators/details/file.xhtml?file=F5A2496CF66CB8CFFE66CB1B27D7DEDE",
+            "type": "File",
             "lastModified": "2021-11-02T14:04:55Z",
             "summary": "F5A2496CF66CB8CFFE66CB1B27D7DEDE",
             "privateFlag": false,
@@ -30,10 +30,10 @@ JSON Response
         }, 
         {
             "id": 9,
-            "type": "EmailAddress",
             "ownerName": "Demo Organization",
             "dateAdded": "2021-11-02T12:34:03Z",
-            "webLink": "/auth/indicators/details/emailaddress.xhtml?emailaddress=badguy%40bad.com",
+            "webLink": "https://app.threatconnect.com/auth/indicators/details/emailaddress.xhtml?emailaddress=badguy%40bad.com",
+            "type": "EmailAddress",
             "lastModified": "2021-11-02T12:48:51Z",
             "description": "A bad email address",
             "summary": "badguy@bad.com",
@@ -70,11 +70,13 @@ JSON Response
     {
         "data": {
             "id": 3,
-            "type": "Host",
             "ownerName": "Demo Organization",
             "dateAdded": "2021-10-26T12:40:00Z",
-            "webLink": "/auth/indicators/details/host.xhtml?host=badguy.com",
+            "webLink": "https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=badguy.com",
+            "type": "Host",
             "lastModified": "2021-11-02T14:58:55Z",
+            "rating": 3.00,
+            "confidence": 74,
             "description": "A bad host.",
             "summary": "badguy.com",
             "privateFlag": false,
@@ -87,7 +89,7 @@ JSON Response
         "status": "Success"
     }
 
-The same response would be returned if we used the following request, where the Indicator’s ID is replaced with its summary:
+The same response would be returned if we used the following request, where the Indicator's ID is replaced with its summary:
 
 .. code::
 
@@ -108,15 +110,15 @@ JSON Response
 
     {
         "data": [{
-            "type": "URL",
             "ownerName": "Demo Organization",
             "dateAdded": "2021-11-02T15:17:28Z",
+            "type": "URL",
             "summary": "http://badsite.com"
         }],
         "status": "Success"
     }
 
-By default, this query will return all Indicators recently deleted in the API key’s default Organization. You can `specify a different owner <https://docs.threatconnect.com/en/latest/rest_api/v3/specify_owner.html>`_ by including the ``?owner=`` query parameter in your query.
+By default, this query will return all Indicators recently deleted in the API key's default Organization. You can `specify a different owner <https://docs.threatconnect.com/en/latest/rest_api/v3/specify_owner.html>`_ by including the ``?owner=`` query parameter in your query.
 
 .. note::
     The **indicatorDeleteRetentionTime** system setting determines the number of days to retain deleted Indicators.

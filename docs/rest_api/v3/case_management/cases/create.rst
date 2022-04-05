@@ -7,78 +7,22 @@ The basic format for creating a Case is:
 
     POST /v3/cases/
     {
-      "name": "Case name",
-      "status": "Case status",
-      "severity": "Case severity"
+        "name": "Case name",
+        "status": "Case status",
+        "severity": "Case severity"
     }
 
-Refer to the following table for a list of available fields for the ``cases`` object:
-
-+---------------------+-------------------------------------------------+-----------+---------+-------------------------------------------------------------------------+
-| Field               | Description                                     | Required  | Type    | Example Value(s)                                                        |
-+=====================+=================================================+===========+=========+=========================================================================+
-| artifacts           | A list of Artifacts corresponding to the Case   | FALSE     | String  | {"data": [{"summary": "badguy@bad.com", "type": "Email Address"}]}      |
-+---------------------+-------------------------------------------------+-----------+---------+-------------------------------------------------------------------------+
-| assignee            | The user or group Assignee object for the Case  | FALSE     | String  | {"type": "User", "data": {"userName": "jonsmith@threatconnect.com"}}    |
-+---------------------+-------------------------------------------------+-----------+---------+-------------------------------------------------------------------------+
-| attributes          | A list of Attributes corresponding to the Case  | FALSE     | String  | {"data": [{"type": "Case Attribute Name",                               |
-|                     |                                                 |           |         | "value": "Case Attribute Value", "source": "Case Attribute Source"}]}   |
-+---------------------+-------------------------------------------------+-----------+---------+-------------------------------------------------------------------------+
-| caseCloseTime       | The date and time a Case was closed             | FALSE     | Date    | "2021-04-30T00:00:00Z"                                                  |
-+---------------------+-------------------------------------------------+-----------+---------+-------------------------------------------------------------------------+
-| caseDetectionTime   | The date and time a security incident or        | FALSE     | Date    | "2021-04-30T00:00:00Z"                                                  |
-|                     | threat was detected (e.g., by a security team)  |           |         |                                                                         |
-+---------------------+-------------------------------------------------+-----------+---------+-------------------------------------------------------------------------+
-| caseOccurrence Time | The date and time a security incident or        | FALSE     | Date    | "2021-04-30T00:00:00Z"                                                  |
-|                     | threat occurred                                 |           |         |                                                                         |
-+---------------------+-------------------------------------------------+-----------+---------+-------------------------------------------------------------------------+
-| caseOpenTime        | The date and time a Case was opened             | FALSE     | Date    | "2021-04-30T00:00:00Z"                                                  |
-+---------------------+-------------------------------------------------+-----------+---------+-------------------------------------------------------------------------+
-| description         | A description of the Case                       | FALSE     | String  | "New case description"                                                  |
-+---------------------+-------------------------------------------------+-----------+---------+-------------------------------------------------------------------------+
-| name                | The name of the Case                            | TRUE      | String  | "New Case"                                                              |
-+---------------------+-------------------------------------------------+-----------+---------+-------------------------------------------------------------------------+
-| notes               | A list of Notes corresponding to the Case       | FALSE     | String  | {"data": [{"text": "Note about malware case"}]}                         |
-+---------------------+-------------------------------------------------+-----------+---------+-------------------------------------------------------------------------+
-| resolution          | The resolution of the Case                      | FALSE     | String  | "Containment Achieved", "False Positive"                                |
-+---------------------+-------------------------------------------------+-----------+---------+-------------------------------------------------------------------------+
-| severity            | The severity of the Case. Valid values are      | TRUE      | String  | ""Low", "Medium", "High", or "Critical"                                 |
-|                     | "Low", "Medium", "High", or "Critical"          |           |         |                                                                         |
-+---------------------+-------------------------------------------------+-----------+---------+-------------------------------------------------------------------------+
-| status              | The status of the Case                          | TRUE      | String  | "Open", "Closed"                                                        |
-+---------------------+-------------------------------------------------+-----------+---------+-------------------------------------------------------------------------+
-| tags                | A list of Tags corresponding to the Case        | FALSE     | String  | {"data": [{"name": "Phishing"}]}                                        |
-+---------------------+-------------------------------------------------+-----------+---------+-------------------------------------------------------------------------+
-| tasks               | A list of Tasks corresponding to the Case       | FALSE     | String  | {"data": [{"name": "Investigate Phishing Email", "workflowPhase": 1,    |
-|                     |                                                 |           |         | "workflowStep": 1}]}                                                    |
-+---------------------+-------------------------------------------------+-----------+---------+-------------------------------------------------------------------------+
-| userAccess          | A list of users that, when defined, are the     | FALSE     | String  | {"data": [{"userName": "jsmith@threatconnect.com"}]}                    |
-|                     | only ones allowed to view or edit the Case      |           |         |                                                                         |
-+---------------------+-------------------------------------------------+-----------+---------+-------------------------------------------------------------------------+
-| workflowEvents      | A list of Timeline events corresponding to      | FALSE     | String  | {"data": [{"summary": "Case created via API", "eventDate":              |
-|                     | the Case                                        |           |         | "2021-08-12T12:30:12Z"}]}                                               |
-+---------------------+-------------------------------------------------+-----------+---------+-------------------------------------------------------------------------+
-| workflowTemplate    | The Workflow Template applied to the Case       | FALSE     | String  | {"name": "Example Workflow Template"}                                   |
-+---------------------+-------------------------------------------------+-----------+---------+-------------------------------------------------------------------------+
-
-.. note::
-    Attribute Types for Cases must first be created in the System or Organization in which a Case resides before they can be added to the Case. See the `Creating Custom Attribute Types <https://training.threatconnect.com/learn/article/creating-custom-attributes-kb-article>`_ knowledge base article for more information.
-
-.. include:: ../_includes/case_resolutions.rst
-
-.. note::
-    Setting the ``tags`` field will replace any existing tag(s) with the one(s) specified.
-
-For example, the following query will create a Case named ``Example Workflow Case`` that has a severity of ``Low``, has a status of ``Open``, and is assigned to ``jonsmith@threatconnect.com``:
+For example, the following query will create a Case named ``Example Workflow Case`` that has a severity of ``Low``, has a status of ``Open``, is assigned to ``jonsmith@threatconnect.com``, and includes an Artifact that is associated to an existing Indicator:
 
 .. code::
 
     POST /v3/cases/
     {
-      "assignee": {"type": "User", "data": {"userName": "jonsmith@threatconnect.com"}},
-      "name": "Example Workflow Case",
-      "severity": "Low",
-      "status": "Open"
+        "artifacts": {"data": [{"summary": "badguy.com", "type": "Host", "associatedIndicators": {"data": [{"id": "2"}]}}]},
+        "assignee": {"type": "User", "data": {"userName": "jonsmith@threatconnect.com"}},
+        "name": "Example Workflow Case",
+        "severity": "Low",
+        "status": "Open"
     }
 
 JSON Response:
@@ -86,7 +30,7 @@ JSON Response:
 .. code:: json
 
     {
-    "data": {
+        "data": {
         "id": 1,
         "xid": "a1a1a1a1-a1a1-a1a1-a1a1-a1a1a1a1a1a1",
         "name": "Example Workflow Case",
@@ -104,41 +48,52 @@ JSON Response:
         "severity": "Low",
         "resolution": "Not Specified",
         "assignee": {
-          "type": "User",
-          "data": {
-            "id": 1,
-            "userName": "jonsmith@threatconnect.com",
+            "type": "User",
+            "data": {
+                "id": 1,
+                "userName": "jonsmith@threatconnect.com",
+                "firstName": "John",
+                "lastName": "Smith",
+                "pseudonym": "johnsmith",
+                "role": "User"
+            }
+        },
+        "tasks": {},
+        "artifacts": {
+        "data": [
+            {
+                "id": 12,
+                "summary": "badguy.com",
+                "type": "Host",
+                "intelType": "indicator-Host",
+                "dateAdded": "2021-04-09T14:41:27.27Z",
+                "derivedLink": true,
+                "hashCode": "fTgtpcEQ4JMzFNpXBMhfyXue7s/DchX7uCWedTcqiqA="
+            }
+          ]
+        },
+        "notes": {},
+        "userAccess": {},
+        "createdBy": {
+            "id": 3,
+            "userName": "11112222333344445555",
             "firstName": "John",
             "lastName": "Smith",
-            "pseudonym": "johnsmith",
-            "role": "User"
-          }
-        },
-        "tasks": {
-          "count": 0,
-        },
-        "artifacts": {
-          "count": 0,
-        },
-        "notes": {
-          "count": 0,
-        },
-        "userAccess": {
-          "count": 0,
-        },
-        "createdBy": {
-          "id": 3,
-          "userName": "11112222333344445555",
-          "firstName": "John",
-          "lastName": "Smith",
-          "pseudonym": "jsmithAPI",
-          "role": "Api User"
+            "pseudonym": "jsmithAPI",
+            "role": "Api User"
         },
         "owner": "Example Organization",
-        "attributes": {
-          "count": 0,
+        "ownerId": 7,
+        "attributes": {},
+        "associatedGroups": {},
+        "associatedIndicators": {},
+        "associatedCases": {}
         },
-      },
-      "message": "Created",
-      "status": "Success"
+        "message": "Created",
+        "status": "Success"
     }
+
+Refer to the `Available Fields <#available-fields>`_ and section for a list of available fields that can be included in the body of a POST request for the ``artifacts`` object.
+
+.. note::
+    When creating or updating a Case, you can associate Cases, Indicators, and Groups that do not yet exist in ThreatConnect to the Case. To do so, fill out all required fields for the `type of Indicator <https://docs.threatconnect.com/en/latest/rest_api/v3/indicators/indicators.html>`_, `type of Group <https://docs.threatconnect.com/en/latest/rest_api/v3/groups/groups.html>`_, or Case being associated to the Case. Upon creation of the new Case, any associated objects included in the body of the POST request that do not yet exist in ThreatConnect will also be created. In addition, you can associate multiple Cases, Indicators, and Groups, as well as apply multiple `Tags <https://docs.threatconnect.com/en/latest/rest_api/v3/tags/tags.html>`_, to the Case being created in a single POST request.
