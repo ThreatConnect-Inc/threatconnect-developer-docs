@@ -42,7 +42,7 @@ Alternatively, refer to the following tables for a list of available fields that
      - "Corporate email"
    * - associatedGroups
      - A list of Groups associated to the Victim Asset
-     - String
+     - `Group Object <https://docs.threatconnect.com/en/latest/rest_api/v3/groups/groups.html>`_
      - FALSE
      - TRUE
      - {"data": [{"id": 12345}]}, {"data": [{"name": "Bad Adversary", "type": "Adversary"}]}
