@@ -45,9 +45,10 @@ JSON Response:
                                 "role": "Administrator"
                         }
                 },
-                "owner": "Example Organization
+                "owner": "Example Organization"
             },
             "message": "Updated",
             "status": "Success"
         }
 
+Refer to the `Available Fields <#available-fields>`_ and section for a list of available fields that can be included in the body of a PUT request for the ``tasks`` object.
