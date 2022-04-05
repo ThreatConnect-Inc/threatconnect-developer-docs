@@ -742,17 +742,19 @@ Retrieve Indicator Observations
 Retrieving Recent Observations
 """"""""""""""""""""""""""""""
 
-As of ThreatConnect 5.0, the API branch below provides the ten Indicators with the most Observations since a given date. If no date is given, the default query returns the ten Indicators that have had the most Observations over the past day. In this context, a "day" includes all of the previous day and all data from the current day up to the current moment in time.
+The following API branch returns up to 20,000 Indicators with the most observations since a given date. System Administrators can adjust this limit via the **System Settings** screen for their ThreatConnect instance, if desired.
+
+If no date is provided when submitting a request, the default query returns Indicators with the most observations over the past day. In this context, a "day" includes all of the previous day and all data from the current day up to the current moment in time.
 
 .. code::
 
     GET /v2/indicators/observed
 
-To view Indicators with the most Observations since a specific date, use the ``dateObserved`` parameter, as demonstrated below:
+To view Indicators with the most observations since a specific date, use the ``dateObserved`` parameter, as demonstrated below:
 
 .. code::
 
-    GET /v2/indicators/observed?dateObserved=2017-01-13
+    GET /v2/indicators/observed?dateObserved=2022-04-05
 
 This request will return the following data:
 
@@ -765,18 +767,24 @@ This request will return the following data:
         "indicator": [
           {
             "summary": "192.168.0.1",
+            "observationCount": 12,
+            "lastObserved": "2022-04-05T07:44:13Z",
             "userObservedList": [
               {
                 "userName": "12345678901234567890",
+                "userLastObservedDate": "2022-04-05T07:44:13Z",
                 "count": 12
               }
             ]
           },
           {
             "summary": "example.com",
+            "observationCount": 2,
+            "lastObserved": "2022-04-04T21:17:06Z",
             "userObservedList": [
               {
                 "userName": "12345678901234567890",
+                "userLastObservedDate": "2022-04-04T21:17:06Z",
                 "count": 2
               }
             ]
@@ -785,18 +793,18 @@ This request will return the following data:
       }
     }
 
-.. note:: Only Observations reported using API accounts that are configured to be included in Observations and False Positives will show up in the list of recent Observations. For more details on how to configure an API account in this way, refer to the Knowledge Base article `here <https://training.threatconnect.com/learn/article/reporting-false-positives-kb-article>`__.
+.. note:: Only observations reported using API accounts that are configured to be included in observations and false positive reports will show up in the list of recent observations. For more details on how to configure an API account in this way, see the "Including False Positives Reported by API Users" section of the `Reporting False Positives <https://training.threatconnect.com/learn/article/reporting-false-positives-kb-article>`_ knowledge base article.
 
 Retrieving Total Indicator Observations
 """""""""""""""""""""""""""""""""""""""
 
-To retrieve the total count of Observations for an Indicator, use the following query:
+To retrieve the total count of observations for an Indicator, use the following query:
 
 .. code::
 
     GET /v2/indicators/{indicatorType}/{indicator}/observations
 
-For example, the query below will retrieve the Observations for the Host ``example.com``:
+For example, the query below will retrieve the observations for the Host ``example.com``:
 
 .. code::
 
@@ -822,13 +830,13 @@ JSON Response:
 Retrieving Observations from Your Organization
 """"""""""""""""""""""""""""""""""""""""""""""
 
-To view the number of an Indicator's Observations that came from your Organization, you can use a query in the following format:
+To view the number of an Indicator's observations that came from your Organization, you can use a query in the following format:
 
 .. code::
 
     GET /v2/indicators/{indicatorType}/{indicator}/observationCount
 
-For example, the query below will retrieve the Observation counts for the Host ``example.com``:
+For example, the query below will retrieve the observation counts for the Host ``example.com``:
 
 .. code::
 
@@ -850,7 +858,7 @@ JSON Response:
       }
     }
 
-The ``yourCount`` field shows the total number of Observations on the Indicator that came your Organization (and ``yourLastObserved`` provides the date of the most recent Observation). The ``count`` and ``lastObserved`` describe Observations from any ThreatConnect user.
+The ``yourCount`` field shows the total number of observations on the Indicator that came from your Organization (and ``yourLastObserved`` provides the date of the most recent observation). The ``count`` and ``lastObserved`` describe observations from any ThreatConnect user.
 
 Retrieve Indicator Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
