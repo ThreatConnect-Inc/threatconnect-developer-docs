@@ -60,11 +60,11 @@ JSON Response:
       "status": "Success"
   }
 
-Additional association levels for intelligence items may also be retrieved. For example, including the ``?fields=associatedGroups.attributes`` query parameter in the preceding query will return information about the Indicator with ID 12345, including Tags applied to the Indicator, Groups associated to the Indicator, and Attributes added to those associated Groups.
+Additional association levels for intelligence items may also be retrieved. For example, adding ``.attributes`` to the ``?fields=associatedGroups`` query parameter in the the preceding query will return information about the Indicator with ID 12345, including Tags applied to the Indicator, Groups associated to the Indicator, and Attributes added to those associated Groups.
 
 .. code::
 
-  GET /v3/indicators/12345?fields=tags&fields=associatedGroups&fields=associatedGroups.attributes
+  GET /v3/indicators/12345?fields=tags&fields=associatedGroups.attributes
 
 JSON Response:
 
