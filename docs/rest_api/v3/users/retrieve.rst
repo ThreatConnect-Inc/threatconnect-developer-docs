@@ -15,23 +15,24 @@ JSON Response:
 .. code:: json
 
     {
-        "data": [{
-            "id": 1,
-            "userName": "smithj@threatconnect.com",
-            "firstName": "John",
-            "lastName": "Smith",
-            "pseudonym": "JMS",
-            "role": "Administrator"
-        }, 
-        {
-            "id": 2,
-            "userName": "pjones+analyst@threatconnect.com",
-            "firstName": "Pat",
-            "lastName": "Jones",
-            "pseudonym": "patjones",
-            "role": "User"
-        }, 
-        {...}
+        "data": [
+            {
+                "id": 1,
+                "userName": "smithj@threatconnect.com",
+                "firstName": "John",
+                "lastName": "Smith",
+                "pseudonym": "JMS",
+                "role": "Administrator"
+            }, 
+            {
+                "id": 2,
+                "userName": "pjones+analyst@threatconnect.com",
+                "firstName": "Pat",
+                "lastName": "Jones",
+                "pseudonym": "patjones",
+                "role": "User"
+            }, 
+            {...}
         ],
         "status": "Success"
     }

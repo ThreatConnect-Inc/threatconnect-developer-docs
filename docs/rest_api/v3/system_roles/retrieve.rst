@@ -51,7 +51,7 @@ JSON Response:
                 "assignable": true,
                 "displayed": true
             },
-        {...}
+            {...}
         ],
         "status": "Success"
     }
