@@ -15,24 +15,26 @@ JSON Response:
 .. code:: json
 
     {
-      "data": [{
-        "id": 1,
-        "name": "Email Address",
-        "description": "A name that identifies an electronic post office box on a network where Electronic-Mail (e-mail) can be sent.",
-        "dataType": "String",
-        "intelType": "indicator-EmailAddress",
-        "derivedLink": true
-      }, {
-        "id": 2,
-        "name": "Host",
-        "description": "A hostname. A host is any hardware device that has the capability of permitting access to a network via a user interface, specialized software, network address, protocol stack, or any other means.",
-        "dataType": "String",
-        "intelType": "indicator-Host",
-        "derivedLink": true
-      }, 
-         {...}
-      ],
-      "status": "Success"
+        "data": [
+        {
+            "id": 1,
+            "name": "Email Address",
+            "description": "A name that identifies an electronic post office box on a network where Electronic-Mail (e-mail) can be sent.",
+            "dataType": "String",
+            "intelType": "indicator-EmailAddress",
+            "derivedLink": true
+        },
+        {
+            "id": 2,
+            "name": "Host",
+            "description": "A hostname. A host is any hardware device that has the capability of permitting access to a network via a user interface, specialized software, network address, protocol stack, or any other means.",
+            "dataType": "String",
+            "intelType": "indicator-Host",
+            "derivedLink": true
+        }, 
+        {...}
+        ],
+        "status": "Success"
     }
 
 Retrieve a Single Artifact Type
@@ -55,16 +57,21 @@ JSON Response:
 .. code:: json
 
     {
-      "data": {
-        "id": 3,
-        "name": "URL",
-        "description": "A uniform resource locator, or URL, is a short string containing an address which refers to an object in the web. URLs are a subset of URIs.",
-        "dataType": "String",
-        "intelType": "indicator-URL",
-        "derivedLink": true
-      },
-      "status": "Success"
+        "data": {
+            "id": 3,
+            "name": "URL",
+            "description": "A uniform resource locator, or URL, is a short string containing an address which refers to an object in the web. URLs are a subset of URIs.",
+            "dataType": "String",
+            "intelType": "indicator-URL",
+            "derivedLink": true
+        },
+        "status": "Success"
     }
+
+Request Additional Fields
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To request additional fields not automatically included with each returned object, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
 
 Filter Results
 ^^^^^^^^^^^^^^
