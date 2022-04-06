@@ -7,18 +7,8 @@ The basic format for updating a Case Attribute is:
 
     PUT /v3/caseAttributes/{caseAttributeId}
     {
-      "value": "Case Attribute Value"
+        "value": "Case Attribute Value"
     }
-
-Additional fields can be included when updating a Case Attribute to a Case, Refer to the following table for a list of available fields for the ``caseAttributes`` object:
-
-+-----------+---------------------------------------------------+----------+------------------------+
-| Field     | Description                                       | Type     | Example Value(s)       |
-+===========+===================================================+==========+========================+
-| source    | The Attribute's source                            | String   | "Hybrid analysis"      |
-+-----------+---------------------------------------------------+----------+------------------------+
-| value     | The Attribute's value                             | String   | "50"                   |
-+-----------+---------------------------------------------------+----------+------------------------+
   
 For example, the following query will update the ``value`` of a Case Attribute with ID 1.
 
@@ -26,20 +16,33 @@ For example, the following query will update the ``value`` of a Case Attribute w
 
     POST /v3/caseAttributes/1
     {
-      "value": "75"
+        "value": "75"
     }
 
 JSON Response:
 
 .. code:: json
 
-    {
-      "data": {
-          "id": 1,
-          "type": "Detection Percentage",
-          "value": "75",
-          "source": "Hybrid analysis"
+{
+  "data": {
+      "id": 1,
+      "type": "Detection Percentage",
+      "value": "75",
+      "source": "Hybrid analysis",
+      "createdBy": {
+          "id": 39,
+          "userName": "11112222333344445555",
+          "firstName": "John",
+          "lastName": "Smith",
+          "pseudonym": "jsmithAPI",
+          "role": "Api User"
       },
-      "message": "Updated",
-      "status": "Success"
-    }
+      "dateAdded": "2022-02-15T20:24:04Z",
+      "lastModified": "2022-02-15T20:28:22Z",
+      "default": false
+  },
+  "message": "Updated",
+  "status": "Success"
+}
+
+Refer to the `Available Fields <#available-fields>`_ and section for a list of available fields that can be included in the body of a PUT request for the ``caseAttributes`` object.
