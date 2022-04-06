@@ -18,8 +18,8 @@ JSON Response:
 .. code:: json
 
     {
-      "message": "Deleted",
-      "status": "Success"
+        "message": "Deleted",
+        "status": "Success"
     }
 
 Delete Workflow Templates in Bulk

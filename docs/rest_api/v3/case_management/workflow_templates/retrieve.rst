@@ -15,72 +15,92 @@ JSON Response:
 .. code:: json
 
     {
-      "data": [{
-        "id": 1,
-          "name": "Example Workflow Template",
-          "description": "A description for this Workflow Template.",
-          "active": false,
-          "version": 1,
-          "configAttribute": [{
-              "attributeTypeId": 23,
-          }]
-        }, {
-          "id": 2,
-          "name": "Phishing Analysis Template",
-          "configTask": [{
-            "configPlaybook": None,
-            "fields": [],
-            "name": "Analyze phishing email",
-            "description": "Analyze phishing email",
-            "required": true,
-            "workflowPhase": 1,
-            "workflowStep": 1,
-            "assignee": None
-        }, {
-         "configPlaybook": None,
-         "fields": [{
-            "artifactType": "Email Subject",
-            "dataType": "String",
-            "intelType": "indicator-Email Subject",
-            "name": "helloSubject",
-            "required": false,
-            "uiElement": "String",
-            "uiLabel": "Subject Line"
-            }, {
-            "artifactType": "Email Body",
-            "dataType": "String",
-            "name": "helloBody",
-            "required": true,
-            "uiElement": "String",
-            "uiLabel": "Email Body"
-            }],
-            "name": "Gather the subject line and email body",
-            "description": "Description ",
-            "required": true,
-            "workflowPhase": 1,
-            "workflowStep": 2,
-            "assignee": {
-                "id": None
+        "data": [
+            {
+                "id": 1,
+                "name": "Example Template",
+                "description": "A description for this Workflow Template.",
+                "active": false,
+                "version": 1,
+                "configAttribute": [
+                    {
+                        "attributeTypeId": 86
+                    }
+                ]
             },
-            "dependentOnTaskName": "Analyze Phishing Email"
-        }, {
-            "configPlaybook": {"playbookApp":{"name":"Example Workflow Escalation Demo","type":"Workflow","version":"1.1.0","updated":"2021-03-15T14:54:36.000Z","programName":"e974ff4b663ee7ac4a126793957305b5","id":619},"automatic":false,"io":{"inputs":[{"name":"escalationSubject","value":"${WORKFLOW:Gather the subject line and email body:helloSubject}"},{"name":"esclationBody","value":"${WORKFLOW:Gather the subject line and email body:helloBody}"}],"outputs":[{"intelTypes":[],"name":"emailReceipient","dataType":"String","optional":true,"failOnError":true,"artifactName":"helloRecipient","artifactType":"Email Address"}]}},
-            "fields": [],
-            "name": "Send Escalation Email",
-            "description": "Notify Manager",
-            "required": false,
-            "workflowId": 13,
-            "workflowPhase": 2,
-            "workflowStep": 1,
-            "assignee": {
-                "id": None
+            {
+                "id": 2,
+                "name": "Demo Template with Tasks",
+                "configTask": [
+                    {
+                        "configPlaybook": null,
+                        "fields": [],
+                        "name": "Create a Meeting Notes folder",
+                        "workflowId": 66,
+                        "workflowPhase": 1,
+                        "workflowStep": 1,
+                        "assignee": {
+                            "displayName": "John Smith",
+                            "id": 79,
+                            "name": "jsmith",
+                            "type": "User",
+                            "ownerId": 7,
+                            "superUser": false,
+                            "firstName": "John",
+                            "lastName": "Smith"
+                        },
+                        "duration": 2
+                    },
+                    {
+                        "configPlaybook": null,
+                        "fields": [
+                            {
+                                "artifactType": "Email Address",
+                                "dataType": "String",
+                                "intelType": "indicator-EmailAddress",
+                                "name": "emailAddress",
+                                "required": true,
+                                "uiElement": "String",
+                                "uiLabel": "Email Address"
+                            },
+                            {
+                                "artifactType": "Email Subject",
+                                "dataType": "String",
+                                "intelType": "indicator-Email Subject",
+                                "name": "emailSubject",
+                                "required": true,
+                                "uiElement": "String",
+                                "uiLabel": "Email Subject"
+                            }
+                        ],
+                        "name": "Analyze Email",
+                        "workflowId": 66,
+                        "workflowPhase": 2,
+                        "workflowStep": 2,
+                        "assignee": {
+                            "id": null
+                        },
+                        "dependentOnTaskName": "Confirm Receipt of Email",
+                        "duration": 3
+                    },
+                    {
+                        "configPlaybook": null,
+                        "fields": [],
+                        "name": "Confirm Receipt of Email",
+                        "workflowId": 66,
+                        "workflowPhase": 2,
+                        "workflowStep": 1,
+                        "assignee": {
+                            "id": null
+                        }
+                    }
+                ],
+                "active": true,
+                "version": 1
             },
-            "dependentOnTaskName": "Gather the subject line and email body"
-        }],
-        "active": true,
-        "version": 1
-        }],
-      "status": "Success"
+            {...}
+        ],
+        "status": "Success"
     }
 
 Retrieve a Single Workflow Template
@@ -103,14 +123,19 @@ JSON Response:
 .. code:: json
 
     {
-      "data": {
-          "id": 1,
-          "name": "Example Workflow Template",
-          "description": "A description for this Workflow Template.",
-          "active": false,
-          "version": 1,
-      },
-      "status": "Success"
+        "data": {
+            "id": 1,
+            "name": "Example Template",
+            "description": "A description for this Workflow Template.",
+            "active": false,
+            "version": 1,
+            "configAttribute": [
+                {
+                    "attributeTypeId": 86
+                }
+            ]
+        },
+        "status": "Success"
     }
 
 Request Additional Fields
