@@ -21,6 +21,7 @@ Overview
    :maxdepth: 1
 
    v3/available_endpoints
+   v3/postman_config
 
 Features
 ^^^^^^^^
