@@ -7,9 +7,9 @@ Endpoint: ``/api/v3/notes``
 
 .. include:: fields.rst
 
-.. include:: retrieve.rst
-
 .. include:: create.rst
+
+.. include:: retrieve.rst
 
 .. include:: update.rst
 

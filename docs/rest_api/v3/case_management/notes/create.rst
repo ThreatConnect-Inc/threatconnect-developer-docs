@@ -7,58 +7,38 @@ The basic format for creating a Note is:
 
     POST /v3/notes/
     {
-      "caseId": 1,
-      "caseXid": "a1a1a1a1-a1a1-a1a1-a1a1-a1a1a1a1a1a1",
-      "text": "This is an example note."
+        "caseId": 1,
+        "text": "This is an example note."
     }
-
-Refer to the following table for a list of available fields for the ``notes`` object:
-
-+------------------+---------------------------------------------------+----------+----------+
-| Field            | Description                                       | Required | Type     |
-+==================+===================================================+==========+==========+
-| artifactId       | The ID of the Artifact on which to apply the Note | FALSE    | Integer  |
-+------------------+---------------------------------------------------+----------+----------+
-| caseId           | The ID of the Case on which to apply the Note     | TRUE     | Integer  |
-+------------------+---------------------------------------------------+----------+----------+
-| caseXid          | The XID of the Case on which to apply the Note    | TRUE     | String   |
-+------------------+---------------------------------------------------+----------+----------+
-| taskId           | The ID of the Task on which to apply the Note     | FALSE    | Integer  |
-+------------------+---------------------------------------------------+----------+----------+
-| taskXid          | The XID of the Task on which to apply the Note    | FALSE    | String   |
-+------------------+---------------------------------------------------+----------+----------+
-| text             | The contents of the Note itself                   | TRUE     | String   |
-+------------------+---------------------------------------------------+----------+----------+
-| workflowEventId  | The ID of the Event on which to apply the Note    | FALSE    | Integer  |
-+------------------+---------------------------------------------------+----------+----------+
   
-For example, the following query will create a Note for the Case with ID 1 and apply it to the Artifact with ID 4.
+For example, the following query will create a Note for the Case with ID 3.
 
 .. code::
 
     POST /v3/notes/
     {
-      "caseId": 1,
-      "caseXid": "aa1a1a1a1-a1a1-a1a1-a1a1-a1a1a1a1a1a1",
-      "text": "Some notes about a case artifact.",
-      "artifactId": 4
+        "caseId": 3,
+        "text": "Review the contents of the malware investigation that was recently closed."
     }
 
 JSON Response:
 
 .. code:: json
 
-    {
-      "data": {
-          "id": 1,
-          "text": "Some notes about a case artifact.",
-          "summary": "Some notes about a case artifact.",
-          "author": "11112222333344445555",
-          "dateAdded": "2021-04-22T20:17:15Z",
-          "lastModified": "2021-04-22T20:17:15Z",
-          "edited": false,
-          "artifactId": 4
-      },
-      "message": "Created",
-      "status": "Success"
-    }
+{
+    "data": {
+        "id": 7,
+        "caseId": 3,
+        "caseXid": "d7dafb59-bf74-46fe-bf18-8da14cc59219",
+        "text": "Review the contents of the malware investigation that was recently closed.",
+        "summary": "Review the contents of the malware investigation that was recently closed.",
+        "author": "11112222333344445555",
+        "dateAdded": "2022-04-06T13:14:25Z",
+        "lastModified": "2022-04-06T13:14:25Z",
+        "edited": false
+    },
+    "message": "Created",
+    "status": "Success"
+}
+
+Refer to the `Available Fields <#available-fields>`_ and section for a list of available fields that can be included in the body of a POST request for the ``notes`` object.

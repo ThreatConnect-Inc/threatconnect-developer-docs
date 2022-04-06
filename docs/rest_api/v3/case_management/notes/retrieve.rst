@@ -15,27 +15,29 @@ JSON Response:
 .. code:: json
 
     {
-      "data": [{
-        "id": 1,
-        "caseId": 1,
-        "caseXid": "a1a1a1a1-a1a1-a1a1-a1a1-a1a1a1a1a1a1",
-        "text": "Some notes about a case artifact.",
-        "summary": "Some notes about a case artifact.",
-        "author": "11112222333344445555",
-        "dateAdded": "2021-04-22T20:17:15Z",
-        "lastModified": "2021-04-22T20:17:15Z",
-        "edited": false
-      }, {
-        "id": 2,
-        "caseId": 2,
-        "caseXid": "b2b2b2b2-b2b2-b2b2-b2b2-b2b2b2b2b2b2",
-        "text": "Some notes about a phishing threat.",
-        "summary": "Some notes about a phishing threat.",
-        "author": "pjones+analyst@threatconnect.com",
-        "dateAdded": "2021-03-17T10:15:02Z",
-        "lastModified": "2021-03-18T09:31:22Z",
-        "edited": true
-      }],
+      "data": [
+      {
+          "id": 1,
+          "text": "Some notes about a case artifact.",
+          "summary": "Some notes about a case artifact.",
+          "author": "11112222333344445555",
+          "dateAdded": "2021-04-22T20:17:15Z",
+          "lastModified": "2021-04-22T20:17:15Z",
+          "edited": false,
+          "artifactId": 12
+      },
+      {
+          "id": 2,
+          "caseId": 2,
+          "caseXid": "b2b2b2b2-b2b2-b2b2-b2b2-b2b2b2b2b2b2",
+          "text": "Some notes about a phishing threat.",
+          "summary": "Some notes about a phishing threat.",
+          "author": "pjones+analyst@threatconnect.com",
+          "dateAdded": "2021-03-17T10:15:02Z",
+          "lastModified": "2021-03-18T09:31:22Z",
+          "edited": true
+      }
+      ],
       "status": "Success"
     }
 
@@ -59,24 +61,23 @@ JSON Response:
 .. code:: json
 
     {
-      "data": {
-        "id": 1,
-        "caseId": 1,
-        "caseXid": "a1a1a1a1-a1a1-a1a1-a1a1-a1a1a1a1a1a1",
-        "text": "Some notes about a phishing threat.",
-        "summary": "Some notes about a phishing threat.",
-        "author": "11112222333344445555",
-        "dateAdded": "2021-04-22T20:17:15Z",
-        "lastModified": "22021-04-22T20:17:15Z",
-        "edited": false
-      },
-      "status": "Success"
+        "data": {
+            "id": 1,
+            "text": "Some notes about a case artifact.",
+            "summary": "Some notes about a case artifact.",
+            "author": "11112222333344445555",
+            "dateAdded": "2021-04-22T20:17:15Z",
+            "lastModified": "2021-04-22T20:17:15Z",
+            "edited": false,
+            "artifactId": 12
+        },
+        "status": "Success"
     }
 
 Request Additional Fields
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To request additional fields not automatically provided with each returned object, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
+To request additional fields not automatically included with each returned object, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
 
 Filter Results
 ^^^^^^^^^^^^^^
