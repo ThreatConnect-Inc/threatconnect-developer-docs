@@ -1,7 +1,7 @@
 Available Fields
 ----------------
 
-You can `retrieve a list of available fields <https://docs.threatconnect.com/en/latest/rest_api/v3/retrieve_fields.html>`_ for the ``/v3/tags`` endpoint, including the field’s name, description, and accepted data type, by using the following query:
+You can `retrieve a list of available fields <https://docs.threatconnect.com/en/latest/rest_api/v3/retrieve_fields.html>`_ for the ``/v3/tags`` endpoint, including the field's name, description, and accepted data type, by using the following query:
 
 .. code::
 
@@ -22,12 +22,12 @@ Alternatively, refer to the following tables for a list of available fields that
      - Required for Creation?
      - Updatable?
    * - description
-     - The Tag’s description
+     - The Tag's description
      - String
      - FALSE
      - TRUE
    * - name
-     - The Tag’s name
+     - The Tag's name
      - String
      - TRUE
      - TRUE

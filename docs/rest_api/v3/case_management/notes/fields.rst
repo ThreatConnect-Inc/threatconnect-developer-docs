@@ -58,4 +58,4 @@ Alternatively, refer to the following tables for a list of available fields that
      - FALSE
 
 .. note::
-    When creating a Note, either ``caseId`` or ``caseXid`` must be included in the body of the POST request. Only one needs to be included in the body of the POST request, but both can be included, if desired.
+    \*When creating a Note, either ``caseId`` or ``caseXid`` must be included in the body of the POST request. Only one needs to be included in the body of the POST request, but both can be included, if desired.

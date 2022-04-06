@@ -48,4 +48,6 @@ Alternatively, refer to the following tables for a list of available fields that
      - 1, 2, 3
 
 .. note::
-    Alist of available `Attribute Types <https://docs.threatconnect.com/en/latest/rest_api/v3/attribute_types/attribute_types.html>`_ and their corresponding ID can be retrieved with the following query: ``GET /v3/attributeTypes``.
+    Alist of available `Attribute Types <https://docs.threatconnect.com/en/latest/rest_api/v3/attribute_types/attribute_types.html>`_ and their corresponding ID can be retrieved with the following query:
+    
+    ``GET /v3/attributeTypes``.

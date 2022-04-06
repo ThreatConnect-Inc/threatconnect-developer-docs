@@ -1,7 +1,7 @@
 Available Fields
 ----------------
 
-You can `retrieve a list of available fields <https://docs.threatconnect.com/en/latest/rest_api/v3/retrieve_fields.html>`_ for the ``/v3/indicatorAttributes`` endpoint, including the field’s name, description, and accepted data type, by using the following query:
+You can `retrieve a list of available fields <https://docs.threatconnect.com/en/latest/rest_api/v3/retrieve_fields.html>`_ for the ``/v3/indicatorAttributes`` endpoint, including the field's name, description, and accepted data type, by using the following query:
 
 .. code::
 
@@ -32,22 +32,22 @@ Alternatively, refer to the following tables for a list of available fields that
      - TRUE
      - FALSE
    * - source
-     - The Attribute’s source
+     - The Attribute's source
      - String
      - FALSE
      - TRUE
    * - type
-     - The Attribute’s type
+     - The Attribute's type
      - String
      - TRUE
      - FALSE
    * - value
-     - The Attribute’s value
+     - The Attribute's value
      - String
      - TRUE
      - TRUE
 
 .. note::
-    When setting the ``type`` field, you must enter a valid Attribute type that applies to the type of Indicator to which the Attribute is being added. To retrieve a list of available `Attribute types <https://docs.threatconnect.com/en/latest/rest_api/v3/attribute_types/attribute_types.html>`_, use the following query:
+    When setting the ``type`` field, you must enter a valid Attribute Type that applies to the type of Indicator to which the Attribute is being added. To retrieve a list of available `Attribute Types <https://docs.threatconnect.com/en/latest/rest_api/v3/attribute_types/attribute_types.html>`_, use the following query:
     
     ``GET /v3/attributeTypes``

@@ -48,7 +48,9 @@ Alternatively, refer to the following tables for a list of available fields that
      - TRUE
 
 .. note::
-    Attribute Types for Cases must first be created in the System or Organization in which a Case resides before they can be added to the Case. See the `Creating Custom Attribute Types <https://training.threatconnect.com/learn/article/creating-custom-attributes-kb-article>`__ knowledge base article for more information.
+      When setting the ``type`` field, you must enter a valid Attribute Type that applies to Cases. To retrieve a list of available `Attribute Types <https://docs.threatconnect.com/en/latest/rest_api/v3/attribute_types/attribute_types.html>`_, use the following query:
+    
+    ``GET /v3/attributeTypes``
 
 .. warning::
     Trying to add an Attribute to a Case when the Case Attribute Type's **Max Allowed** limit has been reached will result in an error.
