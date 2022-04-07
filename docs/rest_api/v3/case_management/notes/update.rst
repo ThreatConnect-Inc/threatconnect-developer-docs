@@ -16,7 +16,7 @@ For example, the following query will update the contents of the Note with ID 2:
 
     PUT /v3/notes/2
     {
-      "text": "More detailed notes about a phishing threat."
+        "text": "More detailed notes about a phishing threat."
     }
 
 JSON Response:

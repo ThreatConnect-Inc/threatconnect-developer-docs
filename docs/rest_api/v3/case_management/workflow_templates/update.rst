@@ -30,11 +30,9 @@ JSON Response:
             "description": "A description for this Workflow Template.",
             "active": false,
             "version": 2,
-            "configAttribute": [
-                {
-                    "attributeTypeId": 86
-                }
-            ]
+            "configAttribute": [{
+                "attributeTypeId": 86
+            }]
         },
         "message": "Updated",
         "status": "Success"

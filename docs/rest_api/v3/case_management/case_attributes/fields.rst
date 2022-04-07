@@ -48,8 +48,8 @@ Alternatively, refer to the following tables for a list of available fields that
      - TRUE
 
 .. note::
-      When setting the ``type`` field, you must enter a valid Attribute Type that applies to Cases. To retrieve a list of available `Attribute Types <https://docs.threatconnect.com/en/latest/rest_api/v3/attribute_types/attribute_types.html>`_, use the following query:
-    
+    When setting the ``type`` field, you must enter a valid Attribute Type that applies to Cases. To retrieve a list of available `Attribute Types <https://docs.threatconnect.com/en/latest/rest_api/v3/attribute_types/attribute_types.html>`_, use the following query:
+  
     ``GET /v3/attributeTypes``
 
 .. warning::

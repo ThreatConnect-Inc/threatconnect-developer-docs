@@ -22,11 +22,9 @@ JSON Response:
                 "description": "A description for this Workflow Template.",
                 "active": false,
                 "version": 1,
-                "configAttribute": [
-                    {
-                        "attributeTypeId": 86
-                    }
-                ]
+                "configAttribute": [{
+                    "attributeTypeId": 86
+                }]
             },
             {
                 "id": 2,
@@ -129,11 +127,9 @@ JSON Response:
             "description": "A description for this Workflow Template.",
             "active": false,
             "version": 1,
-            "configAttribute": [
-                {
-                    "attributeTypeId": 86
-                }
-            ]
+            "configAttribute": [{
+                "attributeTypeId": 86
+            }]
         },
         "status": "Success"
     }

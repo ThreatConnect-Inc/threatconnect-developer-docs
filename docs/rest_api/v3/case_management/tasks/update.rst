@@ -35,15 +35,15 @@ JSON Response:
             "required": false,
             "status": "Open",
             "assignee": {
-                    "type": "User",
-                    "data": {
-                            "id": 12,
-                            "userName": "pjones",
-                            "firstName": "Patrick",
-                            "lastName": "Jones",
-                            "pseudonym": "PFJ",
-                            "role": "Administrator"
-                    }
+                "type": "User",
+                "data": {
+                        "id": 12,
+                        "userName": "pjones",
+                        "firstName": "Patrick",
+                        "lastName": "Jones",
+                        "pseudonym": "PFJ",
+                        "role": "Administrator"
+                }
             },
             "owner": "Example Organization"
         },
