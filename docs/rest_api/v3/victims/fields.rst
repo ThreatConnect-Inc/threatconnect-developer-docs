@@ -40,12 +40,6 @@ Alternatively, refer to the following tables for a list of available fields that
      - FALSE
      - TRUE
      - {"data": [{"type": "Attribute Type", "value": "Attribute Value", "source": "Attribute Source"]}}
-   * - description
-     - The Victim's description
-     - String
-     - FALSE
-     - TRUE
-     - "This Victim's bank account was hacked."
    * - name
      - The Victim's name
      - String
@@ -64,12 +58,6 @@ Alternatively, refer to the following tables for a list of available fields that
      - FALSE
      - TRUE
      - "Company ABC"
-   * - ownerName
-     - The name of the Organization, Community, or Source to which the Victim belongs 
-     - String
-     - FALSE
-     - FALSE
-     - "Demo Community"
    * - securityLabels
      - A list of Security Labels applied to the Victim
      - `Security Label Object <https://docs.threatconnect.com/en/latest/rest_api/v3/security_labels/security_labels.html>`_
@@ -88,12 +76,6 @@ Alternatively, refer to the following tables for a list of available fields that
      - FALSE
      - TRUE
      - {"data": [{"name": "Targeted Attack"}]}
-   * - type
-     - The type of Victim being created. The only valid value is "Victim"
-     - String
-     - TRUE
-     - FALSE
-     - "Victim"
    * - workLocation
      - The Victim's work location
      - String

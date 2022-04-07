@@ -15,25 +15,24 @@ JSON Response
 .. code:: json
 
     {
-        "data": [{
-            "id": 1,
-            "type": "Victim",
-            "ownerName": "Demo Organization",
-            "webLink": "/auth/victim/victim.xhtml?victim=1",
-            "name": "Bob Loblaw"
-        }, {
-            "id": 2,
-            "type": "Victim",
-            "ownerName": "Demo Organization",
-            "webLink": "/auth/victim/victim.xhtml?victim=2",
-            "name": "John Doe",
-            "description": "This victim’s bank account was hacked.",
-            "org": "Company ABC",
-            "suborg": "HR Department",
-            "workLocation": "Washington, D.C.",
-            "nationality": "American"
-        },
-        {...}
+        "data": [
+            {
+                "id": 1,
+                "ownerName": "Demo Organization",
+                "webLink": "https://app.threatconnect.com/auth/victim/victim.xhtml?victim=1",
+                "name": "Bob Loblaw"
+            },
+            {
+                "id": 2,
+                "ownerName": "Demo Organization",
+                "webLink": "https://app.threatconnect.com/auth/victim/victim.xhtml?victim=2",
+                "name": "John Doe",
+                "org": "Company ABC",
+                "suborg": "HR Department",
+                "workLocation": "Washington, D.C.",
+                "nationality": "American"
+            },
+            {...}
         ],
         "status": "Success"
     }
@@ -60,11 +59,9 @@ JSON Response
     {
         "data": {
             "id": 3,
-            "type": "Victim",
             "ownerName": "Demo Organization",
-            "webLink": "/auth/victim/victim.xhtml?victim=3",
+            "webLink": "https://app.threatconnect.com/auth/victim/victim.xhtml?victim=3",
             "name": "Bill Smith",
-            "description": "This victim got hacked.",
             "org": "Company XYZ",
             "suborg": "Finance Department",
             "workLocation": "Pittsburgh, Pennsylvania",

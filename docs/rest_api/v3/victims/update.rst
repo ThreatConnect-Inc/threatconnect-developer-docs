@@ -28,7 +28,7 @@ Example PUT Request
 The following query will complete the following actions for a Victim with ID 2:
 
 - Add a ``WebSite`` Victim Asset to the Victim
-- Update the Victim’s description
+- Update the Victim's name
 - Replace the ``TLP: AMBER`` Security Label applied to the Victim with a ``TLP: RED`` Security Label.
 
 .. code::
@@ -36,7 +36,7 @@ The following query will complete the following actions for a Victim with ID 2:
     PUT /v3/victims/2
     {
         "assets": {"data": [{"website": "evilll.com", "type": "WebSite"}]},
-        "description": "This individual was the victim of a company-wide phishing attack.",
+        "name": "Jane Doe"
         "securityLabels": {"data": [{"name": "TLP:RED"}], "mode": "replace"}
     }
 
@@ -47,16 +47,14 @@ JSON Response
     {
         "data": {
             "id": 2,
-            "type": "Victim",
             "ownerName": "Demo Organization",
-            "webLink": "/auth/victim/victim.xhtml?victim=2",
+            "webLink": "https://app.threatconnect.com/auth/victim/victim.xhtml?victim=2",
             "tags": {
                 "data": [{
                     "id": 11,
                     "name": "Targeted Attack",
                     "lastUsed": "2021-11-05T19:16:52Z"
-                }],
-                "count": 1
+                }]
             },
             "securityLabels": {
                 "data": [{
@@ -66,11 +64,9 @@ JSON Response
                     "color": "FF0033",
                     "owner": "System",
                     "dateAdded": "2016-08-31T00:00:00Z"
-                }],
-                "count": 1
+                }]
             },
-            "name": "John Doe",
-            "description": "This individual was the victim of a company-wide phishing attack.",
+            "name": "Jane Doe",
             "org": "Company ABC",
             "suborg": "HR Department",
             "workLocation": "Washington, D.C.",
@@ -86,8 +82,7 @@ JSON Response
                     "type": "EmailAddress",
                     "victimId": 2,
                     "address": "jdoe@companyabc.com"
-                }],
-                "count": 2
+                }]
             },
             "attributes": {
                 "data": [{
@@ -106,8 +101,7 @@ JSON Response
                     "dateAdded": "2021-11-05T19:16:52Z",
                     "lastModified": "2021-11-05T19:16:52Z",
                     "default": false
-                }],
-                "count": 1
+                }]
             }
         },
         "message": "Updated",
