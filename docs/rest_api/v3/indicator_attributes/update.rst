@@ -33,11 +33,11 @@ JSON Response
             "value": "Host used by hacker conglomerate traced to China.",
             "source": "Phase of Intrusion",
             "createdBy": {
-                "id": 39,
-                "userName": "62693284927610908885",
-                "firstName": "API",
-                "lastName": "User",
-                "pseudonym": "APIUserNFmof",
+                "id": 3,
+                "userName": "11112222333344445555",
+                "firstName": "John",
+                "lastName": "Smith",
+                "pseudonym": "jsmithAPI",
                 "role": "Api User"
             },
             "dateAdded": "2021-11-09T13:32:37Z",

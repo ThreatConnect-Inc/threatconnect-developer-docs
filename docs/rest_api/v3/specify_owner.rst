@@ -30,12 +30,13 @@ JSON Response
             "type": "Incident",
             "name": "Dangerous Incident",
             "createdBy": {
-                "id": 39,
+                "id": 3,
                 "userName": "11112222333344445555",
-                "firstName": "API",
-                "lastName": "User",
-                "pseudonym": "APIUserNFmof",
+                "firstName": "John",
+                "lastName": "Smith",
+                "pseudonym": "jsmithAPI",
                 "role": "Api User"
+            },
             },
             "associatedGroups": {},
             "associatedIndicators": {},

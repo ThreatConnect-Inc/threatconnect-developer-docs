@@ -127,11 +127,12 @@ JSON Response
                     "value": "This host is very dangerous",
                     "source": "Phase of Intrusion",
                     "createdBy": {
-                        "id": 371,
-                        "userName": "89474115115672885137",
-                        "firstName": "j",
-                        "lastName": "smith",
-                        "pseudonym": "APIUsergj03B"
+                        "id": 3,
+                        "userName": "11112222333344445555",
+                        "firstName": "John",
+                        "lastName": "Smith",
+                        "pseudonym": "jsmithAPI",
+                        "role": "Api User"
                     },
                     "dateAdded": "2021-11-05T16:43:17Z",
                     "lastModified": "2021-11-05T16:43:17Z",

@@ -60,11 +60,12 @@ JSON Response:
                         "type": "Adversary",
                         "name": "Bad Guy",
                         "createdBy": {
-                            "id": 39,
-                            "userName": "06086238053146319309",
-                            "firstName": "API",
-                            "lastName": "User",
-                            "pseudonym": "APIUserNFmof"
+                            "id": 3,
+                            "userName": "11112222333344445555",
+                            "firstName": "John",
+                            "lastName": "Smith",
+                            "pseudonym": "jsmithAPI",
+                            "role": "Api User"
                         },
                         "lastModified": "2021-04-22T19:24:06Z"
                     }

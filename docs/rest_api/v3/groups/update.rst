@@ -67,11 +67,12 @@ JSON Response
             "type": "Incident",
             "name": "Bad Incident",
             "createdBy": {
-                "id": 39,
-                "userName": "06086238053146319309",
-                "firstName": "API",
-                "lastName": "User",
-                "pseudonym": "APIUserNFmof"
+                "id": 3,
+                "userName": "11112222333344445555",
+                "firstName": "John",
+                "lastName": "Smith",
+                "pseudonym": "jsmithAPI",
+                "role": "Api User"
             },
             "associatedGroups": {},
             "associatedIndicators": {
@@ -83,7 +84,6 @@ JSON Response
                         "dateAdded": "2021-10-26T16:26:19Z",
                         "webLink": "https://app.threatconnect.com/auth/indicators/details/emailaddress.xhtml?emailaddress=verybadguy%40bad.com",
                         "lastModified": "2021-11-04T19:07:01Z",
-                        "description": "Sample Email Address Indicator created via API",
                         "summary": "verybadguy@bad.com",
                         "privateFlag": false,
                         "active": true,
@@ -99,7 +99,6 @@ JSON Response
                         "lastModified": "2021-11-04T13:00:29Z",
                         "rating": 4.0,
                         "confidence": 85,
-                        "description": "The worst kind of bad guy.",
                         "summary": "ultrabadguy.com",
                         "privateFlag": false,
                         "active": true,
@@ -119,11 +118,11 @@ JSON Response
                     "value": "Based on internal analysis, this incident was very severe.",
                     "source": "Example Source",
                     "createdBy": {
-                        "id": 39,
-                        "userName": "62693284927610908885",
-                        "firstName": "API",
-                        "lastName": "User",
-                        "pseudonym": "APIUserNFmof",
+                        "id": 3,
+                        "userName": "11112222333344445555",
+                        "firstName": "John",
+                        "lastName": "Smith",
+                        "pseudonym": "jsmithAPI",
                         "role": "Api User"
                     },
                     "dateAdded": "2021-11-04T19:07:01Z",

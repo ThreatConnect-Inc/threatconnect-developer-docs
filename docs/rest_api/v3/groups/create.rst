@@ -58,11 +58,12 @@ JSON Response
             "type": "Incident",
             "name": "Bad Incident",
             "createdBy": {
-        	        "id": 39,
-                    "userName": "06086238053146319309",
-                    "firstName": "API",
-                    "lastName": "User",
-                    "pseudonym": "APIUserNFmof"
+                "id": 3,
+                "userName": "11112222333344445555",
+                "firstName": "John",
+                "lastName": "Smith",
+                "pseudonym": "jsmithAPI",
+                "role": "Api User"
             },
             "associatedGroups": {},
             "associatedIndicators": {},

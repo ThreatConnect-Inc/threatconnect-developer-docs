@@ -22,7 +22,7 @@ JSON Response:
                 "value": "50",
                 "source": "Hybrid analysis",
                 "createdBy": {
-                    "id": 39,
+                    "id": 3,
                     "userName": "11112222333344445555",
                     "firstName": "John",
                     "lastName": "Smith",

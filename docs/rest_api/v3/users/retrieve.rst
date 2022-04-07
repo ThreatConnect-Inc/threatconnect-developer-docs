@@ -59,10 +59,10 @@ JSON Response:
     {
         "data": {
             "id": 3,
-            "userName": "52583294827510809921",
-            "firstName": "API",
-            "lastName": "User",
-            "pseudonym": "APIUserJMS",
+            "userName": "11112222333344445555",
+            "firstName": "John",
+            "lastName": "Smith",
+            "pseudonym": "jsmithAPI",
             "role": "Api User"
         },
         "status": "Success"

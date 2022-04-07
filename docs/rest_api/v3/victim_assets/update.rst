@@ -22,14 +22,14 @@ Refer to the `Available Fields <#available-fields>`_ section for a list of avail
 For example, the following query will complete the following actions for a Victim Asset with ID 3:
 
 - Associate the ``Bad Incident`` Group to the Victim Asset
-- Update the Victim Asset's name.
+- Update the website associated with the Victim Asset.
 
 .. code::
 
     PUT /v3/victimAssets/3
     {
         "associatedGroups": {"data": [{"name": "Bad Incident", "type": "Incident"}]},
-        "name": "hackerwebsite.com"
+        "website": "hackerwebsite.com"
     }
 
 JSON Response

@@ -88,7 +88,7 @@ JSON Response:
                     "type": "Adversary",
                     "name": "Bad Guy",
                     "createdBy": {
-                        "id": 39,
+                        "id": 3,
                         "userName": "11112222333344445555",
                         "firstName": "John",
                         "lastName": "Smith",

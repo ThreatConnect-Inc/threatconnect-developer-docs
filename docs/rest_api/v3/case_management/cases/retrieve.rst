@@ -130,9 +130,9 @@ JSON Response:
             "assignee": {
                 "type": "Group",
                 "data": {
-                    "id": 10,
+                    "id": 1,
                     "name": "SOC Team",
-                    "description": "SOC Team user group",
+                    "description": "Main SOC users",
                 }
             },
             "createdBy": {

@@ -89,9 +89,6 @@ Alternatively, refer to the following tables for a list of available fields that
      - TRUE
      - "``http://examplesite.com``"
 
-.. note::
-  \*This field is required if creating a Victim Asset that matches the type listed in the **Description** column.
-
 Available values for the ``type`` field include:
 
 - ``EmailAddress``
@@ -99,3 +96,9 @@ Available values for the ``type`` field include:
 - ``Phone``
 - ``SocialNetwork``
 - ``WebSite``
+
+.. note::
+  \*This field is required if creating a Victim Asset that matches the type listed in the **Description** column.
+
+.. note::
+    To **associate an existing Group** to a Victim Asset, use the Group's ID when setting the ``associatedGroups`` field (e.g., {``"data": [{"id": 12345}]}``).

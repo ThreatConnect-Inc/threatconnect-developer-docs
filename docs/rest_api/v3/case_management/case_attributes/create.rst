@@ -33,7 +33,7 @@ JSON Response:
             "type": "Phishing Open Rate",
             "value": "30",
             "createdBy": {
-                "id": 39,
+                "id": 3,
                 "userName": "11112222333344445555",
                 "firstName": "John",
                 "lastName": "Smith",

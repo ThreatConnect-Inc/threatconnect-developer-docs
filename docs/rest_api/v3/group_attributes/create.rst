@@ -37,11 +37,11 @@ JSON Response
             "value": "This is a very dangerous adversary.",
             "source": "Phase of Intrusion",
             "createdBy": {
-                "id": 39,
-                "userName": "62693284927610908885",
-                "firstName": "API",
-                "lastName": "User",
-                "pseudonym": "APIUserNFmof",
+                "id": 3,
+                "userName": "11112222333344445555",
+                "firstName": "John",
+                "lastName": "Smith",
+                "pseudonym": "jsmithAPI",
                 "role": "Api User"
             },
             "dateAdded": "2021-11-09T14:42:13Z",

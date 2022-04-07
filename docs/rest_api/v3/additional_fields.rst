@@ -45,7 +45,14 @@ JSON Response:
                         "dateAdded": "2021-11-03T15:04:49Z",
                         "webLink": "https://app.threatconnect.com/auth/incident/incident.xhtml?incident=94271",
                         "name": "Bad Incident",
-                        "createdBy": "API User",
+                        "createdBy": {
+                            "id": 3,
+                            "userName": "11112222333344445555",
+                            "firstName": "John",
+                            "lastName": "Smith",
+                            "pseudonym": "jsmithAPI",
+                            "role": "Api User"
+                        },
                         "status": "Incident Reported",
                         "eventDate": "2021-11-03T00:00:00Z"
                     }
@@ -107,11 +114,11 @@ JSON Response:
                                     "value": "Based on internal analysis, this incident was bad.",
                                     "source": "Phase of Intrusion",
                                     "createdBy": {
-                                        "id": 39,
+                                        "id": 3,
                                         "userName": "11112222333344445555",
-                                        "firstName": "API",
-                                        "lastName": "User",
-                                        "pseudonym": "APIUserNFmof",
+                                        "firstName": "John",
+                                        "lastName": "Smith",
+                                        "pseudonym": "jsmithAPI",
                                         "role": "Api User"
                                     },
                                     "dateAdded": "2021-11-04T19:07:01Z",

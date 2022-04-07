@@ -96,3 +96,6 @@ Alternatively, refer to the following tables for a list of available fields that
     A list of available `Attribute Types <https://docs.threatconnect.com/en/latest/rest_api/v3/attribute_types/attribute_types.html>`_ can be retrieved with the following query:
     
     ``GET /v3/attributeTypes``
+
+.. note::
+    To **associate an existing Group** to a Victim, use the Group's ID when setting the ``associatedGroups`` field (e.g., {``"data": [{"id": 12345}]}``).

@@ -24,11 +24,12 @@ JSON Response
                 "type": "Document",
                 "name": "Bad Document",
                 "createdBy": {
-                        "id": 39,
-                        "userName": "06086238053146319309",
-                        "firstName": "API",
-                        "lastName": "User",
-                        "pseudonym": "APIUserNFmof"
+                    "id": 3,
+                    "userName": "11112222333344445555",
+                    "firstName": "John",
+                    "lastName": "Smith",
+                    "pseudonym": "jsmithAPI",
+                    "role": "Api User"
                 },
                 "fileName": "indicators.txt",
                 "fileSize": 36,
@@ -94,11 +95,12 @@ JSON Response
             "type": "Incident",
             "name": "Bad Incident",
             "createdBy": {
-                    "id": 39,
-                    "userName": "06086238053146319309",
-                    "firstName": "API",
-                    "lastName": "User",
-                    "pseudonym": "APIUserNFmof"
+                "id": 3,
+                "userName": "11112222333344445555",
+                "firstName": "John",
+                "lastName": "Smith",
+                "pseudonym": "jsmithAPI",
+                "role": "Api User"
             },
             "status": "New",
             "eventDate": "2021-11-03T00:00:00Z",
