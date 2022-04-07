@@ -18,16 +18,15 @@ JSON Response
 .. code:: json
 
     {
-        "next": "https://myinstance.threatconnect.com/api/v3/indicators?resultStart=2&resultLimit=2",
+        "next": "https://app.threatconnect.com/api/v3/indicators?resultStart=2&resultLimit=2",
         "data": [
             {
                 "id": 18,
-                "type": "EmailAddress",
-                "ownerName": "Documentation Team",
+                "ownerName": "Demo Organization",
                 "dateAdded": "2021-10-26T16:26:19Z",
-                "webLink": "/auth/indicators/details/emailaddress.xhtml?emailaddress=verybadguy%40bad.com",
+                "webLink": "https://app.threatconnect.com/auth/indicators/details/emailaddress.xhtml?emailaddress=verybadguy%40bad.com",
+                "type": "EmailAddress",
                 "lastModified": "2021-11-08T18:25:48Z",
-                "description": "Sample Email Address Indicator created via API",
                 "summary": "verybadguy@bad.com",
                 "privateFlag": false,
                 "active": true,
@@ -36,12 +35,11 @@ JSON Response
             },
             {
                 "id": 15,
-                "type": "EmailAddress",
-                "ownerName": "Documentation Team",
+                "ownerName": "Demo Organization",
                 "dateAdded": "2021-10-26T13:08:37Z",
-                "webLink": "/auth/indicators/details/emailaddress.xhtml?emailaddress=ultrabadguy%40bad.com",
+                "webLink": "https://app.threatconnect.com/auth/indicators/details/emailaddress.xhtml?emailaddress=ultrabadguy%40bad.com",
+                "type": "EmailAddress",
                 "lastModified": "2021-11-02T15:00:32Z",
-                "description": "The worst kind of email address for a bad guy to use.",
                 "summary": "ultrabadguy@bad.com",
                 "privateFlag": false,
                 "active": true,

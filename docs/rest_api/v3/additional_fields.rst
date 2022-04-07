@@ -15,50 +15,48 @@ JSON Response:
 
 .. code:: json
 
-  {
-      "data": {
-          "id": 12345,
-          "type": "Host",
-          "ownerName": "Demo Organization",
-          "dateAdded": "2021-10-26T13:05:02Z",
-          "webLink": "/auth/indicators/details/host.xhtml?host=veryultrabadguy.com",
-          "tags": {
-              "data": [
-                  {
-                      "id": 11,
-                      "name": "Targeted Attack",
-                      "lastUsed": "2021-11-03T15:04:49Z"
-                  }
-              ],
-              "count": 1
-          },
-          "lastModified": "2021-10-26T15:16:43Z",
-          "summary": "badguy.com",
-          "privateFlag": false,
-          "active": true,
-          "activeLocked": false,
-          "associatedGroups": {
-              "data": [
-                  {
-                      "id": 94271,
-                      "type": "Incident",
-                      "ownerName": "Demo Organization",
-                      "dateAdded": "2021-11-03T15:04:49Z",
-                      "webLink": "/auth/incident/incident.xhtml?incident=94271",
-                      "name": "Bad Incident",
-                      "createdBy": "API User",
-                      "status": "Incident Reported",
-                      "eventDate": "2021-11-03T00:00:00Z"
-                  }
-              ],
-              "count": 1
-          },
-          "hostName": "badguy.com",
-          "dnsActive": false,
-          "whoisActive": false
-      },
-      "status": "Success"
-  }
+    {
+        "data": {
+            "id": 12345,
+            "ownerName": "Demo Organization",
+            "dateAdded": "2021-10-26T13:05:02Z",
+            "webLink": "https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=veryultrabadguy.com",
+            "tags": {
+                "data": [
+                    {
+                        "id": 11,
+                        "name": "Targeted Attack",
+                        "lastUsed": "2021-11-03T15:04:49Z"
+                    }
+                ]
+            },
+            "type": "Host",
+            "lastModified": "2021-10-26T15:16:43Z",
+            "summary": "badguy.com",
+            "privateFlag": false,
+            "active": true,
+            "activeLocked": false,
+            "associatedGroups": {
+                "data": [
+                    {
+                        "id": 94271,
+                        "type": "Incident",
+                        "ownerName": "Demo Organization",
+                        "dateAdded": "2021-11-03T15:04:49Z",
+                        "webLink": "https://app.threatconnect.com/auth/incident/incident.xhtml?incident=94271",
+                        "name": "Bad Incident",
+                        "createdBy": "API User",
+                        "status": "Incident Reported",
+                        "eventDate": "2021-11-03T00:00:00Z"
+                    }
+                ]
+            },
+            "hostName": "badguy.com",
+            "dnsActive": false,
+            "whoisActive": false
+        },
+        "status": "Success"
+    }
 
 Additional association levels for intelligence items may also be retrieved. For example, adding ``.attributes`` to the ``?fields=associatedGroups`` query parameter in the the preceding query will return information about the Indicator with ID 12345, including Tags applied to the Indicator, Groups associated to the Indicator, and Attributes added to those associated Groups.
 
@@ -70,72 +68,69 @@ JSON Response:
 
 .. code:: json
 
-  {
-      "data": {
-          "id": 12345,
-          "type": "Host",
-          "ownerName": "Demo Organization",
-          "dateAdded": "2021-10-26T13:05:02Z",
-          "webLink": "/auth/indicators/details/host.xhtml?host=veryultrabadguy.com",
-          "tags": {
-              "data": [
-                  {
-                      "id": 11,
-                      "name": "Targeted Attack",
-                      "lastUsed": "2021-11-03T15:04:49Z"
-                  }
-              ],
-              "count": 1
-          },
-          "lastModified": "2021-10-26T15:16:43Z",
-          "summary": "badguy.com",
-          "privateFlag": false,
-          "active": true,
-          "activeLocked": false,
-          "associatedGroups": {
-              "data": [
-                  {
-                      "id": 94271,
-                      "type": "Incident",
-                      "ownerName": "Demo Organization",
-                      "dateAdded": "2021-11-03T15:04:49Z",
-                      "webLink": "/auth/incident/incident.xhtml?incident=94271",
-                      "name": "Bad Incident",
-                      "createdBy": "API User",
-                      "attributes": {
-                          "data": [
-                              {
-                                  "id": 1077825,
-                                  "type": "Additional Analysis and Context",
-                                  "value": "Based on internal analysis, this incident was bad.",
-                                  "source": "Phase of Intrusion",
-                                  "createdBy": {
-                                      "id": 39,
-                                      "userName": "62693284927610908885",
-                                      "firstName": "API",
-                                      "lastName": "User",
-                                      "pseudonym": "APIUserNFmof",
-                                      "role": "Api User"
-                                  },
-                                  "dateAdded": "2021-11-04T19:07:01Z",
-                                  "lastModified": "2021-11-04T19:07:01Z",
-                                  "default": false
-                              }
-                          ],
-                          "count": 1
-                      },
-                      "status": "Incident Reported",
-                      "eventDate": "2021-11-03T00:00:00Z"
-                  }
-              ],
-              "count": 1
-          },
-          "hostName": "badguy.com",
-          "dnsActive": false,
-          "whoisActive": false
-      },
-      "status": "Success"
-  }
+    {
+        "data": {
+            "id": 12345,
+            "ownerName": "Demo Organization",
+            "dateAdded": "2021-10-26T13:05:02Z",
+            "webLink": "https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=veryultrabadguy.com",
+            "tags": {
+                "data": [
+                    {
+                        "id": 11,
+                        "name": "Targeted Attack",
+                        "lastUsed": "2021-11-03T15:04:49Z"
+                    }
+                ]
+            },
+            "type": "Host",
+            "lastModified": "2021-10-26T15:16:43Z",
+            "summary": "badguy.com",
+            "privateFlag": false,
+            "active": true,
+            "activeLocked": false,
+            "associatedGroups": {
+                "data": [
+                    {
+                        "id": 94271,
+                        "type": "Incident",
+                        "ownerName": "Demo Organization",
+                        "dateAdded": "2021-11-03T15:04:49Z",
+                        "webLink": "https://app.threatconnect.com/auth/incident/incident.xhtml?incident=94271",
+                        "name": "Bad Incident",
+                        "createdBy": "API User",
+                        "attributes": {
+                            "data": [
+                                {
+                                    "id": 1077825,
+                                    "type": "Additional Analysis and Context",
+                                    "value": "Based on internal analysis, this incident was bad.",
+                                    "source": "Phase of Intrusion",
+                                    "createdBy": {
+                                        "id": 39,
+                                        "userName": "11112222333344445555",
+                                        "firstName": "API",
+                                        "lastName": "User",
+                                        "pseudonym": "APIUserNFmof",
+                                        "role": "Api User"
+                                    },
+                                    "dateAdded": "2021-11-04T19:07:01Z",
+                                    "lastModified": "2021-11-04T19:07:01Z",
+                                    "default": false
+                                }
+                            ]
+                        },
+                        "status": "Incident Reported",
+                        "eventDate": "2021-11-03T00:00:00Z"
+                    }
+                ]
+            },
+            "hostName": "badguy.com",
+            "dnsActive": false,
+            "whoisActive": false
+        },
+        "status": "Success"
+    }
 
 .. note::
   By default, you can only retrieve one association level for threat intelligence items at a time. To retrieve more than one association level at a time, contact your System Administrator and have them do one of the following:

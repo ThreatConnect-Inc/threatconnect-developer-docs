@@ -7,9 +7,12 @@ For example, the following query will create a new Tag with ``Demo Community`` a
 
 .. code::
 
-    POST /v3/tags?owner=Demo Community
+    POST /v3/groups?owner=Demo Community
     {
-        "name": "Nation State"
+        "type": "Incident",
+        "name": "Dangerous Incident",
+        "eventDate": "2022-04-07",
+        "status": "New"
     }
 
 JSON Response
@@ -18,10 +21,30 @@ JSON Response
 
     {
         "data": {
-            "id": 32,
-            "name": "Nation State",
-            "owner": "Demo Community",
-            "lastUsed": "2021-11-22T20:27:51Z"
+            "id": 35,
+            "ownerName": "Demo Community",
+            "dateAdded": "2022-04-07T14:55:23Z",
+            "webLink": "https://app.threatconnect.com/auth/incident/incident.xhtml?incident=35",
+            "tags": {},
+            "securityLabels": {},
+            "type": "Incident",
+            "name": "Dangerous Incident",
+            "createdBy": {
+                "id": 39,
+                "userName": "11112222333344445555",
+                "firstName": "API",
+                "lastName": "User",
+                "pseudonym": "APIUserNFmof",
+                "role": "Api User"
+            },
+            "associatedGroups": {},
+            "associatedIndicators": {},
+            "associatedCases": {},
+            "associatedArtifacts": {},
+            "attributes": {},
+            "status": "New",
+            "eventDate": "2022-04-07T00:00:00Z",
+            "lastModified": "2022-04-07T14:55:23Z"
         },
         "message": "Created",
         "status": "Success"

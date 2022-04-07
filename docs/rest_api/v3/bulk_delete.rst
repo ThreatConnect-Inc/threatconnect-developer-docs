@@ -1,14 +1,14 @@
 Delete Case Objects in Bulk
 ---------------------------
 
-Case objects (Artifacts, Cases, Notes, Tasks, Workflow Events, Workflow Tasks, and Case Attributes) can be deleted in bulk by using a query in the following format:
+Case objects (Artifacts, Case Attributes, Cases, Notes, Workflow Tasks, and Workflow Events) can be deleted in bulk by using a query in the following format:
 
 .. code::
 
     DELETE /v3/{caseObject}/
 
 .. note::
-    A System Administrator must enable bulk deletion operations for v3 of the ThreatConnect API. Refer to *ThreatConnect System Administration Guide* for instructions on enabling this setting.
+    A System Administrator must enable bulk deletion operations for v3 of the ThreatConnect API.
 
 Objects to be deleted in bulk can be filtered by including the ``?tql=`` query parameter, followed by a query written in `ThreatConnect Query Language (TQL) <https://training.threatconnect.com/learn/article/using-threatconnect-query-language-tql-kb-article>`__, in your query.
 
