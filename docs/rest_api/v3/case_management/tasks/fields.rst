@@ -70,18 +70,6 @@ Alternatively, refer to the following tables for a list of available fields that
      - FALSE
      - TRUE
      - "2021-04-30T10:30:00Z"
-   * - duration
-     - The amount of time until the Task is due, which corresponds with the Task's durationType (e.g., 5 hours)
-     - Integer
-     - FALSE
-     - TRUE
-     - 1, 2, 3
-   * - durationType
-     - The unit of time that corresponds with the Task's duration. Accepted values include "Days", "Hours", and "Minutes"
-     - String
-     - FALSE
-     - TRUE
-     - "Days", "Hours", or "Minutes"
    * - name
      - The name of the Task
      - String
