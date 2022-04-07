@@ -15,28 +15,33 @@ JSON Response
 .. code:: json
 
     {
-        "data": [{
-            "id": 4,
-            "type": "Phone",
-            "victimId": 2,
-            "phone": "0123456789"
-        }, {
-            "id": 3,
-            "type": "WebSite",
-            "victimId": 2,
-            "website": "somewebsite.com"
-        }, {
-            "id": 2,
-            "type": "EmailAddress",
-            "victimId": 2,
-            "address": "jdoe@companyabc.com",
-            "addressType": "Corporate email",
-        }, {
-            "id": 1,
-            "type": "EmailAddress"
-            "victimId": 1,
-            "address": "demo@sample.com"
-        }],
+        "data": [
+            {
+                "id": 4,
+                "type": "Phone",
+                "victimId": 2,
+                "phone": "0123456789"
+            },
+            {
+                "id": 3,
+                "type": "WebSite",
+                "victimId": 2,
+                "website": "somewebsite.com"
+            },
+            {
+                "id": 2,
+                "type": "EmailAddress",
+                "victimId": 2,
+                "address": "jdoe@companyabc.com",
+                "addressType": "Corporate email",
+            },
+            {
+                "id": 1,
+                "type": "EmailAddress"
+                "victimId": 1,
+                "address": "demo@sample.com"
+            }
+        ],
         "status": "Success"
     }
 

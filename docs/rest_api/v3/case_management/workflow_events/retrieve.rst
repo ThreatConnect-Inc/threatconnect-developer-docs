@@ -15,23 +15,24 @@ JSON Response:
 .. code:: json
 
     {
-        "data": [{
-            "id": 1,
-            "eventDate": "2021-03-05T14:48:44Z",
-            "dateAdded": "2021-03-05T14:48:44Z",
-            "summary": "Case created",
-            "systemGenerated": true,
-            "link": "https://app.threatconnect.com/api/v3/cases/1"
-        }, 
-        {
-            "id": 2,
-            "eventDate": "2021-03-05T14:49:24Z",
-            "dateAdded": "2021-03-05T14:49:24Z",
-            "summary": "Added a note",
-            "systemGenerated": true,
-            "link": "https://app.threatconnect.com/api/v3/notes/1"
-        },
-        {...}
+        "data": [
+            {
+                "id": 1,
+                "eventDate": "2021-03-05T14:48:44Z",
+                "dateAdded": "2021-03-05T14:48:44Z",
+                "summary": "Case created",
+                "systemGenerated": true,
+                "link": "https://app.threatconnect.com/api/v3/cases/1"
+            }, 
+            {
+                "id": 2,
+                "eventDate": "2021-03-05T14:49:24Z",
+                "dateAdded": "2021-03-05T14:49:24Z",
+                "summary": "Added a note",
+                "systemGenerated": true,
+                "link": "https://app.threatconnect.com/api/v3/notes/1"
+            },
+            {...}
         ],
         "status": "Success"
     }

@@ -22,7 +22,7 @@ JSON Response
         "status": "Success"
     }
 
-The same response would be returned if we used the following request, where the Indicator ID is replaced with the Indicator’s summary:
+The same response would be returned if we used the following request, where the Indicator ID is replaced with the Indicator's summary:
 
 .. code::
 

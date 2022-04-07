@@ -42,7 +42,7 @@ JSON Response:
                     "lastName": "Smith",
                     "pseudonym": "johnsmith",
                     "role": "User"
-              }
+                }
             },
             "createdBy": {
                 "id": 3,

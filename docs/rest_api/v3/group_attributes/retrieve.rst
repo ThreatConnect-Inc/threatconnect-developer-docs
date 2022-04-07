@@ -21,56 +21,57 @@ JSON Response
 .. code:: json
 
     {
-        "data": [{
-            "id": 10,
-            "type": "Additional Analysis and Context",
-            "value": "This is a very dangerous adversary.",
-            "source": "Phase of Intrusion",
-            "createdBy": {
-                "id": 39,
-                "userName": "62693284927610908885",
-                "firstName": "API",
-                "lastName": "User",
-                "pseudonym": "APIUserNFmof",
-                "role": "Api User"
-            },
-            "dateAdded": "2021-11-09T14:42:13Z",
-            "lastModified": "2021-11-09T14:42:13Z",
-            "default": false
-        }, 
-        {
-            "id": 9,
-            "type": "Source",
-            "value": "https://examplesite.com",
-            "createdBy": {
-                "id": 1,
-                "userName": "smithj@threatconnect.com",
-                "firstName": "John",
-                "lastName": "Smith",
-                "pseudonym": "jsmith",
-                "role": "Administrator"
-            },
-            "dateAdded": "2021-11-08T15:56:46Z",
-            "lastModified": "2021-11-08T15:56:46Z",
-            "default": true
-        }, 
-        {
-            "id": 8,
-            "type": "Description",
-            "value": "This malware is written in a new programming language and has the potential of targeting millions of routers and IOT devices.",
-            "createdBy": {
-                "id": 1,
-                "userName": "smithj@threatconnect.com",
-                "firstName": "John",
-                "lastName": "Smith",
-                "pseudonym": "jsmith",
-                "role": "Administrator"
-            },
-            "dateAdded": "2021-11-08T15:56:46Z",
-            "lastModified": "2021-11-08T15:56:46Z",
-            "default": true
-        }, 
-        {...}
+        "data": [
+            {
+                "id": 10,
+                "type": "Additional Analysis and Context",
+                "value": "This is a very dangerous adversary.",
+                "source": "Phase of Intrusion",
+                "createdBy": {
+                    "id": 39,
+                    "userName": "62693284927610908885",
+                    "firstName": "API",
+                    "lastName": "User",
+                    "pseudonym": "APIUserNFmof",
+                    "role": "Api User"
+                },
+                "dateAdded": "2021-11-09T14:42:13Z",
+                "lastModified": "2021-11-09T14:42:13Z",
+                "default": false
+            }, 
+            {
+                "id": 9,
+                "type": "Source",
+                "value": "https://examplesite.com",
+                "createdBy": {
+                    "id": 1,
+                    "userName": "smithj@threatconnect.com",
+                    "firstName": "John",
+                    "lastName": "Smith",
+                    "pseudonym": "jsmith",
+                    "role": "Administrator"
+                },
+                "dateAdded": "2021-11-08T15:56:46Z",
+                "lastModified": "2021-11-08T15:56:46Z",
+                "default": true
+            }, 
+            {
+                "id": 8,
+                "type": "Description",
+                "value": "This malware is written in a new programming language and has the potential of targeting millions of routers and IOT devices.",
+                "createdBy": {
+                    "id": 1,
+                    "userName": "smithj@threatconnect.com",
+                    "firstName": "John",
+                    "lastName": "Smith",
+                    "pseudonym": "jsmith",
+                    "role": "Administrator"
+                },
+                "dateAdded": "2021-11-08T15:56:46Z",
+                "lastModified": "2021-11-08T15:56:46Z",
+                "default": true
+            }, 
+            {...}
         ],
         "status": "Success"
     }

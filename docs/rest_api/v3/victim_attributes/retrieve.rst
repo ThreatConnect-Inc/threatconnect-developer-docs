@@ -21,37 +21,40 @@ JSON Response
 .. code:: json
 
     {
-        "data": [{
-            "id": 2,
-            "type": "Description",
-            "value": "Ransomware attack victim.",
-            "createdBy": {
+        "data": [
+            {
+                "id": 2,
+                "type": "Description",
+                "value": "Ransomware attack victim.",
+                "createdBy": {
+                    "id": 1,
+                    "userName": "smithj@threatconnect.com",
+                    "firstName": "John",
+                    "lastName": "Smith",
+                    "pseudonym": "jsmith"
+                },
+                "dateAdded": "2021-11-09T15:49:22Z",
+                "lastModified": "2021-11-09T15:49:22Z",
+                "default": true
+            },
+            {
                 "id": 1,
-                "userName": "smithj@threatconnect.com",
-                "firstName": "John",
-                "lastName": "Smith",
-                "pseudonym": "jsmith"
-            },
-            "dateAdded": "2021-11-09T15:49:22Z",
-            "lastModified": "2021-11-09T15:49:22Z",
-            "default": true
-        }, {
-            "id": 1,
-            "type": "Additional Analysis and Context",
-            "value": "Based on additional analysis, it was determined that this victim’s bank account was hacked.",
-            "source": "Phase of Intrusion",
-            "createdBy": {
-                "id": 39,
-                "userName": "62693284927610908885",
-                "firstName": "API",
-                "lastName": "User",
-                "pseudonym": "APIUserNFmof",
-                "role": "Api User"
-            },
-            "dateAdded": "2021-11-09T15:43:06Z",
-            "lastModified": "2021-11-09T15:43:06Z",
-            "default": false
-        }],
+                "type": "Additional Analysis and Context",
+                "value": "Based on additional analysis, it was determined that this victim’s bank account was hacked.",
+                "source": "Phase of Intrusion",
+                "createdBy": {
+                    "id": 39,
+                    "userName": "62693284927610908885",
+                    "firstName": "API",
+                    "lastName": "User",
+                    "pseudonym": "APIUserNFmof",
+                    "role": "Api User"
+                },
+                "dateAdded": "2021-11-09T15:43:06Z",
+                "lastModified": "2021-11-09T15:43:06Z",
+                "default": false
+            }
+        ],
         "status": "Success"
     }
 

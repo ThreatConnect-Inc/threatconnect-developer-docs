@@ -7,8 +7,8 @@ The basic format for creating a Workflow Event is:
 
     POST /v3/workflowEvents/
     {
-      "caseId": 1,
-      "summary": "Summary of the Workflow Event"
+        "caseId": 1,
+        "summary": "Summary of the Workflow Event"
     }
 
 For example, the following query will create a Workflow Event with a summary of "Updated Case name" for the Case with ID 1.
@@ -17,8 +17,8 @@ For example, the following query will create a Workflow Event with a summary of 
 
     POST /v3/workflowEvents/
     {
-      "caseId": 1,
-      "summary": "Updated Case name"
+        "caseId": 1,
+        "summary": "Updated Case name"
     }
 
 JSON Response:

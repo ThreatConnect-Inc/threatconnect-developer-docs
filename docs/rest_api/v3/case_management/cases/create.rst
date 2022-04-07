@@ -31,63 +31,63 @@ JSON Response:
 
     {
         "data": {
-        "id": 1,
-        "xid": "a1a1a1a1-a1a1-a1a1-a1a1-a1a1a1a1a1a1",
-        "name": "Example Workflow Case",
-        "dateAdded": "2021-04-09T14:41:27Z",
-        "caseOpenTime": "2021-04-09T14:41:27.27Z",
-        "caseOpenUser": {
-            "id": 3,
-            "userName": "11112222333344445555",
-            "firstName": "John",
-            "lastName": "Smith",
-            "pseudonym": "jsmithAPI",
-            "role": "Api User"
-        },
-        "status": "Open",
-        "severity": "Low",
-        "resolution": "Not Specified",
-        "assignee": {
-            "type": "User",
-            "data": {
-                "id": 1,
-                "userName": "jonsmith@threatconnect.com",
+            "id": 1,
+            "xid": "a1a1a1a1-a1a1-a1a1-a1a1-a1a1a1a1a1a1",
+            "name": "Example Workflow Case",
+            "dateAdded": "2021-04-09T14:41:27Z",
+            "caseOpenTime": "2021-04-09T14:41:27.27Z",
+            "caseOpenUser": {
+                "id": 3,
+                "userName": "11112222333344445555",
                 "firstName": "John",
                 "lastName": "Smith",
-                "pseudonym": "johnsmith",
-                "role": "User"
-            }
-        },
-        "tasks": {},
-        "artifacts": {
-        "data": [
-            {
-                "id": 12,
-                "summary": "badguy.com",
-                "type": "Host",
-                "intelType": "indicator-Host",
-                "dateAdded": "2021-04-09T14:41:27.27Z",
-                "derivedLink": true,
-                "hashCode": "fTgtpcEQ4JMzFNpXBMhfyXue7s/DchX7uCWedTcqiqA="
-            }
-          ]
-        },
-        "notes": {},
-        "userAccess": {},
-        "createdBy": {
-            "id": 3,
-            "userName": "11112222333344445555",
-            "firstName": "John",
-            "lastName": "Smith",
-            "pseudonym": "jsmithAPI",
-            "role": "Api User"
-        },
-        "owner": "Example Organization",
-        "ownerId": 7,
-        "attributes": {},
-        "associatedGroups": {},
-        "associatedIndicators": {},
-        "associatedCases": {}
+                "pseudonym": "jsmithAPI",
+                "role": "Api User"
+            },
+            "status": "Open",
+            "severity": "Low",
+            "resolution": "Not Specified",
+            "assignee": {
+                "type": "User",
+                "data": {
+                    "id": 1,
+                    "userName": "jonsmith@threatconnect.com",
+                    "firstName": "John",
+                    "lastName": "Smith",
+                    "pseudonym": "johnsmith",
+                    "role": "User"
+                }
+            },
+            "tasks": {},
+            "artifacts": {
+                "data": [
+                    {
+                        "id": 12,
+                        "summary": "badguy.com",
+                        "type": "Host",
+                        "intelType": "indicator-Host",
+                        "dateAdded": "2021-04-09T14:41:27.27Z",
+                        "derivedLink": true,
+                        "hashCode": "fTgtpcEQ4JMzFNpXBMhfyXue7s/DchX7uCWedTcqiqA="
+                    }
+                ]
+            },
+            "notes": {},
+            "userAccess": {},
+            "createdBy": {
+                "id": 3,
+                "userName": "11112222333344445555",
+                "firstName": "John",
+                "lastName": "Smith",
+                "pseudonym": "jsmithAPI",
+                "role": "Api User"
+            },
+            "owner": "Example Organization",
+            "ownerId": 7,
+            "attributes": {},
+            "associatedGroups": {},
+            "associatedIndicators": {},
+            "associatedCases": {}
         },
         "message": "Created",
         "status": "Success"

@@ -27,83 +27,81 @@ JSON Response:
 .. code:: json
 
     {
-      "data": {
-        "id": 1,
-        "xid": "aa1a1a1a1-a1a1-a1a1-a1a1-a1a1a1a1a1a1",
-        "name": "Example Workflow Case",
-        "dateAdded": "2021-04-09T14:41:27.27Z",
-        "caseOpenTime": "2021-04-09T14:41:27Z",
-        "caseOpenUser": {
-            "id": 3,
-            "userName": "11112222333344445555",
-            "firstName": "John",
-            "lastName": "Smith",
-            "pseudonym": "jsmithAPI",
-            "role": "Api User"
-        },
-        "caseCloseTime": "2021-04-12T18:36.18Z",
-        "caseCloseUser": {
-            "id": 3,
-            "userName": "11112222333344445555",
-            "firstName": "John",
-            "lastName": "Smith",
-            "pseudonym": "jsmithAPI",
-            "role": "Api User" 
-        },
-        "status": "Closed",
-        "severity": "Medium",
-        "resolution": "False Positive",
-        "tasks": {},
-        "artifacts": {
-          "data": [
-            {
-              "id": 12,
-              "summary": "badguy.com",
-              "type": "Host",
-              "intelType": "indicator-Host",
-              "dateAdded": "2021-04-09T14:41:27.27Z",
-              "derivedLink": true,
-              "hashCode": "fTgtpcEQ4JMzFNpXBMhfyXue7s/DchX7uCWedTcqiqA="
-            }
-          ]
-        },
-        "notes": {},},
-        "createdBy": {
-          "id": 3,
-          "userName": "11112222333344445555",
-          "firstName": "John",
-          "lastName": "Smith",
-          "pseudonym": "jsmithAPI",
-          "role": "Api User"
-        },
-        "owner": "Example Organization",
-        "ownerId": 7,
-        "attributes": {},
-        "associatedGroups": {
-          "data": [
-            {
-              "id": 356367,
-              "ownerName": "Example Organization",
-              "dateAdded": "2021-04-12T18:36.18Z",
-              "webLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=356367",
-              "type": "Adversary",
-              "name": "Bad Guy",
-              "createdBy": {
-                "id": 39,
+        "data": {
+            "id": 1,
+            "xid": "aa1a1a1a1-a1a1-a1a1-a1a1-a1a1a1a1a1a1",
+            "name": "Example Workflow Case",
+            "dateAdded": "2021-04-09T14:41:27.27Z",
+            "caseOpenTime": "2021-04-09T14:41:27Z",
+            "caseOpenUser": {
+                "id": 3,
                 "userName": "11112222333344445555",
                 "firstName": "John",
                 "lastName": "Smith",
-                "pseudonym": "jsmithAPI"
-              },
-              "lastModified": "2021-04-12T18:36.18Z"
-            }
-          ]
+                "pseudonym": "jsmithAPI",
+                "role": "Api User"
+            },
+            "caseCloseTime": "2021-04-12T18:36.18Z",
+            "caseCloseUser": {
+                "id": 3,
+                "userName": "11112222333344445555",
+                "firstName": "John",
+                "lastName": "Smith",
+                "pseudonym": "jsmithAPI",
+                "role": "Api User" 
+            },
+            "status": "Closed",
+            "severity": "Medium",
+            "resolution": "False Positive",
+            "tasks": {},
+            "artifacts": {
+            "data": [
+                {
+                    "id": 12,
+                    "summary": "badguy.com",
+                    "type": "Host",
+                    "intelType": "indicator-Host",
+                    "dateAdded": "2021-04-09T14:41:27.27Z",
+                    "derivedLink": true,
+                    "hashCode": "fTgtpcEQ4JMzFNpXBMhfyXue7s/DchX7uCWedTcqiqA="
+                }
+            ]},
+            "notes": {},
+            "createdBy": {
+                "id": 3,
+                "userName": "11112222333344445555",
+                "firstName": "John",
+                "lastName": "Smith",
+                "pseudonym": "jsmithAPI",
+                "role": "Api User"
+            },
+            "owner": "Example Organization",
+            "ownerId": 7,
+            "attributes": {},
+            "associatedGroups": {
+            "data": [
+                {
+                    "id": 356367,
+                    "ownerName": "Example Organization",
+                    "dateAdded": "2021-04-12T18:36.18Z",
+                    "webLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=356367",
+                    "type": "Adversary",
+                    "name": "Bad Guy",
+                    "createdBy": {
+                        "id": 39,
+                        "userName": "11112222333344445555",
+                        "firstName": "John",
+                        "lastName": "Smith",
+                        "pseudonym": "jsmithAPI"
+                    },
+                    "lastModified": "2021-04-12T18:36.18Z"
+                }
+            ]},
+            "associatedIndicators": {},
+            "associatedCases": {}
         },
-        "associatedIndicators": {},
-        "associatedCases": {}
-      },
-      "message": "Updated",
-      "status": "Success"
+        "message": "Updated",
+        "status": "Success"
     }
 
 Refer to the `Available Fields <#available-fields>`_ and section for a list of available fields that can be included in the body of a PUT request for the ``cases`` object.

@@ -15,34 +15,35 @@ JSON Response
 .. code:: json
 
     {
-        "data": [{
-            "id": 10,
-            "ownerName": "Demo Organization",
-            "dateAdded": "2021-11-02T13:07:08Z",
-            "webLink": "https://app.threatconnect.com/auth/indicators/details/file.xhtml?file=F5A2496CF66CB8CFFE66CB1B27D7DEDE",
-            "type": "File",
-            "lastModified": "2021-11-02T14:04:55Z",
-            "summary": "F5A2496CF66CB8CFFE66CB1B27D7DEDE",
-            "privateFlag": false,
-            "active": true,
-            "activeLocked": false,
-            "md5": "F5A2496CF66CB8CFFE66CB1B27D7DEDE"
-        }, 
-        {
-            "id": 9,
-            "ownerName": "Demo Organization",
-            "dateAdded": "2021-11-02T12:34:03Z",
-            "webLink": "https://app.threatconnect.com/auth/indicators/details/emailaddress.xhtml?emailaddress=badguy%40bad.com",
-            "type": "EmailAddress",
-            "lastModified": "2021-11-02T12:48:51Z",
-            "description": "A bad email address",
-            "summary": "badguy@bad.com",
-            "privateFlag": false,
-            "active": true,
-            "activeLocked": false,
-            "address": "badguy@bad.com"
-        },
-        {...}
+        "data": [
+            {
+                "id": 10,
+                "ownerName": "Demo Organization",
+                "dateAdded": "2021-11-02T13:07:08Z",
+                "webLink": "https://app.threatconnect.com/auth/indicators/details/file.xhtml?file=F5A2496CF66CB8CFFE66CB1B27D7DEDE",
+                "type": "File",
+                "lastModified": "2021-11-02T14:04:55Z",
+                "summary": "F5A2496CF66CB8CFFE66CB1B27D7DEDE",
+                "privateFlag": false,
+                "active": true,
+                "activeLocked": false,
+                "md5": "F5A2496CF66CB8CFFE66CB1B27D7DEDE"
+            }, 
+            {
+                "id": 9,
+                "ownerName": "Demo Organization",
+                "dateAdded": "2021-11-02T12:34:03Z",
+                "webLink": "https://app.threatconnect.com/auth/indicators/details/emailaddress.xhtml?emailaddress=badguy%40bad.com",
+                "type": "EmailAddress",
+                "lastModified": "2021-11-02T12:48:51Z",
+                "description": "A bad email address",
+                "summary": "badguy@bad.com",
+                "privateFlag": false,
+                "active": true,
+                "activeLocked": false,
+                "address": "badguy@bad.com"
+            },
+            {...}
         ], 
         "status": "Success"
     }
@@ -108,15 +109,18 @@ JSON Response
 
 .. code:: json
 
-    {
-        "data": [{
+{
+    "data": [
+        {
             "ownerName": "Demo Organization",
             "dateAdded": "2021-11-02T15:17:28Z",
             "type": "URL",
             "summary": "http://badsite.com"
-        }],
-        "status": "Success"
-    }
+        }
+    ],
+    "count": 1,
+    "status": "Success"
+}
 
 By default, this query will return all Indicators recently deleted in the API key's default Organization. You can `specify a different owner <https://docs.threatconnect.com/en/latest/rest_api/v3/specify_owner.html>`_ by including the ``?owner=`` query parameter in your query.
 

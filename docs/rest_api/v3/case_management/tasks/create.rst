@@ -7,8 +7,8 @@ The basic format for creating a Task is:
 
     POST /v3/tasks/
     {
-      "caseId": 1,
-      "name": "Example Task for Workflow Case"
+        "caseId": 1,
+        "name": "Example Task for Workflow Case"
     }
 
 For example, the following query will create a new Task for the Case with ID 1. This Task's name will be "Create Shared Drive Folder for Case" and it will be the second step of the first Workflow Phase:

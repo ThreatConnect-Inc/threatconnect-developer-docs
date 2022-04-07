@@ -7,9 +7,9 @@ The basic format for creating an Artifact is:
 
     POST /v3/artifacts/
     {
-      "caseId": 1,
-      "summary": "Summary of the data contained in the Artifact",
-      "type": "The Artifact's data type"
+        "caseId": 1,
+        "summary": "Summary of the data contained in the Artifact",
+        "type": "The Artifact's data type"
     }
 
 For example, the following query will create an ``Email Address`` Artifact with a summary of ``badguy@bad.com`` for the Case with ID 1, create a new Adversary Group named ``Bad Guy`` and associate it to the Artifact, and create a Note for the Artifact:
@@ -18,11 +18,11 @@ For example, the following query will create an ``Email Address`` Artifact with 
 
     POST /v3/artifacts/
     {
-      "caseId": 1,
-      "summary": "badguy@bad.com",
-      "type": "Email Address",
-      "associatedGroups": {"data": [{"name": "Bad Guy", "type": "Adversary"}]}, 
-      "notes": {"data": [{"text": "Note about this artifact"}]}
+        "caseId": 1,
+        "summary": "badguy@bad.com",
+        "type": "Email Address",
+        "associatedGroups": {"data": [{"name": "Bad Guy", "type": "Adversary"}]}, 
+        "notes": {"data": [{"text": "Note about this artifact"}]}
     }
 
 JSON Response:

@@ -21,40 +21,41 @@ JSON Response
 .. code:: json
 
     {
-        "data": [{
-            "id": 10,
-            "type": "Additional Analysis and Context",
-            "value": "Host used by hacker conglomerate traced to Iran.",
-            "source": "Phase of Intrusion",
-            "createdBy": {
-                "id": 39,
-                "userName": "62693284927610908885",
-                "firstName": "API",
-                "lastName": "User",
-                "pseudonym": "APIUserNFmof",
-                "role": "Api User"
+        "data": [
+            {
+                "id": 10,
+                "type": "Additional Analysis and Context",
+                "value": "Host used by hacker conglomerate traced to Iran.",
+                "source": "Phase of Intrusion",
+                "createdBy": {
+                    "id": 39,
+                    "userName": "62693284927610908885",
+                    "firstName": "API",
+                    "lastName": "User",
+                    "pseudonym": "APIUserNFmof",
+                    "role": "Api User"
+                },
+                "dateAdded": "2021-11-09T13:32:37Z",
+                "lastModified": "2021-11-09T13:32:37Z",
+                "default": false
+            }, 
+            {
+                "id": 9,
+                "type": "First Seen",
+                "value": "2021-11-07T04:00:35Z",
+                "dateAdded": "2021-11-09T06:03:54Z",
+                "lastModified": "2021-11-09T06:03:54Z",
+                "default": false
+            }, 
+            {
+                "id": 8,
+                "type": "Description",
+                "value": "At the time of Analysis, the host of this URL resolved to Address 199.34.228.53",
+                "dateAdded": "2021-11-09T06:03:54Z",
+                "lastModified": "2021-11-09T06:03:54Z",
+                "default": false
             },
-            "dateAdded": "2021-11-09T13:32:37Z",
-            "lastModified": "2021-11-09T13:32:37Z",
-            "default": false
-        }, 
-        {
-            "id": 9,
-            "type": "First Seen",
-            "value": "2021-11-07T04:00:35Z",
-            "dateAdded": "2021-11-09T06:03:54Z",
-            "lastModified": "2021-11-09T06:03:54Z",
-            "default": false
-        }, 
-        {
-            "id": 8,
-            "type": "Description",
-            "value": "At the time of Analysis, the host of this URL resolved to Address 199.34.228.53",
-            "dateAdded": "2021-11-09T06:03:54Z",
-            "lastModified": "2021-11-09T06:03:54Z",
-            "default": false
-        },
-        {...}
+            {...}
         ],
         "status": "Success"
     }
