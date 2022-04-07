@@ -220,7 +220,7 @@ Event
      - Required for Creation?
      - Updatable?
    * - eventDate
-     - The date and time when the Event was created
+     - The date and time when the Event took place
      - Date
      - FALSE
      - TRUE
@@ -250,7 +250,7 @@ Incident
      - Required for Creation?
      - Updatable?
    * - eventDate
-     - The date and time when the Incident was created
+     - The date when the Incident took place
      - Date
      - FALSE
      - TRUE
@@ -290,7 +290,7 @@ Report
      - TRUE
      - TRUE
    * - publishDate
-     - The date and time when the Report was created
+     - The date and time when the Report was published
      - Date
      - FALSE
      - TRUE

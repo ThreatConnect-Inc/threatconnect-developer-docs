@@ -28,7 +28,7 @@ The following query will create an ``Incident`` Group for an Incident that took 
     {
         "type": "Incident",
         "name": "Bad Incident",
-        "eventDate": "2021-11-03T10:50:00Z",
+        "eventDate": "2021-11-03",
         "status": "New",
         "tags": {"data": [{"name": "Targeted Attack"}, {"name": "Robbery"}]}
     }
