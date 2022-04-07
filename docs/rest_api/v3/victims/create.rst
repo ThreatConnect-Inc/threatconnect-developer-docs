@@ -41,65 +41,65 @@ JSON Response
 
 .. code:: json
 
-{
-    "data": {
-        "id": 2,
-        "ownerName": "Demo Organization",
-        "webLink": "https://app.threatconnect.com/auth/victim/victim.xhtml?victim=2",
-        "tags": {
-            "data": [{
-                "id": 11,
-                "name": "Targeted Attack",
-                "lastUsed": "2021-11-05T19:16:52Z"
-            }]
+    {
+        "data": {
+            "id": 2,
+            "ownerName": "Demo Organization",
+            "webLink": "https://app.threatconnect.com/auth/victim/victim.xhtml?victim=2",
+            "tags": {
+                "data": [{
+                    "id": 11,
+                    "name": "Targeted Attack",
+                    "lastUsed": "2021-11-05T19:16:52Z"
+                }]
+            },
+            "securityLabels": {
+                "data": [{
+                    "id": 3,
+                    "name": "TLP:AMBER",
+                    "description": "This security label is used for information that requires support to be effectively acted upon, yet carries risks to privacy, reputation, or operations if shared outside of the organizations involved.",
+                    "color": "FFC000",
+                    "owner": "System",
+                    "dateAdded": "2016-08-31T00:00:00Z"
+                }]
+            },
+            "name": "John Doe",
+            "org": "Company ABC",
+            "suborg": "HR Department",
+            "workLocation": "Washington, D.C.",
+            "nationality": "American",
+            "assets": {
+                "data": [{
+                    "id": 2,
+                    "type": "EmailAddress",
+                    "victimId": 2,
+                    "address": "jdoe@companyabc.com",
+                    "addressType": "Corporate email"
+                }]
+            },
+            "attributes": {
+                "data": [{
+                    "id": 1,
+                    "type": "Additional Analysis and Context",
+                    "value": "Example value",
+                    "source": "Example Source",
+                    "createdBy": {
+                        "id": 39,
+                        "userName": "62693284927610908885",
+                        "firstName": "API",
+                        "lastName": "User",
+                        "pseudonym": "APIUserNFmof",
+                        "role": "Api User"
+                    },
+                    "dateAdded": "2021-11-05T19:16:52Z",
+                    "lastModified": "2021-11-05T19:16:52Z",
+                    "default": false
+                }]
+            }
         },
-        "securityLabels": {
-            "data": [{
-                "id": 3,
-                "name": "TLP:AMBER",
-                "description": "This security label is used for information that requires support to be effectively acted upon, yet carries risks to privacy, reputation, or operations if shared outside of the organizations involved.",
-                "color": "FFC000",
-                "owner": "System",
-                "dateAdded": "2016-08-31T00:00:00Z"
-            }]
-        },
-        "name": "John Doe",
-        "org": "Company ABC",
-        "suborg": "HR Department",
-        "workLocation": "Washington, D.C.",
-        "nationality": "American",
-        "assets": {
-            "data": [{
-                "id": 2,
-                "type": "EmailAddress",
-                "victimId": 2,
-                "address": "jdoe@companyabc.com",
-                "addressType": "Corporate email"
-            }]
-        },
-        "attributes": {
-            "data": [{
-                "id": 1,
-                "type": "Additional Analysis and Context",
-                "value": "Example value",
-                "source": "Example Source",
-                "createdBy": {
-                    "id": 39,
-                    "userName": "62693284927610908885",
-                    "firstName": "API",
-                    "lastName": "User",
-                    "pseudonym": "APIUserNFmof",
-                    "role": "Api User"
-                },
-                "dateAdded": "2021-11-05T19:16:52Z",
-                "lastModified": "2021-11-05T19:16:52Z",
-                "default": false
-            }]
-        }
-    },
-    "message": "Created",
-    "status": "Success"
-}
+        "message": "Created",
+        "status": "Success"
+    }
 
 .. note::
     When creating a Victim, you can apply Tags that do not yet exist in ThreatConnect to it. In this scenario, you would need to fill out `all required fields for each new Tag <https://docs.threatconnect.com/en/latest/rest_api/v3/tags/tags.html>`_. Upon creation of the new Victim, any Tags included in the body of the POST request that do not yet exist in ThreatConnect will also be created.
