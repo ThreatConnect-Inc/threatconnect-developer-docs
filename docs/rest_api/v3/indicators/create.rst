@@ -49,7 +49,7 @@ JSON Response
             "id": 4,
             "ownerName": "Demo Organization",
             "dateAdded": "2021-11-05T16:43:17Z",
-            "webLink": "/auth/indicators/details/host.xhtml?host=ultrabadguy.com",
+            "webLink": "https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=ultrabadguy.com",
             "tags": {
                 "data": [{
                     "id": 10,

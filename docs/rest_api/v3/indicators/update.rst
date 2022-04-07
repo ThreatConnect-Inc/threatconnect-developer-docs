@@ -58,20 +58,24 @@ JSON Response
             "dateAdded": "2021-11-05T16:43:17Z",
             "webLink": "https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=ultrabadguy.com",
             "tags": {
-                "data": [{
-                    "id": 10,
-                    "name": "Malicious Host",
-                    "description": "A tag that can be applied to malicious Host Indicators.",
-                    "lastUsed": "2021-11-05T16:43:17Z"
-                }, {
-                    "id": 11,
-                    "name": "Targeted Attack",
-                    "lastUsed": "2021-11-05T16:43:17Z"
-                }, {
-                    "id": 12,
-                    "name": "Russia",
-                    "lastUsed": "2021-11-05T17:21:07Z"
-                }],
+                "data": [
+                    {
+                        "id": 10,
+                        "name": "Malicious Host",
+                        "description": "A tag that can be applied to malicious Host Indicators.",
+                        "lastUsed": "2021-11-05T16:43:17Z"
+                    },
+                    {
+                        "id": 11,
+                        "name": "Targeted Attack",
+                        "lastUsed": "2021-11-05T16:43:17Z"
+                    },
+                    {
+                        "id": 12,
+                        "name": "Russia",
+                        "lastUsed": "2021-11-05T17:21:07Z"
+                    }
+                ],
             },
             "securityLabels": {
                 "data": [{

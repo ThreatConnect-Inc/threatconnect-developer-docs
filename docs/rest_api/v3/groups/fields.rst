@@ -64,12 +64,6 @@ Alternatively, refer to the following tables for a list of available fields that
      - TRUE
      - TRUE
      - "21-0043847: Threat Actor Capabilities"
-   * - ownerName
-     - The name of the Organization, Community, or Source to which the Group belongs 
-     - String
-     - FALSE
-     - FALSE
-     - "Demo Community"
    * - securityLabels
      - A list of Security Labels applied to the Group
      - `Security Label Object <https://docs.threatconnect.com/en/latest/rest_api/v3/security_labels/security_labels.html>`_

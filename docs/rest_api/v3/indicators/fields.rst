@@ -64,12 +64,6 @@ Alternatively, refer to the following tables for a list of available fields that
      - FALSE
      - TRUE
      - {"data": [{"type": "Attribute Type", "value": "Attribute Value", "source": "Attribute Source"]}}
-   * - ownerName
-     - The name of the Organization, Community, or Source to which the Indicator belongs 
-     - String
-     - FALSE
-     - FALSE
-     - "Demo Community"
    * - privateFlag
      - Indicates where the Indicator is private 
      - Boolean
