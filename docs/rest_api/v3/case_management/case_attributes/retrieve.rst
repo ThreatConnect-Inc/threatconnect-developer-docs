@@ -16,38 +16,39 @@ JSON Response:
 
     {
         "data": [
-        {
-            "id": 1,
-            "type": "Detection Percentage",
-            "value": "50",
-            "source": "Hybrid analysis",
-            "createdBy": {
-                "id": 39,
-                "userName": "11112222333344445555",
-                "firstName": "John",
-                "lastName": "Smith",
-                "pseudonym": "jsmithAPI",
-                "role": "Api User"
+            {
+                "id": 1,
+                "type": "Detection Percentage",
+                "value": "50",
+                "source": "Hybrid analysis",
+                "createdBy": {
+                    "id": 39,
+                    "userName": "11112222333344445555",
+                    "firstName": "John",
+                    "lastName": "Smith",
+                    "pseudonym": "jsmithAPI",
+                    "role": "Api User"
+                },
+                "dateAdded": "2022-02-15T20:24:04Z",
+                "lastModified": "2022-02-15T20:24:16Z",
+                "default": false
             },
-            "dateAdded": "2022-02-15T20:24:04Z",
-            "lastModified": "2022-02-15T20:24:16Z",
-            "default": false
-        },
-        {
-            "id": 2,
-            "type": "Phishing Open Rate",
-            "value": "20",
-            "createdBy": {
-                "id": 79,
-                "userName": "jsmith",
-                "firstName": "John",
-                "lastName": "Smith",
-                "pseudonym": "jsmith"
+            {
+                "id": 2,
+                "type": "Phishing Open Rate",
+                "value": "20",
+                "createdBy": {
+                    "id": 79,
+                    "userName": "jsmith",
+                    "firstName": "John",
+                    "lastName": "Smith",
+                    "pseudonym": "jsmith"
+                },
+                "dateAdded": "2022-02-15T20:24:18Z",
+                "lastModified": "2022-02-15T20:24:37Z",
+                "default": false
             },
-            "dateAdded": "2022-02-15T20:24:18Z",
-            "lastModified": "2022-02-15T20:24:37Z",
-            "default": false
-        }
+            {...}
         ],
         "status": "Success"
     }

@@ -16,23 +16,23 @@ JSON Response:
 
     {
         "data": [
-        {
-            "id": 1,
-            "name": "Email Address",
-            "description": "A name that identifies an electronic post office box on a network where Electronic-Mail (e-mail) can be sent.",
-            "dataType": "String",
-            "intelType": "indicator-EmailAddress",
-            "derivedLink": true
-        },
-        {
-            "id": 2,
-            "name": "Host",
-            "description": "A hostname. A host is any hardware device that has the capability of permitting access to a network via a user interface, specialized software, network address, protocol stack, or any other means.",
-            "dataType": "String",
-            "intelType": "indicator-Host",
-            "derivedLink": true
-        }, 
-        {...}
+            {
+                "id": 1,
+                "name": "Email Address",
+                "description": "A name that identifies an electronic post office box on a network where Electronic-Mail (e-mail) can be sent.",
+                "dataType": "String",
+                "intelType": "indicator-EmailAddress",
+                "derivedLink": true
+            },
+            {
+                "id": 2,
+                "name": "Host",
+                "description": "A hostname. A host is any hardware device that has the capability of permitting access to a network via a user interface, specialized software, network address, protocol stack, or any other means.",
+                "dataType": "String",
+                "intelType": "indicator-Host",
+                "derivedLink": true
+            }, 
+            {...}
         ],
         "status": "Success"
     }

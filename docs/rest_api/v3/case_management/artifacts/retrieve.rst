@@ -15,26 +15,27 @@ JSON Response:
 .. code:: json
 
     {
-        "data": [{
-            "id": 1,
-            "summary": "badguy@bad.com",
-            "type": "Email Address",
-            "intelType": "indicator-EmailAddress",
-            "dateAdded": "2021-04-22T19:24:06Z",
-            "derivedLink": "true",
-            "hashCode": "2e7d3603331dea4ec9a14442c0a409dcfc3f69e7"
-        },
-        {
-              "id": 2,
-              "summary": "123.456.78.90",
-              "type": "IP Address",
-              "intelType": "indicator-Address",
-              "source": "johnsmith",
-              "dateAdded": "2021-03-08T13:24:38Z",
-              "derivedLink": "true",
-              "hashCode": "cbdb4defdbb9433683a9daa0764c58a45bddd729"
-        },
-        {...}
+        "data": [
+            {
+                "id": 1,
+                "summary": "badguy@bad.com",
+                "type": "Email Address",
+                "intelType": "indicator-EmailAddress",
+                "dateAdded": "2021-04-22T19:24:06Z",
+                "derivedLink": "true",
+                "hashCode": "2e7d3603331dea4ec9a14442c0a409dcfc3f69e7"
+            },
+            {
+                "id": 2,
+                "summary": "123.456.78.90",
+                "type": "IP Address",
+                "intelType": "indicator-Address",
+                "source": "johnsmith",
+                "dateAdded": "2021-03-08T13:24:38Z",
+                "derivedLink": "true",
+                "hashCode": "cbdb4defdbb9433683a9daa0764c58a45bddd729"
+            },
+            {...}
         ],
         "status": "Success"
     }

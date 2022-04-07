@@ -16,25 +16,25 @@ JSON Response:
 
     {
         "data": [
-        {
-            "id": 1,
-            "name": "Additional Analysis and Context",
-            "description": "Relevant research and analysis associated with this Indicator, Signature, or Activity Group. Can be internal analysis or links to published articles, whitepapers, websites, or any reference providing amplifying information or geo-political context.",
-            "maxSize": 65536,
-            "allowMarkdown": true,
-            "errorMessage": "Please enter valid Additional Analysis and Context.",
-            "systemRequired": true
-        },
-        {
-            "id": 2,
-            "name": "Adversary Motivation Type",
-            "description": "Select an overall motivation.",
-            "maxSize": 21,
-            "allowMarkdown": false,
-            "errorMessage": "Please enter valid Adversary Motivation Type.",
-            "systemRequired": false
-        },
-        {...}
+            {
+                "id": 1,
+                "name": "Additional Analysis and Context",
+                "description": "Relevant research and analysis associated with this Indicator, Signature, or Activity Group. Can be internal analysis or links to published articles, whitepapers, websites, or any reference providing amplifying information or geo-political context.",
+                "maxSize": 65536,
+                "allowMarkdown": true,
+                "errorMessage": "Please enter valid Additional Analysis and Context.",
+                "systemRequired": true
+            },
+            {
+                "id": 2,
+                "name": "Adversary Motivation Type",
+                "description": "Select an overall motivation.",
+                "maxSize": 21,
+                "allowMarkdown": false,
+                "errorMessage": "Please enter valid Adversary Motivation Type.",
+                "systemRequired": false
+            },
+            {...}
         ],
         "status": "Success"
     }
