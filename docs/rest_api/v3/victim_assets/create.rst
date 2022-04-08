@@ -12,8 +12,6 @@ The basic format for creating a Victim Asset is:
         //additional fields for the selected Victim Asset type
     }
 
-Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a POST request for the ``victimAssets`` object.
-
 For example, the following query will create a Phone Victim Asset and add it to the Victim with ID 2:
 
 .. code::
@@ -39,3 +37,5 @@ JSON Response
         "message": "Created",
         "status": "Success"
     }
+
+Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a POST request for the ``victimAssets`` object.

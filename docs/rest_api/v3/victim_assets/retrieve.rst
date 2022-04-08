@@ -33,11 +33,11 @@ JSON Response
                 "type": "EmailAddress",
                 "victimId": 2,
                 "address": "jdoe@companyabc.com",
-                "addressType": "Corporate email",
+                "addressType": "Corporate email"
             },
             {
                 "id": 1,
-                "type": "EmailAddress"
+                "type": "EmailAddress",
                 "victimId": 1,
                 "address": "demo@sample.com"
             }
@@ -77,7 +77,7 @@ JSON Response
 Request Additional Fields
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To request additional fields not automatically provided with each returned object, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
+To request additional fields not automatically included with each returned object, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
 
 Filter Results
 ^^^^^^^^^^^^^^
