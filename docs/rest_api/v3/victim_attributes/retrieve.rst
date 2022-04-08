@@ -40,7 +40,7 @@ JSON Response
             {
                 "id": 1,
                 "type": "Additional Analysis and Context",
-                "value": "Based on additional analysis, it was determined that this victim’s bank account was hacked.",
+                "value": "Based on additional analysis, it was determined that this victim's bank account was hacked.",
                 "source": "Phase of Intrusion",
                 "createdBy": {
                     "id": 3,

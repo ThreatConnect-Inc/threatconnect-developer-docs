@@ -10,8 +10,6 @@ The basic format for updating a Victim Attribute is:
         {updatedField}: {updatedValue}
     }
 
-Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a PUT request for the ``victimAttributes`` object.
-
 For example, the following query will update the value of the Victim Attribute with ID 1 and make it the default Attribute of its type:
 
 .. code::
@@ -19,7 +17,7 @@ For example, the following query will update the value of the Victim Attribute w
     PUT /v3/victimAttributes/1
     {
         "default": true,
-        "value": "Based on additional analysis, it was determined that this victim’s social media, bank, and email accounts were hacked as the result of a phishing attack."
+        "value": "Based on additional analysis, it was determined that this victim's social media, bank, and email accounts were hacked as the result of a phishing attack."
     }
 
 JSON Response
@@ -30,7 +28,7 @@ JSON Response
         "data": {
             "id": 1,
             "type": "Additional Analysis and Context",
-            "value": "Based on additional analysis, it was determined that this victim’s bank account was hacked.",
+            "value": "Based on additional analysis, it was determined that this victim's bank account was hacked.",
             "source": "Phase of Intrusion",
             "createdBy": {
                 "id": 3,
@@ -47,3 +45,5 @@ JSON Response
         "message": "Updated",
         "status": "Success"
     }
+
+Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a PUT request for the ``victimAttributes`` object.
