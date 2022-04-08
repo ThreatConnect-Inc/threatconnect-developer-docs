@@ -1,7 +1,7 @@
 Available Fields
 ----------------
 
-You can `retrieve a list of available fields <https://docs.threatconnect.com/en/latest/rest_api/v3/retrieve_fields.html>`_ for the ``/v3/cases`` endpoint, including the field's name, description, and accepted data type, by using the following query:
+You can `retrieve a list of available fields <https://docs.threatconnect.com/en/latest/rest_api/v3/retrieve_fields.html>`_ for the ``/v3/cases`` endpoint, including each field's name, description, and accepted data type, by using the following query:
 
 .. code::
 
@@ -59,7 +59,7 @@ Alternatively, refer to the following tables for a list of available fields that
      - TRUE
      - {"data": [{"type": "Case Attribute Name", value": "Case Attribute Value", "source": "Case Attribute Source"}]}
    * - caseCloseTime
-     - The date and time a Case was closed
+     - The date and time the Case was closed
      - Date
      - FALSE
      - TRUE
@@ -77,7 +77,7 @@ Alternatively, refer to the following tables for a list of available fields that
      - TRUE
      - "2021-04-30T00:00:00Z"
    * - caseOpenTime
-     - The date and time a Case was opened
+     - The date and time the Case was opened
      - Date
      - FALSE
      - TRUE
@@ -107,13 +107,13 @@ Alternatively, refer to the following tables for a list of available fields that
      - TRUE
      - "Containment Achieved", "False Positive"
    * - severity
-     - The severity of the Case. Valid values are "Low", "Medium", "High", or "Critical"
+     - The severity of the Case (accepted values include "Low", "Medium", "High", and "Critical")
      - String
      - TRUE
      - TRUE
-     - "Low", "Medium", "High", or "Critical"
+     - "Low", "Medium", "High", "Critical"
    * - status
-     - The status of the Case. Valid values are "Open" or "Closed"
+     - The status of the Case (accepted values include "Open" and "Closed")
      - String
      - TRUE
      - TRUE
@@ -155,4 +155,4 @@ Alternatively, refer to the following tables for a list of available fields that
     Attribute Types for Cases must first be created in the System or Organization in which a Case resides before they can be added to the Case. See the `Creating Custom Attribute Types <https://training.threatconnect.com/learn/article/creating-custom-attributes-kb-article>`_ knowledge base article for more information.
 
 .. note::
-    To **associate an existing Case or Group** to a Case, use the object's ID when setting the ``associatedCases`` or ``associatedGroups`` field, respectively (e.g., ``{"data": [{"id": 12345}]}``). To **associate an existing Indicator** to a Case, use either the Indicator's ID, or the Indicator's type and name (e.g., for a Host Indicator, use its ``hostName``), when setting the ``associatedIndicators`` field.
+    To **associate an existing Case or Group** to a Case, use the object's ID when setting the ``associatedCases`` or ``associatedGroups`` field, respectively (e.g., ``{"data": [{"id": 12345}]}``). To **associate an existing Indicator** to a Case, use either the Indicator's ID, or the Indicator's type and summary (e.g., for a Host Indicator, use its ``hostName``), when setting the ``associatedIndicators`` field.

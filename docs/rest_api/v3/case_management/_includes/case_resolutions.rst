@@ -1,4 +1,4 @@
-Available values for the ``resolution`` field include:
+Accepted values for the ``resolution`` field include:
     
     - ``Containment Achieved``
     - ``Deferred / Delayred``

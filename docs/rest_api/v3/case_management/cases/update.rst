@@ -10,7 +10,7 @@ The basic format for updating a Case is:
         {updatedField}: {updatedValue}
     }
   
-For example, the following query will update the resolution and status of the Case with ID 1. It will also create a new Adversary Group named ``Bad Guy`` that includes an associated Artifact and associate the Group to the Case:
+For example, the following query will update the resolution and status of the Case with ID 1. It will also create a new Adversary Group named ``Extreme Bad Guy`` that includes an associated Artifact and associate the Group to the Case:
 
 .. code::
 
@@ -18,7 +18,7 @@ For example, the following query will update the resolution and status of the Ca
     {
         "resolution": "False Positive",
         "status": "Closed",
-        "associatedGroups": {"data": [{"name": "Bad Guy", "type": "Adversary", "associatedArtifacts": {"data": [{"id": 1}]}}]}
+        "associatedGroups": {"data": [{"name": "Extreme Bad Guy", "type": "Adversary", "associatedArtifacts": {"data": [{"id": 1}]}}]}
     }
 
 
@@ -79,24 +79,26 @@ JSON Response:
             "ownerId": 7,
             "attributes": {},
             "associatedGroups": {
-            "data": [
-                {
-                    "id": 356367,
-                    "ownerName": "Example Organization",
-                    "dateAdded": "2021-04-12T18:36.18Z",
-                    "webLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=356367",
-                    "type": "Adversary",
-                    "name": "Bad Guy",
-                    "createdBy": {
-                        "id": 3,
-                        "userName": "11112222333344445555",
-                        "firstName": "John",
-                        "lastName": "Smith",
-                        "pseudonym": "jsmithAPI"
-                    },
-                    "lastModified": "2021-04-12T18:36.18Z"
-                }
-            ]},
+                "data": [
+                    {
+                        "id": 17,
+                        "ownerName": "Example Organization",
+                        "dateAdded": "2021-04-12T18:36.18Z",
+                        "webLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=17",
+                        "type": "Adversary",
+                        "name": "Extreme Bad Guy",
+                        "createdBy": {
+                            "id": 3,
+                            "userName": "11112222333344445555",
+                            "firstName": "John",
+                            "lastName": "Smith",
+                            "pseudonym": "jsmithAPI",
+                            "role": "Api User"
+                        },
+                        "lastModified": "2021-04-12T18:36.18Z"
+                    }
+                ]
+            },
             "associatedIndicators": {},
             "associatedCases": {}
         },

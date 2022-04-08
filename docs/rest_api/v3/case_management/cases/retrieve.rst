@@ -78,7 +78,8 @@ JSON Response:
                     "userName": "pjones+analyst@threatconnect.com",
                     "firstName": "Patrick",
                     "lastName": "Jones",
-                    "pseudonym": "patjones"
+                    "pseudonym": "patjones",
+                    "role": "User"
                 },
                 "owner": "Example Organization",
                 "ownerId": 7
@@ -140,7 +141,8 @@ JSON Response:
                 "userName": "jsmith@threatconnect.com",
                 "firstName": "John",
                 "lastName": "Smith",
-                "pseudonym": "johnsmith"
+                "pseudonym": "johnsmith",
+                "role": "User"
             },
             "owner": "Example Organization",
             "ownerId": 7
