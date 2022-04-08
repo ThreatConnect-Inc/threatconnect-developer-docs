@@ -10,25 +10,10 @@ The basic format for updating a Victim is:
         {updatedField}: {updatedValue}
     }
 
-Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a PUT request for the ``victims`` object.
+For example, the following query will complete the following actions for a Victim with ID 2:
 
-.. note::
-    When updating a Victim, you can use the ``mode`` field to add or remove the following metadata:
-
-    - ``associatedGroups``
-    - ``attributes``
-    - ``securityLabels``
-    - ``tags``
-
-    See `Update an Object's Metadata <https://docs.threatconnect.com/en/latest/rest_api/v3/update_metadata.html>`_ for instructions on using the ``mode`` field.
-
-Example PUT Request
-^^^^^^^^^^^^^^^^^^^^
-
-The following query will complete the following actions for a Victim with ID 2:
-
-- Add a ``WebSite`` Victim Asset to the Victim
-- Update the Victim's name
+- Add a ``WebSite`` Victim Asset to the Victim;
+- Update the Victim's name;
 - Replace the ``TLP: AMBER`` Security Label applied to the Victim with a ``TLP: RED`` Security Label.
 
 .. code::
@@ -36,7 +21,7 @@ The following query will complete the following actions for a Victim with ID 2:
     PUT /v3/victims/2
     {
         "assets": {"data": [{"website": "evilll.com", "type": "WebSite"}]},
-        "name": "Jane Doe"
+        "name": "Jane Doe",
         "securityLabels": {"data": [{"name": "TLP:RED"}], "mode": "replace"}
     }
 
@@ -107,3 +92,15 @@ JSON Response
         "message": "Updated",
         "status": "Success"
     }
+
+Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a PUT request for the ``victims`` object.
+
+.. note::
+    When updating a Victim, you can use the ``mode`` field to add or remove the following metadata:
+
+    - ``associatedGroups``
+    - ``attributes``
+    - ``securityLabels``
+    - ``tags``
+
+    See `Update an Object's Metadata <https://docs.threatconnect.com/en/latest/rest_api/v3/update_metadata.html>`_ for instructions on using the ``mode`` field.

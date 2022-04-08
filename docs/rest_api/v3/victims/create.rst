@@ -7,19 +7,10 @@ The basic format for creating a Victim is:
 
     POST /v3/victims/
     {
-        "name": "Victim name goes here",
-        "type": "Victim"
+        "name": "John Doe"
     }
 
-Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a POST request for the ``victims`` object.
-
-.. note::
-    You can add multiple Attributes, Tags, and Security Labels to the Victim being created in a single POST request. Similarly, you can associate multiple Groups to the Victim being created in a single POST request.
-
-Example POST Request
-^^^^^^^^^^^^^^^^^^^^
-
-The following query will create a Victim. Note that all optional fields available for the ``victims`` object are included in this request.
+For example, the following query will create a Victim. Note that all optional fields available for the ``victims`` object are included in this request.
 
 .. code::
 
@@ -27,7 +18,7 @@ The following query will create a Victim. Note that all optional fields availabl
     {
         "name": "John Doe",
         "assets": {"data": [{"address": "jdoe@companyabc.com", "addressType": "Corporate email", "type": "EmailAddress"}]},
-        "associatedGroups": {"data": [{"id": 12345}], [{"name": "Bad Adversary", "type": "Adversary"},
+        "associatedGroups": {"data": [{"id": 12345}], [{"name": "Bad Adversary", "type": "Adversary"}]},
         "attributes": {"data": [{"type": "Additional Analysis and Context", "value": "Example value", "source": "Example Source"}]},
         "nationality": "American",
         "org": "Company ABC",
@@ -101,7 +92,12 @@ JSON Response
         "status": "Success"
     }
 
-.. note::
-    When creating a Victim, you can apply Tags that do not yet exist in ThreatConnect to it. In this scenario, you would need to fill out `all required fields for each new Tag <https://docs.threatconnect.com/en/latest/rest_api/v3/tags/tags.html>`_. Upon creation of the new Victim, any Tags included in the body of the POST request that do not yet exist in ThreatConnect will also be created.
+Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a POST request for the ``victims`` object.
 
-    Similarly, you can associate Groups that do not yet exist in ThreatConnect to the Victim. In this scenario, you would need to fill out `all required fields for the type of Group <https://docs.threatconnect.com/en/latest/rest_api/v3/groups/groups.html>`_ being associated to the Victim. Upon creation of the new Victim, any associated Groups included in the body of the POST request that do not yet exist in ThreatConnect will also be created.
+.. note::
+    You can add multiple Attributes, Tags, and Security Labels to the Victim being created in a single POST request. Similarly, you can associate multiple Groups to the Victim being created in a single POST request.
+
+.. note::
+    When creating a Victim, you can apply Tags that do not yet exist in ThreatConnect to it. To do so, fill out `all required fields for each new Tag <https://docs.threatconnect.com/en/latest/rest_api/v3/tags/tags.html>`_. Upon creation of the new Victim, any Tags included in the body of the POST request that do not yet exist in ThreatConnect will also be created.
+
+    Similarly, you can associate Groups that do not yet exist in ThreatConnect to the Victim. To do so, fill out `all required fields for the type of Group <https://docs.threatconnect.com/en/latest/rest_api/v3/groups/groups.html>`_ being associated to the Victim. Upon creation of the new Victim, any associated Groups included in the body of the POST request that do not yet exist in ThreatConnect will also be created.
