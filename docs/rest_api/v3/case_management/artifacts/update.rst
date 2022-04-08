@@ -48,4 +48,4 @@ Refer to the `Available Fields <#available-fields>`_ and section for a list of a
     See `Update an Object's Metadata <https://docs.threatconnect.com/en/latest/rest_api/v3/update_metadata.html>`_ for instructions on using the ``mode`` field.
 
 .. note::
-    To update an Artifact's ``fieldName``, the Artifact must be associated with a Task, and the associated Task must have multiple Artifact Fields defined. For more information about Artifact Fields, see the "Artifact Fields" section of the `Workflow Cases: Phases and Tasks <https://training.threatconnect.com/learn/article/workflow-cases-phases-and-tasks-kb-article>`_ knowledge base article.
+    To update an Artifact's ``fieldName``, the Artifact must correspond to a Task, and that Task must have multiple Artifact Fields defined. For more information about Artifact Fields, see the "Artifact Fields" section of the `Workflow Cases: Phases and Tasks <https://training.threatconnect.com/learn/article/workflow-cases-phases-and-tasks-kb-article>`_ knowledge base article.

@@ -53,7 +53,7 @@ Alternatively, refer to the following tables for a list of available fields that
      - TRUE
      - true, false
    * - fieldName
-     - The name of the Artifact Field within an associated Task
+     - The name of the Artifact Field within a corresponding Task
      - String
      - FALSE
      - TRUE
@@ -63,13 +63,13 @@ Alternatively, refer to the following tables for a list of available fields that
      - String
      - FALSE
      - TRUE
-     -  
+     -  "UEsDBBQABgAIAA..."
    * - hashCode
      - The hash code of File-type Artifacts
      - String
      - FALSE
      - TRUE
-     - "C254ZZjosDoUA2Bwdu03Wmtlp2Jdg3BxPMsJ4Ygff0o="
+     - "C254ZZjosDoUA2B..."
    * - notes
      - A list of Notes corresponding to the Artifact
      - `Note Object <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/notes/notes.html>`_
@@ -77,7 +77,7 @@ Alternatively, refer to the following tables for a list of available fields that
      - TRUE
      - {"data": [{"text": "Note about malware case"}]}
    * - source
-     - The name of the user who entered the Artifact into the Case
+     - The name of the user who added the Artifact to the Case
      - String
      - FALSE
      - TRUE
@@ -89,13 +89,13 @@ Alternatively, refer to the following tables for a list of available fields that
      - TRUE
      - "badguy.com"
    * - taskId
-     - The ID of the Task that the Artifact references
+     - The ID of the Task corresponding to the Artifact
      - Integer
      - FALSE
      - FALSE
      - 1, 2, 3
    * - taskXid
-     - The XID of the Task that the Artifact references
+     - The XID of the Task corresponding to the Artifact
      - String
      - FALSE
      - FALSE
@@ -118,4 +118,4 @@ Alternatively, refer to the following tables for a list of available fields that
     Alternatively, refer to `Artifact Types <../artifact_types/artifact_types.html>`_ for instructions on retrieving available Artifact types.
 
 .. note::
-    To **associate an existing Group** to an Artifact, use the Group's ID when setting the ``associatedGroups`` field (e.g., ``{"data": [{"id": 12345}]}``). To **associate an existing Indicator** to an Artifact, use either the Indicator's ID, or the Indicator's type and name (e.g., for a Host Indicator, use its ``hostName``), when setting the ``associatedIndicators`` field.
+    To **associate an existing Group** to an Artifact, use the Group's ID when setting the ``associatedGroups`` field (e.g., ``{"data": [{"id": 12345}]}``). To **associate an existing Indicator** to an Artifact, use either the Indicator's ID, or the Indicator's type and summary (e.g., for a Host Indicator, use its ``hostName``), when setting the ``associatedIndicators`` field.

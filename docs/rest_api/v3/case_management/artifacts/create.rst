@@ -42,21 +42,21 @@ JSON Response:
                         "id": 5,
                         "text": "Note about this artifact",
                         "summary": "Note about this artifact",
-                        "author": "06086238053146319309",
+                        "author": "11112222333344445555",
                         "dateAdded": "2021-04-22T19:24:06Z",
                         "lastModified": "2021-04-22T19:24:06Z",
                         "edited": false,
-                        "artifactId": 29571
+                        "artifactId": 1
                     }
                 ]
             },
             "associatedGroups": {
                 "data": [
                     {
-                        "id": 356316,
+                        "id": 13,
                         "ownerName": "Demo Organization",
                         "dateAdded": "2021-04-22T19:24:06Z",
-                        "webLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=356316",
+                        "webLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=13",
                         "type": "Adversary",
                         "name": "Bad Guy",
                         "createdBy": {
@@ -84,4 +84,10 @@ Refer to the `Available Fields <#available-fields>`_ and section for a list of a
     When creating or updating an Artifact, you can associate Indicators and Groups that do not yet exist in ThreatConnect to the Artifact. To do so, fill out all required fields for the type of `Indicator <https://docs.threatconnect.com/en/latest/rest_api/v3/indicators/indicators.html>`_ or `Group <https://docs.threatconnect.com/en/latest/rest_api/v3/groups/groups.html>`_ being associated to the Artifact. Upon creation of the new Artifact, any associated objects included in the body of the POST request that do not yet exist in ThreatConnect will also be created. In addition, you can associate multiple Indicators and Groups to the Artifact being created in a single POST request.
 
 .. hint::
-    To create an Artifact that is displayed in the **Task Artifacts** section of a Task, the Artifact must be associated with a Task, the associated Task must have an Artifact Field defined that accepts the same Artifact data type as the associated Artifact, and the ``fieldname`` field must be defined. Otherwise, the Artifact will be displayed in the **Related Artifacts** section of the Task. For more information about Artifact Fields, see the "Artifact Fields" section of the `Workflow Cases: Phases and Tasks <https://training.threatconnect.com/learn/article/workflow-cases-phases-and-tasks-kb-article>`_ knowledge base article.
+    To create an Artifact that is displayed in the **Task Artifacts** section of a Task, the following conditions must be met:
+
+    - The Artifact must correspond to a Task;
+    - The corresponding Task must have an **Artifact Field** that accepts the same data type as the Artifact;
+    - The ``fieldname`` field must be defined when creating the Artifact.
+
+    Otherwise, the Artifact will be displayed in the **Related Artifacts** section of the Task. For more information about Artifact Fields, see the "Artifact Fields" section of theection of the Task. For more information about Artifact Fields, see the "Artifact Fields" section of the `Workflow Cases: Phases and Tasks <https://training.threatconnect.com/learn/article/workflow-cases-phases-and-tasks-kb-article>`_ knowledge base article.
