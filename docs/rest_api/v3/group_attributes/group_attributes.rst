@@ -2,7 +2,7 @@
 Group Attributes
 ================
 
-Attributes are key/value data sets that can be added to any Group. This type of metadata provides an excellent way to organize, categorize, and integrate Groups into an Organization’s analytic workflow.
+Attributes are key/value data sets that can be added to any Group. This type of metadata provides an excellent way to organize, categorize, and integrate Groups into an Organization's analytic workflow.
 
 Endpoint: ``/api/v3/groupAttributes``
 

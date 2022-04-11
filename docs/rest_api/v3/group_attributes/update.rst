@@ -19,7 +19,7 @@ For example, the following query will update the value of the Group Attribute wi
     PUT /v3/groupAttributes/10
     {
         "default": true,
-        "value": "This is an extremely dangerous adversary"
+        "value": "This is an extremely dangerous adversary."
     }
 
 JSON Response
