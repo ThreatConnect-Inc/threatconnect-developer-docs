@@ -30,7 +30,7 @@ Example PUT Request
 The following query will complete the following actions for the ``ultrabadguy.com`` Host Indicator:
 
 - Disable the **DNS** feature for the Indicator
-- Disassociate the ``Bad Guy`` Adversary Group from the Indicator
+- Dissociate the ``Bad Guy`` Adversary Group from the Indicator
 - Update the Indicator's Confidence Rating
 - Replace a ``TLP: AMBER`` Security Label that is applied to the Indicator with a ``TLP: Red`` Security Label
 - Apply a new ``Russia`` Tag to the Indicator without replacing any existing Tags applied to the Indicator.
@@ -75,7 +75,7 @@ JSON Response
                         "name": "Russia",
                         "lastUsed": "2021-11-05T17:21:07Z"
                     }
-                ],
+                ]
             },
             "securityLabels": {
                 "data": [{
@@ -85,7 +85,7 @@ JSON Response
                     "color": "FF0033",
                     "owner": "System",
                     "dateAdded": "2016-08-31T00:00:00Z"
-                }],
+                }]
             },
             "lastModified": "2021-11-05T17:21:06Z",
             "type": "Host",
@@ -103,8 +103,14 @@ JSON Response
                     "dateAdded": "2021-08-27T12:16:56Z",
                     "webLink": "https://app.threatconnect.com/auth/incident/incident.xhtml?incident=12",
                     "name": "Dangerous Incident",
-                    "createdBy": "Pat Jones"
-                }],
+                    "createdBy": {
+                        "id": 1,
+                        "userName": "smithj@threatconnect.com",
+                        "firstName": "John",
+                        "lastName": "Smith",
+                        "pseudonym": "JMS"
+                    }
+                }]
             },
             "associatedIndicators": {
                 "data": [{
@@ -125,7 +131,7 @@ JSON Response
                     "hostName": "ultrabadguy.com",
                     "dnsActive": false,
                     "whoisActive": true
-                }],
+                }]
             },
             "attributes": {
                 "data": [{
@@ -144,7 +150,7 @@ JSON Response
                     "dateAdded": "2021-11-05T16:43:17Z",
                     "lastModified": "2021-11-05T16:43:17Z",
                     "default": false
-                }],
+                }]
             },
             "associatedCases": {},
             "associatedArtifacts": {},

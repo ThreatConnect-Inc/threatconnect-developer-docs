@@ -51,16 +51,19 @@ JSON Response
             "dateAdded": "2021-11-05T16:43:17Z",
             "webLink": "https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=ultrabadguy.com",
             "tags": {
-                "data": [{
-                    "id": 10,
-                    "name": "Malicious Host",
-                    "description": "A tag that can be applied to malicious Host Indicators.",
-                    "lastUsed": "2021-11-05T16:43:17Z"
-                }, {
-                    "id": 11,
-                    "name": "Targeted Attack",
-                    "lastUsed": "2021-11-05T16:43:17Z"
-                }],
+                "data": [
+                    {
+                        "id": 10,
+                        "name": "Malicious Host",
+                        "description": "A tag that can be applied to malicious Host Indicators.",
+                        "lastUsed": "2021-11-05T16:43:17Z"
+                    },
+                    {
+                        "id": 11,
+                        "name": "Targeted Attack",
+                        "lastUsed": "2021-11-05T16:43:17Z"
+                    }
+                ]
             },
             "securityLabels": {
                 "data": [{
@@ -70,7 +73,7 @@ JSON Response
                     "color": "FFC000",
                     "owner": "System",
                     "dateAdded": "2016-08-31T00:00:00Z"
-                }],
+                }]
             },
             "type": "Host",
             "lastModified": "2021-11-05T16:43:17Z",
@@ -81,23 +84,39 @@ JSON Response
             "active": true,
             "activeLocked": false,
             "associatedGroups": {
-                "data": [{
-                    "id": 15,
-                    "type": "Adversary",
-                    "ownerName": "Demo Organization",
-                    "dateAdded": "2021-11-05T16:43:17Z",
-                    "webLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=15",
-                    "name": "Bad Guy",
-                    "createdBy": "John Smith"
-                }, {
-                    "id": 12,
-                    "type": "Incident",
-                    "ownerName": "Demo Organization",
-                    "dateAdded": "2021-08-27T12:16:56Z",
-                    "webLink": "https://app.threatconnect.com/auth/incident/incident.xhtml?incident=12",
-                    "name": "Dangerous Incident",
-                    "createdBy": "Pat Jones"
-                }],
+                "data": [
+                    {
+                        "id": 15,
+                        "type": "Adversary",
+                        "ownerName": "Demo Organization",
+                        "dateAdded": "2021-11-05T16:43:17Z",
+                        "webLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=15",
+                        "name": "Bad Guy",
+                        "createdBy": {
+                            "id": 3,
+                            "userName": "11112222333344445555",
+                            "firstName": "John",
+                            "lastName": "Smith",
+                            "pseudonym": "jsmithAPI",
+                            "role": "Api User"
+                        }
+                    },
+                    {
+                        "id": 12,
+                        "type": "Incident",
+                        "ownerName": "Demo Organization",
+                        "dateAdded": "2021-08-27T12:16:56Z",
+                        "webLink": "https://app.threatconnect.com/auth/incident/incident.xhtml?incident=12",
+                        "name": "Dangerous Incident",
+                        "createdBy": {
+                            "id": 1,
+                            "userName": "smithj@threatconnect.com",
+                            "firstName": "John",
+                            "lastName": "Smith",
+                            "pseudonym": "JMS"
+                        }
+                    }
+                ]
             },
             "associatedIndicators": {
                 "data": [{
@@ -118,11 +137,11 @@ JSON Response
                     "hostName": "ultrabadguy.com",
                     "dnsActive": true,
                     "whoisActive": true
-                }],
+                }]
             },
             "attributes": {
                 "data": [{
-                    "id": 88842457,
+                    "id": 24,
                     "type": "Additional Analysis and Context",
                     "value": "This host is very dangerous",
                     "source": "Phase of Intrusion",
@@ -137,7 +156,7 @@ JSON Response
                     "dateAdded": "2021-11-05T16:43:17Z",
                     "lastModified": "2021-11-05T16:43:17Z",
                     "default": false
-                }],
+                }]
             },
             "associatedCases": {},
             "associatedArtifacts": {},
