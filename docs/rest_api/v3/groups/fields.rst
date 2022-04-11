@@ -1,7 +1,7 @@
 Available Fields
 ----------------
 
-You can `retrieve a list of available fields <https://docs.threatconnect.com/en/latest/rest_api/v3/retrieve_fields.html>`_ for the ``/v3/groups`` endpoint, including the field’s name, description, and accepted data type, by using the following query:
+You can `retrieve a list of available fields <https://docs.threatconnect.com/en/latest/rest_api/v3/retrieve_fields.html>`_ for the ``/v3/groups`` endpoint, including each field's name, description, and accepted data type, by using the following query:
 
 .. code::
 
@@ -10,7 +10,7 @@ You can `retrieve a list of available fields <https://docs.threatconnect.com/en/
 .. note::
     To view all fields, including read-only fields, include the ``?show=readonly`` query parameter.
 
-Alternatively, refer to the following tables for a list of available fields that can be included in the body of a POST or PUT request for **all** Group types.
+Alternatively, refer to the following table for a list of available fields that can be included in the body of a POST or PUT request for **all** Group types.
 
 .. list-table::
    :widths: 20 20 10 15 15 20
@@ -83,7 +83,7 @@ Alternatively, refer to the following tables for a list of available fields that
      - FALSE
      - "Document", "Email"
 
-Available values for the ``type`` field include:
+Accepted values for the ``type`` field include:
 
 - ``Adversary``
 - ``Attack Pattern``
@@ -109,7 +109,7 @@ Available values for the ``type`` field include:
     ``GET /v3/attributeTypes``
 
 .. note::
-    To **associate an existing Artifact, Case, Group, or Victim Asset** to a Group, use the object's ID when setting the ``associatedArtifacts``, ``associatedCases``, ``associatedGroups``, or ``associatedVictimAssets`` field, respectively (e.g., ``{"data": [{"id": 12345}]}``). To **associate an existing Indicator to a Group**, use either the Indicator's ID, or the Indicator's type and name (e.g., for a Host Indicator, use its ``hostName``), when setting the ``associatedIndicators`` field.
+    To **associate an existing Artifact, Case, Group, or Victim Asset** to a Group, use the object's ID when setting the ``associatedArtifacts``, ``associatedCases``, ``associatedGroups``, or ``associatedVictimAssets`` field, respectively (e.g., ``{"data": [{"id": 12345}]}``). To **associate an existing Indicator to a Group**, use the Indicator's ID, or the Indicator's type and name (e.g., for a Host Indicator, use its ``hostName``), when setting the ``associatedIndicators`` field.
 
 Group-Specific Fields
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -165,7 +165,7 @@ Document
      - TRUE
 
 .. note::
-    If ``malware`` is set to ``true``, then the ``password`` field will be required
+    \*If ``malware`` is set to ``true``, then the ``password`` field will be required
 
 To upload the contents of a Document to ThreatConnect or update the contents of an existing Document in ThreatConnect, see the `Upload a Document or Report <#upload-a-document-or-report-2>`_ and `Update a Document or Report <#update-a-document-or-report-2>`_ sections, respectively.
 
@@ -201,11 +201,6 @@ Email
      - String
      - FALSE
      - TRUE
-   * - to
-     - The Email's **To:** field
-     - String
-     - FALSE
-     - TRUE
 
 Event
 =====
@@ -230,7 +225,7 @@ Event
      - FALSE
      - TRUE
 
-Valid values for an Event's ``status`` include:
+Accepted values for an Event's ``status`` include:
 
 - ``Needs Review``
 - ``False Positive``
@@ -260,7 +255,7 @@ Incident
      - FALSE
      - TRUE
 
-Valid values for an Incident's ``status`` include:
+Accepted values for an Incident's ``status`` include:
 
 - ``New``
 - ``Open``
@@ -325,7 +320,7 @@ Signature
      - TRUE
      - TRUE
 
-Valid values for a Signature's ``fileType`` include:
+Accepted values for a Signature's ``fileType`` include:
 
 - ``Bro``
 - ``ClamAV``
@@ -386,7 +381,7 @@ Task
      - FALSE
      - "In Progress", "Not Started"
 
-Valid values for an Task's ``status`` include:
+Accepted values for a Task's ``status`` include:
 
 - ``Not Started``
 - ``In Progress``

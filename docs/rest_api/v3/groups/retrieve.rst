@@ -46,11 +46,11 @@ JSON Response
                 "webLink": "https://app.threatconnect.com//auth/email/email.xhtml?email=9",
                 "name": "Your Amazon.com order for demo@sample.com",
                 "createdBy": {
-                        "id": 1,
-                        "userName": "smithj@threatconnect.com",
-                        "firstName": "John",
-                        "lastName": "Smith",
-                        "pseudonym": "JMS"
+                    "id": 1,
+                    "userName": "smithj@threatconnect.com",
+                    "firstName": "John",
+                    "lastName": "Smith",
+                    "pseudonym": "JMS"
                 },
                 "to": "demo@sample.com",
                 "from": "auto-confirm@bad.com",
