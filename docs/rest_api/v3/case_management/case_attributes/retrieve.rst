@@ -38,11 +38,12 @@ JSON Response:
                 "type": "Phishing Open Rate",
                 "value": "20",
                 "createdBy": {
-                    "id": 79,
+                    "id": 1,
                     "userName": "jsmith",
                     "firstName": "John",
                     "lastName": "Smith",
-                    "pseudonym": "jsmith"
+                    "pseudonym": "jsmith",
+                    "role": "User"
                 },
                 "dateAdded": "2022-02-15T20:24:18Z",
                 "lastModified": "2022-02-15T20:24:37Z",

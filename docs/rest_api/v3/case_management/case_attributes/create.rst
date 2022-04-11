@@ -29,7 +29,7 @@ JSON Response:
 
     {
         "data": {
-            "id": 13,
+            "id": 3,
             "type": "Phishing Open Rate",
             "value": "30",
             "createdBy": {
