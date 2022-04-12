@@ -109,18 +109,18 @@ JSON Response
 
 .. code:: json
 
-{
-    "data": [
-        {
-            "ownerName": "Demo Organization",
-            "dateAdded": "2021-11-02T15:17:28Z",
-            "type": "URL",
-            "summary": "http://badsite.com"
-        }
-    ],
-    "count": 1,
-    "status": "Success"
-}
+    {
+        "data": [
+            {
+                "ownerName": "Demo Organization",
+                "dateAdded": "2021-11-02T15:17:28Z",
+                "type": "URL",
+                "summary": "http://badsite.com"
+            }
+        ],
+        "count": 1,
+        "status": "Success"
+    }
 
 By default, this query will return all Indicators recently deleted in the API key's default Organization. You can `specify a different owner <https://docs.threatconnect.com/en/latest/rest_api/v3/specify_owner.html>`_ by including the ``?owner=`` query parameter in your query.
 
