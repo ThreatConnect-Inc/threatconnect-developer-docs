@@ -742,7 +742,7 @@ Retrieve Indicator Observations
 Retrieving Recent Observations
 """"""""""""""""""""""""""""""
 
-The following API branch returns up to 20,000 Indicators with the most observations since a given date. System Administrators can adjust this limit via the **System Settings** screen for their ThreatConnect instance, if desired.
+As of ThreatConnect 6.5, the following API branch returns up to 20,000 Indicators with the most observations since a given date. System Administrators can adjust this limit via the **System Settings** screen for their ThreatConnect instance, if desired.
 
 If no date is provided when submitting a request, the default query returns Indicators with the most observations over the past day. In this context, a "day" includes all of the previous day and all data from the current day up to the current moment in time.
 
