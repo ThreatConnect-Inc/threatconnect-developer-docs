@@ -19,9 +19,9 @@ When updating an Artifact, Case, Indicator, Group, Victim, or Victim Asset, you 
 +----------+-------------------------------------------------------------------------------+
 
 .. note::
-    If no value is assigned to the ``mode`` field when updating an object’s metadata, append will be used by default.
+    If no value is assigned to the ``mode`` field when updating an object's metadata, append will be used by default.
 
-The following table lists the metadata that can be updated for each object’s respective endpoint.
+The following table lists the metadata that can be updated for each object's respective endpoint.
 
 +-----------------+-------------------------+
 | Object          | Updatable Metadata      |
@@ -147,15 +147,24 @@ JSON Response
             "active": true,
             "activeLocked": false,
             "associatedGroups": {
-                "data": [{
-                    "id": 12,
-                    "type": "Incident",
-                    "ownerName": "Demo Organization",
-                    "dateAdded": "2021-08-27T12:16:56Z",
-                    "webLink": "https://app.threatconnect.com/auth/incident/incident.xhtml?incident=12",
-                    "name": "Dangerous Incident",
-                    "createdBy": "Pat Jones"
-                }]
+                "data": [
+                    {
+                        "id": 12,
+                        "type": "Incident",
+                        "ownerName": "Demo Organization",
+                        "dateAdded": "2021-08-27T12:16:56Z",
+                        "webLink": "https://app.threatconnect.com/auth/incident/incident.xhtml?incident=12",
+                        "name": "Dangerous Incident",
+                        "createdBy": {
+                            "id": 1,
+                            "userName": "smithj@threatconnect.com",
+                            "firstName": "John",
+                            "lastName": "Smith",
+                            "pseudonym": "JMS",
+                            "role": "Administrator"
+                        }
+                    }
+                ]
             },
             "associatedIndicators": {
                 "data": [{

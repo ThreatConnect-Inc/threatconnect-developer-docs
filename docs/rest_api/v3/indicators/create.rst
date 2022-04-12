@@ -113,7 +113,8 @@ JSON Response
                             "userName": "smithj@threatconnect.com",
                             "firstName": "John",
                             "lastName": "Smith",
-                            "pseudonym": "JMS"
+                            "pseudonym": "JMS",
+                            "role": "Administrator"
                         }
                     }
                 ]
