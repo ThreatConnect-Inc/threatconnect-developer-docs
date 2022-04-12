@@ -33,7 +33,7 @@ Alternatively, refer to the following table for a list of available fields that 
      - FALSE
    * - caseXid
      - The XID of the Case to which the Note will be applied
-     - Integer
+     - String
      - TRUE*
      - FALSE
    * - taskId
@@ -43,7 +43,7 @@ Alternatively, refer to the following table for a list of available fields that 
      - FALSE
    * - taskXid
      - The XID of the Task to which the Note will be applied
-     - Integer
+     - String
      - FALSE
      - FALSE
    * - text
