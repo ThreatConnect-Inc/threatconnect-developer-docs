@@ -10,7 +10,7 @@ The basic format for updating a Workflow Event is:
         {updatedField}: {updatedValue}
     }
 
-For example, the following query will update the summary for the Workflow Event with ID 1 and add a Note to the Workflow Event.
+For example, the following query will update the summary for the Workflow Event with ID 4 and add a Note to the Workflow Event.
 
 .. code::
 
