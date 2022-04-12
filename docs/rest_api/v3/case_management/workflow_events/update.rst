@@ -24,31 +24,31 @@ JSON Response:
 
 .. code:: json
 
-{
-    "data": {
-        "id": 4,
-        "eventDate": "2021-03-05T14:48:44Z",
-        "dateAdded": "2021-03-05T14:48:44Z",
-        "summary": "New Workflow Event summary",
-        "systemGenerated": false,
-        "notes": {
-            "data": [
-                {
-                    "id": 7,
-                    "text": "Additional information about this Workflow Event",
-                    "summary": "Additional information about this Workflow Event",
-                    "author": "11112222333344445555",
-                    "dateAdded": "2021-03-07T11:17:32Z",
-                    "lastModified": "2021-03-07T11:17:32Z",
-                    "edited": false,
-                    "workflowEventId": 4
-                }
-            ]
-        }
-    },
-    "message": "Updated",
-    "status": "Success"
-}
+    {
+        "data": {
+            "id": 4,
+            "eventDate": "2021-03-05T14:48:44Z",
+            "dateAdded": "2021-03-05T14:48:44Z",
+            "summary": "New Workflow Event summary",
+            "systemGenerated": false,
+            "notes": {
+                "data": [
+                    {
+                        "id": 7,
+                        "text": "Additional information about this Workflow Event",
+                        "summary": "Additional information about this Workflow Event",
+                        "author": "11112222333344445555",
+                        "dateAdded": "2021-03-07T11:17:32Z",
+                        "lastModified": "2021-03-07T11:17:32Z",
+                        "edited": false,
+                        "workflowEventId": 4
+                    }
+                ]
+            }
+        },
+        "message": "Updated",
+        "status": "Success"
+    }
 
 Refer to the `Available Fields <#available-fields>`_ and section for a list of available fields that can be included in the body of a PUT request for the ``workflowEvents`` object.
 
