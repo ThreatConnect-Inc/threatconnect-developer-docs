@@ -23,4 +23,4 @@ JSON Response
     }
 
 .. note::
-    Tags that are deleted will be removed automatically from any objects to which they are applied.
+    Deleted Tags will be automatically removed from any objects to which they are applied.

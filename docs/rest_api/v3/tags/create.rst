@@ -11,8 +11,6 @@ The basic format for creating a Tag is:
         "description": "Tag description goes here"
     }
 
-Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a POST request for the ``tags`` object.
-
 For example, the following query will create a ``Phishing`` Tag:
 
 .. code::
@@ -38,3 +36,5 @@ JSON Response
         "message": "Created",
         "status": "Success"
     }
+
+Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a POST request for the ``tags`` object.

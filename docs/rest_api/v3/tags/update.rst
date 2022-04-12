@@ -10,8 +10,6 @@ The basic format for updating a Tag is:
         {updatedField}: {updatedValue}
     }
 
-Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a PUT request for the ``tags`` object.
-
 For example, the following query will rename the Tag with ID 1 to ``Phishing Attack``:
 
 .. code::
@@ -36,3 +34,5 @@ JSON Response
         "message": "Updated",
         "status": "Success"
     }
+
+Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a PUT request for the ``tags`` object.
