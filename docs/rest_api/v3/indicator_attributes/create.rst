@@ -12,8 +12,6 @@ The basic format for creating an Indicator Attribute is:
         "value": "Attribute value goes here"
     }
 
-Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a POST request for the ``indicatorAttributes`` object.
-
 For example, the following query will create an Attribute and add it to the Indicator with ID 20:
 
 .. code::
@@ -51,6 +49,9 @@ JSON Response
         "message": "Created",
         "status": "Success"
     }
+
+
+Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a POST request for the ``indicatorAttributes`` object.
 
 .. note::
     Indicator Attributes can also be created when creating an Indicator. See the “Create Indicators” section of `Indicators <https://docs.threatconnect.com/en/latest/rest_api/v3/indicators/indicators.html>`_ for more information.

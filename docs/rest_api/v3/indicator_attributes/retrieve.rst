@@ -43,6 +43,14 @@ JSON Response
                 "id": 9,
                 "type": "First Seen",
                 "value": "2021-11-07T04:00:35Z",
+                "createdBy": {
+                    "id": 2,
+                    "userName": "pjones+analyst@threatconnect.com",
+                    "firstName": "Pat",
+                    "lastName": "Jones",
+                    "pseudonym": "patjones",
+                    "role": "User"
+                }, 
                 "dateAdded": "2021-11-09T06:03:54Z",
                 "lastModified": "2021-11-09T06:03:54Z",
                 "default": false
@@ -69,11 +77,11 @@ To retrieve a specific Indicator Attribute, use a query in the following format:
 
     GET /v3/indicatorAttributes/{indicatorAttributeId}
 
-For example, the following query will return information about the Indicator Attribute with ID 7:
+For example, the following query will return information about the Indicator Attribute with ID 9:
 
 .. code::
 
-    GET /v3/indicatorAttributes/7
+    GET /v3/indicatorAttributes/9
 
 JSON Response
 
@@ -81,12 +89,20 @@ JSON Response
 
     {
         "data": {
-            "id": 7,
-            "type": "External ID",
-            "value": "7342281",
-            "dateAdded": "2021-11-09T06:03:54Z",
-            "lastModified": "2021-11-09T06:03:54Z",
-            "default": false
+          "id": 9,
+          "type": "First Seen",
+          "value": "2021-11-07T04:00:35Z",
+        	"createdBy": {
+              "id": 2,
+              "userName": "pjones+analyst@threatconnect.com",
+              "firstName": "Pat",
+              "lastName": "Jones",
+              "pseudonym": "patjones",
+              "role": "User"
+          }, 
+          "dateAdded": "2021-11-09T06:03:54Z",
+          "lastModified": "2021-11-09T06:03:54Z",
+          "default": false
         },
         "status": "Success"
     }
@@ -94,7 +110,7 @@ JSON Response
 Request Additional Fields
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To request additional fields not automatically provided with each returned object, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
+To request additional fields not automatically included with each returned object, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
 
 Filter Results
 ^^^^^^^^^^^^^^
