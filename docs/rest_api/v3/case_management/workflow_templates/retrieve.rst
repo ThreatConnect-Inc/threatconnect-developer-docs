@@ -34,18 +34,18 @@ JSON Response:
                         "configPlaybook": null,
                         "fields": [],
                         "name": "Create a Meeting Notes folder",
-                        "workflowId": 66,
+                        "workflowId": 2,
                         "workflowPhase": 1,
                         "workflowStep": 1,
                         "assignee": {
-                            "displayName": "John Smith",
-                            "id": 79,
-                            "name": "jsmith",
+                            "displayName": "Pat Jones",
+                            "id": 2,
+                            "name": "pjones+analyst@threatconnect.com",
                             "type": "User",
                             "ownerId": 7,
                             "superUser": false,
-                            "firstName": "John",
-                            "lastName": "Smith"
+                            "firstName": "Pat",
+                            "lastName": "Jones"
                         },
                         "duration": 2
                     },
@@ -72,12 +72,10 @@ JSON Response:
                             }
                         ],
                         "name": "Analyze Email",
-                        "workflowId": 66,
+                        "workflowId": 2,
                         "workflowPhase": 2,
                         "workflowStep": 2,
-                        "assignee": {
-                            "id": null
-                        },
+                        "assignee": null,
                         "dependentOnTaskName": "Confirm Receipt of Email",
                         "duration": 3
                     },
@@ -85,12 +83,10 @@ JSON Response:
                         "configPlaybook": null,
                         "fields": [],
                         "name": "Confirm Receipt of Email",
-                        "workflowId": 66,
+                        "workflowId": 2,
                         "workflowPhase": 2,
                         "workflowStep": 1,
-                        "assignee": {
-                            "id": null
-                        }
+                        "assignee": null
                     }
                 ],
                 "active": true,
@@ -137,7 +133,7 @@ JSON Response:
 Request Additional Fields
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To request additional fields not automatically provided with each returned object, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
+To request additional fields not automatically included with each returned object, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
 
 Filter Results
 ^^^^^^^^^^^^^^
