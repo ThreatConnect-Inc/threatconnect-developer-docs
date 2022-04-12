@@ -36,7 +36,8 @@ JSON Response:
                 "dateAdded": "2021-03-17T10:15:02Z",
                 "lastModified": "2021-03-18T09:31:22Z",
                 "edited": true
-            }
+            },
+            {...}
         ],
         "status": "Success"
     }
