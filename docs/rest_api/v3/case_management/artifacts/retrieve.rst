@@ -22,7 +22,7 @@ JSON Response:
                 "type": "Email Address",
                 "intelType": "indicator-EmailAddress",
                 "dateAdded": "2021-04-22T19:24:06Z",
-                "derivedLink": "true",
+                "derivedLink": true,
                 "hashCode": "a/mHEtrRoPrG9csrdltEY73kdKHihi2jow40V3WFYrU="
             },
             {
@@ -32,7 +32,7 @@ JSON Response:
                 "intelType": "indicator-Address",
                 "source": "johnsmith",
                 "dateAdded": "2021-03-08T13:24:38Z",
-                "derivedLink": "true",
+                "derivedLink": true,
                 "hashCode": "cbdb4defdbb9433683a9daa0764c58a45bddd729"
             },
             {...}
@@ -68,7 +68,7 @@ JSON Response:
             "intelType": "indicator-Email Subject",
             "source": "patjones",
             "dateAdded": "2021-03-15T10:16:40Z",
-            "derivedLink": "true",
+            "derivedLink": true,
             "hashCode": "fec31a1f2937c37b110d467cf78c03d820954596"
         },
         "status": "Success"
