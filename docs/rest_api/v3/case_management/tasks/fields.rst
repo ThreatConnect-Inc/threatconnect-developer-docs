@@ -1,7 +1,7 @@
 Available Fields
 ----------------
 
-You can `retrieve a list of available fields <https://docs.threatconnect.com/en/latest/rest_api/v3/retrieve_fields.html>`_ for the ``/v3/tasks`` endpoint, including the field's name, description, and accepted data type, by using the following query:
+You can `retrieve a list of available fields <https://docs.threatconnect.com/en/latest/rest_api/v3/retrieve_fields.html>`_ for the ``/v3/tasks`` endpoint, including each field's name, description, and accepted data type, by using the following query:
 
 .. code::
 
@@ -10,7 +10,7 @@ You can `retrieve a list of available fields <https://docs.threatconnect.com/en/
 .. note::
     To view all fields, including read-only fields, include the ``?show=readonly`` query parameter.
 
-Alternatively, refer to the following tables for a list of available fields that can be included in the body of a POST or PUT request for the ``tasks`` object.
+Alternatively, refer to the following table for a list of available fields that can be included in the body of a POST or PUT request for the ``tasks`` object.
 
 .. list-table::
    :widths: 20 20 10 15 15 20
@@ -53,7 +53,7 @@ Alternatively, refer to the following tables for a list of available fields that
      - TRUE
      - "2021-04-30T00:00:00Z"
    * - dependentOnId
-     - The ID of another Task that this Task is dependent upon
+     - The ID of another Task on which the Task is dependent
      - Integer
      - FALSE
      - TRUE
@@ -83,13 +83,13 @@ Alternatively, refer to the following tables for a list of available fields that
      - TRUE
      - {"data": [{"text": "Note about Task"}]}
    * - required
-     - Flag indicating whether the Task is required
+     - Indicates whether the Task is required
      - Boolean
      - FALSE
      - TRUE
      - true, false
    * - status
-     - The status of the Task. Valid values are "Pending", "Open", "Reopened", or "Closed"
+     - The status of the Task (accepted values include "Pending", "Open", "Reopened", or "Closed")
      - String
      - FALSE
      - TRUE
@@ -101,7 +101,7 @@ Alternatively, refer to the following tables for a list of available fields that
      - FALSE
      - 1, 2, 3
    * - workflowStep
-     - The step of the Workflow where the Task takes place
+     - The Workflow step where the Task takes place
      - Integer
      - FALSE
      - FALSE

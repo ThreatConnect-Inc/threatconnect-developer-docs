@@ -19,7 +19,7 @@ For example, the following query will create a new Task for the Case with ID 1. 
     {
         "caseId": 1,
         "name": "Create Meeting Notes Folder",
-        "description": "If Case listed a Severity of High or Critical, create a Meeting Notes folder inside the Case folder.",
+        "description": "If the Case listed a Severity of High or Critical, create a Meeting Notes folder inside the Case folder.",
         "dueDate": "2022-03-29T12:15:00Z",
         "workflowPhase": 1,
         "workflowStep": 2

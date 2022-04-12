@@ -28,12 +28,12 @@ JSON Response:
                 "assignee": {
                     "type": "User",
                     "data": {
-                        "id": 12,
-                        "userName": "pjones",
+                        "id": 2,
+                        "userName": "pjones+analyst@threatconnect.com",
                         "firstName": "Patrick",
                         "lastName": "Jones",
-                        "pseudonym": "PFJ",
-                        "role": "Administrator"
+                        "pseudonym": "patjones",
+                        "role": "User"
                     }
                 },
                 "owner": "Example Organization"
@@ -48,14 +48,11 @@ JSON Response:
                 "dependentOnId": 8,
                 "status": "Pending",
                 "assignee": {
-                    "type": "User",
+                    "type": "Group",
                     "data": {
-                        "id": 12,
-                        "userName": "pjones",
-                        "firstName": "Patrick",
-                        "lastName": "Jones",
-                        "pseudonym": "PFJ",
-                        "role": "Administrator"
+                        "id": 1,
+                        "name": "SOC Team",
+                        "description": "SOC Team user group"
                     }
                 },
                 "owner": "Example Organization"
@@ -99,12 +96,12 @@ JSON Response:
                 "assignee": {
                     "type": "User",
                     "data": {
-                        "id": 12,
-                        "userName": "pjones",
+                        "id": 2,
+                        "userName": "pjones+analyst@threatconnect.com",
                         "firstName": "Patrick",
                         "lastName": "Jones",
-                        "pseudonym": "PFJ",
-                        "role": "Administrator"
+                        "pseudonym": "patjones",
+                        "role": "User"
                     }
                 },
                 "owner": "Example Organization"
@@ -117,7 +114,7 @@ JSON Response:
 Request Additional Fields
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To request additional fields not automatically provided with each returned object, refer to `Request Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
+To request additional fields not automatically included with each returned object, refer to `Request Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
 
 Filter Results
 ^^^^^^^^^^^^^^

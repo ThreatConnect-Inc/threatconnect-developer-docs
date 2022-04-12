@@ -10,7 +10,10 @@ The basic format for updating a Task is:
         {updatedField}: {updatedValue}
     }
 
-For example, the following query will make the Task with ID 1 required to complete and will make it due at 10:30 a.m. on April 5, 2022:
+For example, the following query will make the following changes to the Task with ID 1:
+
+- The Task will be due at 10:30 a.m. on April 5, 2022;
+- The Task will be required to complete.
 
 .. code::
 
@@ -37,14 +40,15 @@ JSON Response:
             "assignee": {
                 "type": "User",
                 "data": {
-                        "id": 12,
-                        "userName": "pjones",
-                        "firstName": "Patrick",
-                        "lastName": "Jones",
-                        "pseudonym": "PFJ",
-                        "role": "Administrator"
+                    "id": 2,
+                    "userName": "pjones+analyst@threatconnect.com",
+                    "firstName": "Patrick",
+                    "lastName": "Jones",
+                    "pseudonym": "patjones",
+                    "role": "User"
                 }
             },
+            "notes": {},
             "owner": "Example Organization"
         },
         "message": "Updated",
