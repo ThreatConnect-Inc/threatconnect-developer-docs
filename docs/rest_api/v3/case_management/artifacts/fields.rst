@@ -27,13 +27,17 @@ Alternatively, refer to the following tables for a list of available fields that
      - `Group Object <https://docs.threatconnect.com/en/latest/rest_api/v3/groups/groups.html>`_
      - FALSE
      - TRUE
-     - {"data": [{"id": 12345}]}, {"data": [{"name": "Bad Adversary", "type": "Adversary"}]}
+     - | {"data": [{"id": 12345}]}
+       |
+       | {"data": [{"name": "Bad Adversary", "type": "Adversary"}]}
    * - associatedIndicators
      - A list of Indicators associated to the Artifact
      - `Indicator Object <https://docs.threatconnect.com/en/latest/rest_api/v3/indicators/indicators.html>`_
      - FALSE
      - TRUE
-     - {"data": [{"id": 12345}]}, {"data": [{"hostName":"badguy.com", "type": "Host"}]}
+     - | {"data": [{"id": 12345}]}
+       |
+       | {"data": [{"hostName":"badguy.com", "type": "Host"}]}
    * - caseId
      - The ID of the Case that contains the Artifact
      - Integer

@@ -27,31 +27,41 @@ Alternatively, refer to the following table for a list of available fields that 
      - `Artifact Object <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/artifacts/artifacts.html>`_
      - FALSE
      - TRUE
-     - {"data": [{"id": 12345}]}, {"data": [{ "caseId": 1, "summary": "badguy@bad.com", "type": "Email Address"}]}
+     - | {"data": [{"id": 12345}]}
+       |
+       | {"data": [{ "caseId": 1, "summary": "badguy@bad.com", "type": "Email Address"}]}
    * - associatedCases
      - A list of Cases associated to the Group
      - `Case Object <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/cases/cases.html>`_
      - FALSE
      - TRUE
-     - {"data": [{"id": 12345}]}, {"data": [{"name": "Hacker Investigation", "status": "Open", "severity": "Low" }]}}
+     - | {"data": [{"id": 12345}]}
+       |
+       | {"data": [{"name": "Hacker Investigation", "status": "Open", "severity": "Low" }]}}
    * - associatedGroups
      - A list of Groups associated to the Group
      - `Group Object <https://docs.threatconnect.com/en/latest/rest_api/v3/groups/groups.html>`_
      - FALSE
      - TRUE
-     - {"data": [{"id": 12345}]}, {"data": [{"name": "Bad Adversary", "type": "Adversary"}]}
+     - | {"data": [{"id": 12345}]}
+       |
+       | {"data": [{"name": "Bad Adversary", "type": "Adversary"}]}
    * - associatedIndicators
      - A list of Indicators associated to the Group
      - `Indicator Object <https://docs.threatconnect.com/en/latest/rest_api/v3/indicators/indicators.html>`_
      - FALSE
      - TRUE
-     - {"data": [{"id": 12345}]}, {"data": [{"hostName":"badguy.com", "type": "Host"}]}
+     - | {"data": [{"id": 12345}]}
+       |
+       | {"data": [{"hostName":"badguy.com", "type": "Host"}]}
    * - associatedVictimAssets
      - A list of Victim Assets associated to the Group
      - `Victim Asset Object <https://docs.threatconnect.com/en/latest/rest_api/v3/victim-assets/victim-assets.html>`_
      - FALSE
      - TRUE
-     - {"data": [{"id": 12345}]}, {"data": [{"phone": "0123456789", "type": "Phone"}]}
+     - | {"data": [{"id": 12345}]}
+       |
+       | {"data": [{"phone": "0123456789", "type": "Phone"}]}
    * - attributes
      - A list of Attributes corresponding to the Group 
      - `Group Attribute Object <https://docs.threatconnect.com/en/latest/rest_api/v3/group-attributes/group-attributes.html>`_
@@ -355,7 +365,9 @@ Task
      - Assignee Object
      - FALSE
      - TRUE
-     - {"data": [{"type": "Assigned", "user": {"id": 12}}]}, {"data": [{"type": "Escalate", "user": {"id": 8}}]}
+     - | {"data": [{"type": "Assigned", "user": {"id": 12}}]}
+       |
+       | {"data": [{"type": "Escalate", "user": {"id": 8}}]}
    * - dueDate
      - The date and time when the Task is due
      - Date

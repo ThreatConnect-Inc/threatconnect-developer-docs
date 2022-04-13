@@ -27,31 +27,41 @@ Alternatively, refer to the following tables for a list of available fields that
      - `Artifact Object <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/artifacts/artifacts.html>`_
      - FALSE
      - TRUE
-     - {"data": [{"id": 12345}]}, {"data": [{"name": "Bad Adversary", "type": "Adversary"}]}
+     - | {"data": [{"id": 12345}]}
+       |
+       | {"data": [{"name": "Bad Adversary", "type": "Adversary"}]}
    * - assignee
      - The user or user group assigned to the Case
      - Assignee Object
      - FALSE
      - TRUE
-     - {"type": "User", "data": {"userName": "jonsmith@threatconnect.com"}}, {"type": "Group", "data": {"name": "SOC Team"}}
+     - | {"type": "User", "data": {"userName": "jonsmith@threatconnect.com"}}
+       |
+       | {"type": "Group", "data": {"name": "SOC Team"}}
    * - associatedCases
      - A list of Cases associated to the Case
      - Case Object
      - FALSE
      - TRUE
-     - {"data": [{"id": 12345}]}, {"data": [{"name": "Hacker Investigation", "status": "Open", "severity": "Low" }]}
+     - | {"data": [{"id": 12345}]}
+       |
+       | {"data": [{"name": "Hacker Investigation", "status": "Open", "severity": "Low" }]}
    * - associatedGroups
      - A list of Groups associated to the Case
      - `Group Object <https://docs.threatconnect.com/en/latest/rest_api/v3/groups/groups.html>`_
      - FALSE
      - TRUE
-     - {"data": [{"id": 12345}]}, {"data": [{"name": "Bad Adversary", "type": "Adversary"}]}
+     - | {"data": [{"id": 12345}]}
+       |
+       | {"data": [{"name": "Bad Adversary", "type": "Adversary"}]}
    * - associatedIndicators
      - A list of Indicators associated to the Case
      - `Indicator Object <https://docs.threatconnect.com/en/latest/rest_api/v3/indicators/indicators.html>`_
      - FALSE
      - TRUE
-     - {"data": [{"id": 12345}]}, {"data": [{"hostName":"badguy.com", "type": "Host"}]}
+     - | {"data": [{"id": 12345}]}
+       |
+       | {"data": [{"hostName":"badguy.com", "type": "Host"}]}
    * - attributes
      - A list of Attributes corresponding to the Case
      - `Case Attribute Object <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/case_attributes/case_attributes.html>`_
@@ -147,7 +157,9 @@ Alternatively, refer to the following tables for a list of available fields that
      - `Workflow Template Object <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/workflow_templates/workflow_templates.html>`_
      - FALSE
      - TRUE
-     - {"name": "Example Workflow Template"}, {"id": 12345}
+     - | {"name": "Example Workflow Template"}
+       |
+       | {"id": 12345}
 
 .. include:: ../_includes/case_resolutions.rst
 

@@ -39,19 +39,25 @@ Alternatively, refer to the following table for a list of available fields that 
      - `Artifact Object <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/artifacts/artifacts.html>`_
      - FALSE
      - TRUE
-     - {"data": [{"id": 12345}]}, {"data": [{ "caseId": 1, "summary": "badguy@bad.com", "type": "Email Address"}]}
+     - | {"data": [{"id": 12345}]}
+       |
+       | {"data": [{ "caseId": 1, "summary": "badguy@bad.com", "type": "Email Address"}]}
    * - associatedCases
      - A list of Cases associated to the Indicator
      - `Case Object <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/cases/cases.html>`_
      - FALSE
      - TRUE
-     - {"data": [{"id": 12345}]}, {"data": [{"name": "Hacker Investigation", "status": "Open", "severity": "Low" }]}}
+     - | {"data": [{"id": 12345}]}
+       |
+       | {"data": [{"name": "Hacker Investigation", "status": "Open", "severity": "Low" }]}}
    * - associatedGroups
      - A list of Groups associated to the Indicator 
      - `Group Object <https://docs.threatconnect.com/en/latest/rest_api/v3/groups/groups.html>`_
      - FALSE
      - TRUE
-     - {"data": [{"id": 12345}]}, {"data": [{"name": "Bad Adversary", "type": "Adversary"}]}
+     - | {"data": [{"id": 12345}]}
+       |
+       | {"data": [{"name": "Bad Adversary", "type": "Adversary"}]}
    * - attributes
      - A list of Attributes corresponding to the Indicator 
      - `Indicator Attribute Object <https://docs.threatconnect.com/en/latest/rest_api/v3/indicator_attributes/indicator_attributes.html>`_

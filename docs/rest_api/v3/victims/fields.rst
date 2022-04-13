@@ -27,13 +27,17 @@ Alternatively, refer to the following tables for a list of available fields that
      - `Victim Asset Object <https://docs.threatconnect.com/en/latest/rest_api/v3/victim_assets/victim_assets.html>`_
      - FALSE
      - TRUE
-     - {"data": [{"id": 12345}]}, {"data": [{"phone": "0123456789", "type": "Phone"}]}
+     - | {"data": [{"id": 12345}]}
+       |
+       | {"data": [{"phone": "0123456789", "type": "Phone"}]}
    * - associatedGroups
      - A list of Groups associated to the Victim
      - `Group Object <https://docs.threatconnect.com/en/latest/rest_api/v3/groups/groups.html>`_
      - FALSE
      - TRUE
-     - {"data": [{"id": 12345}]}, {"data": [{"name": "Bad Adversary", "type": "Adversary"}]}
+     - | {"data": [{"id": 12345}]}
+       |
+       | {"data": [{"name": "Bad Adversary", "type": "Adversary"}]}
    * - attributes
      - A list of Attributes corresponding to the Victim
      - `Victim Attribute Object <https://docs.threatconnect.com/en/latest/rest_api/v3/victim_attributes/victim_attributes.html>`_

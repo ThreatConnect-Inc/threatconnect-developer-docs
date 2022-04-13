@@ -33,7 +33,9 @@ Alternatively, refer to the following table for a list of available fields that 
      - Assignee Object
      - FALSE
      - TRUE
-     - {"type": "User", "data": {"userName": "jonsmith@threatconnect.com"}}, {"type": "Group", "data": {"name": "SOC Team"}}
+     - | {"type": "User", "data": {"userName": "jonsmith@threatconnect.com"}}
+       |
+       | {"type": "Group", "data": {"name": "SOC Team"}}
    * - caseId
      - The ID of the Case that contains the Task
      - Integer
