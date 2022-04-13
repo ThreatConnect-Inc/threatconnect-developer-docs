@@ -30,7 +30,7 @@ JSON Response:
                 "id": 3,
                 "name": "TI Team",
                 "description": "Threat Intel Team, all levels"
-            },
+            }
         ],
         "status": "Success"
     }
@@ -62,6 +62,11 @@ JSON Response:
         },
         "status": "Success"
     }
+
+Request Additional Fields
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To request additional fields not automatically included with each returned object, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
 
 Filter Results
 ^^^^^^^^^^^^^^

@@ -76,8 +76,8 @@ JSON Response:
             "name": "Example Org Custom Role",
             "descriptionOrg": "This is an example custom role. Do not use.",
             "descriptionAdmin": "This is an example custom role for an Organization.",
-            "orgRole": false,
-            "commRole": true,
+            "orgRole": true,
+            "commRole": false,
             "available": true
         },
         "status": "Success"

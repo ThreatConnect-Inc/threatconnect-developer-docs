@@ -31,7 +31,15 @@ JSON Response:
                 "lastName": "Jones",
                 "pseudonym": "patjones",
                 "role": "User"
-            }, 
+            },
+            {
+                "id": 3,
+                "userName": "11112222333344445555",
+                "firstName": "John",
+                "lastName": "Smith",
+                "pseudonym": "jsmithAPI",
+                "role": "Api User"
+            },
             {...}
         ],
         "status": "Success"

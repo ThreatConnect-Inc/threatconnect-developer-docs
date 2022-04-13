@@ -8,7 +8,7 @@ To retrieve all Security Labels, use the following query:
 
 .. code::
 
-    GET /v3/securityLabels/
+    GET /v3/securityLabels
 
 JSON Response:
 

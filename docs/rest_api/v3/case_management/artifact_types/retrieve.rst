@@ -8,7 +8,7 @@ To retrieve all Artifact types, use the following query:
 
 .. code::
 
-    GET /v3/artifactTypes/
+    GET /v3/artifactTypes
 
 JSON Response:
 
@@ -67,11 +67,6 @@ JSON Response:
         },
         "status": "Success"
     }
-
-Request Additional Fields
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To request additional fields not automatically included with each returned object, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
 
 Filter Results
 ^^^^^^^^^^^^^^

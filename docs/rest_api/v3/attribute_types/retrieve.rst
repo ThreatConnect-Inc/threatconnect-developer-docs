@@ -8,7 +8,7 @@ To retrieve all Attribute Types, use the following query:
 
 .. code::
 
-    GET /v3/attributeTypes/
+    GET /v3/attributeTypes
 
 JSON Response:
 
@@ -18,21 +18,29 @@ JSON Response:
         "data": [
             {
                 "id": 1,
-                "name": "Additional Analysis and Context",
-                "description": "Relevant research and analysis associated with this Indicator, Signature, or Activity Group. Can be internal analysis or links to published articles, whitepapers, websites, or any reference providing amplifying information or geo-political context.",
-                "maxSize": 65536,
+                "name": "Course of Action Taken",
+                "description": "Describe the Course of Action Taken.",
+                "maxSize": 500,
                 "allowMarkdown": true,
-                "errorMessage": "Please enter valid Additional Analysis and Context.",
-                "systemRequired": true
+                "errorMessage": "Please enter a valid Course of Action.",
+                "systemRequired": false
             },
             {
                 "id": 2,
-                "name": "Adversary Motivation Type",
-                "description": "Select an overall motivation.",
-                "maxSize": 21,
+                "name": "Infrastructure Ownership",
+                "description": "Select ownership details of the Infrastructure (IP Address, Domain Name, URL, etc) used in an Adversary operation.",
+                "maxSize": 19,
                 "allowMarkdown": false,
-                "errorMessage": "Please enter valid Adversary Motivation Type.",
-                "systemRequired": false
+                "errorMessage": "Please enter valid infrastructure ownership details: Adversary Owned, Adversary Leased, Adversary Subverted",
+                "systemRequired": false,
+                "validationRule": {
+                    "id": 12,
+                    "name": "Adversary Ownership",
+                    "text": "Adversary Owned;Adversary Leased;Adversary Subverted;Unknown;",
+                    "type": "SelectOne",
+                    "description": "Infrastructure Ownership Types",
+                    "version": "1"
+                }
             },
             {...}
         ],
@@ -62,11 +70,11 @@ JSON Response:
     {
         "data": {
             "id": 3,
-            "name": "Adversary Type",
-            "description": "The type of Adversary.",
-            "maxSize": 50,
-            "allowMarkdown": false,
-            "errorMessage": "Please enter valid Adversary Type: Group, Persona.",
+            "name": "TTP Description: Malware/Tool Information",
+            "description": "Malware and hackertools usage characteristics: backdoor, self-propagating, rootkit, pass-the-hash, keylogger, Other.",
+            "maxSize": 500,
+            "allowMarkdown": true,
+            "errorMessage": "Please enter a valid TTP Description: Malware/Tool Information.",
             "systemRequired": false
         },
         "status": "Success"
