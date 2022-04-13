@@ -78,14 +78,14 @@ The following table lists the metadata that can be updated for each object's res
 +-----------------+-------------------------+
 
 .. note::
-    To disassociate an object from an Artifact, Case, Indicator, Group, Victim, or Victim Asset, you must use the object's ID when setting its respective field (e.g., if dissociating a Group from an object, use the Group's ID when setting the ``associatedGroups`` field).
+    To dissociate an object from an Artifact, Case, Indicator, Group, Victim, or Victim Asset, you must use the object's ID when setting its respective field (e.g., if dissociating a Group from an object, use the Group's ID when setting the ``associatedGroups`` field).
 
 Example Request
 ^^^^^^^^^^^^^^^
 
 The following query will complete the following actions for the ``ultrabadguy.com`` Host Indicator:
 
-- Disassociate the Group with ID ``15`` from the Indicator
+- Dissociate the Group with ID ``15`` from the Indicator
 - Replace the ``TLP: AMBER`` Security Label that is applied to the Indicator with the ``TLP: Red`` Security Label
 - Apply a new ``Russia`` Tag to the Indicator without replacing any existing Tags applied to the Indicator.
 
