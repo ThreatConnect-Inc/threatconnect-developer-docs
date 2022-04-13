@@ -11,7 +11,7 @@ The basic format to delete a Workflow Event is:
         "deletedReason": "Reason for deleting the Workflow Event."
     }
 
-.. note::
+.. attention::
     Only Workflow Events that have been manually added to a Case may be deleted.
 
 For example, the following query will delete the Workflow Event with ID 4:
