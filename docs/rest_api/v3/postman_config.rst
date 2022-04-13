@@ -16,7 +16,7 @@ Open the `ThreatConnect API Postman collection <https://god.gw.postman.com/run-c
 
     Figure 1
 
-.. important::
+.. attention::
     You cannot create a workspace when prompted to select one on the **Fork collection** screen (Figure 2) and **Import collection** window of the Postman desktop app (Figure 3). Therefore, before forking or importing the v3 API collection, make sure to `create the workspace <https://learning.postman.com/docs/getting-started/creating-your-first-workspace/>`_ into which the collection will be forked or imported.
 
 On the **Fork collection into your workspace** screen, select one of the following options:
@@ -87,7 +87,7 @@ Select the **Variables** subtab to display the variables in the **ThreatConnect 
 
 The ThreatConnect API supports `hash-based message authentication code (HMAC) <#hmac-authentication>`_ and `token-based authentication <#token-based-authentication>`_. Based on the type of authentication you will be using, fill out the corresponding variables as detailed in the following sections.
 
-.. important::
+.. attention::
     If you enter an API token in addition to your ThreatConnect Access ID and Secret Key, token-based authentication will be used instead of HMAC authentication. However, if your token expires and you do not update the value for the **tcToken** variable, or clear its checkbox, token-based authentication will still be used instead of HMAC authentication. Therefore, **it is recommended to use one authentication method only**.
 
 HMAC Authentication
@@ -108,7 +108,7 @@ Token-based Authentication
 - **tcToken**: Enter a ThreatConnect API token created by your Organization Administrator in the **CURRENT VALUE** column.
 - Click the **Save** button in the top toolbar of the ThreatConnect API tab.
 
-.. important::
+.. attention::
     ThreatConnect API tokens **expire automatically after four hours**. To obtain a new API token, contact your Organization Administrator. Instructions for creating an API token are available in the “API Token” section of *ThreatConnect Organization Administration Guide*.
 
 Step 3: Make ThreatConnect API Requests in Postman

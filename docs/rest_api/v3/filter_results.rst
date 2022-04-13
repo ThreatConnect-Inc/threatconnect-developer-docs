@@ -15,7 +15,7 @@ To view a list of available options to set in the ``?tql=`` query parameter for 
 
     OPTIONS /v3/{objectName}/tql
 
-.. important::
+.. attention::
     Depending on the tool you're using to interact with the ThreatConnect API, it may be necessary to manually encode the URL in your request when including query parameters. For example, some tools may accept ``?tql=ownerName EQ "Demo Community"`` as a valid URL and automatically encode it, while others may require you to manually encode the URL (e.g., ``?tql=ownerName%20EQ%20%22Demo%20Community%22``). If you submit a request with query parameters and a ``401 Unauthorized`` error is returned, verify whether the URL in your request is encoded properly for your preferred API tool.
 
 .. note::

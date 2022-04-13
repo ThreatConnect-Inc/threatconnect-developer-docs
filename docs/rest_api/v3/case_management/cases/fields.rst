@@ -151,7 +151,7 @@ Alternatively, refer to the following tables for a list of available fields that
 
 .. include:: ../_includes/case_resolutions.rst
 
-.. important::
+.. attention::
     Attribute Types for Cases must first be created in the System or Organization in which a Case resides before they can be added to the Case. See the `Creating Custom Attribute Types <https://training.threatconnect.com/learn/article/creating-custom-attributes-kb-article>`_ knowledge base article for more information.
 
 .. hint::

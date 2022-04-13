@@ -15,5 +15,5 @@ You can specify additional sorting levels by appending additional sorting keywor
 
     GET /v3/indicators?sorting=ownerName DESC confidence DESC
 
-.. important::
+.. attention::
     Depending on the tool you're using to interact with the ThreatConnect API, it may be necessary to manually encode the URL in your request when including query parameters. For example, some tools may accept ``?sorting=ownerName ASC`` as a valid URL and automatically encode it, while others may require you to manually encode the URL (e.g., ``?sorting=ownerName%20ASC``). If you submit a request with query parameters and a ``401 Unauthorized`` error is returned, verify whether the URL in your request is encoded properly for your preferred API tool.
