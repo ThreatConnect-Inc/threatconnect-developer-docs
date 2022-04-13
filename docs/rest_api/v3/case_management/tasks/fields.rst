@@ -7,7 +7,7 @@ You can `retrieve a list of available fields <https://docs.threatconnect.com/en/
 
     OPTIONS /v3/tasks
 
-.. note::
+.. hint::
     To view all fields, including read-only fields, include the ``?show=readonly`` query parameter.
 
 Alternatively, refer to the following table for a list of available fields that can be included in the body of a POST or PUT request for the ``tasks`` object.

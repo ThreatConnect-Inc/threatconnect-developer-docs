@@ -8,7 +8,7 @@ To retrieve all Workflow Events, use the following query:
 
 .. code::
 
-    GET /v3/workflowEvents/
+    GET /v3/workflowEvents
 
 JSON Response:
 

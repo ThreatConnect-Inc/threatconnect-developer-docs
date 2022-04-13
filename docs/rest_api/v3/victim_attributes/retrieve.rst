@@ -14,7 +14,7 @@ To retrieve all Victim Attributes, use the following query:
 
 .. code::
 
-    GET /v3/victimAttributes/
+    GET /v3/victimAttributes
 
 JSON Response
 

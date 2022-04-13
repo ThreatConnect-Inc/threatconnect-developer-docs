@@ -7,7 +7,7 @@ You can `retrieve a list of available fields <https://docs.threatconnect.com/en/
 
     OPTIONS /v3/cases
 
-.. note::
+.. hint::
     To view all fields, including read-only fields, include the ``?show=readonly`` query parameter.
 
 Alternatively, refer to the following tables for a list of available fields that can be included in the body of a POST or PUT request for the ``cases`` object.
@@ -151,8 +151,8 @@ Alternatively, refer to the following tables for a list of available fields that
 
 .. include:: ../_includes/case_resolutions.rst
 
-.. note::
+.. important::
     Attribute Types for Cases must first be created in the System or Organization in which a Case resides before they can be added to the Case. See the `Creating Custom Attribute Types <https://training.threatconnect.com/learn/article/creating-custom-attributes-kb-article>`_ knowledge base article for more information.
 
-.. note::
+.. hint::
     To **associate an existing Case or Group** to a Case, use the object's ID when setting the ``associatedCases`` or ``associatedGroups`` field, respectively (e.g., ``{"data": [{"id": 12345}]}``). To **associate an existing Indicator** to a Case, use either the Indicator's ID, or the Indicator's type and summary (e.g., for a Host Indicator, use its ``hostName``), when setting the ``associatedIndicators`` field.

@@ -22,5 +22,5 @@ JSON Response
         "status": "Success"
     }
 
-.. note::
+.. important::
     Deleted Tags will be automatically removed from any objects to which they are applied.

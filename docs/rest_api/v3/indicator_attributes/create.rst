@@ -5,7 +5,7 @@ The basic format for creating an Indicator Attribute is:
 
 .. code::
 
-    POST /v3/indicatorAttributes/
+    POST /v3/indicatorAttributes
     {
         "indicatorId": 12345,
         "type": "Attribute type goes here",
@@ -16,7 +16,7 @@ For example, the following query will create an Attribute and add it to the Indi
 
 .. code::
 
-    POST /v3/indicatorAttributes/
+    POST /v3/indicatorAttributes
     {
         "indicatorId": 20,
         "source": "Phase of Intrusion",
@@ -53,5 +53,5 @@ JSON Response
 
 Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a POST request for the ``indicatorAttributes`` object.
 
-.. note::
+.. hint::
     Indicator Attributes can also be created when creating an Indicator. See the “Create Indicators” section of `Indicators <https://docs.threatconnect.com/en/latest/rest_api/v3/indicators/indicators.html>`_ for more information.

@@ -8,7 +8,7 @@ To retrieve all Artifacts, use the following query:
 
 .. code::
 
-    GET /v3/artifacts/
+    GET /v3/artifacts
 
 JSON Response:
 

@@ -8,7 +8,7 @@ To retrieve all Groups, use the following query:
 
 .. code::
 
-    GET /v3/groups/
+    GET /v3/groups
 
 JSON Response
 

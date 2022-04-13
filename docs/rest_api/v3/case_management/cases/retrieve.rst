@@ -8,7 +8,7 @@ To retrieve all Cases, use the following query:
 
 .. code::
 
-    GET /v3/cases/
+    GET /v3/cases
 
 JSON Response:
 

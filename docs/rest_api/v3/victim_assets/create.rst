@@ -5,7 +5,7 @@ The basic format for creating a Victim Asset is:
 
 .. code::
 
-    POST /v3/victimAssets/
+    POST /v3/victimAssets
     {
         "type": "Victim Asset type goes here",
         "victimId": 12345
@@ -16,7 +16,7 @@ For example, the following query will create a Phone Victim Asset and add it to 
 
 .. code::
 
-    POST /v3/victimAssets/
+    POST /v3/victimAssets
     {
         "phone": "0123456789",
         "type": "Phone",

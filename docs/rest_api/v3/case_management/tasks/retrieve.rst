@@ -8,7 +8,7 @@ To retrieve all Tasks, use the following query:
 
 .. code::
 
-    GET /v3/tasks/
+    GET /v3/tasks
 
 JSON Response:
 

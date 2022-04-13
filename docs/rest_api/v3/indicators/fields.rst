@@ -7,7 +7,7 @@ You can `retrieve a list of available fields <https://docs.threatconnect.com/en/
 
     OPTIONS /v3/indicators
 
-.. note::
+.. hint::
     To view all fields, including read-only fields, include the ``?show=readonly`` query parameter.
 
 Alternatively, refer to the following table for a list of available fields that can be included in the body of a POST or PUT request for **all** Indicator types.
@@ -115,7 +115,7 @@ Accepted values for the ``type`` field include:
     
     ``GET /v3/attributeTypes``
 
-.. note::
+.. hint::
     To **associate an existing Artifact, Case, or Group** to an Indicator, use the object's ID when setting the associatedArtifacts, associatedCases, or associatedGroups field, respectively (e.g., ``{"data": [{"id": 12345}]}``).
 
 Indicator-Specific Fields

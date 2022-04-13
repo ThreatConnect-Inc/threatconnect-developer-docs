@@ -7,7 +7,7 @@ You can `retrieve a list of available fields <https://docs.threatconnect.com/en/
 
     OPTIONS /v3/artifacts
 
-.. note::
+.. hint::
     To view all fields, including read-only fields, include the ``?show=readonly`` query parameter.
 
 Alternatively, refer to the following tables for a list of available fields that can be included in the body of a POST or PUT request for the ``artifacts`` object.
@@ -107,15 +107,14 @@ Alternatively, refer to the following tables for a list of available fields that
      - FALSE
      - "URL"
 
+To view a list of available Artifact data types, use the following query and refer to the ``type`` field:
+
+``OPTIONS /v3/artifacts/``
+
+Alternatively, refer to `Artifact Types <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/artifact_types/artifact_types.html>`_ for instructions on retrieving available Artifact types.
+
 .. note::
     \*When creating an Artifact, either ``caseId`` or ``caseXid`` must be included in the body of the POST request. Only one needs to be included in the body of the POST request, but both can be included, if desired.
 
-.. note::
-    To view a list of available Artifact data types, use the following query and refer to the ``type`` field:
-    
-    ``OPTIONS /v3/artifacts/``
-    
-    Alternatively, refer to `Artifact Types <../artifact_types/artifact_types.html>`_ for instructions on retrieving available Artifact types.
-
-.. note::
+.. hint::
     To **associate an existing Group** to an Artifact, use the Group's ID when setting the ``associatedGroups`` field (e.g., ``{"data": [{"id": 12345}]}``). To **associate an existing Indicator** to an Artifact, use either the Indicator's ID, or the Indicator's type and summary (e.g., for a Host Indicator, use its ``hostName``), when setting the ``associatedIndicators`` field.

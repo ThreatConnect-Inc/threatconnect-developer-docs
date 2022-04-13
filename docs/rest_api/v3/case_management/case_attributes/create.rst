@@ -5,7 +5,7 @@ The basic format for creating a Case Attribute and adding it to a Case is:
 
 .. code::
 
-    POST /v3/caseAttributes/
+    POST /v3/caseAttributes
     {
         "caseId": 1,
         "type": "Case Attribute Type",
@@ -16,7 +16,7 @@ For example, the following query will add a Case Attribute to the Case with ID 1
 
 .. code::
 
-    POST /v3/caseAttributes/
+    POST /v3/caseAttributes
     {
         "caseId": 1,
         "type": "Phishing Open Rate",

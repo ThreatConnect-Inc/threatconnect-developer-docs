@@ -16,7 +16,7 @@ Open the `ThreatConnect API Postman collection <https://god.gw.postman.com/run-c
 
     Figure 1
 
-.. warning::
+.. important::
     You cannot create a workspace when prompted to select one on the **Fork collection** screen (Figure 2) and **Import collection** window of the Postman desktop app (Figure 3). Therefore, before forking or importing the v3 API collection, make sure to `create the workspace <https://learning.postman.com/docs/getting-started/creating-your-first-workspace/>`_ into which the collection will be forked or imported.
 
 On the **Fork collection into your workspace** screen, select one of the following options:
@@ -87,10 +87,13 @@ Select the **Variables** subtab to display the variables in the **ThreatConnect 
 
 The ThreatConnect API supports `hash-based message authentication code (HMAC) <#hmac-authentication>`_ and `token-based authentication <#token-based-authentication>`_. Based on the type of authentication you will be using, fill out the corresponding variables as detailed in the following sections.
 
+.. important::
+    If you enter an API token in addition to your ThreatConnect Access ID and Secret Key, token-based authentication will be used instead of HMAC authentication. However, if your token expires and you do not update the value for the **tcToken** variable, or clear its checkbox, token-based authentication will still be used instead of HMAC authentication. Therefore, **it is recommended to use one authentication method only**.
+
 HMAC Authentication
 ^^^^^^^^^^^^^^^^^^^
 
-- **baseUrl**: By default, this variable is set to the API URL for ThreatConnect’s Public Cloud instance. If you are using an On-Premises or Dedicated Cloud ThreatConnect instance, enter the API URL for your instance (e.g., ``https://companyabc.threatconnect.com/api``).
+- **baseUrl**: By default, this variable is set to the API URL for ThreatConnect's Public Cloud instance. If you are using an On-Premises or Dedicated Cloud ThreatConnect instance, enter the API URL for your instance (e.g., ``https://companyabc.threatconnect.com/api``).
 - **tcAccessId**: Enter the Access ID for your `ThreatConnect API user account <https://training.threatconnect.com/learn/article/creating-user-accounts-kb-article>`_ in the **CURRENT VALUE** column.
 - **tcSecretKey**: Enter the Secret Key for your ThreatConnect API user account in the **CURRENT VALUE** column.
 - **tcToken**: Clear the checkbox for this variable.
@@ -99,13 +102,13 @@ HMAC Authentication
 Token-based Authentication
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- **baseUrl**: By default, this variable is set to the API URL for ThreatConnect’s Public Cloud instance. If you are using an On-Premises or Dedicated Cloud ThreatConnect instance, enter the API URL for your instance (e.g., ``https://companyabc.threatconnect.com/api``).
+- **baseUrl**: By default, this variable is set to the API URL for ThreatConnect's Public Cloud instance. If you are using an On-Premises or Dedicated Cloud ThreatConnect instance, enter the API URL for your instance (e.g., ``https://companyabc.threatconnect.com/api``).
 - **tcAccessId**: Clear the checkbox for this variable.
 - **tcSecretKey**: Clear the checkbox for this variable.
 - **tcToken**: Enter a ThreatConnect API token created by your Organization Administrator in the **CURRENT VALUE** column.
 - Click the **Save** button in the top toolbar of the ThreatConnect API tab.
 
-.. warning::
+.. important::
     ThreatConnect API tokens **expire automatically after four hours**. To obtain a new API token, contact your Organization Administrator. Instructions for creating an API token are available in the “API Token” section of *ThreatConnect Organization Administration Guide*.
 
 Step 3: Make ThreatConnect API Requests in Postman
@@ -132,3 +135,6 @@ Optional: Create Environments in Postman
 
 If you use multiple ThreatConnect instances, it can be helpful to `create an environment <https://learning.postman.com/docs/sending-requests/managing-environments/#creating-environments>`_ for each instance with the `variables included in this collection <#step-2-configure-the-threatconnect-v3-api-collection>`_ via the **Environments** tab on the side navigation bar. Once you have created environments for each ThreatConnect instance you access, `select the environment <https://learning.postman.com/docs/sending-requests/managing-environments/#selecting-an-active-environment>`_ from the **Environment** dropdown when `making API requests in Postman <#step-3-make-threatconnect-api-requests-in-postman>`_.
 
+----
+
+*Postman™ is a trademark of Postman, Inc.*

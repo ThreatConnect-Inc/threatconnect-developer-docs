@@ -5,7 +5,7 @@ The basic format for creating a Group is:
 
 .. code::
 
-    POST /v3/groups/
+    POST /v3/groups
     {
         "name": "Group name goes here",
         "type": "Group type goes here"
@@ -24,7 +24,7 @@ The following query will create an ``Incident`` Group for an Incident that took 
 
 .. code::
 
-    POST /v3/groups/
+    POST /v3/groups
     {
         "type": "Incident",
         "name": "Bad Incident",

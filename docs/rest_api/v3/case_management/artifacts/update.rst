@@ -39,7 +39,7 @@ JSON Response:
 
 Refer to the `Available Fields <#available-fields>`_ and section for a list of available fields that can be included in the body of a PUT request for the ``artifacts`` object.
 
-.. note::
+.. hint::
     When updating an Artifact, you can use the ``mode`` field to add or remove the following metadata:
 
     - ``associatedGroups``

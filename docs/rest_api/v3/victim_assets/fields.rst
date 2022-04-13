@@ -7,7 +7,7 @@ You can `retrieve a list of available fields <https://docs.threatconnect.com/en/
 
     OPTIONS /v3/victimAssets
 
-.. note::
+.. hint::
     To view all fields, including read-only fields, include the ``?show=readonly`` query parameter.
 
 Alternatively, refer to the following tables for a list of available fields that can be included in the body of a POST or PUT request for the ``victimAssets`` object.
@@ -100,5 +100,5 @@ Available values for the ``type`` field include:
 .. note::
   \*This field is required if creating a Victim Asset that matches the type listed in the **Description** column.
 
-.. note::
+.. hint::
     To **associate an existing Group** to a Victim Asset, use the Group's ID when setting the ``associatedGroups`` field (e.g., {``"data": [{"id": 12345}]}``).

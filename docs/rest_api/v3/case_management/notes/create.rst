@@ -5,7 +5,7 @@ The basic format for creating a Note is:
 
 .. code::
 
-    POST /v3/notes/
+    POST /v3/notes
     {
         "caseId": 1,
         "text": "This is an example note."
@@ -15,7 +15,7 @@ For example, the following query will create a Note for the Case with ID 3.
 
 .. code::
 
-    POST /v3/notes/
+    POST /v3/notes
     {
         "caseId": 3,
         "text": "Review the contents of the malware investigation that was recently closed."

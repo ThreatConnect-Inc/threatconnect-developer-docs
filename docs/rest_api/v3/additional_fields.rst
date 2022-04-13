@@ -139,7 +139,7 @@ JSON Response:
         "status": "Success"
     }
 
-.. note::
+.. important::
   By default, you can only retrieve one association level for threat intelligence items at a time. To retrieve more than one association level at a time, contact your System Administrator and have them do one of the following:
 
   - Enable the **Allow User to Exceed API Link Limit** setting on your API user account. Instructions for enabling this setting are available in the `Creating User Accounts <https://training.threatconnect.com/learn/article/creating-user-accounts-kb-article>`_ knowledge base article.

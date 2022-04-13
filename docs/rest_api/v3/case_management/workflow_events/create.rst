@@ -5,7 +5,7 @@ The basic format for creating a Workflow Event is:
 
 .. code::
 
-    POST /v3/workflowEvents/
+    POST /v3/workflowEvents
     {
         "caseId": 1,
         "summary": "Summary of the Workflow Event"
@@ -15,7 +15,7 @@ For example, the following query will create a Workflow Event with a summary of 
 
 .. code::
 
-    POST /v3/workflowEvents/
+    POST /v3/workflowEvents
     {
         "caseId": 1,
         "summary": "New Security Breach Detected by TI Team"

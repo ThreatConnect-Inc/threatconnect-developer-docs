@@ -12,7 +12,7 @@ The basic format for updating an Indicator is:
 
 Refer to the `Available Fields <#available-fields>`_ and `Indicator-Specific Fields <#indicator-specific-fields>`_ sections for a list of available fields that can be included in the body of a PUT request for the ``indicators`` object.
 
-.. note::
+.. hint::
     When updating an Indicator, you can use the ``mode`` field to add or remove the following metadata:
 
     - ``associatedArtifacts``

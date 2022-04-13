@@ -5,7 +5,7 @@ The basic format for creating a Victim Attribute is:
 
 .. code::
 
-    POST /v3/victimAttributes/
+    POST /v3/victimAttributes
     {
         "victimId": 12345,
         "type": "Attribute type goes here",
@@ -16,7 +16,7 @@ For example, the following query will create an Attribute and add it to the Vict
 
 .. code::
 
-    POST /v3/victimAttributes/
+    POST /v3/victimAttributes
     {
         "victimId": 2,
         "source": "Phase of Intrusion",
@@ -53,5 +53,5 @@ JSON Response
 
 Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a POST request for the ``victimAttributes`` object.
 
-.. note::
+.. hint::
     Victim Attributes can also be created when creating a Victim. See the “Create Victims” section of `Victims <https://docs.threatconnect.com/en/latest/rest_api/v3/victims/victims.html>`_ for more information.

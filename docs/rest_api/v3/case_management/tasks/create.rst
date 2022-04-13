@@ -5,7 +5,7 @@ The basic format for creating a Task is:
 
 .. code::
 
-    POST /v3/tasks/
+    POST /v3/tasks
     {
         "caseId": 1,
         "name": "Example Task for Workflow Case"
@@ -15,7 +15,7 @@ For example, the following query will create a new Task for the Case with ID 1. 
 
 .. code::
 
-    POST /v3/tasks/
+    POST /v3/tasks
     {
         "caseId": 1,
         "name": "Create Meeting Notes Folder",

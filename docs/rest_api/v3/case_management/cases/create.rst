@@ -5,7 +5,7 @@ The basic format for creating a Case is:
 
 .. code::
 
-    POST /v3/cases/
+    POST /v3/cases
     {
         "name": "Case name",
         "status": "Case status",
@@ -16,7 +16,7 @@ For example, the following query will create a Case named ``Example Workflow Cas
 
 .. code::
 
-    POST /v3/cases/
+    POST /v3/cases
     {
         "artifacts": {"data": [{"summary": "badguy.com", "type": "Host", "associatedIndicators": {"data": [{"id": "2"}]}}]},
         "assignee": {"type": "User", "data": {"userName": "jonsmith@threatconnect.com"}},

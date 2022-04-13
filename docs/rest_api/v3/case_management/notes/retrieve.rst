@@ -8,7 +8,7 @@ To retrieve all Notes, use the following query:
 
 .. code::
 
-    GET /v3/notes/
+    GET /v3/notes
 
 JSON Response:
 

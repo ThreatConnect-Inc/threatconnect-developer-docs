@@ -5,7 +5,7 @@ The basic format for creating a Workflow Template is:
 
 .. code::
 
-    POST /v3/workflowTemplates/
+    POST /v3/workflowTemplates
     {
         "name": "Example Workflow Template"
     }
@@ -14,7 +14,7 @@ For example, the following query will create a Workflow Template with the name `
 
 .. code::
 
-    POST /v3/workflowTemplates/
+    POST /v3/workflowTemplates
     {
         "name": "Phishing Investigation Template",
         "description": "Template for phishing investigations."

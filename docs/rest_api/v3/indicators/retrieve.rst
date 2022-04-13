@@ -8,7 +8,7 @@ To retrieve all Indicators, use the following query:
 
 .. code::
 
-    GET /v3/indicators/
+    GET /v3/indicators
 
 JSON Response
 

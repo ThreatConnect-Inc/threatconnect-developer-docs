@@ -5,7 +5,7 @@ The basic format for creating a Victim is:
 
 .. code::
 
-    POST /v3/victims/
+    POST /v3/victims
     {
         "name": "John Doe"
     }
@@ -14,7 +14,7 @@ For example, the following query will create a Victim. Note that all optional fi
 
 .. code::
 
-    POST /v3/victims/
+    POST /v3/victims
     {
         "name": "John Doe",
         "assets": {"data": [{"address": "jdoe@companyabc.com", "addressType": "Corporate email", "type": "EmailAddress"}]},

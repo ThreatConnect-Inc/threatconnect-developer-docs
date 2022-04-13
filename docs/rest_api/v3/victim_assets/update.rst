@@ -40,7 +40,7 @@ JSON Response
 
 Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a PUT request for the ``victimAssets`` object.
 
-.. note::
+.. hint::
     When updating a Victim Asset, you can use the ``mode`` field to add or remove the following metadata:
 
     - ``associatedGroups``

@@ -14,7 +14,7 @@ To retrieve all Group Attributes, use the following query:
 
 .. code::
 
-    GET /v3/groupAttributes/
+    GET /v3/groupAttributes
 
 JSON Response
 

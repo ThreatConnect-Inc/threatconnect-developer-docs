@@ -5,7 +5,7 @@ The basic format for creating an Indicator is:
 
 .. code::
 
-    POST /v3/indicators/
+    POST /v3/indicators
     {
         "type": "Indicator type goes here",
         //required fields for the selected Indicator type
@@ -23,7 +23,7 @@ The following query will create a Host Indicator with a host name of ``ultrabadg
 
 .. code::
 
-    POST /v3/indicators/
+    POST /v3/indicators
     {
         "type": "Host",
         "hostName": "ultrabadguy.com",

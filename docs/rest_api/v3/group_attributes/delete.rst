@@ -22,5 +22,5 @@ JSON Response
         "status": "Success"
     }
 
-.. note::
+.. hint::
     Group Attributes can be removed from a Group via the ``mode`` field. See `Update an Object's Metadata <https://docs.threatconnect.com/en/latest/rest_api/v3/update_metadata.html>`_ for more information.

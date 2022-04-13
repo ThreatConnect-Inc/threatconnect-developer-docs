@@ -8,7 +8,7 @@ To retrieve all Workflow Templates, use the following query:
 
 .. code::
 
-    GET /v3/workflowTemplates/
+    GET /v3/workflowTemplates
 
 JSON Response:
 

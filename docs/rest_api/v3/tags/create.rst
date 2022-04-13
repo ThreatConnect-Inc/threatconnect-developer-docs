@@ -5,7 +5,7 @@ The basic format for creating a Tag is:
 
 .. code::
 
-    POST /v3/tags/
+    POST /v3/tags
     {
         "name": "Tag name goes here",
         "description": "Tag description goes here"
@@ -15,7 +15,7 @@ For example, the following query will create a ``Phishing`` Tag:
 
 .. code::
 
-    POST /v3/tags/
+    POST /v3/tags
     {
         "name": "Phishing",
         "description": "Apply this Tag to objects related to phishing attacks."

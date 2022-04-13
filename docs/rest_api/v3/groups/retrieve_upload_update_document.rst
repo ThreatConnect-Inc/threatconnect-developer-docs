@@ -26,10 +26,10 @@ To upload the contents of a Document or Report in ThreatConnect, use a query in 
 If uploading a document to the `Malware Vault <https://training.threatconnect.com/learn/article/uploading-malware-kb-article>`_, the following steps must be completed before uploading the document:
 
 - Create a password-protected zip file on your computer that contains the document.
-- Create a new Document Group with the additional fields ``malware`` set to ``true`` and ``password`` set to the zip file’s password.
+- Create a new Document Group with the additional fields ``malware`` set to ``true`` and ``password`` set to the zip file's password.
 
-.. warning::
-    If you’re **uploading a file larger than 5GB**, contact your System Administrator about increasing the allowed file size for uploads.
+.. important::
+    If you're **uploading a file larger than 5GB**, contact your System Administrator about increasing the allowed file size for uploads.
 
 Update a Document or Report
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^

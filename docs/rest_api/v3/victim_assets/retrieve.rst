@@ -8,7 +8,7 @@ To retrieve all Victim Assets, use the following query:
 
 .. code::
 
-    GET /v3/victimAssets/
+    GET /v3/victimAssets
 
 JSON Response
 

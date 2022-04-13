@@ -8,7 +8,7 @@ To retrieve all Case Attributes, use the following query:
 
 .. code::
 
-    GET /v3/caseAttributes/
+    GET /v3/caseAttributes
 
 JSON Response:
 

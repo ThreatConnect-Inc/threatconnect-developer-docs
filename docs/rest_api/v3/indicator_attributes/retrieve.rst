@@ -14,7 +14,7 @@ To retrieve all Indicator Attributes, use the following query:
 
 .. code::
 
-    GET /v3/indicatorAttributes/
+    GET /v3/indicatorAttributes
 
 JSON Response
 

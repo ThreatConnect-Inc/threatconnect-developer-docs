@@ -8,7 +8,7 @@ To retrieve all Victims, use the following query:
 
 .. code::
 
-    GET /v3/victims/
+    GET /v3/victims
 
 JSON Response
 

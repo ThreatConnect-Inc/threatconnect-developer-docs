@@ -5,7 +5,7 @@ The basic format for creating an Artifact is:
 
 .. code::
 
-    POST /v3/artifacts/
+    POST /v3/artifacts
     {
         "caseId": 1,
         "summary": "Summary of the data contained in the Artifact",
@@ -16,7 +16,7 @@ For example, the following query will create an ``Email Address`` Artifact with 
 
 .. code::
 
-    POST /v3/artifacts/
+    POST /v3/artifacts
     {
         "caseId": 1,
         "summary": "badguy@bad.com",
@@ -83,7 +83,7 @@ Refer to the `Available Fields <#available-fields>`_ and section for a list of a
 .. note::
     When creating or updating an Artifact, you can associate Indicators and Groups that do not yet exist in ThreatConnect to the Artifact. To do so, fill out all required fields for the type of `Indicator <https://docs.threatconnect.com/en/latest/rest_api/v3/indicators/indicators.html>`_ or `Group <https://docs.threatconnect.com/en/latest/rest_api/v3/groups/groups.html>`_ being associated to the Artifact. Upon creation of the new Artifact, any associated objects included in the body of the POST request that do not yet exist in ThreatConnect will also be created. In addition, you can associate multiple Indicators and Groups to the Artifact being created in a single POST request.
 
-.. hint::
+.. note::
     To create an Artifact that is displayed in the **Task Artifacts** section of a Task, the following conditions must be met:
 
     - The Artifact must correspond to a Task;

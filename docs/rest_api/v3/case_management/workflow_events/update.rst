@@ -52,5 +52,5 @@ JSON Response:
 
 Refer to the `Available Fields <#available-fields>`_ and section for a list of available fields that can be included in the body of a PUT request for the ``workflowEvents`` object.
 
-.. note::
+.. important::
     You cannot modify system-generated Workflow Events (i.e., Workflow Events with their ``systemGenerated`` field set to ``true``). However, you can add Notes to system-generated Workflow Events.

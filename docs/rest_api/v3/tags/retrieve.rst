@@ -8,7 +8,7 @@ To retrieve all Tags, use the following query:
 
 .. code::
 
-    GET /v3/tags/
+    GET /v3/tags
 
 JSON Response
 

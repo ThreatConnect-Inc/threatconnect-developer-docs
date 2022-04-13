@@ -7,7 +7,7 @@ You can `retrieve a list of available fields <https://docs.threatconnect.com/en/
 
     OPTIONS /v3/groups
 
-.. note::
+.. hint::
     To view all fields, including read-only fields, include the ``?show=readonly`` query parameter.
 
 Alternatively, refer to the following table for a list of available fields that can be included in the body of a POST or PUT request for **all** Group types.
@@ -108,7 +108,7 @@ Accepted values for the ``type`` field include:
     
     ``GET /v3/attributeTypes``
 
-.. note::
+.. hint::
     To **associate an existing Artifact, Case, Group, or Victim Asset** to a Group, use the object's ID when setting the ``associatedArtifacts``, ``associatedCases``, ``associatedGroups``, or ``associatedVictimAssets`` field, respectively (e.g., ``{"data": [{"id": 12345}]}``). To **associate an existing Indicator to a Group**, use the Indicator's ID, or the Indicator's type and name (e.g., for a Host Indicator, use its ``hostName``), when setting the ``associatedIndicators`` field.
 
 Group-Specific Fields
