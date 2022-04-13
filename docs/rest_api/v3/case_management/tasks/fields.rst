@@ -21,7 +21,7 @@ Alternatively, refer to the following table for a list of available fields that 
      - Type
      - Required for Creation?
      - Updatable?
-     - Example value(s)
+     - Example Value(s)
    * - artifacts
      - A list of Artifacts associated with the Task
      - `Artifact Object <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/artifacts/artifacts.html>`_

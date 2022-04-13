@@ -21,7 +21,7 @@ Alternatively, refer to the following tables for a list of available fields that
      - Type
      - Required for Creation?
      - Updatable?
-     - Example value(s)
+     - Example Value(s)
    * - associatedGroups
      - A list of Groups associated to the Artifact
      - `Group Object <https://docs.threatconnect.com/en/latest/rest_api/v3/groups/groups.html>`_

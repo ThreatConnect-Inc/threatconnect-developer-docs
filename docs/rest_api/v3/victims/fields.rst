@@ -21,7 +21,7 @@ Alternatively, refer to the following tables for a list of available fields that
      - Type
      - Required for Creation?
      - Updatable?
-     - Example value(s)
+     - Example Value(s)
    * - assets
      - A list of Victim Assets corresponding to the Victim
      - `Victim Asset Object <https://docs.threatconnect.com/en/latest/rest_api/v3/victim_assets/victim_assets.html>`_

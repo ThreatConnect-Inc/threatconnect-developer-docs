@@ -21,7 +21,7 @@ Alternatively, refer to the following table for a list of available fields that 
      - Type
      - Required for Creation?
      - Updatable?
-     - Example value(s)
+     - Example Value(s)
    * - active
      - Indicates whether the Indicator is active
      - Boolean

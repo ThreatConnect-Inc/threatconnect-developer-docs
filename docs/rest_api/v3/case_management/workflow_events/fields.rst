@@ -21,7 +21,7 @@ Alternatively, refer to the following table for a list of available fields that 
      - Type
      - Required for Creation?
      - Updatable?
-     - Example value(s)
+     - Example Value(s)
    * - caseId
      - The ID of the Case that contains the Workflow Event
      - Integer

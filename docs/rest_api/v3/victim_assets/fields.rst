@@ -21,7 +21,7 @@ Alternatively, refer to the following tables for a list of available fields that
      - Type
      - Required for Creation?
      - Updatable?
-     - Example value(s)
+     - Example Value(s)
    * - accountName
      - The account name associated with a **Network Account** or **Social Network** Victim Asset
      - String
