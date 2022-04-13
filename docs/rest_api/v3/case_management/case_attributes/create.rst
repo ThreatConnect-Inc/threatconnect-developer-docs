@@ -49,3 +49,6 @@ JSON Response:
     }
 
 Refer to the `Available Fields <#available-fields>`_ and section for a list of available fields that can be included in the body of a POST request for the ``caseAttributes`` object.
+
+.. hint::
+    Case Attributes can also be created when creating a Case. See the “Create Cases” section of `Cases <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/cases/cases.html>`_ for more information.
