@@ -5,8 +5,6 @@ When retrieving objects, you can request additional fields not included with eac
 
 For example, the following query will return information about the Indicator with ID 12345, including Tags applied to the Indicator and Groups associated to the Indicator.
 
-For example, the following query will return information about the Artifact with ID 3, including a related Task and a related Note:
-
 .. code::
 
   GET /v3/indicators/12345?fields=tags&fields=associatedGroups
