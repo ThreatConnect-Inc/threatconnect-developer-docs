@@ -1,7 +1,7 @@
 Include Additional Fields for Returned Objects
 ----------------------------------------------
 
-When retrieving objects, you can request additional fields not included with each returned object by including the ``?fields=`` query parameter, followed by the field name(s) you want to include, in your query. To view a list of available options to set in the ``?fields=`` query parameter for each object, use the following query:
+When retrieving objects, you can request additional fields not automatically included with each returned object by including the ``?fields=`` query parameter, followed by the field name(s) you want to include, in your query. To view a list of available options to set in the ``?fields=`` query parameter for an object, use the following query:
 
 .. code::
 
