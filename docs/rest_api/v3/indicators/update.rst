@@ -31,8 +31,9 @@ The following query will complete the following actions for the ``ultrabadguy.co
 
 - Disable the **DNS** feature for the Indicator
 - Dissociate the ``Bad Guy`` Adversary Group from the Indicator
+- Add a new ``Additional Analysis and Context`` Attribute to the Indicator
 - Update the Indicator's Confidence Rating
-- Replace a ``TLP: AMBER`` Security Label that is applied to the Indicator with a ``TLP: Red`` Security Label
+- Replace an existing Security Label applied to the Indicator with a ``TLP: Red`` Security Label
 - Apply a new ``Russia`` Tag to the Indicator without replacing any existing Tags applied to the Indicator.
 
 .. code::
