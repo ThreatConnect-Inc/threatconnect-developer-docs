@@ -31,7 +31,6 @@ The following query will complete the following actions for the ``ultrabadguy.co
 
 - Disable the **DNS** feature for the Indicator
 - Dissociate the ``Bad Guy`` Adversary Group from the Indicator
-- Add a new ``Additional Analysis and Context`` Attribute to the Indicator
 - Update the Indicator's Confidence Rating
 - Replace an existing Security Label applied to the Indicator with a ``TLP: Red`` Security Label
 - Apply a new ``Russia`` Tag to the Indicator without replacing any existing Tags applied to the Indicator.
@@ -42,7 +41,6 @@ The following query will complete the following actions for the ``ultrabadguy.co
     {
         "dnsActive": false,
         "associatedGroups": {"id": 15}], "mode": "delete"},
-        "attributes": {"data": [{"type": "Additional Analysis and Context", "value": "This host is very dangerous", "source": "Phase of Intrusion"}]},
         "confidence": 92,
         "securityLabels": {"data": [{"name": "TLP:RED"}], "mode": "replace"},
         "tags": {"data": [{"name": "Russia"}], "mode": "append"}
@@ -137,7 +135,7 @@ JSON Response
             },
             "attributes": {
                 "data": [{
-                    "id": 88842457,
+                    "id": 24,
                     "type": "Additional Analysis and Context",
                     "value": "This host is very dangerous",
                     "source": "Phase of Intrusion",
