@@ -55,7 +55,7 @@ To understand the implementation and usage of the v3 API, consider the HTTP meth
 **GET /**
     - Retrieves a list of objects
     - ``?tql= tql`` query to filter results
-    - ``?fields=`` requests additional fields not automatically provided with each returned object
+    - ``?fields=`` requests additional fields not automatically included with each returned object
     - ``?resultStart=`` starting result index, for pagination
     - ``?resultLimit=`` maximum number of results, for pagination
     - ``?sorting=`` query parameter to specify sorting order
@@ -63,7 +63,7 @@ To understand the implementation and usage of the v3 API, consider the HTTP meth
     
 **GET /{id}**
     - Retrieves a single object specified by the given ID
-    - ``?fields=`` requests additional fields not automatically provided with each returned object
+    - ``?fields=`` requests additional fields not automatically included with each returned object
     - ``?owner=`` query parameter to specify the owner of the data being requested
     
 **POST /**
