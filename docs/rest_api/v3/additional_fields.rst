@@ -1,13 +1,20 @@
 Include Additional Fields for Returned Objects
 ----------------------------------------------
 
-When retrieving objects, you can request additional fields not included with each returned object by including the ``?fields=`` query parameter, followed by the field name(s) you want to include, in your query.
-
-For example, the following query will return information about the Indicator with ID 12345, including Tags applied to the Indicator and Groups associated to the Indicator.
+When retrieving objects, you can request additional fields not included with each returned object by including the ``?fields=`` query parameter, followed by the field name(s) you want to include, in your query. To view a list of available options to set in the ``?fields=`` query parameter for each object, use the following query:
 
 .. code::
 
-  GET /v3/indicators/12345?fields=tags&fields=associatedGroups
+    OPTIONS /v3/{objectName}/fields
+
+Example Request
+^^^^^^^^^^^^^^^
+
+The following query will return information about the Indicator with ID 12345, including Tags applied to the Indicator, ThreatAssess information for the Indicator, and Groups associated to the Indicator:
+
+.. code::
+
+  GET /v3/indicators/12345?fields=tags&fields=threatAssess&fields=associatedGroups
 
 JSON Response:
 
@@ -30,6 +37,11 @@ JSON Response:
             },
             "type": "Host",
             "lastModified": "2021-10-26T15:16:43Z",
+            "rating": 4.00,
+            "confidence": 70,
+            "threatAssessRating": 1.89,
+            "threatAssessConfidence": 45.41,
+            "threatAssessScore": 673,
             "summary": "badguy.com",
             "privateFlag": false,
             "active": true,
@@ -63,11 +75,11 @@ JSON Response:
         "status": "Success"
     }
 
-Additional association levels for intelligence items may also be retrieved. For example, adding ``.attributes`` to the ``?fields=associatedGroups`` query parameter in the the preceding query will return information about the Indicator with ID 12345, including Tags applied to the Indicator, Groups associated to the Indicator, and Attributes added to those associated Groups.
+Additional association levels for intelligence items may also be retrieved. For example, adding ``.attributes`` to the ``?fields=associatedGroups`` query parameter in the preceding query will also return Attributes added to the Group associated to the Indicator:
 
 .. code::
 
-  GET /v3/indicators/12345?fields=tags&fields=associatedGroups.attributes
+  GET /v3/indicators/12345?fields=tags&fields=threatAssess&fields=associatedGroups.attributes
 
 JSON Response:
 
@@ -90,6 +102,11 @@ JSON Response:
             },
             "type": "Host",
             "lastModified": "2021-10-26T15:16:43Z",
+            "rating": 4.00,
+            "confidence": 70,
+            "threatAssessRating": 1.89,
+            "threatAssessConfidence": 45.41,
+            "threatAssessScore": 673,
             "summary": "badguy.com",
             "privateFlag": false,
             "active": true,
@@ -142,12 +159,6 @@ JSON Response:
 
   - Enable the **Allow User to Exceed API Link Limit** setting on your API user account. Instructions for enabling this setting are available in the `Creating User Accounts <https://training.threatconnect.com/learn/article/creating-user-accounts-kb-article>`_ knowledge base article.
   - Update the **v3ApiIntelLinkLimit** system setting to allow for more than one association level to be retrieved at a time.
-
-To view a list of available options to set in the ``?fields=`` query parameter for each object, use the following query:
-
-.. code::
-
-    OPTIONS /v3/{objectName}/fields
 
 .. note::
     The ``?tql=`` and ``?fields=`` query parameters can be combined in a single request. For example, the following query will return all Indicators, along with their respective Tags and Attributes, that belong to the ``Demo Community`` owner:
