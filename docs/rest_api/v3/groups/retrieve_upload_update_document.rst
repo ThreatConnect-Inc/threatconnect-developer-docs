@@ -18,7 +18,7 @@ To upload the contents of a Document or Report in ThreatConnect, use a query in 
 
 .. code::
 
-    POST /v3/groups/{groupId}/upload
+    PUT /v3/groups/{groupId}/upload
     Content-Type: application/octet-stream
 
     <raw report contents>
