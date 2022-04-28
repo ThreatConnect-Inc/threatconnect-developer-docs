@@ -46,7 +46,7 @@ Refer to the following table descriptions of each available API endpoint on the 
 Available Parameters
 --------------------
 
-`Parameters <https://docs.oasis-open.org/cti/taxii/v2.1/cs01/taxii-v2.1-cs01.html#_Toc31107517>`_ included in common STIX™ 2.1 frameworks are supported for the API endpoints listed in the preceding.
+`Parameters <https://docs.oasis-open.org/cti/taxii/v2.1/cs01/taxii-v2.1-cs01.html#_Toc31107517>`_ included in common STIX™ 2.1 frameworks are supported for the API endpoints listed in the preceding table.
 
 Example Requests and Responses
 ------------------------------
