@@ -55,7 +55,7 @@ Example Requests and Responses
 
 .. code::
 
-    curl --location --request GET 'https://app.threatconnect.com/api/services/taxii2/v1/tc_taxii'--header 'Accept: application/taxii+json;version=2.1'--header 'Authorization: Basic {REPLACE THIS WITH BASIC AUTH}'
+    curl --location --request GET 'https://app.threatconnect.com/api/services/taxii2/v1/tc_taxii' --header 'Accept: application/taxii+json;version=2.1' --header 'Authorization: Basic {REPLACE THIS WITH BASIC AUTH}'
 
 JSON Response
 
@@ -74,7 +74,7 @@ JSON Response
 
 .. code::
 
-    curl --location --request GET 'https://app.threatconnect.com/api/services/taxii2/v1/tc_taxii/collections'--header 'Accept: application/taxii+json;version=2.1'--header 'Authorization: Basic {REPLACE THIS WITH BASIC AUTH}'
+    curl --location --request GET 'https://app.threatconnect.com/api/services/taxii2/v1/tc_taxii/collections' --header 'Accept: application/taxii+json;version=2.1' --header 'Authorization: Basic {REPLACE THIS WITH BASIC AUTH}'
 
 JSON Response
 
@@ -114,7 +114,7 @@ JSON Response
 
 .. code::
 
-    curl --location --request GET 'https://app.threatconnect.com/api/services/taxii2/v1/tc_taxii/collections/Example%20Organization'--header 'Accept: application/taxii+json;version=2.1'--header 'Authorization: Basic {REPLACE THIS WITH BASIC AUTH}'
+    curl --location --request GET 'https://app.threatconnect.com/api/services/taxii2/v1/tc_taxii/collections/Example%20Organization' --header 'Accept: application/taxii+json;version=2.1' --header 'Authorization: Basic {REPLACE THIS WITH BASIC AUTH}'
 
 JSON Response
 
@@ -137,7 +137,7 @@ JSON Response
 
 .. code::
 
-    curl --location --request GET 'https://app.threatconnect.com/api/services/taxii2/v1/tc_taxii/collections/Example%20Organization/manifest'--header 'Accept: application/taxii+json;version=2.1'--header 'Authorization: Basic {REPLACE THIS WITH BASIC AUTH}'
+    curl --location --request GET 'https://app.threatconnect.com/api/services/taxii2/v1/tc_taxii/collections/Example%20Organization/manifest' --header 'Accept: application/taxii+json;version=2.1' --header 'Authorization: Basic {REPLACE THIS WITH BASIC AUTH}'
 
 JSON Response
 
@@ -165,7 +165,7 @@ JSON Response
 
 .. code::
 
-    curl --location --request GET 'https://app.threatconnect.com/api/services/taxii2/v1/tc_taxii/collections/Example%20Organization/objects?limit=10'--header 'Accept: application/taxii+json;version=2.1'--header 'Authorization: Basic {REPLACE THIS WITH BASIC AUTH}'
+    curl --location --request GET 'https://app.threatconnect.com/api/services/taxii2/v1/tc_taxii/collections/Example%20Organization/objects?limit=10' --header 'Accept: application/taxii+json;version=2.1' --header 'Authorization: Basic {REPLACE THIS WITH BASIC AUTH}'
 
 JSON Response
 
@@ -223,7 +223,7 @@ JSON Response
 
 .. code::
 
-    curl --location --request GET 'https://app.threatconnect.com/api/services/taxii2/v1/taxii2'--header 'Accept: application/taxii+json;version=2.1'--header 'Authorization: Basic {REPLACE THIS WITH BASIC AUTH}'
+    curl --location --request GET 'https://app.threatconnect.com/api/services/taxii2/v1/taxii2' --header 'Accept: application/taxii+json;version=2.1' --header 'Authorization: Basic {REPLACE THIS WITH BASIC AUTH}'
 
 JSON Response
 
