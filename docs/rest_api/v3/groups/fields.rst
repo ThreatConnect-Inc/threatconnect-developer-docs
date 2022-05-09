@@ -335,7 +335,7 @@ Accepted values for a Signature's ``fileType`` include:
 - ``Bro``
 - ``ClamAV``
 - ``CybOX``
-- ``Irish Search Hash``
+- ``Iris Search Hash``
 - ``OpenIOC``
 - ``Regex``
 - ``SPL``
