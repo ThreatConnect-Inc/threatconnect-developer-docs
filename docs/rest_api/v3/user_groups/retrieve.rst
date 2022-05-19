@@ -57,8 +57,8 @@ JSON Response:
     {
         "data": {
             "id": 3,
-            "name": "IR Team",
-            "description": "IR Team members, Levels 1-3"
+            "name": "TI Team",
+            "description": "Threat Intel Team, all levels"
         },
         "status": "Success"
     }
