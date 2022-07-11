@@ -114,6 +114,7 @@ Refer to the `Available Fields <#available-fields>`_ and section for a list of a
     - ``associatedCases``
     - ``associatedGroups``
     - ``associatedIndicators``
+    - ``attributes``
     - ``tags``
 
     See `Update an Object's Metadata <https://docs.threatconnect.com/en/latest/rest_api/v3/update_metadata.html>`_ for instructions on using the ``mode`` field.

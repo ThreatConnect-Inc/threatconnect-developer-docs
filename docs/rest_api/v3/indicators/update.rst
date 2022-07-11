@@ -18,7 +18,10 @@ Refer to the `Available Fields <#available-fields>`_ and `Indicator-Specific Fie
     - ``associatedArtifacts``
     - ``associatedCases``
     - ``associatedGroups``
+    - ``associatedIndicators``
     - ``attributes``
+    - ``fileActions``
+    - ``fileOccurrences``
     - ``securityLabels``
     - ``tags``
 
@@ -132,6 +135,9 @@ JSON Response
                     "dnsActive": false,
                     "whoisActive": true
                 }]
+            },
+            "fileActions": {
+                "count": 0
             },
             "attributes": {
                 "data": [{

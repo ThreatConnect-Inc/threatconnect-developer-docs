@@ -17,7 +17,7 @@ Refer to the `Available Fields <#available-fields>`_ and `Indicator-Specific Fie
     You can add multiple Attributes, Tags, and Security Labels to the Indicator being created in a single POST request. Similarly, you can associate multiple Artifacts, Cases, and Groups to the Indicator being created in a single POST request.
 
 Example POST Request
-^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
 
 The following query will create a Host Indicator with a host name of ``ultrabadguy.com``. Note that all optional fields available for the ``indicators`` object are included in this request.
 
@@ -139,6 +139,9 @@ JSON Response
                     "dnsActive": true,
                     "whoisActive": true
                 }]
+            },
+            "fileActions": {
+                "count": 0
             },
             "attributes": {
                 "data": [{

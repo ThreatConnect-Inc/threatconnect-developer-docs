@@ -15,3 +15,9 @@ Endpoint: ``/api/v3/indicators``
 .. include:: update.rst
 
 .. include:: delete.rst
+
+.. include:: indicatorToIndicatorAssociations.rst
+
+.. include:: fileActions.rst
+
+.. include:: fileOccurrences.rst

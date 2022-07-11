@@ -58,6 +58,14 @@ Alternatively, refer to the following table for a list of available fields that 
      - | {"data": [{"id": 12345}]}
        |
        | {"data": [{"name": "Bad Adversary", "type": "Adversary"}]}
+   * - associatedIndicators
+     - A list of Indicators associated to the Indicator 
+     - Indicator Object
+     - FALSE
+     - TRUE
+     - | {"data": [{"id": 12345}]}
+       |
+       | {"data": [{"hostName": "badguy.com", "type": "Host"}]}
    * - attributes
      - A list of Attributes corresponding to the Indicator 
      - `Indicator Attribute Object <https://docs.threatconnect.com/en/latest/rest_api/v3/indicator_attributes/indicator_attributes.html>`_
@@ -179,6 +187,16 @@ File
      - Type
      - Required for Creation?
      - Updatable?
+   * - fileActions
+     - A list of File Actions associated with the File Indicator
+     - `File Action Object <https://docs.threatconnect.com/en/latest/rest_api/v3/indicators/indicators.html#file-actions>`_
+     - FALSE
+     - TRUE
+   * - fileOccurrences
+     - A list of File Occurrences associated with the File Indicator
+     - `File Occurrence Object <https://docs.threatconnect.com/en/latest/rest_api/v3/indicators/indicators.html#file-occurrences>`_
+     - FALSE
+     - TRUE
    * - md5
      - The MD5 hash associated with the File Indicator
      - String

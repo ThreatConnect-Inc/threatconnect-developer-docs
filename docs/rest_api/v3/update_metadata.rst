@@ -36,6 +36,8 @@ The following table lists the metadata that can be updated for each object's res
 +-----------------+-------------------------+
 |                 | associatedIndicators    |
 +-----------------+-------------------------+
+|                 | attributes              |
++-----------------+-------------------------+
 |                 | tags                    |
 +-----------------+-------------------------+
 | indicators      | associatedArtifacts     |
@@ -44,7 +46,13 @@ The following table lists the metadata that can be updated for each object's res
 +-----------------+-------------------------+
 |                 | associatedGroups        |
 +-----------------+-------------------------+
+|                 | associatedIndicators    |
++-----------------+-------------------------+
 |                 | attributes              |
++-----------------+-------------------------+
+|                 | fileActions             |
++-----------------+-------------------------+
+|                 | fileOccurrences         |
 +-----------------+-------------------------+
 |                 | securityLabels          |
 +-----------------+-------------------------+
@@ -184,6 +192,9 @@ JSON Response
                     "dnsActive": false,
                     "whoisActive": true
                 }]
+            },
+            "fileActions": {
+                "count": 0
             },
             "attributes": {
                 "data": [{
