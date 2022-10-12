@@ -43,7 +43,7 @@ The following query will complete the following actions for the ``ultrabadguy.co
     PUT /v3/indicators/ultrabadguy.com
     {
         "dnsActive": false,
-        "associatedGroups": {"id": 15}], "mode": "delete"},
+        "associatedGroups": [{"id": 15}], "mode": "delete"},
         "confidence": 92,
         "securityLabels": {"data": [{"name": "TLP:RED"}], "mode": "replace"},
         "tags": {"data": [{"name": "Russia"}], "mode": "append"}
@@ -101,7 +101,7 @@ JSON Response
                 "data": [{
                     "id": 12,
                     "type": "Incident",
-                    "ownerName": "Demo Organization",
+                    "ownerName": "Demo Source",
                     "dateAdded": "2021-08-27T12:16:56Z",
                     "webLink": "https://app.threatconnect.com/auth/incident/incident.xhtml?incident=12",
                     "name": "Dangerous Incident",
@@ -111,7 +111,8 @@ JSON Response
                         "firstName": "John",
                         "lastName": "Smith",
                         "pseudonym": "JMS",
-                        "role": "Administrator"
+                        "owner": "Demo Organization",
+                        "systemRole": "Administrator"
                     }
                 }]
             },
@@ -151,7 +152,8 @@ JSON Response
                         "firstName": "John",
                         "lastName": "Smith",
                         "pseudonym": "jsmithAPI",
-                        "role": "Api User"
+                        "owner": "Demo Organization",
+                        "systemRole": "API User"
                     },
                     "dateAdded": "2021-11-05T16:43:17Z",
                     "lastModified": "2021-11-05T16:43:17Z",

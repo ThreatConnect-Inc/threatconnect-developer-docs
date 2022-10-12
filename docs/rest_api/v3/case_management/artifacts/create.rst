@@ -65,7 +65,8 @@ JSON Response:
                             "firstName": "John",
                             "lastName": "Smith",
                             "pseudonym": "jsmithAPI",
-                            "role": "Api User"
+                            "owner": "Demo Organization",
+                            "systemRole": "Api User"
                         },
                         "lastModified": "2021-04-22T19:24:06Z"
                     }
@@ -81,13 +82,26 @@ JSON Response:
 Refer to the `Available Fields <#available-fields>`_ and section for a list of available fields that can be included in the body of a POST request for the ``artifacts`` object.
 
 .. note::
-    When creating or updating an Artifact, you can associate Indicators and Groups that do not yet exist in ThreatConnect to the Artifact. To do so, fill out all required fields for the type of `Indicator <https://docs.threatconnect.com/en/latest/rest_api/v3/indicators/indicators.html>`_ or `Group <https://docs.threatconnect.com/en/latest/rest_api/v3/groups/groups.html>`_ being associated to the Artifact. Upon creation of the new Artifact, any associated objects included in the body of the POST request that do not yet exist in ThreatConnect will also be created. In addition, you can associate multiple Indicators and Groups to the Artifact being created in a single POST request.
-
-.. note::
     To create an Artifact that is displayed in the **Task Artifacts** section of a Task, the following conditions must be met:
 
     - The Artifact must correspond to a Task;
     - The corresponding Task must have an **Artifact Field** that accepts the same data type as the Artifact;
     - The ``fieldname`` field must be defined when creating the Artifact.
 
-    Otherwise, the Artifact will be displayed in the **Related Artifacts** section of the Task. For more information about Artifact Fields, see the "Artifact Fields" section of theection of the Task. For more information about Artifact Fields, see the "Artifact Fields" section of the `Workflow Cases: Phases and Tasks <https://training.threatconnect.com/learn/article/workflow-cases-phases-and-tasks-kb-article>`_ knowledge base article.
+    Otherwise, the Artifact will be displayed in the **Related Artifacts** section of the Task. For more information about Artifact Fields, see the "Artifact Fields" section of the `Adding Tasks to a Case <https://knowledge.threatconnect.com/docs/adding-tasks-to-a-case#artifact-fields>`_ knowledge base article.
+
+Create Associations
+^^^^^^^^^^^^^^^^^^^
+
+In ThreatConnect, you can create associations between Artifacts in your Organization and Groups and Indicators in your Organization.
+
+When creating associations for Artifacts using the ThreatConnect v3 API, follow these guidelines:
+
+- To create an association to a new Group, include `all fields required to create the type of Group <https://docs.threatconnect.com/en/latest/rest_api/v3/groups/groups.html#available-fields>`_ when setting the ``associatedGroups`` field. The new Group will be created in the Organization to which your API user account belongs.
+- To create an association to an existing Group, use the Group's ID when setting the ``associatedGroups`` field (e.g., ``"associatedGroups": {"data": [{"id": 12345}]}``).
+- To create an association to a new Indicator, include `all fields required to create the type of Indicator <https://docs.threatconnect.com/en/latest/rest_api/v3/indicators/indicators.html#available-fields>`_ when setting the ``associatedIndicators`` field. The new Indicator will be created in the Organization to which your API user account belongs.
+- To create an association to an existing Indicator, use the Indicator's ID, or its summary and type (e.g., ``"associatedIndicators": {"data": [{"type": "Host", "hostname": "badguy.com"}]}``), when setting the ``associatedIndicators`` field.
+
+.. note::
+
+    You can associate multiple Indicators and Groups to an Artifact in a single POST or PUT request.

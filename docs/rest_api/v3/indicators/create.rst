@@ -14,7 +14,7 @@ The basic format for creating an Indicator is:
 Refer to the `Available Fields <#available-fields>`_ and `Indicator-Specific Fields <#indicator-specific-fields>`_ sections for a list of available fields that can be included in the body of a POST request for the ``indicators`` object.
 
 .. note::
-    You can add multiple Attributes, Tags, and Security Labels to the Indicator being created in a single POST request. Similarly, you can associate multiple Artifacts, Cases, and Groups to the Indicator being created in a single POST request.
+    You can add multiple `Attributes <https://docs.threatconnect.com/en/latest/rest_api/v3/group_attributes/indicator_attributes.html>`_, `Tags <https://docs.threatconnect.com/en/latest/rest_api/v3/tags/tags.html>`_, and `Security Labels <https://docs.threatconnect.com/en/latest/rest_api/v3/security_labels/security_labels.html>`_ to an Indicator in a single POST or PUT request.
 
 Example POST Request
 ^^^^^^^^^^^^^^^^^^^^
@@ -98,13 +98,14 @@ JSON Response
                             "firstName": "John",
                             "lastName": "Smith",
                             "pseudonym": "jsmithAPI",
-                            "role": "Api User"
+                            "owner": "Demo Organization",
+                            "systemRole": "Api User"
                         }
                     },
                     {
                         "id": 12,
                         "type": "Incident",
-                        "ownerName": "Demo Organization",
+                        "ownerName": "Demo Source",
                         "dateAdded": "2021-08-27T12:16:56Z",
                         "webLink": "https://app.threatconnect.com/auth/incident/incident.xhtml?incident=12",
                         "name": "Dangerous Incident",
@@ -114,7 +115,8 @@ JSON Response
                             "firstName": "John",
                             "lastName": "Smith",
                             "pseudonym": "JMS",
-                            "role": "Administrator"
+                            "owner": "Demo Organization",
+                            "systemRole": "Administrator"
                         }
                     }
                 ]
@@ -155,7 +157,8 @@ JSON Response
                         "firstName": "John",
                         "lastName": "Smith",
                         "pseudonym": "jsmithAPI",
-                        "role": "Api User"
+                        "owner": "Demo Organization",
+                        "systemRole": "Api User"
                     },
                     "dateAdded": "2021-11-05T16:43:17Z",
                     "lastModified": "2021-11-05T16:43:17Z",
@@ -172,7 +175,21 @@ JSON Response
         "status": "Success"
     }
 
-.. note::
-    When creating or updating an Indicator, you can apply Tags that do not yet exist in ThreatConnect to it. To do so, fill out `all required fields for each new Tag <https://docs.threatconnect.com/en/latest/rest_api/v3/tags/tags.html>`_. Upon creation of the new Indicator, any Tags included in the body of the POST request that do not yet exist in ThreatConnect will also be created.
+Create Associations
+^^^^^^^^^^^^^^^^^^^
 
-    Similarly, you can associate Artifacts, Cases, and Groups that do not yet exist in ThreatConnect to the Indicator. To do so, fill out all required fields for the type of object being associated to the Indicator. Upon creation of the new Indicator, any associated Artifacts, Cases, or Groups included in the body of the POST request that do not yet exist in ThreatConnect will also be created.
+In ThreatConnect, you can create associations between Indicators and Artifacts, Cases, Groups, and Indicators that exist in the same owner (e.g., you can only associate Artifacts, Cases, Groups, and Indicators in your Organization to an Indicator in your Organization). If cross-owner associations are enabled on your ThreatConnect instance, you can also create associations between Groups and Indicators in Communities and Sources to which you have access and Indicators in your Organization.
+
+When creating associations for Indicators using the ThreatConnect v3 API, follow these guidelines:
+
+- To create an association to a new Artifact, include `all fields required to create an Artifact <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/artifacts/artifacts.html#available-fields>`_when setting the ``associatedArtifacts`` field. The new Artifact will be created in the Organization to which your API user account belongs.
+- To create an association to an existing Artifact, use the Artifact's ID when setting the ``associatedArtifacts`` field (e.g., ``"associatedArtifacts": {"data": [{"id": 12345}]}``).
+- To create an association to a new Case, include `all fields required to create a Case <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/cases/cases.html#available-fields>`_ when setting the ``associatedCases`` field. The new Case will be created in the Organization to which your API user account belongs.
+- To create an association to an existing Case, use the Case's ID when setting the ``associatedCases`` field.
+- To create an association to a new Group, include `all fields required to create the type of Group <#available-fields>`_ when setting the ``associatedGroups`` field. The new Group will be created in the Organization to which your API user account belongs.
+- To create an association to an existing Group that belongs to an Organization, Community, or Source, use the Group's ID when setting the ``associatedGroups`` field.
+- If creating an Indicator-to-Indicator associations, see the `"Indicator-to-Indicator Associations" section <#indicator-to-indicator-associations>`_ for further instruction.
+
+.. note::
+
+    You can associate multiple Artifacts, Cases, Groups, and Indicators to an Indicator in a single POST or PUT request.

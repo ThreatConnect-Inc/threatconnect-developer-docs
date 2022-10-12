@@ -10,7 +10,10 @@ The basic format for updating a Case is:
         {updatedField}: {updatedValue}
     }
   
-For example, the following query will update the resolution and status of the Case with ID 1. It will also create a new Adversary Group named ``Extreme Bad Guy`` that includes an associated Artifact and associate the Group to the Case:
+For example, the following query will perform the following actions for the Case with ID 1:
+
+- Update the resolution and status of the Case
+- Create a new Adversary Group named ``Extreme Bad Guy`` that includes an associated Artifact and associate the Group to the Case
 
 .. code::
 
@@ -39,7 +42,8 @@ JSON Response:
                 "firstName": "John",
                 "lastName": "Smith",
                 "pseudonym": "jsmithAPI",
-                "role": "Api User"
+                "owner": "Demo Organization",
+                "systemRole": "Api User"
             },
             "caseCloseTime": "2021-04-12T18:36.18Z",
             "caseCloseUser": {
@@ -48,7 +52,8 @@ JSON Response:
                 "firstName": "John",
                 "lastName": "Smith",
                 "pseudonym": "jsmithAPI",
-                "role": "Api User" 
+                "owner": "Demo Organization",
+                "systemRole": "Api User"
             },
             "status": "Closed",
             "severity": "Medium",
@@ -73,9 +78,10 @@ JSON Response:
                 "firstName": "John",
                 "lastName": "Smith",
                 "pseudonym": "jsmithAPI",
-                "role": "Api User"
+                "owner": "Demo Organization",
+                "systemRole": "Api User"
             },
-            "owner": "Example Organization",
+            "owner": "Demo Organization",
             "ownerId": 7,
             "attributes": {},
             "associatedGroups": {
@@ -93,7 +99,8 @@ JSON Response:
                             "firstName": "John",
                             "lastName": "Smith",
                             "pseudonym": "jsmithAPI",
-                            "role": "Api User"
+                            "owner": "Demo Organization",
+                            "systemRole": "Api User"
                         },
                         "lastModified": "2021-04-12T18:36.18Z"
                     }

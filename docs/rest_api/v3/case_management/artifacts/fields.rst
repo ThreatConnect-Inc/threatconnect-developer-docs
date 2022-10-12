@@ -1,7 +1,7 @@
 Available Fields
 ----------------
 
-You can `retrieve a list of available fields <https://docs.threatconnect.com/en/latest/rest_api/v3/retrieve_fields.html>`_ for the ``/v3/artifacts`` endpoint, including the field's name, description, and accepted data type, by using the following query:
+Use the following query to `retrieve a list of available fields <https://docs.threatconnect.com/en/latest/rest_api/v3/retrieve_fields.html>`_, including the field's name, description, and accepted data type, for the ``/v3/artifacts`` endpoint:
 
 .. code::
 
@@ -119,6 +119,3 @@ Alternatively, refer to `Artifact Types <https://docs.threatconnect.com/en/lates
 
 .. note::
     \*When creating an Artifact, either ``caseId`` or ``caseXid`` must be included in the body of the POST request. Only one needs to be included in the body of the POST request, but both can be included, if desired.
-
-.. hint::
-    To **associate an existing Group** to an Artifact, use the Group's ID when setting the ``associatedGroups`` field (e.g., ``{"data": [{"id": 12345}]}``). To **associate an existing Indicator** to an Artifact, use either the Indicator's ID, or the Indicator's type and summary (e.g., for a Host Indicator, use its ``hostName``), when setting the ``associatedIndicators`` field.

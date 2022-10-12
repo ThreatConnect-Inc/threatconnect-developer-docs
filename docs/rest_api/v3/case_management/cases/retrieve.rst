@@ -28,7 +28,8 @@ JSON Response:
                     "firstName": "John",
                     "lastName": "Smith",
                     "pseudonym": "jsmithAPI",
-                    "role": "Api User"
+                    "owner": "Demo Organization",
+                    "systemRole": "Api User"
                 },
                 "status": "Open",
                 "severity": "Low",
@@ -37,11 +38,12 @@ JSON Response:
                     "type": "User",
                     "data": {
                         "id": 1,
-                        "userName": "jonsmith@threatconnect.com",
+                        "userName": "smithj@threatconnect.com",
                         "firstName": "John",
                         "lastName": "Smith",
-                        "pseudonym": "johnsmith",
-                        "role": "User"
+                        "pseudonym": "JMS",
+                        "owner": "Demo Organization",
+                        "systemRole": "Administrator"
                     }
                 },
                 "createdBy": {
@@ -50,7 +52,8 @@ JSON Response:
                     "firstName": "John",
                     "lastName": "Smith",
                     "pseudonym": "jsmithAPI",
-                    "role": "Api User"
+                    "owner": "Demo Organization",
+                    "systemRole": "Api User"
                 },
                 "owner": "Example Organization",
                 "ownerId": 7
@@ -65,10 +68,11 @@ JSON Response:
                 "caseOpenUser": {
                     "id": 2,
                     "userName": "pjones+analyst@threatconnect.com",
-                    "firstName": "Patrick",
+                    "firstName": "Pat",
                     "lastName": "Jones",
                     "pseudonym": "patjones",
-                    "role": "User"
+                    "owner": "Demo Organization",
+                    "systemRole": "User"
                 },
                 "status": "Open",
                 "severity": "Critical",
@@ -76,12 +80,13 @@ JSON Response:
                 "createdBy": {
                     "id": 2,
                     "userName": "pjones+analyst@threatconnect.com",
-                    "firstName": "Patrick",
+                    "firstName": "Pat",
                     "lastName": "Jones",
                     "pseudonym": "patjones",
-                    "role": "User"
+                    "owner": "Demo Organization",
+                    "systemRole": "User"
                 },
-                "owner": "Example Organization",
+                "owner": "Demo Organization",
                 "ownerId": 7
             },
             {...}
@@ -119,11 +124,12 @@ JSON Response:
             "caseOpenTime": "2021-04-09T14:41:27.622Z",
             "caseOpenUser": {
                 "id": 1,
-                "userName": "jsmith@threatconnect.com",
+                "userName": "smithj@threatconnect.com",
                 "firstName": "John",
                 "lastName": "Smith",
-                "pseudonym": "johnsmith",
-                "role": "User"
+                "pseudonym": "JMS",
+                "owner": "Demo Organization",
+                "systemRole": "Administrator"
             },
             "status": "Open",
             "severity": "Medium",
@@ -138,13 +144,14 @@ JSON Response:
             },
             "createdBy": {
                 "id": 1,
-                "userName": "jsmith@threatconnect.com",
+                "userName": "smithj@threatconnect.com",
                 "firstName": "John",
                 "lastName": "Smith",
-                "pseudonym": "johnsmith",
-                "role": "User"
+                "pseudonym": "JMS",
+                "owner": "Demo Organization",
+                "systemRole": "Administrator"
             },
-            "owner": "Example Organization",
+            "owner": "Demo Organization",
             "ownerId": 7
         },
         "status": "Success"

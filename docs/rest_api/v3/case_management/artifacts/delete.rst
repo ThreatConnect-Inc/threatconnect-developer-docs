@@ -25,4 +25,4 @@ JSON Response:
 Delete Artifacts in Bulk
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-To delete Artifacts in bulk, refer to `Delete Case Objects in Bulk <https://docs.threatconnect.com/en/latest/rest_api/v3/bulk_delete.html>`_.
+For instructions on deleting Artifacts in bulk, refer to `Delete Case Objects in Bulk <https://docs.threatconnect.com/en/latest/rest_api/v3/bulk_delete.html>`_.

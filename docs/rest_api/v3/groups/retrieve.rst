@@ -29,7 +29,8 @@ JSON Response
                     "firstName": "John",
                     "lastName": "Smith",
                     "pseudonym": "jsmithAPI",
-                    "role": "Api User"
+                    "owner": "Demo Organization",
+                    "systemRole": "Api User"
                 },
                 "fileName": "indicators.txt",
                 "fileSize": 36,
@@ -50,7 +51,9 @@ JSON Response
                     "userName": "smithj@threatconnect.com",
                     "firstName": "John",
                     "lastName": "Smith",
-                    "pseudonym": "JMS"
+                    "pseudonym": "JMS",
+                    "owner": "Demo Organization",
+                    "systemRole": "Administrator"
                 },
                 "to": "demo@sample.com",
                 "from": "auto-confirm@bad.com",
@@ -100,11 +103,12 @@ JSON Response
                 "firstName": "John",
                 "lastName": "Smith",
                 "pseudonym": "jsmithAPI",
-                "role": "Api User"
+                "owner": "Demo Organization",
+                "systemRole": "Api User"
             },
             "status": "New",
             "eventDate": "2021-11-03T00:00:00Z",
-            "lastModified": "2022-02-16T18:54:23Z"
+            "lastModified": "2022-02-16T14:57:45Z"
         },
         "status": "Success"
     }

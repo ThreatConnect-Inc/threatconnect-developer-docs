@@ -27,14 +27,15 @@ Refer to the `Available Fields <#available-fields>`_ and `Group-Specific Fields 
     See `Update an Object's Metadata <https://docs.threatconnect.com/en/latest/rest_api/v3/update_metadata.html>`_ for instructions on using the ``mode`` field.
 
 Example PUT Request
-^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^
 
-The following query will complete the following actions for the ``Incident`` Group with ID 3:
+The following query will complete the following actions for the Group with ID 3:
 
-- Associate an Email Address Indicator (``verybadguy@bad.com``) and a Host Indicator (``ultrabadguy.com``) to the Group
+- Associate an Email Address Indicator (``verybadguy@bad.com``) that exists in Demo Community to the Group
+- Create a new Host Indicator (``ultrabadguy.com``) and associated it to the Group
 - Add an ``Additional Analysis and Context`` Attribute to the Group
 - Update the ``status`` of the Incident
-- Remove the ``Robbery`` Tag applied to the Group.
+- Remove the ``Robbery`` Tag applied to the Group
 
 .. code::
 
@@ -72,7 +73,8 @@ JSON Response
                 "firstName": "John",
                 "lastName": "Smith",
                 "pseudonym": "jsmithAPI",
-                "role": "Api User"
+                "owner": "Demo Organization",
+                "systemRole": "Api User"
             },
             "associatedGroups": {},
             "associatedIndicators": {
@@ -80,7 +82,7 @@ JSON Response
                     {
                         "id": 15,
                         "type": "EmailAddress",
-                        "ownerName": "Demo Organization",
+                        "ownerName": "Demo Community",
                         "dateAdded": "2021-10-26T16:26:19Z",
                         "webLink": "https://app.threatconnect.com/auth/indicators/details/emailaddress.xhtml?emailaddress=verybadguy%40bad.com",
                         "lastModified": "2021-11-04T19:07:01Z",
@@ -123,7 +125,8 @@ JSON Response
                         "firstName": "John",
                         "lastName": "Smith",
                         "pseudonym": "jsmithAPI",
-                        "role": "Api User"
+                        "owner": "Demo Organization",
+                        "systemRole": "Api User"
                     },
                     "dateAdded": "2021-11-04T19:07:01Z",
                     "lastModified": "2021-11-04T19:07:01Z",

@@ -52,7 +52,9 @@ JSON Response
 Retrieve a Single Indicator
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Specific Indicators can be retrieved by either their ID or summary. The basic format for retrieving an Indicator is:
+You can retrieve a specific Indicator using its ID or summary. If using an Indicator's summary, the API request will search for the Indicator in the Organization to which your API user account belongs. To search for an Indicator by summary in a Community or Source to which your API user account has access, include the ``?owner= query parameter``, followed by the owner's name, in your request. For more information about the ``?owner=`` query parameter, see `Specify an Owner <https://docs.threatconnect.com/en/latest/rest_api/v3/specify_owner.html>`_.
+
+The basic format for retrieving an Indicator is:
 
 .. code::
 
@@ -122,10 +124,10 @@ JSON Response
         "status": "Success"
     }
 
-By default, this query will return all Indicators recently deleted in the API key's default Organization. You can `specify a different owner <https://docs.threatconnect.com/en/latest/rest_api/v3/specify_owner.html>`_ by including the ``?owner=`` query parameter in your query.
+By default, this query will return all Indicators recently deleted in the Organization to which your API user account belongs. However, you can `specify a different owner <https://docs.threatconnect.com/en/latest/rest_api/v3/specify_owner.html>`_ by including the ``?owner=`` query parameter in your query.
 
 .. note::
-    The **indicatorDeleteRetentionTime** system setting determines the number of days to retain deleted Indicators.
+    The number of days to retain deleted Indicators is configured by your System Administrator.
 
 Request Additional Fields
 ^^^^^^^^^^^^^^^^^^^^^^^^^

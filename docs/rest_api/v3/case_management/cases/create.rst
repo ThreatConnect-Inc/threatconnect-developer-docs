@@ -19,7 +19,7 @@ For example, the following query will create a Case named ``Example Workflow Cas
     POST /v3/cases
     {
         "artifacts": {"data": [{"summary": "badguy.com", "type": "Host", "associatedIndicators": {"data": [{"id": "2"}]}}]},
-        "assignee": {"type": "User", "data": {"userName": "jonsmith@threatconnect.com"}},
+        "assignee": {"type": "User", "data": {"userName": "smithj@threatconnect.com"}},
         "name": "Example Workflow Case",
         "severity": "Low",
         "status": "Open"
@@ -42,7 +42,8 @@ JSON Response:
                 "firstName": "John",
                 "lastName": "Smith",
                 "pseudonym": "jsmithAPI",
-                "role": "Api User"
+                "owner": "Demo Organization",
+                "systemRole": "Api User"
             },
             "status": "Open",
             "severity": "Low",
@@ -51,11 +52,12 @@ JSON Response:
                 "type": "User",
                 "data": {
                     "id": 1,
-                    "userName": "jonsmith@threatconnect.com",
+                    "userName": "smithj@threatconnect.com",
                     "firstName": "John",
                     "lastName": "Smith",
-                    "pseudonym": "johnsmith",
-                    "role": "User"
+                    "pseudonym": "JMS",
+                    "owner": "Demo Organization",
+                    "systemRole": "Administrator"
                 }
             },
             "tasks": {},
@@ -80,9 +82,10 @@ JSON Response:
                 "firstName": "John",
                 "lastName": "Smith",
                 "pseudonym": "jsmithAPI",
-                "role": "Api User"
+                "owner": "Demo Organization",
+                "systemRole": "Api User"
             },
-            "owner": "Example Organization",
+            "owner": "Demo Organization",
             "ownerId": 7,
             "attributes": {},
             "associatedGroups": {},
@@ -96,6 +99,24 @@ JSON Response:
 Refer to the `Available Fields <#available-fields>`_ and section for a list of available fields that can be included in the body of a POST request for the ``artifacts`` object.
 
 .. note::
-    When creating or updating a Case, you can associate Cases, Indicators, and Groups that do not yet exist in ThreatConnect to the Case. To do so, fill out all required fields for the `type of Indicator <https://docs.threatconnect.com/en/latest/rest_api/v3/indicators/indicators.html>`_, `type of Group <https://docs.threatconnect.com/en/latest/rest_api/v3/groups/groups.html>`_, or Case being associated to the Case. Upon creation of the new Case, any associated objects included in the body of the POST request that do not yet exist in ThreatConnect will also be created.
-    
-    In addition, you can associate multiple Cases, Indicators, and Groups, as well as apply multiple `Tags <https://docs.threatconnect.com/en/latest/rest_api/v3/tags/tags.html>`_, to the Case being created in a single POST request.
+
+   You can apply multiple `Tags <https://docs.threatconnect.com/en/latest/rest_api/v3/tags/tags.html>`_ to a Case in a single POST or PUT request. When setting the tags field, use a Tag's ID to apply an existing Tag to a Case, or include `all required fields to create a Tag <https://docs.threatconnect.com/en/latest/rest_api/v3/tags/tags.html#available-fields>`_ to apply a new Tag to a Case.
+
+Create Associations
+^^^^^^^^^^^^^^^^^^^
+
+In ThreatConnect, you can create associations between Cases in your Organization and Groups and Indicators in your Organization. If cross-owner associations are enabled on your ThreatConnect instance, you can also create associations between Groups and Indicators in Communities and Sources to which you have access and Cases in your Organization.
+
+When creating associations for Cases using the ThreatConnect v3 API, follow these guidelines:
+
+- To create an association to a new Case, include `all fields required to create a Case <#available-fields>`_ when setting the ``associatedCases`` field. The new Case will be created in the Organization to which your API user account belongs.
+- To create an association to an existing Case, use the Case's ID when setting the ``associatedCases`` field (e.g., ``"associatedCases": {"data": [{"id": 12345}]}``).
+- To create an association to a new Group, include `all fields required to create the type of Group <https://docs.threatconnect.com/en/latest/rest_api/v3/groups/groups.html#available-fields>`_ when setting the ``associatedGroups`` field. The new Group will be created in the Organization to which your API user account belongs.
+- To create an association to an existing Group that belongs to an Organization, Community, or Source, use the Group's ID when setting the ``associatedGroups`` field.
+- To create an association to a new Indicator, include `all fields required to create the type of Indicator <https://docs.threatconnect.com/en/latest/rest_api/v3/indicators/indicators.html#available-fields>`_ when setting the ``associatedIndicators`` field. The new Indicator will be created in the Organization to which your API user account belongs.
+- To create an association to an existing Indicator that belongs to an Organization, use the Indicator's ID, or its summary and type (e.g., ``"associatedIndicators": {"data": [{"type": "Host", "hostname": "badguy.com"}]}``), when setting the ``associatedIndicators`` field.
+- To create an association to an existing Indicator that belongs to a Community or Source, use the Indicator's ID when setting the ``associatedIndicators`` field.
+
+.. note::
+
+    You can associate multiple Cases, Indicators, and Groups to a Case in a single POST or PUT request.

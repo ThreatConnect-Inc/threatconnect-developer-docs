@@ -1,7 +1,7 @@
 File Actions
 ------------
 
-File Indicators can model a special Indicator-to-Indicator association, which is based on their behavior once opened. These associations can be used to model the fact that malware may contain and create additional files or communicate with network devices. A File Action adds an Indicator to a File Indicator's behavior model, which can be viewed on the `Behavior tab <https://training.threatconnect.com/learn/article/modeling-file-behavior-kb-article>`_ of the File Indicator's **Details** screen.
+File Indicators can model a special Indicator-to-Indicator association, which is based on their behavior once opened. These associations can be used to model the fact that malware may contain and create additional files or communicate with network devices. A File Action adds an Indicator to a File Indicator's behavior model, which can be viewed on the `Behavior tab <https://knowledge.threatconnect.com/docs/modeling-file-behavior>`_ of the File Indicator's **Details** screen.
 
 The following table outlines the **default** File Actions available in ThreatConnect, along with the Indicator type(s) that can be associated to a File Indicator via each File Action.
 
@@ -51,6 +51,11 @@ The following table outlines the fields available when creating File Actions for
      - The name of the File Action
      - String
      - TRUE
+
+.. hint::
+    If the Indicator being associated to the File Indicator via a File Action belongs to a Community or Source, use the Indicator's ID when setting the ``indicators`` field. For instructions on retrieving an Indicator's ID, see the `"Retrieve Indicators" section <#retrieve-indicators>`_.
+    
+    If the Indicator being associated to the File Indicator via a File Action belongs to an Organization, use the Indicator's ID, or use its type and summary type (e.g., ``"associatedIndicators": {"data": [{"type": "Host", "hostname": "badguy.com"}]}``), when setting the ``indicators`` field.
 
 In the following example, the query will:
 

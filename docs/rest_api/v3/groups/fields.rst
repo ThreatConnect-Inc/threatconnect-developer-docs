@@ -1,7 +1,7 @@
 Available Fields
 ----------------
 
-You can `retrieve a list of available fields <https://docs.threatconnect.com/en/latest/rest_api/v3/retrieve_fields.html>`_ for the ``/v3/groups`` endpoint, including each field's name, description, and accepted data type, by using the following query:
+Use the following query to `retrieve a list of available fields <https://docs.threatconnect.com/en/latest/rest_api/v3/retrieve_fields.html>`_, including each field's name, description, and accepted data type, for the ``/v3/groups`` endpoint:
 
 .. code::
 
@@ -114,12 +114,9 @@ Accepted values for the ``type`` field include:
 - ``Vulnerability``
 
 .. note::
-    A list of available `Attribute Types <https://docs.threatconnect.com/en/latest/rest_api/v3/attribute_types/attribute_types.html>`_ can be retrieved with the following query:
+    Use the following query to retrieve a list of available `Attribute Types <https://docs.threatconnect.com/en/latest/rest_api/v3/attribute_types/attribute_types.html>`_:
     
     ``GET /v3/attributeTypes``
-
-.. hint::
-    To **associate an existing Artifact, Case, Group, or Victim Asset** to a Group, use the object's ID when setting the ``associatedArtifacts``, ``associatedCases``, ``associatedGroups``, or ``associatedVictimAssets`` field, respectively (e.g., ``{"data": [{"id": 12345}]}``). To **associate an existing Indicator to a Group**, use the Indicator's ID, or the Indicator's type and name (e.g., for a Host Indicator, use its ``hostName``), when setting the ``associatedIndicators`` field.
 
 Group-Specific Fields
 ^^^^^^^^^^^^^^^^^^^^^^^^^

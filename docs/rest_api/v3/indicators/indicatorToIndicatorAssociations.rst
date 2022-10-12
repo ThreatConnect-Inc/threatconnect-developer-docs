@@ -15,6 +15,13 @@ For example, when creating an **ASN to Address** association, you can associate 
 
 The following table outlines the default Indicator-to-Indicator associations in ThreatConnect and the Indicator types each association supports.
 
+.. hint::
+  If the Indicator of the non-primary type belongs to a Community or Source, use the Indicator's ID when setting the ``associatedIndicators`` field (e.g., ``"associatedIndicators": {"data": [{"id": 12345}]}``). For instructions on retrieving an Indicator's ID, see the `"Retrieve Indicators" section <#retrieve-indicators>`_.
+
+  If the Indicator of the non-primary type belongs to an Organization, use the Indicator's ID, or use its type and summary type (e.g., ``"associatedIndicators": {"data": [{"type": "Host", "hostname": "badguy.com"}]}``), when setting the ``associatedIndicators`` field.
+
+  To create an association to a new Indicator, include `all fields required to create the type of Indicator <#available-fields>`_ when setting the ``associatedIndicators`` field. The new Indicator will be created in the Organization to which your API user account belongs.
+
 .. note::
     In addition to the association types listed in this table, customer-configured custom associations are also supported. Your System Administrator can retrieve information for these association types, including the primary and non-primary Indicator types the association supports, on the **Indicators** tab of the **System Settings** screen.
 

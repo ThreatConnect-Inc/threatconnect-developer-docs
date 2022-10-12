@@ -1,7 +1,7 @@
 Available Fields
 ----------------
 
-You can `retrieve a list of available fields <https://docs.threatconnect.com/en/latest/rest_api/v3/retrieve_fields.html>`_ for the ``/v3/cases`` endpoint, including each field's name, description, and accepted data type, by using the following query:
+Use the following query to `retrieve a list of available fields <https://docs.threatconnect.com/en/latest/rest_api/v3/retrieve_fields.html>`_, including each field's name, description, and accepted data type, for the ``/v3/cases`` endpoint:
 
 .. code::
 
@@ -45,7 +45,7 @@ Alternatively, refer to the following tables for a list of available fields that
      - TRUE
      - | {"data": [{"id": 12345}]}
        |
-       | {"data": [{"name": "Hacker Investigation", "status": "Open", "severity": "Low" }]}
+       | {"data": [{"name": "Hacker Investigation", "status": "Open", "severity": "Low"}]}
    * - associatedGroups
      - A list of Groups associated to the Case
      - `Group Object <https://docs.threatconnect.com/en/latest/rest_api/v3/groups/groups.html>`_
@@ -164,7 +164,4 @@ Alternatively, refer to the following tables for a list of available fields that
 .. include:: ../_includes/case_resolutions.rst
 
 .. attention::
-    Attribute Types for Cases must first be created in the System or Organization in which a Case resides before they can be added to the Case. See the `Creating Custom Attribute Types <https://training.threatconnect.com/learn/article/creating-custom-attributes-kb-article>`_ knowledge base article for more information.
-
-.. hint::
-    To **associate an existing Case or Group** to a Case, use the object's ID when setting the ``associatedCases`` or ``associatedGroups`` field, respectively (e.g., ``{"data": [{"id": 12345}]}``). To **associate an existing Indicator** to a Case, use either the Indicator's ID, or the Indicator's type and summary (e.g., for a Host Indicator, use its ``hostName``), when setting the ``associatedIndicators`` field.
+    Attribute Types for Cases must first be created in the System or Organization in which a Case resides before they can be added to the Case. See the `Creating Custom Attribute Types <https://knowledge.threatconnect.com/docs/creating-custom-attribute-types>`_ knowledge base article for more information.
