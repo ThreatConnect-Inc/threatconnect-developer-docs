@@ -89,7 +89,7 @@ In ThreatConnect, you can create associations between Groups and Artifacts, Case
 
 When creating associations for Groups using the ThreatConnect v3 API, follow these guidelines:
 
-- To create an association to a new Artifact, include `all fields required to create an Artifact <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/artifacts/artifacts.html#available-fields>`_when setting the ``associatedArtifacts`` field. The new Artifact will be created in the Organization to which your API user account belongs.
+- To create an association to a new Artifact, include `all fields required to create an Artifact <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/artifacts/artifacts.html#available-fields>`_ when setting the ``associatedArtifacts`` field. The new Artifact will be created in the Organization to which your API user account belongs.
 - To create an association to an existing Artifact, use the Artifact's ID when setting the ``associatedArtifacts`` field (e.g., ``"associatedArtifacts": {"data": [{"id": 12345}]}``).
 - To create an association to a new Case, include `all fields required to create a Case <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/cases/cases.html#available-fields>`_ when setting the ``associatedCases`` field. The new Case will be created in the Organization to which your API user account belongs.
 - To create an association to an existing Case, use the Case's ID when setting the ``associatedCases`` field.
