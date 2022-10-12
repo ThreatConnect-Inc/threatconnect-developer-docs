@@ -169,7 +169,8 @@ JSON Response
                             "firstName": "John",
                             "lastName": "Smith",
                             "pseudonym": "JMS",
-                            "role": "Administrator"
+                            "owner": "Demo Organization",
+                            "systemRole": "Administrator"
                         }
                     }
                 ]
@@ -208,7 +209,8 @@ JSON Response
                         "firstName": "John",
                         "lastName": "Smith",
                         "pseudonym": "jsmithAPI",
-                        "role": "Api User"
+                        "owner": "Demo Organization",
+                        "systemRole": "Api User"
                     },
                     "dateAdded": "2021-11-05T16:43:17Z",
                     "lastModified": "2021-11-05T16:43:17Z",

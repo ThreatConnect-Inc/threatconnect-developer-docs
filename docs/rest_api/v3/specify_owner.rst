@@ -35,7 +35,8 @@ JSON Response
                 "firstName": "John",
                 "lastName": "Smith",
                 "pseudonym": "jsmithAPI",
-                "role": "Api User"
+                "owner": "Demo Organization",
+                "systemRole": "Api User"
             },
             },
             "associatedGroups": {},

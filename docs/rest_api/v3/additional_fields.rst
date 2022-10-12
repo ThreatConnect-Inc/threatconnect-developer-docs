@@ -61,7 +61,8 @@ JSON Response:
                             "firstName": "John",
                             "lastName": "Smith",
                             "pseudonym": "jsmithAPI",
-                            "role": "Api User"
+                            "owner": "Demo Organization",
+                            "systemRole": "Api User"
                         },
                         "status": "Incident Reported",
                         "eventDate": "2021-11-03T00:00:00Z"
@@ -120,7 +121,15 @@ JSON Response:
                         "dateAdded": "2021-11-03T15:04:49Z",
                         "webLink": "https://app.threatconnect.com/auth/incident/incident.xhtml?incident=94271",
                         "name": "Bad Incident",
-                        "createdBy": "API User",
+                        "createdBy": {
+                            "id": 3,
+                            "userName": "11112222333344445555",
+                            "firstName": "John",
+                            "lastName": "Smith",
+                            "pseudonym": "jsmithAPI",
+                            "owner": "Demo Organization",
+                            "systemRole": "Api User"
+                        },
                         "attributes": {
                             "data": [
                                 {
@@ -134,7 +143,8 @@ JSON Response:
                                         "firstName": "John",
                                         "lastName": "Smith",
                                         "pseudonym": "jsmithAPI",
-                                        "role": "Api User"
+                                        "owner": "Demo Organization",
+                                        "systemRole": "Api User"
                                     },
                                     "dateAdded": "2021-11-04T19:07:01Z",
                                     "lastModified": "2021-11-04T19:07:01Z",
