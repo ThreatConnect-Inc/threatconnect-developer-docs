@@ -57,6 +57,8 @@ The following table outlines the fields available when creating File Actions for
     
     If the Indicator being associated to the File Indicator via a File Action belongs to an Organization, use the Indicator's ID, or use its type and summary type (e.g., ``"associatedIndicators": {"data": [{"type": "Host", "hostname": "badguy.com"}]}``), when setting the ``indicators`` field.
 
+    To create an association to a new Indicator via a File Action, include `all fields required to create the type of Indicator <#available-fields>`_ when setting the ``indicators`` field.
+
 In the following example, the query will:
 
 - Create a new File Indicator based on an MD5 file hash

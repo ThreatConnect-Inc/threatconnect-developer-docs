@@ -109,11 +109,11 @@ In ThreatConnect, you can create associations between Cases in your Organization
 
 When creating associations for Cases using the ThreatConnect v3 API, follow these guidelines:
 
-- To create an association to a new Case, include `all fields required to create a Case <#available-fields>`_ when setting the ``associatedCases`` field. The new Case will be created in the Organization to which your API user account belongs.
+- To create an association to a new Case, include `all fields required to create a Case <#available-fields>`_ when setting the ``associatedCases`` field.
 - To create an association to an existing Case, use the Case's ID when setting the ``associatedCases`` field (e.g., ``"associatedCases": {"data": [{"id": 12345}]}``).
-- To create an association to a new Group, include `all fields required to create the type of Group <https://docs.threatconnect.com/en/latest/rest_api/v3/groups/groups.html#available-fields>`_ when setting the ``associatedGroups`` field. The new Group will be created in the Organization to which your API user account belongs.
+- To create an association to a new Group, include `all fields required to create the type of Group <https://docs.threatconnect.com/en/latest/rest_api/v3/groups/groups.html#available-fields>`_ when setting the ``associatedGroups`` field.
 - To create an association to an existing Group that belongs to an Organization, Community, or Source, use the Group's ID when setting the ``associatedGroups`` field.
-- To create an association to a new Indicator, include `all fields required to create the type of Indicator <https://docs.threatconnect.com/en/latest/rest_api/v3/indicators/indicators.html#available-fields>`_ when setting the ``associatedIndicators`` field. The new Indicator will be created in the Organization to which your API user account belongs.
+- To create an association to a new Indicator, include `all fields required to create the type of Indicator <https://docs.threatconnect.com/en/latest/rest_api/v3/indicators/indicators.html#available-fields>`_ when setting the ``associatedIndicators`` field.
 - To create an association to an existing Indicator that belongs to an Organization, use the Indicator's ID, or its summary and type (e.g., ``"associatedIndicators": {"data": [{"type": "Host", "hostname": "badguy.com"}]}``), when setting the ``associatedIndicators`` field.
 - To create an association to an existing Indicator that belongs to a Community or Source, use the Indicator's ID when setting the ``associatedIndicators`` field.
 

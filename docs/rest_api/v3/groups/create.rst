@@ -89,16 +89,16 @@ In ThreatConnect, you can create associations between Groups and Artifacts, Case
 
 When creating associations for Groups using the ThreatConnect v3 API, follow these guidelines:
 
-- To create an association to a new Artifact, include `all fields required to create an Artifact <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/artifacts/artifacts.html#available-fields>`_ when setting the ``associatedArtifacts`` field. The new Artifact will be created in the Organization to which your API user account belongs.
+- To create an association to a new Artifact, include `all fields required to create an Artifact <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/artifacts/artifacts.html#available-fields>`_ when setting the ``associatedArtifacts`` field.
 - To create an association to an existing Artifact, use the Artifact's ID when setting the ``associatedArtifacts`` field (e.g., ``"associatedArtifacts": {"data": [{"id": 12345}]}``).
-- To create an association to a new Case, include `all fields required to create a Case <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/cases/cases.html#available-fields>`_ when setting the ``associatedCases`` field. The new Case will be created in the Organization to which your API user account belongs.
+- To create an association to a new Case, include `all fields required to create a Case <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/cases/cases.html#available-fields>`_ when setting the ``associatedCases`` field.
 - To create an association to an existing Case, use the Case's ID when setting the ``associatedCases`` field.
-- To create an association to a new Group, include `all fields required to create the type of Group <#available-fields>`_ when setting the ``associatedGroups`` field. The new Group will be created in the Organization to which your API user account belongs.
+- To create an association to a new Group, include `all fields required to create the type of Group <#available-fields>`_ when setting the ``associatedGroups`` field.
 - To create an association to an existing Group that belongs to an Organization, Community, or Source, use the Group's ID when setting the ``associatedGroups`` field.
-- To create an association to a new Indicator, include `all fields required to create the type of Indicator <https://docs.threatconnect.com/en/latest/rest_api/v3/indicators/indicators.html>`_ when setting the ``associatedIndicators`` field. The new Indicator will be created in the Organization to which your API user account belongs.
+- To create an association to a new Indicator, include `all fields required to create the type of Indicator <https://docs.threatconnect.com/en/latest/rest_api/v3/indicators/indicators.html>`_ when setting the ``associatedIndicators`` field.
 - To create an association to an existing Indicator that belongs to an Organization, use the Indicator's ID, or its summary and type (e.g., ``"associatedIndicators": {"data": [{"type": "Host", "hostname": "badguy.com"}]}``), when setting the ``associatedIndicators`` field.
 - To create an association to an existing Indicator that belongs to a Community or Source, use the Indicator's ID when setting the ``associatedIndicators`` field.
-- To create an association to a new Victim Asset, include `all fields required to create a Victim Asset <https://docs.threatconnect.com/en/latest/rest_api/v3/victim_assets/victim_assets.html#available-fields>`_ when setting the ``associatedVictimAssets`` field. The new Victim Asset will be created in the Organization to which your API user account belongs.
+- To create an association to a new Victim Asset, include `all fields required to create a Victim Asset <https://docs.threatconnect.com/en/latest/rest_api/v3/victim_assets/victim_assets.html#available-fields>`_ when setting the ``associatedVictimAssets`` field.
 - To create an association to an existing Victim Asset, use the Victim Asset's ID when setting the ``associatedVictimAssets`` field.
 
 .. note::
