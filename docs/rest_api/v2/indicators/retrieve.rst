@@ -675,6 +675,47 @@ JSON Response:
       }
     }
 
+To include the unique ID for each Indicator in its corresponding Owner, add the ``?includes=additional`` parameter to the query. Including this parameter will return the itemId field in the response for each Owner, which will contain the ID for the Indicator in that Owner.
+
+For example, the following query is the same as the preceding one, except it now includes the ``?includes=additional`` parameter:
+
+.. code::
+
+    GET /v2/indicators/urls/http%3A%2F%2Fexample.com%2F/owners?includes=additional
+
+JSON Response:
+
+.. code:: json
+
+    {
+      "status": "Success",
+      "data": {
+        "owner": [
+          {
+            "id": 0,
+            "name": "Example Organization",
+            "type": "Organization",
+            "itemId": "12241"
+          },
+          {
+            "id": 1,
+            "name": "Common Community",
+            "type": "Community",
+            "itemId": "12278"
+          },
+          {
+            "id": 2,
+            "name": "Example Community",
+            "type": "Community",
+            "itemId": "12301"
+          }
+        ]
+      }
+    }
+
+.. hint::
+    With an Indicator's ID (i.e., the ``itemId``), you can retrieve information about, update, and delete the Indicator when working with the `ThreatConnect v3 API <https://docs.threatconnect.com/en/latest/rest_api/v3/indicators/indicators.html>`_.
+
 Retrieve Indicator Metadata
 ---------------------------
 
