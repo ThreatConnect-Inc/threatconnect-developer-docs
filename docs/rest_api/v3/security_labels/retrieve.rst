@@ -35,7 +35,7 @@ JSON Response:
             {
                 "id": 3,
                 "name": "TLP:AMBER",
-                "description": "This security label is used for information that requires support to be effectively acted upon, yet carries risks to privacy, reputation, or operations if shared outside of the organizations involved.",
+                "description": "This security label is used for information that requires support to be effectively acted upon, yet carries risks to privacy, reputation, or operations if shared outside of the organizations involved. Information with this label can be shared with members of an organization and its clients.",
                 "color": "FFC000",
                 "owner": "System",
                 "dateAdded": "2016-08-31T00:00:00Z"
@@ -43,10 +43,26 @@ JSON Response:
             {
                 "id": 4,
                 "name": "TLP:RED",
-                "description": "This security label is used for information that cannot be effectively acted upon by additional parties, and could lead to impacts on a party"s privacy, reputation, or operations if misused.",
-                "color": "FF0033",
+                "description": "This security label is used for information that cannot be effectively acted upon by additional parties, and could lead to impacts on a party's privacy, reputation, or operations if misused.",
+                "color": "FF2B2B",
                 "owner": "System",
                 "dateAdded": "2016-08-31T00:00:00Z"
+            },
+            {
+                "id": 5,
+                "name": "TLP:CLEAR",
+                "description": "This security label is used for information that carries minimal or no foreseeable risk of misuse, in accordance with applicable rules and procedures for public release.",
+                "color": "FFFFFF",
+                "owner": "System",
+                "dateAdded": "2022-08-31T00:00:00Z"
+            },
+            {
+                "id": 6,
+                "name": "TLP:AMBER+STRICT",
+                "description": "This security label is used for information that requires support to be effectively acted upon, yet carries risks to privacy, reputation, or operations if shared outside of the organizations involved and the source of the information wants to restrict sharing of the information to only the organizations involved. Information with this label can only be shared with members of an organization.",
+                "color": "FFC000",
+                "owner": "System",
+                "dateAdded": "2022-08-31T00:00:00Z"
             }
         ],
         "status": "Success"
