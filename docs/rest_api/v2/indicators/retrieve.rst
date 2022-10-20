@@ -675,7 +675,7 @@ JSON Response:
       }
     }
 
-To include the unique ID for each Indicator in its corresponding Owner, add the ``?includes=additional`` parameter to the query. Including this parameter will return the itemId field in the response for each Owner, which will contain the ID for the Indicator in that Owner.
+To include the unique ID for each Indicator in its corresponding Owner, add the ``?includes=additional`` parameter to the query. Including this parameter will return the ``itemId`` field in the response for each Owner, which will contain the ID for the Indicator in that Owner.
 
 For example, the following query is the same as the preceding one, except it now includes the ``?includes=additional`` parameter:
 
