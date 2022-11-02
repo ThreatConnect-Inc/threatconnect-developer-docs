@@ -9,7 +9,7 @@ The following steps are written for development on a macOS® or Linux® system. 
 This guide walks through the steps necessary to create and initialize a fully functioning App.  Adding custom code or logic is not covered in this guide.
 
 .. note::
-    This quick start guide covers building an App with TcEx 2.*x*. A quick start guide for building an App with TcEx 3.*x* is available at `https://threatconnect.readme.io/docs/building-apps-quickstart <https://threatconnect.readme.io/docs/building-apps-quickstart>`_.
+    This quick start guide covers building an App with TcEx 2.x. A quick start guide for building an App with TcEx 3.x is available at `https://threatconnect.readme.io/docs/building-apps-quickstart <https://threatconnect.readme.io/docs/building-apps-quickstart>`_.
 
 .. Important:: This guide assumes that the workstation and ThreatConnect instance have the same version of Python installed. Writing Apps that supports multiple versions of Python is supported but not covered in this guide.
 
