@@ -4,11 +4,14 @@
 Building Apps: Quick Start
 ---------------------------
 
-The following steps are written for development on a OSX® or Linux® system.  Development on a Windows® system is supported and should follow similar steps. Before proceeding, Python® must be installed, and if preferred, a Python virtual environment should be configured. For local testing a Redis server also must be installed and running. The steps needed to install Python, Redis, and a virtual environment are outside the scope of this document.
+The following steps are written for development on a macOS® or Linux® system.  Development on a Windows® system is supported and should follow similar steps. Before proceeding, Python® must be installed, and if preferred, a Python virtual environment should be configured. For local testing a Redis® server also must be installed and running. The steps needed to install Python, Redis, and a virtual environment are outside the scope of this document.
 
-This quick-start guide walks through the steps necessary to create and initialize a fully functioning App.  Adding custom code or logic is not covered in this quick-start guide.
+This guide walks through the steps necessary to create and initialize a fully functioning App.  Adding custom code or logic is not covered in this guide.
 
-.. Important:: This guide assumes that the workstation and ThreatConnect instance have the same version of Python installed. Writing Apps that supports multiple versions of Python is supported but not covered in the quick-start guide.
+.. note::
+    This quick start guide covers building an App with TcEx 2.*x*. A quick start guide for building an App with TcEx 3.*x* is available at `https://threatconnect.readme.io/docs/building-apps-quickstart <https://threatconnect.readme.io/docs/building-apps-quickstart>`_.
+
+.. Important:: This guide assumes that the workstation and ThreatConnect instance have the same version of Python installed. Writing Apps that supports multiple versions of Python is supported but not covered in this guide.
 
 Initializing an App
 -------------------
@@ -37,7 +40,7 @@ After running the ``tcinit`` command, the App directory and file structure will 
 Building the "lib" Directory
 ----------------------------
 
-At a minimum, all Apps require the ``tcex`` Python package.  If other Python packages are required, the package name should be added to the **requirements.txt** file in the project directory. For this quick-start guide, no additional packages are required.
+At a minimum, all Apps require the ``tcex`` Python package.  If other Python packages are required, the package name should be added to the **requirements.txt** file in the project directory. For this guide, no additional packages are required.
 
 .. code-block:: bash
 
@@ -68,10 +71,12 @@ The ``tcpackage`` command will package all relevant files in the project directo
     :ref:`App Packaging <building_apps_tcpackage>`
         Documentation for packaging of an App
 
-OS X® is a registered trademark of Apple, Inc.
+macOS® is a registered trademark of Apple, Inc.
 
 Linux® is a registered trademark of Linus Torvalds.
 
-Windows® is a registered trademark of the Microsoft Corporation.
-
 Python® is a registered trademark of the Python Software Foundation.
+
+Redis® is a registered trademark of Redis Ltd.
+
+Windows® is a registered trademark of the Microsoft Corporation.
