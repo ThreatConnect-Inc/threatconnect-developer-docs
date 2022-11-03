@@ -18,7 +18,7 @@ For example, the following query will create a Victim. Note that all optional fi
     {
         "name": "John Doe",
         "assets": {"data": [{"address": "jdoe@companyabc.com", "addressType": "Corporate email", "type": "EmailAddress"}]},
-        "associatedGroups": {"data": [{"id": 12345}], [{"name": "Bad Adversary", "type": "Adversary"}]},
+        "associatedGroups": {"data": [{"id": 12345}, {"name": "Bad Adversary", "type": "Adversary"}]},
         "attributes": {"data": [{"type": "Additional Analysis and Context", "value": "Example value", "source": "Example Source"}]},
         "nationality": "American",
         "org": "Company ABC",
