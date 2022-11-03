@@ -33,6 +33,7 @@ Features
    v3/bulk_delete
    v3/enable_pagination
    v3/filter_results
+   v3/http_status_codes
    v3/additional_fields
    v3/retrieve_fields
    v3/retrieve_open_api_doc
