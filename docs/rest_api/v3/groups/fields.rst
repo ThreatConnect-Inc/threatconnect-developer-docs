@@ -209,6 +209,9 @@ Email
      - FALSE
      - TRUE
 
+.. note::
+    The ``to`` field for Email Groups is a read-only field. However, associating an Email Address `Victim Asset <https://docs.threatconnect.com/en/latest/rest_api/v3/victim_assets/victim_assets.html>`_ to an Email Group will populate the Email Group's ``to`` field with that Victim Asset's email address automatically.
+
 Event
 =====
 
