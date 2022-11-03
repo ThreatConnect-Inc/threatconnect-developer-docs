@@ -289,41 +289,33 @@ User-Information Endpoints
 
 * ``/v2/whoami``
 
-HTTP Responses
---------------
+HTTP Status Codes
+-----------------
 
-The API will return appropriate HTTP response codes with a description in the message field as detailed in the table below. This can be helpful when troubleshooting queries.
+The API will return appropriate HTTP response codes to indicate the success or failure of a request. For failed API requests, refer to the ``message`` field included in the response for an explanation as to why the request failed.
 
-+--------------------+----------------------------------------------------------+
-| HTTP Response      | Explanation                                              |
-| Code               |                                                          |
-+====================+==========================================================+
-| ``200`` - Success  | Successful execution of a request                        |
-+--------------------+----------------------------------------------------------+
-| ``201`` - Created  | The query successfully created the specified entity.     |
-+--------------------+----------------------------------------------------------+
-| ``400`` - Bad      | Status returned if the request was not properly          |
-| Request            | formatted. The message included with the response will   |
-|                    | include details.                                         |
-+--------------------+----------------------------------------------------------+
-| ``401`` -          | Returned if a user does not have access to the specified |
-| Unauthorized       | resource or the method attempted on a resource           |
-+--------------------+----------------------------------------------------------+
-| ``403`` -          | Returned when specifying an Owner to which the user does |
-| Forbidden          | do not have access, or does not exist                    |
-+--------------------+----------------------------------------------------------+
-| ``403`` - Bad      | This Indicator is included in a system-wide exclusion    |
-| Request            | list.                                                    |
-+--------------------+----------------------------------------------------------+
-| ``404`` - Not      | The service or resource specified in the path does not   |
-| Found              | exist.                                                   |
-+--------------------+----------------------------------------------------------+
-| ``500`` - Internal | An unknown internal error                                |
-| Server Error       |                                                          |
-+--------------------+----------------------------------------------------------+
-| ``503`` - Service  | The Instance of ThreatConnect is not licensed to enable  |
-| Unavailable        | the API.                                                 |
-+--------------------+----------------------------------------------------------+
+.. list-table::
+   :widths: 35 65
+   :header-rows: 1
+
+   * - HTTP Status Code
+     - Description
+   * - 200 - Success
+     - The request succeeded.
+   * - 201 - Created
+     - The request succeeded and created the specified entity.
+   * - 400 - Bad Request
+     - The request was not formatted properly. The response will include a message with details explaining the formatting issue.
+   * - 401 - Unauthorized
+     - The API user does not have access to the specified resource or permissions to perform the operation attempted on a resource.
+   * - 403 - Forbidden
+     - The API user specified an owner that does not exist or to which they do not have access.
+   * - 404 - Not Found
+     - The requested resource does not exist.
+   * - 500 - Internal Server Error
+     - An unknown internal error prevented the server from fulfilling the request.
+   * - 503 - Service Unavailable
+     - The ThreatConnect instance is not licensed to enable the API.
 
 Specifying an Owner
 -------------------
