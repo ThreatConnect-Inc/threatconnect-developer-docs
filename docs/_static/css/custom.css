@@ -5,6 +5,10 @@
 
 */
 
+.wy-side-nav-search {
+    background-color: #335d7f !important;
+}
+
 /* Temporary fix for https://github.com/rtfd/sphinx_rtd_theme/issues/417 */
 
 .rst-content .highlight>pre {
