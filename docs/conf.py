@@ -61,7 +61,7 @@ latex_documents = [
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-html_logo = "_static/dark_logo.png"
+html_logo = "_static/ThreatConnect_Logo_Dark.png"
 
 # If true, "Created using Sphinx" is shown in the HTML footer. Default is True.
 #
@@ -74,7 +74,7 @@ html_show_copyright = True
 
 # Set the path to the static files
 html_static_path = ['_static']
-html_favicon = '_static/favicon.ico'
+html_favicon = '_static/TC_Favicon.ico'
 
 
 def setup(app):
