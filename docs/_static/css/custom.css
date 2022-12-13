@@ -6,7 +6,8 @@
 */
 
 .wy-side-nav-search {
-    background-color: #335d7f !important;
+    background-color: #335d7f;
+    background-image: linear-gradient(135deg, #001c25 25%, #335d75 100%) !important;
 }
 
 /* Temporary fix for https://github.com/rtfd/sphinx_rtd_theme/issues/417 */
