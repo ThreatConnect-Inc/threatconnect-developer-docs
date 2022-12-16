@@ -404,7 +404,6 @@ JSON Response:
           "lastModified": "2017-07-13T18:16:49Z",
           "webLink": "https://app.threatconnect.com/tc/auth/incident/incident.xhtml?incident=12345",
           "xid": "b85ce129-cfd5-4c82-9814-37cf9f4d15c0:11",
-          "xid": "a1a1a1a1-a1a1-a1a1-a1a1-a1a1a1a1a1a1:a1",
           "communityOrSource": false,
           "additionalOwners": [],
           "eventDate": "2017-06-21T18:15:49Z",
