@@ -27,6 +27,7 @@ JSON Response:
             "type": "Document",
             "ownerName": "Example Organization",
             "dateAdded": "2017-07-13T16:43:19Z",
+            "lastModified": "2017-07-13T16:44:19Z",
             "webLink": "https://app.threatconnect.com/auth/document/document.xhtml?document=12345"
           },
           {
@@ -35,6 +36,7 @@ JSON Response:
             "type": "Email",
             "ownerName": "Example Organization",
             "dateAdded": "2017-07-13T19:28:10Z",
+            "lastModified": "2017-07-13T19:29:10Z"
             "webLink": "https://app.threatconnect.com/auth/email/email.xhtml?email=12346"
           }
         ]
@@ -89,6 +91,7 @@ JSON Response:
             "name": "Test Incident",
             "ownerName": "Wanna Cry Hits Stoic Department",
             "dateAdded": "2017-07-13T17:50:17",
+            "lastModified": "2017-07-13T17:51:17",
             "webLink": "https://app.threatconnect.com/auth/incident/incident.xhtml?incident=54321",
             "eventDate": "2017-03-21T00:00:00Z"
           },
@@ -97,6 +100,7 @@ JSON Response:
             "name": "PoS Malware Detected at Denver Location",
             "ownerName": "Example Organization",
             "dateAdded": "2017-07-13T17:51:17",
+            "lastModified": "2017-07-13T17:52:17",
             "webLink": "https://app.threatconnect.com/auth/incident/incident.xhtml?incident=54322",
             "eventDate": "2017-06-27T00:00:00Z"
           }
@@ -135,6 +139,7 @@ JSON Response:
             "type": "Organization"
           },
           "dateAdded": "2017-05-13T18:40:22Z",
+          "lastModified": "2017-05-13T18:41:22Z",
           "webLink": "https://app.threatconnect.com/auth/threat/threat.xhtml?threat=12345"
         }
       }
@@ -233,8 +238,8 @@ JSON Response:
         "resultCount": 1,
         "securityLabel": [
           {
-            "name": "TLP Amber",
-            "description": "TLP Amber information requires support to be effectively acted upon, yet carries risks to privacy, reputation, or operations if shared outside of the organizations involved.",
+            "name": "TLP:AMBER",
+            "description": "This security label is used for information that requires support to be effectively acted upon, yet carries risks to privacy, reputation, or operations if shared outside of the organizations involved. Information with this label can be shared with members of an organization and its clients.",
             "dateAdded": "2017-07-13T17:50:17"
           }
         ]
@@ -266,8 +271,8 @@ JSON Response:
         "resultCount": 1,
         "securityLabel": [
           {
-            "name": "TLP Amber",
-            "description": "TLP Amber information requires support to be effectively acted upon, yet carries risks to privacy, reputation, or operations if shared outside of the organizations involved.",
+            "name": "TLP:AMBER",
+            "description": "This security label is used for information that requires support to be effectively acted upon, yet carries risks to privacy, reputation, or operations if shared outside of the organizations involved. Information with this label can be shared with members of an organization and its clients.",
             "dateAdded": "2017-07-13T17:50:17"
           }
         ]
@@ -300,7 +305,7 @@ JSON Response:
         "tag": [
           {
             "name": "Nation State",
-            "webLink": "https://app.threatconnect.com/auth/tags/tag.xhtml?tag=Nation+State&owner=Common+Community"
+            "webLink": "https://app.threatconnect.com/auth/tags/tag.xhtml?tag=12&owner=Example+Organization"
           }
         ]
       }
@@ -334,13 +339,13 @@ JSON Response:
             "id": "54321",
             "name": "Real Bad Guy",
             "type": "Handle",
-            "webLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=1157242"
+            "webLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=12345"
           },
           {
             "id": "54322",
             "name": "http://facebook.com/therealbadguy",
             "type": "URL",
-            "webLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=1157242"
+            "webLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=12345"
           }
         ]
       }
@@ -367,13 +372,13 @@ To get details about a specific Adversary Asset, use a query in the following fo
 Retrieve Incident Status
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Incidents in ThreatConnect have a status that can be set and retrieved via API. Adding the ‘includeAdditional’ parameter when requesting data about an Incident will return data which includes the Incident’s status. Use a query in the following format to find an Incident's status:
+Incidents in ThreatConnect have a status that can be set and retrieved via API. Adding the ``includeAdditional`` parameter when requesting data about an Incident will return data which includes the Incident's status. Use a query in the following format to find an Incident's status:
 
 .. code::
 
     GET /v2/groups/incidents/{incidentId}?includeAdditional=true
 
-For example, the query below will return information about the Incident with ID 12345 as well as the Incident’s status.
+For example, the query below will return information about the Incident with ID 12345 as well as the Incident's status.
 
 .. code::
 
@@ -394,8 +399,14 @@ JSON Response:
             "name": "Example Organization",
             "type": "Organization"
           },
+          "createdBy": "John Smith"
           "dateAdded": "2017-07-13T18:15:49Z",
+          "lastModified": "2017-07-13T18:16:49Z",
           "webLink": "https://app.threatconnect.com/tc/auth/incident/incident.xhtml?incident=12345",
+          "xid": "b85ce129-cfd5-4c82-9814-37cf9f4d15c0:11",
+          "xid": "a1a1a1a1-a1a1-a1a1-a1a1-a1a1a1a1a1a1:a1",
+          "communityOrSource": false,
+          "additionalOwners": [],
           "eventDate": "2017-06-21T18:15:49Z",
           "status": "Open"
         }
@@ -437,6 +448,7 @@ JSON Response:
             "type": "Incident",
             "ownerName": "Example Organization",
             "dateAdded": "2017-07-13T17:50:17",
+            "lastModified": "2017-07-13T17:51:17",
             "webLink": "https://app.threatconnect.com/auth/incident/incident.xhtml?incident=54321"
           }
         ]
@@ -516,6 +528,9 @@ JSON Response:
             "confidence": 55,
             "threatAssessRating": 3.0,
             "threatAssessConfidence": 55.0,
+            "threatAssessScore": 406,
+            "calScore": 423,
+            "calIndicatorStatus": 1
             "webLink": "https://app.threatconnect.com/auth/indicators/details/address.xhtml?address=0.0.0.0&owner=Example+Organization",
             "summary": "0.0.0.0"
           }

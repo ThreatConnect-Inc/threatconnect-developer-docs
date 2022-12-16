@@ -67,6 +67,7 @@ JSON Response:
             "type": "Organization"
           },
           "dateAdded": "2017-07-13T17:50:17",
+          "lastModified": "2017-07-13T17:50:17",
           "webLink": "https://app.threatconnect.com/auth/incident/incident.xhtml?incident=54321",
           "eventDate": "2017-7-13T00:00:00-04:00"
         }
@@ -163,11 +164,11 @@ To add a Security Label to an Attribute, use the following format, where ``{secu
 
     POST /v2/groups/{groupType}/{groupId}/attributes/{attributeId}/securityLabels/{securityLabel}
 
-For example, the query below will add a ``TLP Amber`` Security Label to the Attribute on the Threat:
+For example, the query below will add a ``TLP:AMBER`` Security Label to the Attribute on the Threat:
 
 .. code::
 
-    POST /v2/groups/threats/12345/attributes/54321/securityLabels/TLP%20Amber
+    POST /v2/groups/threats/12345/attributes/54321/securityLabels/TLP%3AAMBER
 
 .. note:: In order to add a Security Label to an Attribute, the Security Label must already exist. The query above will not create a new Security Label. If you specify a Security Label that does not exist, it will return an error.
 
@@ -180,19 +181,17 @@ To add a Security Label to a Group, use the following format, where ``{securityL
 
     POST /v2/groups/{groupType}/{groupId}/securityLabels/{securityLabel}
 
-For example, the query below will add a ``TLP Amber`` Security Label to the Threat with ID 12345:
+For example, the query below will add a ``TLP:AMBER`` Security Label to the Threat with ID 12345:
 
 .. code::
 
-    POST /v2/groups/threats/12345/securityLabels/TLP%20Amber
+    POST /v2/groups/threats/12345/securityLabels/TLP%3AAMBER
 
 JSON Response:
 
 .. code:: json
 
     {
-      "apiCalls": 1,
-      "resultCount": 0,
       "status": "Success"
     }
 
@@ -218,8 +217,6 @@ JSON Response:
 .. code:: json
 
     {
-      "apiCalls": 1,
-      "resultCount": 0,
       "status": "Success"
     }
 
@@ -245,7 +242,6 @@ For example, the query below will add ``Pierre Despereaux`` as a Handle to the A
 .. code::
 
     POST /v2/groups/adversaries/12345/adversaryAssets/handles
-    Content-type: application/json; charset=utf-8
 
     {
       "handle": "Pierre Despereaux"
