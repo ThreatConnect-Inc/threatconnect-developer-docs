@@ -18,8 +18,6 @@ JSON Response:
 .. code:: json
 
     {
-      "apiCalls": 1,
-      "resultCount": 0,
       "status": "Success"
     }
 

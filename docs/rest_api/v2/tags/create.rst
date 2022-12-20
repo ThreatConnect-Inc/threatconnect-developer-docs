@@ -9,7 +9,10 @@ Tag descriptions can be written with the following request:
 
    POST /api/v2/tags
 
-   { "name": "myTag", "description": "my description" }
+   {
+      "name": "Phishing",
+      "description": "Apply this Tag to objects related to phishing attacks."
+   }
    
 Response:
 
@@ -19,20 +22,23 @@ Response:
        "status": "Success",
            "data": {
                 "tag": {
-                   "name": "myTag",
-                   "description": "my description",
-                   "webLink": "https://....com/auth/tags/tag.xhtml?tag=myTag\u0026owner=System"
+                   "name": "Phishing",
+                   "description": "Apply this Tag to objects related to phishing attacks.",
+                   "webLink": "https://app.threatconnect.com/auth/tags/tag.xhtml?tag=12346&owner=Example+Organization"
                }
            }
    }
    
-Tag descriptions can be edited as follows:
+A Tag's name and description can be edited as follows:
 
 .. code::
 
-   PUT /api/v2/tags/myTag
+   PUT /api/v2/tags/Phishing
 
-   { "name": "myTag", "description": "new desc" }
+   {
+      "name": "Phishing Attack",
+      "description": "Apply this Tag to Indicators and Groups related to phishing attacks. Do not apply it to Victims."
+   }
 
 
 For more details, see:
