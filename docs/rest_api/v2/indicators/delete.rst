@@ -5,21 +5,19 @@ To delete an Indicator, the most basic format is:
 
 .. code::
 
-    DELETE /v2/indicators/{indicatorType}/{indicator}?owner=owner
+    DELETE /v2/indicators/{indicatorType}/{indicator}?owner={ownerName}
 
-For example, the query below will delete the Email Address ``bad@example.com``:
+For example, the query below will delete the Email Address ``bad@example.com`` in Example Community:
 
 .. code::
 
-    DELETE /v2/indicators/emailAddresses/bad@example.com?owner=owner
+    DELETE /v2/indicators/emailAddresses/bad@example.com?owner=Example%20Community
 
 JSON Response:
 
 .. code:: json
 
     {
-        "apiCalls": 1,
-        "resultCount": 0,
         "status": "Success"
     }
 
@@ -45,14 +43,13 @@ JSON Response:
             "ownerName": "Example Org",
             "type": "File",
             "dateAdded": "2017-10-31T18:32:13Z",
-            "lastModified": null,
             "summary": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           }
         ]
       }
     }
 
-By default, this will return all of the Indicators recently deleted in the API key’s default Organization. The number of days for which the Indicators will be listed on this API branch before being removed is specified by the ``indicatorDeleteRetentionTime`` system setting.
+By default, this will return all of the Indicators recently deleted in the API key's default Organization. The number of days for which the Indicators will be listed on this API branch before being removed is specified by the ``indicatorDeleteRetentionTime`` system setting.
 
 To view Indicators that have been recently deleted from a Community or Source that is not the default Owner, append the ``owner={ownerName}`` parameter to the query, as demonstrated below:
 
@@ -83,8 +80,6 @@ JSON Response:
 .. code:: json
 
     {
-      "apiCalls": 1,
-      "resultCount": 0,
       "status": "Success"
     }
 
@@ -94,11 +89,11 @@ To delete a Security Label from an Attribute, use the following format, where ``
 
     DELETE /v2/indicators/{indicatorType}/{indicator}/attributes/{attributeId}/securityLabels/{securityLabel}
 
-For example, the query below will remove the ``TLP Amber`` Security Label from the Attribute with ID 54321 on the Email Address ``bad@example.com``:
+For example, the query below will remove the ``TLP:AMBER`` Security Label from the Attribute with ID 54321 on the Email Address ``bad@example.com``:
 
 .. code::
 
-    DELETE /v2/indicators/emailAddresses/bad@example.com/attributes/54321/securityLabels/TLP%20Amber
+    DELETE /v2/indicators/emailAddresses/bad@example.com/attributes/54321/securityLabels/TLP%3AAMBER
 
 Delete Indicator Security Labels
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -109,19 +104,17 @@ To delete a Security Label from an Indicator, use the following format, where ``
 
     DELETE /v2/indicators/{indicatorType}/{indicator}/securityLabels/{securityLabel}
 
-For example, the query below will delete the ``TLP Amber`` Security Label to the Email Address ``bad@example.com``:
+For example, the query below will delete the ``TLP:AMBER`` Security Label to the Email Address ``bad@example.com``:
 
 .. code::
 
-    DELETE /v2/indicators/emailAddresses/bad@example.com/securityLabels/TLP%20Amber
+    DELETE /v2/indicators/emailAddresses/bad@example.com/securityLabels/TLP%3AAMBER
 
 JSON Response:
 
 .. code:: json
     
     {
-      "apiCalls": 1,
-      "resultCount": 0,
       "status": "Success"
     }
 
@@ -145,8 +138,6 @@ JSON Response:
 .. code:: json
 
     {
-      "apiCalls": 1,
-      "resultCount": 0,
       "status": "Success"
     }
 
@@ -200,8 +191,6 @@ JSON Response:
 .. code:: json
 
     {
-      "apiCalls": 1,
-      "resultCount": 0,
       "status": "Success"
     }
 
@@ -225,8 +214,6 @@ JSON Response:
 .. code:: json
 
     {
-      "apiCalls": 1,
-      "resultCount": 0,
       "status": "Success"
     }
 
@@ -250,8 +237,6 @@ JSON Response:
 .. code:: json
 
     {
-      "apiCalls": 1,
-      "resultCount": 0,
       "status": "Success"
     }
 
@@ -275,7 +260,5 @@ JSON Response:
 .. code:: json
 
     {
-      "apiCalls": 1,
-      "resultCount": 0,
       "status": "Success"
     }

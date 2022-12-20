@@ -294,14 +294,16 @@ JSON Response:
       }
     }
     
-Note that using the 'includes=additional' parameter will also work. Likewise, 'includes=tags', 'includes=attributes', and 'includes=labels' are permitted.
+Note that using the ``includes=additional`` parameter will also work. Likewise, ``includes=tags``, ``includes=attributes``, and ``includes=labels`` are permitted.
 
 Indicator Keys
 ^^^^^^^^^^^^^^
 
-As of ThreatConnect version 5.8+, it is possible to retrieve the Indicator keys needed for pivoting to associated Indicators or Groups. These key values can be retrieved by adding the includeAdditional=true parameter. The indicatorTypes API endpoint will return key/values pair for each Indicator type, called ‘Key1’ and, optionally, ‘Key2’ and ‘Key3.’ For example:
+As of ThreatConnect version 5.8+, it is possible to retrieve the Indicator keys needed for pivoting to associated Indicators or Groups. These key values can be retrieved by adding the ``includeAdditional=true`` parameter. The ``indicatorTypes`` API endpoint will return key/values pair for each Indicator type, called ``key1`` and, optionally, ``key2`` and ``key3``.
 
-GET /v2/types/indicatorTypes?includeAdditional=true.
+.. code::
+
+    GET /v2/types/indicatorTypes?includeAdditional=true
 
 JSON Response:
 
@@ -441,15 +443,18 @@ JSON Response:
       }
     }
  
-Keys can also be retrieved for a single type by adding the indicatortype to the command as follows:
+Keys can also be retrieved for a single type by adding the ``indicatorType`` to the command as follows:
 
-GET /v2/types/indicatorTypes/{indicatorType}?includeAdditional=true
+.. code::
 
-For example:
+    GET /v2/types/indicatorTypes/{indicatorType}?includeAdditional=true
 
-GET /v2/types/indicatorTypes/address?includeAdditional=true
+For example, the following request will return the Indicator keys for Address Indicators. Note that using the ``includes=additional`` parameter will also work.
 
-will return the Indicator keys for Address Indicators. Note that using the ‘includes=additional’ parameter will also work.
+.. code::
+
+    GET /v2/types/indicatorTypes/address?includeAdditional=true
+
 
 Retrieve All Indicators
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -477,6 +482,9 @@ JSON Response:
             "lastModified": "2017-07-19T17:35:31Z",
             "threatAssessRating": 3,
             "threatAssessConfidence": 50,
+            "threatAssessScore": 281,
+            "calScore": 173,
+            "calIndicatorStatus": 2,
             "webLink": "https://app.threatconnect.com/auth/indicators/details/url.xhtml?orgid=54321&owner=Example+Organization",
             "summary": "http://example.com/login.php"
           },
@@ -488,6 +496,9 @@ JSON Response:
             "lastModified": "2017-07-19T17:35:29Z",
             "threatAssessRating": 4,
             "threatAssessConfidence": 75,
+            "threatAssessScore": 408,
+            "calScore": 426,
+            "calIndicatorStatus": 1,
             "webLink": "https://app.threatconnect.com/auth/indicators/details/emailaddress.xhtml?emailaddress=bad%40gmail.com&owner=Example+Organization",
             "summary": "bad@gmail.com"
           }
@@ -504,7 +515,7 @@ To retrieve multiple Indicators of a certain type, use a query in the following 
 
     GET /v2/indicators/{indicatorType}
 
-The ``{indicatorType}`` can be any one of the available Indicator Yypes below or any of the custom Indicator Types available in your instance of ThreatConnect:
+Replace ``{indicatorType}`` with any one of the following Indicator types or any of the custom Indicator Types available in your ThreatConnect instance:
 
 .. include:: ../_includes/indicator_types.rst
 
@@ -530,6 +541,8 @@ JSON Response:
             "lastModified": "2017-07-19T17:53:50Z",
             "threatAssessRating": 3,
             "threatAssessConfidence": 50,
+            "threatAssessScore": 389,
+            "calIndicatorStatus": 2,
             "webLink": "https://app.threatconnect.com/auth/indicators/details/emailaddress.xhtml?emailaddress=phish%40example.com&owner=Example+Organization",
             "address": "phish@example.com"
           },
@@ -540,6 +553,9 @@ JSON Response:
             "lastModified": "2017-07-19T17:53:49Z",
             "threatAssessRating": 3,
             "threatAssessConfidence": 50,
+            "threatAssessScore": 363,
+            "calScore": 173,
+            "calIndicatorStatus": 2,
             "webLink": "https://app.threatconnect.com/auth/indicators/details/emailaddress.xhtml?emailaddress=bad%40gmail.com&owner=Example+Organization",
             "address": "bad@gmail.com"
           }
@@ -578,8 +594,11 @@ JSON Response:
           },
           "dateAdded": "2017-07-13T17:50:17",
           "lastModified": "2017-03-29T12:53:49Z",
-          "threatAssessRating": 1.67,
-          "threatAssessConfidence": 18.33,
+          "threatAssessRating": 3.0,
+          "threatAssessConfidence": 50.0,
+          "threatAssessScore": 363,
+          "calScore": 173,
+          "calIndicatorStatus": 2,
           "webLink": "https://app.threatconnect.com/auth/indicators/details/url.xhtml?orgid=54321&owner=Example+Organization",
           "text": "http://example.com/"
         }
@@ -627,6 +646,9 @@ JSON Response:
           "confidence": 85,
           "threatAssessRating": 4.0,
           "threatAssessConfidence": 85.0,
+          "threatAssessScore": 536,
+          "calScore": 218,
+          "calIndicatorStatus": 2,
           "source": "https://heimdalsecurity.com/blog/bluedoom-worm-eternablue-nsa-exploits/",
           "description": "Mutex created by BlueDoom / EternalRocks malware to ensure first payload is not run more than once on a target system."
         }
@@ -722,9 +744,7 @@ Retrieve Indicator Metadata
 Retrieve Indicator Status
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-An active and an activeLocked key will be returned when retrieving Indicators with 
-
-?includeAdditional=true. 
+An ``active`` and an ``activeLocked`` field will be returned when retrieving Indicators by including the ``?includeAdditional=true`` parameter in your request. 
  
 Retrieve Indicator Observations and False Positives
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -760,6 +780,8 @@ JSON Response:
           "threatAssessRating": 3.0,
           "threatAssessConfidence": 50.0,
           "threatAssessScore": 354,
+          "calScore": 173,
+          "calIndicatorStatus": 2,
           "webLink": "https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=example.com&owner=Example%20Organization",
           "observationCount": 5,
           "lastObserved": "2016-07-13T17:50:25-05:00",
@@ -768,6 +790,8 @@ JSON Response:
           "privateFlag": false,
           "active": true,
           "activeLocked": false,
+          "communityOrSource": false,
+          "additionalOwners": [],
           "hostName": "example.com",
           "dnsActive": "false",
           "whoisActive": "false"
@@ -834,7 +858,7 @@ This request will return the following data:
       }
     }
 
-.. note:: Only observations reported using API accounts that are configured to be included in observations and false positive reports will show up in the list of recent observations. For more details on how to configure an API account in this way, see the "Including False Positives Reported by API Users" section of the `Reporting False Positives <https://training.threatconnect.com/learn/article/reporting-false-positives-kb-article>`_ knowledge base article.
+.. note:: Only observations reported using API accounts that are configured to be included in observations and false positive reports will show up in the list of recent observations. For more details on how to configure an API account in this way, see the `Including False Positives Reported by API Users <https://knowledge.threatconnect.com/docs/including-false-positives-reported-by-api-users>`_ knowledge base article.
 
 Retrieving Total Indicator Observations
 """""""""""""""""""""""""""""""""""""""
@@ -967,8 +991,8 @@ JSON Response:
         "resultCount": 1,
         "securityLabel": [
           {
-            "name": "TLP Amber",
-            "description": "TLP Amber information requires support to be effectively acted upon, yet carries risks to privacy, reputation, or operations if shared outside of the Organizations involved.",
+            "name": "TLP:AMBER",
+            "description": "This security label is used for information that requires support to be effectively acted upon, yet carries risks to privacy, reputation, or operations if shared outside of the organizations involved. Information with this label can be shared with members of an organization and its clients.",
             "dateAdded": "2017-07-13T17:50:17"
           }
         ]
@@ -1000,8 +1024,8 @@ JSON Response:
         "resultCount": 1,
         "securityLabel": [
           {
-            "name": "TLP Amber",
-            "description": "TLP Amber information requires support to be effectively acted upon, yet carries risks to privacy, reputation, or operations if shared outside of the organizations involved.",
+            "name": "TLP:AMBER",
+            "description": "This security label is used for information that requires support to be effectively acted upon, yet carries risks to privacy, reputation, or operations if shared outside of the organizations involved. Information with this label can be shared with members of an organization and its clients.",
             "dateAdded": "2017-07-13T17:50:17"
           }
         ]
@@ -1079,6 +1103,7 @@ JSON Response:
             "type": "Incident",
             "ownerName": "Example Organization",
             "dateAdded": "2017-07-13T17:50:17",
+            "lastModified": "2017-07-13T17:51:17",
             "webLink": "https://app.threatconnect.com/auth/incident/incident.xhtml?incident=54321"
           }
         ]
@@ -1145,6 +1170,9 @@ JSON Response:
             "confidence": 55,
             "threatAssessRating": 3.0,
             "threatAssessConfidence": 55.0,
+            "threatAssessScore": 281,
+            "calScore": 173,
+            "calIndicatorStatus": 2,
             "webLink": "https://app.threatconnect.com/auth/indicators/details/address.xhtml?address=0.0.0.0&owner=Example+Organization",
             "summary": "0.0.0.0"
           }
@@ -1258,6 +1286,9 @@ JSON Response:
             "id": "54321",
             "name": "Bad Guy",
             "org": "Example Organization",
+            "suborg": "",
+            "workLocation": "",
+            "nationality": "",
             "webLink": "https://app.threatconnect.com/auth/victim/victim.xhtml?victim=54321"
           }
         ]

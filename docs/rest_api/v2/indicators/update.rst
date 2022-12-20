@@ -69,10 +69,12 @@ JSON Response:
           },
           "dateAdded": "2017-07-13T17:50:17",
           "lastModified": "2017-07-19T20:34:23Z",
-          "rating": 4,
+          "rating": 4.0,
           "confidence": 80,
           "threatAssessRating": 1.67,
           "threatAssessConfidence": 18.33,
+          "threatAssessScore": 233,
+          "calIndicatorStatus": 1,
           "webLink": "https://app.threatconnect.com/auth/indicators/details/emailaddress.xhtml?emailaddress=bad%40example.com&owner=Example+Organization",
           "address": "bad@example.com"
         }

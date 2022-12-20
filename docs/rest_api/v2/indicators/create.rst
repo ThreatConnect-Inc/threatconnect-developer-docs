@@ -510,11 +510,11 @@ To add a Security Label to an Attribute, use the following format, where ``{secu
 
     POST /v2/indicators/{indicatorType}/{indicator}/attributes/{attributeId}/securityLabels/{securityLabel}
 
-For example, the query below will add a ``TLP Amber`` Security Label to the Attribute on the Threat:
+For example, the query below will add a ``TLP:AMBER`` Security Label to the Attribute added to the Email Address ``bad@example.com``:
 
 .. code::
 
-    POST /v2/indicators/emailAddresses/bad@example.com/attributes/54321/securityLabels/TLP%20Amber
+    POST /v2/indicators/emailAddresses/bad@example.com/attributes/54321/securityLabels/TLP%3AAMBER
 
 .. note:: In order to add a Security Label to an Attribute, the Security Label must already exist. The query above will not create a new Security Label. If you specify a Security Label that does not exist, it will return an error.
 
@@ -527,19 +527,17 @@ To add a Security Label to an Indicator, use the following format, where ``{secu
 
     POST /v2/indicators/{indicatorType}/{indicator}/securityLabels/{securityLabel}
 
-For example, the query below will add a ``TLP Amber`` Security Label to the Email Address ``bad@example.com``:
+For example, the query below will add a ``TLP:AMBER`` Security Label to the Email Address ``bad@example.com``:
 
 .. code::
 
-    POST /v2/indicators/emailAddresses/bad@example.com/securityLabels/TLP%20Amber
+    POST /v2/indicators/emailAddresses/bad@example.com/securityLabels/TLP%3AAMBER
 
 JSON Response:
 
 .. code:: json
     
     {
-      "apiCalls": 1,
-      "resultCount": 0,
       "status": "Success"
     }
 
@@ -565,8 +563,6 @@ JSON Response:
 .. code:: json
 
     {
-      "apiCalls": 1,
-      "resultCount": 0,
       "status": "Success"
     }
 

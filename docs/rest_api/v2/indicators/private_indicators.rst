@@ -35,6 +35,8 @@ JSON Response:
           "threatAssessRating": 4.37,
           "threatAssessConfidence": 72.91,
           "threatAssessScore": 650,
+          "calScore": 552,
+          "calIndicatorStatus": 1,
           "webLink": "https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=example.org&owner=Example+Org",
           "source": "ThreatConnect Enrichment",
           "description": "Malicious domain.",
