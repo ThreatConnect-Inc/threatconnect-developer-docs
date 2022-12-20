@@ -17,8 +17,8 @@ The following query will return all Security Labels that start with "TLP" (``nam
 
     GET /v2/securityLabels/?filters=name%5ETLP
 
-The following query will return the Security Label with the name "TLP:Green" (``name=TLP:Green``):
+The following query will return the Security Label with the name "TLP:GREEN" (``name=TLP:GREEN``):
 
 .. code::
 
-    GET /v2/securityLabels/?filters=name%3DTLP%3AGreen
+    GET /v2/securityLabels/?filters=name%3DTLP%3AGREEN
