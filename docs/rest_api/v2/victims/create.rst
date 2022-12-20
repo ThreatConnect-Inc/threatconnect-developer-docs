@@ -43,7 +43,7 @@ For example, the query below will create a Victim in the default owner:
       "org": "Test Org",
       "suborg": "HR Department",
       "workLocation": "Washington D.C.",
-      "nationality": "American",
+      "nationality": "American"
     }
 
 JSON Response:
@@ -112,7 +112,7 @@ JSON Response:
         "victimNetworkAccount": {
           "id": 398,
           "type": "NetworkAccount",
-          "webLink": "https://sandbox.threatconnect.com/auth/victim/victim.xhtml?victim=12345",
+          "webLink": "https://app.threatconnect.com/auth/victim/victim.xhtml?victim=12345",
           "account": "John Doe",
           "network": "Active Directory"
         }
@@ -175,11 +175,11 @@ To add a Security Label to an Attribute, use the following format, where ``{secu
 
     POST /v2/victims/{victimId}/attributes/{attributeId}/securityLabels/{securityLabel}
 
-For example, the query below will add a ``TLP Amber`` Security Label to the Attribute on the Victim:
+For example, the query below will add a ``TLP:AMBER`` Security Label to the Attribute on the Victim:
 
 .. code::
 
-    POST /v2/victims/12345/attributes/54321/securityLabels/TLP%20Amber
+    POST /v2/victims/12345/attributes/54321/securityLabels/TLP%3AAMBER
 
 .. note:: In order to add a Security Label to an Attribute, the Security Label must already exist. The query above will not create a new Security Label. If you specify a Security Label that does not exist, it will return an error.
 
@@ -192,19 +192,17 @@ To add a Security Label to a Victim, use the following format, where ``{security
 
     POST /v2/victims/{victimId}/securityLabels/{securityLabel}
 
-For example, the query below will add a ``TLP Amber`` Security Label to the Victim with ID 12345:
+For example, the query below will add a ``TLP:AMBER`` Security Label to the Victim with ID 12345:
 
 .. code::
 
-    POST /v2/victims/12345/securityLabels/TLP%20Amber
+    POST /v2/victims/12345/securityLabels/TLP%3AAMBER
 
 JSON Response:
 
 .. code:: json
     
     {
-      "apiCalls": 1,
-      "resultCount": 0,
       "status": "Success"
     }
 
@@ -230,8 +228,6 @@ JSON Response:
 .. code:: json
 
     {
-      "apiCalls": 1,
-      "resultCount": 0,
       "status": "Success"
     }
 

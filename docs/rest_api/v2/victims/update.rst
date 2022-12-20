@@ -34,7 +34,7 @@ For example, the query below will update the name of a Victim with ID 12345:
 
     PUT /v2/victims/12345
     {
-      "name": "New Victim Name",
+      "name": "New Victim Name"
     }
 
 JSON Response:
