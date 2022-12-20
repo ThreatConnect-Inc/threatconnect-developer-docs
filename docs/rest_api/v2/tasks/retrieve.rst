@@ -154,8 +154,8 @@ JSON Response:
         "resultCount": 1,
         "securityLabel": [
           {
-            "name": "TLP Amber",
-            "description": "TLP Amber information requires support to be effectively acted upon, yet carries risks to privacy, reputation, or operations if shared outside of the Organizations involved.",
+            "name": "TLP:AMBER",
+            "description": "This security label is used for information that requires support to be effectively acted upon, yet carries risks to privacy, reputation, or operations if shared outside of the organizations involved. Information with this label can be shared with members of an organization and its clients.",
             "dateAdded": "2017-07-13T17:50:17"
           }
         ]
@@ -187,8 +187,8 @@ JSON Response:
         "resultCount": 1,
         "securityLabel": [
           {
-            "name": "TLP Amber",
-            "description": "TLP Amber information requires support to be effectively acted upon, yet carries risks to privacy, reputation, or operations if shared outside of the Organizations involved.",
+            "name": "TLP:AMBER",
+            "description": "This security label is used for information that requires support to be effectively acted upon, yet carries risks to privacy, reputation, or operations if shared outside of the organizations involved. Information with this label can be shared with members of an organization and its clients.",
             "dateAdded": "2017-07-13T17:50:17"
           }
         ]
@@ -260,6 +260,7 @@ JSON Response:
             "type": "Incident",
             "ownerName": "Example Organization",
             "dateAdded": "2017-07-13T17:50:17",
+            "lastModified": "2017-07-13T17:51:17",
             "webLink": "https://app.threatconnect.com/auth/incident/incident.xhtml?incident=54321"
           }
         ]
@@ -324,6 +325,8 @@ JSON Response:
             "confidence": 55,
             "threatAssessRating": 3.0,
             "threatAssessConfidence": 55.0,
+            "threatAssessScore": 389,
+            "calIndicatorStatus": 2,
             "webLink": "https://app.threatconnect.com/auth/indicators/details/address.xhtml?address=0.0.0.0&owner=Example+Organization",
             "summary": "0.0.0.0"
           }
@@ -435,6 +438,9 @@ JSON Response:
             "id": "54321",
             "name": "Bad Guy",
             "org": "Example Organization",
+            "suborg": "HR Department",
+            "workLocation": "Washington, D.C.",
+            "nationality": "American",
             "webLink": "https://app.threatconnect.com/auth/victim/victim.xhtml?victim=54321"
           }
         ]

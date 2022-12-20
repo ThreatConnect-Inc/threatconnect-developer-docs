@@ -59,6 +59,10 @@ JSON Response:
           },
           "dateAdded": "2017-07-13T17:50:17",
           "webLink": "https://app.threatconnect.com/auth/task/task.xhtml?task=54321",
+          "status": "Not Started",
+          "escalated": false,
+          "reminded": false,
+          "overdue": false,
           "dueDate": "2017-07-13T13:36:53-04:00"
         }
       }
@@ -98,6 +102,10 @@ JSON Response:
           },
           "dateAdded": "2017-07-13T17:50:17",
           "webLink": "https://app.threatconnect.com/auth/task/task.xhtml?task=54321",
+          "status": "Not Started",
+          "escalated": false,
+          "reminded": false,
+          "overdue": false,
           "dueDate": "2017-07-13T13:36:53-04:00",
           "assignee": [
             {
@@ -208,11 +216,11 @@ To add a Security Label to an Attribute, use the following format, where ``{secu
 
     POST /v2/tasks/{taskId}/attributes/{attributeId}/securityLabels/{securityLabel}
 
-For example, the query below will add a ``TLP Amber`` Security Label to the Attribute on the Task:
+For example, the query below will add a ``TLP:AMBER`` Security Label to the Attribute on the Task:
 
 .. code::
 
-    POST /v2/tasks/12345/attributes/54321/securityLabels/TLP%20Amber
+    POST /v2/tasks/12345/attributes/54321/securityLabels/TLP%3AAMBER
 
 .. note:: In order to add a Security Label to an Attribute, the Security Label must already exist. The query above will not create a new Security Label. If you specify a Security Label that does not exist, it will return an error.
 
@@ -225,19 +233,17 @@ To add a Security Label to a Task, use the following format, where ``{securityLa
 
     POST /v2/tasks/{taskId}/securityLabels/{securityLabel}
 
-For example, the query below will add a ``TLP Amber`` Security Label to the Task with ID 12345:
+For example, the query below will add a ``TLP:AMBER`` Security Label to the Task with ID 12345:
 
 .. code::
 
-    POST /v2/tasks/12345/securityLabels/TLP%20Amber
+    POST /v2/tasks/12345/securityLabels/TLP%3AAMBER
 
 JSON Response:
 
 .. code:: json
     
     {
-      "apiCalls": 1,
-      "resultCount": 0,
       "status": "Success"
     }
 
@@ -263,8 +269,6 @@ JSON Response:
 .. code:: json
 
     {
-      "apiCalls": 1,
-      "resultCount": 0,
       "status": "Success"
     }
 

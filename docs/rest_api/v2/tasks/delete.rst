@@ -18,8 +18,6 @@ JSON Response:
 .. code:: json
 
     {
-        "apiCalls": 1,
-        "resultCount": 0,
         "status": "Success"
     }
 
@@ -46,8 +44,6 @@ JSON Response:
 .. code:: json
 
     {
-      "apiCalls": 1,
-      "resultCount": 0,
       "status": "Success"
     }
 
@@ -57,11 +53,11 @@ To delete a Security Label from an Attribute, use the following format, where ``
 
     DELETE /v2/tasks/{taskId}/attributes/{attributeId}/securityLabels/{securityLabel}
 
-For example, the query below will remove the ``TLP Amber`` Security Label from the Attribute with ID 54321 on the Task:
+For example, the query below will remove the ``TLP:AMBER`` Security Label from the Attribute with ID 54321 on the Task:
 
 .. code::
 
-    DELETE /v2/tasks/12345/attributes/54321/securityLabels/TLP%20Amber
+    DELETE /v2/tasks/12345/attributes/54321/securityLabels/TLP%3AAMBER
 
 Delete Task Security Labels
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -72,19 +68,17 @@ To delete a Security Label from a Task, use the following format, where ``{secur
 
     DELETE /v2/tasks/{taskId}/securityLabels/{securityLabel}
 
-For example, the query below will delete the ``TLP Amber`` Security Label to the Task with ID 12345:
+For example, the query below will delete the ``TLP:AMBER`` Security Label to the Task with ID 12345:
 
 .. code::
 
-    DELETE /v2/tasks/12345/securityLabels/TLP%20Amber
+    DELETE /v2/tasks/12345/securityLabels/TLP%3AAMBER
 
 JSON Response:
 
 .. code:: json
     
     {
-      "apiCalls": 1,
-      "resultCount": 0,
       "status": "Success"
     }
 
@@ -108,8 +102,6 @@ JSON Response:
 .. code:: json
 
     {
-      "apiCalls": 1,
-      "resultCount": 0,
       "status": "Success"
     }
 
@@ -140,8 +132,6 @@ JSON Response:
 .. code:: json
 
     {
-      "apiCalls": 1,
-      "resultCount": 0,
       "status": "Success"
     }
 
@@ -165,8 +155,6 @@ JSON Response:
 .. code:: json
 
     {
-      "apiCalls": 1,
-      "resultCount": 0,
       "status": "Success"
     }
 
@@ -190,8 +178,6 @@ JSON Response:
 .. code:: json
 
     {
-      "apiCalls": 1,
-      "resultCount": 0,
       "status": "Success"
     }
 
@@ -216,7 +202,5 @@ JSON Response:
 .. code:: json
 
     {
-      "apiCalls": 1,
-      "resultCount": 0,
       "status": "Success"
     }

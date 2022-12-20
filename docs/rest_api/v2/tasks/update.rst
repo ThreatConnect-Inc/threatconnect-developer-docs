@@ -37,7 +37,7 @@ For example, the query below will update the name and due date of the Task with 
     PUT /v2/tasks/12345
     {
       "name": "New Task Name",
-      "dueDate": "2017-07-13T13:36:53-04:00"
+      "dueDate": "2017-07-15T13:36:53-04:00"
     }
 
 JSON Response:
@@ -56,8 +56,9 @@ JSON Response:
             "type": "Organization"
           },
           "dateAdded": "2017-07-13T17:50:17",
+          "lastModified": "2017-07-13T18:12:39"
           "webLink": "https://app.threatconnect.com/auth/task/task.xhtml?task=12345",
-          "dueDate": "2017-07-13T13:36:53-04:00"
+          "dueDate": "2017-07-15T13:36:53-04:00"
         }
       }
     }
@@ -68,7 +69,7 @@ Update Task Metadata
 Update Task Attributes
 ^^^^^^^^^^^^^^^^^^^^^^
 
-To update a Task's Attributse, use the following format:
+To update a Task's Attributes, use the following format:
 
 .. code::
 
