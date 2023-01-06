@@ -46,7 +46,7 @@ source_parsers = {
         }
 master_doc = 'index'
 project = u'ThreatConnect Developer Docs'
-copyright = u'2022, ThreatConnect Inc'
+copyright = u'2023, ThreatConnect Inc'
 version = 'latest'
 release = 'latest'
 exclude_patterns = ['_build']
