@@ -1,14 +1,14 @@
 Available Fields
 ----------------
 
-Use the following query to `retrieve a list of available fields <https://docs.threatconnect.com/en/latest/rest_api/v3/retrieve_fields.html>`_, including each field's name, description, and accepted data type, for the ``/v3/indicators`` endpoint:
+Send the following request to `retrieve a list of available fields <https://docs.threatconnect.com/en/latest/rest_api/v3/retrieve_fields.html>`_, including each field's name, description, and accepted data type, for the ``/v3/indicators`` endpoint:
 
 .. code::
 
     OPTIONS /v3/indicators
 
 .. hint::
-    To view all fields, including read-only fields, include the ``?show=readonly`` query parameter.
+    To include read-only fields in the response, append the ``?show=readonly`` query parameter to the OPTIONS request.
 
 Alternatively, refer to the following table for a list of available fields that can be included in the body of a POST or PUT request for **all** Indicator types.
 
@@ -66,8 +66,8 @@ Alternatively, refer to the following table for a list of available fields that 
      - | {"data": [{"id": 12345}]}
        |
        | {"data": [{"hostName": "badguy.com", "type": "Host"}]}
-   * - attributes
-     - A list of Attributes corresponding to the Indicator 
+   * - attributes [1]_
+     - A list of Attributes added to the Indicator 
      - `Indicator Attribute Object <https://docs.threatconnect.com/en/latest/rest_api/v3/indicator_attributes/indicator_attributes.html>`_
      - FALSE
      - TRUE
@@ -77,9 +77,21 @@ Alternatively, refer to the following table for a list of available fields that 
      - Integer
      - FALSE
      - TRUE
-     - {"data": [{"type": "Attribute Type", "value": "Attribute Value", "source": "Attribute Source"]}}
+     - 1, 2, 3,...100
+   * - ownerId [2]_
+     - The ID of the `owner <https://docs.threatconnect.com/en/latest/rest_api/v3/owners/owners.html>`_ to which the Indicator belongs 
+     - Integer
+     - FALSE
+     - FALSE
+     - 1, 2, 3,...100
+   * - ownerName [2]_
+     - The name of the owner to which the Indicator belongs
+     - String
+     - FALSE
+     - FALSE
+     - "Demo Community"
    * - privateFlag
-     - Indicates where the Indicator is private 
+     - Indicates where the Indicator is private
      - Boolean
      - FALSE
      - TRUE
@@ -102,32 +114,28 @@ Alternatively, refer to the following table for a list of available fields that 
      - FALSE
      - TRUE
      - {"data": [{"name": "Targeted Attack"}]}
-   * - type
+   * - type [3]_
      - The type of Indicator being created
      - String
      - TRUE
      - FALSE
      - "Address", "Host", "Registry Key"
 
-Accepted values for the ``type`` field include:
-
-- ``Address``
-- ``EmailAddress``
-- ``File``
-- ``Host``
-- ``URL``
-- ``ASN``
-- ``CIDR``
-- ``EmailSubject``
-- ``Hashtag``
-- ``Mutex``
-- ``Registry Key``
-- ``User Agent``
-
-.. note::
-    Use the following query to retrieve a list of available `Attribute Types <https://docs.threatconnect.com/en/latest/rest_api/v3/attribute_types/attribute_types.html>`_:
-    
-    ``GET /v3/attributeTypes``
+.. [1] To retrieve a list of available `Attribute Types <https://docs.threatconnect.com/en/latest/rest_api/v3/attribute_types/attribute_types.html>`_, send the following request: ``GET /v3/attributeTypes``.
+.. [2] By default, Indicators will be created in the Organization in which your API user account resides. To create an Indicator in a Community or Source, include the ``ownerId`` or ``ownerName`` field in your request. Alternatively, append the ``?owner=`` query parameter to your request and specify the owner in which to create the Indicator.
+.. [3] The following are accepted values for the ``type`` field:
+    - ``Address``
+    - ``EmailAddress``
+    - ``File``
+    - ``Host``
+    - ``URL``
+    - ``ASN``
+    - ``CIDR``
+    - ``EmailSubject``
+    - ``Hashtag``
+    - ``Mutex``
+    - ``Registry Key``
+    - ``User Agent``
 
 Indicator-Specific Fields
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -197,17 +205,17 @@ File
    * - md5
      - The MD5 hash associated with the File Indicator
      - String
-     - TRUE*
+     - TRUE [4]_
      - FALSE
    * - sha1
      - The SHA1 hash associated with the File Indicator
      - String
-     - TRUE*
+     - TRUE [4]_
      - FALSE
    * - sha256
      - The SHA256 hash associated with the File Indicator
      - String
-     - TRUE*
+     - TRUE [4]_
      - FALSE
    * - size
      - The size of the file associated with the File Indicator
@@ -215,8 +223,7 @@ File
      - FALSE
      - TRUE
 
-.. note::
-    \*When creating a File Indicator, you must **include at least one valid hash**.
+.. [4] When creating a File Indicator, you must include at least one valid hash.
 
 Host
 ====
@@ -376,25 +383,24 @@ Registry Key
      - String
      - TRUE
      - FALSE
-   * - Value Type
+   * - Value Type [5]_
      - The registry value type associated with the Registry Key Indicator
      - String
      - TRUE
      - FALSE
 
-Accepted values for the ``Value Type`` field include:
-
-- ``REG_NONE``
-- ``REG_BINARY``
-- ``REG_DWORD``
-- ``REG_DWORD_LITTLE_ENDIAN``
-- ``REG_DWORD_BIG_ENDIAN``
-- ``REG_EXPAND_SZ``
-- ``REG_LINK``
-- ``REG_MULTI_SZ``
-- ``REG_QWORD``
-- ``REG_QWORD_LITTLE_ENDIAN``
-- ``REG_SZ``
+.. [5] The following are accepted values for a Registry Key Indicator's ``Value Type`` field:
+    - ``REG_NONE``
+    - ``REG_BINARY``
+    - ``REG_DWORD``
+    - ``REG_DWORD_LITTLE_ENDIAN``
+    - ``REG_DWORD_BIG_ENDIAN``
+    - ``REG_EXPAND_SZ``
+    - ``REG_LINK``
+    - ``REG_MULTI_SZ``
+    - ``REG_QWORD``
+    - ``REG_QWORD_LITTLE_ENDIAN``
+    - ``REG_SZ``
 
 User Agent
 ==========

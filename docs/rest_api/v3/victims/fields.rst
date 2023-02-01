@@ -1,14 +1,14 @@
 Available Fields
 ----------------
 
-You can `retrieve a list of available fields <https://docs.threatconnect.com/en/latest/rest_api/v3/retrieve_fields.html>`_ for the ``/v3/victims`` endpoint, including each field's name, description, and accepted data type, by using the following query:
+Send the following request to `retrieve a list of available fields <https://docs.threatconnect.com/en/latest/rest_api/v3/retrieve_fields.html>`_, including each field's name, description, and accepted data type, for the ``/v3/victims`` endpoint:
 
 .. code::
 
     OPTIONS /v3/victims
 
 .. hint::
-    To view all fields, including read-only fields, include the ``?show=readonly`` query parameter.
+    To include read-only fields in the response, append the ``?show=readonly`` query parameter to the OPTIONS request.
 
 Alternatively, refer to the following tables for a list of available fields that can be included in the body of a POST or PUT request for the ``victims`` object.
 
@@ -22,8 +22,8 @@ Alternatively, refer to the following tables for a list of available fields that
      - Required for Creation?
      - Updatable?
      - Example Value(s)
-   * - assets
-     - A list of Victim Assets corresponding to the Victim
+   * - assets [1]_
+     - A list of Victim Assets added to the Victim
      - `Victim Asset Object <https://docs.threatconnect.com/en/latest/rest_api/v3/victim_assets/victim_assets.html>`_
      - FALSE
      - TRUE
@@ -38,8 +38,8 @@ Alternatively, refer to the following tables for a list of available fields that
      - | {"data": [{"id": 12345}]}
        |
        | {"data": [{"name": "Bad Adversary", "type": "Adversary"}]}
-   * - attributes
-     - A list of Attributes corresponding to the Victim
+   * - attributes [2]_
+     - A list of Attributes added to the Victim
      - `Victim Attribute Object <https://docs.threatconnect.com/en/latest/rest_api/v3/victim_attributes/victim_attributes.html>`_
      - FALSE
      - TRUE
@@ -55,6 +55,18 @@ Alternatively, refer to the following tables for a list of available fields that
      - String
      - FALSE
      - TRUE
+     - "American"
+   * - ownerId [3]_
+     - The ID of the `owner <https://docs.threatconnect.com/en/latest/rest_api/v3/owners/owners.html>`_ to which the Victim belongs
+     - Integer
+     - FALSE
+     - FALSE
+     - 1, 2, 3,...100
+   * - ownerName
+     - The name of the owner to which the Victim belongs
+     - String
+     - FALSE
+     - FALSE
      - "American"
    * - org
      - The Victim's organization
@@ -87,18 +99,13 @@ Alternatively, refer to the following tables for a list of available fields that
      - TRUE
      - "Washington, D.C."
 
-The following Victim Asset types can be added to a Victim via the ``assets`` field:
-
+.. [1] The following Victim Asset types can be added to a Victim via the ``assets`` field:
     - ``EmailAddress``
     - ``NetworkAccount``
     - ``Phone``
     - ``SocialNetwork``
     - ``WebSite``
 
-.. note::
-    A list of available `Attribute Types <https://docs.threatconnect.com/en/latest/rest_api/v3/attribute_types/attribute_types.html>`_ can be retrieved with the following query:
-    
-    ``GET /v3/attributeTypes``
+.. [2] To retrieve a list of available `Attribute Types <https://docs.threatconnect.com/en/latest/rest_api/v3/attribute_types/attribute_types.html>`_, send the following request: ``GET /v3/attributeTypes``
 
-.. hint::
-    To **associate an existing Group** to a Victim, use the Group's ID when setting the ``associatedGroups`` field (e.g., {``"data": [{"id": 12345}]}``).
+.. [3] By default, Victims will be created in the Organization in which your API user account resides. To create a Victim in a Community or Source, include the ``ownerId`` or ``ownerName`` field in your request. Alternatively, append the ``?owner=`` query parameter to your request and specify the owner in which to create the Victim.

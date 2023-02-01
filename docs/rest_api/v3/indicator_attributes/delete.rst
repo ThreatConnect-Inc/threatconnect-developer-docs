@@ -1,13 +1,13 @@
 Delete Indicator Attributes
 ---------------------------
 
-The basic format for deleting an Indicator Attribute is:
+Send a request in the following format to delete an Indicator Attribute:
 
 .. code::
 
     DELETE /v3/indicatorAttributes/{indicatorAttributeId}
 
-For example, the following query will delete the Indicator Attribute with ID 10:
+For example, the following request will delete the Indicator Attribute whose ID is 10:
 
 .. code::
 
@@ -23,4 +23,4 @@ JSON Response
     }
 
 .. hint::
-    Indicator Attributes can be removed from an Indicator via the ``mode`` field. See `Update an Object's Metadata <https://docs.threatconnect.com/en/latest/rest_api/v3/update_metadata.html>`_ for more information.
+    You can also remove Indicator Attributes from an Indicator by using the ``mode`` field on the ``/v3/indicators`` endpoint. See `Update an Object's Metadata <https://docs.threatconnect.com/en/latest/rest_api/v3/update_metadata.html>`_ for more information.

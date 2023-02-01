@@ -1,13 +1,13 @@
-Retrieve a PDF Report for Groups
---------------------------------
+Retrieve a PDF Report for a Group
+---------------------------------
 
-To retrieve a PDF report for a Group, use a query in the following format:
+Send a request in the following format to retrieve a PDF report for a Group:
 
 .. code::
 
     GET /v3/groups/{groupId}/pdf
 
-PDF reports can only be retrieved for the following Group types:
+You can retrieve PDF reports for the following Group types:
 
 - ``Adversary``
 - ``Attack Pattern``

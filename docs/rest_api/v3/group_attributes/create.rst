@@ -1,7 +1,7 @@
 Create Group Attributes
 -----------------------
 
-The basic format for creating a Group Attribute is:
+The following example illustrates the basic format for creating a Group Attribute:
 
 .. code::
 
@@ -12,7 +12,7 @@ The basic format for creating a Group Attribute is:
         "value": "Attribute value goes here"
     }
 
-For example, the following query will create an Attribute and add it to the Group with ID 20:
+For example, the following request will create an Attribute and add it to the Group whose ID is 20:
 
 .. code::
 
@@ -31,26 +31,24 @@ JSON Response
     {
         "data": {
             "id": 10,
+            "dateAdded": "2021-11-09T14:42:13Z",
             "type": "Additional Analysis and Context",
             "value": "This is a very dangerous adversary.",
             "source": "Phase of Intrusion",
             "createdBy": {
                 "id": 3,
-                "userName": "11112222333344445555",
-                "firstName": "John",
-                "lastName": "Smith",
-                "pseudonym": "jsmithAPI",
-                "role": "Api User"
+                "userName": "11112222333344445555"
             },
-            "dateAdded": "2021-11-09T14:42:13Z",
             "lastModified": "2021-11-09T14:42:13Z",
+            "pinned": false,
             "default": false
         },
         "message": "Created",
         "status": "Success"
     }
 
+
 Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a POST request for the ``groupAttributes`` object.
 
 .. hint::
-    Group Attributes can also be created when creating a Group. See the “Create Groups” section of `Groups <https://docs.threatconnect.com/en/latest/rest_api/v3/groups/groups.html>`_ for more information.
+    Group Attributes can also be created and added to a Group when creating the Group. See the “Create Groups” section of `Groups <https://docs.threatconnect.com/en/latest/rest_api/v3/groups/groups.html>`_ for more information.

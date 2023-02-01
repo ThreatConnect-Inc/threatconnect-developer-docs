@@ -30,7 +30,7 @@ The following table outlines the fields available when creating File Occurrences
 .. note::
     \*While none of these fields are required, you must include at least one of them to create a File Occurrence.
 
-In the following example, the query will add a File Occurrence to the existing File Indicator with ID ``20``:
+In the following example, the request will add a File Occurrence to the existing File Indicator whose ID is 20:
 
 .. code::
 
@@ -55,9 +55,10 @@ JSON Response
     {
         "data": {
             "id": 20,
+            "ownerId": 1,
             "ownerName": "Demo Organization",
             "dateAdded": "2022-06-14T13:59:54Z",
-            "webLink": "https://app.threatconnect.com/auth/indicators/details/file.xhtml?file=9D67E81C18101FC266057CD7851604B8",
+            "webLink": "https://app.threatconnect.com/#/details/indicators/20/overview",
             "tags": {},
             "securityLabels": {},
             "type": "File",
@@ -74,15 +75,16 @@ JSON Response
             "attributes": {},
             "associatedCases": {},
             "associatedArtifacts": {},
-            "md5": "9D67E81C18101FC266057CD7851604B8"
+            "md5": "9D67E81C18101FC266057CD7851604B8",
+            "legacyLink": "https://app.threatconnect.com/auth/indicators/details/file.xhtml?file=9D67E81C18101FC266057CD7851604B8&owner=Demo+Organization"
         },
         "message": "Updated",
         "status": "Success"
     }
 
-By default, the fileOccurrences field is not included in the response that is returned when retrieving, creating, and updating Indicators. To include this field in responses returned by the API, include the ``?fields=fileOccurrences`` `query parameter <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_ in your request.
+By default, the fileOccurrences field is not included in the response that is returned when retrieving, creating, and updating Indicators. To include this field in responses returned by the API, append the ``?fields=fileOccurrences`` `query parameter <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_ to your request.
 
-For comparison, the following example uses the same request in the preceding example with the ``?fields=fileOccurrences`` query parameter added to it:
+For comparison, the following example is the same request used in the preceding example, but the ``?fields=fileOccurrences`` query parameter has been added to the request:
 
 .. code::
 
@@ -107,9 +109,10 @@ JSON Response
     {
         "data": {
             "id": 20,
+            "ownerId": 1,
             "ownerName": "Demo Organization",
             "dateAdded": "2022-06-14T13:59:54Z",
-            "webLink": "https://appthreatconnect.com/auth/indicators/details/file.xhtml?file=9D67E81C18101FC266057CD7851604B8",
+            "webLink": "https://appthreatconnect.com/#/details/indicators/20/overview",
             "type": "File",
             "lastModified": "2022-06-14T14:00:11Z",
             "summary": "9D67E81C18101FC266057CD7851604B8",
@@ -127,17 +130,17 @@ JSON Response
                 ],
                 "count": 1
             },
-            "md5": "9D67E81C18101FC266057CD7851604B8"
+            "md5": "9D67E81C18101FC266057CD7851604B8",
+            "legacyLink": "https://appthreatconnect.com/auth/indicators/details/file.xhtml?file=9D67E81C18101FC266057CD7851604B8&owner=Demo+Organization"
         },
         "message": "Updated",
         "status": "Success"
     }
 
-
 Manage an Indicator's File Actions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You can append, replace, and delete File Occurrences via the ``mode`` field. If deleting a File Occurrence, use the File Occurrence's ID when constructing your query. For example, the following query will delete the File Occurrence with ID ``5`` added to the File Indicator with ``20``:
+You can append, replace, and delete File Occurrences via the ``mode`` field. If deleting a File Occurrence, use the File Occurrence's ID when constructing your request. For example, the following request will delete the File Occurrence whose ID is 5 added to the File Indicator whose ID is 20:
 
 .. code::
 

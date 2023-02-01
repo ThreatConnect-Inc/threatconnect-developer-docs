@@ -1,7 +1,7 @@
 Retrieve Victim Attributes
 --------------------------
 
-The following section describes how to retrieve Victim Attributes via the ``/v3/victimAttributes`` endpoint. In addition to the methods described in this section, you can retrieve Attributes added to a specific Victim by using the following query:
+The following section describes how to retrieve Victim Attributes via the ``/v3/victimAttributes`` endpoint. In addition to the methods described in this section, you can send the following request to retrieve Attributes added to a specific Victim: ``GET /v3/victims/{victimId}?fields=attributes``.
 
 .. code::
 
@@ -10,7 +10,7 @@ The following section describes how to retrieve Victim Attributes via the ``/v3/
 Retrieve All Victim Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To retrieve all Victim Attributes, use the following query:
+Send the following request to retrieve data for all Victim Attributes:
 
 .. code::
 
@@ -24,34 +24,29 @@ JSON Response
         "data": [
             {
                 "id": 2,
+                "dateAdded": "2021-11-09T15:49:22Z",
                 "type": "Description",
                 "value": "Ransomware attack victim.",
                 "createdBy": {
                     "id": 1,
-                    "userName": "smithj@threatconnect.com",
-                    "firstName": "John",
-                    "lastName": "Smith",
-                    "pseudonym": "jsmith"
+                    "userName": "smithj@threatconnect.com"
                 },
-                "dateAdded": "2021-11-09T15:49:22Z",
                 "lastModified": "2021-11-09T15:49:22Z",
+                "pinned": false,
                 "default": true
             },
             {
                 "id": 1,
+                "dateAdded": "2021-11-09T15:43:06Z",
                 "type": "Additional Analysis and Context",
                 "value": "Based on additional analysis, it was determined that this victim's bank account was hacked.",
                 "source": "Phase of Intrusion",
                 "createdBy": {
                     "id": 3,
-                    "userName": "11112222333344445555",
-                    "firstName": "John",
-                    "lastName": "Smith",
-                    "pseudonym": "jsmithAPI",
-                    "role": "Api User"
+                    "userName": "11112222333344445555"
                 },
-                "dateAdded": "2021-11-09T15:43:06Z",
                 "lastModified": "2021-11-09T15:43:06Z",
+                "pinned": false,
                 "default": false
             }
         ],
@@ -61,13 +56,13 @@ JSON Response
 Retrieve a Single Victim Attribute
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To retrieve a specific Victim Attribute, use a query in the following format:
+Send a request in the following format to retrieve data for a specific Victim Attribute:
 
 .. code::
 
     GET /v3/victimAttributes/{victimAttributeId}
 
-For example, the following query will return information about the Victim Attribute with ID 2:
+For example, the following request will retrieve data for the Victim Attribute whose ID is 2:
 
 .. code::
 
@@ -80,17 +75,15 @@ JSON Response
     {
         "data": {
             "id": 2,
+            "dateAdded": "2021-11-09T15:49:22Z",
             "type": "Description",
             "value": "Ransomware attack victim.",
             "createdBy": {
                 "id": 1,
-                "userName": "smithj@threatconnect.com",
-                "firstName": "John",
-                "lastName": "Smith",
-                "pseudonym": "jsmith"
+                "userName": "smithj@threatconnect.com"
             },
-            "dateAdded": "2021-11-09T15:49:22Z",
             "lastModified": "2021-11-09T15:49:22Z",
+            "pinned": false,
             "default": true
         },
         "status": "Success"
@@ -99,9 +92,9 @@ JSON Response
 Request Additional Fields
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To request additional fields not automatically included with each returned object, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
+To request additional fields not included in the default response, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
 
 Filter Results
 ^^^^^^^^^^^^^^
 
-To filter returned objects using ThreatConnect Query Language (TQL), refer to `Filter Results with TQL <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_.
+To filter results using ThreatConnect Query Language (TQL), refer to `Filter Results with TQL <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_.

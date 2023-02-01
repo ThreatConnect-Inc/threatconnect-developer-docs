@@ -1,7 +1,7 @@
 Update Victim Attributes
 ------------------------
 
-The basic format for updating a Victim Attribute is:
+The following example illustrates the basic format for updating a Victim Attribute:
 
 .. code::
 
@@ -10,7 +10,7 @@ The basic format for updating a Victim Attribute is:
         {updatedField}: {updatedValue}
     }
 
-For example, the following query will update the value of the Victim Attribute with ID 1 and make it the default Attribute of its type:
+For example, the following request will update the value of the Victim Attribute whose ID is 1 and make it the default Attribute of its type:
 
 .. code::
 
@@ -27,19 +27,16 @@ JSON Response
     {
         "data": {
             "id": 1,
+            "dateAdded": "2021-11-09T15:43:06Z",
             "type": "Additional Analysis and Context",
             "value": "Based on additional analysis, it was determined that this victim's bank account was hacked.",
             "source": "Phase of Intrusion",
             "createdBy": {
                 "id": 3,
-                "userName": "11112222333344445555",
-                "firstName": "John",
-                "lastName": "Smith",
-                "pseudonym": "jsmithAPI",
-                "role": "Api User"
+                "userName": "11112222333344445555"
             },
-            "dateAdded": "2021-11-09T15:43:06Z",
             "lastModified": "2021-11-09T15:43:06Z",
+            "pinned": false,
             "default": true
         },
         "message": "Updated",

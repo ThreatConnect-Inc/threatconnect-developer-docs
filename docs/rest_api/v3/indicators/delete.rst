@@ -1,13 +1,13 @@
 Delete Indicators
 -----------------
 
-The basic format for deleting an Indicator is:
+Send a request in the following format to delete an Indicator:
 
 .. code::
 
     DELETE /v3/indicators/{indicatorId or indicatorSummary}
 
-For example, the following query will delete the Indicator with ID 3:
+For example, the following request will delete the Indicator whose ID is 3:
 
 .. code::
 
@@ -22,8 +22,17 @@ JSON Response
         "status": "Success"
     }
 
-The same response would be returned if we used the following request, where the Indicator ID is replaced with the Indicator's summary:
+The same response will be returned for the following request, where the Indicator's ID is replaced with its summary:
 
 .. code::
 
     DELETE /v3/indicators/badguy.com
+
+JSON Response
+
+.. code::
+
+    {
+        "message": "Deleted",
+        "status": "Success"
+    }

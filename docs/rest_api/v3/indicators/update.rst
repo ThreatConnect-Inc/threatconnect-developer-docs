@@ -1,7 +1,7 @@
 Update Indicators
 -----------------
 
-The basic format for updating an Indicator is:
+The following example illustrates the basic format for updating an Indicator:
 
 .. code::
 
@@ -30,12 +30,12 @@ Refer to the `Available Fields <#available-fields>`_ and `Indicator-Specific Fie
 Example PUT Request
 ^^^^^^^^^^^^^^^^^^^^^
 
-The following query will complete the following actions for the ``ultrabadguy.com`` Host Indicator:
+The following request will make the following updates to the ultrabadguy.com Host Indicator:
 
 - Disable the **DNS** feature for the Indicator
-- Dissociate the ``Bad Guy`` Adversary Group from the Indicator
+- Dissociate the **Bad Guy** Adversary Group from the Indicator
 - Update the Indicator's Confidence Rating
-- Replace an existing Security Label applied to the Indicator with a ``TLP: Red`` Security Label
+- Replace any existing Security Labels applied to the Indicator with the ``TLP: RED`` Security Label
 - Apply a new ``Russia`` Tag to the Indicator without replacing any existing Tags applied to the Indicator.
 
 .. code::
@@ -43,7 +43,7 @@ The following query will complete the following actions for the ``ultrabadguy.co
     PUT /v3/indicators/ultrabadguy.com
     {
         "dnsActive": false,
-        "associatedGroups": [{"id": 15}], "mode": "delete"},
+        "associatedGroups": {"data": [{"id": 15}], "mode": "delete"},
         "confidence": 92,
         "securityLabels": {"data": [{"name": "TLP:RED"}], "mode": "replace"},
         "tags": {"data": [{"name": "Russia"}], "mode": "append"}
@@ -56,9 +56,10 @@ JSON Response
     {
         "data": {
             "id": 4,
+            "ownerId": 1,
             "ownerName": "Demo Organization",
             "dateAdded": "2021-11-05T16:43:17Z",
-            "webLink": "https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=ultrabadguy.com",
+            "webLink": "https://app.threatconnect.com/#/details/indicators/4/overview",
             "tags": {
                 "data": [
                     {
@@ -80,91 +81,74 @@ JSON Response
                 ]
             },
             "securityLabels": {
-                "data": [{
-                    "id": 4,
-                    "name": "TLP:RED",
-                    "description": "This security label is used for information that cannot be effectively acted upon by additional parties, and could lead to impacts on a party's privacy, reputation, or operations if misused.",
-                    "color": "FF0033",
-                    "owner": "System",
-                    "dateAdded": "2016-08-31T00:00:00Z"
-                }]
+                "data": [
+                    {
+                        "id": 4,
+                        "name": "TLP:RED",
+                        "description": "This security label is used for information that cannot be effectively acted upon by additional parties, and could lead to impacts on a party's privacy, reputation, or operations if misused.",
+                        "color": "FF2B2B",
+                        "owner": "System",
+                        "dateAdded": "2016-08-31T00:00:00Z"
+                    }
+                ]
             },
-            "lastModified": "2021-11-05T17:21:06Z",
             "type": "Host",
-            "rating": 5.0,
+            "lastModified": "2021-11-05T17:21:06Z",
+            "rating": 5.00,
             "confidence": 92,
             "summary": "ultrabadguy.com",
             "privateFlag": false,
             "active": true,
             "activeLocked": false,
             "associatedGroups": {
-                "data": [{
-                    "id": 12,
-                    "type": "Incident",
-                    "ownerName": "Demo Source",
-                    "dateAdded": "2021-08-27T12:16:56Z",
-                    "webLink": "https://app.threatconnect.com/auth/incident/incident.xhtml?incident=12",
-                    "name": "Dangerous Incident",
-                    "createdBy": {
-                        "id": 1,
-                        "userName": "smithj@threatconnect.com",
-                        "firstName": "John",
-                        "lastName": "Smith",
-                        "pseudonym": "JMS",
-                        "owner": "Demo Organization",
-                        "systemRole": "Administrator"
+                "data": [
+                    {
+                        "id": 12,
+                        "ownerId": 1,
+                        "type": "Incident",
+                        "ownerName": "Demo Organization",
+                        "dateAdded": "2021-08-27T12:16:56Z",
+                        "webLink": "https://app.threatconnect.com/#/details/groups/12/overview",
+                        "name": "Dangerous Incident",
+                        "createdBy": {
+                            "id": 1,
+                            "userName": "smithj@threatconnect.com"
+                        },
+                        "upVoteCount": "0",
+                        "downVoteCount": "0",
+                        "lastModified": "2021-11-05T16:43:17Z",
+                        "legacyLink": "https://app.threatconnect.com/auth/incident/incident.xhtml?incident=12"
                     }
-                }]
+                ]
             },
-            "associatedIndicators": {
-                "data": [{
-                    "id": 4,
-                    "type": "Host",
-                    "ownerName": "Demo Organization",
-                    "dateAdded": "2021-11-05T16:43:17Z",
-                    "webLink": "https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=ultrabadguy.com",
-                    "lastModified": "2021-11-05T17:21:07Z",
-                    "rating": 5.0,
-                    "confidence": 92,
-                    "source": "A Reliable Source",
-                    "description": "Potentially malicious host related to malware dissemination.",
-                    "summary": "ultrabadguy.com",
-                    "privateFlag": false,
-                    "active": true,
-                    "activeLocked": false,
-                    "hostName": "ultrabadguy.com",
-                    "dnsActive": false,
-                    "whoisActive": true
-                }]
-            },
+            "associatedIndicators": {},
             "fileActions": {
                 "count": 0
             },
             "attributes": {
-                "data": [{
-                    "id": 24,
-                    "type": "Additional Analysis and Context",
-                    "value": "This host is very dangerous",
-                    "source": "Phase of Intrusion",
-                    "createdBy": {
-                        "id": 3,
-                        "userName": "11112222333344445555",
-                        "firstName": "John",
-                        "lastName": "Smith",
-                        "pseudonym": "jsmithAPI",
-                        "owner": "Demo Organization",
-                        "systemRole": "API User"
-                    },
-                    "dateAdded": "2021-11-05T16:43:17Z",
-                    "lastModified": "2021-11-05T16:43:17Z",
-                    "default": false
-                }]
+                "data": [
+                    {
+                        "id": 24,
+                        "dateAdded": "2021-11-05T16:43:17Z",
+                        "type": "Additional Analysis and Context",
+                        "value": "This host is very dangerous",
+                        "source": "Phase of Intrusion",
+                        "createdBy": {
+                            "id": 3,
+                            "userName": "11112222333344445555"
+                        },
+                        "lastModified": "2021-11-05T16:43:17Z",
+                        "pinned": false,
+                        "default": false
+                    }
+                ]
             },
             "associatedCases": {},
             "associatedArtifacts": {},
             "hostName": "ultrabadguy.com",
             "dnsActive": false,
-            "whoisActive": true
+            "whoisActive": true,
+            "legacyLink": "https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=ultrabadguy.com&owner=Demo+Organization"
         },
         "message": "Updated",
         "status": "Success"

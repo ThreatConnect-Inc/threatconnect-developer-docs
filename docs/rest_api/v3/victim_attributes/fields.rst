@@ -1,14 +1,14 @@
 Available Fields
 ----------------
 
-You can `retrieve a list of available fields <https://docs.threatconnect.com/en/latest/rest_api/v3/retrieve_fields.html>`_ for the ``/v3/victimAttributes`` endpoint, including each field's name, description, and accepted data type, by using the following query:
+Send the following request to `retrieve a list of available fields <https://docs.threatconnect.com/en/latest/rest_api/v3/retrieve_fields.html>`_, including each field's name, description, and accepted data type, for the ``/v3/victimAttributes`` endpoint:
 
 .. code::
 
     OPTIONS /v3/victimAttributes
 
 .. hint::
-    To view all fields, including read-only fields, include the ``?show=readonly`` query parameter.
+    To include read-only fields in the response, append the ``?show=readonly`` query parameter to the OPTIONS request.
 
 Alternatively, refer to the following tables for a list of available fields that can be included in the body of a POST or PUT request for the ``victimAttributes`` object.
 
@@ -22,8 +22,13 @@ Alternatively, refer to the following tables for a list of available fields that
      - Required for Creation?
      - Updatable?
    * - default
-     - A flag indicating whether an Attribute is the default Attribute of its type within the object (this field applies to certain Attribute and data types only)
+     - Indicates whether the Attribute is the default Attribute of its type for the Victim to which it is added (this field applies to certain Attribute and data types only)
      - Boolean
+     - FALSE
+     - TRUE
+   * - securityLabels
+     - A list of Security Labels applied to the Attribute
+     - `Security Label Object <https://docs.threatconnect.com/en/latest/rest_api/v3/security_labels/security_labels.html>`_
      - FALSE
      - TRUE
    * - source
@@ -31,7 +36,7 @@ Alternatively, refer to the following tables for a list of available fields that
      - String
      - FALSE
      - TRUE
-   * - type
+   * - type [1]_
      - The Attribute's type
      - String
      - TRUE
@@ -42,12 +47,9 @@ Alternatively, refer to the following tables for a list of available fields that
      - TRUE
      - TRUE
    * - victimId
-     - The ID of the Victim associated with the Attribute
+     - The ID of the Victim to which the Attribute is added
      - Integer
      - TRUE
      - FALSE
 
-.. note::
-    When setting the ``type`` field, you must enter a valid Attribute Type that applies to Victims. To retrieve a list of available `Attribute Types <https://docs.threatconnect.com/en/latest/rest_api/v3/attribute_types/attribute_types.html>`_, use the following query:
-    
-    ``GET /v3/attributeTypes``
+.. [1] When setting the ``type`` field, you must enter a valid Attribute Type that applies to Victims. To retrieve a list of available `Attribute Types <https://docs.threatconnect.com/en/latest/rest_api/v3/attribute_types/attribute_types.html>`_, send the following request: ``GET /v3/attributeTypes``.

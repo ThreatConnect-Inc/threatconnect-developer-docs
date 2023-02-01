@@ -1,13 +1,13 @@
 Delete Victim Attributes
 ------------------------
 
-The basic format for deleting a Victim Attribute is:
+Send a request in the following format to delete a Victim Attribute:
 
 .. code::
 
     DELETE /v3/victimAttributes/{victimAttributeId}
 
-For example, the following query will delete the Victim Attribute with ID 1:
+For example, the following request will delete the Victim Attribute whose ID is 1:
 
 .. code::
 
@@ -23,4 +23,4 @@ JSON Response
     }
 
 .. note::
-    Victim Attributes can be removed from a Victim via the ``mode`` field. See `Update an Object's Metadata <https://docs.threatconnect.com/en/latest/rest_api/v3/update_metadata.html>`_ for more information.
+    You can also remove Victim Attributes from a Victim by using the ``mode`` field on the ``/v3/victims`` endpoint. See `Update an Object's Metadata <https://docs.threatconnect.com/en/latest/rest_api/v3/update_metadata.html>`_ for more information.

@@ -1,7 +1,7 @@
 Update Group Attributes
 -----------------------
 
-The basic format for updating a Group Attribute is:
+The following example illustrates the basic format for updating a Group Attribute:
 
 .. code::
 
@@ -10,7 +10,7 @@ The basic format for updating a Group Attribute is:
         {updatedField}: {updatedValue}
     }
 
-For example, the following query will update the value of the Group Attribute with ID 10 and make it the default Attribute of its type:
+For example, the following request will update the value of the Group Attribute whose ID is 10 and make it the default Attribute of its type:
 
 .. code::
 
@@ -27,19 +27,16 @@ JSON Response
     {
         "data": {
             "id": 10,
+            "dateAdded": "2021-11-09T14:42:13Z",
             "type": "Additional Analysis and Context",
             "value": "This is an extremely dangerous adversary.",
             "source": "Phase of Intrusion",
             "createdBy": {
                 "id": 3,
-                "userName": "11112222333344445555",
-                "firstName": "John",
-                "lastName": "Smith",
-                "pseudonym": "jsmithAPI",
-                "role": "Api User"
+                "userName": "11112222333344445555"
             },
-            "dateAdded": "2021-11-09T14:42:13Z",
             "lastModified": "2021-11-09T14:42:13Z",
+            "pinned": false,
             "default": true
         },
         "message": "Updated",

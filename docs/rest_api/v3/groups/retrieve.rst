@@ -4,7 +4,7 @@ Retrieve Groups
 Retrieve All Groups
 ^^^^^^^^^^^^^^^^^^^
 
-To retrieve all Groups, use the following query:
+Send the following request to retrieve data for all Groups:
 
 .. code::
 
@@ -18,68 +18,69 @@ JSON Response
         "data": [
             {
                 "id": 10,
+                "ownerId": 1,
                 "ownerName": "Demo Organization",
                 "dateAdded": "2021-10-21T19:54:59Z",
-                "webLink": "https://app.threatconnect.com//auth/document/document.xhtml?document=10",
+                "webLink": "https://app.threatconnect.com/auth/document/document.xhtml?document=10",
                 "type": "Document",
                 "name": "Bad Document",
                 "createdBy": {
                     "id": 3,
-                    "userName": "11112222333344445555",
-                    "firstName": "John",
-                    "lastName": "Smith",
-                    "pseudonym": "jsmithAPI",
-                    "owner": "Demo Organization",
-                    "systemRole": "Api User"
+                    "userName": "11112222333344445555"
                 },
+                "upVoteCount":"0",
+                "downVoteCount":"0",
                 "fileName": "indicators.txt",
                 "fileSize": 36,
                 "status": "Success",
                 "documentType": "Text",
                 "documentDateAdded": "2021-10-21T19:54:59Z",
-                "lastModified": "2022-03-09T12:44:04Z"
+                "lastModified": "2022-03-09T12:44:04Z",
+                "legacyLink": "https://app.threatconnect.com/auth/document/document.xhtml?document=10"
             },
             {
                 "id": 9,
-                "type": "Email",
+                "ownerId": 1,
                 "ownerName": "Demo Organization",
                 "dateAdded": "2021-09-17T12:52:49Z",
-                "webLink": "https://app.threatconnect.com//auth/email/email.xhtml?email=9",
+                "webLink": "https://app.threatconnect.com/auth/email/email.xhtml?email=9",
+                "type": "Email",
                 "name": "Your Amazon.com order for demo@sample.com",
                 "createdBy": {
                     "id": 1,
-                    "userName": "smithj@threatconnect.com",
-                    "firstName": "John",
-                    "lastName": "Smith",
-                    "pseudonym": "JMS",
-                    "owner": "Demo Organization",
-                    "systemRole": "Administrator"
+                    "userName": "smithj@threatconnect.com"
                 },
+                "upVoteCount":"0",
+                "downVoteCount":"0",
                 "to": "demo@sample.com",
                 "from": "auto-confirm@bad.com",
                 "subject": "Your Amazon.com order for demo@sample.com",
-                "header": "Delivered-To: [MY EMAIL ADDRESS]\r\nReceived: by 10.182.3.66 with SMTP id a2csp104490oba;\r\nFri, 17 Sep 2021 08:50:19 -0400\r\n\r\nReceived: by 10.14.212.72 with SMTP id x48mr8232338eeo.40.1344724334578;\r\n\r\nFri, 17 Sep 2021 08:50:19 -0400\r\n\r\nReturn-Path: <e.vwidxus@yahoo.com>\r\n\r\nReceived: from 72-255-12-30.client.stsn.net (72-255-12-30.client.stsn.net. [72.255.12.30])\r\n\r\nby mx.google.com with ESMTP id c41si1698069eem.38.2012.08.11.15.32.13;\r\n\r\nFri, 17 Sep 2021 08:50:19 -0400\r\n\r\nReceived-SPF: neutral (google.com: 72.255.12.30 is neither permitted nor denied by best guess record for domain of e.vwidxus@yahoo.com) client-ip=72.255.12.30;\r\n\r\nAuthentication-Results: mx.google.com; spf=neutral (google.com: 72.255.12.30 is neither permitted nor denied by best guess record for domain of e.vwidxus@yahoo.com) smtp.mail=e.vwidxus@yahoo.com\r\n\r\nReceived: by vwidxus.net id hnt67m0ce87b for <[MY EMAIL ADDRESS]>; Fri, 17 Sep 2021 08:50:19 -0400 (envelope-from <e.vwidxus@yahoo.com>)\r\n\r\nReceived: from vwidxus.net by web.vwidxus.net with local (Mailing Server 4.69)\r\n\r\nid 34597139-886586-27/./PV3Xa/WiSKhnO+7kCTI+xNiKJsH/rC/\r\n\r\nfor root@vwidxus.net; Fri, 17 Sep 2021 08:50:19 -0400",
-                "body": "Please visit bad.com to see your order and give us all your money. Muahahahaha!\r\n\r\n",
+                "header": "<email header goes here>",
+                "body": "Please visit bad.com to see your order and give us all your money. Muahahahaha!",
                 "scoreIncludesBody": true,
                 "emailDate": "2021-09-17T12:50:19Z",
                 "scoreBreakdown": "Rule SPF Neutral was matched against 'neutral'.\t100\nRule Host was matched against 'bad.com'.\t282\n",
-                "lastModified": "2022-03-09T20:39:52Z"
+                "lastModified": "2022-03-09T20:39:52Z",
+                "legacyLink": "https://app.threatconnect.com/auth/email/email.xhtml?email=9"
             },
             {...}
         ],
         "status": "Success"
     }
 
-Retrieve a Single Group
-^^^^^^^^^^^^^^^^^^^^^^^
+.. hint::
+    To limit the results to a specific owner, append the ``?owner=`` query parameter to your request. For more information about the ``?owner=`` query parameter, see `Specify an Owner <https://docs.threatconnect.com/en/latest/rest_api/v3/specify_owner.html>`_.
 
-To retrieve a specific Group, use a query in the following format:
+Retrieve a Specific Group
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Send a request in the following format to retrieve data for a specific Group:
 
 .. code::
 
     GET /v3/groups/{groupId}
 
-For example, the following query will return information about the Group with ID 3:
+For example, the following request will retrieve data for the Group whose ID is 3:
 
 .. code::
 
@@ -92,23 +93,22 @@ JSON Response
     {
         "data": {
             "id": 3,
+            "ownerId": 1,
             "ownerName": "Demo Organization",
             "dateAdded": "2021-11-03T14:57:45Z",
-            "webLink": "https://app.threatconnect.com//auth/incident/incident.xhtml?incident=3",
+            "webLink": "https://app.threatconnect.com/#/details/groups/3/overview",
             "type": "Incident",
             "name": "Bad Incident",
             "createdBy": {
                 "id": 3,
-                "userName": "11112222333344445555",
-                "firstName": "John",
-                "lastName": "Smith",
-                "pseudonym": "jsmithAPI",
-                "owner": "Demo Organization",
-                "systemRole": "Api User"
+                "userName": "11112222333344445555"
             },
+            "upVoteCount":"0",
+            "downVoteCount":"0",
             "status": "New",
             "eventDate": "2021-11-03T00:00:00Z",
-            "lastModified": "2022-02-16T14:57:45Z"
+            "lastModified": "2021-11-03T14:57:45Z2022-02-16T18:54:23Z",
+            "legacyLink": "https://app.threatconnect.com/auth/incident/incident.xhtml?incident=3",
         },
         "status": "Success"
     }
@@ -116,9 +116,9 @@ JSON Response
 Request Additional Fields
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To request additional fields not automatically included with each returned object, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
+To request additional fields not included in the default response, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
 
 Filter Results
 ^^^^^^^^^^^^^^
 
-To filter returned objects using ThreatConnect Query Language (TQL), refer to `Filter Results with TQL <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_.
+To filter results using ThreatConnect Query Language (TQL), refer to `Filter Results with TQL <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_.

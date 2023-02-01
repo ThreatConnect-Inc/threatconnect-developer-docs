@@ -4,7 +4,7 @@ Retrieve Victims
 Retrieve All Victims
 ^^^^^^^^^^^^^^^^^^^^
 
-To retrieve all Victims, use the following query:
+Send the following request to retrieve data for all Victims:
 
 .. code::
 
@@ -37,16 +37,19 @@ JSON Response
         "status": "Success"
     }
 
+.. hint::
+    To limit the results to a specific owner, append the ``?owner=`` query parameter to your request. For more information about the ``?owner=`` query parameter, see `Specify an Owner <https://docs.threatconnect.com/en/latest/rest_api/v3/specify_owner.html>`_.
+
 Retrieve a Single Victim
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-To retrieve a specific Victim, use a query in the following format:
+Send a request in the following format to retrieve data for a specific Victim:
 
 .. code::
 
     GET /v3/victims/{victimId}
 
-For example, the following query will return information about the Victim with ID 3:
+For example, the following request will retrieve data for the Victim whose ID is 3:
 
 .. code::
 
@@ -73,9 +76,9 @@ JSON Response
 Request Additional Fields
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To request additional fields not automatically included with each returned object, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
+To request additional fields not include in the default response, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
 
 Filter Results
 ^^^^^^^^^^^^^^
 
-To filter returned objects using ThreatConnect Query Language (TQL), refer to `Filter Results with TQL <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_.
+To filter results using ThreatConnect Query Language (TQL), refer to `Filter Results with TQL <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_.

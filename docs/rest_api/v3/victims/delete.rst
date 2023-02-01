@@ -1,13 +1,13 @@
 Delete Victims
 --------------
 
-The basic format for deleting a Victim is:
+Send a request in the following format to delete a Victim:
 
 .. code::
 
     DELETE /v3/victims/{victimId}
 
-For example, the following query will delete the Group with ID 1:
+For example, the following request will delete the Victim whose ID is 1:
 
 .. code::
 
