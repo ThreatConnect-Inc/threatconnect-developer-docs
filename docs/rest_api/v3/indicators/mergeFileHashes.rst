@@ -25,7 +25,7 @@ JSON Response
     {
         "data": {
             "id": 28,
-            "ownerId": ,
+            "ownerId": 1,
             "ownerName": "Demo Organization",
             "dateAdded": "2023-01-27T17:03:38Z",
             "webLink": "https://app.threatconnect.com/#/details/indicators/28/overview",
