@@ -40,8 +40,8 @@ JSON Response
 .. hint::
     To limit the results to a specific owner, append the ``?owner=`` query parameter to your request. For more information about the ``?owner=`` query parameter, see `Specify an Owner <https://docs.threatconnect.com/en/latest/rest_api/v3/specify_owner.html>`_.
 
-Retrieve a Single Victim
-^^^^^^^^^^^^^^^^^^^^^^^^
+Retrieve a Specific Victim
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Send a request in the following format to retrieve data for a specific Victim:
 

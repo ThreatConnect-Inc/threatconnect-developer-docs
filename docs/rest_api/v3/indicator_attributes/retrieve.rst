@@ -63,8 +63,8 @@ JSON Response
         "status": "Success"
     }
 
-Retrieve a Single Indicator Attribute
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Retrieve a Specific Indicator Attribute
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Send a request in the following format to retrieve data for a specific Indicator Attribute:
 

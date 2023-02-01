@@ -53,8 +53,8 @@ JSON Response
         "status": "Success"
     }
 
-Retrieve a Single Victim Attribute
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Retrieve a Specific Victim Attribute
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Send a request in the following format to retrieve data for a specific Victim Attribute:
 
