@@ -14,6 +14,7 @@ Refer to the `Available Fields <#available-fields>`_ and `Group-Specific Fields 
 
 .. hint::
     When updating a Group, you can use the ``mode`` field to add or remove the following metadata:
+    
     - ``associatedArtifacts``
     - ``associatedCases``
     - ``associatedGroups``

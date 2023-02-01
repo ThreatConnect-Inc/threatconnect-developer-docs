@@ -120,6 +120,7 @@ Alternatively, refer to the following table for a list of available fields that 
 .. [1] To retrieve a list of available `Attribute Types <https://docs.threatconnect.com/en/latest/rest_api/v3/attribute_types/attribute_types.html>`_, send the following request: ``GET /v3/attributeTypes``.
 .. [2] By default, Groups will be created in the Organization in which your API user account resides. To create a Group in a Community or Source, include the ``ownerId`` or ``ownerName`` field in your request. Alternatively, append the ``?owner=`` query parameter to your request and specify the owner in which to create the Group.
 .. [3] The following are accepted values for the ``type`` field:
+
     - ``Adversary``
     - ``Attack Pattern``
     - ``Campaign``
@@ -143,7 +144,7 @@ Group-Specific Fields
 
 Based on the type of Group being created, you may need to include additional fields in the body of a POST request. Similarly, some Group types include additional fields that may be updated via a PUT request.
 
-The following tables lists valid fields that can be included in the body of a POST or PUT request for ``Campaign``, ``Document``, ``Email``, ``Event``, ``Incident``, ``Report``, ``Signature``, and ``Task`` Groups.
+The following tables lists valid fields that can be included in the body of a POST or PUT request Campaign, Document, Email, Event, Incident, Report, Signature, and Task Groups.
 
 Campaign
 ========
@@ -193,7 +194,7 @@ Document
 
 .. [4] If ``malware`` is set to ``true``, then the ``password`` field will be required.
 
-To upload a file to a Document Group or update the contents of a file uploaded to a Document Group, see the `Upload a File to a Document or Report Group <#upload-a-file-to-a-document-or-report-group>`_ and `Update a Document or Report Group's File <#update-a-document-or-report-groups-file>`_ sections, respectively.
+To upload a file to a Document Group or update the contents of a file uploaded to a Document Group, see the `Upload a File to a Document or Report Group <#upload-a-file-to-a-document-or-report-group-2>`_ and `Update a Document or Report Group's File <#update-a-document-or-report-group-s-file-2>`_ sections, respectively.
 
 Email
 =====
@@ -255,6 +256,7 @@ Event
      - TRUE
 
 .. [5] The following are accepted values for an Event Group's ``status`` field:
+
     - ``Needs Review``
     - ``False Positive``
     - ``No Further Action``
@@ -284,6 +286,7 @@ Incident
      - TRUE
 
 .. [6] The following are accepted values for an Incident Group's ``status`` field:
+
     - ``New``
     - ``Open``
     - ``Stalled``
@@ -317,7 +320,7 @@ Report
      - FALSE
      - TRUE
 
-To upload a file to a Report Group or update the contents of a file uploaded to a Report Group, see the `Upload a File to a Document or Report Group <#upload-a-file-to-a-document-or-report-group>`_ and `Update a Document or Report Group's File <#update-a-document-or-report-groups-file>`_ sections, respectively.
+To upload a file to a Report Group or update the contents of a file uploaded to a Report Group, see the `Upload a File to a Document or Report Group <#upload-a-file-to-a-document-or-report-group-2>`_ and `Update a Document or Report Group's File <#update-a-document-or-report-group-s-file-2>`_ sections, respectively.
 
 Signature
 =========
@@ -350,6 +353,7 @@ Signature
 .. [7] The ``fileText`` field contains the Signature itself, which must be properly escaped and encoded when creating or updating the Signature Group.
 
 .. [8] The following are accepted values for a Signature Group's ``fileType`` field:
+
     - ``Bro``
     - ``ClamAV``
     - ``CybOX``
@@ -410,6 +414,7 @@ Task
      - "In Progress", "Not Started"
 
 .. [9] The following are accepted values for a Task Group's ``status`` field:
+
     - ``Not Started``
     - ``In Progress``
     - ``Completed``

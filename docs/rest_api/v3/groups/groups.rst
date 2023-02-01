@@ -9,7 +9,7 @@ Endpoint: ``/api/v3/groups``
 .. note::
     When working with Groups using the ThreatConnect REST API, you may need to specify the ID of the Group with which you would like to work. While you can use the API to retrieve a Group's ID, you can also find it in the URL of each Group.
 
-    If you navigate to the `new **Details** screen <https://knowledge.threatconnect.com/docs/the-details-screen>`_, the URL should look like ``https://app.threatconnect.com/#/details/groups/123456/overview``. The number between ``groups/`` and ``/overview`` is the Group's ID. Similarly, if you navigate to the `legacy **Details** screen <https://knowledge.threatconnect.com/docs/the-details-screen-legacy>`_ for a Group, the URL should look like ``https://app.threatconnect.com/auth/<GROUP-TYPE>/<GROUP-TYPE>.xhtml?<GROUP-TYPE>=123456``. The number following ``<GROUP-TYPE>=`` is the Group's ID.
+    If you navigate to the new **Details** screen, the URL should look like ``https://app.threatconnect.com/#/details/groups/123456/overview``. The number between ``groups/`` and ``/overview`` is the Group's ID. Similarly, if you navigate to the legacy **Details** screen for a Group, the URL should look like ``https://app.threatconnect.com/auth/<GROUP-TYPE>/<GROUP-TYPE>.xhtml?<GROUP-TYPE>=123456``. The number following ``<GROUP-TYPE>=`` is the Group's ID.
 
 .. include:: fields.rst
 

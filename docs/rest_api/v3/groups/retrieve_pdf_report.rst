@@ -9,16 +9,16 @@ Send a request in the following format to retrieve a PDF report for a Group:
 
 You can retrieve PDF reports for the following Group types:
 
-- ``Adversary``
-- ``Attack Pattern``
-- ``Campaign``
-- ``Course of Action``
-- ``Event``
-- ``Incident``
-- ``Intrusion Set``
-- ``Malware``
-- ``Report``
-- ``Tactic``
-- ``Threat``
-- ``Tool``
-- ``Vulnerability``
+- Adversary
+- Attack Pattern
+- Campaign
+- Course of Action
+- Event
+- Incident
+- Intrusion Set
+- Malware
+-`Report
+- Tactic
+- Threat
+- Tool
+- Vulnerability
