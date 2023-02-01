@@ -18,7 +18,9 @@ The following request will update an existing File Indicator containing an MD5 f
         "mode": "merge"
     }
 
-.. code:: json
+JSON Response
+
+.. code::
 
     {
         "data": {
@@ -61,7 +63,9 @@ To remove a single file hash from a File Indicator, include ``"mode": "delete"``
         "mode": "delete"
     }
 
-.. code:: json
+JSON Response
+
+.. code::
 
     {
         "data": {
