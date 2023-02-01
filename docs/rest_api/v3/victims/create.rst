@@ -11,6 +11,7 @@ The following example illustrates the basic format for creating a Victim:
     }
 
 For example, the following request will create a Victim named John Doe. It will also perform the following actions for the Victim:
+
 - Create a new Email Address Victim Asset and add it to the Victim
 - Associate an existing Group to the Victim, and create a new **Bad Guy** Adversary Group and associate it to the Victim
 - Add an **Additional Analysis and Context** Attribute to the Victim
@@ -39,71 +40,71 @@ JSON Response
 
 .. code:: json
 
-{
-    "data": {
-        "id": 2,
-        "ownerName": "Demo Organization",
-        "webLink": "https://app.threatconnect.com/auth/victim/victim.xhtml?victim=2",
-        "tags": {
-            "data": [
-                {
-                    "id": 11,
-                    "name": "Targeted Attack",
-                    "lastUsed": "2021-11-05T19:16:52Z"
-                }
-            ]
-        },
-        "securityLabels": {
-            "data": [
-                {
-                    "id": 3,
-                    "name": "TLP:AMBER",
-                    "description": "This security label is used for information that requires support to be effectively acted upon, yet carries risks to privacy, reputation, or operations if shared outside of the organizations involved. Information with this label can be shared with members of an organization and its clients.
-                    "color": "FFC000",
-                    "owner": "System",
-                    "dateAdded": "2016-08-31T00:00:00Z"
-                }
-            ]
-        },
-        "name": "John Doe",
-        "org": "Company ABC",
-        "suborg": "HR Department",
-        "workLocation": "Washington, D.C.",
-        "nationality": "American",
-        "assets": {
-            "data": [
-                {
-                    "id": 5,
-                    "type": "EmailAddress",
-                    "victimId": 2,
-                    "address": "jdoe@companyabc.com",
-                    "addressType": "Corporate email",
-                    "webLink": "https://app.threatconnect.com/auth/victim/victim.xhtml?victim=2"
-                }
-            ]
-        },
-        "attributes": {
-            "data": [
-                {
-                    "id": 1,
-                    "dateAdded": "2021-11-05T19:16:52Z",
-                    "type": "Additional Analysis and Context",
-                    "value": "Example value",
-                    "source": "Example Source",
-                    "createdBy": {
+    {
+        "data": {
+            "id": 2,
+            "ownerName": "Demo Organization",
+            "webLink": "https://app.threatconnect.com/auth/victim/victim.xhtml?victim=2",
+            "tags": {
+                "data": [
+                    {
+                        "id": 11,
+                        "name": "Targeted Attack",
+                        "lastUsed": "2021-11-05T19:16:52Z"
+                    }
+                ]
+            },
+            "securityLabels": {
+                "data": [
+                    {
                         "id": 3,
-                        "userName": "11112222333344445555"
-                    },
-                    "lastModified": "2021-11-05T19:16:52Z",
-                    "pinned": false
-                    "default": false
-                }
-            ]
-        }
-    },
-    "message": "Created",
-    "status": "Success"
-}
+                        "name": "TLP:AMBER",
+                        "description": "This security label is used for information that requires support to be effectively acted upon, yet carries risks to privacy, reputation, or operations if shared outside of the organizations involved. Information with this label can be shared with members of an organization and its clients.
+                        "color": "FFC000",
+                        "owner": "System",
+                        "dateAdded": "2016-08-31T00:00:00Z"
+                    }
+                ]
+            },
+            "name": "John Doe",
+            "org": "Company ABC",
+            "suborg": "HR Department",
+            "workLocation": "Washington, D.C.",
+            "nationality": "American",
+            "assets": {
+                "data": [
+                    {
+                        "id": 5,
+                        "type": "EmailAddress",
+                        "victimId": 2,
+                        "address": "jdoe@companyabc.com",
+                        "addressType": "Corporate email",
+                        "webLink": "https://app.threatconnect.com/auth/victim/victim.xhtml?victim=2"
+                    }
+                ]
+            },
+            "attributes": {
+                "data": [
+                    {
+                        "id": 1,
+                        "dateAdded": "2021-11-05T19:16:52Z",
+                        "type": "Additional Analysis and Context",
+                        "value": "Example value",
+                        "source": "Example Source",
+                        "createdBy": {
+                            "id": 3,
+                            "userName": "11112222333344445555"
+                        },
+                        "lastModified": "2021-11-05T19:16:52Z",
+                        "pinned": false
+                        "default": false
+                    }
+                ]
+            }
+        },
+        "message": "Created",
+        "status": "Success"
+    }
 
 Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a POST request for the ``victims`` object.
 
@@ -114,6 +115,7 @@ Create Associations
 ^^^^^^^^^^^^^^^^^^^
 
 You can create associations between Victims and Groups that exist in the same owner only. When creating associations for Victims using the ThreatConnect v3 API, follow these guidelines:
+
 - To create an association to a new Group, include all fields required to create the type of Group when setting the ``associatedGroups`` field. To create the Group in a Community or Source, include the ``ownerId`` or ``ownerName`` field in the request and specify the ID or name, respectively, of the Community or Source in which to create the Group when setting the ``associatedGroups`` field.
 - To create an association to an existing Group, use the Group's ID when setting the ``associatedGroups`` field (e.g., ``"associatedGroups": {"data": [{"id": 12345}]}``).
 

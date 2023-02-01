@@ -62,7 +62,7 @@ Alternatively, refer to the following tables for a list of available fields that
      - FALSE
      - FALSE
      - 1, 2, 3,...100
-   * - ownerName
+   * - ownerName [3]_
      - The name of the owner to which the Victim belongs
      - String
      - FALSE
@@ -100,12 +100,13 @@ Alternatively, refer to the following tables for a list of available fields that
      - "Washington, D.C."
 
 .. [1] The following Victim Asset types can be added to a Victim via the ``assets`` field:
+
     - ``EmailAddress``
     - ``NetworkAccount``
     - ``Phone``
     - ``SocialNetwork``
     - ``WebSite``
 
-.. [2] To retrieve a list of available `Attribute Types <https://docs.threatconnect.com/en/latest/rest_api/v3/attribute_types/attribute_types.html>`_, send the following request: ``GET /v3/attributeTypes``
+.. [2] To retrieve a list of available `Attribute Types <https://docs.threatconnect.com/en/latest/rest_api/v3/attribute_types/attribute_types.html>`_, send the following request: ``GET /v3/attributeTypes``.
 
 .. [3] By default, Victims will be created in the Organization in which your API user account resides. To create a Victim in a Community or Source, include the ``ownerId`` or ``ownerName`` field in your request. Alternatively, append the ``?owner=`` query parameter to your request and specify the owner in which to create the Victim.
