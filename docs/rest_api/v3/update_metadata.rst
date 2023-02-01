@@ -86,7 +86,7 @@ The following table lists the metadata that can be updated for each object's res
 +-----------------+-------------------------+
 
 .. attention::
-    To dissociate an object from an Artifact, Case, Indicator, Group, Victim, or Victim Asset, you must use the object's ID when setting its respective field (e.g., to dissociating an Indicator from an object, use the Indicator's ID when setting the ``associatedIndicators`` field).
+    To dissociate an object from an Artifact, Case, Indicator, Group, Victim, or Victim Asset, you must use the object's ID when setting its respective field (e.g., to dissociate an Indicator from an object, use the Indicator's ID when setting the ``associatedIndicators`` field).
 
 Example Request
 ^^^^^^^^^^^^^^^
