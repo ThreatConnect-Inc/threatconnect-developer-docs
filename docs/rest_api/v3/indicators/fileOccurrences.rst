@@ -82,7 +82,7 @@ JSON Response
         "status": "Success"
     }
 
-By default, the fileOccurrences field is not included in the response that is returned when retrieving, creating, and updating Indicators. To include this field in responses returned by the API, append the ``?fields=fileOccurrences`` `query parameter <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_ to your request.
+By default, the ``fileOccurrences`` field is not included in the response that is returned when retrieving, creating, and updating Indicators. To include this field in responses returned by the API, append the ``?fields=fileOccurrences`` `query parameter <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_ to your request.
 
 For comparison, the following example is the same request used in the preceding example, but the ``?fields=fileOccurrences`` query parameter has been added to the request:
 

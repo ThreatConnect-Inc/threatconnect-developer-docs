@@ -17,7 +17,7 @@ You can retrieve PDF reports for the following Group types:
 - Incident
 - Intrusion Set
 - Malware
--`Report
+- Report
 - Tactic
 - Threat
 - Tool

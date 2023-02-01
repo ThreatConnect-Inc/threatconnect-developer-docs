@@ -57,4 +57,4 @@ Alternatively, refer to the following table for a list of available fields that 
      - TRUE
      - TRUE
 
-.. [1] When setting the ``type`` field, you must enter a valid Attribute Type that applies to the type of Indicator to which the Attribute is being added. To retrieve a list of available `Attribute Types <https://docs.threatconnect.com/en/latest/rest_api/v3/attribute_types/attribute_types.html>`_, send the following request: ``GET /v3/attributeTypes``
+.. [1] When setting the ``type`` field, you must enter a valid Attribute Type that applies to the type of Indicator to which the Attribute is being added. To retrieve a list of available `Attribute Types <https://docs.threatconnect.com/en/latest/rest_api/v3/attribute_types/attribute_types.html>`_, send the following request: ``GET /v3/attributeTypes``.

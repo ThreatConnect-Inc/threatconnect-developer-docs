@@ -20,6 +20,7 @@ Example POST Request
 ^^^^^^^^^^^^^^^^^^^^
 
 The following request will create an **ultrabadguy.com** Host Indicator. It will also complete the following actions for the Indicator:
+
 - Activate the **DNS** and **Whois** features for the Indicator
 - Set the Indicator Status for the Indicator to active
 - Associate the existing Group whose ID is 12 to the Indicator, and create a new **Bad Guy** Adversary Group in a Source and associate it to the Indicator

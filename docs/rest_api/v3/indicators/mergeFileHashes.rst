@@ -51,7 +51,7 @@ The following request will update an existing File Indicator containing an MD5 f
         "status": "Success"
     }
 
-To remove a single file hash from a File Indicator, include ``"mode": "merge"`` in the body of the request. For example, the following request will remove the SHA1 file hash (**BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB**) just added to the File Indicator containing an MD5 file hash (**AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA**). Note that the Indicator's summary is encoded in the URL for this request.
+To remove a single file hash from a File Indicator, include ``"mode": "delete"`` in the body of the request. For example, the following request will remove the SHA1 file hash (**BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB**) just added to the File Indicator containing an MD5 file hash (**AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA**). Note that the Indicator's summary is encoded in the URL for this request.
 
 .. code::
 

@@ -35,8 +35,8 @@ The following request will make the following updates to the ultrabadguy.com Hos
 - Disable the **DNS** feature for the Indicator
 - Dissociate the **Bad Guy** Adversary Group from the Indicator
 - Update the Indicator's Confidence Rating
-- Replace any existing Security Labels applied to the Indicator with the ``TLP: RED`` Security Label
-- Apply a new ``Russia`` Tag to the Indicator without replacing any existing Tags applied to the Indicator.
+- Replace any existing Security Labels applied to the Indicator with the **TLP: RED** Security Label
+- Apply a new **Russia** Tag to the Indicator without replacing any existing Tags applied to the Indicator.
 
 .. code::
 

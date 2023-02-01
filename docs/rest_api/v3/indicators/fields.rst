@@ -124,6 +124,7 @@ Alternatively, refer to the following table for a list of available fields that 
 .. [1] To retrieve a list of available `Attribute Types <https://docs.threatconnect.com/en/latest/rest_api/v3/attribute_types/attribute_types.html>`_, send the following request: ``GET /v3/attributeTypes``.
 .. [2] By default, Indicators will be created in the Organization in which your API user account resides. To create an Indicator in a Community or Source, include the ``ownerId`` or ``ownerName`` field in your request. Alternatively, append the ``?owner=`` query parameter to your request and specify the owner in which to create the Indicator.
 .. [3] The following are accepted values for the ``type`` field:
+
     - ``Address``
     - ``EmailAddress``
     - ``File``
@@ -390,6 +391,7 @@ Registry Key
      - FALSE
 
 .. [5] The following are accepted values for a Registry Key Indicator's ``Value Type`` field:
+
     - ``REG_NONE``
     - ``REG_BINARY``
     - ``REG_DWORD``
