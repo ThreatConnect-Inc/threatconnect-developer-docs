@@ -35,7 +35,6 @@ In the following example, the request will add a File Occurrence to the existing
 .. code::
 
     PUT /v3/indicators/20
-
     {
         "fileOccurrences": {
             "data": [
@@ -89,7 +88,6 @@ For comparison, the following example is the same request used in the preceding 
 .. code::
 
     PUT /v3/indicators/20?fields=fileOccurrences
-
     {
         "fileOccurrences": {
             "data": [
@@ -145,7 +143,6 @@ You can append, replace, and delete File Occurrences via the ``mode`` field. If 
 .. code::
 
     PUT /v3/indicators/20
-
     {
         "fileOccurrences": {
             "data": [

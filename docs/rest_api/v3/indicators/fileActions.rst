@@ -59,13 +59,12 @@ The following table outlines the fields you must include in your request when cr
 In the following example, the request will perform the following actions:
 
 - Create a new File Indicator based on an MD5 file hash
-- Create a new Address Indicator and associate it to the newly created File Indicator using the File Traffic File Action
-- Associate the existing File Indicator whose ID is 12 to the newly created File Indicator using the File Archive File Action
+- Create a new Address Indicator and associate it to the newly created File Indicator using the **File Traffic** File Action
+- Associate the existing File Indicator whose ID is 12 to the newly created File Indicator using the **File Archive** File Action
 
 .. code::
 
     POST /v3/indicators
-
     {
         "type": "File",
         "md5": "2ea0564f33e4cb67063c4a06734eb627",

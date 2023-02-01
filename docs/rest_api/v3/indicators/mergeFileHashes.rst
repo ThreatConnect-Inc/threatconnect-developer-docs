@@ -20,7 +20,7 @@ The following request will update an existing File Indicator containing an MD5 f
 
 JSON Response
 
-.. code::
+.. code:: json
 
     {
         "data": {
@@ -65,7 +65,7 @@ To remove a single file hash from a File Indicator, include ``"mode": "delete"``
 
 JSON Response
 
-.. code::
+.. code:: json
 
     {
         "data": {

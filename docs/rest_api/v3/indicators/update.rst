@@ -30,7 +30,7 @@ Refer to the `Available Fields <#available-fields>`_ and `Indicator-Specific Fie
 Example PUT Request
 ^^^^^^^^^^^^^^^^^^^^^
 
-The following request will make the following updates to the ultrabadguy.com Host Indicator:
+The following request will make the following updates to the **ultrabadguy.com** Host Indicator:
 
 - Disable the **DNS** feature for the Indicator
 - Dissociate the **Bad Guy** Adversary Group from the Indicator
