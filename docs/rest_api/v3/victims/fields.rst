@@ -56,6 +56,12 @@ Alternatively, refer to the following tables for a list of available fields that
      - FALSE
      - TRUE
      - "American"
+   * - org
+     - The Victim's organization
+     - String
+     - FALSE
+     - TRUE
+     - "Company ABC"
    * - ownerId [3]_
      - The ID of the `owner <https://docs.threatconnect.com/en/latest/rest_api/v3/owners/owners.html>`_ to which the Victim belongs
      - Integer
@@ -68,12 +74,6 @@ Alternatively, refer to the following tables for a list of available fields that
      - FALSE
      - FALSE
      - "American"
-   * - org
-     - The Victim's organization
-     - String
-     - FALSE
-     - TRUE
-     - "Company ABC"
    * - securityLabels
      - A list of Security Labels applied to the Victim
      - `Security Label Object <https://docs.threatconnect.com/en/latest/rest_api/v3/security_labels/security_labels.html>`_
