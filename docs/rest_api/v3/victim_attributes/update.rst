@@ -29,7 +29,7 @@ JSON Response
             "id": 1,
             "dateAdded": "2021-11-09T15:43:06Z",
             "type": "Additional Analysis and Context",
-            "value": "Based on additional analysis, it was determined that this victim's bank account was hacked.",
+            "value": "Based on additional analysis, it was determined that this victim's social media, bank, and email accounts were hacked as the result of a phishing attack.",
             "source": "Phase of Intrusion",
             "createdBy": {
                 "id": 3,

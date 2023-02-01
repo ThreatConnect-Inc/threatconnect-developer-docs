@@ -22,5 +22,5 @@ JSON Response
         "status": "Success"
     }
 
-.. note::
+.. hint::
     You can also remove Victim Attributes from a Victim by using the ``mode`` field on the ``/v3/victims`` endpoint. See `Update an Object's Metadata <https://docs.threatconnect.com/en/latest/rest_api/v3/update_metadata.html>`_ for more information.
