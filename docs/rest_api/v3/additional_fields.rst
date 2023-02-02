@@ -1,178 +1,276 @@
 Include Additional Fields for Returned Objects
 ----------------------------------------------
 
-When retrieving objects, you can request additional fields not automatically included with each returned object by including the ``?fields=`` query parameter, followed by the field name(s) you want to include, in your query. To view a list of available options to set in the ``?fields=`` query parameter for an object, use the following query:
+Overview
+^^^^^^^^
 
-.. code::
+When creating, retrieving, or updating data, you can request additional fields that are not included in the default API response by appending the ``fields`` query parameter, followed each field's name, to your request. To request multiple fields, prepend ``&fields=`` to each subsequent field in the ``fields`` query parameter. For example, to include data for Tags and associated Groups in the API response when retrieving an Indicator, append the following to the API request's URL: ``?fields=tags&fields=associatedGroups``.
 
-    OPTIONS /v3/{objectName}/fields
 
-Example Request
-^^^^^^^^^^^^^^^
+Retrieve a List of Available Fields for an Object
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The following query will return information about the Indicator with ID 12345, including Tags applied to the Indicator, ThreatAssess information for the Indicator, and Groups associated to the Indicator:
+For instructions on retrieving a list of fields you can request for an object's endpoint when using the ``fields`` query parameter, refer to `Retrieve a List of Available Fields for an Object <https://docs.threatconnect.com/en/latest/rest_api/v3/retrieve_fields.html>`_.
+
+Example Requests
+^^^^^^^^^^^^^^^^
+
+This section provides example requests demonstrating sample use cases for the ``fields`` query parameter.
+
+Include an Indicator's Tags, ThreatAssess Information, and Associated Groups
+============================================================================
+
+The following request will retrieve data the Indicator whose ID is 4, including Tags applied to the Indicator, ThreatAssess information for the Indicator, and Groups associated to the Indicator:
 
 .. code::
 
   GET /v3/indicators/12345?fields=tags&fields=threatAssess&fields=associatedGroups
 
-JSON Response:
+JSON Response
 
 .. code:: json
 
     {
         "data": {
-            "id": 12345,
+            "id": 4,
+            "ownerId": 1,
             "ownerName": "Demo Organization",
-            "dateAdded": "2021-10-26T13:05:02Z",
-            "webLink": "https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=veryultrabadguy.com",
+            "dateAdded": "2023-01-26T21:00:03Z",
+            "webLink": "https://app.threatconnect.com/#/details/indicators/4/overview",
             "tags": {
                 "data": [
                     {
                         "id": 11,
                         "name": "Targeted Attack",
-                        "lastUsed": "2021-11-03T15:04:49Z"
+                        "lastUsed": "2023-01-30T17:58:56Z"
+                    },
+                    {
+                        "id": 13,
+                        "name": "Created via API",
+                        "description": "Apply this Tag to objects created via the ThreatConnect API.",
+                        "lastUsed": "2023-01-30T18:39:32Z"
+                    },
+                    {
+                        "id": 17,
+                        "name": "Russia",
+                        "lastUsed": "2023-01-27T14:25:55Z"
                     }
                 ]
             },
             "type": "Host",
-            "lastModified": "2021-10-26T15:16:43Z",
-            "rating": 4.00,
-            "confidence": 70,
-            "threatAssessRating": 1.89,
-            "threatAssessConfidence": 45.41,
-            "threatAssessScore": 673,
-            "summary": "badguy.com",
+            "lastModified": "2023-01-27T14:25:55Z",
+            "rating": 5.00,
+            "confidence": 65,
+            "threatAssessRating": 4.5,
+            "threatAssessConfidence": 58.0,
+            "threatAssessScore": 678,
+            "threatAssessScoreObserved": 139,
+            "threatAssessScoreFalsePositive": -167,
+            "summary": "ultrabadguy.com",
             "privateFlag": false,
             "active": true,
             "activeLocked": false,
             "associatedGroups": {
                 "data": [
                     {
-                        "id": 94271,
-                        "type": "Incident",
-                        "ownerName": "Demo Organization",
-                        "dateAdded": "2021-11-03T15:04:49Z",
-                        "webLink": "https://app.threatconnect.com/auth/incident/incident.xhtml?incident=94271",
-                        "name": "Bad Incident",
+                        "id": 12,
+                        "ownerId": 2,
+                        "ownerName": "Demo Source",
+                        "dateAdded": "2023-01-26T21:00:03Z",
+                        "webLink": "https://app.threatconnect.com/#/details/groups/12/overview",
+                        "type": "Adversary",
+                        "name": "Bad Guy",
                         "createdBy": {
                             "id": 3,
-                            "userName": "11112222333344445555",
-                            "firstName": "John",
-                            "lastName": "Smith",
-                            "pseudonym": "jsmithAPI",
-                            "owner": "Demo Organization",
-                            "systemRole": "Api User"
+                            "userName": "11112222333344445555"
                         },
-                        "status": "Incident Reported",
-                        "eventDate": "2021-11-03T00:00:00Z"
+                        "upVoteCount": "0",
+                        "downVoteCount": "0",
+                        "lastModified": "2023-01-26T21:00:04Z",
+                        "legacyLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=12"
                     }
                 ]
             },
-            "hostName": "badguy.com",
+            "hostName": "ultrabadguy.com",
             "dnsActive": false,
-            "whoisActive": false
+            "whoisActive": true,
+            "legacyLink": "https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=ultrabadguy.com&owner=Demo+Organization"
         },
         "status": "Success"
     }
 
-Additional association levels for intelligence items may also be retrieved. For example, adding ``.attributes`` to the ``?fields=associatedGroups`` query parameter in the preceding query will also return Attributes added to the Group associated to the Indicator:
+Include Additional Association Levels for a Field
+=================================================
+
+When using the fields query parameter, you can also request additional association levels for the specified field by appending ``.`` followed by the field name to the ``fields`` query parameter.
+
+For example, the following request will retrieve data for the Indicator whose ID is 4 and include Groups associated to the Indicator and Attributes added to those Groups in the response. To accomplish this, ``?fields=associatedGroups.attributes`` is appended to the request's URL.
 
 .. code::
 
-  GET /v3/indicators/12345?fields=tags&fields=threatAssess&fields=associatedGroups.attributes
+  GET /v3/indicators/4?fields=associatedGroups.attributes
 
-JSON Response:
+JSON Response
 
 .. code:: json
 
     {
         "data": {
-            "id": 12345,
+            "id": 4,
+            "ownerId": 1,
             "ownerName": "Demo Organization",
-            "dateAdded": "2021-10-26T13:05:02Z",
-            "webLink": "https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=veryultrabadguy.com",
-            "tags": {
-                "data": [
-                    {
-                        "id": 11,
-                        "name": "Targeted Attack",
-                        "lastUsed": "2021-11-03T15:04:49Z"
-                    }
-                ]
-            },
+            "dateAdded": "2023-01-26T21:00:03Z",
+            "webLink": "https://app.threatconnect.com/#/details/indicators/4/overview",
             "type": "Host",
-            "lastModified": "2021-10-26T15:16:43Z",
-            "rating": 4.00,
-            "confidence": 70,
-            "threatAssessRating": 1.89,
-            "threatAssessConfidence": 45.41,
-            "threatAssessScore": 673,
-            "summary": "badguy.com",
+            "lastModified": "2023-01-27T14:25:55Z",
+            "rating": 5.00,
+            "confidence": 65,
+            "summary": "ultrabadguy.com",
             "privateFlag": false,
             "active": true,
             "activeLocked": false,
             "associatedGroups": {
                 "data": [
                     {
-                        "id": 94271,
-                        "type": "Incident",
-                        "ownerName": "Demo Organization",
-                        "dateAdded": "2021-11-03T15:04:49Z",
-                        "webLink": "https://app.threatconnect.com/auth/incident/incident.xhtml?incident=94271",
-                        "name": "Bad Incident",
+                        "id": 12,
+                        "ownerId": 2,
+                        "ownerName": "Demo Source",
+                        "dateAdded": "2023-01-26T21:00:03Z",
+                        "webLink": "https://app.threatconnect.com/#/details/groups/12/overview",
+                        "type": "Adversary",
+                        "name": "Bad Guy",
                         "createdBy": {
                             "id": 3,
-                            "userName": "11112222333344445555",
-                            "firstName": "John",
-                            "lastName": "Smith",
-                            "pseudonym": "jsmithAPI",
-                            "owner": "Demo Organization",
-                            "systemRole": "Api User"
+                            "userName": "11112222333344445555"
                         },
+                        "upVoteCount": "0",
+                        "downVoteCount": "0",
                         "attributes": {
                             "data": [
                                 {
-                                    "id": 1077825,
-                                    "type": "Additional Analysis and Context",
-                                    "value": "Based on internal analysis, this incident was bad.",
-                                    "source": "Phase of Intrusion",
+                                    "id": 10,
+                                    "dateAdded": "2023-02-02T18:26:06Z",
+                                    "type": "Adversary Type",
+                                    "value": "This is a very bad Adversary type.",
                                     "createdBy": {
                                         "id": 3,
-                                        "userName": "11112222333344445555",
-                                        "firstName": "John",
-                                        "lastName": "Smith",
-                                        "pseudonym": "jsmithAPI",
-                                        "owner": "Demo Organization",
-                                        "systemRole": "Api User"
+                                        "userName": "11112222333344445555"
                                     },
-                                    "dateAdded": "2021-11-04T19:07:01Z",
-                                    "lastModified": "2021-11-04T19:07:01Z",
-                                    "default": false
+                                    "lastModified": "2023-02-02T18:26:06Z",
+                                    "pinned": true,
+                                    "default": true
                                 }
                             ]
                         },
-                        "status": "Incident Reported",
-                        "eventDate": "2021-11-03T00:00:00Z"
+                        "lastModified": "2023-02-02T18:26:06Z",
+                        "legacyLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=12"
                     }
                 ]
             },
-            "hostName": "badguy.com",
+            "hostName": "ultrabadguy.com",
             "dnsActive": false,
-            "whoisActive": false
+            "whoisActive": true,
+            "legacyLink": "https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=ultrabadguy.com&owner=Demo+Organization"
         },
         "status": "Success"
     }
 
-.. attention::
-  By default, you can only retrieve one association level for threat intelligence items at a time. To retrieve more than one association level at a time, contact your System Administrator and have them do one of the following:
+By default, you can retrieve only one association level at a time. To retrieve more than one association level at a time, contact your System Administrator and have them complete one of the following actions:
 
-  - Enable the **Allow User to Exceed API Link Limit** setting on your API user account. Instructions for enabling this setting are available in the `Creating User Accounts <https://training.threatconnect.com/learn/article/creating-user-accounts-kb-article>`_ knowledge base article.
-  - Update the **v3ApiIntelLinkLimit** system setting to allow for more than one association level to be retrieved at a time.
+  - Enable the **Allow User to Exceed API Link Limit** setting on your API user account. Instructions for enabling this setting are available in the `"Creating an API User Account" section of the Creating User Accounts <https://knowledge.threatconnect.com/docs/creating-user-accounts#creating-an-api-user>`_ knowledge base article.
+  - Update the v3 API link limit in system settings to allow for more than one association level to be retrieved at a time.
+
+Include Details About the User Who Created an Object
+====================================================
+
+Responses for some objects include a ``createdBy`` field, which includes subfields that specify the user who created the object. By default, only the ``id`` and ``userName`` subfields are included in the ``createdBy`` field. To include more details about the user that created an object, append ``?fields=userDetails`` to the request. Note that the number of additional subfields included in the ``createdBy`` field will vary based on your API user account's Organization role.
+
+For example, the following request will retrieve data for the Group whose ID is 12 and return additional details about the user who created the Group. The first response will be for an API user without **Read** permission for user accounts (e.g., the API user account has an Organization role of Standard User), and the second response will be for an API user with **Read** permission for user accounts (e.g., the API user account has an Organization role of Organization Administrator).
+
+.. code::
+
+  GET /v3/groups/12?fields=userDetails
+
+JSON Response (Without Read Permissions)
+
+.. code:: json
+
+    {
+        "data": {
+            "id": 12,
+            "ownerId": 2,
+            "ownerName": "Demo Source",
+            "dateAdded": "2023-01-26T21:00:03Z",
+            "webLink": "https://app.threatconnect,com/#/details/groups/12/overview",
+            "type": "Adversary",
+            "name": "Bad Guy",
+            "createdBy": {
+                "id": 3,
+                "userName": "11112222333344445555",
+                "firstName": "John",
+                "lastName": "Smith",
+                "pseudonym": "jsmithAPI",
+                "owner": "Demo Organization"
+            },
+            "upVoteCount": "0",
+            "downVoteCount": "0",
+            "lastModified": "2023-02-02T18:26:06Z",
+            "legacyLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=12"
+        },
+        "status": "Success"
+    }
+
+JSON Response (With Read Permissions)
+
+.. code:: json
+    {
+        "data": {
+            "id": 12,
+            "ownerId": 2,
+            "ownerName": "Demo Source",
+            "dateAdded": "2023-01-26T21:00:03Z",
+            "webLink": "https://app.threatconnect,com/#/details/groups/12/overview",
+            "type": "Adversary",
+            "name": "Bad Guy",
+            "createdBy": {
+                "id": 3,
+                "userName": "11112222333344445555",
+                "firstName": "John",
+                "lastName": "Smith",
+                "pseudonym": "jsmithAPI",
+                "owner": "Demo Organization",
+                "lastPasswordChange": "2022-10-13T14:31:59Z",
+                "termsAccepted": false,
+                "logoutIntervalMinutes": 30,
+                "systemRole": "Api User",
+                "ownerRoles": {
+                    "Demo Community": "Director",
+                    "Demo Organization": "Organization Administrator",
+                    "Demo Source": "Director"
+                },
+                "disabled": false,
+                "locked": false,
+                "passwordResetRequired": false,
+                "twoFactorResetRequired": false
+            },
+            "upVoteCount": "0",
+            "downVoteCount": "0",
+            "lastModified": "2023-02-02T18:26:06Z",
+            "legacyLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=12"
+        },
+        "status": "Success"
+    }
+
+Combine the "tql" and "fields" Query Parameters
+===============================================
+
+You can combine the ``tql`` and ``fields`` query parameters in a single API request, allowing you to filter results using ThreatConnect Query Language (TQL) and include additional fields in the response.
+
+For example, the following request will return data for all Indicators, along with their respective Tags and Attributes, with a Threat Rating greater than or equal to 4. Note that the TQL string included in the request's URL is encoded.
+
+.. code::
+
+  GET /v3/indicators?tql=rating%20GEQ%204&fields=tags&fields=attributes
 
 .. note::
-    The ``?tql=`` and ``?fields=`` query parameters can be combined in a single request. For example, the following query will return all Indicators, along with their respective Tags and Attributes, that belong to the ``Demo Community`` owner:
-
-    ``GET /v3/indicators?tql=ownerName EQ "Demo Community"&fields=tags&fields=attributes``
-
-    Depending on the tool you're using to interact with the ThreatConnect API, it may be necessary to manually encode the URL in your request when including query parameters. For example, some tools may accept ``?tql=ownerName EQ "Demo Community"&fields=tags&fields=attributes`` as a valid URL and automatically encode it, while others may require you to manually encode the URL (e.g., ``?tql=ownerName%20EQ%20%22Demo%20Community%22&fields=tags&fields=attributes``). If you submit a request with query parameters and a ``401 Unauthorized`` error is returned, verify whether the URL in your request is encoded properly for your preferred API tool.
+    Depending on the tool you are using to interact with the ThreatConnect API, it may be necessary to encode the URL in your request manually if it includes query parameters. For example, some tools may accept ``/v3/indicators?tql=ownerName GEQ 4&fields=tags&fields=attributes`` as a valid request URL and encode it automatically, while others may require you to encode the request's URL manually. If you send a request with query parameters and a 401 Unauthorized error is returned, verify whether the URL in your request is encoded properly for the API tool you are using.
