@@ -1,7 +1,7 @@
 Retrieve Indicator Attributes
 -----------------------------
 
-The following section describes how to retrieve Indicator Attributes via the ``/v3/indicatorAttributes`` endpoint. In addition to the methods described in this section, you can send the following request to retrieve Attributes added to a specific Indicator: ``GET /v3/indicators/{indicatorid or indicatorSummary}?fields=attributes``.
+The following section describes how to retrieve Indicator Attributes via the ``/v3/indicatorAttributes`` endpoint. In addition to the methods described in this section, you can send the following request to retrieve Attributes added to a specific Indicator: ``GET /v3/indicators/{indicatorId or indicatorSummary}?fields=attributes``.
 
 .. code::
 
