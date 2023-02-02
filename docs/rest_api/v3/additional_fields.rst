@@ -24,7 +24,7 @@ The following request will retrieve data the Indicator whose ID is 4, including 
 
 .. code::
 
-  GET /v3/indicators/12345?fields=tags&fields=threatAssess&fields=associatedGroups
+  GET /v3/indicators/4?fields=tags&fields=threatAssess&fields=associatedGroups
 
 JSON Response
 
@@ -201,7 +201,7 @@ JSON Response (Without Read Permissions)
             "ownerId": 2,
             "ownerName": "Demo Source",
             "dateAdded": "2023-01-26T21:00:03Z",
-            "webLink": "https://app.threatconnect,com/#/details/groups/12/overview",
+            "webLink": "https://app.threatconnect.com/#/details/groups/12/overview",
             "type": "Adversary",
             "name": "Bad Guy",
             "createdBy": {
@@ -223,13 +223,14 @@ JSON Response (Without Read Permissions)
 JSON Response (With Read Permissions)
 
 .. code:: json
+    
     {
         "data": {
             "id": 12,
             "ownerId": 2,
             "ownerName": "Demo Source",
             "dateAdded": "2023-01-26T21:00:03Z",
-            "webLink": "https://app.threatconnect,com/#/details/groups/12/overview",
+            "webLink": "https://app.threatconnect.com/#/details/groups/12/overview",
             "type": "Adversary",
             "name": "Bad Guy",
             "createdBy": {
@@ -266,7 +267,7 @@ Combine the "tql" and "fields" Query Parameters
 
 You can combine the ``tql`` and ``fields`` query parameters in a single API request, allowing you to filter results using ThreatConnect Query Language (TQL) and include additional fields in the response.
 
-For example, the following request will return data for all Indicators, along with their respective Tags and Attributes, with a Threat Rating greater than or equal to 4. Note that the TQL string included in the request's URL is encoded.
+For example, the following request will retrieve data for all Indicators with a Threat Rating greater than or equal to 4 and include data for Tags and Attributes added to each Indicator in the response. Note that the TQL string included in the request's URL is encoded.
 
 .. code::
 
