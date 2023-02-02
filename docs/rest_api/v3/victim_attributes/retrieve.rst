@@ -3,10 +3,6 @@ Retrieve Victim Attributes
 
 The following section describes how to retrieve Victim Attributes via the ``/v3/victimAttributes`` endpoint. In addition to the methods described in this section, you can send the following request to retrieve Attributes added to a specific Victim: ``GET /v3/victims/{victimId}?fields=attributes``.
 
-.. code::
-
-    GET /v3/victims/{victimId}?fields=attributes
-
 Retrieve All Victim Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
