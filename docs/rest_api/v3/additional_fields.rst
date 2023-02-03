@@ -99,6 +99,17 @@ JSON Response
         "status": "Success"
     }
 
+.. attention::
+    When sending a request to the ``/v3/indicators`` endpoint with ``?fields=threatAssess`` appended to the request, the following fields will be included in the response:
+
+    - ``threatAssessRating``
+    - ``threatAssessConfidence``
+    - ``threatAssessScore``
+    - ``threatAssessScoreObserved``
+    - ``threatAssessScoreFalsePositive``
+
+    It is recommended to not use the ``threatAssessRating`` and ``threatAssessConfidence`` fields and their values, as these are legacy fields.
+
 Include Additional Association Levels for a Field
 =================================================
 
