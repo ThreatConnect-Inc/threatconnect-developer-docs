@@ -186,10 +186,93 @@ JSON Response
         "status": "Success"
     }
 
-By default, you can retrieve only one association level at a time. To retrieve more than one association level at a time, contact your System Administrator and have them complete one of the following actions:
+By default, you can retrieve only **one association level** at a time. To retrieve more than one association level at a time, contact your System Administrator and have them complete one of the following actions:
 
   - Enable the **Allow User to Exceed API Link Limit** setting on your API user account. Instructions for enabling this setting are available in the `"Creating an API User Account" section of the Creating User Accounts <https://knowledge.threatconnect.com/docs/creating-user-accounts#creating-an-api-user>`_ knowledge base article.
   - Update the v3 API link limit in system settings to allow for more than one association level to be retrieved at a time.
+
+The following example demonstrates how to retrieve two association levels in a single request. Specifically, the request will retrieve data for the Indicator whose ID is 4 and include Groups associated to the Indicator, Attributes added to those Groups (the first association level), and Security Labels applied to those Attributes (the second association level) in the response. To accomplish this, ``?fields=associatedGroups.attributes.securityLabels`` is appended to the request's URL.
+
+.. code::
+
+  GET /v3/indicators/4?fields=associatedGroups.attributes.securityLabels
+
+JSON Response
+
+.. code:: json
+
+    {
+        "data": {
+            "id": 4,
+            "ownerId": 1,
+            "ownerName": "Demo Organization",
+            "dateAdded": "2023-01-26T21:00:03Z",
+            "webLink": "https://app.threatconnect.com/#/details/indicators/4/overview",
+            "type": "Host",
+            "lastModified": "2023-01-27T14:25:55Z",
+            "rating": 5.00,
+            "confidence": 65,
+            "summary": "ultrabadguy.com",
+            "privateFlag": false,
+            "active": true,
+            "activeLocked": false,
+            "associatedGroups": {
+                "data": [
+                    {
+                        "id": 12,
+                        "ownerId": 2,
+                        "ownerName": "Demo Source",
+                        "dateAdded": "2023-01-26T21:00:03Z",
+                        "webLink": "https://app.threatconnect.com/#/details/groups/12/overview",
+                        "type": "Adversary",
+                        "name": "Bad Guy",
+                        "createdBy": {
+                            "id": 3,
+                            "userName": "11112222333344445555"
+                        },
+                        "upVoteCount": "0",
+                        "downVoteCount": "0",
+                        "attributes": {
+                            "data": [
+                                {
+                                    "id": 10,
+                                    "dateAdded": "2023-02-02T18:26:06Z",
+                                    "securityLabels": {
+                                        "data": [
+                                            {
+                                                "id": 3,
+                                                "name": "TLP:AMBER",
+                                                "description": "This security label is used for information that requires support to be effectively acted upon, yet carries risks to privacy, reputation, or operations if shared outside of the organizations involved. Information with this label can be shared with members of an organization and its clients.",
+                                                "color": "FFC000",
+                                                "owner": "System",
+                                                "dateAdded": "2016-08-31T00:00:00Z"
+                                            }
+                                        ]
+                                    },
+                                    "type": "Adversary Type",
+                                    "value": "This is a very bad Adversary type.",
+                                    "createdBy": {
+                                        "id": 3,
+                                        "userName": "11112222333344445555"
+                                    },
+                                    "lastModified": "2023-02-02T18:26:06Z",
+                                    "pinned": true,
+                                    "default": true
+                                }
+                            ]
+                        },
+                        "lastModified": "2023-02-02T18:26:06Z",
+                        "legacyLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=12"
+                    }
+                ]
+            },
+            "hostName": "ultrabadguy.com",
+            "dnsActive": false,
+            "whoisActive": true,
+            "legacyLink": "https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=ultrabadguy.com&owner=Demo+Organization"
+        },
+        "status": "Success"
+    }
 
 Include Details About the User Who Created an Object
 ====================================================
