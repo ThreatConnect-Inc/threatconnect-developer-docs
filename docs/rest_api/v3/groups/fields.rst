@@ -365,7 +365,11 @@ Signature
     - ``Sigma``
     - ``Snort``
     - ``Suricata``
+    - ``TQL Query``
     - ``YARA``
+
+.. note::
+    Accepted values for a Signature Group's ``fileType`` field may also include custom Signature types created by a System Administrator.
 
 Task
 ====
