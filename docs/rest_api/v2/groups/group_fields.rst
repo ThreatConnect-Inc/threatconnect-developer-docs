@@ -98,14 +98,18 @@
 
 \* The valid values for a Signature's fileType field are:
 
-* Snort ®
-* Suricata
-* YARA
-* ClamAV ®
-* OpenIOC
-* CybOX™
 * Bro
+* ClamAV®
+* CybOX™
+* Iris™ Search Hash
+* KQL
+* OpenIOC
 * Regex
 * Splunk® Search Processing Language (SPL)
+* Sigma
+* Snort®
+* Suricata
+* TQL Query
+* YARA
 
 \*\* A Signature's fileText field contains the Signature itself, which must be properly escaped and encoded when submitting for creation or updating.
