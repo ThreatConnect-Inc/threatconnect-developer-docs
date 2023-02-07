@@ -10,7 +10,73 @@ When creating, retrieving, or updating data, you can request additional fields t
 Retrieve a List of Available Fields for an Object
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For instructions on retrieving a list of fields you can request for an object's endpoint when using the ``fields`` query parameter, refer to `Retrieve a List of Available Fields for an Object <https://docs.threatconnect.com/en/latest/rest_api/v3/retrieve_fields.html>`_.
+Send a request in the following format to retrieve a list of fields you can include in the default API response returned from an object's endpoint:
+
+.. code::
+
+  OPTIONS /v3/{objectType}/fields
+
+For example, the following request will retrieve a list of fields you can include in the default response returned from the ``/v3/groups`` endpoint:
+
+.. code::
+
+    OPTIONS /v3/groups/fields
+
+JSON Response
+
+.. code:: json
+
+    {
+        "data": [
+            {
+                "description": "Includes artifacts with a relationship to the group",
+                "includedByDefault": false,
+                "name": "associatedArtifacts"
+            },
+            {
+                "description": "Includes cases with a relationship to the group",
+                "includedByDefault": false,
+                "name": "associatedCases"
+            },
+            {
+                "description": "Includes groups with a relationship to the group",
+                "includedByDefault": false,
+                "name": "associatedGroups"
+            },
+            {
+                "description": "Includes indicators related to the group",
+                "includedByDefault": false,
+                "name": "associatedIndicators"
+            },
+            {
+                "description": "Includes victim assets related to the group",
+                "includedByDefault": false,
+                "name": "associatedVictimAssets"
+            },
+            {
+                "description": "Includes attributes related to the group",
+                "includedByDefault": false,
+                "name": "attributes"
+            },
+            {
+                "description": "Includes security labels related to the group",
+                "includedByDefault": false,
+                "name": "securityLabels"
+            },
+            {
+                "description": "Includes tags related to the group",
+                "includedByDefault": false,
+                "name": "tags"
+            },
+            {
+                "description": "Includes explicit details of the user",
+                "includedByDefault": false,
+                "name": "userDetails"
+            }
+        ],
+        "count": 9,
+        "status": "Success"
+    }
 
 Example Requests
 ^^^^^^^^^^^^^^^^
