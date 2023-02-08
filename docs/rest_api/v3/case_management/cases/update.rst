@@ -1,7 +1,7 @@
 Update Cases
 ------------
 
-The basic format for updating a Case is:
+The following example illustrates the basic format for updating a Case:
 
 .. code::
 
@@ -10,10 +10,11 @@ The basic format for updating a Case is:
         {updatedField}: {updatedValue}
     }
   
-For example, the following query will perform the following actions for the Case with ID 1:
+For example, the following request will make the following updates to the Case whose ID is 1:
 
-- Update the resolution and status of the Case
-- Create a new Adversary Group named ``Extreme Bad Guy`` that includes an associated Artifact and associate the Group to the Case
+- Set the Case's resolution to **False Positive**
+- Set the Case's status to **Closed**
+- Create a new Adversary Group named **Extreme Bad Guy** that is associated to the Artifact whose ID is 4, and then associate the Group to the Case
 
 .. code::
 
@@ -21,7 +22,7 @@ For example, the following query will perform the following actions for the Case
     {
         "resolution": "False Positive",
         "status": "Closed",
-        "associatedGroups": {"data": [{"name": "Extreme Bad Guy", "type": "Adversary", "associatedArtifacts": {"data": [{"id": 1}]}}]}
+        "associatedGroups": {"data": [{"name": "Extreme Bad Guy", "type": "Adversary", "associatedArtifacts": {"data": [{"id": 4}]}}]}
     }
 
 
@@ -33,81 +34,27 @@ JSON Response:
         "data": {
             "id": 1,
             "xid": "aa1a1a1a1-a1a1-a1a1-a1a1-a1a1a1a1a1a1",
-            "name": "Example Workflow Case",
+            "name": "Phishing Investigation",
             "dateAdded": "2021-04-09T14:41:27.27Z",
             "caseOpenTime": "2021-04-09T14:41:27Z",
             "caseOpenUser": {
                 "id": 3,
-                "userName": "11112222333344445555",
-                "firstName": "John",
-                "lastName": "Smith",
-                "pseudonym": "jsmithAPI",
-                "owner": "Demo Organization",
-                "systemRole": "Api User"
+                "userName": "11112222333344445555"
             },
             "caseCloseTime": "2021-04-12T18:36.18Z",
             "caseCloseUser": {
                 "id": 3,
-                "userName": "11112222333344445555",
-                "firstName": "John",
-                "lastName": "Smith",
-                "pseudonym": "jsmithAPI",
-                "owner": "Demo Organization",
-                "systemRole": "Api User"
+                "userName": "11112222333344445555"
             },
             "status": "Closed",
-            "severity": "Medium",
+            "severity": "Low",
             "resolution": "False Positive",
-            "tasks": {},
-            "artifacts": {
-            "data": [
-                {
-                    "id": 12,
-                    "summary": "badguy.com",
-                    "type": "Host",
-                    "intelType": "indicator-Host",
-                    "dateAdded": "2021-04-09T14:41:27.27Z",
-                    "derivedLink": true,
-                    "hashCode": "fTgtpcEQ4JMzFNpXBMhfyXue7s/DchX7uCWedTcqiqA="
-                }
-            ]},
-            "notes": {},
             "createdBy": {
                 "id": 3,
-                "userName": "11112222333344445555",
-                "firstName": "John",
-                "lastName": "Smith",
-                "pseudonym": "jsmithAPI",
-                "owner": "Demo Organization",
-                "systemRole": "Api User"
+                "userName": "11112222333344445555"
             },
             "owner": "Demo Organization",
-            "ownerId": 7,
-            "attributes": {},
-            "associatedGroups": {
-                "data": [
-                    {
-                        "id": 17,
-                        "ownerName": "Example Organization",
-                        "dateAdded": "2021-04-12T18:36.18Z",
-                        "webLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=17",
-                        "type": "Adversary",
-                        "name": "Extreme Bad Guy",
-                        "createdBy": {
-                            "id": 3,
-                            "userName": "11112222333344445555",
-                            "firstName": "John",
-                            "lastName": "Smith",
-                            "pseudonym": "jsmithAPI",
-                            "owner": "Demo Organization",
-                            "systemRole": "Api User"
-                        },
-                        "lastModified": "2021-04-12T18:36.18Z"
-                    }
-                ]
-            },
-            "associatedIndicators": {},
-            "associatedCases": {}
+            "ownerId": 1
         },
         "message": "Updated",
         "status": "Success"
@@ -116,7 +63,7 @@ JSON Response:
 Refer to the `Available Fields <#available-fields>`_ and section for a list of available fields that can be included in the body of a PUT request for the ``cases`` object.
 
 .. hint::
-    When updating an Artifact, you can use the ``mode`` field to add or remove the following metadata:
+    When updating a Case, you can use the ``mode`` field to add or remove the following metadata:
 
     - ``associatedCases``
     - ``associatedGroups``
@@ -126,5 +73,5 @@ Refer to the `Available Fields <#available-fields>`_ and section for a list of a
 
     See `Update an Object's Metadata <https://docs.threatconnect.com/en/latest/rest_api/v3/update_metadata.html>`_ for instructions on using the ``mode`` field.
 
-.. warning::
-    Trying to add an Attribute to a Case when the Case Attribute Type's **Max Allowed** limit has been reached will result in an error.
+.. attention::
+    If you try to add an Attribute to a Case when the Case Attribute Type's **Max Allowed** limit has been reached, an error will occur.

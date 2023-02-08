@@ -4,7 +4,7 @@ Retrieve Cases
 Retrieve All Cases
 ^^^^^^^^^^^^^^^^^^
 
-To retrieve all Cases, use the following query:
+Send the following request to retrieve data for all Cases:
 
 .. code::
 
@@ -19,17 +19,12 @@ JSON Response:
             {
                 "id": 1,
                 "xid": "a1a1a1a1-a1a1-a1a1-a1a1-a1a1a1a1a1a1",
-                "name": "Example Workflow Case",
+                "name": "Phishing Investigation",
                 "dateAdded": "2021-04-09T14:41:27.622Z",
                 "caseOpenTime": "2021-04-09T14:41:27.622Z",
                 "caseOpenUser": {
                     "id": 3,
-                    "userName": "11112222333344445555",
-                    "firstName": "John",
-                    "lastName": "Smith",
-                    "pseudonym": "jsmithAPI",
-                    "owner": "Demo Organization",
-                    "systemRole": "Api User"
+                    "userName": "11112222333344445555"
                 },
                 "status": "Open",
                 "severity": "Low",
@@ -38,25 +33,15 @@ JSON Response:
                     "type": "User",
                     "data": {
                         "id": 1,
-                        "userName": "smithj@threatconnect.com",
-                        "firstName": "John",
-                        "lastName": "Smith",
-                        "pseudonym": "JMS",
-                        "owner": "Demo Organization",
-                        "systemRole": "Administrator"
+                        "userName": "smithj@threatconnect.com"
                     }
                 },
                 "createdBy": {
                     "id": 3,
-                    "userName": "11112222333344445555",
-                    "firstName": "John",
-                    "lastName": "Smith",
-                    "pseudonym": "jsmithAPI",
-                    "owner": "Demo Organization",
-                    "systemRole": "Api User"
+                    "userName": "11112222333344445555"
                 },
-                "owner": "Example Organization",
-                "ownerId": 7
+                "owner": "Demo Organization",
+                "ownerId": 1
             }, 
             {
                 "id": 2,
@@ -67,44 +52,36 @@ JSON Response:
                 "caseOpenTime": "2021-03-25T18:56:22Z",
                 "caseOpenUser": {
                     "id": 2,
-                    "userName": "pjones+analyst@threatconnect.com",
-                    "firstName": "Pat",
-                    "lastName": "Jones",
-                    "pseudonym": "patjones",
-                    "owner": "Demo Organization",
-                    "systemRole": "User"
+                    "userName": "pjones+analyst@threatconnect.com"
                 },
                 "status": "Open",
                 "severity": "Critical",
                 "resolution": "Not Specified",
                 "createdBy": {
                     "id": 2,
-                    "userName": "pjones+analyst@threatconnect.com",
-                    "firstName": "Pat",
-                    "lastName": "Jones",
-                    "pseudonym": "patjones",
-                    "owner": "Demo Organization",
-                    "systemRole": "User"
+                    "userName": "pjones+analyst@threatconnect.com"
                 },
                 "owner": "Demo Organization",
-                "ownerId": 7
+                "ownerId": 1
             },
             {...}
-      ],
-      "status": "Success"
+        ],
+        "status": "Success"
     }
 
+.. attention::
+    Only Cases to which your API user account has viewing access will be included in the API response.
 
-Retrieve a Single Case
-^^^^^^^^^^^^^^^^^^^^^^
+Retrieve a Specific Case
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-To retrieve a specific Case, use a query in the following format:
+Send a request in the following format to retrieve data for a specific Case:
 
 .. code::
 
     GET /v3/cases/{caseId}
 
-For example, the following query will return information about the Case with ID 3:
+For example, the following request will retrieve data for the Case whose ID is 3:
 
 .. code::
 
@@ -118,18 +95,12 @@ JSON Response:
         "data": {
             "id": 3,
             "xid": "c3c3c3c3-c3c3-c3c3-c3c3-c3c3c3c3c3c3",
-            "name": "Phishing Investigation",
-            "description": "Case to investigate new phishing threat",
+            "name": "Analyze Suspicious Email and Report Findings",
             "dateAdded": "2021-04-09T14:41:27.622Z",
             "caseOpenTime": "2021-04-09T14:41:27.622Z",
             "caseOpenUser": {
                 "id": 1,
-                "userName": "smithj@threatconnect.com",
-                "firstName": "John",
-                "lastName": "Smith",
-                "pseudonym": "JMS",
-                "owner": "Demo Organization",
-                "systemRole": "Administrator"
+                "userName": "smithj@threatconnect.com"
             },
             "status": "Open",
             "severity": "Medium",
@@ -139,31 +110,25 @@ JSON Response:
                 "data": {
                     "id": 1,
                     "name": "SOC Team",
-                    "description": "Main SOC users",
+                    "description": "Members of the SOC team.",
                 }
             },
             "createdBy": {
                 "id": 1,
-                "userName": "smithj@threatconnect.com",
-                "firstName": "John",
-                "lastName": "Smith",
-                "pseudonym": "JMS",
-                "owner": "Demo Organization",
-                "systemRole": "Administrator"
+                "userName": "smithj@threatconnect.com"
             },
             "owner": "Demo Organization",
-            "ownerId": 7
+            "ownerId": 1
         },
         "status": "Success"
     }
 
-
 Request Additional Fields
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To request additional fields not automatically included with each returned object, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
+To request additional fields not included in the default response, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
 
 Filter Results
 ^^^^^^^^^^^^^^
 
-To filter returned objects using ThreatConnect Query Language (TQL), refer to `Filter Results with TQL <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_.
+To filter results using ThreatConnect Query Language (TQL), refer to `Filter Results with TQL <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_.
