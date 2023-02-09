@@ -109,7 +109,7 @@ Alternatively, refer to the following table for a list of available fields that 
      - Boolean
      - FALSE
      - TRUE
-     - 0 (to submit a **DownVote** Intel Rating) or 1 (to submit an **UpVote** Intel Rating)
+     - 0 (to submit a **Downvote** Intel Rating) or 1 (to submit an **Upvote** Intel Rating)
 
 .. [1] To retrieve a list of available `Attribute Types <https://docs.threatconnect.com/en/latest/rest_api/v3/attribute_types/attribute_types.html>`_, send the following request: ``GET /v3/attributeTypes``.
 .. [2] By default, Groups will be created in the Organization in which your API user account resides. To create a Group in a Community or Source, include the ``ownerId`` or ``ownerName`` field in your request. Alternatively, append the ``?owner=`` query parameter to your request and specify the owner in which to create the Group.
