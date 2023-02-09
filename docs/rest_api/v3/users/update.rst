@@ -5,7 +5,7 @@ Update Users
 
     Only API users with an Organization role of Organization Administrator can update users.
 
-The basic format for updating a user is:
+The following example illustrates the basic format for updating a user:
 
 .. code::
 
@@ -15,7 +15,7 @@ The basic format for updating a user is:
     }
 
 
-For example, the following query will disable and lock the account for the user with ID 11:
+For example, the following request will disable and lock the account for the user whose ID is 11:
 
 .. code::
 
@@ -36,9 +36,12 @@ JSON Response
             "userName": "jeffersond@companyabc.com",
             "firstName": "Donald",
             "lastName": "Jefferson",
+            "pseudonym": "DonJ",
             "owner": "Demo Organization",
             "lastPasswordChange": "2022-08-30T12:45:17Z",
             "uiTheme": "Light",
+            "jobFunction": "Threat Intelligence",
+            "jobRole": "Analyst",
             "termsAccepted": true,
             "logoutIntervalMinutes": 30,
             "systemRole": "User",
@@ -56,7 +59,7 @@ JSON Response
         "status": "Success"
     }
 
-Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a PUT request for the ``users`` object.
+Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a PUT request to the ``/v3/security/users`` endpoint.
 
 .. note:: 
 

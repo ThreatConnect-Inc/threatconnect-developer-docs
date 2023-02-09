@@ -5,7 +5,7 @@ Create Users
 
     Only API users with an Organization role of Organization Administrator can create users.
 
-The basic format for creating a user is:
+The following example illustrates the basic format for creating a user:
 
 .. code::
 
@@ -22,7 +22,7 @@ The basic format for creating a user is:
         "systemRole": "User"
     }
 
-For example, the following query will create a user account where the user will be required to reset their password and enroll in MFA after logging into ThreatConnect for the first time:
+For example, the following request will create a new user who will be required to reset their password and enroll in MFA after logging into ThreatConnect for the first time:
 
 .. code::
 
@@ -66,7 +66,7 @@ JSON Response
         "status": "Success"
     }
 
-Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a POST request for the ``users`` object.
+Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a POST request to the ``/v3/security/users`` endpoint.
 
 .. note:: 
 

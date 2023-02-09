@@ -1,13 +1,13 @@
 Available Fields
 ----------------
 
-You can retrieve a list of fields for the ``v3/security/users`` endpoint using the following query:
+Send the following request to `retrieve a list of fields <https://docs.threatconnect.com/en/latest/rest_api/v3/retrieve_fields.html>`_ for the ``/v3/security/users`` endpoint:
 
 .. code::
 
     OPTIONS /v3/security/users?show=readonly
 
-Alternatively, refer to the following table for a list of available fields that can be included in the body of a POST or PUT request for the ``users`` object:
+Alternatively, refer to the following table for a list of available fields that can be included in the body of a POST or PUT request to the ``/v3/security/users`` endpoint:
 
 .. list-table::
    :widths: 20 20 20 20 20
@@ -18,6 +18,11 @@ Alternatively, refer to the following table for a list of available fields that 
      - Type
      - Required for Creation?
      - Updatable?
+   * - customTqlTimeout
+     - The maximum amount of time, in milliseconds, that ThreatConnect Query Language (TQL) queries made by the user will be allowed to run before timing out
+     - Integer
+     - FALSE
+     - TRUE
    * - disabled
      - Determines whether the user's account is disabled
      - Boolean
@@ -68,10 +73,10 @@ Alternatively, refer to the following table for a list of available fields that 
      - String
      - FALSE
      - TRUE
-   * - systemRole
-     - The user's `System role <https://docs.threatconnect.com/en/latest/rest_api/v3/system_roles/system_roles.html>`_ (all System roles except API User may be used)
+   * - systemRole [1]_
+     - The user's `System role <https://docs.threatconnect.com/en/latest/rest_api/v3/system_roles/system_roles.html>`_
      - String
-     - FALSE
+     - TRUE
      - TRUE
    * - termsAccepted
      - Determines whether to present the user with ThreatConnect's terms of service the next time they log into ThreatConnect
@@ -83,7 +88,7 @@ Alternatively, refer to the following table for a list of available fields that 
      - Boolean
      - FALSE
      - TRUE
-   * - uiTheme
+   * - uiTheme [2]_
      - Specifies whether to set the ThreatConnect user interface to a light or dark theme for the user (accepted values include "Light" and "Dark")
      - String
      - FALSE
@@ -93,3 +98,10 @@ Alternatively, refer to the following table for a list of available fields that 
      - String
      - TRUE
      - TRUE
+
+.. [1] All System roles except **API User** may be assigned to a user.
+
+.. [2] The following are accepted values for the ``uiTheme`` field:
+
+    - ``Light``
+    - ``Dark``

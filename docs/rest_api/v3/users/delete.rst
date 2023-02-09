@@ -5,13 +5,13 @@ Delete Users
 
     Only API users with an Organization role of Organization Administrator can delete users.
 
-The basic format to delete a user is:
+Send a request in the following format to delete a user:
 
 .. code::
 
     DELETE /v3/security/users/{userId}
 
-For example, the following query will delete the user with ID 10:
+For example, the following request will delete the user whose ID is 10:
 
 .. code::
 
