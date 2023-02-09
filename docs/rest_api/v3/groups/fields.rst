@@ -10,7 +10,7 @@ Send the following request to `retrieve a list of available fields <https://docs
 .. hint::
     To include read-only fields in the response, append the ``?show=readonly`` query parameter to the OPTIONS request.
 
-Alternatively, refer to the following table for a list of available fields that can be included in the body of a POST or PUT request for **all** Group types.
+Alternatively, refer to the following table for a list of available fields that can be included in the body of a POST or PUT request to the ``/v3/groups`` endpoint for **all** Group types.
 
 .. list-table::
    :widths: 20 20 10 15 15 20
@@ -68,12 +68,6 @@ Alternatively, refer to the following table for a list of available fields that 
      - FALSE
      - TRUE
      - {"data": [{"type": "Attribute Type", "value": "Attribute Value", "source": "Attribute Source"]}}
-   * - downVote
-     - Indicates that the Group's intelligence was inaccurate, untimely, or irrelevant
-     - Boolean
-     - FALSE
-     - TRUE
-     - true, false
    * - name
      - The Group's name
      - String
@@ -111,11 +105,11 @@ Alternatively, refer to the following table for a list of available fields that 
      - FALSE
      - "Document", "Email"
    * - upVote
-     - Indicates that the Group's intelligence was accurate and useful
+     - Use this field to update the Group's `Intel Rating <https://knowledge.threatconnect.com/docs/group-intel-rating>`_
      - Boolean
      - FALSE
      - TRUE
-     - true, false
+     - 0 (to submit a **DownVote** Intel Rating) or 1 (to submit an **UpVote** Intel Rating)
 
 .. [1] To retrieve a list of available `Attribute Types <https://docs.threatconnect.com/en/latest/rest_api/v3/attribute_types/attribute_types.html>`_, send the following request: ``GET /v3/attributeTypes``.
 .. [2] By default, Groups will be created in the Organization in which your API user account resides. To create a Group in a Community or Source, include the ``ownerId`` or ``ownerName`` field in your request. Alternatively, append the ``?owner=`` query parameter to your request and specify the owner in which to create the Group.
