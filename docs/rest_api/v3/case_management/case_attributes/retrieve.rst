@@ -1,10 +1,12 @@
 Retrieve Case Attributes
 ------------------------
 
+The following section describes how to retrieve Case Attributes via the ``/v3/caseAttributes`` endpoint. In addition to the methods described in this section, you can send the following request to retrieve Attributes added to a specific Case: ``GET /v3/cases/{caseId}?fields=attributes``.
+
 Retrieve All Case Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To retrieve all Case Attributes, use the following query:
+Send the following request to retrieve data for all Case Attributes:
 
 .. code::
 
@@ -18,35 +20,29 @@ JSON Response:
         "data": [
             {
                 "id": 1,
+                "dateAdded": "2022-02-15T20:24:04Z",
                 "type": "Detection Percentage",
                 "value": "50",
                 "source": "Hybrid analysis",
                 "createdBy": {
                     "id": 3,
-                    "userName": "11112222333344445555",
-                    "firstName": "John",
-                    "lastName": "Smith",
-                    "pseudonym": "jsmithAPI",
-                    "role": "Api User"
+                    "userName": "11112222333344445555"
                 },
-                "dateAdded": "2022-02-15T20:24:04Z",
                 "lastModified": "2022-02-15T20:24:16Z",
+                "pinned": false,
                 "default": false
             },
             {
                 "id": 2,
+                "dateAdded": "2022-02-15T20:24:18Z",
                 "type": "Phishing Open Rate",
                 "value": "20",
                 "createdBy": {
                     "id": 1,
-                    "userName": "jsmith",
-                    "firstName": "John",
-                    "lastName": "Smith",
-                    "pseudonym": "jsmith",
-                    "role": "User"
+                    "userName": "smithj@threatconnect.com"
                 },
-                "dateAdded": "2022-02-15T20:24:18Z",
                 "lastModified": "2022-02-15T20:24:37Z",
+                "pinned": false,
                 "default": false
             },
             {...}
@@ -54,50 +50,48 @@ JSON Response:
         "status": "Success"
     }
 
-Retrieve a Single Case Attribute
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Retrieve a Specific Case Attribute
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To retrieve a specific Case Attribute, use a query in the following format:
+Send a request in the following format to retrieve data for a specific Case Attribute:
 
 .. code::
 
     GET /v3/caseAttributes/{caseAttributeId}
 
-For example, the following query will return information about the Case Attribute with ID 1:
+For example, the following request will retrieve data for the Case Attribute whose ID is 3:
 
 .. code::
 
-    GET /v3/notes/1
+    GET /v3/caseAttributes/3
 
 JSON Response:
 
 .. code:: json
 
     {
-      "data": {
-          "id": 1,
-          "type": "Detection Percentage",
-          "value": "50",
-          "createdBy": {
-              "id": 79,
-              "userName": "jsmith",
-              "firstName": "John",
-              "lastName": "Smith",
-              "pseudonym": "jsmith"
-          },
-          "dateAdded": "2022-02-15T20:24:04Z",
-          "lastModified": "2022-02-15T20:24:16Z",
-          "default": false
-      },
-      "status": "Success"
+        "data": {
+            "id": 3,
+            "dateAdded": "2022-02-15T20:24:04Z",
+            "type": "Summary of Case Findings",
+            "value": "After analyzing the threat for which this Case was opened, it was determined that the threat does not pose a risk to Company ABC.",
+            "createdBy": {
+                "id": 3,
+                "userName": "11112222333344445555"
+            },
+            "lastModified": "2022-02-15T21:13:16Z",
+            "pinned": false,
+            "default": false
+        },
+        "status": "Success"
     }
 
 Request Additional Fields
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To request additional fields not automatically included with each returned object, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
+To request additional fields not included in the default response, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
 
 Filter Results
 ^^^^^^^^^^^^^^
 
-To filter returned objects using ThreatConnect Query Language (TQL), refer to `Filter Results with TQL <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_.
+To filter results using ThreatConnect Query Language (TQL), refer to `Filter Results with TQL <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_.

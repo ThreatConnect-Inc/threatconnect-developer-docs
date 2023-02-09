@@ -1,7 +1,7 @@
 Create Case Attributes
 ----------------------
 
-The basic format for creating a Case Attribute and adding it to a Case is:
+The following example illustrates the basic format for creating a Case Attribute:
 
 .. code::
 
@@ -12,7 +12,7 @@ The basic format for creating a Case Attribute and adding it to a Case is:
         "value": "Case Attribute Value"
     }
   
-For example, the following query will add a Case Attribute to the Case with ID 1.
+For example, the following request will add a Case Attribute to the Case whose ID is 1:
 
 .. code::
 
@@ -30,25 +30,22 @@ JSON Response:
     {
         "data": {
             "id": 3,
+            "dateAdded": "2022-04-06T12:40:48Z",
             "type": "Phishing Open Rate",
             "value": "30",
             "createdBy": {
                 "id": 3,
-                "userName": "11112222333344445555",
-                "firstName": "John",
-                "lastName": "Smith",
-                "pseudonym": "jsmithAPI",
-                "role": "Api User"
+                "userName": "11112222333344445555"
             },
-            "dateAdded": "2022-04-06T12:40:48Z",
             "lastModified": "2022-04-06T12:40:48Z",
+            "pinned": false,
             "default": false
         },
         "message": "Created",
         "status": "Success"
     }
 
-Refer to the `Available Fields <#available-fields>`_ and section for a list of available fields that can be included in the body of a POST request for the ``caseAttributes`` object.
+Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a POST request to the ``/v3/caseAttributes`` endpoint.
 
 .. hint::
-    Case Attributes can also be created when creating a Case. See the “Create Cases” section of `Cases <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/cases/cases.html>`_ for more information.
+    Case Attributes can also be created and added to a Case when creating the Case. See the “Create Cases” section of `Cases <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/cases/cases.html>`_ for more information.
