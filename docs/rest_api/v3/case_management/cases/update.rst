@@ -74,4 +74,4 @@ Refer to the `Available Fields <#available-fields>`_ and section for a list of a
     See `Update an Object's Metadata <https://docs.threatconnect.com/en/latest/rest_api/v3/update_metadata.html>`_ for instructions on using the ``mode`` field.
 
 .. attention::
-    If you try to add an Attribute to a Case when the Case Attribute Type's **Max Allowed** limit has been reached, an error will occur.
+    If you try to add an Attribute to a Case when the Attribute Type's **Max Allowed** limit for Cases has been reached, the API will return a **400 - Bad Request** error.
