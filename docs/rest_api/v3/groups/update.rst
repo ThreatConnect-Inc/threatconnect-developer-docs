@@ -10,7 +10,7 @@ The following example illustrates the basic format for updating a Group:
         {updatedField}: {updatedValue}
     }
 
-Refer to the `Available Fields <#available-fields>`_ and `Group-Specific Fields <#group-specific-fields>`_ sections for a list of available fields that can be included in the body of a PUT request for the ``groups`` object.
+Refer to the `Available Fields <#available-fields>`_ and `Group-Specific Fields <#group-specific-fields>`_ sections for a list of available fields that can be included in the body of a PUT request to the ``/v3/groups`` endpoint.
 
 .. hint::
     When updating a Group, you can use the ``mode`` field to add or remove the following metadata:

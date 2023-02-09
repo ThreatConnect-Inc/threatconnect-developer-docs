@@ -12,7 +12,7 @@ The following example illustrates the basic format for creating a Group:
         //required fields for the selected Group type go here, if applicable
     }
 
-Refer to the `Available Fields <#available-fields>`_ and `Group-Specific Fields <#group-specific-fields>`_ sections for a list of available fields that can be included in the body of a POST request for the ``groups`` object.
+Refer to the `Available Fields <#available-fields>`_ and `Group-Specific Fields <#group-specific-fields>`_ sections for a list of available fields that can be included in the body of a POST request to the ``/v3/groups`` endpoint.
 
 .. hint::
     You can add multiple `Attributes <https://docs.threatconnect.com/en/latest/rest_api/v3/group_attributes/group_attributes.html>`_, `Tags <https://docs.threatconnect.com/en/latest/rest_api/v3/tags/tags.html>`_, and `Security Labels <https://docs.threatconnect.com/en/latest/rest_api/v3/security_labels/security_labels.html>`_ to a Group in a single POST or PUT request.
