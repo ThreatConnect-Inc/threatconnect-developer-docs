@@ -16,24 +16,24 @@ JSON Response:
 
 .. code:: json
 
-{
-    "data": [
-        {
-            "id": 1,
-            "userName": "smithj@threatconnect.com"
-        }, 
-        {
-            "id": 2,
-            "userName": "pjones+analyst@threatconnect.com"
-        },
-        {
-            "id": 3,
-            "userName": "11112222333344445555"
-        },
-        {...}
-    ],
-    "status": "Success"
-}
+    {
+        "data": [
+            {
+                "id": 1,
+                "userName": "smithj@threatconnect.com"
+            }, 
+            {
+                "id": 2,
+                "userName": "pjones+analyst@threatconnect.com"
+            },
+            {
+                "id": 3,
+                "userName": "11112222333344445555"
+            },
+            {...}
+        ],
+        "status": "Success"
+    }
 
 Retrieve a Specific User
 ^^^^^^^^^^^^^^^^^^^^^^^^
