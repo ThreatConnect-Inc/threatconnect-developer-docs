@@ -4,7 +4,7 @@ Retrieve Attribute Types
 Retrieve All Attribute Types
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To retrieve all Attribute Types, use the following query:
+Send the following request to retrieve data for all Attribute Types:
 
 .. code::
 
@@ -15,6 +15,7 @@ JSON Response:
 .. code:: json
 
     {
+        "next": "https://app.threatconnect.com/api/v3/attributeTypes?resultStart=100&resultLimit=100",
         "data": [
             {
                 "id": 1,
@@ -22,8 +23,7 @@ JSON Response:
                 "description": "Describe the Course of Action Taken.",
                 "maxSize": 500,
                 "allowMarkdown": true,
-                "errorMessage": "Please enter a valid Course of Action.",
-                "systemRequired": false
+                "errorMessage": "Please enter a valid Course of Action."
             },
             {
                 "id": 2,
@@ -32,7 +32,6 @@ JSON Response:
                 "maxSize": 19,
                 "allowMarkdown": false,
                 "errorMessage": "Please enter valid infrastructure ownership details: Adversary Owned, Adversary Leased, Adversary Subverted",
-                "systemRequired": false,
                 "validationRule": {
                     "id": 12,
                     "name": "Adversary Ownership",
@@ -44,20 +43,21 @@ JSON Response:
             },
             {...}
         ],
+        "count": 214,
         "status": "Success"
     }
 
 
-Retrieve a Single Attribute Type
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Retrieve a Specific Attribute Type
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To retrieve a specific Attribute Type, use a query in the following format:
+Send a request in the following format to retrieve data for a specific Attribute Type:
 
 .. code::
 
     GET /v3/attributeTypes/{attributeTypeId}
 
-For example, the following query will return information about the Attribute Type with ID 3:
+For example, the following request will retrieve data for the Attribute Type whose ID is 3:
 
 .. code::
 
@@ -74,8 +74,7 @@ JSON Response:
             "description": "Malware and hackertools usage characteristics: backdoor, self-propagating, rootkit, pass-the-hash, keylogger, Other.",
             "maxSize": 500,
             "allowMarkdown": true,
-            "errorMessage": "Please enter a valid TTP Description: Malware/Tool Information.",
-            "systemRequired": false
+            "errorMessage": "Please enter a valid TTP Description: Malware/Tool Information."
         },
         "status": "Success"
     }
@@ -83,9 +82,9 @@ JSON Response:
 Request Additional Fields
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To request additional fields not automatically included with each returned object, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
+To request additional fields not included in the default response, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
 
 Filter Results
 ^^^^^^^^^^^^^^
 
-To filter returned objects using ThreatConnect Query Language (TQL), refer to `Filter Results with TQL <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_.
+To filter results using ThreatConnect Query Language (TQL), refer to `Filter Results with TQL <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_.
