@@ -1,16 +1,16 @@
 Available Fields
 ----------------
 
-Use the following query to `retrieve a list of available fields <https://docs.threatconnect.com/en/latest/rest_api/v3/retrieve_fields.html>`_, including the field's name, description, and accepted data type, for the ``/v3/artifacts`` endpoint:
+Send the following request to `retrieve a list of available fields <https://docs.threatconnect.com/en/latest/rest_api/v3/retrieve_fields.html>`_, including the field's name, description, and accepted data type, for the ``/v3/artifacts`` endpoint:
 
 .. code::
 
     OPTIONS /v3/artifacts
 
 .. hint::
-    To view all fields, including read-only fields, include the ``?show=readonly`` query parameter.
+    To include read-only fields in the response, append the ``?show=readonly`` query parameter to the OPTIONS request.
 
-Alternatively, refer to the following tables for a list of available fields that can be included in the body of a POST or PUT request for the ``artifacts`` object.
+Alternatively, refer to the following tables for a list of available fields that can be included in the body of a POST or PUT request to the ``/v3/artifacts`` endpoint.
 
 .. list-table::
    :widths: 20 20 10 15 15 20
@@ -39,15 +39,15 @@ Alternatively, refer to the following tables for a list of available fields that
        |
        | {"data": [{"hostName":"badguy.com", "type": "Host"}]}
    * - caseId
-     - The ID of the Case that contains the Artifact
+     - The ID of the Case to which the Artifact belongs
      - Integer
-     - TRUE*
+     - TRUE [1]_
      - FALSE
      - 1, 2, 3
    * - caseXid
-     - The XID of the Case that contains the Artifact
+     - The XID of the Case to which the Artifact belongs
      - String
-     - TRUE*
+     - TRUE [1]_
      - FALSE
      - "a1a1a1a1-a1a1-a1a1-a1a1-a1a1a1a1a1a1"
    * - derivedLink
@@ -56,12 +56,12 @@ Alternatively, refer to the following tables for a list of available fields that
      - FALSE
      - TRUE
      - true, false
-   * - fieldName
-     - The name of the Artifact Field within a corresponding Task
+   * - fieldName [2]_
+     - The name of the Task Artifact Field to which the Artifact corresponds
      - String
      - FALSE
      - TRUE
-     - "Sender Address"
+     - "senderAddress"
    * - fileData
      - Base64-encoded file attachment (required only for certain Artifact types)
      - String
@@ -75,11 +75,11 @@ Alternatively, refer to the following tables for a list of available fields that
      - TRUE
      - "C254ZZjosDoUA2B..."
    * - notes
-     - A list of Notes corresponding to the Artifact
+     - A list of Notes added to the Artifact
      - `Note Object <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/notes/notes.html>`_
      - FALSE
      - TRUE
-     - {"data": [{"text": "Note about malware case"}]}
+     - {"data": [{"text": "This IP address is malicious."}]}
    * - source
      - The name of the user who added the Artifact to the Case
      - String
@@ -87,35 +87,35 @@ Alternatively, refer to the following tables for a list of available fields that
      - TRUE
      - "jsmith"
    * - summary
-     - The data contained in the Artifact
+     - The summary (i.e., name) of the Artifact
      - String
      - TRUE
      - TRUE
      - "badguy.com"
    * - taskId
-     - The ID of the Task corresponding to the Artifact
+     - The ID of the Task to which the Artifact belongs
      - Integer
      - FALSE
      - FALSE
      - 1, 2, 3
    * - taskXid
-     - The XID of the Task corresponding to the Artifact
+     - The XID of the Task to which the Artifact belongs
      - String
      - FALSE
      - FALSE
      - "d7dafb59-bf74-46fe-bf18-8da14cc59219"
-   * - type
-     - The Artifact's data type
+   * - type [3]_
+     - The Artifact's type
      - String
      - TRUE
      - FALSE
      - "URL"
 
-To view a list of available Artifact data types, use the following query and refer to the ``type`` field:
+.. [1] When adding an Artifact to a Case, you must include either the ``caseId`` or ``caseXid`` field in the body of the POST request. Only one needs to be included in the body of the POST request, but both can be included, if desired.
 
-``OPTIONS /v3/artifacts/``
+.. [2] To retrieve the name of a Task's Artifact Field(s), send a request in the following format and review the ``name`` field for each Artifact Field contained within the ``configTask`` object in the response: ``GET /v3/tasks/{taskId}``.
 
-Alternatively, refer to `Artifact Types <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/artifact_types/artifact_types.html>`_ for instructions on retrieving available Artifact types.
+.. [3] To retrieve a list of available Artifact types, send the following request and review the ``type`` field in the response: ``OPTIONS /v3/artifacts``. You can also retrieve a list of available Artifact types by sending the following request: ``GET /v3/artifactTypes``.
 
 .. note::
-    \*When creating an Artifact, either ``caseId`` or ``caseXid`` must be included in the body of the POST request. Only one needs to be included in the body of the POST request, but both can be included, if desired.
+    If adding an Artifact to a Task, you do not need to specify the ID of the Case to which the Task belongs in your request. You only need to specify the ID or XID of the Task to which the Artifact will be added.

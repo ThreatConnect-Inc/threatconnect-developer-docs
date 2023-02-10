@@ -1,13 +1,13 @@
 Delete Artifacts
 ----------------
 
-The basic format to delete an Artifact is:
+Send a request in the following format to delete an Artifact:
 
 .. code::
 
     DELETE /v3/artifacts/{artifactId}
 
-For example, the following query will delete the Artifact with ID 1:
+For example, the following request will delete the Artifact whose ID is 1:
 
 .. code::
 

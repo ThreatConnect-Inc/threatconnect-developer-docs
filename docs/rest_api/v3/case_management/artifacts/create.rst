@@ -1,7 +1,7 @@
 Create Artifacts
 ----------------
 
-The basic format for creating an Artifact is:
+The following example illustrates the basic format for creating an Artifact:
 
 .. code::
 
@@ -12,7 +12,11 @@ The basic format for creating an Artifact is:
         "type": "The Artifact's data type"
     }
 
-For example, the following query will create an ``Email Address`` Artifact with a summary of ``badguy@bad.com`` for the Case with ID 1, create a new Adversary Group named ``Bad Guy`` and associate it to the Artifact, and create a Note for the Artifact:
+For example, the following request will add an Email Address Artifact with a summary of **badguy@bad.com** to the Case whose ID is 1. It will also complete the following actions for the Artifact:
+
+- Create a new **Bad Guy** Adversary Group and associate it to the Artifact
+- Add a Note to the Artifact
+
 
 .. code::
 
@@ -22,7 +26,7 @@ For example, the following query will create an ``Email Address`` Artifact with 
         "summary": "badguy@bad.com",
         "type": "Email Address",
         "associatedGroups": {"data": [{"name": "Bad Guy", "type": "Adversary"}]}, 
-        "notes": {"data": [{"text": "Note about this artifact"}]}
+        "notes": {"data": [{"text": "This email address belongs to a bad guy."}]}
     }
 
 JSON Response:
@@ -40,8 +44,8 @@ JSON Response:
                 "data": [
                     {
                         "id": 5,
-                        "text": "Note about this artifact",
-                        "summary": "Note about this artifact",
+                        "text": "This email address belongs to a bad guy.",
+                        "summary": " This email address belongs to a bad guy.",
                         "author": "11112222333344445555",
                         "dateAdded": "2021-04-22T19:24:06Z",
                         "lastModified": "2021-04-22T19:24:06Z",
@@ -54,21 +58,20 @@ JSON Response:
                 "data": [
                     {
                         "id": 13,
-                        "ownerName": "Demo Organization",
                         "dateAdded": "2021-04-22T19:24:06Z",
-                        "webLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=13",
+                        "ownerId": 1,
+                        "ownerName": "Demo Organization",
+                        "webLink": "https://app.threatconnect.com/#/details/groups/13/overview",
                         "type": "Adversary",
                         "name": "Bad Guy",
                         "createdBy": {
                             "id": 3,
-                            "userName": "11112222333344445555",
-                            "firstName": "John",
-                            "lastName": "Smith",
-                            "pseudonym": "jsmithAPI",
-                            "owner": "Demo Organization",
-                            "systemRole": "Api User"
+                            "userName": "11112222333344445555"
                         },
-                        "lastModified": "2021-04-22T19:24:06Z"
+                        "upVoteCount": "0",
+                        "downVoteCount": "0",
+                        "lastModified": "2021-04-22T19:24:06Z",
+                        "legacyLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=13",
                     }
                 ]
             },
@@ -79,29 +82,28 @@ JSON Response:
         "status": "Success"
     }
 
-Refer to the `Available Fields <#available-fields>`_ and section for a list of available fields that can be included in the body of a POST request for the ``artifacts`` object.
+Refer to the `Available Fields <#available-fields>`_ and section for a list of available fields that can be included in the body of a POST request to the ``/v3/artifacts`` endpoint.
 
 .. note::
-    To create an Artifact that is displayed in the **Task Artifacts** section of a Task, the following conditions must be met:
+    To create an Artifact that is displayed in the **Task Artifacts** section when viewing the Task in the ThreatConnect UI, the following conditions must be met:
 
-    - The Artifact must correspond to a Task;
-    - The corresponding Task must have an **Artifact Field** that accepts the same data type as the Artifact;
-    - The ``fieldname`` field must be defined when creating the Artifact.
+    - The Artifact must be added to a Task
+    - The Task to which the Artifact is added must have an Artifact Field that accepts the Artifact's type
+    - The ``fieldname`` field must be defined when creating the Artifact, and the value for this field must be the Task's Artifact Field that accepts the Artifact's type
 
-    Otherwise, the Artifact will be displayed in the **Related Artifacts** section of the Task. For more information about Artifact Fields, see the "Artifact Fields" section of the `Adding Tasks to a Case <https://knowledge.threatconnect.com/docs/adding-tasks-to-a-case#artifact-fields>`_ knowledge base article.
+    If these conditions are not met, the Artifact will be listed as a related Artifact when viewing the Task in the ThreatConnect UI. For more information about Artifact Fields, see the `"Artifact Fields" section of the Adding Tasks to a Case <https://knowledge.threatconnect.com/docs/adding-tasks-to-a-case#artifact-fields>`_ knowledge base article.
 
 Create Associations
 ^^^^^^^^^^^^^^^^^^^
 
-In ThreatConnect, you can create associations between Artifacts in your Organization and Groups and Indicators in your Organization.
+You can create associations between Artifacts in your Organization and Groups and Indicators in your Organization.
 
 When creating associations for Artifacts using the ThreatConnect v3 API, follow these guidelines:
 
 - To create an association to a new Group, include `all fields required to create the type of Group <https://docs.threatconnect.com/en/latest/rest_api/v3/groups/groups.html#available-fields>`_ when setting the ``associatedGroups`` field.
 - To create an association to an existing Group, use the Group's ID when setting the ``associatedGroups`` field (e.g., ``"associatedGroups": {"data": [{"id": 12345}]}``).
 - To create an association to a new Indicator, include `all fields required to create the type of Indicator <https://docs.threatconnect.com/en/latest/rest_api/v3/indicators/indicators.html#available-fields>`_ when setting the ``associatedIndicators`` field.
-- To create an association to an existing Indicator, use the Indicator's ID, or its summary and type (e.g., ``"associatedIndicators": {"data": [{"type": "Host", "hostname": "badguy.com"}]}``), when setting the ``associatedIndicators`` field.
+- To create an association to an existing Indicator, use the Indicator's ID, or use its summary and type (e.g., ``"associatedIndicators": {"data": [{"type": "Host", "hostname": "badguy.com"}]}``), when setting the ``associatedIndicators`` field.
 
-.. note::
-
+.. hint::
     You can associate multiple Indicators and Groups to an Artifact in a single POST or PUT request.

@@ -1,7 +1,7 @@
 Update Artifacts
 ----------------
 
-The basic format for updating an Artifact is:
+The following example illustrates the basic format for updating an Artifact:
 
 .. code::
 
@@ -10,7 +10,7 @@ The basic format for updating an Artifact is:
         {updatedField}: {updatedValue}
     }
 
-For example, the query below will update the summary for the Artifact with ID 1.
+For example, the following request will update the summary of the Artifact whose ID is 1:
 
 .. code::
 
@@ -37,7 +37,7 @@ JSON Response:
         "status": "Success"
     }
 
-Refer to the `Available Fields <#available-fields>`_ and section for a list of available fields that can be included in the body of a PUT request for the ``artifacts`` object.
+Refer to the `Available Fields <#available-fields>`_ and section for a list of available fields that can be included in the body of a PUT request to the ``/v3/artifacts`` endpoint.
 
 .. hint::
     When updating an Artifact, you can use the ``mode`` field to add or remove the following metadata:
@@ -48,4 +48,4 @@ Refer to the `Available Fields <#available-fields>`_ and section for a list of a
     See `Update an Object's Metadata <https://docs.threatconnect.com/en/latest/rest_api/v3/update_metadata.html>`_ for instructions on using the ``mode`` field.
 
 .. note::
-    To update an Artifact's ``fieldName``, the Artifact must correspond to a Task, and that Task must have multiple Artifact Fields defined. For more information about Artifact Fields, see the "Artifact Fields" section of the `Adding Tasks to a Case <https://knowledge.threatconnect.com/docs/adding-tasks-to-a-case#artifact-fields>`_ knowledge base article.
+    To update an Artifact's ``fieldName``, the Artifact must belong to a Task, and that Task must contain multiple Artifact Fields that accept the Artifact's type. For more information about Artifact Fields, see the `"Artifact Fields" section of the Adding Tasks to a Case <https://knowledge.threatconnect.com/docs/adding-tasks-to-a-case#artifact-fields>`_ knowledge base article.
