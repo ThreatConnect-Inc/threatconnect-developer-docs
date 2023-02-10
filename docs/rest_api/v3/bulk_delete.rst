@@ -1,7 +1,7 @@
 Delete Case Objects in Bulk
 ---------------------------
 
-If your System Administrator enabled bulk deletion operations for ThreatConnect v3 API, you can delete Artifacts, Case Attributes, Cases, Notes, Workflow Tasks, and Workflow Events in bulk by sending a request in the following format:
+If your System Administrator enabled bulk deletion operations for ThreatConnect v3 API, you can delete Artifacts, Cases, Notes, Workflow Tasks, and Workflow Events (i.e., Timeline Events) in bulk by sending a request in the following format:
 
 .. code::
 
