@@ -9,8 +9,8 @@ When creating, retrieving, or updating data, you can use the ``fields`` query pa
 To use the fields query parameter, append ``?fields={fieldName}`` to the end of the request URL. To include multiple fields in the API response, separate each key-value pair with an ampersand (``&``). For example, to include data for associated Groups and Tags in an API response, append ``?fields=associatedGroups&fields=tags`` to the end of the request URL.
 
 
-Retrieve a List of Available Fields for an Object
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Retrieve a List of Available Fields for an Endpoint
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Send a request in the following format to retrieve a list of fields you can include in responses returned from an object's endpoint:
 
