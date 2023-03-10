@@ -18,7 +18,7 @@ For example, the following request will add an Email Address Artifact with a sum
 - Add a Note to the Artifact
 
 .. hint::
-    To include the ``associatedGroups`` and ``notes`` field in the API response, append ``?fields=associatedGroups&fields=notes`` to the end of the request URL.
+    To include the ``associatedGroups`` and ``notes`` fields in the API response, append ``?fields=associatedGroups&fields=notes`` to the end of the request URL.
 
 
 .. code::
