@@ -53,7 +53,7 @@ JSON Response
     }
 
 .. hint::
-    To limit the results to a specific owner, append the ``?owner=`` query parameter to your request. For more information about the ``?owner=`` query parameter, see `Specify an Owner <https://docs.threatconnect.com/en/latest/rest_api/v3/specify_owner.html>`_.
+    Use the ``owner`` query parameter to `limit the results to a specific owner <https://docs.threatconnect.com/en/latest/rest_api/v3/specify_owner.html>`_.
 
 Retrieve a Specific Indicator
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -158,17 +158,7 @@ JSON Response
         "status": "Success"
     }
 
-You can `specify a different owner <https://docs.threatconnect.com/en/latest/rest_api/v3/specify_owner.html>`_ by appending the ``?owner=`` query parameter to your request. You can also use the ``?type=`` and ``?deletedSince=`` query parameters to limit the results by Indicator type and deletion date, respectively.
+To retrieve deleted Indicators from a Community or Source, use the ``owner`` `query parameter <https://docs.threatconnect.com/en/latest/rest_api/v3/specify_owner.html>`_. You can also use the ``type`` and ``deletedSince`` query parameters to limit the results by Indicator type and deletion date, respectively.
 
 .. note::
     The number of days for which deleted Indicators are retained is configured by your System Administrator.
-
-Request Additional Fields
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To request additional fields not included in the default response, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
-
-Filter Results
-^^^^^^^^^^^^^^
-
-To filter results using ThreatConnect Query Language (TQL), refer to `Filter Results with TQL <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_.

@@ -4,7 +4,7 @@ Retrieve Workflow Events
 Retrieve All Workflow Events
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To retrieve all Workflow Events, use the following query:
+Send the following request to retrieve data for all Workflow Events:
 
 .. code::
 
@@ -37,16 +37,16 @@ JSON Response:
         "status": "Success"
     }
 
-Retrieve a Single Workflow Event
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Retrieve a Specific Workflow Event
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To retrieve a specific Workflow Event, use a query in the following format:
+Send a request in the following format to retrieve data for a specific Workflow Event:
 
 .. code::
 
     GET /v3/workflowEvents/{workflowEventId}
 
-For example, the following query will return information about the Workflow Event with ID 1:
+For example, the following request will retrieve data for the Workflow Event whose ID is 1:
 
 .. code::
 
@@ -67,13 +67,3 @@ JSON Response:
         },
         "status": "Success"
     }
-
-Request Additional Fields
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To request additional fields not automatically included with each returned object, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
-
-Filter Results
-^^^^^^^^^^^^^^
-
-To filter returned objects using ThreatConnect Query Language (TQL), refer to `Filter Results with TQL <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_.

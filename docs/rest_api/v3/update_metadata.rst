@@ -4,7 +4,7 @@ Update an Object's Metadata
 Overview
 ^^^^^^^^
 
-When updating an Artifact, Case, Indicator, Group, Victim, or Victim Asset, you can use the ``mode`` field to add or remove metadata. The ``mode`` field accepts three values, each of which is defined in the following table.
+When updating an Artifact, Case, Group, Indicator, Victim Asset, or Victim, you can use the ``mode`` field to add and remove metadata to and from the object, respectively. The ``mode`` field accepts three values, each of which is defined in the following table.
 
 +----------+-------------------------------------------------------------------------------+
 | Value    | Description                                                                   |
@@ -40,6 +40,22 @@ The following table lists the metadata that can be updated for each object's res
 +-----------------+-------------------------+
 |                 | tags                    |
 +-----------------+-------------------------+
+| groups          | associatedArtifacts     |
++-----------------+-------------------------+
+|                 | associatedCases         |
++-----------------+-------------------------+
+|                 | associatedGroups        |
++-----------------+-------------------------+
+|                 | associatedIndicators    |
++-----------------+-------------------------+
+|                 | associatedVictimAssets  |
++-----------------+-------------------------+
+|                 | attributes              |
++-----------------+-------------------------+
+|                 | securityLabels          |
++-----------------+-------------------------+
+|                 | tags                    |
++-----------------+-------------------------+
 | indicators      | associatedArtifacts     |
 +-----------------+-------------------------+
 |                 | associatedCases         |
@@ -58,21 +74,7 @@ The following table lists the metadata that can be updated for each object's res
 +-----------------+-------------------------+
 |                 | tags                    |
 +-----------------+-------------------------+
-| groups          | associatedArtifacts     |
-+-----------------+-------------------------+
-|                 | associatedCases         |
-+-----------------+-------------------------+
-|                 | associatedGroups        |
-+-----------------+-------------------------+
-|                 | associatedIndicators    |
-+-----------------+-------------------------+
-|                 | associatedVictimAssets  |
-+-----------------+-------------------------+
-|                 | attributes              |
-+-----------------+-------------------------+
-|                 | securityLabels          |
-+-----------------+-------------------------+
-|                 | tags                    |
+| victimAssets    | associatedGroups        |
 +-----------------+-------------------------+
 | victims         | associatedGroups        |
 +-----------------+-------------------------+
@@ -82,11 +84,9 @@ The following table lists the metadata that can be updated for each object's res
 +-----------------+-------------------------+
 |                 | tags                    |
 +-----------------+-------------------------+
-| victimAssets    | associatedGroups        |
-+-----------------+-------------------------+
 
 .. attention::
-    To dissociate an object from an Artifact, Case, Indicator, Group, Victim, or Victim Asset, you must use the object's ID when setting its respective field (e.g., to dissociate an Indicator from an object, use the Indicator's ID when setting the ``associatedIndicators`` field).
+    To dissociate an object from an Artifact, Case, Group, Indicator, Victim Asset, or Victim, you must use the object's ID when setting its respective field (e.g., to dissociate an Indicator from an object, use the Indicator's ID when setting the ``associatedIndicators`` field).
 
 Example Request
 ^^^^^^^^^^^^^^^
@@ -97,9 +97,11 @@ The following request will make the following updates to the **ultrabadguy.com**
 - Replace any Security Labels applied to the Indicator with the **TLP: RED** Security Label
 - Apply a new **Russia** Tag to the Indicator without replacing any existing Tags applied to it
 
+Because the ``associatedGroups``, ``securityLabels``, and ``tags`` field are not included in the API response by default, ``?fields=associatedGroups&fields=securityLabels&fields=tags`` is appended to the end of the request URL so that these fields are included in the response.
+
 .. code::
 
-    PUT /v3/indicators/ultrabadguy.com
+    PUT /v3/indicators/ultrabadguy.com?fields=associatedGroups&fields=securityLabels&fields=tags
     {
         "associatedGroups": {"data": [{"id": 15}], "mode": "delete"},
         "securityLabels": {"data": [{"name": "TLP:RED"}], "mode": "replace"},
@@ -175,30 +177,6 @@ JSON Response
                     }
                 ]
             },
-            "associatedIndicators": {},
-            "fileActions": {
-                    "count": 0
-            },
-            "attributes": {
-                "data": [
-                    {
-                        "id": 24,
-                        "dateAdded": "2021-11-05T16:43:17Z",
-                        "type": "Additional Analysis and Context",
-                        "value": "This host is very dangerous",
-                        "source": "Phase of Intrusion",
-                        "createdBy": {
-                            "id": 3,
-                            "userName": "11112222333344445555"
-                        },
-                        "lastModified": "2021-11-05T16:43:17Z",
-                        "pinned": false,
-                        "default": false
-                    }
-                ]
-            },
-            "associatedCases": {},
-            "associatedArtifacts": {},
             "hostName": "ultrabadguy.com",
             "dnsActive": false,
             "whoisActive": true,

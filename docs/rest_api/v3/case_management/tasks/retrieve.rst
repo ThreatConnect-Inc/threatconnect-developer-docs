@@ -4,7 +4,7 @@ Retrieve Workflow Tasks
 Retrieve All Tasks
 ^^^^^^^^^^^^^^^^^^
 
-To retrieve all Tasks, use the following query:
+Send the following request to retrieve data for all Tasks:
 
 .. code::
 
@@ -20,7 +20,7 @@ JSON Response:
                 "id": 1,
                 "xid": "bf710c31-7641-4100-9edf-461c1f6bb354",
                 "name": "Read ThreatConnect's Building a Basic Workflow Blog",
-                "workflowPhase": 0,
+                "workflowPhase": 1,
                 "workflowStep": 1,
                 "dueDate": "2022-03-20T23:59:59Z",
                 "required": false,
@@ -29,20 +29,16 @@ JSON Response:
                     "type": "User",
                     "data": {
                         "id": 2,
-                        "userName": "pjones+analyst@threatconnect.com",
-                        "firstName": "Patrick",
-                        "lastName": "Jones",
-                        "pseudonym": "patjones",
-                        "role": "User"
+                        "userName": "pjones+analyst@threatconnect.com"
                     }
                 },
-                "owner": "Example Organization"
+                "owner": "Demo Organization"
             },
             {
                 "id": 2,
                 "xid": "93e9aced-7419-4121-bef1-5276737936ab",
                 "name": "Gather the subject line and email body",
-                "workflowPhase": 0,
+                "workflowPhase": 1,
                 "workflowStep": 2,
                 "required": true,
                 "dependentOnId": 8,
@@ -55,7 +51,7 @@ JSON Response:
                         "description": "SOC Team user group"
                     }
                 },
-                "owner": "Example Organization"
+                "owner": "Demo Organization"
             },
             {...}
         ],
@@ -63,16 +59,16 @@ JSON Response:
     }
 
 
-Retrieve a Single Task
-^^^^^^^^^^^^^^^^^^^^^^
+Retrieve a Specific Task
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-To retrieve a specific Task, use a query in the following format:
+Send a request in the following format to retrieve data for a specific Task:
 
 .. code::
 
     GET /v3/tasks/{taskId}
 
-For example, the following query will return information about the Task with ID 1:
+For example, the following request will retrieve data for the Task whose ID is 1:
 
 .. code::
 
@@ -88,7 +84,7 @@ JSON Response:
                 "id": 1,
                 "xid": "bf710c31-7641-4100-9edf-461c1f6bb354",
                 "name": "Read ThreatConnect's Building a Basic Workflow Blog",
-                "workflowPhase": 0,
+                "workflowPhase": 1,
                 "workflowStep": 1,
                 "dueDate": "2022-03-20T23:59:59Z",
                 "required": false,
@@ -97,26 +93,11 @@ JSON Response:
                     "type": "User",
                     "data": {
                         "id": 2,
-                        "userName": "pjones+analyst@threatconnect.com",
-                        "firstName": "Patrick",
-                        "lastName": "Jones",
-                        "pseudonym": "patjones",
-                        "role": "User"
+                        "userName": "pjones+analyst@threatconnect.com"
                     }
                 },
-                "owner": "Example Organization"
+                "owner": "Demo Organization"
             }
         ],
         "Status": "Success"
     }
-
-
-Request Additional Fields
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To request additional fields not automatically included with each returned object, refer to `Request Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
-
-Filter Results
-^^^^^^^^^^^^^^
-
-To filter returned objects using ThreatConnect Query Language (TQL), refer to `Filter Results with TQL <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_.

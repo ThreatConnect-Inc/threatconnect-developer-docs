@@ -1,14 +1,17 @@
-Available Fields
+Endpoint Options
 ----------------
 
-Send the following request to `retrieve a list of available fields <https://docs.threatconnect.com/en/latest/rest_api/v3/retrieve_fields.html>`_, including each field's name, description, and accepted data type, for the ``/v3/groups`` endpoint:
+Available Fields
+^^^^^^^^^^^^^^^^
+
+Send the following request to `retrieve a list of available fields <https://docs.threatconnect.com/en/latest/rest_api/v3/retrieve_fields.html>`_, including each field's name, description, and accepted data type, that can be included in the body of a POST or PUT request to the ``/v3/groups`` endpoint:
 
 .. code::
 
     OPTIONS /v3/groups
 
 .. hint::
-    To include read-only fields in the response, append the ``?show=readonly`` query parameter to the OPTIONS request.
+    To include read-only fields in the response, append ``?show=readonly`` to the end of the request URL.
 
 Alternatively, refer to the following table for a list of available fields that can be included in the body of a POST or PUT request to the ``/v3/groups`` endpoint for **all** Group types.
 
@@ -112,7 +115,7 @@ Alternatively, refer to the following table for a list of available fields that 
      - 0 (to submit a **Downvote** Intel Rating) or 1 (to submit an **Upvote** Intel Rating)
 
 .. [1] To retrieve a list of available `Attribute Types <https://docs.threatconnect.com/en/latest/rest_api/v3/attribute_types/attribute_types.html>`_, send the following request: ``GET /v3/attributeTypes``.
-.. [2] By default, Groups will be created in the Organization in which your API user account resides. To create a Group in a Community or Source, include the ``ownerId`` or ``ownerName`` field in your request. Alternatively, append the ``?owner=`` query parameter to your request and specify the owner in which to create the Group.
+.. [2] By default, Groups will be created in the Organization in which your API user account resides. To create a Group in a Community or Source, include the ``ownerId`` or ``ownerName`` field in your request. Alternatively, use the ``owner`` query parameter to `specify the owner <https://docs.threatconnect.com/en/latest/rest_api/v3/specify_owner.html>`_ in which to create the Group.
 .. [3] The following are accepted values for the ``type`` field:
 
     - ``Adversary``
@@ -418,3 +421,25 @@ Task
     - ``Completed``
     - ``Waiting on Someone``
     - ``Deferred``
+  
+Include Additional Fields in Responses
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When creating, retrieving, or updating data, you can use the ``fields`` query parameter to `include additional fields in the API response that are not included by default <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
+
+Send the following request to retrieve a list of fields you can include in responses returned from the ``/v3/groups`` endpoint:
+
+.. code::
+
+    OPTIONS /v3/groups/fields
+
+Filter Results
+^^^^^^^^^^^^^^
+
+When retrieving data, you can use the ``tql`` query parameter to `filter results with ThreatConnect Query Language (TQL) <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_.
+
+Send the following request to retrieve a list of valid TQL parameters you can use when including the ``tql`` query parameter in a request to the ``/v3/groups`` endpoint:
+
+.. code::
+
+    OPTIONS /v3/groups/tql

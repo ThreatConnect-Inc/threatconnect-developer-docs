@@ -4,23 +4,25 @@ Include Additional Fields for Returned Objects
 Overview
 ^^^^^^^^
 
-When creating, retrieving, or updating data, you can request additional fields that are not included in the default API response by appending the ``fields`` query parameter, followed each field's name, to your request. To request multiple fields, prepend ``&fields=`` to each subsequent field in the ``fields`` query parameter. For example, to include data for Tags and associated Groups in the API response when retrieving an Indicator, append the following to the API request's URL: ``?fields=tags&fields=associatedGroups``.
+When creating, retrieving, or updating data, you can use the ``fields`` query parameter to include additional fields that are not included in the API response by default.
+
+To use the fields query parameter, append ``?fields={fieldName}`` to the end of the request URL. To include multiple fields in the API response, separate each key-value pair with an ampersand (``&``). For example, to include data for associated Groups and Tags in an API response, append ``?fields=associatedGroups&fields=tags`` to the end of the request URL.
 
 
 Retrieve a List of Available Fields for an Object
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Send a request in the following format to retrieve a list of fields you can include in the default API response returned from an object's endpoint:
+Send a request in the following format to retrieve a list of fields you can include in responses returned from an object's endpoint:
 
 .. code::
 
   OPTIONS /v3/{objectType}/fields
 
-For example, the following request will retrieve a list of fields you can include in the default response returned from the ``/v3/groups`` endpoint:
+For example, the following request will retrieve a list of fields you can include in responses returned from the ``/v3/indicators`` endpoint:
 
 .. code::
 
-    OPTIONS /v3/groups/fields
+    OPTIONS /v3/indicators/fields
 
 JSON Response
 
@@ -29,52 +31,97 @@ JSON Response
     {
         "data": [
             {
-                "description": "Includes artifacts with a relationship to the group",
+                "description": "Includes artifacts with a relationship to the indicator",
                 "includedByDefault": false,
                 "name": "associatedArtifacts"
             },
             {
-                "description": "Includes cases with a relationship to the group",
+                "description": "Includes cases with a relationship to the indicator",
                 "includedByDefault": false,
                 "name": "associatedCases"
             },
             {
-                "description": "Includes groups with a relationship to the group",
+                "description": "Includes groups related to the indicator",
                 "includedByDefault": false,
                 "name": "associatedGroups"
             },
             {
-                "description": "Includes indicators related to the group",
+                "description": "Includes indicators related to the indicator",
                 "includedByDefault": false,
                 "name": "associatedIndicators"
             },
             {
-                "description": "Includes victim assets related to the group",
-                "includedByDefault": false,
-                "name": "associatedVictimAssets"
-            },
-            {
-                "description": "Includes attributes related to the group",
+                "description": "Includes attributes related to the indicator",
                 "includedByDefault": false,
                 "name": "attributes"
             },
             {
-                "description": "Includes security labels related to the group",
+                "description": "Includes DNS resolution data related to the Host indicators",
+                "includedByDefault": false,
+                "name": "dnsResolution"
+            },
+            {
+                "description": "Includes Enrichment data related to the indicator",
+                "includedByDefault": false,
+                "name": "enrichment"
+            },
+            {
+                "description": "Includes the False Positives fields falsePositives and lastFalsePositive",
+                "includedByDefault": false,
+                "name": "falsePositives"
+            },
+            {
+                "description": "Includes indicators related to the indicator by file action",
+                "includedByDefault": false,
+                "name": "fileActions"
+            },
+            {
+                "description": "Includes file occurrences related to the indicator",
+                "includedByDefault": false,
+                "name": "fileOccurrences"
+            },
+            {
+                "description": "Includes the following fields, over-writing the custom field names: value1, value2, and value3",
+                "includedByDefault": false,
+                "name": "genericCustomIndicatorValues"
+            },
+            {
+                "description": "Includes GEO location information related to the Host and IP indicators",
+                "includedByDefault": false,
+                "name": "geoLocation"
+            },
+            {
+                "description": "Includes investigation links related to the indicator type",
+                "includedByDefault": false,
+                "name": "investigationLinks"
+            },
+            {
+                "description": "Includes the Observations fields observations and lastObserved",
+                "includedByDefault": false,
+                "name": "observations"
+            },
+            {
+                "description": "Includes security labels related to the indicator",
                 "includedByDefault": false,
                 "name": "securityLabels"
             },
             {
-                "description": "Includes tags related to the group",
+                "description": "Includes tags related to the indicator",
                 "includedByDefault": false,
                 "name": "tags"
             },
             {
-                "description": "Includes explicit details of the user",
+                "description": "Includes the Threat Assess fields threatAssessRating, threatAssessScore, and threatAssessConfidence",
                 "includedByDefault": false,
-                "name": "userDetails"
+                "name": "threatAssess"
+            },
+            {
+                "description": "Includes WhoIs information related to the Host indicators",
+                "includedByDefault": false,
+                "name": "whoIs"
             }
         ],
-        "count": 9,
+        "count": 18,
         "status": "Success"
     }
 
@@ -166,7 +213,7 @@ JSON Response
     }
 
 .. attention::
-    When sending a request to the ``/v3/indicators`` endpoint with ``?fields=threatAssess`` appended to the request, the following fields will be included in the response:
+    When sending a request to the ``/v3/indicators`` endpoint with ``?fields=threatAssess`` appended to the end of the request URL, the following fields will be included in the API response:
 
     - ``threatAssessRating``
     - ``threatAssessConfidence``
@@ -179,9 +226,9 @@ JSON Response
 Include Additional Association Levels for a Field
 =================================================
 
-When using the fields query parameter, you can also request additional association levels for the specified field by appending ``.`` followed by the field name to the ``fields`` query parameter.
+When using the ``fields`` query parameter, you can request additional association levels for a field by appending ``.{fieldName}`` to the field's name. 
 
-For example, the following request will retrieve data for the Indicator whose ID is 4 and include Groups associated to the Indicator and Attributes added to those Groups in the response. To accomplish this, ``?fields=associatedGroups.attributes`` is appended to the request's URL.
+For example, the following request will retrieve data for the Indicator whose ID is 4 and include Groups associated to the Indicator and Attributes added to those Groups in the response. To accomplish this, ``?fields=associatedGroups.attributes`` is appended to the end of the request URL.
 
 .. code::
 
@@ -252,12 +299,18 @@ JSON Response
         "status": "Success"
     }
 
-By default, you can retrieve only **one association level** at a time. To retrieve more than one association level at a time, contact your System Administrator and have them complete one of the following actions:
+By default, you can retrieve only **one association level at a time**. To retrieve more than one association level at a time, contact your System Administrator and have them complete one of the following actions:
 
   - Enable the **Allow User to Exceed API Link Limit** setting on your API user account. Instructions for enabling this setting are available in the `"Creating an API User Account" section of the Creating User Accounts <https://knowledge.threatconnect.com/docs/creating-user-accounts#creating-an-api-user>`_ knowledge base article.
   - Update the v3 API link limit in system settings to allow for more than one association level to be retrieved at a time.
 
-The following example demonstrates how to retrieve two association levels in a single request. Specifically, the request will retrieve data for the Indicator whose ID is 4 and include Groups associated to the Indicator, Attributes added to those Groups (the first association level), and Security Labels applied to those Attributes (the second association level) in the response. To accomplish this, ``?fields=associatedGroups.attributes.securityLabels`` is appended to the request's URL.
+The following example demonstrates how to retrieve two association levels in a single request. The request will retrieve data for the Indicator whose ID is 4 and include the following data in the API response:
+
+- Groups associated to the Indicator
+- Attributes added to those Groups (the first association level)
+- Security Labels applied to those Attributes (the second association level)
+
+To accomplish this, ``?fields=associatedGroups.attributes.securityLabels`` is appended to the end of the request URL.
 
 .. code::
 
@@ -343,7 +396,7 @@ JSON Response
 Include Details About the User Who Created an Object
 ====================================================
 
-Responses for some objects include a ``createdBy`` field, which includes subfields that specify the user who created the object. By default, only the ``id`` and ``userName`` subfields are included in the ``createdBy`` field. To include more details about the user that created an object, append ``?fields=userDetails`` to the request. Note that the number of additional subfields included in the ``createdBy`` field will vary based on your API user account's Organization role.
+Responses for some objects include a ``createdBy`` field, which includes subfields that specify the user who created the object. By default, the ``createdBy`` field includes only the ``id`` and ``userName`` subfields. To include more details about the user that created an object, append ``?fields=userDetails`` to the end of the request URL. Note that the number of additional subfields included in the ``createdBy`` field will vary based on your API user account's Organization role.
 
 For example, the following request will retrieve data for the Group whose ID is 12 and return additional details about the user who created the Group. The first response will be for an API user without **Read** permission for user accounts (e.g., the API user account has an Organization role of Standard User), and the second response will be for an API user with **Read** permission for user accounts (e.g., the API user account has an Organization role of Organization Administrator).
 
@@ -425,13 +478,13 @@ JSON Response (With Read Permissions)
 Combine the "tql" and "fields" Query Parameters
 ===============================================
 
-You can combine the ``tql`` and ``fields`` query parameters in a single API request, allowing you to filter results using ThreatConnect Query Language (TQL) and include additional fields in the response.
+You can combine the ``tql`` and ``fields`` query parameters in a single API request, allowing you to `filter results using ThreatConnect Query Language (TQL) <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_ and include additional fields in the API response.
 
-For example, the following request will retrieve data for all Indicators with a Threat Rating greater than or equal to 4 and include data for Tags and Attributes added to each Indicator in the response. Note that the TQL string included in the request's URL is encoded.
+For example, the following request will retrieve data for all Indicators with a Threat Rating greater than or equal to 4 and include data for Tags and Attributes added to each Indicator in the API response. Note that the TQL string included in the request URL is encoded.
 
 .. code::
 
   GET /v3/indicators?tql=rating%20GEQ%204&fields=tags&fields=attributes
 
 .. note::
-    Depending on the tool you are using to interact with the ThreatConnect API, it may be necessary to encode the URL in your request manually if it includes query parameters. For example, some tools may accept ``/v3/indicators?tql=ownerName GEQ 4&fields=tags&fields=attributes`` as a valid request URL and encode it automatically, while others may require you to encode the request's URL manually. If you send a request with query parameters and a 401 Unauthorized error is returned, verify whether the URL in your request is encoded properly for the API tool you are using.
+    Depending on the tool you are using to interact with the ThreatConnect API, it may be necessary to encode the request URL manually if it includes query parameters. For example, some tools may accept ``/v3/indicators?tql=ownerName GEQ 4&fields=tags&fields=attributes`` as a valid request URL and encode it automatically, while others may require you to encode the request URL manually. If you send a request with query parameters and a **401 Unauthorized** error is returned, verify whether the request URL is encoded properly for the API tool you are using.

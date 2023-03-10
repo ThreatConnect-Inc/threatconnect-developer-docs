@@ -1,7 +1,7 @@
 Update Workflow Events
 ----------------------
 
-The basic format for updating a Workflow Event is:
+The following example illustrates the basic format for updating a Workflow Event:
 
 .. code::
 
@@ -10,7 +10,10 @@ The basic format for updating a Workflow Event is:
         {updatedField}: {updatedValue}
     }
 
-For example, the following query will update the summary for the Workflow Event with ID 4 and add a Note to the Workflow Event.
+For example, the following request will update the summary for the Workflow Event whose ID is 4 and add a Note to the Workflow Event:
+
+.. hint::
+    To include the ``notes`` field in the API response, append ``?fields=notes`` to the end of the request URL.
 
 .. code::
 
@@ -31,26 +34,13 @@ JSON Response:
             "dateAdded": "2021-03-05T14:48:44Z",
             "summary": "New Workflow Event summary",
             "systemGenerated": false,
-            "notes": {
-                "data": [
-                    {
-                        "id": 7,
-                        "text": "Additional information about this Workflow Event",
-                        "summary": "Additional information about this Workflow Event",
-                        "author": "11112222333344445555",
-                        "dateAdded": "2021-03-07T11:17:32Z",
-                        "lastModified": "2021-03-07T11:17:32Z",
-                        "edited": false,
-                        "workflowEventId": 4
-                    }
-                ]
-            }
+            "link": "https://app.threatconnect.com/api/v3/cases/1"
         },
         "message": "Updated",
         "status": "Success"
     }
 
-Refer to the `Available Fields <#available-fields>`_ and section for a list of available fields that can be included in the body of a PUT request for the ``workflowEvents`` object.
+Refer to the `Available Fields <#available-fields>`_ and section for a list of available fields that can be included in the body of a PUT request to the ``/v3/workflowEvents`` endpoint.
 
 .. attention::
-    You cannot modify system-generated Workflow Events (i.e., Workflow Events with their ``systemGenerated`` field set to ``true``). However, you can add Notes that correspond to system-generated Workflow Events.
+    You cannot modify system-generated Workflow Events (i.e., Workflow Events with the ``systemGenerated`` field set to ``true``), but you can add Notes to them.

@@ -62,9 +62,11 @@ In the following example, the request will perform the following actions:
 - Create a new Address Indicator and associate it to the newly created File Indicator using the **File Traffic** File Action
 - Associate the existing File Indicator whose ID is 12 to the newly created File Indicator using the **File Archive** File Action
 
+Because the ``fileActions`` field is not included in the API response by default, the ``fields`` query parameter is added to the request URL and assigned a value of ``fileActions`` so that this field is included in the response.
+
 .. code::
 
-    POST /v3/indicators
+    POST /v3/indicators?fields=fileActions
     {
         "type": "File",
         "md5": "2ea0564f33e4cb67063c4a06734eb627",
@@ -73,14 +75,14 @@ In the following example, the request will perform the following actions:
                 {
                     "relationship": "File Traffic",
                     "indicator": {
-                    "type": "Address",
-                    "ip": "66.96.146.132"
+                        "type": "Address",
+                        "ip": "66.96.146.132"
                     }
                 },
                 {
                     "relationship": "File Archive",
                     "indicator": {
-                    "id": 12
+                        "id": 12
                     }
                 }
             ]
@@ -94,53 +96,16 @@ JSON Response
     {
         "data": {
             "id": 18,
-            "ownerId": 1,
+            "ownerId": 18,
             "ownerName": "Demo Organization",
             "dateAdded": "2022-06-14T12:57:53Z",
             "webLink": "https://app.threatconnect.com/#/details/indicators/18/overview",
-            "tags": {},
-            "securityLabels": {},
             "type": "File",
             "lastModified": "2022-06-14T12:57:53Z",
             "summary": "2EA0564F33E4CB67063C4A06734EB627",
             "privateFlag": false,
             "active": true,
             "activeLocked": false,
-            "associatedGroups": {},
-            "associatedIndicators": {
-                "data": [
-                    {
-                        "id": 19,
-                        "ownerId": 1,
-                        "ownerName": "Demo Organization",
-                        "dateAdded": "2022-06-14T12:57:53Z",
-                        "webLink": "https://app.threatconnect.com/#/details/indicators/19/overview",
-                        "type": "Address",
-                        "lastModified": "2022-06-14T12:57:53Z",
-                        "summary": "66.96.146.132",
-                        "privateFlag": false,
-                        "active": true,
-                        "activeLocked": false,
-                        "ip": "66.96.146.132",
-                        "legacyLink": "https://app.threatconnect.com/auth/indicators/details/address.xhtml?address=66.96.146.132&owner=Demo+Organization"
-                    },
-                    {
-                        "id": 12,
-                        "ownerId": 1,
-                        "ownerName": "Demo Organization",
-                        "dateAdded": "2022-05-27T12:42:28Z",
-                        "webLink": "https://app.threatconnect.com/#/details/indicators/12/overview",
-                        "type": "File",
-                        "lastModified": "2022-05-27T12:42:28Z ",
-                        "summary": "FB69E1273E7A53AD8E9BBE64B80859FC",
-                        "privateFlag": false,
-                        "active": true,
-                        "activeLocked": false,
-                        "md5": "FB69E1273E7A53AD8E9BBE64B80859FC",
-                        "legacyLink": "https://app.threatconnect.com/auth/indicators/details/file.xhtml?file=FB69E1273E7A53AD8E9BBE64B80859FC&owner=Demo+Organization"
-                    }
-                ]
-            },
             "fileActions": {
                 "data": [
                     {
@@ -151,40 +116,15 @@ JSON Response
                             "ownerName": "Demo Organization",
                             "dateAdded": "2022-05-27T12:42:28Z ",
                             "webLink": "https://app.threatconnect.com/#/details/indicators/12/overview",
-                            "tags": {},
-                            "securityLabels": {},
                             "type": "File",
                             "lastModified": "2022-05-27T12:42:28Z ",
                             "summary": "FB69E1273E7A53AD8E9BBE64B80859FC",
                             "privateFlag": false,
                             "active": true,
                             "activeLocked": false,
-                            "associatedGroups": {},
-                            "associatedIndicators": {
-                                "data": [
-                                    {
-                                        "id": 18,
-                                        "ownerId": 1,
-                                        "ownerName": "Demo Organization",
-                                        "dateAdded": "2022-06-14T12:57:53Z",
-                                        "webLink": "https://app.threatconnect.com/#/details/indicators/18/overview",
-                                        "type": "File",
-                                        "lastModified": "2022-06-14T12:57:53Z",
-                                        "summary": "2EA0564F33E4CB67063C4A06734EB627",
-                                        "privateFlag": false,
-                                        "active": true,
-                                        "activeLocked": false,
-                                        "md5": "2EA0564F33E4CB67063C4A06734EB627",
-                                        "legacyLink": "https://app.threatconnect.com/auth/indicators/details/file.xhtml?file=2EA0564F33E4CB67063C4A06734EB627&owner=Demo+Organization"
-                                    }
-                                ]
-                            },
                             "fileActions": {
                                 "count": 0
                             },
-                            "attributes": {},
-                            "associatedCases": {},
-                            "associatedArtifacts": {},
                             "md5": "FB69E1273E7A53AD8E9BBE64B80859FC",
                             "legacyLink": "https://app.threatconnect.com/auth/indicators/details/file.xhtml?file=FB69E1273E7A53AD8E9BBE64B80859FC&owner=Demo+Organization"
                         }
@@ -197,40 +137,15 @@ JSON Response
                             "ownerName": "Demo Organization",
                             "dateAdded": "2022-06-14T12:57:53Z",
                             "webLink": "https://app.threatconnect.com/#/details/indicators/19/overview",
-                            "tags": {},
-                            "securityLabels": {},
                             "type": "Address",
                             "lastModified": "2022-06-14T12:57:53Z",
                             "summary": "66.96.146.132",
                             "privateFlag": false,
                             "active": true,
                             "activeLocked": false,
-                            "associatedGroups": {},
-                            "associatedIndicators": {
-                                "data": [
-                                    {
-                                        "id": 18,
-                                        "ownerId": 1,
-                                        "ownerName": "Demo Organization",
-                                        "dateAdded": "2022-06-14T12:57:53Z",
-                                        "webLink": "https://app.threatconnect.com/#/details/indicators/18/overview",
-                                        "type": "File",
-                                        "lastModified": "2022-06-14T12:57:53Z",
-                                        "summary": "2EA0564F33E4CB67063C4A06734EB627",
-                                        "privateFlag": false,
-                                        "active": true,
-                                        "activeLocked": false,
-                                        "md5": "2EA0564F33E4CB67063C4A06734EB627",
-                                        "legacyLink”: “https://app.threatconnect.com/auth/indicators/details/file.xhtml?file=2EA0564F33E4CB67063C4A06734EB627&owner=Demo+Organization"
-                                    }
-                                ]
-                            },
                             "fileActions": {
                                 "count": 0
                             },
-                            "attributes": {},
-                            "associatedCases": {},
-                            "associatedArtifacts": {},
                             "ip": "66.96.146.132",
                             "legacyLink": "https://app.threatconnect.com/auth/indicators/details/address.xhtml?address=66.96.146.132&owner=Demo+Organization"
                         }
@@ -238,9 +153,6 @@ JSON Response
                 ],
                 "count": 2
             },
-            "attributes": {},
-            "associatedCases": {},
-            "associatedArtifacts": {},
             "md5": "2EA0564F33E4CB67063C4A06734EB627",
             "legacyLink": "https://app.threatconnect.com/auth/indicators/details/file.xhtml?file=2EA0564F33E4CB67063C4A06734EB627&owner=Demo+Organization"
         },

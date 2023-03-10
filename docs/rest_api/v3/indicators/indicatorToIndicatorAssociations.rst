@@ -56,11 +56,11 @@ The following table outlines the default Indicator-to-Indicator associations in 
 .. note::
     In addition to the association types listed in this table, customer-configured custom associations are also supported. Your System Administrator can retrieve information for these association types, including the primary and non-primary Indicator types the association supports, on the **Indicators** tab of the **System Settings** screen.
 
-In the following example, the request will associate an existing Address Indicator to an existing ASN Indicator:
+In the following example, the request will associate an existing Address Indicator to an existing ASN Indicator. Because the ``associatedIndicators`` field is not included in the API response by default, the ``fields`` query parameter is added to the request URL and assigned a value of ``associatedIndicators`` so that this field is included in the response.
 
 .. code::
 
-    PUT /v3/indicators/ASN204288
+    PUT /v3/indicators/ASN204288?fields=associatedIndicators
     {
         "associatedIndicators": {"data": [{"ip": "66.96.146.129", "type": "Address"}]}
     }
@@ -70,21 +70,18 @@ JSON Response
 .. code:: json
 
     {
-      "data": {
+        "data": {
             "id": 15,
             "ownerId": 1,
             "ownerName": "Demo Organization",
             "dateAdded": "2022-03-11T19:25:43Z",
             "webLink": "https://app.threatconnect.com/#/details/indicators/15/overview",
-            "tags": {},
-            "securityLabels": {},
             "type": "ASN",
             "lastModified": "2022-06-13T18:25:30Z",
             "summary": "ASN204288",
             "privateFlag": false,
             "active": true,
             "activeLocked": false,
-            "associatedGroups": {},
             "associatedIndicators": {
                 "data": [
                     {
@@ -104,12 +101,6 @@ JSON Response
                     }
                 ]
             },
-            "fileActions": {
-                "count": 0
-            },
-            "attributes": {},
-            "associatedCases": {},
-            "associatedArtifacts": {},
             "legacyLink": "https://app.threatconnect.com/auth/indicators/details/customIndicator.xhtml?id=15&owner=Demo+Organization",
             "AS Number": "ASN204288"
         },

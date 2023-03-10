@@ -17,6 +17,9 @@ For example, the following request will add an Email Address Artifact with a sum
 - Create a new **Bad Guy** Adversary Group and associate it to the Artifact
 - Add a Note to the Artifact
 
+.. hint::
+    To include the ``associatedGroups`` and ``notes`` field in the API response, append ``?fields=associatedGroups&fields=notes`` to the end of the request URL.
+
 
 .. code::
 
@@ -40,41 +43,6 @@ JSON Response:
             "type": "Email Address",
             "intelType": "indicator-EmailAddress",
             "dateAdded": "2021-04-22T19:24:06Z",
-            "notes": {
-                "data": [
-                    {
-                        "id": 5,
-                        "text": "This email address belongs to a bad guy.",
-                        "summary": " This email address belongs to a bad guy.",
-                        "author": "11112222333344445555",
-                        "dateAdded": "2021-04-22T19:24:06Z",
-                        "lastModified": "2021-04-22T19:24:06Z",
-                        "edited": false,
-                        "artifactId": 1
-                    }
-                ]
-            },
-            "associatedGroups": {
-                "data": [
-                    {
-                        "id": 13,
-                        "dateAdded": "2021-04-22T19:24:06Z",
-                        "ownerId": 1,
-                        "ownerName": "Demo Organization",
-                        "webLink": "https://app.threatconnect.com/#/details/groups/13/overview",
-                        "type": "Adversary",
-                        "name": "Bad Guy",
-                        "createdBy": {
-                            "id": 3,
-                            "userName": "11112222333344445555"
-                        },
-                        "upVoteCount": "0",
-                        "downVoteCount": "0",
-                        "lastModified": "2021-04-22T19:24:06Z",
-                        "legacyLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=13",
-                    }
-                ]
-            },
             "derivedLink": true,
             "hashCode": "a/mHEtrRoPrG9csrdltEY73kdKHihi2jow40V3WFYrU="
         },
@@ -105,5 +73,5 @@ When creating associations for Artifacts using the ThreatConnect v3 API, follow 
 - To create an association to a new Indicator, include `all fields required to create the type of Indicator <https://docs.threatconnect.com/en/latest/rest_api/v3/indicators/indicators.html#available-fields>`_ when setting the ``associatedIndicators`` field.
 - To create an association to an existing Indicator, use the Indicator's ID, or use its summary and type (e.g., ``"associatedIndicators": {"data": [{"type": "Host", "hostname": "badguy.com"}]}``), when setting the ``associatedIndicators`` field.
 
-.. hint::
+.. note::
     You can associate multiple Indicators and Groups to an Artifact in a single POST or PUT request.

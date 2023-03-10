@@ -1,7 +1,7 @@
 Delete Workflow Events
 ----------------------
 
-The basic format to delete a Workflow Event is:
+Send a request in the following format to delete a Workflow Event:
 
 .. code::
 
@@ -14,7 +14,7 @@ The basic format to delete a Workflow Event is:
 .. attention::
     Only Workflow Events that have been manually added to a Case may be deleted.
 
-For example, the following query will delete the Workflow Event with ID 4:
+For example, the following request will delete the Workflow Event whose ID is 4:
 
 .. code::
 
@@ -32,3 +32,8 @@ JSON Response:
         "message": "Deleted",
         "status": "Success"
     }
+
+Delete Workflow Events in Bulk
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For instructions on deleting Workflow Evemts in bulk, refer to `Delete Case Objects in Bulk <https://docs.threatconnect.com/en/latest/rest_api/v3/bulk_delete.html>`_.

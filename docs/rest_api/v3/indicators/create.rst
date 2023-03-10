@@ -11,9 +11,9 @@ The follow example illustrates the basic format for creating an Indicator:
         //required fields for the selected Indicator type
     }
 
-Refer to the `Available Fields <#available-fields>`_ and `Indicator-Specific Fields <#indicator-specific-fields>`_ sections for a list of available fields that can be included in the body of a POST request for the ``indicators`` object.
+Refer to the `Available Fields <#available-fields>`_ and `Indicator-Specific Fields <#indicator-specific-fields>`_ sections for a list of available fields that can be included in the body of a POST request to the ``/v3/indicators`` endpoint.
 
-.. hint::
+.. note::
     You can add multiple `Attributes <https://docs.threatconnect.com/en/latest/rest_api/v3/group_attributes/indicator_attributes.html>`_, `Tags <https://docs.threatconnect.com/en/latest/rest_api/v3/tags/tags.html>`_, and `Security Labels <https://docs.threatconnect.com/en/latest/rest_api/v3/security_labels/security_labels.html>`_ to an Indicator in a single POST or PUT request.
 
 Example POST Request
@@ -28,6 +28,9 @@ The following request will create an **ultrabadguy.com** Host Indicator. It will
 - Set the Indicator's Threat and Confidence Ratings
 - Apply the **TLP:AMBER** Security Label to the Indicator
 - Apply **Targeted Attack** and **Malicious Host** Tags to the Indicator
+
+.. hint::
+    To include the ``associatedGroups``, ``attributes``, ``securityLabels``, and ``tags`` fields in the API response, append ``?fields=associatedGroups&fields=attributes&fields=securityLabels&fields=tags`` to the end of the request URL.
 
 .. code::
 
@@ -58,33 +61,6 @@ JSON Response
             "ownerName": "Demo Organization",
             "dateAdded": "2021-11-05T16:43:17Z",
             "webLink": "https://app.threatconnect.com/#/details/indicators/4/overview",
-            "tags": {
-                "data": [
-                    {
-                        "id": 10,
-                        "name": "Malicious Host",
-                        "description": "A tag that can be applied to malicious Host Indicators.",
-                        "lastUsed": "2021-11-05T16:43:17Z"
-                    },
-                    {
-                        "id": 11,
-                        "name": "Targeted Attack",
-                        "lastUsed": "2021-11-05T16:43:17Z"
-                    }
-                ]
-            },
-            "securityLabels": {
-                "data": [
-                    {
-                        "id": 3,
-                        "name": "TLP:AMBER",
-                        "description": "This security label is used for information that requires support to be effectively acted upon, yet carries risks to privacy, reputation, or operations if shared outside of the organizations involved. Information with this label can be shared with members of an organization and its clients."
-                        "color": "FFC000",
-                        "owner": "System",
-                        "dateAdded": "2016-08-31T00:00:00Z"
-                    }
-                ]
-            },
             "type": "Host",
             "lastModified": "2021-11-05T16:43:17Z",
             "rating": 5.00,
@@ -93,68 +69,6 @@ JSON Response
             "privateFlag": false,
             "active": true,
             "activeLocked": false,
-            "associatedGroups": {
-                "data": [
-                    {
-                        "id": 15,
-                        "ownerId": 2,
-                        "ownerName": "Demo Source",
-                        "dateAdded": "2021-11-05T16:43:17Z",
-                        "webLink": "https://app.threatconnect.com/#/details/groups/15/overview",
-                        "type": "Adversary",
-                        "name": "Bad Guy",
-                        "createdBy": {
-                            "id": 3,
-                            "userName": "11112222333344445555"
-                        },
-                        "upVoteCount": "0",
-                        "downVoteCount": "0",
-                        "lastModified": "2021-11-05T16:43:17Z",
-                        "legacyLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=15"
-                    },
-                    {
-                        "id": 12,
-                        "ownerId": 1,
-                        "ownerName": "Demo Organization",
-                        "dateAdded": "2021-08-27T12:16:56Z",
-                        "webLink": "https://app.threatconnect.com/#/details/groups/12/overview",
-                        "type": "Incident",
-                        "name": "Dangerous Incident",
-                        "createdBy": {
-                            "id": 1,
-                            "userName": "smithj@threatconnect.com"
-                        },
-                        "upVoteCount": "0",
-                        "downVoteCount": "0",
-                        "lastModified": "2021-11-05T16:43:17Z",
-                        "legacyLink": "https://app.threatconnect.com/auth/incident/incident.xhtml?incident=12"
-                    }
-                ]
-            },
-            "associatedIndicators": {},
-            "fileActions": {
-                "count": 0
-            },
-            "attributes": {
-                "data": [
-                    {
-                        "id": 24,
-                        "dateAdded": "2021-11-05T16:43:17Z",
-                        "type": "Additional Analysis and Context",
-                        "value": "This host is very dangerous",
-                        "source": "Phase of Intrusion",
-                        "createdBy": {
-                            "id": 3,
-                            "userName": "11112222333344445555"
-                        },
-                        "lastModified": "2021-11-05T16:43:17Z",
-                        "pinned": false,
-                        "default": false
-                    }
-                ]
-            },
-            "associatedCases": {},
-            "associatedArtifacts": {},
             "hostName": "ultrabadguy.com",
             "dnsActive": true,
             "whoisActive": true,
@@ -178,6 +92,6 @@ When creating associations for Indicators using the ThreatConnect v3 API, follow
 - To create an association to an existing Group, use the Group's ID when setting the ``associatedGroups`` field.
 - If creating an Indicator-to-Indicator associations, see the `"Indicator-to-Indicator Associations" section <#indicator-to-indicator-associations>`_ for further instruction.
 
-.. hint::
+.. note::
 
     You can associate multiple Artifacts, Cases, Groups, and Indicators to an Indicator in a single POST or PUT request.

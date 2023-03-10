@@ -1,7 +1,7 @@
 Create Workflow Tasks
 ---------------------
 
-The basic format for creating a Task is:
+The following example illustrates the basic format for creating a Task:
 
 .. code::
 
@@ -11,7 +11,10 @@ The basic format for creating a Task is:
         "name": "Example Task for Workflow Case"
     }
 
-For example, the following query will create a new Task for the Case with ID 1. This Task's name will be "Create Shared Drive Folder for Case" and it will be the second step of the first Workflow Phase:
+For example, the following request will add a Task named "Create Meeting Notes Folder" to the Case whose ID is 1. It will also complete the following actions for the Task:
+
+- Make the Task the third step of the first Workflow Phase for the Case
+- Make the Task a due at 12:15 p.m. on March 29, 2022
 
 .. code::
 
@@ -22,7 +25,7 @@ For example, the following query will create a new Task for the Case with ID 1. 
         "description": "If the Case listed a Severity of High or Critical, create a Meeting Notes folder inside the Case folder.",
         "dueDate": "2022-03-29T12:15:00Z",
         "workflowPhase": 1,
-        "workflowStep": 2
+        "workflowStep": 3
     }
 
 JSON Response:
@@ -36,15 +39,14 @@ JSON Response:
             "name": "Create Meeting Notes Folder",
             "description": "If Case listed a Severity of High or Critical, create a Meeting Notes folder inside the Case folder.",
             "workflowPhase": 1,
-            "workflowStep": 2,
+            "workflowStep": 3,
             "dueDate": "2022-03-29T12:15:00Z",
             "required": false,
             "status": "Open",
-            "notes": {},
-            "owner": "Example Organization"
+            "owner": "Demo Organization"
         },
         "message": "Created",
         "status": "Success"
     }
 
-Refer to the `Available Fields <#available-fields>`_ and section for a list of available fields that can be included in the body of a POST request for the ``tasks`` object.
+Refer to the `Available Fields <#available-fields>`_ and section for a list of available fields that can be included in the body of a POST request to the ``/v3/tasks`` endpoint.

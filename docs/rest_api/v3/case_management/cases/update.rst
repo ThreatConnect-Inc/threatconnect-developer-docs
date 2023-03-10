@@ -16,6 +16,9 @@ For example, the following request will make the following updates to the Case w
 - Set the Case's status to **Closed**
 - Create a new Adversary Group named **Extreme Bad Guy** that is associated to the Artifact whose ID is 4, and then associate the Group to the Case
 
+.. hint::
+    To include the ``associatedGroups`` field in the API response, append ``?fields=associatedGroups`` to the end of the request URL.
+
 .. code::
 
     PUT /v3/cases/1
@@ -49,6 +52,13 @@ JSON Response:
             "status": "Closed",
             "severity": "Low",
             "resolution": "False Positive",
+            "assignee": {
+                "type": "User",
+                "data": {
+                    "id": 1,
+                    "userName": "smithj@threatconnect.com"
+                }
+            },
             "createdBy": {
                 "id": 3,
                 "userName": "11112222333344445555"
@@ -60,7 +70,7 @@ JSON Response:
         "status": "Success"
     }
 
-Refer to the `Available Fields <#available-fields>`_ and section for a list of available fields that can be included in the body of a PUT request for the ``cases`` object.
+Refer to the `Available Fields <#available-fields>`_ and section for a list of available fields that can be included in the body of a PUT request to the ``/v3/cases`` endpoint.
 
 .. hint::
     When updating a Case, you can use the ``mode`` field to add or remove the following metadata:
@@ -74,4 +84,4 @@ Refer to the `Available Fields <#available-fields>`_ and section for a list of a
     See `Update an Object's Metadata <https://docs.threatconnect.com/en/latest/rest_api/v3/update_metadata.html>`_ for instructions on using the ``mode`` field.
 
 .. attention::
-    If you try to add an Attribute to a Case when the Attribute Type's **Max Allowed** limit for Cases has been reached, the API will return a **400 - Bad Request** error.
+    If you try to add an Attribute to a Case when the Attribute Type's **Max Allowed** limit for Cases has been reached, the API will return a **400 Bad Request** error.

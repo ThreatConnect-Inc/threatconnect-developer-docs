@@ -19,6 +19,9 @@ For example, the following request will create a Case named "Phishing Investigat
 - Assign the Case to smithj@threatconnect.com
 - Create an Artifact within the Case and associate the Artifact to the existing Indicator whose ID is 2
 
+.. hint::
+    To include the ``artifacts`` field in the API response, append ``?fields=artifacts`` to the end of the request URL.
+
 .. code::
 
     POST /v3/cases
@@ -66,7 +69,7 @@ JSON Response:
         "status": "Success"
     }
 
-Refer to the `Available Fields <#available-fields>`_ and section for a list of available fields that can be included in the body of a POST request for the ``cases`` object.
+Refer to the `Available Fields <#available-fields>`_ and section for a list of available fields that can be included in the body of a POST request to the ``/v3/cases`` endpoint.
 
 Create Associations
 ^^^^^^^^^^^^^^^^^^^
@@ -82,5 +85,5 @@ When creating associations for Cases using the ThreatConnect v3 API, follow thes
 - To create an association to a new Indicator, include `all fields required to create the type of Indicator <https://docs.threatconnect.com/en/latest/rest_api/v3/indicators/indicators.html#available-fields>`_ when setting the ``associatedIndicators`` field. To create the Indicator in a Community or Source, include the ``ownerId`` or ``ownerName`` field in the request and specify the ID or name, respectively, of the Community or Source in which to create the Indicator when setting the ``associatedIndicators`` field.
 - To create an association to an existing Indicator, use the Indicator's ID, or use its summary and type (e.g., ``"associatedIndicators": {"data": [{"type": "Host", "hostname": "badguy.com"}]}``), when setting the ``associatedIndicators`` field. To create an association to an Indicator in a Community or Source using the Indicator's summary and type, include the ``ownerId`` or ``ownerName`` field and specify the ID or name, respectively, of the Community or Source to which the Indicator belongs when setting the ``associatedIndicators`` field.
 
-.. hint::
+.. note::
     You can associate multiple Cases, Indicators, and Groups to a Case in a single POST or PUT request.

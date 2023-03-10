@@ -18,12 +18,14 @@ JSON Response
         "data": [
             {
                 "id": 1,
+                "ownerId": 1,
                 "ownerName": "Demo Organization",
                 "webLink": "https://app.threatconnect.com/auth/victim/victim.xhtml?victim=1",
                 "name": "Bob Loblaw"
             },
             {
                 "id": 2,
+                "ownerId": 1,
                 "ownerName": "Demo Organization",
                 "webLink": "https://app.threatconnect.com/auth/victim/victim.xhtml?victim=2",
                 "name": "John Doe",
@@ -38,7 +40,7 @@ JSON Response
     }
 
 .. hint::
-    To limit the results to a specific owner, append the ``?owner=`` query parameter to your request. For more information about the ``?owner=`` query parameter, see `Specify an Owner <https://docs.threatconnect.com/en/latest/rest_api/v3/specify_owner.html>`_.
+    Use the ``owner`` query parameter to `limit the results to a specific owner <https://docs.threatconnect.com/en/latest/rest_api/v3/specify_owner.html>`_.
 
 Retrieve a Specific Victim
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -62,6 +64,7 @@ JSON Response
     {
         "data": {
             "id": 3,
+            "ownerId": 1,
             "ownerName": "Demo Organization",
             "webLink": "https://app.threatconnect.com/auth/victim/victim.xhtml?victim=3",
             "name": "Bill Smith",
@@ -72,13 +75,3 @@ JSON Response
         },
         "status": "Success"
     }
-
-Request Additional Fields
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To request additional fields not included in the default response, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
-
-Filter Results
-^^^^^^^^^^^^^^
-
-To filter results using ThreatConnect Query Language (TQL), refer to `Filter Results with TQL <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_.
