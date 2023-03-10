@@ -97,7 +97,7 @@ The following request will make the following updates to the **ultrabadguy.com**
 - Replace any Security Labels applied to the Indicator with the **TLP: RED** Security Label
 - Apply a new **Russia** Tag to the Indicator without replacing any existing Tags applied to it
 
-Because the ``associatedGroups``, ``securityLabels``, and ``tags`` field are not included in the API response by default, ``?fields=associatedGroups&fields=securityLabels&fields=tags`` is appended to the end of the request URL so that these fields are included in the response.
+Because the ``associatedGroups``, ``securityLabels``, and ``tags`` fields are not included in the API response by default, ``?fields=associatedGroups&fields=securityLabels&fields=tags`` is appended to the end of the request URL so that these fields are included in the response.
 
 .. code::
 
