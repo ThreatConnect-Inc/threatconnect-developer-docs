@@ -1,5 +1,5 @@
-Include Additional Fields for Returned Objects
-----------------------------------------------
+Include Additional Fields in API Responses
+------------------------------------------
 
 Overview
 ^^^^^^^^
