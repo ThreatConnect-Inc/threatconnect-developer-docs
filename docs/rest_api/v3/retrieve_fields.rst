@@ -1,5 +1,5 @@
-Retrieve a List of Available Fields for an Object
--------------------------------------------------
+Retrieve a List of Available Fields for an Endpoint
+---------------------------------------------------
 
 Send a request in the following format to retrieve a list of available fields, including the field's name, description, and accepted data type, that can be included in the body of a POST or PUT request to the specified object's endpoint:
 
