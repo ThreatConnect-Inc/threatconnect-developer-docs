@@ -20,15 +20,27 @@ JSON Response:
         "data": [
             {
                 "id": 1,
-                "userName": "smithj@threatconnect.com"
+                "userName": "smithj@threatconnect.com",
+                "firstName": "John",
+                "lastName": "Smith",
+                "pseudonym": "JMS",
+                "owner": "Demo Organization"
             }, 
             {
                 "id": 2,
-                "userName": "pjones+analyst@threatconnect.com"
+                "userName": "pjones+analyst@threatconnect.com",
+                "firstName": "Pat",
+                "lastName": "Jones",
+                "pseudonym": "patjones",
+                "owner": "Demo Organization",
             },
             {
                 "id": 3,
-                "userName": "11112222333344445555"
+                "userName": "11112222333344445555",
+                "firstName": "John",
+                "lastName": "Smith",
+                "pseudonym": "jsmithAPI",
+                "owner": "Demo Organization",
             },
             {...}
         ],
