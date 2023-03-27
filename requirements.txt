@@ -2,6 +2,6 @@ hvac==0.2.17
 inflect==0.2.5
 jsonschema==2.5.1
 python-dateutil==2.6.0
-redis==2.10.5
+redis==4.5.3
 requests==2.20.0
 tcex
