@@ -317,21 +317,11 @@ Batch Indicator Input File Format (V2)
 
     **Option 1**
     
-    ``{
-          "summary": "905ad8176a569a36421bf54c04ba7f95: a52b6986d68cdfac53aa740566cbeade4452124e: 25bdabd23e349f5e5ea7890795b06d15d842bde1d43135c361e755f748ca05d0",
-          "type": "File",
-          ...
-      }``
+    ``{"summary": "905ad8176a569a36421bf54c04ba7f95: a52b6986d68cdfac53aa740566cbeade4452124e: 25bdabd23e349f5e5ea7890795b06d15d842bde1d43135c361e755f748ca05d0", "type": "File", ...}``
     
     **Option 2**
     
-    ``{
-          "md5": "905ad8176a569a36421bf54c04ba7f95",
-          "sha1": "a52b6986d68cdfac53aa740566cbeade4452124e",
-          "sha256": "25bdabd23e349f5e5ea7890795b06d15d842bde1d43135c361e755f748ca05d0",
-          "type": "File",
-          ...
-      }``        
+    ``{"md5": "905ad8176a569a36421bf54c04ba7f95", "sha1": "a52b6986d68cdfac53aa740566cbeade4452124e", "sha256": "25bdabd23e349f5e5ea7890795b06d15d842bde1d43135c361e755f748ca05d0", "type": "File", ...}``        
 
 .. note::
     Exporting indicators via the `JSON Bulk Reports <https://docs.threatconnect.com/en/latest/rest_api/v2/indicators/indicators.html#json-bulk-reports>`__ endpoint will create a file in this format.
