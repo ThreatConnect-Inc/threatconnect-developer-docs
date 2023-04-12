@@ -145,7 +145,7 @@ Batch Indicator Input File Formats
 The Batch Upload feature expects to ingest a JSON file consisting of list(s) of dictionaries. As shown in the following examples, the V1 Batch operation expects a single list of Indicator objects only, whereas the enhanced V2 Batch operation expects Indicator and Group objects to be contained within its own ``indicator`` and ``group`` array definition, respectively. The list of fields expected within each Indicator or Group item parallels those described in the Indicator and Group creation operations. Additionally, you must include a ``type`` field within each item that defines the particular Indicator or Group type the item represents.
 
 Batch Indicator Input File Format (V1)
-=======================================
+"""""""""""""""""""""""""""""""""""""""
 
 .. code:: json
 
@@ -165,7 +165,7 @@ Batch Indicator Input File Format (V1)
  }]
     
 Batch Indicator Input File Format (V2)
-=======================================
+"""""""""""""""""""""""""""""""""""""""
 
 **Indicator-to-Group Association**
 
