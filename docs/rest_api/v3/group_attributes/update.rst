@@ -10,14 +10,14 @@ The following example illustrates the basic format for updating a Group Attribut
         {updatedField}: {updatedValue}
     }
 
-For example, the following request will update the value of the Group Attribute whose ID is 10 and make it the default Attribute of its type:
+For example, the following request will update the value of the Group Attribute whose ID is 10 and and add a source to the Attribute:
 
 .. code::
 
     PUT /v3/groupAttributes/10
     {
-        "default": true,
-        "value": "This is an extremely dangerous adversary."
+        "source": "CAL",
+        "value": "APT28, IRON TWILIGHT, SNAKEMACKEREL, Swallowtail, Group 74, Sednit, Sofacy, Pawn Storm, Fancy Bear, STRONTIUM, Tsar Team, Threat Group-4127, TG-4127"
     }
 
 JSON Response
@@ -27,20 +27,29 @@ JSON Response
     {
         "data": {
             "id": 10,
-            "dateAdded": "2021-11-09T14:42:13Z",
-            "type": "Additional Analysis and Context",
-            "value": "This is an extremely dangerous adversary.",
-            "source": "Phase of Intrusion",
+            "dateAdded": "2023-03-29T14:42:13Z",
+            "type": "Aliases",
+            "value": "APT28, IRON TWILIGHT, SNAKEMACKEREL, Swallowtail, Group 74, Sednit, Sofacy, Pawn Storm, Fancy Bear, STRONTIUM, Tsar Team, Threat Group-4127, TG-4127",
+            "source": "CAL",
             "createdBy": {
-                "id": 3,
-                "userName": "11112222333344445555"
+                    "id": 3,
+                    "userName": "11112222333344445555",
+                    "firstName": "John",
+                    "lastName": "Smith",
+                    "pseudonym": "jsmithAPI",
+                    "owner": "Demo Organization"
             },
-            "lastModified": "2021-11-09T14:42:13Z",
-            "pinned": false,
+            "lastModified": "2023-03-30T07:16:29Z",
+            "settings": {
+                "associable": true,
+                "pinnedByDefault": true,
+                "message": "Enter any aliases for the Group object."
+            },
+            "pinned": true,
             "default": true
         },
         "message": "Updated",
         "status": "Success"
     }
 
-Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a PUT request for the ``groupAttributes`` object.
+Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a PUT request to the ``/v3/groupAttributes`` endpoint.

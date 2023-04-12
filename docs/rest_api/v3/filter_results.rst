@@ -183,6 +183,37 @@ Request (Encoded URL)
 
     GET /v3/cases?tql=caseOpenTime%20GEQ%20%222023-02-01%22%20and%20caseOpenTime%20LEQ%20%222023-02-28%22
 
+Filter Objects by Association Method
+====================================
+
+As of ThreatConnect version 7.1, you can use the following TQL parameters when working with the ``/v3/groups`` and ``/v3/indicators`` endpoints to filter results based on the method used to create a Group or Indicator association:
+
+- ``associatedGroupSource``: Use this parameter to filter results based on the method used to create an association to a Group.
+- ``associatedIndicatorSource``: Use this parameter to filter results based on the method used to create an association to an Indicator.
+
+If you use one of these parameters in a request, you must assign it one of the following values:
+
+- ``UNKNOWN``: The association was created during a structured or unstructured Indicator import.
+- ``MANUAL``: The association was created from an object's Details screen, including the Associations tab, Behavior tab (for File Indicators only), and Sharing tab (for all Group types except Task).
+- ``API``: The association was created using the v2, v3, or Batch API.
+- ``TQL``: The association was created via a TQL query.
+- ``DNS``: The association was created via the DNS resolution tracking feature (for Address and Host Indicators only).
+- ``EMAIL``: The association was created during the ingestion of an email.
+
+For example, the following request will retrieve data for all Groups with at least one Indicator associated to them via the v2, v3, or Batch API:
+
+Request (Decoded URL)
+
+.. code::
+    
+    GET v3/groups?tql=associatedIndicatorSource="API"
+
+Request (Encoded URL)
+
+.. code::
+
+    GET /v3/groups?tql=associatedIndicatorSource%3D%22API%22
+
 Combine the "tql" and "fields" Query Parameters
 ===============================================
 

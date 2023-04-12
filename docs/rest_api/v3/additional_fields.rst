@@ -116,6 +116,11 @@ JSON Response
                 "name": "threatAssess"
             },
             {
+                "description": "Includes Observations and False Positive stats of tracked users",
+                "includedByDefault": false,
+                "name": "trackedUsers"
+            },
+            {
                 "description": "Includes WhoIs information related to the Host indicators",
                 "includedByDefault": false,
                 "name": "whoIs"
@@ -222,6 +227,49 @@ JSON Response
     - ``threatAssessScoreFalsePositive``
 
     It is recommended to not use the ``threatAssessRating`` and ``threatAssessConfidence`` fields and their values, as these are legacy fields.
+
+Include Observations and False Positives Reported by API Users
+==============================================================
+
+The following request will retrieve data for the Indicator whose ID is 4, including observations and false positives reported by API users in the Organization:
+
+.. code::
+
+    GET /v3/indicators/4?fields=trackedUsers
+
+JSON Response
+
+.. code::
+
+    {
+        "data": {
+            "id": 4,
+            "ownerId": 1,
+            "ownerName": "Demo Organization",
+            "dateAdded": "2023-01-26T21:00:03Z",
+            "webLink": "https://app.threatconnect.com/#/details/indicators/4/overview",
+            "type": "Host",
+            "lastModified": "2023-01-27T14:25:55Z",
+            "rating": 5.00,
+            "summary": "ultrabadguy.com",
+            "trackedUsers": {
+                "jsmith API": {
+                    "observations": 5,
+                    "lastObserved": "2023-01-27T03:16:30Z",
+                    "falsePositives": 1,
+                    "lastFalsePositive": "2023-01-27T00:00:00Z"
+                }
+            },
+            "privateFlag": false,
+            "active": true,
+            "activeLocked": false,
+            "hostName": "ultrabadguy.com",
+            "dnsActive": false,
+            "whoisActive": false,
+            "legacyLink": "https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=ultrabadguy.com&owner=Demo+Organization"
+        },
+        "status": "Success"
+    }
 
 Include Additional Association Levels for a Field
 =================================================

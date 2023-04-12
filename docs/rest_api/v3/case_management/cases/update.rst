@@ -38,8 +38,9 @@ JSON Response:
             "id": 1,
             "xid": "aa1a1a1a1-a1a1-a1a1-a1a1-a1a1a1a1a1a1",
             "name": "Phishing Investigation",
-            "dateAdded": "2021-04-09T14:41:27.27Z",
-            "caseOpenTime": "2021-04-09T14:41:27Z",
+            "dateAdded": "2023-03-09T14:41:27.27Z",
+            "lastUpdated": "2023-03-30T13:27:41Z",
+            "caseOpenTime": "2023-03-09T14:41:27Z",
             "caseOpenUser": {
                 "id": 3,
                 "userName": "11112222333344445555"
@@ -47,7 +48,11 @@ JSON Response:
             "caseCloseTime": "2021-04-12T18:36.18Z",
             "caseCloseUser": {
                 "id": 3,
-                "userName": "11112222333344445555"
+                "userName": "11112222333344445555",
+                "firstName": "John",
+                "lastName": "Smith",
+                "pseudonym": "jsmithAPI",
+                "owner": "Demo Organization"
             },
             "status": "Closed",
             "severity": "Low",
@@ -56,12 +61,20 @@ JSON Response:
                 "type": "User",
                 "data": {
                     "id": 1,
-                    "userName": "smithj@threatconnect.com"
+                    "userName": "smithj@threatconnect.com",
+                    "firstName": "John",
+                    "lastName": "Smith",
+                    "pseudonym": "JMS",
+                    "owner": "Demo Organization"
                 }
             },
             "createdBy": {
                 "id": 3,
-                "userName": "11112222333344445555"
+                "userName": "11112222333344445555",
+                "firstName": "John",
+                "lastName": "Smith",
+                "pseudonym": "jsmithAPI",
+                "owner": "Demo Organization"
             },
             "owner": "Demo Organization",
             "ownerId": 1

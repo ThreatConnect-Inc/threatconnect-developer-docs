@@ -20,11 +20,16 @@ JSON Response:
                 "id": 1,
                 "xid": "a1a1a1a1-a1a1-a1a1-a1a1-a1a1a1a1a1a1",
                 "name": "Phishing Investigation",
-                "dateAdded": "2021-04-09T14:41:27.622Z",
-                "caseOpenTime": "2021-04-09T14:41:27.622Z",
+                "dateAdded": "2023-03-09T14:41:27.622Z",
+                "lastUpdated": "2023-03-09T14:41:27.622Z",
+                "caseOpenTime": "2023-03-09T14:41:27.622Z",
                 "caseOpenUser": {
                     "id": 3,
-                    "userName": "11112222333344445555"
+                    "userName": "11112222333344445555",
+                    "firstName": "John",
+                    "lastName": "Smith",
+                    "pseudonym": "jsmithAPI",
+                    "owner": "Demo Organization"
                 },
                 "status": "Open",
                 "severity": "Low",
@@ -33,12 +38,20 @@ JSON Response:
                     "type": "User",
                     "data": {
                         "id": 1,
-                        "userName": "smithj@threatconnect.com"
+                        "userName": "smithj@threatconnect.com",
+                        "firstName": "John",
+                        "lastName": "Smith",
+                        "pseudonym": "JMS",
+                        "owner": "Demo Organization"
                     }
                 },
                 "createdBy": {
                     "id": 3,
-                    "userName": "11112222333344445555"
+                    "userName": "11112222333344445555",
+                    "firstName": "John",
+                    "lastName": "Smith",
+                    "pseudonym": "jsmithAPI",
+                    "owner": "Demo Organization"
                 },
                 "owner": "Demo Organization",
                 "ownerId": 1
@@ -48,18 +61,27 @@ JSON Response:
                 "xid": "b2b2b2b2-b2b2-b2b2-b2b2-b2b2b2b2b2b2",
                 "name": "Malware Investigation",
                 "description": "Case to investigate new malware",
-                "dateAdded": "2021-03-25T18:56:22Z",
-                "caseOpenTime": "2021-03-25T18:56:22Z",
+                "dateAdded": "2023-03-17T18:56:22Z",
+                "lastUpdated": "2023-03-25T11:25:34Z",
+                "caseOpenTime": "2023-03-17T18:56:22Z",
                 "caseOpenUser": {
                     "id": 2,
-                    "userName": "pjones+analyst@threatconnect.com"
+                    "userName": "pjones+analyst@threatconnect.com",
+                    "firstName": "Pat",
+                    "lastName": "Jones",
+                    "pseudonym": "patjones",
+                    "owner": "Demo Organization"
                 },
                 "status": "Open",
                 "severity": "Critical",
                 "resolution": "Not Specified",
                 "createdBy": {
                     "id": 2,
-                    "userName": "pjones+analyst@threatconnect.com"
+                    "userName": "pjones+analyst@threatconnect.com",
+                    "firstName": "Pat",
+                    "lastName": "Jones",
+                    "pseudonym": "patjones",
+                    "owner": "Demo Organization"
                 },
                 "owner": "Demo Organization",
                 "ownerId": 1
@@ -96,11 +118,16 @@ JSON Response:
             "id": 3,
             "xid": "c3c3c3c3-c3c3-c3c3-c3c3-c3c3c3c3c3c3",
             "name": "Analyze Suspicious Email and Report Findings",
-            "dateAdded": "2021-04-09T14:41:27.622Z",
-            "caseOpenTime": "2021-04-09T14:41:27.622Z",
+            "dateAdded": "2023-03-19T14:41:27.622Z",
+            "lastUpdated": "2023-03-21T09:22:39.622Z",
+            "caseOpenTime": "2023-03-09T14:41:27.622Z",
             "caseOpenUser": {
                 "id": 1,
-                "userName": "smithj@threatconnect.com"
+                "userName": "smithj@threatconnect.com",
+                "firstName": "John",
+                "lastName": "Smith",
+                "pseudonym": "JMS",
+                "owner": "Demo Organization"
             },
             "status": "Open",
             "severity": "Medium",
@@ -115,7 +142,11 @@ JSON Response:
             },
             "createdBy": {
                 "id": 1,
-                "userName": "smithj@threatconnect.com"
+                "userName": "smithj@threatconnect.com",
+                "firstName": "John",
+                "lastName": "Smith",
+                "pseudonym": "JMS",
+                "owner": "Demo Organization"
             },
             "owner": "Demo Organization",
             "ownerId": 1

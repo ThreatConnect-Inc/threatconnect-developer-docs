@@ -71,6 +71,7 @@ Threat Intelligence Objects
    v3/group_attributes/group_attributes
    v3/groups/groups
    v3/indicator_attributes/indicator_attributes
+   v3/indicator_enrichment/indicator_enrichment
    v3/indicators/indicators
    v3/security_labels/security_labels
    v3/tags/tags

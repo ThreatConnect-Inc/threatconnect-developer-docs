@@ -20,41 +20,58 @@ JSON Response
         "data": [
             {
                 "id": 10,
-                "dateAdded": "2021-11-09T14:42:13Z",
-                "type": "Additional Analysis and Context",
-                "value": "This is a very dangerous adversary.",
-                "source": "Phase of Intrusion",
+                "dateAdded": "2023-03-29T14:42:13Z",
+                "type": "Aliases",
+                "value": "APT28, Fancy Bear, Threat Group-4127, TG-4127",
                 "createdBy": {
                     "id": 3,
-                    "userName": "11112222333344445555"
+                    "userName": "11112222333344445555",
+                    "firstName": "John",
+                    "lastName": "Smith",
+                    "pseudonym": "jsmithAPI",
+                    "owner": "Demo Organization"
                 },
-                "lastModified": "2021-11-09T14:42:13Z",
-                "pinned": false,
-                "default": false
+                "lastModified": "2023-03-29T14:42:13Z",
+                "settings": {
+                    "associable": true,
+                    "pinnedByDefault": true,
+                    "message": "Enter the Group's aliases."
+                },
+                "pinned": true,
+                "default": true
             }, 
             {
                 "id": 9,
-                "dateAdded": "2021-11-08T15:56:46Z",
+                "dateAdded": "2023-03-28T15:56:46Z",
                 "type": "Source",
                 "value": "https://examplesite.com",
                 "createdBy": {
                     "id": 1,
-                    "userName": "smithj@threatconnect.com"
+                    "userName": "smithj@threatconnect.com",
+                    "firstName": "John",
+                    "lastName": "Smith",
+                    "pseudonym": "jsmith",
+                    "owner": "Demo Organization"
                 },
-                "lastModified": "2021-11-08T15:56:46Z",
+                "lastModified": "2023-03-28T15:56:46Z",
                 "pinned": true,
                 "default": true
             }, 
             {
                 "id": 8,
-                "dateAdded": "2021-11-08T15:56:46Z",
+                "dateAdded": "2023-03-08T15:55:59Z",
                 "type": "Description",
                 "value": "This malware is written in a new programming language and has the potential of targeting millions of routers and IOT devices.",
+                "source": "Internal analysis",
                 "createdBy": {
                     "id": 1,
-                    "userName": "smithj@threatconnect.com"
+                    "userName": "smithj@threatconnect.com",
+                    "firstName": "John",
+                    "lastName": "Smith",
+                    "pseudonym": "jsmith",
+                    "owner": "Demo Organization"
                 },
-                "lastModified": "2021-11-08T15:56:46Z",
+                "lastModified": "2023-03-08T15:55:59Z",
                 "pinned": false,
                 "default": true
             }, 
@@ -62,6 +79,9 @@ JSON Response
         ],
         "status": "Success"
     }
+
+.. note::
+    If an Attribute Type is configured as a default, pinned, or association Attribute Type, then the ``settings`` field will be included in the response for Attributes of that Attribute Type.
 
 Retrieve a Specific Group Attribute
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -85,26 +105,20 @@ JSON Response
     {
         "data": {
             "id": 7,
-            "dateAdded": "2021-11-08T15:56:46Z",
+            "dateAdded": "2023-03-08T15:55:59Z",
             "type": "Description",
             "value": "This Incident is related to a recent ransomware attack.",
             "createdBy": {
                 "id": 1,
-                "userName": "smithj@threatconnect.com"
+                "userName": "smithj@threatconnect.com",
+                "firstName": "John",
+                "lastName": "Smith",
+                "pseudonym": "jsmith",
+                "owner": "Demo Organization"
             },
-            "lastModified": "2021-11-08T15:56:46Z",
+            "lastModified": "2023-03-08T15:55:59Z",
             "pinned": false,
             "default": true
         },
         "status": "Success"
     }
-
-Request Additional Fields
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To request additional fields not included in the default response, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
-
-Filter Results
-^^^^^^^^^^^^^^
-
-To filter results using ThreatConnect Query Language (TQL), refer to `Filter Results with TQL <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_.
