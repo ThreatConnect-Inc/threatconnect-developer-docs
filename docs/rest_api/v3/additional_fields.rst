@@ -200,7 +200,11 @@ JSON Response
                         "name": "Bad Guy",
                         "createdBy": {
                             "id": 3,
-                            "userName": "11112222333344445555"
+                            "userName": "11112222333344445555",
+                            "firstName": "John",
+                            "lastName": "Smith",
+                            "pseudonym": "jsmithAPI",
+                            "owner": "Demo Organization"
                         },
                         "upVoteCount": "0",
                         "downVoteCount": "0",
@@ -253,7 +257,7 @@ JSON Response
             "rating": 5.00,
             "summary": "ultrabadguy.com",
             "trackedUsers": {
-                "jsmith API": {
+                "John Smith": {
                     "observations": 5,
                     "lastObserved": "2023-01-27T03:16:30Z",
                     "falsePositives": 1,
@@ -313,7 +317,11 @@ JSON Response
                         "name": "Bad Guy",
                         "createdBy": {
                             "id": 3,
-                            "userName": "11112222333344445555"
+                            "userName": "11112222333344445555",
+                            "firstName": "John",
+                            "lastName": "Smith",
+                            "pseudonym": "jsmithAPI",
+                            "owner": "Demo Organization"
                         },
                         "upVoteCount": "0",
                         "downVoteCount": "0",
@@ -326,7 +334,11 @@ JSON Response
                                     "value": "This is a very bad Adversary type.",
                                     "createdBy": {
                                         "id": 3,
-                                        "userName": "11112222333344445555"
+                                        "userName": "11112222333344445555",
+                                        "firstName": "John",
+                                        "lastName": "Smith",
+                                        "pseudonym": "jsmithAPI",
+                                        "owner": "Demo Organization"
                                     },
                                     "lastModified": "2023-02-02T18:26:06Z",
                                     "pinned": true,
@@ -395,7 +407,11 @@ JSON Response
                         "name": "Bad Guy",
                         "createdBy": {
                             "id": 3,
-                            "userName": "11112222333344445555"
+                            "userName": "11112222333344445555",
+                            "firstName": "John",
+                            "lastName": "Smith",
+                            "pseudonym": "jsmithAPI",
+                            "owner": "Demo Organization"
                         },
                         "upVoteCount": "0",
                         "downVoteCount": "0",
@@ -420,7 +436,11 @@ JSON Response
                                     "value": "This is a very bad Adversary type.",
                                     "createdBy": {
                                         "id": 3,
-                                        "userName": "11112222333344445555"
+                                        "userName": "11112222333344445555",
+                                        "firstName": "John",
+                                        "lastName": "Smith",
+                                        "pseudonym": "jsmithAPI",
+                                        "owner": "Demo Organization"
                                     },
                                     "lastModified": "2023-02-02T18:26:06Z",
                                     "pinned": true,
