@@ -4,7 +4,7 @@ Retrieve Tags
 Retrieve All Tags
 ^^^^^^^^^^^^^^^^^
 
-To retrieve all Tags, use the following query:
+Send the following request to retrieve data for all Tags:
 
 .. code::
 
@@ -43,13 +43,13 @@ JSON Response
 Retrieve a Single Tag
 ^^^^^^^^^^^^^^^^^^^^^
 
-To retrieve a specific Tag, use a query in the following format:
+Send a request in the following format to retrieve data for a specific Tag:
 
 .. code::
 
     GET /v3/tags/{tagId}
 
-For example, the following query will return information about the Tag with ID 2:
+For example, the following request will retrieve data for the Tag whose ID is 2:
 
 .. code::
 
@@ -68,13 +68,3 @@ JSON Response
         },
         "status": "Success"
     }
-
-Request Additional Fields
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To request additional fields not automatically included with each returned object, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
-
-Filter Results
-^^^^^^^^^^^^^^
-
-To filter returned objects using ThreatConnect Query Language (TQL), refer to `Filter Results with TQL <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_.

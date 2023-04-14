@@ -1,7 +1,7 @@
 Update Tags
 -----------
 
-The basic format for updating a Tag is:
+The following example illustrates the basic format for updating a Tag:
 
 .. code::
 
@@ -10,7 +10,7 @@ The basic format for updating a Tag is:
         {updatedField}: {updatedValue}
     }
 
-For example, the following query will rename the Tag with ID 1 to ``Phishing Attack``:
+For example, the following request will rename the Tag whose ID is 1 from **Phishing** to **Phishing Attack**:
 
 .. code::
 
@@ -35,4 +35,4 @@ JSON Response
         "status": "Success"
     }
 
-Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a PUT request for the ``tags`` object.
+Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a PUT request to the ``/v3/tags`` endpoint.
