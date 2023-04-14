@@ -40,8 +40,8 @@ JSON Response
         "status": "Success"
     }
 
-Retrieve a Single Tag
-^^^^^^^^^^^^^^^^^^^^^
+Retrieve a Specific Tag
+^^^^^^^^^^^^^^^^^^^^^^^
 
 Send a request in the following format to retrieve data for a specific Tag:
 
