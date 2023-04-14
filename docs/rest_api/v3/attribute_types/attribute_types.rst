@@ -1,7 +1,7 @@
 Attribute Types
 ===============
 
-Attributes are key/value data sets that can be added to Cases, Groups, Indicators, and Victims. This type of metadata provides an excellent way to organize, categorize, and capture the context around items in ThreatConnect.
+Attributes are key/value data sets that can be added to Groups, Indicators, Victims, and Workflow Cases. When adding an Attribute to an object, users must select the type of Attribute they want to create.
 
 Endpoint: ``/api/v3/attributeTypes``
 
