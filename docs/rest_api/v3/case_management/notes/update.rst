@@ -1,16 +1,16 @@
 Update Notes
 ------------
 
-The basic format for updating a Note is:
+The following example illustrates the basic format for updating a Note:
 
 .. code::
 
-    PUT /v3/notes/{noteID}
+    PUT /v3/notes/{noteId}
     {
-        {updatedField}: {updatedValue}
+        "text": "{updatedNoteContents}"
     }
 
-For example, the following query will update the contents of the Note with ID 2:
+For example, the following request will update the contents of the Note whose ID is 2:
 
 .. code::
 
@@ -39,4 +39,4 @@ JSON Response:
         "status": "Success"
     }
 
-Refer to the `Available Fields <#available-fields>`_ and section for a list of available fields that can be included in the body of a PUT request for the ``notes`` object.
+Refer to the `Available Fields <#available-fields>`_ and section for a list of available fields that can be included in the body of a PUT request to the ``/v3/notes`` endpoint.

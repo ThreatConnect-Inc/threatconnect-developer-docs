@@ -1,7 +1,7 @@
 Create Notes
 -------------
 
-The basic format for creating a Note is:
+The following example illustrates the basic format for creating a Note:
 
 .. code::
 
@@ -11,7 +11,7 @@ The basic format for creating a Note is:
         "text": "This is an example note."
     }
   
-For example, the following query will create a Note for the Case with ID 3.
+For example, the following request will add a Note to the Case whose ID is 3:
 
 .. code::
 
@@ -41,4 +41,4 @@ JSON Response:
         "status": "Success"
     }
 
-Refer to the `Available Fields <#available-fields>`_ and section for a list of available fields that can be included in the body of a POST request for the ``notes`` object.
+Refer to the `Available Fields <#available-fields>`_ and section for a list of available fields that can be included in the body of a POST request to the ``/v3/notes`` endpoint.
