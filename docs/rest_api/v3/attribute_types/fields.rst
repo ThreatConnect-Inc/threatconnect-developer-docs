@@ -1,5 +1,8 @@
-Available Fields
+Endpoint Options
 ----------------
+
+Available Fields
+^^^^^^^^^^^^^^^^
 
 Send the following request to retrieve a complete list of fields that may be included in responses returned from the ``/v3/attributeTypes`` endpoint, which is a **read-only endpoint**:
 

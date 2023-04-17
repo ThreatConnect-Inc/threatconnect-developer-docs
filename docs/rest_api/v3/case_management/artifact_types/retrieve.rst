@@ -4,7 +4,7 @@ Retrieve Artifact Types
 Retrieve All Artifact Types
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To retrieve all Artifact types, use the following query:
+Send the following request to retrieve data for all Artifact types:
 
 .. code::
 
@@ -37,16 +37,16 @@ JSON Response:
         "status": "Success"
     }
 
-Retrieve a Single Artifact Type
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Retrieve a Specific Artifact Type
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To retrieve a specific Artifact type, use a query in the following format:
+Send a request in the following format to retrieve data for a specific Artifact type:
 
 .. code::
 
     GET /v3/artifactTypes/{artifactTypeId}
 
-For example, the following query will return information about the Artifact type with ID 3:
+For example, the following request will retrieve data for the Artifact type whose ID is 3:
 
 .. code::
 
@@ -67,8 +67,3 @@ JSON Response:
         },
         "status": "Success"
     }
-
-Filter Results
-^^^^^^^^^^^^^^
-
-To filter returned objects using ThreatConnect Query Language (TQL), refer to `Filter Results with TQL <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_.
