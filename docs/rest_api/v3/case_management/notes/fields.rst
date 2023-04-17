@@ -32,12 +32,12 @@ Alternatively, refer to the following table for a list of available fields that 
    * - caseId
      - The ID of the Case to which the Note will be applied
      - Integer
-     - TRUE [1]_, [2]_
+     - TRUE [1]_ [2]_
      - FALSE
    * - caseXid
      - The XID of the Case to which the Note will be applied
      - String
-     - TRUE [1]_, [2]_
+     - TRUE [1]_ [2]_
      - FALSE
    * - taskId
      - The ID of the Task to which the Note will be applied
