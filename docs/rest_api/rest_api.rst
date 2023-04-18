@@ -42,13 +42,13 @@ Features
    v3/specify_owner
    v3/update_metadata
 
-Case Management Objects
-^^^^^^^^^^^^^^^^^^^^^^^
+Case Management Endpoints
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. include:: v3/case_management/case_management.rst
 
-.. note::
-   To add, edit, and delete Case Management data, the API user’s Organization role must be set to **Organization Administrator**.
+.. attention::
+   To add, edit, and delete Case Management data, the API user must have an Organization role of **Organization Administrator**.
 
 .. toctree::
    :maxdepth: 2
@@ -62,8 +62,8 @@ Case Management Objects
    v3/case_management/workflow_events/workflow_events
    v3/case_management/workflow_templates/workflow_templates
 
-Threat Intelligence Objects
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Threat Intelligence Endpoints
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
    :maxdepth: 2
@@ -79,8 +79,8 @@ Threat Intelligence Objects
    v3/victim_attributes/victim_attributes
    v3/victims/victims
 
-Miscellaneous Objects
-^^^^^^^^^^^^^^^^^^^^^
+Miscellaneous Endpoints
+^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
    :maxdepth: 2
