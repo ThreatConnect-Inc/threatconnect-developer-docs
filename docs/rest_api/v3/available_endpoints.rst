@@ -23,6 +23,7 @@ Threat Intelligence Endpoints
 -   ``/v3/groups``
 -   ``/v3/indicatorAttributes``
 -   ``/v3/indicators``
+-   ``/v3/indicators/enrich``
 -   ``/v3/securityLabels``
 -   ``/v3/tags``
 -   ``/v3/victimAssets``
