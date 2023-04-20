@@ -1,13 +1,13 @@
 Delete Victim Assets
 --------------------
 
-The basic format for deleting a Victim Asset is:
+Send a request in the following format to delete a Victim Asset:
 
 .. code::
 
     DELETE /v3/victimAssets/{victimAssetId}
 
-For example, the following query will delete the Victim Asset with ID 1:
+For example, the following request will delete the Victim Asset whose ID is 1:
 
 .. code::
 

@@ -1,7 +1,7 @@
 Update Victim Assets
 --------------------
 
-The basic format for updating a Victim Asset is:
+The following example illustrates the basic format for updating a Victim Asset:
 
 .. code::
 
@@ -10,16 +10,26 @@ The basic format for updating a Victim Asset is:
         {updatedField}: {updatedValue}
     }
 
-For example, the following query will complete the following actions for a Victim Asset with ID 3:
+For example, the following request will perform the following actions for the Victim Asset whose ID is 3:
 
-- Create an Incident Group with a summary of ``Bad Incident`` and associate it to the Victim Asset;
-- Update the website associated with the Victim Asset.
+- Create an Incident Group named **Bad Incident** and associate it to the Victim Asset
+- Update the website associated with the Victim Asset
+
+.. hint::
+    To include the ``associatedGroups`` field in the API response, append ``?fields=groups`` to the end of the request URL.
 
 .. code::
 
     PUT /v3/victimAssets/3
     {
-        "associatedGroups": {"data": [{"name": "Bad Incident", "type": "Incident"}]},
+        "associatedGroups": {
+            "data": [
+                {
+                    "name": "Bad Incident",
+                    "type": "Incident"
+                }
+            ]
+        },
         "website": "hackerwebsite.com"
     }
 
@@ -32,17 +42,14 @@ JSON Response
             "id": 3,
             "type": "WebSite",
             "victimId": 2,
-            "website": "hackerwebsite.com"
+            "website": "hackerwebsite.com",
+            "webLink": "https://app.threatconnect.com/auth/victim/victim.xhtml?victim=2"
         },
         "message": "Updated",
         "status": "Success"
     }
 
-Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a PUT request for the ``victimAssets`` object.
+Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a PUT request to the ``/v3/victimAssets`` endpoint.
 
 .. hint::
-    When updating a Victim Asset, you can use the ``mode`` field to add or remove the following metadata:
-
-    - ``associatedGroups``
-
-    See `Update an Object's Metadata <https://docs.threatconnect.com/en/latest/rest_api/v3/update_metadata.html>`_ for instructions on using the ``mode`` field.
+    When updating a Victim Asset, you can use the ``mode`` field within the ``associatedGroups`` field to associate Groups to and dissociate them from the Victim Asset. See `Update an Object's Metadata <https://docs.threatconnect.com/en/latest/rest_api/v3/update_metadata.html>`_ for instructions on using the ``mode`` field.

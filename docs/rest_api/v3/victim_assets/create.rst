@@ -1,7 +1,7 @@
 Create Victim Assets
 --------------------
 
-The basic format for creating a Victim Asset is:
+The following example illustrates the basic format for creating a Victim Asset:
 
 .. code::
 
@@ -12,7 +12,7 @@ The basic format for creating a Victim Asset is:
         //additional fields for the selected Victim Asset type
     }
 
-For example, the following query will create a Phone Victim Asset and add it to the Victim with ID 2:
+For example, the following request will create a Phone Victim Asset and add it to the Victim with ID 2:
 
 .. code::
 
@@ -32,10 +32,11 @@ JSON Response
             "id": 4,
             "type": "Phone",
             "victimId": 2,
-            "phone": "0123456789"
+            "phone": "0123456789",
+            "webLink": "https://app.threatconnect.com/auth/victim/victim.xhtml?victim=2"
         },
         "message": "Created",
         "status": "Success"
     }
 
-Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a POST request for the ``victimAssets`` object.
+Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a POST request to the ``/v3/victimAssets`` endpoint.
