@@ -4,7 +4,7 @@ Retrieve System Roles
 Retrieve All System Roles
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To retrieve all system roles in your ThreatConnect instance, use the following query:
+Send the following request to retrieve data for all system roles:
 
 .. code::
 
@@ -37,35 +37,21 @@ JSON Response:
                 "assignable": true,
                 "displayed": true
             },
-            {
-                "id": 9,
-                "name": "Api User",
-                "active": true,
-                "assignable": false,
-                "displayed": false
-            },
-            {
-                "id": 10,
-                "name": "Accounts Administrator",
-                "active": true,
-                "assignable": true,
-                "displayed": true
-            },
             {...}
         ],
         "status": "Success"
     }
 
-Retrieve a Single System Role
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Retrieve a Specific System Role
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To retrieve a specific system role in your ThreatConnect instance, use a query in the following format:
+Send a request in the following format to retrieve data for a specific system role:
 
 .. code::
 
     GET /v3/security/systemRoles/{systemRoleId}
 
-For example, the following query will return information about the system role with ID 17:
+For example, the following request will retrieve data for the system role whose ID is 17:
 
 .. code::
 
@@ -85,8 +71,3 @@ JSON Response:
         },
         "status": "Success"
     }
-
-Filter Results
-^^^^^^^^^^^^^^
-
-To filter returned objects using ThreatConnect Query Language (TQL), refer to `Filter Results with TQL <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_.

@@ -4,7 +4,7 @@ Retrieve Owner Roles
 Retrieve All Owner Roles
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-To retrieve all owner roles, including custom owner roles, in your ThreatConnect instance, use the following query:
+Send the following request to retrieve data for all owner roles:
 
 .. code::
 
@@ -51,16 +51,16 @@ JSON Response:
         "status": "Success"
     }
 
-Retrieve a Single Owner Role
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Retrieve a Specific Owner Role
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To retrieve a specific owner role in your ThreatConnect instance, use a query in the following format:
+Send a request in the following format to retrieve data for a specific owner role:
 
 .. code::
 
     GET /v3/security/ownerRoles/{ownerRoleId}
 
-For example, the following query will return information about the owner role with ID 15, which is a custom owner role:
+For example, the following request will retrieve data for the owner role whose ID is 15, which is a custom owner role:
 
 .. code::
 
@@ -82,8 +82,3 @@ JSON Response:
         },
         "status": "Success"
     }
-
-Filter Results
-^^^^^^^^^^^^^^
-
-To filter returned objects using ThreatConnect Query Language (TQL), refer to `Filter Results with TQL <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_.

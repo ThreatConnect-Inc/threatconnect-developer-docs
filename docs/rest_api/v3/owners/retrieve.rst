@@ -4,7 +4,7 @@ Retrieve Owners
 Retrieve All Owners
 ^^^^^^^^^^^^^^^^^^^
 
-To retrieve all owners in the Organization in which your API user account resides, use the following query:
+Send the following request to retrieve data for all owners:
 
 .. code::
 
@@ -111,16 +111,16 @@ JSON Response:
         "status": "Success"
     }
 
-Retrieve a Single Owner
-^^^^^^^^^^^^^^^^^^^^^^^
+Retrieve a Specific Owner
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To retrieve a specific owner in the Organization in which your API user account resides, use a query in the following format:
+Send a request in the following format to retrieve data for a specific owner:
 
 .. code::
 
     GET /v3/security/owners/{ownerId}
 
-For example, the following query will return information about the owner with ID 3:
+For example, the following request will retrieve data for the owner whose ID is 3:
 
 .. code::
 
@@ -163,8 +163,3 @@ JSON Response:
         },
         "status": "Success"
     }
-
-Filter Results
-^^^^^^^^^^^^^^
-
-To filter returned objects using ThreatConnect Query Language (TQL), refer to `Filter Results with TQL <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_.
