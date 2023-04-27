@@ -1,7 +1,7 @@
 Create Workflow Templates
 -------------------------
 
-The basic format for creating a Workflow Template is:
+The following example illustrates the basic format for creating a Workflow Template:
 
 .. code::
 
@@ -10,14 +10,14 @@ The basic format for creating a Workflow Template is:
         "name": "Example Workflow Template"
     }
 
-For example, the following query will create a Workflow Template with the name ``Phishing Investigation Template`` and a description of the Template:
+For example, the following request will create a Workflow Template named **Phishing Investigation Workflow** and add a description to it:
 
 .. code::
 
     POST /v3/workflowTemplates
     {
-        "name": "Phishing Investigation Template",
-        "description": "Template for phishing investigations."
+        "name": "Phishing Investigation Workflow",
+        "description": "Workflow for phishing investigations."
     }
 
 JSON Response:
@@ -27,8 +27,8 @@ JSON Response:
     {
         "data": {
             "id": 3,
-            "name": "Phishing Investigation Template",
-            "description": "Template for phishing investigations.",
+            "name": "Phishing Investigation Workflow",
+            "description": "Workflow for phishing investigations.",
             "active": false,
             "version": 1
         },
@@ -36,4 +36,4 @@ JSON Response:
         "status": "Success"
     }
 
-Refer to the `Available Fields <#available-fields>`_ and section for a list of available fields that can be included in the body of a POST request for the ``workflowTemplates`` object.
+Refer to the `Available Fields <#available-fields>`_ and section for a list of available fields that can be included in the body of a POST request to the ``/v3/workflowTemplates`` endpoint.

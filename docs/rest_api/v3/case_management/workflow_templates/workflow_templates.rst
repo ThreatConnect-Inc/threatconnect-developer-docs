@@ -14,3 +14,7 @@ Endpoint: ``/api/v3/workflowTemplates``
 .. include:: update.rst
 
 .. include:: delete.rst
+
+----
+
+*TC Exchange™ is a trademark of ThreatConnect, Inc.*

@@ -4,7 +4,7 @@ Retrieve Workflow Templates
 Retrieve All Workflow Templates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To retrieve all Workflow Templates, use the following query:
+Send the following request to retrieve data for all Workflow Templates:
 
 .. code::
 
@@ -18,22 +18,26 @@ JSON Response:
         "data": [
             {
                 "id": 1,
-                "name": "Example Template",
-                "description": "A description for this Workflow Template.",
+                "name": "Example Workflow",
+                "description": "This is an example Workflow.",
                 "active": false,
                 "version": 1,
-                "configAttribute": [{
-                    "attributeTypeId": 86
-                }]
+                "configAttribute": [
+                    {
+                        "attributeTypeId": 271
+                    }
+                ]
             },
             {
                 "id": 2,
-                "name": "Demo Template with Tasks",
+                "name": "Email Analysis",
+                "description": "Workflow for analyzing suspicious emails.",
                 "configTask": [
                     {
                         "configPlaybook": null,
                         "fields": [],
                         "name": "Create a Meeting Notes folder",
+                        "required": true,
                         "workflowId": 2,
                         "workflowPhase": 1,
                         "workflowStep": 1,
@@ -47,6 +51,7 @@ JSON Response:
                             "firstName": "Pat",
                             "lastName": "Jones"
                         },
+                        "durationType": "Hours",
                         "duration": 2
                     },
                     {
@@ -72,17 +77,29 @@ JSON Response:
                             }
                         ],
                         "name": "Analyze Email",
+                        "description": "Perform analysis of suspicious email.",
+                        "required": true,
                         "workflowId": 2,
                         "workflowPhase": 2,
                         "workflowStep": 2,
-                        "assignee": null,
+                        "workflowStep": 1,
+                        "assignee": {
+                            "displayName": "SOC Team",
+                            "id": 1,
+                            "name": "SOC Team",
+                            "type": "Group",
+                            "ownerId": 7,
+                            "superUser": false
+                        },
                         "dependentOnTaskName": "Confirm Receipt of Email",
+                        "durationType": "Days",
                         "duration": 3
                     },
                     {
                         "configPlaybook": null,
                         "fields": [],
                         "name": "Confirm Receipt of Email",
+                        "required": false,
                         "workflowId": 2,
                         "workflowPhase": 2,
                         "workflowStep": 1,
@@ -97,20 +114,21 @@ JSON Response:
         "status": "Success"
     }
 
-Retrieve a Single Workflow Template
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To retrieve a specific Workflow Template, use a query in the following format:
+Retrieve a Specific Workflow Template
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Send a request in the following format to retrieve data for a specific Workflow Template:
 
 .. code::
 
     GET /v3/workflowTemplates/{workflowTemplateId}
 
-For example, the following query will return information about the Workflow template with ID 1:
+For example, the following request will retrieve data for the Workflow Template whose ID is 3:
 
 .. code::
 
-    GET /v3/workflowTemplates/1
+    GET /v3/workflowTemplates/3
 
 JSON Response:
 
@@ -118,24 +136,11 @@ JSON Response:
 
     {
         "data": {
-            "id": 1,
-            "name": "Example Template",
-            "description": "A description for this Workflow Template.",
+            "id": 3,
+            "name": "Phishing Investigation Workflow",
+            "description": "Workflow for phishing investigations.",
             "active": false,
-            "version": 1,
-            "configAttribute": [{
-                "attributeTypeId": 86
-            }]
+            "version": 1
         },
         "status": "Success"
     }
-
-Request Additional Fields
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To request additional fields not automatically included with each returned object, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
-
-Filter Results
-^^^^^^^^^^^^^^
-
-To filter returned objects using ThreatConnect Query Language (TQL), refer to `Filter Results with TQL <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_.
