@@ -33,7 +33,11 @@ JSON Response
             "source": "Phase of Intrusion",
             "createdBy": {
                 "id": 3,
-                "userName": "11112222333344445555"
+                "userName": "11112222333344445555",
+                "firstName": "John",
+                "lastName": "Smith",
+                "pseudonym": "jsmithAPI",
+                "owner": "Demo Organization"
             },
             "lastModified": "2021-11-09T13:38:12Z",
             "pinned": true,
@@ -43,4 +47,4 @@ JSON Response
         "status": "Success"
     }
 
-Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a PUT request for the ``indicatorAttributes`` object.
+Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a PUT request to the ``/v3/indicatorAttributes`` endpoint.

@@ -26,7 +26,11 @@ JSON Response:
                 "source": "Hybrid analysis",
                 "createdBy": {
                     "id": 3,
-                    "userName": "11112222333344445555"
+                    "userName": "11112222333344445555",
+                    "firstName": "John",
+                    "lastName": "Smith",
+                    "pseudonym": "jsmithAPI",
+                    "owner": "Demo Organization"
                 },
                 "lastModified": "2022-02-15T20:24:16Z",
                 "pinned": false,
@@ -39,7 +43,11 @@ JSON Response:
                 "value": "20",
                 "createdBy": {
                     "id": 1,
-                    "userName": "smithj@threatconnect.com"
+                    "userName": "smithj@threatconnect.com",
+                    "firstName": "John",
+                    "lastName": "Smith",
+                    "pseudonym": "jsmith",
+                    "owner": "Demo Organization"
                 },
                 "lastModified": "2022-02-15T20:24:37Z",
                 "pinned": false,
@@ -77,7 +85,11 @@ JSON Response:
             "value": "After analyzing the threat for which this Case was opened, it was determined that the threat does not pose a risk to Company ABC.",
             "createdBy": {
                 "id": 3,
-                "userName": "11112222333344445555"
+                "userName": "11112222333344445555",
+                "firstName": "John",
+                "lastName": "Smith",
+                "pseudonym": "jsmithAPI",
+                "owner": "Demo Organization"
             },
             "lastModified": "2022-02-15T21:13:16Z",
             "pinned": false,
@@ -85,13 +97,3 @@ JSON Response:
         },
         "status": "Success"
     }
-
-Request Additional Fields
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To request additional fields not included in the default response, refer to `Include Additional Fields for Returned Objects <https://docs.threatconnect.com/en/latest/rest_api/v3/additional_fields.html>`_.
-
-Filter Results
-^^^^^^^^^^^^^^
-
-To filter results using ThreatConnect Query Language (TQL), refer to `Filter Results with TQL <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_.

@@ -32,7 +32,11 @@ JSON Response:
             "source": "Hybrid analysis",
             "createdBy": {
                 "id": 3,
-                "userName": "11112222333344445555"
+                "userName": "11112222333344445555",
+                "firstName": "John",
+                "lastName": "Smith",
+                "pseudonym": "jsmithAPI",
+                "owner": "Demo Organization"
             },
             "lastModified": "2022-02-15T20:28:22Z",
             "pinned": false,

@@ -35,7 +35,11 @@ JSON Response:
             "value": "30",
             "createdBy": {
                 "id": 3,
-                "userName": "11112222333344445555"
+                "userName": "11112222333344445555",
+                "firstName": "John",
+                "lastName": "Smith",
+                "pseudonym": "jsmithAPI",
+                "owner": "Demo Organization"
             },
             "lastModified": "2022-04-06T12:40:48Z",
             "pinned": false,

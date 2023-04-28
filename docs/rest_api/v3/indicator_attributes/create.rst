@@ -37,7 +37,11 @@ JSON Response
             "source": "Phase of Intrusion",
             "createdBy": {
                 "id": 3,
-                "userName": "11112222333344445555"
+                "userName": "11112222333344445555",
+                "firstName": "John",
+                "lastName": "Smith",
+                "pseudonym": "jsmithAPI",
+                "owner": "Demo Organization"
             },
             "lastModified": "2021-11-09T13:32:37Z",
             "pinned": false,
@@ -47,7 +51,7 @@ JSON Response
         "status": "Success"
     }
 
-Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a POST request for the ``indicatorAttributes`` object.
+Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a POST request to the ``/v3/indicatorAttributes`` endpoint.
 
 .. hint::
     Indicator Attributes can also be created and added to an Indicator when creating the Indicator. See the “Create Indicators” section of `Indicators <https://docs.threatconnect.com/en/latest/rest_api/v3/indicators/indicators.html>`_ for more information.
