@@ -70,7 +70,7 @@ Alternatively, refer to the following tables for a list of available fields that
      - `Case Attribute Object <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/case_attributes/case_attributes.html>`_
      - FALSE
      - TRUE
-     - {"data": [{"type": "Attribute Type", "value": "Attribute Value", "source": "Attribute Source"]}}
+     - {"data": [{"type": "Attribute Type", "value": "Attribute Value", "source": "Attribute Source"}]}
    * - caseCloseTime
      - The date and time the Case was closed
      - Date
