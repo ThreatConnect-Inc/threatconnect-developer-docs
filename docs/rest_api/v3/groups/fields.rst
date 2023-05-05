@@ -40,7 +40,7 @@ Alternatively, refer to the following table for a list of available fields that 
      - TRUE
      - | {"data": [{"id": 12345}]}
        |
-       | {"data": [{"name": "Hacker Investigation", "status": "Open", "severity": "Low" }]}}
+       | {"data": [{"name": "Hacker Investigation", "status": "Open", "severity": "Low" }]}
    * - associatedGroups
      - A list of Groups associated to the Group
      - `Group Object <https://docs.threatconnect.com/en/latest/rest_api/v3/groups/groups.html>`_
@@ -70,7 +70,7 @@ Alternatively, refer to the following table for a list of available fields that 
      - `Group Attribute Object <https://docs.threatconnect.com/en/latest/rest_api/v3/group-attributes/group-attributes.html>`_
      - FALSE
      - TRUE
-     - {"data": [{"type": "Attribute Type", "value": "Attribute Value", "source": "Attribute Source"]}}
+     - {"data": [{"type": "Attribute Type", "value": "Attribute Value", "source": "Attribute Source"}]}
    * - name
      - The Group's name
      - String

@@ -52,7 +52,7 @@ Alternatively, refer to the following table for a list of available fields that 
      - TRUE
      - | {"data": [{"id": 12345}]}
        |
-       | {"data": [{"name": "Hacker Investigation", "status": "Open", "severity": "Low" }]}}
+       | {"data": [{"name": "Hacker Investigation", "status": "Open", "severity": "Low" }]}
    * - associatedGroups
      - A list of Groups associated to the Indicator 
      - `Group Object <https://docs.threatconnect.com/en/latest/rest_api/v3/groups/groups.html>`_
@@ -74,7 +74,7 @@ Alternatively, refer to the following table for a list of available fields that 
      - `Indicator Attribute Object <https://docs.threatconnect.com/en/latest/rest_api/v3/indicator_attributes/indicator_attributes.html>`_
      - FALSE
      - TRUE
-     - {"data": [{"type": "Attribute Type", "value": "Attribute Value", "source": "Attribute Source"]}}
+     - {"data": [{"type": "Attribute Type", "value": "Attribute Value", "source": "Attribute Source"}]}
    * - confidence
      - The Indicator's Confidence Rating 
      - Integer

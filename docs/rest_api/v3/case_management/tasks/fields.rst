@@ -30,7 +30,7 @@ Alternatively, refer to the following table for a list of available fields that 
      - `Artifact Object <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/artifacts/artifacts.html>`_
      - FALSE
      - TRUE
-     - {"data": [{"summary": "badguy@bad.com", "type": "Email Address"]}}
+     - {"data": [{"summary": "badguy@bad.com", "type": "Email Address"}]}
    * - assignee
      - The user or group Assignee object for the Task
      - Assignee Object
