@@ -232,3 +232,20 @@ Request (Encoded URL)
 .. code::
 
   GET /v3/indicators?tql=rating%20%3E%3D%204&fields=tags&fields=attributes
+
+Retrieve Association Attributes Added to a Specific Group
+=========================================================
+
+The following request will retrieve data for association Attributes that belong to two Groups: one whose ID is 10 and another whose ID is 15. The response will include the ``groupId`` field to indicate which Attribute(s) belong to which Group.
+
+Request (Decoded URL)
+
+.. code::
+
+    GET /v3/groupAttributes?fields=groupId&tql=hasGroup(id in (10,15)) AND associable=true
+
+Request (Encoded URL)
+
+.. code::
+
+    GET /v3/groupAttributes?fields=groupId&tql=hasGroup(id%20in%20(10%2C15))%20AND%20associable%3Dtrue
