@@ -3,5 +3,5 @@ inflect==0.2.5
 jsonschema==2.5.1
 python-dateutil==2.6.0
 redis==2.10.5
-requests==2.20.0
+requests==2.31.0
 tcex
