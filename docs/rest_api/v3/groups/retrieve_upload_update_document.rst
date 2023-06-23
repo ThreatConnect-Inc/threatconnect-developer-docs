@@ -18,7 +18,7 @@ Send a request in the following format to upload the contents of a file to a Doc
 
 .. code::
 
-    PUT /v3/groups/{groupId}/upload
+    POST /v3/groups/{groupId}/upload
     Content-Type: application/octet-stream
 
     <raw report contents>
