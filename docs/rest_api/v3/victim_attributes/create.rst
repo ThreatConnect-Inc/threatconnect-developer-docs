@@ -37,7 +37,7 @@ JSON Response
             "source": "Phase of Intrusion",
             "createdBy": {
                 "id": 3,
-                "userName": "11112222333344445555"",
+                "userName": "11112222333344445555",
                 "firstName": "John",
                 "lastName": "Smith",
                 "pseudonym": "jsmithAPI",
