@@ -43,7 +43,6 @@ JSON Response:
             "xid": "a1a1a1a1-a1a1-a1a1-a1a1-a1a1a1a1a1a1",
             "name": "Phishing Investigation",
             "dateAdded": "2023-03-09T14:41:27Z",
-            "lastUpdated": "2023-03-09T14:41:27Z",
             "caseOpenTime": "2023-03-09T14:41:27.27Z",
             "caseOpenUser": {
                 "id": 3,

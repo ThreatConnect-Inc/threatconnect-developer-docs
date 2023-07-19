@@ -21,7 +21,6 @@ JSON Response:
                 "xid": "a1a1a1a1-a1a1-a1a1-a1a1-a1a1a1a1a1a1",
                 "name": "Phishing Investigation",
                 "dateAdded": "2023-03-09T14:41:27.622Z",
-                "lastUpdated": "2023-03-09T14:41:27.622Z",
                 "caseOpenTime": "2023-03-09T14:41:27.622Z",
                 "caseOpenUser": {
                     "id": 3,
@@ -62,7 +61,6 @@ JSON Response:
                 "name": "Malware Investigation",
                 "description": "Case to investigate new malware",
                 "dateAdded": "2023-03-17T18:56:22Z",
-                "lastUpdated": "2023-03-25T11:25:34Z",
                 "caseOpenTime": "2023-03-17T18:56:22Z",
                 "caseOpenUser": {
                     "id": 2,
@@ -119,7 +117,6 @@ JSON Response:
             "xid": "c3c3c3c3-c3c3-c3c3-c3c3-c3c3c3c3c3c3",
             "name": "Analyze Suspicious Email and Report Findings",
             "dateAdded": "2023-03-19T14:41:27.622Z",
-            "lastUpdated": "2023-03-21T09:22:39.622Z",
             "caseOpenTime": "2023-03-09T14:41:27.622Z",
             "caseOpenUser": {
                 "id": 1,
