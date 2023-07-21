@@ -24,7 +24,7 @@ On the **Fork collection into your workspace** screen, select one of the followi
 - Click the **Fork Collection** button to fork the collection into your Postman workspace. Your Postman profile must be public to fork a collection in a public workspace.
 - Click the **import a copy** link to import a copy of the collection into your workspace. You must use the `Postman desktop app <https://www.postman.com/downloads/>`_ to import a collection into your workspace.
 
-For the Collection
+Fork the Collection
 ^^^^^^^^^^^^^^^^^^
 
 After clicking the **Fork Collection** button, the **Fork collection screen** will be displayed (Figure 2).
