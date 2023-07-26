@@ -91,6 +91,7 @@ Miscellaneous Endpoints
    v3/system_roles/system_roles
    v3/user_groups/user_groups
    v3/users/users
+   v3/tc_exchange_administration/tc_exchange_administration
 
 ----
 
