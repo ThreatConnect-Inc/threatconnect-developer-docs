@@ -17,7 +17,7 @@ Upload and Install Apps on TC Exchange
 To upload an App to TC Exchange and install it on your ThreatConnect instance, you must send a multipart/form-data request. Refer to the following table for the key-value pairs that may be included in the request.
 
 .. list-table::
-   :widths: 25 25 50
+   :widths: 25 50 25
    :header-rows: 1
 
    * - Key Name
