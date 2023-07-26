@@ -27,6 +27,6 @@ Endpoint: ``/api/v3/indicators``
 
 .. include:: mergeFileHashes.rst
 
----
+----
 
 *MITRE ATT&CK® and ATT&CK® are registered trademarks of The MITRE Corporation.*

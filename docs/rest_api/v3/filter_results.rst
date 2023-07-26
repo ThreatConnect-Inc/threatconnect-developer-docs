@@ -290,6 +290,6 @@ Request (Encoded URL)
 
     GET /v3/groupAttributes?fields=groupId&tql=hasGroup(id%20in%20(10%2C15))%20AND%20associable%3Dtrue
 
----
+----
 
 *MITRE ATT&CK® and ATT&CK® are registered trademarks of The MITRE Corporation.*

@@ -642,6 +642,6 @@ Request (Encoded URL)
 .. note::
     Depending on the tool you are using to interact with the ThreatConnect API, it may be necessary to encode the request URL manually if it includes query parameters. For example, some tools may accept ``/v3/indicators?tql=ownerName GEQ 4&fields=tags&fields=attributes`` as a valid request URL and encode it automatically, while others may require you to encode the request URL manually. If you send a request with query parameters and a **401 Unauthorized** error is returned, verify whether the request URL is encoded properly for the API tool you are using.
 
----
+----
 
 *MITRE ATT&CK® and ATT&CK® are registered trademarks of The MITRE Corporation.*
