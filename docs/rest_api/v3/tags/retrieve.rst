@@ -96,11 +96,13 @@ To retrieve only standard Tags, send the following request:
 Request (Decoded URL)
 
 .. code::
+
     GET /v3/tags?tql=techniqueId is null
 
 Request (Encoded URL)
 
 .. code::
+
     GET /v3/tags?tql=techniqueId%20is%20null
 
 Retrieve ATT&CK Tags
@@ -113,11 +115,13 @@ To retrieve only ATT&CK Tags, send the following request:
 Request (Decoded URL)
 
 .. code::
+
     GET /v3/tags?tql=techniqueId is not null
 
 Request (Encoded URL)
 
 .. code::
+
     GET /v3/tags?tql=techniqueId%20is%20not%20null
 
 Retrieve Main Tags
@@ -128,9 +132,11 @@ As of ThreatConnect version 7.2, System Administrators can create Tag normalizat
 Request (Decoded URL)
 
 .. code::
+
     GET v3/tags?tql=normalized EQ true
 
 Request (Encoded URL)
 
 .. code::
+    
     GET /v3/tags?tql=normalized%20EQ%20true

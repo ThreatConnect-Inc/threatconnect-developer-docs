@@ -120,11 +120,13 @@ JSON Response
 In this second example, the request will enrich the URL Indicator whose ID is 20 with data retrieved from urlscan.io:
 
 .. code::
+
     POST /v3/indicators/20/enrich?type=URLScan
 
 JSON Response
 
 .. code:: json
+    
     {
         "data": {
             "id": 20,

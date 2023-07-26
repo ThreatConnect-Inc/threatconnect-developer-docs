@@ -28,9 +28,9 @@ JSON Response
     {
         "data": {
             "id": 1,
-            "name": "Phishing",
+            "name": "Ransomware"",
             "owner": "Demo Organization",
-            "description": "Apply this Tag to objects related to phishing attacks.",
+            "description": "Apply this Tag to objects related to ransomware attacks.",
             "lastUsed": "2021-11-08T18:01:36Z"
         },
         "message": "Created",

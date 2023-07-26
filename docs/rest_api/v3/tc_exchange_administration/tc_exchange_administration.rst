@@ -32,14 +32,13 @@ To upload an App to TC Exchange and install it on your ThreatConnect instance, y
        | - false (default)
      - Optional
    * - allowAppDistribution
-     - urlscan.io
      - | Specifies whether to allow the App to be downloaded by App Catalog clients.
        |
        | **Accepted values**:
        |
        | - true
        | - false (default)
-    - Optional
+     - Optional
    * - fileData
      - The .tcx (App zip) file to be uploaded.
      - Required
@@ -47,6 +46,7 @@ To upload an App to TC Exchange and install it on your ThreatConnect instance, y
 For example, the following request will upload the Vault.tcx file to TC Exchange and install the corresponding App with permissions to be used by all Organizations on the ThreatConnect instance:
 
 .. code::
+
     curl --location --request POST 'https://companyabc.threatconnect.com/api/v3/apps/exchange/install' \
     --header 'Timestamp: $UNIX_EPOCH_TIMESTAMP' \
     --header 'Authorization: TC $ACCESS_ID:$SIGNATURE' \
@@ -57,6 +57,7 @@ For example, the following request will upload the Vault.tcx file to TC Exchange
 JSON Response
 
 .. code:: json
+
     [
         {
             "id": 500,
@@ -79,6 +80,7 @@ API tokens may be used to run Service Apps locally for testing. Note that these 
 Send a request in the following format to generate an API token:
 
 .. code::
+
     curl --location --request POST 'https://companyabc.threatconnect.com/api/v3/token/api' \
     --header 'Timestamp: $UNIX_EPOCH_TIMESTAMP' \
     --header 'Authorization: TC $ACCESS_ID:$SIGNATURE' \
@@ -87,6 +89,7 @@ Send a request in the following format to generate an API token:
 JSON Response
 
 .. code:: json
+
     {
         "status": "Success",
         "data": "API:5:5Aca6d:1687297679443:BxTn+qxRV3p5YzYg+/oIKhbU2QuW2u6C8f06YaRd9Cg="
@@ -111,6 +114,7 @@ Step 2: Generate a Service Token for the Service
 After you obtain the ID of the Service you want to test, send a request in the following format to generate a Service token:
 
 .. code::
+
     curl --location 'https://companyabc.threatconnect.com/api/v3/token/svc' \
     --header 'Timestamp: $UNIX_EPOCH_TIMESTAMP' \
     --header 'Authorization: TC $ACCESS_ID:$SIGNATURE' \
@@ -120,11 +124,12 @@ After you obtain the ID of the Service you want to test, send a request in the f
     }'
 
 .. code:: json
+
     {
         "status": "Success",
         "data": "SVC:5:savejX:1687291192791:da39a780af56bc0b4521e6cf75b09f1a:357:SJWhTy0R6LgUx0ZI7hDW16/bTL9uJq+lmH68VLMtIHE="
     }
 
----
+----
 
 *TC Exchange™ is a trademark of ThreatConnect, Inc.*
