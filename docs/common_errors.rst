@@ -11,17 +11,17 @@ General Errors
 Signature Data Did Not Match Expected Result
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This error occurs when something is wrong with the signature used in the `Authorization Section <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#authorization>`__. Make sure you are using the ``HMAC-SHA256`` algorithm and base-64 encoding to create the signature. Refer to the `Authorization Section <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#authorization>`__ for steps to fix this error.
+This error occurs when something is wrong with the signature used in the ``Authorization`` header. Make sure you are using the HMAC-SHA256 algorithm and base-64 encoding to create the signature. Refer to the `Authorization section <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#authorization>`__ for more information.
 
 Timestamp Out of Acceptable Time Range
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Every API call to ThreatConnect requires a ``Timestamp`` header that is within five minutes of the ThreatConnect server's system time. If you get this error, you are passing in a Timestamp that does not line up with ThreatConnect system time. Refer to the `Timestamp Section <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#timestamp>`__ for steps to fix this error.
+Every API request to ThreatConnect requires a ``Timestamp`` header that is **within five minutes** of the ThreatConnect server's system time. If you receive this error, then the value of the Timestamp header does not align with ThreatConnect's system time. Refer to the `Timestamp section <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#timestamp>`__ for more information.
 
 Access Denied
 ^^^^^^^^^^^^^
 
-This error occurs when one of the values in the `Authorization Header <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#authorization>`__ is incorrect, or when you are making a request to an Owner to which the API account you are using does not have access.
+This error occurs when one of the values in the ``Authorization`` header is incorrect, or when you are making a request to a ThreatConnect owner to which your API user account does not have access.
 
 Creating Indicators
 -------------------

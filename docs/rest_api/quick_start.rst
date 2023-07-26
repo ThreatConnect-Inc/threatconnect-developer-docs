@@ -4,38 +4,36 @@ Quick Start
 Creating an API Key
 -------------------
 
-To create an API User, please refer to the `Creating User Accounts <https://training.threatconnect.com/learn/article/creating-user-accounts-kb-article>`__ knowledge base article. If you are not able to create an API key using instructions provided in this article, please contact sales@threatconnect.com to discuss pricing.
+To create an API user account, please refer to the `Creating User Accounts <https://knowledge.threatconnect.com/docs/creating-user-accounts>`__ knowledge base article. If you are not able to create an API key using instructions provided in this article, please contact sales@threatconnect.com to discuss pricing.
 
 Using the API
 -------------
 
-For those with a ThreatConnect Public Cloud API user account, the ThreatConnect API is accessible at ``https://app.threatconnect.com/api``.
+If using an API user account on ThreatConnect's Public Cloud instance, the ThreatConnect API is accessible at ``https://app.threatconnect.com/api``. If using an API user account on a Dedicated Cloud or On-Premises ThreatConnect instance, the ThreatConnect API is accessible at the base URL of your instance followed by ``/api`` (e.g., ``https://companyabc.threatconnect.com/api``).
 
-For the rest of this document, the base API URL will not be included in any of the endpoints (e.g., the branch for owners will be described as ``/v2/owners`` rather than ``https://app.threatconnect.com/api/v2/owners``). You will be responsible for adding the correct base API URL.
+For the rest of this document, the base API URL will not be included in any of the endpoints (e.g., the branch for the v2 API owners endpoint will be described as ``/v2/owners`` rather than ``https://app.threatconnect.com/api/v2/owners``). When sending requests to the ThreatConnect API, you will be responsible for adding the correct base URL to the URL in the request.
 
-Requests to ThreatConnect API endpoints must be made over HTTPS with a valid Signature (as described in the next section), or a 403 error will be returned.
-
-Each API response is formatted with a status. If the status is "Success," each response includes a ``data`` field with the appropriate response type. If the status is "Failure," an appropriate error message is provided as to why the request failed.
+Requests to ThreatConnect API endpoints must be made over HTTPS with a valid signature (as described in the next "Authentication" section), or a 403 error will be returned. Each API response is formatted with a status. If a ``"Success"`` status is returned, each response will include a ``data`` field with the appropriate response type. If a ``"Failure"`` status is returned, an appropriate error message indicating why the request failed will be provided.
 
 API Versioning
 --------------
 
-The API will be versioned, as needed, to support continued development of the ThreatConnect platform, and existing API versions will be appropriately deprecated.
+The API will be versioned, as needed, to support continued development of ThreatConnect, and existing API versions will be deprecated appropriately .
 
 Version 1 (/v1)
 ^^^^^^^^^^^^^^^
 
-v1 of the ThreatConnect API has been deprecated for several years now and, as of v6.0, is no longer available.
+The ThreatConnect v1 API has been deprecated for several years now and, as of ThreatConnect version 6.0, is no longer available.
 
 Version 2 (/v2)
 ^^^^^^^^^^^^^^^
 
-v2 of the ThreatConnect API remains the current active version for Threat Intelligence features within the platform. Write capabilities are supported via HTTP POST and PUT methods. The HTTP GET method is used for read access to resources. To better understand the implementation and usage of the v2 API, refer to the individual sections within this document that describe the methods and data formats available at each endpoint.
+The ThreatConnect v2 API can be used to interact with threat intelligence data, custom metrics, notifications, and Playbooks. Write capabilities are supported via HTTP POST and PUT methods. The HTTP GET method is used for read access to resources. To better understand the implementation and usage of the v2 API, refer to the individual sections within this documentation that describe the methods and data formats available at each endpoint.
 
 Version 3 (/v3)
 ^^^^^^^^^^^^^^^
 
-v3 of the ThreatConnect API begins with the release of v6.0 and is the current active version for Case Management features within the platform. As of the release of v6.4, it supports many of the Threat Intelligence features currently available within v2 of the ThreatConnect API.
+The ThreatConnect v3 API was introduced in ThreatConnect version 6.0 and is the current active version for Case management features within the platform. As of ThreatConnect version 6.4, it supports many of the threat intelligence features currently available in the ThreatConnect v2 API.
 
 The v3 API was designed to leverage a few "lessons learned" identified within the design and deployment of the v2 API. Of particular note, the number of calls needed to make relatively complex setting/getting operations has been greatly reduced and simplified. TQL filtering is also now supported, allowing the user to format, filter, and sort data in a nearly infinite number of ways. The path structure has been simplified as well, having eliminated the need for many levels of nested paths within a given primary endpoint. Finally, error messaging has also been improved in order to better assist the user in identifying and repairing malformed requests.
 
@@ -78,7 +76,7 @@ To understand the implementation and usage of the v3 API, consider the HTTP meth
     - ``?owner=`` query parameter to specify the owner of the data being set
     
 **DELETE /**
-    - Performs bulk deletion of objects (Note: System Configuration option v3ApiBulkDeleteAllowed must be enabled.)
+    - Performs bulk deletion of objects (**Note**: This feature must be enabled in the system settings for your ThreatConnect instance.)
     - ``?tql= tql`` query to filter items to be deleted
     - ``?owner=`` query parameter to specify the owner of the data being set
     
@@ -89,37 +87,32 @@ To understand the implementation and usage of the v3 API, consider the HTTP meth
 Authentication
 --------------
 
-To authenticate an API call to ThreatConnect, there are two required headers—`Authorization <#authorization>`__ and `Timestamp <#timestamp>`__—which are detailed below:
-
-A complete request should look like:
+To authenticate an API request to ThreatConnect, there are two required headers—`Authorization <#authorization>`_ and `Timestamp <#timestamp>`_. The following example illustrates how a complete API request should look:
 
 .. code::
 
-    GET https://app.threatconnect.com/api/v2/indicators?owner=Common%20Community HTTP/1.1
-     Timestamp: 1513703787
-     Authorization: TC 12345678901234567890:PthSlXIA7rNMow1h8wShfvOnTOhxHd+7njUe4MT4ZSs=
+    curl --location --request GET 'https://app.threatconnect.com/api/v2/indicators?owner=Common%20Community' \
+    --header 'Timestamp: 1513703787' \
+    --header 'Authorization: TC 12345678901234567890:PthSlXIA7rNMow1h8wShfvOnTOhxHd+7njUe4MT4ZSs=' \
+    --header 'Accept: application/json'
 
 Timestamp
 ^^^^^^^^^
 
 The required ``Timestamp`` header is a nonce in Unix epoch time (generated by Unix shell with the command: ``date +%s``). The value of the ``Timestamp`` header should look something like ``1513703787``.
 
-.. note:: If the nonce is not within five minutes of the ThreatConnect server's system time, a `Timestamp error <../common_errors.html#timestamp-out-of-acceptable-time-range>`__  will be returned.
+.. note::
+    If the nonce is not within five minutes of the ThreatConnect server's system time, a `Timestamp error <../common_errors.html#timestamp-out-of-acceptable-time-range>`__  will be returned.
 
 Authorization
 ^^^^^^^^^^^^^
 
 The required ``Authorization`` header has the format: ``TC $ACCESS_ID:$SIGNATURE``.
 
-The ``$ACCESS_ID`` is the ID of the API user you are using to make requests. If you do not have or do not know the API_ID, ask your System Administrator.
+- ``$ACCESS_ID``: This is the Access ID of your API user account. If you do know this value, contact your System Administrator.
+- ``$SIGNATURE``: This value is created by concatenating the API path and query strings, HTTP method, and value of the Timestamp header as follows: ``/api/v2/indicators/hosts/example.com?Owner=Common%20Community:GET:1513703787``. The result is signed with your API user account's Secret Key using SHA256 to calculate a hash-based message authentication code (HMAC) and then base-64 encoded.
 
-The ``$SIGNATURE`` is created by concatenating the API path and query strings, HTTP method, and Timestamp (dicsussed in the previous section) as follows:
-
-``/v2/indicators/hosts/example.com?Owner=Common%20Community:GET:1513703787``
-
-The result is then signed with the user's ``Secret Key`` using SHA256 to calculate an HMAC (a.k.a. ``HMAC-SHA256``) and base-64 encoded.
-
-The value of the final ``Authorization`` header should look like:
+The following example illustrates how the value of the ``Authorization`` header should look:
 
 .. code::
 
@@ -130,9 +123,10 @@ Testing API Connectivity
 
 To test API connectivity, start with a request to the ``/v2/owners`` branch to return all Organizations and Communities to which the API credentials have access. An example Bash script for performing this test is available on `GitHub <https://github.com/ThreatConnect-Inc/threatconnect-bash>`_. In this example, you will first update the fields in the ``config.sh`` file, and then execute the ``threatconnect.sh`` file to make the request to the ``/v2/owners`` branch. 
 
-.. note:: If you receive an error while using the script above, make sure that the ``API_HOST`` variable in the ``config.sh`` file is pointed to the correct API for the instance of ThreatConnect you wish to use.
+.. note::
+    If you receive an error while using the script above, make sure that the ``API_HOST`` variable in the ``config.sh`` file is pointed to the correct API for the instance of ThreatConnect you wish to use.
 
-Get a list of all Owners visible to this user:
+Send the following request to retrieve a list of all owners to which your API user account has access:
 
 .. code::
 
@@ -186,5 +180,5 @@ Next Steps
 
 From here, find a topic that interests you and dig in! If you don't know where to start, retrieving Indicators is a good place to begin.
 
-.. hint:: When using this documentation, it will be helpful to have a basic understanding of the `ThreatConnect Data Model <http://kb.threatconnect.com/customer/en/portal/articles/2092925-the-threatconnect-data-model>`_.
-
+.. hint::
+    When using this documentation, it is helpful to have a basic understanding of the `ThreatConnect Data Model <https://knowledge.threatconnect.com/docs/the-threatconnect-data-model>`_.
