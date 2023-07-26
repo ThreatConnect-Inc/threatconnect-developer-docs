@@ -17,7 +17,7 @@ Upload and Install Apps on TC Exchange
 To upload an App to TC Exchange and install it on your ThreatConnect instance, you must send a multipart/form-data request. Refer to the following table for the key-value pairs that may be included in the request.
 
 .. list-table::
-   :widths: 25 50 25
+   :widths: 20 60 20
    :header-rows: 1
 
    * - Key Name
@@ -106,7 +106,7 @@ Step 1: Obtain the Service ID
 Run the following database command to obtain the ID of the desired Service:
 
 .. code::
-    
+
     select * from appcatalogitem where programname like '%TCVC%';
 
 Step 2: Generate a Service Token for the Service
@@ -123,6 +123,8 @@ After you obtain the ID of the Service you want to test, send a request in the f
     --data '{
         "serviceId": 12345
     }'
+
+JSON Response
 
 .. code:: json
 
