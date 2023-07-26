@@ -106,6 +106,7 @@ Step 1: Obtain the Service ID
 Run the following database command to obtain the ID of the desired Service:
 
 .. code::
+    
     select * from appcatalogitem where programname like '%TCVC%';
 
 Step 2: Generate a Service Token for the Service
