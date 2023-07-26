@@ -9,7 +9,7 @@ As of ThreatConnect version 7.2, you can use the ThreatConnect v3 API endpoints 
 - ``/v3/token/svc``
 
 .. attention::
-    Your API user account must have a `system role<https://docs.threatconnect.com/en/latest/rest_api/v3/system_roles/system_roles.html>`_ of **Exchange Admin** to use these API endpoints.
+    Your API user account must have a `system role <https://docs.threatconnect.com/en/latest/rest_api/v3/system_roles/system_roles.html>`_ of **Exchange Admin** to use these API endpoints.
 
 Upload and Install Apps on TC Exchange
 --------------------------------------
@@ -69,7 +69,7 @@ JSON Response
     ]
 
 .. hint::
-    For more information about the values used for the ``Timestamp`` and ``Authorization`` headers, refer to the `Authentication <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#authentication>`_.
+    For more information about the values used for the ``Timestamp`` and ``Authorization`` headers, refer to the `"Authentication" section of Quick Start <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#authentication>`_.
 
 Generate API Tokens
 -------------------
