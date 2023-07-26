@@ -75,6 +75,7 @@ The following request will make the following updates to the Incident Group whos
             ],
             "mode": "delete"
         }
+    }
 
 JSON Response
 
