@@ -18,19 +18,51 @@ For example, the following request will create a Case named "Phishing Investigat
 - Set the Case's status to **Open**
 - Assign the Case to smithj@threatconnect.com
 - Create an Artifact within the Case and associate the Artifact to the existing Indicator whose ID is 2
+- Apply the **T1566 - Phishing** ATT&CK® Tag to the Case
+
+.. attention::
+    When applying ATT&CK Tags to a Case, do not include the corresponding technique/sub-technique ID in the Tag's name. For example, to apply the **T1566 - Phishing** ATT&CK Tag to a Case, use Phishing as the Tag name.
+
+    Also, if you applied a new Tag to a Case and that Tag matches a synonymous Tag listed in a `Tag normalization rule <https://knowledge.threatconnect.com/docs/tag-normalization>`_, it will be converted to the main Tag listed in the rule. Similarly, if you applied a new Tag to a Case and that Tag `matches an ATT&CK Tag <https://knowledge.threatconnect.com/docs/attack-tags#converting-standard-tags-to-attck-tags>`_, it will be converted to that ATT&CK Tag.
 
 .. hint::
-    To include the ``artifacts`` field in the API response, append ``?fields=artifacts`` to the end of the request URL.
+    To include the ``artifacts`` and ``tags`` fields in the API response, append ``?fields=artifacts&fields=tags`` to the end of the request URL.
 
 .. code::
 
     POST /v3/cases
     {
-        "artifacts": {"data": [{"summary": "badguy.com", "type": "Host", "associatedIndicators": {"data": [{"id": "2"}]}}]},
-        "assignee": {"type": "User", "data": {"userName": "smithj@threatconnect.com"}},
+        "artifacts": {
+            "data": [
+                {
+                    "summary": "badguy.com",
+                    "type": "Host",
+                    "associatedIndicators": {
+                        "data": [
+                            {
+                                "id": "2"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "assignee": {
+            "type": "User",
+            "data": {
+                "userName": "smithj@threatconnect.com"
+            }
+        },
         "name": "Phishing Investigation",
         "severity": "Low",
-        "status": "Open"
+        "status": "Open",
+        "tags": {
+            "data": [
+                {
+                    "name": "Phishing"
+                }
+            ]
+        }
     }
 
 JSON Response:

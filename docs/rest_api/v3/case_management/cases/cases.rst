@@ -14,3 +14,7 @@ Endpoint: ``/api/v3/cases``
 .. include:: update.rst
 
 .. include:: delete.rst
+
+---
+
+*MITRE ATT&CK® and ATT&CK® are registered trademarks of The MITRE Corporation.*

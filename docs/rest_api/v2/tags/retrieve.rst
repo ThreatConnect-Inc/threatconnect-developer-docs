@@ -5,7 +5,7 @@ Tag descriptions can be viewed using the following request:
 
 .. code::
 
-   GET /api/v2/tags?detailed=true
+   GET /v2/tags?detailed=true
 
 
 .. include:: filters.rst
@@ -13,11 +13,11 @@ Tag descriptions can be viewed using the following request:
 Retrieve All Tags
 ^^^^^^^^^^^^^^^^^
 
-To retrieve all tags, use the following query:
+To retrieve all Tags, use the following query:
 
 .. code::
 
-    GET /v2/tags/
+    GET /v2/tags
 
 JSON Response:
 
@@ -30,22 +30,23 @@ JSON Response:
         "tag": [
           {
             "name": "Nation State",
-            "webLink": "https://app.threatconnect.com/auth/tags/tag.xhtml?tag=Nation+State&owner=Example+Organization"
+            "webLink": "https://app.threatconnect.com/auth/tags/tag.xhtml?tag=12&owner=Example+Organization"
           },
           {
             "name": "Europe",
-            "webLink": "https://app.threatconnect.com/auth/tags/tag.xhtml?tag=Europe&owner=Example+Organization"
+            "webLink": "https://app.threatconnect.com/auth/tags/tag.xhtml?tag=17&owner=Example+Organization"
           }
         ]
       }
     }
 
+.. note::
+  ATT&CK® Tags are not included in response returned for a ``GET /v2/tags`` request.
+
 Retrieve a Single Tag
 ^^^^^^^^^^^^^^^^^^^^^
 
-To retrieve a specific tag, use a query in the following format:
-
-Introduction here
+To retrieve a specific Tag, use a query in the following format:
 
 .. code::
 
@@ -66,13 +67,19 @@ JSON Response:
       "data": {
         "tag": {
           "name": "Nation State",
-          "webLink": "https://app.threatconnect.com/auth/tags/tag.xhtml?tag=Nation+State&owner=Example+Organization"
+          "webLink": "https://app.threatconnect.com/auth/tags/tag.xhtml?tag=12&owner=Example+Organization"
         }
       }
     }
 
+.. attention::
+  When retrieving a specific ATT&CK Tag, do not include the corresponding technique/sub-technique ID in the Tag's name. For example, to retrieve information about the **T1566 - Phishing** ATT&CK Tag, use **Phishing** as the Tag name in the query.
+
 Retrieve Tag Associations
 -------------------------
+
+.. attention::
+  You cannot retrieve Indicators, Groups, or Victims associated to an ATT&CK Tag via the ``/v2/tags`` endpoint.
 
 Group to Tag Associations
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -83,7 +90,7 @@ To view Groups associated with a given Tag, use a query in the following format:
 
     GET /v2/tags/{tagName}/groups
 
-For example, the query below will retrieve all of the Groups associated with the ``Nation State`` tag:
+For example, the query below will retrieve all of the Groups associated with the ``Nation State`` Tag:
 
 .. code::
 
@@ -105,13 +112,13 @@ JSON Response:
             "ownerName": "Example Organization",
             "dateAdded": "2017-07-13T17:50:17",
             "lastModified": "2017-07-13T17:51:17",
-            "webLink": "https://app.threatconnect.com/auth/document/document.xhtml?document=54321"
+            "webLink": "https://app.threatconnect.com/#/details/groups/54321/overview"
           }
         ]
       }
     }
 
-You can also find associated Groups of a given type using the following format:
+You can also retrieve associated Groups of a given type using the following format:
 
 .. code::
 
@@ -121,19 +128,17 @@ Replace ``{associatedGroupType}`` with one of the following Group types:
 
 .. include:: ../_includes/group_types.rst
 
-For example, we could use the following query to find all Incidents associated with the ``Nation State`` tag:
+For example, the following query will return all Incidents associated with the ``Nation State`` Tag:
 
 .. code::
 
     GET /v2/tags/Nation%20State/groups/incidents
 
-We can also drill down even further by adding the ID of an associated Group to the end of the query such as:
+To retrieve a specific Incident associated with the ``Nation State`` Tag, include the ID of that Incident in the request URL:
 
 .. code::
 
     GET /v2/tags/Nation%20State/groups/incidents/54321
-
-Where ``54321`` is the ID of an Incident associated with the ``Nation State`` tag.
 
 Indicator to Tag Associations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -144,7 +149,7 @@ To view Indicators associated with a given Tag, use a query in the following for
 
     GET /v2/tags/{tagName}/indicators
 
-For example, the query below will retrieve all of the Indicators associated with the ``Nation State`` tag:
+For example, the query below will retrieve all of the Indicators associated with the ``Nation State`` Tag:
 
 .. code::
 
@@ -165,25 +170,27 @@ JSON Response:
             "type": "Address",
             "dateAdded": "2017-07-13T17:50:17",
             "lastModified": "2017-07-20T15:43:09Z",
+            "rating": 3.00,
+            "confidence": 75,
             "threatAssessRating": 3.0,
             "threatAssessConfidence": 75.0,
             "threatAssessScore": 507,
             "calScore": 181,
             "calIndicatorStatus": 2,
-            "webLink": "https://app.threatconnect.com/auth/indicators/details/address.xhtml?address=0.0.0.0&owner=Example+Organization",
+            "webLink": "https://app.threatconnect.com/#/details/indicators/54321/overview&owner=Example+Organization",
             "summary": "0.0.0.0"
           }
         ]
       }
     }
 
-You can also find associated Indicators of a given type using the following format:
+You can also retrieve associated Indicators of a given type using the following format:
 
 .. code::
 
     GET /v2/tags/{tagName}/indicators/{associatedIndicatorType}
 
-For example, we could use the following query to find all Address Indicators associated with the ``Nation State`` tag:
+For example, the following query will return all Address Indicators associated with the ``Nation State`` Tag:
 
 .. code::
 
@@ -198,7 +205,7 @@ To view Victims associated with a given Tag, use a query in the following format
 
     GET /v2/tags/{tagName}/victims
 
-For example, the query below will retrieve all of the Victims associated with the ``Nation State`` tag:
+For example, the query below will return all of the Victims associated with the ``Nation State`` Tag:
 
 .. code::
 
@@ -226,10 +233,8 @@ JSON Response:
       }
     }
 
-We can also drill down even further by adding the ID of an associated Victim to the end of the query like:
+To retrieve a specific Victim associated with the ``Nation State`` Tag, include the ID of that Victim in the request URL:
 
 .. code::
 
     GET /v2/tags/Nation%20State/victims/54321
-
-Where ``54321`` is the ID of a Victim associated with the ``Nation State`` tag.

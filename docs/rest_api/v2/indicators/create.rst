@@ -546,7 +546,7 @@ JSON Response:
 Create Indicator Tags
 ^^^^^^^^^^^^^^^^^^^^^
 
-To add a Tag to an Indicator, use the following format, where ``{tagName}`` is replaced with the name of the Tag you wish to add to the Indicator:
+To add a Tag to an Indicator, use the following format, where ``{tagName}`` is replaced with the name of the Tag you want to add to the Indicator:
 
 .. code::
 
@@ -567,6 +567,8 @@ JSON Response:
     }
 
 .. include:: ../_includes/tag_length.rst
+
+.. include:: ../_includes/apply_attack_tags.rst
 
 Creating File Occurrences
 ^^^^^^^^^^^^^^^^^^^^^^^^^

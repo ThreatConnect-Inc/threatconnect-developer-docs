@@ -135,6 +135,74 @@ Example Requests
 
 This section provides example requests demonstrating sample use cases for the ``fields`` query parameter.
 
+Include Tags Applied to a Group
+===============================
+
+The following request will retrieve data for the Group whose ID is 11, including standard and ATT&CK® Tags applied to the Group:
+
+.. code::
+
+  GET /v3/groups/11?fields=tags
+
+JSON Response
+
+.. code:: json
+
+    {
+        "data": {
+            "id": 18,
+            "dateAdded": "2023-03-31T18:29:12Z",
+            "ownerId": 1,
+            "ownerName": "Demo Organization",
+            "webLink": "https://app.threatconnect.com/#/details/groups/11/overview",
+            "tags": {
+                "data": [
+                    {
+                        "id": 475,
+                        "name": "Phishing",
+                        "description": "Adversaries may send phishing messages to gain access to victim systems. All forms of phishing are electronically delivered social engineering. Phishing can be targeted, known as spearphishing. In spearphishing, a specific individual, company, or industry will be targeted by the adversary. More generally, adversaries can conduct non-targeted phishing, such as in mass malware spam campaigns.\n\nAdversaries may send victims emails containing malicious attachments or links, typically to execute malicious code on victim systems. Phishing may also be conducted via third-party services, like social media platforms. Phishing may also involve social engineering techniques, such as posing as a trusted source, as well as evasive techniques such as removing or manipulating emails or metadata/headers from compromised accounts being abused to send messages (e.g., [Email Hiding Rules](https://attack.mitre.org/techniques/T1564/008)).(Citation: Microsoft OAuth Spam 2022)(Citation: Palo Alto Unit 42 VBA Infostealer 2014) Another way to accomplish this is by forging or spoofing(Citation: Proofpoint-spoof) the identity of the sender which can be used to fool both the human recipient as well as automated security tools.(Citation: cyberproof-double-bounce) \n\nVictims may also receive phishing messages that instruct them to call a phone number where they are directed to visit a malicious URL, download malware,(Citation: sygnia Luna Month)(Citation: CISA Remote Monitoring and Management Software) or install adversary-accessible remote management tools onto their computer (i.e., [User Execution](https://attack.mitre.org/techniques/T1204)).(Citation: Unit42 Luna Moth)",
+                        "lastUsed": "2023-07-06T18:08:17Z",
+                        "techniqueId": "T1566",
+                        "platforms": {
+                            "data": [
+                                "Linux",
+                                "macOS",
+                                "Windows",
+                                "SaaS",
+                                "Office 365",
+                                "Google Workspace"
+                            ],
+                            "count": 6
+                        }
+                    },
+                    {
+                        "id": 9,
+                        "name": "Ransomware",
+                        "description": "Apply this Tag to objects involved in ransomware attacks.",
+                        "lastUsed": "2023-07-06T18:08:17Z"
+                    }
+                ]
+            },
+            "type": "Adversary",
+            "name": "Bad Guy",
+            "createdBy": {
+                "id": 3,
+                "userName": "11112222333344445555",
+                "firstName": "John",
+                "lastName": "Smith",
+                "pseudonym": "jsmithAPI",
+                "owner": "Demo Organization"
+            },
+            "upVoteCount": "0",
+            "downVoteCount": "0",
+            "lastModified": "2023-07-06T18:08:17Z",
+            "legacyLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=11"
+        },
+        "status": "Success"
+    }
+
+ATT&CK Tags will include an additional ``techniqueId`` field in the response object. This field specifies the ID of the MITRE ATT&CK® technique or sub-technique that the Tag represents.
+
 Include an Indicator's Tags, ThreatAssess Information, and Associated Groups
 ============================================================================
 
@@ -464,9 +532,18 @@ JSON Response
 Include Details About the User Who Created an Object
 ====================================================
 
-Responses for some objects include a ``createdBy`` field, which includes subfields that specify the user who created the object. By default, the ``createdBy`` field includes only the ``id`` and ``userName`` subfields. To include more details about the user that created an object, append ``?fields=userDetails`` to the end of the request URL. Note that the number of additional subfields included in the ``createdBy`` field will vary based on your API user account's Organization role.
+Responses for some objects include a ``createdBy`` field, which includes subfields that provide details about the user who created the object. By default, the ``createdBy`` field includes the following subfields:
 
-For example, the following request will retrieve data for the Group whose ID is 12 and return additional details about the user who created the Group. The first response will be for an API user without **Read** permission for user accounts (e.g., the API user account has an Organization role of Standard User), and the second response will be for an API user with **Read** permission for user accounts (e.g., the API user account has an Organization role of Organization Administrator).
+- ``id``
+- ``username``
+- ``firstName``
+- ``lastName``
+- ``pseudonym``
+- ``owner``
+
+To include more details about the user that created an object, append ``?fields=userDetails`` to the end of the request URL. Note that additional subfields will be included within the ``createdBy`` field only for API users with Read permission for user accounts (i.e., API user accounts with an Organization role of Organization Administrator).
+
+For example, the following request will retrieve data for the Group whose ID is 12 and return additional details about the user who created the Group.
 
 .. code::
 
@@ -475,7 +552,7 @@ For example, the following request will retrieve data for the Group whose ID is 
 JSON Response (Without Read Permissions)
 
 .. code:: json
-
+    
     {
         "data": {
             "id": 12,
@@ -491,7 +568,7 @@ JSON Response (Without Read Permissions)
                 "firstName": "John",
                 "lastName": "Smith",
                 "pseudonym": "jsmithAPI",
-                "owner": "Demo Organization"
+                "owner": "Demo Organization",
             },
             "upVoteCount": "0",
             "downVoteCount": "0",
@@ -548,7 +625,15 @@ Combine the "tql" and "fields" Query Parameters
 
 You can combine the ``tql`` and ``fields`` query parameters in a single API request, allowing you to `filter results using ThreatConnect Query Language (TQL) <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_ and include additional fields in the API response.
 
-For example, the following request will retrieve data for all Indicators with a Threat Rating greater than or equal to 4 and include data for Tags and Attributes added to each Indicator in the API response. Note that the TQL string included in the request URL is encoded.
+For example, the following request will retrieve data for all Indicators with a Threat Rating greater than or equal to 4 and include data for Tags and Attributes added to each Indicator in the API response.
+
+Request (Decoded URL)
+
+.. code::
+
+  GET /v3/indicators?tql=rating GEQ 4&fields=tags&fields=attributes
+
+Request (Encoded URL)
 
 .. code::
 
@@ -556,3 +641,7 @@ For example, the following request will retrieve data for all Indicators with a 
 
 .. note::
     Depending on the tool you are using to interact with the ThreatConnect API, it may be necessary to encode the request URL manually if it includes query parameters. For example, some tools may accept ``/v3/indicators?tql=ownerName GEQ 4&fields=tags&fields=attributes`` as a valid request URL and encode it automatically, while others may require you to encode the request URL manually. If you send a request with query parameters and a **401 Unauthorized** error is returned, verify whether the request URL is encoded properly for the API tool you are using.
+
+---
+
+*MITRE ATT&CK® and ATT&CK® are registered trademarks of The MITRE Corporation.*

@@ -24,3 +24,6 @@ JSON Response
 
 .. attention::
     Deleting a Tag will also remove the Tag from any objects to which it was applied.
+
+.. note::
+    You cannot delete ATT&CK Tags.

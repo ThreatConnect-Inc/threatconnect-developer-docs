@@ -26,7 +26,11 @@ JSON Response
                 "name": "Bad Document",
                 "createdBy": {
                     "id": 3,
-                    "userName": "11112222333344445555"
+                    "userName": "11112222333344445555",
+                    "firstName": "John",
+                    "lastName": "Smith",
+                    "pseudonym": "jsmithAPI",
+                    "owner": "Demo Organization"
                 },
                 "upVoteCount":"0",
                 "downVoteCount":"0",
@@ -48,7 +52,11 @@ JSON Response
                 "name": "Your Amazon.com order for demo@sample.com",
                 "createdBy": {
                     "id": 1,
-                    "userName": "smithj@threatconnect.com"
+                    "userName": "smithj@threatconnect.com",
+                    "firstName": "John",
+                    "lastName": "Smith",
+                    "pseudonym": "jsmith",
+                    "owner": "Demo Organization"
                 },
                 "upVoteCount":"0",
                 "downVoteCount":"0",
@@ -101,7 +109,11 @@ JSON Response
             "name": "Bad Incident",
             "createdBy": {
                 "id": 3,
-                "userName": "11112222333344445555"
+                "userName": "11112222333344445555",
+                "firstName": "John",
+                "lastName": "Smith",
+                "pseudonym": "jsmithAPI",
+                "owner": "Demo Organization"
             },
             "upVoteCount":"0",
             "downVoteCount":"0",

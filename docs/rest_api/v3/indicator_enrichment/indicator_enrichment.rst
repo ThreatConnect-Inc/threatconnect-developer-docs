@@ -4,12 +4,13 @@ Indicator Enrichment
 
 Enriching threat intelligence data helps remove false positives and delivers actionable intelligence for threat investigations and other security operations. ThreatConnect includes built-in enrichment services that you can use to retrieve data from a third-party enrichment service that a System Administrator has enabled on your instance and for a given Indicator type.
 
-Enrich Indicators with Data From an Enrichment Service
+Enrich Indicators With Data From an Enrichment Service
 ------------------------------------------------------
 
-As of ThreatConnect version 7.1, you can use the v3 API to enrich Indicators with data retrieved from the following third-party enrichment services:
+You can use the v3 API to enrich Indicators with data retrieved from the following third-party enrichment services:
 
 - Shodan®
+- urlscan.io
 - VirusTotal™
 
 To enrich Indicators using the v3 API, you must append the ``type`` query parameter to the end of the request URL and specify which enrichment service(s) to use. See the following table for a list of accepted values for the ``type`` query parameter.
@@ -28,6 +29,9 @@ To enrich Indicators using the v3 API, you must append the ``type`` query parame
    * - ``Shodan``
      - Shodan
      - Available for Address Indicators only
+   * - ``URLScan``
+     - urlscan.io
+     - Available for URL Indicators only
    * - ``VirusTotalV3``
      - VirusTotal
      - Available for Address, File, Host, and URL Indicators only
@@ -51,7 +55,7 @@ Send a request in the following format to enrich a specific Indicator with data 
 
     POST /v3/indicators/{indicatorId or indicatorSummary}/enrich?type={enrichmentService}
 
-For example, the following request will enrich the **71.6.135.131** Address Indicator with data retrieved from Shodan:
+In this first example, the request will enrich the **71.6.135.131** Address Indicator with data retrieved from Shodan:
 
 .. code::
 
@@ -59,7 +63,7 @@ For example, the following request will enrich the **71.6.135.131** Address Indi
 
 JSON Response
 
-.. code::
+.. code:: json
 
     {
         "data": {
@@ -113,6 +117,55 @@ JSON Response
         "status": "Success"
     }
 
+In this second example, the request will enrich the URL Indicator whose ID is 20 with data retrieved from urlscan.io:
+
+.. code::
+    POST /v3/indicators/20/enrich?type=URLScan
+
+JSON Response
+
+.. code:: json
+    {
+        "data": {
+            "id": 20,
+            "dateAdded": "2023-05-31T14:35:51Z",
+            "ownerId": 1,
+            "ownerName": "Demo Organization",
+            "webLink": "https://app.threatconnect.com/#/details/indicators/20/overview",
+            "type": "URL",
+            "lastModified": "2023-05-31T14:35:58Z",
+            "summary": "http://nemesis.com",
+            "privateFlag": false,
+            "active": true,
+            "activeLocked": false,
+            "text": "http://nemesis.com",
+            "legacyLink": "https://app.threatconnect.com/auth/indicators/details/url.xhtml?orgid=1&owner=Demo+Organization",
+            "enrichment": {
+                "data": [
+                    {
+                        "type": "URLScan",
+                        "malicious": false,
+                        "maliciousScore": 0,
+                        "domain": "www.brandbucket.com",
+                        "ip": {
+                            "ip": "2606:4700:10::6816:6d8",
+                            "country": "US"
+                        },
+                        "submittedUrl": "http://nemesis.com/",
+                        "effectiveUrl": "https://www.brandbucket.com/names/nemesis?source=ext",
+                        "contactSummary": {
+                            "ipCount": 1,
+                            "countryCount": 1,
+                            "domainCount": 7,
+                            "httpCount": 110
+                        }
+                    }
+                ]
+            }
+        },
+        "status": "Success"
+    }
+
 Enrich Multiple Indicators
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -155,14 +208,14 @@ The specified enrichment service must be available for each type of Indicator in
 
 JSON Response
 
-.. code::
+.. code:: json
 
     {
         "enriched": 2,
         "status": "Success"
     }
 
-Enrich Indicators with Multiple Enrichment Services
+Enrich Indicators With Multiple Enrichment Services
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can specify multiple enrichment services from which to retrieve data when enriching one or more Indicators. In this scenario, each enrichment service must be available for the type(s) of Indicator(s) you want to enrich.
@@ -187,7 +240,7 @@ For example, the following request will enrich two Address Indicators with data 
 
 JSON Response
 
-.. code::
+.. code:: json
 
     {
         "enriched": 2,
@@ -214,7 +267,7 @@ If an enrichment service is not available for an Indicator type included in the 
 
 JSON Response
 
-.. code::
+.. code:: json
 
     {
         "enriched": 1,
@@ -256,7 +309,7 @@ For example, the following request will retrieve data for the **71.6.135.131** A
 
 JSON Response
 
-.. code::
+.. code:: json
 
     {
         "data": {

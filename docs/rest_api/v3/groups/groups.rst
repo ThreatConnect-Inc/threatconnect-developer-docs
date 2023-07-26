@@ -24,3 +24,7 @@ Endpoint: ``/api/v3/groups``
 .. include:: retrieve_upload_update_document.rst
 
 .. include:: retrieve_pdf_report.rst
+
+---
+
+*MITRE ATT&CK® and ATT&CK® are registered trademarks of The MITRE Corporation.*

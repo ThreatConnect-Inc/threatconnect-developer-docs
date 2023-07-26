@@ -46,10 +46,31 @@ The following request will make the following updates to the **ultrabadguy.com**
     PUT /v3/indicators/ultrabadguy.com
     {
         "dnsActive": false,
-        "associatedGroups": {"data": [{"id": 15}], "mode": "delete"},
+        "associatedGroups": {
+            "data": [
+                {
+                    "id": 15
+                }
+            ],
+            "mode": "delete"
+        },
         "confidence": 92,
-        "securityLabels": {"data": [{"name": "TLP:RED"}], "mode": "replace"},
-        "tags": {"data": [{"name": "Russia"}], "mode": "append"}
+        "securityLabels": {
+            "data": [
+                {
+                    "name": "TLP:RED"
+                }
+            ],
+            "mode": "replace"
+        },
+        "tags": {
+            "data": [
+                {
+                    "name": "Russia"
+                }
+            ],
+            "mode": "append"
+        }
     }
 
 JSON Response

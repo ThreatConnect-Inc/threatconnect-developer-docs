@@ -7,11 +7,11 @@ Tag descriptions can be written with the following request:
 
 .. code::
 
-   POST /api/v2/tags
+   POST /v2/tags
 
    {
-      "name": "Phishing",
-      "description": "Apply this Tag to objects related to phishing attacks."
+      "name": "Ransomware",
+      "description": "Apply this Tag to objects related to ransomware attacks."
    }
    
 Response:
@@ -22,8 +22,8 @@ Response:
        "status": "Success",
            "data": {
                 "tag": {
-                   "name": "Phishing",
-                   "description": "Apply this Tag to objects related to phishing attacks.",
+                   "name": "Ransomware",
+                   "description": "Apply this Tag to objects related to ransomware attacks.",
                    "webLink": "https://app.threatconnect.com/auth/tags/tag.xhtml?tag=12346&owner=Example+Organization"
                }
            }
@@ -33,11 +33,11 @@ A Tag's name and description can be edited as follows:
 
 .. code::
 
-   PUT /api/v2/tags/Phishing
+   PUT /v2/tags/Ransomware
 
    {
-      "name": "Phishing Attack",
-      "description": "Apply this Tag to Indicators and Groups related to phishing attacks. Do not apply it to Victims."
+      "name": "Ransomware Attack",
+      "description": "Apply this Tag to Indicators and Groups related to ransomware attacks. Do not apply it to Victims."
    }
 
 
@@ -47,3 +47,5 @@ For more details, see:
 * `Adding Tags to Indicators <https://docs.threatconnect.com/en/latest/rest_api/v2/indicators/indicators.html#create-indicator-tags>`_ 
 * `Adding Tags to Tasks <https://docs.threatconnect.com/en/latest/rest_api/v2/tasks/tasks.html#create-task-tags>`_ 
 * `Adding Tags to Victims <https://docs.threatconnect.com/en/latest/rest_api/v2/victims/victims.html#create-victim-tags>`_ 
+
+.. include:: ../_includes/apply_attack_tags.rst

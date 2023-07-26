@@ -10,13 +10,13 @@ The following example illustrates the basic format for updating a Tag:
         {updatedField}: {updatedValue}
     }
 
-For example, the following request will rename the Tag whose ID is 1 from **Phishing** to **Phishing Attack**:
+For example, the following request will rename the Tag whose ID is 1 from **Ransomware** to **Ransomware Attack**:
 
 .. code::
 
     PUT /v3/tags/1
     {
-        "name": "Phishing Attack"
+        "name": "Ransomware Attack"
     }
 
 JSON Response
@@ -26,9 +26,9 @@ JSON Response
     {
         "data": {
             "id": 1,
-            "name": "Phishing Attack",
+            "name": "Ransomware Attack",
             "owner": "Demo Organization",
-            "description": "Apply this Tag to objects related to phishing attacks.",
+            "description": "Apply this Tag to objects related to ransomware attacks.",
             "lastUsed": "2021-11-08T18:01:36Z"
         },
         "message": "Updated",

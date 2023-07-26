@@ -25,9 +25,22 @@ For example, the following request will make the following updates to the Case w
     {
         "resolution": "False Positive",
         "status": "Closed",
-        "associatedGroups": {"data": [{"name": "Extreme Bad Guy", "type": "Adversary", "associatedArtifacts": {"data": [{"id": 4}]}}]}
+        "associatedGroups": {
+            "data": [
+                {
+                    "name": "Extreme Bad Guy",
+                    "type": "Adversary",
+                    "associatedArtifacts": {
+                        "data": [
+                            {
+                                "id": 4
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
     }
-
 
 JSON Response:
 

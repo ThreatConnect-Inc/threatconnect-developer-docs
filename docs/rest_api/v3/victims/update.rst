@@ -23,10 +23,25 @@ For example, the following request will perform the following actions for the Vi
 
     PUT /v3/victims/2
     {
-        "assets": {"data": [{"website": "evilll.com", "type": "WebSite"}]},
+        "assets": {
+            "data": [
+                {
+                    "website": "evilll.com",
+                    "type": "WebSite"
+                }
+            ]
+        },
         "name": "Jane Doe",
-        "securityLabels": {"data": [{"name": "TLP:RED"}], "mode": "replace"}
+        "securityLabels": {
+            "data": [
+                {
+                    "name": "TLP:RED"
+                }
+            ],
+            "mode": "replace"
+        }
     }
+
 
 JSON Response
 

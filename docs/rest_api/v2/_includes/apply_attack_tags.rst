@@ -1,0 +1,4 @@
+.. attention::
+    When applying ATT&CK Tags to an object, do not include the corresponding technique/sub-technique ID in the Tag's name. For example, to apply the ``T1566 - Phishing`` ATT&CK Tag to an object, use ``Phishing`` as the Tag name.
+
+    Also, if you applied a new Tag to an object and that Tag matches a synonymous Tag listed in a `Tag normalization rule <https://knowledge.threatconnect.com/docs/tag-normalization>`_, it will be converted to the main Tag listed in the rule. Similarly, if you applied a new Tag to an object and that Tag `matches an ATT&CK Tag <https://knowledge.threatconnect.com/docs/attack-tags#converting-standard-tags-to-attck-tags>`_, it will be converted to that ATT&CK Tag.

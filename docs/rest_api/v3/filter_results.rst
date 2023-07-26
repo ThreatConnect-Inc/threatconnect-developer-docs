@@ -1,4 +1,4 @@
-Filter Results with TQL
+Filter Results With TQL
 -----------------------
 
 Overview
@@ -118,9 +118,15 @@ JSON Response
                 "name": "Summary",
                 "type": "StringLower",
                 "description": "The name of the tag (case insensitive)"
+            },
+            {
+                "keyword": "techniqueId",
+                "name": "Technique ID",
+                "type": "String",
+                "description": "The standard ID for specific MITRE ATT&CK techniques and subtechniques"
             }
         ],
-        "count": 16,
+        "count": 17,
         "status": "Success"
     }
 
@@ -182,6 +188,40 @@ Request (Encoded URL)
 .. code::
 
     GET /v3/cases?tql=caseOpenTime%20GEQ%20%222023-02-01%22%20and%20caseOpenTime%20LEQ%20%222023-02-28%22
+
+Filter ATT&CK Tags by Technique ID
+==================================
+
+The following request will retrieve data for all ATT&CK® Tags whose technique ID starts with **T1001**:
+
+Request (Decoded URL)
+
+.. code::
+
+    GET /v3/tags?tql=techniqueId startswith "T1001"
+
+Request (Encoded URL)
+
+.. code::
+
+    GET /v3/tags?tql=techniqueId%20startswith%20%22T1001%22
+
+Filter ATT&CK Tags by Associated Groups
+=======================================
+
+The following request will retrieve data for all ATT&CK Tags applied to the Group whose ID is 11:
+
+Request (Decoded URL)
+
+.. code::
+
+    GET /v3/tags?tql=techniqueId is not null and associatedGroup EQ 11
+
+Request (Encoded URL)
+
+.. code::
+
+    GET /v3/tags?tql=techniqueId%20is%20not%20null%20and%20associatedGroup%20EQ%2011
 
 Filter Objects by Association Method
 ====================================
@@ -249,3 +289,7 @@ Request (Encoded URL)
 .. code::
 
     GET /v3/groupAttributes?fields=groupId&tql=hasGroup(id%20in%20(10%2C15))%20AND%20associable%3Dtrue
+
+---
+
+*MITRE ATT&CK® and ATT&CK® are registered trademarks of The MITRE Corporation.*

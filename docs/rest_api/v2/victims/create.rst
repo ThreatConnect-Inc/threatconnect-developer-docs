@@ -211,13 +211,13 @@ JSON Response:
 Create Victim Tags
 ^^^^^^^^^^^^^^^^^^
 
-To add a Tag to a Victim, use the following format, where ``{tagName}`` is replaced with the name of the Tag you wish to add to the Victim:
+To add a Tag to a Victim, use the following format, where ``{tagName}`` is replaced with the name of the Tag you want to add to the Victim:
 
 .. code::
 
     POST /v2/victims/{victimId}/tags/{tagName}
 
-For example, the query below will add the ``Nation State`` Tag to the Victim with ID 12345:
+For example, the query below will add the ``Nation State`` Tag to the Victim whose ID is 12345:
 
 .. code::
 
@@ -232,6 +232,8 @@ JSON Response:
     }
 
 .. include:: ../_includes/tag_length.rst
+
+.. include:: ../_includes/apply_attack_tags.rst
 
 Create Victim Associations
 --------------------------

@@ -288,7 +288,7 @@ To retrieve the Tags for a Group, use a query in the following format:
 
     GET /v2/groups/{groupType}/{groupId}/tags
 
-For example, the query below will retrieve all Tags for the Threat with ID 12345:
+For example, the query below will retrieve all Tags for the Threat whose ID is 12345:
 
 .. code::
 
@@ -301,15 +301,21 @@ JSON Response:
     {
       "status": "Success",
       "data": {
-        "resultCount": 1,
+        "resultCount": 2,
         "tag": [
           {
             "name": "Nation State",
             "webLink": "https://app.threatconnect.com/auth/tags/tag.xhtml?tag=12&owner=Example+Organization"
+          },
+          {
+            "name": "Phishing",
+            "webLink": "https://app.threatconnect.com/auth/tags/tag.xhtml?tag=339"
           }
         ]
       }
     }
+
+.. include:: ../_includes/attack_tags_response.rst
 
 Retrieve Adversary Assets
 ^^^^^^^^^^^^^^^^^^^^^^^^^

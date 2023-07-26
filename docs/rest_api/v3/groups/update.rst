@@ -35,7 +35,7 @@ The following request will make the following updates to the Incident Group whos
 - Create a new Host Indicator (**ultrabadguy.com**) in the API user's Organization and associate it to the Group
 - Add an **Additional Analysis and Context Attribute** to the Group
 - Update the status of the Incident
-- Remove the **Robbery** Tag applied to the Group
+- Remove the **Targeted Attack** Tag applied to the Group
 
 .. hint::
     To include the ``associatedIndicators``, ``attributes``, and ``tags`` fields in the API response, append ``?fields=associatedIndicators&fields=attributes&fields=tags`` to the end of the request URL.
@@ -44,12 +44,37 @@ The following request will make the following updates to the Incident Group whos
 
     PUT /v3/groups/3
     {
-        "associatedIndicators": {"data": [{"address": "verybadguy@bad.com", "type": "EmailAddress", "ownerName": "Demo Community" }, {"hostName": "ultrabadguy.com", "type": "Host"}]},
-        "attributes": {"data": [{"type": "Additional Analysis and Context", "value": "Based on internal analysis, this incident was very severe.", "source": "Example Source"}]},
+        "associatedIndicators": {
+            "data": [
+                {
+                    "address": "verybadguy@bad.com",
+                    "type": "EmailAddress",
+                    "ownerName": "Demo Community"
+                },
+                {
+                    "hostName": "ultrabadguy.com",
+                    "type": "Host"
+                }
+            ]
+        },
+        "attributes": {
+            "data": [
+                {
+                    "type": "Additional Analysis and Context",
+                    "value": "Based on internal analysis, this incident was very severe.",
+                    "source": "Example Source"
+                }
+            ]
+        },
         "status": "Incident Reported",
-        "tags": {"data": [{"name": "Robbery"}], "mode": "delete"}
-    }
-
+        "tags": {
+            "data": [
+                {
+                    "name": "Targeted Attack"
+                }
+            ],
+            "mode": "delete"
+        }
 
 JSON Response
 
@@ -66,7 +91,11 @@ JSON Response
             "name": "Bad Incident",
             "createdBy": {
                 "id": 3,
-                "userName": "11112222333344445555"
+                "userName": "11112222333344445555",
+                "firstName": "John",
+                "lastName": "Smith",
+                "pseudonym": "jsmithAPI",
+                "owner": "Demo Organization"
             },
             "upVoteCount":"0",
             "downVoteCount":"0",

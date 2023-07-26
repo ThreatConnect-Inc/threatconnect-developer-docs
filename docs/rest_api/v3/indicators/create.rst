@@ -27,7 +27,12 @@ The following request will create an **ultrabadguy.com** Host Indicator. It will
 - Add an **Additional Analysis and Context** Attribute to the Indicator
 - Set the Indicator's Threat and Confidence Ratings
 - Apply the **TLP:AMBER** Security Label to the Indicator
-- Apply **Targeted Attack** and **Malicious Host** Tags to the Indicator
+- Apply the **Targeted Attack** standard Tag and the **T1566 - Phishing** ATT&CK® Tag to the Indicator
+
+.. attention::
+    When applying ATT&CK Tags to an Indicator, do not include the corresponding technique/sub-technique ID in the Tag's name. For example, to apply the **T1566 - Phishing** ATT&CK Tag to an Indicator, use **Phishing** as the Tag name.
+
+    Also, if you applied a new Tag to an Indicator and that Tag matches a synonymous Tag listed in a `Tag normalization rule <https://knowledge.threatconnect.com/docs/tag-normalization>`_, it will be converted to the main Tag listed in the rule. Similarly, if you applied a new Tag to an Indicator and that Tag `matches an ATT&CK Tag <https://knowledge.threatconnect.com/docs/attack-tags#converting-standard-tags-to-attck-tags>`_, it will be converted to that ATT&CK Tag.
 
 .. hint::
     To include the ``associatedGroups``, ``attributes``, ``securityLabels``, and ``tags`` fields in the API response, append ``?fields=associatedGroups&fields=attributes&fields=securityLabels&fields=tags`` to the end of the request URL.
@@ -41,14 +46,47 @@ The following request will create an **ultrabadguy.com** Host Indicator. It will
         "dnsActive": true,
         "whoisActive": true,
         "active": true,
-        "associatedGroups": {"data": [{"id": 12}, {"name": "Bad Guy", "type": "Adversary", "ownerName": "Demo Source"}]},
-        "attributes": {"data": [{"type": "Additional Analysis and Context", "value": "This host is very dangerous", "source": "Phase of Intrusion"}]},
+        "associatedGroups": {
+            "data": [
+                {
+                    "id": 12
+                },
+                {
+                    "name": "Bad Guy",
+                    "type": "Adversary",
+                    "ownerName": "Demo Source"
+                }
+            ]
+        },
+        "attributes": {
+            "data": [
+                {
+                    "type": "Additional Analysis and Context",
+                    "value": "This host is very dangerous",
+                    "source": "Phase of Intrusion"
+                }
+            ]
+        },
         "confidence": 85,
         "rating": 5,
-        "securityLabels": {"data": [{"name": "TLP:AMBER"}]},
-        "tags": {"data": [{"name": "Targeted Attack"}, {"name": "Malicious Host"}]}
+        "securityLabels": {
+            "data": [
+                {
+                    "name": "TLP:AMBER"
+                }
+            ]
+        },
+        "tags": {
+            "data": [
+                {
+                    "name": "Targeted Attack"
+                },
+                {
+                    "name": "Phishing"
+                }
+            ]
+        }
     }
-
 
 JSON Response
 

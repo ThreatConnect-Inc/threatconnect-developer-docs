@@ -252,13 +252,13 @@ JSON Response:
 Create Task Tags
 ^^^^^^^^^^^^^^^^
 
-To add a Tag to a Task, use the following format, where ``{tagName}`` is replaced with the name of the Tag you wish to add to the Task:
+To add a Tag to a Task, use the following format, where ``{tagName}`` is replaced with the name of the Tag you want to add to the Task:
 
 .. code::
 
     POST /v2/tasks/{taskId}/tags/{tagName}
 
-For example, the query below will add the ``Nation State`` Tag to the Task with ID 12345:
+For example, the query below will add the ``Nation State`` Tag to the Task whose ID is 12345:
 
 .. code::
 
@@ -273,6 +273,8 @@ JSON Response:
     }
 
 .. include:: ../_includes/tag_length.rst
+
+.. include:: ../_includes/apply_attack_tags.rst
 
 Create Task Associations
 ------------------------

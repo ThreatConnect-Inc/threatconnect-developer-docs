@@ -20,7 +20,12 @@ Refer to the `Available Fields <#available-fields>`_ and `Group-Specific Fields 
 Example POST Request
 ^^^^^^^^^^^^^^^^^^^^^
 
-The following request will create an Incident Group for an Incident that took place on Nov. 3, 2021. The Incident will be assigned a status of **New**, and **Targeted Attack** and **Robbery** Tags will be applied to it.
+The following request will create an Incident Group for an Incident that took place on Nov. 3, 2021. The Incident will be assigned a status of **New**, two Tags will be applied to it: the **Targeted Attack** standard Tag and the **T1566 - Phishing** ATT&CK® Tag.
+
+.. attention::
+    When applying ATT&CK Tags to a Group, do not include the corresponding technique/sub-technique ID in the Tag's name. For example, to apply the **T1566 - Phishing** ATT&CK Tag to a Group, use **Phishing** as the Tag name.
+
+    Also, if you applied a new Tag to a Group and that Tag matches a synonymous Tag listed in a `Tag normalization rule <https://knowledge.threatconnect.com/docs/tag-normalization>`_, it will be converted to the main Tag listed in the rule. Similarly, if you applied a new Tag to a Group and that Tag `matches an ATT&CK Tag <https://knowledge.threatconnect.com/docs/attack-tags#converting-standard-tags-to-attck-tags>`_, it will be converted to that ATT&CK Tag.
 
 .. hint::
     To include the ``tags`` field in the API response, append ``?fields=tags`` to the end of the request URL.
@@ -33,7 +38,16 @@ The following request will create an Incident Group for an Incident that took pl
         "name": "Bad Incident",
         "eventDate": "2021-11-03",
         "status": "New",
-        "tags": {"data": [{"name": "Targeted Attack"}, {"name": "Robbery"}]}
+        "tags": {
+            "data": [
+                {
+                    "name": "Targeted Attack"
+                },
+                {
+                    "name": "Phishing"
+                }
+            ]
+        }
     }
 
 JSON Response
@@ -51,7 +65,11 @@ JSON Response
             "name": "Bad Incident",
             "createdBy": {
                 "id": 3,
-                "userName": "11112222333344445555"
+                "userName": "11112222333344445555",
+                "firstName": "John",
+                "lastName": "Smith",
+                "pseudonym": "jsmithAPI",
+                "owner": "Demo Organization"
             },
             "upVoteCount":"0",
             "downVoteCount":"0",

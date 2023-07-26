@@ -1,0 +1,2 @@
+.. note::
+  If a Tag object in the response represents an ATT&CK® Tag, then the ``&owner=`` portion of the URL will not be included in the ``webLink`` field. This is because ATT&CK Tags do not belong to an owner.

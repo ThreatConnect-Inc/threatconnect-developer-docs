@@ -204,7 +204,7 @@ To retrieve the Tags for a Task, use a query in the following format:
 
     GET /v2/tasks/{taskId}/tags
 
-For example, the query below will retrieve all Tags for the Task with ID 12345:
+For example, the query below will retrieve all Tags for the Task whose ID is 12345:
 
 .. code::
 
@@ -217,15 +217,21 @@ JSON Response:
     {
       "status": "Success",
       "data": {
-        "resultCount": 1,
+        "resultCount": 2,
         "tag": [
           {
             "name": "Nation State",
-            "webLink": "https://app.threatconnect.com/auth/tags/tag.xhtml?tag=Nation+State&owner=Common+Community"
+            "webLink": "https://app.threatconnect.com/auth/tags/tag.xhtml?tag=12&owner=Example+Organization"
+          },
+          {
+            "name": "Phishing",
+            "webLink": "https://app.threatconnect.com/auth/tags/tag.xhtml?tag=339"
           }
         ]
       }
     }
+
+.. include:: ../_includes/attack_tags_response.rst
 
 Retrieve Task Associations
 --------------------------

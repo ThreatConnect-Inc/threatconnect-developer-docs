@@ -200,13 +200,13 @@ JSON Response:
 Create Group Tags
 ^^^^^^^^^^^^^^^^^
 
-To add a Tag to a Group, use the following format where ``{tagName}`` is replaced with the name of the Tag you wish to add to the Group:
+To add a Tag to a Group, use the following format where ``{tagName}`` is replaced with the name of the Tag you want to add to the Group:
 
 .. code::
 
     POST /v2/groups/{groupType}/{groupId}/tags/{tagName}
 
-For example, the query below will add the ``Nation State`` Tag to the Threat with ID 12345:
+For example, the query below will add the ``Nation State`` Tag to the Threat whose ID is 12345:
 
 .. code::
 
@@ -221,6 +221,8 @@ JSON Response:
     }
 
 .. include:: ../_includes/tag_length.rst
+
+.. include:: ../_includes/apply_attack_tags.rst
 
 Create Adversary Assets
 ^^^^^^^^^^^^^^^^^^^^^^^

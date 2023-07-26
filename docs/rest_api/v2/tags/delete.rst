@@ -21,4 +21,4 @@ JSON Response:
       "status": "Success"
     }
 
-Deleting a Tag via the API removes that Tag from all Groups, Indicators, and Victims that had the deleted Tag.
+Deleting a Tag via the API removes that Tag from all Groups, Indicators, and Victims to which the Tag was applied.

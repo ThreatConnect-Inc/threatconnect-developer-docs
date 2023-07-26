@@ -15,8 +15,13 @@ For example, the following request will create a Victim named John Doe. It will 
 - Create a new Email Address Victim Asset and add it to the Victim
 - Associate an existing Group to the Victim, and create a new **Bad Guy** Adversary Group and associate it to the Victim
 - Add an **Additional Analysis and Context** Attribute to the Victim
-- Apply a **Targeted Attack** Tag to the Victim
+- Apply the **Targeted Attack** standard Tag and the **T1566 - Phishing** ATT&CK® Tag to the Victim
 - Configure the Victim's nationality, organization, suborganization, and work location
+
+.. attention::
+    When applying ATT&CK Tags to a Victim, do not include the corresponding technique/sub-technique ID in the Tag's name. For example, to apply the **T1566 - Phishing** ATT&CK Tag to a Victim, use **Phishing** as the Tag name.
+
+    Also, if you applied a new Tag to a Victim and that Tag matches a synonymous Tag listed in a `Tag normalization rule <https://knowledge.threatconnect.com/docs/tag-normalization>`_, it will be converted to the main Tag listed in the rule. Similarly, if you applied a new Tag to a Victim and that Tag `matches an ATT&CK Tag <https://knowledge.threatconnect.com/docs/attack-tags#converting-standard-tags-to-attck-tags>`_, it will be converted to that ATT&CK Tag.
 
 .. hint::
     To include the ``assets``, ``associatedGroups``, ``attributes``, and ``tags`` fields in the API response, append ``?fields=assets&fields=associatedGroups&fields=attributes&fields=tags`` to the end of the request URL.
@@ -26,13 +31,48 @@ For example, the following request will create a Victim named John Doe. It will 
     POST /v3/victims
     {
         "name": "John Doe",
-        "assets": {"data": [{"address": "jdoe@companyabc.com", "addressType": "Corporate email", "type": "EmailAddress"}]},
-        "associatedGroups": {"data": [{"id": 12345}, {"name": "Bad Adversary", "type": "Adversary"}]},
-        "attributes": {"data": [{"type": "Additional Analysis and Context", "value": "Example value", "source": "Example Source"}]},
+        "assets": {
+            "data": [
+                {
+                    "address": "jdoe@companyabc.com",
+                    "addressType": "Corporate email",
+                    "type": "EmailAddress"
+                }
+            ]
+        },
+        "associatedGroups": {
+            "data": [
+                {
+                    "id": 12345
+                },
+                {
+                    "name": "Bad Adversary",
+                    "type": "Adversary"
+                }
+            ]
+        },
+        "attributes": {
+            "data": [
+                {
+                    "type": "Additional Analysis and Context",
+                    "value": "Example value",
+                    "source": "Example Source"
+                }
+            ]
+        },
         "nationality": "American",
         "org": "Company ABC",
         "suborg": "HR Department",
-        "tags": {"data": [{"name": "Targeted Attack"}]},
+        "tags": {
+            "data": [
+                {
+                    "name": "Targeted Attack"
+                },
+                {
+                    "name": "Phishing"
+                }
+            ]
+        },
         "workLocation": "Washington, D.C."
     }
 

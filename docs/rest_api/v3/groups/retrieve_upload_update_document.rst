@@ -14,7 +14,7 @@ The contents of the file will be returned as ``Content-Type: application/octet-s
 Upload a File to a Document or Report Group
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Send a request in the following format to upload the contents of a file to a Document or Report Group:
+Send a request in the following format to upload the contents of a file to an existing Document or Report Group:
 
 .. code::
 
@@ -30,6 +30,9 @@ If uploading a file to the `Malware Vault <https://knowledge.threatconnect.com/d
 
 .. attention::
     If uploading a file **larger than 5GB**, contact your System Administrator about increasing the allowed file size for uploads.
+
+.. note::
+    If you upload a file whose extension differs from the one specified in the ``filename`` field for the Group, update the value of this field so that the extension matches that of the uploaded file.
 
 Update a Document or Report Group's File
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
