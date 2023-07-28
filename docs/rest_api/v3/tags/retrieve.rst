@@ -140,3 +140,6 @@ Request (Encoded URL)
 .. code::
     
     GET /v3/tags?tql=normalized%20EQ%20true
+
+.. note::
+    This request will not return all main Tags defined within Tag normalization rules on your ThreatConnect instance; rather, it will only return those main Tags that have been created in one of your owners.
