@@ -41,10 +41,10 @@ rst_epilog = """
 viewcode_import = True
 
 templates_path = ['/home/docs/checkouts/readthedocs.org/readthedocs/templates/sphinx', 'templates', '_templates', '.templates']
-source_suffix = ['.rst', '.md']
-source_parsers = {
-            '.md': CommonMarkParser,
-        }
+# source_suffix = ['.rst', '.md']
+# source_parsers = {
+#             '.md': CommonMarkParser,
+#         }
 master_doc = 'index'
 project = u'ThreatConnect Developer Docs'
 copyright = u'2023, ThreatConnect Inc'
