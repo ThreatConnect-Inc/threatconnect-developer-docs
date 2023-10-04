@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from recommonmark.parser import CommonMarkParser
+# from recommonmark.parser import CommonMarkParser
 
 from tcex import __version__
 
@@ -10,6 +10,7 @@ import sys
 sys.path.insert(0, os.path.abspath('../'))
 
 extensions = [
+    'recommonmark',
     'sphinx.ext.autodoc',
     'sphinx.ext.napoleon',
     'sphinx.ext.viewcode'
