@@ -71,6 +71,36 @@ Alternatively, refer to the following table for a list of available fields that 
      - FALSE
      - TRUE
      - {"data": [{"type": "Attribute Type", "value": "Attribute Value", "source": "Attribute Source"}]}
+   * - externalDateAdded
+     - The date and time when the Group was created externally
+     - DateTime
+     - FALSE
+     - TRUE
+     - "2023-10-04T12:34:56Z"
+   * - externalDateExpires
+     - The date and time when the Group expires externally
+     - DateTime
+     - FALSE
+     - TRUE
+     - "2023-10-04T12:34:56Z"
+   * - externalLastModified
+     - The date and time when the Group was last modified externally
+     - DateTime
+     - FALSE
+     - TRUE
+     - "2023-10-04T12:34:56Z"
+   * - firstSeen
+     - The date and time when the Group was first seen
+     - DateTime
+     - FALSE
+     - TRUE
+     - "2023-10-04T12:34:56Z"
+   * - lastSeen
+     - The date and time when the Group was last seen
+     - DateTime
+     - FALSE
+     - TRUE
+     - "2023-10-04T12:34:56Z"
    * - name
      - The Group's name
      - String
@@ -147,25 +177,7 @@ Group-Specific Fields
 
 Based on the type of Group being created, you may need to include additional fields in the body of a POST request. Similarly, some Group types include additional fields that may be updated via a PUT request.
 
-The following tables lists valid fields that can be included in the body of a POST or PUT request Campaign, Document, Email, Event, Incident, Report, Signature, and Task Groups.
-
-Campaign
-========
-
-.. list-table::
-   :widths: 20 20 20 20 20
-   :header-rows: 1
-
-   * - Field
-     - Description
-     - Type
-     - Required for Creation?
-     - Updatable?
-   * - firstSeen
-     - The date and time when the Campaign was created
-     - Date
-     - FALSE
-     - TRUE
+The following tables lists valid fields that can be included in the body of a POST or PUT request Document, Email, Event, Incident, Report, Signature, and Task Groups.
 
 Document
 ========

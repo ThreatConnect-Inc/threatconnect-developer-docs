@@ -115,21 +115,3 @@ JSON Response
         "message": "Created",
         "status": "Success"
     }
-
-Create Associations
-^^^^^^^^^^^^^^^^^^^
-
-You can create associations between Indicators and Artifacts, Cases, Groups, and Indicators that exist in the same owner. If cross-owner associations are enabled on your ThreatConnect instance, you can also create associations between Indicators and Groups and other Indicators that exist in any owner to which you have access.
-When creating associations for Indicators using the ThreatConnect v3 API, follow these guidelines:
-
-- To create an association to a new Artifact, include `all fields required to create an Artifact <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/artifacts/artifacts.html#available-fields>`_  when setting the ``associatedArtifacts`` field.
-- To create an association to an existing Artifact, use the Artifact's ID when setting the ``associatedArtifacts`` field (e.g., ``"associatedArtifacts": {"data": [{"id": 12345}]}``).
-- To create an association to a new Case, include `all fields required to create a Case <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/cases/cases.html#available-fields>`_ when setting the ``associatedCases`` field.
-- To create an association to an existing Case, use the Case's ID when setting the ``associatedCases`` field.
-- To create an association to a new Group, include `all fields required to create the type of Group <https://docs.threatconnect.com/en/latest/rest_api/v3/groups/groups.html#available-fields>`_ when setting the ``associatedGroups`` field. To create the Group in a Community or Source, include the ``ownerId`` or ``ownerName`` field in the request and specify the ID or name, respectively, of the Community or Source in which to create the Group when setting the ``associatedGroups`` field.
-- To create an association to an existing Group, use the Group's ID when setting the ``associatedGroups`` field.
-- If creating an Indicator-to-Indicator associations, see the `"Indicator-to-Indicator Associations" section <#indicator-to-indicator-associations>`_ for further instruction.
-
-.. note::
-
-    You can associate multiple Artifacts, Cases, Groups, and Indicators to an Indicator in a single POST or PUT request.

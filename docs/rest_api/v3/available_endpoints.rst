@@ -1,7 +1,7 @@
 Available Endpoints
 -------------------
 
-The following endpoints are available in v3 of the ThreatConnect API:
+The following endpoints are available in the ThreatConnect v3 API:
 
 Case Management Endpoints
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -24,6 +24,10 @@ Threat Intelligence Endpoints
 -   ``/v3/indicatorAttributes``
 -   ``/v3/indicators``
 -   ``/v3/indicators/enrich``
+-   ``/v3/intelRequirements``
+-   ``/v3/intelRequirements/categories``
+-   ``/v3/intelRequirements/results``
+-   ``/v3/intelRequirements/subtypes``
 -   ``/v3/securityLabels``
 -   ``/v3/tags``
 -   ``/v3/victimAssets``
@@ -40,3 +44,11 @@ Miscellaneous Endpoints
 -   ``/v3/security/systemRoles``
 -   ``/v3/security/userGroups``
 -   ``/v3/security/users``
+
+
+TC Exchange Administration Endpoints
+^^^^^^^^^^^^^^^^^^^^^^^
+
+-   ``/v3/apps/exchange/install``
+-   ``/v3/token/api``
+-   ``/v3/token/svc``

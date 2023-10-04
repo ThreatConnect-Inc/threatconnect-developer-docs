@@ -56,6 +56,11 @@ JSON Response
                 "name": "attributes"
             },
             {
+                "description": "Includes indicators with custom associations to the indicator",
+                "includedByDefault": false,
+                "name": "customAssociations"
+            },
+            {
                 "description": "Includes DNS resolution data related to the Host indicators",
                 "includedByDefault": false,
                 "name": "dnsResolution"
@@ -64,6 +69,11 @@ JSON Response
                 "description": "Includes Enrichment data related to the indicator",
                 "includedByDefault": false,
                 "name": "enrichment"
+            },
+            {
+                "description": "Includes date fields defined in external applications",
+                "includedByDefault": false,
+                "name": "externalDates"
             },
             {
                 "description": "Includes the False Positives fields falsePositives and lastFalsePositive",
@@ -106,6 +116,11 @@ JSON Response
                 "name": "securityLabels"
             },
             {
+                "description": "Includes date fields specific to the sighting reported",
+                "includedByDefault": false,
+                "name": "sightings"
+            },
+            {
                 "description": "Includes tags related to the indicator",
                 "includedByDefault": false,
                 "name": "tags"
@@ -126,7 +141,7 @@ JSON Response
                 "name": "whoIs"
             }
         ],
-        "count": 18,
+        "count": 22,
         "status": "Success"
     }
 
@@ -339,6 +354,51 @@ JSON Response
             "dnsActive": false,
             "whoisActive": false,
             "legacyLink": "https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=ultrabadguy.com&owner=Demo+Organization"
+        },
+        "status": "Success"
+    }
+
+Include Sightings and External Timestamps
+=========================================
+
+When working with Groups and Indicators, you can specify details about when the object was first and last seen. You can also provide external date and time information for the object, including when it was created, when it was last modified, and when it expires externally.
+
+The following request will retrieve data for the Group whose ID is 20, including when it was first and last seen (``sightings``) and external date and time information for the Group (``externalDates``):
+
+.. code::
+
+    GET /v3/groups/20?fields=sightings&fields=externalDates
+
+JSON Response
+
+.. code::
+
+    {
+        "data": {
+            "id": 20,
+            "dateAdded": "2023-08-25T12:44:47Z",
+            "ownerId": 3,
+            "ownerName": "Demo Source",
+            "webLink": "https://app.threatconnect.com/#/details/groups/20/overview",
+            "type": "Adversary",
+            "name": "Nefarious",
+            "createdBy": {
+                "id": 3,
+                "userName": "11112222333344445555",
+                "firstName": "John",
+                "lastName": "Smith",
+                "pseudonym": "jsmithAPI",
+                "owner": "Demo Organization"
+            },
+            "upVoteCount": "0",
+            "downVoteCount": "0",
+            "externalDateAdded": "2023-08-25T18:23:43Z",
+            "externalLastModified": "2023-08-26T18:23:43Z",
+            "externalDateExpires": "2023-08-30T18:23:43Z",
+            "firstSeen": "2023-08-25T18:23:43Z",
+            "lastSeen": "2023-08-26T18:23:43Z",
+            "lastModified": "2023-09-25T12:44:47Z",
+            "legacyLink": "https://app.threatconnect.com/auth/adversary/adversary.xhtml?adversary=20"
         },
         "status": "Success"
     }

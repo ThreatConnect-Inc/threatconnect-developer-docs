@@ -4,7 +4,7 @@ Update an Object's Metadata
 Overview
 ^^^^^^^^
 
-When updating an Artifact, Case, Group, Indicator, Victim Asset, or Victim, you can use the ``mode`` field to add and remove metadata to and from the object, respectively. The ``mode`` field accepts three values, each of which is defined in the following table.
+When updating an Artifact, Case, Group, Indicator, Intelligence Requirement, Victim, or Victim Asset, you can use the ``mode`` field to add and remove metadata to and from the object, respectively. The ``mode`` field accepts three values, each of which is defined in the following table.
 
 +----------+-------------------------------------------------------------------------------+
 | Value    | Description                                                                   |
@@ -23,70 +23,82 @@ When updating an Artifact, Case, Group, Indicator, Victim Asset, or Victim, you 
 
 The following table lists the metadata that can be updated for each object's respective endpoint.
 
-+-----------------+-------------------------+
-| Object          | Updatable Metadata      |
-+=================+=========================+
-| artifacts       | associatedGroups        |
-+-----------------+-------------------------+
-|                 | associatedIndicators    |
-+-----------------+-------------------------+
-| cases           | associatedCases         |
-+-----------------+-------------------------+
-|                 | associatedGroups        |
-+-----------------+-------------------------+
-|                 | associatedIndicators    |
-+-----------------+-------------------------+
-|                 | attributes              |
-+-----------------+-------------------------+
-|                 | tags                    |
-+-----------------+-------------------------+
-| groups          | associatedArtifacts     |
-+-----------------+-------------------------+
-|                 | associatedCases         |
-+-----------------+-------------------------+
-|                 | associatedGroups        |
-+-----------------+-------------------------+
-|                 | associatedIndicators    |
-+-----------------+-------------------------+
-|                 | associatedVictimAssets  |
-+-----------------+-------------------------+
-|                 | attributes              |
-+-----------------+-------------------------+
-|                 | securityLabels          |
-+-----------------+-------------------------+
-|                 | tags                    |
-+-----------------+-------------------------+
-| indicators      | associatedArtifacts     |
-+-----------------+-------------------------+
-|                 | associatedCases         |
-+-----------------+-------------------------+
-|                 | associatedGroups        |
-+-----------------+-------------------------+
-|                 | associatedIndicators    |
-+-----------------+-------------------------+
-|                 | attributes              |
-+-----------------+-------------------------+
-|                 | fileActions             |
-+-----------------+-------------------------+
-|                 | fileOccurrences         |
-+-----------------+-------------------------+
-|                 | securityLabels          |
-+-----------------+-------------------------+
-|                 | tags                    |
-+-----------------+-------------------------+
-| victimAssets    | associatedGroups        |
-+-----------------+-------------------------+
-| victims         | associatedGroups        |
-+-----------------+-------------------------+
-|                 | attributes              |
-+-----------------+-------------------------+
-|                 | securityLabels          |
-+-----------------+-------------------------+
-|                 | tags                    |
-+-----------------+-------------------------+
++---------------------+-------------------------+
+| Object              | Updatable Metadata      |
++=====================+=========================+
+| artifacts           | associatedGroups        |
++---------------------+-------------------------+
+|                     | associatedIndicators    |
++---------------------+-------------------------+
+| cases               | associatedCases         |
++---------------------+-------------------------+
+|                     | associatedGroups        |
++---------------------+-------------------------+
+|                     | associatedIndicators    |
++---------------------+-------------------------+
+|                     | attributes              |
++---------------------+-------------------------+
+|                     | tags                    |
++---------------------+-------------------------+
+| groups              | associatedArtifacts     |
++---------------------+-------------------------+
+|                     | associatedCases         |
++---------------------+-------------------------+
+|                     | associatedGroups        |
++---------------------+-------------------------+
+|                     | associatedIndicators    |
++---------------------+-------------------------+
+|                     | associatedVictimAssets  |
++---------------------+-------------------------+
+|                     | attributes              |
++---------------------+-------------------------+
+|                     | securityLabels          |
++---------------------+-------------------------+
+|                     | tags                    |
++---------------------+-------------------------+
+| indicators          | associatedArtifacts     |
++---------------------+-------------------------+
+|                     | associatedCases         |
++---------------------+-------------------------+
+|                     | associatedGroups        |
++---------------------+-------------------------+
+|                     | associatedIndicators    |
++---------------------+-------------------------+
+|                     | attributes              |
++---------------------+-------------------------+
+|                     | fileActions             |
++---------------------+-------------------------+
+|                     | fileOccurrences         |
++---------------------+-------------------------+
+|                     | securityLabels          |
++---------------------+-------------------------+
+|                     | tags                    |
++---------------------+-------------------------+
+| intelRequirements   | associatedArtifacts     |
++---------------------+-------------------------+
+|                     | associatedCases         |
++---------------------+-------------------------+
+|                     | associatedGroups        |
++---------------------+-------------------------+
+|                     | associatedIndicators    |
++---------------------+-------------------------+
+|                     | associatedVictimAssets  |
++---------------------+-------------------------+
+|                     | tags                    |
++---------------------+-------------------------+
+| victimAssets        | associatedGroups        |
++---------------------+-------------------------+
+| victims             | associatedGroups        |
++---------------------+-------------------------+
+|                     | attributes              |
++---------------------+-------------------------+
+|                     | securityLabels          |
++---------------------+-------------------------+
+|                     | tags                    |
++---------------------+-------------------------+
 
 .. attention::
-    To dissociate an object from an Artifact, Case, Group, Indicator, Victim Asset, or Victim, you must use the object's ID when setting its respective field (e.g., to dissociate an Indicator from an object, use the Indicator's ID when setting the ``associatedIndicators`` field).
+    To dissociate an object from an Artifact, Case, Group, Indicator, Victim, or Victim Asset, you must use the object's ID when setting its respective field (e.g., to dissociate an Indicator from an object, use the Indicator's ID when setting the ``associatedIndicators`` field).
 
 Example Request
 ^^^^^^^^^^^^^^^
@@ -103,9 +115,30 @@ Because the ``associatedGroups``, ``securityLabels``, and ``tags`` fields are no
 
     PUT /v3/indicators/ultrabadguy.com?fields=associatedGroups&fields=securityLabels&fields=tags
     {
-        "associatedGroups": {"data": [{"id": 15}], "mode": "delete"},
-        "securityLabels": {"data": [{"name": "TLP:RED"}], "mode": "replace"},
-        "tags": {"data": [{"name": "Russia"}], "mode": "append"}
+        "associatedGroups": {
+            "data": [
+                {
+                    "id": 15
+                }
+            ],
+            "mode": "delete"
+        },
+        "securityLabels": {
+            "data": [
+                {
+                    "name": "TLP:RED"
+                }
+            ],
+            "mode": "replace"
+        },
+        "tags": {
+            "data": [
+                {
+                    "name": "Russia"
+                }
+            ],
+            "mode": "append"
+        }
     }
 
 JSON Response
@@ -170,8 +203,12 @@ JSON Response
                         "webLink": "https://app.threatconnect.com/#/details/groups/12/overview ",
                         "name": "Dangerous Incident",
                         "createdBy": {
-                            "id": 1,
-                            "userName": "smithj@threatconnect.com"
+                            "id": 3,
+                            "userName": "11112222333344445555",
+                            "firstName": "John",
+                            "lastName": "Smith",
+                            "pseudonym": "jsmithAPI",
+                            "owner": "Demo Organization"
                         },
                         "legacyLink": "https://app.threatconnect.com/auth/incident/incident.xhtml?incident=12"
                     }

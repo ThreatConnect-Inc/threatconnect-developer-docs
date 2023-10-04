@@ -81,6 +81,36 @@ Alternatively, refer to the following table for a list of available fields that 
      - FALSE
      - TRUE
      - 1, 2, 3,...100
+   * - externalDateAdded
+     - The date and time when the Indicator was created externally
+     - DateTime
+     - FALSE
+     - TRUE
+     - "2023-10-04T12:34:56Z"
+   * - externalDateExpires
+     - The date and time when the Indicator expires externally
+     - DateTime
+     - FALSE
+     - TRUE
+     - "2023-10-04T12:34:56Z"
+   * - externalLastModified
+     - The date and time when the Indicator was last modified externally
+     - DateTime
+     - FALSE
+     - TRUE
+     - "2023-10-04T12:34:56Z"
+   * - firstSeen
+     - The date and time when the Indicator was first seen
+     - DateTime
+     - FALSE
+     - TRUE
+     - "2023-10-04T12:34:56Z"
+   * - lastSeen
+     - The date and time when the Indicator was last seen
+     - DateTime
+     - FALSE
+     - TRUE
+     - "2023-10-04T12:34:56Z"
    * - ownerId [2]_
      - The ID of the `owner <https://docs.threatconnect.com/en/latest/rest_api/v3/owners/owners.html>`_ to which the Indicator belongs 
      - Integer

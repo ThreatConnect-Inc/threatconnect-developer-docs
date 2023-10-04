@@ -1,0 +1,41 @@
+Schemas
+-------
+
+Response Body
+^^^^^^^^^^^^^
+
+The default response returned from successful GET and PUT requests to the ``/v3/intelRequirements/results`` endpoint includes one or more objects with the following fields:
+
+* ``id``: <*Integer*> The result's ID number.
+* ``matchedDate``: <*DateTime*> The date and time when the result matched the IR's keyword query (ISO 8601 format).
+* ``name``: <*String*> The name/summary of the ThreatConnect object corresponding to the result.
+* ``ownerId``: <*Integer*> The ID number of the owner of the ThreatConnect object corresponding to the result. This field is only included in the response body when the ThreatConnect object belongs to an owner.
+* ``ownerName``: <*String*> The name of the owner of the owner of the ThreatConnect object corresponding to the result. This field is only included in the response body when the ThreatConnect object belongs to an owner.
+* ``itemId``: <*Integer*> The ID number of the ThreatConnect object corresponding to the result. This field is only included in the response body when the ThreatConnect object belongs to an owner.
+* ``itemType``: <*String*> The type of ThreatConnect object corresponding to the result.
+* ``internal``: <*Boolean*> Specifies whether the result is a local result from your Organization or one of your Communities or Sources.
+* ``falsePositive``: <*Boolean*> Specifies whether the result has been marked as a false result.
+* ``associated``: <*Boolean*> Specifies whether the result has been associated to the IR.
+* ``archived``: <*Boolean*> Specifies whether the result has been archived.
+* ``archivedDate``: <*DateTime*> The date and time when the result was archived (ISO 8601 format). This field is only included in the response body when the result is archived.
+* ``score``: <*Integer*> The weighted score in the relevancy of the result. This field is only included in the response body when a score is available for the result.
+
+**Example**
+
+.. code:: json
+
+    {
+        "id": <int>,
+        "matchedDate": "<datetime>",
+        "name": "<string>",
+        "ownerId": <int>,
+        "ownerName": "<string>",
+        "itemId": <int>,
+        "itemType": "<string>",
+        "internal": <boolean>,
+        "falsePositive": <boolean>,
+        "associated": <boolean>,
+        "archived": <boolean>,
+        "archivedDate": "<datetime>",
+        "score": <int>
+    }
