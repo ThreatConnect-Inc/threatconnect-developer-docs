@@ -22,7 +22,7 @@ On the **Collections** tab, select the **ThreatConnect API** collection that was
     :alt: Authentication subtab of ThreatConnect API in Postman
     :figclass: align-center
 
-    Figure 4
+    Figure 1
 
 Leave the authentication type set to **No Auth**, as the pre-request script included in the collection will perform all steps necessary for the authentication process.
 
@@ -34,7 +34,7 @@ Select the **Variables** subtab to display the variables in the **ThreatConnect 
     :alt: Variables subtab of ThreatConnect API in Postman
     :figclass: align-center
 
-    Figure 5
+    Figure 2
 
 The ThreatConnect API supports `hash-based message authentication code (HMAC) <#hmac-authentication>`_ and `token-based authentication <#token-based-authentication>`_. Based on the type of authentication you will be using, fill out the corresponding variables as detailed in the following sections.
 
@@ -77,7 +77,7 @@ Step 3: Make ThreatConnect API Requests in Postman
     :alt: Response data from the ThreatConnect API in Postman
     :figclass: align-center
 
-    Figure 6
+    Figure 3
 
 You're now ready to use the ThreatConnect API collection in Postman. To learn more about each endpoint in v3 of the ThreatConnect API, select an endpoint under the `v3 API <https://docs.threatconnect.com/en/latest/rest_api/rest_api.html#v3-api>`_ section of this documentation.
 
