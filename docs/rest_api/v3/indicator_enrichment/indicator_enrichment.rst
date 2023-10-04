@@ -721,5 +721,7 @@ JSON Response
 ----
 
 *DomainTools® is a registered trademark of DomainTools, LLC.*
+
 *Shodan® is a registered trademark of Shodan.*
+
 *VirusTotal™ is a trademark of Google, Inc.*
