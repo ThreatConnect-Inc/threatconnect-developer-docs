@@ -37,72 +37,72 @@ The following is the request body schema for a POST request to the ``/v3/intelRe
 
 .. code:: json
     
-{
-    "associatedArtifacts": {
-        "data": [
-            {
-                "<artifactsFieldName>": <artifactsFieldValue>
-            }
-        ]
-    },
-    "associatedCases": {
-        "data": [
-            {
-                "<casesFieldName>": <casesFieldValue>
-            }
-        ]
-    },
-    "associatedGroups": {
-        "data": [
-            {
-                "<groupsFieldName>": <groupsFieldValue>
-            }
-        ]
-    },
-    "associatedIndicators": {
-        "data": [
-            {
-                "<indicatorsFieldName>": <indicatorsFieldValue>
-            }
-        ]
-    },
-    "associatedVictimAssets": {
-        "data": [
-            {
-                "<victimAssetsFieldName>": <victimAssetsFieldValue>
-            }
-        ]
-    },
-    "category": {
-        "id": <int>
-    },
-    "description": "<string>",
-    "keywordSections": [
-        {
-            "compareValue": "<string>",
-            "keywords": [
+    {
+        "associatedArtifacts": {
+            "data": [
                 {
-                    "value": "<string>"
+                    "<artifactsFieldName>": <artifactsFieldValue>
                 }
-            ],
-            "sectionNumber": <int>
-        }
-    ],
-    "requirementText": "<string>",
-    "resetResults": <boolean>,
-    "subtype": {
-        "id": <int>
-    },
-    "tags": {
-        "data": [
+            ]
+        },
+        "associatedCases": {
+            "data": [
+                {
+                    "<casesFieldName>": <casesFieldValue>
+                }
+            ]
+        },
+        "associatedGroups": {
+            "data": [
+                {
+                    "<groupsFieldName>": <groupsFieldValue>
+                }
+            ]
+        },
+        "associatedIndicators": {
+            "data": [
+                {
+                    "<indicatorsFieldName>": <indicatorsFieldValue>
+                }
+            ]
+        },
+        "associatedVictimAssets": {
+            "data": [
+                {
+                    "<victimAssetsFieldName>": <victimAssetsFieldValue>
+                }
+            ]
+        },
+        "category": {
+            "id": <int>
+        },
+        "description": "<string>",
+        "keywordSections": [
             {
-                "<tagsFieldName>": <tagsFieldValue>
+                "compareValue": "<string>",
+                "keywords": [
+                    {
+                        "value": "<string>"
+                    }
+                ],
+                "sectionNumber": <int>
             }
-        ]
-    },
-    "uniqueId": "<string>", 
-    "xid": "<string>"
-}
+        ],
+        "requirementText": "<string>",
+        "resetResults": <boolean>,
+        "subtype": {
+            "id": <int>
+        },
+        "tags": {
+            "data": [
+                {
+                    "<tagsFieldName>": <tagsFieldValue>
+                }
+            ]
+        },
+        "uniqueId": "<string>", 
+        "xid": "<string>"
+    }
 
 Request Body (PUT)
 ^^^^^^^^^^^^^^^^^^^
