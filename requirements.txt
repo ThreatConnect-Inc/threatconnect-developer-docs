@@ -9,3 +9,4 @@ redis==2.10.6
 requests==2.20.0
 tcex
 recommonmark
+sphinx-rtd-theme
