@@ -61,12 +61,12 @@ Send a request in the following format to enrich a specific Indicator with data 
 
 .. note::
 
-    If using an Indicator's summary in the request URI and that Indicator exists in multiple owners, append ``&owner={ownerName}`` to request URI to specify which copy of the Indicator to return data for in the response.
+    If using an Indicator's summary in the request URI and that Indicator exists in multiple owners, append ``?owner={ownerName}`` to request URI to specify which copy of the Indicator to return data for in the response.
 
 Single Enrichment Service
 """""""""""""""""""""""""
 
-In this first example, the request will enrich the **71.6.135.131** Address Indicator in the API user’s Organization  with data retrieved from Shodan.
+In this first example, the request will enrich the **71.6.135.131** Address Indicator in the API user's Organization  with data retrieved from Shodan.
 
 .. code::
 
