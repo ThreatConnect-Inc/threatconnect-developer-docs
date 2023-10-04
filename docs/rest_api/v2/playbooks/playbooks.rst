@@ -18,11 +18,11 @@ The following query returns a list of available Playbooks:
 Retrieve a Specific Playbook
 ============================
 
-The following query returns information about the specified Playbook by the given ID. If the Playbook does not exist, a 404 error is returned:
+The following query returns information about the specified Playbook by the given ``id`` or ``groupXid``, each of which can be retrieved from the response body of a successful ``GET /v2/playbooks`` request. . If the Playbook does not exist, a 404 error is returned:
 
 .. code::
 
-    GET /v2/playbooks/{id}
+    GET /v2/playbooks/{id or groupXid}
 
 Search for Playbooks
 ====================
@@ -64,13 +64,13 @@ The following query exports the specified Playbook as a Playbook (**.pbx**) file
 
 .. code::
 
-    GET /v2/playbooks/{id}/export
+    GET /v2/playbooks/{id or groupXid}/export
 
 The following query exports the specified Playbook as a Content Pack (**.tcxp**) file:
 
 .. code::
 
-    GET /v2/playbooks/{id}/export?format=tcxp
+    GET /v2/playbooks/{id or groupXid}/export?format=tcxp
 
 Import Playbooks
 ================
@@ -88,7 +88,7 @@ The following query uploads a Playbook as a new, major version to an existing Pl
 
 .. code::
 
-    POST /v2/playbooks/{id}
+    POST /v2/playbooks/{id or groupXid}
 
 Activate and Deactivate Playbooks
 =================================
@@ -97,13 +97,13 @@ The following query activates the specified Playbook:
 
 .. code::
 
-    POST /v2/playbooks/{id}/activate
+    POST /v2/playbooks/{id or groupXid}/activate
 
 The following query deactivates the specified Playbook:
 
 .. code::
 
-    POST /v2/playbooks/{id}/deactivate
+    POST /v2/playbooks/{id or groupXid}/deactivate
 
 Delete Playbooks
 =================
@@ -112,4 +112,4 @@ The following query deletes the specified Playbook:
 
 .. code::
 
-    DELETE /v2/playbooks/{id}
+    DELETE /v2/playbooks/{id or groupXid}

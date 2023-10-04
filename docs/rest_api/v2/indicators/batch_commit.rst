@@ -177,6 +177,11 @@ Batch Indicator Input File Format (V2)
                   "confidence": 60,
                   "summary": "super-malicious.ru",
                   "type": "Host",
+                  "externalDateAdded": "2023-08-25T18:23:43Z",
+                  "externalLastModified": "2023-08-26T18:23:43Z",
+                  "externalDateExpires": "2023-08-30T18:23:43Z",
+                  "firstSeen": "2023-08-25T18:23:43Z",
+                  "lastSeen": "2023-08-26T18:23:43Z",
                   "associatedGroups": [{"groupXid":"00000000-0000-0000-0000-000000000000:1234"}],
                   "attribute": [{
                                   "type": "Description",
@@ -191,7 +196,12 @@ Batch Indicator Input File Format (V2)
                   "name": "New Incident",
                   "type": "Incident",
                   "xid": "00000000-0000-0000-0000-000000000000:1234",
-                  "eventDate": "2019-11-26T00:00:00Z",
+                  "eventDate": "2023-08-04T00:00:00Z",
+                  "externalDateAdded": "2023-08-25T18:23:43Z",
+                  "externalLastModified": "2023-08-26T18:23:43Z",
+                  "externalDateExpires": "2023-08-30T18:23:43Z",
+                  "firstSeen": "2023-08-25T18:23:43Z",
+                  "lastSeen": "2023-08-26T18:23:43Z",
                   "attribute": [{
                           "type": "Description",
                           "displayed": true,
@@ -202,6 +212,9 @@ Batch Indicator Input File Format (V2)
                   }]
           }]
     }
+
+.. note::
+    The ``externalDateAdded``, ``externalDateLastModified``, ``externalDateExpires``, ``firstSeen``, and ``lastSeen`` fields included in this JSON example and all subsequent examples are optional fields supported only in the v3 API and V2 Batch API. They are not supported in the v2 API or V1 Batch API.
 
 **Group-to-Indicator Association (New Indicator)**
 
@@ -226,11 +239,13 @@ Batch Indicator Input File Format (V2)
                   "name": "New Incident with Indicator 1",
                   "type": "Incident",
                   "xid": "00000000-0000-0000-0000-000000000000:0001",
-                  "eventDate": "2019-11-26T00:00:00Z",
+                  "eventDate": "2023-08-04T00:00:00Z",
+                  "firstSeen": "2023-08-25T18:23:43Z",
+                  "lastSeen": "2023-08-26T18:23:43Z",
                   "attribute": [{
-                          "type": "Description",
-                          "displayed": true,
-                          "value": "Ryuk C2"
+                          "type": "Impact Score",
+                          "pinned": true,
+                          "value": "57"
                   }],
                   "tag": [{
                           "name": "MyOtherTag"
@@ -241,7 +256,6 @@ Batch Indicator Input File Format (V2)
                 "indicatorType":"Host"
               }
             ]
-
           }]
     }
 
@@ -254,7 +268,10 @@ Batch Indicator Input File Format (V2)
                   "name": "New Incident with Existing Indicator 1",
                   "type": "Incident",
                   "xid": "00000000-0000-0000-0000-000000000000:0003",
-                  "eventDate": "2019-11-26T00:00:00Z",
+                  "eventDate": "2023-08-04T00:00:00Z",
+                  "externalDateAdded": "2023-08-25T18:23:43Z",
+                  "externalLastModified": "2023-08-26T18:23:43Z",
+                  "externalDateExpires": "2023-08-30T18:23:43Z",
                   "attribute": [{
                           "type": "Description",
                           "displayed": true,
@@ -288,9 +305,9 @@ Batch Indicator Input File Format (V2)
             "associatedGroupXid": ["00000000-0000-0000-0000-000000000000:0002"],
                   "eventDate": "2019-11-26T00:00:00Z",
                   "attribute": [{
-                          "type": "Description",
-                          "displayed": true,
-                          "value": "Ryuk C2"
+                          "type": "Impact Score",
+                          "pinned": true,
+                          "value": "57"
                   }],
                   "tag": [{
                           "name": "MyOtherTag"
