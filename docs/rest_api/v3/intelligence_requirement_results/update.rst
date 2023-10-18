@@ -7,6 +7,9 @@ There are three actions you can perform when working with results for an IR:
 * Associate the result to the IR object
 * Mark the result as a false result (i.e., false positive)
 
+.. attention::
+    A result cannot have more than one of the following fields set to ``true`` at a given time: ``archived``, ``associated``, and ``falsePositive``. Attempting to set more than two of these fields to ``true`` for a result will return an error.
+
 Archive a Result
 ^^^^^^^^^^^^^^^^
 
@@ -102,6 +105,12 @@ For example, the following request will associate the result whose ID is 11 to i
         "message": "Updated",
         "status": "Success"
     }
+
+.. attention::
+    When the ``associated`` field is set to ``true`` for a result, you cannot update the field's value to ``false`` manually. Instead, you must dissociate the result from its IR, which will update the ``associated`` field's value to ``false`` automatically.
+
+.. note::
+    When you associate a global result that does not exist in one of your ThreatConnect owners to an IR, a copy of the result will be created in your Organization and then associated to the IR.
 
 Mark a Result as a False Result
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
