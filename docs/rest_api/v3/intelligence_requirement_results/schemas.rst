@@ -18,7 +18,7 @@ The default response returned from successful GET and PUT requests to the ``/v3/
 * ``associated``: <*Boolean*> Specifies whether the result has been associated to the IR.
 * ``archived``: <*Boolean*> Specifies whether the result has been archived.
 * ``archivedDate``: <*DateTime*> The date and time when the result was archived (ISO 8601 format). This field is only included in the response body when the result is archived.
-* ``score``: <*Integer*> The weighted score in the relevancy of the result. This field is only included in the response body when a score is available for the result.
+* ``score``: <*Integer*> A weighted score indicating the relevancy of the result. This field is only included in the response body when a score is available for the result.
 
 **Example**
 
