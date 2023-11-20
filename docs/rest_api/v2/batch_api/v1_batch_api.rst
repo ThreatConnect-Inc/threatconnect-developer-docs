@@ -51,14 +51,14 @@ Send a request in the following format to create a batch job that will use the V
         batchId: "12345"
     }
 
-**Response (Insufficient Privileges)
+**Response (Insufficient Privileges)**
 
 .. code::
 
     HTTP/1.1 401 Unauthorized
     Unable to perform the requested operation due to the following error(s): You do not have permission to create Indicators; Groups; Attributes; Tags; Security Labels;
 
-**Response (Incorrect Settings)
+**Response (Incorrect Settings)**
 
 .. code::
 
@@ -71,7 +71,7 @@ Send a request in the following format to create a batch job that will use the V
 Upload an Input File to a Batch Job
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Batch API expects to ingest a JSON file containing one or more lists of dictionaries. As shown in the following examples, the V2 Batch API expects Indicator and Group objects to be contained within their own ``indicator`` and ``group`` array, respectively. The list of fields expected within each `Indicator <https://docs.threatconnect.com/en/latest/rest_api/v2/indicators/indicators.html#create-indicators>`_ or `Group <https://docs.threatconnect.com/en/latest/rest_api/v2/groups/groups.html#create-groups>`_ object matches those described in the Indicator and Group creation operations. Additionally, you must include a ``type`` field within each object that defines the particular Indicator or Group type the object represents.
+The V1 Batch API expects to ingest a JSON file containing one or more lists of dictionaries. As shown in the following example, the V1 Batch API expects a single list of Indicator objects. The list of fields expected within each Indicator object matches those described in the `Indicator <https://docs.threatconnect.com/en/latest/rest_api/v2/indicators/indicators.html#create-indicators>`_ creation operation. Additionally, you must include a ``type`` field within each object that defines the particular Indicator type the object represents.
 
 .. hint::
     Exporting indicators via the `JSON Bulk Reports <https://docs.threatconnect.com/en/latest/rest_api/v2/indicators/indicators.html#json-bulk-reports>`_ endpoint will create a file in the proper format for the Batch API.
