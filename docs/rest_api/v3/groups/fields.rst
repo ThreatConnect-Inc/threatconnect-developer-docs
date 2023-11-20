@@ -327,7 +327,7 @@ Report
    * - fileName
      - The file name of the Report
      - String
-     - TRUE
+     - FALSE
      - TRUE
    * - publishDate
      - The date and time when the Report was published
