@@ -31,3 +31,7 @@
 .wy-table-responsive table td, .wy-table-responsive table th {
     white-space: normal !important;
 }
+
+.rst-content dl dt {
+    font-weight: 400;
+}
