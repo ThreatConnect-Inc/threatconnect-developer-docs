@@ -115,6 +115,7 @@ v2 API
    overview
    v2/associations/associations
    v2/attributes/attributes
+   v2/batch_api/batch_api
    v2/custom_metrics/custom_metrics
    v2/groups/groups
    v2/indicators/indicators
