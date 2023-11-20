@@ -16,3 +16,5 @@ Groups represent a collection of related behavior and/or intelligence.
 .. include:: publish.rst
 
 .. include:: create_report.rst
+
+.. include:: batch_commit.rst
