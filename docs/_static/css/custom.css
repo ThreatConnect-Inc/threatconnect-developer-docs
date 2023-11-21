@@ -34,4 +34,9 @@
 
 .rst-content dl dt {
     font-weight: 400;
+    margin-bottom: 0;
+}
+
+.rst-content dl dd {
+    margin: 0;
 }
