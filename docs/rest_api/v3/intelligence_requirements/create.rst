@@ -70,11 +70,11 @@ Send a request in the following format to create an IR in your Organization. Not
             "uniqueId": "IR-010",
             "requirementText": "Threats to Medical Device Companies",
             "subtype": {
-                "value": "Intelligence Requirement (IR)",
+                "name": "Intelligence Requirement (IR)",
                 "description": "Threats of overall concern to the organization (e.g., cyber, fraud, geopolitical/physical threats)"
             },
             "category": {
-                "value": "CISO Priorities",
+                "name": "CISO Priorities",
                 "description": "IRs prioritized for the CISO"
             },
             "description": "This IR is used to track threats to medical device companies.",

@@ -34,11 +34,11 @@ Send the following request to retrieve data for all IRs.
                 "uniqueId": "IR-001",
                 "requirementText": "Double Secret Probation",
                 "subtype": {
-                    "value": "Intelligence Requirement (IR)",
+                    "name": "Intelligence Requirement (IR)",
                     "description": "Threats of overall concern to the organization (e.g., cyber, fraud, geopolitical/physical threats)"
                 },
                 "category": {
-                    "value": "CISO Priorities",
+                    "name": "CISO Priorities",
                     "description": "IRs prioritized for the CISO"
                 },
                 "description": "Keeping an eye on Delta House",
@@ -70,7 +70,7 @@ Send the following request to retrieve data for all IRs.
                 "uniqueId": "IR-002",
                 "requirementText": "SHINRA",
                 "subtype": {
-                    "value": "Priority Intelligence Requirement (PIR)",
+                    "name": "Priority Intelligence Requirement (PIR)",
                     "description": "Focus on threat actors' motives, TTPs, targeting, impact, or attribution in association with IRs"
                 },
                 "description": "Intel on Shinra Electric Corp",
@@ -140,11 +140,11 @@ For example, the following request will retrieve data for the IR whose ID is 10.
             "uniqueId": "IR-010",
             "requirementText": "Threats to Medical Device Companies",
             "subtype": {
-                "value": "Intelligence Requirement (IR)",
+                "name": "Intelligence Requirement (IR)",
                 "description": "Threats of overall concern to the organization (e.g., cyber, fraud, geopolitical/physical threats)"
             },
             "category": {
-                "value": "CISO Priorities",
+                "name": "CISO Priorities",
                 "description": "IRs prioritized for the CISO"
             },
             "description": "This IR is used to track threats to medical device companies.",
