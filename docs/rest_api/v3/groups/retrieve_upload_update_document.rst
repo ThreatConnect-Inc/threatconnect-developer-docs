@@ -125,7 +125,7 @@ Send a request in the following format to update the contents of a file uploaded
 
 .. code::
 
-    PUT /v3/groups/{groupId}/upload
+    PUT /v3/groups/{groupId}/upload?filename={fileName.extension}
     Content-Type: application/octet-stream
 
     <new file contents>
