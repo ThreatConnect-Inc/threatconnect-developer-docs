@@ -137,7 +137,7 @@ Send a request in the following format to update the contents of a file uploaded
     PUT /v3/groups/{groupXid}/upload?filename={fileName.extension}&owner={ownerName}
     Content-Type: application/octet-stream
 
-    <raw file contents>
+    <new file contents>
 
 The following request will update the contents of the file named **report.pdf** uploaded to the Report Group whose ID is 25:
 

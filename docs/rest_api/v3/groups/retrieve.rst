@@ -84,13 +84,13 @@ Retrieve a Specific Group
 
 Send a request in the following format to retrieve data for a specific Group:
 
-**Example Request (Group ID)
+**Example Request (Group ID)**
 
 .. code::
 
     GET /v3/groups/{groupId}
 
-**Example Request (Group XID)
+**Example Request (Group XID)**
 
 .. code::
 
