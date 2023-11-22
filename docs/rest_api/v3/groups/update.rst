@@ -3,9 +3,20 @@ Update Groups
 
 The following example illustrates the basic format for updating a Group:
 
+**Example Request (Group ID)**
+
 .. code::
 
     PUT /v3/groups/{groupId}
+    {
+        {updatedField}: {updatedValue}
+    }
+
+**Example Request (Group XID)**
+
+.. code::
+
+    PUT /v3/groups/{groupXid}?owner={ownerName}
     {
         {updatedField}: {updatedValue}
     }
