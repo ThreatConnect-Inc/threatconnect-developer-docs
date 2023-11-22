@@ -42,5 +42,5 @@
 }
 
 .rst-content aside.footnote {
-    display: block;
+    display: block !important;
 }
