@@ -143,4 +143,4 @@
      - **String**
      - **Required**
 
-.. [1] For File Indicators, you can define their file hashes as a concatenated string using colon delimiters in the ``summary`` field or as separate file hashes in the ``md5``, ``sha1``, and ``sha256`` fields. See the `"File Indicator Considerations" <#file-indicator-considerations>`_ section for more information.
+.. [1] For File Indicators, you can define their file hashes as a concatenated string using colon delimiters in the ``summary`` field or as separate file hashes in the ``md5``, ``sha1``, and ``sha256`` fields. See the `"File Indicator Considerations" <#id9>`_ section for more information.
