@@ -81,7 +81,7 @@ See the following tables for a list of additional fields that you may also inclu
 Indicator Fields
 """"""""""""""""
 
-.. include:: .._includes/v1_batch_api_indicator_fields.rst
+.. include:: ../_includes/v1_batch_api_indicator_fields.rst
 
 .. hint::
     Exporting indicators via the `JSON Bulk Reports <https://docs.threatconnect.com/en/latest/rest_api/v2/indicators/indicators.html#json-bulk-reports>`_ endpoint will create a file in the proper format for the Batch API.
