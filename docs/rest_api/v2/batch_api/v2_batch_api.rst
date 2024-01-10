@@ -41,19 +41,20 @@ Send a request in the following format to create a batch job that will use the V
 * ``haltOnError``: <*Boolean*> **REQUIRED** Specifies how the batch process should proceed if it encounters an error. Accepted values include the following:
     * **true**: The batch process will stop processing the entire batch job the first time it encounters an error.
     * **false**: The batch process will attempt to continue processing the batch job after encountering an error.
-* ``action``: <*String*> **REQUIRED** The action that the batch job will perform on data included in the input file. Accepted values include the following:
+* ``action``: <*String*> **REQUIRED** The action that the batch job will perform on incoming data. Accepted values include the following:
     * **Create**: The batch job will create new and update existing data in the specified owner.
-    * **Delete**: The batch job will delete existing data in the specified owner that matches any of the incoming data included in the input file.
-* ``attributeWriteType``: <*String*> **REQUIRED** Specifies how the batch job will handle incoming Attributes included in the input file. Accepted values include the following:
-    * **Append**: The batch job will append incoming Attributes in addition to those added to existing Indicators and Groups. Note that duplicate Attributes may be added to an Indicator or Group, as redundancy checking is not performed.
-    * **Replace**: The batch job will remove Attributes from existing Indicators and Groups before adding incoming Attributes.
-    * **Static**: The batch job will ignore incoming Attributes and not update existing Attributes added to existing Indicators and Groups.
-* ``tagWriteType``: <*String*> Specifies how the batch job will handle incoming Tags included in the input file. Accepted values include the following:
-    * **Append**: The batch job will append incoming Tags in addition to those added to existing Indicators and Groups.
-    * **Replace** (default): The batch job will remove Tags from existing Indicators and Groups before adding incoming Tags.
-* ``securityLabelWriteType``: <*String*> Specifies how the batch job will handle incoming Security Labels included in the input file. Accepted values include the following:
-    * **Append**: The batch job will append incoming Security Labels in addition to those added to existing Indicators and Groups.
-    * **Replace** (default): The batch job will remove Security Labels from existing Indicators and Groups before adding incoming Security Labels.
+    * **Delete**: The batch job will delete existing data in the specified owner that matches any of the incoming data.
+* ``attributeWriteType``: <*String*> **REQUIRED** Specifies how the batch job will handle incoming Attributes. Accepted values include the following:
+    * **Append**: The batch job will append the incoming Attributes to an Indicator or Group. Note that duplicate Attributes may be added, as **redundancy checking is not performed**.
+    * **Replace**: The batch job will replace *all* Attributes added to an Indicator or Group with the incoming Attributes.
+    * **Singleton**: The batch job will replace existing Attributes added to an Indicator or Group only if the incoming data include Attributes with the same Attribute Type(s) as the existing Attributes. Otherwise, existing Attributes added to an Indicator or Group will remain unchanged.
+    * **Static**: The batch job will ignore incoming Attributes and not update existing Attributes added to an Indicator or Group.
+* ``tagWriteType``: <*String*> Specifies how the batch job will handle incoming Tags. Accepted values include the following:
+    * **Append**: The batch job will append the incoming Tags to an Indicator or Group.
+    * **Replace** (default): The batch job will replace all Tags added to an Indicator or Group with the incoming Tags.
+* ``securityLabelWriteType``: <*String*> Specifies how the batch job will handle incoming Security Labels. Accepted values include the following:
+    * **Append**: The batch job will append the incoming Security Labels to an Indicator or Group.
+    * **Replace** (default): The batch job will replace all Security Labels added to an Indicator or Group with the incoming Security Labels.
 * ``fileMergeMode``: <*String*> Specifies whether the batch job will perform a merge operation when the file hashes in an incoming File Indicator match two or more existing File Indicators in the specified owner (e.g., an incoming File Indicator contains an MD5 and SHA1 that each match a separate File Indicator in the specified owner). Accepted values include the following:
     * **Distribute**: The batch job will not perform a merge operation; instead, it will add the metadata (e.g., Threat and Confidence Ratings, Tags, Attributes) for the incoming File Indicator to all matching File Indicators (up to three possible) in the specified owner.
     * **Merge** (default): The batch job will perform a merge operation and combine two or more existing File Indicators with separate file hashes into a single File Indicator with all file hashes. During this process, the File Indicator with the most recent lastModified date will be used as the "primary" copy and retain its Threat and Confidence Ratings (at least, until their values are overwritten by the values for the incoming File Indicator). Attributes, Security Labels, and Tags associated with all merged File Indicators will be applied to the "primary" copy as well. Because Attributes are appended to the "primary" copy, duplicate Attributes may be present if each File Indicator that was merged had similar Attributes.
@@ -96,7 +97,27 @@ Send a request in the following format to create a batch job that will use the V
 Upload an Input File to a Batch Job
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The V2 Batch API expects to ingest a JSON file containing one or more lists of dictionaries. As shown in the following examples, the V2 Batch API expects Indicator and Group objects to be contained within their own ``indicator`` and ``group`` array, respectively. The list of fields expected within each `Indicator <https://docs.threatconnect.com/en/latest/rest_api/v2/indicators/indicators.html#create-indicators>`_ or `Group <https://docs.threatconnect.com/en/latest/rest_api/v2/groups/groups.html#create-groups>`_ object matches those described in the Indicator and Group creation operations. Additionally, you must include a ``type`` field within each object that defines the particular Indicator or Group type the object represents.
+The V2 Batch API expects to ingest a JSON file containing one or more lists of dictionaries. As shown in the following examples, the V2 Batch API expects Indicator and Group objects to be contained within their own ``indicator`` and ``group`` array, respectively. At a minimum, you must include the following fields for each object in each array:
+
+* **indicator**
+    * ``summary``: <*String*> The Indicator's summary.
+    * ``type``: <*String*> The Indicator's type.
+* **group**
+    * ``name``: <*String*> The Group's name.
+    * ``type``: <*String*> The Group's type.
+    * ``xid``: <*String*> The Group's XID.
+
+See the following tables for a list of additional fields that you may also include for Indicator and Group objects in their respective array.
+
+Indicator Fields
+""""""""""""""""
+
+.. include:: ../_includes/v2_batch_api_indicator_fields.rst
+
+Group Fields
+""""""""""""
+
+.. include:: ../_includes/v2_batch_api_group_fields.rst
 
 .. hint::
     Exporting indicators via the `JSON Bulk Reports <https://docs.threatconnect.com/en/latest/rest_api/v2/indicators/indicators.html#json-bulk-reports>`_ endpoint will create a file in the proper format for the Batch API.

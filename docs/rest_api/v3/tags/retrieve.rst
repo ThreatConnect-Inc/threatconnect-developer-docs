@@ -108,7 +108,7 @@ Request (Encoded URL)
 Retrieve ATT&CK Tags
 ====================
 
-As of ThreatConnect version 7.2, the API response for a GET request to the ``/v3/tags`` endpoint will include standard Tags and system-generated ATT&CK® Tags (i.e., Tag objects that include the ``techniqueId`` field). An ATT&CK Tag is a system-generated Tag representing a MITRE ATT&CK® Enterprise technique or sub-technique.
+As of ThreatConnect version 7.2, the API response for a GET request to the ``/v3/tags`` endpoint will include standard Tags and system-generated ATT&CK Tags (i.e., Tag objects that include the ``techniqueId`` field). An ATT&CK Tag is a system-generated Tag representing a MITRE ATT&CK® Enterprise technique or sub-technique.
 
 To retrieve only ATT&CK Tags, send the following request:
 

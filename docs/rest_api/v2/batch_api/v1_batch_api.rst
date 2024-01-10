@@ -32,11 +32,11 @@ Send a request in the following format to create a batch job that will use the V
 * ``haltOnError``: <*Boolean*> **REQUIRED** Specifies how the batch process should proceed if it encounters an error. Accepted values include the following:
     * **true**: The batch process will stop processing the entire batch job the first time it encounters an error.
     * **false**: The batch process will attempt to continue processing the batch job after encountering an error.
-* ``action``: <*String*> **REQUIRED** The action that the batch job will perform on data included in the input file. Accepted values include the following:
+* ``action``: <*String*> **REQUIRED** The action that the batch job will perform on incoming data. Accepted values include the following:
     * **Create**: The batch job will create new and update existing data in the specified owner.
-    * **Delete**: The batch job will delete existing data in the specified owner that matches any of the incoming data included in the input file.
-* ``attributeWriteType``: <*String*> **REQUIRED** Specifies how the batch job will handle incoming Attributes included in the input file. Accepted values include the following:
-    * **Replace**: The batch job will remove Attributes from existing Indicators and Groups before adding incoming Attributes.
+    * **Delete**: The batch job will delete existing data in the specified owner that matches any of the incoming data.
+* ``attributeWriteType``: <*String*> **REQUIRED** Specifies how the batch job will handle incoming Attributes. Accepted values include the following:
+    * **Replace**: The batch job will remove *all* Attributes from existing Indicators and Groups before adding incoming Attributes.
     * **Static**: The batch job will ignore incoming Attributes and not update existing Attributes added to existing Indicators and Groups.
 
 .. note::
@@ -71,7 +71,17 @@ Send a request in the following format to create a batch job that will use the V
 Upload an Input File to a Batch Job
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The V1 Batch API expects to ingest a JSON file containing one or more lists of dictionaries. As shown in the following example, the V1 Batch API expects a single list of Indicator objects. The list of fields expected within each Indicator object matches those described in the `Indicator <https://docs.threatconnect.com/en/latest/rest_api/v2/indicators/indicators.html#create-indicators>`_ creation operation. Additionally, you must include a ``type`` field within each object that defines the particular Indicator type the object represents.
+The Batch API expects to ingest a JSON file containing one or more lists of dictionaries. As shown in the following example, the V1 Batch API expects a single array of Indicator objects. At a minimum, you must include the following fields for each object in each array:
+
+* ``summary``: <*String*> The Indicator's summary.
+* ``type``: <*String*> The Indicator's type.
+
+See the following tables for a list of additional fields that you may also include for Indicator objects in the array.
+
+Indicator Fields
+""""""""""""""""
+
+.. include:: ../_includes/v1_batch_api_indicator_fields.rst
 
 .. hint::
     Exporting indicators via the `JSON Bulk Reports <https://docs.threatconnect.com/en/latest/rest_api/v2/indicators/indicators.html#json-bulk-reports>`_ endpoint will create a file in the proper format for the Batch API.

@@ -16,6 +16,8 @@ Endpoint: ``/api/v3/tags``
 
 .. include:: delete.rst
 
+.. include:: assign_security_coverage.rst
+
 ----
 
 *MITRE ATT&CK® and ATT&CK® are registered trademarks of The MITRE Corporation.*

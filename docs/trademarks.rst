@@ -14,7 +14,7 @@ Trademarks
 -  Paw™ is a trademark of Paw, Inc.
 -  Postman® is a registered trademark of Postman, Inc.
 -  Python® is a registered trademark of the Python Software Foundation.
+-  RiskIQ® and Windows® are registered trademarks of Microsoft Corporation.
 -  Shodan® is a registered trademark of Shodan.
 -  Swagger™ is a trademark of Smartbear Software, Inc.
 -  VirusTotal™ is a trademark of Google, Inc.
--  Windows® is a registered trademark of the Microsoft Corporation.
