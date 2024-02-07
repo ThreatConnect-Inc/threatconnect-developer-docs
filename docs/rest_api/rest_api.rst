@@ -30,6 +30,7 @@ Features
    :maxdepth: 1
 
    v3/create_activity_logs
+   v3/associations
    v3/bulk_delete
    v3/enable_pagination
    v3/filter_results
