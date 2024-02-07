@@ -6,6 +6,34 @@ Overview
 
 When retrieving data, you can use the ``tql`` query parameter to filter results based a query written in `ThreatConnect Query Language (TQL) <https://knowledge.threatconnect.com/docs/threatconnect-query-language-tql>`_. To use the ``tql`` query parameter, append ``?tql={tqlQuery}`` to the end of the request URL.
 
+.. note::
+    If you experience issues with TQL queries timing out while using the v3 API, review the **Custom TQL Timeout** setting for your API user account and ask your System Administrator to review the TQL query timeout system setting for your ThreatConnect instance.
+
+Escape Character Sequences
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When constructing TQL queries in API requests, certain characters must be escaped with a backslash character (``\``) if they are used within a string. See the following table for a list of these characters and their corresponding escape sequence.
+
+.. list-table::
+   :widths: 33 33 34
+   :header-rows: 1
+
+   * - Name
+     - Character
+     - Escape Sequence
+   * - Single quote
+     - ``'``
+     - ``\'``
+   * - Double quote
+     - ``"``
+     - ``\"``
+   * - Backtick
+     - \`
+     - ``\```
+   * - Backslash
+     - ``\``
+     - ``\\``
+
 Retrieve a List of TQL Parameters for an Endpoint
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
