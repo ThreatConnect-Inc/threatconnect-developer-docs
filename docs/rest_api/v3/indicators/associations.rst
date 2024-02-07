@@ -4,7 +4,7 @@ Associations
 Create Associations
 ^^^^^^^^^^^^^^^^^^^
 
-For instructions on associating Artifacts, Cases, and Groups to an Indicator, see `Create and Manage Associations <https://docs.threatconnect.com/en/latest/rest_api/v3/associations.html>`_. For instructions on creating Indicator-to-Indicator associations, see the `"Indicator-to-Indicator Associations" <#indicator-to-indicator-associations>`_ section. 
+For instructions on associating Artifacts, Cases, and Groups to an Indicator, see `Create and Manage Associations <https://docs.threatconnect.com/en/latest/rest_api/v3/associations.html>`_. For instructions on creating Indicator-to-Indicator associations, see the `"Indicator-to-Indicator Associations" <#id19>`_ section. 
 
 Retrieve Custom Associations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
