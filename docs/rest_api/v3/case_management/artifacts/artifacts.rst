@@ -14,3 +14,5 @@ Endpoint: ``/api/v3/artifacts``
 .. include:: update.rst
 
 .. include:: delete.rst
+
+.. include:: associations.rst

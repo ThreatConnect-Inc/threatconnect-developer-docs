@@ -15,3 +15,5 @@ Endpoint: ``/api/v3/victimAssets``
 .. include:: update.rst
 
 .. include:: delete.rst
+
+.. include:: associations.rst

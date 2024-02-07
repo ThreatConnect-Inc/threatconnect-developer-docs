@@ -60,18 +60,3 @@ Refer to the `Available Fields <#available-fields>`_ and section for a list of a
     - The ``fieldname`` field must be defined when creating the Artifact, and the value for this field must be the Task's Artifact Field that accepts the Artifact's type
 
     If these conditions are not met, the Artifact will be listed as a related Artifact when viewing the Task in the ThreatConnect UI. For more information about Artifact Fields, see the `"Artifact Fields" section of the Adding Tasks to a Case <https://knowledge.threatconnect.com/docs/adding-tasks-to-a-case#artifact-fields>`_ knowledge base article.
-
-Create Associations
-^^^^^^^^^^^^^^^^^^^
-
-You can create associations between Artifacts in your Organization and Groups and Indicators in your Organization.
-
-When creating associations for Artifacts using the ThreatConnect v3 API, follow these guidelines:
-
-- To create an association to a new Group, include `all fields required to create the type of Group <https://docs.threatconnect.com/en/latest/rest_api/v3/groups/groups.html#available-fields>`_ when setting the ``associatedGroups`` field.
-- To create an association to an existing Group, use the Group's ID when setting the ``associatedGroups`` field (e.g., ``"associatedGroups": {"data": [{"id": 12345}]}``).
-- To create an association to a new Indicator, include `all fields required to create the type of Indicator <https://docs.threatconnect.com/en/latest/rest_api/v3/indicators/indicators.html#available-fields>`_ when setting the ``associatedIndicators`` field.
-- To create an association to an existing Indicator, use the Indicator's ID, or use its summary and type (e.g., ``"associatedIndicators": {"data": [{"type": "Host", "hostname": "badguy.com"}]}``), when setting the ``associatedIndicators`` field.
-
-.. note::
-    You can associate multiple Indicators and Groups to an Artifact in a single POST or PUT request.

@@ -99,15 +99,7 @@ JSON Response
 Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a POST request to the ``/v3/victims`` endpoint.
 
 .. note::
-    You can add multiple `Attributes <https://docs.threatconnect.com/en/latest/rest_api/v3/victim_attributes/victim_attributes.html>`_, `Tags <https://docs.threatconnect.com/en/latest/rest_api/v3/tags/tags.html>`_, and `Security Labels <https://docs.threatconnect.com/en/latest/rest_api/v3/security_labels/security_labels.html>`_ to the Victim being created in a single POST request.
-
-Create Associations
-^^^^^^^^^^^^^^^^^^^
-
-You can create associations between Victims and Groups that exist in the same owner only. When creating associations for Victims using the ThreatConnect v3 API, follow these guidelines:
-
-- To create an association to a new Group, include `all fields required to create the type of Group <https://docs.threatconnect.com/en/latest/rest_api/v3/groups/groups.html#available-fields>`_ when setting the ``associatedGroups`` field. To create the Group in a Community or Source, include the ``ownerId`` or ``ownerName`` field in the request and specify the ID or name, respectively, of the Community or Source in which to create the Group when setting the ``associatedGroups`` field.
-- To create an association to an existing Group, use the Group's ID when setting the ``associatedGroups`` field (e.g., ``"associatedGroups": {"data": [{"id": 12345}]}``).
+    By default, Victims will be created in the Organization in which your API user account resides. To create a Victim in a Community or Source, use the ``owner`` query parameter to `specify the owner <https://docs.threatconnect.com/en/latest/rest_api/v3/specify_owner.html>`_ in which to create the Victim.
 
 .. note::
-    You can associate multiple Groups to a Victim in a single POST or PUT request.
+    You can add multiple `Attributes <https://docs.threatconnect.com/en/latest/rest_api/v3/victim_attributes/victim_attributes.html>`_, `Tags <https://docs.threatconnect.com/en/latest/rest_api/v3/tags/tags.html>`_, and `Security Labels <https://docs.threatconnect.com/en/latest/rest_api/v3/security_labels/security_labels.html>`_ to the Victim being created in a single POST request.

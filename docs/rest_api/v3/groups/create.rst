@@ -81,24 +81,3 @@ JSON Response
         "message": "Created",
         "status": "Success"
     }
-
-Create Associations
-^^^^^^^^^^^^^^^^^^^
-
-You can create associations between Groups and Artifacts, Cases, Groups, Indicators, and Victim Assets that exist in the same owner. If cross-owner associations are enabled on your ThreatConnect instance, you can also create associations between Groups and Indicators and other Groups that exist in any owner to which you have access.
-
-When creating associations for Groups using the ThreatConnect v3 API, follow these guidelines:
-
-- To create an association to a new Artifact, include `all fields required to create an Artifact <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/artifacts/artifacts.html#available-fields>`_ when setting the ``associatedArtifacts`` field.
-- To create an association to an existing Artifact, use the Artifact's ID when setting the ``associatedArtifacts`` field (e.g., ``"associatedArtifacts": {"data": [{"id": 12345}]}``).
-- To create an association to a new Case, include `all fields required to create a Case <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/cases/cases.html#available-fields>`_ when setting the ``associatedCases`` field.
-- To create an association to an existing Case, use the Case's ID when setting the ``associatedCases`` field.
-- To create an association to a new Group, include `all fields required to create the type of Group <#available-fields>`_ when setting the ``associatedGroups`` field. To create the Group in a Community or Source, include the ``ownerId`` or ``ownerName`` field in the request and specify the ID or name, respectively, of the Community or Source in which to create the Group when setting the ``associatedGroups`` field.
-- To create an association to an existing Group, use the Group's ID when setting the ``associatedGroups`` field.
-- To create an association to a new Indicator, include `all fields required to create the type of Indicator <https://docs.threatconnect.com/en/latest/rest_api/v3/indicators/indicators.html#available-fields>`_ when setting the ``associatedIndicators`` field. To create the Indicator in a Community or Source, include the ``ownerId`` or ``ownerName`` field in the request and specify the ID or name, respectively, of the Community or Source in which to create the Indicator when setting the associatedIndicators field.
-- To create an association to an existing Indicator, use the Indicator's ID, or use its summary and type (e.g., ``"associatedIndicators": {"data": [{"type": "Host", "hostname": "badguy.com"}]}``), when setting the ``associatedIndicators`` field. To create association to an Indicator in a Community or Source using the Indicator's summary and type, include the ``ownerId`` or ``ownerName`` field and specify the ID or name, respectively, of the Community or Source to which the Indicator belongs when setting the ``associatedIndicators`` field.
-- To create an association to a new Victim Asset, include `all fields required to create a Victim Asset <https://docs.threatconnect.com/en/latest/rest_api/v3/victim_assets/victim_assets.html#available-fields>`_ when setting the ``associatedVictimAssets`` field.
-- To create an association to an existing Victim Asset, use the Victim Asset's ID when setting the ``associatedVictimAssets`` field.
-
-.. note::
-    You can associate multiple Artifacts, Cases, Groups, Indicators, and Victim Assets to a Group in a single POST or PUT request.

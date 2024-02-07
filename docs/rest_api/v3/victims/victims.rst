@@ -16,6 +16,8 @@ Endpoint: ``/api/v3/victims``
 
 .. include:: delete.rst
 
+.. include:: associations.rst
+
 ----
 
 *MITRE ATT&CK® and ATT&CK® are registered trademarks of The MITRE Corporation.*

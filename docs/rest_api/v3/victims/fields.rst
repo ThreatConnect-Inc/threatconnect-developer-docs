@@ -65,18 +65,6 @@ Alternatively, refer to the following tables for a list of available fields that
      - FALSE
      - TRUE
      - "Company ABC"
-   * - ownerId [3]_
-     - The ID of the `owner <https://docs.threatconnect.com/en/latest/rest_api/v3/owners/owners.html>`_ to which the Victim belongs
-     - Integer
-     - FALSE
-     - FALSE
-     - 1, 2, 3,...100
-   * - ownerName [3]_
-     - The name of the owner to which the Victim belongs
-     - String
-     - FALSE
-     - FALSE
-     - "American"
    * - securityLabels
      - A list of Security Labels applied to the Victim
      - `Security Label Object <https://docs.threatconnect.com/en/latest/rest_api/v3/security_labels/security_labels.html>`_
@@ -111,8 +99,6 @@ Alternatively, refer to the following tables for a list of available fields that
     - ``WebSite``
 
 .. [2] To retrieve a list of available `Attribute Types <https://docs.threatconnect.com/en/latest/rest_api/v3/attribute_types/attribute_types.html>`_, send the following request: ``GET /v3/attributeTypes``.
-
-.. [3] By default, Victims will be created in the Organization in which your API user account resides. To create a Victim in a Community or Source, include the ``ownerId`` or ``ownerName`` field in your request. Alternatively, Alternatively, use the ``owner`` query parameter to `specify the owner <https://docs.threatconnect.com/en/latest/rest_api/v3/specify_owner.html>`_ in which to create the Victim.
 
 Include Additional Fields in Responses
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
