@@ -3,7 +3,7 @@ Create Users
 
 .. attention::
 
-    Only API users with an Organization role of Organization Administrator can create users.
+    Only API users with an Organization role of Organization Administrator can create users. However, they may not create users whose System role is **Administrator** or **Operations Administrator**.
 
 The following example illustrates the basic format for creating a user:
 

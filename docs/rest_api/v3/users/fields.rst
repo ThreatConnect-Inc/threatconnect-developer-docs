@@ -46,7 +46,7 @@ Alternatively, refer to the following table for a list of available fields that 
      - Boolean
      - FALSE
      - TRUE
-   * - logoutIntervalMinutes
+   * - logoutIntervalMinutes [1]_
      - The amount of time, in minutes, after which the user will be logged out of ThreatConnect
      - Integer
      - FALSE
@@ -76,7 +76,7 @@ Alternatively, refer to the following table for a list of available fields that 
      - String
      - FALSE
      - TRUE
-   * - systemRole [1]_
+   * - systemRole [2]_
      - The user's `System role <https://docs.threatconnect.com/en/latest/rest_api/v3/system_roles/system_roles.html>`_
      - String
      - TRUE
@@ -91,7 +91,7 @@ Alternatively, refer to the following table for a list of available fields that 
      - Boolean
      - FALSE
      - TRUE
-   * - uiTheme [2]_
+   * - uiTheme [3]_
      - Specifies whether to set the ThreatConnect user interface to a light or dark theme for the user (accepted values include "Light" and "Dark")
      - String
      - FALSE
@@ -102,9 +102,11 @@ Alternatively, refer to the following table for a list of available fields that 
      - TRUE
      - TRUE
 
-.. [1] All System roles except **API User** may be assigned to a user.
+.. [1] If no value is provided for the ``logoutIntervalMinutes`` field, a default value of ``30`` will be assigned to it.
 
-.. [2] The following are accepted values for the ``uiTheme`` field:
+.. [2] All System roles except **Administrator** and **Operations Administrator** may be assigned to a user created or updated via the ``/v3/security/users`` endpoint.
+
+.. [3] The following are accepted values for the ``uiTheme`` field:
 
     - ``Light``
     - ``Dark``

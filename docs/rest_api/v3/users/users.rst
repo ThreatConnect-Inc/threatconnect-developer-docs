@@ -8,7 +8,7 @@ Endpoint: ``/api/v3/security/users``
 
 .. attention::
 
-    Only API users with an Organization role of Organization Administrator can create, update, and delete users. API users with any other Organization role can only retrieve users.
+    Only API users with an Organization role of Organization Administrator can create, update, and delete users; however, they may not perform these actions for users whose System role is **Administrator** or **Operations Administrator**. API users with any other Organization role can only retrieve users.
 
 .. include:: fields.rst
 
