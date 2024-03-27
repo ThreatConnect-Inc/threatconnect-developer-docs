@@ -10,7 +10,7 @@ Send a request in the following format to create an IR in your Organization. Not
     POST /v3/intelRequirements
     {
         "category": {
-            "id": 1
+            "name": "CISO Priorities"
         },
         "description": "This IR is used to track threats to medical device companies.",
         "keywordSections": [

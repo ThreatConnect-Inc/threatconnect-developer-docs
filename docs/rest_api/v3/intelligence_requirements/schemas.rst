@@ -16,8 +16,9 @@ The following is the request body schema for a POST request to the ``/v3/intelRe
     * ``data``: <*Array of Indicator Objects*> The `details of the Indicators <https://docs.threatconnect.com/en/latest/rest_api/v3/indicators/indicators.html>`_.
 * ``associatedVictimAssets``: <*Object*> A list of Victim Assets associated to the IR.
     * ``data``: <*Array of Victim Asset Objects*> The `details of the Victim Assets <https://docs.threatconnect.com/en/latest/rest_api/v3/victim_assets/victim_assets.html>`_.
-* ``category``: <*Object*> The IR's category.
-    * ``id``: <*Integer*> The `ID of the IR category <https://docs.threatconnect.com/en/latest/rest_api/v3/intelligence_requirement_categories/intelligence_requirement_categories.html>`_.
+* ``category``: <*Object*> The IR's `category <https://docs.threatconnect.com/en/latest/rest_api/v3/intelligence_requirement_categories/intelligence_requirement_categories.html>`_. To specify the category, use its ID number, name, or both.
+    * ``id``: <*Integer*> The IR category's ID number.
+    * ``name``: <*String*> The IR category's name.
 * ``description``: <*String*> A description of the IR.
 * ``keywordSections``: <*Array*> **REQUIRED** The sections that the IR's keyword query contains.
     * ``compareValue``: <*String*> **REQUIRED** Specifies whether the section is an **includes** or **excludes** section. (Accepted values: **includes**, **excludes**)
@@ -74,7 +75,8 @@ The following is the request body schema for a POST request to the ``/v3/intelRe
             ]
         },
         "category": {
-            "id": <int>
+            "id": <int>,
+            "name": <string>
         },
         "description": "<string>",
         "keywordSections": [
@@ -124,8 +126,9 @@ The following is the request body schema for a PUT request to the ``/v3/intelReq
 * ``associatedVictimAssets``: <*Object*> A list of Victim Assets associated to the IR.
     * ``data``: <*Array of Victim Asset Objects*> The `details of the Victim Assets <https://docs.threatconnect.com/en/latest/rest_api/v3/victim_assets/victim_assets.html>`_.
     * ``mode``: <*String*> Specifies the `action to perform <https://docs.threatconnect.com/en/latest/rest_api/v3/update_metadata.html>`_ with the objects defined in the ``data`` field. (Accepted values: **append**, **delete**, **replace**; Default value: **append**).
-* ``category``: <*Object*> The IR's category.
-    * ``id``: <*Integer*> The `ID of the IR category <https://docs.threatconnect.com/en/latest/rest_api/v3/intelligence_requirement_categories/intelligence_requirement_categories.html>`_.
+* ``category``: <*Object*> The IR's `category <https://docs.threatconnect.com/en/latest/rest_api/v3/intelligence_requirement_categories/intelligence_requirement_categories.html>`_. To specify the category, use its ID number, name, or both.
+    * ``id``: <*Integer*> The IR category's ID number.
+    * ``name``: <*String*> The IR category's name.
 * ``description``: <*String*> A description of the IR.
 * ``keywordSections``: <*Array*> The sections that the IR's keyword query contains.
     * ``compareValue``: <*String*> Specifies whether the section is an **includes** or **excludes** section. (Accepted values: **includes**, **excludes**)
@@ -187,7 +190,8 @@ The following is the request body schema for a PUT request to the ``/v3/intelReq
             "mode": "<string>"
         },
         "category": {
-            "id": <int>
+            "id": <int>,
+            "name": <string>
         },
         "description": "<string>",
         "keywordSections": [

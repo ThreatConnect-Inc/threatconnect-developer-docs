@@ -61,7 +61,7 @@ Alternatively, refer to the following table for a list of available fields that 
      - String
      - TRUE
      - FALSE
-   * - password
+   * - password [2]_
      - The password for the user's account
      - String
      - TRUE
@@ -76,7 +76,7 @@ Alternatively, refer to the following table for a list of available fields that 
      - String
      - FALSE
      - TRUE
-   * - systemRole [2]_
+   * - systemRole [3]_
      - The user's `System role <https://docs.threatconnect.com/en/latest/rest_api/v3/system_roles/system_roles.html>`_
      - String
      - TRUE
@@ -91,7 +91,7 @@ Alternatively, refer to the following table for a list of available fields that 
      - Boolean
      - FALSE
      - TRUE
-   * - uiTheme [3]_
+   * - uiTheme [4]_
      - Specifies whether to set the ThreatConnect user interface to a light or dark theme for the user (accepted values include "Light" and "Dark")
      - String
      - FALSE
@@ -104,9 +104,11 @@ Alternatively, refer to the following table for a list of available fields that 
 
 .. [1] If no value is provided for the ``logoutIntervalMinutes`` field, a default value of ``30`` will be assigned to it.
 
-.. [2] All System roles except **Administrator** and **Operations Administrator** may be assigned to a user created or updated via the ``/v3/security/users`` endpoint.
+.. [2] The ``password`` field is required only when creating users and updating existing users without a password on ThreatConnect instances that do not have SAML™ enabled.
 
-.. [3] The following are accepted values for the ``uiTheme`` field:
+.. [3] All System roles except **Administrator** and **Operations Administrator** may be assigned to a user created or updated via the ``/v3/security/users`` endpoint.
+
+.. [4] The following are accepted values for the ``uiTheme`` field:
 
     - ``Light``
     - ``Dark``
