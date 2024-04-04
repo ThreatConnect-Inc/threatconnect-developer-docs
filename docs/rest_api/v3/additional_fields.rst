@@ -411,11 +411,11 @@ JSON Response
 Include AI Insights for a Report Group
 ======================================
 
-As of ThreatConnect version 7.4, artificial intelligence-generated summaries are available for Report Groups in the CAL™ Automated Threat Library (ATL) Source. The following request will retrieve data for the Report Group whose ID is 4983092, including data displayed on the AI Insights card of the Group's **Details** screen:
+As of ThreatConnect version 7.4, artificial intelligence-generated summaries are available for Report Groups in the CAL™ Automated Threat Library (ATL) Source. The following request will retrieve data for the Report Group whose ID is 213638, including data displayed on the AI Insights card of the Group's **Details** screen:
 
 .. code::
 
-    GET /v3/groups/4983092?fields=insights
+    GET /v3/groups/213638?fields=insights
 
 JSON Response
 
@@ -423,16 +423,16 @@ JSON Response
 
     {
         "data": {
-            "id": 4983092,
-            "dateAdded": "2023-11-20T11:10:17Z",
-            "ownerId": 179,
+            "id": 213638,
+            "dateAdded": "2024-02-13T19:21:55Z",
+            "ownerId": 284,
             "ownerName": "CAL Automated Threat Library",
-            "webLink": "https://app.threatconnect.com/#/details/groups/4983092/overview",
+            "webLink": "https://app.threatconnect.com/#/details/groups/213638",
             "type": "Report",
-            "xid": "1b158579f558403e498c591cee4fd672c124b2c310bf64e487eb0c35ee8d945b",
-            "name": "Navy Federal Credit Union Profile Restricted Scam Email",
+            "xid": "0b6925305b9b934bc0255a380023530be74245b4c8e9cfe282b993cb6e9e7d32",
+            "name": "CSC Partners With NetDiligence to Help Mitigate Cyber Risks",
             "createdBy": {
-                "userName": "ApiUser-CAL Automated Threat Library",
+                "userName": "ApiUser-cal_automated_threat_library",
                 "firstName": "ApiUser",
                 "lastName": "CAL Automated Threat Library",
                 "owner": "CAL Automated Threat Library"
@@ -443,11 +443,22 @@ JSON Response
             "fileName": "None",
             "status": "Awaiting Upload",
             "documentType": "Unrecognized",
-            "insights": "{\"summary\":\"Navy Federal Credit Union members are being targeted by cybercriminals through fake emails that claim their profile has been restricted for security reasons. The emails ask the recipients to click on a link to restore their account, but the link is actually a phishing website designed to steal sensitive information. Members are advised to delete these fake emails and never click on links in suspicious emails. Instead, they should go directly to the Navy Federal Credit Union website and sign in from there to avoid falling victim to these scams.\",\"app\":\"TextSummarizer\",\"bullets\":[\"Cybercriminals are sending fake emails to Navy Federal Credit Union members with the subject line \\\"Important Account Notice\\\" to steal their online banking account credentials, personal and financial information.\",\"The emails claim that the recipient's Navy Federal Credit Union profile has been restricted for security reasons and ask them to click on a link to restore their account.\",\"The fake emails may contain a sense of urgency, such as a warning that the recipient's account will be suspended if they don't take action.\",\"The emails may also contain a form requesting sensitive information, such as banking credentials and personal information.\",\"The Navy Federal Credit Union will never send emails requesting banking credentials, personal and financial information.\",\"Members are advised to delete these fake emails and never click on links in suspicious emails.\",\"If there is something wrong or they need to do with their accounts, they should go directly to the Navy Federal Credit Union website and sign in from there.\"]}",
-            "documentDateAdded": "2023-11-20T11:10:17Z",
-            "publishDate": "2023-11-19T00:00:00Z",
-            "lastModified": "2023-11-20T11:10:17Z",
-            "legacyLink": "https://app.threatconnect.com/auth/report/report.xhtml?report=4983092"
+            "insights": {
+                "summary": "CSC, an enterprise-class domain registrar and leader in mitigating domain security, DNS, and digital brand threats, has partnered with NetDiligence, a leader in cyber risk readiness and response solutions, to provide domain security and digital brand protection solutions to the cyber insurance industry. The partnership will provide cyber insurance carriers, brokers, and clients with new ways to address risk and cyber threats such as phishing, business email compromise, and ransomware. The blog highlights the importance of domain security and digital brand protection for corporations operating multiple brands with hundreds or thousands of domains within their portfolios.",
+                "app": "TextSummarizer",
+                "bullets": [
+                    "The blog announces CSC's partnership with NetDiligence, a leader in cyber risk readiness and response solutions, to provide domain security and digital brand protection solutions to the cyber insurance industry.",
+                    "CSC's innovative technology allows cyber insurance carriers, brokers, and clients to proactively protect their businesses against cyber threats and online brand abuse.",
+                    "The partnership will provide cyber insurance carriers, brokers, and clients with new ways to address risk and cyber threats such as phishing, business email compromise, and ransomware.",
+                    "The blog highlights the importance of domain security and digital brand protection for corporations operating multiple brands with hundreds or thousands of domains within their portfolios.",
+                    "CSC's solutions will be categorized into three services: digital brand protection, domain registrar services, and fraud protection, within the eRiskHub platform.",
+                    "CSC's Chief Technology Officer Ihab Shraim and AXA XL's Gwenn Cujdik will be speaking on the Pathways to Resilience panel, Domain Security: Addressing Cybersecurity at the Source of the Problem."
+                ]
+            },
+            "documentDateAdded": "2024-02-13T19:21:56Z",
+            "publishDate": "2024-02-12T00:00:00Z",
+            "lastModified": "2024-02-13T19:21:55Z",
+            "legacyLink": "https://app.threatconnect.com/auth/report/report.xhtml?report=213638"
         },
         "status": "Success"
     }
