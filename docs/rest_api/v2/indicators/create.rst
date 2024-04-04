@@ -428,6 +428,7 @@ Add Indicator Observations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 API users can add observations to an Indicator if the following conditions are met:
+
 * The **Include in Observations and False Positives** option is turned on for their API user account
 * Their API user account has an Organization role of Standard User or Community role of Editor in the Organization or Community/Source, respectively, in which the Indicator exists.
 
