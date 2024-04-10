@@ -62,11 +62,11 @@ Send a request in the following format to create a custom metric:
 
     POST /v2/customMetrics
     {
-      "name" : "<string>",
-      "dataType" : "<string>",
-      "interval" : "<string>",
-      "keyedValues" : <boolean>,
-      "description" : "<string>"
+      "name": "<string>",
+      "dataType": "<string>",
+      "interval": "<string>",
+      "keyedValues": <boolean>,
+      "description": "<string>"
     }
 
 - ``name``: <*String*> **REQUIRED** The metric's name. (Minimum value: **1**; Maximum value: **45**)
