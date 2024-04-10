@@ -157,7 +157,7 @@ Send a request in the following format to
       "weight": <int>
     }
 
-- ``value``: <*Integer*> **REQUIRED** The value to add to the non-keyed metric. If the metric's data type is Count, then this field is not required.
+- ``value``: <*Integer*> **REQUIRED** The value to add to the non-keyed metric. If the metric's data type is **Count**, then this field is not required.
 - ``date``: <*DateTime*> The date and time when the provided value was added to the metric. If this field is not included in the request body, the default value will be today's date.
 - ``weight``: <*Integer*> The weight of the provided value.
 
