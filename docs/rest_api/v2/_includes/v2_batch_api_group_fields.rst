@@ -34,6 +34,22 @@
      - Specifies whether to display the Attribute as a pinned Attribute on the **Details** screen for the Group to which it is added
      - Boolean
      - Optional
+   * - attribute.securityLabel
+     - An array of Security Labels applied to the Attribute
+     - Array of Objects
+     - Optional
+   * - attribute.securityLabel.color
+     - The hex color code (e.g., FF0000) for the Security Label's color
+     - String
+     - Required if ``securityLabel`` is used within ``attribute`` and the Security Label does not exist
+   * - attribute.securityLabel.description
+     - The Security Label's description
+     - String
+     - Required if ``securityLabel`` is used within ``attribute`` and the Security Label does not exist
+   * - attribute.securityLabel.name
+     - The Security Label's name
+     - String
+     - Required if ``securityLabel`` is used within ``attribute``
    * - attribute.source
      - The Attribute's source
      - String
