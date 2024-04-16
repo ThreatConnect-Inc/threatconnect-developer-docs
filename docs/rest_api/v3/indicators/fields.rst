@@ -69,12 +69,12 @@ Alternatively, refer to the following table for a list of available fields that 
      - | {"data": [{"id": 12345}]}
        |
        | {"data": [{"hostName": "badguy.com", "type": "Host"}]}
-   * - attributes [1]_
+   * - attributes [1]_, [2]_
      - A list of Attributes added to the Indicator 
      - `Indicator Attribute Object <https://docs.threatconnect.com/en/latest/rest_api/v3/indicator_attributes/indicator_attributes.html>`_
      - FALSE
      - TRUE
-     - {"data": [{"type": "Attribute Type", "value": "Attribute Value", "source": "Attribute Source"}]}
+     - {"data": [{"type": "Description", "value": "Malicious IOC", "default": true}]}
    * - confidence
      - The Indicator's Confidence Rating 
      - Integer
@@ -111,13 +111,13 @@ Alternatively, refer to the following table for a list of available fields that 
      - FALSE
      - TRUE
      - "2023-10-04T12:34:56Z"
-   * - ownerId [2]_
+   * - ownerId [3]_
      - The ID of the `owner <https://docs.threatconnect.com/en/latest/rest_api/v3/owners/owners.html>`_ to which the Indicator belongs 
      - Integer
      - FALSE
      - FALSE
      - 1, 2, 3,...100
-   * - ownerName [2]_
+   * - ownerName [3]_
      - The name of the owner to which the Indicator belongs
      - String
      - FALSE
@@ -147,7 +147,7 @@ Alternatively, refer to the following table for a list of available fields that 
      - FALSE
      - TRUE
      - {"data": [{"name": "Targeted Attack"}]}
-   * - type [3]_
+   * - type [4]_
      - The type of Indicator being created
      - String
      - TRUE
@@ -155,8 +155,9 @@ Alternatively, refer to the following table for a list of available fields that 
      - "Address", "Host", "Registry Key"
 
 .. [1] To retrieve a list of available `Attribute Types <https://docs.threatconnect.com/en/latest/rest_api/v3/attribute_types/attribute_types.html>`_, send the following request: ``GET /v3/attributeTypes``.
-.. [2] By default, Indicators will be created in the Organization in which your API user account resides. To create an Indicator in a Community or Source, include the ``ownerId`` or ``ownerName`` field in your request. Alternatively, use the ``owner`` query parameter to `specify the owner <https://docs.threatconnect.com/en/latest/rest_api/v3/specify_owner.html>`_ in which to create the Indicator.
-.. [3] The following are accepted values for the ``type`` field:
+.. [2] To add a Description to an Indicator, use the ``attributes`` field to create a Description Attribute instead of the ``description`` field, as ``description`` is a read-only field. Similarly, to add a Source to an Indicator, use the ``attributes`` field to create a Source Attribute instead of the ``source`` field, as ``source`` is a read-only field.
+.. [3] By default, Indicators will be created in the Organization in which your API user account resides. To create an Indicator in a Community or Source, include the ``ownerId`` or ``ownerName`` field in your request. Alternatively, use the ``owner`` query parameter to `specify the owner <https://docs.threatconnect.com/en/latest/rest_api/v3/specify_owner.html>`_ in which to create the Indicator.
+.. [4] The following are accepted values for the ``type`` field:
 
     - ``Address``
     - ``EmailAddress``
@@ -239,17 +240,17 @@ File
    * - md5
      - The MD5 hash associated with the File Indicator
      - String
-     - TRUE [4]_
+     - TRUE [5]_
      - FALSE
    * - sha1
      - The SHA1 hash associated with the File Indicator
      - String
-     - TRUE [4]_
+     - TRUE [5]_
      - FALSE
    * - sha256
      - The SHA256 hash associated with the File Indicator
      - String
-     - TRUE [4]_
+     - TRUE [5]_
      - FALSE
    * - size
      - The size of the file associated with the File Indicator
@@ -257,7 +258,7 @@ File
      - FALSE
      - TRUE
 
-.. [4] When creating a File Indicator, you must include at least one valid hash.
+.. [5] When creating a File Indicator, you must include at least one valid hash.
 
 Host
 ====
@@ -417,13 +418,13 @@ Registry Key
      - String
      - TRUE
      - FALSE
-   * - Value Type [5]_
+   * - Value Type [6]_
      - The registry value type associated with the Registry Key Indicator
      - String
      - TRUE
      - FALSE
 
-.. [5] The following are accepted values for a Registry Key Indicator's ``Value Type`` field:
+.. [6] The following are accepted values for a Registry Key Indicator's ``Value Type`` field:
 
     - ``REG_NONE``
     - ``REG_BINARY``

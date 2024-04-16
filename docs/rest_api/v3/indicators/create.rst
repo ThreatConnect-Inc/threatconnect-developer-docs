@@ -24,7 +24,7 @@ The following request will create an **ultrabadguy.com** Host Indicator. It will
 - Activate the **DNS** and **Whois** features for the Indicator
 - Set the Indicator Status for the Indicator to active
 - Associate the existing Group whose ID is 12 to the Indicator, and create a new **Bad Guy** Adversary Group in a Source and associate it to the Indicator
-- Add an **Additional Analysis and Context** Attribute to the Indicator
+- Add a Description (i.e., a default Description Attribute) to the Indicator
 - Set the Indicator's Threat and Confidence Ratings
 - Apply the **TLP:AMBER** Security Label to the Indicator
 - Apply the **Targeted Attack** standard Tag and the **T1566 - Phishing** ATT&CK® Tag to the Indicator
@@ -61,9 +61,9 @@ The following request will create an **ultrabadguy.com** Host Indicator. It will
         "attributes": {
             "data": [
                 {
-                    "type": "Additional Analysis and Context",
+                    "type": "Description",
                     "value": "This host is very dangerous",
-                    "source": "Phase of Intrusion"
+                    "default": true
                 }
             ]
         },
@@ -103,6 +103,7 @@ JSON Response
             "lastModified": "2021-11-05T16:43:17Z",
             "rating": 5.00,
             "confidence": 85,
+            "description": "This host is very dangerous",
             "summary": "ultrabadguy.com",
             "privateFlag": false,
             "active": true,

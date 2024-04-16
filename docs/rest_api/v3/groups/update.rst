@@ -44,7 +44,7 @@ The following request will make the following updates to the Incident Group whos
 
 - Associate an Email Address Indicator (**verybadguy@bad.com**) that exists in Demo Community to the Group
 - Create a new Host Indicator (**ultrabadguy.com**) in the API user's Organization and associate it to the Group
-- Add an **Additional Analysis and Context Attribute** to the Group
+- Add a Description (i.e., a default Description Attribute) to the Group
 - Update the status of the Incident
 - Remove the **Targeted Attack** Tag applied to the Group
 
@@ -71,9 +71,9 @@ The following request will make the following updates to the Incident Group whos
         "attributes": {
             "data": [
                 {
-                    "type": "Additional Analysis and Context",
-                    "value": "Based on internal analysis, this incident was very severe.",
-                    "source": "Example Source"
+                    "type": "Description",
+                    "value": "A very severe incident",
+                    "default": true
                 }
             ]
         },

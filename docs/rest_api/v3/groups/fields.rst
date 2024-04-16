@@ -65,12 +65,12 @@ Alternatively, refer to the following table for a list of available fields that 
      - | {"data": [{"id": 12345}]}
        |
        | {"data": [{"phone": "0123456789", "type": "Phone"}]}
-   * - attributes [1]_
+   * - attributes [1]_, [2]_
      - A list of Attributes added to the Group 
      - `Group Attribute Object <https://docs.threatconnect.com/en/latest/rest_api/v3/group-attributes/group-attributes.html>`_
      - FALSE
      - TRUE
-     - {"data": [{"type": "Attribute Type", "value": "Attribute Value", "source": "Attribute Source"}]}
+     - {"data": [{"type": "Description", "value": "A dangerous Group", "default": true}]}
    * - externalDateAdded
      - The date and time when the Group was created externally
      - DateTime
@@ -107,13 +107,13 @@ Alternatively, refer to the following table for a list of available fields that 
      - TRUE
      - TRUE
      - "21-0043847: Threat Actor Capabilities"
-   * - ownerId [2]_
+   * - ownerId [3]_
      - The ID of the `owner <https://docs.threatconnect.com/en/latest/rest_api/v3/owners/owners.html>`_ to which the Group belongs
      - Integer
      - FALSE
      - FALSE
      - 1, 2, 3,...100
-   * - ownerName [2]_
+   * - ownerName [3]_
      - The name of the owner to which the Group belongs
      - String
      - FALSE
@@ -131,7 +131,7 @@ Alternatively, refer to the following table for a list of available fields that 
      - FALSE
      - TRUE
      - {"data": [{"name": "Targeted Attack"}]}
-   * - type [3]_
+   * - type [4]_
      - The type of Group being created
      - String
      - TRUE
@@ -151,8 +151,9 @@ Alternatively, refer to the following table for a list of available fields that 
      - "a1a1a1a1-a1a1-a1a1-a1a1-a1a1a1a1a1a1"
 
 .. [1] To retrieve a list of available `Attribute Types <https://docs.threatconnect.com/en/latest/rest_api/v3/attribute_types/attribute_types.html>`_, send the following request: ``GET /v3/attributeTypes``.
-.. [2] By default, Groups will be created in the Organization in which your API user account resides. To create a Group in a Community or Source, include the ``ownerId`` or ``ownerName`` field in your request. Alternatively, use the ``owner`` query parameter to `specify the owner <https://docs.threatconnect.com/en/latest/rest_api/v3/specify_owner.html>`_ in which to create the Group.
-.. [3] The following are accepted values for the ``type`` field:
+.. [2] To add a Description to a Group, use the ``attributes`` field to create a Description Attribute. Similarly, to add a Source to a Group, use the ``attributes`` field to create a Source Attribute.
+.. [3] By default, Groups will be created in the Organization in which your API user account resides. To create a Group in a Community or Source, include the ``ownerId`` or ``ownerName`` field in your request. Alternatively, use the ``owner`` query parameter to `specify the owner <https://docs.threatconnect.com/en/latest/rest_api/v3/specify_owner.html>`_ in which to create the Group.
+.. [4] The following are accepted values for the ``type`` field:
 
     - ``Adversary``
     - ``Attack Pattern``
@@ -196,7 +197,7 @@ Document
      - String
      - TRUE
      - TRUE
-   * - malware [4]_
+   * - malware [5]_
      - Indicates whether the Document is malware
      - Boolean
      - FALSE
@@ -207,7 +208,7 @@ Document
      - FALSE*
      - TRUE
 
-.. [4] If ``malware`` is set to ``true``, then the ``password`` field will be required.
+.. [5] If ``malware`` is set to ``true``, then the ``password`` field will be required.
 
 To upload a file to a Document Group or update the contents of a file uploaded to a Document Group, see the `Upload a File to a Document or Report Group <#upload-a-file-to-a-document-or-report-group-2>`_ and `Update a Document or Report Group's File <#update-a-document-or-report-group-s-file-2>`_ sections, respectively.
 
@@ -264,13 +265,13 @@ Event
      - Date
      - FALSE
      - TRUE
-   * - status [5]_
+   * - status [6]_
      - The status of the Event
      - String
      - FALSE
      - TRUE
 
-.. [5] The following are accepted values for an Event Group's ``status`` field:
+.. [6] The following are accepted values for an Event Group's ``status`` field:
 
     - ``Needs Review``
     - ``False Positive``
@@ -294,13 +295,13 @@ Incident
      - Date
      - FALSE
      - TRUE
-   * - status [6]_
+   * - status [7]_
      - The status of the Incident
      - String
      - FALSE
      - TRUE
 
-.. [6] The following are accepted values for an Incident Group's ``status`` field:
+.. [7] The following are accepted values for an Incident Group's ``status`` field:
 
     - ``New``
     - ``Open``
@@ -354,20 +355,20 @@ Signature
      - String
      - TRUE
      - TRUE
-   * - fileText [7]_
+   * - fileText [8]_
      - The file text of the Signature
      - String
      - TRUE
      - TRUE
-   * - fileType [8]_
+   * - fileType [9]_
      - The file type of the Signature
      - String
      - TRUE
      - TRUE
 
-.. [7] The ``fileText`` field contains the Signature itself, which must be properly escaped and encoded when creating or updating the Signature Group.
+.. [8] The ``fileText`` field contains the Signature itself, which must be properly escaped and encoded when creating or updating the Signature Group.
 
-.. [8] The following are accepted values for a Signature Group's ``fileType`` field:
+.. [9] The following are accepted values for a Signature Group's ``fileType`` field:
 
     - ``Bro``
     - ``ClamAV``
@@ -425,14 +426,14 @@ Task
      - FALSE
      - TRUE
      - "2021-04-30T00:00:00Z"
-   * - status [9]_
+   * - status [10]_
      - The status of the Task
      - String
      - FALSE
      - FALSE
      - "In Progress", "Not Started"
 
-.. [9] The following are accepted values for a Task Group's ``status`` field:
+.. [10] The following are accepted values for a Task Group's ``status`` field:
 
     - ``Not Started``
     - ``In Progress``

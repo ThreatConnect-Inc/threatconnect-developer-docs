@@ -41,12 +41,12 @@ Alternatively, refer to the following tables for a list of available fields that
      - | {"data": [{"id": 12345}]}
        |
        | {"data": [{"name": "Bad Adversary", "type": "Adversary"}]}
-   * - attributes [2]_
+   * - attributes [2]_, [3]_
      - A list of Attributes added to the Victim
      - `Victim Attribute Object <https://docs.threatconnect.com/en/latest/rest_api/v3/victim_attributes/victim_attributes.html>`_
      - FALSE
      - TRUE
-     - {"data": [{"type": "Attribute Type", "value": "Attribute Value", "source": "Attribute Source"}]}
+     - {"data": [{"type": "Description", "value": "Member of Finance department", "default": true}]}
    * - name
      - The Victim's name
      - String
@@ -99,6 +99,7 @@ Alternatively, refer to the following tables for a list of available fields that
     - ``WebSite``
 
 .. [2] To retrieve a list of available `Attribute Types <https://docs.threatconnect.com/en/latest/rest_api/v3/attribute_types/attribute_types.html>`_, send the following request: ``GET /v3/attributeTypes``.
+.. [3] To add a Description to a Victim, use the ``attributes`` field to create a Description Attribute instead of the ``description`` field, as ``description`` is a read-only field.
 
 Include Additional Fields in Responses
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

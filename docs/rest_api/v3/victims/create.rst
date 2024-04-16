@@ -14,7 +14,7 @@ For example, the following request will create a Victim named John Doe. It will 
 
 - Create a new Email Address Victim Asset and add it to the Victim
 - Associate an existing Group to the Victim, and create a new **Bad Guy** Adversary Group and associate it to the Victim
-- Add an **Additional Analysis and Context** Attribute to the Victim
+- Add a Description (i.e., a default Description Attribute) to the Victim
 - Apply the **Targeted Attack** standard Tag and the **T1566 - Phishing** ATT&CK® Tag to the Victim
 - Configure the Victim's nationality, organization, suborganization, and work location
 
@@ -54,9 +54,9 @@ For example, the following request will create a Victim named John Doe. It will 
         "attributes": {
             "data": [
                 {
-                    "type": "Additional Analysis and Context",
-                    "value": "Example value",
-                    "source": "Example Source"
+                    "type": "Description",
+                    "value": "John Doe works in the Company ABC's HR Department.",
+                    "default": true
                 }
             ]
         },

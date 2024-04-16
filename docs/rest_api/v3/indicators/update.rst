@@ -88,6 +88,7 @@ JSON Response
             "lastModified": "2021-11-05T17:21:06Z",
             "rating": 5.00,
             "confidence": 92,
+            "description": "This host is very dangerous",
             "summary": "ultrabadguy.com",
             "privateFlag": false,
             "active": true,
