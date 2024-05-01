@@ -4,6 +4,9 @@ Indicator Enrichment
 
 Enriching threat intelligence data helps remove false positives and delivers actionable intelligence for threat investigations and other security operations. ThreatConnect includes built-in enrichment services that you can use to retrieve data from a third-party enrichment service that a System Administrator has enabled on your instance and for a given Indicator type.
 
+.. note::
+    You must include the following Content-Type HTTP header in your request in order to enrich an Indicator: ``Content-Type: application/json``
+
 Enrich Indicators With Data From an Enrichment Service
 ------------------------------------------------------
 
@@ -62,6 +65,7 @@ Send a request in the following format to enrich a specific Indicator with data 
 .. code::
 
     POST /v3/indicators/{indicatorId or indicatorSummary}/enrich?type={enrichmentService}
+    Content-Type: application/json
 
 .. note::
 
@@ -75,6 +79,7 @@ In this first example, the request will enrich the **71.6.135.131** Address Indi
 .. code::
 
     POST /v3/indicators/71.6.135.131/enrich?type=Shodan
+    Content-Type: application/json
 
 JSON Response
 
@@ -137,6 +142,7 @@ In this second example, the request will enrich the URL Indicator whose ID is 20
 .. code::
 
     POST /v3/indicators/20/enrich?type=URLScan
+    Content-Type: application/json
 
 JSON Response
 
@@ -188,6 +194,7 @@ In this third example, the request will enrich the **msgsafe.io** Host Indicator
 .. code::
 
     POST /v3/indicators/msgsafe.io/enrich?type=RiskIQ&owner=CAL+Automated+Threat+Library
+    Content-Type: application/json
 
 JSON Response
 
@@ -249,6 +256,7 @@ In this example, the request will enrich the zeverco.com Host Indicator in the A
 .. code::
 
     POST /v3/indicators/zeverco.com/enrich?type=DomainTools&type=VirusTotalV3
+    Content-Type: application/json
 
 JSON Response
 
@@ -326,6 +334,7 @@ If one or more enrichment services is not available for the Indicator type inclu
 .. code::
 
     POST /v3/indicators/zeverco.com/enrich?type=Shodan&type=VirusTotalV3
+    Content-Type: application/json
 
 JSON Response
 
@@ -345,6 +354,8 @@ Send a request in the following format to enrich multiple Indicators with data r
 .. code::
 
     POST /v3/indicators/enrich?type={enrichmentService}
+    Content-Type: application/json
+    
     {
         "data": [
             {
@@ -375,6 +386,8 @@ In the following example, the request will enrich the Indicator whose ID is 15 (
 .. code::
 
     POST /v3/indicators/enrich?type=VirusTotalV3
+    Content-Type: application/json
+
     {
         "data": [
             {
@@ -457,6 +470,8 @@ In the following example, the request will enrich two Address Indicators in the 
 .. code::
 
     POST /v3/indicators/enrich?type=Shodan&type=VirusTotalV3
+    Content-Type: application/json
+
     {
         "data": [
             {
@@ -609,6 +624,8 @@ If one or more enrichment services is not available for one of the Indicator typ
 .. code::
 
     POST /v3/indicators/enrich?type=Shodan&type=VirusTotalV3
+    Content-Type: application/json
+    
     {
         "data": [
             {
