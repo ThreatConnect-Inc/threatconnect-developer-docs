@@ -116,7 +116,7 @@ After you obtain the ID of the Service you want to test, send a request in the f
 
 .. code::
 
-    curl --location 'https://companyabc.threatconnect.com/api/v3/token/svc' \
+    curl --location --request POST 'https://companyabc.threatconnect.com/api/v3/token/svc' \
     --header 'Timestamp: $UNIX_EPOCH_TIMESTAMP' \
     --header 'Authorization: TC $ACCESS_ID:$SIGNATURE' \
     --header 'Content-Type: application/json' \
