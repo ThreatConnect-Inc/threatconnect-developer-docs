@@ -6,6 +6,8 @@ The following example illustrates the basic format for creating a Group:
 .. code::
 
     POST /v3/groups
+    Content-Type: application/json
+
     {
         "name": "Group name goes here",
         "type": "Group type goes here"
@@ -33,6 +35,8 @@ The following request will create an Incident Group for an Incident that took pl
 .. code::
 
     POST /v3/groups
+    Content-Type: application/json
+    
     {
         "type": "Incident",
         "name": "Bad Incident",

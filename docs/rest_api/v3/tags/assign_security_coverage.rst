@@ -9,6 +9,8 @@ Send a request in the following format to update the security coverage assigned 
 .. code::
 
     PUT /v3/tags/{att&ckTagId}
+    Content-Type: application/json
+    
     {
         "securityCoverage": {
             "value": "<securityCoverageLevel>"
@@ -23,6 +25,8 @@ For example, the following request will assign **Weak** coverage to the ATT&CK T
 .. code::
 
    PUT /v3/tags/750
+   Content-Type: application/json
+
     {
         "securityCoverage": {
             "value": "Weak"

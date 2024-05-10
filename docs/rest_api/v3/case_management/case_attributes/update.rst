@@ -6,6 +6,8 @@ The following example illustrates the basic format for updating a Case Attribute
 .. code::
 
     PUT /v3/caseAttributes/{caseAttributeId}
+    Content-Type: application/json
+
     {
         {updatedField}: {updatedValue}
     }
@@ -15,6 +17,8 @@ For example, the following query will update the value of the Case Attribute who
 .. code::
 
     PUT /v3/caseAttributes/1
+    Content-Type: application/json
+    
     {
         "value": "75"
     }

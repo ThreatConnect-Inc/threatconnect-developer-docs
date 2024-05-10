@@ -6,6 +6,8 @@ The following example illustrates the basic format for creating a Task:
 .. code::
 
     POST /v3/tasks
+    Content-Type: application/json
+
     {
         "caseId": 1,
         "name": "Example Task for Workflow Case"
@@ -19,6 +21,8 @@ For example, the following request will add a Task named "Create Meeting Notes F
 .. code::
 
     POST /v3/tasks
+    Content-Type: application/json
+    
     {
         "caseId": 1,
         "name": "Create Meeting Notes Folder",

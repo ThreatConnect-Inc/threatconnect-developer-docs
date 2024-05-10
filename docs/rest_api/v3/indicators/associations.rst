@@ -146,6 +146,8 @@ In the following example, the request will associate an existing Address Indicat
 .. code::
 
     PUT /v3/indicators/ASN204288?fields=associatedIndicators
+    Content-Type: application/json
+
     {
         "associatedIndicators": {
             "data": [
@@ -205,6 +207,8 @@ If you try to associate an ASN Indicator to an Address Indicator, as in the foll
 .. code::
 
     PUT /v3/indicators/66.96.146.129
+    Content-Type: application/json
+
     {
         "associatedIndicators": {
             "data": [
@@ -303,6 +307,8 @@ Because the ``fileActions`` field is not included in the API response by default
 .. code::
 
     POST /v3/indicators?fields=fileActions
+    Content-Type: application/json
+    
     {
         "type": "File",
         "md5": "2ea0564f33e4cb67063c4a06734eb627",

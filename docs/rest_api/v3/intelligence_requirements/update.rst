@@ -8,6 +8,8 @@ Send a request in the following format to update a specific IR. Note that ``{int
 .. code::
 
     PUT /v3/intelRequirements/{intelRequirementId}
+    Content-Type: application/json
+
     {
         "<fieldName>": <fieldValue>
     }
@@ -25,6 +27,8 @@ For example, the following request will update the keywords used in the keyword 
 .. code::
 
     PUT /v3/intelRequirements/10
+    Content-Type: application/json
+    
     {
         "associatedGroups": {
             "data": [

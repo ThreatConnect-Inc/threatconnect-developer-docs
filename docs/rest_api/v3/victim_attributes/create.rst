@@ -6,6 +6,8 @@ The following example illustrates the basic format for creating a Victim Attribu
 .. code::
 
     POST /v3/victimAttributes
+    Content-Type: application/json
+
     {
         "victimId": 12345,
         "type": "Attribute type goes here",
@@ -17,6 +19,8 @@ For example, the following request will create an Attribute and add it to the Vi
 .. code::
 
     POST /v3/victimAttributes
+    Content-Type: application/json
+    
     {
         "victimId": 2,
         "source": "Phase of Intrusion",

@@ -6,6 +6,8 @@ The following example illustrates the basic format for updating a Workflow Event
 .. code::
 
     PUT /v3/workflowEvents/{workflowEventId}
+    Content-Type: application/json
+
     {
         {updatedField}: {updatedValue}
     }
@@ -18,6 +20,8 @@ For example, the following request will update the summary for the Workflow Even
 .. code::
 
     PUT /v3/workflowEvents/4
+    Content-Type: application/json
+    
     {
         "summary": "New Workflow Event summary",
         "notes": {"data": [{"text": "Additional information about this Workflow Event"}]}

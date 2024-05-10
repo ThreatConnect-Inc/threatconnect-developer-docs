@@ -6,6 +6,8 @@ The following example illustrates the basic format for creating a Workflow Templ
 .. code::
 
     POST /v3/workflowTemplates
+    Content-Type: application/json
+
     {
         "name": "Example Workflow Template"
     }
@@ -15,6 +17,8 @@ For example, the following request will create a Workflow Template named **Phish
 .. code::
 
     POST /v3/workflowTemplates
+    Content-Type: application/json
+    
     {
         "name": "Phishing Investigation Workflow",
         "description": "Workflow for phishing investigations."

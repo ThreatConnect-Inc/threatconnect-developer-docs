@@ -6,6 +6,8 @@ The following example illustrates the basic format for updating a Workflow Templ
 .. code::
 
     PUT /v3/workflowTemplates/{workflowTemplateId}
+    Content-Type: application/json
+
     {
         {updatedField}: {updatedValue}
     }
@@ -15,6 +17,8 @@ For example, the following request will update the version number of the Workflo
 .. code::
 
     PUT /v3/workflowTemplates/3
+    Content-Type: application/json
+    
     {
         "version": 2,
         "configAttribute": [

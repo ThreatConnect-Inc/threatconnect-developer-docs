@@ -6,6 +6,8 @@ The following example illustrates the basic format for creating a Group Attribut
 .. code::
 
     POST /v3/groupAttributes
+    Content-Type: application/json
+
     {
         "groupId": 12345,
         "type": "Attribute type goes here",
@@ -17,6 +19,8 @@ For example, the following request will create an Attribute and add it to the Gr
 .. code::
 
     POST /v3/groupAttributes
+    Content-Type: application/json
+    
     {
         "groupId": 20,
         "source": "Phase of Intrusion",

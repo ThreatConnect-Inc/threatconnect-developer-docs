@@ -10,6 +10,8 @@ The following example illustrates the basic format for creating a user:
 .. code::
 
     POST /v3/security/users
+    Content-Type: application/json
+
     {
         "firstName": "John",
         "lastName": "Smith",
@@ -27,6 +29,8 @@ For example, the following request will create a new user who will be required t
 .. code::
 
     POST /v3/security/users
+    Content-Type: application/json
+    
     {
         "firstName": "Herschel",
         "lastName": "Hodges",

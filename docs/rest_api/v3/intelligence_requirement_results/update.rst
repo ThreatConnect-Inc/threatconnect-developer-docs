@@ -20,6 +20,8 @@ Send a request in the following format to archive a specific result.
 .. code::
 
     PUT /v3/intelRequirements/results/{resultId}
+    Content-Type: application/json
+
     {
         "archived": true
     }
@@ -31,6 +33,8 @@ For example, the following request will archive the result whose ID is 10.
 .. code::
 
     PUT /v3/intelRequirements/results/10
+    Content-Type: application/json
+
     {
         "archived": true
     }
@@ -68,6 +72,8 @@ Send a request in the following format to associate a specific result to its IR.
 .. code::
 
     PUT /v3/intelRequirements/results/{resultId}
+    Content-Type: application/json
+
     {
         "associated": true
     }
@@ -79,6 +85,8 @@ For example, the following request will associate the result whose ID is 11 to i
 .. code::
 
     PUT /v3/intelRequirements/results/11
+    Content-Type: application/json
+
     {
         "associated": true
     }
@@ -122,6 +130,8 @@ Send a request in the following format to mark a result as a false result for th
 .. code::
 
     PUT /v3/intelRequirements/results/{resultId}
+    Content-Type: application/json
+
     {
         "falsePositive": true
     }
@@ -133,6 +143,8 @@ For example, the following request will mark the result whose ID is 12 as a fals
 .. code::
 
     PUT /v3/intelRequirements/results/12
+    Content-Type: application/json
+    
     {
         "falsePositive": true
     }

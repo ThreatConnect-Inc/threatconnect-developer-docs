@@ -8,6 +8,8 @@ The following example illustrates the basic format for updating a Group:
 .. code::
 
     PUT /v3/groups/{groupId}
+    Content-Type: application/json
+
     {
         {updatedField}: {updatedValue}
     }
@@ -17,6 +19,8 @@ The following example illustrates the basic format for updating a Group:
 .. code::
 
     PUT /v3/groups/{groupXid}?owner={ownerName}
+    Content-Type: application/json
+
     {
         {updatedField}: {updatedValue}
     }
@@ -54,6 +58,8 @@ The following request will make the following updates to the Incident Group whos
 .. code::
 
     PUT /v3/groups/3
+    Content-Type: application/json
+    
     {
         "associatedIndicators": {
             "data": [

@@ -6,6 +6,8 @@ The following example illustrates the basic format for updating a Case:
 .. code::
 
     PUT /v3/cases/{caseId}
+    Content-Type: application/json
+
     {
         {updatedField}: {updatedValue}
     }
@@ -22,6 +24,8 @@ For example, the following request will make the following updates to the Case w
 .. code::
 
     PUT /v3/cases/1
+    Content-Type: application/json
+    
     {
         "resolution": "False Positive",
         "status": "Closed",

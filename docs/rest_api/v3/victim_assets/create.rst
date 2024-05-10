@@ -6,6 +6,8 @@ The following example illustrates the basic format for creating a Victim Asset:
 .. code::
 
     POST /v3/victimAssets
+    Content-Type: application/json
+
     {
         "type": "Victim Asset type goes here",
         "victimId": 12345
@@ -17,6 +19,8 @@ For example, the following request will create a Phone Victim Asset and add it t
 .. code::
 
     POST /v3/victimAssets
+    Content-Type: application/json
+    
     {
         "phone": "0123456789",
         "type": "Phone",

@@ -292,6 +292,8 @@ When updating an Artifact, Case, Group, Indicator, IR, Victim, or Victim Asset, 
 .. code::
 
     PUT /v3/indicators/badguy.com
+    Content-Type: application/json
+    
     {
         "associatedGroups": {
             "data": [

@@ -6,6 +6,8 @@ The following example illustrates the basic format for creating a Note:
 .. code::
 
     POST /v3/notes
+    Content-Type: application/json
+
     {
         "caseId": 1,
         "text": "This is an example note."
@@ -16,6 +18,8 @@ For example, the following request will add a Note to the Case whose ID is 3:
 .. code::
 
     POST /v3/notes
+    Content-Type: application/json
+    
     {
         "caseId": 3,
         "text": "Review the contents of the malware investigation that was recently closed."

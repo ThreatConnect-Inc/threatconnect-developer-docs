@@ -6,6 +6,8 @@ The following example illustrates the basic format for updating a Group Attribut
 .. code::
 
     PUT /v3/groupAttributes/{groupAttributeId}
+    Content-Type: application/json
+
     {
         {updatedField}: {updatedValue}
     }
@@ -15,6 +17,8 @@ For example, the following request will update the value of the Group Attribute 
 .. code::
 
     PUT /v3/groupAttributes/10
+    Content-Type: application/json
+
     {
         "source": "CAL",
         "value": "APT28, IRON TWILIGHT, SNAKEMACKEREL, Swallowtail, Group 74, Sednit, Sofacy, Pawn Storm, Fancy Bear, STRONTIUM, Tsar Team, Threat Group-4127, TG-4127"

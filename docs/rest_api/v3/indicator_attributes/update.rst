@@ -6,6 +6,8 @@ The following example illustrates the basic format for updating an Indicator Att
 .. code::
 
     PUT /v3/indicatorAttributes/{indicatorAttributeId}
+    Content-Type: application/json
+
     {
         {updatedField}: {updatedValue}
     }
@@ -15,6 +17,8 @@ For example, the following request will update the value of the Indicator Attrib
 .. code::
 
     PUT /v3/indicatorAttributes/10
+    Content-Type: application/json
+    
     {
         "default": true,
         "value": "Host used by hacker conglomerate traced to China."

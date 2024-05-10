@@ -6,6 +6,8 @@ The following example illustrates the basic format for updating a Tag:
 .. code::
 
     PUT /v3/tags/{tagId}
+    Content-Type: application/json
+
     {
         {updatedField}: {updatedValue}
     }
@@ -15,6 +17,8 @@ For example, the following request will rename the Tag whose ID is 1 from **Rans
 .. code::
 
     PUT /v3/tags/1
+    Content-Type: application/json
+    
     {
         "name": "Ransomware Attack"
     }

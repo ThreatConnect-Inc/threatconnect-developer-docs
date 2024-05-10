@@ -13,6 +13,8 @@ The following request will update an existing File Indicator containing an MD5 f
 .. code::
 
     PUT /v3/indicators/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+    Content-Type: application/json
+
     {
         "sha1": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
         "mode": "merge"
@@ -48,6 +50,8 @@ To remove a single file hash from a File Indicator, include ``"mode": "delete"``
 .. code::
 
     PUT /v3/indicators/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA%20%3A%20BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+    Content-Type: application/json
+    
     {
         "sha1": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
         "mode": "delete"

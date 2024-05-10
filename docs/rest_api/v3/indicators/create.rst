@@ -6,6 +6,8 @@ The follow example illustrates the basic format for creating an Indicator:
 .. code::
 
     POST /v3/indicators
+    Content-Type: application/json
+
     {
         "type": "Indicator type goes here",
         //required fields for the selected Indicator type
@@ -40,6 +42,8 @@ The following request will create an **ultrabadguy.com** Host Indicator. It will
 .. code::
 
     POST /v3/indicators
+    Content-Type: application/json
+    
     {
         "type": "Host",
         "hostName": "ultrabadguy.com",

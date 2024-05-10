@@ -6,6 +6,8 @@ The following example illustrates the basic format for updating a Note:
 .. code::
 
     PUT /v3/notes/{noteId}
+    Content-Type: application/json
+
     {
         "text": "{updatedNoteContents}"
     }
@@ -15,6 +17,8 @@ For example, the following request will update the contents of the Note whose ID
 .. code::
 
     PUT /v3/notes/2
+    Content-Type: application/json
+    
     {
         "text": "More detailed notes about a phishing threat."
     }

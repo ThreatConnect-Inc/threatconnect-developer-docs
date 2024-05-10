@@ -6,6 +6,8 @@ The following example illustrates the basic format for creating a Case Attribute
 .. code::
 
     POST /v3/caseAttributes
+    Content-Type: application/json
+
     {
         "caseId": 1,
         "type": "Case Attribute Type",
@@ -17,6 +19,8 @@ For example, the following request will add a Case Attribute to the Case whose I
 .. code::
 
     POST /v3/caseAttributes
+    Content-Type: application/json
+    
     {
         "caseId": 1,
         "type": "Phishing Open Rate",

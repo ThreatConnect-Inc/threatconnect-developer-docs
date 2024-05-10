@@ -6,6 +6,8 @@ The following example illustrates the basic format for creating a Victim:
 .. code::
 
     POST /v3/victims
+    Content-Type: application/json
+
     {
         "name": "John Doe"
     }
@@ -29,6 +31,8 @@ For example, the following request will create a Victim named John Doe. It will 
 .. code::
 
     POST /v3/victims
+    Content-Type: application/json
+    
     {
         "name": "John Doe",
         "assets": {

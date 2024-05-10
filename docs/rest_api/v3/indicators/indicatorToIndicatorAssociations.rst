@@ -61,8 +61,17 @@ In the following example, the request will associate an existing Address Indicat
 .. code::
 
     PUT /v3/indicators/ASN204288?fields=associatedIndicators
+    Content-Type: application/json
+
     {
-        "associatedIndicators": {"data": [{"ip": "66.96.146.129", "type": "Address"}]}
+      "associatedIndicators": {
+        "data": [
+          {
+            "ip": "66.96.146.129", 
+            "type": "Address"
+          }
+        ]
+      }
     }
 
 JSON Response
@@ -113,8 +122,17 @@ If you try to associate an ASN Indicator to an Address Indicator, as in the foll
 .. code::
 
     PUT /v3/indicators/66.96.146.129
+    Content-Type: application/json
+
     {
-        "associatedIndicators": {"data": [{"AS Number": "ASN204288", "type": "ASN"}]}
+      "associatedIndicators": {
+        "data": [
+          {
+            "AS Number": "ASN204288",
+            "type": "ASN"
+          }
+        ]
+      }
     }
 
 JSON Response

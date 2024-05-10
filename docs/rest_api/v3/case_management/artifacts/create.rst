@@ -6,6 +6,8 @@ The following example illustrates the basic format for creating an Artifact:
 .. code::
 
     POST /v3/artifacts
+    Content-Type: application/json
+
     {
         "caseId": 1,
         "summary": "Summary of the data contained in the Artifact",
@@ -24,6 +26,8 @@ For example, the following request will add an Email Address Artifact with a sum
 .. code::
 
     POST /v3/artifacts
+    Content-Type: application/json
+    
     {
         "caseId": 1,
         "summary": "badguy@bad.com",

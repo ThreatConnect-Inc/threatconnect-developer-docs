@@ -6,6 +6,8 @@ The following example illustrates the basic format for creating a Workflow Event
 .. code::
 
     POST /v3/workflowEvents
+    Content-Type: application/json
+
     {
         "caseId": 1,
         "summary": "Summary of the Workflow Event"
@@ -16,6 +18,8 @@ For example, the following request will add a Workflow Event with a summary of "
 .. code::
 
     POST /v3/workflowEvents
+    Content-Type: application/json
+    
     {
         "caseId": 1,
         "summary": "Notes about Case uploaded to SOC team shared drive"

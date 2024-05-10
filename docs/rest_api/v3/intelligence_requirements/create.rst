@@ -8,6 +8,8 @@ Send a request in the following format to create an IR in your Organization. Not
 .. code::
 
     POST /v3/intelRequirements
+    Content-Type: application/json
+    
     {
         "category": {
             "name": "CISO Priorities"

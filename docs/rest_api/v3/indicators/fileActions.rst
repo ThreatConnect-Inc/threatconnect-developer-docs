@@ -67,6 +67,8 @@ Because the ``fileActions`` field is not included in the API response by default
 .. code::
 
     POST /v3/indicators?fields=fileActions
+    Content-Type: application/json
+    
     {
         "type": "File",
         "md5": "2ea0564f33e4cb67063c4a06734eb627",

@@ -6,6 +6,8 @@ The following example illustrates the basic format for updating an Artifact:
 .. code::
 
     PUT /v3/artifacts/{artifactId}
+    Content-Type: application/json
+
     {
         {updatedField}: {updatedValue}
     }
@@ -15,6 +17,8 @@ For example, the following request will update the summary of the Artifact whose
 .. code::
 
     PUT /v3/artifacts/1
+    Content-Type: application/json
+    
     {
         "summary": "verybadguy@bad.com"
     }

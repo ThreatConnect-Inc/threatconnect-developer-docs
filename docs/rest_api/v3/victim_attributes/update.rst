@@ -6,6 +6,8 @@ The following example illustrates the basic format for updating a Victim Attribu
 .. code::
 
     PUT /v3/victimAttributes/{victimAttributeId}
+    Content-Type: application/json
+
     {
         {updatedField}: {updatedValue}
     }
@@ -15,6 +17,8 @@ For example, the following request will update the value of the Victim Attribute
 .. code::
 
     PUT /v3/victimAttributes/1
+    Content-Type: application/json
+    
     {
         "default": true,
         "value": "Based on additional analysis, it was determined that this victim's social media, bank, and email accounts were hacked as the result of a phishing attack."

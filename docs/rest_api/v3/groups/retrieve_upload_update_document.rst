@@ -32,6 +32,8 @@ Before you can upload a file to a Document or Report Group, the Group must exist
 .. code::
 
     POST /v3/groups
+    Content-Type: application/json
+
     {
         "type": "Document",
         "fileName": "example_document.pdf",
@@ -43,6 +45,8 @@ Before you can upload a file to a Document or Report Group, the Group must exist
 .. code::
 
     POST /v3/groups
+    Content-Type: application/json
+    
     {
         "type": "Report",
         "fileName": "example_report.pdf",

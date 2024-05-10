@@ -10,6 +10,8 @@ The following example illustrates the basic format for updating a user:
 .. code::
 
     PUT /v3/security/users/{userId}
+    Content-Type: application/json
+
     {
         {updatedField}: {updatedValue}
     }
@@ -20,6 +22,8 @@ For example, the following request will disable and lock the account for the use
 .. code::
 
     PUT /v3/security/users/11
+    Content-Type: application/json
+    
     {
         "disabled": true,
         "locked": true

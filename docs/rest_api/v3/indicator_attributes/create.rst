@@ -6,6 +6,8 @@ The following example illustrates the basic format for creating an Indicator Att
 .. code::
 
     POST /v3/indicatorAttributes
+    Content-Type: application/json
+
     {
         "indicatorId": 12345,
         "type": "Attribute type goes here",
@@ -17,6 +19,8 @@ For example, the following request will create an Attribute and add it to the In
 .. code::
 
     POST /v3/indicatorAttributes
+    Content-Type: application/json
+    
     {
         "indicatorId": 20,
         "source": "Phase of Intrusion",

@@ -114,6 +114,8 @@ Because the ``associatedGroups``, ``securityLabels``, and ``tags`` fields are no
 .. code::
 
     PUT /v3/indicators/ultrabadguy.com?fields=associatedGroups&fields=securityLabels&fields=tags
+    Content-Type: application/json
+    
     {
         "associatedGroups": {
             "data": [

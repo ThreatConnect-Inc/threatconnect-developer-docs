@@ -22,6 +22,8 @@ The following request will create a new Adversary Group in the owner named **Dem
 .. code::
 
     POST /v3/groups?owner=Demo%20Community
+    Content-Type: application/json
+    
     {
         "type": "Adversary",
         "name": "Bad Guy"

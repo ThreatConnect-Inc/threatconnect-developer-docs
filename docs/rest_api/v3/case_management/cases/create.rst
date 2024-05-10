@@ -6,6 +6,8 @@ The following example illustrates the basic format for creating a Case:
 .. code::
 
     POST /v3/cases
+    Content-Type: application/json
+
     {
         "name": "Case name",
         "status": "Case status",
@@ -31,6 +33,8 @@ For example, the following request will create a Case named "Phishing Investigat
 .. code::
 
     POST /v3/cases
+    Content-Type: application/json
+    
     {
         "artifacts": {
             "data": [

@@ -6,6 +6,8 @@ The following example illustrates the basic format for updating a Victim:
 .. code::
 
     PUT /v3/victims/{victimId}
+    Content-Type: application/json
+
     {
         {updatedField}: {updatedValue}
     }
@@ -22,6 +24,8 @@ For example, the following request will perform the following actions for the Vi
 .. code::
 
     PUT /v3/victims/2
+    Content-Type: application/json
+    
     {
         "assets": {
             "data": [

@@ -6,6 +6,8 @@ The following example illustrates the basic format for updating an Indicator:
 .. code::
 
     PUT /v3/indicators/{indicatorId or indicatorSummary}
+    Content-Type: application/json
+
     {
         {updatedField}: {updatedValue}
     }
@@ -44,6 +46,8 @@ The following request will make the following updates to the **ultrabadguy.com**
 .. code::
 
     PUT /v3/indicators/ultrabadguy.com
+    Content-Type: application/json
+    
     {
         "dnsActive": false,
         "associatedGroups": {

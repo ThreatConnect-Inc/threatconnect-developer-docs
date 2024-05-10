@@ -6,6 +6,8 @@ The following example illustrates the basic format for updating a Task:
 .. code::
 
     PUT /v3/tasks/{taskId}
+    Content-Type: application/json
+
     {
         {updatedField}: {updatedValue}
     }
@@ -15,6 +17,8 @@ For example, the following request will make the Task whose ID is 3 required for
 .. code::
 
     PUT /v3/tasks/3
+    Content-Type: application/json
+    
     {
         "dueDate": "2022-04-05T10:30:00Z",
         "required": true

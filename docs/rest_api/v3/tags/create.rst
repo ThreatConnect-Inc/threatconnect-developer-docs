@@ -6,6 +6,8 @@ The following example illustrates the basic format for creating a Tag:
 .. code::
 
     POST /v3/tags
+    Content-Type: application/json
+
     {
         "name": "Tag name goes here",
         "description": "Tag description goes here"
@@ -16,6 +18,8 @@ For example, the following request will create a Tag named **Ransomware**:
 .. code::
 
     POST /v3/tags
+    Content-Type: application/json
+    
     {
         "name": "Ransomware",
         "description": "Apply this Tag to objects related to ransomware attacks."
