@@ -4,7 +4,7 @@ Endpoint Options
 Available Fields
 ^^^^^^^^^^^^^^^^
 
-Send the following request to `retrieve a list of available fields <https://docs.threatconnect.com/en/latest/rest_api/v3/retrieve_fields.html>`_that may be included in responses returned from the ``/v3/job/executions`` endpoint, which is a **read-only** endpoint:
+Send the following request to `retrieve a list of available fields <https://docs.threatconnect.com/en/latest/rest_api/v3/retrieve_fields.html>`_ that may be included in responses returned from the ``/v3/job/executions`` endpoint, which is a **read-only** endpoint:
 
 .. code::
 
@@ -22,4 +22,4 @@ Send the following request to retrieve a list of valid TQL parameters you can us
     OPTIONS /v3/job/executions/tql
 
 .. hint::
-    See the `"Retrieve Job Executions Completed During a Specific Time Range" <#retrieve-job-executions-completed-during-a-specific-time-range>`_ and `"Retrieve Executions for a Specific Job" <#retrieve-executions-for-a-specific-job>`_ sections for example use cases of the ``tql`` query parameter.
+    See the `"Retrieve Job Executions Completed During a Specific Time Range" <#id1>`_ and `"Retrieve Executions for a Specific Job" <#id2>`_ sections for example use cases of the ``tql`` query parameter.

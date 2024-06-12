@@ -4,7 +4,7 @@ Endpoint Options
 Available Fields
 ^^^^^^^^^^^^^^^^
 
-Send the following request to `retrieve a list of available fields <https://docs.threatconnect.com/en/latest/rest_api/v3/retrieve_fields.html>`_that may be included in responses returned from the ``/v3/jobs`` endpoint, which is a **read-only** endpoint:
+Send the following request to `retrieve a list of available fields <https://docs.threatconnect.com/en/latest/rest_api/v3/retrieve_fields.html>`_ that may be included in responses returned from the ``/v3/jobs`` endpoint, which is a **read-only** endpoint:
 
 .. code::
 
@@ -33,4 +33,4 @@ Send the following request to retrieve a list of valid TQL parameters you can us
     OPTIONS /v3/jobs/tql
 
 .. hint::
-    See the `"Retrieve a Specific Job" <#retrieve-a-specific-job>`_ section for example use cases of the ``tql`` query parameter.
+    See the `"Retrieve a Specific Job" <#id1>`_ section for example use cases of the ``tql`` query parameter.
