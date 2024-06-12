@@ -265,13 +265,24 @@ Event
      - Date
      - FALSE
      - TRUE
-   * - status [6]_
+   * - eventType [6]_
+     - The Event's type
+     - String
+     - FALSE
+     - TRUE
+   * - status [7]_
      - The status of the Event
      - String
      - FALSE
      - TRUE
 
-.. [6] The following are accepted values for an Event Group's ``status`` field:
+.. [6] The following are accepted values for an Event Group's ``eventType`` field:
+
+    - ``Alert``
+    - ``Campaign``
+    - ``None``
+
+.. [7] The following are accepted values for an Event Group's ``status`` field:
 
     - ``Needs Review``
     - ``False Positive``
@@ -295,13 +306,13 @@ Incident
      - Date
      - FALSE
      - TRUE
-   * - status [7]_
+   * - status [8]_
      - The status of the Incident
      - String
      - FALSE
      - TRUE
 
-.. [7] The following are accepted values for an Incident Group's ``status`` field:
+.. [8] The following are accepted values for an Incident Group's ``status`` field:
 
     - ``New``
     - ``Open``
@@ -355,20 +366,20 @@ Signature
      - String
      - TRUE
      - TRUE
-   * - fileText [8]_
+   * - fileText [9]_
      - The file text of the Signature
      - String
      - TRUE
      - TRUE
-   * - fileType [9]_
+   * - fileType [10]_
      - The file type of the Signature
      - String
      - TRUE
      - TRUE
 
-.. [8] The ``fileText`` field contains the Signature itself, which must be properly escaped and encoded when creating or updating the Signature Group.
+.. [9] The ``fileText`` field contains the Signature itself, which must be properly escaped and encoded when creating or updating the Signature Group.
 
-.. [9] The following are accepted values for a Signature Group's ``fileType`` field:
+.. [10] The following are accepted values for a Signature Group's ``fileType`` field:
 
     - ``Bro``
     - ``ClamAV``
@@ -426,14 +437,14 @@ Task
      - FALSE
      - TRUE
      - "2021-04-30T00:00:00Z"
-   * - status [10]_
+   * - status [11]_
      - The status of the Task
      - String
      - FALSE
      - FALSE
      - "In Progress", "Not Started"
 
-.. [10] The following are accepted values for a Task Group's ``status`` field:
+.. [11] The following are accepted values for a Task Group's ``status`` field:
 
     - ``Not Started``
     - ``In Progress``

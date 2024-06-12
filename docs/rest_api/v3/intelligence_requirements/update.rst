@@ -14,7 +14,7 @@ Send a request in the following format to update a specific IR. Note that ``{int
         "<fieldName>": <fieldValue>
     }
 
-For example, the following request will update the keywords used in the keyword query for the IR whose ID is 10 and associate the IR to the Group whose ID is 15.
+For example, the following request will update the keywords used in the keyword query for the IR whose ID is 10 and associate the IR to the Group whose ID is 15:
 
 .. warning::
     When updating the keywords used in an IR's keyword query, the keywords specified within the ``keywordSections`` field will replace all existing keywords used in the query.

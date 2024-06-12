@@ -22,7 +22,7 @@ The following is the request body schema for a POST request to the ``/v3/intelRe
 * ``description``: <*String*> A description of the IR.
 * ``keywordSections``: <*Array*> **REQUIRED** The sections that the IR's keyword query contains.
     * ``compareValue``: <*String*> **REQUIRED** Specifies whether the section is an **includes** or **excludes** section. (Accepted values: **includes**, **excludes**)
-    * ``keywords``: <*Array of Objects*> **REQUIRED** A list of keywords that the section contains.
+    * ``keywords``: <*Array of Objects*> **REQUIRED** A list of keywords that the section contains. Note that the total number of keywords added to an IR must not exceed the IR keyword limit configured by your System Administrator (the default limit is 300 keywords). Otherwise, a **400 Bad Request** error will be returned.
         * ``value``: <*String*> **REQUIRED** The keyword's value. For best practices on defining keywords in IR keyword queries, see the `Best Practices: Keywords for Intelligence Requirements <https://knowledge.threatconnect.com/docs/best-practices-keywords-for-intelligence-requirements>`_ knowledge base article.
     * ``sectionNumber``: <*Integer*> **REQUIRED** The section number for the keyword section.
 * ``requirementText``: <*String*> **REQUIRED** The IR's summary (i.e., the question, topic, or statement on which the IR focuses). The summary provided cannot be the same as the summary for an existing IR on the ThreatConnect instance.
@@ -132,7 +132,7 @@ The following is the request body schema for a PUT request to the ``/v3/intelReq
 * ``description``: <*String*> A description of the IR.
 * ``keywordSections``: <*Array*> The sections that the IR's keyword query contains.
     * ``compareValue``: <*String*> Specifies whether the section is an **includes** or **excludes** section. (Accepted values: **includes**, **excludes**)
-    * ``keywords``: <*Array of Objects*> A list of keywords that the section contains.
+    * ``keywords``: <*Array of Objects*> A list of keywords that the section contains. Note that the total number of keywords added to an IR must not exceed the IR keyword limit configured by your System Administrator (the default limit is 300 keywords). Otherwise, a **400 Bad Request** error will be returned.
         * ``value``: <*String*> The keyword's value. For best practices on defining keywords in IR keyword queries, see the `Best Practices: Keywords for Intelligence Requirements <https://knowledge.threatconnect.com/docs/best-practices-keywords-for-intelligence-requirements>`_ knowledge base article.
     * ``sectionNumber``: <*Integer*> The section number for the keyword section.
 * ``requirementText``: <*String*> The IR's summary (i.e., the question, topic, or statement on which the IR focuses). The summary provided cannot be the same as the summary for an existing IR on the ThreatConnect instance.

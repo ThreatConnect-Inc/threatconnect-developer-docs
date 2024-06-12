@@ -9,7 +9,7 @@ Send a request in the following format to delete an IR. Note that ``{intelRequir
 
     DELETE /v3/intelRequirements/{intelRequirementId}
 
-For example, the following request will delete the IR whose ID is 10.
+For example, the following request will delete the IR whose ID is 10:
 
 **Request**
 

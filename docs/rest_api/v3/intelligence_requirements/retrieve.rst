@@ -4,7 +4,7 @@ Retrieve Intelligence Requirements
 Retrieve All Intelligence Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Send the following request to retrieve data for all IRs.
+Send the following request to retrieve data for all IRs:
 
 **Request**
 
@@ -111,7 +111,7 @@ Send a request in the following format to retrieve data for a specific IR. Note 
 
     GET /v3/intelRequirements/{intelRequirementId}
 
-For example, the following request will retrieve data for the IR whose ID is 10.
+For example, the following request will retrieve data for the IR whose ID is 10:
 
 **Request**
 
