@@ -91,8 +91,12 @@ Miscellaneous Endpoints
    :maxdepth: 2
 
    v3/attribute_types/attribute_types
+   v3/job_executions/job_executions
+   v3/jobs/jobs
    v3/owner_roles/owner_roles
    v3/owners/owners
+   v3/playbook_executions/playbook_executions
+   v3/playbooks/playbooks
    v3/system_roles/system_roles
    v3/user_groups/user_groups
    v3/users/users

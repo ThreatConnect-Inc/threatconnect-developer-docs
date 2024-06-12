@@ -38,7 +38,11 @@ Miscellaneous Endpoints
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 -   ``/v3/attributeTypes``
+-   ``/v3/job/executions``
+-   ``/v3/jobs``
 -   ``/v3/openApi``
+-   ``/v3/playbook/executions``
+-   ``/v3/playbooks``
 -   ``/v3/security/ownerRoles``
 -   ``/v3/security/owners``
 -   ``/v3/security/systemRoles``
