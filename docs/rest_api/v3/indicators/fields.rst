@@ -124,7 +124,7 @@ Alternatively, refer to the following table for a list of available fields that 
      - FALSE
      - "Demo Community"
    * - privateFlag
-     - Indicates where the Indicator is private
+     - Indicates whether the Indicator is private
      - Boolean
      - FALSE
      - TRUE
