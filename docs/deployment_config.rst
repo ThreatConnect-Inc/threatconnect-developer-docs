@@ -541,7 +541,7 @@ When the ``$ATTRIBUTES`` internal variable is used with a ``:<type>`` suffix, th
 * Task: ``["${ATTRIBUTES:Task}"]``
 * Threat: ``["${ATTRIBUTES:Threat}"]``
 * URL: ``["${ATTRIBUTES:URL}"]``
-* UserAgent: ``["${ATTRIBUTES:URL}"]``
+* UserAgent: ``["${ATTRIBUTES:UserAgent}"]``
 * Victim: ``["${ATTRIBUTES:Victim}"]``
 
 External Variables
