@@ -1,6 +1,9 @@
 Retrieve Indicators
 -------------------
 
+.. note::
+    By default, only active Indicators will be included in responses for GET requests to the ``/v3/indicators`` endpoint.
+
 Retrieve All Indicators
 ^^^^^^^^^^^^^^^^^^^^^^^
 
