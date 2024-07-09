@@ -63,6 +63,50 @@ JSON Response
         "status": "Success"
     }
 
+In this next example, the request will update the owner role for the user whose ID is 12 in their Organization:
+
+.. code::
+
+    PUT /v3/security/users/12
+    Content-Type: application/json
+
+    {
+        "owner": "Demo Organization",
+        "ownerRoles": {
+            "Demo Organization": "Organization Administrator"
+        }
+    }
+
+JSON Response
+
+.. code:: json
+
+    {
+        "data": {
+            "id": 12,
+            "userName": "hodgesh@companyabc.com",
+            "firstName": "Herschel",
+            "lastName": "Hodges",
+            "owner": "Demo Organization",
+            "lastPasswordChange": "2024-07-09T14:35:05Z",
+            "uiTheme": "Light",
+            "termsAccepted": false,
+            "logoutIntervalMinutes": 30,
+            "systemRole": "User",
+            "ownerRoles": {
+                "Demo Organization": "Organization Administrator",
+                "Demo Community": "Editor",
+                "Demo Source": "Editor"
+            },
+            "disabled": false,
+            "locked": false,
+            "passwordResetRequired": true,
+            "twoFactorResetRequired": true
+        },
+        "message": "Updated",
+        "status": "Success"
+    }
+
 Refer to the `Available Fields <#available-fields>`_ section for a list of available fields that can be included in the body of a PUT request to the ``/v3/security/users`` endpoint.
 
 .. note:: 

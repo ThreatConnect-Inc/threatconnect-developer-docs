@@ -19,7 +19,7 @@ The following example illustrates the basic format for creating a user:
         "password": "Password1!",
         "owner": "Demo Organization",
         "ownerRoles": {
-            "Demo Organization": "Organization Administrator"
+            "Demo Organization": "Standard User"
         },
         "systemRole": "User"
     }
@@ -38,7 +38,7 @@ For example, the following request will create a new user who will be required t
         "password": "Password1!",
         "owner": "Demo Organization",
         "ownerRoles": {
-            "Demo Organization": "Organization Administrator"
+            "Demo Organization": "Standard User"
         },
         "systemRole": "User",
         "passwordResetRequired": true,

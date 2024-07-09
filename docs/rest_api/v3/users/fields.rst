@@ -60,7 +60,7 @@ Alternatively, refer to the following table for a list of available fields that 
      - The user's `role within each Organization, Community, or Source <https://docs.threatconnect.com/en/latest/rest_api/v3/owner_roles/owner_roles.html>`_ to which they have access
      - String
      - TRUE
-     - FALSE
+     - TRUE
    * - password [2]_
      - The password for the user's account
      - String
