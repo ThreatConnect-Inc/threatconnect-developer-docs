@@ -4,7 +4,7 @@ Retrieve Tags
 Retrieve All Tags
 ^^^^^^^^^^^^^^^^^
 
-Send the following request to retrieve data for all Tags:
+Send the following request to retrieve data for all Tags. By default, the response will include system-generated ATT&CK Tags and Tags your Organization. To retrieve Tags in a Community or Source your API user account has access to, include the ``owner`` query parameter in your request to `specify that Community or Source <https://docs.threatconnect.com/en/latest/rest_api/v3/specify_owner.html>`_.
 
 .. code::
 
@@ -91,7 +91,7 @@ Retrieve Standard Tags
 
 As of ThreatConnect version 7.2, the API response for a GET request to the ``/v3/tags`` endpoint will include standard Tags and system-generated ATT&CK® Tags (i.e., Tag objects that include the ``techniqueId`` field). A standard Tag is any Tag that is not an ATT&CK Tag.
 
-To retrieve only standard Tags, send the following request:
+To retrieve *only* standard Tags in your Organization, send the following request. To retrieve *only* standard Tags in a Community or Source your API user account has access to, include the ``owner`` query parameter in your request to `specify that Community or Source <https://docs.threatconnect.com/en/latest/rest_api/v3/specify_owner.html>`_.
 
 Request (Decoded URL)
 
@@ -127,7 +127,9 @@ Request (Encoded URL)
 Retrieve Main Tags
 ==================
 
-As of ThreatConnect version 7.2, System Administrators can create Tag normalization rules that define one or more synonymous Tags that will be converted to a main Tag whenever they are applied to an object. To retrieve only main Tags, send the following request:
+As of ThreatConnect version 7.2, System Administrators can create Tag normalization rules that define one or more synonymous Tags that will be converted to a main Tag whenever they are applied to an object.
+
+To retrieve *only* main Tags in your Organization, send the following request. To retrieve *only* main Tags in a Community or Source your API user account has access to, include the ``owner`` query parameter in your request to `specify that Community or Source <https://docs.threatconnect.com/en/latest/rest_api/v3/specify_owner.html>`_.
 
 Request (Decoded URL)
 

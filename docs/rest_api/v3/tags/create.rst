@@ -13,7 +13,7 @@ The following example illustrates the basic format for creating a Tag:
         "description": "Tag description goes here"
     }
 
-For example, the following request will create a Tag named **Ransomware**:
+For example, the following request will create a Tag named **Ransomware** in your Organization:
 
 .. code::
 
