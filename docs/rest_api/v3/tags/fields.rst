@@ -39,9 +39,11 @@ Alternatively, refer to the following table for a list of available fields that 
      - String
      - FALSE
      - FALSE
-
-.. note::
-  In addition to the fields listed in the preceding table, you can include the ``securityCoverage`` field in the body of a PUT request when updating an ATT&CK Tag. See the `"Assign Security Coverage to ATT&CK Tags" <#id3>`_ section for further instruction.
+   * - securityCoverage
+     - The security coverage level assigned to an ATT&CK® Tag (see the `"Assign Security Coverage to ATT&CK Tags" <#id3>`_ section for more information)
+     - Security Coverage Object
+     - FALSE
+     - TRUE
 
 Include Additional Fields in Responses
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -6,9 +6,6 @@ Tags can be used to add metadata, or keywords, to Groups, Indicators, Victims, a
 
 Endpoint: ``/api/v3/tags``
 
-.. attention::
-    When retrieving Tags, the response will include Tags in your Organization and system-generated ATT&CK® Tags by default. To retrieve Tags in a Community or Source your API user account has access to, include the ``owner`` query parameter in your request to `specify that Community or Source <https://docs.threatconnect.com/en/latest/rest_api/v3/specify_owner.html>`_.
-
 .. include:: fields.rst
 
 .. include:: create.rst
