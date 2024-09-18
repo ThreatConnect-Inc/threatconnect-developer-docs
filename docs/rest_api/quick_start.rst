@@ -17,7 +17,7 @@ Each API response is formatted with a status. If a ``"Success"`` status is retur
 
 .. attention::
 
-    Requests to ThreatConnect API endpoints must be made over HTTPS with a supported authentication method, as described in the `"Authentication" <#authentication>`_ section. Otherwise, a 403 error will be returned.
+    Requests to ThreatConnect API endpoints must be made over HTTPS with a supported authentication method, as described in the `"Authentication" <#id1>`_ section. Otherwise, a 403 error will be returned.
 
 API Versioning
 --------------
