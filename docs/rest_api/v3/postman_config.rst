@@ -1,7 +1,7 @@
 Postman Configuration
 =====================
 
-ThreatConnect® offers a v3 API collection that you can fork or import into Postman®. This page details how to fork and import the ThreatConnect v3 API collection, configure the collection's variables, and make an API request using the collection.
+ThreatConnect® offers a v3 API `collection <https://learning.postman.com/docs/collections/collections-overview/>`_ that you can fork or import into Postman®. This page details how to fork and import the ThreatConnect v3 API collection, configure the collection's variables, and make an API request using the collection.
 
 Step 1: Fork or Import the ThreatConnect v3 API Collection
 ----------------------------------------------------------
@@ -14,9 +14,10 @@ Navigate to the `ThreatConnect v3 API Postman collection <https://www.postman.co
 Step 2: Configure the ThreatConnect v3 API Collection
 -----------------------------------------------------
 
-On the **Collections** tab, select the **ThreatConnect API** collection that was either forked or imported into your workspace. A **ThreatConnect API** tab will open with the **Authentication** subtab selected (Figure 1).
+1.	Select **Collections** in the Postman `sidebar <https://learning.postman.com/docs/getting-started/basics/navigating-postman/#sidebar>`_. Then select the **ThreatConnect API** collection that was either forked or imported into your workspace to open a **ThreatConnect API** tab in the Postman `workbench <https://learning.postman.com/docs/getting-started/basics/navigating-postman/#workbench>`_.
+2.	Select the **Authorization** subtab in the **ThreatConnect API** tab. Then select **No Auth** in the **Auth Type** dropdown, as the collection's pre-request script will perform all steps in the authentication process (Figure 1).
 
-.. figure:: postman_config_images/Figure_4.png
+.. figure:: postman_config_images/Figure_1_Postman_Configuration.png
     :width: 800
     :align: center
     :alt: Authentication subtab of ThreatConnect API in Postman
@@ -24,11 +25,9 @@ On the **Collections** tab, select the **ThreatConnect API** collection that was
 
     Figure 1
 
-Leave the authentication type set to **No Auth**, as the pre-request script included in the collection will perform all steps necessary for the authentication process.
+3.	Select the **Variables** subtab in the **ThreatConnect API** tab to view the collection's variables (Figure 2). The ThreatConnect API supports `hash-based message authentication code (HMAC) <#hmac-authentication>`_ and `token authentication <#token-based-authentication>`_. Based on the type of authentication you will be using, fill out the corresponding variables, as detailed in the following sections.
 
-Select the **Variables** subtab to display the variables in the **ThreatConnect API** collection (Figure 2).
-
-.. figure:: postman_config_images/Figure_5.png
+.. figure:: postman_config_images/Figure_2_Postman_Configuration.png
     :width: 800
     :align: center
     :alt: Variables subtab of ThreatConnect API in Postman
@@ -36,42 +35,36 @@ Select the **Variables** subtab to display the variables in the **ThreatConnect 
 
     Figure 2
 
-The ThreatConnect API supports `hash-based message authentication code (HMAC) <#hmac-authentication>`_ and `token-based authentication <#token-based-authentication>`_. Based on the type of authentication you will be using, fill out the corresponding variables as detailed in the following sections.
+4.	Click **Save** at the top right of the **ThreatConnect API** tab to save your changes to the collection.
 
 .. attention::
-    If you enter an API token in addition to your ThreatConnect Access ID and Secret Key, token-based authentication will be used instead of HMAC authentication. However, if your token expires and you do not update the value for the **tcToken** variable, or clear its checkbox, token-based authentication will still be used instead of HMAC authentication. Therefore, **it is recommended to use one authentication method only**.
+    If you enter an API token in addition to your ThreatConnect Access ID and Secret Key, token authentication will be used instead of HMAC authentication. However, if your token expires and you do not update the value for the **tcToken** variable or clear its checkbox, token authentication will still be used instead of HMAC authentication. Therefore, **it is recommended to use one authentication method only**.
 
 HMAC Authentication
 ^^^^^^^^^^^^^^^^^^^
 
-- **baseUrl**: By default, this variable is set to the API URL for ThreatConnect's Public Cloud instance. If you are using an On-Premises or Dedicated Cloud ThreatConnect instance, enter the API URL for your instance (e.g., ``https://companyabc.threatconnect.com/api``).
-- **tcAccessId**: Enter the Access ID for your `ThreatConnect API user account <https://training.threatconnect.com/learn/article/creating-user-accounts-kb-article>`_ in the **CURRENT VALUE** column.
+- **baseUrl**: Enter the base URL for your ThreatConnect instance (e.g., ``https://companyabc.threatconnect.com``). Do not include a trailing slash when entering the base URL.
+- **tcAccessId**: Enter the Access ID for your `ThreatConnect API user account <https://knowledge.threatconnect.com/docs/creating-user-accounts>`_ in the **CURRENT VALUE** column.
 - **tcSecretKey**: Enter the Secret Key for your ThreatConnect API user account in the **CURRENT VALUE** column.
 - **tcToken**: Clear the checkbox for this variable.
-- Click the **Save** button in the top toolbar of the **ThreatConnect API** tab.
 
-Token-based Authentication
+Token-Based Authentication
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- **baseUrl**: By default, this variable is set to the API URL for ThreatConnect's Public Cloud instance. If you are using an On-Premises or Dedicated Cloud ThreatConnect instance, enter the API URL for your instance (e.g., ``https://companyabc.threatconnect.com/api``).
+- **baseUrl**: Enter the base URL for your ThreatConnect instance (e.g., ``https://companyabc.threatconnect.com/api``). Do not include a trailing slash when entering the base URL.
 - **tcAccessId**: Clear the checkbox for this variable.
 - **tcSecretKey**: Clear the checkbox for this variable.
-- **tcToken**: Enter a ThreatConnect API token created by your Organization Administrator in the **CURRENT VALUE** column.
-- Click the **Save** button in the top toolbar of the ThreatConnect API tab.
+- **tcToken**: Enter your ThreatConnect API user account token in the **CURRENT VALUE** column. API user account tokens are generated on the **Membership** tab of the **Organization Settings** screen in ThreatConnect and expire after a set amount of time configured by your Organization Administrator. For instructions on creating an API token for your API user account, see the `"Authentication" section of the Quick Start page <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#authentication>`_.
 
-.. attention::
-    ThreatConnect API tokens **expire automatically after four hours**. To obtain a new API token, contact your Organization Administrator. Instructions for creating an API token are available in the “API Token” section of *ThreatConnect Organization Administration Guide*.
+Step 3: Make a ThreatConnect API Request in Postman
+---------------------------------------------------
 
-Step 3: Make ThreatConnect API Requests in Postman
---------------------------------------------------
+1.	Expand the following folders on the **Collections** tab in the Postman `sidebar <https://learning.postman.com/docs/getting-started/basics/navigating-postman/#sidebar>`_: **ThreatConnect API** > **api** > **v3**.
+2.	Expand an endpoint's folder in the **v3** folder to view all available requests for the endpoint.
+3.	Select an API request from the endpoint's folder to open the request in the Postman `workbench <https://learning.postman.com/docs/getting-started/basics/navigating-postman/#workbench>`_.
+4.	Configure your request as desired using the **Query Params** and, for POST and PUT requests, **Body** subtabs in the top portion of the request's tab, and then click **Send** to the right of the request URL. If you connected successfully to the ThreatConnect API, response data will be displayed in the **Body** subtab in the bottom portion of the request's tab (Figure 3).
 
-1. Expand the **ThreatConnect API** collection on the **Collections** tab to display a **v3** folder.
-2. Expand the **v3** folder to view folders for each endpoint in v3 of ThreatConnect's API.
-3. Expand an endpoint's folder (**indicators** in this example) to view available requests for the endpoint.
-4. Select an API request from the endpoint's folder (**GET Retrieve Indicators** in this example). A new tab will be opened for the selected API request.
-5. Click the **Send** button to the right of the request URL. If you connected successfully to the ThreatConnect API, response data will be displayed in the lower pane of the tab for the API request (Figure 3).
-
-.. figure:: postman_config_images/Figure_6.png
+.. figure:: postman_config_images/Figure_3_Postman_Configuration.png
     :width: 800
     :align: center
     :alt: Response data from the ThreatConnect API in Postman
@@ -84,8 +77,8 @@ You're now ready to use the ThreatConnect API collection in Postman. To learn mo
 Optional: Create Environments in Postman
 ----------------------------------------
 
-If you use multiple ThreatConnect instances, it can be helpful to `create an environment <https://learning.postman.com/docs/sending-requests/managing-environments/#creating-environments>`_ for each instance with the `variables included in this collection <#step-2-configure-the-threatconnect-v3-api-collection>`_ via the **Environments** tab on the side navigation bar. Once you have created environments for each ThreatConnect instance you access, `select the environment <https://learning.postman.com/docs/sending-requests/managing-environments/#selecting-an-active-environment>`_ from the **Environment** dropdown when `making API requests in Postman <#step-3-make-threatconnect-api-requests-in-postman>`_.
+If you use multiple ThreatConnect instances, it can be helpful to `create an environment <https://learning.postman.com/docs/sending-requests/managing-environments/#creating-environments>`_ for each instance with the `variables included in this collection <#step-2-configure-the-threatconnect-v3-api-collection>`_ via the **Environments** tab in the Postman sidebar. After you create an environment for each of your ThreatConnect instances, `select the environment <https://learning.postman.com/docs/sending-requests/managing-environments/#selecting-an-active-environment>`_ from the **Environment** at the top right of Postman before `making API requests <#step-3-make-threatconnect-api-requests-in-postman>`_.
 
 ----
 
-*Postman® is a trademark of Postman, Inc.*
+*Postman® is a registered trademark of Postman, Inc.*

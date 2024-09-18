@@ -3,7 +3,7 @@ Common Errors
 
 Here are some common errors that may be encountered while using the API or SDKs. If you run into an error that is not listed here and you are unable to debug it, contact support@threatconnect.com.
 
-You may also find the list of `HTTP Responses <https://docs.threatconnect.com/en/latest/rest_api/overview.html#http-responses>`__ helpful in troubleshooting.
+You may also find the list of `HTTP Status Codes <https://docs.threatconnect.com/en/latest/rest_api/overview.html#http-status-codes>`__ helpful in troubleshooting.
 
 General Errors
 --------------
@@ -11,17 +11,25 @@ General Errors
 Signature Data Did Not Match Expected Result
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This error occurs when something is wrong with the signature used in the ``Authorization`` header. Make sure you are using the HMAC-SHA256 algorithm and base-64 encoding to create the signature. Refer to the `Authorization section <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#authorization>`__ for more information.
+This error occurs if you are authenticating with your API user account's Access ID and Secret Key and something is wrong with the signature used in the ``Authorization`` header. Make sure you are using the HMAC-SHA256 algorithm and base-64 encoding to create the signature. Refer to the `Authorization section <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#authorization>`__ for more information.
 
 Timestamp Out of Acceptable Time Range
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Every API request to ThreatConnect requires a ``Timestamp`` header that is **within five minutes** of the ThreatConnect server's system time. If you receive this error, then the value of the Timestamp header does not align with ThreatConnect's system time. Refer to the `Timestamp section <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#timestamp>`__ for more information.
+If you are authenticating with your API user account's Access ID and Secret Key, the value of the ``Timestamp`` header must be **within five minutes** of the ThreatConnect server's system time. If you receive this error, then the value of the ``Timestamp`` header does not align with ThreatConnect's system time. Refer to the `Timestamp section <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#timestamp>`__ for more information.
 
 Access Denied
 ^^^^^^^^^^^^^
 
-This error occurs when one of the values in the ``Authorization`` header is incorrect, or when you are making a request to a ThreatConnect owner to which your API user account does not have access.
+This error occurs if you are authenticating with your API user account's Access ID and Secret Key and one of the values in the ``Authorization`` header is incorrect. It also occurs if you are making a request to a ThreatConnect owner to which your API user account does not have access.
+
+Unauthorized
+^^^^^^^^^^^^
+
+This error occurs if you are attempting to authenticate your API request with an expired API token. It also occurs if you regenerated your API user account's API token and are attempting to authenticate your API request with the previous token.
+
+.. note::
+    The **API User Administration** window in the ThreatConnect UI indicates when the API token for an API user account is expired. For instructions on accessing this window, see the "Generate an API Token" section of the `Quick Start page <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html>`__.
 
 Creating Indicators
 -------------------

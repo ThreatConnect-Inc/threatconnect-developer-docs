@@ -4,16 +4,20 @@ Quick Start
 Creating an API Key
 -------------------
 
-To create an API user account, please refer to the `Creating User Accounts <https://knowledge.threatconnect.com/docs/creating-user-accounts>`__ knowledge base article. If you are not able to create an API key using instructions provided in this article, please contact sales@threatconnect.com to discuss pricing.
+To access the ThreatConnect API, you must `create an API user account <https://knowledge.threatconnect.com/docs/creating-user-accounts#creating-an-api-user>`_. If you are not able to create an API user account, please send an email to sales@threatconnect.com to discuss pricing.
 
 Using the API
 -------------
 
 If using an API user account on ThreatConnect's Public Cloud instance, the ThreatConnect API is accessible at ``https://app.threatconnect.com/api``. If using an API user account on a Dedicated Cloud or On-Premises ThreatConnect instance, the ThreatConnect API is accessible at the base URL of your instance followed by ``/api`` (e.g., ``https://companyabc.threatconnect.com/api``).
 
-For the rest of this document, the base API URL will not be included in any of the endpoints (e.g., the branch for the v2 API owners endpoint will be described as ``/v2/owners`` rather than ``https://app.threatconnect.com/api/v2/owners``). When sending requests to the ThreatConnect API, you will be responsible for adding the correct base URL to the URL in the request.
+Throughout this documentation, the base API URL will not be included in any of the endpoints (e.g., the branch for the v2 API owners endpoint will be described as ``/v2/owners`` rather than ``https://app.threatconnect.com/api/v2/owners``). When sending requests to the ThreatConnect API, you will be responsible for adding the correct base URL to the URL in the request.
 
-Requests to ThreatConnect API endpoints must be made over HTTPS with a valid signature (as described in the next "Authentication" section), or a 403 error will be returned. Each API response is formatted with a status. If a ``"Success"`` status is returned, each response will include a ``data`` field with the appropriate response type. If a ``"Failure"`` status is returned, an appropriate error message indicating why the request failed will be provided.
+Each API response is formatted with a status. If a ``"Success"`` status is returned, each response will include a data field with the appropriate response type. If an ``"Error"`` status is returned, an appropriate error message as to why the request failed will be provided. For a list of HTTP status codes returned by the API, see `HTTP Status Codes <https://docs.threatconnect.com/en/latest/rest_api/overview.html#http-status-codes>`__.
+
+.. attention::
+
+    Requests to ThreatConnect API endpoints must be made over HTTPS with a supported authentication method, as described in the `"Authentication" <#authentication>`_ section. Otherwise, a 403 error will be returned.
 
 API Versioning
 --------------
@@ -87,7 +91,66 @@ To understand the implementation and usage of the v3 API, consider the HTTP meth
 Authentication
 --------------
 
-To authenticate an API request to ThreatConnect, there are two required headersâ€”`Authorization <#authorization>`_ and `Timestamp <#timestamp>`_. The following example illustrates how a complete API request should look:
+As of ThreatConnect 7.7, there are two ways to authenticate an API request to ThreatConnect:
+
+- API token
+- Access ID and Secret Key
+
+API Token
+^^^^^^^^^
+
+.. note::
+
+    Authenticating an API request to ThreatConnect with an API token requires a ThreatConnect instance with version 7.7 or newer installed.
+
+To authenticate an API request to ThreatConnect with your API token, you must include the *required* ``Authorization`` header in your request. The value of the ``Authorization`` header must be in the format ``TC-Token $API_TOKEN``, where ``$API_TOKEN`` is the value of your API token.
+
+The following example illustrates how a complete API request should look when authenticating with your API token:
+
+.. code::
+
+    curl --location --request GET 'https://app.threatconnect.com/api/v3/indicators' \
+    --header 'Authorization: TC-Token APIV2:430:c8mTcH:1234567890123:7mbiy0OnuSIq0ujNbkrqEB3RlpplzNL3CcQsYGso8ZQ=' \
+    --header 'Accept: application/json'
+
+Generate an API Token
+"""""""""""""""""""""
+**New API User**
+
+Follow these steps to generate an API token for a new API user account in ThreatConnect:
+
+1.	Log into ThreatConnect with an Organization Administrator account.
+
+2.	Hover over **Settings** |gear| on the top navigation bar and select **Org Settings**.
+
+3.	On the **Membership** tab of the **Organization Settings** screen, click **Create API User**.
+
+4.	On the **API User Administration** window, fill out all required fields for the API user, enter the number of days until the API token will expire in the **Token Expiration (days)** field, and click **SAVE USER AND GENERATE TOKEN**. (See the `"Creating an API User" section of Creating User Accounts <https://knowledge.threatconnect.com/docs/creating-user-accounts#creating-an-api-user>`_ for more information on creating API users.)
+    
+**Existing API User**
+
+Follow these steps to generate an API token for an existing API user account in ThreatConnect:
+
+1.	Log into ThreatConnect with an Organization Administrator account.
+
+2.	Hover over **Settings** |gear| on the top navigation bar and select **Org Settings**.
+
+3.	On the **Membership** tab of the **Organization Settings** screen, click **Edit** |pencil| in the **Options** column for an API user account.
+
+4.	On the **API User Administration** window, enter the number of days until the API token will expire in the **Token Expiration (days)** field, and then click **GENERATE TOKEN**.
+
+.. |gear| image:: https://cdn.document360.io/dfc206c8-1c9f-4725-b74d-a66f83432320/Images/Documentation/Settings%20icon.png
+    :height: 25px
+
+.. |pencil| image:: https://cdn.document360.io/dfc206c8-1c9f-4725-b74d-a66f83432320/Images/Documentation/Pencil%20icon_Black.png
+    :height: 25px
+
+Access ID and Secret Key
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+To authenticate an API request to ThreatConnect with your Access ID and Secret Key, you must include the following *required* headers in your request: ``Timestamp`` and ``Authorization``. Both headers are detailed in the following subsections.
+
+The following example illustrates how a complete API request should look when authenticating with your Access ID and Secret Key:
 
 .. code::
 
@@ -97,20 +160,21 @@ To authenticate an API request to ThreatConnect, there are two required headersâ
     --header 'Accept: application/json'
 
 Timestamp
-^^^^^^^^^
+"""""""""
 
 The required ``Timestamp`` header is a nonce in Unix epoch time (generated by Unix shell with the command: ``date +%s``). The value of the ``Timestamp`` header should look something like ``1513703787``.
 
 .. note::
+
     If the nonce is not within five minutes of the ThreatConnect server's system time, a `Timestamp error <../common_errors.html#timestamp-out-of-acceptable-time-range>`__  will be returned.
 
 Authorization
-^^^^^^^^^^^^^
+"""""""""""""
 
-The required ``Authorization`` header has the format: ``TC $ACCESS_ID:$SIGNATURE``.
+The required ``Authorization`` header's value has the format: ``TC $ACCESS_ID:$SIGNATURE``:
 
 - ``$ACCESS_ID``: This is the Access ID of your API user account. If you do know this value, contact your System Administrator.
-- ``$SIGNATURE``: This value is created by concatenating the API path and query strings, HTTP method, and value of the Timestamp header as follows: ``/api/v2/indicators/hosts/example.com?Owner=Common%20Community:GET:1513703787``. The result is signed with your API user account's Secret Key using SHA256 to calculate a hash-based message authentication code (HMAC) and then base-64 encoded.
+- ``$SIGNATURE``: This value is created by concatenating the API path and query strings, HTTP method, and value of the Timestamp header as follows: ``/api/v2/indicators/hosts/example.com?Owner=Common%20Community:GET:1513703787``. The result is signed with your Secret Key using SHA256 to calculate a hash-based message authentication code (HMAC) and then base-64 encoded.
 
 The following example illustrates how the value of the ``Authorization`` header should look:
 
