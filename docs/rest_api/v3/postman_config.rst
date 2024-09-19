@@ -21,7 +21,7 @@ Step 2: Configure the ThreatConnect v3 API Collection
     :width: 775
     :align: center
     :alt: Authentication subtab of ThreatConnect API in Postman
-    :figclass: fig-border
+    :class: fig-border
 
     Figure 1
 
@@ -31,7 +31,7 @@ Step 2: Configure the ThreatConnect v3 API Collection
     :width: 775
     :align: center
     :alt: Variables subtab of ThreatConnect API in Postman
-    :figclass: fig-border
+    :class: fig-border
 
     Figure 2
 
@@ -68,7 +68,7 @@ Step 3: Make a ThreatConnect API Request in Postman
     :width: 775
     :align: center
     :alt: Response data from the ThreatConnect API in Postman
-    :figclass: fig-border
+    :class: fig-border
 
     Figure 3
 
