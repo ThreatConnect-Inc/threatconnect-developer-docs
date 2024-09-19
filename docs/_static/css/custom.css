@@ -44,3 +44,7 @@
 .rst-content aside.footnote {
     display: block !important;
 }
+
+.fig-border {
+    border: 1px solid #000;
+}
