@@ -166,7 +166,7 @@ Alternatively, refer to the following table for a list of available fields that 
     - ``URL``
     - ``ASN``
     - ``CIDR``
-    - ``EmailSubject``
+    - ``Email Subject``
     - ``Hashtag``
     - ``Mutex``
     - ``Registry Key``
@@ -342,8 +342,8 @@ CIDR
      - TRUE
      - FALSE
 
-EmailSubject
-============
+Email Subject
+=============
 
 .. list-table::
    :widths: 20 20 20 20 20
