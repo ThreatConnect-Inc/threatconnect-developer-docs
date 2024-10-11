@@ -195,7 +195,7 @@ Document
    * - fileName
      - The file name of the Document
      - String
-     - TRUE
+     - FALSE
      - TRUE
    * - malware [5]_
      - Indicates whether the Document is malware
