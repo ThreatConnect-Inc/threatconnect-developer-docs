@@ -11,6 +11,7 @@ Trademarks
 -  Maven™ is a trademark of the Apache Software Foundation.
 -  Mac® is a registered trademark of Apple, Inc.
 -  MITRE ATT&CK® and ATT&CK® are registered trademarks of The MITRE Corporation.
+- OpenSearch® is a registered trademark of Amazon Web Services.
 -  Paw™ is a trademark of Paw, Inc.
 -  Postman® is a registered trademark of Postman, Inc.
 -  Python® is a registered trademark of the Python Software Foundation.
