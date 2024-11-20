@@ -320,6 +320,87 @@ JSON Response
 
     It is recommended to not use the ``threatAssessRating`` and ``threatAssessConfidence`` fields and their values, as these are legacy fields.
 
+Include Observations For an Indicator
+=====================================
+
+The following request will retrieve data for the **ultrabadguy.com** Host Indicator in the API user's Organization, including the number of times the Indicator has been observed and the date and time when it was last observed:
+
+.. code::
+
+    GET /v3/indicators/ultrabadguy.com?fields=observations
+
+JSON Response
+
+.. code::
+
+    {
+        "data": {
+            "id": 4,
+            "dateAdded": "2023-01-26T21:00:03Z ",
+            "ownerId": 1,
+            "ownerName": "Demo Organization",
+            "webLink": "https://app.threatconnect.com/#/details/indicators/4",
+            "type": "Host",
+            "lastModified": "2023-01-27T14:25:55Z ",
+            "rating": 4.00,
+            "confidence": 51,
+            "source": "Host used by hacker conglomerate tracked to Iran.",
+            "description": "Indicator associated with malware-connected VPN network.",
+            "summary": "ultrabadguy.com",
+            "observations": 5,
+            "lastObserved": "2023-01-27T03:16:30Z",
+            "privateFlag": false,
+            "active": true,
+            "activeLocked": false,
+            "hostName": "ultrabadguy.com",
+            "dnsActive": false,
+            "whoisActive": false,
+            "legacyLink": "https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=ultrabadguy.com&owner=Demo+Organization"
+        },
+        "status": "Success"
+    }
+
+Include False Positive Reports For an Indicator
+===============================================
+
+The following request will retrieve data for the **ultrabadguy.com** Host Indicator in the API user's Organization, including the number of times the Indicator was reported as a false positive and the date and time when it was last reported as a false positive:
+
+.. code::
+
+    GET /v3/indicators/ultrabadguy.com?fields=falsePositives
+
+JSON Response
+
+.. code::
+
+    {
+        "data": {
+            "id": 4,
+            "dateAdded": "2023-01-26T21:00:03Z ",
+            "ownerId": 1,
+            "ownerName": "Demo Organization",
+            "webLink": "https://app.threatconnect.com/#/details/indicators/4",
+            "type": "Host",
+            "lastModified": "2023-01-27T14:25:55Z ",
+            "rating": 4.00,
+            "confidence": 51,
+            "source": "Host used by hacker conglomerate tracked to Iran.",
+            "description": "Indicator associated with malware-connected VPN network.",
+            "summary": "ultrabadguy.com",
+            "falsePositives": 2,
+            "lastFalsePositive": "2023-01-27T00:00:00Z",
+            "falsePositiveReportedByUser": false,
+            "privateFlag": false,
+            "active": true,
+            "activeLocked": false,
+            "hostName": "ultrabadguy.com",
+            "dnsActive": false,
+            "whoisActive": false,
+            "legacyLink": "https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=ultrabadguy.com&owner=Demo+Organization"
+        },
+        "status": "Success"
+    }
+
 Include Observations and False Positives Reported by API Users
 ==============================================================
 
