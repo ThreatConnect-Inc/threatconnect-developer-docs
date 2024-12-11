@@ -3,7 +3,7 @@ Delete Users
 
 .. attention::
 
-    Only API users with an Organization role of Organization Administrator can delete users. However, they may not delete users whose System role is **Administrator** or **Operations Administrator**.
+    Only API users with an Organization role of Organization Administrator can delete users. However, they may not delete users whose System role is **Administrator**, **Community Leader**, **Operations Administrator**, or **Super User**.
 
 Send a request in the following format to delete a user:
 
