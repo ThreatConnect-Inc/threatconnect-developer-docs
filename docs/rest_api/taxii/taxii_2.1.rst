@@ -4,7 +4,22 @@ TAXII 2.1
 Overview
 --------
 
-To retrieve data from the ThreatConnect TAXII 2.1 server via the TAXII REST API, you must use a TAXII user account. If you do not have a TAXII user account, see `Creating a TAXII User for the ThreatConnect TAXII 2.1 Server <https://knowledge.threatconnect.com/docs/creating-a-taxii-user-for-the-threatconnect-taxii-21-server>`_ knowledge base article.
+The ThreatConnect® TAXII™ 2.1 server can be used by an external TAXII client to retrieve data from your `Organization, Communities, and Sources <https://knowledge.threatconnect.com/docs/ownership-in-threatconnect>`_. After `installing and configuring the ThreatConnect TAXII Server Service App <https://knowledge.threatconnect.com/docs/installing-and-configuring-the-threatconnect-taxii-21-server>`_` and `creating a TAXII user account <https://knowledge.threatconnect.com/docs/creating-a-taxii-user-for-the-threatconnect-taxii-21-server>`_` that can use the corresponding Service, you can use the TAXII user account to connect to the TAXII REST API and retrieve data from the ThreatConnect TAXII 2.1 server.
+
+Before You Start
+----------------
+
+User Roles
+^^^^^^^^^^
+
+- To connect to the TAXII REST API and retrieve data in an Organization from the ThreatConnect TAXII 2.1 server, your TAXII user account must have an Organization role of Standard User. Note that this is the only Organization role that may be assigned to a TAXII user account.
+- To connect to the TAXII REST API and retrieve data in a Community or Source from the ThreatConnect TAXII 2.1 server, your TAXII user account can have any Community role.
+
+Prerequisites
+^^^^^^^^^^^^^
+
+- `Create a TAXII user account <https://knowledge.threatconnect.com/docs/creating-a-taxii-user-for-the-threatconnect-taxii-21-server>`_ (if you do not already have one), as one is required to connect to the TAXII REST API and retrieve data from the ThreatConnect TAXII 2.1 server.
+
 
 Authentication
 --------------
@@ -65,11 +80,11 @@ The TAXII REST API supports `query parameters <https://docs.oasis-open.org/cti/t
 Path Parameters
 ---------------
 
-The examples in the “Example Requests and Responses” section use the following path parameters to represent the different components of the ThreatConnect TAXII 2.1 server URL:
+The examples in the `"Example Requests and Responses" <#example-requests-and-responses>`_ section use the following path parameters to represent the different components of the ThreatConnect TAXII 2.1 server URL:
 
 - ``{baseUrl}``: The base URL of your ThreatConnect instance (e.g., ``https://companyabc.threatconnect.com``), followed by ``/api``.
 - ``{taxiiServicePath}``:
-    - If using **version 2.0** of the **ThreatConnect TAXII Server **App, this will be the API path for the Service that corresponds to the **ThreatConnect TAXII Server** App (e.g., ``/services/taxii/v2``), followed by ``/taxii``. The Service's API path may be found on the `Services screen <https://knowledge.threatconnect.com/docs/playbook-services#viewing-a-service>`_ in the ThreatConnect user interface.
+    - If using **version 2.0** of the **ThreatConnect TAXII Server** App, this will be the API path for the Service that corresponds to the **ThreatConnect TAXII Server** App (e.g., ``/services/taxii/v2``), followed by ``/taxii``. The Service's API path may be found on the `Services screen <https://knowledge.threatconnect.com/docs/playbook-services#viewing-a-service>`_ in the ThreatConnect user interface.
     - If using **version 1.0** of the **ThreatConnect TAXII Server** App, this will be the API path for the Service that corresponds to the **ThreatConnect TAXII Server** App (e.g., ``/services/taxii/v1``). The Service's API path may be found on the `Services screen <https://knowledge.threatconnect.com/docs/playbook-services#viewing-a-service>`_ in the ThreatConnect user interface.
 
 The following are examples of how a complete ThreatConnect TAXII 2.1 server URL should look for each version of the **ThreatConnect TAXII Server** App:
@@ -88,7 +103,7 @@ The following are examples of how a complete ThreatConnect TAXII 2.1 server URL 
 
 .. hint::
 
-    If you are using **version 2.0** of the **ThreatConnect TAXII Server** App, you can obtain the complete ThreatConnect TAXII 2.1 server URL by opening the **ThreatConnect TAXII Server** user interface, clicking the ⋮ menu at the top right of the screen, and selecting **TAXII Server Base API URL**. Note that this URL will have the ``/tc_taxii`` endpoint appended to it.
+    If you are using **version 2.0** of the **ThreatConnect TAXII Server** App, you can obtain the complete ThreatConnect TAXII 2.1 server URL by opening the `ThreatConnect TAXII Server user interface <https://knowledge.threatconnect.com/docs/installing-and-configuring-the-threatconnect-taxii-21-server#using-the-threatconnect-taxii-server-user-interface>`_, clicking the ⋮ menu at the top right of the screen, and selecting **TAXII Server Base API URL**. Note that this URL will have the ``/tc_taxii`` endpoint appended to it.
 
 Example Requests and Responses
 ------------------------------
