@@ -4,7 +4,7 @@ TAXII 2.1
 Overview
 --------
 
-The ThreatConnect® TAXII™ 2.1 server can be used by an external TAXII client to retrieve data from your `Organization, Communities, and Sources <https://knowledge.threatconnect.com/docs/ownership-in-threatconnect>`_. After `installing and configuring the ThreatConnect TAXII Server Service App <https://knowledge.threatconnect.com/docs/installing-and-configuring-the-threatconnect-taxii-21-server>`_` and `creating a TAXII user account <https://knowledge.threatconnect.com/docs/creating-a-taxii-user-for-the-threatconnect-taxii-21-server>`_` that can use the corresponding Service, you can use the TAXII user account to connect to the TAXII REST API and retrieve data from the ThreatConnect TAXII 2.1 server.
+The ThreatConnect® TAXII™ 2.1 server can be used by an external TAXII client to retrieve data from your `Organization, Communities, and Sources <https://knowledge.threatconnect.com/docs/ownership-in-threatconnect>`_. After `installing and configuring the ThreatConnect TAXII Server Service App <https://knowledge.threatconnect.com/docs/installing-and-configuring-the-threatconnect-taxii-21-server>`_ and `creating a TAXII user account <https://knowledge.threatconnect.com/docs/creating-a-taxii-user-for-the-threatconnect-taxii-21-server>`_ that can use the corresponding Service, you can use the TAXII user account to connect to the TAXII REST API and retrieve data from the ThreatConnect TAXII 2.1 server.
 
 Before You Start
 ----------------
@@ -80,7 +80,7 @@ The TAXII REST API supports `query parameters <https://docs.oasis-open.org/cti/t
 Path Parameters
 ---------------
 
-The examples in the `"Example Requests and Responses" <#example-requests-and-responses>`_ section use the following path parameters to represent the different components of the ThreatConnect TAXII 2.1 server URL:
+The examples in the `"Example Requests and Responses" <#id3>`_ section use the following path parameters to represent the different components of the ThreatConnect TAXII 2.1 server URL:
 
 - ``{baseUrl}``: The base URL of your ThreatConnect instance (e.g., ``https://companyabc.threatconnect.com``), followed by ``/api``.
 - ``{taxiiServicePath}``:
