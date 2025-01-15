@@ -44,6 +44,12 @@ JSON Response
             "description": "Adversaries may obfuscate command and control traffic to make it more difficult to detect. Command and control (C2) communications are hidden (but not necessarily encrypted) in an attempt to make the content more difficult to discover or decipher and to make the communication less conspicuous and hide commands from being seen. This encompasses many methods, such as adding junk data to protocol traffic, using steganography, or impersonating legitimate protocols. ",
             "lastUsed": "2023-07-28T17:32:32Z",
             "techniqueId": "T1001",
+            "tactics": {
+                "data": [
+                    "Command and Control"
+                ],
+                "count": 1
+            },
             "platforms": {
                 "data": [
                     "Linux",

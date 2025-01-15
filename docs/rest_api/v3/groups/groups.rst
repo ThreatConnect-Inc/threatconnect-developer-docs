@@ -27,6 +27,8 @@ Endpoint: ``/api/v3/groups``
 
 .. include:: associations.rst
 
+.. include:: intelligence_reviews.rst
+
 ----
 
 *MITRE ATT&CK® and ATT&CK® are registered trademarks of The MITRE Corporation.*

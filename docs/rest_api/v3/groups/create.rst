@@ -25,7 +25,7 @@ Example POST Request
 The following request will create an Incident Group for an Incident that took place on Nov. 3, 2021. The Incident will be assigned a status of **New**, two Tags will be applied to it: the **Targeted Attack** standard Tag and the **T1566 - Phishing** ATT&CK® Tag.
 
 .. attention::
-    When applying ATT&CK Tags to a Group, do not include the corresponding technique/sub-technique ID in the Tag's name. For example, to apply the **T1566 - Phishing** ATT&CK Tag to a Group, use **Phishing** as the Tag name.
+    To apply an ATT&CK Tag to a Group, use either the corresponding technique ID or name. For example, to apply the **T1566 - Phishing** ATT&CK Tag to a Group, either set ``name`` to ``"Phishing"`` or ``techniqueId`` to ``"T1566"`` when defining the ATT&CK Tag object in the request body.
 
     Also, if you applied a new Tag to a Group and that Tag matches a synonymous Tag listed in a `Tag normalization rule <https://knowledge.threatconnect.com/docs/tag-normalization>`_, it will be converted to the main Tag listed in the rule. Similarly, if you applied a new Tag to a Group and that Tag `matches an ATT&CK Tag <https://knowledge.threatconnect.com/docs/attack-tags#converting-standard-tags-to-attck-tags>`_, it will be converted to that ATT&CK Tag.
 
@@ -48,7 +48,7 @@ The following request will create an Incident Group for an Incident that took pl
                     "name": "Targeted Attack"
                 },
                 {
-                    "name": "Phishing"
+                    "techniqueId": "T1566"
                 }
             ]
         }

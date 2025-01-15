@@ -1,7 +1,7 @@
 File Actions
 ------------
 
-File Indicators can model a special Indicator-to-Indicator association, which is based on their behavior once opened. These associations can be used to model the fact that malware may contain and create additional files or communicate with network devices. A File Action adds an Indicator to a File Indicator's behavior model, which can be viewed on the `Behavior tab <https://knowledge.threatconnect.com/docs/modeling-file-behavior>`_ of the File Indicator's **Details** screen.
+File Indicators can model a special Indicator-to-Indicator association, which is based on their behavior once opened. These associations can be used to model the fact that malware may contain and create additional files or communicate with network devices. A File Action adds an Indicator to a File Indicator's behavior model, which can be viewed on the `Behavior tab <https://knowledge.threatconnect.com/docs/modeling-file-behavior>`_ on the File Indicator's legacy **Details** screen.
 
 When creating File Actions using the v3 API, follow these guidelines:
 

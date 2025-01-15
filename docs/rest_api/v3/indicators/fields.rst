@@ -10,6 +10,9 @@ Send the following request to `retrieve a list of available fields <https://docs
 
     OPTIONS /v3/indicators
 
+.. note::
+    Objects in the response for an ``OPTIONS /v3/indicators`` request that have a ``common`` field with a value of ``true`` correspond to API fields that can be updated by API users with read-only permissions (that is, API users with an Organization role of Read Only User or Read Only Commenter, as well as API users with a Community role of User, Commenter, or Subscriber in a given Community or Source) if the **v3ApiReadOnlyReports** system setting is turned on for your ThreatConnect instance.
+
 .. hint::
     To include read-only fields in the response, append ``?show=readonly`` to the end of the request URL.
 
@@ -99,6 +102,12 @@ Alternatively, refer to the following table for a list of available fields that 
      - FALSE
      - TRUE
      - "2023-10-04T12:34:56Z"
+   * - falsePositiveFlag
+     - Indicates whether the Indicator is a false positive
+     - Boolean
+     - FALSE
+     - TRUE
+     - true, false
    * - firstSeen
      - The date and time when the Indicator was first seen
      - DateTime
@@ -111,6 +120,12 @@ Alternatively, refer to the following table for a list of available fields that 
      - FALSE
      - TRUE
      - "2023-10-04T12:34:56Z"
+   * - observations
+     - The number of times the Indicator was observed
+     - Integer
+     - FALSE
+     - TRUE
+     - 1, 2, 3,...
    * - ownerId [3]_
      - The ID of the `owner <https://docs.threatconnect.com/en/latest/rest_api/v3/owners/owners.html>`_ to which the Indicator belongs 
      - Integer

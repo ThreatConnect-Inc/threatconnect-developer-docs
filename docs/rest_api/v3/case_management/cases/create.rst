@@ -23,7 +23,7 @@ For example, the following request will create a Case named "Phishing Investigat
 - Apply the **T1566 - Phishing** ATT&CK® Tag to the Case
 
 .. attention::
-    When applying ATT&CK Tags to a Case, do not include the corresponding technique/sub-technique ID in the Tag's name. For example, to apply the **T1566 - Phishing** ATT&CK Tag to a Case, use Phishing as the Tag name.
+    To apply an ATT&CK Tag to a Case, use either the corresponding technique ID or name. For example, to apply the **T1566 - Phishing** ATT&CK Tag to a Case, either set ``name`` to ``"Phishing"`` or ``techniqueId`` to ``"T1566"`` when defining the ATT&CK Tag object in the request body.
 
     Also, if you applied a new Tag to a Case and that Tag matches a synonymous Tag listed in a `Tag normalization rule <https://knowledge.threatconnect.com/docs/tag-normalization>`_, it will be converted to the main Tag listed in the rule. Similarly, if you applied a new Tag to a Case and that Tag `matches an ATT&CK Tag <https://knowledge.threatconnect.com/docs/attack-tags#converting-standard-tags-to-attck-tags>`_, it will be converted to that ATT&CK Tag.
 
@@ -63,7 +63,7 @@ For example, the following request will create a Case named "Phishing Investigat
         "tags": {
             "data": [
                 {
-                    "name": "Phishing"
+                    "techniqueId": "T1566"
                 }
             ]
         }

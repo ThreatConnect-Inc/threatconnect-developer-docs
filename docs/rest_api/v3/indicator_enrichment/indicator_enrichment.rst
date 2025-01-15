@@ -12,13 +12,14 @@ Enrich Indicators With Data From an Enrichment Service
 
 You can use the v3 API to enrich Indicators with data retrieved from the following third-party enrichment services:
 
+- AbuseIPDB
 - DomainTools®
 - RiskIQ®
 - Shodan®
 - urlscan.io
 - VirusTotal™
 
-To enrich Indicators using the v3 API, you must append the ``type`` query parameter to the end of the request URL and specify which enrichment service(s) to use. See the following table for a list of accepted values for the ``type`` query parameter.
+To enrich Indicators using the v3 API, you must use the ``type`` query parameter in your request and specify which enrichment service(s) to use. See the following table for a list of accepted values for the ``type`` query parameter.
 
 .. attention::
 
@@ -31,6 +32,9 @@ To enrich Indicators using the v3 API, you must append the ``type`` query parame
    * - Value Name
      - Enrichment Service
      - Notes
+   * - ``AbuseIPDB``
+     - AbuseIPDB
+     - Available for Address Indicators only
    * - ``DomainTools``
      - DomainTools
      - Available for Host Indicators only
@@ -47,7 +51,7 @@ To enrich Indicators using the v3 API, you must append the ``type`` query parame
      - VirusTotal
      - Available for Address, File, Host, and URL Indicators only
 
-API requests to enrich an Indicator will use the API key your System Administrator entered when enabling and configuring the specified enrichment service to retrieve data from the enrichment service.
+API requests to enrich an Indicator will use the API key your System Administrator entered when they enabled and configured the specified enrichment service.
 
 .. attention::
 
@@ -69,7 +73,7 @@ Send a request in the following format to enrich a specific Indicator with data 
 
 .. note::
 
-    If using an Indicator's summary in the request URI and that Indicator exists in multiple owners, append ``?owner={ownerName}`` to request URI to specify which copy of the Indicator to return data for in the response.
+    If using an Indicator's summary in the request URI and that Indicator exists in multiple owners, use the ``owner`` `query parameter <https://docs.threatconnect.com/en/latest/rest_api/v3/specify_owner.html>`_ to specify which copy of the Indicator to return data for in the response.
 
 Single Enrichment Service
 """""""""""""""""""""""""
@@ -239,6 +243,55 @@ JSON Response
                         "registrar": "eNom, LLC",
                         "organization": "Data Protected",
                         "domainStatus": "ok"
+                    }
+                ]
+            }
+        },
+        "status": "Success"
+    }
+
+In this fourth example, the request will enrich the **218.92.0.227** Address Indicator in the API user's Organization with data retrieved from AbuseIPDB.
+
+.. note::
+
+    The amount of report data retrieved from AbuseIPDB will depend on the value your System Administrator entered for the **Maximum Age of Results (days)** setting when they configured the AbuseIPDB enrichment service in ThreatConnect.
+
+.. code::
+
+    POST /v3/indicators/218.92.0.227/enrich?type=AbuseIPDB
+    Content-Type: application/json
+
+JSON Response
+
+.. code:: json
+    
+    {
+        "data": {
+            "id": 11175668,
+            "dateAdded": "2024-12-10T15:00:22Z",
+            "ownerId": 1,
+            "ownerName": "Demo Organization",
+            "webLink": "https://app.threatconnect.com/#/details/indicators/11175668",
+            "type": "Address",
+            "lastModified": "2024-12-10T15:00:22Z",
+            "summary": "218.92.0.227",
+            "privateFlag": false,
+            "active": true,
+            "activeLocked": false,
+            "ip": "218.92.0.227",
+            "legacyLink": "https://app.threatconnect.com/auth/indicators/details/address.xhtml?address=218.92.0.227&owner=Demo+Organization",
+            "enrichment": {
+                "data": [
+                    {
+                        "type": "AbuseIPDB",
+                        "confidenceScore": 100,
+                        "reportedCount": 26716,
+                        "reportedCountDistinct": 420,
+                        "lastReported": "2024-12-10T15:00:21Z",
+                        "isp": "CHINANET jiangsu province network",
+                        "usageType": "Fixed Line ISP",
+                        "domainName": "chinatelecom.cn",
+                        "country": "China"
                     }
                 ]
             }

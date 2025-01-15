@@ -137,12 +137,6 @@ Alternatively, refer to the following table for a list of available fields that 
      - TRUE
      - FALSE
      - "Document", "Email"
-   * - upVote
-     - Use this field to update the Group's `Intel Rating <https://knowledge.threatconnect.com/docs/group-intel-rating>`_
-     - Boolean
-     - FALSE
-     - TRUE
-     - 0 (to submit a **Downvote** Intel Rating) or 1 (to submit an **Upvote** Intel Rating)
    * - xid
      - The Group's XID
      - String
@@ -344,6 +338,11 @@ Report
    * - publishDate
      - The date and time when the Report was published
      - Date
+     - FALSE
+     - TRUE
+   * - reviews
+     - An Intelligence Review submitted for the Report (see the "Intelligence Reviews" section for more information)
+     - Intelligence Review Object
      - FALSE
      - TRUE
 
