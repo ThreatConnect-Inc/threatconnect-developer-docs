@@ -2,13 +2,13 @@ Retrieve Indicator Exclusion Lists
 ----------------------------------
 
 Requirements
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 -  To view Indicator Exclusion Lists in an Organization, your API user account must have an Organization role of Standard User, Sharing User, Organization Administrator, or App Developer.
 -  To view Indicator Exclusion Lists in a Community or Source, your API user account must have a Community role of Editor or Director for that Community or Source.
 
 Query Parameters
-~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^
 
 The following table outlines **optional** query parameter(s) that may be used when sending a GET request to the ``/v3/security/exclusionLists`` endpoint.
 
@@ -46,7 +46,7 @@ The following table outlines **optional** query parameter(s) that may be used wh
      - N/A
 
 Retrieve All Indicator Exclusion Lists
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code:: http
 
@@ -55,7 +55,7 @@ Retrieve All Indicator Exclusion Lists
 Retrieve details about all Indicator Exclusion Lists in your owners and at the System level.
 
 Example Request
-^^^^^^^^^^^^^^^
+"""""""""""""""
 
 .. note::
    You must include the required authentication headers for the method you are using to `authenticate your API request <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#id1>`_.
@@ -108,7 +108,7 @@ Example Request
    }
 
 Retrieve a Specific Indicator Exclusion List
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code:: http
 
@@ -117,7 +117,7 @@ Retrieve a Specific Indicator Exclusion List
 Retrieve details about a specific Indicator Exclusion List.
 
 Example Request
-^^^^^^^^^^^^^^^
+"""""""""""""""
 
 .. note::
    You must include the required authentication headers for the method you are using to `authenticate your API request <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#id1>`_.

@@ -7,7 +7,7 @@ Intelligence Reviews provide members of an organization a way to solicit and pro
     As of ThreatConnect 7.8, Intelligence Reviews are available for Report Groups only.
 
 Requirements
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 -  To create Intelligence Reviews in an Organization, your API user account must have an Organization role of Standard User, Sharing User, Organization Administrator, or App Developer.
 -  To create Intelligence Reviews in a Community or Source, your API user account must have a Community role of Contributor, Editor, or Director for that Community or Source.
@@ -16,10 +16,10 @@ Requirements
 -  To delete Intelligence Reviews any user in an Organization created in the Organization or Communities and Sources the Organization is a member of, your API user account must have an Organization role of Organization Administrator.
 
 Intelligence Review Object Schema
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Request Body
-^^^^^^^^^^^^
+""""""""""""
 
 The following is the request body schema for an Intelligence Review object that can be used when creating or updating a Group:
 
@@ -45,7 +45,7 @@ The following is the request body schema for an Intelligence Review object that 
 
 
 Response Body
-^^^^^^^^^^^^^
+"""""""""""""
 
 The following is the response body schema for an Intelligence Review object that is included in API responses from the ``/v3/groups`` endpoint. Note that you must use the ``fields`` query parameter in your request and assign it a value of ``intelReviews`` to include Intelligence Reviews in API responses:
 
@@ -95,7 +95,7 @@ The following is the response body schema for an Intelligence Review object that
     }
 
 Create Intelligence Reviews
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When creating a Group or updating an existing one, you can add an Intelligence Review to the Group. The following request demonstrates how to add an Intelligence Review to an existing Group. Because Intelligence Review data are not included in the API response by default, the ``fields`` query parameter is used and assigned a value of ``intelReviews`` to include those data in the response.
 
@@ -122,7 +122,7 @@ When creating a Group or updating an existing one, you can add an Intelligence R
     You can add only one Intelligence Review per Group.
 
 Retrieve Intelligence Reviews
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When retrieving all Groups or a specific one, you can retrieve Intelligence Reviews by using the ``fields`` query parameter and assigning it a value of ``intelReviews``. The following request demonstrates how to include Intelligence Reviews in the API response when retrieving a specific Group.
 
@@ -133,7 +133,7 @@ When retrieving all Groups or a specific one, you can retrieve Intelligence Revi
     GET /v3/groups/216456?fields=intelReviews
 
 Update Intelligence Reviews
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can update an Intelligence Review only if its ``editable`` field is set to **true**. The following request demonstrates how to update an Intelligence Review added to an existing Group. Because Intelligence Review data are not included in the API response by default, the ``fields`` query parameter is used and assigned a value of ``intelReviews`` to include those data in the response.
 
@@ -157,13 +157,14 @@ You can update an Intelligence Review only if its ``editable`` field is set to *
     }
 
 Delete Intelligence Reviews
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can delete an Intelligence Review only if its deletable field is set to **true**. The following request demonstrates how to delete an Intelligence Review added to an existing Group. Because Intelligence Review data are not included in the API response by default, the ``fields`` query parameter is used and assigned a value of ``intelReviews`` to include those data in the response.
 
 **Request**
 
 .. code:: http
+
     PUT /v3/groups/216456?fields=intelReviews
     Content-Type: application/json
 

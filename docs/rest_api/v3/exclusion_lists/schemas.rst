@@ -2,7 +2,7 @@ Schemas
 -------
 
 Request Body (POST)
-~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^
 
 The following is the request body schema for a POST request to the ``/v3/security/exclusionLists`` endpoint:
 
@@ -42,7 +42,7 @@ The following is the request body schema for a POST request to the ``/v3/securit
    }
 
 Request Body (PUT)
-~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^
 
 The following is the request body schema for a PUT request to the ``/v3/security/exclusionLists`` endpoint:
 
@@ -82,7 +82,7 @@ The following is the request body schema for a PUT request to the ``/v3/security
    }
 
 Response Body
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
 
 The default response returned for successful GET, POST, and PUT requests to the ``/v3/security/exclusionLists`` endpoint may include one or more objects with the following fields:
 
