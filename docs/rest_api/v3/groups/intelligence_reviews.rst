@@ -19,7 +19,7 @@ Intelligence Review Object Schema
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Request Body
-""""""""""""
+============
 
 The following is the request body schema for an Intelligence Review object that can be used when creating or updating a Group:
 
@@ -45,7 +45,7 @@ The following is the request body schema for an Intelligence Review object that 
 
 
 Response Body
-"""""""""""""
+=============
 
 The following is the response body schema for an Intelligence Review object that is included in API responses from the ``/v3/groups`` endpoint. Note that you must use the ``fields`` query parameter in your request and assign it a value of ``intelReviews`` to include Intelligence Reviews in API responses:
 
