@@ -14,10 +14,12 @@ You can use the v3 API to enrich Indicators with data retrieved from the followi
 
 - AbuseIPDB
 - DomainTools®
-- RiskIQ®
 - Shodan®
 - urlscan.io
 - VirusTotal™
+
+.. attention::
+    As of ThreatConnect 7.8.1,the RiskIQ® built-in enrichment service is no longer available, because Microsoft® has discontinued the RiskIQ Community Edition.
 
 To enrich Indicators using the v3 API, you must use the ``type`` query parameter in your request and specify which enrichment service(s) to use. See the following table for a list of accepted values for the ``type`` query parameter.
 
@@ -37,9 +39,6 @@ To enrich Indicators using the v3 API, you must use the ``type`` query parameter
      - Available for Address Indicators only
    * - ``DomainTools``
      - DomainTools
-     - Available for Host Indicators only
-   * - ``RiskIQ``
-     - RiskIQ
      - Available for Host Indicators only
    * - ``Shodan``
      - Shodan
@@ -193,64 +192,7 @@ JSON Response
         "status": "Success"
     }
 
-In this third example, the request will enrich the **msgsafe.io** Host Indicator in a Source the API user has access to with data retrieved from RiskIQ.
-
-.. code::
-
-    POST /v3/indicators/msgsafe.io/enrich?type=RiskIQ&owner=CAL+Automated+Threat+Library
-    Content-Type: application/json
-
-JSON Response
-
-.. code:: json
-    
-    {
-        "data": {
-            "id": 26827582,
-            "dateAdded": "2023-11-18T11:10:21Z",
-            "ownerId": 179,
-            "ownerName": "CAL Automated Threat Library",
-            "webLink": "https://app.threatconnect.com/#/details/indicators/26827582/overview",
-            "type": "Host",
-            "lastModified": "2023-11-22T20:10:19Z",
-            "rating": 0.00,
-            "confidence": 50,
-            "summary": "msgsafe.io",
-            "privateFlag": false,
-            "active": true,
-            "activeLocked": false,
-            "hostName": "msgsafe.io",
-            "dnsActive": false,
-            "whoisActive": false,
-            "legacyLink": "https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=msgsafe.io&owner=CAL+Automated+Threat+Library",
-            "enrichment": {
-                "data": [
-                    {
-                        "type": "RiskIq",
-                        "reputationScore": 9,
-                        "classification": "UNKNOWN",
-                        "rules": [
-                            {
-                                "name": "Resolving IP Address",
-                                "description": "188.166.1.141",
-                                "severity": 1,
-                                "link": "https://community.riskiq.com/search?query=188.166.1.141"
-                            }
-                        ],
-                        "whoisServer": "WHOIS.ENOM.COM",
-                        "expiresAt": "2024-04-30T05:45:46Z",
-                        "registeredOn": "2015-04-30T05:45:46Z",
-                        "registrar": "eNom, LLC",
-                        "organization": "Data Protected",
-                        "domainStatus": "ok"
-                    }
-                ]
-            }
-        },
-        "status": "Success"
-    }
-
-In this fourth example, the request will enrich the **218.92.0.227** Address Indicator in the API user's Organization with data retrieved from AbuseIPDB.
+In this third example, the request will enrich the **218.92.0.227** Address Indicator in the API user's Organization with data retrieved from AbuseIPDB.
 
 .. note::
 

@@ -183,6 +183,28 @@ Request (Encoded URL)
 
     GET /v3/indicators?tql=typeName%20in%20(%22Address%22%2C%20%22Host%22)
 
+Filter Enriched Indicators
+==========================
+
+You can `enrich Indicators <https://docs.threatconnect.com/en/latest/rest_api/v3/indicator_enrichment/indicator_enrichment.html>`_ with several built-in enrichment services in ThreatConnect. Enriched Indicators may then be filtered by data points available for a given enrichment service.
+
+For example, the following request will retrieve data for all Indicators enriched with the AbuseIPDB enrichment service that have a confidence score of 50 or greater in AbuseIPDB:
+
+Request (Decoded URL)
+
+.. code::
+
+    GET /v3/indicators?tql=abuseIpdbConfidenceScore>=50
+
+Request (Encoded URL)
+
+.. code::
+
+    GET /v3/indicators?tql=abuseIpdbConfidenceScore%3E%3D50
+
+For a complete list of enrichment-related TQL parameters, send an ``OPTIONS`` request to the ``/v3/indicators/tql`` endpoint.
+
+
 Filter Groups by Type and Applied Tags
 ======================================
 

@@ -15,7 +15,7 @@ Trademarks
 -  Paw™ is a trademark of Paw, Inc.
 -  Postman® is a registered trademark of Postman, Inc.
 -  Python® is a registered trademark of the Python Software Foundation.
--  RiskIQ® and Windows® are registered trademarks of Microsoft Corporation.
+-  Microsoft®, RiskIQ®, and Windows® are registered trademarks of Microsoft Corporation.
 - Security Assertion Markup Language™ and SAML™ are trademarks of OASIS, the open standards consortium where the SAML specification is owned and developed. SAML is a copyrighted © work of OASIS Open. All rights reserved.
 -  Shodan® is a registered trademark of Shodan.
 -  Swagger™ is a trademark of Smartbear Software, Inc.
