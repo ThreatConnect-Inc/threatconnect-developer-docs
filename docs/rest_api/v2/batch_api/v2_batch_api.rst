@@ -106,12 +106,12 @@ Upload an Input File to a Batch Job
 The V2 Batch API expects to ingest a JSON file containing one or more lists of objects, where Indicator and Group objects are contained within the ``indicator`` and ``group`` arrays. If your instance is running ThreatConnect 7.8.2 or newer, you may also define associations to create within the ``association`` array.
 
 .. note::
-    You can also define associations within the ``indicator`` and ``group`` arrays, regardless of which ThreatConnect version your instance is running. For more information, see the `"Indicator Fields" <#indicator-fields>`_ and `"Group Fields" <#group-fields>`_ sections.
+    You can also define associations within the ``indicator`` and ``group`` arrays, regardless of which ThreatConnect version your instance is running. For more information, see the `"Indicator Fields" <#id3>`_ and `"Group Fields" <#id10>`_ sections.
 
-The following is the batch input file schema for the V2 Batch API. For a list of additional fields you can use when defining Indicator and Group objects, see the `"Indicator Fields" <#indicator-fields>`_ and `"Group Fields" <#group-fields>`_ section, respectively.
+The following is the batch input file schema for the V2 Batch API. For a list of additional fields you can use when defining Indicator and Group objects, see the `"Indicator Fields" <#id3>`_ and `"Group Fields" <#id10>`_ section, respectively.
 
 * ``indicator``: <*Array of Objects*> The Indicators to create or update.
-    * ``summary``: <*String*> **REQUIRED** The Indicator's summary. For File Indicators, you may substitute summary with the field that contains one of the Indicator's file hashes (e.g., you can use ``md5`` instead of summary to define a File Indicator's MD5 hash value). See the `"File Indicator Considerations" <#id9>`_ section for more information.
+    * ``summary``: <*String*> **REQUIRED** The Indicator's summary. For File Indicators, you may substitute summary with the field that contains one of the Indicator's file hashes (e.g., you can use ``md5`` instead of summary to define a File Indicator's MD5 hash value). See the `"File Indicator Considerations" <#id11>`_ section for more information.
     * ``type``: <*String*> **REQUIRED** The Indicator's type.
 * ``group``: <*Array of Objects*> The Groups to create or update.
     * ``name``: <*String*> **REQUIRED** The Group's name.
@@ -225,7 +225,7 @@ The following input file demonstrates how to associate Indicators to Groups usin
 * Create a Host Indicator (**badguyz.com**)
 * Create an Incident Group (**Ransomware Attack at Company ABC**)
 * Associate **badguyz.com** to **Ransomware Attack at Company ABC**
-* Associate **badguyz.com** to an existing Group (the Group whose ID is 12345) in the same owner in which the batch job is processing data
+* Associate **badguyz.com** to an existing Group (the Group whose ID is 12345) in the owner in which the batch job is processing data
 
 .. code:: json
 
@@ -377,7 +377,7 @@ The following input file demonstrates how to associate Groups to *newly created*
 The following input file demonstrates how to associate Groups to *existing* Indicators using the ``associatedIndicators`` field within the ``group`` array. When the Batch API processes the file, it will do the following:
 
 * Create an Incident Group (**Ransomware Attack at Company XYZ**)
-* Associate **Ransomware Attack at Company XYZ** to an existing Address Indicator (**71.6.135.131**) in the same owner in which the batch job is processing data
+* Associate **Ransomware Attack at Company XYZ** to an existing Address Indicator (**71.6.135.131**) in the owner in which the batch job is processing data
 
 Because the Address Indicator already exists in ThreatConnect, it does not need to be defined in the ``indicator`` array in the input file.
 
@@ -419,10 +419,10 @@ Because the Address Indicator already exists in ThreatConnect, it does not need 
 
 The following input file demonstrates how to associate Groups to Indicators using the ``association`` array. When the Batch API processes the file, it will do the following:
 
-* Create a URL Indicator (``http://www.badguyz.com``)
-* Create an Incident Group (``Ransomware Attack at Company XYZ``)
-* Associate ``Ransomware Attack at Company XYZ`` to ``http://www.badguyz.com``
-* Associate ``Ransomware Attack at Company XYZ`` to an existing Address Indicator (the Address Indicator whose ID is 54321) in the same owner in which the batch job is processing data
+* Create a URL Indicator (**http://www.badguyz.com**)
+* Create an Incident Group (**Ransomware Attack at Company XYZ**)
+* Associate **Ransomware Attack at Company XYZ** to **http://www.badguyz.com**
+* Associate **Ransomware Attack at Company XYZ** to an existing Address Indicator (the Address Indicator whose ID is 54321) in the owner in which the batch job is processing data
 
 .. code:: json
 
@@ -548,8 +548,8 @@ The following input file demonstrates how to associate Groups to other Groups us
 
 * Create two Incident Groups (**Compromised User Accounts at Company ABC** and **Leaked Credentials at Company ABC**)
 * Associate **Compromised User Accounts at Company ABC** to **Leaked Credentials at Company ABC**
-* Associate **Compromised User Accounts at Company ABC** to an existing Group (the Group whose ID is 12345) in the same owner in which the batch job is processing data
-* Create an association between two existing Groups in the same owner in which the batch job is processing data
+* Associate **Compromised User Accounts at Company ABC** to an existing Group (the Group whose ID is 12345) in the owner in which the batch job is processing data
+* Create an association between two existing Groups in the owner in which the batch job is processing data
 
 .. code:: json
 
@@ -612,8 +612,8 @@ When the Batch API processes the file, it will do the following:
 * Create a Host Indicator (**verybadguyz.com**)
 * Create a URL Indicator (**http://www.verybadguyz.com**)
 * Associate **verybadguyz.com** to **http://www.verybadguyz.com** using the URL Host association type
-* Associate **verybadguyz.com** to an existing Address Indicator (the Address Indicator whose ID is 54321) in the same owner in which the batch job is processing data using the Host to Indicators association type
-* Create an association between two existing Indicators (an Address and an ASN) in the same owner in which the batch job is processing data using the Address to Indicators association type
+* Associate **verybadguyz.com** to an existing Address Indicator (the Address Indicator whose ID is 54321) in the owner in which the batch job is processing data using the Host to Indicators association type
+* Create an association between two existing Indicators (an Address and an ASN) in the owner in which the batch job is processing data using the Address to Indicators association type
 
 .. code:: json
 

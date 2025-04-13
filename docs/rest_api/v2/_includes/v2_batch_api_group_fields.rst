@@ -98,7 +98,6 @@
      - | The signature file's type (for Signature Groups only)
        |
        | Acceptable values:
-       |
        | * Bro
        | * ClamAV
        | * CybOX
@@ -168,14 +167,12 @@
      - | The status of the security event or incident (for Event and Incident Groups only)
        |
        | Acceptable values (Event):
-       |
        | * Needs Review
        | * False Positive
        | * No Further Action
        | * Escalated
        | 
        | Acceptable values (Incident):
-       | 
        | * New
        | * Open
        | * Stalled

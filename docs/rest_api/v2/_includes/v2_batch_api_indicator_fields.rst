@@ -86,7 +86,6 @@
      - | The Indicator's Confidence Rating
        |
        | Minimum value: **0**
-       |
        | Maximum value: **100**
      - Integer
      - Optional
@@ -128,7 +127,6 @@
      - | The Indicator's Threat Rating
        |
        | Minimum value: **0**
-       |
        | Maximum value: **5**
      - Integer
      - Optional
@@ -177,4 +175,4 @@
      - **String**
      - **Required**
 
-.. [1] For File Indicators, you can define their file hashes as a concatenated string using colon delimiters in the ``summary`` field or as separate file hashes in the ``md5``, ``sha1``, and ``sha256`` fields. See the `"File Indicator Considerations" <#id9>`_ section for more information.
+.. [1] For File Indicators, you can define their file hashes as a concatenated string using colon delimiters in the ``summary`` field or as separate file hashes in the ``md5``, ``sha1``, and ``sha256`` fields. See the `"File Indicator Considerations" <#id11>`_ section for more information.

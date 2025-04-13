@@ -22,7 +22,6 @@
      - | The Indicator's Confidence Rating
        |
        | Minimum value: **0**
-       |
        | Maximum value: **100**
      - Integer
      - Optional
@@ -34,7 +33,6 @@
      - | The Indicator's Threat Rating
        |
        | Minimum value: **0**
-       |
        | Maximum value: **5**
      - Integer
      - Optional

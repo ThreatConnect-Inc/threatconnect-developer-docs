@@ -48,3 +48,7 @@
 .fig-border {
     border: 1px solid #000;
 }
+
+.rst-content .line-block {
+    margin-bottom: 0;
+}
