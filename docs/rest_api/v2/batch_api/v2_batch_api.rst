@@ -4,12 +4,15 @@ V2 Batch API
 The following sections describe how to use the V2 Batch API, including how to create a batch job and upload a file to the job for processing. With the V2 Batch API, you can perform the following actions:
 
 * Import Indicators and Groups
-* Create Group-to-Group, Indicator-to-Group, and Group-to-Indicator associations
+* Create Group-to-Group, Indicator-to-Group, Group-to-Indicator, and, Indicator-to-Indicator associations
 * Create and update Attributes, Tags, and Security Labels for Indicators and Groups
 * Specify how to manage file hash merges and collisions for File Indicators
 
 .. attention::
     The V2 Batch API does not support cross-owner associations.
+
+.. note::
+    To create Indicator-to-Indicator associations with the V2 Batch API, your instance must be running ThreatConnect 7.8.2 or newer.
 
 Create a Batch Job
 ^^^^^^^^^^^^^^^^^^
@@ -57,7 +60,7 @@ Send a request in the following format to create a batch job that will use the V
     * **Replace** (default): The batch job will replace all Security Labels added to an Indicator or Group with the incoming Security Labels.
 * ``fileMergeMode``: <*String*> Specifies whether the batch job will perform a merge operation when the file hashes in an incoming File Indicator match two or more existing File Indicators in the specified owner (e.g., an incoming File Indicator contains an MD5 and SHA1 that each match a separate File Indicator in the specified owner). Accepted values include the following:
     * **Distribute**: The batch job will not perform a merge operation; instead, it will add the metadata (e.g., Threat and Confidence Ratings, Tags, Attributes) for the incoming File Indicator to all matching File Indicators (up to three possible) in the specified owner.
-    * **Merge** (default): The batch job will perform a merge operation and combine two or more existing File Indicators with separate file hashes into a single File Indicator with all file hashes. During this process, the File Indicator with the most recent lastModified date will be used as the "primary" copy and retain its Threat and Confidence Ratings (at least, until their values are overwritten by the values for the incoming File Indicator). Attributes, Security Labels, and Tags associated with all merged File Indicators will be applied to the "primary" copy as well. Because Attributes are appended to the "primary" copy, duplicate Attributes may be present if each File Indicator that was merged had similar Attributes.
+    * **Merge** (default): The batch job will perform a merge operation and combine two or more existing File Indicators with separate file hashes into a single File Indicator with all file hashes. During this process, the File Indicator with the most recent ``lastModified`` date will be used as the "primary" copy and retain its Threat and Confidence Ratings (at least, until their values are overwritten by the values for the incoming File Indicator). Attributes, Security Labels, and Tags associated with all merged File Indicators will be applied to the "primary" copy as well. Because Attributes are appended to the "primary" copy, duplicate Attributes may be present if each File Indicator that was merged had similar Attributes.
 * ``hashCollisionMode``: <*String*> Specifies how the batch job will handle file hash collisions that occur when importing or merging File Indicators (e.g., an incoming File Indicator contains an MD5 and SHA1, while an existing File Indicator contains the same MD5 but a different SHA1). Accepted values include the following:
     * **FavorExisting**: The batch job will favor hashes in the existing File Indicator and ignore conflicting hashes in the incoming File Indicator.
     * **FavorIncoming** (default): The batch job will favor hashes in the incoming File Indicator and overwrite conflicting hashes in the existing File Indicator.
@@ -66,7 +69,7 @@ Send a request in the following format to create a batch job that will use the V
     * **Split**: The batch job will not perform a merge; instead, it will apply the metadata (e.g., Threat and Confidence Ratings, Tags, Attributes) for the incoming File Indicator to all matching File Indicators in the specified owner.
 
 .. note::
-    If ``haltOnError`` is set to ``true`` and an error occurs during the batch process, the status for the batch job will be set to ``Completed`` and the value for ``errorCount`` will be greater than zero. Also, the value for ``unprocessedCount`` will be greater than zero unless the uploaded file did not contain valid JSON.
+    If ``haltOnError`` is set to ``true`` and an error occurs during the batch process, the ``status`` for the batch job will be set to ``Completed`` and the value for ``errorCount`` will be greater than zero. Also, the value for ``unprocessedCount`` will be greater than zero unless the uploaded file did not contain valid JSON.
 
 **Response (Success)**
 
@@ -74,7 +77,10 @@ Send a request in the following format to create a batch job that will use the V
 
     HTTP/1.1 201 Created
     {
-        batchId: "12345"
+        "status": "Success",
+        "data": {
+            "batchId": 2446
+        }
     }
 
 **Response (Insufficient Privileges)**
@@ -92,22 +98,36 @@ Send a request in the following format to create a batch job that will use the V
     Batch job api is not available.  Ensure that batchJobEnabled is true and document storage is enabled and configured;
 
 .. attention::
-    When creating a batch job, the parameters defined in the body of the POST request must be accurate. When troubleshooting issues with the Batch API, make sure the parameter names in the request body are correct and that an accepted value is provided for each parameter.
+    The parameters defined in the body of a POST request to create a batch job must be accurate. When troubleshooting issues with the Batch API, make sure the parameter names in the request body are correct and that an accepted value is provided for each parameter.
 
 Upload an Input File to a Batch Job
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The V2 Batch API expects to ingest a JSON file containing one or more lists of dictionaries. As shown in the following examples, the V2 Batch API expects Indicator and Group objects to be contained within their own ``indicator`` and ``group`` array, respectively. At a minimum, you must include the following fields for each object in each array:
+The V2 Batch API expects to ingest a JSON file containing one or more lists of objects, where Indicator and Group objects are contained within the ``indicator`` and ``group`` arrays. If your instance is running ThreatConnect 7.8.2 or newer, you may also define associations to create within the ``association`` array.
 
-* **indicator**
-    * ``summary``: <*String*> The Indicator's summary.
-    * ``type``: <*String*> The Indicator's type.
-* **group**
-    * ``name``: <*String*> The Group's name.
-    * ``type``: <*String*> The Group's type.
-    * ``xid``: <*String*> The Group's XID.
+.. note::
+    You can also define associations within the ``indicator`` and ``group`` arrays, regardless of which ThreatConnect version your instance is running. For more information, see the `"Indicator Fields" <#indicator-fields>`_ and `"Group Fields" <#group-fields>`_ sections.
 
-See the following tables for a list of additional fields that you may also include for Indicator and Group objects in their respective array.
+The following is the batch input file schema for the V2 Batch API. For a list of additional fields you can use when defining Indicator and Group objects, see the `"Indicator Fields" <#indicator-fields>`_ and `"Group Fields" <#group-fields>`_ section, respectively.
+
+* ``indicator``: <*Array of Objects*> The Indicators to create or update.
+    * ``summary``: <*String*> **REQUIRED** The Indicator's summary. For File Indicators, you may substitute summary with the field that contains one of the Indicator's file hashes (e.g., you can use ``md5`` instead of summary to define a File Indicator's MD5 hash value). See the `"File Indicator Considerations" <#id9>`_ section for more information.
+    * ``type``: <*String*> **REQUIRED** The Indicator's type.
+* ``group``: <*Array of Objects*> The Groups to create or update.
+    * ``name``: <*String*> **REQUIRED** The Group's name.
+    * ``type``: <*String*> **REQUIRED** The Group's type.
+    * ``xid``: <*String*> **REQUIRED** The Group's XID.
+* ``association``: <*Array of Objects*> The associations to create. Supported association types include Indicator to Group, Group to Indicator, Group to Group, and Indicator to Indicator. (Requires ThreatConnect 7.8.2 or newer.)
+    * ``ref_1``: <*String*> The summary of the Indicator or XID of the Group to use as the first object in the association. The Indicator or Group must be present in the batch input file or exist in the owner in which the batch job is processing data. (This field can be used interchangeably or in conjunction with ``id_1``. If both are provided, ``id_1`` will be favored over ``ref_1``.)
+    * ``id_1``: <*Integer*> The ID of the Indicator or Group to use as the first object in the association. The Indicator or Group must exist in the owner in which the batch job is processing data. (This field can be used interchangeably or in conjunction with ``ref_1``. If both are provided, ``id_1`` will be favored over ``ref_1``.)
+    * ``type_1``: <*String*> The type of Indicator or Group defined for ``ref_1`` or ``id_1``. This field is required for Indicators and optional for Groups.
+    * ``ref_2``: <*String*> The summary of the Indicator or XID of the Group to use as the second object in the association. The Indicator or Group must be present in the input file or exist in the owner in which the batch job is processing data. (This field can be used interchangeably or in conjunction with ``id_2``. If both are provided, ``id_2`` will be favored over ``ref_2``.)
+    * ``id_2``: <*Integer*> The ID of the Indicator or Group to use as the second object in the association. The Indicator or Group must exist in the owner in which the batch job is processing data. (This field can be used interchangeably or in conjunction with ``ref_2``. If both are provided, ``id_2`` will be favored over ``ref_2``.)
+    * ``type_2``: <*String*> The type of Indicator or Group defined for ``ref_2`` or ``id_2``. This field is required for Indicators and optional for Groups.
+    * ``associationType``: <*String*> For Indicator-to-Indicator associations only, the name of the association type (e.g., URL Host). This field is **required** if making an Indicator-to-Indicator association.
+
+.. attention::
+    If using the ``association`` field, it must be placed after the ``indicator`` and ``group`` fields in a batch input file.
 
 Indicator Fields
 """"""""""""""""
@@ -130,22 +150,19 @@ Example Input Files
 
 **Indicator-to-Group Association**
 
-When this input file is uploaded to the Batch API, the API will create a Host Indicator (**super-malicious.ru**) and Incident Group (**Ransomware Attack**) and then associate the Indicator to the Group. It will also add an Attribute, Security Label, and Tag to the Indicator and Group.
+The following input file demonstrates how to associate Indicators to Groups using the ``associatedGroups`` field within the ``indicator`` array. When the Batch API processes the file, it will do the following:
+
+* Create a Host Indicator (**badguyz.com**)
+* Create an Incident Group (**Ransomware Attack at Company ABC**)
+* Associate **badguyz.com** to **Ransomware Attack at Company ABC**
 
 .. code:: json
 
     {
         "indicator": [
             {
-                "rating": 3,
-                "confidence": 60,
-                "summary": "super-malicious.ru",
+                "summary": "badguyz.com",
                 "type": "Host",
-                "externalDateAdded": "2023-08-25T18:23:43Z",
-                "externalLastModified": "2023-08-26T18:23:43Z",
-                "externalDateExpires": "2023-08-30T18:23:43Z",
-                "firstSeen": "2023-08-25T18:23:43Z",
-                "lastSeen": "2023-08-26T18:23:43Z",
                 "associatedGroups": [
                     {
                         "groupXid": "00000000-0000-0000-0000-000000000000:0001"
@@ -154,9 +171,16 @@ When this input file is uploaded to the Batch API, the API will create a Host In
                 "attribute": [
                     {
                         "type": "Description",
-                        "value": "A malicious domain"
+                        "value": "This host was involved in a ransomware attack that targeted employees at Company ABC.",
+                        "securityLabel": [
+                            {
+                                "name": "TLP:AMBER"
+                            }
+                        ]
                     }
                 ],
+                "confidence": 60,
+                "rating": 3,
                 "securityLabel": [
                     {
                         "name": "TLP:AMBER"
@@ -164,29 +188,24 @@ When this input file is uploaded to the Batch API, the API will create a Host In
                 ],
                 "tag": [
                     {
-                        "name": "Malicious Host"
+                        "name": "Ransomware"
                     }
                 ]
             }
         ],
         "group": [
             {
-                "name": "Ransomware Attack",
+                "name": "Ransomware Attack at Company ABC",
                 "type": "Incident",
                 "xid": "00000000-0000-0000-0000-000000000000:0001",
-                "eventDate": "2023-08-04T00:00:00Z",
-                "externalDateAdded": "2023-08-25T18:23:43Z",
-                "externalLastModified": "2023-08-26T18:23:43Z",
-                "externalDateExpires": "2023-08-30T18:23:43Z",
-                "firstSeen": "2023-08-25T18:23:43Z",
-                "lastSeen": "2023-08-26T18:23:43Z",
                 "attribute": [
                     {
                         "type": "Description",
-                        "displayed": true,
-                        "value": "A ransomware attack that targeted employees at Company ABC."
+                        "value": "A ransomware attack that targeted employees at Company ABC.",
+                        "displayed": true
                     }
                 ],
+                "eventDate": "2024-08-04T00:00:00Z",
                 "securityLabel": [
                     {
                         "name": "TLP:AMBER"
@@ -201,149 +220,481 @@ When this input file is uploaded to the Batch API, the API will create a Host In
         ]
     }
 
-**Group-to-Indicator Association (New Indicator)**
+The following input file demonstrates how to associate Indicators to Groups using the ``association`` array. When the Batch API processes the file, it will do the following:
 
-When this input file is uploaded to the Batch API, the API will create a Host Indicator (**badguy.com**) and Incident Group (**Ransomware Attack Involving badguy.com**) and then associate the Group to the Indicator. It will also add an Attribute and Tag to the Indicator and Group.
+* Create a Host Indicator (**badguyz.com**)
+* Create an Incident Group (**Ransomware Attack at Company ABC**)
+* Associate **badguyz.com** to **Ransomware Attack at Company ABC**
+* Associate **badguyz.com** to an existing Group (the Group whose ID is 12345) in the same owner in which the batch job is processing data
 
 .. code:: json
 
     {
         "indicator": [
             {
-                "rating": 3,
-                "confidence": 0,
-                "summary": "badguy.com",
+                "summary": "badguyz.com",
                 "type": "Host",
                 "attribute": [
                     {
                         "type": "Description",
-                        "value": "A malicious domain"
+                        "value": "This host was involved in a ransomware attack that targeted employees at Company ABC.",
+                        "securityLabel": [
+                            {
+                                "name": "TLP:AMBER"
+                            }
+                        ]
+                    }
+                ],
+                "confidence": 60,
+                "rating": 3,
+                "securityLabel": [
+                    {
+                        "name": "TLP:AMBER"
                     }
                 ],
                 "tag": [
                     {
-                        "name": "Malicious Host"
+                        "name": "Ransomware"
                     }
                 ]
             }
         ],
         "group": [
             {
-                "name": "Ransomware Attack Involving badguy.com",
+                "name": "Ransomware Attack at Company ABC",
                 "type": "Incident",
-                "xid": "00000000-0000-0000-0000-000000000000:0002",
-                "eventDate": "2023-08-04T00:00:00Z",
-                "firstSeen": "2023-08-25T18:23:43Z",
-                "lastSeen": "2023-08-26T18:23:43Z",
+                "xid": "00000000-0000-0000-0000-000000000000:0001",
                 "attribute": [
                     {
-                        "type": "Additional Analysis and Context",
-                        "pinned": true,
-                        "value": "This ransomware attack involved the badguy.com domain."
+                        "type": "Description",
+                        "value": "A ransomware attack that targeted employees at Company ABC.",
+                        "displayed": true
+                    }
+                ],
+                "eventDate": "2024-08-04T00:00:00Z",
+                "securityLabel": [
+                    {
+                        "name": "TLP:AMBER"
                     }
                 ],
                 "tag": [
                     {
                         "name": "Ransomware"
                     }
+                ]
+            }
+        ],
+        "association": [
+            {
+                "ref_1": "badguyz.com",
+                "type_1": "Host",
+                "ref_2": "00000000-0000-0000-0000-000000000000:0001"
+            },
+            {
+                "ref_1": "badguyz.com",
+                "type_1": "Host",
+                "id_2": 12345
+            }
+        ]
+    }
+
+**Group-to-Indicator Association**
+
+.. note::
+    When creating Group-to-Indicator associations, including the Indicators in the input file improves the efficiency of the batch job. Otherwise, a lookup will need to be made for each Indicator not included in the input file.
+
+The following input file demonstrates how to associate Groups to *newly created* Indicators using the ``associatedIndicators`` field within the ``group`` array. When the Batch API processes the file, it will do the following:
+
+* Create a URL Indicator (**http://www.badguyz.com**)
+* Create an Incident Group (**Ransomware Attack at Company XYZ**)
+* Associate **Ransomware Attack at Company XYZ** to **http://www.badguyz.com**
+
+.. code:: json
+
+    {
+        "indicator": [
+            {
+                "summary": "http://www.badguyz.com",
+                "type": "URL",
+                "attribute": [
+                    {
+                        "type": "Description",
+                        "value": "This URL was involved in a ransomware attack that targeted employees at Company XYZ.",
+                        "securityLabel": [
+                            {
+                                "name": "TLP:AMBER"
+                            }
+                        ]
+                    }
                 ],
+                "confidence": 60,
+                "rating": 3,
+                "securityLabel": [
+                    {
+                        "name": "TLP:AMBER"
+                    }
+                ],
+                "tag": [
+                    {
+                        "name": "Ransomware"
+                    }
+                ]
+            }
+        ],
+        "group": [
+            {
+                "name": "Ransomware Attack at Company XYZ",
+                "type": "Incident",
+                "xid": "00000000-0000-0000-0000-000000000000:0002",
                 "associatedIndicators": [
                     {
-                        "summary": "badguy.com",
-                        "indicatorType": "Host"
+                        "summary": "http://www.badguyz.com",
+                        "indicatorType": "URL"
+                    }
+                ],
+                "attribute": [
+                    {
+                        "type": "Description",
+                        "value": "A ransomware attack that targeted employees at Company XYZ.",
+                        "displayed": true
+                    }
+                ],
+                "eventDate": "2024-08-04T00:00:00Z",
+                "securityLabel": [
+                    {
+                        "name": "TLP:AMBER"
+                    }
+                ],
+                "tag": [
+                    {
+                        "name": "Ransomware"
                     }
                 ]
             }
         ]
     }
 
-**Group-to-Indicator Association (Existing Indicator)**
+The following input file demonstrates how to associate Groups to *existing* Indicators using the ``associatedIndicators`` field within the ``group`` array. When the Batch API processes the file, it will do the following:
 
-When this input file is uploaded to the Batch API, the API will create an Incident Group (**Ransomware Attack Involving verybadguy.com**) and then associate an existing Host Indicator (**verybadguy.com**) to it. It will also add an Attribute and Tag to the Group.
+* Create an Incident Group (**Ransomware Attack at Company XYZ**)
+* Associate **Ransomware Attack at Company XYZ** to an existing Address Indicator (**71.6.135.131**) in the same owner in which the batch job is processing data
+
+Because the Address Indicator already exists in ThreatConnect, it does not need to be defined in the ``indicator`` array in the input file.
 
 .. code:: json
 
     {
         "group": [
             {
-                "name": "Ransomware Attack Involving verybadguy.com",
+                "name": "Ransomware Attack at Company XYZ",
+                "type": "Incident",
+                "xid": "00000000-0000-0000-0000-000000000000:0002",
+                "associatedIndicators": [
+                    {
+                        "summary": "71.6.135.131",
+                        "indicatorType": "Address"
+                    }
+                ],
+                "attribute": [
+                    {
+                        "type": "Description",
+                        "value": "A ransomware attack that targeted employees at Company XYZ.",
+                        "displayed": true
+                    }
+                ],
+                "eventDate": "2024-08-04T00:00:00Z",
+                "securityLabel": [
+                    {
+                        "name": "TLP:AMBER"
+                    }
+                ],
+                "tag": [
+                    {
+                        "name": "Ransomware"
+                    }
+                ]
+            }
+        ]
+    }
+
+The following input file demonstrates how to associate Groups to Indicators using the ``association`` array. When the Batch API processes the file, it will do the following:
+
+* Create a URL Indicator (``http://www.badguyz.com``)
+* Create an Incident Group (``Ransomware Attack at Company XYZ``)
+* Associate ``Ransomware Attack at Company XYZ`` to ``http://www.badguyz.com``
+* Associate ``Ransomware Attack at Company XYZ`` to an existing Address Indicator (the Address Indicator whose ID is 54321) in the same owner in which the batch job is processing data
+
+.. code:: json
+
+    {
+        "indicator": [
+            {
+                "summary": "http://www.badguyz.com",
+                "type": "URL",
+                "attribute": [
+                    {
+                        "type": "Description",
+                        "value": "This URL was involved in a ransomware attack that targeted employees at Company XYZ.",
+                        "securityLabel": [
+                            {
+                                "name": "TLP:AMBER"
+                            }
+                        ]
+                    }
+                ],
+                "confidence": 60,
+                "rating": 3,
+                "securityLabel": [
+                    {
+                        "name": "TLP:AMBER"
+                    }
+                ],
+                "tag": [
+                    {
+                        "name": "Ransomware"
+                    }
+                ]
+            }
+        ],
+        "group": [
+            {
+                "name": "Ransomware Attack at Company XYZ",
+                "type": "Incident",
+                "xid": "00000000-0000-0000-0000-000000000000:0002",
+                "attribute": [
+                    {
+                        "type": "Description",
+                        "value": "A ransomware attack that targeted employees at Company XYZ.",
+                        "displayed": true
+                    }
+                ],
+                "eventDate": "2024-08-04T00:00:00Z",
+                "securityLabel": [
+                    {
+                        "name": "TLP:AMBER"
+                    }
+                ],
+                "tag": [
+                    {
+                        "name": "Ransomware"
+                    }
+                ]
+            }
+        ],
+        "association": [
+            {
+                "ref_1": "00000000-0000-0000-0000-000000000000:0002",
+                "ref_2": "http://www.badguyz.com",
+                "type_2": "URL"
+            },
+            {
+                "ref_1": "00000000-0000-0000-0000-000000000000:0002",
+                "id_2": 54321,
+                "type_2": "Address"
+            }
+        ]
+    }
+
+**Group-to-Group Association**
+
+The following input file demonstrates how to associate Groups to other Groups using the ``associatedGroupXid`` field within the ``group`` array. When the Batch API processes the file, it will do the following:
+
+* Create two Incident Groups (**Compromised User Accounts at Company ABC** and **Leaked Credentials at Company ABC**)
+* Associate **Compromised User Accounts at Company ABC** to **Leaked Credentials at Company ABC**
+
+
+.. code:: json
+
+    {
+        "group": [
+            {
+                "name": "Compromised User Accounts at Company ABC",
                 "type": "Incident",
                 "xid": "00000000-0000-0000-0000-000000000000:0003",
-                "eventDate": "2023-08-04T00:00:00Z",
-                "externalDateAdded": "2023-08-25T18:23:43Z",
-                "externalLastModified": "2023-08-26T18:23:43Z",
-                "externalDateExpires": "2023-08-30T18:23:43Z",
+                "associatedGroupXid": [
+                    "00000000-0000-0000-0000-000000000000:0004"
+                ],
                 "attribute": [
                     {
                         "type": "Description",
                         "displayed": true,
-                        "value": "A ransomware attack that involved the verybadguy.com Host Indicator."
+                        "value": "An incident involving compromised user accounts at Company ABC."
                     }
-                ],
-                "tag": [
-                    {
-                        "name": "Ransomware"
-                    }
-                ],
-                "associatedIndicators": [
-                    {
-                        "summary": "verybadguy.com",
-                        "indicatorType": "Host"
-                    }
-                ]
-            }
-        ]
-    }
-
-.. note::
-    When creating Group-to-Indicator associations, including the Indicator(s) in the JSON file will improve the efficiency of the batch job. Otherwise, a lookup will need to be made for each Indicator not included in the JSON file.
-
-**Group-to-Group Association**
-
-When this input file is uploaded to the Batch API, the API will create two Incident Groups and associate them to each other. It will also add an Attribute and Tag to each Group.
-
-.. code:: json
-
-    {
-        "group": [
-            {
-                "name": "Compromised User Accounts",
-                "type": "Incident",
-                "xid": "00000000-0000-0000-0000-000000000000:0004",
-                "associatedGroupXid": [
-                    "00000000-0000-0000-0000-000000000000:0005"
                 ],
                 "eventDate": "2023-11-01T00:00:00Z",
-                "attribute": [
-                    {
-                        "type": "Additional Analysis and Context",
-                        "pinned": true,
-                        "value": "A phishing email was used to compromise 53 user accounts at Company ABC."
-                    }
-                ],
                 "tag": [
                     {
-                        "name": "Phishing Email"
+                        "name": "Phishing Attack"
                     }
                 ]
             },
             {
-                "name": "Leaked Credentials",
+                "name": "Leaked Credentials at Company ABC",
                 "type": "Incident",
-                "xid": "00000000-0000-0000-0000-000000000000:0005",
-                "eventDate": "2023-11-01T00:00:00Z",
+                "xid": "00000000-0000-0000-0000-000000000000:0004",
                 "attribute": [
                     {
                         "type": "Description",
                         "displayed": true,
-                        "value": "An incident involving leaked credentials."
+                        "value": "An incident involving leaked credentials at Company ABC."
+                    }
+                ],
+                "eventDate": "2023-11-01T00:00:00Z"
+            }
+        ]
+    }
+
+The following input file demonstrates how to associate Groups to other Groups using the ``association`` array. When the Batch API processes the file, it will do the following:
+
+* Create two Incident Groups (**Compromised User Accounts at Company ABC** and **Leaked Credentials at Company ABC**)
+* Associate **Compromised User Accounts at Company ABC** to **Leaked Credentials at Company ABC**
+* Associate **Compromised User Accounts at Company ABC** to an existing Group (the Group whose ID is 12345) in the same owner in which the batch job is processing data
+* Create an association between two existing Groups in the same owner in which the batch job is processing data
+
+.. code:: json
+
+    {
+        "group": [
+            {
+                "name": "Compromised User Accounts at Company ABC",
+                "type": "Incident",
+                "xid": "00000000-0000-0000-0000-000000000000:0003",
+                "attribute": [
+                    {
+                        "type": "Description",
+                        "displayed": true,
+                        "value": "An incident involving compromised user accounts at Company ABC."
+                    }
+                ],
+                "eventDate": "2023-11-01T00:00:00Z",
+                "tag": [
+                    {
+                        "name": "Phishing Attack"
+                    }
+                ]
+            },
+            {
+                "name": "Leaked Credentials at Company ABC",
+                "type": "Incident",
+                "xid": "00000000-0000-0000-0000-000000000000:0004",
+                "attribute": [
+                    {
+                        "type": "Description",
+                        "displayed": true,
+                        "value": "An incident involving leaked credentials at Company ABC."
+                    }
+                ],
+                "eventDate": "2023-11-01T00:00:00Z"
+            }
+        ],
+        "association": [
+            {
+                "ref_1": "00000000-0000-0000-0000-000000000000:0003",
+                "ref_2": "00000000-0000-0000-0000-000000000000:0004"
+            },
+            {
+                "ref_1": "00000000-0000-0000-0000-000000000000:0003",
+                "id_2": 12345
+            },
+            {
+                "id_1": 100,
+                "id_2": 200
+            }
+        ]
+    }
+
+**Indicator-to-Indicator Association**
+
+The following input file demonstrates how to associate Indicators to other Indicators using the ``association`` array. This is the only method you can use to create Indicator-to-Indicator associations with the Batch API.
+
+When the Batch API processes the file, it will do the following:
+
+* Create a Host Indicator (**verybadguyz.com**)
+* Create a URL Indicator (**http://www.verybadguyz.com**)
+* Associate **verybadguyz.com** to **http://www.verybadguyz.com** using the URL Host association type
+* Associate **verybadguyz.com** to an existing Address Indicator (the Address Indicator whose ID is 54321) in the same owner in which the batch job is processing data using the Host to Indicators association type
+* Create an association between two existing Indicators (an Address and an ASN) in the same owner in which the batch job is processing data using the Address to Indicators association type
+
+.. code:: json
+
+    {
+        "indicator": [
+            {
+                "summary": "verybadguyz.com",
+                "type": "Host",
+                "attribute": [
+                    {
+                        "type": "Description",
+                        "value": "A host used by the Very Bad Guyz hacker group.",
+                        "securityLabel": [
+                            {
+                                "name": "TLP:AMBER"
+                            }
+                        ]
+                    }
+                ],
+                "confidence": 60,
+                "rating": 3,
+                "securityLabel": [
+                    {
+                        "name": "TLP:AMBER"
                     }
                 ],
                 "tag": [
                     {
-                        "name": "Data Breach"
+                        "name": "Ransomware"
                     }
                 ]
+            },
+            {
+                "summary": "http://www.verybadguyz.com",
+                "type": "URL",
+                "attribute": [
+                    {
+                        "type": "Description",
+                        "value": "A URL used by the Very Bad Guyz hacker group.",
+                        "securityLabel": [
+                            {
+                                "name": "TLP:AMBER"
+                            }
+                        ]
+                    }
+                ],
+                "confidence": 60,
+                "rating": 3,
+                "securityLabel": [
+                    {
+                        "name": "TLP:AMBER"
+                    }
+                ],
+                "tag": [
+                    {
+                        "name": "Ransomware"
+                    }
+                ]
+            }
+        ],
+        "association": [
+            {
+                "ref_1": "verybadguyz.com",
+                "type_1": "Host",
+                "ref_2": "http://www.verybadguyz.com",
+                "type_2": "URL",
+                "associationType": "URL Host"
+            },
+            {
+                "ref_1": "verybadguyz.com",
+                "type_1": "Host",
+                "id_2": 54321,
+                "type_2": "Address",
+                "associationType": "Host to Indicators"
+            },
+            {
+                "id_1": 54321,
+                "type_1": "Address",
+                "id_2": 654321,
+                "type_2": "ASN",
+                "associationType": "Address to Indicators"
             }
         ]
     }
@@ -463,11 +814,25 @@ Send a request in the following format to check the status of a file upload for 
 
     HTTP/1.1 200 OK
     {
-        status: "Completed",
-        errorCount: 3420,
-        successCount: 405432,
-        unprocessCount: 0
+        "status": "Success",
+        "data": {
+            "batchStatus": {
+                "id": 12345,
+                "status": "Completed",
+                "errorCount": 342,
+                "successCount": 405432,
+                "unprocessCount": 0
+            }
+        }
     }
+
+Query Parameters
+""""""""""""""""
+
+The ``/v2/batch/{batchId}`` endpoint supports the following query parameter:
+
+* ``includeAdditional``: <*Boolean*> Specifies whether to include counts of successful and unsuccessful Indicator creations, Group creations, and associations in the response. (Default value: **false**) 
+
 
 Retrieve Error Messages For a Batch Job
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

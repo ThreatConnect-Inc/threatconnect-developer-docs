@@ -48,7 +48,10 @@ Send a request in the following format to create a batch job that will use the V
 
     HTTP/1.1 201 Created
     {
-        batchId: "12345"
+        "status": "Success",
+        "data": {
+            "batchId": 2446
+        }
     }
 
 **Response (Insufficient Privileges)**
@@ -73,8 +76,8 @@ Upload an Input File to a Batch Job
 
 The Batch API expects to ingest a JSON file containing one or more lists of dictionaries. As shown in the following example, the V1 Batch API expects a single array of Indicator objects. At a minimum, you must include the following fields for each object in each array:
 
-* ``summary``: <*String*> The Indicator's summary.
-* ``type``: <*String*> The Indicator's type.
+* ``summary``: <*String*> **REQUIRED** The Indicator's summary.
+* ``type``: <*String*> **REQUIRED** The Indicator's type.
 
 See the following tables for a list of additional fields that you may also include for Indicator objects in the array.
 
@@ -196,10 +199,16 @@ Send a request in the following format to check the status of a file upload for 
 
     HTTP/1.1 200 OK
     {
-        status: "Completed",
-        errorCount: 3420,
-        successCount: 405432,
-        unprocessCount: 0
+        "status": "Success",
+        "data": {
+            "batchStatus": {
+                "id": 12345,
+                "status": "Completed",
+                "errorCount": 342,
+                "successCount": 405432,
+                "unprocessCount": 0
+            }
+        }
     }
 
 Retrieve Error Messages For a Batch Job

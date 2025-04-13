@@ -27,11 +27,15 @@
      - Array of Objects
      - Optional
    * - attribute.displayed
-     - Specifies whether to display the Attribute as a default Attribute on the **Details** screen for the Group to which it is added (applies to Description and Source Attributes only)
+     - | Specifies whether to display the Attribute as a default Attribute on the **Details** screen for the Group to which it is added (applies to Description and Source Attributes only)
+       |
+       | Default value: **false**
      - Boolean
      - Optional
    * - attribute.pinned
-     - Specifies whether to display the Attribute as a pinned Attribute on the **Details** screen for the Group to which it is added
+     - | Specifies whether to display the Attribute as a pinned Attribute on the **Details** screen for the Group to which it is added
+       |
+       | Default value: **false**
      - Boolean
      - Optional
    * - attribute.securityLabel
@@ -90,8 +94,24 @@
      - The contents of the signature file (for Signature Groups only)
      - String
      - Required for Signature Groups
-   * - fileType [2]_
-     - The signature file's type (for Signature Groups only)
+   * - fileType
+     - | The signature file's type (for Signature Groups only)
+       |
+       | Acceptable values:
+       |
+       | * Bro
+       | * ClamAV
+       | * CybOX
+       | * Iris Search Hash
+       | * KQL
+       | * OpenIOC
+       | * Regex
+       | * SPL
+       | * Sigma
+       | * Snort
+       | * Suricata
+       | * TQL Query
+       | * YARA
      - String
      - Required for Signature Groups only
    * - firstSeen
@@ -115,7 +135,9 @@
      - DateTime
      - Optional
    * - malware
-     - Specifies whether the file uploaded to the Group is a malware file (for Document Groups only)
+     - | Specifies whether the file uploaded to the Group is a malware file (for Document Groups only)
+       |
+       | Default value: **false**
      - Boolean
      - Optional
    * - **name**
@@ -142,8 +164,27 @@
      - The Security Label's name
      - String
      - Required if ``securityLabel`` is used
-   * - status [2]_
-     - The status of the security event or incident (for Event and Incident Groups only)
+   * - status
+     - | The status of the security event or incident (for Event and Incident Groups only)
+       |
+       | Acceptable values (Event):
+       |
+       | * Needs Review
+       | * False Positive
+       | * No Further Action
+       | * Escalated
+       | 
+       | Acceptable values (Incident):
+       | 
+       | * New
+       | * Open
+       | * Stalled
+       | * Containment Achieved
+       | * Restoration Achieved
+       | * Incident Reported
+       | * Closed
+       | * Rejected
+       | * Deleted
      - String
      - Optional
    * - subject
@@ -170,5 +211,3 @@
      - **The Group's XID**
      - **String**
      - **Required**
-
-.. [2]  See the `v2 API Groups creation operation documentation <https://docs.threatconnect.com/en/latest/rest_api/v2/groups/groups.html#create-groups>`_ for a list of accepted values for this field.

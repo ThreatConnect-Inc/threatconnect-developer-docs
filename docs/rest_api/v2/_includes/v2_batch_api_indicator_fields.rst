@@ -7,11 +7,15 @@
      - Accepted Data Type
      - Required?
    * - active
-     - Specifies whether the Indicator's status is active (**true**) or inactive (**false**)
+     - | Specifies whether the Indicator's status is active (**true**) or inactive (**false**)
+       |
+       | Default value: **true**
      - Boolean
      - Optional
    * - activeLocked
-     - Specifies whether to prevent CAL™ from updating the Indicator's status
+     - | Specifies whether to prevent CAL™ from updating the Indicator's status
+       |
+       | Default value: **false**
      - Boolean
      - Optional
    * - associatedGroups
@@ -39,11 +43,15 @@
      - Array of Objects
      - Optional
    * - attribute.displayed
-     - Specifies whether to display the Attribute as a default Attribute on the **Details** screen for the Indicator to which it is added (applies to Description and Source Attributes only)
+     - | Specifies whether to display the Attribute as a default Attribute on the **Details** screen for the Indicator to which it is added (applies to Description and Source Attributes only)
+       |
+       | Default value: **false**
      - Boolean
      - Optional
    * - attribute.pinned
-     - Specifies whether to display the Attribute as a pinned Attribute on the **Details** screen for the Indicator to which it is added
+     - | Specifies whether to display the Attribute as a pinned Attribute on the **Details** screen for the Indicator to which it is added
+       |
+       | Default value: **false**
      - Boolean
      - Optional
    * - attribute.securityLabel
@@ -75,7 +83,11 @@
      - String
      - Required if ``attribute`` is used
    * - confidence
-     - The Indicator's Confidence Rating
+     - | The Indicator's Confidence Rating
+       |
+       | Minimum value: **0**
+       |
+       | Maximum value: **100**
      - Integer
      - Optional
    * - description
@@ -107,11 +119,17 @@
      - String
      - Optional
    * - privateFlag
-     - Specifies whether to mark the Indicator as private
+     - | Specifies whether to mark the Indicator as private (requires private Indicators being enabled on for your ThreatConnect instance)
+       |
+       | Default value: **false**
      - Boolean
      - Optional
    * - rating
-     - The Indicator's Threat Rating
+     - | The Indicator's Threat Rating
+       |
+       | Minimum value: **0**
+       |
+       | Maximum value: **5**
      - Integer
      - Optional
    * - securityLabel

@@ -19,7 +19,11 @@
      - String
      - Required if ``attribute`` is used
    * - confidence
-     - The Indicator's Confidence Rating
+     - | The Indicator's Confidence Rating
+       |
+       | Minimum value: **0**
+       |
+       | Maximum value: **100**
      - Integer
      - Optional
    * - description
@@ -27,7 +31,11 @@
      - String
      - Optional
    * - rating
-     - The Indicator's Threat Rating
+     - | The Indicator's Threat Rating
+       |
+       | Minimum value: **0**
+       |
+       | Maximum value: **5**
      - Integer
      - Optional
    * - source
