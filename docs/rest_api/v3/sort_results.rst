@@ -6,7 +6,7 @@ Overview
 
 When retrieving data, you can use the ``sorting`` query parameter to sort results based on a valid `TQL parameter <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_ for the endpoint, followed by one of the following sorting keywords:
 
-- ``acs``: Sorts results in ascending order.
+- ``asc``: Sorts results in ascending order.
 - ``desc``: Sorts results in descending order.
 - ``nullsfirst``: Places the nulls before the non-null elements in the sort order.
 - ``nullslast``: Places the non-null elements before the non-null elements in the sort order.
