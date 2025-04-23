@@ -89,6 +89,8 @@ JSON Response:
                 "pseudonym": "jsmithAPI",
                 "owner": "Demo Organization"
             },
+            "detectionOverdue": false,
+            "responseOverdue": false,
             "status": "Open",
             "severity": "Low",
             "resolution": "Not Specified",

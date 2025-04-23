@@ -16,6 +16,9 @@ The follow example illustrates the basic format for creating an Indicator:
 Refer to the `Available Fields <#available-fields>`_ and `Indicator-Specific Fields <#indicator-specific-fields>`_ sections for a list of available fields that can be included in the body of a POST request to the ``/v3/indicators`` endpoint.
 
 .. note::
+    If you send a POST request to create an Indicator that already exists in the owner where the API request is creating data, the existing Indicator will be updated instead of a new one being created. This is because each owner can have only one copy of a given Indicator. For example, a single Organization can have only one copy of the Email Address Indicator **badguy@bad.com**.
+
+.. note::
     You can add multiple `Attributes <https://docs.threatconnect.com/en/latest/rest_api/v3/group_attributes/indicator_attributes.html>`_, `Tags <https://docs.threatconnect.com/en/latest/rest_api/v3/tags/tags.html>`_, and `Security Labels <https://docs.threatconnect.com/en/latest/rest_api/v3/security_labels/security_labels.html>`_ to an Indicator in a single POST or PUT request.
 
 Example POST Request
