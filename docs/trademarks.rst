@@ -4,6 +4,7 @@ Trademarks
 -  ThreatConnect® is a registered trademark of ThreatConnect, Inc.
 -  CrowdStrike® is a registered trademark of CrowdStrike, Inc.
 -  ECMAScript® is a registered trademark of Ecma International.
+-  DomainTools® and Farsight Security® are registered trademarks of DomainTools, LLC.
 -  GitHub® is a registered trademark of GitHub, Inc.
 -  Java®, JavaScript®, and Oracle® are registered trademarks of the
    Oracle Corporation.

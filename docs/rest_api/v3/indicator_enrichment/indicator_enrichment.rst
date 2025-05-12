@@ -7,13 +7,14 @@ Enriching threat intelligence data helps remove false positives and delivers act
 .. note::
     You must include the following Content-Type HTTP header in your request in order to enrich an Indicator: ``Content-Type: application/json``
 
-Enrich Indicators With Data From an Enrichment Service
-------------------------------------------------------
+Available Enrichment Services
+-----------------------------
 
 You can use the v3 API to enrich Indicators with data retrieved from the following third-party enrichment services:
 
 - AbuseIPDB
 - DomainTools®
+- Farsight Security®
 - Shodan®
 - urlscan.io
 - VirusTotal™
@@ -21,11 +22,27 @@ You can use the v3 API to enrich Indicators with data retrieved from the followi
 .. attention::
     As of ThreatConnect 7.8.1,the RiskIQ® built-in enrichment service is no longer available, because Microsoft® has discontinued the RiskIQ Community Edition.
 
-To enrich Indicators using the v3 API, you must use the ``type`` query parameter in your request and specify which enrichment service(s) to use. See the following table for a list of accepted values for the ``type`` query parameter.
+Enriching Indicators
+--------------------
+
+The following section describes how to use the v3 API to enrich Indicators with data retrieved from any of the enrichment services that a System Administrator enabled and configured on your ThreatConnect instance. For more information on enabling enrichment services, see `Enrichment <https://knowledge.threatconnect.com/docs/enrichment>`_ in the ThreatConnect knowledge base.
 
 .. attention::
 
-    The accepted values for the ``type`` query parameter are case sensitive.
+    If the API key your System Administrator entered for an enrichment service exceeds the quota limit set by the enrichment vendor, an error message stating so will be returned by the API.
+
+.. note::
+
+    If you enrich an Indicator that exists in multiple owners, each copy of the Indicator will be enriched. However, only a single API request will be sent to the specified enrichment service.
+
+Query Parameters
+^^^^^^^^^^^^^^^^
+
+When using the v3 API to enrich Indicators, use the ``type`` query parameter to specify one or more enrichment services to use. See the following table for a list of acceptable values for the ``type`` query parameter.
+
+.. attention::
+
+    The acceptable values for the ``type`` query parameter are case sensitive.
 
 .. list-table::
    :widths: 25 25 50
@@ -40,6 +57,9 @@ To enrich Indicators using the v3 API, you must use the ``type`` query parameter
    * - ``DomainTools``
      - DomainTools
      - Available for Host Indicators only
+   * - ``Farsight``
+     - Farsight Security
+     - Available for Address and Host Indicators only
    * - ``Shodan``
      - Shodan
      - Available for Address Indicators only
@@ -50,20 +70,10 @@ To enrich Indicators using the v3 API, you must use the ``type`` query parameter
      - VirusTotal
      - Available for Address, File, Host, and URL Indicators only
 
-API requests to enrich an Indicator will use the API key your System Administrator entered when they enabled and configured the specified enrichment service.
-
-.. attention::
-
-    If the API key your System Administrator entered for an enrichment service exceeds the quota limit set by the enrichment vendor, an error message stating so will be returned by the API.
-
-.. note::
-
-    If you enrich an Indicator that exists in multiple owners, each copy of the Indicator will be enriched. However, only a single API request will be sent to the specified enrichment service.
-
 Enrich a Specific Indicator
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Send a request in the following format to enrich a specific Indicator with data retrieved from the specified enrichment service(s):
+Send a request in the following format to enrich a specific Indicator with data retrieved from one or more enrichment services:
 
 .. code::
 
@@ -74,10 +84,240 @@ Send a request in the following format to enrich a specific Indicator with data 
 
     If using an Indicator's summary in the request URI and that Indicator exists in multiple owners, use the ``owner`` `query parameter <https://docs.threatconnect.com/en/latest/rest_api/v3/specify_owner.html>`_ to specify which copy of the Indicator to return data for in the response.
 
-Single Enrichment Service
-"""""""""""""""""""""""""
+AbuseIPDB
+"""""""""
 
-In this first example, the request will enrich the **71.6.135.131** Address Indicator in the API user's Organization  with data retrieved from Shodan.
+The following request will enrich an Address Indicator in the API user's Organization with data retrieved from AbuseIPDB:
+
+.. code::
+
+    POST /v3/indicators/218.92.0.227/enrich?type=AbuseIPDB
+    Content-Type: application/json
+
+JSON Response
+
+.. code:: json
+    
+    {
+        "data": {
+            "id": 11175668,
+            "dateAdded": "2024-12-10T15:00:22Z",
+            "ownerId": 1,
+            "ownerName": "Demo Organization",
+            "webLink": "https://app.threatconnect.com/#/details/indicators/11175668",
+            "type": "Address",
+            "lastModified": "2024-12-10T15:00:22Z",
+            "summary": "218.92.0.227",
+            "privateFlag": false,
+            "active": true,
+            "activeLocked": false,
+            "ip": "218.92.0.227",
+            "legacyLink": "https://app.threatconnect.com/auth/indicators/details/address.xhtml?address=218.92.0.227&owner=Demo+Organization",
+            "enrichment": {
+                "data": [
+                    {
+                        "type": "AbuseIPDB",
+                        "confidenceScore": 100,
+                        "reportedCount": 26716,
+                        "reportedCountDistinct": 420,
+                        "lastReported": "2024-12-10T15:00:21Z",
+                        "isp": "CHINANET jiangsu province network",
+                        "usageType": "Fixed Line ISP",
+                        "domainName": "chinatelecom.cn",
+                        "country": "China"
+                    }
+                ]
+            }
+        },
+        "status": "Success"
+    }
+
+.. note::
+
+    The amount of report data retrieved from AbuseIPDB will depend on the value your System Administrator entered for the **Maximum Age of Results (days)** setting when they configured the AbuseIPDB enrichment service in ThreatConnect.
+
+DomainTools
+"""""""""""
+
+The following request will enrich a Host Indicator in the API user's Organization with data retrieved from DomainTools:
+
+.. code::
+
+    POST /v3/indicators/telecomcredits.us/enrich?type=DomainTools
+    Content-Type: application/json
+
+JSON Response
+
+.. code:: json
+    
+    {
+        "data": {
+            "id": 10629739,
+            "dateAdded": "2024-02-15T19:34:02Z",
+            "ownerId": 1,
+            "ownerName": "Demo Organization",
+            "webLink": "https://app.threatconnect.com/#/details/indicators/10629739",
+            "type": "Host",
+            "lastModified": "2025-04-24T01:19:20Z",
+            "summary": "telecomcredits.us",
+            "privateFlag": false,
+            "active": false,
+            "activeLocked": false,
+            "hostName": "telecomcredits.us",
+            "dnsActive": false,
+            "whoisActive": false,
+            "legacyLink": "https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=telecomcredits.us&owner=Demo+Organization",
+            "enrichment": {
+                "data": [
+                    {
+                        "type": "DomainTools",
+                        "overallRiskScore": 51,
+                        "malwareRiskScore": 13,
+                        "phishingRiskScore": 34,
+                        "spamRiskScore": 51,
+                        "active": true,
+                        "registrantOrg": {
+                            "value": "Redacted for Privacy Purposes",
+                            "count": 1041870
+                        },
+                        "registrar": {
+                            "value": "NAMECHEAP INC",
+                            "count": 27890668
+                        },
+                        "ipList": [
+                            {
+                                "address": {
+                                    "value": "85.121.14.124",
+                                    "count": 4
+                                },
+                                "asn": [
+                                    {
+                                        "value": "12310",
+                                        "count": 5614
+                                    }
+                                ],
+                                "countryCode": {
+                                    "value": "ro",
+                                    "count": 582253
+                                },
+                                "isp": {
+                                    "value": "Byte Cont Srl",
+                                    "count": 567
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        "status": "Success"
+    }
+
+Farsight Security
+"""""""""""""""""
+
+The following request will enrich a Host Indicator in the API user's Organization with data retrieved from Farsight Security:
+
+.. code::
+
+    POST /v3/indicators/zayla.co/enrich?type=Farsight
+    Content-Type: application/json
+
+JSON Response
+
+.. code:: json
+    
+    {
+        "data": {
+            "id": 9962300,
+            "dateAdded": "2023-06-26T15:23:28Z",
+            "ownerId": 1,
+            "ownerName": "Demo Organization",
+            "webLink": "https://app.threatconnect.com/#/details/indicators/9962300",
+            "type": "Host",
+            "lastModified": "2023-09-25T13:40:12Z",
+            "confidence": 0,
+            "source": "Imported from FarSight Passive DNS",
+            "summary": "zayla.co",
+            "privateFlag": false,
+            "active": true,
+            "activeLocked": false,
+            "hostName": "zayla.co",
+            "dnsActive": false,
+            "whoisActive": false,
+            "legacyLink": "https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=zayla.co&owner=Demo+Organization",
+            "enrichment": {
+                "data": [
+                    {
+                        "type": "Farsight",
+                        "results": [
+                            {
+                                "hostname": "zayla.co",
+                                "ips": [
+                                    "13.56.33.8"
+                                ],
+                                "count": 3,
+                                "firstSeen": "2020-06-20T04:35:27Z",
+                                "lastSeen": "2020-06-20T04:40:32Z"
+                            },
+                            {
+                                "hostname": "zayla.co",
+                                "ips": [
+                                    "34.102.136.180"
+                                ],
+                                "count": 3,
+                                "firstSeen": "2023-07-24T05:35:43Z",
+                                "lastSeen": "2023-07-25T02:06:09Z"
+                            },
+                            {
+                                "hostname": "zayla.co",
+                                "ips": [
+                                    "107.180.48.66"
+                                ],
+                                "count": 5900,
+                                "firstSeen": "2020-06-20T21:40:16Z",
+                                "lastSeen": "2025-05-07T09:58:22Z"
+                            },
+                            {
+                                "hostname": "zayla.co",
+                                "ips": [
+                                    "107.180.51.202"
+                                ],
+                                "count": 105,
+                                "firstSeen": "2019-07-08T08:10:43Z",
+                                "lastSeen": "2020-06-13T18:45:36Z"
+                            },
+                            {
+                                "hostname": "zayla.co",
+                                "ips": [
+                                    "184.168.221.32"
+                                ],
+                                "count": 4,
+                                "firstSeen": "2019-01-16T10:19:40Z",
+                                "lastSeen": "2019-02-08T22:02:54Z"
+                            },
+                            {
+                                "hostname": "mail.zayla.co",
+                                "ips": [
+                                    "107.180.48.66"
+                                ],
+                                "count": 30,
+                                "firstSeen": "2023-10-19T10:50:01Z",
+                                "lastSeen": "2024-12-27T05:06:20Z"
+                            }
+                        ],
+                        "msg": "succeeded"
+                    }
+                ]
+            }
+        },
+        "status": "Success"
+    }    
+
+Shodan
+""""""
+
+The following request will enrich an Address Indicator in the API user's Organization with data retrieved from Shodan:
 
 .. code::
 
@@ -140,7 +380,10 @@ JSON Response
         "status": "Success"
     }
 
-In this second example, the request will enrich the URL Indicator whose ID is 20 with data retrieved from urlscan.io.
+urlscan.io
+""""""""""
+
+The following request will enrich the URL Indicator whose ID is 20 with data retrieved from urlscan.io:
 
 .. code::
 
@@ -192,15 +435,14 @@ JSON Response
         "status": "Success"
     }
 
-In this third example, the request will enrich the **218.92.0.227** Address Indicator in the API user's Organization with data retrieved from AbuseIPDB.
+VirusTotal
+"""""""""""
 
-.. note::
-
-    The amount of report data retrieved from AbuseIPDB will depend on the value your System Administrator entered for the **Maximum Age of Results (days)** setting when they configured the AbuseIPDB enrichment service in ThreatConnect.
+The following request will enrich a File Indicator in the API user's Organization with data retrieved from VirusTotal:
 
 .. code::
 
-    POST /v3/indicators/218.92.0.227/enrich?type=AbuseIPDB
+    POST /v3/indicators/45356A9DD616ED7161A3B9192E2F318D0AB5AD10/enrich?type=VirusTotalV3
     Content-Type: application/json
 
 JSON Response
@@ -209,31 +451,24 @@ JSON Response
     
     {
         "data": {
-            "id": 11175668,
-            "dateAdded": "2024-12-10T15:00:22Z",
+            "id": 9962385,
+            "dateAdded": "2023-07-28T14:06:49Z",
             "ownerId": 1,
             "ownerName": "Demo Organization",
-            "webLink": "https://app.threatconnect.com/#/details/indicators/11175668",
-            "type": "Address",
-            "lastModified": "2024-12-10T15:00:22Z",
-            "summary": "218.92.0.227",
+            "webLink": "https://app.threatconnect.com/#/details/indicators/9962385",
+            "type": "File",
+            "lastModified": "2023-07-28T14:06:49Z",
+            "summary": "45356A9DD616ED7161A3B9192E2F318D0AB5AD10",
             "privateFlag": false,
             "active": true,
             "activeLocked": false,
-            "ip": "218.92.0.227",
-            "legacyLink": "https://app.threatconnect.com/auth/indicators/details/address.xhtml?address=218.92.0.227&owner=Demo+Organization",
+            "sha1": "45356A9DD616ED7161A3B9192E2F318D0AB5AD10",
+            "legacyLink": "https://app.threatconnect.com/auth/indicators/details/file.xhtml?file=45356A9DD616ED7161A3B9192E2F318D0AB5AD10&owner=Demo+Organization",
             "enrichment": {
                 "data": [
                     {
-                        "type": "AbuseIPDB",
-                        "confidenceScore": 100,
-                        "reportedCount": 26716,
-                        "reportedCountDistinct": 420,
-                        "lastReported": "2024-12-10T15:00:21Z",
-                        "isp": "CHINANET jiangsu province network",
-                        "usageType": "Fixed Line ISP",
-                        "domainName": "chinatelecom.cn",
-                        "country": "China"
+                        "type": "VirusTotal",
+                        "vtMaliciousCount": 65
                     }
                 ]
             }
@@ -244,9 +479,9 @@ JSON Response
 Multiple Enrichment Services
 """"""""""""""""""""""""""""
 
-When enriching a specific Indicator, you can specify multiple enrichment services from which to retrieve data. In this scenario, each enrichment service must be available for the type of Indicator you want to enrich.
+When enriching a specific Indicator, you can specify multiple enrichment services from which to retrieve data. In this scenario, each enrichment service must support the type of Indicator you want to enrich.
 
-In this example, the request will enrich the zeverco.com Host Indicator in the API user's Organization with data retrieved from DomainTools and VirusTotal.
+The following request will enrich a Host Indicator in the API user's Organization with data retrieved from DomainTools and VirusTotal:
 
 .. code::
 
@@ -324,7 +559,7 @@ JSON Response
         "status": "Success"
     }
 
-If one or more enrichment services is not available for the Indicator type included in the request, an error message indicating which enrichment services are not supported for that Indicator type will be returned. For example, the following request attempts to enrich a Host Indicator with data retrieved from Shodan and VirusTotal. Because Shodan is available for Address Indicators only, an error message stating that the Host Indicator cannot be enriched with Shodan is returned. The Indicator is also not enriched with data from VirusTotal.
+If an enrichment service is not available for the type of Indicator you are trying to enrich, an error message indicating that the enrichment service does not support that Indicator type will be returned. For example, the following request attempts to enrich a Host Indicator with data retrieved from Shodan and VirusTotal. Because Shodan supports only Address Indicators, an error message stating that the Host Indicator cannot be enriched with Shodan is returned. The Indicator is also not enriched with data from VirusTotal.
 
 .. code::
 
@@ -344,7 +579,7 @@ JSON Response
 Enrich Multiple Indicators
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Send a request in the following format to enrich multiple Indicators with data retrieved from the specified enrichment service(s). Note that the specified enrichment service(s) must be available for each type of Indicator included in the request body.
+Send a request in the following format to enrich multiple Indicators with data retrieved from the specified enrichment services. The specified enrichment services must support each type of Indicator defined in the request body.
 
 .. code::
 
@@ -354,20 +589,19 @@ Send a request in the following format to enrich multiple Indicators with data r
     {
         "data": [
             {
-                "id": <indicatorId>
+                "id": 0
             },
             {
-                "type": "<indicatorType>",
-                "summary": "<indicatorSummary>",
-                "ownerName": "<ownerName>"
-            },
-            {...}
+                "type": "<string>",
+                "summary": "<string>",
+                "ownerName": "<string>"
+            }
         ]
     }
 
 .. note::
 
-    When using an Indicator's type and summary instead of its ID, you only need to include the ``owner`` field in the request body if the Indicator does not exist in your Organization.
+    When defining an Indicator by its type and summary instead of its ID, you must define the ``owner`` field in the request body if the Indicator exists in a Community or Source.
 
 .. attention::
 
@@ -376,7 +610,7 @@ Send a request in the following format to enrich multiple Indicators with data r
 Single Enrichment Service
 """""""""""""""""""""""""
 
-In the following example, the request will enrich the Indicator whose ID is 15 (i.e., the **71.6.135.131** Address Indicator) and the **evil.com** Host Indicator in one of the API user's Communities with data retrieved from VirusTotal.
+The following request will enrich the Indicator whose ID is 15 (an Address Indicator), as well as a Host Indicator in one of the API user's Communities, with data retrieved from VirusTotal:
 
 .. code::
 
@@ -458,9 +692,9 @@ JSON Response
 Multiple Enrichment Services
 """"""""""""""""""""""""""""
 
-When enriching multiple Indicators, you can specify multiple enrichment services from which to retrieve data. In this scenario, each enrichment service must be available for the type(s) of Indicator(s) you want to enrich.
+When enriching multiple Indicators, you can specify multiple enrichment services from which to retrieve data. In this scenario, each enrichment service must support the types of Indicators you want to enrich.
 
-In the following example, the request will enrich two Address Indicators in the API user's Organization with data retrieved from Shodan and VirusTotal.
+The following request will enrich two Address Indicators in the API user's Organization with data retrieved from Shodan and VirusTotal:
 
 .. code::
 
@@ -614,7 +848,7 @@ JSON Response
         "status": "Success"
     }
 
-If one or more enrichment services is not available for one of the Indicator types included in the request body, then the request will enrich the Indicator types for which the specified enrichment service is available and return a message indicating which Indicators types could not be enriched with that service. For example, the following request attempts to enrich an Address and Host Indicator in the API user's Organization with data retrieved from Shodan and VirusTotal. Because Shodan is available for Address Indicators only, the API response includes a message stating that the Host Indicator cannot be enriched with Shodan.
+If an enrichment service does not support one of the Indicator types defined in the request body, the request will enrich the types of Indicators that the enrichment service supports and return a message indicating which Indicators cannot be enriched with the enrichment service. For example, the following request attempts to enrich an Address and Host Indicator in the API user's Organization with data retrieved from Shodan and VirusTotal. Because Shodan supports only Address Indicators, the API response includes a message stating that the Host Indicator cannot be enriched with Shodan.
 
 .. code::
 
@@ -724,7 +958,7 @@ Request (Specific Indicator)
 
     You must first enrich an Indicator with a supported enrichment service for data to be populated in the ``enrichment`` field included in the API response.
 
-For example, the following request will retrieve data for the **71.6.135.131** Address Indicator in the API user's Organization and include enrichment data for the Indicator in the API response:
+For example, the following request will retrieve data for an Address Indicator in the API user's Organization and include enrichment data for the Indicator in the API response:
 
 .. code::
 
@@ -789,13 +1023,3 @@ JSON Response
         },
         "status": "Success"
     }
-
-----
-
-*DomainTools® is a registered trademark of DomainTools, LLC.*
-
-*RiskIQ® is a registered trademark of Microsoft Corporation.*
-
-*Shodan® is a registered trademark of Shodan.*
-
-*VirusTotal™ is a trademark of Google, Inc.*
