@@ -142,6 +142,12 @@ JSON Response
                 "description": "The owner name of the tag"
             },
             {
+                "keyword": "securityCoverage",
+                "name": "Security Coverage",
+                "type": "Enum",
+                "description": "The security coverage level of an ATT&CK-based tag as it relates to the user's organization"
+            },
+            {
                 "keyword": "summary",
                 "name": "Summary",
                 "type": "StringLower",
@@ -154,7 +160,7 @@ JSON Response
                 "description": "The standard ID for specific MITRE ATT&CK techniques and subtechniques"
             }
         ],
-        "count": 17,
+        "count": 18,
         "status": "Success"
     }
 
@@ -204,6 +210,22 @@ Request (Encoded URL)
 
 For a complete list of enrichment-related TQL parameters, send an ``OPTIONS`` request to the ``/v3/indicators/tql`` endpoint.
 
+Filter Indicators by ThreatAssess Score
+=======================================
+
+The following request will retrieve data for all Indicators whose ThreatAssess score was updated sometime today and is greater than or equal to 500:
+
+Request (Decoded URL)
+
+.. code::
+
+    GET /v3/indicators?tql=threatAssessLastUpdated>"TODAY()" and threatAssessScore>=500
+
+Request (Encoded URL)
+
+.. code::
+
+    GET /v3/indicators?tql=threatAssessLastUpdated%3E%22TODAY()%22%20and%20threatAssessScore%3E%3D500
 
 Filter Groups by Type and Applied Tags
 ======================================

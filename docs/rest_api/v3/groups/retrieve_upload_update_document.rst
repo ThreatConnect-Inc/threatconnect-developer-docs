@@ -22,47 +22,13 @@ The contents of the file will be returned as ``Content-Type: application/octet-s
 Upload a File to a Document or Report Group
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Create a Document or Report Group
-"""""""""""""""""""""""""""""""""
-
-Before you can upload a file to a Document or Report Group, the Group must exist in one of your ThreatConnect owners. The following examples demonstrate how to create a Document and Report Group.
-
-**Request (Document)**
-
-.. code::
-
-    POST /v3/groups
-    Content-Type: application/json
-
-    {
-        "type": "Document",
-        "fileName": "example_document.pdf",
-        "name": "Example Document Group"
-    }
-
-**Request (Report)**
-
-.. code::
-
-    POST /v3/groups
-    Content-Type: application/json
-    
-    {
-        "type": "Report",
-        "fileName": "example_report.pdf",
-        "name": "Example Report Group"
-    }
-
-Upload a File
-"""""""""""""
-
-Send a request in the following format to upload the contents of a file to an existing Document or Report Group. Note that the ``filename`` query parameter is only required if the ``fileName`` field was not assigned a value when the Group was created.
+Send a request in the following format to upload the contents of a file to an existing Document or Report Group:
 
 **Example Request (Group ID)**
 
 .. code::
 
-    POST /v3/groups/{groupId}/upload?filename={fileName.extension}
+    POST /v3/groups/{groupId}/upload
     Content-Type: application/octet-stream
 
     <raw file contents>
@@ -71,7 +37,7 @@ Send a request in the following format to upload the contents of a file to an ex
 
 .. code::
 
-    POST /v3/groups/{groupXid}/upload?filename={fileName.extension}&owner={ownerName}
+    POST /v3/groups/{groupXid}/upload?owner={ownerName}
     Content-Type: application/octet-stream
 
     <raw file contents>
@@ -90,7 +56,20 @@ If uploading a file to the `Malware Vault <https://knowledge.threatconnect.com/d
 .. note::
     If you upload a file whose extension differs from the one specified in the ``fileName`` field when the Group was created, use the ``filename`` query parameter to update the value of this field so that the extension matches that of the uploaded file.
 
-The following request will upload a file named **report.pdf** to the Report Group whose ID is 25. In this example, the ``filename`` query parameter is included in the request URI because the ``fileName`` field was not defined when the Group was created. If the ``fileName`` field had been defined when the Group was created, then the ``filename`` query parameter would not be required.
+Filename Considerations
+"""""""""""""""""""""""
+
+You can upload a file to a Document or Report Group without a filename (i.e., a Document or Report Group whose ``fileName`` field has no value). However, creating a Document or Report Group with a filename is recommended.
+
+If a Document or Report Group was created without a filename, you can use the optional ``filename`` query parameter to assign the Group a filename. Also, if a Document or Report Group was created with a filename but you are uploading a file with a different file extension, use the ``filename`` query parameter to update the Group's filename so that the extension in it matches that of the uploaded file.
+
+.. note::
+    If you upload a file to a Document or Report Group without a filename, the file type will be set to **Unrecognized**.
+
+Example Request
+"""""""""""""""
+
+The following request will upload a file named **report.pdf** to the Report Group whose ID is 25. In this example, the ``filename`` query parameter is included in the request URI because the ``fileName`` field was not defined when the Group was created.
 
 **Request (HTTP)**
 
