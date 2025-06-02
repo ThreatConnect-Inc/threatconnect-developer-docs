@@ -57,7 +57,7 @@ If uploading a file to the `Malware Vault <https://knowledge.threatconnect.com/d
     If you upload a file whose extension differs from the one specified in the ``fileName`` field when the Group was created, use the ``filename`` query parameter to update the value of this field so that the extension matches that of the uploaded file.
 
 Filename Considerations
-"""""""""""""""""""""""
+=======================
 
 You can upload a file to a Document or Report Group without a filename (i.e., a Document or Report Group whose ``fileName`` field has no value). However, creating a Document or Report Group with a filename is recommended.
 
@@ -67,7 +67,7 @@ If a Document or Report Group was created without a filename, you can use the op
     If you upload a file to a Document or Report Group without a filename, the file type will be set to **Unrecognized**.
 
 Example Request
-"""""""""""""""
+===============
 
 The following request will upload a file named **report.pdf** to the Report Group whose ID is 25. In this example, the ``filename`` query parameter is included in the request URI because the ``fileName`` field was not defined when the Group was created.
 
