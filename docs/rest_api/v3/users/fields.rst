@@ -57,7 +57,7 @@ Alternatively, refer to the following table for a list of available fields that 
      - TRUE
      - FALSE
    * - ownerRoles
-     - The user's `role within each Organization, Community, or Source <https://docs.threatconnect.com/en/latest/rest_api/v3/owner_roles/owner_roles.html>`_ to which they have access
+     - The user's `owner role <https://docs.threatconnect.com/en/latest/rest_api/v3/owner_roles/owner_roles.html>`_ in an Organization. Note that you cannot modify a user's owner role in a Community or Source.
      - String
      - TRUE
      - TRUE
