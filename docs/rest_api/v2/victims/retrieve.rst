@@ -295,7 +295,7 @@ Indicator to Victim Associations
 
 .. note:: It is not possible to associate an Indicator directly with a Victim in ThreatConnect. The query described in this section returns Indicators that share a Group association with the given Victim. In the image below, the Victim and Indicator are not directly associated, but are both associated with the same Group. Therefore, the Indicator would be returned when querying for Indicator associations from the Victim.
 
-.. figure:: ../../_static/victim-to-indicator-associations.png
+.. figure:: ../../../_static/victim-to-indicator-associations.png
     :alt: Victim to Indicator Associations
 
 To view Indicators sharing a Group association with the given Victim, use a query in the following format:
@@ -420,7 +420,7 @@ Victim to Victim Associations
 
 .. note:: It is not possible to associate one Victim directly with another in ThreatConnect. The query described in this section returns Victims which are associated with (or 'through') the same Group(s). In the image below, the two Victims are not directly associated, but are both associated with the same Group. Therefore, Victim B would be returned when querying for Victim associations from Victim A.
 
-.. figure:: ../../_static/victim-to-victim-associations.png
+.. figure:: ../../../_static/victim-to-victim-associations.png
     :alt: Victim to Victim Associations
 
 To view Victims sharing a Group association with the given Victim, use a query in the following format:
