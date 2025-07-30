@@ -134,6 +134,36 @@ Request (Encoded URL)
 
     GET /v3/tags?tql=techniqueId%20is%20not%20null
 
+As of ThreatConnect 7.10, when retrieving ATT&CK Tags, you can include details about the financial impact and risk associated with the technique or sub-technique that the Tag represents. To do so, include the ``fields`` query parameter in your request and assign it a value of ``financialImpact``.
+
+.. note::
+    To retrieve RQ Financial Impact data for ATT&CK Tags, the following requirements must be met:
+        - Turn on the **financialImpactEstimates** system setting and configure the **RQHost** and **RQApiKey** system settings for your ThreatConnect instance on the **System Settings** screen (must be a System Administrator to perform these actions).
+        - Enable ATT&CK RQ Financial Impact for your Organization and configure key parameters unique to your company's risk profile on the **ATT&CK** screen (must be an Organization Administrator to perform this action).
+
+The following request demonstrates how to retrieve all ATT&CK Tags and include RQ Financial Impact data for those Tags:
+
+Request (Decoded URL)
+
+.. code::
+
+    GET /v3/tags?tql=techniqueId is not null&fields=financialImpact
+
+Request (Encoded URL)
+
+.. code::
+
+    GET /v3/tags?tql=techniqueId%20is%20not%20null&fields=financialImpact
+
+When the ``fields`` query parameter's value is set to ``financialImpact``, the following fields are included in the response body for each ATT&CK Tag object if such data are available for the Tag:
+
+.. code:: json
+
+            "financialImpact": {
+                "risk": "Very High",
+                "lastUpdated": "2025-07-18T13:15:07Z"
+            }
+
 Retrieve Main Tags
 ==================
 

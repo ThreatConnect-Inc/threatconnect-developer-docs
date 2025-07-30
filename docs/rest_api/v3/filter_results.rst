@@ -88,6 +88,24 @@ JSON Response
                 "description": "The description of the tag"
             },
             {
+                "keyword": "financialRisk",
+                "name": "Financial Risk",
+                "type": "String",
+                "description": "The RQ-derived financial risk category of an ATT&CK-based tag as it relates to the user's organization"
+            },
+            {
+                "keyword": "financialRiskScore",
+                "name": "Financial Risk Score",
+                "type": "Integer",
+                "description": "The RQ-derived financial risk score of an ATT&CK-based tag as it relates to the user's organization"
+            },
+            {
+                "keyword": "financialRiskValue",
+                "name": "Financial Risk Value",
+                "type": "Integer",
+                "description": "The RQ-derived financial risk currency value of an ATT&CK-based tag as it relates to the user's organization"
+            },
+            {
                 "keyword": "hasCase",
                 "name": "Associated Case",
                 "type": "Integer",
@@ -160,7 +178,7 @@ JSON Response
                 "description": "The standard ID for specific MITRE ATT&CK techniques and subtechniques"
             }
         ],
-        "count": 18,
+        "count": 21,
         "status": "Success"
     }
 

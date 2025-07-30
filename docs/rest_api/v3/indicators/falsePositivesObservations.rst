@@ -7,8 +7,8 @@ Requirements
 ^^^^^^^^^^^^
 
 - To report false positives and observations for Indicators via the ThreatConnect v3 API, the **Include in Observations and False Positives** option must be selected for your API user account.
-- To report false positives and observations for Indicators in an Organization, your API user account must have an Organization role of Standard User, Sharing User, Organization Administrator, or App Developer. Alternatively, if the **v3ApiReadOnlyReports** system setting is turned on for your ThreatConnect instance, your API user account can have any Organization role.
-- To report false positives and observations for Indicators in a Community or Source, your API user account must have a Community role of Contributor, Editor, or Director for the Community or Source. Alternatively, if the **v3ApiReadOnlyReports** system setting is turned on for your ThreatConnect instance, your API user account can have any Community role except Banned for the Community or Source.
+- To report false positives and observations for Indicators in an Organization, your API user account must have an Organization role of Standard User, Sharing User, Organization Administrator, or App Developer. Alternatively, if the **readOnlyUserUpdatesAllowed** system setting is turned on for your ThreatConnect instance, your API user account can have any Organization role.
+- To report false positives and observations for Indicators in a Community or Source, your API user account must have a Community role of Contributor, Editor, or Director for the Community or Source. Alternatively, if the **readOnlyUserUpdatesAllowed** system setting is turned on for your ThreatConnect instance, your API user account can have any Community role except Banned for the Community or Source.
 
 Report an Indicator as False Positive
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -18,6 +18,8 @@ When creating a new Indicator or updating an existing one, you can report the In
 .. code::
 
     PUT /v3/indicators/75?fields=falsePositives
+    Content-Type: application/json
+
     {
         "falsePositiveFlag": true
     }
@@ -91,6 +93,8 @@ When creating a new Indicator or updating an existing one, you can report observ
 .. code::
 
     PUT /v3/indicators/75?fields=observations
+    Content-Type: application/json
+    
     {
         "observations": 1
     }

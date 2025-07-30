@@ -11,7 +11,7 @@ Send the following request to `retrieve a list of available fields <https://docs
     OPTIONS /v3/indicators
 
 .. note::
-    Objects in the response for an ``OPTIONS /v3/indicators`` request that have a ``common`` field with a value of ``true`` correspond to API fields that can be updated by API users with read-only permissions (that is, API users with an Organization role of Read Only User or Read Only Commenter, as well as API users with a Community role of User, Commenter, or Subscriber in a given Community or Source) if the **v3ApiReadOnlyReports** system setting is turned on for your ThreatConnect instance.
+    Objects in the response for an ``OPTIONS /v3/indicators`` request that have a ``common`` field with a value of ``true`` correspond to API fields that can be updated by API users with read-only permissions (that is, API users with an Organization role of Read Only User or Read Only Commenter, as well as API users with a Community role of User, Commenter, or Subscriber in a given Community or Source) if the **readOnlyUserUpdatesAllowed** system setting is turned on for your ThreatConnect instance.
 
 .. hint::
     To include read-only fields in the response, append ``?show=readonly`` to the end of the request URL.

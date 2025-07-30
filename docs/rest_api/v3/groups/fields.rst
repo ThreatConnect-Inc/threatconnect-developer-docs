@@ -270,6 +270,8 @@ Event
      - FALSE
      - TRUE
 
+For more information on updating the status of Event Groups, see the `Event Status <#event-status>`_ section.
+
 .. [6] The following are accepted values for an Event Group's ``eventType`` field:
 
     - ``Alert``
