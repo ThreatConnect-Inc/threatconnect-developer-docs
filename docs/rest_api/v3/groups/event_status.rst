@@ -6,8 +6,8 @@ API users can update the status of Event Groups that belong to their Organizatio
 Requirements
 ^^^^^^^^^^^^
 
-- To update the status of Event Groups in an Organization, your API user account must have an Organization role of Standard User, Sharing User, Organization Administrator, or App Developer. Alternatively, if the readOnlyUserUpdatesAllowed system setting is turned on for your ThreatConnect instance, your API user account can have any Organization role.
-- To update the status of Event Groups in a Community or Source, your API user account must have a Community role of Contributor, Editor, or Director for the Community or Source. Alternatively, if the readOnlyUserUpdatesAllowed system setting is turned on for your ThreatConnect instance, your API user account can have any Community role except Banned for the Community or Source.
+- To update the status of Event Groups in an Organization, your API user account must have an Organization role of Standard User, Sharing User, Organization Administrator, or App Developer. Alternatively, if the **readOnlyUserUpdatesAllowed** system setting is turned on for your ThreatConnect instance, your API user account can have any Organization role.
+- To update the status of Event Groups in a Community or Source, your API user account must have a Community role of Contributor, Editor, or Director for the Community or Source. Alternatively, if the **readOnlyUserUpdatesAllowed** system setting is turned on for your ThreatConnect instance, your API user account can have any Community role except Banned for the Community or Source.
 
 .. note::
     API users with read-only permissions cannot update the status of Incident Groups, regardless of whether the **readOnlyUserUpdatesAllowed** system setting is turned on for your ThreatConnect instance.
