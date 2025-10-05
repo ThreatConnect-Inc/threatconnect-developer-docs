@@ -320,17 +320,3 @@ When the ``fields`` query parameter's value is set to ``common``, ``linkedGroups
                 "User Interaction (UI)": "None"
             }
         }
-
-Filter Vulnerabilities by Unified View Data
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-You can use the following TQL parameters to filter Vulnerability Groups by unified view data:
-
-- ``criteria``: <*String*> The criteria of the Vulnerability.
-- ``cvss_v2``: <*String*> The CVSS V2 vector string of the Vulnerability.
-- ``cvss_v3``: <*String*> The CVSS V3 vector string of the Vulnerability.
-- ``products``: <*String*> The products affected by the Vulnerability.
-- ``source``: <*String*> The source of the Vulnerability.
-- ``title``: <*String*> The summary of the Vulnerability.
-
-For more information on filtering results with TQL, see `Filter Results With TQL <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_.
