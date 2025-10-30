@@ -89,7 +89,7 @@
    * - fileName
      - The name of the Group's file (for Document, Report, and Signature Groups only)
      - String
-     - Required for Document, Report, and Signature Groups
+     - Optional
    * - fileText
      - The contents of the signature file (for Signature Groups only)
      - String

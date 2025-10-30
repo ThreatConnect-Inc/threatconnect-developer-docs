@@ -111,7 +111,7 @@ The V2 Batch API expects to ingest a JSON file containing one or more lists of o
 The following is the batch input file schema for the V2 Batch API. For a list of additional fields you can use when defining Indicator and Group objects, see the `"Indicator Fields" <#id3>`_ and `"Group Fields" <#id10>`_ section, respectively.
 
 * ``indicator``: <*Array of Objects*> The Indicators to create or update.
-    * ``summary``: <*String*> **REQUIRED** The Indicator's summary. For File Indicators, you may substitute summary with the field that contains one of the Indicator's file hashes (e.g., you can use ``md5`` instead of summary to define a File Indicator's MD5 hash value). See the `"File Indicator Considerations" <#id11>`_ section for more information.
+    * ``summary``: <*String*> **REQUIRED** The Indicator's summary. Note that you may substitute ``summary`` with the field that contains the Indicator's value for the specified Indicator type (e.g., you can use ``ip`` instead of ``summary`` to define an Address Indicator's IPv4 or IPv6 address value).
     * ``type``: <*String*> **REQUIRED** The Indicator's type.
 * ``group``: <*Array of Objects*> The Groups to create or update.
     * ``name``: <*String*> **REQUIRED** The Group's name.
@@ -702,7 +702,10 @@ When the Batch API processes the file, it will do the following:
 File Indicator Considerations
 """""""""""""""""""""""""""""
 
-File Indicators may have one or more of the following hashes: MD5, SHA1, and SHA256. When using the Batch API, you can provide values for these hashes using either of the following methods.
+File Indicators may have one or more of the following hashes: MD5, SHA1, and SHA256. When using the Batch API, you can provide values for these hashes using either of the following methods:
+
+- Define hashes in the Indicator's summary
+- Define hashes individually
 
 **Define Hashes in the Indicator's Summary**
 
