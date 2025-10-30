@@ -160,7 +160,7 @@
    * - md5
      - The File Indicator's MD5 file hash
      - String
-     - If ``summary`` is not used, at least one file hash field (``md5``, ``sha1``, or ``sha256``) must be provided [2]_
+     - If ``summary`` is not used, at least one file hash field (``md5``, ``sha1``, or ``sha256``) is required [2]_
    * - Mutex
      - A synchronization primitive used to identify malware files and related malware families (for Mutex Indicators only)
      - String
@@ -197,11 +197,11 @@
    * - sha1
      - The File Indicator's SHA1 file hash
      - String
-     - If ``summary`` is not used, at least one file hash field (``md5``, ``sha1``, or ``sha256``) must be provided [2]_
+     - If ``summary`` is not used, at least one file hash field (``md5``, ``sha1``, or ``sha256``) is required [2]_
    * - sha256
      - The File Indicator's SHA256 file hash
      - String
-     - If ``summary`` is not used, at least one file hash field (``md5``, ``sha1``, or ``sha256``) must be provided [2]_
+     - If ``summary`` is not used, at least one file hash field (``md5``, ``sha1``, or ``sha256``) is required [2]_
    * - size
      - The File Indicator's file size
      - Integer
