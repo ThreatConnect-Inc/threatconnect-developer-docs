@@ -41,6 +41,8 @@ Alternatively, refer to the following tables for a list of available fields that
        | {"type": "Group", "data": {"name": "SOC Team"}}
        |
        | {"type": "User", "data": {"id": 3}}
+       |
+       | {"type": "None"}
    * - associatedCases
      - A list of Cases associated to the Case
      - Case Object

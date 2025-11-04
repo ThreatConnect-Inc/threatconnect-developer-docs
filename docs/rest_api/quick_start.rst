@@ -4,7 +4,7 @@ Quick Start
 Creating an API Key
 -------------------
 
-To access the ThreatConnect API, you must `create an API user account <https://knowledge.threatconnect.com/docs/creating-user-accounts#creating-an-api-user>`_. If you are not able to create an API user account, please send an email to sales@threatconnect.com to discuss pricing.
+To access the ThreatConnect API, you must `create an API user account <https://knowledge.threatconnect.com/docs/managing-user-accounts#creating-an-api-user>`_. If you are not able to create an API user account, please send an email to sales@threatconnect.com to discuss pricing.
 
 Using the API
 -------------
@@ -125,7 +125,7 @@ Follow these steps to generate an API token for a new API user account in Threat
 
 3.	On the **Membership** tab of the **Organization Settings** screen, click **Create API User**.
 
-4.	On the **API User Administration** window, fill out all required fields for the API user, enter the number of days until the API token will expire in the **Token Expiration (days)** field, and click **SAVE USER AND GENERATE TOKEN**. (See the `"Creating an API User" section of Creating User Accounts <https://knowledge.threatconnect.com/docs/creating-user-accounts#creating-an-api-user>`_ for more information on creating API users.)
+4.	On the **API User Administration** window, fill out all required fields for the API user, enter the number of days until the API token will expire in the **Token Expiration (days)** field, and click **SAVE USER AND GENERATE TOKEN**. (See the `"Creating an API User" section of Managing User Accounts <https://knowledge.threatconnect.com/docs/managing-user-accounts#creating-an-api-user>`_ for more information on creating API users.)
     
 **Existing API User**
 

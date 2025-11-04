@@ -33,6 +33,8 @@ Endpoint: ``/api/v3/groups``
 
 .. include:: unified_view_vulnerabilities.rst
 
+.. include:: threat_actor_profiles.rst
+
 ----
 
 *MITRE ATT&CK® and ATT&CK® are registered trademarks of The MITRE Corporation.*

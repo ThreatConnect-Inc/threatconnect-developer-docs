@@ -36,26 +36,13 @@ JSON Response
                 "owner": "Demo Community",
                 "lastUsed": "2021-11-14T18:52:38Z"
             },
-            {...},
+            ...
             {
                 "id": 100,
                 "name": "Process Injection: Thread Local Storage",
                 "description": "Adversaries may inject malicious code into processes via thread local storage (TLS) callbacks in order to evade process-based defenses as well as possibly elevate privileges. TLS callback injection is a method of executing arbitrary code in the address space of a separate live process. \n\nTLS callback injection involves manipulating pointers inside a portable executable (PE) to redirect a process to malicious code before reaching the code's legitimate entry point. TLS callbacks are normally used by the OS to setup and/or cleanup data used by threads. Manipulating TLS callbacks may be performed by allocating and writing to specific offsets within a process’ memory space using other [Process Injection](https://attack.mitre.org/techniques/T1055) techniques such as [Process Hollowing](https://attack.mitre.org/techniques/T1055/012).(Citation: FireEye TLS Nov 2017)\n\nRunning code in the context of another process may allow access to the process's memory, system/network resources, and possibly elevated privileges. Execution via TLS callback injection may also evade detection from security products since the execution is masked under a legitimate process. ",
                 "lastUsed": "2023-06-05T19:39:45Z",
-                "techniqueId": "T1055.005",
-                "tactics": {
-                    "data": [
-                        "Privilege Escalation",
-                        "Defense Evasion"
-                    ],
-                    "count": 2
-                },
-                "platforms": {
-                    "data": [
-                        "Windows"
-                    ],
-                    "count": 1
-                }
+                "techniqueId": "T1055.005"
             }
         ],
         "status": "Success"
@@ -134,12 +121,72 @@ Request (Encoded URL)
 
     GET /v3/tags?tql=techniqueId%20is%20not%20null
 
+Retrieve Associated Tactics
+"""""""""""""""""""""""""""
+
+To include details about the tactics associated with an ATT&CK Tag, include the ``fields`` query parameter in your request and set its value to ``tactics``. The following request demonstrates how to retrieve all ATT&CK Tags and include associated tactics for those Tags:
+
+Request (Decoded URL)
+
+.. code::
+
+    GET /v3/tags?tql=techniqueId is not null&fields=tactics
+
+Request (Encoded URL)
+
+.. code::
+
+    GET /v3/tags?tql=techniqueId%20is%20not%20null&fields=tactics
+
+When the ``fields`` query parameter's value is set to ``tactics``, the following fields are included in the response body for each ATT&CK Tag object:
+
+.. code:: json
+
+            "tactics": {
+                "data": [
+                    "Command and Control"
+                ],
+                "count": 1
+            }
+
+Retrieve Associated Platforms
+"""""""""""""""""""""""""""""
+
+To include details about the platforms associated with an ATT&CK Tag, include the ``fields`` query parameter in your request and set its value to ``platforms``. The following request demonstrates how to retrieve all ATT&CK Tags and include associated platforms for those Tags:
+
+.. code::
+
+    GET /v3/tags?tql=techniqueId is not null&fields=platforms
+
+Request (Encoded URL)
+
+.. code::
+
+    GET /v3/tags?tql=techniqueId%20is%20not%20null&fields=platforms
+
+When the ``fields`` query parameter's value is set to ``platforms``, the following fields are included in the response body for each ATT&CK Tag object:
+
+.. code:: json
+
+            "platforms": {
+                "data": [
+                    "Linux",
+                    "macOS",
+                    "Windows",
+                    "ESXi"
+                ],
+                "count": 4
+            }
+
+Retrieve Financial Impact Data
+""""""""""""""""""""""""""""""
+
 As of ThreatConnect 7.10, when retrieving ATT&CK Tags, you can include details about the financial impact and risk associated with the technique or sub-technique that the Tag represents. To do so, include the ``fields`` query parameter in your request and assign it a value of ``financialImpact``.
 
 .. note::
     To retrieve RQ Financial Impact data for ATT&CK Tags, the following requirements must be met:
-        - Turn on the **financialImpactEstimates** system setting and configure the **RQHost** and **RQApiKey** system settings for your ThreatConnect instance on the **System Settings** screen (must be a System Administrator to perform these actions).
-        - Enable ATT&CK RQ Financial Impact for your Organization and configure key parameters unique to your company's risk profile on the **ATT&CK** screen (must be an Organization Administrator to perform this action).
+        - Turn on the **financialImpactEstimates** system setting for your ThreatConnect instance on the **System Settings** screen (must be a System Administrator to perform these actions).
+        - Enable and configure ATT&CK RQ Financial Impact for your Organization on the **ATT&CK** screen (must be an Organization Administrator to perform this action).
 
 The following request demonstrates how to retrieve all ATT&CK Tags and include RQ Financial Impact data for those Tags:
 

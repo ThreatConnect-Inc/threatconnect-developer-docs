@@ -182,24 +182,7 @@ JSON Response
                         "name": "Phishing",
                         "description": "Adversaries may send phishing messages to gain access to victim systems. All forms of phishing are electronically delivered social engineering. Phishing can be targeted, known as spearphishing. In spearphishing, a specific individual, company, or industry will be targeted by the adversary. More generally, adversaries can conduct non-targeted phishing, such as in mass malware spam campaigns.\n\nAdversaries may send victims emails containing malicious attachments or links, typically to execute malicious code on victim systems. Phishing may also be conducted via third-party services, like social media platforms. Phishing may also involve social engineering techniques, such as posing as a trusted source, as well as evasive techniques such as removing or manipulating emails or metadata/headers from compromised accounts being abused to send messages (e.g., [Email Hiding Rules](https://attack.mitre.org/techniques/T1564/008)).(Citation: Microsoft OAuth Spam 2022)(Citation: Palo Alto Unit 42 VBA Infostealer 2014) Another way to accomplish this is by forging or spoofing(Citation: Proofpoint-spoof) the identity of the sender which can be used to fool both the human recipient as well as automated security tools.(Citation: cyberproof-double-bounce) \n\nVictims may also receive phishing messages that instruct them to call a phone number where they are directed to visit a malicious URL, download malware,(Citation: sygnia Luna Month)(Citation: CISA Remote Monitoring and Management Software) or install adversary-accessible remote management tools onto their computer (i.e., [User Execution](https://attack.mitre.org/techniques/T1204)).(Citation: Unit42 Luna Moth)",
                         "lastUsed": "2023-07-06T18:08:17Z",
-                        "techniqueId": "T1566",
-                        "tactics": {
-                            "data": [
-                                "Initial Access"
-                            ],
-                            "count": 1
-                        },
-                        "platforms": {
-                            "data": [
-                                "Linux",
-                                "macOS",
-                                "Windows",
-                                "SaaS",
-                                "Office 365",
-                                "Google Workspace"
-                            ],
-                            "count": 6
-                        }
+                        "techniqueId": "T1566"
                     },
                     {
                         "id": 9,
@@ -229,14 +212,59 @@ JSON Response
 
 ATT&CK Tags will include an additional ``techniqueId`` field in the response object. This field specifies the ID of the MITRE ATT&CK® technique or sub-technique that the Tag represents.
 
-Include an Indicator's Tags, ThreatAssess Information, and Associated Groups
+Include an Indicator's CAL and ThreatAssess Information
 ============================================================================
 
-The following request will retrieve data the Indicator whose ID is 4, including Tags applied to the Indicator, ThreatAssess information for the Indicator, and Groups associated to the Indicator:
+The following request will retrieve data for the Indicator whose ID is 4, including CAL and ThreatAssess information for the Indicator:
 
 .. code::
 
-  GET /v3/indicators/4?fields=tags&fields=threatAssess&fields=associatedGroups
+  GET /v3/indicators/4?fields=threatAssess
+
+JSON Response
+
+.. code:: json
+
+    {
+        "data": {
+            "id": 4,
+            "ownerId": 1,
+            "ownerName": "Demo Organization",
+            "dateAdded": "2023-01-26T21:00:03Z",
+            "webLink": "https://app.threatconnect.com/#/details/indicators/4/overview",
+            "type": "Host",
+            "lastModified": "2023-01-27T14:25:55Z",
+            "rating": 5.00,
+            "confidence": 65,
+            "threatAssessRating": 4.0,
+            "threatAssessConfidence": 0.0,
+            "threatAssessScore": 405,
+            "threatAssessScoreObserved": 0,
+            "threatAssessScoreFalsePositive": 0,
+            "calScore": 410,
+            "summary": "ultrabadguy.com",
+            "privateFlag": false,
+            "active": true,
+            "activeLocked": false,
+            "hostName": "ultrabadguy.com",
+            "dnsActive": false,
+            "whoisActive": true,
+            "legacyLink": "https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=ultrabadguy.com&owner=Demo+Organization"
+        },
+        "status": "Success"
+    }
+
+.. attention::
+    It is recommended to ignore the ``threatAssessRating`` and ``threatAssessConfidence`` fields and their values, as these are legacy fields.
+
+Include an Indicator's Tags and Associated Groups
+============================================================================
+
+The following request will retrieve data the Indicator whose ID is 4, including Tags applied to the Indicator and Groups associated to the Indicator:
+
+.. code::
+
+  GET /v3/indicators/4?fields=tags&fields=associatedGroups
 
 JSON Response
 
@@ -273,11 +301,6 @@ JSON Response
             "lastModified": "2023-01-27T14:25:55Z",
             "rating": 5.00,
             "confidence": 65,
-            "threatAssessRating": 4.5,
-            "threatAssessConfidence": 58.0,
-            "threatAssessScore": 678,
-            "threatAssessScoreObserved": 139,
-            "threatAssessScoreFalsePositive": -167,
             "summary": "ultrabadguy.com",
             "privateFlag": false,
             "active": true,
@@ -314,17 +337,6 @@ JSON Response
         },
         "status": "Success"
     }
-
-.. attention::
-    When sending a request to the ``/v3/indicators`` endpoint with ``?fields=threatAssess`` appended to the end of the request URL, the following fields will be included in the API response:
-
-    - ``threatAssessRating``
-    - ``threatAssessConfidence``
-    - ``threatAssessScore``
-    - ``threatAssessScoreObserved``
-    - ``threatAssessScoreFalsePositive``
-
-    It is recommended to not use the ``threatAssessRating`` and ``threatAssessConfidence`` fields and their values, as these are legacy fields.
 
 Include Observations For an Indicator
 =====================================
@@ -553,7 +565,7 @@ JSON Response
 Include Additional Association Levels for a Field
 =================================================
 
-When using the ``fields`` query parameter, you can request additional association levels for a field by appending ``.{fieldName}`` to the field's name. 
+When using the ``fields`` query parameter, you can request additional association levels for a field (e.g., requesting an object's Attributes and the Security Labels applied to the Attributes). To accomplish this, use dot notation when setting the value for the fields query parameter.
 
 For example, the following request will retrieve data for the Indicator whose ID is 4 and include Groups associated to the Indicator and Attributes added to those Groups in the response. To accomplish this, ``?fields=associatedGroups.attributes`` is appended to the end of the request URL.
 
@@ -636,7 +648,7 @@ JSON Response
 
 By default, you can retrieve only **one association level at a time**. To retrieve more than one association level at a time, contact your System Administrator and have them complete one of the following actions:
 
-  - Enable the **Allow User to Exceed API Link Limit** setting on your API user account. Instructions for enabling this setting are available in the `"Creating an API User Account" section of the Creating User Accounts <https://knowledge.threatconnect.com/docs/creating-user-accounts#creating-an-api-user>`_ knowledge base article.
+  - Enable the **Allow User to Exceed API Link Limit** setting on your API user account. Instructions for enabling this setting are available in the `"Creating an API User" section of Managing User Accounts <https://knowledge.threatconnect.com/docs/managing-user-accounts#creating-an-api-user>`_.
   - Update the v3 API link limit in system settings to allow for more than one association level to be retrieved at a time.
 
 The following example demonstrates how to retrieve two association levels in a single request. The request will retrieve data for the Indicator whose ID is 4 and include the following data in the API response:
