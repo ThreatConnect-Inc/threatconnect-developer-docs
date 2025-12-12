@@ -3,9 +3,9 @@ Update Users
 
 .. attention::
 
-    Only API users with an Organization role of Organization Administrator can update users. However, they may not update users whose System role is **Administrator**, **Community Leader**, **Operations Administrator**, or **Super User**.
+    Only API users with an Organization role of Organization Administrator can update users in their Organization. However, they may not update users whose System role is **Administrator**, **Community Leader**, **Operations Administrator**, or **Super User**.
 
-The following example illustrates the basic format for updating a user:
+The following example illustrates the basic format for updating a user in your Organization:
 
 .. code::
 
@@ -17,7 +17,7 @@ The following example illustrates the basic format for updating a user:
     }
 
 
-For example, the following request will disable and lock the account for the user whose ID is 11:
+For example, the following request will disable and lock the account for the user in your Organization whose ID is 11:
 
 .. code::
 
@@ -63,7 +63,7 @@ JSON Response
         "status": "Success"
     }
 
-In this next example, the request will update the owner role for the user whose ID is 12 in their Organization:
+In the next example, the request will update the Organization role for the user in your Organization whose ID is 12:
 
 .. code::
 

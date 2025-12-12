@@ -6,7 +6,7 @@ When retrieving data for users, additional fields will be included in the respon
 Retrieve All Users
 ^^^^^^^^^^^^^^^^^^
 
-Send the following request to retrieve data for all users in the Organization in which your API user account resides:
+Send the following request to retrieve data for all users in your Organization:
 
 .. code::
 
@@ -50,13 +50,13 @@ JSON Response:
 Retrieve a Specific User
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Send a request in the following format to retrieve data for a specific user in the Organization in which your API user account resides:
+Send a request in the following format to retrieve data for a specific user in your Organization:
 
 .. code::
 
     GET /v3/security/users/{userId}
 
-For example, the following request will retrieve data for the user whose ID is 3:
+For example, the following request will retrieve data for the user in your Organization whose ID is 3:
 
 .. code::
 

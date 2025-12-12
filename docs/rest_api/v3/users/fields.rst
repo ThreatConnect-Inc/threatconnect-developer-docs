@@ -80,7 +80,7 @@ Alternatively, refer to the following table for a list of available fields that 
      - The user's `System role <https://docs.threatconnect.com/en/latest/rest_api/v3/system_roles/system_roles.html>`_
      - String
      - TRUE
-     - TRUE
+     - FALSE
    * - termsAccepted
      - Determines whether to present the user with ThreatConnect's terms of service the next time they log into ThreatConnect
      - Boolean
@@ -106,7 +106,7 @@ Alternatively, refer to the following table for a list of available fields that 
 
 .. [2] The ``password`` field is required only when creating users and updating existing users without a password on ThreatConnect instances that do not have SAML™ enabled.
 
-.. [3] All System roles except **Administrator** and **Operations Administrator** may be assigned to a user created or updated via the ``/v3/security/users`` endpoint.
+.. [3] All System roles except **Administrator**, **Community Leader**, **Operations Administrator**, and **Super User** may be assigned to a user.
 
 .. [4] The following are accepted values for the ``uiTheme`` field:
 

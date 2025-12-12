@@ -3,9 +3,9 @@ Create Users
 
 .. attention::
 
-    Only API users with an Organization role of Organization Administrator can create users. However, they may not create users whose System role is **Administrator**, **Community Leader**, **Operations Administrator**, or **Super User**.
+    Only API users with an Organization role of Organization Administrator can create users in their Organization. However, they may not create users whose System role is **Administrator**, **Community Leader**, **Operations Administrator**, or **Super User**.
 
-The following example illustrates the basic format for creating a user:
+The following example illustrates the basic format for creating a user in your Organization:
 
 .. code::
 
@@ -24,7 +24,7 @@ The following example illustrates the basic format for creating a user:
         "systemRole": "User"
     }
 
-For example, the following request will create a new user who will be required to reset their password and enroll in MFA after logging into ThreatConnect for the first time:
+For example, the following request will create a new user in your Organization who will be required to reset their password and enroll in MFA after logging into ThreatConnect for the first time:
 
 .. code::
 
