@@ -6,6 +6,10 @@
      - Description
      - Accepted Data Type
      - Required?
+   * - aiProvider
+     - The source of the AI-generated summary provided for the Group (for Document and Report Groups only)
+     - String
+     - Required if ``insights`` is used
    * - associatedGroupXid
      - An array of XIDs for Groups associated to the Group
      - String Array
@@ -127,7 +131,9 @@
      - String
      - Required for Email Groups
    * - insights
-     - An AI-generated synopsis of the Group (for Document and Report Groups only)
+     - | An AI-generated summary of the Group that displays on the **AI insights** card on the Group's **Details** screen (for Document and Report Groups only).
+       | 
+       | If used, you must also assign a value to the ``aiProvider`` field for the Group.
      - String
      - Optional
    * - lastSeen
