@@ -703,7 +703,7 @@ When the Batch API processes the file, it will do the following:
 
 The following input file demonstrates how to create a Group and provide an AI-generated summary for the Group.
 
-When the Batch API processes the file, it will create a Report Group (**APT28 Report Group**) that includes an AI-generated summary from the specified provider:
+When the Batch API processes the file, it will create a Report Group (**Example Report Group with AI Summary**) that includes an AI-generated summary from the specified provider:
 
 .. code:: json
 
