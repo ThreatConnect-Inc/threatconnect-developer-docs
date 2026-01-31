@@ -6,8 +6,12 @@
      - Description
      - Accepted Data Type
      - Required?
+   * - aiLastRetrievalDate
+     - The date and time the AI-generated summary for the Group was last retrieved from its source (for Document, Event, and Report Groups only)
+     - DateTime
+     - Optional
    * - aiProvider
-     - The source of the AI-generated summary provided for the Group (for Document and Report Groups only)
+     - The source of the AI-generated summary provided for the Group (for Document, Event, and Report Groups only)
      - String
      - Required if ``insights`` is used
    * - associatedGroupXid
@@ -131,7 +135,7 @@
      - String
      - Required for Email Groups
    * - insights
-     - | An AI-generated summary of the Group that displays on the **AI insights** card on the Group's **Details** screen (for Document and Report Groups only).
+     - | An AI-generated summary of the Group that displays on the **AI insights** card on the Group's **Details** screen (for Document, Event, and Report Groups only).
        | 
        | If used, you must also assign a value to the ``aiProvider`` field for the Group.
      - String
