@@ -1,17 +1,17 @@
 Update Intelligence Requirements
 --------------------------------
 
-Send a request in the following format to update a specific IR. Note that ``{intelRequirementId}`` represents the value of the ``id`` field for an IR, not the value of the ``uniqueId`` field.
+Send a request in the following format to update a specific IR. Note that ``{id}`` represents the value of the ``id`` field for an IR, not the value of the ``uniqueId`` field.
 
 **Example Request**
 
 .. code::
 
-    PUT /v3/intelRequirements/{intelRequirementId}
+    PUT /v3/intelRequirements/{id}
     Content-Type: application/json
 
     {
-        "<fieldName>": <fieldValue>
+        "<fieldName>": "<fieldValue>"
     }
 
 For example, the following request will update the keywords used in the keyword query for the IR whose ID is 10 and associate the IR to the Group whose ID is 15:
@@ -131,7 +131,8 @@ For example, the following request will update the keywords used in the keyword 
                     ]
                 }
             ],
-            "resultsLink": "https://app.threatconnect.com/v3/intelRequirements/results?tql=intelReqId=10"
+            "resultsLink": "https://app.threatconnect.com/v3/intelRequirements/results?tql=intelReqId=10",
+            "active": true
         },
         "message": "Updated",
         "status": "Success"

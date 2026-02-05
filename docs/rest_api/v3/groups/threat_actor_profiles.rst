@@ -1,7 +1,7 @@
 Threat Actor Profiles
 ---------------------
 
-As of ThreatConnect 7.11, you can access Threat Actor Profiles—that is, a unified view for Adversary, Intrusion Set, and Threat Groups whose name/summary matches an alias of a given threat actor. In the v3 API, you can use the ``fields`` query parameter to include unified view data for Adversary, Intrusion Set, and Threat Groups in API responses.
+As of ThreatConnect 7.11, you can access Threat Actor Profiles—that is, a unified view for Adversary, Intrusion Set, and Threat Groups whose name/summary matches an alias of a given threat actor group. In the v3 API, you can use the ``fields`` query parameter to include unified view data for Adversary, Intrusion Set, and Threat Groups in API responses.
 
 .. note::
     The following example requests demonstrate how to retrieve unified view data for all Adversary, Intrusion Set, and Threat Groups included in a Threat Actor Profile. You can use similar requests to retrieve unified view data for a specific Adversary, Intrusion Set, or Threat Group included in a Threat Actor Profile.
@@ -184,3 +184,22 @@ When the ``fields`` query parameter's value is set to ``common`` and ``aliases``
             "externalDateAdded": "2017-05-31T21:31:55Z",
             "externalLastModified": "2024-11-17T15:50:27Z"
         }
+
+Filter Groups by Threat Actor Profile Data
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You can use the ``hasThreatActorProfile()`` TQL parameter to filter Groups by Threat Actor Profile data. For example, the following request will retrieve unified view data all Groups included in the Threat Actor Profile whose MITRE ID is G0112:
+
+Request (Decoded URL)
+
+.. code:: http
+
+    GET /v3/groups?tql=hasThreatActorProfile(mitre_id="G0112")&fields=common
+
+Request (Encoded URL)
+
+.. code:: http
+
+    GET v3/groups? tql=hasThreatActorProfile(mitre_id%3D%22G0112%22)&fields=common
+
+For more information on filtering results with TQL, see `Filter Results With TQL <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_. For a complete list of TQL parameters you can use to filter Groups included in a Threat Actor Profile, see the `TQL Operators and Parameters <https://knowledge.threatconnect.com/docs/tql-operators-and-parameters>`_ knowledge base article.

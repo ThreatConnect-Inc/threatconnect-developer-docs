@@ -128,9 +128,6 @@ The following table outlines the default Indicator-to-Indicator associations in 
    * - Domain Registrant Email
      - Host
      - EmailAddress
-   * - Domain Registrant Email
-     - Host
-     - EmailAddress
    * - File Download
      - URL
      - File

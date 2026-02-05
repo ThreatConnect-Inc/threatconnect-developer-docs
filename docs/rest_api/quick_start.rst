@@ -1,8 +1,8 @@
 Quick Start
 ===========
 
-Creating an API Key
--------------------
+Creating an API User Account
+----------------------------
 
 To access the ThreatConnect API, you must `create an API user account <https://knowledge.threatconnect.com/docs/managing-user-accounts#creating-an-api-user>`_. If you are not able to create an API user account, please send an email to sales@threatconnect.com to discuss pricing.
 
@@ -91,17 +91,13 @@ To understand the implementation and usage of the v3 API, consider the HTTP meth
 Authentication
 --------------
 
-As of ThreatConnect 7.7, there are two ways to authenticate an API request to ThreatConnect:
+There are two ways to authenticate an API request to ThreatConnect:
 
 - API token
 - Access ID and Secret Key
 
 API Token
 ^^^^^^^^^
-
-.. note::
-
-    Authenticating an API request to ThreatConnect with an API token requires a ThreatConnect instance with version 7.7 or newer installed.
 
 To authenticate an API request to ThreatConnect with your API token, you must include the *required* ``Authorization`` header in your request. The value of the ``Authorization`` header must be in the format ``TC-Token $API_TOKEN``, where ``$API_TOKEN`` is the value of your API token.
 
@@ -121,9 +117,9 @@ Follow these steps to generate an API token for a new API user account in Threat
 
 1.	Log into ThreatConnect with an Organization Administrator account.
 
-2.	Hover over **Settings** |gear| on the top navigation bar and select **Org Settings**.
+2.	From the **Settings** |gear| menu the top navigation bar, select **Org Settings**.
 
-3.	On the **Membership** tab of the **Organization Settings** screen, click **Create API User**.
+3.	On the **Membership** tab, click **Create API User**.
 
 4.	On the **API User Administration** window, fill out all required fields for the API user, enter the number of days until the API token will expire in the **Token Expiration (days)** field, and click **SAVE USER AND GENERATE TOKEN**. (See the `"Creating an API User" section of Managing User Accounts <https://knowledge.threatconnect.com/docs/managing-user-accounts#creating-an-api-user>`_ for more information on creating API users.)
     
@@ -133,9 +129,9 @@ Follow these steps to generate an API token for an existing API user account in 
 
 1.	Log into ThreatConnect with an Organization Administrator account.
 
-2.	Hover over **Settings** |gear| on the top navigation bar and select **Org Settings**.
+2.	From the **Settings** |gear| menu on the top navigation bar, select **Org Settings**.
 
-3.	On the **Membership** tab of the **Organization Settings** screen, click **Edit** |pencil| in the **Options** column for an API user account.
+3.	On the **Membership** tab, locate the API user account you want to edit and click **Edit** |pencil| in the **Options** column.
 
 4.	On the **API User Administration** window, enter the number of days until the API token will expire in the **Token Expiration (days)** field, and then click **GENERATE TOKEN**.
 
@@ -144,6 +140,18 @@ Follow these steps to generate an API token for an existing API user account in 
 
 .. |pencil| image:: https://cdn.document360.io/dfc206c8-1c9f-4725-b74d-a66f83432320/Images/Documentation/Pencil%20icon_Black.png
     :height: 25px
+
+**Temporary API Token**
+
+Follow these steps to generate a temporary API token on the **Jobs** screen in ThreatConnect:
+
+1.	Log into ThreatConnect with a user account that has an Organization role of Standard User, Sharing User, Organization Administrator, or App Developer.
+
+1.	From the **Automation & Feeds** dropdown on the top navigation bar, select **Jobs**.
+
+2.	From the **Options ⋯** menu in the upper-right corner, select **API Token…**.
+
+The **Developer Token** window opens and displays an API token. This token will expire after 4 hours.
 
 Access ID and Secret Key
 ^^^^^^^^^^^^^^^^^^^^^^^^

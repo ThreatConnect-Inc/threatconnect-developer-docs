@@ -6,6 +6,7 @@ Request Body (POST)
 
 The following is the request body schema for a POST request to the ``/v3/intelRequirements`` endpoint:
 
+* ``active``: <*Boolean*> Specifies whether the IR's status is set to active (**true**) or inactive (**false**). When an IR is active, it is currently retrieving results (or will retrieve results after the start date of its query data range is reached). When an IR is inactive, it is no longer retrieving results. If an IR has a query date range and the current date and time are before the end date of the query date range, the IR's status is automatically set to active. Once the end date for the query date range is reached, the IR's status is automatically set to inactive.
 * ``associatedArtifacts``: <*Object*> A list of Artifacts associated to the IR.
     * ``data``: <*Array of Artifact Objects*> The `details of the Artifacts <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/artifacts/artifacts.html>`_.
 * ``associatedCases``: <*Object*> A list of Cases associated to the IR.
@@ -20,11 +21,13 @@ The following is the request body schema for a POST request to the ``/v3/intelRe
     * ``id``: <*Integer*> The IR category's ID number.
     * ``name``: <*String*> The IR category's name.
 * ``description``: <*String*> A description of the IR.
+* ``earliestTimestamp``: <*DateTime*> The start date in an IR query date range (ISO 8601).
 * ``keywordSections``: <*Array*> **REQUIRED** The sections that the IR's keyword query contains.
     * ``compareValue``: <*String*> **REQUIRED** Specifies whether the section is an **includes** or **excludes** section. (Accepted values: **includes**, **excludes**)
     * ``keywords``: <*Array of Objects*> **REQUIRED** A list of keywords that the section contains. Note that the total number of keywords added to an IR must not exceed the IR keyword limit configured by your System Administrator (the default limit is 300 keywords). Otherwise, a **400 Bad Request** error will be returned.
         * ``value``: <*String*> **REQUIRED** The keyword's value. For best practices on defining keywords in IR keyword queries, see the `Best Practices: Keywords for Intelligence Requirements <https://knowledge.threatconnect.com/docs/best-practices-keywords-for-intelligence-requirements>`_ knowledge base article.
     * ``sectionNumber``: <*Integer*> **REQUIRED** The section number for the keyword section.
+* ``latestTimestamp``: <*DateTime*> The end date in an IR query date range (ISO 8601).
 * ``requirementText``: <*String*> **REQUIRED** The IR's summary (i.e., the question, topic, or statement on which the IR focuses). The summary provided cannot be the same as the summary for an existing IR on the ThreatConnect instance.
 * ``resetResults``: <*Boolean*> Specifies whether to include results that have been archived or marked as false results the next time results are retrieved for the IR.
 * ``subtype``: <*Object*> **REQUIRED** The IR's subtype. 
@@ -39,46 +42,48 @@ The following is the request body schema for a POST request to the ``/v3/intelRe
 .. code:: json
     
     {
+        "active": true,
         "associatedArtifacts": {
             "data": [
                 {
-                    "<artifactsFieldName>": <artifactsFieldValue>
+                    "<artifactsFieldName>": "<artifactsFieldValue>"
                 }
             ]
         },
         "associatedCases": {
             "data": [
                 {
-                    "<casesFieldName>": <casesFieldValue>
+                    "<casesFieldName>": "<casesFieldValue>"
                 }
             ]
         },
         "associatedGroups": {
             "data": [
                 {
-                    "<groupsFieldName>": <groupsFieldValue>
+                    "<groupsFieldName>": "<groupsFieldValue>"
                 }
             ]
         },
         "associatedIndicators": {
             "data": [
                 {
-                    "<indicatorsFieldName>": <indicatorsFieldValue>
+                    "<indicatorsFieldName>": "<indicatorsFieldValue>"
                 }
             ]
         },
         "associatedVictimAssets": {
             "data": [
                 {
-                    "<victimAssetsFieldName>": <victimAssetsFieldValue>
+                    "<victimAssetsFieldName>": "<victimAssetsFieldValue>"
                 }
             ]
         },
         "category": {
-            "id": <int>,
-            "name": <string>
+            "id": 0,
+            "name": "<string>"
         },
         "description": "<string>",
+        "earliestTimestamp": "<datetime>",
         "keywordSections": [
             {
                 "compareValue": "<string>",
@@ -87,18 +92,19 @@ The following is the request body schema for a POST request to the ``/v3/intelRe
                         "value": "<string>"
                     }
                 ],
-                "sectionNumber": <int>
+                "sectionNumber": 0
             }
         ],
+        "latestTimestamp": "<datetime>",
         "requirementText": "<string>",
-        "resetResults": <boolean>,
+        "resetResults": true,
         "subtype": {
-            "id": <int>
+            "id": 0
         },
         "tags": {
             "data": [
                 {
-                    "<tagsFieldName>": <tagsFieldValue>
+                    "<tagsFieldName>": "<tagsFieldValue>"
                 }
             ]
         },
@@ -111,6 +117,7 @@ Request Body (PUT)
 
 The following is the request body schema for a PUT request to the ``/v3/intelRequirements`` endpoint:
 
+* ``active``: <*Boolean*> Specifies whether the IR's status is set to active (**true**) or inactive (**false**). When an IR is active, it is currently retrieving results (or will retrieve results after the start date of its query data range is reached). When an IR is inactive, it is no longer retrieving results. If an IR has a query date range and the current date and time are before the end date of the query date range, the IR's status is automatically set to active. Once the end date for the query date range is reached, the IR's status is automatically set to inactive.
 * ``associatedArtifacts``: <*Object*> A list of Artifacts associated to the IR.
     * ``data``: <*Array of Artifact Objects*> The `details of the Artifacts <https://docs.threatconnect.com/en/latest/rest_api/v3/case_management/artifacts/artifacts.html>`_.
     * ``mode``: <*String*> Specifies the `action to perform <https://docs.threatconnect.com/en/latest/rest_api/v3/update_metadata.html>`_ with the objects defined in the ``data`` field. (Accepted values: **append**, **delete**, **replace**; Default value: **append**).
@@ -130,11 +137,13 @@ The following is the request body schema for a PUT request to the ``/v3/intelReq
     * ``id``: <*Integer*> The IR category's ID number.
     * ``name``: <*String*> The IR category's name.
 * ``description``: <*String*> A description of the IR.
+* ``earliestTimestamp``: <*DateTime*> The start date in an IR query date range (ISO 8601).
 * ``keywordSections``: <*Array*> The sections that the IR's keyword query contains.
     * ``compareValue``: <*String*> Specifies whether the section is an **includes** or **excludes** section. (Accepted values: **includes**, **excludes**)
     * ``keywords``: <*Array of Objects*> A list of keywords that the section contains. Note that the total number of keywords added to an IR must not exceed the IR keyword limit configured by your System Administrator (the default limit is 300 keywords). Otherwise, a **400 Bad Request** error will be returned.
         * ``value``: <*String*> The keyword's value. For best practices on defining keywords in IR keyword queries, see the `Best Practices: Keywords for Intelligence Requirements <https://knowledge.threatconnect.com/docs/best-practices-keywords-for-intelligence-requirements>`_ knowledge base article.
     * ``sectionNumber``: <*Integer*> The section number for the keyword section.
+* ``latestTimestamp``: <*DateTime*> The end date in an IR query date range (ISO 8601).
 * ``requirementText``: <*String*> The IR's summary (i.e., the question, topic, or statement on which the IR focuses). The summary provided cannot be the same as the summary for an existing IR on the ThreatConnect instance.
 * ``resetResults``: <*Boolean*> Specifies whether to include results that have been archived or marked as false results the next time results are retrieved for the IR.
 * ``subtype``: <*Object*> The IR's subtype. 
@@ -149,10 +158,11 @@ The following is the request body schema for a PUT request to the ``/v3/intelReq
 .. code:: json
 
     {
+        "active": true,
         "associatedArtifacts": {
             "data": [
                 {
-                    "<artifactsFieldName>": <artifactsFieldValue>
+                    "<artifactsFieldName>": "<artifactsFieldValue>"
                 }
             ],
             "mode": "<string>"
@@ -160,7 +170,7 @@ The following is the request body schema for a PUT request to the ``/v3/intelReq
         "associatedCases": {
             "data": [
                 {
-                    "<casesFieldName>": <casesFieldValue>
+                    "<casesFieldName>": "<casesFieldValue>"
                 }
             ],
             "mode": "<string>"
@@ -168,7 +178,7 @@ The following is the request body schema for a PUT request to the ``/v3/intelReq
         "associatedGroups": {
             "data": [
                 {
-                    "<groupsFieldName>": <groupsFieldValue>
+                    "<groupsFieldName>": "<groupsFieldValue>"
                 }
             ],
             "mode": "<string>"
@@ -176,7 +186,7 @@ The following is the request body schema for a PUT request to the ``/v3/intelReq
         "associatedIndicators": {
             "data": [
                 {
-                    "<indicatorsFieldName>": <indicatorsFieldValue>
+                    "<indicatorsFieldName>": "<indicatorsFieldValue>"
                 }
             ],
             "mode": "<string>"
@@ -184,16 +194,17 @@ The following is the request body schema for a PUT request to the ``/v3/intelReq
         "associatedVictimAssets": {
             "data": [
                 {
-                    "<victimAssetsFieldName>": <victimAssetsFieldValue>
+                    "<victimAssetsFieldName>": "<victimAssetsFieldValue>"
                 }
             ],
             "mode": "<string>"
         },
         "category": {
-            "id": <int>,
-            "name": <string>
+            "id": 0,
+            "name": "<string>"
         },
         "description": "<string>",
+        "earliestTimestamp": "<datetime>",
         "keywordSections": [
             {
                 "compareValue": "<string>",
@@ -202,18 +213,19 @@ The following is the request body schema for a PUT request to the ``/v3/intelReq
                         "value": "<string>"
                     }
                 ],
-                "sectionNumber": <int>
+                "sectionNumber": 0
             }
         ],
+        "latestTimestamp": "<datetime>",
         "requirementText": "<string>",
-        "resetResults": <boolean>,
+        "resetResults": true,
         "subtype": {
-            "id": <int>
+            "id": 0
         },
         "tags": {
             "data": [
                 {
-                    "<tagsFieldName>": <tagsFieldValue>
+                    "<tagsFieldName>": "<tagsFieldValue>"
                 }
             ],
             "mode": "<string>"
@@ -224,7 +236,7 @@ The following is the request body schema for a PUT request to the ``/v3/intelReq
 Response Body
 ^^^^^^^^^^^^^
 
-The default response returned from successful GET, POST, and PUT requests to the ``/v3/intelRequirements`` endpoint includes one or more objects with the following fields:
+The default response for successful GET, POST, and PUT requests to the ``/v3/intelRequirements`` endpoint may include one or more objects with the following fields:
 
 * ``id``: <*Integer*> The IR's ID number. Note that this is not the same ID as the one specified for the uniqueId field when the IR was created or updated.
 * ``xid``: <*String*> The IR's XID. This field is only included in the response body when a value has been assigned to it.
@@ -252,16 +264,20 @@ The default response returned from successful GET, POST, and PUT requests to the
     * ``keywords``: <*Array of Objects*> A list of keywords that the section contains.
         * ``value``: <*String*> The keyword's value.
 * ``resultsLink``: <*String*> A link to view the local and global results for the IR's keyword query.
+* ``earliestTimestamp``: <*DateTime*> The start date in an IR query date range (ISO 8601). This field is only included in the response body when a value has been assigned to it.
+* ``latestTimestamp``: <*DateTime*> The end date in an IR query date range (ISO 8601). This field is only included in the response body when a value has been assigned to it.
+* ``active``: <*Boolean*> Specifies whether the IR's status is set to active (**true**) or inactive (**false**). When an IR is active, it is currently retrieving results (or will retrieve results after the start date of its query data range is reached). When an IR is inactive, it is no longer retrieving results. If an IR has a query date range and the current date and time are before the end date of the query date range, the IR's status is automatically set to active. Once the end date for the query date range is reached, the IR's status is automatically set to inactive.
+
 
 **Example**
 
 .. code:: json
 
     {
-        "id": <int>,
+        "id": 0,
         "xid": "<string>",
         "createdBy": {
-            "id": <int>,
+            "id": 0,
             "userName": "<string>",
             "firstName": "<string>",
             "lastName": "<string>",
@@ -292,5 +308,8 @@ The default response returned from successful GET, POST, and PUT requests to the
                 ]
             }
         ],
-        "resultsLink": "<string>"
+        "resultsLink": "<string>",
+        "earliestTimestamp": "<datetime>",
+        "latestTimestamp": "<datetime>",
+        "active": true
     }

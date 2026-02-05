@@ -54,7 +54,7 @@ Token-Based Authentication
 - **baseUrl**: Enter the base URL for your ThreatConnect instance (e.g., ``https://companyabc.threatconnect.com/api``). Do not include a trailing slash when entering the base URL.
 - **tcAccessId**: Clear the checkbox for this variable.
 - **tcSecretKey**: Clear the checkbox for this variable.
-- **tcToken**: Enter your ThreatConnect API user account token in the **CURRENT VALUE** column. API user account tokens are generated on the **Membership** tab of the **Organization Settings** screen in ThreatConnect and expire after a set amount of time configured by your Organization Administrator. For instructions on creating an API token for your API user account, see the `"Authentication" section of the Quick Start page <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#authentication>`_.
+- **tcToken**: Enter your API token in the **CURRENT VALUE** column. For instructions on generating an API token, see the `"Authentication" section of Quick Start <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#authentication>`_.
 
 Step 3: Make a ThreatConnect API Request in Postman
 ---------------------------------------------------

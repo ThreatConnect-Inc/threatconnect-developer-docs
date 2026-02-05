@@ -1,13 +1,13 @@
 Delete Intelligence Requirements
 --------------------------------
 
-Send a request in the following format to delete an IR. Note that ``{intelRequirementId}`` represents the value of the ``id`` field for an IR, not the value of the ``uniqueId`` field.
+Send a request in the following format to delete an IR. Note that ``{id}`` represents the value of the ``id`` field for an IR, not the value of the ``uniqueId`` field.
 
 **Example Request**
 
 .. code::
 
-    DELETE /v3/intelRequirements/{intelRequirementId}
+    DELETE /v3/intelRequirements/{id}
 
 For example, the following request will delete the IR whose ID is 10:
 

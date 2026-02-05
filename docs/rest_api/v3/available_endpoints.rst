@@ -29,6 +29,7 @@ Threat Intelligence Endpoints
 -   ``/v3/intelRequirements/results``
 -   ``/v3/intelRequirements/subtypes``
 -   ``/v3/securityLabels``
+-   ``/v3/security/exclusionLists``
 -   ``/v3/tags``
 -   ``/v3/victimAssets``
 -   ``/v3/victimAttributes``

@@ -52,7 +52,8 @@ Send the following request to retrieve data for all IRs:
                         ]
                     }
                 ],
-                "resultsLink": "https://app.threatconnect.com/v3/intelRequirements/results?tql=intelReqId=1"
+                "resultsLink": "https://app.threatconnect.com/v3/intelRequirements/results?tql=intelReqId=1",
+                "active": true
             },
             {
                 "id": 2,
@@ -93,9 +94,10 @@ Send the following request to retrieve data for all IRs:
                         ]
                     }
                 ],
-                "resultsLink": "https://app.threatconnect.com/v3/intelRequirements/results?tql=intelReqId=2"
+                "resultsLink": "https://app.threatconnect.com/v3/intelRequirements/results?tql=intelReqId=2",
+                "active": true
             },
-            {...}
+            ...
         ],
         "status": "Success"
     }
@@ -103,13 +105,13 @@ Send the following request to retrieve data for all IRs:
 Retrieve a Specific Intelligence Requirement
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Send a request in the following format to retrieve data for a specific IR. Note that ``{intelRequirementId}`` represents the value of the ``id`` field for an IR, not the value of the ``uniqueId`` field.
+Send a request in the following format to retrieve data for a specific IR. Note that ``{id}`` represents the value of the ``id`` field for an IR, not the value of the ``uniqueId`` field.
 
 **Example Request**
 
 .. code::
 
-    GET /v3/intelRequirements/{intelRequirementId}
+    GET /v3/intelRequirements/{id}
 
 For example, the following request will retrieve data for the IR whose ID is 10:
 
@@ -175,7 +177,8 @@ For example, the following request will retrieve data for the IR whose ID is 10:
                     ]
                 }
             ],
-            "resultsLink": "https://app.threatconnect.com/v3/intelRequirements/results?tql=intelReqId=10"
+            "resultsLink": "https://app.threatconnect.com/v3/intelRequirements/results?tql=intelReqId=10",
+            "active": true
         },
         "status": "Success"
     }

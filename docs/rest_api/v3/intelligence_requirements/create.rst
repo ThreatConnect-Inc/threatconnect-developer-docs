@@ -107,7 +107,8 @@ Send a request in the following format to create an IR in your Organization. Not
                     ]
                 }
             ],
-            "resultsLink": "https://app.threatconnect.com/v3/intelRequirements/results?tql=intelReqId=10"
+            "resultsLink": "https://app.threatconnect.com/v3/intelRequirements/results?tql=intelReqId=10",
+            "active": true
         },
         "message": "Created",
         "status": "Success"
