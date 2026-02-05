@@ -147,9 +147,9 @@ Follow these steps to generate a temporary API token on the **Jobs** screen in T
 
 1.	Log into ThreatConnect with a user account that has an Organization role of Standard User, Sharing User, Organization Administrator, or App Developer.
 
-1.	From the **Automation & Feeds** dropdown on the top navigation bar, select **Jobs**.
+2. From the **Automation & Feeds** dropdown on the top navigation bar, select **Jobs**.
 
-2.	From the **Options ⋯** menu in the upper-right corner, select **API Token…**.
+3.	From the **Options ⋯** menu in the upper-right corner, select **API Token…**.
 
 The **Developer Token** window opens and displays an API token. This token will expire after 4 hours.
 

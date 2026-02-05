@@ -291,7 +291,7 @@ The default response for successful GET, POST, and PUT requests to the ``/v3/int
         "requirementText": "<string>",
         "subtype": {
             "name": "<string>",
-            "description": "<string>
+            "description": "<string>"
         },
         "category": {
             "name": "<string>",
