@@ -30,18 +30,18 @@ The following table outlines the query parameters that may be used when sending 
      - Data Type
      - Default Value
      - Required?
-   * - **``objectId``**
-     - **The ID number of the object to retrieve posts for.**
-     - **Integer**
-     - **N/A**
-     - **Required**
-   * - **``objectType``**
-     - | **The type of object to retrieve posts for.**
+   * - ``objectId``
+     - The ID number of the object to retrieve posts for.
+     - Integer
+     - N/A
+     - Required
+   * - ``objectType``
+     - | The type of object to retrieve posts for.
        |
        | Acceptable values: **Group**, **Indicator**, **Organization**
-     - **String**
-     - **N/A**
-     - **Required**
+     - String
+     - N/A
+     - Required
    * - ``count``
      - Specifies whether to `return a count of items <https://docs.threatconnect.com/en/latest/rest_api/v3/return_count.html>`_ in the API response.
      - Boolean

@@ -79,7 +79,7 @@ Threat Intelligence Endpoints
    v3/intelligence_requirement_categories/intelligence_requirement_categories
    v3/intelligence_requirement_results/intelligence_requirement_results
    v3/intelligence_requirement_subtypes/intelligence_requirement_subtypes
-   v3/posts
+   v3/posts/posts
    v3/security_labels/security_labels
    v3/tags/tags
    v3/victim_assets/victim_assets
