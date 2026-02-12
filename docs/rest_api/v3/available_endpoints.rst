@@ -28,6 +28,8 @@ Threat Intelligence Endpoints
 -   ``/v3/intelRequirements/categories``
 -   ``/v3/intelRequirements/results``
 -   ``/v3/intelRequirements/subtypes``
+-   ``/v3/posts``
+-   ``/v3/posts/reply``
 -   ``/v3/securityLabels``
 -   ``/v3/security/exclusionLists``
 -   ``/v3/tags``
