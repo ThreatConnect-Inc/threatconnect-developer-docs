@@ -28,7 +28,7 @@ The following table outlines the query parameters that may be used when sending 
      - Default Value
      - Required?
    * - ``createActivityLog``
-     - Specifies whether to `create an activity log <hhttps://docs.threatconnect.com/en/latest/rest_api/v3/create_activity_logs.html>`_ for the requested action.
+     - Specifies whether to `create an activity log <https://docs.threatconnect.com/en/latest/rest_api/v3/create_activity_logs.html>`_ for the requested action.
      - Boolean
      - false
      - Optional
