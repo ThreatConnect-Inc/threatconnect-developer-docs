@@ -38,7 +38,7 @@ The following table outlines the query parameters that may be used when sending 
    * - ``objectType``
      - | The type of object to retrieve posts for.
        |
-       | Acceptable values: **Group**, **Indicator**, **Organization**
+       | Acceptable values: **Group**, **Indicator**, **Tag**, **Victim**
      - String
      - N/A
      - Required
