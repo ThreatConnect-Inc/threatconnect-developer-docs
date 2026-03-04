@@ -82,6 +82,37 @@
      - The date and time when the security event or incident took place (for Event and Incident Groups only)
      - DateTime
      - Optional
+   * - eventType
+     - | The type of event (for Event Groups only)
+       |
+       | Acceptable values:
+       |
+       | Alert
+       | Alert [flash]
+       | Alert [hyper-local]
+       | Alert [local]
+       | Alert [urgent]
+       | Breach
+       | Campaign
+       | Compliance / Regulatory
+       | Disclosure
+       | Emerging Threat
+       | Exercise
+       | Exposure
+       | Finding [Compliance violations]
+       | Finding [Configuration weaknesses]
+       | Finding [Missing patches]
+       | Finding [Security posture gaps]
+       | Investigation
+       | None
+       | Operation
+       | Physical Security
+       | Response Action
+       | Social Engineering (non-phishing)
+       | Third Party Reported
+       | Trend
+     - String
+     - Optional
    * - externalDateAdded
      - The date and time when the Group was created externally
      - DateTime
@@ -107,19 +138,19 @@
        |
        | Acceptable values:
        |
-       | * Bro
-       | * ClamAV
-       | * CybOX
-       | * Iris Search Hash
-       | * KQL
-       | * OpenIOC
-       | * Regex
-       | * SPL
-       | * Sigma
-       | * Snort
-       | * Suricata
-       | * TQL Query
-       | * YARA
+       | Bro
+       | ClamAV
+       | CybOX
+       | Iris Search Hash
+       | KQL
+       | OpenIOC
+       | Regex
+       | SPL
+       | Sigma
+       | Snort
+       | Suricata
+       | TQL Query
+       | YARA
      - String
      - Required for Signature Groups only
    * - firstSeen
@@ -179,22 +210,22 @@
        |
        | Acceptable values (Event):
        |
-       | * Needs Review
-       | * False Positive
-       | * No Further Action
-       | * Escalated
+       | Needs Review
+       | False Positive
+       | No Further Action
+       | Escalated
        | 
        | Acceptable values (Incident):
        |
-       | * New
-       | * Open
-       | * Stalled
-       | * Containment Achieved
-       | * Restoration Achieved
-       | * Incident Reported
-       | * Closed
-       | * Rejected
-       | * Deleted
+       | New
+       | Open
+       | Stalled
+       | Containment Achieved
+       | Restoration Achieved
+       | Incident Reported
+       | Closed
+       | Rejected
+       | Deleted
      - String
      - Optional
    * - subject
