@@ -272,11 +272,7 @@ Event
 
 For more information on updating the status of Event Groups, see the `Event Status <#id33>`_ section.
 
-.. [6] The following are accepted values for an Event Group's ``eventType`` field:
-
-    - ``Alert``
-    - ``Campaign``
-    - ``None``
+.. [6] To retrieve a list of accepted values for the ``eventType`` field, send the following request: `GET /v3/groups/eventTypeCategories`.
 
 .. [7] The following are accepted values for an Event Group's ``status`` field:
 

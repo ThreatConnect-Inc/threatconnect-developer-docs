@@ -21,6 +21,7 @@ Threat Intelligence Endpoints
 
 -   ``/v3/groupAttributes``
 -   ``/v3/groups``
+-   ``/v3/groups/eventTypeCategories``
 -   ``/v3/indicatorAttributes``
 -   ``/v3/indicators``
 -   ``/v3/indicators/enrich``
