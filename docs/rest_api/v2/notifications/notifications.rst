@@ -23,7 +23,7 @@ Create and send a notification.
 Requirements
 ^^^^^^^^^^^^
 
--  To create and send notifications to users in an Organization, your API user account must have an Organization role or Organization Administrator.
+-  To create and send notifications to users in an Organization, your API user account must have an Organization role of Organization Administrator.
 -  To create and send notifications to members of a Community or Source, your API user account must have a Community role of Commenter, Contributor, Editor, or Director for that Community or Source.
 
 Request Body Schema
@@ -77,7 +77,7 @@ Example Request
 ^^^^^^^^^^^^^^^
 
 .. note::
-   In addition to the required ``Content-Type`` header, you must include the required authentication headers for the method you are using to `authenticate your API request <https://threatconnect.readme.io/reference/getting-started-1#authentication>`__.
+   In addition to the required ``Content-Type`` header, you must include the required authentication headers for the method you are using to `authenticate your API request <https://docs.threatconnect.com/en/latest/rest_api/quick_start.html#id1>`__.
 
 **Request**
 
