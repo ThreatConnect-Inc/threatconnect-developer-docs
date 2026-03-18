@@ -1,43 +1,103 @@
 Notifications
-==============
+=============
 
-Notifications are a great way for users to follow updates on certain items, such as Indicators, Groups, or Contributes. Click the **Bell** icon on the navigation bar to utilize the Notification feature. The red bubble by the icon will include the number of “Push” Notifications that are available for viewing, which are Notifications that may warrant immediate attention. This documentation will detail how to create Notifications via the API.
+Notifications allow users to track changes made to Groups, Indicators, Intelligence Requirements, Tags, Victims, and other items. Users can view notifications in the ThreatConnect user interface by clicking the **bell** icon on the top navigation bar.
 
-Creating a Notification
--------------------------
+The v2 API allows you to create and send notifications to users in your Organization or members of a specific Community or Source.
 
-To create a Notification, use a query in the following format:
+.. note::
+   - Notifications sent to a Community or Source will be delivered to only non-Banned members in the Community or Source.
+   - Notifications will not be sent to API users.
 
-.. code::
+Endpoint: ``{baseUrl}/api/v2/notifications``
 
-    POST /v2/notifications
+Create Notifications
+--------------------
 
-Required Name/Value Pairs
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. code:: http
 
-If any of the following required name/value pairs are not included in the request, it will fail and be returned with a Bad Request (400) response.
+   POST /v2/notifications
 
-**notificationType**: Free-form text value limited to 50 characters. Values larger than 50 characters are truncated at 50. If the type does not exist, it will be saved for the API user’s Organization. Users in the Organization will be able to set Notification preferences for this type after it is saved. The only value that cannot be used is “System” in any variation of case, as this is a reserved Notification type for “system” push Notifications.
+Create and send a notification.
 
-**priority**: LOW/MEDIUM/HIGH
+Requirements
+^^^^^^^^^^^^
 
-**message**: Message in free-form text that can contain Markdown, limited to 64k in MySQL and 2G in SAP HANA
+-  To create and send notifications to users in an Organization, your API user account must have an Organization role or Organization Administrator.
+-  To create and send notifications to members of a Community or Source, your API user account must have a Community role of Commenter, Contributor, Editor, or Director for that Community or Source.
 
-**recipients**: A comma-separated list of usernames that will receive the message. The usernames must be in the same Organization as the API user sending the message. This parameter is required if the optional “isOrganization” parameter is not provided, or if it is set to “false.”
+Request Body Schema
+^^^^^^^^^^^^^^^^^^^
 
-Optional Parameters
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. list-table::
+   :widths: 20 40 20 20
+   :header-rows: 1
 
-**isOrganization** true/false defaults to “false”: Specifies whether the message is to be sent to all users in the Organization. If set to “true,” the message is sent to all users in the same Organization as the API user sending the message. Notification messages can only be sent to non-API users.
+   * - Field
+     - Description
+     - Data Type
+     - Required
+   * - ``message``
+     - | The contents of the notification. Supports Markdown.
+       | 
+       | Maximum size: 64 KB
+     - String
+     - **Required**
+   * - ``notificationType``
+     - | The notification's type. If the type is new, it will be registered to the recipient's Organization and can be used when updating notification settings.
+       | 
+       | Maximum length: 50 characters
+       |
+       | **Note**: "System" (case-insensitive) is reserved and cannot be used.
+     - String
+     - **Required**
+   * - ``priority``
+     - | The notification's priority.
+       | 
+       | Acceptable values (case-insensitive): **low**, **medium**, **high**
+     - Enum
+     - **Required**
+   * - ``recipients``
+     - A comma-separated list of usernames in your Organization that will receive the notification. This field is required if ``ownerId`` is omitted, or if ``isOrganization`` is **false** or omitted.
+     - Enum
+     - **Conditional**
+   * - ``isOrganization``
+     - | If **true**, the notification will be sent to all non-API users in your Organization.
+       | 
+       | Default value: **false**
+     - Boolean
+     - Optional
+   * - ``ownerId``
+     - The unique ID of the owner whose users or members will receive the notification.
+     - Integer
+     - Optional
 
-JSON Response:
 
-.. code-block:: json
+Example Request
+^^^^^^^^^^^^^^^
 
-    {
-      "message":"Integration Completed!  No errors",
-      "notificationType":"API",
-      "recipients":"user@user.com",
-      "isOrganization":"false",
-      "priority":"HIGH
-     }      
+.. note::
+   In addition to the required ``Content-Type`` header, you must include the required authentication headers for the method you are using to `authenticate your API request <https://threatconnect.readme.io/reference/getting-started-1#authentication>`__.
+
+**Request**
+
+.. code:: http
+
+   POST /v2/notifications
+   Content-Type: application/json
+
+   {
+       "message": "Test message created using the `v2 API`.",
+       "notificationType": "API",
+       "recipients": "jsmith",
+       "isOrganization": false,
+       "priority": "High"
+   }
+
+**Response**
+
+.. code:: json
+
+   {
+       "status": "Success"
+   }
