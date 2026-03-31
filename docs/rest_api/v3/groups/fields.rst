@@ -276,10 +276,16 @@ For more information on updating the status of Event Groups, see the `Event Stat
 
 .. [7] The following are accepted values for an Event Group's ``status`` field:
 
-    - ``Needs Review``
-    - ``False Positive``
-    - ``No Further Action``
+    - ``Completed``
     - ``Escalated``
+    - ``False Positive``
+    - ``In Progress``
+    - ``Needs Review``
+    - ``New``
+    - ``No Further Action``
+    - ``Reopened``
+
+    To set an Event Group's status to **None**, either omit the ``status`` field from the request body or assign it a **null** value. When updating an existing Event Group, you can only revert its status to **None** if it has not been previously assigned another acceptable value.
 
 Incident
 ========

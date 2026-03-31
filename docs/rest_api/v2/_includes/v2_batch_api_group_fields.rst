@@ -210,11 +210,17 @@
        |
        | Acceptable values (Event):
        |
-       | Needs Review
-       | False Positive
-       | No Further Action
+       | Completed
        | Escalated
+       | False Positive
+       | In Progress
+       | Needs Review
+       | New
+       | No Further Action
+       | Reopened
        | 
+       | **Note**: To set an Event Group's status to **None**, either omit the ``status`` field from the request body or assign it a **null** value.
+       |
        | Acceptable values (Incident):
        |
        | New

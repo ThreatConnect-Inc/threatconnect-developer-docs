@@ -15,7 +15,21 @@ Requirements
 Update Event Status
 ^^^^^^^^^^^^^^^^^^^
 
-When creating a new Event Group or updating an existing one, you can update its status. The following request demonstrates how to update an existing Event Group's status:
+For Event Groups, you can set the status field's value to one of the following statuses:
+
+- Completed
+- Escalated
+- False Positive
+- In Progress
+- Needs Review
+- New
+- No Further Action
+- Reopened
+
+.. note::
+    To set an Event Group's status to **None**, either omit the ``status`` field from the request body or assign it a **null** value. When updating an existing Event Group, you can only revert its status to **None** if it has not been previously assigned another acceptable value.
+
+The following request demonstrates how to update an existing Event Group's status:
 
 .. code:: http
 
