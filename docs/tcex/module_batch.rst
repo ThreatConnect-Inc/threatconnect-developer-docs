@@ -56,7 +56,7 @@ The example below passes only the required fields to **document()**.  The option
     document = batch.document('document-001', 'example.txt')
     document.malware = True
     document.password = 'test'
-    document.file_content = 'example file content'
+    document.add_file(filename='example.txt', file_content='example file content') #file_content can be str, bytes or callback to get contents
     # Add Attribute
     attr = document.attribute('Description', 'Example Description')
     attr.displayed = True
