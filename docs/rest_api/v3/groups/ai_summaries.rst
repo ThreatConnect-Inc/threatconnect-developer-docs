@@ -60,19 +60,19 @@ Response Body
 The following is the response body schema for a custom AI content object that is included in API responses. Note that you must use the ``fields`` query parameter in your request and assign it a value of ``insights`` to include custom AI content in API responses:
 
 - ``customAiContent``: <*Object*> The details of the AI-generated summary of the Group.
-  - ``summary``: <*String*> The AI-generated summary in paragraph format. If ``summary`` has no value, it is omitted from the response body.
-  - ``app``: <*String*> The app that was used to generate the AI summary. If ``app`` has no value, it is omitted from the response body.
-  - ``aiProvider``: <*String*> The source that provided the AI-generated summary.
-  - ``markdown``: <*String*> The AI-generated summary in Markdown format.
-  - ``bullets``: <*Array of Strings*> The AI-generated summary in bullet-point format. If ``bullets`` has no value, it is omitted from the response body.
-  - ``lastRetrievalDate``: <*DateTime*> The date and time the AI-generated summary was last retrieved from its source.
-  - ``generatedBy``: <*Object*> The user who added the AI-generated summary to the Group.
-    - ``id``: <*Integer*> The unique numeric identifier of the user.
-    - ``userName``: <*String*> The username of the user.
-    - ``firstName``: <*String*> The first name of the user.
-    - ``lastName``: <*String*> The last name of the user.
-    - ``pseudonym``: <*String*> The pseudonym of the user.
-    - ``owner``: <*String*> The Organization to which the user belongs.
+    - ``summary``: <*String*> The AI-generated summary in paragraph format. If ``summary`` has no value, it is omitted from the response body.
+    - ``app``: <*String*> The app that was used to generate the AI summary. If ``app`` has no value, it is omitted from the response body.
+    - ``aiProvider``: <*String*> The source that provided the AI-generated summary.
+    - ``markdown``: <*String*> The AI-generated summary in Markdown format.
+    - ``bullets``: <*Array of Strings*> The AI-generated summary in bullet-point format. If ``bullets`` has no value, it is omitted from the response body.
+    - ``lastRetrievalDate``: <*DateTime*> The date and time the AI-generated summary was last retrieved from its source.
+    - ``generatedBy``: <*Object*> The user who added the AI-generated summary to the Group.
+        - ``id``: <*Integer*> The unique numeric identifier of the user.
+        - ``userName``: <*String*> The username of the user.
+        - ``firstName``: <*String*> The first name of the user.
+        - ``lastName``: <*String*> The last name of the user.
+        - ``pseudonym``: <*String*> The pseudonym of the user.
+        - ``owner``: <*String*> The Organization to which the user belongs.
 
 **Example**
 

@@ -92,6 +92,7 @@ Alternatively, refer to the following table for a list of available fields that 
    * - firstSeen
      - The date and time when the Group was first seen. Accepts a valid date in `ISO 8601 <https://en.wikipedia.org/wiki/ISO_8601>`_ format or a **null** value.
      - DateTime
+     - FALSE
      - TRUE
      - "2023-10-04T12:34:56Z"
    * - lastSeen
