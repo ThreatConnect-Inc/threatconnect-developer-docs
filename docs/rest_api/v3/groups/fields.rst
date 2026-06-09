@@ -90,9 +90,8 @@ Alternatively, refer to the following table for a list of available fields that 
      - TRUE
      - "2023-10-04T12:34:56Z"
    * - firstSeen
-     - The date and time when the Group was first seen
+     - The date and time when the Group was first seen. Accepts a valid date in `ISO 8601 <https://en.wikipedia.org/wiki/ISO_8601>`_ format or a **null** value.
      - DateTime
-     - FALSE
      - TRUE
      - "2023-10-04T12:34:56Z"
    * - lastSeen
@@ -186,6 +185,11 @@ Document
      - Type
      - Required for Creation?
      - Updatable?
+   * - customAiContent
+     - An AI-generated summary of the Document. For more information, see the `"AI Summaries" <#ai-summaries>`_ section.
+     - Custom AI Content Object
+     - FALSE
+     - TRUE
    * - fileName
      - The file name of the Document
      - String
@@ -254,25 +258,30 @@ Event
      - Type
      - Required for Creation?
      - Updatable?
+   * - customAiContent
+     - An AI-generated summary of the Event. For more information, see the `"AI Summaries" <#ai-summaries>`_ section.
+     - Object
+     - FALSE
+     - TRUE
    * - eventDate
-     - The date and time when the Event took place
-     - Date
+     - The date when the Event took place. Accepts a valid date in `ISO 8601 <https://en.wikipedia.org/wiki/ISO_8601>`_ format or a **null** value.
+     - DateTime
      - FALSE
      - TRUE
    * - eventType [6]_
-     - The Event's type
+     - The Event's type. Accepts a valid Event type or a **null** value.
      - String
      - FALSE
      - TRUE
    * - status [7]_
-     - The status of the Event
+     - The status of the Event. Accepts a valid Event status or a **null** value.
      - String
      - FALSE
      - TRUE
 
 For more information on updating the status of Event Groups, see the `Event Status <#id33>`_ section.
 
-.. [6] To retrieve a list of accepted values for the ``eventType`` field, send the following request: ``GET /v3/groups/eventTypeCategories``.
+.. [6] To retrieve a list of accepted values for the ``eventType`` field, send the following request: ``GET /v3/groups/eventTypeCategories``. If you omit the ``eventType`` field from the request body or assign it a **null** value, the Event Group's type will be set to **None**.
 
 .. [7] The following are accepted values for an Event Group's ``status`` field:
 
@@ -283,9 +292,11 @@ For more information on updating the status of Event Groups, see the `Event Stat
     - ``Needs Review``
     - ``New``
     - ``No Further Action``
+    - ``None``
     - ``Reopened``
+    - ``null``
 
-    To set an Event Group's status to **None**, either omit the ``status`` field from the request body or assign it a **null** value. When updating an existing Event Group, you can only revert its status to **None** if it has not been previously assigned another acceptable value.
+    If you omit the ``status`` field from the request body or assign it a **null** value, the Event Group's status will be set to **None**.
 
 Incident
 ========
@@ -300,8 +311,8 @@ Incident
      - Required for Creation?
      - Updatable?
    * - eventDate
-     - The date when the Incident took place
-     - Date
+     - The date when the Incident took place. Accepts a valid date in `ISO 8601 <https://en.wikipedia.org/wiki/ISO_8601>`_ format or a **null** value.
+     - DateTime
      - FALSE
      - TRUE
    * - status [8]_
@@ -334,18 +345,23 @@ Report
      - Type
      - Required for Creation?
      - Updatable?
+   * - customAiContent
+     - An AI-generated summary of the Report. For more information, see the `"AI Summaries" <#ai-summaries>`_ section.
+     - Object
+     - FALSE
+     - TRUE
    * - fileName
      - The file name of the Report
      - String
      - FALSE
      - TRUE
    * - publishDate
-     - The date and time when the Report was published
-     - Date
+     - The date when the Report was published. Accepts a valid date in `ISO 8601 <https://en.wikipedia.org/wiki/ISO_8601>`_ format or a **null** value.
+     - DateTime
      - FALSE
      - TRUE
    * - reviews
-     - An Intelligence Review submitted for the Report (see the "Intelligence Reviews" section for more information)
+     - An Intelligence Review submitted for the Report. For more information, see the `"Intelligence Reviews" <#intelligence-reviews>`_ section.
      - Intelligence Review Object
      - FALSE
      - TRUE
@@ -424,19 +440,19 @@ Task
        | {"data": [{"type": "Escalate", "user": {"id": 8}}]}
    * - dueDate
      - The date and time when the Task is due
-     - Date
+     - DateTime
      - FALSE
      - TRUE
      - "2021-04-30T00:00:00Z"
    * - escalationDate
      - The date and time when the Task should be escalated
-     - String
+     - DateTime
      - FALSE
      - TRUE
      - "2021-04-30T00:00:00Z"
    * - reminderDate
      - The date and time when a reminder about the Task will be sent
-     - String
+     - DateTime
      - FALSE
      - TRUE
      - "2021-04-30T00:00:00Z"

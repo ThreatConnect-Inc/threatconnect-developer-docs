@@ -31,6 +31,8 @@ Endpoint: ``/api/v3/groups``
 
 .. include:: event_status.rst
 
+.. include:: ai_summaries.rst
+
 .. include:: unified_view_vulnerabilities.rst
 
 .. include:: threat_actor_profiles.rst

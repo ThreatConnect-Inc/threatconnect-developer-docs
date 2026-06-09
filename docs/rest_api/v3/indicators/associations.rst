@@ -9,9 +9,9 @@ For instructions on associating Artifacts, Cases, and Groups to an Indicator, se
 Retrieve Custom Associations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When working with Indicators, you can retrieve data about an Indicator's custom associations, including the name of the custom association and the Indicator involved in this association.
+When working with Indicators, you can retrieve data about an Indicator's direct custom associations, including association's name and the Indicator involved in this association.
 
-For example, the following request will retrieve data for the Indicator whose ID is 30, including information about its custom associations.
+For example, the following request will retrieve data for the Indicator whose ID is 30, including information about its direct custom associations.
 
 .. code::
 

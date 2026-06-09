@@ -15,7 +15,7 @@ Requirements
 Update Event Status
 ^^^^^^^^^^^^^^^^^^^
 
-For Event Groups, you can set the status field's value to one of the following statuses:
+For Event Groups, you can assign the ``status`` field one of the following values:
 
 - Completed
 - Escalated
@@ -24,10 +24,12 @@ For Event Groups, you can set the status field's value to one of the following s
 - Needs Review
 - New
 - No Further Action
+- None
 - Reopened
+- null
 
 .. note::
-    To set an Event Group's status to **None**, either omit the ``status`` field from the request body or assign it a **null** value. When updating an existing Event Group, you can only revert its status to **None** if it has not been previously assigned another acceptable value.
+    If you omit the ``status`` field from the request body or assign it a **null** value, the Event Group's status will be set to **None**.
 
 The following request demonstrates how to update an existing Event Group's status:
 
