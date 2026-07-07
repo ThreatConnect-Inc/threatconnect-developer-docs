@@ -200,6 +200,6 @@ Request (Encoded URL)
 
 .. code:: http
 
-    GET v3/groups? tql=hasThreatActorProfile(mitre_id%3D%22G0112%22)&fields=common
+    GET /v3/groups?tql=hasThreatActorProfile(mitre_id%3D%22G0112%22)&fields=common
 
 For more information on filtering results with TQL, see `Filter Results With TQL <https://docs.threatconnect.com/en/latest/rest_api/v3/filter_results.html>`_. For a complete list of TQL parameters you can use to filter Groups included in a Threat Actor Profile, see the `TQL Operators and Parameters <https://knowledge.threatconnect.com/docs/tql-operators-and-parameters>`_ knowledge base article.
