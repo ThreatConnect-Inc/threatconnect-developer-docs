@@ -138,7 +138,7 @@ The following request demonstrates how to provide an AI-generated summary when c
            "ownerName": "Demo Organization",
            "webLink": "https://app.threatconnect.com/#/details/groups/47434",
            "type": "Report",
-           "name": "Example Report Group with AI Summary",
+           "name": "Emotet Resurgence – Malspam Campaign Targeting Financial Sector",
            "createdBy": {
                "id": 3,
                "userName": "11112222333344445555",
