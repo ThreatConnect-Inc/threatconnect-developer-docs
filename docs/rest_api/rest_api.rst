@@ -95,6 +95,7 @@ Miscellaneous Endpoints
    v3/attribute_types/attribute_types
    v3/job_executions/job_executions
    v3/jobs/jobs
+   v3/notifications/notifications
    v3/owner_roles/owner_roles
    v3/owners/owners
    v3/playbook_executions/playbook_executions

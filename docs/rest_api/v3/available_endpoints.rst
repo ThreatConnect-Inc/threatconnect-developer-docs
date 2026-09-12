@@ -44,6 +44,7 @@ Miscellaneous Endpoints
 -   ``/v3/attributeTypes``
 -   ``/v3/job/executions``
 -   ``/v3/jobs``
+-   ``/v3/notifications``
 -   ``/v3/openApi``
 -   ``/v3/playbook/executions``
 -   ``/v3/playbooks``
