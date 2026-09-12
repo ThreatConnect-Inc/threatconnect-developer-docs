@@ -6,8 +6,7 @@ Notifications allow users to track changes made to Groups, Indicators, Intellige
 The v2 API allows you to create and send notifications to users in your Organization or members of a specific Community or Source.
 
 .. note::
-   - Notifications sent to a Community or Source will be delivered to only non-Banned members in the Community or Source.
-   - Notifications will not be sent to API users.
+   Notifications sent to a Community or Source will be delivered to only non-Banned members in the Community or Source.
 
 Endpoint: ``{baseUrl}/api/v2/notifications``
 
@@ -62,7 +61,7 @@ Request Body Schema
      - Enum
      - **Conditional**
    * - ``isOrganization``
-     - | If **true**, the notification will be sent to all non-API users in your Organization.
+     - | If **true**, the notification will be sent to all users in your Organization.
        | 
        | Default value: **false**
      - Boolean
