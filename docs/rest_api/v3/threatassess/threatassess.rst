@@ -6,4 +6,4 @@ In ThreatConnect, under **Settings** > **Account Settings** > **ThreatAssess**, 
 
 The ThreatConnect v3 API allows you to preview and execute TQL-based ThreatAssess recalculations and retrieve ThreatAssess recalculation queue counts.
 
-For more information on the ``/v3/notifications`` API endpoint, see `ThreatAssess Overview <https://threatconnect.readme.io/reference/threatassess-overview>`_ in the ThreatConnect Developer Hub.
+For more information on the ``/v3/threatAssess`` API endpoints, see `ThreatAssess <https://threatconnect.readme.io/reference/threatassess-overview>`_ in the ThreatConnect Developer Hub.
