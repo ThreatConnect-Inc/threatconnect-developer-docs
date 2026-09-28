@@ -82,6 +82,7 @@ Threat Intelligence Endpoints
    v3/posts/posts
    v3/security_labels/security_labels
    v3/tags/tags
+   v3/threatassess/threatassess
    v3/victim_assets/victim_assets
    v3/victim_attributes/victim_attributes
    v3/victims/victims

@@ -34,6 +34,9 @@ Threat Intelligence Endpoints
 -   ``/v3/securityLabels``
 -   ``/v3/security/exclusionLists``
 -   ``/v3/tags``
+-   ``/v3/threatAssess/tqlRefresh``
+-   ``/v3/threatAssess/tqlRefresh/preview``
+-   ``/v3/threatAssess/queueCounts``
 -   ``/v3/victimAssets``
 -   ``/v3/victimAttributes``
 -   ``/v3/victims``
